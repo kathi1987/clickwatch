@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: edu.hu.clickwatch
+Bundle-SymbolicName: edu.hu.clickwatch;singleton:=true
+Bundle-Version: 0.1.0
+Require-Bundle: org.eclipse.emf.ecore,
+ edu.mit.clickcontrol,
+ org.eclipse.ui,
+ org.eclipse.core.resources,
+ edu.hu.clickwatch.model
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
