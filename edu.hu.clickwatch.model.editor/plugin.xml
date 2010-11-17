@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id$
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="edu.hu.clickwatch.model.presentation.ClickWatchModelModelWizardID"
+            name="%_UI_ClickWatchModelModelWizard_label"
+            class="edu.hu.clickwatch.model.presentation.ClickWatchModelModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/ClickWatchModelModelFile.gif">
+         <description>%_UI_ClickWatchModelModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <editor
+            id="edu.hu.clickwatch.model.presentation.ClickWatchModelEditorID"
+            name="%_UI_ClickWatchModelEditor_label"
+            icon="icons/full/obj16/ClickWatchModelModelFile.gif"
+            extensions="clickwatchmodel"
+            class="edu.hu.clickwatch.model.presentation.ClickWatchModelEditor"
+            contributorClass="edu.hu.clickwatch.model.presentation.ClickWatchModelActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>
