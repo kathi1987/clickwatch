@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link edu.hu.clickwatch.model.Network#getName <em>Name</em>}</li>
  *   <li>{@link edu.hu.clickwatch.model.Network#getNodes <em>Nodes</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.model.Network#getAll <em>All</em>}</li>
  * </ul>
  * </p>
  *
@@ -70,5 +71,31 @@ public interface Network extends EObject {
 	 * @generated
 	 */
 	EList<Node> getNodes();
+
+	/**
+	 * Returns the value of the '<em><b>All</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>All</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>All</em>' containment reference.
+	 * @see #setAll(MultiNode)
+	 * @see edu.hu.clickwatch.model.ClickWatchModelPackage#getNetwork_All()
+	 * @model containment="true"
+	 * @generated
+	 */
+	MultiNode getAll();
+
+	/**
+	 * Sets the value of the '{@link edu.hu.clickwatch.model.Network#getAll <em>All</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>All</em>' containment reference.
+	 * @see #getAll()
+	 * @generated
+	 */
+	void setAll(MultiNode value);
 
 } // Network

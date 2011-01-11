@@ -3,7 +3,8 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Clickcontrol
 Bundle-SymbolicName: edu.mit.clickcontrol
 Bundle-Version: 1.0.0
-Export-Package: .,
- click,
- statscollector
+Export-Package: click,
+ edu.hu.clickcontrol
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Require-Bundle: com.google.guice;bundle-version="3.0.0",
+ com.google.guava;bundle-version="0.0.7"

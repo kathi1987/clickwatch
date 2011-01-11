@@ -6,15 +6,13 @@
  */
 package edu.hu.clickwatch.model.impl;
 
-import edu.hu.clickwatch.model.ClickWatchModelPackage;
-import edu.hu.clickwatch.model.Handler;
-
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+
+import edu.hu.clickwatch.model.ClickWatchModelPackage;
+import edu.hu.clickwatch.model.Handler;
 
 /**
  * <!-- begin-user-doc -->
@@ -438,6 +436,8 @@ public class HandlerImpl extends EObjectImpl implements Handler {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result
+				+ ((eContainer() == null) ? 0 : eContainer().hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		return result;
 	}
@@ -451,6 +451,11 @@ public class HandlerImpl extends EObjectImpl implements Handler {
 		if (getClass() != obj.getClass())
 			return false;
 		HandlerImpl other = (HandlerImpl) obj;
+		if (eContainer() == null) {
+			if (other.eContainer() != null)
+				return false;
+		} else if (!eContainer().equals(other.eContainer()))
+			return false;
 		if (name == null) {
 			if (other.name != null)
 				return false;
@@ -458,5 +463,6 @@ public class HandlerImpl extends EObjectImpl implements Handler {
 			return false;
 		return true;
 	}
+	
 
 } //HandlerImpl

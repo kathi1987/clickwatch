@@ -9,8 +9,8 @@ import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
 
-import edu.hu.clickwatch.model.Connection;
 import edu.hu.clickwatch.model.Node;
+import edu.hu.clickwatch.model.AbstractNodeConnection;
 
 public class Disconnect implements IObjectActionDelegate {
 
@@ -40,7 +40,7 @@ public class Disconnect implements IObjectActionDelegate {
 		}
 		
 		if (node.getConnection() != null) {
-			Connection oldConnection = (Connection)node.getConnection();
+			AbstractNodeConnection oldConnection = (AbstractNodeConnection)node.getConnection();
 			node.setConnection(null);
 			oldConnection.disconnect();
 		}
@@ -54,7 +54,6 @@ public class Disconnect implements IObjectActionDelegate {
 			node = (Node)((IStructuredSelection)selection).getFirstElement();
 		} catch (Exception e) {
 			MessageDialog.openError(shell, "Clickwatch Error", "You can only call this action on a single Node");
-			// TODO
 		}
 	}
 

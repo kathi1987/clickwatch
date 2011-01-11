@@ -7,5 +7,9 @@ Require-Bundle: org.eclipse.emf.ecore,
  edu.mit.clickcontrol,
  org.eclipse.ui,
  org.eclipse.core.resources,
- edu.hu.clickwatch.model
+ edu.hu.clickwatch.model,
+ com.google.guava;bundle-version="0.0.7",
+ org.junit4;bundle-version="4.8.1",
+ com.google.guice;bundle-version="3.0.0",
+ org.eclipse.core.runtime;bundle-version="3.6.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6

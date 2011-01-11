@@ -294,5 +294,5 @@ public class ElementImpl extends EObjectImpl implements Element {
 		} else if (!name.equals(other.name))
 			return false;
 		return true;
-	}
+	}	
 } //ElementImpl

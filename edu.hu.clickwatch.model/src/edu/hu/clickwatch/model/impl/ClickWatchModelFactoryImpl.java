@@ -64,6 +64,7 @@ public class ClickWatchModelFactoryImpl extends EFactoryImpl implements ClickWat
 			case ClickWatchModelPackage.ELEMENT: return createElement();
 			case ClickWatchModelPackage.HANDLER: return createHandler();
 			case ClickWatchModelPackage.NETWORK: return createNetwork();
+			case ClickWatchModelPackage.MULTI_NODE: return createMultiNode();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -107,6 +108,16 @@ public class ClickWatchModelFactoryImpl extends EFactoryImpl implements ClickWat
 	public Network createNetwork() {
 		NetworkImpl network = new NetworkImpl();
 		return network;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public MultiNode createMultiNode() {
+		MultiNodeImpl multiNode = new MultiNodeImpl();
+		return multiNode;
 	}
 
 	/**

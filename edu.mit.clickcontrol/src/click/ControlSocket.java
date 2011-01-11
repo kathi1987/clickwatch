@@ -90,6 +90,7 @@ public class ControlSocket {
 		 * setup connection to the node's click ControlSocket
 		 */
 		_sock = new Socket(_host, _port);
+		System.out.println("connected +++++");
 		_sock.setSoTimeout(_sock_timeout);
 
 		InputStream is = _sock.getInputStream();
@@ -336,6 +337,15 @@ public class ControlSocket {
 			elementName = el;
 			handlerName = handler;
 			canRead = canWrite = false;
+		}
+
+		public HandlerInfo(String elementName, String handlerName,
+				boolean canRead, boolean canWrite) {
+			super();
+			this.elementName = elementName;
+			this.handlerName = handlerName;
+			this.canRead = canRead;
+			this.canWrite = canWrite;
 		}
 
 		public String getDescription() {
@@ -775,7 +785,7 @@ public class ControlSocket {
 		InetAddress localhost = null;
 		try {
 			// localhost = InetAddress.getLocalHost();
-			localhost = InetAddress.getByName("localhost");
+			localhost = InetAddress.getByName("192.168.3.116");
 			// localhost = InetAddress.getByName("bermuda.lcs.mit.edu");
 		} catch (UnknownHostException ex) {
 			System.out.println("Can't get localhost address");

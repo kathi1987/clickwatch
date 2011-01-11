@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import edu.hu.clickwatch.model.ClickWatchModelPackage;
+import edu.hu.clickwatch.model.MultiNode;
 import edu.hu.clickwatch.model.Network;
 import edu.hu.clickwatch.model.Node;
 
@@ -31,6 +32,7 @@ import edu.hu.clickwatch.model.Node;
  * <ul>
  *   <li>{@link edu.hu.clickwatch.model.impl.NetworkImpl#getName <em>Name</em>}</li>
  *   <li>{@link edu.hu.clickwatch.model.impl.NetworkImpl#getNodes <em>Nodes</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.model.impl.NetworkImpl#getAll <em>All</em>}</li>
  * </ul>
  * </p>
  *
@@ -66,6 +68,16 @@ public class NetworkImpl extends EObjectImpl implements Network {
 	 * @ordered
 	 */
 	protected EList<Node> nodes;
+
+	/**
+	 * The cached value of the '{@link #getAll() <em>All</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAll()
+	 * @generated
+	 * @ordered
+	 */
+	protected MultiNode all;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -124,11 +136,56 @@ public class NetworkImpl extends EObjectImpl implements Network {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public MultiNode getAll() {
+		return all;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetAll(MultiNode newAll, NotificationChain msgs) {
+		MultiNode oldAll = all;
+		all = newAll;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ClickWatchModelPackage.NETWORK__ALL, oldAll, newAll);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setAll(MultiNode newAll) {
+		if (newAll != all) {
+			NotificationChain msgs = null;
+			if (all != null)
+				msgs = ((InternalEObject)all).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ClickWatchModelPackage.NETWORK__ALL, null, msgs);
+			if (newAll != null)
+				msgs = ((InternalEObject)newAll).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ClickWatchModelPackage.NETWORK__ALL, null, msgs);
+			msgs = basicSetAll(newAll, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ClickWatchModelPackage.NETWORK__ALL, newAll, newAll));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case ClickWatchModelPackage.NETWORK__NODES:
 				return ((InternalEList<?>)getNodes()).basicRemove(otherEnd, msgs);
+			case ClickWatchModelPackage.NETWORK__ALL:
+				return basicSetAll(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -145,6 +202,8 @@ public class NetworkImpl extends EObjectImpl implements Network {
 				return getName();
 			case ClickWatchModelPackage.NETWORK__NODES:
 				return getNodes();
+			case ClickWatchModelPackage.NETWORK__ALL:
+				return getAll();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -165,6 +224,9 @@ public class NetworkImpl extends EObjectImpl implements Network {
 				getNodes().clear();
 				getNodes().addAll((Collection<? extends Node>)newValue);
 				return;
+			case ClickWatchModelPackage.NETWORK__ALL:
+				setAll((MultiNode)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -183,6 +245,9 @@ public class NetworkImpl extends EObjectImpl implements Network {
 			case ClickWatchModelPackage.NETWORK__NODES:
 				getNodes().clear();
 				return;
+			case ClickWatchModelPackage.NETWORK__ALL:
+				setAll((MultiNode)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -199,6 +264,8 @@ public class NetworkImpl extends EObjectImpl implements Network {
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case ClickWatchModelPackage.NETWORK__NODES:
 				return nodes != null && !nodes.isEmpty();
+			case ClickWatchModelPackage.NETWORK__ALL:
+				return all != null;
 		}
 		return super.eIsSet(featureID);
 	}

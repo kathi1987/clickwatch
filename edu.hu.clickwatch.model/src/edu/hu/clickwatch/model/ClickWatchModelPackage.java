@@ -272,13 +272,96 @@ public interface ClickWatchModelPackage extends EPackage {
 	int NETWORK__NODES = 1;
 
 	/**
+	 * The feature id for the '<em><b>All</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK__ALL = 2;
+
+	/**
 	 * The number of structural features of the '<em>Network</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NETWORK_FEATURE_COUNT = 2;
+	int NETWORK_FEATURE_COUNT = 3;
+
+
+	/**
+	 * The meta object id for the '{@link edu.hu.clickwatch.model.impl.MultiNodeImpl <em>Multi Node</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see edu.hu.clickwatch.model.impl.MultiNodeImpl
+	 * @see edu.hu.clickwatch.model.impl.ClickWatchModelPackageImpl#getMultiNode()
+	 * @generated
+	 */
+	int MULTI_NODE = 4;
+
+	/**
+	 * The feature id for the '<em><b>INet Adress</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTI_NODE__INET_ADRESS = NODE__INET_ADRESS;
+
+	/**
+	 * The feature id for the '<em><b>Port</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTI_NODE__PORT = NODE__PORT;
+
+	/**
+	 * The feature id for the '<em><b>Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTI_NODE__ELEMENTS = NODE__ELEMENTS;
+
+	/**
+	 * The feature id for the '<em><b>Connected</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTI_NODE__CONNECTED = NODE__CONNECTED;
+
+	/**
+	 * The feature id for the '<em><b>Connection</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTI_NODE__CONNECTION = NODE__CONNECTION;
+
+	/**
+	 * The feature id for the '<em><b>Nodes</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTI_NODE__NODES = NODE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Multi Node</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTI_NODE_FEATURE_COUNT = NODE_FEATURE_COUNT + 1;
 
 
 	/**
@@ -498,6 +581,38 @@ public interface ClickWatchModelPackage extends EPackage {
 	EReference getNetwork_Nodes();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link edu.hu.clickwatch.model.Network#getAll <em>All</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>All</em>'.
+	 * @see edu.hu.clickwatch.model.Network#getAll()
+	 * @see #getNetwork()
+	 * @generated
+	 */
+	EReference getNetwork_All();
+
+	/**
+	 * Returns the meta object for class '{@link edu.hu.clickwatch.model.MultiNode <em>Multi Node</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Multi Node</em>'.
+	 * @see edu.hu.clickwatch.model.MultiNode
+	 * @generated
+	 */
+	EClass getMultiNode();
+
+	/**
+	 * Returns the meta object for the reference list '{@link edu.hu.clickwatch.model.MultiNode#getNodes <em>Nodes</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Nodes</em>'.
+	 * @see edu.hu.clickwatch.model.MultiNode#getNodes()
+	 * @see #getMultiNode()
+	 * @generated
+	 */
+	EReference getMultiNode_Nodes();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -686,6 +801,32 @@ public interface ClickWatchModelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference NETWORK__NODES = eINSTANCE.getNetwork_Nodes();
+
+		/**
+		 * The meta object literal for the '<em><b>All</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference NETWORK__ALL = eINSTANCE.getNetwork_All();
+
+		/**
+		 * The meta object literal for the '{@link edu.hu.clickwatch.model.impl.MultiNodeImpl <em>Multi Node</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see edu.hu.clickwatch.model.impl.MultiNodeImpl
+		 * @see edu.hu.clickwatch.model.impl.ClickWatchModelPackageImpl#getMultiNode()
+		 * @generated
+		 */
+		EClass MULTI_NODE = eINSTANCE.getMultiNode();
+
+		/**
+		 * The meta object literal for the '<em><b>Nodes</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MULTI_NODE__NODES = eINSTANCE.getMultiNode_Nodes();
 
 	}
 

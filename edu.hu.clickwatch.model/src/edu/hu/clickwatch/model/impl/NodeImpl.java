@@ -366,7 +366,7 @@ public class NodeImpl extends EObjectImpl implements Node {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public String toString() {
@@ -383,6 +383,6 @@ public class NodeImpl extends EObjectImpl implements Node {
 		result.append(connection);
 		result.append(')');
 		return result.toString();
-	}
+	}	
 
 } //NodeImpl
