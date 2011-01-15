@@ -7,17 +7,16 @@
 package edu.hu.clickwatch.model.provider;
 
 
-import edu.hu.clickwatch.model.ClickWatchModelPackage;
-import edu.hu.clickwatch.model.Handler;
-
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.ResourceLocator;
-
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.util.FeatureMapUtil;
+import org.eclipse.emf.ecore.xml.type.XMLTypeFactory;
+import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -28,6 +27,9 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+
+import edu.hu.clickwatch.model.ClickWatchModelPackage;
+import edu.hu.clickwatch.model.Handler;
 
 /**
  * This is the item provider adapter for a {@link edu.hu.clickwatch.model.Handler} object.
@@ -64,7 +66,6 @@ public class HandlerItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addValuePropertyDescriptor(object);
 			addNamePropertyDescriptor(object);
 			addCanReadPropertyDescriptor(object);
 			addCanWritePropertyDescriptor(object);
@@ -185,6 +186,36 @@ public class HandlerItemProvider
 	}
 
 	/**
+	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
+	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
+		if (childrenFeatures == null) {
+			super.getChildrenFeatures(object);
+			childrenFeatures.add(ClickWatchModelPackage.Literals.HANDLER__VALUE);
+		}
+		return childrenFeatures;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected EStructuralFeature getChildFeature(Object object, Object child) {
+		// Check the type of the specified child object and return the proper feature to use for
+		// adding (see {@link AddCommand}) it as a child.
+
+		return super.getChildFeature(object, child);
+	}
+
+	/**
 	 * This adds a property descriptor for the Changed feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -249,13 +280,15 @@ public class HandlerItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Handler.class)) {
-			case ClickWatchModelPackage.HANDLER__VALUE:
 			case ClickWatchModelPackage.HANDLER__NAME:
 			case ClickWatchModelPackage.HANDLER__CAN_READ:
 			case ClickWatchModelPackage.HANDLER__CAN_WRITE:
 			case ClickWatchModelPackage.HANDLER__CHANGED:
 			case ClickWatchModelPackage.HANDLER__WATCH:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
+			case ClickWatchModelPackage.HANDLER__VALUE:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
 		super.notifyChanged(notification);
@@ -271,6 +304,34 @@ public class HandlerItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ClickWatchModelPackage.Literals.HANDLER__VALUE,
+				 FeatureMapUtil.createEntry
+					(XMLTypePackage.Literals.XML_TYPE_DOCUMENT_ROOT__COMMENT,
+					 "")));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ClickWatchModelPackage.Literals.HANDLER__VALUE,
+				 FeatureMapUtil.createEntry
+					(XMLTypePackage.Literals.XML_TYPE_DOCUMENT_ROOT__TEXT,
+					 "")));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ClickWatchModelPackage.Literals.HANDLER__VALUE,
+				 FeatureMapUtil.createEntry
+					(XMLTypePackage.Literals.XML_TYPE_DOCUMENT_ROOT__PROCESSING_INSTRUCTION,
+					 XMLTypeFactory.eINSTANCE.createProcessingInstruction())));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ClickWatchModelPackage.Literals.HANDLER__VALUE,
+				 FeatureMapUtil.createEntry
+					(XMLTypePackage.Literals.XML_TYPE_DOCUMENT_ROOT__CDATA,
+					 "")));
 	}
 
 	/**
@@ -281,7 +342,7 @@ public class HandlerItemProvider
 	 */
 	@Override
 	public ResourceLocator getResourceLocator() {
-		return ClickWatchModelEditPlugin.INSTANCE;
+		return NewEditPlugin.INSTANCE;
 	}
 
 }

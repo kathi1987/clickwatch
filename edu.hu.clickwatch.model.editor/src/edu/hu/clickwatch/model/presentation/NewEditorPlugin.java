@@ -4,26 +4,27 @@
  *
  * $Id$
  */
-package edu.hu.clickwatch.model.provider;
+package edu.hu.clickwatch.model.presentation;
 
 import org.eclipse.emf.common.EMFPlugin;
+import org.eclipse.emf.common.ui.EclipseUIPlugin;
 import org.eclipse.emf.common.util.ResourceLocator;
 
 /**
- * This is the central singleton for the ClickWatchModel edit plugin.
+ * This is the central singleton for the New editor plugin.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public final class ClickWatchModelEditPlugin extends EMFPlugin {
+public final class NewEditorPlugin extends EMFPlugin {
 	/**
 	 * Keep track of the singleton.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final ClickWatchModelEditPlugin INSTANCE = new ClickWatchModelEditPlugin();
-
+	public static final NewEditorPlugin INSTANCE = new NewEditorPlugin();
+	
 	/**
 	 * Keep track of the singleton.
 	 * <!-- begin-user-doc -->
@@ -38,10 +39,10 @@ public final class ClickWatchModelEditPlugin extends EMFPlugin {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ClickWatchModelEditPlugin() {
+	public NewEditorPlugin() {
 		super
-		  (new ResourceLocator [] {
-		   });
+			(new ResourceLocator [] {
+			});
 	}
 
 	/**
@@ -55,7 +56,7 @@ public final class ClickWatchModelEditPlugin extends EMFPlugin {
 	public ResourceLocator getPluginResourceLocator() {
 		return plugin;
 	}
-
+	
 	/**
 	 * Returns the singleton instance of the Eclipse plugin.
 	 * <!-- begin-user-doc -->
@@ -66,14 +67,14 @@ public final class ClickWatchModelEditPlugin extends EMFPlugin {
 	public static Implementation getPlugin() {
 		return plugin;
 	}
-
+	
 	/**
 	 * The actual implementation of the Eclipse <b>Plugin</b>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static class Implementation extends EclipsePlugin {
+	public static class Implementation extends EclipseUIPlugin {
 		/**
 		 * Creates an instance.
 		 * <!-- begin-user-doc -->
@@ -82,7 +83,7 @@ public final class ClickWatchModelEditPlugin extends EMFPlugin {
 		 */
 		public Implementation() {
 			super();
-
+	
 			// Remember the static instance.
 			//
 			plugin = this;

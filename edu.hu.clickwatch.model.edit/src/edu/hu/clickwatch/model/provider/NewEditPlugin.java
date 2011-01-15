@@ -10,19 +10,19 @@ import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.util.ResourceLocator;
 
 /**
- * This is the central singleton for the ClickWatchModel edit plugin.
+ * This is the central singleton for the New edit plugin.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public final class ClickWatchModelEditPlugin extends EMFPlugin {
+public final class NewEditPlugin extends EMFPlugin {
 	/**
 	 * Keep track of the singleton.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final ClickWatchModelEditPlugin INSTANCE = new ClickWatchModelEditPlugin();
+	public static final NewEditPlugin INSTANCE = new NewEditPlugin();
 
 	/**
 	 * Keep track of the singleton.
@@ -38,7 +38,7 @@ public final class ClickWatchModelEditPlugin extends EMFPlugin {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ClickWatchModelEditPlugin() {
+	public NewEditPlugin() {
 		super
 		  (new ResourceLocator [] {
 		   });

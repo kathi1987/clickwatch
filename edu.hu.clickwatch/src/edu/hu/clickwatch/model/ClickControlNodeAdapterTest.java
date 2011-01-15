@@ -23,6 +23,7 @@ public class ClickControlNodeAdapterTest extends TestCase {
 			@Override
 			public void configure() {
 				bind(IClickSocket.class).to(ClickSocketTestImpl.class);
+				bind(ClickControlNodeAdapter.class).to(ClickControlNodeXmlAdapter.class);
 			}
 			
 		});
@@ -45,7 +46,7 @@ public class ClickControlNodeAdapterTest extends TestCase {
 		
 		assertTrue(node.getElements().size() == 2);
 		assertTrue(node.getElements().get(0).getHandlers().size() == 3);
-		assertTrue(node.getElements().get(0).getHandlers().get(0).getValue().equals("value"));
+		assertTrue(node.getElements().get(0).getHandlers().get(0).getValue().get(0).getValue().equals("value"));
 	}
 	
 	public void testRetrieveHandlerValue() {
@@ -68,5 +69,5 @@ public class ClickControlNodeAdapterTest extends TestCase {
 		modelAdapter.disconnect();
 		assertFalse(modelAdapter.isConnected());
 	}
-	
+
 }

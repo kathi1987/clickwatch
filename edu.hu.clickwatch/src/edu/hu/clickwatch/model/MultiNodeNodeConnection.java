@@ -21,6 +21,6 @@ public class MultiNodeNodeConnection extends AbstractNodeConnection {
 	}
 
 	// TODO override runContinuousUpdate. A MultiNodeNodeConnection should
-	// listen to changes the model rather than update all 3 seconds
+	// listen to changes in the model rather than update all 3 seconds
 
 }

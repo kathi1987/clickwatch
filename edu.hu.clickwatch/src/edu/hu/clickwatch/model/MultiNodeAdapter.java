@@ -2,6 +2,8 @@ package edu.hu.clickwatch.model;
 
 import java.util.List;
 
+import org.eclipse.emf.ecore.util.FeatureMapUtil;
+
 /**
  * This implementation of {@link INodeAdapter} adapts a multi-node to the rest
  * of the network model. A multi-node is a virtual network node that represents
@@ -67,17 +69,26 @@ public class MultiNodeAdapter implements INodeAdapter {
 					} else {
 						for (Element internalElement : internalNodeCopy
 								.getElements()) {
-							if (internalElement.equals(element)) {
+							if (internalElement.getName().equals(element.getName())) {
 								multiNodeElement = internalElement;
 							}
 						}
 					}
 	
 					for (Handler handler : element.getHandlers()) {
-						if (!multiNodeElement.getHandlers().contains(handler)) {
+						boolean exists = false;
+						for (Handler multiNodeHandler: multiNodeElement.getHandlers()) {							
+							if (multiNodeHandler.getName().equals(handler.getName())) {
+								exists = true;
+							}
+						}
+						if (!exists) {
 							Handler multiNodeHandler = modelFactory.createHandler();
 							multiNodeHandler.setName(handler.getName());
 							multiNodeElement.getHandlers().add(multiNodeHandler);
+							
+							multiNodeHandler.getValue().add(
+									FeatureMapUtil.createTextEntry("enter a value"));
 						}
 					}
 				}
@@ -111,7 +122,6 @@ public class MultiNodeAdapter implements INodeAdapter {
 								if (node.isConnected()) {
 									((AbstractNodeConnection)node.getConnection()).propagateHandlerValueChangeToReality(handler, value);
 								}
-								((AbstractNodeConnection)node.getConnection()).propagateRemoteHandlerChangeToModel(handler, value);
 							}	
 						}
 					}

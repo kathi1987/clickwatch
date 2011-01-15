@@ -1,12 +1,16 @@
 package edu.hu.clickwatch.model;
 
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecore.util.FeatureMap;
+import org.eclipse.emf.ecore.xml.type.AnyType;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorPart;
@@ -14,11 +18,13 @@ import org.eclipse.ui.IPartListener;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
 
+import com.google.common.base.Function;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 import com.google.common.base.Throwables;
 import com.google.common.collect.Collections2;
 import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
 import edu.hu.clickwatch.popup.actions.Connect;
@@ -63,7 +69,7 @@ public abstract class AbstractNodeConnection {
 	private IEditorPart editor = null;
 	private boolean isScheduledForDisconnect = false;
 	private boolean hasError = false;
-	
+
 	public void setUp(Node node) {
 		Preconditions.checkNotNull(node);
 		this.node = node;
@@ -97,7 +103,7 @@ public abstract class AbstractNodeConnection {
 			}
 		}
 	}
-	
+
 	protected void runUpdate() {
 		Node updatedNodeCopy = getNodeAdapter().retrieveAll();
 		runInGUI(new UpdateAllModelRunnable(updatedNodeCopy));
@@ -198,18 +204,36 @@ public abstract class AbstractNodeConnection {
 	private abstract static class ListUpdater<T> {
 
 		ListUpdater(List<T> oldList, List<T> newList) {
-			ImmutableSet<T> items = ImmutableSet.copyOf(oldList);
-			ImmutableSet<T> updatedItemsCopy = ImmutableSet.copyOf(newList);
-			for (T notLongerExistingItem : Sets.difference(items,
+			final Map<String, T> oldItemsMap = new HashMap<String, T>();
+			ImmutableSet<String> items = ImmutableSet.copyOf(Lists.transform(
+					oldList, new Function<T, String>() {
+						@Override
+						public String apply(T input) {
+							String name = getName(input);
+							oldItemsMap.put(name, input);
+							return name;
+						}
+					}));
+			final Map<String, T> newItemsMap = new HashMap<String, T>();
+			ImmutableSet<String> updatedItemsCopy = ImmutableSet.copyOf(Lists
+					.transform(newList, new Function<T, String>() {
+						@Override
+						public String apply(T input) {
+							String name = getName(input);
+							newItemsMap.put(name, input);
+							return name;
+						}
+					}));
+			for (String notLongerExistingItemName : Sets.difference(items,
 					updatedItemsCopy)) {
-				removeItem(notLongerExistingItem);
+				removeItem(oldItemsMap.get(notLongerExistingItemName));
 			}
-			for (T newItem : Sets.difference(updatedItemsCopy, items)) {
-				addItem(newItem);
+			for (String newItemName : Sets.difference(updatedItemsCopy, items)) {
+				addItem(newItemsMap.get(newItemName));
 			}
 			for (T updatedItemCopy : newList) {
 				for (T item : oldList) {
-					if (item.equals(updatedItemCopy)) {
+					if (getName(item).equals(getName(updatedItemCopy))) {
 						update(item, updatedItemCopy);
 					}
 				}
@@ -221,6 +245,8 @@ public abstract class AbstractNodeConnection {
 		protected abstract void addItem(T newItem);
 
 		protected abstract void update(T oldItem, T newItem);
+
+		protected abstract String getName(T item);
 	}
 
 	/**
@@ -250,6 +276,11 @@ public abstract class AbstractNodeConnection {
 				}
 
 				@Override
+				protected String getName(Element item) {
+					return item.getName();
+				}
+
+				@Override
 				protected void update(final Element element,
 						final Element updatedElementCopy) {
 					new ListUpdater<Handler>(element.getHandlers(),
@@ -265,11 +296,16 @@ public abstract class AbstractNodeConnection {
 						}
 
 						@Override
+						protected String getName(Handler item) {
+							return item.getName();
+						}
+
+						@Override
 						protected void update(Handler oldItem, Handler newItem) {
 							ensureHandlerIsListening(oldItem);
 							if (newItem.isCanRead()) {
-								if (!newItem.getValue().equals(
-										oldItem.getValue())) {
+								if (handlerValueHasChanged(oldItem,
+										newItem.getValue())) {
 									propagateRemoteHandlerChangeToModel(
 											oldItem, newItem.getValue());
 								}
@@ -281,10 +317,61 @@ public abstract class AbstractNodeConnection {
 		}
 	}
 
+	/**
+	 * This methods decided whether a handler value in the model will be updated
+	 * with a potentially changed value from reality.
+	 * 
+	 * @param handerInModel, the handler that might get a new value
+	 * @param value, the new reality value
+	 * @return true, iff the new value needs to be put into the model
+	 */
+	protected boolean handlerValueHasChanged(Handler handlerInModel,
+			FeatureMap value) {
+		return !compareXml(handlerInModel.getValue(), value);
+	}
+	
+	private boolean compareXml(FeatureMap v1, FeatureMap v2) {
+		if (v1.size() != v2.size()) {
+			return false;
+		}
+		int i = 0;
+		for (FeatureMap.Entry e1: v1) {
+			FeatureMap.Entry e2 = v2.get(i++);
+
+			if (!e1.getEStructuralFeature().getName().equals(e2.getEStructuralFeature().getName())) {
+				return false;
+			}
+			if (e1.getValue() instanceof AnyType && e2.getValue() instanceof AnyType) {
+				if (!compareXml(((AnyType)e1.getValue()).getMixed(), ((AnyType)e2.getValue()).getMixed())) {
+					return false;
+				}
+			} else {
+				if (!e1.getValue().equals(e2.getValue())) {
+					return false;
+				}
+			}
+		}
+		return true;
+	}
+
 	protected void propagateHandlerValueChangeToReality(Handler handler,
 			String value) {
 		if (node.isConnected()) {
 			runInExtraThread(new SetValueInRealityRunnable(handler, value));
+		}
+	}
+	
+	/**
+	 * Transforms model handler values into String, i.e. xml-values are serialized.
+	 * @param value, the value in model form
+	 * @return a string representation of the model value that the remote handler understands.
+	 */
+	protected String getStringValueForModelValue(Object value) {
+		// for now only simple text nodes are supported
+		if (value instanceof FeatureMap.Entry && ((FeatureMap.Entry)value).getValue() instanceof String) {
+			return (String)((FeatureMap.Entry)value).getValue();
+		} else {
+			throw new RuntimeException("Can only set primitive values"); 
 		}
 	}
 
@@ -304,7 +391,7 @@ public abstract class AbstractNodeConnection {
 				if (ClickWatchModelPackage.eINSTANCE.getHandler_Value().equals(
 						msg.getFeature())) {
 					propagateHandlerValueChangeToReality(handler,
-							msg.getNewStringValue());
+							getStringValueForModelValue(msg.getNewValue()));
 				}
 				if (ClickWatchModelPackage.eINSTANCE.getHandler_Watch().equals(
 						msg.getFeature())) {
@@ -330,8 +417,12 @@ public abstract class AbstractNodeConnection {
 		}
 	}
 
+	/**
+	 * @param handler
+	 *            , the handler within the model.
+	 */
 	protected void propagateRemoteHandlerChangeToModel(final Handler handler,
-			final String value) {
+			final FeatureMap value) {
 		runInGUI(new Runnable() {
 			@Override
 			public void run() {
@@ -343,8 +434,8 @@ public abstract class AbstractNodeConnection {
 						|| ((Element) handler.eContainer()).isWatch()) {
 					handler.setChanged(!value.equals(handler.getValue()));
 				}
-				handler.setValue(value);
-
+				handler.getValue().clear();
+				handler.getValue().addAll(value);
 				adapter.enable();
 			}
 		});
@@ -384,7 +475,7 @@ public abstract class AbstractNodeConnection {
 		}
 		runContinuousUpdate();
 	}
-	
+
 	protected void runContinuousUpdate() {
 		runInExtraThread(new ContinuousUpdateRunnable());
 	}

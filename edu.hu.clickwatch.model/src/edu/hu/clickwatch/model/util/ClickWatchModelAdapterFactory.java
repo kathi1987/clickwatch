@@ -6,14 +6,17 @@
  */
 package edu.hu.clickwatch.model.util;
 
-import edu.hu.clickwatch.model.*;
-
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
-
 import org.eclipse.emf.ecore.EObject;
+
+import edu.hu.clickwatch.model.ClickWatchModelPackage;
+import edu.hu.clickwatch.model.Element;
+import edu.hu.clickwatch.model.Handler;
+import edu.hu.clickwatch.model.MultiNode;
+import edu.hu.clickwatch.model.Network;
+import edu.hu.clickwatch.model.Node;
 
 /**
  * <!-- begin-user-doc -->

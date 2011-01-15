@@ -6,6 +6,13 @@
  */
 package edu.hu.clickwatch.model.impl;
 
+import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.impl.EPackageImpl;
+import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
+
 import edu.hu.clickwatch.model.ClickWatchModelFactory;
 import edu.hu.clickwatch.model.ClickWatchModelPackage;
 import edu.hu.clickwatch.model.Element;
@@ -13,13 +20,6 @@ import edu.hu.clickwatch.model.Handler;
 import edu.hu.clickwatch.model.MultiNode;
 import edu.hu.clickwatch.model.Network;
 import edu.hu.clickwatch.model.Node;
-
-import org.eclipse.emf.ecore.EAttribute;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EReference;
-
-import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -108,6 +108,9 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
 		ClickWatchModelPackageImpl theClickWatchModelPackage = (ClickWatchModelPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof ClickWatchModelPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new ClickWatchModelPackageImpl());
 
 		isInited = true;
+
+		// Initialize simple dependencies
+		XMLTypePackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theClickWatchModelPackage.createPackageContents();
@@ -228,7 +231,7 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getHandler_Value() {
+	public EAttribute getHandler_Name() {
 		return (EAttribute)handlerEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -237,7 +240,7 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getHandler_Name() {
+	public EAttribute getHandler_CanRead() {
 		return (EAttribute)handlerEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -246,7 +249,7 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getHandler_CanRead() {
+	public EAttribute getHandler_CanWrite() {
 		return (EAttribute)handlerEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -255,8 +258,8 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getHandler_CanWrite() {
-		return (EAttribute)handlerEClass.getEStructuralFeatures().get(3);
+	public EAttribute getHandler_Watch() {
+		return (EAttribute)handlerEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -264,7 +267,7 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getHandler_Watch() {
+	public EAttribute getHandler_Value() {
 		return (EAttribute)handlerEClass.getEStructuralFeatures().get(5);
 	}
 
@@ -274,7 +277,7 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
 	 * @generated
 	 */
 	public EAttribute getHandler_Changed() {
-		return (EAttribute)handlerEClass.getEStructuralFeatures().get(4);
+		return (EAttribute)handlerEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -372,12 +375,12 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
 		createEAttribute(elementEClass, ELEMENT__WATCH);
 
 		handlerEClass = createEClass(HANDLER);
-		createEAttribute(handlerEClass, HANDLER__VALUE);
 		createEAttribute(handlerEClass, HANDLER__NAME);
 		createEAttribute(handlerEClass, HANDLER__CAN_READ);
 		createEAttribute(handlerEClass, HANDLER__CAN_WRITE);
 		createEAttribute(handlerEClass, HANDLER__CHANGED);
 		createEAttribute(handlerEClass, HANDLER__WATCH);
+		createEAttribute(handlerEClass, HANDLER__VALUE);
 
 		networkEClass = createEClass(NETWORK);
 		createEAttribute(networkEClass, NETWORK__NAME);
@@ -432,12 +435,12 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
 		initEAttribute(getElement_Watch(), ecorePackage.getEBoolean(), "watch", "false", 0, 1, Element.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(handlerEClass, Handler.class, "Handler", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getHandler_Value(), ecorePackage.getEString(), "value", null, 0, 1, Handler.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getHandler_Name(), ecorePackage.getEString(), "name", null, 0, 1, Handler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getHandler_CanRead(), ecorePackage.getEBoolean(), "canRead", null, 0, 1, Handler.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getHandler_CanWrite(), ecorePackage.getEBoolean(), "canWrite", null, 0, 1, Handler.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getHandler_Changed(), ecorePackage.getEBoolean(), "changed", "false", 0, 1, Handler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getHandler_Watch(), ecorePackage.getEBoolean(), "watch", "false", 0, 1, Handler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getHandler_Value(), ecorePackage.getEFeatureMapEntry(), "value", null, 0, -1, Handler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(networkEClass, Network.class, "Network", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getNetwork_Name(), ecorePackage.getEString(), "name", "My Network", 0, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -449,6 +452,35 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
 
 		// Create resource
 		createResource(eNS_URI);
+
+		// Create annotations
+		// http:///org/eclipse/emf/ecore/util/ExtendedMetaData
+		createExtendedMetaDataAnnotations();
+	}
+
+	/**
+	 * Initializes the annotations for <b>http:///org/eclipse/emf/ecore/util/ExtendedMetaData</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createExtendedMetaDataAnnotations() {
+		String source = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData";		
+		addAnnotation
+		  (handlerEClass, 
+		   source, 
+		   new String[] {
+			 "kind", "mixed"
+		   });		
+		addAnnotation
+		  (getHandler_Value(), 
+		   source, 
+		   new String[] {
+			 "kind", "elementWildcard",
+			 "wildcards", "##any",
+			 "name", ":1",
+			 "processing", "lax"
+		   });
 	}
 
 } //ClickWatchModelPackageImpl

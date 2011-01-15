@@ -7,6 +7,7 @@
 package edu.hu.clickwatch.model;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.FeatureMap;
 
 /**
  * <!-- begin-user-doc -->
@@ -16,46 +17,20 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link edu.hu.clickwatch.model.Handler#getValue <em>Value</em>}</li>
  *   <li>{@link edu.hu.clickwatch.model.Handler#getName <em>Name</em>}</li>
  *   <li>{@link edu.hu.clickwatch.model.Handler#isCanRead <em>Can Read</em>}</li>
  *   <li>{@link edu.hu.clickwatch.model.Handler#isCanWrite <em>Can Write</em>}</li>
  *   <li>{@link edu.hu.clickwatch.model.Handler#isChanged <em>Changed</em>}</li>
  *   <li>{@link edu.hu.clickwatch.model.Handler#isWatch <em>Watch</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.model.Handler#getValue <em>Value</em>}</li>
  * </ul>
  * </p>
  *
  * @see edu.hu.clickwatch.model.ClickWatchModelPackage#getHandler()
- * @model
+ * @model extendedMetaData="kind='mixed'"
  * @generated
  */
 public interface Handler extends EObject {
-	/**
-	 * Returns the value of the '<em><b>Value</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Value</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Value</em>' attribute.
-	 * @see #setValue(String)
-	 * @see edu.hu.clickwatch.model.ClickWatchModelPackage#getHandler_Value()
-	 * @model transient="true"
-	 * @generated
-	 */
-	String getValue();
-
-	/**
-	 * Sets the value of the '{@link edu.hu.clickwatch.model.Handler#getValue <em>Value</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Value</em>' attribute.
-	 * @see #getValue()
-	 * @generated
-	 */
-	void setValue(String value);
-
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -160,6 +135,23 @@ public interface Handler extends EObject {
 	 * @generated
 	 */
 	void setWatch(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Value</b></em>' attribute list.
+	 * The list contents are of type {@link org.eclipse.emf.ecore.util.FeatureMap.Entry}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Value</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Value</em>' attribute list.
+	 * @see edu.hu.clickwatch.model.ClickWatchModelPackage#getHandler_Value()
+	 * @model dataType="org.eclipse.emf.ecore.EFeatureMapEntry" many="true"
+	 *        extendedMetaData="kind='elementWildcard' wildcards='##any' name=':1' processing='lax'"
+	 * @generated
+	 */
+	FeatureMap getValue();
 
 	/**
 	 * Returns the value of the '<em><b>Changed</b></em>' attribute.

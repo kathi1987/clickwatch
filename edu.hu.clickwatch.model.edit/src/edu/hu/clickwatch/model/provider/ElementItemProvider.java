@@ -7,18 +7,12 @@
 package edu.hu.clickwatch.model.provider;
 
 
-import edu.hu.clickwatch.model.ClickWatchModelFactory;
-import edu.hu.clickwatch.model.ClickWatchModelPackage;
-
-import edu.hu.clickwatch.model.Element;
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
@@ -30,6 +24,10 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+
+import edu.hu.clickwatch.model.ClickWatchModelFactory;
+import edu.hu.clickwatch.model.ClickWatchModelPackage;
+import edu.hu.clickwatch.model.Element;
 
 /**
  * This is the item provider adapter for a {@link edu.hu.clickwatch.model.Element} object.
@@ -67,32 +65,9 @@ public class ElementItemProvider
 			super.getPropertyDescriptors(object);
 
 			addNamePropertyDescriptor(object);
-			addHandlersPropertyDescriptor(object);
 			addWatchPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Handlers feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addHandlersPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Element_handlers_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Element_handlers_feature", "_UI_Element_type"),
-				 ClickWatchModelPackage.Literals.ELEMENT__HANDLERS,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
 	}
 
 	/**
@@ -249,7 +224,7 @@ public class ElementItemProvider
 	 */
 	@Override
 	public ResourceLocator getResourceLocator() {
-		return ClickWatchModelEditPlugin.INSTANCE;
+		return NewEditPlugin.INSTANCE;
 	}
 
 }

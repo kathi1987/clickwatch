@@ -180,22 +180,13 @@ public interface ClickWatchModelPackage extends EPackage {
 	int HANDLER = 2;
 
 	/**
-	 * The feature id for the '<em><b>Value</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HANDLER__VALUE = 0;
-
-	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HANDLER__NAME = 1;
+	int HANDLER__NAME = 0;
 
 	/**
 	 * The feature id for the '<em><b>Can Read</b></em>' attribute.
@@ -204,7 +195,7 @@ public interface ClickWatchModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HANDLER__CAN_READ = 2;
+	int HANDLER__CAN_READ = 1;
 
 	/**
 	 * The feature id for the '<em><b>Can Write</b></em>' attribute.
@@ -213,7 +204,7 @@ public interface ClickWatchModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HANDLER__CAN_WRITE = 3;
+	int HANDLER__CAN_WRITE = 2;
 
 	/**
 	 * The feature id for the '<em><b>Changed</b></em>' attribute.
@@ -222,7 +213,7 @@ public interface ClickWatchModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HANDLER__CHANGED = 4;
+	int HANDLER__CHANGED = 3;
 
 	/**
 	 * The feature id for the '<em><b>Watch</b></em>' attribute.
@@ -231,7 +222,16 @@ public interface ClickWatchModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HANDLER__WATCH = 5;
+	int HANDLER__WATCH = 4;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HANDLER__VALUE = 5;
 
 	/**
 	 * The number of structural features of the '<em>Handler</em>' class.
@@ -483,17 +483,6 @@ public interface ClickWatchModelPackage extends EPackage {
 	EClass getHandler();
 
 	/**
-	 * Returns the meta object for the attribute '{@link edu.hu.clickwatch.model.Handler#getValue <em>Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see edu.hu.clickwatch.model.Handler#getValue()
-	 * @see #getHandler()
-	 * @generated
-	 */
-	EAttribute getHandler_Value();
-
-	/**
 	 * Returns the meta object for the attribute '{@link edu.hu.clickwatch.model.Handler#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -536,6 +525,17 @@ public interface ClickWatchModelPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getHandler_Watch();
+
+	/**
+	 * Returns the meta object for the attribute list '{@link edu.hu.clickwatch.model.Handler#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Value</em>'.
+	 * @see edu.hu.clickwatch.model.Handler#getValue()
+	 * @see #getHandler()
+	 * @generated
+	 */
+	EAttribute getHandler_Value();
 
 	/**
 	 * Returns the meta object for the attribute '{@link edu.hu.clickwatch.model.Handler#isChanged <em>Changed</em>}'.
@@ -729,14 +729,6 @@ public interface ClickWatchModelPackage extends EPackage {
 		EClass HANDLER = eINSTANCE.getHandler();
 
 		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute HANDLER__VALUE = eINSTANCE.getHandler_Value();
-
-		/**
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -767,6 +759,14 @@ public interface ClickWatchModelPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute HANDLER__WATCH = eINSTANCE.getHandler_Watch();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute HANDLER__VALUE = eINSTANCE.getHandler_Value();
 
 		/**
 		 * The meta object literal for the '<em><b>Changed</b></em>' attribute feature.

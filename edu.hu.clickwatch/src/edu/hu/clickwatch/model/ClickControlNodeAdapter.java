@@ -5,6 +5,7 @@ import java.net.InetAddress;
 import java.util.List;
 
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 
 import click.ControlSocket;
 
@@ -16,13 +17,14 @@ import edu.hu.clickcontrol.IClickSocket;
 import edu.hu.clickwatch.GuiceModule;
 
 /**
- * This implementation of {@link INodeAdapter} adapts a node model to a click node. 
- * It translates remote click data into {@link ClickWatchModelPackage} and vice versa. 
- * Each adapter instance represents a connections to a click node.
+ * This implementation of {@link INodeAdapter} adapts a node model to a click
+ * node. It translates remote click data into {@link ClickWatchModelPackage} and
+ * vice versa. Each adapter instance represents a connections to a click node.
  * 
  * The click control API is accessed through a {@link IClickSocket}
- * implementation. The implementation can be bind via DI and {@link GuiceModule}.
- *
+ * implementation. The implementation can be bind via DI and {@link GuiceModule}
+ * .
+ * 
  * @author Markus Scheidgen
  */
 public class ClickControlNodeAdapter implements INodeAdapter {
@@ -78,11 +80,18 @@ public class ClickControlNodeAdapter implements INodeAdapter {
 				+ " needs to be connected first");
 	}
 
-	private void retriveInternalNodeCopy() {
-		ensureConnected();
-		internalNodeCopy = modelFactory.createNode();
-		internalNodeCopy.setINetAdress(host);
-		internalNodeCopy.setPort(port);
+	/**
+	 * Retrieves element and handler information from the remote node and
+	 * populates a given empty {@link Node} model with it.
+	 * 
+	 * @param internalNodeCopy
+	 *            , the empty node.
+	 * @param cs
+	 *            , the {@link IClickSocket} that should be used to retrieve the
+	 *            node information.
+	 */
+	protected void retrieveAndPopulateInternalNodeCopy(Node internalNodeCopy,
+			IClickSocket cs) {
 		try {
 			for (Object elementNameObject : cs.getConfigElementNames()) {
 				String elementName = elementNameObject.toString();
@@ -123,10 +132,19 @@ public class ClickControlNodeAdapter implements INodeAdapter {
 					} catch (Throwable e) {
 						Throwables.propagate(e);
 					}
-					handler.setValue(new String(data));
+					
+					handler.getValue().set(XMLTypePackage.eINSTANCE.getXMLTypeDocumentRoot_Text(), new String(data));					
 				}
 			}
 		}
+	}
+
+	private void retrieveInternalNodeCopy() {
+		ensureConnected();
+		internalNodeCopy = modelFactory.createNode();
+		internalNodeCopy.setINetAdress(host);
+		internalNodeCopy.setPort(port);
+		retrieveAndPopulateInternalNodeCopy(internalNodeCopy, cs);
 	}
 
 	/**
@@ -143,7 +161,7 @@ public class ClickControlNodeAdapter implements INodeAdapter {
 
 	@Override
 	public synchronized Node retrieveAll() {
-		retriveInternalNodeCopy();
+		retrieveInternalNodeCopy();
 		return EcoreUtil.copy(internalNodeCopy);
 	}
 
