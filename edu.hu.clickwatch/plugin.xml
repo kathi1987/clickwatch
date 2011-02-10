@@ -16,14 +16,14 @@
          </menu>
          <action
                class="edu.hu.clickwatch.popup.actions.Connect"
-               enablesFor="1"
+               enablesFor="+"
                id="edu.hu.clickwatch.connectAction"
                label="Connect"
                menubarPath="edu.hu.clickwatch.menu1/group1">
          </action>
          <action
                class="edu.hu.clickwatch.popup.actions.Disconnect"
-               enablesFor="1"
+               enablesFor="+"
                id="edu.hu.clickwatch.disconnectAction"
                label="Disconnect"
                menubarPath="edu.hu.clickwatch.menu1/group1">
@@ -47,6 +47,13 @@
                   name="group1">
             </separator>
          </menu>
+         <action
+               class="edu.hu.clickwatch.popup.actions.Import"
+               enablesFor="1"
+               id="edu.hu.clickwatch.importAction"
+               label="Import"
+               menubarPath="edu.hu.clickwatch.menu1/group1">
+         </action>
       </objectContribution>
    </extension>
 

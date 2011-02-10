@@ -321,6 +321,33 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getNetwork_ElementFilter() {
+		return (EAttribute)networkEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getNetwork_HandlerFilter() {
+		return (EAttribute)networkEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getNetwork_UpdateIntervall() {
+		return (EAttribute)networkEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getMultiNode() {
 		return multiNodeEClass;
 	}
@@ -386,6 +413,9 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
 		createEAttribute(networkEClass, NETWORK__NAME);
 		createEReference(networkEClass, NETWORK__NODES);
 		createEReference(networkEClass, NETWORK__ALL);
+		createEAttribute(networkEClass, NETWORK__ELEMENT_FILTER);
+		createEAttribute(networkEClass, NETWORK__HANDLER_FILTER);
+		createEAttribute(networkEClass, NETWORK__UPDATE_INTERVALL);
 
 		multiNodeEClass = createEClass(MULTI_NODE);
 		createEReference(multiNodeEClass, MULTI_NODE__NODES);
@@ -446,6 +476,9 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
 		initEAttribute(getNetwork_Name(), ecorePackage.getEString(), "name", "My Network", 0, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getNetwork_Nodes(), this.getNode(), null, "nodes", null, 0, -1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getNetwork_All(), this.getMultiNode(), null, "all", null, 0, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getNetwork_ElementFilter(), ecorePackage.getEString(), "ElementFilter", null, 0, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getNetwork_HandlerFilter(), ecorePackage.getEString(), "HandlerFilter", null, 0, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getNetwork_UpdateIntervall(), ecorePackage.getEInt(), "updateIntervall", null, 0, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(multiNodeEClass, MultiNode.class, "MultiNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getMultiNode_Nodes(), this.getNode(), null, "nodes", null, 0, -1, MultiNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

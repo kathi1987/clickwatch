@@ -1,11 +1,18 @@
 package edu.hu.clickwatch.model;
 
+import java.awt.Window;
 import java.io.IOException;
 import java.net.InetAddress;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import java.util.StringTokenizer;
 
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
+import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.ui.PlatformUI;
 
 import click.ControlSocket;
 
@@ -133,7 +140,9 @@ public class ClickControlNodeAdapter implements INodeAdapter {
 						Throwables.propagate(e);
 					}
 					
-					handler.getValue().set(XMLTypePackage.eINSTANCE.getXMLTypeDocumentRoot_Text(), new String(data));					
+					Collection<String> value = new ArrayList<String>();
+					value.add(new String(data).trim());
+					handler.getValue().set(XMLTypePackage.eINSTANCE.getXMLTypeDocumentRoot_Text(), value);					
 				}
 			}
 		}
@@ -159,11 +168,53 @@ public class ClickControlNodeAdapter implements INodeAdapter {
 		return name.contains("@");
 	}
 
+	/* Filter is a regular expression of this type: element_regexp/handler_regexp 
+	 * called per node
+	 * (non-Javadoc)
+	 * @see edu.hu.clickwatch.model.INodeAdapter#retrieve(java.lang.String)
+	 */
 	@Override
-	public synchronized Node retrieveAll() {
+	public synchronized Node retrieve(String elemFilter, String handFilter) {
 		retrieveInternalNodeCopy();
+		// filter internal node copy
+		if ( (elemFilter == null || elemFilter.trim().equals("")) && (handFilter == null || handFilter.trim().equals("")) ) {
+			return EcoreUtil.copy(internalNodeCopy);	
+		}
+		
+		//MessageDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
+				//		"Malformed Filter", "The filter is malformed. A valid filter is as follows: element_regexp/handler_regexp. Ignoring filter.");
+		//return EcoreUtil.copy(internalNodeCopy);
+		
+		//String nodeName = internalNodeCopy.getINetAdress();
+
+		Iterator<Element> elem_it = internalNodeCopy.getElements().iterator();
+		while (elem_it.hasNext()) {
+			Element elem = elem_it.next();
+			if (elemFilter.trim().equals("")) {
+				continue;
+			}
+			if (!java.util.regex.Pattern.compile(elemFilter).matcher(elem.getName()).find()) {
+				// does not match; remove it
+				elem_it.remove();
+				continue;
+			}
+			if (handFilter.trim().equals("")) {
+				continue;
+			}
+			Iterator<Handler> hand_it = elem.getHandlers().iterator();
+			
+			while (hand_it.hasNext()) {
+				Handler hand = hand_it.next();
+				if (!java.util.regex.Pattern.compile(handFilter).matcher(hand.getName()).find()) {
+					// does not match; remove it
+					hand_it.remove();
+				}
+			}
+		}
 		return EcoreUtil.copy(internalNodeCopy);
 	}
+	
+	
 
 	@Override
 	public synchronized String retrieveHandlerValue(Handler handler) {

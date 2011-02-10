@@ -1,5 +1,7 @@
 package edu.hu.clickwatch.popup.actions;
 
+import java.util.Iterator;
+
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ISelection;
@@ -21,7 +23,7 @@ import edu.hu.clickwatch.model.AbstractNodeConnection;
 public class Connect implements IObjectActionDelegate {
 
 	private IEditorPart editor = null;
-	private Node node;
+	private Iterator<Node> node_it;
 	
 	/**
 	 * Constructor for Action1.
@@ -43,20 +45,22 @@ public class Connect implements IObjectActionDelegate {
 	 * @see IActionDelegate#run(IAction)
 	 */
 	public void run(IAction action) {
-		if (node == null) {
+		if (node_it == null) {
 			return;
 		}
 		
 		AbstractNodeConnection nodeConnection = null;
-		if (node instanceof MultiNode) {
-			nodeConnection = Guice.createInjector(new GuiceModule()).getInstance(MultiNodeNodeConnection.class);
-		} else {
-			nodeConnection = Guice.createInjector(new GuiceModule()).getInstance(ClickControlNodeConnection.class);
+		while (node_it.hasNext()) {
+			Node node = node_it.next();
+			if (node instanceof MultiNode) {
+				nodeConnection = Guice.createInjector(new GuiceModule()).getInstance(MultiNodeNodeConnection.class);
+			} else {
+				nodeConnection = Guice.createInjector(new GuiceModule()).getInstance(ClickControlNodeConnection.class);
+			}
+			node.setConnection(nodeConnection);
+			nodeConnection.setUp(node);
+			nodeConnection.connect(editor);
 		}
-		node.setConnection(nodeConnection);
-		nodeConnection.setUp(node);
-		nodeConnection.connect(editor);
-		
 	}
 
 	/**
@@ -64,7 +68,9 @@ public class Connect implements IObjectActionDelegate {
 	 */
 	public void selectionChanged(IAction action, ISelection selection) {
 		try {
-			node = (Node)((IStructuredSelection)selection).getFirstElement();
+			IStructuredSelection sec = ((IStructuredSelection)selection);
+			node_it = sec.iterator();
+			//node = (Node)((IStructuredSelection)selection).getFirstElement();
 		} catch (Exception e) {
 			MessageDialog.openError(editor.getSite().getShell(), "Clickwatch Error", "You can only call this action on a single Node");
 		}

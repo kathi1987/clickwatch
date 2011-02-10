@@ -33,12 +33,14 @@ public interface INodeAdapter {
 	public void disconnect();
 
 	/**
-	 * Retrieves the whole node information with all its elements and handlers
-	 * from the node this adapter is connected to.
+	 * Retrieves the node information that is described by the given filter.
 	 * 
-	 * @return a copy of the latest model representation of the remote node.
+	 * @param elemFilter filter elements
+	 * @param handFilter filter handler
+	 * @return a copy of the lates model representation of the remote node
+	 *         filtered by filter.
 	 */
-	public Node retrieveAll();
+	public Node retrieve(String elemFilter, String handFilter);
 
 	/**
 	 * Retrieves (reads) the value of a handler from the remote node this
@@ -66,4 +68,5 @@ public interface INodeAdapter {
 	 *            if the value is invalid for the handler.
 	 */
 	public void updateHandlerValue(Handler handler, String value);
+
 }

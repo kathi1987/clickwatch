@@ -33,6 +33,9 @@ import edu.hu.clickwatch.model.Node;
  *   <li>{@link edu.hu.clickwatch.model.impl.NetworkImpl#getName <em>Name</em>}</li>
  *   <li>{@link edu.hu.clickwatch.model.impl.NetworkImpl#getNodes <em>Nodes</em>}</li>
  *   <li>{@link edu.hu.clickwatch.model.impl.NetworkImpl#getAll <em>All</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.model.impl.NetworkImpl#getElementFilter <em>Element Filter</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.model.impl.NetworkImpl#getHandlerFilter <em>Handler Filter</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.model.impl.NetworkImpl#getUpdateIntervall <em>Update Intervall</em>}</li>
  * </ul>
  * </p>
  *
@@ -78,6 +81,66 @@ public class NetworkImpl extends EObjectImpl implements Network {
 	 * @ordered
 	 */
 	protected MultiNode all;
+
+	/**
+	 * The default value of the '{@link #getElementFilter() <em>Element Filter</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getElementFilter()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String ELEMENT_FILTER_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getElementFilter() <em>Element Filter</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getElementFilter()
+	 * @generated
+	 * @ordered
+	 */
+	protected String elementFilter = ELEMENT_FILTER_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getHandlerFilter() <em>Handler Filter</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getHandlerFilter()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String HANDLER_FILTER_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getHandlerFilter() <em>Handler Filter</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getHandlerFilter()
+	 * @generated
+	 * @ordered
+	 */
+	protected String handlerFilter = HANDLER_FILTER_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getUpdateIntervall() <em>Update Intervall</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUpdateIntervall()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int UPDATE_INTERVALL_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getUpdateIntervall() <em>Update Intervall</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUpdateIntervall()
+	 * @generated
+	 * @ordered
+	 */
+	protected int updateIntervall = UPDATE_INTERVALL_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -179,6 +242,69 @@ public class NetworkImpl extends EObjectImpl implements Network {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getElementFilter() {
+		return elementFilter;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setElementFilter(String newElementFilter) {
+		String oldElementFilter = elementFilter;
+		elementFilter = newElementFilter;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ClickWatchModelPackage.NETWORK__ELEMENT_FILTER, oldElementFilter, elementFilter));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getHandlerFilter() {
+		return handlerFilter;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setHandlerFilter(String newHandlerFilter) {
+		String oldHandlerFilter = handlerFilter;
+		handlerFilter = newHandlerFilter;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ClickWatchModelPackage.NETWORK__HANDLER_FILTER, oldHandlerFilter, handlerFilter));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getUpdateIntervall() {
+		return updateIntervall;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setUpdateIntervall(int newUpdateIntervall) {
+		int oldUpdateIntervall = updateIntervall;
+		updateIntervall = newUpdateIntervall;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ClickWatchModelPackage.NETWORK__UPDATE_INTERVALL, oldUpdateIntervall, updateIntervall));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -204,6 +330,12 @@ public class NetworkImpl extends EObjectImpl implements Network {
 				return getNodes();
 			case ClickWatchModelPackage.NETWORK__ALL:
 				return getAll();
+			case ClickWatchModelPackage.NETWORK__ELEMENT_FILTER:
+				return getElementFilter();
+			case ClickWatchModelPackage.NETWORK__HANDLER_FILTER:
+				return getHandlerFilter();
+			case ClickWatchModelPackage.NETWORK__UPDATE_INTERVALL:
+				return getUpdateIntervall();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -227,6 +359,15 @@ public class NetworkImpl extends EObjectImpl implements Network {
 			case ClickWatchModelPackage.NETWORK__ALL:
 				setAll((MultiNode)newValue);
 				return;
+			case ClickWatchModelPackage.NETWORK__ELEMENT_FILTER:
+				setElementFilter((String)newValue);
+				return;
+			case ClickWatchModelPackage.NETWORK__HANDLER_FILTER:
+				setHandlerFilter((String)newValue);
+				return;
+			case ClickWatchModelPackage.NETWORK__UPDATE_INTERVALL:
+				setUpdateIntervall((Integer)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -248,6 +389,15 @@ public class NetworkImpl extends EObjectImpl implements Network {
 			case ClickWatchModelPackage.NETWORK__ALL:
 				setAll((MultiNode)null);
 				return;
+			case ClickWatchModelPackage.NETWORK__ELEMENT_FILTER:
+				setElementFilter(ELEMENT_FILTER_EDEFAULT);
+				return;
+			case ClickWatchModelPackage.NETWORK__HANDLER_FILTER:
+				setHandlerFilter(HANDLER_FILTER_EDEFAULT);
+				return;
+			case ClickWatchModelPackage.NETWORK__UPDATE_INTERVALL:
+				setUpdateIntervall(UPDATE_INTERVALL_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -266,6 +416,12 @@ public class NetworkImpl extends EObjectImpl implements Network {
 				return nodes != null && !nodes.isEmpty();
 			case ClickWatchModelPackage.NETWORK__ALL:
 				return all != null;
+			case ClickWatchModelPackage.NETWORK__ELEMENT_FILTER:
+				return ELEMENT_FILTER_EDEFAULT == null ? elementFilter != null : !ELEMENT_FILTER_EDEFAULT.equals(elementFilter);
+			case ClickWatchModelPackage.NETWORK__HANDLER_FILTER:
+				return HANDLER_FILTER_EDEFAULT == null ? handlerFilter != null : !HANDLER_FILTER_EDEFAULT.equals(handlerFilter);
+			case ClickWatchModelPackage.NETWORK__UPDATE_INTERVALL:
+				return updateIntervall != UPDATE_INTERVALL_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -282,6 +438,12 @@ public class NetworkImpl extends EObjectImpl implements Network {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");
 		result.append(name);
+		result.append(", ElementFilter: ");
+		result.append(elementFilter);
+		result.append(", HandlerFilter: ");
+		result.append(handlerFilter);
+		result.append(", updateIntervall: ");
+		result.append(updateIntervall);
 		result.append(')');
 		return result.toString();
 	}

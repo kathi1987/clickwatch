@@ -20,6 +20,9 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link edu.hu.clickwatch.model.Network#getName <em>Name</em>}</li>
  *   <li>{@link edu.hu.clickwatch.model.Network#getNodes <em>Nodes</em>}</li>
  *   <li>{@link edu.hu.clickwatch.model.Network#getAll <em>All</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.model.Network#getElementFilter <em>Element Filter</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.model.Network#getHandlerFilter <em>Handler Filter</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.model.Network#getUpdateIntervall <em>Update Intervall</em>}</li>
  * </ul>
  * </p>
  *
@@ -96,5 +99,83 @@ public interface Network extends EObject {
 	 * @generated
 	 */
 	void setAll(MultiNode value);
+
+	/**
+	 * Returns the value of the '<em><b>Element Filter</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Element Filter</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Element Filter</em>' attribute.
+	 * @see #setElementFilter(String)
+	 * @see edu.hu.clickwatch.model.ClickWatchModelPackage#getNetwork_ElementFilter()
+	 * @model
+	 * @generated
+	 */
+	String getElementFilter();
+
+	/**
+	 * Sets the value of the '{@link edu.hu.clickwatch.model.Network#getElementFilter <em>Element Filter</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Element Filter</em>' attribute.
+	 * @see #getElementFilter()
+	 * @generated
+	 */
+	void setElementFilter(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Handler Filter</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Handler Filter</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Handler Filter</em>' attribute.
+	 * @see #setHandlerFilter(String)
+	 * @see edu.hu.clickwatch.model.ClickWatchModelPackage#getNetwork_HandlerFilter()
+	 * @model
+	 * @generated
+	 */
+	String getHandlerFilter();
+
+	/**
+	 * Sets the value of the '{@link edu.hu.clickwatch.model.Network#getHandlerFilter <em>Handler Filter</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Handler Filter</em>' attribute.
+	 * @see #getHandlerFilter()
+	 * @generated
+	 */
+	void setHandlerFilter(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Update Intervall</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Update Intervall</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Update Intervall</em>' attribute.
+	 * @see #setUpdateIntervall(int)
+	 * @see edu.hu.clickwatch.model.ClickWatchModelPackage#getNetwork_UpdateIntervall()
+	 * @model
+	 * @generated
+	 */
+	int getUpdateIntervall();
+
+	/**
+	 * Sets the value of the '{@link edu.hu.clickwatch.model.Network#getUpdateIntervall <em>Update Intervall</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Update Intervall</em>' attribute.
+	 * @see #getUpdateIntervall()
+	 * @generated
+	 */
+	void setUpdateIntervall(int value);
 
 } // Network

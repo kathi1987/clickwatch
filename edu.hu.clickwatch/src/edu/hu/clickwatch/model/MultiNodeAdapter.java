@@ -55,7 +55,7 @@ public class MultiNodeAdapter implements INodeAdapter {
 	}
 
 	@Override
-	public Node retrieveAll() {
+	public Node retrieve(String eFilter, String hFilter) {
 		Node internalNodeCopy = modelFactory.createNode();
 
 		for (Node node : getNodes()) {

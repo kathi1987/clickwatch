@@ -281,13 +281,40 @@ public interface ClickWatchModelPackage extends EPackage {
 	int NETWORK__ALL = 2;
 
 	/**
+	 * The feature id for the '<em><b>Element Filter</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK__ELEMENT_FILTER = 3;
+
+	/**
+	 * The feature id for the '<em><b>Handler Filter</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK__HANDLER_FILTER = 4;
+
+	/**
+	 * The feature id for the '<em><b>Update Intervall</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK__UPDATE_INTERVALL = 5;
+
+	/**
 	 * The number of structural features of the '<em>Network</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NETWORK_FEATURE_COUNT = 3;
+	int NETWORK_FEATURE_COUNT = 6;
 
 
 	/**
@@ -592,6 +619,39 @@ public interface ClickWatchModelPackage extends EPackage {
 	EReference getNetwork_All();
 
 	/**
+	 * Returns the meta object for the attribute '{@link edu.hu.clickwatch.model.Network#getElementFilter <em>Element Filter</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Element Filter</em>'.
+	 * @see edu.hu.clickwatch.model.Network#getElementFilter()
+	 * @see #getNetwork()
+	 * @generated
+	 */
+	EAttribute getNetwork_ElementFilter();
+
+	/**
+	 * Returns the meta object for the attribute '{@link edu.hu.clickwatch.model.Network#getHandlerFilter <em>Handler Filter</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Handler Filter</em>'.
+	 * @see edu.hu.clickwatch.model.Network#getHandlerFilter()
+	 * @see #getNetwork()
+	 * @generated
+	 */
+	EAttribute getNetwork_HandlerFilter();
+
+	/**
+	 * Returns the meta object for the attribute '{@link edu.hu.clickwatch.model.Network#getUpdateIntervall <em>Update Intervall</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Update Intervall</em>'.
+	 * @see edu.hu.clickwatch.model.Network#getUpdateIntervall()
+	 * @see #getNetwork()
+	 * @generated
+	 */
+	EAttribute getNetwork_UpdateIntervall();
+
+	/**
 	 * Returns the meta object for class '{@link edu.hu.clickwatch.model.MultiNode <em>Multi Node</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -809,6 +869,30 @@ public interface ClickWatchModelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference NETWORK__ALL = eINSTANCE.getNetwork_All();
+
+		/**
+		 * The meta object literal for the '<em><b>Element Filter</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute NETWORK__ELEMENT_FILTER = eINSTANCE.getNetwork_ElementFilter();
+
+		/**
+		 * The meta object literal for the '<em><b>Handler Filter</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute NETWORK__HANDLER_FILTER = eINSTANCE.getNetwork_HandlerFilter();
+
+		/**
+		 * The meta object literal for the '<em><b>Update Intervall</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute NETWORK__UPDATE_INTERVALL = eINSTANCE.getNetwork_UpdateIntervall();
 
 		/**
 		 * The meta object literal for the '{@link edu.hu.clickwatch.model.impl.MultiNodeImpl <em>Multi Node</em>}' class.

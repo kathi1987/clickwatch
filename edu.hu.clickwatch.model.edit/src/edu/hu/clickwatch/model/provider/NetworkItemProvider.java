@@ -65,6 +65,9 @@ public class NetworkItemProvider
 			super.getPropertyDescriptors(object);
 
 			addNamePropertyDescriptor(object);
+			addElementFilterPropertyDescriptor(object);
+			addHandlerFilterPropertyDescriptor(object);
+			addUpdateIntervallPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -87,6 +90,72 @@ public class NetworkItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Element Filter feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addElementFilterPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Network_ElementFilter_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Network_ElementFilter_feature", "_UI_Network_type"),
+				 ClickWatchModelPackage.Literals.NETWORK__ELEMENT_FILTER,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Handler Filter feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addHandlerFilterPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Network_HandlerFilter_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Network_HandlerFilter_feature", "_UI_Network_type"),
+				 ClickWatchModelPackage.Literals.NETWORK__HANDLER_FILTER,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Update Intervall feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addUpdateIntervallPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Network_updateIntervall_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Network_updateIntervall_feature", "_UI_Network_type"),
+				 ClickWatchModelPackage.Literals.NETWORK__UPDATE_INTERVALL,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -157,6 +226,9 @@ public class NetworkItemProvider
 
 		switch (notification.getFeatureID(Network.class)) {
 			case ClickWatchModelPackage.NETWORK__NAME:
+			case ClickWatchModelPackage.NETWORK__ELEMENT_FILTER:
+			case ClickWatchModelPackage.NETWORK__HANDLER_FILTER:
+			case ClickWatchModelPackage.NETWORK__UPDATE_INTERVALL:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case ClickWatchModelPackage.NETWORK__NODES:

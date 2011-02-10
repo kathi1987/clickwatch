@@ -8,6 +8,7 @@ import java.util.Map;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.xml.type.AnyType;
@@ -65,6 +66,25 @@ import edu.hu.clickwatch.popup.actions.Disconnect;
 public abstract class AbstractNodeConnection {
 
 	private Node node;
+	private String elemFilter = null;
+	private String handFilter = null;
+	private final static int UPDATE_INTERVALL_DEFAULT = 5000;
+	private int updateIntervall = UPDATE_INTERVALL_DEFAULT;
+	
+	private Adapter filterListener = new AdapterImpl() {
+		@Override
+		public void notifyChanged(Notification notification) {
+			if (notification.getFeature() == ClickWatchModelPackage.eINSTANCE.getNetwork_ElementFilter()) {
+				elemFilter = notification.getNewStringValue();
+			}
+			if (notification.getFeature() == ClickWatchModelPackage.eINSTANCE.getNetwork_HandlerFilter()) {
+				handFilter = notification.getNewStringValue();
+			}
+			if (notification.getFeature() == ClickWatchModelPackage.eINSTANCE.getNetwork_UpdateIntervall()) {
+				updateIntervall = notification.getNewIntValue();
+			}
+		}
+	};
 
 	private IEditorPart editor = null;
 	private boolean isScheduledForDisconnect = false;
@@ -105,7 +125,7 @@ public abstract class AbstractNodeConnection {
 	}
 
 	protected void runUpdate() {
-		Node updatedNodeCopy = getNodeAdapter().retrieveAll();
+		Node updatedNodeCopy = getNodeAdapter().retrieve(elemFilter, handFilter);
 		runInGUI(new UpdateAllModelRunnable(updatedNodeCopy));
 		runInGUI(new Runnable() {
 			@Override
@@ -118,7 +138,11 @@ public abstract class AbstractNodeConnection {
 		});
 		EcoreUtil.delete(updatedNodeCopy, true);
 		try {
-			Thread.sleep(3000);
+			if (updateIntervall == 0) {
+				Thread.sleep(UPDATE_INTERVALL_DEFAULT);
+			} else {
+				Thread.sleep(updateIntervall);
+			}
 		} catch (InterruptedException e) {
 			Throwables.propagate(e);
 		}
@@ -473,7 +497,24 @@ public abstract class AbstractNodeConnection {
 		if (node.isConnected()) {
 			return;
 		}
+		Network network = getNetwork(node);
+		network.eAdapters().add(filterListener);
+		elemFilter = network.getElementFilter();
+		handFilter = network.getHandlerFilter();
+		updateIntervall = network.getUpdateIntervall();
 		runContinuousUpdate();
+	}
+	
+	private Network getNetwork(Node node) {
+		EObject container = node.eContainer();
+		if (container instanceof Network) {
+			return (Network)container;
+		} else if (container instanceof Node) {
+			return getNetwork((Node)container);
+		} else {
+			Preconditions.checkArgument(false, "Node must be contained in a network");
+			return null;
+		}
 	}
 
 	protected void runContinuousUpdate() {
@@ -484,6 +525,7 @@ public abstract class AbstractNodeConnection {
 	 * Disconnects from the remote note in the next possible moment.
 	 */
 	public synchronized void disconnect() {
+		getNetwork(node).eAdapters().remove(filterListener);
 		isScheduledForDisconnect = true;
 	}
 
