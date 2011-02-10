@@ -22,6 +22,8 @@ import click.ControlSocket.HandlerInfo;
 public class ClickSocketTestImpl implements IClickSocket {
 
 	private static final String value = "value";
+	private static final String xmlValue = "<book><title>Harry Potter</title></book>";
+	private static final String XML_HANDLER_NAME = "xml";
 	private int valueChange = 0;
 
 	private static class Tuple<T1, T2> {
@@ -96,17 +98,39 @@ public class ClickSocketTestImpl implements IClickSocket {
 		return Arrays.asList(new HandlerInfo[] {
 				new HandlerInfo("name", name + ".h1", true, true),
 				new HandlerInfo("name", name + ".h2", true, true),
-				new HandlerInfo("name", name + ".h3", false, true), });
+				new HandlerInfo("name", name + ".h3", false, true), 
+				new HandlerInfo("name", XML_HANDLER_NAME, true, false)});
 	}
 
 	@Override
 	public char[] read(String elementName, String handlerName)
 			throws ClickException, IOException {
-		String result = values.get(Tuple.create(elementName, handlerName));
-		if (result == null) {
-			return value.toCharArray();
+		if (handlerName.equals(XML_HANDLER_NAME)) {
+			StringBuffer result = new StringBuffer();
+			result.append("<element name='" + elementName + "'>");
+			for (HandlerInfo handler: getElementHandlers(elementName)) {
+				if (!handler.getHandlerName().equals(XML_HANDLER_NAME)) {
+					result.append("<handler name='" + handler.getHandlerName() + "'>");
+					if (handler.isCanRead()) {
+						result.append(read(elementName, handler.getHandlerName()));
+					}
+					result.append("</handler>");
+				}
+			}
+			result.append("</element>");
+			return result.toString().toCharArray();
 		} else {
-			return result.toCharArray();
+			String result = values.get(Tuple.create(elementName, handlerName));
+	
+			if (result == null) {
+				if (handlerName.endsWith("h2")) {
+					return xmlValue.toCharArray();
+				} else {
+					return value.toCharArray();
+				}
+			} else {
+				return result.toCharArray();
+			}
 		}
 	}
 
