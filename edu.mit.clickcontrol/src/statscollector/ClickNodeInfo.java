@@ -1,9 +1,9 @@
 package statscollector;
 
-import click.ClickConnection;
-
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+
+import click.ClickConnection;
 
 class ClickNodeInfo extends Thread {
 	String nodeName;
@@ -20,6 +20,7 @@ class ClickNodeInfo extends Thread {
 		this.port = port;
 	}
 
+	@Override
 	public void run() {
 		while (true) {
 			boolean read_error = false;

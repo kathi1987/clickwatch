@@ -30,6 +30,7 @@ public class StringUtils {
 	/**
 	 * Convert a buffer of splitter-terminated strings into a Vector of Strings.
 	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public static Vector split(char buf[], int offset, char terminator) {
 		Vector v = new Vector();
 		int pos = offset;
@@ -47,6 +48,7 @@ public class StringUtils {
 	/**
 	 * Convert a buffer of splitter-terminated strings into a Vector of Strings.
 	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public static Vector split(String s, int offset, char terminator) {
 		Vector v = new Vector();
 		int pos = offset;
@@ -65,6 +67,7 @@ public class StringUtils {
 	/**
 	 * Split at whitespace.
 	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public static Vector split(char buf[], int offset) {
 		Vector v = new Vector();
 		int pos = offset;
@@ -86,6 +89,7 @@ public class StringUtils {
 	/**
 	 * Split at whitespace.
 	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public static Vector split(String s, int offset) {
 		Vector v = new Vector();
 		int pos = offset;

@@ -4,11 +4,11 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.util.List;
 
-import com.google.common.base.Preconditions;
-
 import click.ClickException;
 import click.ControlSocket;
 import click.ControlSocket.HandlerInfo;
+
+import com.google.common.base.Preconditions;
 
 public class ClickSocketImpl implements IClickSocket {
 	

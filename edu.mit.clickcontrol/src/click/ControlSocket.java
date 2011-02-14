@@ -41,6 +41,7 @@ import click.ClickException.PermissionDeniedException;
  * @author Douglas S. J. De Couto, Eddie Kohler
  */
 
+@SuppressWarnings("unused")
 public class ControlSocket {
 
 	private InetAddress _host;
@@ -145,6 +146,7 @@ public class ControlSocket {
 	 * @return Socket description
 	 * @see #socketName
 	 */
+	@Override
 	public String toString() {
 		return _host + ":" + _port;
 	}
@@ -233,6 +235,7 @@ public class ControlSocket {
 	 * @see #getRouterConfig
 	 * @see #getRouterFlatConfig
 	 */
+	@SuppressWarnings("rawtypes")
 	public Vector getConfigElementNames() throws ClickException, IOException {
 		char[] buf = read(null, "list");
 
@@ -270,6 +273,7 @@ public class ControlSocket {
 	 *             returned an unknwon unknown error code, or the response could
 	 *             otherwise not be understood).
 	 */
+	@SuppressWarnings("rawtypes")
 	public Vector getRouterClasses() throws ClickException, IOException {
 		char[] buf = read(null, "classes");
 		return StringUtils.split(buf, 0, '\n');
@@ -291,6 +295,7 @@ public class ControlSocket {
 	 *             returned an unknwon unknown error code, or the response could
 	 *             otherwise not be understood).
 	 */
+	@SuppressWarnings("rawtypes")
 	public Vector getRouterPackages() throws ClickException, IOException {
 		char[] buf = read(null, "packages");
 		return StringUtils.split(buf, 0, '\n');
@@ -314,6 +319,7 @@ public class ControlSocket {
 	 * @see #getRouterConfig
 	 * @see #getRouterFlatConfig
 	 */
+	@SuppressWarnings("rawtypes")
 	public Vector getConfigRequirements() throws ClickException, IOException {
 		char[] buf = read(null, "requirements");
 		return StringUtils.split(buf, 0, '\n');
@@ -355,6 +361,7 @@ public class ControlSocket {
 				return elementName + "." + handlerName;
 		}
 
+		@Override
 		public String toString() {
 			return handlerName;
 		}
@@ -401,6 +408,7 @@ public class ControlSocket {
 	 * @see #getRouterConfig
 	 * @see #getRouterFlatConfig
 	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public Vector getElementHandlers(String elementName) throws ClickException,
 			IOException {
 		Vector v = new Vector();
@@ -770,6 +778,7 @@ public class ControlSocket {
 	/*
 	 * test driver
 	 */
+	@SuppressWarnings("rawtypes")
 	public static void main(String args[]) {
 		if (args.length == 0 || args.length > 3) {
 			System.out.println("to list router info, `java ControlSocket'");

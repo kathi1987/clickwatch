@@ -22,6 +22,7 @@ public class ClientDispatcher extends Thread {
 		System.out.println("new client connected: " + client.getInetAddress());
 	}
 
+	@Override
 	@SuppressWarnings("finally")
 	public void run() {
 		while (true) {
