@@ -1,9 +1,7 @@
 package click;
 
-import click.ControlSocket;
-
-import java.net.InetAddress;
 import java.io.IOException;
+import java.net.InetAddress;
 
 /**
  * Created by IntelliJ IDEA. User: robert Date: 24.10.2009 Time: 00:28:02 To

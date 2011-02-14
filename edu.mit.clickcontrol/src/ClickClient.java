@@ -1,7 +1,7 @@
-import click.ClickConnection;
-
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+
+import click.ClickConnection;
 
 /**
  * Created by IntelliJ IDEA. User: robert Date: 20.07.2008 Time: 14:34:47 To
@@ -65,7 +65,7 @@ public class ClickClient {
 			Integer p = new Integer(args[2]);
 			ClickConnection cc = new ClickConnection(ip, p.intValue());
 			cc.openClickConnection();
-			int result = cc.writeHandler(args[3], args[4], command);
+			cc.writeHandler(args[3], args[4], command);
 			cc.closeClickConnection();
 
 		} else {

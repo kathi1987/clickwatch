@@ -1,6 +1,10 @@
 package statscollector;
 
-import java.net.*;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.net.ServerSocket;
+import java.net.Socket;
 
 /**
  * Transmits channel load statistics via TCP to Matlab TCP Client.
@@ -48,7 +52,7 @@ public class StatsCollector {
 				mssg = dataDispatcher.getData();
 				// System.out.print("tx: ");
 				for (int j = 0; j < mssg.length; j++) {
-					byte b = mssg[j];
+					// byte b = mssg[j];
 					// System.out.print(b + " ");
 				}
 				// System.out.println();

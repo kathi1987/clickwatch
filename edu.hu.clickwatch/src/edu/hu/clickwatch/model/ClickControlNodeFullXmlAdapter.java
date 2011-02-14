@@ -20,7 +20,14 @@ import com.google.common.base.Throwables;
 
 import edu.hu.clickcontrol.IClickSocket;
 
-public class ClickControlNodeXmlAdapter extends ClickControlNodeAdapter {
+/**
+ * This adapter assumes there is a special handler that each elements has and
+ * that allows to retrieve all handler values as xml.
+ * 
+ * @author Markus Scheidgen
+ * 
+ */
+public class ClickControlNodeFullXmlAdapter extends AbstractXmlNodeAdapter {
 
 	private static final String XML_HANDLER_NAME = "xml";
 	private static final ClickWatchModelFactory modelFactory = ClickWatchModelFactory.eINSTANCE;
@@ -61,7 +68,7 @@ public class ClickControlNodeXmlAdapter extends ClickControlNodeAdapter {
 				new GenericXMLResourceFactoryImpl());
 
 		Resource resource = resourceSet.createResource(URI.createURI("fake.xml"));
-		ByteArrayInputStream bais = new ByteArrayInputStream(xml.getBytes());
+		ByteArrayInputStream bais = new ByteArrayInputStream(xml.trim().getBytes());
 		try {
 			resource.load(bais, null);
 		} catch (IOException e) {
@@ -80,5 +87,11 @@ public class ClickControlNodeXmlAdapter extends ClickControlNodeAdapter {
 		Preconditions.checkState(resource.getContents().size() == 1 && resource.getContents().get(0) instanceof XMLTypeDocumentRoot);
 		return (XMLTypeDocumentRoot)resource.getContents().get(0);
 	}
-	
+
+	@Override
+	protected void doUpdateHandlerValue(Handler handler, Object value) {
+		// TODO
+		super.doUpdateHandlerValue(handler, value);
+	}
+
 }

@@ -90,6 +90,7 @@ public class DataDispatcher extends Thread {
 		}
 	}
 
+	@SuppressWarnings("unused")
 	private byte[] nextSample() {
 		byte[] lastmsg = getNewData();
 		byte[] mssg = getData();
@@ -116,6 +117,7 @@ public class DataDispatcher extends Thread {
 		return result;
 	}
 
+	@Override
 	public void run() {
 		try {
 			while (true) {
@@ -138,7 +140,7 @@ public class DataDispatcher extends Thread {
 		if (true) {
 			// System.out.print("new data: " + lastUpdate + " " + fps + " ");
 			for (int j = 0; j < mssg.length; j++) {
-				byte b = mssg[j];
+				// byte b = mssg[j];
 				// System.out.print(b + " ");
 			}
 			// System.out.println();

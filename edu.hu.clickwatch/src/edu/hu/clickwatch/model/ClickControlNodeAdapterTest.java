@@ -17,13 +17,14 @@ public class ClickControlNodeAdapterTest extends TestCase {
 	
 	private INodeAdapter modelAdapter = null;
 	
+	@Override
 	public void setUp() {
 		Injector injector = Guice.createInjector(new GuiceModule() {
 
 			@Override
 			public void configure() {
 				bind(IClickSocket.class).to(ClickSocketTestImpl.class);
-				bind(ClickControlNodeAdapter.class).to(ClickControlNodeXmlAdapter.class);
+				bind(ClickControlNodeAdapter.class).to(ClickControlNodeXmlValuesAdapter.class);
 			}
 			
 		});
@@ -45,7 +46,7 @@ public class ClickControlNodeAdapterTest extends TestCase {
 		Node node = modelAdapter.retrieve(null, null);
 		
 		assertTrue(node.getElements().size() == 2);
-		assertTrue(node.getElements().get(0).getHandlers().size() == 3);
+		assertTrue(node.getElements().get(0).getHandlers().size() == 2);
 		assertTrue(node.getElements().get(0).getHandlers().get(0).getValue().get(0).getValue().equals("value"));
 	}
 	
@@ -59,8 +60,11 @@ public class ClickControlNodeAdapterTest extends TestCase {
 	public void testUpdateHandlerValue() {
 		testConnect();
 		Node node = modelAdapter.retrieve(null, null);
-		modelAdapter.updateHandlerValue(node.getElements().get(0).getHandlers().get(0), "newValue");
-		String value = modelAdapter.retrieveHandlerValue(node.getElements().get(0).getHandlers().get(0));
+		
+		Handler handler = node.getElements().get(0).getHandlers().get(0);
+		handler.getValue().setValue(0, "newValue");
+		modelAdapter.updateHandlerValue(handler, handler.getValue());
+		String value = modelAdapter.retrieveHandlerValue(handler);
 		assertTrue(value.equals("newValue"));
 	}
 	

@@ -6,12 +6,13 @@ Bundle-Version: 0.1.0
 Require-Bundle: org.eclipse.emf.ecore,
  edu.mit.clickcontrol,
  org.eclipse.ui,
- org.eclipse.core.resources,
  edu.hu.clickwatch.model,
- com.google.guava;bundle-version="0.0.7",
  org.junit4;bundle-version="4.8.1",
  com.google.guice;bundle-version="3.0.0",
  org.eclipse.core.runtime;bundle-version="3.6.0",
  org.eclipse.emf.ecore.xmi;bundle-version="2.5.0",
- org.eclipse.ui.ide;bundle-version="3.6.1"
+ org.eclipse.ui.ide;bundle-version="3.6.1",
+ com.google.guava;bundle-version="0.0.7"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: edu.hu.clickwatch
+Bundle-ActivationPolicy: lazy

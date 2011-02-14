@@ -1,5 +1,7 @@
 package edu.hu.clickwatch.model;
 
+import org.eclipse.emf.common.notify.Notification;
+
 import com.google.inject.ImplementedBy;
 
 /**
@@ -67,6 +69,26 @@ public interface INodeAdapter {
 	 *            additional check of the value and no exception will be thrown
 	 *            if the value is invalid for the handler.
 	 */
-	public void updateHandlerValue(Handler handler, String value);
+	public void updateHandlerValue(Handler handler, Object value);
+	
+	/**
+	 * Based on the value representation of this {@link ClickControlNodeAdapter}, this method
+	 * must decide whether a notification on a handler represents a change of the handler value.
+	 * 
+	 * @param notification A notification for a handler.
+	 * @return True, iff the handler has changed.
+	 */
+	public boolean determineHandlerHasChangedInModel(Notification notification);
+	
+	/**
+	 * Based on the value representation of this {@link INodeAdapter}, this
+	 * method must decide whether the handler value has changed, comparing a new
+	 * value from the network with an old model value.
+	 * 
+	 * @param modelCopy
+	 * @param realityCopy
+	 * @return True, iff the handler values are not identically.
+	 */
+	public boolean determineHandlerHasChangedInReality(Handler modelCopy, Handler realityCopy);
 
 }
