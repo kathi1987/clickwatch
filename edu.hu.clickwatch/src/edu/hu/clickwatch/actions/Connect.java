@@ -1,4 +1,4 @@
-package edu.hu.clickwatch.popup.actions;
+package edu.hu.clickwatch.actions;
 
 import java.util.Iterator;
 

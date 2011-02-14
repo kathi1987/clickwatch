@@ -25,8 +25,8 @@ import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
-import edu.hu.clickwatch.popup.actions.Connect;
-import edu.hu.clickwatch.popup.actions.Disconnect;
+import edu.hu.clickwatch.actions.Connect;
+import edu.hu.clickwatch.actions.Disconnect;
 
 /**
  * Instances of the class represent a connection the a remote node. These

@@ -12,6 +12,5 @@ Export-Package: edu.hu.clickwatch.model.presentation
 Require-Bundle: org.eclipse.core.runtime,
  edu.hu.clickwatch.model.edit;visibility:=reexport,
  org.eclipse.emf.ecore.xmi;visibility:=reexport,
- org.eclipse.emf.edit.ui;visibility:=reexport,
- edu.hu.clickwatch
+ org.eclipse.emf.edit.ui;visibility:=reexport
 Bundle-ActivationPolicy: lazy

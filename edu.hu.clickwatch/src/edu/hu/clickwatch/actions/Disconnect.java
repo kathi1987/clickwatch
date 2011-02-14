@@ -1,8 +1,5 @@
-package edu.hu.clickwatch.popup.actions;
+package edu.hu.clickwatch.actions;
 
-import java.util.Iterator;
-
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ISelection;
@@ -12,18 +9,18 @@ import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
 
-import edu.hu.clickwatch.model.Handler;
-import edu.hu.clickwatch.model.Network;
+import edu.hu.clickwatch.model.AbstractNodeConnection;
+import edu.hu.clickwatch.model.Node;
 
-public class Reset implements IObjectActionDelegate {
+public class Disconnect implements IObjectActionDelegate {
 
 	private Shell shell;
-	private Network network;
+	private Node node;
 	
 	/**
 	 * Constructor for Action1.
 	 */
-	public Reset() {
+	public Disconnect() {
 		super();
 	}
 
@@ -40,16 +37,14 @@ public class Reset implements IObjectActionDelegate {
 	 */
 	@Override
 	public void run(IAction action) {
-		if (network == null) {
+		if (node == null) {
 			return;
 		}
 		
-		Iterator<EObject> allContents = network.eAllContents();
-		while (allContents.hasNext()) {
-			EObject next = allContents.next();
-			if (next instanceof Handler) {
-				((Handler)next).setChanged(false);
-			}
+		if (node.getConnection() != null) {
+			AbstractNodeConnection oldConnection = (AbstractNodeConnection)node.getConnection();
+			node.setConnection(null);
+			oldConnection.disconnect();
 		}
 	}
 
@@ -59,10 +54,9 @@ public class Reset implements IObjectActionDelegate {
 	@Override
 	public void selectionChanged(IAction action, ISelection selection) {
 		try {
-			network = (Network)((IStructuredSelection)selection).getFirstElement();
+			node = (Node)((IStructuredSelection)selection).getFirstElement();
 		} catch (Exception e) {
 			MessageDialog.openError(shell, "Clickwatch Error", "You can only call this action on a single Node");
-			// TODO
 		}
 	}
 
