@@ -163,9 +163,15 @@ public final class NewEditorAdvisor extends WorkbenchAdvisor {
 		public void createInitialLayout(IPageLayout layout) {
 			layout.setEditorAreaVisible(true);
 			layout.addPerspectiveShortcut(ID_PERSPECTIVE);
+
+			IFolderLayout bottom = layout.createFolder("bottom", IPageLayout.BOTTOM, (float)0.66, layout.getEditorArea());
+			bottom.addView(IPageLayout.ID_PROP_SHEET);
+
+			IFolderLayout xsl = layout.createFolder("XSLView", IPageLayout.RIGHT, (float)0.5, layout.getEditorArea());
+			xsl.addView("edu.hu.clickwatch.XSLView");
 			
-			IFolderLayout folder = layout.createFolder("main", IPageLayout.BOTTOM, (float)0.66, layout.getEditorArea());
-			folder.addView(IPageLayout.ID_PROP_SHEET);
+			IFolderLayout result = layout.createFolder("Result", IPageLayout.RIGHT, (float)0.5, "XSLView");
+			result.addView("edu.hu.clickwatch.ResultView");
 		}
 	}
 	

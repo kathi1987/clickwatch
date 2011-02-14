@@ -7,6 +7,7 @@
 package edu.hu.clickwatch.model.presentation;
 
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -54,24 +55,17 @@ import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 
+import org.eclipse.jface.operation.IRunnableWithProgress;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
 
 import edu.hu.clickwatch.model.ClickWatchModelFactory;
 import edu.hu.clickwatch.model.ClickWatchModelPackage;
 import edu.hu.clickwatch.model.provider.NewEditPlugin;
-
-
-import java.io.File;
-
-import org.eclipse.jface.operation.IRunnableWithProgress;
-
-import org.eclipse.swt.events.SelectionAdapter;
-import org.eclipse.swt.events.SelectionEvent;
-
-import org.eclipse.swt.widgets.Button;
-import org.eclipse.swt.widgets.Text;
-
 
 /**
  * This is a simple wizard for creating a new model file.

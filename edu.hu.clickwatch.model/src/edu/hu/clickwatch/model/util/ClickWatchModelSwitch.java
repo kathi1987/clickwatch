@@ -6,6 +6,7 @@
  */
 package edu.hu.clickwatch.model.util;
 
+import edu.hu.clickwatch.model.*;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
