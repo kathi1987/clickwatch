@@ -3,6 +3,7 @@ package edu.hu.clickwatch.model;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.PatternSyntaxException;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
@@ -72,10 +73,20 @@ public abstract class AbstractNodeConnection {
 		@Override
 		public void notifyChanged(Notification notification) {
 			if (notification.getFeature() == ClickWatchModelPackage.eINSTANCE.getNetwork_ElementFilter()) {
-				elemFilter = notification.getNewStringValue();
+				String newElemFilter = notification.getNewStringValue();
+				if (validateFilter(newElemFilter, "element")) {
+					elemFilter = newElemFilter;
+				} else {
+					elemFilter = "";
+				}
 			}
 			if (notification.getFeature() == ClickWatchModelPackage.eINSTANCE.getNetwork_HandlerFilter()) {
-				handFilter = notification.getNewStringValue();
+				String newHandFilter = notification.getNewStringValue();
+				if (validateFilter(newHandFilter, "handler")) {
+					handFilter = newHandFilter;
+				} else {
+					handFilter = "";
+				}
 			}
 			if (notification.getFeature() == ClickWatchModelPackage.eINSTANCE.getNetwork_UpdateIntervall()) {
 				updateIntervall = notification.getNewIntValue();
@@ -83,6 +94,22 @@ public abstract class AbstractNodeConnection {
 		}
 	};
 
+	private boolean validateFilter(String newFilter, String type) {
+		// filter internal node copy
+		if ( newFilter == null || newFilter.trim().equals("") ) {
+			return true;	
+		}
+		
+		try {
+			java.util.regex.Pattern.compile(newFilter);
+		} catch (PatternSyntaxException pe) {
+			MessageDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
+			 "Malformed Filter", "The " + type + " filter is malformed. Ignoring filter.");
+			return false;
+		}
+		return true;
+	}
+	
 	private IEditorPart editor = null;
 	private boolean isScheduledForDisconnect = false;
 	private boolean hasError = false;
@@ -109,6 +136,17 @@ public abstract class AbstractNodeConnection {
 				while (!isScheduledForDisconnect()) {
 					runUpdate();
 				}
+			} catch (final Exception ex) {
+				runInGUI(new Runnable() {
+					@Override
+					public void run() {
+						MessageDialog.openError(editor.getSite().getShell(),
+								"Exception", "Exception " + ex.getClass().getName()
+										+ " occured: " + ex.getMessage());
+					}
+				});
+				System.out.println("Exception " + ex.getClass().getName()
+						+ " occured:\n" + ex.getMessage());
 			} finally {
 				getNodeAdapter().disconnect();
 				runInGUI(new Runnable() {
@@ -434,8 +472,21 @@ public abstract class AbstractNodeConnection {
 		}
 		Network network = getNetwork(node);
 		network.eAdapters().add(filterListener);
-		elemFilter = network.getElementFilter();
-		handFilter = network.getHandlerFilter();
+
+		String newElemFilter = network.getElementFilter();
+		if (validateFilter(newElemFilter, "element")) {
+			elemFilter = newElemFilter;
+		} else {
+			elemFilter = "";
+		}
+		
+		String newHandFilter = network.getHandlerFilter();
+		if (validateFilter(newHandFilter, "handler")) {
+			handFilter = newElemFilter;
+		} else {
+			handFilter = "";
+		}
+
 		updateIntervall = network.getUpdateIntervall();
 		runContinuousUpdate();
 	}

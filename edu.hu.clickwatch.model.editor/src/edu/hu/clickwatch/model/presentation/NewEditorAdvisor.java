@@ -69,12 +69,12 @@ public final class NewEditorAdvisor extends WorkbenchAdvisor {
 	 * Returns the default file extension filters. This method should only be used to initialize {@link #FILE_EXTENSION_FILTERS}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	private static String[] getFileExtensionFilters() {
 		List<String> result = new UniqueEList<String>();
 		result.addAll(ClickWatchModelEditor.FILE_EXTENSION_FILTERS);
-//		result.addAll(XMLTypeEditor.FILE_EXTENSION_FILTERS);
+		//result.addAll(XMLTypeEditor.FILE_EXTENSION_FILTERS);
 		return result.toArray(new String[0]);
 	} 
 

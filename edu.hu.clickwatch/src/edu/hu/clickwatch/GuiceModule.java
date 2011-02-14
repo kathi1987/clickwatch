@@ -2,6 +2,7 @@ package edu.hu.clickwatch;
 
 import com.google.inject.AbstractModule;
 
+import edu.hu.clickcontrol.IClickSocket;
 import edu.hu.clickwatch.model.ClickControlNodeAdapter;
 import edu.hu.clickwatch.model.ClickControlNodeXmlValuesAdapter;
 

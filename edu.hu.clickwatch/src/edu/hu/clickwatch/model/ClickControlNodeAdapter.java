@@ -6,10 +6,13 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
+import java.util.regex.PatternSyntaxException;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
+import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.ui.PlatformUI;
 
 import click.ControlSocket;
 
@@ -70,6 +73,9 @@ public class ClickControlNodeAdapter implements INodeAdapter {
 
 	@Override
 	public synchronized void disconnect() {
+		if (cs == null || !isConnected) {
+			return;
+		}
 		cs.close();
 		isConnected = false;
 		if (internalNodeCopy != null) {
@@ -183,9 +189,20 @@ public class ClickControlNodeAdapter implements INodeAdapter {
 			return EcoreUtil.copy(internalNodeCopy);	
 		}
 		
-		//MessageDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
-		// "Malformed Filter", "The filter is malformed. A valid filter is as follows: element_regexp/handler_regexp. Ignoring filter.");
-		//return EcoreUtil.copy(internalNodeCopy);
+		try {
+			java.util.regex.Pattern.compile(elemFilter);
+		} catch (PatternSyntaxException pe) {
+			MessageDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
+			 "Malformed Filter", "The element filter is malformed. Ignoring filter.");
+			return EcoreUtil.copy(internalNodeCopy);
+		}
+		try {
+			java.util.regex.Pattern.compile(handFilter);
+		} catch (PatternSyntaxException pe) {
+			MessageDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
+			 "Malformed Filter", "The handler filter is malformed. Ignoring filter.");
+			return EcoreUtil.copy(internalNodeCopy);
+		}
 		
 		//String nodeName = internalNodeCopy.getINetAdress();
 
