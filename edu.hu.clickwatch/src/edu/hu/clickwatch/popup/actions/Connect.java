@@ -14,11 +14,11 @@ import org.eclipse.ui.IWorkbenchPart;
 import com.google.inject.Guice;
 
 import edu.hu.clickwatch.GuiceModule;
+import edu.hu.clickwatch.model.AbstractNodeConnection;
 import edu.hu.clickwatch.model.ClickControlNodeConnection;
 import edu.hu.clickwatch.model.MultiNode;
 import edu.hu.clickwatch.model.MultiNodeNodeConnection;
 import edu.hu.clickwatch.model.Node;
-import edu.hu.clickwatch.model.AbstractNodeConnection;
 
 public class Connect implements IObjectActionDelegate {
 
@@ -35,6 +35,7 @@ public class Connect implements IObjectActionDelegate {
 	/**
 	 * @see IObjectActionDelegate#setActivePart(IAction, IWorkbenchPart)
 	 */
+	@Override
 	public void setActivePart(IAction action, IWorkbenchPart targetPart) {
 		if (targetPart instanceof IEditorPart) {
 			editor = (IEditorPart)targetPart;
@@ -44,6 +45,7 @@ public class Connect implements IObjectActionDelegate {
 	/**
 	 * @see IActionDelegate#run(IAction)
 	 */
+	@Override
 	public void run(IAction action) {
 		if (node_it == null) {
 			return;
@@ -66,6 +68,8 @@ public class Connect implements IObjectActionDelegate {
 	/**
 	 * @see IActionDelegate#selectionChanged(IAction, ISelection)
 	 */
+	@Override
+	@SuppressWarnings("unchecked")
 	public void selectionChanged(IAction action, ISelection selection) {
 		try {
 			IStructuredSelection sec = ((IStructuredSelection)selection);

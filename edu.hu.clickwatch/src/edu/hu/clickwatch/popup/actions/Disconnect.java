@@ -9,8 +9,8 @@ import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
 
-import edu.hu.clickwatch.model.Node;
 import edu.hu.clickwatch.model.AbstractNodeConnection;
+import edu.hu.clickwatch.model.Node;
 
 public class Disconnect implements IObjectActionDelegate {
 
@@ -27,6 +27,7 @@ public class Disconnect implements IObjectActionDelegate {
 	/**
 	 * @see IObjectActionDelegate#setActivePart(IAction, IWorkbenchPart)
 	 */
+	@Override
 	public void setActivePart(IAction action, IWorkbenchPart targetPart) {
 		shell = targetPart.getSite().getShell();
 	}
@@ -34,6 +35,7 @@ public class Disconnect implements IObjectActionDelegate {
 	/**
 	 * @see IActionDelegate#run(IAction)
 	 */
+	@Override
 	public void run(IAction action) {
 		if (node == null) {
 			return;
@@ -49,6 +51,7 @@ public class Disconnect implements IObjectActionDelegate {
 	/**
 	 * @see IActionDelegate#selectionChanged(IAction, ISelection)
 	 */
+	@Override
 	public void selectionChanged(IAction action, ISelection selection) {
 		try {
 			node = (Node)((IStructuredSelection)selection).getFirstElement();

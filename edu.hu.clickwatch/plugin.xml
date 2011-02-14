@@ -4,57 +4,69 @@
    <extension
          point="org.eclipse.ui.popupMenus">
       <objectContribution
-            id="edu.hu.clickwatch.contribution1"
+            id="edu.hu.clickwatch.NodeContribution"
             objectClass="edu.hu.clickwatch.model.Node">
-         <menu
-               id="edu.hu.clickwatch.menu1"
-               label="Clickwatch"
-               path="additions">
-            <separator
-                  name="group1">
-            </separator>
-         </menu>
          <action
                class="edu.hu.clickwatch.popup.actions.Connect"
                enablesFor="+"
                id="edu.hu.clickwatch.connectAction"
                label="Connect"
-               menubarPath="edu.hu.clickwatch.menu1/group1">
+               menubarPath="additions">
          </action>
          <action
                class="edu.hu.clickwatch.popup.actions.Disconnect"
                enablesFor="+"
                id="edu.hu.clickwatch.disconnectAction"
                label="Disconnect"
-               menubarPath="edu.hu.clickwatch.menu1/group1">
+               menubarPath="additions">
          </action>
       </objectContribution>
       <objectContribution
-            id="edu.hu.clickwatch.contribution2"
+            id="edu.hu.clickwatch.NetworkContribution"
             objectClass="edu.hu.clickwatch.model.Network">
          <action
                class="edu.hu.clickwatch.popup.actions.Reset"
                enablesFor="1"
                id="edu.hu.clickwatch.resetAction"
                label="Reset"
-               menubarPath="edu.hu.clickwatch.menu1/group1">
+               menubarPath="additions">
          </action>
-         <menu
-               id="edu.hu.clickwatch.menu1"
-               label="Clickwatch"
-               path="additions">
-            <separator
-                  name="group1">
-            </separator>
-         </menu>
          <action
                class="edu.hu.clickwatch.popup.actions.Import"
                enablesFor="1"
                id="edu.hu.clickwatch.importAction"
                label="Import"
-               menubarPath="edu.hu.clickwatch.menu1/group1">
+               menubarPath="additions">
          </action>
       </objectContribution>
+   </extension>
+   <extension
+         id="ClickWatch"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="edu.hu.clickwatch.model.editor.NewEditorAdvisorApplication"
+            name="ClickWatch">
+         <property
+               name="appName"
+               value="ClickWatch">
+         </property>
+         <property
+               name="preferenceCustomization"
+               value="plugin_customization.ini">
+         </property>
+         <property
+               name="startupForegroundColor"
+               value="FFFFFF">
+         </property>
+         <property
+               name="startupMessageRect"
+               value="420,65,300,20">
+         </property>
+         <property
+               name="startupProgressRect"
+               value="0,85,900,15">
+         </property>
+      </product>
    </extension>
 
 </plugin>

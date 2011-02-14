@@ -1,18 +1,15 @@
 package edu.hu.clickwatch.model;
 
-import java.awt.Window;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-import java.util.StringTokenizer;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
-import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.ui.PlatformUI;
 
 import click.ControlSocket;
 
@@ -140,12 +137,16 @@ public class ClickControlNodeAdapter implements INodeAdapter {
 						Throwables.propagate(e);
 					}
 					
-					Collection<String> value = new ArrayList<String>();
-					value.add(new String(data).trim());
-					handler.getValue().set(XMLTypePackage.eINSTANCE.getXMLTypeDocumentRoot_Text(), value);					
+					populateHandlerValueOfInternalNodeCopy(handler, new String(data));					
 				}
 			}
 		}
+	}
+	
+	protected void populateHandlerValueOfInternalNodeCopy(Handler internalHandlerCopy, String plainHandlerValue) {
+		Collection<String> value = new ArrayList<String>();
+		value.add(plainHandlerValue.trim());
+		internalHandlerCopy.getValue().set(XMLTypePackage.eINSTANCE.getXMLTypeDocumentRoot_Text(), value);
 	}
 
 	private void retrieveInternalNodeCopy() {
@@ -168,7 +169,8 @@ public class ClickControlNodeAdapter implements INodeAdapter {
 		return name.contains("@");
 	}
 
-	/* Filter is a regular expression of this type: element_regexp/handler_regexp 
+	/**
+	 * Filter is a regular expression of this type: element_regexp/handler_regexp 
 	 * called per node
 	 * (non-Javadoc)
 	 * @see edu.hu.clickwatch.model.INodeAdapter#retrieve(java.lang.String)
@@ -182,7 +184,7 @@ public class ClickControlNodeAdapter implements INodeAdapter {
 		}
 		
 		//MessageDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
-				//		"Malformed Filter", "The filter is malformed. A valid filter is as follows: element_regexp/handler_regexp. Ignoring filter.");
+		// "Malformed Filter", "The filter is malformed. A valid filter is as follows: element_regexp/handler_regexp. Ignoring filter.");
 		//return EcoreUtil.copy(internalNodeCopy);
 		
 		//String nodeName = internalNodeCopy.getINetAdress();
@@ -213,8 +215,6 @@ public class ClickControlNodeAdapter implements INodeAdapter {
 		}
 		return EcoreUtil.copy(internalNodeCopy);
 	}
-	
-	
 
 	@Override
 	public synchronized String retrieveHandlerValue(Handler handler) {
@@ -224,17 +224,18 @@ public class ClickControlNodeAdapter implements INodeAdapter {
 	}
 
 	@Override
-	public synchronized void updateHandlerValue(Handler handler, String value) {
+	public final synchronized void updateHandlerValue(Handler handler, Object value) {
 		ensureConnected();
-		updateHandlerValue(
-				new String[] { ((Element) handler.eContainer()).getName(),
-						handler.getName() }, value);
+		doUpdateHandlerValue(handler, value);
+	}
+	
+	protected void doUpdateHandlerValue(Handler handler, Object value) {
+		updateHandlerValue(new String[] { ((Element) handler.eContainer()).getName(), handler.getName() }, value.toString());
 	}
 
 	private String retriveHandlerValue(String[] path) {
 		Preconditions.checkState(isConnected);
-		Preconditions.checkArgument(path.length == 2,
-				"path to handler must have length 2");
+		Preconditions.checkArgument(path.length == 2, "path to handler must have length 2");
 
 		String value = null;
 		try {
@@ -247,14 +248,26 @@ public class ClickControlNodeAdapter implements INodeAdapter {
 
 	private void updateHandlerValue(String[] path, String value) {
 		Preconditions.checkState(isConnected);
-		Preconditions.checkArgument(path.length == 2,
-				"path to handler must have length 2");
+		Preconditions.checkArgument(path.length == 2, "path to handler must have length 2");
 
 		try {
 			cs.write(path[0], path[1], value.toCharArray());
 		} catch (Throwable e) {
 			Throwables.propagate(e);
 		}
+	}
+	
+	@Override
+	public boolean determineHandlerHasChangedInModel(Notification notification) {
+		return ClickWatchModelPackage.eINSTANCE.getHandler_Value().equals(
+				notification.getFeature());
+	}
+
+	@Override
+	public boolean determineHandlerHasChangedInReality(Handler modelCopy,
+			Handler realityCopy) {
+		return modelCopy.getValue() == null ? false :
+			modelCopy.getValue().equals(realityCopy.getValue());
 	}
 
 }

@@ -2,6 +2,7 @@ package edu.hu.clickwatch.model;
 
 import java.util.List;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.util.FeatureMapUtil;
 
 /**
@@ -111,7 +112,7 @@ public class MultiNodeAdapter implements INodeAdapter {
 	 * facilitates the {@link AbstractNodeConnection} of the node models.
 	 */
 	@Override
-	public void updateHandlerValue(Handler handler, String value) {
+	public void updateHandlerValue(Handler handler, Object value) {
 		for (Node node: getNodes()) {
 			if (!(node instanceof MultiNode)) {
 				String elementName = ((Element)handler.eContainer()).getName();
@@ -130,4 +131,14 @@ public class MultiNodeAdapter implements INodeAdapter {
 		}
 	}
 
+	@Override
+	public boolean determineHandlerHasChangedInModel(Notification notification) {
+		return false;
+	}
+
+	@Override
+	public boolean determineHandlerHasChangedInReality(Handler modelCopy,
+			Handler realityCopy) {
+		return false;
+	}
 }

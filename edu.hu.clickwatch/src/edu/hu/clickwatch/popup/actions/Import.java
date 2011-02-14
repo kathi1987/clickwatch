@@ -1,28 +1,24 @@
 package edu.hu.clickwatch.popup.actions;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import org.eclipse.core.resources.IFile;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IActionDelegate;
-import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
-import org.eclipse.ui.PlatformUI;
 
 import edu.hu.clickwatch.model.ClickWatchModelFactory;
-import edu.hu.clickwatch.model.Handler;
 import edu.hu.clickwatch.model.Network;
 import edu.hu.clickwatch.model.Node;
 
@@ -43,6 +39,7 @@ public class Import implements IObjectActionDelegate {
 	/**
 	 * @see IObjectActionDelegate#setActivePart(IAction, IWorkbenchPart)
 	 */
+	@Override
 	public void setActivePart(IAction action, IWorkbenchPart targetPart) {
 		shell = targetPart.getSite().getShell();
 	}
@@ -50,11 +47,22 @@ public class Import implements IObjectActionDelegate {
 	/**
 	 * @see IActionDelegate#run(IAction)
 	 */
+	@Override
 	public void run(IAction action) {
 		if (network == null) {
 			return;
 		}
-
+		
+		FileDialog fd = new FileDialog(shell, SWT.OPEN);
+        fd.setText("Open");
+        String[] filterExt = { "*.txt", "*.*" };
+        fd.setFilterExtensions(filterExt);
+        String fileName = fd.open();
+        
+        if (fileName == null) {
+        	return;
+        }
+        
 		// clear old node entries
 		network.getNodes().clear();
 		
@@ -62,13 +70,10 @@ public class Import implements IObjectActionDelegate {
 		List<String> node_lst = new ArrayList<String>();
 
 		try {
-			IFileEditorInput ctx = (IFileEditorInput) PlatformUI.getWorkbench()
-					.getActiveWorkbenchWindow().getActivePage()
-					.getActiveEditor().getEditorInput();
-			IFile aFile = ctx.getFile().getProject().getFile("nodes.import");
-
-			BufferedReader input = new BufferedReader(new InputStreamReader(
-					aFile.getContents()));
+			File file = new File(fileName);
+			
+			BufferedReader input = new BufferedReader(new FileReader(file));
+			
 			try {
 				String line = null;
 				while ((line = input.readLine()) != null) {
@@ -81,7 +86,7 @@ public class Import implements IObjectActionDelegate {
 			ex.printStackTrace();
 		}
 
-		for (Iterator iterator = node_lst.iterator(); iterator.hasNext();) {
+		for (Iterator<String> iterator = node_lst.iterator(); iterator.hasNext();) {
 			String string = (String) iterator.next();
 			Node node = ClickWatchModelFactory.eINSTANCE.createNode();
 			node.setINetAdress(string);
@@ -93,6 +98,7 @@ public class Import implements IObjectActionDelegate {
 	/**
 	 * @see IActionDelegate#selectionChanged(IAction, ISelection)
 	 */
+	@Override
 	public void selectionChanged(IAction action, ISelection selection) {
 		try {
 			network = (Network) ((IStructuredSelection) selection)

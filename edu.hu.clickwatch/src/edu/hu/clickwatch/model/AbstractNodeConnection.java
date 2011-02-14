@@ -1,6 +1,5 @@
 package edu.hu.clickwatch.model;
 
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,9 +8,9 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.FeatureMap;
-import org.eclipse.emf.ecore.xml.type.AnyType;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorPart;
@@ -21,9 +20,7 @@ import org.eclipse.ui.PlatformUI;
 
 import com.google.common.base.Function;
 import com.google.common.base.Preconditions;
-import com.google.common.base.Predicate;
 import com.google.common.base.Throwables;
-import com.google.common.collect.Collections2;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
@@ -153,9 +150,9 @@ public abstract class AbstractNodeConnection {
 	 */
 	private class SetValueInRealityRunnable implements Runnable {
 		final Handler handler;
-		final String value;
+		final Object value;
 
-		public SetValueInRealityRunnable(Handler handler, String value) {
+		public SetValueInRealityRunnable(Handler handler, Object value) {
 			super();
 			this.handler = handler;
 			this.value = value;
@@ -328,10 +325,9 @@ public abstract class AbstractNodeConnection {
 						protected void update(Handler oldItem, Handler newItem) {
 							ensureHandlerIsListening(oldItem);
 							if (newItem.isCanRead()) {
-								if (handlerValueHasChanged(oldItem,
-										newItem.getValue())) {
+								if (getNodeAdapter().determineHandlerHasChangedInReality(oldItem, newItem)) {
 									propagateRemoteHandlerChangeToModel(
-											oldItem, newItem.getValue());
+											oldItem, newItem.getValue());	
 								}
 							}
 						}
@@ -341,61 +337,10 @@ public abstract class AbstractNodeConnection {
 		}
 	}
 
-	/**
-	 * This methods decided whether a handler value in the model will be updated
-	 * with a potentially changed value from reality.
-	 * 
-	 * @param handerInModel, the handler that might get a new value
-	 * @param value, the new reality value
-	 * @return true, iff the new value needs to be put into the model
-	 */
-	protected boolean handlerValueHasChanged(Handler handlerInModel,
-			FeatureMap value) {
-		return !compareXml(handlerInModel.getValue(), value);
-	}
-	
-	private boolean compareXml(FeatureMap v1, FeatureMap v2) {
-		if (v1.size() != v2.size()) {
-			return false;
-		}
-		int i = 0;
-		for (FeatureMap.Entry e1: v1) {
-			FeatureMap.Entry e2 = v2.get(i++);
-
-			if (!e1.getEStructuralFeature().getName().equals(e2.getEStructuralFeature().getName())) {
-				return false;
-			}
-			if (e1.getValue() instanceof AnyType && e2.getValue() instanceof AnyType) {
-				if (!compareXml(((AnyType)e1.getValue()).getMixed(), ((AnyType)e2.getValue()).getMixed())) {
-					return false;
-				}
-			} else {
-				if (!e1.getValue().equals(e2.getValue())) {
-					return false;
-				}
-			}
-		}
-		return true;
-	}
-
-	protected void propagateHandlerValueChangeToReality(Handler handler,
-			String value) {
+	protected final void propagateHandlerValueChangeToReality(Handler handler,
+			Object value) {
 		if (node.isConnected()) {
 			runInExtraThread(new SetValueInRealityRunnable(handler, value));
-		}
-	}
-	
-	/**
-	 * Transforms model handler values into String, i.e. xml-values are serialized.
-	 * @param value, the value in model form
-	 * @return a string representation of the model value that the remote handler understands.
-	 */
-	protected String getStringValueForModelValue(Object value) {
-		// for now only simple text nodes are supported
-		if (value instanceof FeatureMap.Entry && ((FeatureMap.Entry)value).getValue() instanceof String) {
-			return (String)((FeatureMap.Entry)value).getValue();
-		} else {
-			throw new RuntimeException("Can only set primitive values"); 
 		}
 	}
 
@@ -404,24 +349,30 @@ public abstract class AbstractNodeConnection {
 	 * of handler changed, the value is also written to the handler in the real
 	 * node.
 	 */
-	private class HandlerModelAdapter extends AdapterImpl {
+	private class HandlerModelAdapter extends EContentAdapter {
 
 		private boolean enabled = true;
 
 		@Override
 		public void notifyChanged(Notification msg) {
-			if (enabled) {
-				Handler handler = (Handler) msg.getNotifier();
-				if (ClickWatchModelPackage.eINSTANCE.getHandler_Value().equals(
-						msg.getFeature())) {
-					propagateHandlerValueChangeToReality(handler,
-							getStringValueForModelValue(msg.getNewValue()));
+			if (enabled && msg.getEventType() != Notification.REMOVING_ADAPTER) {
+				Object notifier = msg.getNotifier();
+				while (notifier != null && 
+						notifier instanceof EObject && !(notifier instanceof Handler)) {
+					notifier = ((EObject)notifier).eContainer();
 				}
-				if (ClickWatchModelPackage.eINSTANCE.getHandler_Watch().equals(
-						msg.getFeature())) {
-					if (msg.getNewBooleanValue()) {
-						((Element) handler.eContainer()).setWatch(true);
+				if (notifier != null && notifier instanceof Handler) {
+					Handler handler = (Handler)notifier;
+					
+					if (getNodeAdapter().determineHandlerHasChangedInModel(msg)) {
+						propagateHandlerValueChangeToReality(handler, handler.getValue());
 					}
+					if (ClickWatchModelPackage.eINSTANCE.getHandler_Watch().equals(
+							msg.getFeature())) {
+						if (msg.getNewBooleanValue()) {
+							((Element) handler.eContainer()).setWatch(true);
+						}
+					}	
 				}
 			}
 		}
@@ -434,51 +385,35 @@ public abstract class AbstractNodeConnection {
 			enabled = true;
 		}
 	};
+	
+	private final HandlerModelAdapter modelChangeListener = new HandlerModelAdapter();
 
 	private void ensureHandlerIsListening(Handler handler) {
-		if (getHandlerAdapter(handler) == null) {
-			handler.eAdapters().add(new HandlerModelAdapter());
-		}
+		handler.eAdapters().remove(modelChangeListener);
+		handler.eAdapters().add(modelChangeListener);
 	}
 
 	/**
 	 * @param handler
 	 *            , the handler within the model.
 	 */
-	protected void propagateRemoteHandlerChangeToModel(final Handler handler,
+	protected final void propagateRemoteHandlerChangeToModel(final Handler handler,
 			final FeatureMap value) {
 		runInGUI(new Runnable() {
 			@Override
 			public void run() {
-				HandlerModelAdapter adapter = getHandlerAdapter(handler);
-				Preconditions.checkNotNull(adapter);
-				adapter.disable();
+				modelChangeListener.disable();
 
-				if (handler.isWatch()
-						|| ((Element) handler.eContainer()).isWatch()) {
+				if (handler.isWatch() || ((Element) handler.eContainer()).isWatch()) {
 					handler.setChanged(!value.equals(handler.getValue()));
 				}
 				handler.getValue().clear();
 				handler.getValue().addAll(value);
-				adapter.enable();
+				
+				modelChangeListener.enable();
 			}
 		});
 
-	}
-
-	private static HandlerModelAdapter getHandlerAdapter(Handler handler) {
-		Collection<Adapter> adapters = Collections2.filter(handler.eAdapters(),
-				new Predicate<Adapter>() {
-					@Override
-					public boolean apply(Adapter input) {
-						return input instanceof HandlerModelAdapter;
-					}
-				});
-		if (adapters.size() > 0) {
-			return (HandlerModelAdapter) adapters.iterator().next();
-		} else {
-			return null;
-		}
 	}
 
 	/**
