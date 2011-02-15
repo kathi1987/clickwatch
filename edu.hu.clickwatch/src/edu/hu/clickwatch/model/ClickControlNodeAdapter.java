@@ -189,21 +189,6 @@ public class ClickControlNodeAdapter implements INodeAdapter {
 			return EcoreUtil.copy(internalNodeCopy);	
 		}
 		
-		try {
-			java.util.regex.Pattern.compile(elemFilter);
-		} catch (PatternSyntaxException pe) {
-			MessageDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
-			 "Malformed Filter", "The element filter is malformed. Ignoring filter.");
-			return EcoreUtil.copy(internalNodeCopy);
-		}
-		try {
-			java.util.regex.Pattern.compile(handFilter);
-		} catch (PatternSyntaxException pe) {
-			MessageDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
-			 "Malformed Filter", "The handler filter is malformed. Ignoring filter.");
-			return EcoreUtil.copy(internalNodeCopy);
-		}
-		
 		//String nodeName = internalNodeCopy.getINetAdress();
 
 		Iterator<Element> elem_it = internalNodeCopy.getElements().iterator();

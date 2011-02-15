@@ -482,7 +482,7 @@ public abstract class AbstractNodeConnection {
 		
 		String newHandFilter = network.getHandlerFilter();
 		if (validateFilter(newHandFilter, "handler")) {
-			handFilter = newElemFilter;
+			handFilter = newHandFilter;
 		} else {
 			handFilter = "";
 		}

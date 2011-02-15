@@ -1,5 +1,7 @@
 package edu.hu.clickwatch.actions;
 
+import java.util.Iterator;
+
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ISelection;
@@ -15,7 +17,7 @@ import edu.hu.clickwatch.model.Node;
 public class Disconnect implements IObjectActionDelegate {
 
 	private Shell shell;
-	private Node node;
+	private Iterator<Node> node_it;
 	
 	/**
 	 * Constructor for Action1.
@@ -37,14 +39,18 @@ public class Disconnect implements IObjectActionDelegate {
 	 */
 	@Override
 	public void run(IAction action) {
-		if (node == null) {
+		if (node_it == null) {
 			return;
 		}
 		
-		if (node.getConnection() != null) {
-			AbstractNodeConnection oldConnection = (AbstractNodeConnection)node.getConnection();
-			node.setConnection(null);
-			oldConnection.disconnect();
+		while (node_it.hasNext()) {
+			Node node = node_it.next();
+			
+			if (node.getConnection() != null) {
+				AbstractNodeConnection oldConnection = (AbstractNodeConnection)node.getConnection();
+				node.setConnection(null);
+				oldConnection.disconnect();
+			}
 		}
 	}
 
@@ -54,9 +60,9 @@ public class Disconnect implements IObjectActionDelegate {
 	@Override
 	public void selectionChanged(IAction action, ISelection selection) {
 		try {
-			node = (Node)((IStructuredSelection)selection).getFirstElement();
+			node_it = ((IStructuredSelection)selection).iterator();
 		} catch (Exception e) {
-			MessageDialog.openError(shell, "Clickwatch Error", "You can only call this action on a single Node");
+			MessageDialog.openError(shell, "Clickwatch Error", "ErrorMsg:" + e.getMessage());
 		}
 	}
 
