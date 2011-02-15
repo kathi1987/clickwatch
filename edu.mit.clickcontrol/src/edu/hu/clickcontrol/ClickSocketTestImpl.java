@@ -87,7 +87,7 @@ public class ClickSocketTestImpl implements IClickSocket {
 	@Override
 	public List<String> getConfigElementNames() throws ClickException,
 			IOException {
-		return Arrays.asList(new String[] { "e1", "e2" });
+		return Arrays.asList(new String[] { "e1", "e2", "e3/c1/c2" });
 	}
 
 	@Override

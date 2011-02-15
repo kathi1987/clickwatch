@@ -2,14 +2,13 @@ package edu.hu.clickwatch.model;
 
 import java.io.IOException;
 import java.net.InetAddress;
-import java.util.ArrayList;
-import java.util.Collection;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 
 import click.ControlSocket;
 
@@ -19,6 +18,7 @@ import com.google.inject.Inject;
 
 import edu.hu.clickcontrol.IClickSocket;
 import edu.hu.clickwatch.GuiceModule;
+import edu.hu.clickwatch.XmlUtil;
 
 /**
  * This implementation of {@link INodeAdapter} adapts a node model to a click
@@ -96,23 +96,42 @@ public class ClickControlNodeAdapter implements INodeAdapter {
 	 */
 	protected void retrieveAndPopulateInternalNodeCopy(Node internalNodeCopy,
 			IClickSocket cs) {
+		Map<String, Element> elementMap = new HashMap<String, Element>();
+		List<String> configElementNames = null;
 		try {
-			for (Object elementNameObject : cs.getConfigElementNames()) {
+			configElementNames = cs.getConfigElementNames();
+			for (Object elementNameObject : configElementNames) {
 				String elementName = elementNameObject.toString();
-				if (!ignoreElement(elementName)) {
-					Element element = modelFactory.createElement();
-					element.setName(elementName.toString());
-					internalNodeCopy.getElements().add(element);
+				if (!ignoreElement(elementName)) {					
+					String[] elementPath = elementName.split("/");
+					String elementNamePrefix = null;
+					Element parent = null;
+					for (String elementPathItem: elementPath) {
+						elementNamePrefix = elementNamePrefix == null ? elementPathItem : elementNamePrefix + "/" + elementPathItem;
+						Element element = elementMap.get(elementNamePrefix);
+						if (element == null) {
+							element = modelFactory.createElement();
+							element.setName(elementPathItem);
+							if (parent == null) {
+								internalNodeCopy.getElements().add(element);
+							} else {
+								parent.getChildren().add(element);
+							}
+							elementMap.put(elementNamePrefix, element);
+						}
+						parent = element;
+					}
 				}
 			}
 		} catch (Throwable e) {
 			Throwables.propagate(e);
 		}
 
-		for (Element element : internalNodeCopy.getElements()) {
+		for (String elementPath: configElementNames) {
 			List<ControlSocket.HandlerInfo> handlerInfos = null;
-			try {
-				handlerInfos = cs.getElementHandlers(element.getName());
+			Element element = elementMap.get(elementPath);
+			try {				
+				handlerInfos = cs.getElementHandlers(elementPath);
 			} catch (Throwable e) {
 				Throwables.propagate(e);
 			}
@@ -144,9 +163,7 @@ public class ClickControlNodeAdapter implements INodeAdapter {
 	}
 	
 	protected void populateHandlerValueOfInternalNodeCopy(Handler internalHandlerCopy, String plainHandlerValue) {
-		Collection<String> value = new ArrayList<String>();
-		value.add(plainHandlerValue.trim());
-		internalHandlerCopy.getValue().set(XMLTypePackage.eINSTANCE.getXMLTypeDocumentRoot_Text(), value);
+		internalHandlerCopy.setValue(XmlUtil.createXMLText(plainHandlerValue.trim()));
 	}
 
 	private void retrieveInternalNodeCopy() {
@@ -217,7 +234,7 @@ public class ClickControlNodeAdapter implements INodeAdapter {
 	}
 
 	@Override
-	public synchronized String retrieveHandlerValue(Handler handler) {
+	public final synchronized String retrieveHandlerValue(Handler handler) {
 		ensureConnected();
 		return retriveHandlerValue(new String[] {
 				((Element) handler.eContainer()).getName(), handler.getName() });
@@ -226,11 +243,18 @@ public class ClickControlNodeAdapter implements INodeAdapter {
 	@Override
 	public final synchronized void updateHandlerValue(Handler handler, Object value) {
 		ensureConnected();
-		doUpdateHandlerValue(handler, value);
+		Element element = (Element)handler.eContainer();
+		String elementName = element.getName();
+		while (element.eContainer() instanceof Element) {
+			element = (Element)element.eContainer();
+			elementName = element.getName() + "/" + elementName;
+		}		
+		updateHandlerValue(new String[] { elementName, handler.getName() }, 
+				getPlainHandlerValue(value));
 	}
 	
-	protected void doUpdateHandlerValue(Handler handler, Object value) {
-		updateHandlerValue(new String[] { ((Element) handler.eContainer()).getName(), handler.getName() }, value.toString());
+	protected String getPlainHandlerValue(Object value) {
+		return value.toString();
 	}
 
 	private String retriveHandlerValue(String[] path) {

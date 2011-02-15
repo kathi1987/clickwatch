@@ -9,6 +9,7 @@ import com.google.inject.Injector;
 import edu.hu.clickcontrol.ClickSocketTestImpl;
 import edu.hu.clickcontrol.IClickSocket;
 import edu.hu.clickwatch.GuiceModule;
+import edu.hu.clickwatch.XmlUtil;
 
 public class ClickControlNodeAdapterTest extends TestCase {
 
@@ -45,9 +46,9 @@ public class ClickControlNodeAdapterTest extends TestCase {
 		testConnect();
 		Node node = modelAdapter.retrieve(null, null);
 		
-		assertTrue(node.getElements().size() == 2);
+		assertTrue(node.getElements().size() == 3);
 		assertTrue(node.getElements().get(0).getHandlers().size() == 2);
-		assertTrue(node.getElements().get(0).getHandlers().get(0).getValue().get(0).getValue().equals("value"));
+		assertTrue(node.getElements().get(0).getHandlers().get(0).getValue().getMixed().getValue(0).equals("value"));
 	}
 	
 	public void testRetrieveHandlerValue() {
@@ -61,8 +62,8 @@ public class ClickControlNodeAdapterTest extends TestCase {
 		testConnect();
 		Node node = modelAdapter.retrieve(null, null);
 		
-		Handler handler = node.getElements().get(0).getHandlers().get(0);
-		handler.getValue().setValue(0, "newValue");
+		Handler handler = node.getElements().get(0).getHandlers().get(0); 
+		handler.setValue(XmlUtil.createXMLText("newValue"));
 		modelAdapter.updateHandlerValue(handler, handler.getValue());
 		String value = modelAdapter.retrieveHandlerValue(handler);
 		assertTrue(value.equals("newValue"));

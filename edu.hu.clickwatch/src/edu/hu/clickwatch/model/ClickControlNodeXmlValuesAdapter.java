@@ -1,8 +1,7 @@
 package edu.hu.clickwatch.model;
 
-import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.xml.type.AnyType;
 import org.eclipse.emf.ecore.xml.type.XMLTypeDocumentRoot;
 
@@ -20,24 +19,22 @@ public class ClickControlNodeXmlValuesAdapter extends AbstractXmlNodeAdapter {
 	protected void populateHandlerValueOfInternalNodeCopy(
 			Handler internalHandlerCopy, String plainHandlerValue) {
 		XMLTypeDocumentRoot xml = deserializeXml("<value>" + plainHandlerValue + "</value>");
-		internalHandlerCopy.getValue().addAll(
-				((AnyType)xml.getMixed().getValue(0)).getMixed());
+		internalHandlerCopy.setValue((AnyType)((XMLTypeDocumentRoot)xml).getMixed().getValue(0));
 	}
-	
+
 	@Override
-	protected void doUpdateHandlerValue(Handler handler, Object value) {
-		Preconditions.checkArgument(value instanceof FeatureMap);
+	protected String getPlainHandlerValue(Object value) {
+		Preconditions.checkArgument(value instanceof AnyType);
 		
-		FeatureMap valueAsXml = (FeatureMap)
-			((Handler)EcoreUtil.copy(((EStructuralFeature.Setting)value).getEObject())).getValue();
+		AnyType valueAsXml = (AnyType)EcoreUtil.copy((EObject)value);
 		
 		XMLTypeDocumentRoot xml = deserializeXml("<value></value>");
 		xml.getMixed().clear();
-		xml.getMixed().addAll(valueAsXml);
+		xml.getMixed().addAll(valueAsXml.getMixed());
 
 		String xmlString = serializeXml(xml);
 		xmlString = xmlString.substring(xmlString.indexOf("?>\n") + 3);
-		super.doUpdateHandlerValue(handler, xmlString);
+		
+		return xmlString;
 	}
-
 }

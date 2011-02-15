@@ -13,10 +13,26 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.impl.GenericXMLResourceFactoryImpl;
+import org.eclipse.emf.ecore.xml.type.AnyType;
+import org.eclipse.emf.ecore.xml.type.XMLTypeDocumentRoot;
+import org.eclipse.emf.ecore.xml.type.XMLTypeFactory;
+import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 
 import com.google.common.base.Throwables;
 
 public class XmlUtil {
+	
+	public static AnyType createXMLText(String text) {
+		AnyType result = XMLTypeFactory.eINSTANCE.createAnyType();
+		result.getAny().add(XMLTypePackage.eINSTANCE.getXMLTypeDocumentRoot_Text(), text);
+		return result;
+	}
+	
+	public static XMLTypeDocumentRoot createXMLDocument(AnyType content) {
+		XMLTypeDocumentRoot document = XMLTypeFactory.eINSTANCE.createXMLTypeDocumentRoot();
+		document.getMixed().add(XMLTypePackage.eINSTANCE.getXMLTypeDocumentRoot_Mixed(), content);
+		return document;
+	}
 	
 	public static EObject deserializeXml(String xml) {
 		ResourceSet resourceSet = new ResourceSetImpl();
@@ -41,11 +57,19 @@ public class XmlUtil {
 			}
 		}
 		
+		EObject result = null;		
 		if (resource.getContents().size() > 0) {
-			return resource.getContents().get(0);
-		} else {
-			return null;
+			result = resource.getContents().get(0);
+			resource.getContents().remove(0);
 		}
+		
+		try {
+			resource.delete(null);
+		} catch (IOException e) {
+			Throwables.propagate(e);
+		}
+		
+		return result;
 	}
 	
 	public static String serializeXml(EObject object) {
@@ -59,6 +83,7 @@ public class XmlUtil {
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		try {
 			resource.save(baos, null);
+			resource.delete(null);
 		} catch (IOException e) {
 			Throwables.propagate(e);
 		}

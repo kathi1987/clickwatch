@@ -21,7 +21,7 @@ public class AbstractXmlNodeAdapter extends ClickControlNodeAdapter {
 	@Override
 	public boolean determineHandlerHasChangedInReality(Handler modelCopy,
 			Handler realityCopy) {
-		return !compareXml(modelCopy.getValue(), realityCopy.getValue());
+		return !compareXml(modelCopy.getValue().getMixed(), realityCopy.getValue().getMixed());
 	}
 
 	private boolean compareXml(FeatureMap v1, FeatureMap v2) {

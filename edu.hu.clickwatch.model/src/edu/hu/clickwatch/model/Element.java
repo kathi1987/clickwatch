@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link edu.hu.clickwatch.model.Element#getName <em>Name</em>}</li>
  *   <li>{@link edu.hu.clickwatch.model.Element#getHandlers <em>Handlers</em>}</li>
  *   <li>{@link edu.hu.clickwatch.model.Element#isWatch <em>Watch</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.model.Element#getChildren <em>Children</em>}</li>
  * </ul>
  * </p>
  *
@@ -70,6 +71,22 @@ public interface Element extends EObject {
 	 * @generated
 	 */
 	void setWatch(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Children</b></em>' containment reference list.
+	 * The list contents are of type {@link edu.hu.clickwatch.model.Element}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Children</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Children</em>' containment reference list.
+	 * @see edu.hu.clickwatch.model.ClickWatchModelPackage#getElement_Children()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<Element> getChildren();
 
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.

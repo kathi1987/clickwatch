@@ -7,6 +7,7 @@
 package edu.hu.clickwatch.model;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.xml.type.AnyType;
 import org.eclipse.emf.ecore.util.FeatureMap;
 
 /**
@@ -137,21 +138,31 @@ public interface Handler extends EObject {
 	void setWatch(boolean value);
 
 	/**
-	 * Returns the value of the '<em><b>Value</b></em>' attribute list.
-	 * The list contents are of type {@link org.eclipse.emf.ecore.util.FeatureMap.Entry}.
+	 * Returns the value of the '<em><b>Value</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Value</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Value</em>' attribute list.
+	 * @return the value of the '<em>Value</em>' containment reference.
+	 * @see #setValue(AnyType)
 	 * @see edu.hu.clickwatch.model.ClickWatchModelPackage#getHandler_Value()
-	 * @model dataType="org.eclipse.emf.ecore.EFeatureMapEntry" many="true"
+	 * @model containment="true"
 	 *        extendedMetaData="kind='elementWildcard' wildcards='##any' name=':1' processing='lax'"
 	 * @generated
 	 */
-	FeatureMap getValue();
+	AnyType getValue();
+
+	/**
+	 * Sets the value of the '{@link edu.hu.clickwatch.model.Handler#getValue <em>Value</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Value</em>' containment reference.
+	 * @see #getValue()
+	 * @generated
+	 */
+	void setValue(AnyType value);
 
 	/**
 	 * Returns the value of the '<em><b>Changed</b></em>' attribute.

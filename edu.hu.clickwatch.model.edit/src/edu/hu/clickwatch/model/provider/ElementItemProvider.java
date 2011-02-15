@@ -105,6 +105,7 @@ public class ElementItemProvider
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(ClickWatchModelPackage.Literals.ELEMENT__HANDLERS);
+			childrenFeatures.add(ClickWatchModelPackage.Literals.ELEMENT__CHILDREN);
 		}
 		return childrenFeatures;
 	}
@@ -193,6 +194,7 @@ public class ElementItemProvider
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case ClickWatchModelPackage.ELEMENT__HANDLERS:
+			case ClickWatchModelPackage.ELEMENT__CHILDREN:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -214,6 +216,11 @@ public class ElementItemProvider
 			(createChildParameter
 				(ClickWatchModelPackage.Literals.ELEMENT__HANDLERS,
 				 ClickWatchModelFactory.eINSTANCE.createHandler()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ClickWatchModelPackage.Literals.ELEMENT__CHILDREN,
+				 ClickWatchModelFactory.eINSTANCE.createElement()));
 	}
 
 	/**

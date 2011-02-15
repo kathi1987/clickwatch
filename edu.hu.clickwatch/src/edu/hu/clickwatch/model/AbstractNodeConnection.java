@@ -10,7 +10,7 @@ import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.ecore.util.FeatureMap;
+import org.eclipse.emf.ecore.xml.type.AnyType;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorPart;
@@ -281,59 +281,67 @@ public abstract class AbstractNodeConnection {
 			super();
 			this.updatedNodeCopy = updatedNodeCopy;
 		}
+		
+		class ElementListUpdater extends ListUpdater<Element> {
+			
+			public ElementListUpdater(List<Element> oldList, List<Element> newList) {
+				super(oldList, newList);
+			}
+
+			@Override
+			protected void removeItem(Element oldItem) {
+				EcoreUtil.delete(oldItem, true);
+			}
+
+			@Override
+			protected void addItem(Element newItem) {
+				node.getElements().add(EcoreUtil.copy(newItem));
+			}
+
+			@Override
+			protected String getName(Element item) {
+				return item.getName();
+			}
+
+			@Override
+			protected void update(final Element element,
+					final Element updatedElementCopy) {
+				new ElementListUpdater(element.getChildren(), updatedElementCopy.getChildren());
+				new ListUpdater<Handler>(element.getHandlers(),
+						updatedElementCopy.getHandlers()) {
+					@Override
+					protected void removeItem(Handler oldItem) {
+						EcoreUtil.delete(oldItem);
+					}
+
+					@Override
+					protected void addItem(Handler newItem) {
+						element.getHandlers().add(EcoreUtil.copy(newItem));
+					}
+
+					@Override
+					protected String getName(Handler item) {
+						return item.getName();
+					}
+
+					@Override
+					protected void update(Handler oldItem, Handler newItem) {
+						ensureHandlerIsListening(oldItem);
+						if (newItem.isCanRead()) {
+							if (getNodeAdapter().determineHandlerHasChangedInReality(oldItem, newItem)) {
+								propagateRemoteHandlerChangeToModel(
+										oldItem, newItem.getValue());	
+							}
+						}
+					}
+				};
+			}
+		};
 
 		@Override
 		public void run() {
-			new ListUpdater<Element>(node.getElements(),
-					updatedNodeCopy.getElements()) {
-				@Override
-				protected void removeItem(Element oldItem) {
-					EcoreUtil.delete(oldItem, true);
-				}
-
-				@Override
-				protected void addItem(Element newItem) {
-					node.getElements().add(EcoreUtil.copy(newItem));
-				}
-
-				@Override
-				protected String getName(Element item) {
-					return item.getName();
-				}
-
-				@Override
-				protected void update(final Element element,
-						final Element updatedElementCopy) {
-					new ListUpdater<Handler>(element.getHandlers(),
-							updatedElementCopy.getHandlers()) {
-						@Override
-						protected void removeItem(Handler oldItem) {
-							EcoreUtil.delete(oldItem);
-						}
-
-						@Override
-						protected void addItem(Handler newItem) {
-							element.getHandlers().add(EcoreUtil.copy(newItem));
-						}
-
-						@Override
-						protected String getName(Handler item) {
-							return item.getName();
-						}
-
-						@Override
-						protected void update(Handler oldItem, Handler newItem) {
-							ensureHandlerIsListening(oldItem);
-							if (newItem.isCanRead()) {
-								if (getNodeAdapter().determineHandlerHasChangedInReality(oldItem, newItem)) {
-									propagateRemoteHandlerChangeToModel(
-											oldItem, newItem.getValue());	
-								}
-							}
-						}
-					};
-				}
-			};
+			new ElementListUpdater(node.getElements(),
+					updatedNodeCopy.getElements());
 		}
 	}
 
@@ -398,7 +406,7 @@ public abstract class AbstractNodeConnection {
 	 *            , the handler within the model.
 	 */
 	protected final void propagateRemoteHandlerChangeToModel(final Handler handler,
-			final FeatureMap value) {
+			final AnyType value) {
 		runInGUI(new Runnable() {
 			@Override
 			public void run() {
@@ -407,8 +415,7 @@ public abstract class AbstractNodeConnection {
 				if (handler.isWatch() || ((Element) handler.eContainer()).isWatch()) {
 					handler.setChanged(!value.equals(handler.getValue()));
 				}
-				handler.getValue().clear();
-				handler.getValue().addAll(value);
+				handler.setValue(value);
 				
 				modelChangeListener.enable();
 			}

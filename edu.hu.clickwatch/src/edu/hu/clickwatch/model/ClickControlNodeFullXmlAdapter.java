@@ -52,7 +52,7 @@ public class ClickControlNodeFullXmlAdapter extends AbstractXmlNodeAdapter {
 					Handler handler = modelFactory.createHandler();
 					handler.setName(handlerName);
 					handler.setCanRead(true);
-					handler.getValue().addAll(handlerXml.getMixed());
+					handler.setValue(handlerXml);
 					element.getHandlers().add(handler);
 				}
 			}
@@ -89,9 +89,9 @@ public class ClickControlNodeFullXmlAdapter extends AbstractXmlNodeAdapter {
 	}
 
 	@Override
-	protected void doUpdateHandlerValue(Handler handler, Object value) {
+	protected String getPlainHandlerValue(Object value) {
 		// TODO
-		super.doUpdateHandlerValue(handler, value);
+		return super.getPlainHandlerValue(value);
 	}
 
 }

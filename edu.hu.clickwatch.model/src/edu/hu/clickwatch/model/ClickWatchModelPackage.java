@@ -161,13 +161,22 @@ public interface ClickWatchModelPackage extends EPackage {
 	int ELEMENT__WATCH = 2;
 
 	/**
+	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ELEMENT__CHILDREN = 3;
+
+	/**
 	 * The number of structural features of the '<em>Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT_FEATURE_COUNT = 3;
+	int ELEMENT_FEATURE_COUNT = 4;
 
 	/**
 	 * The meta object id for the '{@link edu.hu.clickwatch.model.impl.HandlerImpl <em>Handler</em>}' class.
@@ -225,7 +234,7 @@ public interface ClickWatchModelPackage extends EPackage {
 	int HANDLER__WATCH = 4;
 
 	/**
-	 * The feature id for the '<em><b>Value</b></em>' attribute list.
+	 * The feature id for the '<em><b>Value</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -489,6 +498,17 @@ public interface ClickWatchModelPackage extends EPackage {
 	EAttribute getElement_Watch();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link edu.hu.clickwatch.model.Element#getChildren <em>Children</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Children</em>'.
+	 * @see edu.hu.clickwatch.model.Element#getChildren()
+	 * @see #getElement()
+	 * @generated
+	 */
+	EReference getElement_Children();
+
+	/**
 	 * Returns the meta object for the attribute '{@link edu.hu.clickwatch.model.Element#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -554,15 +574,15 @@ public interface ClickWatchModelPackage extends EPackage {
 	EAttribute getHandler_Watch();
 
 	/**
-	 * Returns the meta object for the attribute list '{@link edu.hu.clickwatch.model.Handler#getValue <em>Value</em>}'.
+	 * Returns the meta object for the containment reference '{@link edu.hu.clickwatch.model.Handler#getValue <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute list '<em>Value</em>'.
+	 * @return the meta object for the containment reference '<em>Value</em>'.
 	 * @see edu.hu.clickwatch.model.Handler#getValue()
 	 * @see #getHandler()
 	 * @generated
 	 */
-	EAttribute getHandler_Value();
+	EReference getHandler_Value();
 
 	/**
 	 * Returns the meta object for the attribute '{@link edu.hu.clickwatch.model.Handler#isChanged <em>Changed</em>}'.
@@ -771,6 +791,14 @@ public interface ClickWatchModelPackage extends EPackage {
 		EAttribute ELEMENT__WATCH = eINSTANCE.getElement_Watch();
 
 		/**
+		 * The meta object literal for the '<em><b>Children</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ELEMENT__CHILDREN = eINSTANCE.getElement_Children();
+
+		/**
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -821,12 +849,12 @@ public interface ClickWatchModelPackage extends EPackage {
 		EAttribute HANDLER__WATCH = eINSTANCE.getHandler_Watch();
 
 		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' attribute list feature.
+		 * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute HANDLER__VALUE = eINSTANCE.getHandler_Value();
+		EReference HANDLER__VALUE = eINSTANCE.getHandler_Value();
 
 		/**
 		 * The meta object literal for the '<em><b>Changed</b></em>' attribute feature.
