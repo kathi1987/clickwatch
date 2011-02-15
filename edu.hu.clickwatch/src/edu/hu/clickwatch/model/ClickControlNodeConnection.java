@@ -2,6 +2,9 @@ package edu.hu.clickwatch.model;
 
 import com.google.inject.Inject;
 
+import edu.hu.clickwatch.nodeadapter.ClickControlNodeAdapter;
+import edu.hu.clickwatch.nodeadapter.INodeAdapter;
+
 public class ClickControlNodeConnection extends AbstractNodeConnection {
 	
 	@Inject

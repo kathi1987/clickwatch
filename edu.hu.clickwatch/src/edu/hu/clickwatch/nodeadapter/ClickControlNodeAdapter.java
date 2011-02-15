@@ -1,4 +1,4 @@
-package edu.hu.clickwatch.model;
+package edu.hu.clickwatch.nodeadapter;
 
 import java.io.IOException;
 import java.net.InetAddress;
@@ -19,6 +19,11 @@ import com.google.inject.Inject;
 import edu.hu.clickcontrol.IClickSocket;
 import edu.hu.clickwatch.GuiceModule;
 import edu.hu.clickwatch.XmlUtil;
+import edu.hu.clickwatch.model.ClickWatchModelFactory;
+import edu.hu.clickwatch.model.ClickWatchModelPackage;
+import edu.hu.clickwatch.model.Element;
+import edu.hu.clickwatch.model.Handler;
+import edu.hu.clickwatch.model.Node;
 
 /**
  * This implementation of {@link INodeAdapter} adapts a node model to a click
@@ -193,7 +198,7 @@ public class ClickControlNodeAdapter implements INodeAdapter {
 	 * Filter is a regular expression of this type: element_regexp/handler_regexp 
 	 * called per node
 	 * (non-Javadoc)
-	 * @see edu.hu.clickwatch.model.INodeAdapter#retrieve(java.lang.String)
+	 * @see edu.hu.clickwatch.nodeadapter.INodeAdapter#retrieve(java.lang.String)
 	 */
 	@Override
 	public synchronized Node retrieve(String elemFilter, String handFilter) {

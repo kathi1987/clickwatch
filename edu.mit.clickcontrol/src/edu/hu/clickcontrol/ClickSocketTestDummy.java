@@ -19,7 +19,7 @@ import click.ControlSocket.HandlerInfo;
  * 
  * @author Markus Scheidgen
  */
-public class ClickSocketTestImpl implements IClickSocket {
+public class ClickSocketTestDummy implements IClickSocket {
 
 	private static final String value = "value";
 	private int valueChange = 0;
@@ -71,7 +71,7 @@ public class ClickSocketTestImpl implements IClickSocket {
 		}
 	}
 
-	private Map<Tuple<String, String>, String> values = new HashMap<ClickSocketTestImpl.Tuple<String, String>, String>();
+	private Map<Tuple<String, String>, String> values = new HashMap<ClickSocketTestDummy.Tuple<String, String>, String>();
 
 	@Override
 	public void connect(InetAddress host, int port) throws IOException {

@@ -1,8 +1,11 @@
-package edu.hu.clickwatch.model;
+package edu.hu.clickwatch.nodeadapter;
 
 import org.eclipse.emf.common.notify.Notification;
 
 import com.google.inject.ImplementedBy;
+
+import edu.hu.clickwatch.model.Handler;
+import edu.hu.clickwatch.model.Node;
 
 /**
  * This interface describes node adapters. A node adapter adapts a node model to

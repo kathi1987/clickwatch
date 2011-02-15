@@ -14,7 +14,6 @@ import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.impl.GenericXMLResourceFactoryImpl;
 import org.eclipse.emf.ecore.xml.type.AnyType;
-import org.eclipse.emf.ecore.xml.type.XMLTypeDocumentRoot;
 import org.eclipse.emf.ecore.xml.type.XMLTypeFactory;
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 
@@ -26,12 +25,6 @@ public class XmlUtil {
 		AnyType result = XMLTypeFactory.eINSTANCE.createAnyType();
 		result.getAny().add(XMLTypePackage.eINSTANCE.getXMLTypeDocumentRoot_Text(), text);
 		return result;
-	}
-	
-	public static XMLTypeDocumentRoot createXMLDocument(AnyType content) {
-		XMLTypeDocumentRoot document = XMLTypeFactory.eINSTANCE.createXMLTypeDocumentRoot();
-		document.getMixed().add(XMLTypePackage.eINSTANCE.getXMLTypeDocumentRoot_Mixed(), content);
-		return document;
 	}
 	
 	public static EObject deserializeXml(String xml) {

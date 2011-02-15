@@ -28,6 +28,7 @@ import com.google.common.collect.Sets;
 
 import edu.hu.clickwatch.actions.Connect;
 import edu.hu.clickwatch.actions.Disconnect;
+import edu.hu.clickwatch.nodeadapter.INodeAdapter;
 
 /**
  * Instances of the class represent a connection the a remote node. These
@@ -383,7 +384,7 @@ public abstract class AbstractNodeConnection {
 		}
 	}
 
-	protected final void propagateHandlerValueChangeToReality(Handler handler,
+	public final void propagateHandlerValueChangeToReality(Handler handler,
 			Object value) {
 		if (node.isConnected()) {
 			runInExtraThread(new SetValueInRealityRunnable(handler, value));

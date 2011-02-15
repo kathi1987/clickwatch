@@ -2,7 +2,7 @@ package edu.hu.clickcontrol;
 
 import com.google.common.base.Throwables;
 
-public class ClickSocketXmlTestImpl extends ClickSocketTestImpl {
+public class ClickSocketXmlTestDummy extends ClickSocketTestDummy {
 
 	@Override
 	protected String getDefaultValue() {
