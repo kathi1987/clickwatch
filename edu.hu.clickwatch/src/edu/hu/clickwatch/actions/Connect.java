@@ -74,9 +74,8 @@ public class Connect implements IObjectActionDelegate {
 		try {
 			IStructuredSelection sec = ((IStructuredSelection)selection);
 			node_it = sec.iterator();
-			//node = (Node)((IStructuredSelection)selection).getFirstElement();
 		} catch (Exception e) {
-			MessageDialog.openError(editor.getSite().getShell(), "Clickwatch Error", "You can only call this action on a single Node");
+			MessageDialog.openError(editor.getSite().getShell(), "Clickwatch Error", "ErrorMsg:" + e.getMessage());
 		}
 	}
 

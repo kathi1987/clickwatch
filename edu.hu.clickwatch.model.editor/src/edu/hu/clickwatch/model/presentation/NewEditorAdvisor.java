@@ -74,7 +74,7 @@ public final class NewEditorAdvisor extends WorkbenchAdvisor {
 	private static String[] getFileExtensionFilters() {
 		List<String> result = new UniqueEList<String>();
 		result.addAll(ClickWatchModelEditor.FILE_EXTENSION_FILTERS);
-//		result.addAll(XMLTypeEditor.FILE_EXTENSION_FILTERS);
+		//result.addAll(XMLTypeEditor.FILE_EXTENSION_FILTERS);
 		return result.toArray(new String[0]);
 	} 
 

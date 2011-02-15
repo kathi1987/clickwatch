@@ -39,7 +39,11 @@ public class ClickSocketImpl implements IClickSocket {
 
 	@Override
 	public char[] read(String elementName, String handlerName) throws ClickException, IOException {
-		return cs.read(elementName, handlerName);
+		// remove all \t & \n
+		String res = new String(cs.read(elementName, handlerName));
+		res = res.replaceAll("\t", "");
+		res = res.replaceAll("\n", "");
+		return res.toCharArray();
 	}
 
 	@Override

@@ -70,6 +70,9 @@ public class ClickControlNodeAdapter implements INodeAdapter {
 
 	@Override
 	public synchronized void disconnect() {
+		if (cs == null || !isConnected) {
+			return;
+		}
 		cs.close();
 		isConnected = false;
 		if (internalNodeCopy != null) {
@@ -199,10 +202,6 @@ public class ClickControlNodeAdapter implements INodeAdapter {
 		if ( (elemFilter == null || elemFilter.trim().equals("")) && (handFilter == null || handFilter.trim().equals("")) ) {
 			return EcoreUtil.copy(internalNodeCopy);	
 		}
-		
-		//MessageDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
-		// "Malformed Filter", "The filter is malformed. A valid filter is as follows: element_regexp/handler_regexp. Ignoring filter.");
-		//return EcoreUtil.copy(internalNodeCopy);
 		
 		//String nodeName = internalNodeCopy.getINetAdress();
 

@@ -38,6 +38,7 @@ import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.wizard.WizardDialog;
+import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PartInitException;
 

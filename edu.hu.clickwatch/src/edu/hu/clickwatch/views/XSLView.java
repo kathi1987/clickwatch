@@ -1,5 +1,15 @@
 package edu.hu.clickwatch.views;
 
+import java.io.StringReader;
+import java.io.StringWriter;
+
+import javax.xml.transform.Result;
+import javax.xml.transform.Source;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.stream.StreamResult;
+import javax.xml.transform.stream.StreamSource;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -7,6 +17,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.IToolBarManager;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.jface.text.IDocument;
 import org.eclipse.jface.text.source.ISourceViewer;
@@ -24,6 +35,8 @@ import org.eclipse.wst.sse.ui.internal.StructuredTextViewer;
 import org.eclipse.wst.xml.core.internal.provisional.contenttype.ContentTypeIdForXML;
 import org.eclipse.wst.xsl.ui.internal.StructuredTextViewerConfigurationXSL;
 
+import com.google.common.base.Throwables;
+
 import edu.hu.clickwatch.XmlUtil;
 import edu.hu.clickwatch.model.presentation.ClickWatchModelEditor;
 
@@ -32,7 +45,14 @@ public class XSLView extends ViewPart {
 	private ISourceViewer viewer = null;
 	private Action evaluate = null;
 	private EObject currentResult = null;
+	
+	// XSLT transformer
+	private TransformerFactory transFact;
 
+	public XSLView() {
+		initXslProcessor();
+	}
+	
 	@Override
 	public void createPartControl(Composite parent) {
 		SourceViewerConfiguration sourceViewerConfiguration = new StructuredTextViewerConfigurationXSL();
@@ -61,7 +81,7 @@ public class XSLView extends ViewPart {
 		result.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
 		result.append("<xsl:stylesheet version=\"1.0\" xmlns:xsl=\"http://www.w3.org/1999/XSL/Transform\">\n");
 		result.append("    <xsl:template match=\"/\">\n");
-		result.append("        <!-- TODO: Auto-generated template -->\n");
+		result.append("        <xsl:copy-of select=\".\"/>\n");
 		result.append("    </xsl:template>\n");
 		result.append("</xsl:stylesheet>\n");
 		return result.toString();
@@ -131,15 +151,29 @@ public class XSLView extends ViewPart {
 			evalResult = performEvaluation(inputAsString, viewer.getDocument().get());
 		} catch (Throwable e) {
 			// TODO error
-			System.out.println("error1");
+			System.out.println("error: " + e.getMessage());
+			MessageDialog.openError(viewer.getTextWidget().getShell(),
+					"Exception", "Exception " + e.getClass().getName()
+							+ " occured: " + e.getMessage());
 			return;
 		}
 		
-		EObject result = XmlUtil.deserializeXml(evalResult);
+		EObject result = null;
+		
+		try {
+			result = XmlUtil.deserializeXml(evalResult);
+		} catch (Throwable e) {
+			System.out.println("error: " + e.getMessage());
+			MessageDialog.openError(viewer.getTextWidget().getShell(),
+					"Exception", "Exception " + e.getClass().getName()
+							+ " occured: " + e.getMessage());
+			return;
+		}
 		
 		if (result == null) {
-			// TODO error
-			System.out.println("error2");
+			System.out.println("error: result xml is null");
+			MessageDialog.openError(viewer.getTextWidget().getShell(),
+					"Exception", "Exception: result xml is null");
 			return;
 		} else {
 			for(IViewReference viewRef: getViewSite().getPage().getViewReferences()) {
@@ -154,12 +188,46 @@ public class XSLView extends ViewPart {
 			}
 		}
 	}
+
+	private void initXslProcessor() {
+		
+	    // create an instance of TransformerFactory
+	    transFact = TransformerFactory.newInstance();
+	}
 	
 	private String performEvaluation(String inputXml, String xsl) {
+
 		System.out.println("#perfom eval for:\n");
 		System.out.println(inputXml);
 		System.out.println("\n#with sheet:\n");
 		System.out.println(xsl);
-		return "<foo><bar>TEXT</bar></foo>";
+
+		// hack
+		inputXml = inputXml.replaceAll("\n", "");
+		inputXml = inputXml.replaceAll("\t", "");
+		xsl = xsl.replaceAll("\n", "");
+		xsl = xsl.replaceAll("\t", "");
+		
+		Source xmlSource = new StreamSource(new StringReader(inputXml));
+	    Source xsltSource = new StreamSource(new StringReader(xsl));
+	    StringWriter resWriter = new StringWriter();
+	    Result result = new StreamResult(resWriter);
+
+	    Transformer trans;
+		try {
+			trans = transFact.newTransformer(xsltSource);
+		    trans.transform(xmlSource, result);		
+		} catch (Exception e) {
+			Throwables.propagate(e);
+		}
+		
+		String resStr = resWriter.toString();
+		// hack
+		resStr = resStr.replaceAll("\n", "");
+		resStr = resStr.replaceAll("\t", "");
+		System.out.println("\n#result:\n");
+		System.out.println(resStr);
+		
+		return resStr;
 	}
 }
