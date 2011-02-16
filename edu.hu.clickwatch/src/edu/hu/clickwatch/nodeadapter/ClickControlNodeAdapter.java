@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import click.ControlSocket;
@@ -136,35 +137,44 @@ public class ClickControlNodeAdapter implements INodeAdapter {
 		}
 
 		for (String elementPath: configElementNames) {
-			List<ControlSocket.HandlerInfo> handlerInfos = null;
-			Element element = elementMap.get(elementPath);
-			try {				
-				handlerInfos = cs.getElementHandlers(elementPath);
-			} catch (Throwable e) {
-				Throwables.propagate(e);
-			}
-
-			for (ControlSocket.HandlerInfo handlerInfo : handlerInfos) {
-				Handler newHandler = ClickWatchModelFactory.eINSTANCE
-						.createHandler();
-				newHandler.setName(handlerInfo.getHandlerName());
-				newHandler.setCanRead(handlerInfo.isCanRead());
-				newHandler.setCanWrite(handlerInfo.isCanWrite());
-				if (newHandler.isCanRead()) {
-					element.getHandlers().add(newHandler);
+			if (!ignoreElement(elementPath)) {
+				List<ControlSocket.HandlerInfo> handlerInfos = null;
+				Element element = elementMap.get(elementPath);
+				Preconditions.checkState(element != null);
+				try {				
+					handlerInfos = cs.getElementHandlers(elementPath);
+				} catch (Throwable e) {
+					Throwables.propagate(e);
 				}
-			}
-
-			for (Handler handler : element.getHandlers()) {
-				if (handler.isCanRead()) {
-					char data[] = null;
-					try {
-						data = cs.read(element.getName(), handler.getName());
-					} catch (Throwable e) {
-						Throwables.propagate(e);
+	
+				for (ControlSocket.HandlerInfo handlerInfo : handlerInfos) {
+					Handler newHandler = ClickWatchModelFactory.eINSTANCE
+							.createHandler();
+					newHandler.setName(handlerInfo.getHandlerName());
+					newHandler.setCanRead(handlerInfo.isCanRead());
+					newHandler.setCanWrite(handlerInfo.isCanWrite());
+					if (newHandler.isCanRead()) {
+						element.getHandlers().add(newHandler);
 					}
-					
-					populateHandlerValueOfInternalNodeCopy(handler, new String(data));					
+				}
+	
+				for (Handler handler : element.getHandlers()) {
+					if (handler.isCanRead()) {
+						char data[] = null;
+						try {
+							String elementName = element.getName();
+							Element container = element;
+							while (container.eContainer() instanceof Element) {
+								container = (Element)container.eContainer();
+								elementName = container.getName() + "/" + elementName;
+							}
+							data = cs.read(elementName, handler.getName());
+						} catch (Throwable e) {
+							Throwables.propagate(e);
+						}
+						
+						populateHandlerValueOfInternalNodeCopy(handler, new String(data));					
+					}
 				}
 			}
 		}
