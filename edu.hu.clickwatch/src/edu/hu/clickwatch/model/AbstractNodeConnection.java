@@ -11,7 +11,7 @@ import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.ecore.util.FeatureMap;
+import org.eclipse.emf.ecore.xml.type.AnyType;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorPart;
@@ -28,6 +28,7 @@ import com.google.common.collect.Sets;
 
 import edu.hu.clickwatch.actions.Connect;
 import edu.hu.clickwatch.actions.Disconnect;
+import edu.hu.clickwatch.nodeadapter.INodeAdapter;
 
 /**
  * Instances of the class represent a connection the a remote node. These
@@ -69,6 +70,10 @@ public abstract class AbstractNodeConnection {
 	private final static int UPDATE_INTERVALL_DEFAULT = 5000;
 	private int updateIntervall = UPDATE_INTERVALL_DEFAULT;
 	
+	private IEditorPart editor = null;
+	private boolean isScheduledForDisconnect = false;
+	private boolean hasError = false;
+	
 	private Adapter filterListener = new AdapterImpl() {
 		@Override
 		public void notifyChanged(Notification notification) {
@@ -109,17 +114,13 @@ public abstract class AbstractNodeConnection {
 		}
 		return true;
 	}
-	
-	private IEditorPart editor = null;
-	private boolean isScheduledForDisconnect = false;
-	private boolean hasError = false;
 
 	public void setUp(Node node) {
 		Preconditions.checkNotNull(node);
 		this.node = node;
 	}
 
-	protected abstract INodeAdapter getNodeAdapter();
+	public abstract INodeAdapter getNodeAdapter();
 
 	/**
 	 * Runnable for retrieving the current configuration of a node and updating
@@ -140,9 +141,8 @@ public abstract class AbstractNodeConnection {
 				runInGUI(new Runnable() {
 					@Override
 					public void run() {
-						MessageDialog.openError(editor.getSite().getShell(),
-								"Exception", "Exception " + ex.getClass().getName()
-										+ " occured: " + ex.getMessage());
+						showMessage("Exception", "Exception " + ex.getClass().getName()
+								+ " occured: " + ex.getMessage());
 					}
 				});
 				System.out.println("Exception " + ex.getClass().getName()
@@ -159,7 +159,7 @@ public abstract class AbstractNodeConnection {
 		}
 	}
 
-	protected void runUpdate() {
+	public void runUpdate() {
 		Node updatedNodeCopy = getNodeAdapter().retrieve(elemFilter, handFilter);
 		runInGUI(new UpdateAllModelRunnable(updatedNodeCopy));
 		runInGUI(new Runnable() {
@@ -172,6 +172,10 @@ public abstract class AbstractNodeConnection {
 			}
 		});
 		EcoreUtil.delete(updatedNodeCopy, true);
+		sleepUntilNextUpdate();
+	}
+	
+	protected void sleepUntilNextUpdate() {
 		try {
 			if (updateIntervall == 0) {
 				Thread.sleep(UPDATE_INTERVALL_DEFAULT);
@@ -204,7 +208,7 @@ public abstract class AbstractNodeConnection {
 		}
 	}
 
-	private void runInGUI(final Runnable runnable) {
+	protected void runInGUI(final Runnable runnable) {
 		Display display = editor.getSite().getShell().getDisplay();
 		display.asyncExec(new Runnable() {
 			@Override
@@ -213,18 +217,15 @@ public abstract class AbstractNodeConnection {
 					runnable.run();
 				} catch (RuntimeException e) {
 					hasError = true;
-					MessageDialog.openError(editor.getSite().getShell(),
-							"Exception", "Exception " + e.getClass().getName()
+					showMessage("Exception", "Exception " + e.getClass().getName()
 									+ " occured: " + e.getMessage()
 									+ ". Node is forced to disconnect.");
-					System.out.println("Exception " + e.getClass().getName()
-							+ " occured:\n" + e.getMessage());
 				}
 			}
 		});
 	}
 
-	private void runInExtraThread(final Runnable runnable) {
+	protected void runInExtraThread(final Runnable runnable) {
 		new Thread() {
 			@Override
 			public void run() {
@@ -234,13 +235,7 @@ public abstract class AbstractNodeConnection {
 					runInGUI(new Runnable() {
 						@Override
 						public void run() {
-							MessageDialog.openError(
-									editor.getSite().getShell(), "Exception",
-									"Exception " + e.getClass().getName()
-											+ " occured: " + e.getMessage());
-							System.out.println("Exception "
-									+ e.getClass().getName() + " occured:\n"
-									+ e.getMessage());
+							showMessage("Exception", "Exception " + e.getClass().getName() + " occured: " + e.getMessage());
 						}
 					});
 				}
@@ -319,63 +314,71 @@ public abstract class AbstractNodeConnection {
 			super();
 			this.updatedNodeCopy = updatedNodeCopy;
 		}
+		
+		class ElementListUpdater extends ListUpdater<Element> {
+			
+			public ElementListUpdater(List<Element> oldList, List<Element> newList) {
+				super(oldList, newList);
+			}
+
+			@Override
+			protected void removeItem(Element oldItem) {
+				EcoreUtil.delete(oldItem, true);
+			}
+
+			@Override
+			protected void addItem(Element newItem) {
+				node.getElements().add(EcoreUtil.copy(newItem));
+			}
+
+			@Override
+			protected String getName(Element item) {
+				return item.getName();
+			}
+
+			@Override
+			protected void update(final Element element,
+					final Element updatedElementCopy) {
+				new ElementListUpdater(element.getChildren(), updatedElementCopy.getChildren());
+				new ListUpdater<Handler>(element.getHandlers(),
+						updatedElementCopy.getHandlers()) {
+					@Override
+					protected void removeItem(Handler oldItem) {
+						EcoreUtil.delete(oldItem);
+					}
+
+					@Override
+					protected void addItem(Handler newItem) {
+						element.getHandlers().add(EcoreUtil.copy(newItem));
+					}
+
+					@Override
+					protected String getName(Handler item) {
+						return item.getName();
+					}
+
+					@Override
+					protected void update(Handler oldItem, Handler newItem) {
+						ensureHandlerIsListening(oldItem);
+						if (newItem.isCanRead()) {
+							if (getNodeAdapter().determineHandlerHasChangedInReality(oldItem, newItem)) {
+								propagateRemoteHandlerChangeToModel(
+										oldItem, newItem.getValue());	
+							}
+						}
+					}
+				};
+			}
+		};
 
 		@Override
 		public void run() {
-			new ListUpdater<Element>(node.getElements(),
-					updatedNodeCopy.getElements()) {
-				@Override
-				protected void removeItem(Element oldItem) {
-					EcoreUtil.delete(oldItem, true);
-				}
-
-				@Override
-				protected void addItem(Element newItem) {
-					node.getElements().add(EcoreUtil.copy(newItem));
-				}
-
-				@Override
-				protected String getName(Element item) {
-					return item.getName();
-				}
-
-				@Override
-				protected void update(final Element element,
-						final Element updatedElementCopy) {
-					new ListUpdater<Handler>(element.getHandlers(),
-							updatedElementCopy.getHandlers()) {
-						@Override
-						protected void removeItem(Handler oldItem) {
-							EcoreUtil.delete(oldItem);
-						}
-
-						@Override
-						protected void addItem(Handler newItem) {
-							element.getHandlers().add(EcoreUtil.copy(newItem));
-						}
-
-						@Override
-						protected String getName(Handler item) {
-							return item.getName();
-						}
-
-						@Override
-						protected void update(Handler oldItem, Handler newItem) {
-							ensureHandlerIsListening(oldItem);
-							if (newItem.isCanRead()) {
-								if (getNodeAdapter().determineHandlerHasChangedInReality(oldItem, newItem)) {
-									propagateRemoteHandlerChangeToModel(
-											oldItem, newItem.getValue());	
-								}
-							}
-						}
-					};
-				}
-			};
+			new ElementListUpdater(node.getElements(),
+					updatedNodeCopy.getElements());
 		}
 	}
 
-	protected final void propagateHandlerValueChangeToReality(Handler handler,
+	public final void propagateHandlerValueChangeToReality(Handler handler,
 			Object value) {
 		if (node.isConnected()) {
 			runInExtraThread(new SetValueInRealityRunnable(handler, value));
@@ -436,7 +439,7 @@ public abstract class AbstractNodeConnection {
 	 *            , the handler within the model.
 	 */
 	protected final void propagateRemoteHandlerChangeToModel(final Handler handler,
-			final FeatureMap value) {
+			final AnyType value) {
 		runInGUI(new Runnable() {
 			@Override
 			public void run() {
@@ -445,8 +448,7 @@ public abstract class AbstractNodeConnection {
 				if (handler.isWatch() || ((Element) handler.eContainer()).isWatch()) {
 					handler.setChanged(!value.equals(handler.getValue()));
 				}
-				handler.getValue().clear();
-				handler.getValue().addAll(value);
+				handler.setValue(value);
 				
 				modelChangeListener.enable();
 			}
@@ -463,8 +465,7 @@ public abstract class AbstractNodeConnection {
 	 *            close to realise automatic disconnect on editor close.
 	 */
 	public void connect(IEditorPart editorPart) {
-		PlatformUI.getWorkbench().getActiveWorkbenchWindow().getPartService()
-				.addPartListener(closeListener);
+		installPartListener(closeListener);
 		this.editor = editorPart;
 
 		if (node.isConnected()) {
@@ -511,6 +512,7 @@ public abstract class AbstractNodeConnection {
 	 * Disconnects from the remote note in the next possible moment.
 	 */
 	public synchronized void disconnect() {
+		unInstallPartListener(closeListener);
 		getNetwork(node).eAdapters().remove(filterListener);
 		isScheduledForDisconnect = true;
 	}
@@ -548,5 +550,17 @@ public abstract class AbstractNodeConnection {
 
 	protected Node getNode() {
 		return node;
+	}
+	
+	protected void showMessage(String title, String message) {
+		MessageDialog.openError(editor.getSite().getShell(), title, message);
+	}
+	
+	protected void installPartListener(IPartListener listener) {
+		PlatformUI.getWorkbench().getActiveWorkbenchWindow().getPartService().addPartListener(closeListener);
+	}
+	
+	protected void unInstallPartListener(IPartListener listener) {
+		PlatformUI.getWorkbench().getActiveWorkbenchWindow().getPartService().removePartListener(closeListener);
 	}
 }

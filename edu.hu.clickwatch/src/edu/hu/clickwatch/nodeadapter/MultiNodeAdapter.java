@@ -1,9 +1,17 @@
-package edu.hu.clickwatch.model;
+package edu.hu.clickwatch.nodeadapter;
 
 import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.ecore.util.FeatureMapUtil;
+
+import edu.hu.clickwatch.XmlUtil;
+import edu.hu.clickwatch.model.AbstractNodeConnection;
+import edu.hu.clickwatch.model.ClickWatchModelFactory;
+import edu.hu.clickwatch.model.Element;
+import edu.hu.clickwatch.model.Handler;
+import edu.hu.clickwatch.model.MultiNode;
+import edu.hu.clickwatch.model.Network;
+import edu.hu.clickwatch.model.Node;
 
 /**
  * This implementation of {@link INodeAdapter} adapts a multi-node to the rest
@@ -87,9 +95,7 @@ public class MultiNodeAdapter implements INodeAdapter {
 							Handler multiNodeHandler = modelFactory.createHandler();
 							multiNodeHandler.setName(handler.getName());
 							multiNodeElement.getHandlers().add(multiNodeHandler);
-							
-							multiNodeHandler.getValue().add(
-									FeatureMapUtil.createTextEntry("enter a value"));
+							multiNodeHandler.setValue(XmlUtil.createXMLText("enter a value"));
 						}
 					}
 				}

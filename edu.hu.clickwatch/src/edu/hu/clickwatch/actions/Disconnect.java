@@ -57,6 +57,7 @@ public class Disconnect implements IObjectActionDelegate {
 	/**
 	 * @see IActionDelegate#selectionChanged(IAction, ISelection)
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void selectionChanged(IAction action, ISelection selection) {
 		try {

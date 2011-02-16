@@ -45,6 +45,17 @@ public class HandlerItemProvider
 		ITreeItemContentProvider,
 		IItemLabelProvider,
 		IItemPropertySource {
+	
+	/**
+	 * @generated NOT
+	 */
+	@Override
+	public Object getCreateChildImage(Object owner, Object feature,
+			Object child, Collection<?> selection) {
+		// TODO not only forbid images
+		return null;
+	}
+
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->

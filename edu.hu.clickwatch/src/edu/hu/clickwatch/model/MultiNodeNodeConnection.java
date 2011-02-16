@@ -3,13 +3,16 @@ package edu.hu.clickwatch.model;
 import com.google.common.base.Preconditions;
 import com.google.inject.Inject;
 
+import edu.hu.clickwatch.nodeadapter.INodeAdapter;
+import edu.hu.clickwatch.nodeadapter.MultiNodeAdapter;
+
 public class MultiNodeNodeConnection extends AbstractNodeConnection {
 
 	@Inject
 	private MultiNodeAdapter nodeAdapter;
 
 	@Override
-	protected INodeAdapter getNodeAdapter() {
+	public INodeAdapter getNodeAdapter() {
 		return nodeAdapter;
 	}
 

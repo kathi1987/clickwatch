@@ -213,6 +213,15 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getElement_Children() {
+		return (EReference)elementEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EAttribute getElement_Name() {
 		return (EAttribute)elementEClass.getEStructuralFeatures().get(0);
 	}
@@ -267,8 +276,8 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getHandler_Value() {
-		return (EAttribute)handlerEClass.getEStructuralFeatures().get(5);
+	public EReference getHandler_Value() {
+		return (EReference)handlerEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -400,6 +409,7 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
 		createEAttribute(elementEClass, ELEMENT__NAME);
 		createEReference(elementEClass, ELEMENT__HANDLERS);
 		createEAttribute(elementEClass, ELEMENT__WATCH);
+		createEReference(elementEClass, ELEMENT__CHILDREN);
 
 		handlerEClass = createEClass(HANDLER);
 		createEAttribute(handlerEClass, HANDLER__NAME);
@@ -407,7 +417,7 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
 		createEAttribute(handlerEClass, HANDLER__CAN_WRITE);
 		createEAttribute(handlerEClass, HANDLER__CHANGED);
 		createEAttribute(handlerEClass, HANDLER__WATCH);
-		createEAttribute(handlerEClass, HANDLER__VALUE);
+		createEReference(handlerEClass, HANDLER__VALUE);
 
 		networkEClass = createEClass(NETWORK);
 		createEAttribute(networkEClass, NETWORK__NAME);
@@ -444,6 +454,9 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
 		setNsPrefix(eNS_PREFIX);
 		setNsURI(eNS_URI);
 
+		// Obtain other dependent packages
+		XMLTypePackage theXMLTypePackage = (XMLTypePackage)EPackage.Registry.INSTANCE.getEPackage(XMLTypePackage.eNS_URI);
+
 		// Create type parameters
 
 		// Set bounds for type parameters
@@ -463,6 +476,7 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
 		initEAttribute(getElement_Name(), ecorePackage.getEString(), "name", null, 0, 1, Element.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getElement_Handlers(), this.getHandler(), null, "handlers", null, 0, -1, Element.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getElement_Watch(), ecorePackage.getEBoolean(), "watch", "false", 0, 1, Element.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getElement_Children(), this.getElement(), null, "children", null, 0, -1, Element.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(handlerEClass, Handler.class, "Handler", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getHandler_Name(), ecorePackage.getEString(), "name", null, 0, 1, Handler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -470,7 +484,7 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
 		initEAttribute(getHandler_CanWrite(), ecorePackage.getEBoolean(), "canWrite", null, 0, 1, Handler.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getHandler_Changed(), ecorePackage.getEBoolean(), "changed", "false", 0, 1, Handler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getHandler_Watch(), ecorePackage.getEBoolean(), "watch", "false", 0, 1, Handler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getHandler_Value(), ecorePackage.getEFeatureMapEntry(), "value", null, 0, -1, Handler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHandler_Value(), theXMLTypePackage.getAnyType(), null, "value", null, 0, 1, Handler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(networkEClass, Network.class, "Network", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getNetwork_Name(), ecorePackage.getEString(), "name", "My Network", 0, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

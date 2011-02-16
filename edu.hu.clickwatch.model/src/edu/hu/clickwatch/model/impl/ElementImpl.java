@@ -32,6 +32,7 @@ import edu.hu.clickwatch.model.Handler;
  *   <li>{@link edu.hu.clickwatch.model.impl.ElementImpl#getName <em>Name</em>}</li>
  *   <li>{@link edu.hu.clickwatch.model.impl.ElementImpl#getHandlers <em>Handlers</em>}</li>
  *   <li>{@link edu.hu.clickwatch.model.impl.ElementImpl#isWatch <em>Watch</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.model.impl.ElementImpl#getChildren <em>Children</em>}</li>
  * </ul>
  * </p>
  *
@@ -85,6 +86,16 @@ public class ElementImpl extends EObjectImpl implements Element {
 	 * @ordered
 	 */
 	protected boolean watch = WATCH_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getChildren() <em>Children</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getChildren()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Element> children;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -143,6 +154,18 @@ public class ElementImpl extends EObjectImpl implements Element {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<Element> getChildren() {
+		if (children == null) {
+			children = new EObjectContainmentEList<Element>(Element.class, this, ClickWatchModelPackage.ELEMENT__CHILDREN);
+		}
+		return children;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public String getName() {
 		return name;
 	}
@@ -169,6 +192,8 @@ public class ElementImpl extends EObjectImpl implements Element {
 		switch (featureID) {
 			case ClickWatchModelPackage.ELEMENT__HANDLERS:
 				return ((InternalEList<?>)getHandlers()).basicRemove(otherEnd, msgs);
+			case ClickWatchModelPackage.ELEMENT__CHILDREN:
+				return ((InternalEList<?>)getChildren()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -187,6 +212,8 @@ public class ElementImpl extends EObjectImpl implements Element {
 				return getHandlers();
 			case ClickWatchModelPackage.ELEMENT__WATCH:
 				return isWatch();
+			case ClickWatchModelPackage.ELEMENT__CHILDREN:
+				return getChildren();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -210,6 +237,10 @@ public class ElementImpl extends EObjectImpl implements Element {
 			case ClickWatchModelPackage.ELEMENT__WATCH:
 				setWatch((Boolean)newValue);
 				return;
+			case ClickWatchModelPackage.ELEMENT__CHILDREN:
+				getChildren().clear();
+				getChildren().addAll((Collection<? extends Element>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -231,6 +262,9 @@ public class ElementImpl extends EObjectImpl implements Element {
 			case ClickWatchModelPackage.ELEMENT__WATCH:
 				setWatch(WATCH_EDEFAULT);
 				return;
+			case ClickWatchModelPackage.ELEMENT__CHILDREN:
+				getChildren().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -249,6 +283,8 @@ public class ElementImpl extends EObjectImpl implements Element {
 				return handlers != null && !handlers.isEmpty();
 			case ClickWatchModelPackage.ELEMENT__WATCH:
 				return watch != WATCH_EDEFAULT;
+			case ClickWatchModelPackage.ELEMENT__CHILDREN:
+				return children != null && !children.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

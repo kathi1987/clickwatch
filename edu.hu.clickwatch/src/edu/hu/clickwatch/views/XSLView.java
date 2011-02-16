@@ -13,6 +13,7 @@ import javax.xml.transform.stream.StreamSource;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.IToolBarManager;
@@ -43,6 +44,7 @@ public class XSLView extends ViewPart {
 	
 	private ISourceViewer viewer = null;
 	private Action evaluate = null;
+	private EObject currentResult = null;
 	
 	// XSLT transformer
 	private TransformerFactory transFact;
@@ -178,6 +180,10 @@ public class XSLView extends ViewPart {
 				IViewPart view = viewRef.getView(false);
 				if (view instanceof ResultView) {
 					((ResultView)view).setInput(result);
+					if (currentResult != null) {
+						EcoreUtil.delete(currentResult);			
+					}
+					currentResult = result;
 				}
 			}
 		}
