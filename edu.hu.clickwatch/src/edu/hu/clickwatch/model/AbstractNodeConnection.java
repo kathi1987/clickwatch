@@ -70,6 +70,10 @@ public abstract class AbstractNodeConnection {
 	private final static int UPDATE_INTERVALL_DEFAULT = 5000;
 	private int updateIntervall = UPDATE_INTERVALL_DEFAULT;
 	
+	private IEditorPart editor = null;
+	private boolean isScheduledForDisconnect = false;
+	private boolean hasError = false;
+	
 	private Adapter filterListener = new AdapterImpl() {
 		@Override
 		public void notifyChanged(Notification notification) {
@@ -110,17 +114,13 @@ public abstract class AbstractNodeConnection {
 		}
 		return true;
 	}
-	
-	private IEditorPart editor = null;
-	private boolean isScheduledForDisconnect = false;
-	private boolean hasError = false;
 
 	public void setUp(Node node) {
 		Preconditions.checkNotNull(node);
 		this.node = node;
 	}
 
-	protected abstract INodeAdapter getNodeAdapter();
+	public abstract INodeAdapter getNodeAdapter();
 
 	/**
 	 * Runnable for retrieving the current configuration of a node and updating
@@ -141,9 +141,8 @@ public abstract class AbstractNodeConnection {
 				runInGUI(new Runnable() {
 					@Override
 					public void run() {
-						MessageDialog.openError(editor.getSite().getShell(),
-								"Exception", "Exception " + ex.getClass().getName()
-										+ " occured: " + ex.getMessage());
+						showMessage("Exception", "Exception " + ex.getClass().getName()
+								+ " occured: " + ex.getMessage());
 					}
 				});
 				System.out.println("Exception " + ex.getClass().getName()
@@ -160,7 +159,7 @@ public abstract class AbstractNodeConnection {
 		}
 	}
 
-	protected void runUpdate() {
+	public void runUpdate() {
 		Node updatedNodeCopy = getNodeAdapter().retrieve(elemFilter, handFilter);
 		runInGUI(new UpdateAllModelRunnable(updatedNodeCopy));
 		runInGUI(new Runnable() {
@@ -173,6 +172,10 @@ public abstract class AbstractNodeConnection {
 			}
 		});
 		EcoreUtil.delete(updatedNodeCopy, true);
+		sleepUntilNextUpdate();
+	}
+	
+	protected void sleepUntilNextUpdate() {
 		try {
 			if (updateIntervall == 0) {
 				Thread.sleep(UPDATE_INTERVALL_DEFAULT);
@@ -205,7 +208,7 @@ public abstract class AbstractNodeConnection {
 		}
 	}
 
-	private void runInGUI(final Runnable runnable) {
+	protected void runInGUI(final Runnable runnable) {
 		Display display = editor.getSite().getShell().getDisplay();
 		display.asyncExec(new Runnable() {
 			@Override
@@ -214,18 +217,15 @@ public abstract class AbstractNodeConnection {
 					runnable.run();
 				} catch (RuntimeException e) {
 					hasError = true;
-					MessageDialog.openError(editor.getSite().getShell(),
-							"Exception", "Exception " + e.getClass().getName()
+					showMessage("Exception", "Exception " + e.getClass().getName()
 									+ " occured: " + e.getMessage()
 									+ ". Node is forced to disconnect.");
-					System.out.println("Exception " + e.getClass().getName()
-							+ " occured:\n" + e.getMessage());
 				}
 			}
 		});
 	}
 
-	private void runInExtraThread(final Runnable runnable) {
+	protected void runInExtraThread(final Runnable runnable) {
 		new Thread() {
 			@Override
 			public void run() {
@@ -235,13 +235,7 @@ public abstract class AbstractNodeConnection {
 					runInGUI(new Runnable() {
 						@Override
 						public void run() {
-							MessageDialog.openError(
-									editor.getSite().getShell(), "Exception",
-									"Exception " + e.getClass().getName()
-											+ " occured: " + e.getMessage());
-							System.out.println("Exception "
-									+ e.getClass().getName() + " occured:\n"
-									+ e.getMessage());
+							showMessage("Exception", "Exception " + e.getClass().getName() + " occured: " + e.getMessage());
 						}
 					});
 				}
@@ -471,8 +465,7 @@ public abstract class AbstractNodeConnection {
 	 *            close to realise automatic disconnect on editor close.
 	 */
 	public void connect(IEditorPart editorPart) {
-		PlatformUI.getWorkbench().getActiveWorkbenchWindow().getPartService()
-				.addPartListener(closeListener);
+		installPartListener(closeListener);
 		this.editor = editorPart;
 
 		if (node.isConnected()) {
@@ -519,6 +512,7 @@ public abstract class AbstractNodeConnection {
 	 * Disconnects from the remote note in the next possible moment.
 	 */
 	public synchronized void disconnect() {
+		unInstallPartListener(closeListener);
 		getNetwork(node).eAdapters().remove(filterListener);
 		isScheduledForDisconnect = true;
 	}
@@ -556,5 +550,17 @@ public abstract class AbstractNodeConnection {
 
 	protected Node getNode() {
 		return node;
+	}
+	
+	protected void showMessage(String title, String message) {
+		MessageDialog.openError(editor.getSite().getShell(), title, message);
+	}
+	
+	protected void installPartListener(IPartListener listener) {
+		PlatformUI.getWorkbench().getActiveWorkbenchWindow().getPartService().addPartListener(closeListener);
+	}
+	
+	protected void unInstallPartListener(IPartListener listener) {
+		PlatformUI.getWorkbench().getActiveWorkbenchWindow().getPartService().removePartListener(closeListener);
 	}
 }

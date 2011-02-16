@@ -7,7 +7,6 @@ import com.google.common.base.Throwables;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 
-import edu.hu.clickcontrol.ClickSocketTestImpl;
 import edu.hu.clickcontrol.IClickSocket;
 import edu.hu.clickwatch.GuiceModule;
 import edu.hu.clickwatch.model.Handler;

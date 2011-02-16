@@ -11,7 +11,7 @@ public class ClickControlNodeConnection extends AbstractNodeConnection {
 	private ClickControlNodeAdapter nodeAdapter;
 
 	@Override
-	protected INodeAdapter getNodeAdapter() {
+	public INodeAdapter getNodeAdapter() {
 		return nodeAdapter;
 	}
 

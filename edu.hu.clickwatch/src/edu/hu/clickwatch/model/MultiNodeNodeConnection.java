@@ -12,7 +12,7 @@ public class MultiNodeNodeConnection extends AbstractNodeConnection {
 	private MultiNodeAdapter nodeAdapter;
 
 	@Override
-	protected INodeAdapter getNodeAdapter() {
+	public INodeAdapter getNodeAdapter() {
 		return nodeAdapter;
 	}
 
