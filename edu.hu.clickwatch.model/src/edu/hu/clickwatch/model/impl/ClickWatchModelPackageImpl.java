@@ -522,7 +522,7 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
 		   new String[] {
 			 "kind", "elementWildcard",
 			 "wildcards", "##any",
-			 "name", ":1",
+			 "name", "xml",
 			 "processing", "lax"
 		   });
 	}

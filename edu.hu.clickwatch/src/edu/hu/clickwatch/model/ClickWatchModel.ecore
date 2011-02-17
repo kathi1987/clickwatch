@@ -42,7 +42,7 @@
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="elementWildcard"/>
         <details key="wildcards" value="##any"/>
-        <details key="name" value=":1"/>
+        <details key="name" value="xml"/>
         <details key="processing" value="lax"/>
       </eAnnotations>
     </eStructuralFeatures>
