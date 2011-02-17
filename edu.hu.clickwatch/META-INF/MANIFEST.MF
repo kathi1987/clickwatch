@@ -21,7 +21,8 @@ Require-Bundle: org.eclipse.emf.ecore,
  org.eclipse.wst.xml.ui;bundle-version="1.1.100",
  org.eclipse.wst.sse.core;bundle-version="1.1.502",
  org.eclipse.wst.xml.core;bundle-version="1.1.502",
- edu.hu.clickwatch.model.editor
+ edu.hu.clickwatch.model.editor,
+ org.eclipse.xsd;bundle-version="2.6.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: edu.hu.clickwatch
 Bundle-ActivationPolicy: lazy

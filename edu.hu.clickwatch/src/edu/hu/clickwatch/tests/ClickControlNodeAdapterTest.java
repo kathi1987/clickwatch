@@ -1,5 +1,7 @@
 package edu.hu.clickwatch.tests;
 
+import org.eclipse.emf.ecore.xml.type.AnyType;
+
 import junit.framework.TestCase;
 import click.ControlSocket.HandlerInfo;
 
@@ -9,6 +11,7 @@ import com.google.inject.Injector;
 
 import edu.hu.clickcontrol.IClickSocket;
 import edu.hu.clickwatch.GuiceModule;
+import edu.hu.clickwatch.XmlUtil;
 import edu.hu.clickwatch.model.Handler;
 import edu.hu.clickwatch.model.Node;
 import edu.hu.clickwatch.nodeadapter.ClickControlNodeAdapter;
@@ -75,7 +78,7 @@ public class ClickControlNodeAdapterTest extends TestCase {
 		assertEquals("elem", node.getElements().get(0).getName());
 		assertEquals(1, node.getElements().get(0).getHandlers().size());
 		assertEquals("handler", node.getElements().get(0).getHandlers().get(0).getName());
-		assertEquals("value", node.getElements().get(0).getHandlers().get(0).getValue().getMixed().getValue(0));
+		assertEquals("value", ((AnyType)node.getElements().get(0).getHandlers().get(0).getValue()).getMixed().getValue(0));
 		assertEquals(true, node.getElements().get(0).getHandlers().get(0).isCanRead());
 		assertEquals(true, node.getElements().get(0).getHandlers().get(0).isCanWrite());
 	}
@@ -116,7 +119,7 @@ public class ClickControlNodeAdapterTest extends TestCase {
 			assertEquals("e" + (i + 1), node.getElements().get(i).getName());	
 			assertEquals(1, node.getElements().get(i).getHandlers().size());
 			assertEquals("handler", node.getElements().get(i).getHandlers().get(0).getName());
-			assertEquals("value", node.getElements().get(i).getHandlers().get(0).getValue().getMixed().getValue(0));
+			assertEquals("value", ((AnyType)node.getElements().get(i).getHandlers().get(0).getValue()).getMixed().getValue(0));
 			assertEquals(true, node.getElements().get(i).getHandlers().get(0).isCanRead());
 			assertEquals(true, node.getElements().get(i).getHandlers().get(0).isCanWrite());
 		}
@@ -127,7 +130,8 @@ public class ClickControlNodeAdapterTest extends TestCase {
 		Node node = modelAdapter.retrieve(null, null);
 		checkDefaultNode(node);
 		
-		String value = modelAdapter.retrieveHandlerValue(node.getElements().get(0).getHandlers().get(0));
+		Handler handler = node.getElements().get(0).getHandlers().get(0);
+		String value = (String)((AnyType)modelAdapter.getValueRepresentation(handler).get(handler)).getMixed().getValue(0);
 		assertTrue(value.equals("value"));
 	}
 	
@@ -145,7 +149,7 @@ public class ClickControlNodeAdapterTest extends TestCase {
 		checkDefaultNode(node);
 		
 		Handler handler = node.getElements().get(0).getHandlers().get(0); 
-		modelAdapter.updateHandlerValue(handler, "newValue");
+		modelAdapter.updateHandlerValue(handler, XmlUtil.createXMLText("newValue"));
 	}
 	
 	protected Object getNewHandlerValue(String strValue) {

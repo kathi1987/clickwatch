@@ -9,6 +9,7 @@ package edu.hu.clickwatch.model.impl;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
@@ -144,7 +145,7 @@ public class HandlerImpl extends EObjectImpl implements Handler {
 	 * @generated
 	 * @ordered
 	 */
-	protected AnyType value;
+	protected EObject value;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -254,7 +255,7 @@ public class HandlerImpl extends EObjectImpl implements Handler {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public AnyType getValue() {
+	public EObject getValue() {
 		return value;
 	}
 
@@ -263,8 +264,8 @@ public class HandlerImpl extends EObjectImpl implements Handler {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetValue(AnyType newValue, NotificationChain msgs) {
-		AnyType oldValue = value;
+	public NotificationChain basicSetValue(EObject newValue, NotificationChain msgs) {
+		EObject oldValue = value;
 		value = newValue;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ClickWatchModelPackage.HANDLER__VALUE, oldValue, newValue);
@@ -278,7 +279,7 @@ public class HandlerImpl extends EObjectImpl implements Handler {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setValue(AnyType newValue) {
+	public void setValue(EObject newValue) {
 		if (newValue != value) {
 			NotificationChain msgs = null;
 			if (value != null)
@@ -375,7 +376,7 @@ public class HandlerImpl extends EObjectImpl implements Handler {
 				setWatch((Boolean)newValue);
 				return;
 			case ClickWatchModelPackage.HANDLER__VALUE:
-				setValue((AnyType)newValue);
+				setValue((EObject)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -405,7 +406,7 @@ public class HandlerImpl extends EObjectImpl implements Handler {
 				setWatch(WATCH_EDEFAULT);
 				return;
 			case ClickWatchModelPackage.HANDLER__VALUE:
-				setValue((AnyType)null);
+				setValue((EObject)null);
 				return;
 		}
 		super.eUnset(featureID);

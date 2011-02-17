@@ -2,13 +2,13 @@ package edu.hu.clickwatch.model;
 
 import com.google.inject.Inject;
 
-import edu.hu.clickwatch.nodeadapter.ClickControlNodeAdapter;
+import edu.hu.clickwatch.nodeadapter.AbstractNodeAdapter;
 import edu.hu.clickwatch.nodeadapter.INodeAdapter;
 
 public class ClickControlNodeConnection extends AbstractNodeConnection {
 	
 	@Inject
-	private ClickControlNodeAdapter nodeAdapter;
+	private INodeAdapter nodeAdapter;
 
 	@Override
 	public INodeAdapter getNodeAdapter() {
@@ -18,6 +18,6 @@ public class ClickControlNodeConnection extends AbstractNodeConnection {
 	@Override
 	public void setUp(Node node) {
 		super.setUp(node);
-		nodeAdapter.setUp(node.getINetAdress(), node.getPort());
+		((AbstractNodeAdapter)nodeAdapter).setUp(node.getINetAdress(), node.getPort());
 	}
 }

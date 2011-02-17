@@ -9,6 +9,7 @@ public class TestSuite {
 		suite.addTestSuite(ClickControlNodeAdapterTest.class);
 		suite.addTestSuite(ClickControlNodeXmlValuesAdapterTest.class);
 		suite.addTestSuite(XmlUtilTest.class);
+		suite.addTestSuite(ConnectionTest.class);
 		//$JUnit-END$
 		return suite;
 	}

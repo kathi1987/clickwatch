@@ -146,13 +146,13 @@ public interface Handler extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Value</em>' containment reference.
-	 * @see #setValue(AnyType)
+	 * @see #setValue(EObject)
 	 * @see edu.hu.clickwatch.model.ClickWatchModelPackage#getHandler_Value()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='elementWildcard' wildcards='##any' name=':1' processing='lax'"
 	 * @generated
 	 */
-	AnyType getValue();
+	EObject getValue();
 
 	/**
 	 * Sets the value of the '{@link edu.hu.clickwatch.model.Handler#getValue <em>Value</em>}' containment reference.
@@ -162,7 +162,7 @@ public interface Handler extends EObject {
 	 * @see #getValue()
 	 * @generated
 	 */
-	void setValue(AnyType value);
+	void setValue(EObject value);
 
 	/**
 	 * Returns the value of the '<em><b>Changed</b></em>' attribute.

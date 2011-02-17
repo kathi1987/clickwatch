@@ -3,10 +3,12 @@ package edu.hu.clickwatch.nodeadapter;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.ecore.EObject;
 
 import edu.hu.clickwatch.XmlUtil;
 import edu.hu.clickwatch.model.AbstractNodeConnection;
 import edu.hu.clickwatch.model.ClickWatchModelFactory;
+import edu.hu.clickwatch.model.ClickWatchModelPackage;
 import edu.hu.clickwatch.model.Element;
 import edu.hu.clickwatch.model.Handler;
 import edu.hu.clickwatch.model.MultiNode;
@@ -106,14 +108,6 @@ public class MultiNodeAdapter implements INodeAdapter {
 	}
 
 	/**
-	 * return always an empty String.
-	 */
-	@Override
-	public String retrieveHandlerValue(Handler handler) {
-		return "";
-	}
-
-	/**
 	 * Updates the given handler on all nodes that have this handler. It
 	 * facilitates the {@link AbstractNodeConnection} of the node models.
 	 */
@@ -138,13 +132,32 @@ public class MultiNodeAdapter implements INodeAdapter {
 	}
 
 	@Override
-	public boolean determineHandlerHasChangedInModel(Notification notification) {
-		return false;
-	}
-
-	@Override
-	public boolean determineHandlerHasChangedInReality(Handler modelCopy,
-			Handler realityCopy) {
-		return false;
+	public IValueRepresentation getValueRepresentation(Handler handler) {
+		return new IValueRepresentation() {			
+			@Override
+			public void set(Handler handler, Object value) {
+				handler.setValue((EObject)value);
+			}
+			
+			@Override
+			public boolean isNotificationChangingValue(Notification notification) {
+				if (notification.getNotifier() instanceof Handler) {
+					return notification.getFeature() == ClickWatchModelPackage.eINSTANCE.getHandler_Value();
+				} else {
+					return true;
+				}
+			}
+			
+			@Override
+			public Object get(Handler handler) {
+				return handler.getValue();
+			}
+			
+			@Override
+			public boolean equalsModelValueRealityValue(Object modelValue,
+					Object realValue) {
+				return true;
+			}
+		};
 	}
 }

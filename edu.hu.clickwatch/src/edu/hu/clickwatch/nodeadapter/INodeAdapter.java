@@ -1,7 +1,5 @@
 package edu.hu.clickwatch.nodeadapter;
 
-import org.eclipse.emf.common.notify.Notification;
-
 import com.google.inject.ImplementedBy;
 
 import edu.hu.clickwatch.model.Handler;
@@ -46,19 +44,7 @@ public interface INodeAdapter {
 	 *         filtered by filter.
 	 */
 	public Node retrieve(String elemFilter, String handFilter);
-
-	/**
-	 * Retrieves (reads) the value of a handler from the remote node this
-	 * adapter is connected to.
-	 * 
-	 * @param handler
-	 *            , model representation of the handler that is to be read. The
-	 *            remote handler is identified by the handlers name and the name
-	 *            of the container element.
-	 * @return the value as read from the remote node.
-	 */
-	public String retrieveHandlerValue(Handler handler);
-
+	
 	/**
 	 * Updates (writes) a value to a handler on the remote node this adapter is
 	 * connected to.
@@ -74,24 +60,5 @@ public interface INodeAdapter {
 	 */
 	public void updateHandlerValue(Handler handler, Object value);
 	
-	/**
-	 * Based on the value representation of this {@link ClickControlNodeAdapter}, this method
-	 * must decide whether a notification on a handler represents a change of the handler value.
-	 * 
-	 * @param notification A notification for a handler.
-	 * @return True, iff the handler has changed.
-	 */
-	public boolean determineHandlerHasChangedInModel(Notification notification);
-	
-	/**
-	 * Based on the value representation of this {@link INodeAdapter}, this
-	 * method must decide whether the handler value has changed, comparing a new
-	 * value from the network with an old model value.
-	 * 
-	 * @param modelCopy
-	 * @param realityCopy
-	 * @return True, iff the handler values are not identically.
-	 */
-	public boolean determineHandlerHasChangedInReality(Handler modelCopy, Handler realityCopy);
-
+	public IValueRepresentation getValueRepresentation(Handler handler);
 }

@@ -157,6 +157,7 @@
       <plugin id="org.eclipse.wst.xml.xpath2.processor"/>
       <plugin id="org.eclipse.wst.xsl.core"/>
       <plugin id="org.eclipse.wst.xsl.ui"/>
+      <plugin id="org.eclipse.xsd"/>
       <plugin id="org.hamcrest.core"/>
       <plugin id="org.junit"/>
       <plugin id="org.junit4"/>

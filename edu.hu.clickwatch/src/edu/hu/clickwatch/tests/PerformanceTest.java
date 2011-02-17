@@ -4,7 +4,6 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 
 import junit.framework.TestCase;
-import click.ControlSocket.HandlerInfo;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
@@ -17,46 +16,16 @@ import edu.hu.clickwatch.model.Node;
 import edu.hu.clickwatch.nodeadapter.ClickControlNodeXmlValuesAdapter;
 import edu.hu.clickwatch.nodeadapter.INodeAdapter;
 
-public class ClickControlNodeConnectionTest extends TestCase {
+public class PerformanceTest extends TestCase {
 	
-	private IClickSocket createClickSocket(final int numberOfElements, final int numberOfHandlers) {
-		return new ClickSocketTestImpl() {	
-			@Override
-			public void handleWrite(String element, String handler, String value) {
-				// empty
-			}
-			
-			@Override
-			public String getValue(String element, String handler) {
-				return "<foo><bar>TEXT</bar></foo>";
-			}
-			
-			@Override
-			public HandlerInfo[] getHandler(String element) {
-				HandlerInfo[] result = new HandlerInfo[numberOfHandlers];
-				for (int i = 0; i < numberOfHandlers; i++) {
-					result[i] = new HandlerInfo(element, "h" + i, true, true);
-				}
-				return result;
-			}
-			
-			@Override
-			public String[] getElements() {
-				String[] result = new String[numberOfElements];
-				for (int i = 0; i < numberOfElements; i++) {
-					result[i] = "e" + i;
-				}
-				return result;
-			}
-		};
-	}
+	
 
 	private void performTest(int numberOfElements, int numberOfHandler, int numberOfUpdates, int reportOnEach) {
 		Runtime runtime = Runtime.getRuntime();
 		NumberFormat memFormat = new DecimalFormat("#00,000,000,000,000");
 		NumberFormat updatesFormat = new DecimalFormat("#00,000,000");
 		
-		final IClickSocket clickSocket = createClickSocket(numberOfElements, numberOfHandler);
+		final IClickSocket clickSocket = TestUtil.createClickSocket(numberOfElements, numberOfHandler);
 		Injector injector = Guice.createInjector(new GuiceModule() {
 			@Override
 			public void configure() {
@@ -69,7 +38,7 @@ public class ClickControlNodeConnectionTest extends TestCase {
 		Node node = ClickWatchModelFactory.eINSTANCE.createNode();
 		network.getNodes().add(node);
 		
-		ClickControlNodeConnectionTestImpl connection = injector.getInstance(ClickControlNodeConnectionTestImpl.class);
+		NodeConnectionTestImpl connection = injector.getInstance(NodeConnectionTestImpl.class);
 		connection.setUp(node);
 		connection.connect(null);
 		connection.getNodeAdapter().connect();

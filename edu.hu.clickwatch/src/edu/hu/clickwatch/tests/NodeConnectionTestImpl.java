@@ -4,7 +4,7 @@ import org.eclipse.ui.IPartListener;
 
 import edu.hu.clickwatch.model.ClickControlNodeConnection;
 
-public class ClickControlNodeConnectionTestImpl extends ClickControlNodeConnection {
+public class NodeConnectionTestImpl extends ClickControlNodeConnection {
 
 	@Override
 	protected void runInGUI(Runnable runnable) {

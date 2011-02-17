@@ -11,7 +11,6 @@ import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.ecore.xml.type.AnyType;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorPart;
@@ -160,11 +159,11 @@ public abstract class AbstractNodeConnection {
 	}
 
 	public void runUpdate() {
-		Node updatedNodeCopy = getNodeAdapter().retrieve(elemFilter, handFilter);
-		runInGUI(new UpdateAllModelRunnable(updatedNodeCopy));
+		final Node updatedNodeCopy = getNodeAdapter().retrieve(elemFilter, handFilter);
 		runInGUI(new Runnable() {
 			@Override
 			public void run() {
+				updater.update(AbstractNodeConnection.this, node, updatedNodeCopy);
 				if (!node.isConnected()) {
 
 				}
@@ -302,17 +301,22 @@ public abstract class AbstractNodeConnection {
 
 		protected abstract String getName(T item);
 	}
+	
+	private static final SynchronizedUpdater updater = new SynchronizedUpdater();
 
 	/**
 	 * Runnable used to update the model with data retrieved from the real node.
 	 * Should be run in GUI-Thread.
 	 */
-	private class UpdateAllModelRunnable implements Runnable {
-		final Node updatedNodeCopy;
-
-		public UpdateAllModelRunnable(Node updatedNodeCopy) {
-			super();
-			this.updatedNodeCopy = updatedNodeCopy;
+	private static class SynchronizedUpdater { //implements Runnable {
+		AbstractNodeConnection connection;
+		Node modelNode;
+		
+		synchronized void update(AbstractNodeConnection connection, Node modelNode, Node newRealNode) {
+			this.modelNode = modelNode;
+			this.connection = connection;
+			
+			new ElementListUpdater(modelNode.getElements(), newRealNode.getElements());
 		}
 		
 		class ElementListUpdater extends ListUpdater<Element> {
@@ -328,7 +332,7 @@ public abstract class AbstractNodeConnection {
 
 			@Override
 			protected void addItem(Element newItem) {
-				node.getElements().add(EcoreUtil.copy(newItem));
+				modelNode.getElements().add(EcoreUtil.copy(newItem));
 			}
 
 			@Override
@@ -359,23 +363,22 @@ public abstract class AbstractNodeConnection {
 
 					@Override
 					protected void update(Handler oldItem, Handler newItem) {
-						ensureHandlerIsListening(oldItem);
+						connection.ensureHandlerIsListening(oldItem);
 						if (newItem.isCanRead()) {
-							if (getNodeAdapter().determineHandlerHasChangedInReality(oldItem, newItem)) {
-								propagateRemoteHandlerChangeToModel(
-										oldItem, newItem.getValue());	
+							if (!connection.getNodeAdapter().getValueRepresentation(newItem).equalsModelValueRealityValue(oldItem.getValue(), newItem.getValue())) {
+								connection.modelChangeListener.disable();
+
+								if (oldItem.isWatch() || ((Element) oldItem.eContainer()).isWatch()) {
+									oldItem.setChanged(!newItem.getValue().equals(oldItem.getValue()));
+								}
+								connection.getNodeAdapter().getValueRepresentation(oldItem).set(oldItem, newItem.getValue());
+								connection.modelChangeListener.enable();
 							}
 						}
 					}
 				};
 			}
 		};
-
-		@Override
-		public void run() {
-			new ElementListUpdater(node.getElements(),
-					updatedNodeCopy.getElements());
-		}
 	}
 
 	public final void propagateHandlerValueChangeToReality(Handler handler,
@@ -395,9 +398,9 @@ public abstract class AbstractNodeConnection {
 		private boolean enabled = true;
 
 		@Override
-		public void notifyChanged(Notification msg) {
-			if (enabled && msg.getEventType() != Notification.REMOVING_ADAPTER) {
-				Object notifier = msg.getNotifier();
+		public void notifyChanged(Notification notification) {
+			if (enabled && notification.getEventType() != Notification.REMOVING_ADAPTER) {
+				Object notifier = notification.getNotifier();
 				while (notifier != null && 
 						notifier instanceof EObject && !(notifier instanceof Handler)) {
 					notifier = ((EObject)notifier).eContainer();
@@ -405,12 +408,12 @@ public abstract class AbstractNodeConnection {
 				if (notifier != null && notifier instanceof Handler) {
 					Handler handler = (Handler)notifier;
 					
-					if (getNodeAdapter().determineHandlerHasChangedInModel(msg)) {
+					if (getNodeAdapter().getValueRepresentation(handler).isNotificationChangingValue(notification)) {
 						propagateHandlerValueChangeToReality(handler, handler.getValue());
 					}
 					if (ClickWatchModelPackage.eINSTANCE.getHandler_Watch().equals(
-							msg.getFeature())) {
-						if (msg.getNewBooleanValue()) {
+							notification.getFeature())) {
+						if (notification.getNewBooleanValue()) {
 							((Element) handler.eContainer()).setWatch(true);
 						}
 					}	
@@ -432,28 +435,6 @@ public abstract class AbstractNodeConnection {
 	private void ensureHandlerIsListening(Handler handler) {
 		handler.eAdapters().remove(modelChangeListener);
 		handler.eAdapters().add(modelChangeListener);
-	}
-
-	/**
-	 * @param handler
-	 *            , the handler within the model.
-	 */
-	protected final void propagateRemoteHandlerChangeToModel(final Handler handler,
-			final AnyType value) {
-		runInGUI(new Runnable() {
-			@Override
-			public void run() {
-				modelChangeListener.disable();
-
-				if (handler.isWatch() || ((Element) handler.eContainer()).isWatch()) {
-					handler.setChanged(!value.equals(handler.getValue()));
-				}
-				handler.setValue(value);
-				
-				modelChangeListener.enable();
-			}
-		});
-
 	}
 
 	/**

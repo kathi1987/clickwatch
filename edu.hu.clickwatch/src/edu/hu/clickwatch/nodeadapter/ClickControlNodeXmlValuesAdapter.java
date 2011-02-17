@@ -10,6 +10,7 @@ import org.eclipse.emf.ecore.xml.type.XMLTypeDocumentRoot;
 import com.google.common.base.Preconditions;
 
 import edu.hu.clickwatch.XmlUtil;
+import edu.hu.clickwatch.model.ClickWatchModelPackage;
 import edu.hu.clickwatch.model.Handler;
 
 /**
@@ -18,21 +19,62 @@ import edu.hu.clickwatch.model.Handler;
  * 
  * @author Markus Scheidgen
  */
-public class ClickControlNodeXmlValuesAdapter extends ClickControlNodeAdapter {
+public class ClickControlNodeXmlValuesAdapter extends AbstractNodeAdapter {
 	
-	@Override
-	public boolean determineHandlerHasChangedInModel(Notification notification) {
-		if (notification.getNotifier() instanceof Handler) {
-			return super.determineHandlerHasChangedInModel(notification);
-		} else {
-			return true;
+	private IExtendedValueRepresentation defaultValueRepresentation = new IExtendedValueRepresentation() {	
+		@Override
+		public void set(Handler handler, Object value) {
+			handler.setValue((EObject)value);
 		}
-	}
+		
+		@Override
+		public boolean isNotificationChangingValue(Notification notification) {
+			if (notification.getNotifier() instanceof Handler) {
+				return notification.getFeature() == ClickWatchModelPackage.eINSTANCE.getHandler_Value();
+			} else {
+				return true;
+			}
+		}
+		
+		@Override
+		public Object get(Handler handler) {
+			return handler.getValue();
+		}
+		
+		@Override
+		public boolean equalsModelValueRealityValue(Object modelValue,
+				Object realValue) {
+//			return createPlainRealValue(modelValue).equals(createPlainRealValue(realValue));
+			return compareXml(((AnyType)modelValue).getMixed(), ((AnyType)realValue).getMixed());
+		}
+		
+		@Override
+		public String createPlainRealValue(Object modelValue) {
+			Preconditions.checkArgument(modelValue instanceof AnyType);
+			
+			AnyType valueAsXml = (AnyType)EcoreUtil.copy((EObject)modelValue);
+			
+			XMLTypeDocumentRoot xml = deserializeXml("<value></value>");
+			xml.getMixed().clear();
+			xml.getMixed().addAll(valueAsXml.getMixed());
+
+			String xmlString = serializeXml(xml);
+			xmlString = xmlString.substring(xmlString.indexOf("?>\n") + 3);
+			
+			return xmlString;
+		}
+		
+		@Override
+		public Object createModelValue(String plainRealValue) {	
+			XMLTypeDocumentRoot xml = deserializeXml("<value>" + plainRealValue + "</value>");
+			return ((XMLTypeDocumentRoot)xml).getMixed().getValue(0);
+		}
+	};
 	
 	@Override
-	public boolean determineHandlerHasChangedInReality(Handler modelCopy,
-			Handler realityCopy) {
-		return !compareXml(modelCopy.getValue().getMixed(), realityCopy.getValue().getMixed());
+	protected IExtendedValueRepresentation getExtendedValueRepresentation(
+			Handler handler) {
+		return defaultValueRepresentation;
 	}
 
 	private boolean compareXml(FeatureMap v1, FeatureMap v2) {
@@ -65,28 +107,5 @@ public class ClickControlNodeXmlValuesAdapter extends ClickControlNodeAdapter {
 	
 	protected static String serializeXml(XMLTypeDocumentRoot xml) {
 		return XmlUtil.serializeXml(xml);
-	}
-
-	@Override
-	protected void populateHandlerValueOfInternalNodeCopy(
-			Handler internalHandlerCopy, String plainHandlerValue) {
-		XMLTypeDocumentRoot xml = deserializeXml("<value>" + plainHandlerValue + "</value>");
-		internalHandlerCopy.setValue((AnyType)((XMLTypeDocumentRoot)xml).getMixed().getValue(0));
-	}
-
-	@Override
-	protected String getPlainHandlerValue(Object value) {
-		Preconditions.checkArgument(value instanceof AnyType);
-		
-		AnyType valueAsXml = (AnyType)EcoreUtil.copy((EObject)value);
-		
-		XMLTypeDocumentRoot xml = deserializeXml("<value></value>");
-		xml.getMixed().clear();
-		xml.getMixed().addAll(valueAsXml.getMixed());
-
-		String xmlString = serializeXml(xml);
-		xmlString = xmlString.substring(xmlString.indexOf("?>\n") + 3);
-		
-		return xmlString;
 	}
 }

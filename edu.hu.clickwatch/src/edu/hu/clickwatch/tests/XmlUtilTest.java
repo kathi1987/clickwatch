@@ -3,20 +3,33 @@ package edu.hu.clickwatch.tests;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 import junit.framework.TestCase;
 
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.impl.DynamicEObjectImpl;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.XMLResource;
+import org.eclipse.emf.ecore.xmi.impl.XMLResourceFactoryImpl;
 import org.eclipse.emf.ecore.xml.type.AnyType;
 import org.eclipse.emf.ecore.xml.type.XMLTypeDocumentRoot;
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
+import org.eclipse.xsd.ecore.XSDEcoreBuilder;
+
+import com.apple.laf.AquaButtonBorder.Dynamic;
+import com.google.common.base.Function;
+import com.google.common.collect.Collections2;
+import com.google.common.collect.Lists;
+import com.sun.org.apache.xerces.internal.util.XMLResourceIdentifierImpl;
 
 import edu.hu.clickwatch.ClickWatchStandaloneSetup;
 import edu.hu.clickwatch.XmlUtil;
@@ -97,5 +110,35 @@ public class XmlUtilTest extends TestCase {
 		}
 		
 		System.out.println(baos.toString());
+	}
+	
+	public void testTryXDS() {
+		Collection<EObject> xsd = new XSDEcoreBuilder().generate(URI.createFileURI("/Users/markus/Downloads/link_stat.xsd"));
+		Collection<EPackage> xsdPackages = Collections2.transform(xsd, new Function<EObject, EPackage>() {
+			@Override
+			public EPackage apply(EObject input) {
+				return (EPackage)input;
+			}
+		});
+		final ResourceSet rs = new ResourceSetImpl();
+		rs.getResourceFactoryRegistry().getExtensionToFactoryMap().put("xml", new XMLResourceFactoryImpl());
+		for (EPackage ePackage: xsdPackages) {
+			rs.getPackageRegistry().put(ePackage.getNsURI(), ePackage);
+		}
+		
+		Resource xmlResource = rs.createResource(URI.createFileURI("/Users/markus/Downloads/test.xml"));
+	
+		Map<String, Object> options = new HashMap<String, Object>();
+		options.put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);
+		// options.put(XMLResource.OPTION_RECORD_UNKNOWN_FEATURE, Boolean.TRUE);
+		options.put(XMLResource.OPTION_ENCODING, "UTF-8");
+		
+		try {
+			xmlResource.load(options);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		System.out.println(xmlResource.getContents().get(0).eContents());
 	}
 }
