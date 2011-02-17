@@ -348,7 +348,7 @@ public abstract class AbstractNodeConnection {
 						updatedElementCopy.getHandlers()) {
 					@Override
 					protected void removeItem(Handler oldItem) {
-						EcoreUtil.delete(oldItem);
+						EcoreUtil.delete(oldItem, true);
 					}
 
 					@Override

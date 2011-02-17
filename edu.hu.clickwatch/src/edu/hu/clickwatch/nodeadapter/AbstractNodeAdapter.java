@@ -204,40 +204,46 @@ public abstract class AbstractNodeAdapter implements INodeAdapter {
 	 * @see edu.hu.clickwatch.nodeadapter.INodeAdapter#retrieve(java.lang.String)
 	 */
 	@Override
-	public synchronized Node retrieve(String elemFilter, String handFilter) {
+	public synchronized Node retrieve(String elemFilters, String handFilter) {
 		retrieveInternalNodeCopy();
 		// filter internal node copy
-		if ( (elemFilter == null || elemFilter.trim().equals("")) && (handFilter == null || handFilter.trim().equals("")) ) {
+		if ( (elemFilters == null || elemFilters.trim().equals("")) && (handFilter == null || handFilter.trim().equals("")) ) {
 			return EcoreUtil.copy(internalNodeCopy);	
 		}
 		
-		//String nodeName = internalNodeCopy.getINetAdress();
-
+		String[] elemFilter = elemFilters.split("/");
 		Iterator<Element> elem_it = internalNodeCopy.getElements().iterator();
+		// recusrive checker
+		filterMatched(elem_it, elemFilter, 0, handFilter);
+		return EcoreUtil.copy(internalNodeCopy);
+	}
+	
+	// recursive filter
+	private void filterMatched(Iterator<Element> elem_it, String[] elemFilter, int idx, String handFilter) {
 		while (elem_it.hasNext()) {
 			Element elem = elem_it.next();
-			if (elemFilter.trim().equals("")) {
-				continue;
-			}
-			if (!java.util.regex.Pattern.compile(elemFilter).matcher(elem.getName()).find()) {
+			if ( (elemFilter.length > idx) && !java.util.regex.Pattern.compile(elemFilter[idx]).matcher(elem.getName()).find()) {
 				// does not match; remove it
 				elem_it.remove();
-				continue;
-			}
-			if (handFilter.trim().equals("")) {
-				continue;
+				continue; // no need to check the children nodes
 			}
 			Iterator<Handler> hand_it = elem.getHandlers().iterator();
 			
-			while (hand_it.hasNext()) {
-				Handler hand = hand_it.next();
-				if (!java.util.regex.Pattern.compile(handFilter).matcher(hand.getName()).find()) {
-					// does not match; remove it
-					hand_it.remove();
+			if (handFilter != null) {
+				while (hand_it.hasNext()) {
+					Handler hand = hand_it.next();
+					if (!java.util.regex.Pattern.compile(handFilter).matcher(hand.getName()).find()) {
+						// does not match; remove it
+						hand_it.remove();
+					}
 				}
 			}
+
+			// recursive call
+			if (elem.getChildren().size() > 0) {
+				filterMatched(elem.getChildren().iterator(), elemFilter, idx+1, handFilter);
+			}
 		}
-		return EcoreUtil.copy(internalNodeCopy);
 	}
 
 	@Override

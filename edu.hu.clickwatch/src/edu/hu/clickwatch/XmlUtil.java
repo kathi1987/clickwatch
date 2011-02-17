@@ -4,19 +4,18 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
-import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.impl.GenericXMLResourceFactoryImpl;
 import org.eclipse.emf.ecore.xml.type.AnyType;
 import org.eclipse.emf.ecore.xml.type.XMLTypeFactory;
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 
+import com.google.common.base.Preconditions;
 import com.google.common.base.Throwables;
 
 public class XmlUtil {
@@ -27,12 +26,20 @@ public class XmlUtil {
 		return result;
 	}
 	
-	public static EObject deserializeXml(String xml) {
-		ResourceSet resourceSet = new ResourceSetImpl();
-		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put(
-				Resource.Factory.Registry.DEFAULT_EXTENSION,
-				new GenericXMLResourceFactoryImpl());
-
+	private static ResourceSet resourceSet = null;
+	
+	private static void initialize() {
+		if (resourceSet == null) {
+			resourceSet = new ResourceSetImpl();
+			resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put(
+					Resource.Factory.Registry.DEFAULT_EXTENSION,
+					new GenericXMLResourceFactoryImpl());	
+		}
+	}
+	
+	public synchronized static EObject deserializeXml(String xml) {
+		initialize();
+		
 		Resource resource = resourceSet.createResource(URI.createURI("fake.xml"));
 		ByteArrayInputStream bais = new ByteArrayInputStream(xml.getBytes());
 		try {
@@ -41,14 +48,7 @@ public class XmlUtil {
 			Throwables.propagate(e);
 		}
 		
-		// Validate the contents of the loaded resource.
-		for (EObject eObject: resource.getContents()) {
-			Diagnostic diagnostic = Diagnostician.INSTANCE
-					.validate(eObject);
-			if (diagnostic.getSeverity() != Diagnostic.OK) {
-				// TODO
-			}
-		}
+		Preconditions.checkState((resource.getErrors().size() + resource.getWarnings().size()) == 0);
 		
 		EObject result = null;		
 		if (resource.getContents().size() > 0) {
@@ -65,11 +65,8 @@ public class XmlUtil {
 		return result;
 	}
 	
-	public static String serializeXml(EObject object) {
-		ResourceSet resourceSet = new ResourceSetImpl();
-		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put(
-				Resource.Factory.Registry.DEFAULT_EXTENSION,
-				new GenericXMLResourceFactoryImpl());
+	public synchronized static String serializeXml(EObject object) {
+		initialize();
 
 		Resource resource = resourceSet.createResource(URI.createURI("fake.xml"));
 		resource.getContents().add(EcoreUtil.copy(object));
