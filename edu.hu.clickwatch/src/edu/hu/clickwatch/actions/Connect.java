@@ -54,14 +54,18 @@ public class Connect implements IObjectActionDelegate {
 		AbstractNodeConnection nodeConnection = null;
 		while (node_it.hasNext()) {
 			Node node = node_it.next();
-			if (node instanceof MultiNode) {
-				nodeConnection = Guice.createInjector(new GuiceModule()).getInstance(MultiNodeNodeConnection.class);
+			if (node.getConnection() == null || !node.isConnected()) {
+				if (node instanceof MultiNode) {
+					nodeConnection = Guice.createInjector(new GuiceModule()).getInstance(MultiNodeNodeConnection.class);
+				} else {
+					nodeConnection = Guice.createInjector(new GuiceModule()).getInstance(ClickControlNodeConnection.class);
+				}
+				node.setConnection(nodeConnection);
+				nodeConnection.setUp(node);
+				nodeConnection.connect(editor);
 			} else {
-				nodeConnection = Guice.createInjector(new GuiceModule()).getInstance(ClickControlNodeConnection.class);
+				System.out.println("Already connected");
 			}
-			node.setConnection(nodeConnection);
-			nodeConnection.setUp(node);
-			nodeConnection.connect(editor);
 		}
 	}
 
