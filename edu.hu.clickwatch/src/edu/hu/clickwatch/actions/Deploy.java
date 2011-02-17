@@ -104,7 +104,7 @@ public class Deploy implements IObjectActionDelegate {
 		
 		// copy resource file to remote
 		String lfile = "D:\\tmp\\resource.tar.gz";
-		String rfile = lfile;
+		String rfile = "resource.tar.gz";
 		
 		// copy file
 		scpTo(session, lfile, rfile);
