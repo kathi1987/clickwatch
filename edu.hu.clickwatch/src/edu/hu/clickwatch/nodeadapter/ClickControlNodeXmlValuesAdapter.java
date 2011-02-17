@@ -24,11 +24,7 @@ public class ClickControlNodeXmlValuesAdapter extends AbstractNodeAdapter {
 	private IExtendedValueRepresentation defaultValueRepresentation = new IExtendedValueRepresentation() {	
 		@Override
 		public void set(Handler handler, Object value) {
-			EObject oldValue = handler.getValue();
 			handler.setValue((EObject)value);
-			if (oldValue != null) {
-				EcoreUtil.delete(oldValue, true);
-			}
 		}
 		
 		@Override
@@ -76,6 +72,7 @@ public class ClickControlNodeXmlValuesAdapter extends AbstractNodeAdapter {
 			Object result = xml.getMixed().getValue(0); 
 			xml.getMixed().remove(0);
 			EcoreUtil.delete(xml, true);
+			Preconditions.checkNotNull(result);
 			return result;
 		}
 	};
