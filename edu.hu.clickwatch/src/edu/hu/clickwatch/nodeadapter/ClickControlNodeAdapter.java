@@ -230,7 +230,7 @@ public class ClickControlNodeAdapter implements INodeAdapter {
 	private void filterMatched(Iterator<Element> elem_it, String[] elemFilter, int idx, String handFilter) {
 		while (elem_it.hasNext()) {
 			Element elem = elem_it.next();
-			if (!java.util.regex.Pattern.compile(elemFilter[idx]).matcher(elem.getName()).find()) {
+			if ( (elemFilter.length > idx) && !java.util.regex.Pattern.compile(elemFilter[idx]).matcher(elem.getName()).find()) {
 				// does not match; remove it
 				elem_it.remove();
 				continue; // no need to check the children nodes

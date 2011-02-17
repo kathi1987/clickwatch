@@ -20,6 +20,13 @@
                label="Disconnect"
                menubarPath="additions">
          </action>
+         <action
+               class="edu.hu.clickwatch.actions.Deploy"
+               enablesFor="+"
+               id="edu.hu.clickwatch.deployAction"
+               label="Deploy"
+               menubarPath="additions">
+         </action>
       </objectContribution>
       <objectContribution
             id="edu.hu.clickwatch.NetworkContribution"
