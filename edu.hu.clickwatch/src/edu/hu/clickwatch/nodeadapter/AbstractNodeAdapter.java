@@ -204,7 +204,7 @@ public abstract class AbstractNodeAdapter implements INodeAdapter {
 	 * @see edu.hu.clickwatch.nodeadapter.INodeAdapter#retrieve(java.lang.String)
 	 */
 	@Override
-	public synchronized Node retrieve(String elemFilters, String handFilter) {
+	public Node retrieve(String elemFilters, String handFilter) {
 		retrieveInternalNodeCopy();
 		// filter internal node copy
 		if ( (elemFilters == null || elemFilters.trim().equals("")) && (handFilter == null || handFilter.trim().equals("")) ) {
