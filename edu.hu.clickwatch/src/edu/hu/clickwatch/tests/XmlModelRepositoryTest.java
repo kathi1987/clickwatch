@@ -39,7 +39,7 @@ import edu.hu.clickwatch.model.Handler;
 import edu.hu.clickwatch.model.Network;
 import edu.hu.clickwatch.model.Node;
 
-public class XmlUtilTest extends TestCase {
+public class XmlModelRepositoryTest extends TestCase {
 	
 	private XmlModelRepository xmlModelRepository = null;
 

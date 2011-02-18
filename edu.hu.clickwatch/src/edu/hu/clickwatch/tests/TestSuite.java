@@ -8,7 +8,7 @@ public class TestSuite {
 		//$JUnit-BEGIN$
 		suite.addTestSuite(ClickControlNodeAdapterTest.class);
 		suite.addTestSuite(ClickControlNodeXmlValuesAdapterTest.class);
-		suite.addTestSuite(XmlUtilTest.class);
+		suite.addTestSuite(XmlModelRepositoryTest.class);
 		suite.addTestSuite(ConnectionTest.class);
 		//$JUnit-END$
 		return suite;
