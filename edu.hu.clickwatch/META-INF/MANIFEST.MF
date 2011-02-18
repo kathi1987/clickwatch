@@ -28,3 +28,4 @@ Export-Package: edu.hu.clickwatch
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: jsch-20110217.jar,
  .
+Bundle-Activator: edu.hu.clickwatch.ClickWatchPluginActivator

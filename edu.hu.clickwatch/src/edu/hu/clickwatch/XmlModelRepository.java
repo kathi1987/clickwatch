@@ -24,15 +24,15 @@ import com.google.common.base.Throwables;
 
 public class XmlModelRepository {
 	
-	public static AnyType createXMLText(String text) {
+	public AnyType createXMLText(String text) {
 		AnyType result = XMLTypeFactory.eINSTANCE.createAnyType();
 		result.getAny().add(XMLTypePackage.eINSTANCE.getXMLTypeDocumentRoot_Text(), text);
 		return result;
 	}
 	
-	private static ResourceSet resourceSet = null;
+	private ResourceSet resourceSet = null;
 	
-	private static void initialize() {
+	private void initialize() {
 		if (resourceSet == null) {
 			resourceSet = new ResourceSetImpl();
 			resourceSet.getLoadOptions().put(XSDResourceImpl.XSD_TRACK_LOCATION, Boolean.TRUE);
@@ -45,7 +45,7 @@ public class XmlModelRepository {
 	}
 	
 	@SuppressWarnings("unchecked")
-	private static <T> T load(URI uri, String str, Class<? extends T> resultClass, boolean keep) {
+	private synchronized <T> T load(URI uri, String str, Class<? extends T> resultClass, boolean keep) {
 		initialize();
 		
 		Resource resource = null;
@@ -77,19 +77,20 @@ public class XmlModelRepository {
 				Throwables.propagate(e);
 			}
 		}
-			
+		
+		Preconditions.checkNotNull(result);
 		return (T)result;
 	}
 	
-	public static EObject deserializeXml(String xml) {
+	public EObject deserializeXml(String xml) {
 		return load(URI.createURI("transient.xml"), xml, EObject.class, false);
 	}
 	
-	public static XSDSchema loadXSD(URI uri, String xsd) {
+	public XSDSchema loadXSD(URI uri, String xsd) {
 		return load(uri, xsd, XSDSchema.class, true);
 	}
 	
-	public static String serializeXml(EObject object) {
+	public String serializeXml(EObject object) {
 		initialize();
 
 		Resource resource = resourceSet.createResource(URI.createURI("fake.xml"));

@@ -36,11 +36,15 @@ import org.eclipse.wst.xml.core.internal.provisional.contenttype.ContentTypeIdFo
 import org.eclipse.wst.xsl.ui.internal.StructuredTextViewerConfigurationXSL;
 
 import com.google.common.base.Throwables;
+import com.google.inject.Inject;
 
 import edu.hu.clickwatch.XmlModelRepository;
 import edu.hu.clickwatch.model.presentation.ClickWatchModelEditor;
 
 public class XSLView extends ViewPart {
+	
+	@Inject
+	private XmlModelRepository xmlModelRepository;
 	
 	private ISourceViewer viewer = null;
 	private Action evaluate = null;
@@ -144,7 +148,7 @@ public class XSLView extends ViewPart {
 			return;
 		}
 		
-		String inputAsString = XmlModelRepository.serializeXml(input);
+		String inputAsString = xmlModelRepository.serializeXml(input);
 		
 		String evalResult = null;
 		try {
@@ -161,7 +165,7 @@ public class XSLView extends ViewPart {
 		EObject result = null;
 		
 		try {
-			result = XmlModelRepository.deserializeXml(evalResult);
+			result = xmlModelRepository.deserializeXml(evalResult);
 		} catch (Throwable e) {
 			System.out.println("error: " + e.getMessage());
 			MessageDialog.openError(viewer.getTextWidget().getShell(),

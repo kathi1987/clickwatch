@@ -36,7 +36,7 @@ public class ConnectionTest extends TestCase {
 		exit = 0;
 		injector = Guice.createInjector(new GuiceModule() {
 			@Override
-			public void configure() {
+			protected void overrideConfigure() {
 				bind(IClickSocket.class).toInstance(clickSocket);
 				bind(INodeAdapter.class).to(ClickControlNodeXmlValuesAdapter.class);
 			}			

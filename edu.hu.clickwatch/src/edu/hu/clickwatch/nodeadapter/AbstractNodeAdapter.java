@@ -13,6 +13,7 @@ import click.ControlSocket;
 
 import com.google.common.base.Preconditions;
 import com.google.common.base.Throwables;
+import com.google.inject.ImplementedBy;
 import com.google.inject.Inject;
 
 import edu.hu.clickcontrol.IClickSocket;
@@ -32,7 +33,8 @@ public abstract class AbstractNodeAdapter implements INodeAdapter {
 
 	private String host = null;
 	private String port = null;
-	
+
+	@ImplementedBy(DefaultXmlValueRepresentation.class)
 	public interface IExtendedValueRepresentation extends IValueRepresentation {
 		
 		public Object createModelValue(String plainRealValue);

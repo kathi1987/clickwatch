@@ -8,11 +8,15 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EcoreFactory;
 
 import com.google.common.base.Throwables;
+import com.google.inject.Inject;
 
 import edu.hu.clickwatch.model.Element;
 import edu.hu.clickwatch.model.Handler;
 
 public class ClickControlXSDNodeAdapter extends AbstractNodeAdapter {
+	
+	@Inject
+	private DefaultXmlValueRepresentation defaultXmlValueRep;
 	
 	public static final String XSD_HANDLER_NAME = "schema";
 	
@@ -21,7 +25,6 @@ public class ClickControlXSDNodeAdapter extends AbstractNodeAdapter {
 	
 	private static final EPackage NULL_PACKAGE = EcoreFactory.eINSTANCE.createEPackage();
 	private Map<String, EPackage> metaModelsForElementPaths = new HashMap<String, EPackage>();
-	private static final DefaultXmlValueRepresentation defaultXmlValueRep = new DefaultXmlValueRepresentation();
 
 	private class XSDValueRepresentation implements IExtendedValueRepresentation {
 		

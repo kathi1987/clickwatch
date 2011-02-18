@@ -1,5 +1,7 @@
 package edu.hu.clickwatch.nodeadapter;
 
+import com.google.inject.Inject;
+
 import edu.hu.clickwatch.model.Handler;
 
 /**
@@ -10,7 +12,8 @@ import edu.hu.clickwatch.model.Handler;
  */
 public class ClickControlNodeXmlValuesAdapter extends AbstractNodeAdapter {
 	
-	private static final IExtendedValueRepresentation defaultValueRepresentation = new DefaultXmlValueRepresentation();
+	@Inject
+	private IExtendedValueRepresentation defaultValueRepresentation;
 	
 	@Override
 	protected IExtendedValueRepresentation getExtendedValueRepresentation(

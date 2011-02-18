@@ -5,6 +5,8 @@ import java.util.List;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 
+import com.google.inject.Inject;
+
 import edu.hu.clickwatch.XmlModelRepository;
 import edu.hu.clickwatch.model.AbstractNodeConnection;
 import edu.hu.clickwatch.model.ClickWatchModelFactory;
@@ -25,6 +27,9 @@ import edu.hu.clickwatch.model.Node;
  * 
  */
 public class MultiNodeAdapter implements INodeAdapter {
+	
+	@Inject
+	private XmlModelRepository xmlRepo;
 
 	private MultiNode node = null;
 	private static final ClickWatchModelFactory modelFactory = ClickWatchModelFactory.eINSTANCE;
@@ -97,7 +102,7 @@ public class MultiNodeAdapter implements INodeAdapter {
 							Handler multiNodeHandler = modelFactory.createHandler();
 							multiNodeHandler.setName(handler.getName());
 							multiNodeElement.getHandlers().add(multiNodeHandler);
-							multiNodeHandler.setValue(XmlModelRepository.createXMLText("enter a value"));
+							multiNodeHandler.setValue(xmlRepo.createXMLText("enter a value"));
 						}
 					}
 				}

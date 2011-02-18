@@ -1,8 +1,9 @@
 package edu.hu.clickwatch.tests;
 
+import junit.framework.TestCase;
+
 import org.eclipse.emf.ecore.xml.type.AnyType;
 
-import junit.framework.TestCase;
 import click.ControlSocket.HandlerInfo;
 
 import com.google.common.base.Throwables;
@@ -11,7 +12,6 @@ import com.google.inject.Injector;
 
 import edu.hu.clickcontrol.IClickSocket;
 import edu.hu.clickwatch.GuiceModule;
-import edu.hu.clickwatch.XmlModelRepository;
 import edu.hu.clickwatch.model.Handler;
 import edu.hu.clickwatch.model.Node;
 import edu.hu.clickwatch.nodeadapter.ClickControlNodeAdapter;
@@ -21,7 +21,8 @@ public class ClickControlNodeAdapterTest extends TestCase {
 
 	private static final String port = "7777";
 	private static final String iPAddress = "192.168.3.31";
-	
+
+	protected GuiceModule guiceModule = null;
 	private INodeAdapter modelAdapter = null;
 	private ClickSocketTestImpl clickSocket = null;
 		
@@ -57,15 +58,16 @@ public class ClickControlNodeAdapterTest extends TestCase {
 
 	private void setUp(final ClickSocketTestImpl clickSocket) {
 		this.clickSocket = clickSocket;
-		Injector injector = Guice.createInjector(new GuiceModule() {
+		guiceModule = new GuiceModule() {
 			@Override
-			public void configure() {
+			protected void overrideConfigure() {
 				bind(IClickSocket.class).toInstance(clickSocket);
 				if (getClickControlNodeAdapterClass() != null) {
 					bind(INodeAdapter.class).to(getClickControlNodeAdapterClass());
 				}
 			}			
-		});
+		};
+		Injector injector = Guice.createInjector(guiceModule);
 		modelAdapter = injector.getInstance(ClickControlNodeAdapter.class);
 	}
 	
@@ -149,7 +151,7 @@ public class ClickControlNodeAdapterTest extends TestCase {
 		checkDefaultNode(node);
 		
 		Handler handler = node.getElements().get(0).getHandlers().get(0); 
-		modelAdapter.updateHandlerValue(handler, XmlModelRepository.createXMLText("newValue"));
+		modelAdapter.updateHandlerValue(handler, guiceModule.getXmlModelRepository().createXMLText("newValue"));
 	}
 	
 	protected Object getNewHandlerValue(String strValue) {

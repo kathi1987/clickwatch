@@ -8,6 +8,7 @@ import org.eclipse.emf.ecore.xml.type.AnyType;
 import org.eclipse.emf.ecore.xml.type.XMLTypeDocumentRoot;
 
 import com.google.common.base.Preconditions;
+import com.google.inject.Inject;
 
 import edu.hu.clickwatch.XmlModelRepository;
 import edu.hu.clickwatch.model.ClickWatchModelPackage;
@@ -15,6 +16,9 @@ import edu.hu.clickwatch.model.Handler;
 import edu.hu.clickwatch.nodeadapter.AbstractNodeAdapter.IExtendedValueRepresentation;
 
 public class DefaultXmlValueRepresentation implements IExtendedValueRepresentation {
+	
+	@Inject
+	private XmlModelRepository xmlRepo;
 	
 	protected DefaultXmlValueRepresentation() {
 		// emtpy
@@ -98,11 +102,11 @@ public class DefaultXmlValueRepresentation implements IExtendedValueRepresentati
 		return true;
 	}
 
-	private static XMLTypeDocumentRoot deserializeXml(String xml) {
-		return (XMLTypeDocumentRoot)XmlModelRepository.deserializeXml(xml);
+	private XMLTypeDocumentRoot deserializeXml(String xml) {
+		return (XMLTypeDocumentRoot)xmlRepo.deserializeXml(xml);
 	}
 	
-	private static String serializeXml(XMLTypeDocumentRoot xml) {
-		return XmlModelRepository.serializeXml(xml);
+	private String serializeXml(XMLTypeDocumentRoot xml) {
+		return xmlRepo.serializeXml(xml);
 	}
 }

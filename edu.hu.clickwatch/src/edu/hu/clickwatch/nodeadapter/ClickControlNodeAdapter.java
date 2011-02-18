@@ -5,6 +5,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.xml.type.AnyType;
 
 import com.google.common.base.Preconditions;
+import com.google.inject.Inject;
 
 import edu.hu.clickcontrol.IClickSocket;
 import edu.hu.clickwatch.GuiceModule;
@@ -24,6 +25,9 @@ import edu.hu.clickwatch.model.Handler;
  * @author Markus Scheidgen
  */
 public class ClickControlNodeAdapter extends AbstractNodeAdapter {
+	
+	@Inject
+	protected XmlModelRepository xmlRepo;
 
 	private IExtendedValueRepresentation defaultValueRepresentation = new IExtendedValueRepresentation() {
 		
@@ -61,7 +65,7 @@ public class ClickControlNodeAdapter extends AbstractNodeAdapter {
 		
 		@Override
 		public Object createModelValue(String plainRealValue) {
-			return XmlModelRepository.createXMLText(plainRealValue);
+			return xmlRepo.createXMLText(plainRealValue);
 		}
 	};
 
