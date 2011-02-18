@@ -10,13 +10,18 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.util.Iterator;
+import java.util.List;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.dialogs.ProgressMonitorDialog;
+import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.SWT;
@@ -48,7 +53,7 @@ public class Deploy implements IObjectActionDelegate {
 
 	private Shell shell;
 	private IEditorPart editor = null;
-	private Iterator<Node> node_it;
+	private List<Node> node_lst;
 
 	/**
 	 * Constructor for Action1.
@@ -73,11 +78,24 @@ public class Deploy implements IObjectActionDelegate {
 	 */
 	@Override
 	public void run(IAction action) {
-		if (node_it == null) {
+		if (node_lst == null || node_lst.isEmpty()) {
 			return;
 		}
+		
+		// select resource for deployment
+		FileDialog fd = new FileDialog(shell, SWT.OPEN);
+        fd.setText("Open");
+        String[] filterExt = { "*.bz2", "*.tar", "*.gz", "*.zip", "*.dat", "*.*" };
+        fd.setFilterExtensions(filterExt);
+        String lfile = fd.open();
+        
+        if (lfile == null) {
+        	return;
+        }
 
-		//AbstractNodeConnection nodeConnection = null;
+        Iterator<Node> node_it = node_lst.iterator();
+		//
+        // Step 1: prepare, copy and unpack router conf
 		while (node_it.hasNext()) {
 			Node node = node_it.next();
 
@@ -89,9 +107,24 @@ public class Deploy implements IObjectActionDelegate {
 			}
 			
 			// remote deploy
-			System.out.println("deploy for node " + node.getINetAdress() + " called.");
+			System.out.println("deploying on node " + node.getINetAdress() + " called.");
 			try {
-				deployRemote(node.getINetAdress());
+				deployRemote(node.getINetAdress(), lfile);
+			} catch (Exception e) {
+				System.err.println("ErrorMsg:" + e.getMessage());
+				MessageDialog.openError(editor.getSite().getShell(), "Clickwatch Error", "ErrorMsg:" + e.getMessage());			}
+		}
+
+        node_it = node_lst.iterator();
+		//
+        // Step 2: start router conf
+		while (node_it.hasNext()) {
+			Node node = node_it.next();
+
+			// remote deploy
+			System.out.println("starting on node " + node.getINetAdress() + " called.");
+			try {
+				startRemote(node.getINetAdress());
 			} catch (Exception e) {
 				System.err.println("ErrorMsg:" + e.getMessage());
 				MessageDialog.openError(editor.getSite().getShell(), "Clickwatch Error", "ErrorMsg:" + e.getMessage());			}
@@ -106,43 +139,50 @@ public class Deploy implements IObjectActionDelegate {
 	public void selectionChanged(IAction action, ISelection selection) {
 		try {
 			IStructuredSelection sec = ((IStructuredSelection)selection);
-			node_it = sec.iterator();
+			node_lst = sec.toList();
 		} catch (Exception e) {
 			MessageDialog.openError(editor.getSite().getShell(), "Clickwatch Error", "ErrorMsg:" + e.getMessage());
 		}
 	}
 
-	private void deployRemote(String host) throws JSchException, IOException {
+	private void deployRemote(String host, String lfile) throws JSchException, IOException, InvocationTargetException, InterruptedException {
 		
-		// select resource for deployment
-		FileDialog fd = new FileDialog(shell, SWT.OPEN);
-        fd.setText("Open");
-        String[] filterExt = { "*.tar", "*.gz", "*.zip", "*.*" };
-        fd.setFilterExtensions(filterExt);
-        String lfile = fd.open();
-        
-        if (lfile == null) {
-        	return;
-        }
- 		
 		// init ssh
-		String user = "root"; //"testbed";
-		//String host = "192.168.4.117";
+		String user = "root";
 		Session session = initSsh(user, host);
-		
+
+		// clean-up old
+		String command = "rm -rf /tmp/seismo";
+		execRemote("Cleanup router conf on node " + host, session, command);
+
 		// copy resource file to remote
 		//String lfile = "/tmp/resource.tar.gz";
 		String rfile = "/tmp/" + (new File(lfile)).getName();
 		
 		// copy file
-		scpTo(session, lfile, rfile);
-		// execute remote commands
-		String command = "cat /proc/cpuinfo";
-		execRemote(session, command);
+		scpTo("Uploading router conf on node " + host, session, lfile, rfile);
+		
+		// unpack
+		command = "(cd /tmp/; bzcat seismo.tar.bz2 | tar xvf - )";
+		execRemote("Unpacking router conf on node " + host, session, command);
 		
 		// close session
 		session.disconnect();
 	}
+	
+	private void startRemote(String host) throws JSchException, IOException, InvocationTargetException, InterruptedException {
+		
+		// init ssh
+		String user = "root";
+		Session session = initSsh(user, host);
+
+		// start
+		String command = "(cd /tmp/seismo; ./bin/seismo.sh delaystart )";
+		execRemote("Starting router conf on node " + host, session, command);
+
+		// close session
+		session.disconnect();
+	}	
 	
 	private byte[] readPrivateKeyFromFile(URL url) throws IOException {
 	    InputStream is = url.openStream();
@@ -203,10 +243,12 @@ public class Deploy implements IObjectActionDelegate {
 	
 	///////////////////
 	// SSH handling - copy file to remote host
-	private void scpTo(Session session, String lfile, String rfile) {
+	private void scpTo(final String progressBarMsg, Session session, String lfile, String rfile) {
 
 		FileInputStream fis = null;
 		try {
+			fis = new FileInputStream(lfile);
+			
 			boolean ptimestamp = true;
 			// exec 'scp -t rfile' remotely
 			String command = "scp " + (ptimestamp ? "-p" :"") + " -t " + rfile;
@@ -214,13 +256,13 @@ public class Deploy implements IObjectActionDelegate {
 			((ChannelExec)channel).setCommand(command);
 
 			// get I/O streams for remote scp
-			OutputStream out = channel.getOutputStream();
+			final OutputStream out = channel.getOutputStream();
 			InputStream in = channel.getInputStream();
 
 			channel.connect();
 
-			if(checkAck(in)!=0){
-				System.exit(0);
+			if(checkAck(in) != 0){
+				throw new Exception("Copying to remote host failed.");
 			}
 
 			File _lfile = new File(lfile);
@@ -233,12 +275,12 @@ public class Deploy implements IObjectActionDelegate {
 				out.write(command.getBytes()); 
 				out.flush();
 				if(checkAck(in) != 0){
-					System.exit(0);
+					throw new Exception("Copying to remote host failed.");
 				}
 			}
 
 			// send "C0644 filesize filename", where filename should not include '/'
-			long filesize = _lfile.length();
+			final long filesize = _lfile.length();
 			command = "C0644 " + filesize + " ";
 			if (lfile.lastIndexOf('/') > 0) {
 				command += lfile.substring(lfile.lastIndexOf('/')+1);
@@ -249,33 +291,54 @@ public class Deploy implements IObjectActionDelegate {
 			out.write(command.getBytes()); 
 			out.flush();
 			if(checkAck(in) != 0) {
-				System.exit(0);
+				throw new Exception("Copying to remote host failed.");
 			}
 
 			// send a content of lfile
-			fis = new FileInputStream(lfile);
-			byte[] buf = new byte[1024];
-			while (true) {
-				int len = fis.read(buf, 0, buf.length);
-				if(len <= 0) break;
-				out.write(buf, 0, len); //out.flush();
-			}
+
+			final FileInputStream ffis = fis;
+			ProgressMonitorDialog dialog = new ProgressMonitorDialog(shell);
+			dialog.run(true, true, new IRunnableWithProgress(){
+			    public void run(IProgressMonitor monitor) {
+			    	try {
+						final int totalWork = (int)filesize;
+						
+				        monitor.beginTask(progressBarMsg, totalWork);
+						int tx_bytes = 0;
+						byte[] buf = new byte[1024];
+						while (true) {
+							int len = ffis.read(buf, 0, buf.length);
+							if(len <= 0) break;
+							out.write(buf, 0, len); //out.flush();
+							tx_bytes += len;
+							monitor.worked(tx_bytes);
+						}
+				        monitor.done();
+			    	} catch(Exception e) {
+			    		MessageDialog.openError(editor.getSite().getShell(), "Clickwatch Error", "Exception: " + e.getMessage());	
+			    	}
+			    }
+			});			
+			
 			fis.close();
-			fis = null;
+			//fis = null;
 			// send '\0'
-			buf[0] = 0; 
-			out.write(buf, 0, 1); 
+			byte[] buf2 = new byte[10];
+			buf2[0] = 0; 
+			out.write(buf2, 0, 1); 
 			out.flush();
 			if(checkAck(in) != 0){
-				System.exit(0);
+				throw new Exception("Copying to remote host failed.");
 			}
 			out.close();
 
 			channel.disconnect();
+			
 			//session.disconnect();
 
 		} catch(Exception e){
 			System.out.println(e);
+			MessageDialog.openError(editor.getSite().getShell(), "Clickwatch Error", "Exception: " + e.getMessage());
 			try {
 				if(fis != null) {
 					fis.close();
@@ -314,9 +377,13 @@ public class Deploy implements IObjectActionDelegate {
 	///////////////////
 	// SSH handling - execute command on remote host
 	// e.g. command = "set|grep SSH"
-	private void execRemote(Session session, String command) throws JSchException, IOException {
+	private void execRemote(final String progressBarMsg, Session session, String command) throws JSchException, IOException, InvocationTargetException, InterruptedException {
 
-        Channel channel = session.openChannel("exec");
+		// hack: ssh bug
+		final String END_TOKEN = "ACKNOWLEDGEMENT4711"; 
+		command += " ; echo \"" + END_TOKEN + "\"";
+		
+        final Channel channel = session.openChannel("exec");
         ((ChannelExec)channel).setCommand(command);
 
         // X Forwarding
@@ -331,25 +398,47 @@ public class Deploy implements IObjectActionDelegate {
         //((ChannelExec)channel).setErrStream(fos);
         ((ChannelExec)channel).setErrStream(System.err);
 
-        InputStream in = channel.getInputStream();
-
+        final InputStream in = channel.getInputStream();
         channel.connect();
 
-        byte[] tmp = new byte[1024];
-        while (true) {
-          while(in.available() > 0) {
-            int i = in.read(tmp, 0, 1024);
-            if(i < 0) break;
-            System.out.print(new String(tmp, 0, i));
-          }
-          if (channel.isClosed()) {
-            System.out.println("exit-status: " + channel.getExitStatus());
-            break;
-          }
-          try {
-        	  Thread.sleep(1000);
-          } catch (Exception ee) {}
-        }
+		ProgressMonitorDialog dialog = new ProgressMonitorDialog(shell);
+		dialog.run(true, true, new IRunnableWithProgress(){
+		    public void run(IProgressMonitor monitor) {
+		    	try {
+			        monitor.beginTask(progressBarMsg, 10);
+
+			        byte[] tmp = new byte[1024];
+			        String oldChunk = "";
+			        while (true) {
+			          while (in.available() > 0) {
+			            int i = in.read(tmp, 0, 1024);
+			            if(i < 0) break;
+			            String ret = new String(tmp, 0, i);
+			            System.out.print(ret);
+			            if ((oldChunk + ret).indexOf(END_TOKEN) > -1) {
+			            	channel.disconnect();
+			            	break;
+			            }
+			            oldChunk = ret;
+			          }
+			          if (channel.isClosed()) {
+					        monitor.done();
+			            System.out.println("Exit-status: " + channel.getExitStatus());
+			            break;
+			          }
+			          try {
+			            Thread.sleep(1000);
+			          } catch (Exception ee) {}
+			        }
+					//monitor.worked(++chunks);
+		    	} catch(Exception e) {
+		    		MessageDialog.openError(editor.getSite().getShell(), "Clickwatch Error", "Exception: " + e.getMessage());	
+		    	}
+		    }
+		});
+			
+		
+		in.close();
         channel.disconnect();
         //session.disconnect();
       }
