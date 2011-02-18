@@ -140,8 +140,7 @@ public class ConnectionTest extends TestCase {
 		waitForExit(numberOfUpdates);
 	}
 	
-	// the device_wifi/link_stat bug !!!
-	public void testCase42() {
+	public void testFilter() {
 		setUp(new ClickSocketTestImpl() {			
 			@Override
 			public void handleWrite(String element, String handler, String value) {

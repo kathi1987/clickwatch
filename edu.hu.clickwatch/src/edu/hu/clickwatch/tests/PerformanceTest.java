@@ -12,7 +12,7 @@ import com.google.inject.Injector;
 
 import edu.hu.clickcontrol.IClickSocket;
 import edu.hu.clickwatch.GuiceModule;
-import edu.hu.clickwatch.XmlUtil;
+import edu.hu.clickwatch.XmlModelRepository;
 import edu.hu.clickwatch.model.ClickWatchModelFactory;
 import edu.hu.clickwatch.model.Network;
 import edu.hu.clickwatch.model.Node;
@@ -101,7 +101,7 @@ public class PerformanceTest extends TestCase {
 		long reportOnEach = 1000;
 		
 		for (int i = 0; i < runs; i++) {
-			EcoreUtil.delete(XmlUtil.deserializeXml("<foo><bar>TEXT</bar></foo>"), true);
+			EcoreUtil.delete(XmlModelRepository.deserializeXml("<foo><bar>TEXT</bar></foo>"), true);
 			report("deserialize memory leak? ", i, reportOnEach);
 		}
 	}

@@ -153,14 +153,8 @@ public abstract class AbstractNodeAdapter implements INodeAdapter {
 				for (Handler handler : element.getHandlers()) {
 					if (handler.isCanRead() && !ignoreHandler(handler.getName())) {
 						char data[] = null;
-						try {
-							String elementName = element.getName();
-							Element container = element;
-							while (container.eContainer() instanceof Element) {
-								container = (Element)container.eContainer();
-								elementName = container.getName() + "/" + elementName;
-							}
-							data = cs.read(elementName, handler.getName());
+						try {							
+							data = cs.read(element.getElementPath(), handler.getName());
 						} catch (Throwable e) {
 							Throwables.propagate(e);
 						}
@@ -252,15 +246,10 @@ public abstract class AbstractNodeAdapter implements INodeAdapter {
 		
 		ensureConnected();
 		Element element = (Element)handler.eContainer();
-		String elementName = element.getName();
-		while (element.eContainer() instanceof Element) {
-			element = (Element)element.eContainer();
-			elementName = element.getName() + "/" + elementName;
-		}		
 		
 		try {
 			IExtendedValueRepresentation valueRep = getExtendedValueRepresentation(handler);
-			cs.write(elementName, handler.getName(), valueRep.createPlainRealValue(value).toCharArray());
+			cs.write(element.getElementPath(), handler.getName(), valueRep.createPlainRealValue(value).toCharArray());
 		} catch (Throwable e) {
 			Throwables.propagate(e);
 		}

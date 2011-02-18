@@ -16,14 +16,13 @@ import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
 
-import com.google.inject.Guice;
-import com.jcraft.jsch.*;
+import com.jcraft.jsch.Channel;
+import com.jcraft.jsch.ChannelExec;
+import com.jcraft.jsch.JSch;
+import com.jcraft.jsch.JSchException;
+import com.jcraft.jsch.Session;
 
-import edu.hu.clickwatch.GuiceModule;
 import edu.hu.clickwatch.model.AbstractNodeConnection;
-import edu.hu.clickwatch.model.ClickControlNodeConnection;
-import edu.hu.clickwatch.model.MultiNode;
-import edu.hu.clickwatch.model.MultiNodeNodeConnection;
 import edu.hu.clickwatch.model.Node;
 
 /**

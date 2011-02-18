@@ -8,7 +8,7 @@ import com.google.common.base.Preconditions;
 
 import edu.hu.clickcontrol.IClickSocket;
 import edu.hu.clickwatch.GuiceModule;
-import edu.hu.clickwatch.XmlUtil;
+import edu.hu.clickwatch.XmlModelRepository;
 import edu.hu.clickwatch.model.ClickWatchModelPackage;
 import edu.hu.clickwatch.model.Handler;
 
@@ -61,7 +61,7 @@ public class ClickControlNodeAdapter extends AbstractNodeAdapter {
 		
 		@Override
 		public Object createModelValue(String plainRealValue) {
-			return XmlUtil.createXMLText(plainRealValue);
+			return XmlModelRepository.createXMLText(plainRealValue);
 		}
 	};
 

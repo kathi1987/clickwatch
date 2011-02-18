@@ -4,13 +4,11 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
 
 import click.ClickException;
 import click.ControlSocket.HandlerInfo;
 
 import com.google.common.base.Preconditions;
-import com.google.common.base.Throwables;
 
 import edu.hu.clickcontrol.IClickSocket;
 

@@ -1,6 +1,6 @@
 package edu.hu.clickwatch.tests;
 
-import edu.hu.clickwatch.XmlUtil;
+import edu.hu.clickwatch.XmlModelRepository;
 import edu.hu.clickwatch.nodeadapter.ClickControlNodeXmlValuesAdapter;
 import edu.hu.clickwatch.nodeadapter.INodeAdapter;
 
@@ -8,7 +8,7 @@ public class ClickControlNodeXmlValuesAdapterTest extends ClickControlNodeAdapte
 
 	@Override
 	protected Object getNewHandlerValue(String strValue) {
-		return XmlUtil.createXMLText(strValue);
+		return XmlModelRepository.createXMLText(strValue);
 	}
 
 	@Override

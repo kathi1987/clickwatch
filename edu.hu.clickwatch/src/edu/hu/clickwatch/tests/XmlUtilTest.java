@@ -1,8 +1,12 @@
 package edu.hu.clickwatch.tests;
 
+import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -20,13 +24,18 @@ import org.eclipse.emf.ecore.xmi.impl.XMLResourceFactoryImpl;
 import org.eclipse.emf.ecore.xml.type.AnyType;
 import org.eclipse.emf.ecore.xml.type.XMLTypeDocumentRoot;
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
+import org.eclipse.xsd.XSDPlugin;
+import org.eclipse.xsd.XSDSchema;
 import org.eclipse.xsd.ecore.XSDEcoreBuilder;
+import org.eclipse.xsd.util.XSDResourceFactoryImpl;
+import org.eclipse.xsd.util.XSDResourceImpl;
 
 import com.google.common.base.Function;
+import com.google.common.base.Throwables;
 import com.google.common.collect.Collections2;
 
 import edu.hu.clickwatch.ClickWatchStandaloneSetup;
-import edu.hu.clickwatch.XmlUtil;
+import edu.hu.clickwatch.XmlModelRepository;
 import edu.hu.clickwatch.model.ClickWatchModelFactory;
 import edu.hu.clickwatch.model.ClickWatchModelPackage;
 import edu.hu.clickwatch.model.Element;
@@ -60,7 +69,7 @@ public class XmlUtilTest extends TestCase {
 			node.getElements().add(element);
 			Handler handler = ClickWatchModelFactory.eINSTANCE.createHandler();
 			element.getHandlers().add(handler);
-			EObject xml = XmlUtil.deserializeXml("<value><foo><bar>TEXT</bar></foo></value>");
+			EObject xml = XmlModelRepository.deserializeXml("<value><foo><bar>TEXT</bar></foo></value>");
 			handler.setValue((AnyType)((XMLTypeDocumentRoot)xml).getMixed().getValue(0));
 		}
 		
@@ -94,7 +103,7 @@ public class XmlUtilTest extends TestCase {
 		EObject value = handler.getValue();
 		assertTrue(XMLTypePackage.eINSTANCE.getAnyType().isInstance(value));
 		
-		handler.setValue(XmlUtil.createXMLText("newValue"));
+		handler.setValue(XmlModelRepository.createXMLText("newValue"));
 		
 		baos = new ByteArrayOutputStream();
 		try {
@@ -134,4 +143,45 @@ public class XmlUtilTest extends TestCase {
 		
 		System.out.println(xmlResource.getContents().get(0).eContents());
 	}
+	
+	public void testDeserializeXSD() {
+		URI uri = URI.createFileURI("/Users/markus/Downloads/link_stat.xsd");
+		String xsdStr = null;
+		try {
+			xsdStr = readFileAsString(uri.toFileString());
+		} catch (IOException e) {
+			Throwables.propagate(e);
+		}
+		
+		XSDSchema xsd = XmlModelRepository.loadXSD(uri, xsdStr);
+		assertNotNull(xsd);
+		
+		XSDEcoreBuilder xsdEcoreBuilder = new XSDEcoreBuilder();
+		xsdEcoreBuilder.generate(xsd);
+		Collection<EPackage> metaModel = xsdEcoreBuilder.getTargetNamespaceToEPackageMap().values();
+		
+		assertEquals(1, metaModel.size());
+		
+		try {
+			xsd.eResource().delete(null);
+		} catch (IOException e) {
+			Throwables.propagate(e);
+		}
+	}
+
+    private static String readFileAsString(String filePath) throws java.io.IOException{
+        StringBuffer fileData = new StringBuffer(1000);
+        BufferedReader reader = new BufferedReader(
+                new FileReader(filePath));
+        char[] buf = new char[1024];
+        int numRead=0;
+        while((numRead=reader.read(buf)) != -1){
+            String readData = String.valueOf(buf, 0, numRead);
+            fileData.append(readData);
+            buf = new char[1024];
+        }
+        reader.close();
+        return fileData.toString();
+    }
+
 }

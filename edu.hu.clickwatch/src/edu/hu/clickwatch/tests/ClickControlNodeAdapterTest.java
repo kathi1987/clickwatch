@@ -11,7 +11,7 @@ import com.google.inject.Injector;
 
 import edu.hu.clickcontrol.IClickSocket;
 import edu.hu.clickwatch.GuiceModule;
-import edu.hu.clickwatch.XmlUtil;
+import edu.hu.clickwatch.XmlModelRepository;
 import edu.hu.clickwatch.model.Handler;
 import edu.hu.clickwatch.model.Node;
 import edu.hu.clickwatch.nodeadapter.ClickControlNodeAdapter;
@@ -149,7 +149,7 @@ public class ClickControlNodeAdapterTest extends TestCase {
 		checkDefaultNode(node);
 		
 		Handler handler = node.getElements().get(0).getHandlers().get(0); 
-		modelAdapter.updateHandlerValue(handler, XmlUtil.createXMLText("newValue"));
+		modelAdapter.updateHandlerValue(handler, XmlModelRepository.createXMLText("newValue"));
 	}
 	
 	protected Object getNewHandlerValue(String strValue) {

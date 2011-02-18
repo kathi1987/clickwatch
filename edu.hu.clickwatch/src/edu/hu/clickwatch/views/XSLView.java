@@ -37,7 +37,7 @@ import org.eclipse.wst.xsl.ui.internal.StructuredTextViewerConfigurationXSL;
 
 import com.google.common.base.Throwables;
 
-import edu.hu.clickwatch.XmlUtil;
+import edu.hu.clickwatch.XmlModelRepository;
 import edu.hu.clickwatch.model.presentation.ClickWatchModelEditor;
 
 public class XSLView extends ViewPart {
@@ -144,7 +144,7 @@ public class XSLView extends ViewPart {
 			return;
 		}
 		
-		String inputAsString = XmlUtil.serializeXml(input);
+		String inputAsString = XmlModelRepository.serializeXml(input);
 		
 		String evalResult = null;
 		try {
@@ -161,7 +161,7 @@ public class XSLView extends ViewPart {
 		EObject result = null;
 		
 		try {
-			result = XmlUtil.deserializeXml(evalResult);
+			result = XmlModelRepository.deserializeXml(evalResult);
 		} catch (Throwable e) {
 			System.out.println("error: " + e.getMessage());
 			MessageDialog.openError(viewer.getTextWidget().getShell(),
