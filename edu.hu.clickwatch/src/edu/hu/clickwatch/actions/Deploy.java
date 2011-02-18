@@ -1,20 +1,27 @@
 package edu.hu.clickwatch.actions;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.util.Iterator;
 
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
+import org.eclipse.ui.PlatformUI;
 
 import com.google.inject.Guice;
 import com.jcraft.jsch.*;
@@ -103,8 +110,8 @@ public class Deploy implements IObjectActionDelegate {
 		Session session = initSsh(user, host);
 		
 		// copy resource file to remote
-		String lfile = "D:\\tmp\\resource.tar.gz";
-		String rfile = "resource.tar.gz";
+		String lfile = "/tmp/resource.tar.gz";
+		String rfile = lfile;
 		
 		// copy file
 		scpTo(session, lfile, rfile);
@@ -116,16 +123,70 @@ public class Deploy implements IObjectActionDelegate {
 		session.disconnect();
 	}
 	
+	private byte[] readPrivateKeyFromFile(String path) throws IOException {
+		File file = new File(path);
+	    InputStream is = new FileInputStream(file);
+
+	    // Get the size of the file
+	    long length = file.length();
+
+	    // You cannot create an array using a long type.
+	    // It needs to be an int type.
+	    // Before converting to an int type, check
+	    // to ensure that file is not larger than Integer.MAX_VALUE.
+	    if (length > Integer.MAX_VALUE) {
+	        // File is too large
+	    }
+
+	    // Create the byte array to hold the data
+	    byte[] bytes = new byte[(int)length];
+
+	    // Read in the bytes
+	    int offset = 0;
+	    int numRead = 0;
+	    while (offset < bytes.length
+	           && (numRead=is.read(bytes, offset, bytes.length-offset)) >= 0) {
+	        offset += numRead;
+	    }
+
+	    // Ensure all the bytes have been read in
+	    if (offset < bytes.length) {
+	        throw new IOException("Could not completely read file "+file.getName());
+	    }
+
+	    // Close the input stream and return bytes
+	    is.close();
+	    return bytes;
+	}
+
 	///////////////////
 	// SSH handling - init ssh
 	private Session initSsh(String user, String host) throws JSchException {
 		JSch jsch = new JSch();
-		Session session = jsch.getSession(user, host, 22);
+		byte[] prvkey = new byte[0];
+		
+		try {
+			prvkey = readPrivateKeyFromFile("id_dsa");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} // Private key must be byte array
+        
+		final byte[] emptyPassPhrase = new byte[0]; // Empty passphrase for now, get real passphrase from MyUserInfo
+
+        jsch.addIdentity(
+            user,    // String userName
+            prvkey,          // byte[] privateKey 
+            null,            // byte[] publicKey
+            emptyPassPhrase  // byte[] passPhrase
+        );
+
+        Session session = jsch.getSession(user, host, 22);
 
 		// username and password will be given via UserInfo interface.
 		// dirty hack
-		session.setPassword("testbed");
-		jsch.setKnownHosts("C:\\cygwin\\home\\zubow\\.ssh\\known_hosts");
+		// session.setPassword("testbed");
+		jsch.setKnownHosts("known_hosts");
 		session.connect();
 		
 		return session;
