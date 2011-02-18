@@ -1,16 +1,22 @@
 package edu.hu.clickwatch.actions;
 
+import java.io.BufferedInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.URL;
 import java.util.Iterator;
 
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.FileDialog;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IObjectActionDelegate;
@@ -22,6 +28,7 @@ import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.JSchException;
 import com.jcraft.jsch.Session;
 
+import edu.hu.clickwatch.ClickWatchPluginActivator;
 import edu.hu.clickwatch.model.AbstractNodeConnection;
 import edu.hu.clickwatch.model.Node;
 
@@ -31,6 +38,7 @@ import edu.hu.clickwatch.model.Node;
  */
 public class Deploy implements IObjectActionDelegate {
 
+	private Shell shell;
 	private IEditorPart editor = null;
 	private Iterator<Node> node_it;
 
@@ -48,6 +56,7 @@ public class Deploy implements IObjectActionDelegate {
 	public void setActivePart(IAction action, IWorkbenchPart targetPart) {
 		if (targetPart instanceof IEditorPart) {
 			editor = (IEditorPart)targetPart;
+			shell = targetPart.getSite().getShell();
 		}
 	}
 
@@ -96,35 +105,89 @@ public class Deploy implements IObjectActionDelegate {
 	}
 
 	private void deployRemote(String host) throws JSchException, IOException {
+		
+		// select resource for deployment
+		FileDialog fd = new FileDialog(shell, SWT.OPEN);
+        fd.setText("Open");
+        String[] filterExt = { "*.tar", "*.gz", "*.zip", "*.*" };
+        fd.setFilterExtensions(filterExt);
+        String lfile = fd.open();
+        
+        if (lfile == null) {
+        	return;
+        }
+ 		
 		// init ssh
 		String user = "root"; //"testbed";
 		//String host = "192.168.4.117";
 		Session session = initSsh(user, host);
 		
 		// copy resource file to remote
-		String lfile = "D:\\tmp\\resource.tar.gz";
-		String rfile = "resource.tar.gz";
+		//String lfile = "/tmp/resource.tar.gz";
+		String rfile = "/tmp/" + (new File(lfile)).getName();
 		
 		// copy file
 		scpTo(session, lfile, rfile);
 		// execute remote commands
-		String command = "set|grep SSH";
+		String command = "cat /proc/cpuinfo";
 		execRemote(session, command);
 		
 		// close session
 		session.disconnect();
 	}
 	
+	private byte[] readPrivateKeyFromFile(URL url) throws IOException {
+	    InputStream is = url.openStream();
+	    
+	    BufferedInputStream bis = new BufferedInputStream(is);
+	    ByteArrayOutputStream buf = new ByteArrayOutputStream();
+	    int result = bis.read();
+	    while(result != -1) {
+	      byte b = (byte)result;
+	      buf.write(b);
+	      result = bis.read();
+	    }        
+
+	    byte[] bytes = buf.toByteArray();
+	    
+	    // Close the input stream and return bytes
+	    is.close();
+	    return bytes;
+	}
+
 	///////////////////
 	// SSH handling - init ssh
-	private Session initSsh(String user, String host) throws JSchException {
+	private Session initSsh(String user, String host) throws JSchException, IOException {
 		JSch jsch = new JSch();
-		Session session = jsch.getSession(user, host, 22);
+		byte[] prvkey = new byte[0];
+		
+		try {
+			URL url = ClickWatchPluginActivator.getInstance().getBundle().getEntry("res/ssh/id_dsa");
+			prvkey = readPrivateKeyFromFile(url);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} // Private key must be byte array
+        
+		final byte[] emptyPassPhrase = new byte[0]; // Empty passphrase for now, get real passphrase from MyUserInfo
+
+        jsch.addIdentity(
+            user,    // String userName
+            prvkey,          // byte[] privateKey 
+            null,            // byte[] publicKey
+            emptyPassPhrase  // byte[] passPhrase
+        );
+
+        Session session = jsch.getSession(user, host, 22);
 
 		// username and password will be given via UserInfo interface.
 		// dirty hack
-		session.setPassword("testbed");
-		jsch.setKnownHosts("C:\\cygwin\\home\\zubow\\.ssh\\known_hosts");
+		// session.setPassword("testbed");
+        URL url = ClickWatchPluginActivator.getInstance().getBundle().getEntry("res/ssh/known_hosts");
+        InputStream is = url.openStream();
+		jsch.setKnownHosts(is);
+		is.close();
+		
 		session.connect();
 		
 		return session;

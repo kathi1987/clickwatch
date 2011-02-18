@@ -207,6 +207,13 @@ public abstract class AbstractNodeAdapter implements INodeAdapter {
 			return EcoreUtil.copy(internalNodeCopy);	
 		}
 		
+		if (elemFilters == null) {
+			elemFilters = "";
+		}
+		if (handFilter == null) {
+			handFilter = "";
+		}
+		
 		String[] elemFilter = elemFilters.split("/");
 		Iterator<Element> elem_it = internalNodeCopy.getElements().iterator();
 		// recusrive checker
@@ -225,13 +232,11 @@ public abstract class AbstractNodeAdapter implements INodeAdapter {
 			}
 			Iterator<Handler> hand_it = elem.getHandlers().iterator();
 			
-			if (handFilter != null) {
-				while (hand_it.hasNext()) {
-					Handler hand = hand_it.next();
-					if (!java.util.regex.Pattern.compile(handFilter).matcher(hand.getName()).find()) {
-						// does not match; remove it
-						hand_it.remove();
-					}
+			while (hand_it.hasNext()) {
+				Handler hand = hand_it.next();
+				if (!java.util.regex.Pattern.compile(handFilter).matcher(hand.getName()).find()) {
+					// does not match; remove it
+					hand_it.remove();
 				}
 			}
 
