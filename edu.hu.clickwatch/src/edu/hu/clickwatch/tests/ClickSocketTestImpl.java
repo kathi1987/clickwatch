@@ -73,12 +73,12 @@ public abstract class ClickSocketTestImpl implements IClickSocket {
 	}
 	
 	private void delay() {
-		int randomMillisecs = new Random().nextInt(5);
-		try {
-			Thread.sleep(randomMillisecs);
-		} catch (InterruptedException e) {
-			Throwables.propagate(e);
-		}
+//		int randomMillisecs = new Random().nextInt(5);
+//		try {
+//			Thread.sleep(randomMillisecs);
+//		} catch (InterruptedException e) {
+//			Throwables.propagate(e);
+//		}
 	}
 
 	public abstract void handleWrite(String element, String handler, String value);

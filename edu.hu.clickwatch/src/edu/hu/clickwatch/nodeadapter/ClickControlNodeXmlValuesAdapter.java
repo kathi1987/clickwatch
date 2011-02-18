@@ -61,13 +61,19 @@ public class ClickControlNodeXmlValuesAdapter extends AbstractNodeAdapter {
 			String xmlString = serializeXml(xml);
 			xmlString = xmlString.substring(xmlString.indexOf("?>\n") + 3);
 			
+			EcoreUtil.delete(xml, true);
+			
 			return xmlString;
 		}
 		
 		@Override
 		public Object createModelValue(String plainRealValue) {	
 			XMLTypeDocumentRoot xml = deserializeXml("<value>" + plainRealValue + "</value>");
-			return ((XMLTypeDocumentRoot)xml).getMixed().getValue(0);
+			Object result = xml.getMixed().getValue(0); 
+			xml.getMixed().remove(0);
+			EcoreUtil.delete(xml, true);
+			Preconditions.checkNotNull(result);
+			return result;
 		}
 	};
 	

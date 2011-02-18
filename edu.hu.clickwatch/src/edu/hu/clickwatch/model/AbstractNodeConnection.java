@@ -256,7 +256,7 @@ public abstract class AbstractNodeConnection {
 
 	private abstract static class ListUpdater<T> {
 
-		ListUpdater(List<T> oldList, List<T> newList) {
+		void run(List<T> oldList, List<T> newList) {
 			final Map<String, T> oldItemsMap = new HashMap<String, T>();
 			ImmutableSet<String> items = ImmutableSet.copyOf(Lists.transform(
 					oldList, new Function<T, String>() {
@@ -310,19 +310,23 @@ public abstract class AbstractNodeConnection {
 	 */
 	private static class SynchronizedUpdater { //implements Runnable {
 		AbstractNodeConnection connection;
-		Node modelNode;
 		
 		synchronized void update(AbstractNodeConnection connection, Node modelNode, Node newRealNode) {
-			this.modelNode = modelNode;
-			this.connection = connection;
-			
-			new ElementListUpdater(modelNode.getElements(), newRealNode.getElements());
+			this.connection = connection;			
+			new ElementListUpdater(modelNode.getElements()).run(modelNode.getElements(), newRealNode.getElements());
 		}
 		
 		class ElementListUpdater extends ListUpdater<Element> {
 			
-			public ElementListUpdater(List<Element> oldList, List<Element> newList) {
-				super(oldList, newList);
+			final List<Element> modelElements;
+			
+			public ElementListUpdater(List<Element> modelElements) {
+				super();
+				this.modelElements = modelElements;
+			}
+
+			public void run(List<Element> oldList, List<Element> newList) {
+				super.run(oldList, newList);
 			}
 
 			@Override
@@ -332,7 +336,7 @@ public abstract class AbstractNodeConnection {
 
 			@Override
 			protected void addItem(Element newItem) {
-				modelNode.getElements().add(EcoreUtil.copy(newItem));
+				modelElements.add(EcoreUtil.copy(newItem));
 			}
 
 			@Override
@@ -343,12 +347,11 @@ public abstract class AbstractNodeConnection {
 			@Override
 			protected void update(final Element element,
 					final Element updatedElementCopy) {
-				new ElementListUpdater(element.getChildren(), updatedElementCopy.getChildren());
-				new ListUpdater<Handler>(element.getHandlers(),
-						updatedElementCopy.getHandlers()) {
+				new ElementListUpdater(element.getChildren()).run(element.getChildren(), updatedElementCopy.getChildren());
+				new ListUpdater<Handler>() {
 					@Override
 					protected void removeItem(Handler oldItem) {
-						EcoreUtil.delete(oldItem);
+						EcoreUtil.delete(oldItem, true);
 					}
 
 					@Override
@@ -365,7 +368,10 @@ public abstract class AbstractNodeConnection {
 					protected void update(Handler oldItem, Handler newItem) {
 						connection.ensureHandlerIsListening(oldItem);
 						if (newItem.isCanRead()) {
-							if (!connection.getNodeAdapter().getValueRepresentation(newItem).equalsModelValueRealityValue(oldItem.getValue(), newItem.getValue())) {
+							if (!connection.getNodeAdapter().getValueRepresentation(newItem).equalsModelValueRealityValue(
+									connection.getNodeAdapter().getValueRepresentation(oldItem).get(oldItem), 
+									connection.getNodeAdapter().getValueRepresentation(newItem).get(newItem))) {
+								
 								connection.modelChangeListener.disable();
 
 								if (oldItem.isWatch() || ((Element) oldItem.eContainer()).isWatch()) {
@@ -376,7 +382,7 @@ public abstract class AbstractNodeConnection {
 							}
 						}
 					}
-				};
+				}.run(element.getHandlers(), updatedElementCopy.getHandlers());
 			}
 		};
 	}
@@ -409,7 +415,7 @@ public abstract class AbstractNodeConnection {
 					Handler handler = (Handler)notifier;
 					
 					if (getNodeAdapter().getValueRepresentation(handler).isNotificationChangingValue(notification)) {
-						propagateHandlerValueChangeToReality(handler, handler.getValue());
+						propagateHandlerValueChangeToReality(handler, getNodeAdapter().getValueRepresentation(handler).get(handler));
 					}
 					if (ClickWatchModelPackage.eINSTANCE.getHandler_Watch().equals(
 							notification.getFeature())) {

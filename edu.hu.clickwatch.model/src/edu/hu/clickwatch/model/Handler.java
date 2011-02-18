@@ -149,7 +149,7 @@ public interface Handler extends EObject {
 	 * @see #setValue(EObject)
 	 * @see edu.hu.clickwatch.model.ClickWatchModelPackage#getHandler_Value()
 	 * @model containment="true"
-	 *        extendedMetaData="kind='elementWildcard' wildcards='##any' name=':1' processing='lax'"
+	 *        extendedMetaData="kind='elementWildcard' wildcards='##any' name='xml' processing='lax'"
 	 * @generated
 	 */
 	EObject getValue();

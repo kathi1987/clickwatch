@@ -3,6 +3,7 @@ package edu.hu.clickwatch.tests;
 import java.util.ConcurrentModificationException;
 
 import junit.framework.TestCase;
+import click.ControlSocket.HandlerInfo;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
@@ -27,9 +28,12 @@ public class ConnectionTest extends TestCase {
 	
 	@Override
 	public void setUp() {
+		setUp(TestUtil.createClickSocket(10, 1, false));
+	}
+	
+	public void setUp(final IClickSocket clickSocket) {
 		exception = null;
 		exit = 0;
-		final IClickSocket clickSocket = TestUtil.createClickSocket(10, 1, true);
 		injector = Guice.createInjector(new GuiceModule() {
 			@Override
 			public void configure() {
@@ -127,13 +131,56 @@ public class ConnectionTest extends TestCase {
 			runInExtraThread(new Runnable() {
 				@Override
 				public void run() {
-					connection.runUpdate();											
+					connection.runUpdate();
 					exit++;
 				}
 			});
 		}
 		
 		waitForExit(numberOfUpdates);
+	}
+	
+	// the device_wifi/link_stat bug !!!
+	public void testCase42() {
+		setUp(new ClickSocketTestImpl() {			
+			@Override
+			public void handleWrite(String element, String handler, String value) {
+				// emtpy
+			}
+			
+			@Override
+			public String getValue(String element, String handler) {
+				return "<foo><bar>TEXT</bar></foo>";
+			}
+			
+			@Override
+			public HandlerInfo[] getHandler(String element) {
+				return new HandlerInfo[] { new HandlerInfo(element, "h", true, true) };
+			}
+			
+			@Override
+			public String[] getElements() {
+				return new String[] { "device_wifi/link_stat", "device_wifi/foo", "bar"};
+			}
+		});
+		
+		final Node node = createNode();
+		final NodeConnectionTestImpl connection = injector.getInstance(NodeConnectionTestImpl.class);
+		connection.setUp(node);
+		connection.connect(null);
+		connection.getNodeAdapter().connect();
+		
+		network.setElementFilter("device_wifi/link_stat");
+		connection.runUpdate();
+		
+		assertEquals(1, node.getElements().size());
+		assertEquals(1, node.getElements().get(0).getChildren().size());
+		
+		network.setElementFilter("");
+		connection.runUpdate();
+		
+		assertEquals(2, node.getElements().size());
+		assertEquals(2, node.getElements().get(0).getChildren().size());
 	}
 	
 	private void runInExtraThread(final Runnable runnable) {

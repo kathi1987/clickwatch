@@ -124,7 +124,6 @@ public class XmlUtilTest extends TestCase {
 	
 		Map<String, Object> options = new HashMap<String, Object>();
 		options.put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);
-		// options.put(XMLResource.OPTION_RECORD_UNKNOWN_FEATURE, Boolean.TRUE);
 		options.put(XMLResource.OPTION_ENCODING, "UTF-8");
 		
 		try {

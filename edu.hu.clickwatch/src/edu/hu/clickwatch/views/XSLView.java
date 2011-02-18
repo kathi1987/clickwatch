@@ -181,7 +181,7 @@ public class XSLView extends ViewPart {
 				if (view instanceof ResultView) {
 					((ResultView)view).setInput(result);
 					if (currentResult != null) {
-						EcoreUtil.delete(currentResult);			
+						EcoreUtil.delete(currentResult, true);			
 					}
 					currentResult = result;
 				}
