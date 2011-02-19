@@ -52,10 +52,14 @@ public abstract class AbstractNodeAdapter implements INodeAdapter {
 		Preconditions.checkNotNull(host);
 
 		try {
+			InetAddress dst = InetAddress.getByName(host);
+			if (!dst.isReachable(4000)) { // wait at most 4s
+				throw new IOException("ICMP requesting failed; node seems to be down.");
+			}
 			cs.connect(InetAddress.getByName(host), new Integer(port));
 			isConnected = true;
 		} catch (IOException e) {
-			Throwables.propagate(e);
+			Throwables.propagate(new IOException("Connecting to Click chatter socket failed; click seems to be not running." + e.getMessage()));
 		}
 
 		System.out.println("Connected to " + host);

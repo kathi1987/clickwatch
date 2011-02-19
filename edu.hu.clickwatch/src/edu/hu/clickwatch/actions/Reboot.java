@@ -47,10 +47,10 @@ import edu.hu.clickwatch.model.Node;
 import edu.hu.clickwatch.util.SshConnectionFactory;
 
 /**
- * Deploy a new Click configuration to remote nodes via ssh.
+ * Reboot a network node via ssh.
  * @author zubow
  */
-public class Deploy implements IObjectActionDelegate {
+public class Reboot implements IObjectActionDelegate {
 
 	public final static String SSH_USER = "root";
 	
@@ -61,7 +61,7 @@ public class Deploy implements IObjectActionDelegate {
 	/**
 	 * Constructor for Action1.
 	 */
-	public Deploy() {
+	public Reboot() {
 		super();
 	}
 
@@ -85,20 +85,9 @@ public class Deploy implements IObjectActionDelegate {
 			return;
 		}
 		
-		// select resource for deployment
-		FileDialog fd = new FileDialog(shell, SWT.OPEN);
-        fd.setText("Open");
-        String[] filterExt = { "*.bz2", "*.tar", "*.gz", "*.zip", "*.dat", "*.*" };
-        fd.setFilterExtensions(filterExt);
-        String lfile = fd.open();
-        
-        if (lfile == null) {
-        	return;
-        }
-
         Iterator<Node> node_it = node_lst.iterator();
 		//
-        // Step 1: prepare, copy and unpack router conf
+        // disconnect if connected & reboot node
 		while (node_it.hasNext()) {
 			Node node = node_it.next();
 
@@ -110,24 +99,9 @@ public class Deploy implements IObjectActionDelegate {
 			}
 			
 			// remote deploy
-			System.out.println("deploying on node " + node.getINetAdress() + " called.");
+			System.out.println("reboot on node " + node.getINetAdress() + " called.");
 			try {
-				deployRemote(node.getINetAdress(), lfile);
-			} catch (Exception e) {
-				System.err.println("ErrorMsg:" + e.getMessage());
-				MessageDialog.openError(editor.getSite().getShell(), "Clickwatch Error", "ErrorMsg:" + e.getMessage());			}
-		}
-
-        node_it = node_lst.iterator();
-		//
-        // Step 2: start router conf
-		while (node_it.hasNext()) {
-			Node node = node_it.next();
-
-			// remote deploy
-			System.out.println("starting on node " + node.getINetAdress() + " called.");
-			try {
-				startRemote(node.getINetAdress());
+				rebootRemote(node.getINetAdress());
 			} catch (Exception e) {
 				System.err.println("ErrorMsg:" + e.getMessage());
 				MessageDialog.openError(editor.getSite().getShell(), "Clickwatch Error", "ErrorMsg:" + e.getMessage());			}
@@ -148,53 +122,16 @@ public class Deploy implements IObjectActionDelegate {
 		}
 	}
 
-	private void deployRemote(String host, String lfile) throws Exception {
+	private void rebootRemote(String host) throws Exception {
 		
 		// init ssh
 		Session session = SshConnectionFactory.getInstance().createSession(SSH_USER, host);
 
 		// clean-up old
-		long startTime = System.currentTimeMillis();
-		String command = "rm -rf /tmp/seismo";
-		StringBuffer logMsg = SshConnectionFactory.getInstance().execRemote(session, command, "Cleanup router conf on node " + host, shell);
-		log2Sout(logMsg.append("\n").append("Clean-up executed in ").append((System.currentTimeMillis() - startTime) / 1000).append(" sec"));
+		String command = "reboot";
+		StringBuffer logMsg = SshConnectionFactory.getInstance().execRemote(session, command, "Rebooting node " + host, shell);
+		log2Sout(logMsg);
 		
-		// copy resource file to remote
-		String lFileUnqualified = (new File(lfile)).getName();
-		String rfile = "/tmp/" + lFileUnqualified;
-		
-		// copy file
-		startTime = System.currentTimeMillis();
-		SshConnectionFactory.getInstance().scpTo(session, lfile, rfile, "Uploading router conf on node " + host, shell);
-		System.out.println("Copy file executed in " + ((System.currentTimeMillis() - startTime) / 1000) + " sec");
-		
-		// unpack
-		startTime = System.currentTimeMillis();
-		command = "(cd /tmp/; bzcat " + lFileUnqualified + " | tar xvf - )";
-		logMsg = SshConnectionFactory.getInstance().execRemote(session, command, "Unpacking router conf on node " + host, shell);
-		log2Sout(logMsg.append("\n").append("Unpacking executed in ").append((System.currentTimeMillis() - startTime) / 1000).append(" sec"));
-		
-		// close session
-		SshConnectionFactory.getInstance().closeSession(session);
-	}
-	
-	private void startRemote(String host) throws Exception {
-		
-		// init ssh
-		Session session = SshConnectionFactory.getInstance().createSession(SSH_USER, host);
-
-		// start
-		long startTime = System.currentTimeMillis();
-		String command = "(cd /tmp/seismo; ./bin/seismo.sh delaystart )";
-		StringBuffer logMsg = SshConnectionFactory.getInstance().execRemote(session, command, "Starting router conf on node " + host, shell);
-		log2Sout(logMsg.append("\n").append("Starting executed in ").append((System.currentTimeMillis() - startTime) / 1000).append(" sec"));
-		
-		// check log file after sleeping for 5 seconds
-		startTime = System.currentTimeMillis();
-		command = "(sleep 5; cd /tmp; cat seismo_brn.log )";
-		logMsg = SshConnectionFactory.getInstance().execRemote(session, command, "Fetching log file from node " + host, shell);
-		log2Sout(logMsg.append("\n").append("Fetching log-file executed in ").append((System.currentTimeMillis() - startTime) / 1000).append(" sec"));
-
 		// close session
 		SshConnectionFactory.getInstance().closeSession(session);
 	}

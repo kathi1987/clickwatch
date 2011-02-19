@@ -27,6 +27,13 @@
                label="Deploy"
                menubarPath="additions">
          </action>
+         <action
+               class="edu.hu.clickwatch.actions.Reboot"
+               enablesFor="+"
+               id="edu.hu.clickwatch.rebootAction"
+               label="Reboot"
+               menubarPath="additions">
+         </action>
       </objectContribution>
       <objectContribution
             id="edu.hu.clickwatch.NetworkContribution"
