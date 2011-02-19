@@ -5,6 +5,7 @@ import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -96,6 +97,18 @@ public class Deploy implements IObjectActionDelegate {
         	return;
         }
 
+        //
+        // Step 0: calc MD5 checksum
+        String md5cs = "";
+        FileInputStream fis;
+		try {
+			fis = new FileInputStream( new File(lfile) );
+	        md5cs = org.apache.commons.codec.digest.DigestUtils.md5Hex( fis );
+		} catch (Exception e1) {
+			System.err.println("ErrorMsg:" + e1.getMessage());
+			MessageDialog.openError(editor.getSite().getShell(), "Clickwatch Error", "ErrorMsg:" + e1.getMessage());
+		}
+        
         Iterator<Node> node_it = node_lst.iterator();
 		//
         // Step 1: prepare, copy and unpack router conf
@@ -112,7 +125,7 @@ public class Deploy implements IObjectActionDelegate {
 			// remote deploy
 			System.out.println("deploying on node " + node.getINetAdress() + " called.");
 			try {
-				deployRemote(node.getINetAdress(), lfile);
+				deployRemote(node.getINetAdress(), lfile, md5cs);
 			} catch (Exception e) {
 				System.err.println("ErrorMsg:" + e.getMessage());
 				MessageDialog.openError(editor.getSite().getShell(), "Clickwatch Error", "ErrorMsg:" + e.getMessage());			}
@@ -148,25 +161,29 @@ public class Deploy implements IObjectActionDelegate {
 		}
 	}
 
-	private void deployRemote(String host, String lfile) throws Exception {
+	private void deployRemote(String host, String lfile, String md5cs) throws Exception {
 		
 		// init ssh
 		Session session = SshConnectionFactory.getInstance().createSession(SSH_USER, host);
 
-		// clean-up old
-		long startTime = System.currentTimeMillis();
-		String command = "rm -rf /tmp/seismo";
-		StringBuffer logMsg = SshConnectionFactory.getInstance().execRemote(session, command, "Cleanup router conf on node " + host, shell);
-		log2Sout(logMsg.append("\n").append("Clean-up executed in ").append((System.currentTimeMillis() - startTime) / 1000).append(" sec"));
-		
-		// copy resource file to remote
 		String lFileUnqualified = (new File(lfile)).getName();
 		String rfile = "/tmp/" + lFileUnqualified;
 		
-		// copy file
-		startTime = System.currentTimeMillis();
-		SshConnectionFactory.getInstance().scpTo(session, lfile, rfile, "Uploading router conf on node " + host, shell);
-		System.out.println("Copy file executed in " + ((System.currentTimeMillis() - startTime) / 1000) + " sec");
+		// clean-up old
+		long startTime = System.currentTimeMillis();
+		String command = "rm -rf /tmp/seismo; md5sum " + rfile + " | awk '{ print $1 }'";
+		StringBuffer logMsg = SshConnectionFactory.getInstance().execRemote(session, command, "Cleanup router conf on node " + host, shell);
+		log2Sout(logMsg.append("\n").append("Clean-up executed in ").append((System.currentTimeMillis() - startTime) / 1000).append(" sec"));
+		
+		// compare checksum
+		if (logMsg.toString().indexOf(md5cs) > -1) {
+			System.out.println("There is already a file with the same MD5 checksum; skip copying ... ");
+		} else {
+			// copy resource file to remote
+			startTime = System.currentTimeMillis();
+			SshConnectionFactory.getInstance().scpTo(session, lfile, rfile, "Uploading router conf on node " + host, shell);
+			System.out.println("Copy file executed in " + ((System.currentTimeMillis() - startTime) / 1000) + " sec");
+		}
 		
 		// unpack
 		startTime = System.currentTimeMillis();

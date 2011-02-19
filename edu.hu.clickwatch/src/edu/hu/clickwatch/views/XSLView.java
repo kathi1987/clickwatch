@@ -1,5 +1,7 @@
 package edu.hu.clickwatch.views;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.StringReader;
 import java.io.StringWriter;
 
@@ -24,6 +26,7 @@ import org.eclipse.jface.text.source.ISourceViewer;
 import org.eclipse.jface.text.source.SourceViewerConfiguration;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IViewPart;
@@ -44,6 +47,8 @@ public class XSLView extends ViewPart {
 	
 	private ISourceViewer viewer = null;
 	private Action evaluate = null;
+	private Action validate = null;
+	private Action load = null;
 	private EObject currentResult = null;
 	
 	// XSLT transformer
@@ -94,23 +99,84 @@ public class XSLView extends ViewPart {
 	}
 
 	private void fillLocalPullDown(IMenuManager manager) {
+		manager.add(load);
+		manager.add(validate);
 		manager.add(evaluate);
 	}
 
 	private void fillLocalToolBar(IToolBarManager manager) {
+		manager.add(load);
+		manager.add(validate);
 		manager.add(evaluate);
 	}
 	
 	private void makeActions() {
+		load = new Action() {
+			public void run() {
+				load();
+			}
+		};
+		load.setText("Load");
+		load.setToolTipText("Load XSL stylesheet from file");
+
+		validate = new Action() {
+			public void run() {
+				validate();
+			}
+		};
+		validate.setText("Validate");
+		validate.setToolTipText("Validate XSL stylesheet");
+
 		evaluate = new Action() {
 			public void run() {
 				evaluate();
 			}
 		};
-		evaluate.setText("Evaluate");
-		evaluate.setToolTipText("Evaluate XSL on current Network model");
+		evaluate.setText("Perform XSLT");
+		evaluate.setToolTipText("Perform XSL transformation on current Network model");
 	}
 
+	private void load() {
+
+		// select resource for deployment
+		FileDialog fd = new FileDialog(viewer.getTextWidget().getShell(), SWT.OPEN);
+        fd.setText("Open");
+        String[] filterExt = { "*.xsl", "*.xslt", "*.*" };
+        fd.setFilterExtensions(filterExt);
+        String lfile = fd.open();
+        
+        if (lfile == null) {
+        	return;
+        }
+
+        try {
+	        String fileContent = readFileAsString(lfile);
+	        viewer.getDocument().set(fileContent);
+        } catch (Exception e) {
+			System.out.println("error: " + e.getMessage());
+			MessageDialog.openError(viewer.getTextWidget().getShell(),
+					"Exception", "Exception " + e.getClass().getName()
+							+ " occured: " + e.getMessage());
+			return;
+        }
+    }
+
+	private void validate() {
+		String xsl = viewer.getDocument().get();
+
+		try {
+			Source xsltSource = new StreamSource(new StringReader(xsl));
+		    Transformer trans = transFact.newTransformer(xsltSource);
+		} catch (Throwable e) {
+			// TODO error
+			System.out.println("error: " + e.getMessage());
+			MessageDialog.openError(viewer.getTextWidget().getShell(),
+					"Validation failed", "Exception " + e.getClass().getName()
+							+ " occured: " + e.getMessage());
+			return;
+		}
+	}
+	
 	private void evaluate() {
 		IEditorPart activeEditor = getViewSite().getPage().getActiveEditor();
 		if (!(activeEditor instanceof ClickWatchModelEditor)) {
@@ -190,7 +256,6 @@ public class XSLView extends ViewPart {
 	}
 
 	private void initXslProcessor() {
-		
 	    // create an instance of TransformerFactory
 	    transFact = TransformerFactory.newInstance();
 	}
@@ -230,4 +295,19 @@ public class XSLView extends ViewPart {
 		
 		return resStr;
 	}
+
+    private static String readFileAsString(String filePath) throws java.io.IOException {
+        StringBuffer fileData = new StringBuffer(1000);
+        BufferedReader reader = new BufferedReader(
+                new FileReader(filePath));
+        char[] buf = new char[1024];
+        int numRead=0;
+        while((numRead=reader.read(buf)) != -1){
+            String readData = String.valueOf(buf, 0, numRead);
+            fileData.append(readData);
+            buf = new char[1024];
+        }
+        reader.close();
+        return fileData.toString();
+    }
 }

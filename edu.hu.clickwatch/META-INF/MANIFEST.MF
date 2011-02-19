@@ -27,5 +27,6 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: edu.hu.clickwatch
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: jsch-20110217.jar,
+ commons-codec-1.4.jar,
  .
 Bundle-Activator: edu.hu.clickwatch.ClickWatchPluginActivator
