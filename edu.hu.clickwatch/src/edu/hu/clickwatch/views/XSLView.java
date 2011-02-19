@@ -1,7 +1,10 @@
 package edu.hu.clickwatch.views;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.PrintWriter;
 import java.io.StringReader;
 import java.io.StringWriter;
 
@@ -49,6 +52,7 @@ public class XSLView extends ViewPart {
 	private Action evaluate = null;
 	private Action validate = null;
 	private Action load = null;
+	private Action save = null;
 	private EObject currentResult = null;
 	
 	// XSLT transformer
@@ -100,12 +104,14 @@ public class XSLView extends ViewPart {
 
 	private void fillLocalPullDown(IMenuManager manager) {
 		manager.add(load);
+		manager.add(save);
 		manager.add(validate);
 		manager.add(evaluate);
 	}
 
 	private void fillLocalToolBar(IToolBarManager manager) {
 		manager.add(load);
+		manager.add(save);
 		manager.add(validate);
 		manager.add(evaluate);
 	}
@@ -118,6 +124,14 @@ public class XSLView extends ViewPart {
 		};
 		load.setText("Load");
 		load.setToolTipText("Load XSL stylesheet from file");
+
+		save = new Action() {
+			public void run() {
+				save();
+			}
+		};
+		save.setText("Save");
+		save.setToolTipText("Save XSL stylesheet to file");
 
 		validate = new Action() {
 			public void run() {
@@ -136,12 +150,36 @@ public class XSLView extends ViewPart {
 		evaluate.setToolTipText("Perform XSL transformation on current Network model");
 	}
 
+	private void save() {
+
+        FileDialog fd = new FileDialog(viewer.getTextWidget().getShell(), SWT.SAVE);
+        fd.setText("Save");
+        fd.setFilterPath("D:/");
+        String[] filterExt = { "*.xslt", "*.xsl", "*.*" };
+        fd.setFilterExtensions(filterExt);
+        String selFile = fd.open();
+        System.out.println(selFile);
+        
+        try {
+			PrintWriter out = new PrintWriter(new File(selFile));
+	        String content = viewer.getDocument().get();
+	        out.write(content);
+	        out.close();
+		} catch (FileNotFoundException e) {
+			System.out.println("error: " + e.getMessage());
+			MessageDialog.openError(viewer.getTextWidget().getShell(),
+					"Exception", "Exception " + e.getClass().getName()
+							+ " occured: " + e.getMessage());
+			return;
+		}
+	}
+	
 	private void load() {
 
 		// select resource for deployment
 		FileDialog fd = new FileDialog(viewer.getTextWidget().getShell(), SWT.OPEN);
         fd.setText("Open");
-        String[] filterExt = { "*.xsl", "*.xslt", "*.*" };
+        String[] filterExt = { "*.xslt", "*.xsl", "*.*" };
         fd.setFilterExtensions(filterExt);
         String lfile = fd.open();
         
