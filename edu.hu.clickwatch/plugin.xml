@@ -7,10 +7,10 @@
             id="edu.hu.clickwatch.NodeContribution"
             objectClass="edu.hu.clickwatch.model.Node">
          <action
-               class="edu.hu.clickwatch.actions.Connect"
+               class="edu.hu.clickwatch.actions.Reboot"
                enablesFor="+"
-               id="edu.hu.clickwatch.connectAction"
-               label="Connect"
+               id="edu.hu.clickwatch.rebootAction"
+               label="Reboot"
                menubarPath="additions">
          </action>
          <action
@@ -25,6 +25,13 @@
                enablesFor="+"
                id="edu.hu.clickwatch.deployAction"
                label="Deploy"
+               menubarPath="additions">
+         </action>
+         <action
+               class="edu.hu.clickwatch.actions.Connect"
+               enablesFor="+"
+               id="edu.hu.clickwatch.connectAction"
+               label="Connect"
                menubarPath="additions">
          </action>
       </objectContribution>
