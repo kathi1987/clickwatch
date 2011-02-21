@@ -4,12 +4,20 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EcoreFactory;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 
+import click.ControlSocket.HandlerInfo;
+
+import com.google.common.base.Preconditions;
 import com.google.common.base.Throwables;
 import com.google.inject.Inject;
 
+import edu.hu.clickwatch.XmlModelRepository;
+import edu.hu.clickwatch.model.ClickWatchModelPackage;
 import edu.hu.clickwatch.model.Element;
 import edu.hu.clickwatch.model.Handler;
 
@@ -17,6 +25,9 @@ public class ClickControlXSDNodeAdapter extends AbstractNodeAdapter {
 	
 	@Inject
 	private DefaultXmlValueRepresentation defaultXmlValueRep;
+	
+	@Inject
+	private XmlModelRepository xmlModelRepository;
 	
 	public static final String XSD_HANDLER_NAME = "schema";
 	
@@ -36,58 +47,91 @@ public class ClickControlXSDNodeAdapter extends AbstractNodeAdapter {
 		
 		@Override
 		public void set(Handler handler, Object value) {
-			// TODO Auto-generated method stub			
+			Preconditions.checkArgument(value instanceof EObject);
+			handler.setValue((EObject)value);
 		}
 		
 		@Override
 		public boolean isNotificationChangingValue(Notification notification) {
-			// TODO Auto-generated method stub
-			return false;
+			if (notification.getNotifier() instanceof Handler) {
+				return notification.getFeature() == ClickWatchModelPackage.eINSTANCE.getHandler_Value();
+			} else {
+				return true;
+			}
 		}
 		
 		@Override
 		public Object get(Handler handler) {
-			// TODO Auto-generated method stub
-			return null;
+			return handler.getValue();
 		}
 		
 		@Override
 		public boolean equalsModelValueRealityValue(Object modelValue,
 				Object realValue) {
-			// TODO Auto-generated method stub
-			return false;
+			Preconditions.checkArgument(modelValue instanceof EObject);
+			Preconditions.checkArgument(realValue instanceof EObject);
+			
+			String modelXml = xmlModelRepository.getOriginalXml((EObject)modelValue);
+			String realXml = xmlModelRepository.getOriginalXml((EObject)modelValue);
+			
+			if (modelXml != null && realXml != null) {
+				return modelXml.equals(realXml);
+			} else {
+				return xmlModelRepository.serializeModel(metaModel, (EObject)modelValue).
+						equals(xmlModelRepository.serializeModel(metaModel, (EObject)realValue));
+			}
 		}
 		
 		@Override
 		public String createPlainRealValue(Object modelValue) {
-			// TODO Auto-generated method stub
-			return null;
+			return xmlModelRepository.serializeModel(metaModel, (EObject)modelValue);
 		}
 		
 		@Override
 		public Object createModelValue(String plainRealValue) {
-			// TODO Auto-generated method stub
-			return null;
+			EObject documentRoot = xmlModelRepository.deserializeModel(metaModel, plainRealValue);
+			EObject result = documentRoot.eContents().get(0);
+			EcoreUtil.remove(result);
+			EcoreUtil.delete(documentRoot, true);
+			return result;
 		}
 	};
 	
 	private EPackage getMetaModelFromXSD(Element element) {
-		EPackage result = metaModelsForElementPaths.get(element.getElementPath());
+		String elementPath = element.getElementPath();
+		EPackage result = metaModelsForElementPaths.get(elementPath);
 		if (result == null) {
-			String xsd = readXSD(element);	
-			// TODO
+			String xsdStr = readXSD(element);	
+			if (xsdStr == null) {
+				result = NULL_PACKAGE;
+			} else {
+				URI xsdUri = URI.createURI(elementPath + ".xsd"); // URI decides whether nodes share xsd or not
+				result = xmlModelRepository.loadMetaModelFromXSD(xsdUri, xsdStr);
+			}
+			metaModelsForElementPaths.put(elementPath, result);
 		}
 		return result;		
 	}
 	
 	private String readXSD(Element element) {
-		String xsd = null;
 		try {
-			xsd = new String(getClickSocket().read(element.getElementPath(), XSD_HANDLER_NAME));
+			boolean hasXsd = false;
+			String elementPath = element.getElementPath();
+			for(HandlerInfo hi: getClickSocket().getElementHandlers(elementPath)) {
+				if (hi.getHandlerName().equals(XSD_HANDLER_NAME)) {
+					hasXsd = true;
+				}
+			}
+			
+			if (hasXsd) {
+				return new String(getClickSocket().read(elementPath, XSD_HANDLER_NAME));
+			} else {
+				return null;
+			}
 		} catch (Throwable e) {
 			Throwables.propagate(e);
+			return null;
 		}
-		return xsd;
 	}
 
 	@Override
@@ -95,11 +139,15 @@ public class ClickControlXSDNodeAdapter extends AbstractNodeAdapter {
 		IExtendedValueRepresentation result = valueReps.get(handler);
 		if (result == null) {
 			Element element = (Element)handler.eContainer();
-			EPackage metaModel = getMetaModelFromXSD(element);
+			EPackage metaModel = getMetaModelFromXSD(element);			
 			if (metaModel == NULL_PACKAGE) {
 				result = defaultXmlValueRep;
 			} else {
-				result = new XSDValueRepresentation(metaModel);
+				if (XSD_HANDLER_NAME.equals(handler.getName())) {
+					result = new ConstantValueRepresentation(metaModel);
+				} else {
+					result = new XSDValueRepresentation(metaModel);
+				}
 			}
 			valueReps.put(handler, result);
 		} 

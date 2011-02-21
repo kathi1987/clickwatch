@@ -1,19 +1,22 @@
 package edu.hu.clickwatch.tests;
 
-import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 import junit.framework.TestCase;
 
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EClassifier;
+import org.eclipse.emf.ecore.EFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
@@ -40,6 +43,9 @@ import edu.hu.clickwatch.model.Network;
 import edu.hu.clickwatch.model.Node;
 
 public class XmlModelRepositoryTest extends TestCase {
+	
+	public final static String LINK_STAT_XSD = "src/" + XmlModelRepositoryTest.class.getPackage().getName().replace(".", "/") + "/link_stat.xsd";
+	public final static String LINK_STAT_XML = "src/" + XmlModelRepositoryTest.class.getPackage().getName().replace(".", "/") + "/link_stat_test.xml";
 	
 	private XmlModelRepository xmlModelRepository = null;
 
@@ -127,8 +133,8 @@ public class XmlModelRepositoryTest extends TestCase {
 		System.out.println(baos.toString());
 	}
 	
-	public void testTryXDS() {
-		Collection<EObject> xsd = new XSDEcoreBuilder().generate(URI.createFileURI("/Users/markus/Downloads/link_stat.xsd"));
+	public void testBasicXDS() {
+		Collection<EObject> xsd = new XSDEcoreBuilder().generate(URI.createFileURI(LINK_STAT_XSD));
 		Collection<EPackage> xsdPackages = Collections2.transform(xsd, new Function<EObject, EPackage>() {
 			@Override
 			public EPackage apply(EObject input) {
@@ -141,7 +147,7 @@ public class XmlModelRepositoryTest extends TestCase {
 			rs.getPackageRegistry().put(ePackage.getNsURI(), ePackage);
 		}
 		
-		Resource xmlResource = rs.createResource(URI.createFileURI("/Users/markus/Downloads/test.xml"));
+		Resource xmlResource = rs.createResource(URI.createFileURI(LINK_STAT_XML));
 	
 		Map<String, Object> options = new HashMap<String, Object>();
 		options.put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);
@@ -152,13 +158,19 @@ public class XmlModelRepositoryTest extends TestCase {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
+		EObject model = xmlResource.getContents().get(0);
+		Iterator<EObject> it = model.eAllContents();
+		while (it.hasNext()) {
+			assertTrue(! (it.next() instanceof AnyType));
+		}	
 	}
 	
 	public void testDeserializeXSD() {
-		URI uri = URI.createFileURI("/Users/markus/Downloads/link_stat.xsd");
+		URI uri = URI.createFileURI(LINK_STAT_XSD);
 		String xsdStr = null;
 		try {
-			xsdStr = readFileAsString(uri.toFileString());
+			xsdStr = TestUtil.readFileAsString(uri.toFileString());
 		} catch (IOException e) {
 			Throwables.propagate(e);
 		}
@@ -172,20 +184,42 @@ public class XmlModelRepositoryTest extends TestCase {
 		
 		assertEquals(1, metaModel.size());
 	}
-
-    private static String readFileAsString(String filePath) throws java.io.IOException{
-        StringBuffer fileData = new StringBuffer(1000);
-        BufferedReader reader = new BufferedReader(
-                new FileReader(filePath));
-        char[] buf = new char[1024];
-        int numRead=0;
-        while((numRead=reader.read(buf)) != -1){
-            String readData = String.valueOf(buf, 0, numRead);
-            fileData.append(readData);
-            buf = new char[1024];
-        }
-        reader.close();
-        return fileData.toString();
-    }
+	
+	public void testXSD() throws IOException {
+		EPackage metaModel = xmlModelRepository.loadMetaModelFromXSD(URI.createFileURI(LINK_STAT_XSD), 
+				TestUtil.readFileAsString(LINK_STAT_XSD));
+		
+		for (EClassifier eClassifier: metaModel.getEClassifiers()) {
+			if (eClassifier instanceof EClass) {
+				assertTrue(!eClassifier.getName().contains(" Type"));
+			}
+		}
+		
+		EObject result = xmlModelRepository.deserializeModel(metaModel, TestUtil.readFileAsString(LINK_STAT_XML));
+		
+		assertNotNull(result);
+		assertTrue(result.eClass().getEPackage().getName().equals(metaModel.getName()));
+		
+		EFactory factory = metaModel.getEFactoryInstance();
+		EObject documentRoot = factory.create((EClass)metaModel.getEClassifier("DocumentRoot"));
+		
+		EStructuralFeature xMLNSPrefixMapFeature = documentRoot.eClass().getEStructuralFeature("xMLNSPrefixMap");
+		documentRoot.eSet(xMLNSPrefixMapFeature, result.eGet(xMLNSPrefixMapFeature));
+		
+		EStructuralFeature xSISchemaLocation = documentRoot.eClass().getEStructuralFeature("xSISchemaLocation");
+		documentRoot.eSet(xSISchemaLocation, result.eGet(xSISchemaLocation));
+		
+		String featureName = result.eContents().get(0).eContents().get(0).eContainmentFeature().getName();
+		documentRoot.eSet(documentRoot.eClass().getEStructuralFeature(featureName), result.eContents().get(0).eContents().get(0));
+		
+		String serializedResult = xmlModelRepository.serializeModel(metaModel, documentRoot);
+		System.out.println(serializedResult);
+		result = xmlModelRepository.deserializeModel(metaModel, serializedResult);
+		
+		Iterator<EObject> it = result.eAllContents();
+		while (it.hasNext()) {
+			assertTrue(! (it.next() instanceof AnyType));
+		}	
+	}
 
 }

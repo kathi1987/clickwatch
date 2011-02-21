@@ -91,7 +91,7 @@
       </view>
             <view
             category="edu.hu.clickwatch.viewCategory"
-            class="edu.hu.clickwatch.views.ResultView"
+            class="edu.hu.clickwatch.GuiceAwareExecutableExtensionFactory:edu.hu.clickwatch.views.ResultView"
             icon="/icons/sample.gif"
             id="edu.hu.clickwatch.ResultView"
             name="Results"

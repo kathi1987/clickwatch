@@ -31,7 +31,6 @@ import com.jcraft.jsch.Session;
 import edu.hu.clickwatch.ClickWatchPluginActivator;
 import edu.hu.clickwatch.model.AbstractNodeConnection;
 import edu.hu.clickwatch.model.Node;
-
 /**
  * Deploy a new Click configuration to remote nodes via ssh.
  * @author zubow
