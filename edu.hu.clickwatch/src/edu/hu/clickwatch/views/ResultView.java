@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
 import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory;
@@ -21,6 +22,7 @@ import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.part.ViewPart;
 
+import edu.hu.clickwatch.XmlUtil;
 import edu.hu.clickwatch.model.provider.ClickWatchModelItemProviderAdapterFactory;
 
 public class ResultView extends ViewPart {
@@ -75,36 +77,34 @@ public class ResultView extends ViewPart {
 	private void makeActions() {
 		save = new Action() {
 			public void run() {
-				//save();
+				save();
 			}
 		};
 		save.setText("Save");
 		save.setToolTipText("Save XSL stylesheet to file");
 	}
 
-/*	
 	private void save() {
 
-        FileDialog fd = new FileDialog(viewer.getTextWidget().getShell(), SWT.SAVE);
+        FileDialog fd = new FileDialog(treeViewer.getTree().getShell(), SWT.SAVE);
         fd.setText("Save");
         fd.setFilterPath("D:/");
-        String[] filterExt = { "*.xslt", "*.xsl", "*.*" };
+        String[] filterExt = { "*.xml", "*.*" };
         fd.setFilterExtensions(filterExt);
         String selFile = fd.open();
         System.out.println(selFile);
         
         try {
 			PrintWriter out = new PrintWriter(new File(selFile));
-	        String content = viewer.getDocument().get();
+	        String content = XmlUtil.serializeXml((EObject)(treeViewer.getInput()));
 	        out.write(content);
 	        out.close();
 		} catch (FileNotFoundException e) {
 			System.out.println("error: " + e.getMessage());
-			MessageDialog.openError(viewer.getTextWidget().getShell(),
+			MessageDialog.openError(treeViewer.getTree().getShell(),
 					"Exception", "Exception " + e.getClass().getName()
 							+ " occured: " + e.getMessage());
 			return;
 		}
 	}
-*/
 }
