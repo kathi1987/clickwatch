@@ -20,9 +20,6 @@ import org.eclipse.emf.ecore.EFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.EcoreFactory;
-import org.eclipse.emf.ecore.impl.DynamicEObjectImpl.BasicEMapEntry;
-import org.eclipse.emf.ecore.util.EcoreEMap;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xsd.XSDSchema;
 import org.eclipse.xsd.ecore.XSDEcoreBuilder;
@@ -30,7 +27,6 @@ import org.eclipse.xsd.ecore.XSDEcoreBuilder;
 import click.ControlSocket.HandlerInfo;
 
 import com.google.common.base.Throwables;
-import com.google.inject.Inject;
 
 import edu.hu.clickwatch.ClickWatchPluginActivator;
 import edu.hu.clickwatch.XmlModelRepository;
@@ -78,9 +74,7 @@ public class ClickSocketXSDDummy extends ClickSocketTestImpl {
 				documentRoot.eSet(xSISchemaLocation, copyEMapXSISchemaLoction);
 				documentRoot.eSet(contentFeature, content);
 				String serializedHandlerValue = xmlModelRepository.serializeModel(metaModel, documentRoot);
-				handlerXml.put(name, serializedHandlerValue);
-				
-				System.out.println(serializedHandlerValue); // TODO KLAPPT NUR BEIM ERSTEN
+				handlerXml.put(name, serializedHandlerValue);		
 			}
 			handlerXml.put(ClickControlXSDNodeAdapter.XSD_HANDLER_NAME, schemaStr);
 		}
