@@ -13,6 +13,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -109,7 +110,11 @@ public class Deploy implements IObjectActionDelegate {
 			MessageDialog.openError(editor.getSite().getShell(), "Clickwatch Error", "ErrorMsg:" + e1.getMessage());
 		}
         
+		// show log files only for single node deployment
+		boolean show_log = (node_lst.size() == 1) ? true : false;
+		
         Iterator<Node> node_it = node_lst.iterator();
+        List<Boolean> mask = new ArrayList<Boolean>();
 		//
         // Step 1: prepare, copy and unpack router conf
 		while (node_it.hasNext()) {
@@ -122,28 +127,41 @@ public class Deploy implements IObjectActionDelegate {
 				oldConnection.disconnect();
 			}
 			
-			// remote deploy
-			System.out.println("deploying on node " + node.getINetAdress() + " called.");
 			try {
+				// remote deploy
+				System.out.println("deploying on node " + node.getINetAdress() + " called.");
 				deployRemote(node.getINetAdress(), lfile, md5cs);
+				mask.add(true);
 			} catch (Exception e) {
 				System.err.println("ErrorMsg:" + e.getMessage());
-				MessageDialog.openError(editor.getSite().getShell(), "Clickwatch Error", "ErrorMsg:" + e.getMessage());			}
+				MessageDialog.openError(editor.getSite().getShell(), "Clickwatch Error", "ErrorMsg:" + e.getMessage());			
+				mask.add(false);
+			}
 		}
 
         node_it = node_lst.iterator();
+        Iterator<Boolean> mask_it = mask.iterator();
 		//
         // Step 2: start router conf
 		while (node_it.hasNext()) {
 			Node node = node_it.next();
+			Boolean status = mask_it.next();
 
 			// remote deploy
-			System.out.println("starting on node " + node.getINetAdress() + " called.");
-			try {
-				startRemote(node.getINetAdress());
-			} catch (Exception e) {
-				System.err.println("ErrorMsg:" + e.getMessage());
-				MessageDialog.openError(editor.getSite().getShell(), "Clickwatch Error", "ErrorMsg:" + e.getMessage());			}
+			if (status) {
+				System.out.println("starting on node " + node.getINetAdress() + " called.");
+				try {
+					String remoteLog = startRemote(node.getINetAdress());
+					if (show_log) {
+						MessageDialog.openInformation(editor.getSite().getShell(), "Clickwatch Log Info", "Remote Log: " + remoteLog);			
+					}
+				} catch (Exception e) {
+					System.err.println("ErrorMsg:" + e.getMessage());
+					MessageDialog.openError(editor.getSite().getShell(), "Clickwatch Error", "ErrorMsg:" + e.getMessage());			
+				}
+			} else {
+				// do not start failed nodes
+			}
 		}
 	}
 
@@ -195,7 +213,7 @@ public class Deploy implements IObjectActionDelegate {
 		SshConnectionFactory.getInstance().closeSession(session);
 	}
 	
-	private void startRemote(String host) throws Exception {
+	private String startRemote(String host) throws Exception {
 		
 		// init ssh
 		Session session = SshConnectionFactory.getInstance().createSession(SSH_USER, host);
@@ -210,10 +228,12 @@ public class Deploy implements IObjectActionDelegate {
 		startTime = System.currentTimeMillis();
 		command = "(sleep 5; cd /tmp; cat seismo_brn.log )";
 		logMsg = SshConnectionFactory.getInstance().execRemote(session, command, "Fetching log file from node " + host, shell);
+		String logstr = logMsg.toString();
 		log2Sout(logMsg.append("\n").append("Fetching log-file executed in ").append((System.currentTimeMillis() - startTime) / 1000).append(" sec"));
 
 		// close session
 		SshConnectionFactory.getInstance().closeSession(session);
+		return logstr;
 	}
 	
 	private void log2Sout(StringBuffer sb) {

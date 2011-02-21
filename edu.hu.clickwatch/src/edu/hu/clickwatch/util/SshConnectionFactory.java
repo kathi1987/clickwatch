@@ -32,6 +32,7 @@ import sun.security.jca.GetInstance.Instance;
 public class SshConnectionFactory {
 
 	private static SshConnectionFactory instance;
+	public final static String END_TOKEN = "__ACK__"; 
 	
 	private SshConnectionFactory() {}
 	
@@ -260,7 +261,6 @@ public class SshConnectionFactory {
 		final StringBuffer sb = new StringBuffer();
 		
 		// handling ssh bug on old WGT routers
-		final String END_TOKEN = "__ACK__"; 
 		command += " ; echo \"" + END_TOKEN + "\"";
 		
         final Channel channel = session.openChannel("exec");
@@ -303,7 +303,7 @@ public class SshConnectionFactory {
 			          }
 			          if (channel.isClosed()) {
 					    monitor.done();
-					    sb.append("Exit-status: " + channel.getExitStatus());
+					    System.out.println("Exit-status: " + channel.getExitStatus());
 			            break;
 			          }
 			          try {
@@ -320,6 +320,9 @@ public class SshConnectionFactory {
 		in.close();
         channel.disconnect();
 
-        return sb;
+	    // remove TOKEN
+        String res = sb.toString();
+        res = res.replaceAll(END_TOKEN, "");
+        return new StringBuffer(res);
       }	
 }

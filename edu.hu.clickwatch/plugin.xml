@@ -14,6 +14,13 @@
                menubarPath="additions">
          </action>
          <action
+               class="edu.hu.clickwatch.actions.Execute"
+               enablesFor="+"
+               id="edu.hu.clickwatch.execAction"
+               label="Execute"
+               menubarPath="additions">
+         </action>
+         <action
                class="edu.hu.clickwatch.actions.Disconnect"
                enablesFor="+"
                id="edu.hu.clickwatch.disconnectAction"
@@ -32,6 +39,13 @@
                enablesFor="+"
                id="edu.hu.clickwatch.connectAction"
                label="Connect"
+               menubarPath="additions">
+         </action>
+         <action
+               class="edu.hu.clickwatch.actions.Configure"
+               enablesFor="+"
+               id="edu.hu.clickwatch.configAction"
+               label="Configure"
                menubarPath="additions">
          </action>
       </objectContribution>
