@@ -324,5 +324,71 @@ public class SshConnectionFactory {
         String res = sb.toString();
         res = res.replaceAll(END_TOKEN, "");
         return new StringBuffer(res);
+      }
+	
+	/**
+	 * No progressbar ...
+	 */
+	public StringBuffer execSilentRemote(Session session, String command) throws Exception {
+
+		final StringBuffer sb = new StringBuffer();
+		
+		// handling ssh bug on old WGT routers
+		command += " ; echo \"" + END_TOKEN + "\"";
+		
+        final Channel channel = session.openChannel("exec");
+        ((ChannelExec)channel).setCommand(command);
+
+        // X Forwarding
+        // channel.setXForwarding(true);
+
+        //channel.setInputStream(System.in);
+        channel.setInputStream(null);
+
+        //channel.setOutputStream(System.out);
+
+        //FileOutputStream fos=new FileOutputStream("/tmp/stderr");
+        //((ChannelExec)channel).setErrStream(fos);
+        ((ChannelExec)channel).setErrStream(System.err);
+
+        final InputStream in = channel.getInputStream();
+        channel.connect();
+
+    	try {
+	        byte[] tmp = new byte[1024];
+	        String oldChunk = "";
+	        while (true) {
+	          while (in.available() > 0) {
+	            int i = in.read(tmp, 0, 1024);
+	            if(i < 0) break;
+	            String ret = new String(tmp, 0, i);
+	            sb.append(ret);
+	            if ((oldChunk + ret).indexOf(END_TOKEN) > -1) {
+	            	channel.disconnect();
+	            	break;
+	            }
+	            oldChunk = ret;
+	          }
+	          if (channel.isClosed()) {
+			    System.out.println("Exit-status: " + channel.getExitStatus());
+	            break;
+	          }
+	          try {
+	            Thread.sleep(1000);
+	          } catch (Exception ee) {}
+	        }
+			//monitor.worked(++chunks);
+    	} catch(Exception e) {
+    		System.err.println("Exception: " + e.getMessage());
+    		//MessageDialog.openError(shell, "Clickwatch Error", "Exception: " + e.getMessage());	
+    	}
+		
+		in.close();
+        channel.disconnect();
+
+	    // remove TOKEN
+        String res = sb.toString();
+        res = res.replaceAll(END_TOKEN, "");
+        return new StringBuffer(res);
       }	
 }

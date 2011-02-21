@@ -80,6 +80,32 @@ public class Execute implements IObjectActionDelegate {
 	private List<Node> node_lst;
 	private EObject currentResult = null;
 
+	/**
+	 * Executing ssh commands in parallel 
+	 */
+	public class WorkerThread extends Thread {
+		
+		public String iNodeAddr;
+		public String cmd;
+		public String result;
+		
+		public WorkerThread(String iNodeAddr, String cmd) {
+			this.iNodeAddr = iNodeAddr;
+			this.cmd = cmd;
+		}
+		
+		public void run() {
+			// remote execute
+			System.out.println("exec on node " + iNodeAddr + " called.");
+			try {
+				result = execRemote(iNodeAddr, cmd);
+			} catch (Exception e) {
+				System.err.println("ErrorMsg:" + e.getMessage());
+				//MessageDialog.openError(editor.getSite().getShell(), "Clickwatch Error", "ErrorMsg:" + e.getMessage());			
+			}
+		}
+	}
+	
 	public class InputDialog extends Dialog {
 
 		private String cmdMessage;
@@ -235,23 +261,20 @@ public class Execute implements IObjectActionDelegate {
 		InputDialog diag = new InputDialog(editor.getSite().getShell());
 		diag.open();
 		
-		String cmd = diag.getCmdInput();
+		final String cmd = diag.getCmdInput();
 		
 		if (cmd == null) {
 			return;
 		}
 		
 		// show log files only for single node deployment
-		boolean show_log = (node_lst.size() == 1) ? true : false;
+		final boolean show_log = (node_lst.size() == 1) ? true : false;
 		
-        Iterator<Node> node_it = node_lst.iterator();
-        
-        List<String> results = new ArrayList<String>();
-        List<String> nodeNames = new ArrayList<String>();
+		WorkerThread[] workerThreads = new WorkerThread[node_lst.size()];
 		//
         // disconnect if connected & reboot node
-		while (node_it.hasNext()) {
-			Node node = node_it.next();
+		for (int idx=0; idx<node_lst.size(); idx++) {
+			final Node node = node_lst.get(idx);
 
 			// disconnect if connected
 			if (node.getConnection() != null) {
@@ -259,22 +282,29 @@ public class Execute implements IObjectActionDelegate {
 				node.setConnection(null);
 				oldConnection.disconnect();
 			}
-			
-			// remote deploy
-			System.out.println("exec on node " + node.getINetAdress() + " called.");
-			try {
-				String remoteLog = execRemote(node.getINetAdress(), cmd);
-				if (show_log) {
-					MessageDialog.openInformation(editor.getSite().getShell(), "Clickwatch Exec", "Result: " + remoteLog);			
-				}
-				results.add(remoteLog);
-				nodeNames.add(node.getINetAdress());
-			} catch (Exception e) {
-				System.err.println("ErrorMsg:" + e.getMessage());
-				MessageDialog.openError(editor.getSite().getShell(), "Clickwatch Error", "ErrorMsg:" + e.getMessage());			}
+
+			final int idx2 = idx;
+			workerThreads[idx] = new WorkerThread(node.getINetAdress(), cmd);
+			workerThreads[idx].start();
 		}
 		
-		// show results in treeview
+		// wait until all worker threads are finished
+		for (int i=0; i<workerThreads.length; i++) {
+			try {
+				workerThreads[i].join();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+		
+        final List<String> results = new ArrayList<String>();
+        final List<String> nodeNames = new ArrayList<String>();
+		for (int i=0; i<workerThreads.length; i++) {
+			results.add(workerThreads[i].result);
+			nodeNames.add(workerThreads[i].iNodeAddr);
+		}
+			
+        // show results in treeview
 		showResults(results, nodeNames);
 	}
 	
@@ -324,7 +354,7 @@ public class Execute implements IObjectActionDelegate {
 		// init ssh
 		Session session = SshConnectionFactory.getInstance().createSession(SSH_USER, host);
 
-		StringBuffer logMsg = SshConnectionFactory.getInstance().execRemote(session, command, "Executing on node " + host, shell);
+		StringBuffer logMsg = SshConnectionFactory.getInstance().execSilentRemote(session, command);
 		log2Sout(logMsg);
 		
 		// close session
