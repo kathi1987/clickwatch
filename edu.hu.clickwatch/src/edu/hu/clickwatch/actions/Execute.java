@@ -81,13 +81,14 @@ public class Execute implements IObjectActionDelegate {
 	private EObject currentResult = null;
 
 	/**
-	 * Executing ssh commands in parallel 
+	 * Executing ssh commands in parallel on each node 
 	 */
 	public class WorkerThread extends Thread {
 		
 		public String iNodeAddr;
 		public String cmd;
 		public String result;
+		public Exception exception;
 		
 		public WorkerThread(String iNodeAddr, String cmd) {
 			this.iNodeAddr = iNodeAddr;
@@ -101,11 +102,15 @@ public class Execute implements IObjectActionDelegate {
 				result = execRemote(iNodeAddr, cmd);
 			} catch (Exception e) {
 				System.err.println("ErrorMsg:" + e.getMessage());
+				exception = e;
 				//MessageDialog.openError(editor.getSite().getShell(), "Clickwatch Error", "ErrorMsg:" + e.getMessage());			
 			}
 		}
 	}
 	
+	/**
+	 * GUI dialog for entering a command to be remotely executed 
+	 */
 	public class InputDialog extends Dialog {
 
 		private String cmdMessage;
@@ -113,9 +118,6 @@ public class Execute implements IObjectActionDelegate {
 		
 		/**
 		 * InputDialog constructor
-		 * 
-		 * @param parent
-		 *            the parent
 		 */
 		public InputDialog(Shell parent) {
 			// Pass the default styles here
@@ -124,11 +126,6 @@ public class Execute implements IObjectActionDelegate {
 
 		/**
 		 * InputDialog constructor
-		 * 
-		 * @param parent
-		 *            the parent
-		 * @param style
-		 *            the style
 		 */
 		public InputDialog(Shell parent, int style) {
 			// Let users override the default styles
@@ -174,9 +171,6 @@ public class Execute implements IObjectActionDelegate {
 
 		/**
 		 * Creates the dialog's contents
-		 * 
-		 * @param shell
-		 *            the dialog window
 		 */
 		private void createContents(final Shell shell) {
 			shell.setLayout(new GridLayout(2, true));
@@ -232,7 +226,7 @@ public class Execute implements IObjectActionDelegate {
 	}	
 	
 	/**
-	 * Constructor for Action1.
+	 * Constructor for Execute action.
 	 */
 	public Execute() {
 		super();
@@ -258,6 +252,7 @@ public class Execute implements IObjectActionDelegate {
 			return;
 		}
 		
+		// ask user for command to execute
 		InputDialog diag = new InputDialog(editor.getSite().getShell());
 		diag.open();
 		
@@ -267,12 +262,11 @@ public class Execute implements IObjectActionDelegate {
 			return;
 		}
 		
-		// show log files only for single node deployment
+		// show exec result directly via popup only if a single node was selected otherwise go into batch mode
 		final boolean show_log = (node_lst.size() == 1) ? true : false;
-		
+
+		//  create n parallel execution threads
 		WorkerThread[] workerThreads = new WorkerThread[node_lst.size()];
-		//
-        // disconnect if connected & reboot node
 		for (int idx=0; idx<node_lst.size(); idx++) {
 			final Node node = node_lst.get(idx);
 
@@ -283,12 +277,11 @@ public class Execute implements IObjectActionDelegate {
 				oldConnection.disconnect();
 			}
 
-			final int idx2 = idx;
 			workerThreads[idx] = new WorkerThread(node.getINetAdress(), cmd);
 			workerThreads[idx].start();
 		}
 		
-		// wait until all worker threads are finished
+		// sync point: wait until all worker threads are finished
 		for (int i=0; i<workerThreads.length; i++) {
 			try {
 				workerThreads[i].join();
@@ -299,17 +292,26 @@ public class Execute implements IObjectActionDelegate {
 		
         final List<String> results = new ArrayList<String>();
         final List<String> nodeNames = new ArrayList<String>();
+        final List<Exception> exceptions = new ArrayList<Exception>();
 		for (int i=0; i<workerThreads.length; i++) {
 			results.add(workerThreads[i].result);
 			nodeNames.add(workerThreads[i].iNodeAddr);
+			exceptions.add(workerThreads[i].exception);
 		}
 			
         // show results in treeview
 		showResults(results, nodeNames);
+		
+		// show exceptions in popup window
+		showExceptions(nodeNames, exceptions);
 	}
 	
+	/**
+	 * Update results in resultview 
+	 */
 	private void showResults(List<String> results, List<String> nodeNames) {
 
+		// create xml from results string
 		StringBuffer xmlResults = new StringBuffer();
 		xmlResults.append("<network>");
 		for (int i=0; i<results.size(); i++) {
@@ -336,6 +338,24 @@ public class Execute implements IObjectActionDelegate {
 	}
 
 	/**
+	 * At the end display the statistics about failed execs
+	 */
+	private void showExceptions(List<String> nodeNames, List<Exception> exceptions) {
+		StringBuffer txtExc = new StringBuffer();
+		for (int i=0; i<exceptions.size(); i++) {
+			txtExc.append("Node ").append(nodeNames.get(i)).append(" -> ");
+			if (exceptions.get(i) != null) {
+				txtExc.append(exceptions.get(i).getMessage());
+			} else {
+				txtExc.append("OK");
+			}
+			txtExc.append("\n");
+		}
+		
+		MessageDialog.openError(editor.getSite().getShell(), "Result stats", txtExc.toString());		
+	}
+	
+	/**
 	 * @see IActionDelegate#selectionChanged(IAction, ISelection)
 	 */
 	@Override
@@ -354,7 +374,7 @@ public class Execute implements IObjectActionDelegate {
 		// init ssh
 		Session session = SshConnectionFactory.getInstance().createSession(SSH_USER, host);
 
-		StringBuffer logMsg = SshConnectionFactory.getInstance().execSilentRemote(session, command);
+		StringBuffer logMsg = SshConnectionFactory.getInstance().execRemote(session, command);
 		log2Sout(logMsg);
 		
 		// close session

@@ -110,17 +110,33 @@ public class SshConnectionFactory {
 	    is.close();
 	    return bytes;
 	}
-	
-	/**
-	 * SSH handling - copy file to remote host 
-	 * @param session SSH session to be used
-	 * @param lfile local file name
-	 * @param rfile remote file name
-	 * @param progressBarMsg String for GUI progress bar
-	 * @param shell
-	 */
-	public void scpTo(Session session, String lfile, String rfile, final String progressBarMsg, final Shell shell) {
 
+	/**
+	 * SSH handling - copy file to remote host
+	 * 
+	 *  Note: a progress bar shows the progress
+	 */
+	public void scpToGUI(Session session, String lfile, String rfile, final String progressBarMsg, final Shell shell) {
+		scpToHelper(session, lfile, rfile, progressBarMsg, shell);
+	}
+		
+	/**
+	 * SSH handling - copy file to remote host
+	 * 
+	 *  Note: no progress bar is displayed
+	 */
+	public void scpTo(Session session, String lfile, String rfile) {
+		scpToHelper(session, lfile, rfile, null, null);
+	}
+
+	/**
+	 * SSH handling - copy file to remote host
+	 * 
+	 *  Note: a progress bar shows the progress
+	 */
+	private void scpToHelper(Session session, String lfile, String rfile, final String progressBarMsg, final Shell shell) {
+
+		boolean silentMode = progressBarMsg == null || shell == null;
 		FileInputStream fis = null;
 		try {
 			fis = new FileInputStream(lfile);
@@ -171,30 +187,45 @@ public class SshConnectionFactory {
 			}
 
 			// send a content of lfile
-
-			final FileInputStream ffis = fis;
-			ProgressMonitorDialog dialog = new ProgressMonitorDialog(shell);
-			dialog.run(true, true, new IRunnableWithProgress(){
-			    public void run(IProgressMonitor monitor) {
-			    	try {
-						final int totalWork = (int)filesize;
-						
-						monitor.beginTask(progressBarMsg, totalWork);
-						int tx_bytes = 0;
-						byte[] buf = new byte[1024];
-						while (true) {
-							int len = ffis.read(buf, 0, buf.length);
-							if(len <= 0) break;
-							out.write(buf, 0, len); //out.flush();
-							tx_bytes += len;
-							monitor.worked(tx_bytes);
-						}
-				        monitor.done();
-			    	} catch(Exception e) {
-			    		MessageDialog.openError(shell, "Clickwatch Error", "Exception: " + e.getMessage());	
-			    	}
-			    }
-			});			
+			if (!silentMode) {
+				// show progress bar
+				final FileInputStream ffis = fis;
+				ProgressMonitorDialog dialog = new ProgressMonitorDialog(shell);
+				dialog.run(true, true, new IRunnableWithProgress(){
+				    public void run(IProgressMonitor monitor) {
+				    	try {
+							final int totalWork = (int)filesize;
+							
+							monitor.beginTask(progressBarMsg, totalWork);
+							int tx_bytes = 0;
+							byte[] buf = new byte[1024];
+							while (true) {
+								int len = ffis.read(buf, 0, buf.length);
+								if(len <= 0) break;
+								out.write(buf, 0, len); //out.flush();
+								tx_bytes += len;
+								monitor.worked(tx_bytes);
+							}
+					        monitor.done();
+				    	} catch(Exception e) {
+				    		MessageDialog.openError(shell, "Clickwatch Error", "Exception: " + e.getMessage());	
+				    	}
+				    }
+				});
+			} else {
+				// silent mode
+		    	try {
+					byte[] buf = new byte[1024];
+					while (true) {
+						int len = fis.read(buf, 0, buf.length);
+						if(len <= 0) break;
+						out.write(buf, 0, len); //out.flush();
+					}
+		    	} catch(Exception e) {
+		    		System.err.println("Exception: " + e.getMessage());
+		    		throw e;
+		    	}
+			}
 			
 			fis.close();
 			//fis = null;
@@ -211,12 +242,14 @@ public class SshConnectionFactory {
 			channel.disconnect();
 		} catch(Exception e){
 			System.out.println(e);
-			MessageDialog.openError(shell, "Clickwatch Error", "Exception: " + e.getMessage());
+			if (!silentMode) {
+				MessageDialog.openError(shell, "Clickwatch Error", "Exception: " + e.getMessage());
+			}
 			try {
 				if(fis != null) {
 					fis.close();
 				}
-			} catch(Exception ee) {}
+			} catch (Exception ee) {}
 		}		
 	}
 
@@ -248,36 +281,20 @@ public class SshConnectionFactory {
 	}
 	
 	/**
-	 * SSH handling - execute command on remote host
-	 * e.g. command = "set|grep SSH"
-	 * @param session
-	 * @param command
-	 * @param progressBarMsg
-	 * @throws Exception
-	 * @return remote log messages from STDIN
+	 * SSH handling - execute command on remote host e.g. command = "set|grep SSH"
+	 * 
+	 * Note: progress is displayed via progress bar
 	 */
-	public StringBuffer execRemote(Session session, String command, final String progressBarMsg, final Shell shell) throws Exception {
+	public StringBuffer execRemoteGUI(Session session, String command, final String progressBarMsg, final Shell shell) throws Exception {
 
 		final StringBuffer sb = new StringBuffer();
 		
 		// handling ssh bug on old WGT routers
 		command += " ; echo \"" + END_TOKEN + "\"";
-		
         final Channel channel = session.openChannel("exec");
         ((ChannelExec)channel).setCommand(command);
-
-        // X Forwarding
-        // channel.setXForwarding(true);
-
-        //channel.setInputStream(System.in);
         channel.setInputStream(null);
-
-        //channel.setOutputStream(System.out);
-
-        //FileOutputStream fos=new FileOutputStream("/tmp/stderr");
-        //((ChannelExec)channel).setErrStream(fos);
         ((ChannelExec)channel).setErrStream(System.err);
-
         final InputStream in = channel.getInputStream();
         channel.connect();
 
@@ -306,9 +323,7 @@ public class SshConnectionFactory {
 					    System.out.println("Exit-status: " + channel.getExitStatus());
 			            break;
 			          }
-			          try {
-			            Thread.sleep(1000);
-			          } catch (Exception ee) {}
+			          try { Thread.sleep(1000); } catch (Exception ee) {}
 			        }
 					//monitor.worked(++chunks);
 		    	} catch(Exception e) {
@@ -327,30 +342,20 @@ public class SshConnectionFactory {
       }
 	
 	/**
-	 * No progressbar ...
+	 * SSH handling - execute command on remote host e.g. command = "set|grep SSH"
+	 * 
+	 * Note: Execute without showing a progressbar ...
 	 */
-	public StringBuffer execSilentRemote(Session session, String command) throws Exception {
+	public StringBuffer execRemote(Session session, String command) throws Exception {
 
 		final StringBuffer sb = new StringBuffer();
 		
 		// handling ssh bug on old WGT routers
 		command += " ; echo \"" + END_TOKEN + "\"";
-		
         final Channel channel = session.openChannel("exec");
         ((ChannelExec)channel).setCommand(command);
-
-        // X Forwarding
-        // channel.setXForwarding(true);
-
-        //channel.setInputStream(System.in);
         channel.setInputStream(null);
-
-        //channel.setOutputStream(System.out);
-
-        //FileOutputStream fos=new FileOutputStream("/tmp/stderr");
-        //((ChannelExec)channel).setErrStream(fos);
         ((ChannelExec)channel).setErrStream(System.err);
-
         final InputStream in = channel.getInputStream();
         channel.connect();
 
@@ -373,14 +378,10 @@ public class SshConnectionFactory {
 			    System.out.println("Exit-status: " + channel.getExitStatus());
 	            break;
 	          }
-	          try {
-	            Thread.sleep(1000);
-	          } catch (Exception ee) {}
+	          try { Thread.sleep(1000); } catch (Exception ee) {}
 	        }
-			//monitor.worked(++chunks);
     	} catch(Exception e) {
     		System.err.println("Exception: " + e.getMessage());
-    		//MessageDialog.openError(shell, "Clickwatch Error", "Exception: " + e.getMessage());	
     	}
 		
 		in.close();

@@ -130,7 +130,7 @@ public class Deploy implements IObjectActionDelegate {
 			try {
 				// remote deploy
 				System.out.println("deploying on node " + node.getINetAdress() + " called.");
-				deployRemote(node.getINetAdress(), lfile, md5cs);
+				DeploymentHelper.getInstance().deployRemote(node.getINetAdress(), lfile, md5cs, shell, true);
 				mask.add(true);
 			} catch (Exception e) {
 				System.err.println("ErrorMsg:" + e.getMessage());
@@ -151,7 +151,7 @@ public class Deploy implements IObjectActionDelegate {
 			if (status) {
 				System.out.println("starting on node " + node.getINetAdress() + " called.");
 				try {
-					String remoteLog = startRemote(node.getINetAdress());
+					String remoteLog = DeploymentHelper.getInstance().startRemote(node.getINetAdress(), shell, true);
 					if (show_log) {
 						MessageDialog.openInformation(editor.getSite().getShell(), "Clickwatch Log Info", "Remote Log: " + remoteLog);			
 					}
@@ -177,66 +177,5 @@ public class Deploy implements IObjectActionDelegate {
 		} catch (Exception e) {
 			MessageDialog.openError(editor.getSite().getShell(), "Clickwatch Error", "ErrorMsg:" + e.getMessage());
 		}
-	}
-
-	private void deployRemote(String host, String lfile, String md5cs) throws Exception {
-		
-		// init ssh
-		Session session = SshConnectionFactory.getInstance().createSession(SSH_USER, host);
-
-		String lFileUnqualified = (new File(lfile)).getName();
-		String rfile = "/tmp/" + lFileUnqualified;
-		
-		// clean-up old
-		long startTime = System.currentTimeMillis();
-		String command = "rm -rf /tmp/seismo; md5sum " + rfile + " | awk '{ print $1 }'";
-		StringBuffer logMsg = SshConnectionFactory.getInstance().execRemote(session, command, "Cleanup router conf on node " + host, shell);
-		log2Sout(logMsg.append("\n").append("Clean-up executed in ").append((System.currentTimeMillis() - startTime) / 1000).append(" sec"));
-		
-		// compare checksum
-		if (logMsg.toString().indexOf(md5cs) > -1) {
-			System.out.println("There is already a file with the same MD5 checksum; skip copying ... ");
-		} else {
-			// copy resource file to remote
-			startTime = System.currentTimeMillis();
-			SshConnectionFactory.getInstance().scpTo(session, lfile, rfile, "Uploading router conf on node " + host, shell);
-			System.out.println("Copy file executed in " + ((System.currentTimeMillis() - startTime) / 1000) + " sec");
-		}
-		
-		// unpack
-		startTime = System.currentTimeMillis();
-		command = "(cd /tmp/; bzcat " + lFileUnqualified + " | tar xvf - )";
-		logMsg = SshConnectionFactory.getInstance().execRemote(session, command, "Unpacking router conf on node " + host, shell);
-		log2Sout(logMsg.append("\n").append("Unpacking executed in ").append((System.currentTimeMillis() - startTime) / 1000).append(" sec"));
-		
-		// close session
-		SshConnectionFactory.getInstance().closeSession(session);
-	}
-	
-	private String startRemote(String host) throws Exception {
-		
-		// init ssh
-		Session session = SshConnectionFactory.getInstance().createSession(SSH_USER, host);
-
-		// start
-		long startTime = System.currentTimeMillis();
-		String command = "(cd /tmp/seismo; ./bin/seismo.sh delaystart )";
-		StringBuffer logMsg = SshConnectionFactory.getInstance().execRemote(session, command, "Starting router conf on node " + host, shell);
-		log2Sout(logMsg.append("\n").append("Starting executed in ").append((System.currentTimeMillis() - startTime) / 1000).append(" sec"));
-		
-		// check log file after sleeping for 5 seconds
-		startTime = System.currentTimeMillis();
-		command = "(sleep 5; cd /tmp; cat seismo_brn.log )";
-		logMsg = SshConnectionFactory.getInstance().execRemote(session, command, "Fetching log file from node " + host, shell);
-		String logstr = logMsg.toString();
-		log2Sout(logMsg.append("\n").append("Fetching log-file executed in ").append((System.currentTimeMillis() - startTime) / 1000).append(" sec"));
-
-		// close session
-		SshConnectionFactory.getInstance().closeSession(session);
-		return logstr;
-	}
-	
-	private void log2Sout(StringBuffer sb) {
-		System.out.println(sb.toString());
 	}
 }

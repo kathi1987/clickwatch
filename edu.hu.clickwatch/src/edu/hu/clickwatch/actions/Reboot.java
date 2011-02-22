@@ -129,7 +129,7 @@ public class Reboot implements IObjectActionDelegate {
 
 		// clean-up old
 		String command = "reboot";
-		StringBuffer logMsg = SshConnectionFactory.getInstance().execRemote(session, command, "Rebooting node " + host, shell);
+		StringBuffer logMsg = SshConnectionFactory.getInstance().execRemoteGUI(session, command, "Rebooting node " + host, shell);
 		log2Sout(logMsg);
 		
 		// close session
