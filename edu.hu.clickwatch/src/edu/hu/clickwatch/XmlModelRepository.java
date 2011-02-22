@@ -13,6 +13,7 @@ import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
@@ -97,6 +98,7 @@ public class XmlModelRepository {
 				Map<Object, Object> loadOptions = resourceSet.getLoadOptions();
 				resource.load(bais, loadOptions);
 			} catch (IOException e) {
+				e.printStackTrace();
 				Throwables.propagate(e);
 			}
 			
@@ -174,10 +176,12 @@ public class XmlModelRepository {
 						String name = ((XSDNamedComponent)container).getName();
 						if (name != null) {
 							complexTypeDefinition.setName(name);
+							complexTypeDefinition.getElement().setAttributeNS(EcorePackage.eNS_URI, "name", name);
 						} else {
 							String alias = ((XSDNamedComponent)container).getAliasName();
 							if (!alias.contains("_._")) {
 								complexTypeDefinition.setName(alias);
+								complexTypeDefinition.getElement().setAttributeNS(EcorePackage.eNS_URI, "name", alias);
 							}
 						}
 					}
@@ -190,7 +194,21 @@ public class XmlModelRepository {
 		Collection<EPackage> values = xsdEcoreBuilder.getTargetNamespaceToEPackageMap().values();
 		Preconditions.checkState(values.size() == 1);
 		EPackage result = values.iterator().next();
+		
+//		ExtendedMetaData xmd = ExtendedMetaData.INSTANCE;
+//		xmd.setQualified(result, true);
+//		xmd.set
+		
 		result.setNsURI(xsdUri.toString());
+		
+//		URI metaModelUri = URI.createURI(xsdUri.toString().replace(".xsd", ".ecore"));
+//		Resource metaModelResource = resourceSet.getResource(metaModelUri, false);
+//		if (metaModelResource == null) {
+//			metaModelResource = resourceSet.createResource(metaModelUri);
+//			metaModelResource.getContents().add(result);
+//			result.setNsURI(metaModelUri.toString());
+//		}
+		System.out.println("META-MODEL: " + serializeXml(result) + "\n\n");
 		return result;		
 	}
 	

@@ -15,6 +15,7 @@ import com.google.inject.Injector;
 
 import edu.hu.clickcontrol.IClickSocket;
 import edu.hu.clickwatch.GuiceModule;
+import edu.hu.clickwatch.XmlModelRepository;
 import edu.hu.clickwatch.model.Handler;
 import edu.hu.clickwatch.model.Node;
 import edu.hu.clickwatch.nodeadapter.AbstractNodeAdapter;
@@ -24,6 +25,7 @@ import edu.hu.clickwatch.nodeadapter.INodeAdapter;
 public class ClickControlXSDNodeAdapterTest extends TestCase {
 
 	private INodeAdapter nodeAdapter;
+	private XmlModelRepository xmlModelRepository;
 	
 	@Override
 	public void setUp() throws IOException {
@@ -60,6 +62,7 @@ public class ClickControlXSDNodeAdapterTest extends TestCase {
 		};
 		Injector injector = Guice.createInjector(guiceModule);
 		nodeAdapter = injector.getInstance(INodeAdapter.class);
+		xmlModelRepository = injector.getInstance(XmlModelRepository.class);
 		((AbstractNodeAdapter)nodeAdapter).setUp("localhost", "7777");
 	}
 	
@@ -69,6 +72,8 @@ public class ClickControlXSDNodeAdapterTest extends TestCase {
 		
 		assertEquals(2, node.getElements().size());
 		assertEquals(6, node.getElements().get(0).getHandlers().size());
+		
+		assertNotNull(TestUtil.query(node, ":n/link_stat:e/bad_version:h/badnodes:x/badnode:x"));
 
 		for (Handler handler: node.getElements().get(0).getHandlers()) {
 			if (!handler.getName().equals(ClickControlXSDNodeAdapter.XSD_HANDLER_NAME)) {
@@ -79,5 +84,11 @@ public class ClickControlXSDNodeAdapterTest extends TestCase {
 			}
 		}
 		
+		String xml = xmlModelRepository.serializeXml(node);
+		System.out.println(xml);
+		
+		EObject reReadModel = xmlModelRepository.deserializeXml(xml);
+		assertNotNull(TestUtil.query(reReadModel, ":n/foo:e/bar:h/foo:x/bar[=TEXT]:x"));
+		assertNotNull(TestUtil.query(reReadModel, ":n/link_stat:e/bad_version:h/badnodes:x/badnode[version=101]:x"));
 	}
 }

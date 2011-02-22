@@ -5,10 +5,14 @@ import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecore.util.FeatureMap;
+import org.eclipse.emf.ecore.util.FeatureMapUtil;
 
 import click.ControlSocket.HandlerInfo;
 
@@ -36,7 +40,7 @@ public class ClickControlXSDNodeAdapter extends AbstractNodeAdapter {
 	
 	private static final EPackage NULL_PACKAGE = EcoreFactory.eINSTANCE.createEPackage();
 	private Map<String, EPackage> metaModelsForElementPaths = new HashMap<String, EPackage>();
-
+	
 	private class XSDValueRepresentation implements IExtendedValueRepresentation {
 		
 		final EPackage metaModel;
@@ -48,7 +52,19 @@ public class ClickControlXSDNodeAdapter extends AbstractNodeAdapter {
 		@Override
 		public void set(Handler handler, Object value) {
 			Preconditions.checkArgument(value instanceof EObject);
-			handler.setValue((EObject)value);
+
+			EStructuralFeature valueFeature = null;
+			for (EStructuralFeature aFeature: ((EClass)metaModel.getEClassifier("DocumentRoot")).getEStructuralFeatures()) {
+				if (aFeature.getEType().isInstance(value)) {
+					valueFeature = aFeature;
+				}
+			}
+			
+			Preconditions.checkNotNull(valueFeature);
+			
+			handler.getMixed().clear();
+			handler.getAny().clear();
+			handler.getAny().add(FeatureMapUtil.createRawEntry(valueFeature, value));
 		}
 		
 		@Override
@@ -62,7 +78,16 @@ public class ClickControlXSDNodeAdapter extends AbstractNodeAdapter {
 		
 		@Override
 		public Object get(Handler handler) {
-			return handler.getValue();
+			FeatureMap mixed = handler.getMixed();
+			if (mixed.isEmpty()) {
+				if (handler.getAny().isEmpty()) {
+					return null;
+				} else {
+					return handler.getAny().getValue(0);
+				}
+			} else {
+				return mixed.getValue(0);
+			}
 		}
 		
 		@Override
@@ -70,6 +95,10 @@ public class ClickControlXSDNodeAdapter extends AbstractNodeAdapter {
 				Object realValue) {
 			Preconditions.checkArgument(modelValue instanceof EObject);
 			Preconditions.checkArgument(realValue instanceof EObject);
+			
+			if (!modelValue.getClass().equals(realValue.getClass())) {
+				return false;
+			}
 			
 			String modelXml = xmlModelRepository.getOriginalXml((EObject)modelValue);
 			String realXml = xmlModelRepository.getOriginalXml((EObject)modelValue);

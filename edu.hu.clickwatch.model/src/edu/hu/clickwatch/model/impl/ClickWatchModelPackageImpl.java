@@ -285,6 +285,24 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getHandler_Mixed() {
+		return (EAttribute)handlerEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getHandler_Any() {
+		return (EAttribute)handlerEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EAttribute getHandler_Changed() {
 		return (EAttribute)handlerEClass.getEStructuralFeatures().get(3);
 	}
@@ -418,6 +436,8 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
 		createEAttribute(handlerEClass, HANDLER__CHANGED);
 		createEAttribute(handlerEClass, HANDLER__WATCH);
 		createEReference(handlerEClass, HANDLER__VALUE);
+		createEAttribute(handlerEClass, HANDLER__MIXED);
+		createEAttribute(handlerEClass, HANDLER__ANY);
 
 		networkEClass = createEClass(NETWORK);
 		createEAttribute(networkEClass, NETWORK__NAME);
@@ -484,6 +504,8 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
 		initEAttribute(getHandler_Changed(), ecorePackage.getEBoolean(), "changed", "false", 0, 1, Handler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getHandler_Watch(), ecorePackage.getEBoolean(), "watch", "false", 0, 1, Handler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHandler_Value(), ecorePackage.getEObject(), null, "value", null, 0, 1, Handler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getHandler_Mixed(), ecorePackage.getEFeatureMapEntry(), "mixed", null, 0, -1, Handler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getHandler_Any(), ecorePackage.getEFeatureMapEntry(), "any", null, 0, -1, Handler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(networkEClass, Network.class, "Network", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getNetwork_Name(), ecorePackage.getEString(), "name", "My Network", 0, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -519,13 +541,20 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
 			 "kind", "mixed"
 		   });		
 		addAnnotation
-		  (getHandler_Value(), 
+		  (getHandler_Mixed(), 
 		   source, 
 		   new String[] {
 			 "kind", "elementWildcard",
-			 "wildcards", "##any",
-			 "name", "xml",
-			 "processing", "lax"
+			 "name", ":mixed"
+		   });		
+		addAnnotation
+		  (getHandler_Any(), 
+		   source, 
+		   new String[] {
+			 "kind", "elementWildcard",
+			 "name", ":1",
+			 "processing", "lax",
+			 "wildcards", "##any"
 		   });
 	}
 

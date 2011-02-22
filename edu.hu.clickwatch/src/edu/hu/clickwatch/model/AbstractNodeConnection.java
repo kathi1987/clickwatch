@@ -368,16 +368,17 @@ public abstract class AbstractNodeConnection {
 					protected void update(Handler oldItem, Handler newItem) {
 						connection.ensureHandlerIsListening(oldItem);
 						if (newItem.isCanRead()) {
-							if (!connection.getNodeAdapter().getValueRepresentation(newItem).equalsModelValueRealityValue(
-									connection.getNodeAdapter().getValueRepresentation(oldItem).get(oldItem), 
-									connection.getNodeAdapter().getValueRepresentation(newItem).get(newItem))) {
+							INodeAdapter nodeAdapter = connection.getNodeAdapter();
+							if (!nodeAdapter.getValueRepresentation(newItem).equalsModelValueRealityValue(
+									nodeAdapter.getValueRepresentation(oldItem).get(oldItem), 
+									nodeAdapter.getValueRepresentation(newItem).get(newItem))) {
 								
 								connection.modelChangeListener.disable();
 
 								if (oldItem.isWatch() || ((Element) oldItem.eContainer()).isWatch()) {
-									oldItem.setChanged(!newItem.getValue().equals(oldItem.getValue()));
+									oldItem.setChanged(true);
 								}
-								connection.getNodeAdapter().getValueRepresentation(oldItem).set(oldItem, newItem.getValue());
+								nodeAdapter.getValueRepresentation(oldItem).set(oldItem, nodeAdapter.getValueRepresentation(newItem).get(newItem));
 								connection.modelChangeListener.enable();
 							}
 						}

@@ -243,13 +243,31 @@ public interface ClickWatchModelPackage extends EPackage {
 	int HANDLER__VALUE = 5;
 
 	/**
+	 * The feature id for the '<em><b>Mixed</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HANDLER__MIXED = 6;
+
+	/**
+	 * The feature id for the '<em><b>Any</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HANDLER__ANY = 7;
+
+	/**
 	 * The number of structural features of the '<em>Handler</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HANDLER_FEATURE_COUNT = 6;
+	int HANDLER_FEATURE_COUNT = 8;
 
 
 	/**
@@ -585,6 +603,28 @@ public interface ClickWatchModelPackage extends EPackage {
 	EReference getHandler_Value();
 
 	/**
+	 * Returns the meta object for the attribute list '{@link edu.hu.clickwatch.model.Handler#getMixed <em>Mixed</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Mixed</em>'.
+	 * @see edu.hu.clickwatch.model.Handler#getMixed()
+	 * @see #getHandler()
+	 * @generated
+	 */
+	EAttribute getHandler_Mixed();
+
+	/**
+	 * Returns the meta object for the attribute list '{@link edu.hu.clickwatch.model.Handler#getAny <em>Any</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Any</em>'.
+	 * @see edu.hu.clickwatch.model.Handler#getAny()
+	 * @see #getHandler()
+	 * @generated
+	 */
+	EAttribute getHandler_Any();
+
+	/**
 	 * Returns the meta object for the attribute '{@link edu.hu.clickwatch.model.Handler#isChanged <em>Changed</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -855,6 +895,22 @@ public interface ClickWatchModelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference HANDLER__VALUE = eINSTANCE.getHandler_Value();
+
+		/**
+		 * The meta object literal for the '<em><b>Mixed</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute HANDLER__MIXED = eINSTANCE.getHandler_Mixed();
+
+		/**
+		 * The meta object literal for the '<em><b>Any</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute HANDLER__ANY = eINSTANCE.getHandler_Any();
 
 		/**
 		 * The meta object literal for the '<em><b>Changed</b></em>' attribute feature.

@@ -47,12 +47,7 @@ public class ClickSocketXSDDummy extends ClickSocketTestImpl {
 			handlerXml = new HashMap<String, String>();
 			
 			String schemaStr = readEntry(XmlModelRepositoryTest.LINK_STAT_XSD);
-			XSDSchema schema = xmlModelRepository.loadXSD(getSchemaURI(),
-						schemaStr);
-	
-			XSDEcoreBuilder xsdEcoreBuilder = new XSDEcoreBuilder();
-			xsdEcoreBuilder.generate(schema);
-			EPackage metaModel = xsdEcoreBuilder.getTargetNamespaceToEPackageMap().values().iterator().next();
+			EPackage metaModel = xmlModelRepository.loadMetaModelFromXSD(getSchemaURI(), schemaStr);
 			
 			EObject model = xmlModelRepository.deserializeModel(metaModel, readEntry(getDummyXmlEntry()));
 			EFactory factory = metaModel.getEFactoryInstance();
@@ -138,7 +133,7 @@ public class ClickSocketXSDDummy extends ClickSocketTestImpl {
 	public String getValue(String element, String handler) {
 		initialize();
 		if (element.equals(NORMAL_ELEM)) {
-			return "TEXT";
+			return "<foo><bar>TEXT</bar></foo>";
 		} else {
 			return handlerXml.get(handler);
 		}

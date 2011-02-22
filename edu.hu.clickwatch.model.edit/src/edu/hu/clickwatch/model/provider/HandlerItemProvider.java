@@ -209,9 +209,23 @@ public class HandlerItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(ClickWatchModelPackage.Literals.HANDLER__VALUE);
+			childrenFeatures.add(ClickWatchModelPackage.Literals.HANDLER__MIXED);
+			childrenFeatures.add(ClickWatchModelPackage.Literals.HANDLER__ANY);
 		}
 		return childrenFeatures;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected EStructuralFeature getChildFeature(Object object, Object child) {
+		// Check the type of the specified child object and return the proper feature to use for
+		// adding (see {@link AddCommand}) it as a child.
+
+		return super.getChildFeature(object, child);
 	}
 
 	/**
@@ -284,9 +298,13 @@ public class HandlerItemProvider
 			case ClickWatchModelPackage.HANDLER__CAN_WRITE:
 			case ClickWatchModelPackage.HANDLER__CHANGED:
 			case ClickWatchModelPackage.HANDLER__WATCH:
+			case ClickWatchModelPackage.HANDLER__VALUE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
-			case ClickWatchModelPackage.HANDLER__VALUE:
+			case ClickWatchModelPackage.HANDLER__MIXED:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+				return;
+			case ClickWatchModelPackage.HANDLER__ANY:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}

@@ -2,10 +2,14 @@ package edu.hu.clickwatch.nodeadapter;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.FeatureMap;
+import org.eclipse.emf.ecore.util.FeatureMapUtil;
 import org.eclipse.emf.ecore.xml.type.AnyType;
 import org.eclipse.emf.ecore.xml.type.XMLTypeDocumentRoot;
+import org.eclipse.emf.ecore.xml.type.XMLTypeFactory;
+import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 
 import com.google.common.base.Preconditions;
 import com.google.inject.Inject;
@@ -17,8 +21,19 @@ import edu.hu.clickwatch.nodeadapter.AbstractNodeAdapter.IExtendedValueRepresent
 
 public class DefaultXmlValueRepresentation implements IExtendedValueRepresentation {
 	
+	protected class ValueClass {
+		private final Object value;
+		private final EStructuralFeature feature;
+		
+		public ValueClass(Object value, EStructuralFeature feature) {
+			super();
+			this.value = value;
+			this.feature = feature;
+		}
+	}
+	
 	@Inject
-	private XmlModelRepository xmlRepo;
+	private XmlModelRepository xmlModelRepository;
 	
 	protected DefaultXmlValueRepresentation() {
 		// emtpy
@@ -26,7 +41,23 @@ public class DefaultXmlValueRepresentation implements IExtendedValueRepresentati
 	
 	@Override
 	public void set(Handler handler, Object value) {
-		handler.setValue((EObject)value);
+		Preconditions.checkArgument(value instanceof ValueClass);
+		Object anyValue = ((ValueClass)value).value;
+		EStructuralFeature anyFeature = ((ValueClass)value).feature;
+		
+		if (anyValue instanceof String) {
+			if (handler.getMixed().isEmpty()) {
+				handler.getMixed().add(FeatureMapUtil.createRawEntry(anyFeature, anyValue));
+			} else {
+				handler.getMixed().set(0, FeatureMapUtil.createRawEntry(anyFeature, anyValue));
+			}
+		} else {
+			if (handler.getAny().isEmpty()) {
+				handler.getAny().add(FeatureMapUtil.createRawEntry(anyFeature, anyValue));
+			} else {
+				handler.getAny().set(0, FeatureMapUtil.createRawEntry(anyFeature, anyValue));
+			}
+		}
 	}
 	
 	@Override
@@ -40,27 +71,47 @@ public class DefaultXmlValueRepresentation implements IExtendedValueRepresentati
 	
 	@Override
 	public Object get(Handler handler) {
-		return handler.getValue();
+		FeatureMap mixed = handler.getMixed();
+		if (mixed.isEmpty()) {
+			if (handler.getAny().isEmpty()) {
+				return null;
+			} else {
+				return handler.getAny().getValue(0);
+			}
+		} else {
+			return mixed.getValue(0);
+		}
 	}
 	
 	@Override
 	public boolean equalsModelValueRealityValue(Object modelValue,
 			Object realValue) {
-//		return createPlainRealValue(modelValue).equals(createPlainRealValue(realValue));
-		return compareXml(((AnyType)modelValue).getMixed(), ((AnyType)realValue).getMixed());
+		if (modelValue instanceof String) {
+			return modelValue.equals(realValue);
+		} else if (modelValue instanceof AnyType) {
+			if (realValue instanceof AnyType) {
+				return compareXml(((AnyType)modelValue).getMixed(), ((AnyType)realValue).getMixed());
+			} else {
+				return false;
+			}
+		} else {
+			Preconditions.checkArgument(false, "unsupported model value types");
+			return false;
+		}
 	}
 	
 	@Override
-	public String createPlainRealValue(Object modelValue) {
-		Preconditions.checkArgument(modelValue instanceof AnyType);
-		
-		AnyType valueAsXml = (AnyType)EcoreUtil.copy((EObject)modelValue);
-		
-		XMLTypeDocumentRoot xml = deserializeXml("<value></value>");
-		xml.getMixed().clear();
-		xml.getMixed().addAll(valueAsXml.getMixed());
+	public String createPlainRealValue(Object modelValue) {		
+		XMLTypeDocumentRoot xml = XMLTypeFactory.eINSTANCE.createXMLTypeDocumentRoot();
+		if (modelValue instanceof String) {
+			xml.getMixed().add(XMLTypePackage.eINSTANCE.getXMLTypeDocumentRoot_Text(), modelValue);
+		} else if (modelValue instanceof AnyType) {
+			xml.getMixed().add(((EObject)modelValue).eContainingFeature(), EcoreUtil.copy((EObject)modelValue));
+		} else {
+			Preconditions.checkArgument(false);	
+		}
 
-		String xmlString = serializeXml(xml);
+		String xmlString = xmlModelRepository.serializeXml(xml);
 		xmlString = xmlString.substring(xmlString.indexOf("?>\n") + 3);
 		
 		EcoreUtil.delete(xml, true);
@@ -69,13 +120,18 @@ public class DefaultXmlValueRepresentation implements IExtendedValueRepresentati
 	}
 	
 	@Override
-	public Object createModelValue(String plainRealValue) {	
-		XMLTypeDocumentRoot xml = deserializeXml("<value>" + plainRealValue + "</value>");
-		Object result = xml.getMixed().getValue(0); 
-		xml.getMixed().remove(0);
+	public Object createModelValue(String plainRealValue) {		
+		XMLTypeDocumentRoot xml = (XMLTypeDocumentRoot)xmlModelRepository.deserializeXml("<xml>" + plainRealValue + "</xml>");
+		FeatureMap xmlRootMixed = ((AnyType)xml.getMixed().getValue(0)).getMixed();
+		Preconditions.checkState(xmlRootMixed.size() == 1);
+		Object anyValue = xmlRootMixed.getValue(0);
+		EStructuralFeature anyFeature = xmlRootMixed.getEStructuralFeature(0);
+		
+		xmlRootMixed.remove(anyValue);
+		xmlRootMixed.remove(anyFeature);
 		EcoreUtil.delete(xml, true);
-		Preconditions.checkNotNull(result);
-		return result;
+		Preconditions.checkNotNull(anyValue);
+		return new ValueClass(anyValue, anyFeature);
 	}
 	
 	private static boolean compareXml(FeatureMap v1, FeatureMap v2) {
@@ -100,13 +156,5 @@ public class DefaultXmlValueRepresentation implements IExtendedValueRepresentati
 			}
 		}
 		return true;
-	}
-
-	private XMLTypeDocumentRoot deserializeXml(String xml) {
-		return (XMLTypeDocumentRoot)xmlRepo.deserializeXml(xml);
-	}
-	
-	private String serializeXml(XMLTypeDocumentRoot xml) {
-		return xmlRepo.serializeXml(xml);
 	}
 }
