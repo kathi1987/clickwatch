@@ -13,8 +13,12 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
+import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
+import org.eclipse.emf.edit.provider.FeatureMapEntryWrapperItemProvider;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
@@ -305,4 +309,23 @@ public class HandlerItemProvider
 		return NewEditPlugin.INSTANCE;
 	}
 
+	/**
+	 * @generated NOT
+	 */
+	protected Object createWrapper(EObject object, EStructuralFeature feature,
+			Object value, int index) {
+		if (feature == ClickWatchModelPackage.eINSTANCE.getHandler_Any()) {
+			return new FeatureMapEntryWrapperItemProvider(
+					(FeatureMap.Entry) value, object, (EAttribute) feature,
+					index, adapterFactory, getResourceLocator()) {
+				@Override
+				public String getText(Object object) {
+					return ((FeatureMap.Entry) value).getEStructuralFeature()
+							.getName();
+				}
+			};
+		} else {
+			return super.createWrapper(object, feature, value, index);
+		}
+	}
 }

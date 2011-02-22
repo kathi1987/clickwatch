@@ -36,16 +36,21 @@ import org.eclipse.emf.common.ui.viewer.IViewerProvider;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.xmi.XMLResource;
+import org.eclipse.emf.ecore.xml.type.AnyType;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
 import org.eclipse.emf.edit.provider.AdapterFactoryItemDelegator;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
+import org.eclipse.emf.edit.provider.FeatureMapEntryWrapperItemProvider;
 import org.eclipse.emf.edit.provider.ReflectiveItemProvider;
 import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
 import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory;
@@ -581,6 +586,45 @@ public class ClickWatchModelEditor
 						}
 					} else {
 						return super.getText(object);
+					}
+				}
+				
+				
+				@Override
+				public Collection<?> getChildren(Object object) {
+					Collection<Object> result = new ArrayList<Object>();
+					for(Object child: super.getChildren(object)) {	
+						boolean ommit = false;
+						if (child instanceof FeatureMapEntryWrapperItemProvider) {
+							Object value = ((FeatureMap.Entry)((FeatureMapEntryWrapperItemProvider)child).getValue()).getValue();
+							if (value instanceof String && ((String)value).trim().equals("")) {
+								ommit = true;
+							}
+						}
+						if (!ommit) {
+							result.add(child);
+						}
+					}
+					
+					return result;
+				}
+
+
+				@Override
+				protected Object createWrapper(EObject object,
+						EStructuralFeature feature, Object value, int index) {
+					if (value instanceof FeatureMap.Entry && ((FeatureMap.Entry)value).getValue() instanceof AnyType) {
+						return new FeatureMapEntryWrapperItemProvider(
+								(FeatureMap.Entry) value, object, (EAttribute) feature,
+								index, adapterFactory, getResourceLocator()) {
+							@Override
+							public String getText(Object object) {
+								return ((FeatureMap.Entry) value).getEStructuralFeature()
+										.getName();
+							}
+						};
+					} else {
+						return super.createWrapper(object, feature, value, index);
 					}
 				}
 			};
