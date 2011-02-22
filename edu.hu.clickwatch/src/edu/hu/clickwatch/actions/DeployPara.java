@@ -166,73 +166,96 @@ public class DeployPara implements IObjectActionDelegate {
         fd.setText("Open");
         String[] filterExt = { "*.bz2", "*.tar", "*.gz", "*.zip", "*.dat", "*.*" };
         fd.setFilterExtensions(filterExt);
-        String lfile = fd.open();
+        final String lfile = fd.open();
         
         if (lfile == null) {
         	return;
         }
 
-        //
-        // Step 0: calc MD5 checksum
-        String md5cs = "";
-        FileInputStream fis;
+		//  create n parallel execution threads
+		final PrepareWorkerThread[] prepareWorkerThreads = new PrepareWorkerThread[node_lst.size()];
+		//  create n parallel execution threads
+		final RunWorkerThread[] runWorkerThreads = new RunWorkerThread[node_lst.size()];
+
 		try {
-			fis = new FileInputStream( new File(lfile) );
-	        md5cs = org.apache.commons.codec.digest.DigestUtils.md5Hex( fis );
-		} catch (Exception e1) {
-			System.err.println("ErrorMsg:" + e1.getMessage());
-			MessageDialog.openError(editor.getSite().getShell(), "Clickwatch Error", "ErrorMsg:" + e1.getMessage());
+	        ProgressMonitorDialog dialog = new ProgressMonitorDialog(shell);
+	        dialog.run(true, true, new IRunnableWithProgress() {
+	            public void run(IProgressMonitor monitor) {
+		        	try {
+		        		monitor.beginTask("Remote deployment", 3);
+		        		int step = 0;
+				        //
+				        // Step 0: calc MD5 checksum
+				        String md5cs = "";
+				        FileInputStream fis;
+						try {
+							fis = new FileInputStream( new File(lfile) );
+					        md5cs = org.apache.commons.codec.digest.DigestUtils.md5Hex( fis );
+						} catch (Exception e1) {
+							System.err.println("ErrorMsg:" + e1.getMessage());
+							MessageDialog.openError(editor.getSite().getShell(), "Clickwatch Error", "ErrorMsg:" + e1.getMessage());
+						}
+				        
+						monitor.worked(++step);
+						
+				        //
+				        // Step 1: prepare, copy and unpack router conf in parallel
+						for (int idx=0; idx<node_lst.size(); idx++) {
+							final Node node = node_lst.get(idx);
+				
+							// disconnect if connected
+							if (node.getConnection() != null) {
+								AbstractNodeConnection oldConnection = (AbstractNodeConnection)node.getConnection();
+								node.setConnection(null);
+								oldConnection.disconnect();
+							}
+							
+							// do it in parallel
+							prepareWorkerThreads[idx] = new PrepareWorkerThread(node.getINetAdress(), lfile, md5cs);
+							prepareWorkerThreads[idx].start();
+						}
+						
+						// sync point: wait until all worker threads are finished
+						for (int i=0; i<prepareWorkerThreads.length; i++) {
+							try {
+								prepareWorkerThreads[i].join();
+							} catch (InterruptedException e) { e.printStackTrace(); }
+						}
+						
+						monitor.worked(++step);
+						
+						//
+				        // Step 2: start router in parallel
+						for (int idx=0; idx<node_lst.size(); idx++) {
+							final Node node = node_lst.get(idx);
+				
+							// do it in parallel
+							runWorkerThreads[idx] = new RunWorkerThread(node.getINetAdress(), prepareWorkerThreads[idx]);
+							runWorkerThreads[idx].start();
+						}
+						
+						// sync point: wait until all worker threads are finished
+						for (int i=0; i<runWorkerThreads.length; i++) {
+							try {
+								runWorkerThreads[i].join();
+							} catch (InterruptedException e) { e.printStackTrace(); }
+						}
+						monitor.worked(++step);
+		        	} catch(Exception e) {
+		    			System.err.println("Exception: " + e.getMessage());
+		        		MessageDialog.openError(shell, "Clickwatch Error", "Exception: " + e.getMessage());	
+		        	} finally {
+		        		monitor.done();
+		        	}
+	            }
+	        });
+		} catch (Exception e) {
+			System.err.println("Exception: " + e.getMessage());
+    		MessageDialog.openError(shell, "Clickwatch Error", "Exception: " + e.getMessage());	
 		}
-        
-		// show log files only for single node deployment
-		boolean show_log = (node_lst.size() == 1) ? true : false;
 		
-		//  create n parallel execution threads
-		PrepareWorkerThread[] prepareWorkerThreads = new PrepareWorkerThread[node_lst.size()];
-
-        //
-        // Step 1: prepare, copy and unpack router conf in parallel
-		for (int idx=0; idx<node_lst.size(); idx++) {
-			final Node node = node_lst.get(idx);
-
-			// disconnect if connected
-			if (node.getConnection() != null) {
-				AbstractNodeConnection oldConnection = (AbstractNodeConnection)node.getConnection();
-				node.setConnection(null);
-				oldConnection.disconnect();
-			}
-			
-			// do it in parallel
-			prepareWorkerThreads[idx] = new PrepareWorkerThread(node.getINetAdress(), lfile, md5cs);
-			prepareWorkerThreads[idx].start();
-		}
-		
-		// sync point: wait until all worker threads are finished
-		for (int i=0; i<prepareWorkerThreads.length; i++) {
-			try {
-				prepareWorkerThreads[i].join();
-			} catch (InterruptedException e) { e.printStackTrace(); }
-		}
-		
-		//  create n parallel execution threads
-		RunWorkerThread[] runWorkerThreads = new RunWorkerThread[node_lst.size()];
 		//
-        // Step 2: start router in parallel
-		for (int idx=0; idx<node_lst.size(); idx++) {
-			final Node node = node_lst.get(idx);
-
-			// do it in parallel
-			runWorkerThreads[idx] = new RunWorkerThread(node.getINetAdress(), prepareWorkerThreads[idx]);
-			runWorkerThreads[idx].start();
-		}
-		
-		// sync point: wait until all worker threads are finished
-		for (int i=0; i<runWorkerThreads.length; i++) {
-			try {
-				runWorkerThreads[i].join();
-			} catch (InterruptedException e) { e.printStackTrace(); }
-		}
-		
+		// analyze results
         final List<String> prepResults = new ArrayList<String>();
         final List<String> runResults = new ArrayList<String>();
         final List<String> nodeNames = new ArrayList<String>();
