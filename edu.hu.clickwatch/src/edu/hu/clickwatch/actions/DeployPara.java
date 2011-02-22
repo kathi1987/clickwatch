@@ -66,21 +66,80 @@ public class DeployPara implements IObjectActionDelegate {
 	private List<Node> node_lst;
 	private EObject currentResult = null;
 	
+	// synchronized counter
+	public class Counter {
+		private int count;
+		public synchronized void inc() {
+			count++;
+		}
+		public synchronized int get() {
+			return count;
+		}
+	}
+	
+	public class ObserverThread extends Thread {
+		private WorkerStatus[] observedThreads;
+		private IProgressMonitor monitor;
+		private Counter counter;
+		private String title;
+		
+		public ObserverThread(WorkerStatus[] observedThreads, IProgressMonitor monitor, Counter counter, String title) {
+			this.observedThreads = observedThreads;
+			this.monitor = monitor;
+			this.counter = counter;
+			this.title = title;
+		}
+
+		public void run() {
+			while (true) {
+				int count_before = counter.get();
+				int running_cnt = 0;
+				for (WorkerStatus worker : observedThreads) {
+					if (!worker.hasFinished()) {
+						running_cnt++;
+					}
+				}
+				if (running_cnt == 0) {
+					break; // finished
+				}
+
+				monitor.setTaskName(title + " waiting: " + (observedThreads.length-running_cnt) + " / " + (observedThreads.length));
+				try {
+					sleep(50);
+				} catch (InterruptedException e) { }
+				int progress = counter.get() - count_before;
+				monitor.worked(progress);
+				if (monitor.isCanceled()) {
+					monitor.done();
+					throw new RuntimeException("User canceled operation!");
+				}
+			}
+		}
+	}
+	
+	public interface WorkerStatus {
+		public boolean hasFinished();
+	}
+	
 	/**
-	 * Executing deployment in parallel - colean-up, copy, unpack
+	 * Executing deployment in parallel - clean-up, copy, unpack
 	 */
-	public class PrepareWorkerThread extends Thread {
+	public class PrepareWorkerThread extends Thread implements WorkerStatus {
 		
 		public String iNodeAddr;
 		public String lfile;
 		public String md5cs;
 		public String result;
 		public Exception exception;
+		private Counter counter;
+		private boolean finished;
 		
-		public PrepareWorkerThread(String iNodeAddr, String lfile, String md5cs) {
+		public PrepareWorkerThread(String iNodeAddr, String lfile, String md5cs, Counter counter) {
 			this.iNodeAddr = iNodeAddr;
 			this.lfile = lfile;
 			this.md5cs = md5cs;
+			this.counter = counter;
+			finished = false;
 		}
 		
 		public void run() {
@@ -91,27 +150,39 @@ public class DeployPara implements IObjectActionDelegate {
 			} catch (Exception e) {
 				System.err.println("ErrorMsg:" + e.getMessage());
 				exception = e;			
+			} finally {
+				counter.inc();
+				finished = true;
 			}
 		}
 		
 		public boolean failed() {
 			return (exception != null);
 		}
+
+		@Override
+		public boolean hasFinished() {
+			return finished;
+		}
 	}	
 	
 	/**
 	 * Start nodes in parallel
 	 */
-	public class RunWorkerThread extends Thread {
+	public class RunWorkerThread extends Thread implements WorkerStatus {
 		
 		public String iNodeAddr;
 		public PrepareWorkerThread prepareThr;
 		public String result;
 		public Exception exception;
+		private Counter counter;
+		private boolean finished;
 		
-		public RunWorkerThread(String iNodeAddr, PrepareWorkerThread prepareThr) {
+		public RunWorkerThread(String iNodeAddr, PrepareWorkerThread prepareThr, Counter counter) {
 			this.iNodeAddr = iNodeAddr;
 			this.prepareThr = prepareThr;
+			this.counter = counter;
+			finished = false;
 		}
 		
 		public void run() {
@@ -127,11 +198,18 @@ public class DeployPara implements IObjectActionDelegate {
 			} else {
 				// do not start failed nodes
 			}
+			counter.inc();
+			finished = true;
 		}
 		
 		public boolean failed() {
 			return (exception != null);
 		}
+		
+		@Override
+		public boolean hasFinished() {
+			return finished;
+		}		
 	}	
 
 	/**
@@ -182,10 +260,13 @@ public class DeployPara implements IObjectActionDelegate {
 	        dialog.run(true, true, new IRunnableWithProgress() {
 	            public void run(IProgressMonitor monitor) {
 		        	try {
-		        		monitor.beginTask("Remote deployment", 3);
-		        		int step = 0;
+		        		int numtasks = 1 + 2 * node_lst.size();
+		        		Counter counter = new Counter();
+		        		monitor.beginTask("Remote deployment", numtasks);
+
 				        //
 				        // Step 0: calc MD5 checksum
+						monitor.setTaskName("MD5 calc ...");
 				        String md5cs = "";
 				        FileInputStream fis;
 						try {
@@ -195,8 +276,11 @@ public class DeployPara implements IObjectActionDelegate {
 							System.err.println("ErrorMsg:" + e1.getMessage());
 							MessageDialog.openError(editor.getSite().getShell(), "Clickwatch Error", "ErrorMsg:" + e1.getMessage());
 						}
-				        
-						monitor.worked(++step);
+						counter.inc();
+						monitor.worked(1);
+						
+						monitor.setTaskName("Prepare deployment ...");
+						final ObserverThread observer = new ObserverThread(prepareWorkerThreads, monitor, counter, "Prepare deployment ... ");
 						
 				        //
 				        // Step 1: prepare, copy and unpack router conf in parallel
@@ -211,36 +295,39 @@ public class DeployPara implements IObjectActionDelegate {
 							}
 							
 							// do it in parallel
-							prepareWorkerThreads[idx] = new PrepareWorkerThread(node.getINetAdress(), lfile, md5cs);
+							prepareWorkerThreads[idx] = new PrepareWorkerThread(node.getINetAdress(), lfile, md5cs, counter);
 							prepareWorkerThreads[idx].start();
 						}
+						observer.start();
 						
 						// sync point: wait until all worker threads are finished
 						for (int i=0; i<prepareWorkerThreads.length; i++) {
-							try {
-								prepareWorkerThreads[i].join();
-							} catch (InterruptedException e) { e.printStackTrace(); }
+							prepareWorkerThreads[i].join();
 						}
+						observer.join();
 						
-						monitor.worked(++step);
+						//monitor.worked(counter.get());
+						monitor.setTaskName("Start router conf ...");
 						
+						final ObserverThread observer2 = new ObserverThread(runWorkerThreads, monitor, counter, "Start router conf ...");
 						//
 				        // Step 2: start router in parallel
 						for (int idx=0; idx<node_lst.size(); idx++) {
 							final Node node = node_lst.get(idx);
 				
 							// do it in parallel
-							runWorkerThreads[idx] = new RunWorkerThread(node.getINetAdress(), prepareWorkerThreads[idx]);
+							runWorkerThreads[idx] = new RunWorkerThread(node.getINetAdress(), prepareWorkerThreads[idx], counter);
 							runWorkerThreads[idx].start();
 						}
+						observer2.start();
 						
 						// sync point: wait until all worker threads are finished
 						for (int i=0; i<runWorkerThreads.length; i++) {
-							try {
-								runWorkerThreads[i].join();
-							} catch (InterruptedException e) { e.printStackTrace(); }
+							runWorkerThreads[i].join();
 						}
-						monitor.worked(++step);
+						observer2.join();
+						
+						//monitor.worked(counter.get());
 		        	} catch(Exception e) {
 		    			System.err.println("Exception: " + e.getMessage());
 		        		MessageDialog.openError(shell, "Clickwatch Error", "Exception: " + e.getMessage());	
@@ -253,7 +340,7 @@ public class DeployPara implements IObjectActionDelegate {
 			System.err.println("Exception: " + e.getMessage());
     		MessageDialog.openError(shell, "Clickwatch Error", "Exception: " + e.getMessage());	
 		}
-		
+
 		//
 		// analyze results
         final List<String> prepResults = new ArrayList<String>();
@@ -274,7 +361,6 @@ public class DeployPara implements IObjectActionDelegate {
 		
 		// show exceptions in popup window
 		showExceptions(nodeNames, prepareExceptions, runExceptions);
-		
 	}
 
 	/**
