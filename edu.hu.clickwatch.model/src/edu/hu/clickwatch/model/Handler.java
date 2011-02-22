@@ -23,7 +23,6 @@ import org.eclipse.emf.ecore.util.FeatureMap;
  *   <li>{@link edu.hu.clickwatch.model.Handler#isCanWrite <em>Can Write</em>}</li>
  *   <li>{@link edu.hu.clickwatch.model.Handler#isChanged <em>Changed</em>}</li>
  *   <li>{@link edu.hu.clickwatch.model.Handler#isWatch <em>Watch</em>}</li>
- *   <li>{@link edu.hu.clickwatch.model.Handler#getValue <em>Value</em>}</li>
  *   <li>{@link edu.hu.clickwatch.model.Handler#getMixed <em>Mixed</em>}</li>
  *   <li>{@link edu.hu.clickwatch.model.Handler#getAny <em>Any</em>}</li>
  * </ul>
@@ -138,32 +137,6 @@ public interface Handler extends EObject {
 	 * @generated
 	 */
 	void setWatch(boolean value);
-
-	/**
-	 * Returns the value of the '<em><b>Value</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Value</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Value</em>' containment reference.
-	 * @see #setValue(EObject)
-	 * @see edu.hu.clickwatch.model.ClickWatchModelPackage#getHandler_Value()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EObject getValue();
-
-	/**
-	 * Sets the value of the '{@link edu.hu.clickwatch.model.Handler#getValue <em>Value</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Value</em>' containment reference.
-	 * @see #getValue()
-	 * @generated
-	 */
-	void setValue(EObject value);
 
 	/**
 	 * Returns the value of the '<em><b>Mixed</b></em>' attribute list.

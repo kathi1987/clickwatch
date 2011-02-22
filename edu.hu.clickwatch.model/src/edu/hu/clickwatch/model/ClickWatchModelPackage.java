@@ -234,22 +234,13 @@ public interface ClickWatchModelPackage extends EPackage {
 	int HANDLER__WATCH = 4;
 
 	/**
-	 * The feature id for the '<em><b>Value</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HANDLER__VALUE = 5;
-
-	/**
 	 * The feature id for the '<em><b>Mixed</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HANDLER__MIXED = 6;
+	int HANDLER__MIXED = 5;
 
 	/**
 	 * The feature id for the '<em><b>Any</b></em>' attribute list.
@@ -258,7 +249,7 @@ public interface ClickWatchModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HANDLER__ANY = 7;
+	int HANDLER__ANY = 6;
 
 	/**
 	 * The number of structural features of the '<em>Handler</em>' class.
@@ -267,7 +258,7 @@ public interface ClickWatchModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HANDLER_FEATURE_COUNT = 8;
+	int HANDLER_FEATURE_COUNT = 7;
 
 
 	/**
@@ -592,17 +583,6 @@ public interface ClickWatchModelPackage extends EPackage {
 	EAttribute getHandler_Watch();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link edu.hu.clickwatch.model.Handler#getValue <em>Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Value</em>'.
-	 * @see edu.hu.clickwatch.model.Handler#getValue()
-	 * @see #getHandler()
-	 * @generated
-	 */
-	EReference getHandler_Value();
-
-	/**
 	 * Returns the meta object for the attribute list '{@link edu.hu.clickwatch.model.Handler#getMixed <em>Mixed</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -887,14 +867,6 @@ public interface ClickWatchModelPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute HANDLER__WATCH = eINSTANCE.getHandler_Watch();
-
-		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference HANDLER__VALUE = eINSTANCE.getHandler_Value();
 
 		/**
 		 * The meta object literal for the '<em><b>Mixed</b></em>' attribute list feature.

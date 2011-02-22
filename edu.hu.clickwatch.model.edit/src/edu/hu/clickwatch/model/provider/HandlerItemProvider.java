@@ -79,31 +79,8 @@ public class HandlerItemProvider
 			addCanWritePropertyDescriptor(object);
 			addChangedPropertyDescriptor(object);
 			addWatchPropertyDescriptor(object);
-			addValuePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Value feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	protected void addValuePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Handler_value_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Handler_value_feature", "_UI_Handler_type"),
-				 ClickWatchModelPackage.Literals.HANDLER__VALUE,
-				 true,
-				 true,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
 	}
 
 	/**
@@ -295,12 +272,9 @@ public class HandlerItemProvider
 			case ClickWatchModelPackage.HANDLER__CAN_WRITE:
 			case ClickWatchModelPackage.HANDLER__CHANGED:
 			case ClickWatchModelPackage.HANDLER__WATCH:
-			case ClickWatchModelPackage.HANDLER__VALUE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case ClickWatchModelPackage.HANDLER__MIXED:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-				return;
 			case ClickWatchModelPackage.HANDLER__ANY:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;

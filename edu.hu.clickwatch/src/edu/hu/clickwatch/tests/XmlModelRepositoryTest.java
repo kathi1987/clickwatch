@@ -88,7 +88,7 @@ public class XmlModelRepositoryTest extends TestCase {
 			Handler handler = ClickWatchModelFactory.eINSTANCE.createHandler();
 			element.getHandlers().add(handler);
 			EObject xml = xmlModelRepository.deserializeXml("<value><foo><bar>TEXT</bar></foo></value>");
-			handler.setValue((AnyType)((XMLTypeDocumentRoot)xml).getMixed().getValue(0));
+			handler.getAny().addAll(((XMLTypeDocumentRoot)xml).getMixed());
 		}
 		
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -117,10 +117,11 @@ public class XmlModelRepositoryTest extends TestCase {
 		assertEquals(1, resource.getContents().size());
 		assertEquals(ClickWatchModelPackage.eINSTANCE.getNetwork(), resource.getContents().get(0).eClass());
 		Handler handler = ((Network)resource.getContents().get(0)).getNodes().get(0).getElements().get(0).getHandlers().get(0);
-		EObject value = handler.getValue();
+		EObject value = (EObject)handler.getAny().getValue(0);
 		assertTrue(XMLTypePackage.eINSTANCE.getAnyType().isInstance(value));
 		
-		handler.setValue(xmlModelRepository.createXMLText("newValue"));
+		handler.getAny().clear();
+		handler.getMixed().add(XMLTypePackage.eINSTANCE.getXMLTypeDocumentRoot_Text(), "newValue");
 		
 		baos = new ByteArrayOutputStream();
 		try {

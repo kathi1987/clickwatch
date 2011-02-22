@@ -63,7 +63,8 @@ public class DefaultXmlValueRepresentation implements IExtendedValueRepresentati
 	@Override
 	public boolean isNotificationChangingValue(Notification notification) {
 		if (notification.getNotifier() instanceof Handler) {
-			return notification.getFeature() == ClickWatchModelPackage.eINSTANCE.getHandler_Value();
+			return notification.getFeature() == ClickWatchModelPackage.eINSTANCE.getHandler_Any() ||
+					notification.getFeature() == ClickWatchModelPackage.eINSTANCE.getHandler_Mixed();
 		} else {
 			return true;
 		}

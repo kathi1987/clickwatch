@@ -6,6 +6,7 @@
  */
 package edu.hu.clickwatch.model.util;
 
+import edu.hu.clickwatch.model.*;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;

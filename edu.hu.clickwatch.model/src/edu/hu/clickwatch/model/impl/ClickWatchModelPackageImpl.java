@@ -276,17 +276,8 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getHandler_Value() {
-		return (EReference)handlerEClass.getEStructuralFeatures().get(5);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EAttribute getHandler_Mixed() {
-		return (EAttribute)handlerEClass.getEStructuralFeatures().get(6);
+		return (EAttribute)handlerEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -295,7 +286,7 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
 	 * @generated
 	 */
 	public EAttribute getHandler_Any() {
-		return (EAttribute)handlerEClass.getEStructuralFeatures().get(7);
+		return (EAttribute)handlerEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -435,7 +426,6 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
 		createEAttribute(handlerEClass, HANDLER__CAN_WRITE);
 		createEAttribute(handlerEClass, HANDLER__CHANGED);
 		createEAttribute(handlerEClass, HANDLER__WATCH);
-		createEReference(handlerEClass, HANDLER__VALUE);
 		createEAttribute(handlerEClass, HANDLER__MIXED);
 		createEAttribute(handlerEClass, HANDLER__ANY);
 
@@ -503,7 +493,6 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
 		initEAttribute(getHandler_CanWrite(), ecorePackage.getEBoolean(), "canWrite", null, 0, 1, Handler.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getHandler_Changed(), ecorePackage.getEBoolean(), "changed", "false", 0, 1, Handler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getHandler_Watch(), ecorePackage.getEBoolean(), "watch", "false", 0, 1, Handler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getHandler_Value(), ecorePackage.getEObject(), null, "value", null, 0, 1, Handler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getHandler_Mixed(), ecorePackage.getEFeatureMapEntry(), "mixed", null, 0, -1, Handler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getHandler_Any(), ecorePackage.getEFeatureMapEntry(), "any", null, 0, -1, Handler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
