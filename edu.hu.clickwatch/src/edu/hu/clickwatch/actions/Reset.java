@@ -20,9 +20,6 @@ public class Reset implements IObjectActionDelegate {
 	private Shell shell;
 	private Network network;
 	
-	/**
-	 * Constructor for Action1.
-	 */
 	public Reset() {
 		super();
 	}

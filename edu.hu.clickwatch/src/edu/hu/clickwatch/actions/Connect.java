@@ -20,6 +20,11 @@ import edu.hu.clickwatch.model.MultiNode;
 import edu.hu.clickwatch.model.MultiNodeNodeConnection;
 import edu.hu.clickwatch.model.Node;
 
+/**
+ * Establish a connection to the remote node via the click control element.
+ *  
+ * @author zubow
+ */
 public class Connect implements IObjectActionDelegate {
 
 	private IEditorPart editor = null;

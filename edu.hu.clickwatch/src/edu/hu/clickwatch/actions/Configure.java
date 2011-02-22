@@ -59,6 +59,9 @@ import edu.hu.clickwatch.util.SshConnectionFactory;
  */
 public class Configure implements IObjectActionDelegate {
 
+	/**
+	 * Input dialog for setting-up wifi specific parameters 
+	 */
 	public class InputDialog extends Dialog {
 
 		// mode
@@ -328,8 +331,6 @@ public class Configure implements IObjectActionDelegate {
 		}
 	}
 
-	public final static String SSH_USER = "root";
-
 	private Shell shell;
 	private IEditorPart editor = null;
 	private List<Node> node_lst;
@@ -369,29 +370,30 @@ public class Configure implements IObjectActionDelegate {
 		String rfChan = diag.getRfChanInput();
 		String txPow = diag.getTxPowInput();
 
-		Iterator<Node> node_it = node_lst.iterator();
-		//
-		// disconnect if connected & reboot node
-		while (node_it.hasNext()) {
-			Node node = node_it.next();
+		String cmd = "./initdriver.sh " + mode + " " + wifiType + " " + rfChan + " " + txPow;
+		
+		//  create n parallel execution threads
+		ExecWorkerThread[] workerThreads = new ExecWorkerThread[node_lst.size()];
+		for (int idx=0; idx<node_lst.size(); idx++) {
+			final Node node = node_lst.get(idx);
 
 			// disconnect if connected
 			if (node.getConnection() != null) {
-				AbstractNodeConnection oldConnection = (AbstractNodeConnection) node
-						.getConnection();
+				AbstractNodeConnection oldConnection = (AbstractNodeConnection)node.getConnection();
 				node.setConnection(null);
 				oldConnection.disconnect();
 			}
 
-			// remote deploy
-			System.out.println("configure on node " + node.getINetAdress()
-					+ " called.");
+			workerThreads[idx] = new ExecWorkerThread(node.getINetAdress(), cmd);
+			workerThreads[idx].start();
+		}
+		
+		// sync point: wait until all worker threads are finished
+		for (int i=0; i<workerThreads.length; i++) {
 			try {
-				configRemote(node.getINetAdress(), mode, wifiType, rfChan, txPow);
-			} catch (Exception e) {
-				System.err.println("ErrorMsg:" + e.getMessage());
-				MessageDialog.openError(editor.getSite().getShell(),
-						"Clickwatch Error", "ErrorMsg:" + e.getMessage());
+				workerThreads[i].join();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
 			}
 		}
 	}
@@ -409,25 +411,5 @@ public class Configure implements IObjectActionDelegate {
 			MessageDialog.openError(editor.getSite().getShell(),
 					"Clickwatch Error", "ErrorMsg:" + e.getMessage());
 		}
-	}
-
-	private void configRemote(String host, String mode, String wifiType, String rfChan, String txPow) throws Exception {
-		/*
-		 * // init ssh Session session =
-		 * SshConnectionFactory.getInstance().createSession(SSH_USER, host);
-		 * 
-		 * // clean-up old String command = "reboot"; StringBuffer logMsg =
-		 * SshConnectionFactory.getInstance().execRemote(session, command,
-		 * "Rebooting node " + host, shell); log2Sout(logMsg);
-		 * 
-		 * // close session
-		 * SshConnectionFactory.getInstance().closeSession(session);
-		 */
-		MessageDialog.openError(editor.getSite().getShell(),
-				"Clickwatch Error", "Not yet implemented - Robert, I need your help here.");
-	}
-
-	private void log2Sout(StringBuffer sb) {
-		System.out.println(sb.toString());
 	}
 }

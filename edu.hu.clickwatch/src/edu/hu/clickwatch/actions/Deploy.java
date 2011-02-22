@@ -46,7 +46,6 @@ import com.jcraft.jsch.*;
 import edu.hu.clickwatch.ClickWatchPluginActivator;
 import edu.hu.clickwatch.GuiceModule;
 import edu.hu.clickwatch.XmlUtil;
-import edu.hu.clickwatch.actions.Execute.WorkerThread;
 import edu.hu.clickwatch.model.AbstractNodeConnection;
 import edu.hu.clickwatch.model.ClickControlNodeConnection;
 import edu.hu.clickwatch.model.MultiNode;
@@ -56,15 +55,24 @@ import edu.hu.clickwatch.util.SshConnectionFactory;
 import edu.hu.clickwatch.views.ResultView;
 
 /**
- * Deploy a new Click configuration to remote nodes via ssh in parallel.
+ * Deploy a new Click configuration to remote nodes using ssh in parallel.
+ * 
  * @author zubow
  */
-public class Deploy implements IObjectActionDelegate {
+public class Deploy implements IObjectActionDelegate, SSHParams {
 
 	private Shell shell;
 	private IEditorPart editor = null;
 	private List<Node> node_lst;
 	private EObject currentResult = null;
+	
+	public class Marker {
+		public boolean value;
+		
+		public Marker(boolean value) {
+			this.value = value;
+		}
+	}
 	
 	// synchronized counter
 	public class Counter {
@@ -86,12 +94,14 @@ public class Deploy implements IObjectActionDelegate {
 		private IProgressMonitor monitor;
 		private Counter counter;
 		private String title;
+		private boolean wasCanceled;
 		
 		public ObserverThread(WorkerStatus[] observedThreads, IProgressMonitor monitor, Counter counter, String title) {
 			this.observedThreads = observedThreads;
 			this.monitor = monitor;
 			this.counter = counter;
 			this.title = title;
+			this.wasCanceled = false;
 		}
 
 		public void run() {
@@ -127,7 +137,12 @@ public class Deploy implements IObjectActionDelegate {
 				monitor.worked(progress);
 				if (monitor.isCanceled()) {
 					monitor.done();
-					throw new RuntimeException("User canceled operation!");
+					wasCanceled = true;
+					// cancel all observed threads
+					for (WorkerStatus worker : observedThreads) {
+						worker.cancel();
+					}
+					return; // stop the thread
 				}
 			}
 		}
@@ -136,6 +151,7 @@ public class Deploy implements IObjectActionDelegate {
 	public interface WorkerStatus {
 		public boolean hasFinished();
 		public String getNodeName();
+		public void cancel();
 	}
 	
 	/**
@@ -150,6 +166,7 @@ public class Deploy implements IObjectActionDelegate {
 		public Exception exception;
 		private Counter counter;
 		private boolean finished;
+		private boolean canceled;
 		
 		public PrepareWorkerThread(String iNodeAddr, String lfile, String md5cs, Counter counter) {
 			this.iNodeAddr = iNodeAddr;
@@ -157,13 +174,14 @@ public class Deploy implements IObjectActionDelegate {
 			this.md5cs = md5cs;
 			this.counter = counter;
 			finished = false;
+			canceled = false;
 		}
 		
 		public void run() {
 			try {
 				// remote deploy
 				System.out.println("deploying on node " + iNodeAddr + " called.");
-				result = DeploymentHelper.getInstance().deployRemote(iNodeAddr, lfile, md5cs, shell, false);
+				result = deployRemote(iNodeAddr, lfile, md5cs, false);
 			} catch (Exception e) {
 				System.err.println("ErrorMsg:" + e.getMessage());
 				exception = e;			
@@ -185,6 +203,9 @@ public class Deploy implements IObjectActionDelegate {
 		public String getNodeName() {
 			return iNodeAddr;
 		}
+		public void cancel() {
+			canceled = true;
+		}
 	}	
 	
 	/**
@@ -198,12 +219,14 @@ public class Deploy implements IObjectActionDelegate {
 		public Exception exception;
 		private Counter counter;
 		private boolean finished;
+		private boolean canceled;
 		
 		public RunWorkerThread(String iNodeAddr, PrepareWorkerThread prepareThr, Counter counter) {
 			this.iNodeAddr = iNodeAddr;
 			this.prepareThr = prepareThr;
 			this.counter = counter;
 			finished = false;
+			canceled = false;
 		}
 		
 		public void run() {
@@ -211,7 +234,7 @@ public class Deploy implements IObjectActionDelegate {
 			if (!prepareThr.failed()) {
 				System.out.println("starting on node " + iNodeAddr + " called.");
 				try {
-					result = DeploymentHelper.getInstance().startRemote(iNodeAddr, shell, false);
+					result = startRemote(iNodeAddr, false);
 				} catch (Exception e) {
 					System.err.println("ErrorMsg:" + e.getMessage());
 					exception = e;			
@@ -233,6 +256,9 @@ public class Deploy implements IObjectActionDelegate {
 		}		
 		public String getNodeName() {
 			return iNodeAddr;
+		}
+		public void cancel() {
+			canceled = true;
 		}
 	}	
 
@@ -279,6 +305,7 @@ public class Deploy implements IObjectActionDelegate {
 		//  create n parallel execution threads
 		final RunWorkerThread[] runWorkerThreads = new RunWorkerThread[node_lst.size()];
 
+		final Marker canceled = new Marker(false);
 		try {
 	        ProgressMonitorDialog dialog = new ProgressMonitorDialog(shell);
 	        dialog.run(true, true, new IRunnableWithProgress() {
@@ -330,6 +357,12 @@ public class Deploy implements IObjectActionDelegate {
 						}
 						observer.join();
 						
+						// check if canceled
+						if (observer.wasCanceled) {
+							canceled.value = true;
+							return;
+						}
+						
 						//monitor.worked(counter.get());
 						monitor.setTaskName("Start router conf ...");
 						
@@ -350,6 +383,11 @@ public class Deploy implements IObjectActionDelegate {
 							runWorkerThreads[i].join();
 						}
 						observer2.join();
+						// check if canceled
+						if (observer2.wasCanceled) {
+							canceled.value = true;
+							return;
+						}
 						
 						//monitor.worked(counter.get());
 		        	} catch(Exception e) {
@@ -367,26 +405,126 @@ public class Deploy implements IObjectActionDelegate {
 
 		//
 		// analyze results
-        final List<String> prepResults = new ArrayList<String>();
-        final List<String> runResults = new ArrayList<String>();
-        final List<String> nodeNames = new ArrayList<String>();
-        final List<Exception> prepareExceptions = new ArrayList<Exception>();
-        final List<Exception> runExceptions = new ArrayList<Exception>();
-		for (int i=0; i<runWorkerThreads.length; i++) {
-			runResults.add(runWorkerThreads[i].result);
-			prepResults.add(prepareWorkerThreads[i].result);
-			nodeNames.add(runWorkerThreads[i].iNodeAddr);
-			prepareExceptions.add(prepareWorkerThreads[i].exception);
-			runExceptions.add(runWorkerThreads[i].exception);
-		}
+		if (!canceled.value) {
+	        final List<String> prepResults = new ArrayList<String>();
+	        final List<String> runResults = new ArrayList<String>();
+	        final List<String> nodeNames = new ArrayList<String>();
+	        final List<Exception> prepareExceptions = new ArrayList<Exception>();
+	        final List<Exception> runExceptions = new ArrayList<Exception>();
+			for (int i=0; i<runWorkerThreads.length; i++) {
+				runResults.add(runWorkerThreads[i].result);
+				prepResults.add(prepareWorkerThreads[i].result);
+				nodeNames.add(runWorkerThreads[i].iNodeAddr);
+				prepareExceptions.add(prepareWorkerThreads[i].exception);
+				runExceptions.add(runWorkerThreads[i].exception);
+			}
+				
+	        // show results in treeview
+			showResults(prepResults, runResults, nodeNames);
 			
-        // show results in treeview
-		showResults(prepResults, runResults, nodeNames);
-		
-		// show exceptions in popup window
-		showExceptions(nodeNames, prepareExceptions, runExceptions);
+			// show exceptions in popup window
+			showExceptions(nodeNames, prepareExceptions, runExceptions);
+		}
 	}
 
+	/**
+	 * Remote deployment: clean-up, copy and unpack router conf
+	 */
+	public String deployRemote(String host, String lfile, String md5cs, boolean showProgressbar) throws Exception {
+		
+		StringBuffer results = new StringBuffer();
+		// init ssh
+		Session session = SshConnectionFactory.getInstance().createSession(SSH_USER, host);
+
+		String lFileUnqualified = (new File(lfile)).getName();
+		String rfile = "/tmp/" + lFileUnqualified;
+		
+		// clean-up old
+		long startTime = System.currentTimeMillis();
+		String command = "rm -rf /tmp/seismo; md5sum " + rfile + " | awk '{ print $1 }'";
+		StringBuffer logMsg = null;
+		if (showProgressbar) {
+			logMsg = SshConnectionFactory.getInstance().execRemoteGUI(session, command, "Cleanup router conf on node " + host, shell);
+		} else {
+			logMsg = SshConnectionFactory.getInstance().execRemote(session, command);
+		}
+		log2Sout(logMsg.append("\n").append("Clean-up executed in ").append((System.currentTimeMillis() - startTime) / 1000).append(" sec"));
+		results.append(logMsg);
+		
+		// compare checksum
+		if (logMsg.toString().indexOf(md5cs) > -1) {
+			String msg = "There is already a file with the same MD5 checksum; skip copying ... ";
+			System.out.println(msg);
+			results.append("\n").append(msg).append("\n");
+		} else {
+			// copy resource file to remote
+			startTime = System.currentTimeMillis();
+			if (showProgressbar) {
+				SshConnectionFactory.getInstance().scpToGUI(session, lfile, rfile, "Uploading router conf on node " + host, shell);
+			} else {
+				SshConnectionFactory.getInstance().scpTo(session, lfile, rfile);
+			}
+			String msg = "Copy file executed in " + ((System.currentTimeMillis() - startTime) / 1000) + " sec";
+			System.out.println(msg);
+			results.append("\n").append(msg).append("\n");
+		}
+		
+		// unpack
+		startTime = System.currentTimeMillis();
+		command = "(cd /tmp/; bzcat " + lFileUnqualified + " | tar xvf - )";
+		if (showProgressbar) {
+			logMsg = SshConnectionFactory.getInstance().execRemoteGUI(session, command, "Unpacking router conf on node " + host, shell);
+		} else {
+			logMsg = SshConnectionFactory.getInstance().execRemote(session, command);
+		}
+		log2Sout(logMsg.append("\n").append("Unpacking executed in ").append((System.currentTimeMillis() - startTime) / 1000).append(" sec"));
+		results.append("\n").append(logMsg).append("\n");
+		
+		// close session
+		SshConnectionFactory.getInstance().closeSession(session);
+		results.append("closing session.\n");
+		return results.toString();
+	}
+	
+	/**
+	 * Start router configuration
+	 */
+	public String startRemote(String host, boolean showProgressbar) throws Exception {
+		
+		// init ssh
+		Session session = SshConnectionFactory.getInstance().createSession(SSH_USER, host);
+
+		// start
+		long startTime = System.currentTimeMillis();
+		String command = "(cd /tmp/seismo; ./bin/seismo.sh delaystart )";
+		StringBuffer logMsg = null;
+		if (showProgressbar) {
+			logMsg = SshConnectionFactory.getInstance().execRemoteGUI(session, command, "Starting router conf on node " + host, shell);
+		} else {
+			logMsg = SshConnectionFactory.getInstance().execRemote(session, command);
+		}
+		log2Sout(logMsg.append("\n").append("Starting executed in ").append((System.currentTimeMillis() - startTime) / 1000).append(" sec"));
+		
+		// check log file after sleeping for 5 seconds
+		startTime = System.currentTimeMillis();
+		command = "(sleep 5; cd /tmp; cat seismo_brn.log )";
+		if (showProgressbar) {
+			logMsg = SshConnectionFactory.getInstance().execRemoteGUI(session, command, "Fetching log file from node " + host, shell);
+		} else {
+			logMsg = SshConnectionFactory.getInstance().execRemote(session, command);
+		}
+		String logstr = logMsg.toString();
+		log2Sout(logMsg.append("\n").append("Fetching log-file executed in ").append((System.currentTimeMillis() - startTime) / 1000).append(" sec"));
+
+		// close session
+		SshConnectionFactory.getInstance().closeSession(session);
+		return logstr;
+	}
+	
+	private void log2Sout(StringBuffer sb) {
+		System.out.println(sb.toString());
+	}
+	
 	/**
 	 * Update results in resultview 
 	 */

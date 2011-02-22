@@ -68,46 +68,63 @@ import edu.hu.clickwatch.util.SshConnectionFactory;
 import edu.hu.clickwatch.views.ResultView;
 
 /**
+ * Executes shell commands in parallel on each node using SSH.
+ * 
+ * @author zubow
+ */
+class ExecWorkerThread extends Thread {
+	
+	public String iNodeAddr;
+	public String cmd;
+	public String result;
+	public Exception exception;
+	
+	public ExecWorkerThread(String iNodeAddr, String cmd) {
+		this.iNodeAddr = iNodeAddr;
+		this.cmd = cmd;
+	}
+	
+	public void run() {
+		// remote execute
+		System.out.println("cmd " + cmd + " on node " + iNodeAddr + " called.");
+		try {
+			result = execRemote(iNodeAddr, cmd);
+		} catch (Exception e) {
+			System.err.println("ErrorMsg:" + e.getMessage());
+			exception = e;
+		}
+	}
+	
+	private String execRemote(String host, String command) throws Exception {
+		
+		// init ssh
+		Session session = SshConnectionFactory.getInstance().createSession(SSHParams.SSH_USER, host);
+
+		StringBuffer logMsg = SshConnectionFactory.getInstance().execRemote(session, command);
+		log2Sout(logMsg);
+		
+		// close session
+		SshConnectionFactory.getInstance().closeSession(session);
+		
+		return logMsg.toString();
+	}
+
+	private void log2Sout(StringBuffer sb) {
+		System.out.println(sb.toString());
+	}
+}
+
+/**
  * Exec remote code via ssh.
  * @author zubow
  */
 public class Execute implements IObjectActionDelegate {
 
-	public final static String SSH_USER = "root";
-	
 	private Shell shell;
 	private IEditorPart editor = null;
 	private List<Node> node_lst;
 	private EObject currentResult = null;
 
-	/**
-	 * Executing ssh commands in parallel on each node 
-	 */
-	public class WorkerThread extends Thread {
-		
-		public String iNodeAddr;
-		public String cmd;
-		public String result;
-		public Exception exception;
-		
-		public WorkerThread(String iNodeAddr, String cmd) {
-			this.iNodeAddr = iNodeAddr;
-			this.cmd = cmd;
-		}
-		
-		public void run() {
-			// remote execute
-			System.out.println("exec on node " + iNodeAddr + " called.");
-			try {
-				result = execRemote(iNodeAddr, cmd);
-			} catch (Exception e) {
-				System.err.println("ErrorMsg:" + e.getMessage());
-				exception = e;
-				//MessageDialog.openError(editor.getSite().getShell(), "Clickwatch Error", "ErrorMsg:" + e.getMessage());			
-			}
-		}
-	}
-	
 	/**
 	 * GUI dialog for entering a command to be remotely executed 
 	 */
@@ -266,7 +283,7 @@ public class Execute implements IObjectActionDelegate {
 		final boolean show_log = (node_lst.size() == 1) ? true : false;
 
 		//  create n parallel execution threads
-		WorkerThread[] workerThreads = new WorkerThread[node_lst.size()];
+		ExecWorkerThread[] workerThreads = new ExecWorkerThread[node_lst.size()];
 		for (int idx=0; idx<node_lst.size(); idx++) {
 			final Node node = node_lst.get(idx);
 
@@ -277,7 +294,7 @@ public class Execute implements IObjectActionDelegate {
 				oldConnection.disconnect();
 			}
 
-			workerThreads[idx] = new WorkerThread(node.getINetAdress(), cmd);
+			workerThreads[idx] = new ExecWorkerThread(node.getINetAdress(), cmd);
 			workerThreads[idx].start();
 		}
 		
@@ -367,23 +384,5 @@ public class Execute implements IObjectActionDelegate {
 		} catch (Exception e) {
 			MessageDialog.openError(editor.getSite().getShell(), "Clickwatch Error", "ErrorMsg:" + e.getMessage());
 		}
-	}
-
-	private String execRemote(String host, String command) throws Exception {
-		
-		// init ssh
-		Session session = SshConnectionFactory.getInstance().createSession(SSH_USER, host);
-
-		StringBuffer logMsg = SshConnectionFactory.getInstance().execRemote(session, command);
-		log2Sout(logMsg);
-		
-		// close session
-		SshConnectionFactory.getInstance().closeSession(session);
-		
-		return logMsg.toString();
-	}
-	
-	private void log2Sout(StringBuffer sb) {
-		System.out.println(sb.toString());
 	}
 }

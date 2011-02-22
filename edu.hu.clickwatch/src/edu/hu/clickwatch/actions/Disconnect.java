@@ -14,14 +14,16 @@ import org.eclipse.ui.IWorkbenchPart;
 import edu.hu.clickwatch.model.AbstractNodeConnection;
 import edu.hu.clickwatch.model.Node;
 
+/**
+ * Closes a connection to a remote node (click control element) 
+ * 
+ * @author zubow
+ */
 public class Disconnect implements IObjectActionDelegate {
 
 	private Shell shell;
 	private Iterator<Node> node_it;
 	
-	/**
-	 * Constructor for Action1.
-	 */
 	public Disconnect() {
 		super();
 	}

@@ -22,6 +22,11 @@ import edu.hu.clickwatch.model.ClickWatchModelFactory;
 import edu.hu.clickwatch.model.Network;
 import edu.hu.clickwatch.model.Node;
 
+/**
+ * Import a list of nodes from external file
+ * 
+ * @author zubow
+ */
 public class Import implements IObjectActionDelegate {
 	
 	public final static String PORT = "7777";
@@ -29,9 +34,6 @@ public class Import implements IObjectActionDelegate {
 	private Shell shell;
 	private Network network;
 
-	/**
-	 * Constructor for Action1.
-	 */
 	public Import() {
 		super();
 	}
@@ -71,7 +73,6 @@ public class Import implements IObjectActionDelegate {
 
 		try {
 			File file = new File(fileName);
-			
 			BufferedReader input = new BufferedReader(new FileReader(file));
 			
 			try {

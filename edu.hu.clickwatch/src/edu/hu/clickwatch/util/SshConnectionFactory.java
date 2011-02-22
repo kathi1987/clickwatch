@@ -31,6 +31,8 @@ import sun.security.jca.GetInstance.Instance;
  */
 public class SshConnectionFactory {
 
+	public final static String SSH_USER = "root";
+
 	private static SshConnectionFactory instance;
 	public final static String END_TOKEN = "__ACK__"; 
 	

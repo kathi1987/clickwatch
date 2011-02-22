@@ -47,20 +47,15 @@ import edu.hu.clickwatch.model.Node;
 import edu.hu.clickwatch.util.SshConnectionFactory;
 
 /**
- * Reboot a network node via ssh.
+ * Reboots a node using SSH.
+ * 
  * @author zubow
  */
 public class Reboot implements IObjectActionDelegate {
 
-	public final static String SSH_USER = "root";
-	
-	private Shell shell;
 	private IEditorPart editor = null;
 	private List<Node> node_lst;
 
-	/**
-	 * Constructor for Action1.
-	 */
 	public Reboot() {
 		super();
 	}
@@ -72,7 +67,6 @@ public class Reboot implements IObjectActionDelegate {
 	public void setActivePart(IAction action, IWorkbenchPart targetPart) {
 		if (targetPart instanceof IEditorPart) {
 			editor = (IEditorPart)targetPart;
-			shell = targetPart.getSite().getShell();
 		}
 	}
 
@@ -84,12 +78,13 @@ public class Reboot implements IObjectActionDelegate {
 		if (node_lst == null || node_lst.isEmpty()) {
 			return;
 		}
+	
+		String cmd = "reboot";
 		
-        Iterator<Node> node_it = node_lst.iterator();
-		//
-        // disconnect if connected & reboot node
-		while (node_it.hasNext()) {
-			Node node = node_it.next();
+		//  create n parallel execution threads
+		ExecWorkerThread[] workerThreads = new ExecWorkerThread[node_lst.size()];
+		for (int idx=0; idx<node_lst.size(); idx++) {
+			final Node node = node_lst.get(idx);
 
 			// disconnect if connected
 			if (node.getConnection() != null) {
@@ -97,14 +92,18 @@ public class Reboot implements IObjectActionDelegate {
 				node.setConnection(null);
 				oldConnection.disconnect();
 			}
-			
-			// remote deploy
-			System.out.println("reboot on node " + node.getINetAdress() + " called.");
+
+			workerThreads[idx] = new ExecWorkerThread(node.getINetAdress(), cmd);
+			workerThreads[idx].start();
+		}
+		
+		// sync point: wait until all worker threads are finished
+		for (int i=0; i<workerThreads.length; i++) {
 			try {
-				rebootRemote(node.getINetAdress());
-			} catch (Exception e) {
-				System.err.println("ErrorMsg:" + e.getMessage());
-				MessageDialog.openError(editor.getSite().getShell(), "Clickwatch Error", "ErrorMsg:" + e.getMessage());			}
+				workerThreads[i].join();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
@@ -120,23 +119,5 @@ public class Reboot implements IObjectActionDelegate {
 		} catch (Exception e) {
 			MessageDialog.openError(editor.getSite().getShell(), "Clickwatch Error", "ErrorMsg:" + e.getMessage());
 		}
-	}
-
-	private void rebootRemote(String host) throws Exception {
-		
-		// init ssh
-		Session session = SshConnectionFactory.getInstance().createSession(SSH_USER, host);
-
-		// clean-up old
-		String command = "reboot";
-		StringBuffer logMsg = SshConnectionFactory.getInstance().execRemoteGUI(session, command, "Rebooting node " + host, shell);
-		log2Sout(logMsg);
-		
-		// close session
-		SshConnectionFactory.getInstance().closeSession(session);
-	}
-	
-	private void log2Sout(StringBuffer sb) {
-		System.out.println(sb.toString());
 	}
 }
