@@ -21,8 +21,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.xsd.XSDSchema;
-import org.eclipse.xsd.ecore.XSDEcoreBuilder;
 
 import click.ControlSocket.HandlerInfo;
 

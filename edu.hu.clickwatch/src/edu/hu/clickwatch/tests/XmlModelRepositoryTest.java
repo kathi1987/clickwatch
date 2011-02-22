@@ -99,7 +99,6 @@ public class XmlModelRepositoryTest extends TestCase {
 		}
 		
 		String modelXmi = baos.toString();
-		System.out.println(modelXmi);
 		
 		try {
 			resource.delete(null);
@@ -129,8 +128,7 @@ public class XmlModelRepositoryTest extends TestCase {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
-		System.out.println(baos.toString());
+
 	}
 	
 	public void testBasicXDS() {
@@ -213,7 +211,6 @@ public class XmlModelRepositoryTest extends TestCase {
 		documentRoot.eSet(documentRoot.eClass().getEStructuralFeature(featureName), result.eContents().get(0).eContents().get(0));
 		
 		String serializedResult = xmlModelRepository.serializeModel(metaModel, documentRoot);
-		System.out.println(serializedResult);
 		result = xmlModelRepository.deserializeModel(metaModel, serializedResult);
 		
 		Iterator<EObject> it = result.eAllContents();

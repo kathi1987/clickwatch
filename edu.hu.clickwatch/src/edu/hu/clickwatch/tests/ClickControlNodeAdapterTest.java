@@ -106,8 +106,6 @@ public class ClickControlNodeAdapterTest extends TestCase {
 		Node node = modelAdapter.retrieve(null, null);
 		
 		checkDefaultNode(node);
-		
-		System.out.println(xmlModelRepository.serializeXml(node));
 	}
 	
 	public void testRetrieveAllWithMultipleElements() {

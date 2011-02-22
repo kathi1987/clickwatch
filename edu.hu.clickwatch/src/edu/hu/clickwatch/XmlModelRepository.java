@@ -195,20 +195,7 @@ public class XmlModelRepository {
 		Preconditions.checkState(values.size() == 1);
 		EPackage result = values.iterator().next();
 		
-//		ExtendedMetaData xmd = ExtendedMetaData.INSTANCE;
-//		xmd.setQualified(result, true);
-//		xmd.set
-		
 		result.setNsURI(xsdUri.toString());
-		
-//		URI metaModelUri = URI.createURI(xsdUri.toString().replace(".xsd", ".ecore"));
-//		Resource metaModelResource = resourceSet.getResource(metaModelUri, false);
-//		if (metaModelResource == null) {
-//			metaModelResource = resourceSet.createResource(metaModelUri);
-//			metaModelResource.getContents().add(result);
-//			result.setNsURI(metaModelUri.toString());
-//		}
-		System.out.println("META-MODEL: " + serializeXml(result) + "\n\n");
 		return result;		
 	}
 	

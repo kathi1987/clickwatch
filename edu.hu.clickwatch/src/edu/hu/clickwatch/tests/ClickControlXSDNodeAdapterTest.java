@@ -85,7 +85,6 @@ public class ClickControlXSDNodeAdapterTest extends TestCase {
 		}
 		
 		String xml = xmlModelRepository.serializeXml(node);
-		System.out.println(xml);
 		
 		EObject reReadModel = xmlModelRepository.deserializeXml(xml);
 		assertNotNull(TestUtil.query(reReadModel, ":n/foo:e/bar:h/foo:x/bar[=TEXT]:x"));

@@ -59,8 +59,6 @@ public abstract class AbstractNodeAdapter implements INodeAdapter {
 		} catch (IOException e) {
 			Throwables.propagate(e);
 		}
-
-		System.out.println("Connected to " + host);
 	}
 
 	@Override
@@ -79,7 +77,6 @@ public abstract class AbstractNodeAdapter implements INodeAdapter {
 			EcoreUtil.delete(internalNodeCopy, true);
 		}
 		internalNodeCopy = null;
-		System.out.println("Disconnected from " + host);
 	}
 
 	private void ensureConnected() {
