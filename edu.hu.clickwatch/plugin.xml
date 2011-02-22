@@ -28,13 +28,6 @@
                menubarPath="additions">
          </action>
          <action
-               class="edu.hu.clickwatch.actions.DeployPara"
-               enablesFor="+"
-               id="edu.hu.clickwatch.deployParaAction"
-               label="DeployPara"
-               menubarPath="additions">
-         </action>
-         <action
                class="edu.hu.clickwatch.actions.Deploy"
                enablesFor="+"
                id="edu.hu.clickwatch.deployAction"
