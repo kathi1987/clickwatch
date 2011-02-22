@@ -13,6 +13,9 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.util.BasicFeatureMap;
+import org.eclipse.emf.ecore.util.FeatureMap;
+import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.emf.ecore.xml.type.AnyType;
 
 import edu.hu.clickwatch.model.ClickWatchModelPackage;
@@ -30,7 +33,8 @@ import edu.hu.clickwatch.model.Handler;
  *   <li>{@link edu.hu.clickwatch.model.impl.HandlerImpl#isCanWrite <em>Can Write</em>}</li>
  *   <li>{@link edu.hu.clickwatch.model.impl.HandlerImpl#isChanged <em>Changed</em>}</li>
  *   <li>{@link edu.hu.clickwatch.model.impl.HandlerImpl#isWatch <em>Watch</em>}</li>
- *   <li>{@link edu.hu.clickwatch.model.impl.HandlerImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.model.impl.HandlerImpl#getMixed <em>Mixed</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.model.impl.HandlerImpl#getAny <em>Any</em>}</li>
  * </ul>
  * </p>
  *
@@ -138,14 +142,24 @@ public class HandlerImpl extends EObjectImpl implements Handler {
 	protected boolean watch = WATCH_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getValue() <em>Value</em>}' containment reference.
+	 * The cached value of the '{@link #getMixed() <em>Mixed</em>}' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getValue()
+	 * @see #getMixed()
 	 * @generated
 	 * @ordered
 	 */
-	protected EObject value;
+	protected FeatureMap mixed;
+
+	/**
+	 * The cached value of the '{@link #getAny() <em>Any</em>}' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAny()
+	 * @generated
+	 * @ordered
+	 */
+	protected FeatureMap any;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -255,8 +269,11 @@ public class HandlerImpl extends EObjectImpl implements Handler {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EObject getValue() {
-		return value;
+	public FeatureMap getMixed() {
+		if (mixed == null) {
+			mixed = new BasicFeatureMap(this, ClickWatchModelPackage.HANDLER__MIXED);
+		}
+		return mixed;
 	}
 
 	/**
@@ -264,33 +281,11 @@ public class HandlerImpl extends EObjectImpl implements Handler {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetValue(EObject newValue, NotificationChain msgs) {
-		EObject oldValue = value;
-		value = newValue;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ClickWatchModelPackage.HANDLER__VALUE, oldValue, newValue);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
+	public FeatureMap getAny() {
+		if (any == null) {
+			any = new BasicFeatureMap(this, ClickWatchModelPackage.HANDLER__ANY);
 		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setValue(EObject newValue) {
-		if (newValue != value) {
-			NotificationChain msgs = null;
-			if (value != null)
-				msgs = ((InternalEObject)value).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ClickWatchModelPackage.HANDLER__VALUE, null, msgs);
-			if (newValue != null)
-				msgs = ((InternalEObject)newValue).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ClickWatchModelPackage.HANDLER__VALUE, null, msgs);
-			msgs = basicSetValue(newValue, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ClickWatchModelPackage.HANDLER__VALUE, newValue, newValue));
+		return any;
 	}
 
 	/**
@@ -301,8 +296,10 @@ public class HandlerImpl extends EObjectImpl implements Handler {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case ClickWatchModelPackage.HANDLER__VALUE:
-				return basicSetValue(null, msgs);
+			case ClickWatchModelPackage.HANDLER__MIXED:
+				return ((InternalEList<?>)getMixed()).basicRemove(otherEnd, msgs);
+			case ClickWatchModelPackage.HANDLER__ANY:
+				return ((InternalEList<?>)getAny()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -346,8 +343,12 @@ public class HandlerImpl extends EObjectImpl implements Handler {
 				return isChanged();
 			case ClickWatchModelPackage.HANDLER__WATCH:
 				return isWatch();
-			case ClickWatchModelPackage.HANDLER__VALUE:
-				return getValue();
+			case ClickWatchModelPackage.HANDLER__MIXED:
+				if (coreType) return getMixed();
+				return ((FeatureMap.Internal)getMixed()).getWrapper();
+			case ClickWatchModelPackage.HANDLER__ANY:
+				if (coreType) return getAny();
+				return ((FeatureMap.Internal)getAny()).getWrapper();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -375,8 +376,11 @@ public class HandlerImpl extends EObjectImpl implements Handler {
 			case ClickWatchModelPackage.HANDLER__WATCH:
 				setWatch((Boolean)newValue);
 				return;
-			case ClickWatchModelPackage.HANDLER__VALUE:
-				setValue((EObject)newValue);
+			case ClickWatchModelPackage.HANDLER__MIXED:
+				((FeatureMap.Internal)getMixed()).set(newValue);
+				return;
+			case ClickWatchModelPackage.HANDLER__ANY:
+				((FeatureMap.Internal)getAny()).set(newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -405,8 +409,11 @@ public class HandlerImpl extends EObjectImpl implements Handler {
 			case ClickWatchModelPackage.HANDLER__WATCH:
 				setWatch(WATCH_EDEFAULT);
 				return;
-			case ClickWatchModelPackage.HANDLER__VALUE:
-				setValue((EObject)null);
+			case ClickWatchModelPackage.HANDLER__MIXED:
+				getMixed().clear();
+				return;
+			case ClickWatchModelPackage.HANDLER__ANY:
+				getAny().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -430,8 +437,10 @@ public class HandlerImpl extends EObjectImpl implements Handler {
 				return changed != CHANGED_EDEFAULT;
 			case ClickWatchModelPackage.HANDLER__WATCH:
 				return watch != WATCH_EDEFAULT;
-			case ClickWatchModelPackage.HANDLER__VALUE:
-				return value != null;
+			case ClickWatchModelPackage.HANDLER__MIXED:
+				return mixed != null && !mixed.isEmpty();
+			case ClickWatchModelPackage.HANDLER__ANY:
+				return any != null && !any.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -456,6 +465,10 @@ public class HandlerImpl extends EObjectImpl implements Handler {
 		result.append(changed);
 		result.append(", watch: ");
 		result.append(watch);
+		result.append(", mixed: ");
+		result.append(mixed);
+		result.append(", any: ");
+		result.append(any);
 		result.append(')');
 		return result.toString();
 	}

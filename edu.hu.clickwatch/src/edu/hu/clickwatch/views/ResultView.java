@@ -22,7 +22,9 @@ import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.part.ViewPart;
 
-import edu.hu.clickwatch.XmlUtil;
+import com.google.inject.Inject;
+
+import edu.hu.clickwatch.XmlModelRepository;
 import edu.hu.clickwatch.model.provider.ClickWatchModelItemProviderAdapterFactory;
 
 public class ResultView extends ViewPart {
@@ -30,6 +32,9 @@ public class ResultView extends ViewPart {
 	private Action save = null;
 	private TreeViewer treeViewer = null;
 	private ComposedAdapterFactory adapterFactory;
+	
+	@Inject
+	private XmlModelRepository xmlModelRepository; 
 	
 	public void setInput(Object input) {
 		treeViewer.setInput(input);
@@ -96,7 +101,7 @@ public class ResultView extends ViewPart {
         
         try {
 			PrintWriter out = new PrintWriter(new File(selFile));
-	        String content = XmlUtil.serializeXml((EObject)(treeViewer.getInput()));
+	        String content = xmlModelRepository.serializeXml((EObject)(treeViewer.getInput()));
 	        out.write(content);
 	        out.close();
 		} catch (FileNotFoundException e) {

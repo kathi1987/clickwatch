@@ -3,9 +3,7 @@ package edu.hu.clickwatch.nodeadapter;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.ecore.EObject;
 
-import edu.hu.clickwatch.XmlUtil;
 import edu.hu.clickwatch.model.AbstractNodeConnection;
 import edu.hu.clickwatch.model.ClickWatchModelFactory;
 import edu.hu.clickwatch.model.ClickWatchModelPackage;
@@ -97,7 +95,7 @@ public class MultiNodeAdapter implements INodeAdapter {
 							Handler multiNodeHandler = modelFactory.createHandler();
 							multiNodeHandler.setName(handler.getName());
 							multiNodeElement.getHandlers().add(multiNodeHandler);
-							multiNodeHandler.setValue(XmlUtil.createXMLText("enter a value"));
+							// TODO initialize value (any, mixed)
 						}
 					}
 				}
@@ -136,13 +134,14 @@ public class MultiNodeAdapter implements INodeAdapter {
 		return new IValueRepresentation() {			
 			@Override
 			public void set(Handler handler, Object value) {
-				handler.setValue((EObject)value);
+				// TODO
 			}
 			
 			@Override
 			public boolean isNotificationChangingValue(Notification notification) {
 				if (notification.getNotifier() instanceof Handler) {
-					return notification.getFeature() == ClickWatchModelPackage.eINSTANCE.getHandler_Value();
+					return notification.getFeature() == ClickWatchModelPackage.eINSTANCE.getHandler_Any() ||
+							notification.getFeature() == ClickWatchModelPackage.eINSTANCE.getHandler_Mixed();
 				} else {
 					return true;
 				}
@@ -150,7 +149,7 @@ public class MultiNodeAdapter implements INodeAdapter {
 			
 			@Override
 			public Object get(Handler handler) {
-				return handler.getValue();
+				return null; // TODO
 			}
 			
 			@Override

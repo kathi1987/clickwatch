@@ -23,7 +23,6 @@ public class Reset implements IObjectActionDelegate {
 	public Reset() {
 		super();
 	}
-
 	/**
 	 * @see IObjectActionDelegate#setActivePart(IAction, IWorkbenchPart)
 	 */

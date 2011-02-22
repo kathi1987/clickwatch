@@ -6,9 +6,10 @@ public class TestSuite {
 	public static Test suite() {
 		junit.framework.TestSuite suite = new junit.framework.TestSuite(TestSuite.class.getName());
 		//$JUnit-BEGIN$
+		suite.addTestSuite(XmlModelRepositoryTest.class);
 		suite.addTestSuite(ClickControlNodeAdapterTest.class);
 		suite.addTestSuite(ClickControlNodeXmlValuesAdapterTest.class);
-		suite.addTestSuite(XmlUtilTest.class);
+		suite.addTestSuite(ClickControlXSDNodeAdapterTest.class);
 		suite.addTestSuite(ConnectionTest.class);
 		//$JUnit-END$
 		return suite;

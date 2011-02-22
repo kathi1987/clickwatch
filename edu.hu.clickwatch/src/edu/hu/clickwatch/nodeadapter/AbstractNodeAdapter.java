@@ -13,6 +13,7 @@ import click.ControlSocket;
 
 import com.google.common.base.Preconditions;
 import com.google.common.base.Throwables;
+import com.google.inject.ImplementedBy;
 import com.google.inject.Inject;
 
 import edu.hu.clickcontrol.IClickSocket;
@@ -32,7 +33,8 @@ public abstract class AbstractNodeAdapter implements INodeAdapter {
 
 	private String host = null;
 	private String port = null;
-	
+
+	@ImplementedBy(DefaultXmlValueRepresentation.class)
 	public interface IExtendedValueRepresentation extends IValueRepresentation {
 		
 		public Object createModelValue(String plainRealValue);
@@ -52,17 +54,11 @@ public abstract class AbstractNodeAdapter implements INodeAdapter {
 		Preconditions.checkNotNull(host);
 
 		try {
-			InetAddress dst = InetAddress.getByName(host);
-			if (!dst.isReachable(4000)) { // wait at most 4s
-				throw new IOException("ICMP requesting failed; node seems to be down.");
-			}
 			cs.connect(InetAddress.getByName(host), new Integer(port));
 			isConnected = true;
 		} catch (IOException e) {
-			Throwables.propagate(new IOException("Connecting to Click chatter socket failed; click seems to be not running." + e.getMessage()));
+			Throwables.propagate(e);
 		}
-
-		System.out.println("Connected to " + host);
 	}
 
 	@Override
@@ -81,7 +77,6 @@ public abstract class AbstractNodeAdapter implements INodeAdapter {
 			EcoreUtil.delete(internalNodeCopy, true);
 		}
 		internalNodeCopy = null;
-		System.out.println("Disconnected from " + host);
 	}
 
 	private void ensureConnected() {
@@ -157,14 +152,8 @@ public abstract class AbstractNodeAdapter implements INodeAdapter {
 				for (Handler handler : element.getHandlers()) {
 					if (handler.isCanRead() && !ignoreHandler(handler.getName())) {
 						char data[] = null;
-						try {
-							String elementName = element.getName();
-							Element container = element;
-							while (container.eContainer() instanceof Element) {
-								container = (Element)container.eContainer();
-								elementName = container.getName() + "/" + elementName;
-							}
-							data = cs.read(elementName, handler.getName());
+						try {							
+							data = cs.read(element.getElementPath(), handler.getName());
 						} catch (Throwable e) {
 							Throwables.propagate(e);
 						}
@@ -261,15 +250,10 @@ public abstract class AbstractNodeAdapter implements INodeAdapter {
 		
 		ensureConnected();
 		Element element = (Element)handler.eContainer();
-		String elementName = element.getName();
-		while (element.eContainer() instanceof Element) {
-			element = (Element)element.eContainer();
-			elementName = element.getName() + "/" + elementName;
-		}		
 		
 		try {
 			IExtendedValueRepresentation valueRep = getExtendedValueRepresentation(handler);
-			cs.write(elementName, handler.getName(), valueRep.createPlainRealValue(value).toCharArray());
+			cs.write(element.getElementPath(), handler.getName(), valueRep.createPlainRealValue(value).toCharArray());
 		} catch (Throwable e) {
 			Throwables.propagate(e);
 		}

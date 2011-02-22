@@ -45,7 +45,7 @@ import com.jcraft.jsch.*;
 
 import edu.hu.clickwatch.ClickWatchPluginActivator;
 import edu.hu.clickwatch.GuiceModule;
-import edu.hu.clickwatch.XmlUtil;
+import edu.hu.clickwatch.util.XmlUtil;
 import edu.hu.clickwatch.model.AbstractNodeConnection;
 import edu.hu.clickwatch.model.ClickControlNodeConnection;
 import edu.hu.clickwatch.model.MultiNode;
@@ -285,6 +285,7 @@ public class Deploy implements IObjectActionDelegate, SSHParams {
 	 */
 	@Override
 	public void run(IAction action) {
+
 		if (node_lst == null || node_lst.isEmpty()) {
 			return;
 		}

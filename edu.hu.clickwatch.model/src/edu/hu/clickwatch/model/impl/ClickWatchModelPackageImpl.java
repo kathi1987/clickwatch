@@ -276,8 +276,17 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getHandler_Value() {
-		return (EReference)handlerEClass.getEStructuralFeatures().get(5);
+	public EAttribute getHandler_Mixed() {
+		return (EAttribute)handlerEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getHandler_Any() {
+		return (EAttribute)handlerEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -417,7 +426,8 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
 		createEAttribute(handlerEClass, HANDLER__CAN_WRITE);
 		createEAttribute(handlerEClass, HANDLER__CHANGED);
 		createEAttribute(handlerEClass, HANDLER__WATCH);
-		createEReference(handlerEClass, HANDLER__VALUE);
+		createEAttribute(handlerEClass, HANDLER__MIXED);
+		createEAttribute(handlerEClass, HANDLER__ANY);
 
 		networkEClass = createEClass(NETWORK);
 		createEAttribute(networkEClass, NETWORK__NAME);
@@ -475,13 +485,16 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
 		initEAttribute(getElement_Watch(), ecorePackage.getEBoolean(), "watch", "false", 0, 1, Element.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getElement_Children(), this.getElement(), null, "children", null, 0, -1, Element.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		addEOperation(elementEClass, ecorePackage.getEString(), "getElementPath", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(handlerEClass, Handler.class, "Handler", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getHandler_Name(), ecorePackage.getEString(), "name", null, 0, 1, Handler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getHandler_CanRead(), ecorePackage.getEBoolean(), "canRead", null, 0, 1, Handler.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getHandler_CanWrite(), ecorePackage.getEBoolean(), "canWrite", null, 0, 1, Handler.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getHandler_Changed(), ecorePackage.getEBoolean(), "changed", "false", 0, 1, Handler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getHandler_Watch(), ecorePackage.getEBoolean(), "watch", "false", 0, 1, Handler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getHandler_Value(), ecorePackage.getEObject(), null, "value", null, 0, 1, Handler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getHandler_Mixed(), ecorePackage.getEFeatureMapEntry(), "mixed", null, 0, -1, Handler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getHandler_Any(), ecorePackage.getEFeatureMapEntry(), "any", null, 0, -1, Handler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(networkEClass, Network.class, "Network", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getNetwork_Name(), ecorePackage.getEString(), "name", "My Network", 0, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -517,13 +530,20 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
 			 "kind", "mixed"
 		   });		
 		addAnnotation
-		  (getHandler_Value(), 
+		  (getHandler_Mixed(), 
 		   source, 
 		   new String[] {
 			 "kind", "elementWildcard",
-			 "wildcards", "##any",
-			 "name", "xml",
-			 "processing", "lax"
+			 "name", ":mixed"
+		   });		
+		addAnnotation
+		  (getHandler_Any(), 
+		   source, 
+		   new String[] {
+			 "kind", "elementWildcard",
+			 "name", ":1",
+			 "processing", "lax",
+			 "wildcards", "##any"
 		   });
 	}
 

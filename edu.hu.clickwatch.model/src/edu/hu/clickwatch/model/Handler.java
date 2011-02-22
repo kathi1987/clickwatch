@@ -23,7 +23,8 @@ import org.eclipse.emf.ecore.util.FeatureMap;
  *   <li>{@link edu.hu.clickwatch.model.Handler#isCanWrite <em>Can Write</em>}</li>
  *   <li>{@link edu.hu.clickwatch.model.Handler#isChanged <em>Changed</em>}</li>
  *   <li>{@link edu.hu.clickwatch.model.Handler#isWatch <em>Watch</em>}</li>
- *   <li>{@link edu.hu.clickwatch.model.Handler#getValue <em>Value</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.model.Handler#getMixed <em>Mixed</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.model.Handler#getAny <em>Any</em>}</li>
  * </ul>
  * </p>
  *
@@ -138,31 +139,38 @@ public interface Handler extends EObject {
 	void setWatch(boolean value);
 
 	/**
-	 * Returns the value of the '<em><b>Value</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Mixed</b></em>' attribute list.
+	 * The list contents are of type {@link org.eclipse.emf.ecore.util.FeatureMap.Entry}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Value</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Mixed</em>' attribute list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Value</em>' containment reference.
-	 * @see #setValue(EObject)
-	 * @see edu.hu.clickwatch.model.ClickWatchModelPackage#getHandler_Value()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='elementWildcard' wildcards='##any' name='xml' processing='lax'"
+	 * @return the value of the '<em>Mixed</em>' attribute list.
+	 * @see edu.hu.clickwatch.model.ClickWatchModelPackage#getHandler_Mixed()
+	 * @model dataType="org.eclipse.emf.ecore.EFeatureMapEntry" many="true"
+	 *        extendedMetaData="kind='elementWildcard' name=':mixed'"
 	 * @generated
 	 */
-	EObject getValue();
+	FeatureMap getMixed();
 
 	/**
-	 * Sets the value of the '{@link edu.hu.clickwatch.model.Handler#getValue <em>Value</em>}' containment reference.
+	 * Returns the value of the '<em><b>Any</b></em>' attribute list.
+	 * The list contents are of type {@link org.eclipse.emf.ecore.util.FeatureMap.Entry}.
 	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Any</em>' attribute list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Value</em>' containment reference.
-	 * @see #getValue()
+	 * @return the value of the '<em>Any</em>' attribute list.
+	 * @see edu.hu.clickwatch.model.ClickWatchModelPackage#getHandler_Any()
+	 * @model dataType="org.eclipse.emf.ecore.EFeatureMapEntry" many="true"
+	 *        extendedMetaData="kind='elementWildcard' name=':1' processing='lax' wildcards='##any'"
 	 * @generated
 	 */
-	void setValue(EObject value);
+	FeatureMap getAny();
 
 	/**
 	 * Returns the value of the '<em><b>Changed</b></em>' attribute.

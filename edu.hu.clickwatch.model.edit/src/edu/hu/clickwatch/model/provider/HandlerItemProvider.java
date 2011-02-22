@@ -13,11 +13,12 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
+import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.util.FeatureMapUtil;
-import org.eclipse.emf.ecore.xml.type.XMLTypeFactory;
-import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
+import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
+import org.eclipse.emf.edit.provider.FeatureMapEntryWrapperItemProvider;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
@@ -82,31 +83,8 @@ public class HandlerItemProvider
 			addCanWritePropertyDescriptor(object);
 			addChangedPropertyDescriptor(object);
 			addWatchPropertyDescriptor(object);
-			addValuePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Value feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	protected void addValuePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Handler_value_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Handler_value_feature", "_UI_Handler_type"),
-				 ClickWatchModelPackage.Literals.HANDLER__VALUE,
-				 true,
-				 true,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
 	}
 
 	/**
@@ -209,9 +187,23 @@ public class HandlerItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(ClickWatchModelPackage.Literals.HANDLER__VALUE);
+			childrenFeatures.add(ClickWatchModelPackage.Literals.HANDLER__MIXED);
+			childrenFeatures.add(ClickWatchModelPackage.Literals.HANDLER__ANY);
 		}
 		return childrenFeatures;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected EStructuralFeature getChildFeature(Object object, Object child) {
+		// Check the type of the specified child object and return the proper feature to use for
+		// adding (see {@link AddCommand}) it as a child.
+
+		return super.getChildFeature(object, child);
 	}
 
 	/**
@@ -286,7 +278,8 @@ public class HandlerItemProvider
 			case ClickWatchModelPackage.HANDLER__WATCH:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
-			case ClickWatchModelPackage.HANDLER__VALUE:
+			case ClickWatchModelPackage.HANDLER__MIXED:
+			case ClickWatchModelPackage.HANDLER__ANY:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -302,35 +295,7 @@ public class HandlerItemProvider
 	 */
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
-		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add
-			(createChildParameter
-				(ClickWatchModelPackage.Literals.HANDLER__VALUE,
-				 FeatureMapUtil.createEntry
-					(XMLTypePackage.Literals.XML_TYPE_DOCUMENT_ROOT__COMMENT,
-					 "")));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ClickWatchModelPackage.Literals.HANDLER__VALUE,
-				 FeatureMapUtil.createEntry
-					(XMLTypePackage.Literals.XML_TYPE_DOCUMENT_ROOT__TEXT,
-					 "")));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ClickWatchModelPackage.Literals.HANDLER__VALUE,
-				 FeatureMapUtil.createEntry
-					(XMLTypePackage.Literals.XML_TYPE_DOCUMENT_ROOT__PROCESSING_INSTRUCTION,
-					 XMLTypeFactory.eINSTANCE.createProcessingInstruction())));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ClickWatchModelPackage.Literals.HANDLER__VALUE,
-				 FeatureMapUtil.createEntry
-					(XMLTypePackage.Literals.XML_TYPE_DOCUMENT_ROOT__CDATA,
-					 "")));
 	}
 
 	/**
@@ -344,4 +309,23 @@ public class HandlerItemProvider
 		return NewEditPlugin.INSTANCE;
 	}
 
+	/**
+	 * @generated NOT
+	 */
+	protected Object createWrapper(EObject object, EStructuralFeature feature,
+			Object value, int index) {
+		if (feature == ClickWatchModelPackage.eINSTANCE.getHandler_Any()) {
+			return new FeatureMapEntryWrapperItemProvider(
+					(FeatureMap.Entry) value, object, (EAttribute) feature,
+					index, adapterFactory, getResourceLocator()) {
+				@Override
+				public String getText(Object object) {
+					return ((FeatureMap.Entry) value).getEStructuralFeature()
+							.getName();
+				}
+			};
+		} else {
+			return super.createWrapper(object, feature, value, index);
+		}
+	}
 }

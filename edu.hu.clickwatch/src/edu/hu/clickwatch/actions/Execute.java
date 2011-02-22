@@ -56,7 +56,7 @@ import com.jcraft.jsch.*;
 
 import edu.hu.clickwatch.ClickWatchPluginActivator;
 import edu.hu.clickwatch.GuiceModule;
-import edu.hu.clickwatch.XmlUtil;
+import edu.hu.clickwatch.util.XmlUtil;
 import edu.hu.clickwatch.actions.Configure.InputDialog;
 import edu.hu.clickwatch.model.AbstractNodeConnection;
 import edu.hu.clickwatch.model.ClickControlNodeConnection;
