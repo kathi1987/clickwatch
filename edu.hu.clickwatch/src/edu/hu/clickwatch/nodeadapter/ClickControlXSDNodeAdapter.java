@@ -4,8 +4,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -119,6 +122,16 @@ public class ClickControlXSDNodeAdapter extends AbstractNodeAdapter {
 		
 		@Override
 		public Object createModelValue(String plainRealValue) {
+			// TODO this is an ugly way to provide the schema URI
+			int xsdRefPos = plainRealValue.indexOf(">");
+			if (xsdRefPos > 0) {
+				if (plainRealValue.charAt(xsdRefPos - 1) == '/') {
+					xsdRefPos -= 1;
+				}
+				plainRealValue = plainRealValue.substring(0, xsdRefPos) + 
+						" xsi:noNamespaceSchemaLocation='" +
+						metaModel.getNsURI() + "'" + plainRealValue.substring(xsdRefPos);
+			}
 			EObject documentRoot = xmlModelRepository.deserializeModel(metaModel, plainRealValue);
 			EObject result = documentRoot.eContents().get(0);
 			EcoreUtil.remove(result);
@@ -144,6 +157,7 @@ public class ClickControlXSDNodeAdapter extends AbstractNodeAdapter {
 	}
 	
 	private String readXSD(Element element) {
+		String result = null;
 		try {
 			boolean hasXsd = false;
 			String elementPath = element.getElementPath();
@@ -154,13 +168,17 @@ public class ClickControlXSDNodeAdapter extends AbstractNodeAdapter {
 			}
 			
 			if (hasXsd) {
-				return new String(getClickSocket().read(elementPath, XSD_HANDLER_NAME));
-			} else {
-				return null;
+				result =  new String(getClickSocket().read(elementPath, XSD_HANDLER_NAME));
 			}
 		} catch (Throwable e) {
 			Throwables.propagate(e);
 			return null;
+		}
+		
+		if (result == null || result.trim().equals("")) {
+			return null;
+		} else {
+			return result;
 		}
 	}
 
@@ -176,7 +194,20 @@ public class ClickControlXSDNodeAdapter extends AbstractNodeAdapter {
 				if (XSD_HANDLER_NAME.equals(handler.getName())) {
 					result = new ConstantValueRepresentation(metaModel);
 				} else {
-					result = new XSDValueRepresentation(metaModel);
+					EClass handlerClass = (EClass)metaModel.getEClassifier("handler");
+					EEnum eEnum = (EEnum)handlerClass.getEStructuralFeature("name").getEType();
+					EList<EEnumLiteral> eLiterals = eEnum.getELiterals();
+					boolean handlerIsCoveredByXSD = false;
+					for (EEnumLiteral eLiteral: eLiterals) {
+						if (eLiteral.getLiteral().equals(handler.getName())) {
+							handlerIsCoveredByXSD = true;
+						}
+					}
+					if (handlerIsCoveredByXSD) {
+						result = new XSDValueRepresentation(metaModel);
+					} else {
+						result = defaultXmlValueRep;
+					}
 				}
 			}
 			valueReps.put(handler, result);

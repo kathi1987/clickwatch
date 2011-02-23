@@ -41,21 +41,29 @@ public class DefaultXmlValueRepresentation implements IExtendedValueRepresentati
 	
 	@Override
 	public void set(Handler handler, Object value) {
-		Preconditions.checkArgument(value instanceof ValueClass);
-		Object anyValue = ((ValueClass)value).value;
-		EStructuralFeature anyFeature = ((ValueClass)value).feature;
-		
-		if (anyValue instanceof String) {
-			if (handler.getMixed().isEmpty()) {
-				handler.getMixed().add(FeatureMapUtil.createRawEntry(anyFeature, anyValue));
+		if (value instanceof ValueClass) {
+			Object anyValue = ((ValueClass)value).value;
+			EStructuralFeature anyFeature = ((ValueClass)value).feature;
+			
+			if (anyValue instanceof String) {
+				if (handler.getMixed().isEmpty()) {
+					handler.getMixed().add(FeatureMapUtil.createRawEntry(anyFeature, anyValue));
+				} else {
+					handler.getMixed().set(0, FeatureMapUtil.createRawEntry(anyFeature, anyValue));
+				}
 			} else {
-				handler.getMixed().set(0, FeatureMapUtil.createRawEntry(anyFeature, anyValue));
+				if (handler.getAny().isEmpty()) {
+					handler.getAny().add(FeatureMapUtil.createRawEntry(anyFeature, anyValue));
+				} else {
+					handler.getAny().set(0, FeatureMapUtil.createRawEntry(anyFeature, anyValue));
+				}
 			}
 		} else {
+			Preconditions.checkState(!(handler.getAny().isEmpty() && handler.getMixed().isEmpty()));
 			if (handler.getAny().isEmpty()) {
-				handler.getAny().add(FeatureMapUtil.createRawEntry(anyFeature, anyValue));
+				handler.getMixed().setValue(0, value);
 			} else {
-				handler.getAny().set(0, FeatureMapUtil.createRawEntry(anyFeature, anyValue));
+				handler.getAny().setValue(0, value);
 			}
 		}
 	}
