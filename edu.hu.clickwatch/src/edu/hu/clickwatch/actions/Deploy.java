@@ -490,7 +490,7 @@ public class Deploy implements IObjectActionDelegate, SSHParams {
 
 		// start
 		long startTime = System.currentTimeMillis();
-		String command = "(cd /tmp/seismo; ./bin/seismo.sh delaystart )";
+		String command = "(cd /tmp/seismo; ./lib/standalone/seismo.sh delaystart )";
 		StringBuffer logMsg = null;
 		if (showProgressbar) {
 			logMsg = SshConnectionFactory.getInstance().execRemoteGUI(session, command, "Starting router conf on node " + host, shell);

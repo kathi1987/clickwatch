@@ -32,8 +32,8 @@ public class GuiceModule extends AbstractModule {
 		// bindToPlayer();
 		
 		// binds a special ClickControlNodeAdapter that reads the xml-handler of each element instead its native HandlerInfos
-		//bind(INodeAdapter.class).to(ClickControlXSDNodeAdapter.class);
-		bind(INodeAdapter.class).to(ClickControlNodeXmlValuesAdapter.class);
+		bind(INodeAdapter.class).to(ClickControlXSDNodeAdapter.class);
+		//bind(INodeAdapter.class).to(ClickControlNodeXmlValuesAdapter.class);
 	}
 	
 	@SuppressWarnings("unused")
