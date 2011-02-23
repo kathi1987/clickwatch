@@ -70,7 +70,7 @@ public interface Handler extends EObject {
 	 * @return the value of the '<em>Can Read</em>' attribute.
 	 * @see #setCanRead(boolean)
 	 * @see edu.hu.clickwatch.model.ClickWatchModelPackage#getHandler_CanRead()
-	 * @model transient="true"
+	 * @model
 	 * @generated
 	 */
 	boolean isCanRead();
@@ -96,7 +96,7 @@ public interface Handler extends EObject {
 	 * @return the value of the '<em>Can Write</em>' attribute.
 	 * @see #setCanWrite(boolean)
 	 * @see edu.hu.clickwatch.model.ClickWatchModelPackage#getHandler_CanWrite()
-	 * @model transient="true"
+	 * @model
 	 * @generated
 	 */
 	boolean isCanWrite();

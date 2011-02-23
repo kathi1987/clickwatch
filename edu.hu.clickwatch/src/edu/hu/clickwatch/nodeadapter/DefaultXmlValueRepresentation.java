@@ -124,15 +124,17 @@ public class DefaultXmlValueRepresentation implements IExtendedValueRepresentati
 	public Object createModelValue(String plainRealValue) {		
 		XMLTypeDocumentRoot xml = (XMLTypeDocumentRoot)xmlModelRepository.deserializeXml("<xml>" + plainRealValue + "</xml>");
 		FeatureMap xmlRootMixed = ((AnyType)xml.getMixed().getValue(0)).getMixed();
-		Preconditions.checkState(xmlRootMixed.size() == 1);
-		Object anyValue = xmlRootMixed.getValue(0);
-		EStructuralFeature anyFeature = xmlRootMixed.getEStructuralFeature(0);
-		
-		xmlRootMixed.remove(anyValue);
-		xmlRootMixed.remove(anyFeature);
-		EcoreUtil.delete(xml, true);
-		Preconditions.checkNotNull(anyValue);
-		return new ValueClass(anyValue, anyFeature);
+		if (xmlRootMixed.size() == 1) {
+			Object anyValue = xmlRootMixed.getValue(0);
+			EStructuralFeature anyFeature = xmlRootMixed.getEStructuralFeature(0);
+			xmlRootMixed.remove(anyValue);
+			xmlRootMixed.remove(anyFeature);
+			EcoreUtil.delete(xml, true);
+			Preconditions.checkNotNull(anyValue);
+			return new ValueClass(anyValue, anyFeature);
+		} else {
+			return new ValueClass("", XMLTypePackage.eINSTANCE.getXMLTypeDocumentRoot_Text());
+		}
 	}
 	
 	private static boolean compareXml(FeatureMap v1, FeatureMap v2) {

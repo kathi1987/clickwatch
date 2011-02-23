@@ -15,9 +15,15 @@ import edu.hu.clickcontrol.IClickSocket;
 public abstract class ClickSocketTestImpl implements IClickSocket {
 	
 	private boolean isConnected = false;
+	
+	protected InetAddress host;
+	protected int port;
 
 	@Override
 	public void connect(InetAddress host, int port) throws IOException {
+		this.host = host;
+		this.port = port;
+		
 		delay();
 		isConnected = true;
 	}
