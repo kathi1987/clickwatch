@@ -112,7 +112,8 @@ public class Deploy implements IObjectActionDelegate, SSHParams {
 							runThr.append(worker.getNodeName()).append(", ");
 						}
 					}
-					monName += " (Open: " + runThr.toString() + ")";
+					String runThr2 = runThr.toString();
+					monName += " (Open: " + runThr2.substring(0, runThr2.length()-2) + ")";
 				}
 				
 				monitor.setTaskName(monName);
@@ -576,7 +577,7 @@ public class Deploy implements IObjectActionDelegate, SSHParams {
 			txtExc.append("\n");
 		}
 		
-		MessageDialog.openError(editor.getSite().getShell(), "Result stats", txtExc.toString());		
+		MessageDialog.openInformation(editor.getSite().getShell(), "Result stats", txtExc.toString());		
 	}
 	
 	/**

@@ -127,7 +127,7 @@ public class XSLView extends ViewPart {
 			}
 		};
 		load.setText("Load");
-		load.setToolTipText("Load XSL stylesheet from file");
+		load.setToolTipText("Load XSLT stylesheet from file");
 
 		save = new Action() {
 			public void run() {
@@ -135,7 +135,7 @@ public class XSLView extends ViewPart {
 			}
 		};
 		save.setText("Save");
-		save.setToolTipText("Save XSL stylesheet to file");
+		save.setToolTipText("Save XSLT stylesheet to file");
 
 		validate = new Action() {
 			public void run() {
@@ -143,14 +143,14 @@ public class XSLView extends ViewPart {
 			}
 		};
 		validate.setText("Validate");
-		validate.setToolTipText("Validate XSL stylesheet");
+		validate.setToolTipText("Validate XSLT stylesheet");
 		evaluate = new Action() {
 			public void run() {
 				evaluate();
 			}
 		};
 		evaluate.setText("Perform XSLT");
-		evaluate.setToolTipText("Perform XSL transformation on current Network model");
+		evaluate.setToolTipText("Perform XSLT transformation on current Network model");
 	}
 
 	private void save() {
