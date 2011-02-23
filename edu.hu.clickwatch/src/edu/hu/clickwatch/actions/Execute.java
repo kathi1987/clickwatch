@@ -78,6 +78,7 @@ class ExecWorkerThread extends Thread {
 	public String cmd;
 	public String result;
 	public Exception exception;
+	public long latency; // in ms
 	
 	public ExecWorkerThread(String iNodeAddr, String cmd) {
 		this.iNodeAddr = iNodeAddr;
@@ -98,6 +99,7 @@ class ExecWorkerThread extends Thread {
 	private String execRemote(String host, String command) throws Exception {
 		
 		// init ssh
+		long start = System.currentTimeMillis();
 		Session session = SshConnectionFactory.getInstance().createSession(SSHParams.SSH_USER, host);
 
 		StringBuffer logMsg = SshConnectionFactory.getInstance().execRemote(session, command);
@@ -105,6 +107,8 @@ class ExecWorkerThread extends Thread {
 		
 		// close session
 		SshConnectionFactory.getInstance().closeSession(session);
+		
+		latency = System.currentTimeMillis() - start;
 		
 		return logMsg.toString();
 	}
@@ -308,16 +312,18 @@ public class Execute implements IObjectActionDelegate {
 		}
 		
         final List<String> results = new ArrayList<String>();
+        final List<Long> latency = new ArrayList<Long>();
         final List<String> nodeNames = new ArrayList<String>();
         final List<Exception> exceptions = new ArrayList<Exception>();
 		for (int i=0; i<workerThreads.length; i++) {
 			results.add(workerThreads[i].result);
+			latency.add(workerThreads[i].latency);
 			nodeNames.add(workerThreads[i].iNodeAddr);
 			exceptions.add(workerThreads[i].exception);
 		}
 			
         // show results in treeview
-		showResults(results, nodeNames);
+		showResults(results, nodeNames, latency);
 		
 		// show exceptions in popup window
 		showExceptions(nodeNames, exceptions);
@@ -326,13 +332,13 @@ public class Execute implements IObjectActionDelegate {
 	/**
 	 * Update results in resultview 
 	 */
-	private void showResults(List<String> results, List<String> nodeNames) {
+	private void showResults(List<String> results, List<String> nodeNames, List<Long> latency) {
 
 		// create xml from results string
 		StringBuffer xmlResults = new StringBuffer();
 		xmlResults.append("<network>");
 		for (int i=0; i<results.size(); i++) {
-			xmlResults.append("<node id='" + nodeNames.get(i) + "'>");
+			xmlResults.append("<node id='" + nodeNames.get(i) + "' latency='" + latency.get(i) + "'>");
 			xmlResults.append(results.get(i));
 			xmlResults.append("</node>");
 		}

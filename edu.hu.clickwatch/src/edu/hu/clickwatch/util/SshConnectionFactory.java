@@ -118,8 +118,8 @@ public class SshConnectionFactory {
 	 * 
 	 *  Note: a progress bar shows the progress
 	 */
-	public void scpToGUI(Session session, String lfile, String rfile, final String progressBarMsg, final Shell shell) {
-		scpToHelper(session, lfile, rfile, progressBarMsg, shell);
+	public long scpToGUI(Session session, String lfile, String rfile, final String progressBarMsg, final Shell shell) {
+		return scpToHelper(session, lfile, rfile, progressBarMsg, shell);
 	}
 		
 	/**
@@ -127,8 +127,8 @@ public class SshConnectionFactory {
 	 * 
 	 *  Note: no progress bar is displayed
 	 */
-	public void scpTo(Session session, String lfile, String rfile) {
-		scpToHelper(session, lfile, rfile, null, null);
+	public long scpTo(Session session, String lfile, String rfile) {
+		return scpToHelper(session, lfile, rfile, null, null);
 	}
 
 	/**
@@ -136,7 +136,7 @@ public class SshConnectionFactory {
 	 * 
 	 *  Note: a progress bar shows the progress
 	 */
-	private void scpToHelper(Session session, String lfile, String rfile, final String progressBarMsg, final Shell shell) {
+	private long scpToHelper(Session session, String lfile, String rfile, final String progressBarMsg, final Shell shell) {
 
 		boolean silentMode = progressBarMsg == null || shell == null;
 		FileInputStream fis = null;
@@ -242,6 +242,8 @@ public class SshConnectionFactory {
 			out.close();
 
 			channel.disconnect();
+			
+			return filesize; // file size
 		} catch(Exception e){
 			System.out.println(e);
 			if (!silentMode) {
@@ -252,7 +254,8 @@ public class SshConnectionFactory {
 					fis.close();
 				}
 			} catch (Exception ee) {}
-		}		
+		}
+		return -1;
 	}
 
 	private static int checkAck(InputStream in) throws IOException{

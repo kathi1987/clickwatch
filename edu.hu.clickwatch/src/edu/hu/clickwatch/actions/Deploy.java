@@ -90,6 +90,9 @@ public class Deploy implements IObjectActionDelegate, SSHParams {
 	 * Based on that the progress dialog is updated.
 	 */
 	public class ObserverThread extends Thread {
+		
+		public final static int OUTSTANDING_THR = 3;
+		
 		private WorkerStatus[] observedThreads;
 		private IProgressMonitor monitor;
 		private Counter counter;
@@ -119,14 +122,15 @@ public class Deploy implements IObjectActionDelegate, SSHParams {
 
 				String monName = title + " waiting: " + (observedThreads.length-running_cnt) + " / " + (observedThreads.length);
 				
-				if (running_cnt <= 3) {
+				// show some more detailed information if there are only OUTSTANDING_THR-many outstanding jobs
+				if (running_cnt <= OUTSTANDING_THR) {
 					StringBuffer runThr = new StringBuffer();
 					for (WorkerStatus worker : observedThreads) {
 						if (!worker.hasFinished()) {
 							runThr.append(worker.getNodeName()).append(", ");
 						}
 					}
-					monName += " (Outstanding: " + runThr.toString() + ")";
+					monName += " (Open: " + runThr.toString() + ")";
 				}
 				
 				monitor.setTaskName(monName);
@@ -148,6 +152,9 @@ public class Deploy implements IObjectActionDelegate, SSHParams {
 		}
 	}
 	
+	/**
+	 * Common interface of all worker threads 
+	 */
 	public interface WorkerStatus {
 		public boolean hasFinished();
 		public String getNodeName();
@@ -240,7 +247,8 @@ public class Deploy implements IObjectActionDelegate, SSHParams {
 					exception = e;			
 				}
 			} else {
-				// do not start failed nodes
+				// do not start failed nodes; skipped
+				exception = new Exception("Skipped.");
 			}
 			counter.inc();
 			finished = true;
@@ -460,12 +468,15 @@ public class Deploy implements IObjectActionDelegate, SSHParams {
 		} else {
 			// copy resource file to remote
 			startTime = System.currentTimeMillis();
+			long file_sz;
 			if (showProgressbar) {
-				SshConnectionFactory.getInstance().scpToGUI(session, lfile, rfile, "Uploading router conf on node " + host, shell);
+				file_sz = SshConnectionFactory.getInstance().scpToGUI(session, lfile, rfile, "Uploading router conf on node " + host, shell);
 			} else {
-				SshConnectionFactory.getInstance().scpTo(session, lfile, rfile);
+				file_sz = SshConnectionFactory.getInstance().scpTo(session, lfile, rfile);
 			}
-			String msg = "Copy file executed in " + ((System.currentTimeMillis() - startTime) / 1000) + " sec";
+			long tx_dur = ((System.currentTimeMillis() - startTime) / 1000);
+			double avg_thr = file_sz / (double)tx_dur;
+			String msg = "Copy file executed in " + tx_dur + " sec with an avg. throughput of " + avg_thr;
 			System.out.println(msg);
 			results.append("\n").append(msg).append("\n");
 		}
