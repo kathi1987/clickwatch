@@ -1,24 +1,10 @@
 package edu.hu.clickwatch.actions;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedReader;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.lang.reflect.InvocationTargetException;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
-import org.eclipse.core.resources.IFile;
-import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -33,23 +19,16 @@ import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.IEditorPart;
-import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IViewReference;
 import org.eclipse.ui.IWorkbenchPart;
-import org.eclipse.ui.PlatformUI;
 
-import com.google.inject.Guice;
-import com.jcraft.jsch.*;
+import com.google.inject.Inject;
+import com.jcraft.jsch.Session;
 
-import edu.hu.clickwatch.ClickWatchPluginActivator;
-import edu.hu.clickwatch.GuiceModule;
-import edu.hu.clickwatch.util.XmlUtil;
+import edu.hu.clickwatch.XmlModelRepository;
 import edu.hu.clickwatch.model.AbstractNodeConnection;
-import edu.hu.clickwatch.model.ClickControlNodeConnection;
-import edu.hu.clickwatch.model.MultiNode;
-import edu.hu.clickwatch.model.MultiNodeNodeConnection;
 import edu.hu.clickwatch.model.Node;
 import edu.hu.clickwatch.util.SshConnectionFactory;
 import edu.hu.clickwatch.views.ResultView;
@@ -60,6 +39,9 @@ import edu.hu.clickwatch.views.ResultView;
  * @author zubow
  */
 public class Deploy implements IObjectActionDelegate, SSHParams {
+	
+	@Inject
+	private XmlModelRepository xmlModelRepository;
 
 	private Shell shell;
 	private IEditorPart editor = null;
@@ -559,7 +541,7 @@ public class Deploy implements IObjectActionDelegate, SSHParams {
 		
 		System.out.println("XMl results to display: " + xmlResults.toString());
 		
-		EObject result = XmlUtil.deserializeXml(xmlResults.toString());
+		EObject result = xmlModelRepository.deserializeXml(xmlResults.toString());
 
 		for(IViewReference viewRef: editor.getEditorSite().getPage().getViewReferences()) {
 			IViewPart view = viewRef.getView(false);

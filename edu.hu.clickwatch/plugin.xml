@@ -7,42 +7,42 @@
             id="edu.hu.clickwatch.NodeContribution"
             objectClass="edu.hu.clickwatch.model.Node">
          <action
-               class="edu.hu.clickwatch.actions.Reboot"
+               class="edu.hu.clickwatch.GuiceAwareExecutableExtensionFactory:edu.hu.clickwatch.actions.Reboot"
                enablesFor="+"
                id="edu.hu.clickwatch.rebootAction"
                label="Reboot"
                menubarPath="additions">
          </action>
          <action
-               class="edu.hu.clickwatch.actions.Execute"
+               class="edu.hu.clickwatch.GuiceAwareExecutableExtensionFactory:edu.hu.clickwatch.actions.Execute"
                enablesFor="+"
                id="edu.hu.clickwatch.execAction"
                label="Execute"
                menubarPath="additions">
          </action>
          <action
-               class="edu.hu.clickwatch.actions.Disconnect"
+               class="edu.hu.clickwatch.GuiceAwareExecutableExtensionFactory:edu.hu.clickwatch.actions.Disconnect"
                enablesFor="+"
                id="edu.hu.clickwatch.disconnectAction"
                label="Disconnect"
                menubarPath="additions">
          </action>
          <action
-               class="edu.hu.clickwatch.actions.Deploy"
+               class="edu.hu.clickwatch.GuiceAwareExecutableExtensionFactory:edu.hu.clickwatch.actions.Deploy"
                enablesFor="+"
                id="edu.hu.clickwatch.deployAction"
                label="Deploy"
                menubarPath="additions">
          </action>
          <action
-               class="edu.hu.clickwatch.actions.Connect"
+               class="edu.hu.clickwatch.GuiceAwareExecutableExtensionFactory:edu.hu.clickwatch.actions.Connect"
                enablesFor="+"
                id="edu.hu.clickwatch.connectAction"
                label="Connect"
                menubarPath="additions">
          </action>
          <action
-               class="edu.hu.clickwatch.actions.Configure"
+               class="edu.hu.clickwatch.GuiceAwareExecutableExtensionFactory:edu.hu.clickwatch.actions.Configure"
                enablesFor="+"
                id="edu.hu.clickwatch.configAction"
                label="Configure"
@@ -53,14 +53,14 @@
             id="edu.hu.clickwatch.NetworkContribution"
             objectClass="edu.hu.clickwatch.model.Network">
          <action
-               class="edu.hu.clickwatch.actions.Reset"
+               class="edu.hu.clickwatch.GuiceAwareExecutableExtensionFactory:edu.hu.clickwatch.actions.Reset"
                enablesFor="1"
                id="edu.hu.clickwatch.resetAction"
                label="Reset"
                menubarPath="additions">
          </action>
          <action
-               class="edu.hu.clickwatch.actions.Import"
+               class="edu.hu.clickwatch.GuiceAwareExecutableExtensionFactory:edu.hu.clickwatch.actions.Import"
                enablesFor="1"
                id="edu.hu.clickwatch.importAction"
                label="Import"

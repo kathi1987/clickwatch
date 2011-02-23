@@ -22,7 +22,6 @@ import com.jcraft.jsch.JSchException;
 import com.jcraft.jsch.Session;
 
 import edu.hu.clickwatch.ClickWatchPluginActivator;
-import sun.security.jca.GetInstance.Instance;
 
 /**
  * Handling of SSH related communication

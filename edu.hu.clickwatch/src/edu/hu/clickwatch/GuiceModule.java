@@ -2,10 +2,8 @@ package edu.hu.clickwatch;
 
 import com.google.inject.AbstractModule;
 
-import edu.hu.clickcontrol.IClickSocket;
 import edu.hu.clickwatch.nodeadapter.ClickControlXSDNodeAdapter;
 import edu.hu.clickwatch.nodeadapter.INodeAdapter;
-import edu.hu.clickwatch.tests.ClickSocketXSDDummy;
 
 public class GuiceModule extends AbstractModule {
 	
