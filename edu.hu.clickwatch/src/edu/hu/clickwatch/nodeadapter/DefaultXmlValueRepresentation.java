@@ -41,6 +41,10 @@ public class DefaultXmlValueRepresentation implements IExtendedValueRepresentati
 	
 	@Override
 	public void set(Handler handler, Object value) {
+		if (value == null) {
+			return;
+		}
+		
 		if (value instanceof ValueClass) {
 			Object anyValue = ((ValueClass)value).value;
 			EStructuralFeature anyFeature = ((ValueClass)value).feature;
@@ -95,6 +99,10 @@ public class DefaultXmlValueRepresentation implements IExtendedValueRepresentati
 	@Override
 	public boolean equalsModelValueRealityValue(Object modelValue,
 			Object realValue) {
+		if (modelValue == null || realValue == null) {
+			return false;
+		}
+		
 		if (modelValue instanceof String) {
 			return modelValue.equals(realValue);
 		} else if (modelValue instanceof AnyType) {
@@ -110,7 +118,7 @@ public class DefaultXmlValueRepresentation implements IExtendedValueRepresentati
 	}
 	
 	@Override
-	public String createPlainRealValue(Object modelValue) {		
+	public String createPlainRealValue(Object modelValue) {	
 		XMLTypeDocumentRoot xml = XMLTypeFactory.eINSTANCE.createXMLTypeDocumentRoot();
 		if (modelValue instanceof String) {
 			xml.getMixed().add(XMLTypePackage.eINSTANCE.getXMLTypeDocumentRoot_Text(), modelValue);
@@ -130,19 +138,23 @@ public class DefaultXmlValueRepresentation implements IExtendedValueRepresentati
 	
 	@Override
 	public Object createModelValue(String plainRealValue) {		
+		plainRealValue = plainRealValue.replaceFirst("^<\\?[^\\?]+\\?>", "").trim();
 		XMLTypeDocumentRoot xml = (XMLTypeDocumentRoot)xmlModelRepository.deserializeXml("<xml>" + plainRealValue + "</xml>");
 		FeatureMap xmlRootMixed = ((AnyType)xml.getMixed().getValue(0)).getMixed();
-		if (xmlRootMixed.size() == 1) {
-			Object anyValue = xmlRootMixed.getValue(0);
-			EStructuralFeature anyFeature = xmlRootMixed.getEStructuralFeature(0);
-			xmlRootMixed.remove(anyValue);
-			xmlRootMixed.remove(anyFeature);
-			EcoreUtil.delete(xml, true);
-			Preconditions.checkNotNull(anyValue);
-			return new ValueClass(anyValue, anyFeature);
-		} else {
-			return new ValueClass("", XMLTypePackage.eINSTANCE.getXMLTypeDocumentRoot_Text());
+		if (xmlRootMixed.size() > 0) {
+			for(FeatureMap.Entry entry: xmlRootMixed) {
+				Object anyValue = entry.getValue();
+				if (!(anyValue == null || (anyValue instanceof String && "".equals(((String)anyValue).trim())))) {
+					EStructuralFeature anyFeature = entry.getEStructuralFeature();
+					xmlRootMixed.remove(anyValue);
+					xmlRootMixed.remove(anyFeature);
+					EcoreUtil.delete(xml, true);
+					Preconditions.checkNotNull(anyValue);
+					return new ValueClass(anyValue, anyFeature);		
+				}
+			}					
 		}
+		return new ValueClass("", XMLTypePackage.eINSTANCE.getXMLTypeDocumentRoot_Text());
 	}
 	
 	private static boolean compareXml(FeatureMap v1, FeatureMap v2) {
