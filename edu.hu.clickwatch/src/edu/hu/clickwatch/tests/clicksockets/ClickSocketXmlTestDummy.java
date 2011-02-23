@@ -1,4 +1,4 @@
-package edu.hu.clickcontrol;
+package edu.hu.clickwatch.tests.clicksockets;
 
 import com.google.common.base.Throwables;
 

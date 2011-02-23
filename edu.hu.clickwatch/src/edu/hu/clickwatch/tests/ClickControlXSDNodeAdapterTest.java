@@ -21,6 +21,7 @@ import edu.hu.clickwatch.model.Node;
 import edu.hu.clickwatch.nodeadapter.AbstractNodeAdapter;
 import edu.hu.clickwatch.nodeadapter.ClickControlXSDNodeAdapter;
 import edu.hu.clickwatch.nodeadapter.INodeAdapter;
+import edu.hu.clickwatch.tests.clicksockets.ClickSocketXSDDummy;
 
 public class ClickControlXSDNodeAdapterTest extends TestCase {
 

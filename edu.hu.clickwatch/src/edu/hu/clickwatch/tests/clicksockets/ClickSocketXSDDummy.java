@@ -1,4 +1,4 @@
-package edu.hu.clickwatch.tests;
+package edu.hu.clickwatch.tests.clicksockets;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -29,6 +29,7 @@ import com.google.common.base.Throwables;
 import edu.hu.clickwatch.ClickWatchPluginActivator;
 import edu.hu.clickwatch.XmlModelRepository;
 import edu.hu.clickwatch.nodeadapter.ClickControlXSDNodeAdapter;
+import edu.hu.clickwatch.tests.XmlModelRepositoryTest;
 
 public class ClickSocketXSDDummy extends ClickSocketTestImpl {
 

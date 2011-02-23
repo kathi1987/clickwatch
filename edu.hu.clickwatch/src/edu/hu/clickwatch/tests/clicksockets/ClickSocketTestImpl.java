@@ -1,4 +1,4 @@
-package edu.hu.clickwatch.tests;
+package edu.hu.clickwatch.tests.clicksockets;
 
 import java.io.IOException;
 import java.net.InetAddress;

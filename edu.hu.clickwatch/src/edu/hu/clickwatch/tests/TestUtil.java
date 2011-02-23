@@ -19,6 +19,7 @@ import edu.hu.clickcontrol.IClickSocket;
 import edu.hu.clickwatch.model.Element;
 import edu.hu.clickwatch.model.Handler;
 import edu.hu.clickwatch.model.Node;
+import edu.hu.clickwatch.tests.clicksockets.ClickSocketTestImpl;
 
 public class TestUtil {
 	

@@ -1,4 +1,4 @@
-package edu.hu.clickcontrol;
+package edu.hu.clickwatch.tests.clicksockets;
 
 import java.io.IOException;
 import java.net.InetAddress;
@@ -9,6 +9,7 @@ import java.util.Map;
 
 import click.ClickException;
 import click.ControlSocket.HandlerInfo;
+import edu.hu.clickcontrol.IClickSocket;
 
 /**
  * Test implementation for {@link IClickSocket }. This implementation models an

@@ -15,6 +15,7 @@ import edu.hu.clickwatch.model.Network;
 import edu.hu.clickwatch.model.Node;
 import edu.hu.clickwatch.nodeadapter.ClickControlNodeXmlValuesAdapter;
 import edu.hu.clickwatch.nodeadapter.INodeAdapter;
+import edu.hu.clickwatch.tests.clicksockets.ClickSocketTestImpl;
 
 public class ConnectionTest extends TestCase {
 
