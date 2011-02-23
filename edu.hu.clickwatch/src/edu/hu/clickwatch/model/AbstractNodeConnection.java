@@ -27,6 +27,8 @@ import com.google.common.collect.Sets;
 
 import edu.hu.clickwatch.actions.Connect;
 import edu.hu.clickwatch.actions.Disconnect;
+import edu.hu.clickwatch.nodeadapter.AbstractNodeAdapter;
+import edu.hu.clickwatch.nodeadapter.AbstractNodeAdapter.ErrorListener;
 import edu.hu.clickwatch.nodeadapter.INodeAdapter;
 
 /**
@@ -61,7 +63,7 @@ import edu.hu.clickwatch.nodeadapter.INodeAdapter;
  * @author Markus Scheidgen
  * 
  */
-public abstract class AbstractNodeConnection {
+public abstract class AbstractNodeConnection implements ErrorListener {
 
 	private Node node;
 	private String elemFilter = null;
@@ -72,6 +74,9 @@ public abstract class AbstractNodeConnection {
 	private IEditorPart editor = null;
 	private boolean isScheduledForDisconnect = false;
 	private boolean hasError = false;
+	
+	private Throwable unreportedError = null;
+	private boolean haveReportedAnError = false;
 	
 	private Adapter filterListener = new AdapterImpl() {
 		@Override
@@ -132,9 +137,11 @@ public abstract class AbstractNodeConnection {
 			try {
 				if (!getNodeAdapter().isConnected()) {
 					getNodeAdapter().connect();
+					installErrorListener(getNodeAdapter());
 				}
 				while (!isScheduledForDisconnect()) {
 					runUpdate();
+					reportPossibleError();
 				}
 			} catch (final Exception ex) {
 				runInGUI(new Runnable() {
@@ -148,6 +155,7 @@ public abstract class AbstractNodeConnection {
 						+ " occured:\n" + ex.getMessage());
 			} finally {
 				getNodeAdapter().disconnect();
+				uninstallErrorListener(getNodeAdapter());
 				runInGUI(new Runnable() {
 					@Override
 					public void run() {
@@ -155,6 +163,18 @@ public abstract class AbstractNodeConnection {
 					}
 				});
 			}
+		}
+	}
+	
+	private void uninstallErrorListener(INodeAdapter nodeAdapter) {
+		if (nodeAdapter instanceof AbstractNodeAdapter) {
+			((AbstractNodeAdapter)nodeAdapter).addErrorListener(this);
+		}
+	}
+
+	private void installErrorListener(INodeAdapter nodeAdapter) {
+		if (nodeAdapter instanceof AbstractNodeAdapter) {
+			((AbstractNodeAdapter)nodeAdapter).removeErrorListener(this);
 		}
 	}
 
@@ -550,5 +570,26 @@ public abstract class AbstractNodeConnection {
 	
 	protected void unInstallPartListener(IPartListener listener) {
 		PlatformUI.getWorkbench().getActiveWorkbenchWindow().getPartService().removePartListener(closeListener);
+	}
+
+	@Override
+	public void handlerError(Throwable e) {
+		unreportedError = e;
+	}
+	
+	private synchronized void reportPossibleError() {
+		if (unreportedError != null) {
+			if (haveReportedAnError) {
+				System.err.println("Exception " + unreportedError.getClass().getName()
+						+ " occured: " + unreportedError.getMessage()
+						+ ". Trying to keep node connection alive though.");
+			} else {
+				showMessage("Exception", "Exception " + unreportedError.getClass().getName()
+						+ " occured: " + unreportedError.getMessage()
+						+ ". Trying to keep node connection alive though. All other errors for this node are written to System.err");
+				haveReportedAnError = true;
+			}
+			unreportedError = null;
+		}
 	}
 }

@@ -54,6 +54,10 @@ public class ClickControlXSDNodeAdapter extends AbstractNodeAdapter {
 		
 		@Override
 		public void set(Handler handler, Object value) {
+			if (value == null) {
+				return;
+			}
+			
 			Preconditions.checkArgument(value instanceof EObject);
 
 			EStructuralFeature valueFeature = null;
@@ -97,22 +101,27 @@ public class ClickControlXSDNodeAdapter extends AbstractNodeAdapter {
 		@Override
 		public boolean equalsModelValueRealityValue(Object modelValue,
 				Object realValue) {
-			Preconditions.checkArgument(modelValue instanceof EObject);
-			Preconditions.checkArgument(realValue instanceof EObject);
-			
-			if (!modelValue.getClass().equals(realValue.getClass())) {
-				return false;
-			}
-			
-			String modelXml = xmlModelRepository.getOriginalXml((EObject)modelValue);
-			String realXml = xmlModelRepository.getOriginalXml((EObject)modelValue);
-			
-			if (modelXml != null && realXml != null) {
-				return modelXml.equals(realXml);
-			} else {
-				return xmlModelRepository.serializeModel(metaModel, (EObject)modelValue).
-						equals(xmlModelRepository.serializeModel(metaModel, (EObject)realValue));
-			}
+//			if (modelValue == null || realValue == null) {
+//				return false;
+//			}
+//			
+//			Preconditions.checkArgument(modelValue instanceof EObject);
+//			Preconditions.checkArgument(realValue instanceof EObject);
+//			
+//			if (!modelValue.getClass().equals(realValue.getClass())) {
+//				return false;
+//			}
+//			
+//			String modelXml = xmlModelRepository.getOriginalXml((EObject)modelValue);
+//			String realXml = xmlModelRepository.getOriginalXml((EObject)modelValue);
+//			
+//			if (modelXml != null && realXml != null) {
+//				return modelXml.equals(realXml);
+//			} else {
+//				return xmlModelRepository.serializeModel(metaModel, (EObject)modelValue).
+//						equals(xmlModelRepository.serializeModel(metaModel, (EObject)realValue));
+//			}
+			return eEquals(modelValue, realValue);
 		}
 		
 		@Override
@@ -122,15 +131,18 @@ public class ClickControlXSDNodeAdapter extends AbstractNodeAdapter {
 		
 		@Override
 		public Object createModelValue(String plainRealValue) {
+			plainRealValue = plainRealValue.replaceFirst("^<\\?[^\\?]+\\?>", "").trim();
 			// TODO this is an ugly way to provide the schema URI
-			int xsdRefPos = plainRealValue.indexOf(">");
-			if (xsdRefPos > 0) {
-				if (plainRealValue.charAt(xsdRefPos - 1) == '/') {
-					xsdRefPos -= 1;
+			if (!plainRealValue.contains("xsi:noNamespaceSchemaLocation")) {
+				int xsdRefPos = plainRealValue.indexOf(">");
+				if (xsdRefPos > 0) {
+					if (plainRealValue.charAt(xsdRefPos - 1) == '/') {
+						xsdRefPos -= 1;
+					}
+					plainRealValue = plainRealValue.substring(0, xsdRefPos) + 
+							" xsi:noNamespaceSchemaLocation='" +
+							metaModel.getNsURI() + "'" + plainRealValue.substring(xsdRefPos);
 				}
-				plainRealValue = plainRealValue.substring(0, xsdRefPos) + 
-						" xsi:noNamespaceSchemaLocation='" +
-						metaModel.getNsURI() + "'" + plainRealValue.substring(xsdRefPos);
 			}
 			EObject documentRoot = xmlModelRepository.deserializeModel(metaModel, plainRealValue);
 			EObject result = documentRoot.eContents().get(0);
@@ -192,7 +204,8 @@ public class ClickControlXSDNodeAdapter extends AbstractNodeAdapter {
 				result = defaultXmlValueRep;
 			} else {
 				if (XSD_HANDLER_NAME.equals(handler.getName())) {
-					result = new ConstantValueRepresentation(metaModel);
+					//result = new ConstantValueRepresentation(metaModel);
+					result = defaultXmlValueRep;
 				} else {
 					EClass handlerClass = (EClass)metaModel.getEClassifier("handler");
 					EEnum eEnum = (EEnum)handlerClass.getEStructuralFeature("name").getEType();
@@ -213,6 +226,46 @@ public class ClickControlXSDNodeAdapter extends AbstractNodeAdapter {
 			valueReps.put(handler, result);
 		} 
 		return result;
+	}
+	
+	private boolean eEquals(Object one, Object two) {
+		if ((one == null || two == null) && (one != two)) {
+			return false;
+		} else if (one instanceof EObject && two instanceof EObject) {
+			EObject eOne = (EObject)one;
+			EObject eTwo = (EObject)two;
+			if (eOne.eClass() != eTwo.eClass()) {
+				return false;
+			}
+			for(EStructuralFeature feature: eOne.eClass().getEAllStructuralFeatures()) {
+				if (!feature.isDerived() && !isTimeIndicatingFeature(feature)) {
+					if (!eEquals(eOne.eGet(feature), eTwo.eGet(feature))) {
+						return false;
+					}
+				}
+			}
+			return true;
+		} else if (one instanceof EList<?> && two instanceof EList<?>) {
+			EList<?> lOne = (EList<?>)one;
+			EList<?> lTwo = (EList<?>)two;
+			if (lOne.size() != lTwo.size()) {
+				return false;
+			}
+			int lOneSize = lOne.size();
+			for (int i = 0; i < lOneSize; i++) {
+				if (!eEquals(lOne.get(i), lTwo.get(i))) {
+					return false;
+				}
+			}
+			return true;
+		} else {
+			return one.equals(two);
+		}
+	}
+
+	private boolean isTimeIndicatingFeature(EStructuralFeature feature) {
+		String normalizedName = feature.getName().trim().toLowerCase();
+		return normalizedName.equals("time") || normalizedName.equals("seq");
 	}
 	
 }

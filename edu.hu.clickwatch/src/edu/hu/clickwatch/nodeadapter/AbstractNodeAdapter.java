@@ -2,11 +2,13 @@ package edu.hu.clickwatch.nodeadapter;
 
 import java.io.IOException;
 import java.net.InetAddress;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import click.ControlSocket;
@@ -33,6 +35,12 @@ public abstract class AbstractNodeAdapter implements INodeAdapter {
 
 	private String host = null;
 	private String port = null;
+	
+	private final List<ErrorListener> errorListeners = new ArrayList<AbstractNodeAdapter.ErrorListener>();
+	
+	public interface ErrorListener {
+		public void handlerError(Throwable e);
+	}
 
 	@ImplementedBy(DefaultXmlValueRepresentation.class)
 	public interface IExtendedValueRepresentation extends IValueRepresentation {
@@ -252,16 +260,98 @@ public abstract class AbstractNodeAdapter implements INodeAdapter {
 		Element element = (Element)handler.eContainer();
 		
 		try {
-			IExtendedValueRepresentation valueRep = getExtendedValueRepresentation(handler);
+			IExtendedValueRepresentation valueRep = (IExtendedValueRepresentation)getValueRepresentation(handler);
 			cs.write(element.getElementPath(), handler.getName(), valueRep.createPlainRealValue(value).toCharArray());
 		} catch (Throwable e) {
 			Throwables.propagate(e);
 		}
 	}
+
+	public void addErrorListener(ErrorListener listener) {
+		errorListeners.add(listener);
+	}
+	
+	public void removeErrorListener(ErrorListener listener) {
+		errorListeners.remove(listener);
+	}
+	
+	private void handle(Throwable e) {
+		for (ErrorListener errorListener: errorListeners) {
+			errorListener.handlerError(e);
+		}
+	}
+
+	private class ExtentValueRepresentationErrorHandlerWrapper implements IExtendedValueRepresentation {
+		final IExtendedValueRepresentation source;
+
+		public ExtentValueRepresentationErrorHandlerWrapper(IExtendedValueRepresentation source) {
+			this.source = source;
+		}
+		
+		@Override
+		public boolean isNotificationChangingValue(Notification notification) {
+			try {
+				return source.isNotificationChangingValue(notification);
+			} catch (Throwable e) {
+				handle(e);
+				return false;
+			}
+		}
+
+		@Override
+		public boolean equalsModelValueRealityValue(Object modelValue,
+				Object realValue) {
+			try {
+				return source.equalsModelValueRealityValue(modelValue, realValue);
+			} catch (Throwable e) {
+				handle(e);
+				return true;
+			}
+		}
+
+		@Override
+		public Object get(Handler handler) {
+			try {
+				return source.get(handler);
+			} catch (Throwable e) {
+				handle(e);
+				return null;
+			}
+		}
+
+		@Override
+		public void set(Handler handler, Object value) {
+			try {
+				source.set(handler, value);
+			} catch (Throwable e) {
+				handle(e);
+			}
+		}
+
+		@Override
+		public Object createModelValue(String plainRealValue) {
+			try {
+				return source.createModelValue(plainRealValue);
+			} catch (Throwable e) {
+				handle(e);
+				return null;
+			}
+		}
+
+		@Override
+		public String createPlainRealValue(Object modelValue) {
+			try {
+				return source.createPlainRealValue(modelValue);
+			} catch (Throwable e) {
+				handle(e);
+				return null;
+			}
+		}
+	}
 	
 	@Override
-	public IValueRepresentation getValueRepresentation(Handler handler) {
-		return getExtendedValueRepresentation(handler);
+	public final IValueRepresentation getValueRepresentation(Handler handler) {
+		return new ExtentValueRepresentationErrorHandlerWrapper(getExtendedValueRepresentation(handler));
 	}
 	
 	protected IClickSocket getClickSocket() {

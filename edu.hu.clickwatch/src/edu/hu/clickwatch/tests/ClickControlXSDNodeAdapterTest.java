@@ -14,6 +14,7 @@ import com.google.inject.Guice;
 import com.google.inject.Injector;
 
 import edu.hu.clickcontrol.IClickSocket;
+import edu.hu.clickwatch.ClickWatchStandaloneSetup;
 import edu.hu.clickwatch.GuiceModule;
 import edu.hu.clickwatch.XmlModelRepository;
 import edu.hu.clickwatch.model.Handler;
@@ -21,6 +22,7 @@ import edu.hu.clickwatch.model.Node;
 import edu.hu.clickwatch.nodeadapter.AbstractNodeAdapter;
 import edu.hu.clickwatch.nodeadapter.ClickControlXSDNodeAdapter;
 import edu.hu.clickwatch.nodeadapter.INodeAdapter;
+import edu.hu.clickwatch.tests.clicksockets.ClickSocketPlayer;
 import edu.hu.clickwatch.tests.clicksockets.ClickSocketXSDDummy;
 
 public class ClickControlXSDNodeAdapterTest extends TestCase {
@@ -30,6 +32,7 @@ public class ClickControlXSDNodeAdapterTest extends TestCase {
 	
 	@Override
 	public void setUp() throws IOException {
+		ClickWatchStandaloneSetup.doSetup();
 
 		final IClickSocket clickSocket = new ClickSocketXSDDummy() {
 
@@ -90,5 +93,15 @@ public class ClickControlXSDNodeAdapterTest extends TestCase {
 		EObject reReadModel = xmlModelRepository.deserializeXml(xml);
 		assertNotNull(TestUtil.query(reReadModel, ":n/foo:e/bar:h/foo:x/bar[=TEXT]:x"));
 		assertNotNull(TestUtil.query(reReadModel, ":n/link_stat:e/bad_version:h/badnodes:x/badnode[version=101]:x"));
+	}
+	
+	public void testWithRecord() {
+		Injector injector = Guice.createInjector(ClickSocketPlayer.getJUnitTestModule());
+		nodeAdapter = injector.getInstance(INodeAdapter.class);
+		xmlModelRepository = injector.getInstance(XmlModelRepository.class);
+		((AbstractNodeAdapter)nodeAdapter).setUp("192.168.3.152", "7777");
+		
+		nodeAdapter.connect();
+		nodeAdapter.retrieve("", "");
 	}
 }
