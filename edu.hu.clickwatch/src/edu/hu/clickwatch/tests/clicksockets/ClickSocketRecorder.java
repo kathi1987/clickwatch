@@ -23,6 +23,9 @@ import edu.hu.clickwatch.nodeadapter.INodeAdapter;
 public class ClickSocketRecorder {
 
 	private Injector injector;
+	
+	private static long UPDATE_INTERVALL = 1000;
+	private static int NUMBER_OF_RECORDS = 10;
 
 	public ClickSocketRecorder() {
 		ClickWatchStandaloneSetup.doSetup();
@@ -36,28 +39,37 @@ public class ClickSocketRecorder {
 
 	public void record(String[] args) {
 		String recordFile = args[0];
-		Network result = ClickWatchModelFactory.eINSTANCE.createNetwork();
-		RetrieveLoop: for (int i = 1; i < args.length; i = i + 2) {
-			String host = args[i];
-			String port = args[i + 1];
-
-			Node node = null;
-			try {
-				node = retrieve(host, port);
-				node.setPort(port);
-				node.setINetAdress(host);
-			} catch (Throwable e) {
-				e.printStackTrace();
-				System.err.println("Exception while retrieving " + host + "["
-						+ port + "]\n");
-				continue RetrieveLoop;
-			}
-			result.getNodes().add(node);
-		}
-
 		ResourceSet rs = new ResourceSetImpl();
 		Resource resource = rs.createResource(URI.createFileURI(recordFile));
-		resource.getContents().add(result);
+		
+		for (int record = 0; record < NUMBER_OF_RECORDS; record++) {
+			Network result = ClickWatchModelFactory.eINSTANCE.createNetwork();
+			RetrieveLoop: for (int i = 1; i < args.length; i = i + 2) {
+				String host = args[i];
+				String port = args[i + 1];
+	
+				Node node = null;
+				try {
+					node = retrieve(host, port);
+					node.setPort(port);
+					node.setINetAdress(host);
+				} catch (Throwable e) {
+					e.printStackTrace();
+					System.err.println("Exception while retrieving " + host + "["
+							+ port + "]\n");
+					continue RetrieveLoop;
+				}
+				result.getNodes().add(node);
+			}
+			resource.getContents().add(result);
+			
+			try {
+				Thread.sleep(UPDATE_INTERVALL);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+
 		try {
 			resource.save(null);
 		} catch (IOException e) {

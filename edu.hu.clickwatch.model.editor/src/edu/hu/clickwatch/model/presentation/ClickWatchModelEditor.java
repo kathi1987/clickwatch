@@ -559,6 +559,67 @@ public class ClickWatchModelEditor
 		super();
 		initializeEditingDomain();
 	}
+	
+	public static class MyReflectiveItemProviderAdapterFactory extends ReflectiveItemProviderAdapterFactory {
+		ReflectiveItemProvider itemProvider = new ReflectiveItemProvider(this) {
+			@Override
+			public String getText(Object object) {
+				if (object instanceof EObject) {
+					String result = ((EObject)object).eClass().getName();
+					if (result == null) {
+						return super.getText(object);
+					} else {
+						return result;
+					}
+				} else {
+					return super.getText(object);
+				}
+			}
+			
+			
+			@Override
+			public Collection<?> getChildren(Object object) {
+				Collection<Object> result = new ArrayList<Object>();
+				for(Object child: super.getChildren(object)) {	
+					boolean ommit = false;
+					if (child instanceof FeatureMapEntryWrapperItemProvider) {
+						Object value = ((FeatureMap.Entry)((FeatureMapEntryWrapperItemProvider)child).getValue()).getValue();
+						if (value instanceof String && ((String)value).trim().equals("")) {
+							ommit = true;
+						}
+					}
+					if (!ommit) {
+						result.add(child);
+					}
+				}
+				
+				return result;
+			}
+
+
+			@Override
+			protected Object createWrapper(EObject object,
+					EStructuralFeature feature, Object value, int index) {
+				if (value instanceof FeatureMap.Entry && ((FeatureMap.Entry)value).getValue() instanceof AnyType) {
+					return new FeatureMapEntryWrapperItemProvider(
+							(FeatureMap.Entry) value, object, (EAttribute) feature,
+							index, adapterFactory, getResourceLocator()) {
+						@Override
+						public String getText(Object object) {
+							return ((FeatureMap.Entry) value).getEStructuralFeature()
+									.getName();
+						}
+					};
+				} else {
+					return super.createWrapper(object, feature, value, index);
+				}
+			}
+		};
+		@Override
+		public Adapter createAdapter(Notifier target) {
+			return itemProvider;
+		}
+	}
 
 	/**
 	 * This sets up the editing domain for the model editor.
@@ -573,67 +634,7 @@ public class ClickWatchModelEditor
 
 		adapterFactory.addAdapterFactory(new ResourceItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new ClickWatchModelItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory() {
-			ReflectiveItemProvider itemProvider = new ReflectiveItemProvider(this) {
-				@Override
-				public String getText(Object object) {
-					if (object instanceof EObject) {
-						String result = ((EObject)object).eClass().getName();
-						if (result == null) {
-							return super.getText(object);
-						} else {
-							return result;
-						}
-					} else {
-						return super.getText(object);
-					}
-				}
-				
-				
-				@Override
-				public Collection<?> getChildren(Object object) {
-					Collection<Object> result = new ArrayList<Object>();
-					for(Object child: super.getChildren(object)) {	
-						boolean ommit = false;
-						if (child instanceof FeatureMapEntryWrapperItemProvider) {
-							Object value = ((FeatureMap.Entry)((FeatureMapEntryWrapperItemProvider)child).getValue()).getValue();
-							if (value instanceof String && ((String)value).trim().equals("")) {
-								ommit = true;
-							}
-						}
-						if (!ommit) {
-							result.add(child);
-						}
-					}
-					
-					return result;
-				}
-
-
-				@Override
-				protected Object createWrapper(EObject object,
-						EStructuralFeature feature, Object value, int index) {
-					if (value instanceof FeatureMap.Entry && ((FeatureMap.Entry)value).getValue() instanceof AnyType) {
-						return new FeatureMapEntryWrapperItemProvider(
-								(FeatureMap.Entry) value, object, (EAttribute) feature,
-								index, adapterFactory, getResourceLocator()) {
-							@Override
-							public String getText(Object object) {
-								return ((FeatureMap.Entry) value).getEStructuralFeature()
-										.getName();
-							}
-						};
-					} else {
-						return super.createWrapper(object, feature, value, index);
-					}
-				}
-			};
-			@Override
-			public Adapter createAdapter(Notifier target) {
-				return itemProvider;
-			}
-			
-		});
+		adapterFactory.addAdapterFactory(new MyReflectiveItemProviderAdapterFactory());
 
 		// Create the command stack that will notify this editor as commands are executed.
 		//

@@ -95,7 +95,7 @@ public class ClickControlXSDNodeAdapterTest extends TestCase {
 		assertNotNull(TestUtil.query(reReadModel, ":n/link_stat:e/bad_version:h/badnodes:x/badnode[version=101]:x"));
 	}
 	
-	public void testLastRecord() {
+	public void testWithRecord() {
 		Injector injector = Guice.createInjector(ClickSocketPlayer.getJUnitTestModule());
 		nodeAdapter = injector.getInstance(INodeAdapter.class);
 		xmlModelRepository = injector.getInstance(XmlModelRepository.class);

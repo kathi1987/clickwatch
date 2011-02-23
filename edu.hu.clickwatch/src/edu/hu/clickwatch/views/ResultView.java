@@ -6,7 +6,6 @@ import java.io.PrintWriter;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
-import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
 import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory;
 import org.eclipse.emf.edit.ui.celleditor.AdapterFactoryTreeEditor;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
@@ -25,6 +24,7 @@ import org.eclipse.ui.part.ViewPart;
 import com.google.inject.Inject;
 
 import edu.hu.clickwatch.XmlModelRepository;
+import edu.hu.clickwatch.model.presentation.ClickWatchModelEditor;
 import edu.hu.clickwatch.model.provider.ClickWatchModelItemProviderAdapterFactory;
 
 public class ResultView extends ViewPart {
@@ -44,7 +44,7 @@ public class ResultView extends ViewPart {
 		adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
 		adapterFactory.addAdapterFactory(new ResourceItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new ClickWatchModelItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
+		adapterFactory.addAdapterFactory(new ClickWatchModelEditor.MyReflectiveItemProviderAdapterFactory());
 	}
 
 	@Override

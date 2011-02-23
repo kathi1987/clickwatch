@@ -25,17 +25,18 @@ public class ClickSocketPlayerSocketImpl extends ClickSocketTestImpl {
 	ClickSocketPlayer player;
 	
 	private Node node = null;
+	private long lastUpdate = 0;
 	
 	private String[] elements = null;
 	private ListMultimap<String, HandlerInfo> handlers = null;
 	private Map<String, String> values = null;
 	
 	private void initialize() {
-		if (node == null) {
+		if (node == null || lastUpdate != player.getCurrentUpdate()) {
 			String host = this.host.toString().substring(1);
 			String port = "" + this.port;
 			
-			node = player.getNode(host, port);
+			node = player.getNode(host, port, player.getCurrentUpdate());
 			
 			Preconditions.checkState(node != null);
 			
@@ -61,6 +62,7 @@ public class ClickSocketPlayerSocketImpl extends ClickSocketTestImpl {
 			}
 			
 			this.elements = elements.toArray(new String[] {});
+			lastUpdate = player.getCurrentUpdate();
 		}
 	}
 	
