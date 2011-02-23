@@ -7,6 +7,7 @@ import org.eclipse.emf.common.util.URI;
 import com.google.inject.AbstractModule;
 
 import edu.hu.clickcontrol.IClickSocket;
+import edu.hu.clickwatch.nodeadapter.ClickControlNodeXmlValuesAdapter;
 import edu.hu.clickwatch.nodeadapter.ClickControlXSDNodeAdapter;
 import edu.hu.clickwatch.nodeadapter.INodeAdapter;
 import edu.hu.clickwatch.tests.clicksockets.ClickSocketPlayer;
@@ -31,7 +32,8 @@ public class GuiceModule extends AbstractModule {
 		// bindToPlayer();
 		
 		// binds a special ClickControlNodeAdapter that reads the xml-handler of each element instead its native HandlerInfos
-		bind(INodeAdapter.class).to(ClickControlXSDNodeAdapter.class);
+		//bind(INodeAdapter.class).to(ClickControlXSDNodeAdapter.class);
+		bind(INodeAdapter.class).to(ClickControlNodeXmlValuesAdapter.class);
 	}
 	
 	@SuppressWarnings("unused")
