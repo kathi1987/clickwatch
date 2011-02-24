@@ -6,6 +6,7 @@
  */
 package edu.hu.clickwatch.model.provider;
 
+import java.awt.image.IndexColorModel;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -18,6 +19,7 @@ import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.IChangeNotifier;
 import org.eclipse.emf.edit.provider.IDisposable;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
+import org.eclipse.emf.edit.provider.IItemColorProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.INotifyChangedListener;
@@ -71,6 +73,7 @@ public class ClickWatchModelItemProviderAdapterFactory extends ClickWatchModelAd
 		supportedTypes.add(IStructuredItemContentProvider.class);
 		supportedTypes.add(ITreeItemContentProvider.class);
 		supportedTypes.add(IItemLabelProvider.class);
+		supportedTypes.add(IItemColorProvider.class);
 		supportedTypes.add(IItemPropertySource.class);
 	}
 

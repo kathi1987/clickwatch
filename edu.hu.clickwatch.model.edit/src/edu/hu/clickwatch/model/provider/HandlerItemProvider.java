@@ -16,9 +16,6 @@ import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.util.FeatureMapUtil;
-import org.eclipse.emf.ecore.xml.type.XMLTypeFactory;
-import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.FeatureMapEntryWrapperItemProvider;
@@ -48,6 +45,7 @@ public class HandlerItemProvider
 		IStructuredItemContentProvider,
 		ITreeItemContentProvider,
 		IItemLabelProvider,
+		//IItemColorProvider,
 		IItemPropertySource {
 	
 	/**
@@ -331,4 +329,17 @@ public class HandlerItemProvider
 			return super.createWrapper(object, feature, value, index);
 		}
 	}
+	
+	/**
+	 * @generated NOT
+	 */
+	//private final static Object green = Display.getCurrent().getSystemColor(SWT.COLOR_GREEN);
+
+	/** 
+	 * @generated NOT
+	 */
+//	@Override
+//	public Object getForeground(Object object) {
+//		return green;
+//	}
 }

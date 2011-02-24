@@ -936,7 +936,7 @@ public class ClickWatchModelEditor
 	 * This is the method used by the framework to install your own controls.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public void createPages() {
@@ -969,7 +969,7 @@ public class ClickWatchModelEditor
 				selectionViewer = (TreeViewer)viewerPane.getViewer();
 				selectionViewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));
 
-				selectionViewer.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+				selectionViewer.setLabelProvider(new AdapterFactoryLabelProvider.ColorProvider(adapterFactory, selectionViewer));
 				selectionViewer.setInput(editingDomain.getResourceSet());
 				selectionViewer.setSelection(new StructuredSelection(editingDomain.getResourceSet().getResources().get(0)), true);
 				viewerPane.setTitle(editingDomain.getResourceSet());
@@ -983,170 +983,170 @@ public class ClickWatchModelEditor
 
 			// Create a page for the parent tree view.
 			//
-			{
-				ViewerPane viewerPane =
-					new ViewerPane(getSite().getPage(), ClickWatchModelEditor.this) {
-						@Override
-						public Viewer createViewer(Composite composite) {
-							Tree tree = new Tree(composite, SWT.MULTI);
-							TreeViewer newTreeViewer = new TreeViewer(tree);
-							return newTreeViewer;
-						}
-						@Override
-						public void requestActivation() {
-							super.requestActivation();
-							setCurrentViewerPane(this);
-						}
-					};
-				viewerPane.createControl(getContainer());
-
-				parentViewer = (TreeViewer)viewerPane.getViewer();
-				parentViewer.setAutoExpandLevel(30);
-				parentViewer.setContentProvider(new ReverseAdapterFactoryContentProvider(adapterFactory));
-				parentViewer.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-
-				createContextMenuFor(parentViewer);
-				int pageIndex = addPage(viewerPane.getControl());
-				setPageText(pageIndex, getString("_UI_ParentPage_label"));
-			}
-
-			// This is the page for the list viewer
-			//
-			{
-				ViewerPane viewerPane =
-					new ViewerPane(getSite().getPage(), ClickWatchModelEditor.this) {
-						@Override
-						public Viewer createViewer(Composite composite) {
-							return new ListViewer(composite);
-						}
-						@Override
-						public void requestActivation() {
-							super.requestActivation();
-							setCurrentViewerPane(this);
-						}
-					};
-				viewerPane.createControl(getContainer());
-				listViewer = (ListViewer)viewerPane.getViewer();
-				listViewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));
-				listViewer.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-
-				createContextMenuFor(listViewer);
-				int pageIndex = addPage(viewerPane.getControl());
-				setPageText(pageIndex, getString("_UI_ListPage_label"));
-			}
-
-			// This is the page for the tree viewer
-			//
-			{
-				ViewerPane viewerPane =
-					new ViewerPane(getSite().getPage(), ClickWatchModelEditor.this) {
-						@Override
-						public Viewer createViewer(Composite composite) {
-							return new TreeViewer(composite);
-						}
-						@Override
-						public void requestActivation() {
-							super.requestActivation();
-							setCurrentViewerPane(this);
-						}
-					};
-				viewerPane.createControl(getContainer());
-				treeViewer = (TreeViewer)viewerPane.getViewer();
-				treeViewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));
-				treeViewer.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-
-				new AdapterFactoryTreeEditor(treeViewer.getTree(), adapterFactory);
-
-				createContextMenuFor(treeViewer);
-				int pageIndex = addPage(viewerPane.getControl());
-				setPageText(pageIndex, getString("_UI_TreePage_label"));
-			}
-
-			// This is the page for the table viewer.
-			//
-			{
-				ViewerPane viewerPane =
-					new ViewerPane(getSite().getPage(), ClickWatchModelEditor.this) {
-						@Override
-						public Viewer createViewer(Composite composite) {
-							return new TableViewer(composite);
-						}
-						@Override
-						public void requestActivation() {
-							super.requestActivation();
-							setCurrentViewerPane(this);
-						}
-					};
-				viewerPane.createControl(getContainer());
-				tableViewer = (TableViewer)viewerPane.getViewer();
-
-				Table table = tableViewer.getTable();
-				TableLayout layout = new TableLayout();
-				table.setLayout(layout);
-				table.setHeaderVisible(true);
-				table.setLinesVisible(true);
-
-				TableColumn objectColumn = new TableColumn(table, SWT.NONE);
-				layout.addColumnData(new ColumnWeightData(3, 100, true));
-				objectColumn.setText(getString("_UI_ObjectColumn_label"));
-				objectColumn.setResizable(true);
-
-				TableColumn selfColumn = new TableColumn(table, SWT.NONE);
-				layout.addColumnData(new ColumnWeightData(2, 100, true));
-				selfColumn.setText(getString("_UI_SelfColumn_label"));
-				selfColumn.setResizable(true);
-
-				tableViewer.setColumnProperties(new String [] {"a", "b"});
-				tableViewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));
-				tableViewer.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-
-				createContextMenuFor(tableViewer);
-				int pageIndex = addPage(viewerPane.getControl());
-				setPageText(pageIndex, getString("_UI_TablePage_label"));
-			}
-
-			// This is the page for the table tree viewer.
-			//
-			{
-				ViewerPane viewerPane =
-					new ViewerPane(getSite().getPage(), ClickWatchModelEditor.this) {
-						@Override
-						public Viewer createViewer(Composite composite) {
-							return new TreeViewer(composite);
-						}
-						@Override
-						public void requestActivation() {
-							super.requestActivation();
-							setCurrentViewerPane(this);
-						}
-					};
-				viewerPane.createControl(getContainer());
-
-				treeViewerWithColumns = (TreeViewer)viewerPane.getViewer();
-
-				Tree tree = treeViewerWithColumns.getTree();
-				tree.setLayoutData(new FillLayout());
-				tree.setHeaderVisible(true);
-				tree.setLinesVisible(true);
-
-				TreeColumn objectColumn = new TreeColumn(tree, SWT.NONE);
-				objectColumn.setText(getString("_UI_ObjectColumn_label"));
-				objectColumn.setResizable(true);
-				objectColumn.setWidth(250);
-
-				TreeColumn selfColumn = new TreeColumn(tree, SWT.NONE);
-				selfColumn.setText(getString("_UI_SelfColumn_label"));
-				selfColumn.setResizable(true);
-				selfColumn.setWidth(200);
-
-				treeViewerWithColumns.setColumnProperties(new String [] {"a", "b"});
-				treeViewerWithColumns.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));
-				treeViewerWithColumns.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-
-				createContextMenuFor(treeViewerWithColumns);
-				int pageIndex = addPage(viewerPane.getControl());
-				setPageText(pageIndex, getString("_UI_TreeWithColumnsPage_label"));
-			}
+//			{
+//				ViewerPane viewerPane =
+//					new ViewerPane(getSite().getPage(), ClickWatchModelEditor.this) {
+//						@Override
+//						public Viewer createViewer(Composite composite) {
+//							Tree tree = new Tree(composite, SWT.MULTI);
+//							TreeViewer newTreeViewer = new TreeViewer(tree);
+//							return newTreeViewer;
+//						}
+//						@Override
+//						public void requestActivation() {
+//							super.requestActivation();
+//							setCurrentViewerPane(this);
+//						}
+//					};
+//				viewerPane.createControl(getContainer());
+//
+//				parentViewer = (TreeViewer)viewerPane.getViewer();
+//				parentViewer.setAutoExpandLevel(30);
+//				parentViewer.setContentProvider(new ReverseAdapterFactoryContentProvider(adapterFactory));
+//				parentViewer.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+//
+//				createContextMenuFor(parentViewer);
+//				int pageIndex = addPage(viewerPane.getControl());
+//				setPageText(pageIndex, getString("_UI_ParentPage_label"));
+//			}
+//
+//			// This is the page for the list viewer
+//			//
+//			{
+//				ViewerPane viewerPane =
+//					new ViewerPane(getSite().getPage(), ClickWatchModelEditor.this) {
+//						@Override
+//						public Viewer createViewer(Composite composite) {
+//							return new ListViewer(composite);
+//						}
+//						@Override
+//						public void requestActivation() {
+//							super.requestActivation();
+//							setCurrentViewerPane(this);
+//						}
+//					};
+//				viewerPane.createControl(getContainer());
+//				listViewer = (ListViewer)viewerPane.getViewer();
+//				listViewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));
+//				listViewer.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+//
+//				createContextMenuFor(listViewer);
+//				int pageIndex = addPage(viewerPane.getControl());
+//				setPageText(pageIndex, getString("_UI_ListPage_label"));
+//			}
+//
+//			// This is the page for the tree viewer
+//			//
+//			{
+//				ViewerPane viewerPane =
+//					new ViewerPane(getSite().getPage(), ClickWatchModelEditor.this) {
+//						@Override
+//						public Viewer createViewer(Composite composite) {
+//							return new TreeViewer(composite);
+//						}
+//						@Override
+//						public void requestActivation() {
+//							super.requestActivation();
+//							setCurrentViewerPane(this);
+//						}
+//					};
+//				viewerPane.createControl(getContainer());
+//				treeViewer = (TreeViewer)viewerPane.getViewer();
+//				treeViewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));
+//				treeViewer.setLabelProvider(new AdapterFactoryLabelProvider.ColorProvider(adapterFactory, treeViewer));
+//
+//				new AdapterFactoryTreeEditor(treeViewer.getTree(), adapterFactory);
+//
+//				createContextMenuFor(treeViewer);
+//				int pageIndex = addPage(viewerPane.getControl());
+//				setPageText(pageIndex, getString("_UI_TreePage_label"));
+//			}
+//
+//			// This is the page for the table viewer.
+//			//
+//			{
+//				ViewerPane viewerPane =
+//					new ViewerPane(getSite().getPage(), ClickWatchModelEditor.this) {
+//						@Override
+//						public Viewer createViewer(Composite composite) {
+//							return new TableViewer(composite);
+//						}
+//						@Override
+//						public void requestActivation() {
+//							super.requestActivation();
+//							setCurrentViewerPane(this);
+//						}
+//					};
+//				viewerPane.createControl(getContainer());
+//				tableViewer = (TableViewer)viewerPane.getViewer();
+//
+//				Table table = tableViewer.getTable();
+//				TableLayout layout = new TableLayout();
+//				table.setLayout(layout);
+//				table.setHeaderVisible(true);
+//				table.setLinesVisible(true);
+//
+//				TableColumn objectColumn = new TableColumn(table, SWT.NONE);
+//				layout.addColumnData(new ColumnWeightData(3, 100, true));
+//				objectColumn.setText(getString("_UI_ObjectColumn_label"));
+//				objectColumn.setResizable(true);
+//
+//				TableColumn selfColumn = new TableColumn(table, SWT.NONE);
+//				layout.addColumnData(new ColumnWeightData(2, 100, true));
+//				selfColumn.setText(getString("_UI_SelfColumn_label"));
+//				selfColumn.setResizable(true);
+//
+//				tableViewer.setColumnProperties(new String [] {"a", "b"});
+//				tableViewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));
+//				tableViewer.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+//
+//				createContextMenuFor(tableViewer);
+//				int pageIndex = addPage(viewerPane.getControl());
+//				setPageText(pageIndex, getString("_UI_TablePage_label"));
+//			}
+//
+//			// This is the page for the table tree viewer.
+//			//
+//			{
+//				ViewerPane viewerPane =
+//					new ViewerPane(getSite().getPage(), ClickWatchModelEditor.this) {
+//						@Override
+//						public Viewer createViewer(Composite composite) {
+//							return new TreeViewer(composite);
+//						}
+//						@Override
+//						public void requestActivation() {
+//							super.requestActivation();
+//							setCurrentViewerPane(this);
+//						}
+//					};
+//				viewerPane.createControl(getContainer());
+//
+//				treeViewerWithColumns = (TreeViewer)viewerPane.getViewer();
+//
+//				Tree tree = treeViewerWithColumns.getTree();
+//				tree.setLayoutData(new FillLayout());
+//				tree.setHeaderVisible(true);
+//				tree.setLinesVisible(true);
+//
+//				TreeColumn objectColumn = new TreeColumn(tree, SWT.NONE);
+//				objectColumn.setText(getString("_UI_ObjectColumn_label"));
+//				objectColumn.setResizable(true);
+//				objectColumn.setWidth(250);
+//
+//				TreeColumn selfColumn = new TreeColumn(tree, SWT.NONE);
+//				selfColumn.setText(getString("_UI_SelfColumn_label"));
+//				selfColumn.setResizable(true);
+//				selfColumn.setWidth(200);
+//
+//				treeViewerWithColumns.setColumnProperties(new String [] {"a", "b"});
+//				treeViewerWithColumns.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));
+//				treeViewerWithColumns.setLabelProvider(new AdapterFactoryLabelProvider.ColorProvider(adapterFactory, treeViewer));
+//
+//				createContextMenuFor(treeViewerWithColumns);
+//				int pageIndex = addPage(viewerPane.getControl());
+//				setPageText(pageIndex, getString("_UI_TreeWithColumnsPage_label"));
+//			}
 
 			getSite().getShell().getDisplay().asyncExec
 				(new Runnable() {
