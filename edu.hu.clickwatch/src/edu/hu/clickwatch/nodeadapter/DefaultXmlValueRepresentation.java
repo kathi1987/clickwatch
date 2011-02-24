@@ -15,6 +15,7 @@ import com.google.common.base.Preconditions;
 import com.google.inject.Inject;
 
 import edu.hu.clickwatch.XmlModelRepository;
+import edu.hu.clickwatch.merge.Merge;
 import edu.hu.clickwatch.model.ClickWatchModelPackage;
 import edu.hu.clickwatch.model.Handler;
 import edu.hu.clickwatch.nodeadapter.AbstractNodeAdapter.IExtendedValueRepresentation;
@@ -97,27 +98,6 @@ public class DefaultXmlValueRepresentation implements IExtendedValueRepresentati
 	}
 	
 	@Override
-	public boolean equalsModelValueRealityValue(Object modelValue,
-			Object realValue) {
-		if (modelValue == null || realValue == null) {
-			return false;
-		}
-		
-		if (modelValue instanceof String) {
-			return modelValue.equals(realValue);
-		} else if (modelValue instanceof AnyType) {
-			if (realValue instanceof AnyType) {
-				return compareXml(((AnyType)modelValue).getMixed(), ((AnyType)realValue).getMixed());
-			} else {
-				return false;
-			}
-		} else {
-			Preconditions.checkArgument(false, "unsupported model value types");
-			return false;
-		}
-	}
-	
-	@Override
 	public String createPlainRealValue(Object modelValue) {	
 		XMLTypeDocumentRoot xml = XMLTypeFactory.eINSTANCE.createXMLTypeDocumentRoot();
 		if (modelValue instanceof String) {
@@ -138,7 +118,7 @@ public class DefaultXmlValueRepresentation implements IExtendedValueRepresentati
 	
 	@Override
 	public Object createModelValue(String plainRealValue) {		
-		plainRealValue = plainRealValue.replaceFirst("^<\\?[^\\?]+\\?>", "").trim();
+		plainRealValue = XmlModelRepository.stripProcessingInstructions(plainRealValue);
 		XMLTypeDocumentRoot xml = (XMLTypeDocumentRoot)xmlModelRepository.deserializeXml("<xml>" + plainRealValue + "</xml>");
 		FeatureMap xmlRootMixed = ((AnyType)xml.getMixed().getValue(0)).getMixed();
 		if (xmlRootMixed.size() > 0) {
@@ -156,34 +136,14 @@ public class DefaultXmlValueRepresentation implements IExtendedValueRepresentati
 		}
 		return new ValueClass("", XMLTypePackage.eINSTANCE.getXMLTypeDocumentRoot_Text());
 	}
-	
-	private static boolean compareXml(FeatureMap v1, FeatureMap v2) {
-		if (v1.size() != v2.size()) {
-			return false;
-		}
-		int i = 0;
-		for (FeatureMap.Entry e1: v1) {
-			FeatureMap.Entry e2 = v2.get(i++);
 
-			if (!e1.getEStructuralFeature().getName().equals(e2.getEStructuralFeature().getName())) {
-				return false;
+	@Override
+	public boolean merge(final Handler mergee, final Object newValue) {
+		return Merge.merge(get(mergee), newValue, new Merge.SimpleOperations() {			
+			@Override
+			public void replace() {
+				set(mergee, newValue);
 			}
-			if (e1.getValue() instanceof AnyType && e2.getValue() instanceof AnyType) {
-				if (!compareXml(((AnyType)e1.getValue()).getMixed(), ((AnyType)e2.getValue()).getMixed())) {
-					return false;
-				}
-				if (!compareXml(((AnyType)e1.getValue()).getAnyAttribute(), ((AnyType)e2.getValue()).getAnyAttribute())) {
-					return false;
-				}
-				if (!compareXml(((AnyType)e1.getValue()).getAny(), ((AnyType)e2.getValue()).getAny())) {
-					return false;
-				}
-			} else {
-				if (!e1.getValue().equals(e2.getValue())) {
-					return false;
-				}
-			}
-		}
-		return true;
+		});
 	}
 }

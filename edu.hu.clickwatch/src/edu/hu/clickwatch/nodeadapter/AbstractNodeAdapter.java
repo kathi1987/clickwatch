@@ -9,6 +9,9 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import click.ControlSocket;
@@ -49,6 +52,8 @@ public abstract class AbstractNodeAdapter implements INodeAdapter {
 		
 		public String createPlainRealValue(Object modelValue);
 		
+		public void set(Handler handler, Object value);
+	
 	}
 
 	public synchronized void setUp(String host, String port) {
@@ -299,17 +304,6 @@ public abstract class AbstractNodeAdapter implements INodeAdapter {
 		}
 
 		@Override
-		public boolean equalsModelValueRealityValue(Object modelValue,
-				Object realValue) {
-			try {
-				return source.equalsModelValueRealityValue(modelValue, realValue);
-			} catch (Throwable e) {
-				handle(e);
-				return true;
-			}
-		}
-
-		@Override
 		public Object get(Handler handler) {
 			try {
 				return source.get(handler);
@@ -347,6 +341,18 @@ public abstract class AbstractNodeAdapter implements INodeAdapter {
 				return null;
 			}
 		}
+
+		@Override
+		public boolean merge(Handler mergee, Object newVaule) {
+			try {
+				return source.merge(mergee, newVaule);
+			} catch (Throwable e) {
+				handle(e);
+				return false;
+			}
+		}
+		
+		
 	}
 	
 	@Override
@@ -359,4 +365,5 @@ public abstract class AbstractNodeAdapter implements INodeAdapter {
 	}
 
 	protected abstract IExtendedValueRepresentation getExtendedValueRepresentation(Handler handler);
+	
 }

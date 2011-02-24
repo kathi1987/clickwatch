@@ -20,12 +20,6 @@ public class ConstantValueRepresentation implements IExtendedValueRepresentation
 	}
 
 	@Override
-	public boolean equalsModelValueRealityValue(Object modelValue,
-			Object realValue) {
-		return true;
-	}
-
-	@Override
 	public Object get(Handler handler) {
 		return constant;
 	}
@@ -45,4 +39,8 @@ public class ConstantValueRepresentation implements IExtendedValueRepresentation
 		throw new IllegalStateException();
 	}
 
+	@Override
+	public boolean merge(Handler mergee, Object newVaule) {
+		return false;
+	}
 }

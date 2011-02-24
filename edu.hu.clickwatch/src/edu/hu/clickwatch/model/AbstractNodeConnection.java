@@ -389,18 +389,16 @@ public abstract class AbstractNodeConnection implements ErrorListener {
 						connection.ensureHandlerIsListening(oldItem);
 						if (newItem.isCanRead()) {
 							INodeAdapter nodeAdapter = connection.getNodeAdapter();
-							if (!nodeAdapter.getValueRepresentation(newItem).equalsModelValueRealityValue(
-									nodeAdapter.getValueRepresentation(oldItem).get(oldItem), 
-									nodeAdapter.getValueRepresentation(newItem).get(newItem))) {
-								
-								connection.modelChangeListener.disable();
-
+							connection.modelChangeListener.disable();
+							boolean hasChanged = nodeAdapter.getValueRepresentation(oldItem).merge(oldItem, 
+									nodeAdapter.getValueRepresentation(newItem).get(newItem));
+							
+							if (hasChanged) {
 								if (oldItem.isWatch() || ((Element) oldItem.eContainer()).isWatch()) {
 									oldItem.setChanged(true);
 								}
-								nodeAdapter.getValueRepresentation(oldItem).set(oldItem, nodeAdapter.getValueRepresentation(newItem).get(newItem));
-								connection.modelChangeListener.enable();
 							}
+							connection.modelChangeListener.enable();
 						}
 					}
 				}.run(element.getHandlers(), updatedElementCopy.getHandlers());

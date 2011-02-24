@@ -132,10 +132,6 @@ public class MultiNodeAdapter implements INodeAdapter {
 	@Override
 	public IValueRepresentation getValueRepresentation(Handler handler) {
 		return new IValueRepresentation() {			
-			@Override
-			public void set(Handler handler, Object value) {
-				// TODO
-			}
 			
 			@Override
 			public boolean isNotificationChangingValue(Notification notification) {
@@ -152,10 +148,10 @@ public class MultiNodeAdapter implements INodeAdapter {
 				return null; // TODO
 			}
 			
+			
 			@Override
-			public boolean equalsModelValueRealityValue(Object modelValue,
-					Object realValue) {
-				return true;
+			public boolean merge(Handler mergee, Object newValue) {
+				return false;
 			}
 		};
 	}

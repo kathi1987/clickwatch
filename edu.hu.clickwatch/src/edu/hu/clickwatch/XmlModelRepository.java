@@ -158,6 +158,8 @@ public class XmlModelRepository {
 	
 	public EObject deserializeModel(EPackage metaModel, String xml) {
 		initialize();
+		xml = stripProcessingInstructions(xml);
+		xml = addNamespaceToRootElement(xml, metaModel.getNsURI());
 		resourceSet.getPackageRegistry().put(metaModel.getNsURI(), metaModel);
 		return load(URI.createURI("transient.xml"), xml, EObject.class, false);
 	}
@@ -198,5 +200,25 @@ public class XmlModelRepository {
 		result.setNsURI(xsdUri.toString());
 		return result;		
 	}
+
 	
+	public static String stripProcessingInstructions(String xml) {
+		return xml.replaceFirst("^<\\?[^\\?]+\\?>", "").trim();
+	}
+
+	private static String addNamespaceToRootElement(String xml, String nsURI) {
+		// TODO this is an ugly way to provide the schema URI
+		if (!xml.contains("xsi:noNamespaceSchemaLocation")) {
+			int xsdRefPos = xml.indexOf(">");
+			if (xsdRefPos > 0) {
+				if (xml.charAt(xsdRefPos - 1) == '/') {
+					xsdRefPos -= 1;
+				}
+				xml = xml.substring(0, xsdRefPos) + 
+						" xsi:noNamespaceSchemaLocation='" +
+						nsURI + "'" + xml.substring(xsdRefPos);
+			}
+		}
+		return xml;
+	}
 }

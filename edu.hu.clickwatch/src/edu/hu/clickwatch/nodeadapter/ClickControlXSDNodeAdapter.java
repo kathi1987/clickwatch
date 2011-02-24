@@ -24,6 +24,7 @@ import com.google.common.base.Throwables;
 import com.google.inject.Inject;
 
 import edu.hu.clickwatch.XmlModelRepository;
+import edu.hu.clickwatch.merge.Merge;
 import edu.hu.clickwatch.model.ClickWatchModelPackage;
 import edu.hu.clickwatch.model.Element;
 import edu.hu.clickwatch.model.Handler;
@@ -99,56 +100,27 @@ public class ClickControlXSDNodeAdapter extends AbstractNodeAdapter {
 		}
 		
 		@Override
-		public boolean equalsModelValueRealityValue(Object modelValue,
-				Object realValue) {
-//			if (modelValue == null || realValue == null) {
-//				return false;
-//			}
-//			
-//			Preconditions.checkArgument(modelValue instanceof EObject);
-//			Preconditions.checkArgument(realValue instanceof EObject);
-//			
-//			if (!modelValue.getClass().equals(realValue.getClass())) {
-//				return false;
-//			}
-//			
-//			String modelXml = xmlModelRepository.getOriginalXml((EObject)modelValue);
-//			String realXml = xmlModelRepository.getOriginalXml((EObject)modelValue);
-//			
-//			if (modelXml != null && realXml != null) {
-//				return modelXml.equals(realXml);
-//			} else {
-//				return xmlModelRepository.serializeModel(metaModel, (EObject)modelValue).
-//						equals(xmlModelRepository.serializeModel(metaModel, (EObject)realValue));
-//			}
-			return eEquals(modelValue, realValue);
-		}
-		
-		@Override
 		public String createPlainRealValue(Object modelValue) {
 			return xmlModelRepository.serializeModel(metaModel, (EObject)modelValue);
 		}
 		
 		@Override
-		public Object createModelValue(String plainRealValue) {
-			plainRealValue = plainRealValue.replaceFirst("^<\\?[^\\?]+\\?>", "").trim();
-			// TODO this is an ugly way to provide the schema URI
-			if (!plainRealValue.contains("xsi:noNamespaceSchemaLocation")) {
-				int xsdRefPos = plainRealValue.indexOf(">");
-				if (xsdRefPos > 0) {
-					if (plainRealValue.charAt(xsdRefPos - 1) == '/') {
-						xsdRefPos -= 1;
-					}
-					plainRealValue = plainRealValue.substring(0, xsdRefPos) + 
-							" xsi:noNamespaceSchemaLocation='" +
-							metaModel.getNsURI() + "'" + plainRealValue.substring(xsdRefPos);
-				}
-			}
+		public Object createModelValue(String plainRealValue) {			
 			EObject documentRoot = xmlModelRepository.deserializeModel(metaModel, plainRealValue);
 			EObject result = documentRoot.eContents().get(0);
 			EcoreUtil.remove(result);
 			EcoreUtil.delete(documentRoot, true);
 			return result;
+		}
+		
+		@Override
+		public boolean merge(final Handler mergee, final Object newValue) {
+			return Merge.merge(get(mergee), newValue, new Merge.SimpleOperations() {			
+				@Override
+				public void replace() {
+					set(mergee, newValue);
+				}
+			});
 		}
 	};
 	
@@ -204,7 +176,6 @@ public class ClickControlXSDNodeAdapter extends AbstractNodeAdapter {
 				result = defaultXmlValueRep;
 			} else {
 				if (XSD_HANDLER_NAME.equals(handler.getName())) {
-					//result = new ConstantValueRepresentation(metaModel);
 					result = defaultXmlValueRep;
 				} else {
 					EClass handlerClass = (EClass)metaModel.getEClassifier("handler");
@@ -227,45 +198,4 @@ public class ClickControlXSDNodeAdapter extends AbstractNodeAdapter {
 		} 
 		return result;
 	}
-	
-	private boolean eEquals(Object one, Object two) {
-		if ((one == null || two == null) && (one != two)) {
-			return false;
-		} else if (one instanceof EObject && two instanceof EObject) {
-			EObject eOne = (EObject)one;
-			EObject eTwo = (EObject)two;
-			if (eOne.eClass() != eTwo.eClass()) {
-				return false;
-			}
-			for(EStructuralFeature feature: eOne.eClass().getEAllStructuralFeatures()) {
-				if (!feature.isDerived() && !isTimeIndicatingFeature(feature)) {
-					if (!eEquals(eOne.eGet(feature), eTwo.eGet(feature))) {
-						return false;
-					}
-				}
-			}
-			return true;
-		} else if (one instanceof EList<?> && two instanceof EList<?>) {
-			EList<?> lOne = (EList<?>)one;
-			EList<?> lTwo = (EList<?>)two;
-			if (lOne.size() != lTwo.size()) {
-				return false;
-			}
-			int lOneSize = lOne.size();
-			for (int i = 0; i < lOneSize; i++) {
-				if (!eEquals(lOne.get(i), lTwo.get(i))) {
-					return false;
-				}
-			}
-			return true;
-		} else {
-			return one.equals(two);
-		}
-	}
-
-	private boolean isTimeIndicatingFeature(EStructuralFeature feature) {
-		String normalizedName = feature.getName().trim().toLowerCase();
-		return normalizedName.equals("time") || normalizedName.equals("seq");
-	}
-	
 }
