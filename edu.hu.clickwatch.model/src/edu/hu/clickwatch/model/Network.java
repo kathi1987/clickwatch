@@ -70,6 +70,7 @@ public interface Network extends EObject {
 	 * @return the value of the '<em>Nodes</em>' containment reference list.
 	 * @see edu.hu.clickwatch.model.ClickWatchModelPackage#getNetwork_Nodes()
 	 * @model containment="true"
+	 *        extendedMetaData="name='node' kind='element'"
 	 * @generated
 	 */
 	EList<Node> getNodes();

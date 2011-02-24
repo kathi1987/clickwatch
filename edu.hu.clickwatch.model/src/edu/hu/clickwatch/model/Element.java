@@ -41,6 +41,7 @@ public interface Element extends EObject {
 	 * @return the value of the '<em>Handlers</em>' containment reference list.
 	 * @see edu.hu.clickwatch.model.ClickWatchModelPackage#getElement_Handlers()
 	 * @model containment="true"
+	 *        extendedMetaData="name='handler' kind='element'"
 	 * @generated
 	 */
 	EList<Handler> getHandlers();

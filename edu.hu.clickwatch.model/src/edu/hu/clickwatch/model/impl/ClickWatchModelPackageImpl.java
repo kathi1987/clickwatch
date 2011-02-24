@@ -524,6 +524,20 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
 	protected void createExtendedMetaDataAnnotations() {
 		String source = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData";		
 		addAnnotation
+		  (getNode_Elements(), 
+		   source, 
+		   new String[] {
+			 "name", "element",
+			 "kind", "element"
+		   });		
+		addAnnotation
+		  (getElement_Handlers(), 
+		   source, 
+		   new String[] {
+			 "name", "handler",
+			 "kind", "element"
+		   });		
+		addAnnotation
 		  (handlerEClass, 
 		   source, 
 		   new String[] {
@@ -544,6 +558,13 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
 			 "name", ":1",
 			 "processing", "lax",
 			 "wildcards", "##any"
+		   });		
+		addAnnotation
+		  (getNetwork_Nodes(), 
+		   source, 
+		   new String[] {
+			 "name", "node",
+			 "kind", "element"
 		   });
 	}
 

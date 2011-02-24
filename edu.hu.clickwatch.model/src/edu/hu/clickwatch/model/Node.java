@@ -96,6 +96,7 @@ public interface Node extends EObject {
 	 * @return the value of the '<em>Elements</em>' containment reference list.
 	 * @see edu.hu.clickwatch.model.ClickWatchModelPackage#getNode_Elements()
 	 * @model containment="true"
+	 *        extendedMetaData="name='element' kind='element'"
 	 * @generated
 	 */
 	EList<Element> getElements();
