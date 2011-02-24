@@ -172,6 +172,12 @@ public class DefaultXmlValueRepresentation implements IExtendedValueRepresentati
 				if (!compareXml(((AnyType)e1.getValue()).getMixed(), ((AnyType)e2.getValue()).getMixed())) {
 					return false;
 				}
+				if (!compareXml(((AnyType)e1.getValue()).getAnyAttribute(), ((AnyType)e2.getValue()).getAnyAttribute())) {
+					return false;
+				}
+				if (!compareXml(((AnyType)e1.getValue()).getAny(), ((AnyType)e2.getValue()).getAny())) {
+					return false;
+				}
 			} else {
 				if (!e1.getValue().equals(e2.getValue())) {
 					return false;

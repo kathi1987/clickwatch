@@ -7,7 +7,6 @@ import org.eclipse.emf.common.util.URI;
 import com.google.inject.AbstractModule;
 
 import edu.hu.clickcontrol.IClickSocket;
-import edu.hu.clickwatch.nodeadapter.ClickControlNodeXmlValuesAdapter;
 import edu.hu.clickwatch.nodeadapter.ClickControlXSDNodeAdapter;
 import edu.hu.clickwatch.nodeadapter.INodeAdapter;
 import edu.hu.clickwatch.tests.clicksockets.ClickSocketPlayer;
