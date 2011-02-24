@@ -376,8 +376,9 @@ public final class NewEditorAdvisor extends WorkbenchAdvisor {
 		 * @generated
 		 */
 		public void run(IAction action) {
-			MessageDialog.openInformation(getWindow().getShell(), getString("_UI_About_title"),
-			getString("_UI_About_text"));
+			String msg = "ClickWatch by Humboldt Wireless Lab (HWL) group.\nFor more information visit our website: http://hwl.hu-berlin.de/features/software/";
+			MessageDialog.openInformation(getWindow().getShell(), "ClickWatch by HWL",
+					msg);
 		}
 	}
 	
