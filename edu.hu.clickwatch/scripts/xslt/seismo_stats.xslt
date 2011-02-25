@@ -9,7 +9,7 @@
 	<xsl:template match="text()"/>
 	<xsl:template match="node/seismo/chaninfo">
 	    <xsl:if test="@id &lt; 3">
-			<xsl:variable name="nodeid" select="../../../../../element[@name='id']/handler[@name='devinfo']/nodeidentity/@name"/>
+			<xsl:variable name="nodeid" select="../../../../../element[@name='id']/handler[@name='devinfo']/nodeidentity/device/@address"/>
 			<seismo_stat>
 				<xsl:attribute name="node"><xsl:value-of select="$nodeid"/></xsl:attribute>
 				<xsl:attribute name="chanId"><xsl:value-of select="@id"/></xsl:attribute>
