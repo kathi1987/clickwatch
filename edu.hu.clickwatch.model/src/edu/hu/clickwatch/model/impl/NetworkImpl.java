@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import edu.hu.clickwatch.model.ClickWatchModelPackage;
@@ -36,6 +37,7 @@ import edu.hu.clickwatch.model.Node;
  *   <li>{@link edu.hu.clickwatch.model.impl.NetworkImpl#getElementFilter <em>Element Filter</em>}</li>
  *   <li>{@link edu.hu.clickwatch.model.impl.NetworkImpl#getHandlerFilter <em>Handler Filter</em>}</li>
  *   <li>{@link edu.hu.clickwatch.model.impl.NetworkImpl#getUpdateIntervall <em>Update Intervall</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.model.impl.NetworkImpl#getSubnetworks <em>Subnetworks</em>}</li>
  * </ul>
  * </p>
  *
@@ -141,6 +143,16 @@ public class NetworkImpl extends EObjectImpl implements Network {
 	 * @ordered
 	 */
 	protected int updateIntervall = UPDATE_INTERVALL_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getSubnetworks() <em>Subnetworks</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSubnetworks()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Network> subnetworks;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -305,6 +317,18 @@ public class NetworkImpl extends EObjectImpl implements Network {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<Network> getSubnetworks() {
+		if (subnetworks == null) {
+			subnetworks = new EObjectContainmentEList<Network>(Network.class, this, ClickWatchModelPackage.NETWORK__SUBNETWORKS);
+		}
+		return subnetworks;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -312,6 +336,8 @@ public class NetworkImpl extends EObjectImpl implements Network {
 				return ((InternalEList<?>)getNodes()).basicRemove(otherEnd, msgs);
 			case ClickWatchModelPackage.NETWORK__ALL:
 				return basicSetAll(null, msgs);
+			case ClickWatchModelPackage.NETWORK__SUBNETWORKS:
+				return ((InternalEList<?>)getSubnetworks()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -336,6 +362,8 @@ public class NetworkImpl extends EObjectImpl implements Network {
 				return getHandlerFilter();
 			case ClickWatchModelPackage.NETWORK__UPDATE_INTERVALL:
 				return getUpdateIntervall();
+			case ClickWatchModelPackage.NETWORK__SUBNETWORKS:
+				return getSubnetworks();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -368,6 +396,10 @@ public class NetworkImpl extends EObjectImpl implements Network {
 			case ClickWatchModelPackage.NETWORK__UPDATE_INTERVALL:
 				setUpdateIntervall((Integer)newValue);
 				return;
+			case ClickWatchModelPackage.NETWORK__SUBNETWORKS:
+				getSubnetworks().clear();
+				getSubnetworks().addAll((Collection<? extends Network>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -398,6 +430,9 @@ public class NetworkImpl extends EObjectImpl implements Network {
 			case ClickWatchModelPackage.NETWORK__UPDATE_INTERVALL:
 				setUpdateIntervall(UPDATE_INTERVALL_EDEFAULT);
 				return;
+			case ClickWatchModelPackage.NETWORK__SUBNETWORKS:
+				getSubnetworks().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -422,6 +457,8 @@ public class NetworkImpl extends EObjectImpl implements Network {
 				return HANDLER_FILTER_EDEFAULT == null ? handlerFilter != null : !HANDLER_FILTER_EDEFAULT.equals(handlerFilter);
 			case ClickWatchModelPackage.NETWORK__UPDATE_INTERVALL:
 				return updateIntervall != UPDATE_INTERVALL_EDEFAULT;
+			case ClickWatchModelPackage.NETWORK__SUBNETWORKS:
+				return subnetworks != null && !subnetworks.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

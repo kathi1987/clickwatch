@@ -326,13 +326,22 @@ public interface ClickWatchModelPackage extends EPackage {
 	int NETWORK__UPDATE_INTERVALL = 5;
 
 	/**
+	 * The feature id for the '<em><b>Subnetworks</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK__SUBNETWORKS = 6;
+
+	/**
 	 * The number of structural features of the '<em>Network</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NETWORK_FEATURE_COUNT = 6;
+	int NETWORK_FEATURE_COUNT = 7;
 
 
 	/**
@@ -692,6 +701,17 @@ public interface ClickWatchModelPackage extends EPackage {
 	EAttribute getNetwork_UpdateIntervall();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link edu.hu.clickwatch.model.Network#getSubnetworks <em>Subnetworks</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Subnetworks</em>'.
+	 * @see edu.hu.clickwatch.model.Network#getSubnetworks()
+	 * @see #getNetwork()
+	 * @generated
+	 */
+	EReference getNetwork_Subnetworks();
+
+	/**
 	 * Returns the meta object for class '{@link edu.hu.clickwatch.model.MultiNode <em>Multi Node</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -949,6 +969,14 @@ public interface ClickWatchModelPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute NETWORK__UPDATE_INTERVALL = eINSTANCE.getNetwork_UpdateIntervall();
+
+		/**
+		 * The meta object literal for the '<em><b>Subnetworks</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference NETWORK__SUBNETWORKS = eINSTANCE.getNetwork_Subnetworks();
 
 		/**
 		 * The meta object literal for the '{@link edu.hu.clickwatch.model.impl.MultiNodeImpl <em>Multi Node</em>}' class.
