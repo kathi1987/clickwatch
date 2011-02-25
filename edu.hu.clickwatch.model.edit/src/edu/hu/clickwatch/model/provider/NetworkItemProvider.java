@@ -174,6 +174,7 @@ public class NetworkItemProvider
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(ClickWatchModelPackage.Literals.NETWORK__NODES);
 			childrenFeatures.add(ClickWatchModelPackage.Literals.NETWORK__ALL);
+			childrenFeatures.add(ClickWatchModelPackage.Literals.NETWORK__SUBNETWORKS);
 		}
 		return childrenFeatures;
 	}
@@ -233,6 +234,7 @@ public class NetworkItemProvider
 				return;
 			case ClickWatchModelPackage.NETWORK__NODES:
 			case ClickWatchModelPackage.NETWORK__ALL:
+			case ClickWatchModelPackage.NETWORK__SUBNETWORKS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -264,6 +266,11 @@ public class NetworkItemProvider
 			(createChildParameter
 				(ClickWatchModelPackage.Literals.NETWORK__ALL,
 				 ClickWatchModelFactory.eINSTANCE.createMultiNode()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ClickWatchModelPackage.Literals.NETWORK__SUBNETWORKS,
+				 ClickWatchModelFactory.eINSTANCE.createNetwork()));
 	}
 
 	/**

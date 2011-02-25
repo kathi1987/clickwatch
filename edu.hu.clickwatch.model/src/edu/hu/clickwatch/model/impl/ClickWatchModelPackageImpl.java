@@ -366,6 +366,15 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getNetwork_Subnetworks() {
+		return (EReference)networkEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getMultiNode() {
 		return multiNodeEClass;
 	}
@@ -436,6 +445,7 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
 		createEAttribute(networkEClass, NETWORK__ELEMENT_FILTER);
 		createEAttribute(networkEClass, NETWORK__HANDLER_FILTER);
 		createEAttribute(networkEClass, NETWORK__UPDATE_INTERVALL);
+		createEReference(networkEClass, NETWORK__SUBNETWORKS);
 
 		multiNodeEClass = createEClass(MULTI_NODE);
 		createEReference(multiNodeEClass, MULTI_NODE__NODES);
@@ -503,6 +513,7 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
 		initEAttribute(getNetwork_ElementFilter(), ecorePackage.getEString(), "ElementFilter", null, 0, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getNetwork_HandlerFilter(), ecorePackage.getEString(), "HandlerFilter", null, 0, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getNetwork_UpdateIntervall(), ecorePackage.getEInt(), "updateIntervall", null, 0, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getNetwork_Subnetworks(), this.getNetwork(), null, "subnetworks", null, 0, -1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(multiNodeEClass, MultiNode.class, "MultiNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getMultiNode_Nodes(), this.getNode(), null, "nodes", null, 0, -1, MultiNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -564,6 +575,13 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
 		   source, 
 		   new String[] {
 			 "name", "node",
+			 "kind", "element"
+		   });		
+		addAnnotation
+		  (getNetwork_Subnetworks(), 
+		   source, 
+		   new String[] {
+			 "name", "subnetwork",
 			 "kind", "element"
 		   });
 	}

@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link edu.hu.clickwatch.model.Network#getElementFilter <em>Element Filter</em>}</li>
  *   <li>{@link edu.hu.clickwatch.model.Network#getHandlerFilter <em>Handler Filter</em>}</li>
  *   <li>{@link edu.hu.clickwatch.model.Network#getUpdateIntervall <em>Update Intervall</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.model.Network#getSubnetworks <em>Subnetworks</em>}</li>
  * </ul>
  * </p>
  *
@@ -178,5 +179,22 @@ public interface Network extends EObject {
 	 * @generated
 	 */
 	void setUpdateIntervall(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Subnetworks</b></em>' containment reference list.
+	 * The list contents are of type {@link edu.hu.clickwatch.model.Network}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Subnetworks</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Subnetworks</em>' containment reference list.
+	 * @see edu.hu.clickwatch.model.ClickWatchModelPackage#getNetwork_Subnetworks()
+	 * @model containment="true"
+	 *        extendedMetaData="name='subnetwork' kind='element'"
+	 * @generated
+	 */
+	EList<Network> getSubnetworks();
 
 } // Network

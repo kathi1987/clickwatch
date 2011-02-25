@@ -20,7 +20,6 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
 import edu.hu.clickwatch.model.ClickWatchModelPackage;
-import edu.hu.clickwatch.model.MultiNode;
 import edu.hu.clickwatch.model.Node;
 
 /**

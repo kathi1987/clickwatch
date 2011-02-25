@@ -19,6 +19,8 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClickWatchModel.ecore#//Element/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ClickWatchModel.ecore#//Element/handlers"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClickWatchModel.ecore#//Element/watch"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ClickWatchModel.ecore#//Element/children"/>
+      <genOperations ecoreOperation="ClickWatchModel.ecore#//Element/getElementPath"/>
     </genClasses>
     <genClasses ecoreClass="ClickWatchModel.ecore#//Handler">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClickWatchModel.ecore#//Handler/name"/>
@@ -26,7 +28,8 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClickWatchModel.ecore#//Handler/canWrite"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClickWatchModel.ecore#//Handler/changed"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClickWatchModel.ecore#//Handler/watch"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClickWatchModel.ecore#//Handler/value"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute ClickWatchModel.ecore#//Handler/mixed"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute ClickWatchModel.ecore#//Handler/any"/>
     </genClasses>
     <genClasses ecoreClass="ClickWatchModel.ecore#//Network">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClickWatchModel.ecore#//Network/name"/>
@@ -35,6 +38,8 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClickWatchModel.ecore#//Network/ElementFilter"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClickWatchModel.ecore#//Network/HandlerFilter"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClickWatchModel.ecore#//Network/updateIntervall"/>
+      <genFeatures property="None" children="true" createChild="true" propertyCategory=""
+          ecoreFeature="ecore:EReference ClickWatchModel.ecore#//Network/subnetworks"/>
     </genClasses>
     <genClasses ecoreClass="ClickWatchModel.ecore#//MultiNode">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ClickWatchModel.ecore#//MultiNode/nodes"/>
