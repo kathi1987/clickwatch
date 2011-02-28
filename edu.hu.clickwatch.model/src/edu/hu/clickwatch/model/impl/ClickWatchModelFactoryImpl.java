@@ -8,6 +8,7 @@ package edu.hu.clickwatch.model.impl;
 
 import edu.hu.clickwatch.model.*;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
@@ -80,6 +81,36 @@ public class ClickWatchModelFactoryImpl extends EFactoryImpl implements ClickWat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public Object createFromString(EDataType eDataType, String initialValue) {
+		switch (eDataType.getClassifierID()) {
+			case ClickWatchModelPackage.BACKBONE_TYPE:
+				return createBackboneTypeFromString(eDataType, initialValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String convertToString(EDataType eDataType, Object instanceValue) {
+		switch (eDataType.getClassifierID()) {
+			case ClickWatchModelPackage.BACKBONE_TYPE:
+				return convertBackboneTypeToString(eDataType, instanceValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public Node createNode() {
 		NodeImpl node = new NodeImpl();
 		return node;
@@ -123,6 +154,26 @@ public class ClickWatchModelFactoryImpl extends EFactoryImpl implements ClickWat
 	public MultiNode createMultiNode() {
 		MultiNodeImpl multiNode = new MultiNodeImpl();
 		return multiNode;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public BackboneType createBackboneTypeFromString(EDataType eDataType, String initialValue) {
+		BackboneType result = BackboneType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertBackboneTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
 	}
 
 	/**

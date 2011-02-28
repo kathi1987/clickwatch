@@ -332,9 +332,8 @@ public class HandlerItemProvider
 	}
 	
 	private final static Object black = Display.getCurrent().getSystemColor(SWT.COLOR_BLACK);
-	private final static Object yellow = Display.getCurrent().getSystemColor(SWT.COLOR_YELLOW);
-	private final static Object red = Display.getCurrent().getSystemColor(SWT.COLOR_RED);
-	private final static Object white = Display.getCurrent().getSystemColor(SWT.COLOR_WHITE);
+	private final static Object yellow = Display.getCurrent().getSystemColor(SWT.COLOR_DARK_YELLOW);
+	private final static Object red = Display.getCurrent().getSystemColor(SWT.COLOR_DARK_RED);
 	
 	@Override
 	public Object getForeground(Object object) {

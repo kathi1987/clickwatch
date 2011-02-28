@@ -25,6 +25,7 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
+import edu.hu.clickwatch.model.BackboneType;
 import edu.hu.clickwatch.model.ClickWatchModelFactory;
 import edu.hu.clickwatch.model.ClickWatchModelPackage;
 import edu.hu.clickwatch.model.Node;
@@ -221,7 +222,11 @@ public class NodeItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Node"));
+		if (((Node)object).getBackbone() == BackboneType.WIRELESS) {
+			return overlayImage(object, getResourceLocator().getImage("full/obj16/Node_wireless"));
+		} else {
+			return overlayImage(object, getResourceLocator().getImage("full/obj16/Node"));
+		}
 	}
 
 	/**

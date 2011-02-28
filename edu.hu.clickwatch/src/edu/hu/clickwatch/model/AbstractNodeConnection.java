@@ -420,9 +420,6 @@ public abstract class AbstractNodeConnection implements ErrorListener {
 		@Override
 		public void notifyChanged(Notification notification) {
 			super.notifyChanged(notification);
-			if (notification instanceof ChangeMark.ChangeMarkNotification) {
-				return;
-			}
 			if (notification.getEventType() != Notification.REMOVING_ADAPTER) {
 				Object notifier = notification.getNotifier();
 				while (notifier != null && 
@@ -456,6 +453,7 @@ public abstract class AbstractNodeConnection implements ErrorListener {
 			if (handler.isWatch() || ((Element) handler.eContainer()).isWatch()) {
 				handler.setChanged(true);
 			}
+			// TODO did not get colorful markings of recently changed object and attribute to work -> need to change strategy 
 //			if (notification.getNotifier() instanceof EObject) {
 //				ChangeMark.addChangeMark((EObject)notification.getNotifier(), 
 //						(EStructuralFeature)notification.getFeature(), notification.getNewValue());

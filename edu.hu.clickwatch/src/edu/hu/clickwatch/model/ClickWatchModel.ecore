@@ -19,7 +19,8 @@
         transient="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="connection" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"
         transient="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="backbone" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="backbone" eType="#//BackboneType"
+        defaultValueLiteral="unkown"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Element">
     <eOperations name="getElementPath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -89,5 +90,10 @@
   <eClassifiers xsi:type="ecore:EClass" name="MultiNode" eSuperTypes="#//Node">
     <eStructuralFeatures xsi:type="ecore:EReference" name="nodes" upperBound="-1"
         eType="#//Node"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="BackboneType">
+    <eLiterals name="wired"/>
+    <eLiterals name="wireless" value="1"/>
+    <eLiterals name="unknown" value="2"/>
   </eClassifiers>
 </ecore:EPackage>

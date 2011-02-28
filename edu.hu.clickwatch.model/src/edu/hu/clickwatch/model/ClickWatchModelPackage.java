@@ -8,6 +8,7 @@ package edu.hu.clickwatch.model;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -437,6 +438,17 @@ public interface ClickWatchModelPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link edu.hu.clickwatch.model.BackboneType <em>Backbone Type</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see edu.hu.clickwatch.model.BackboneType
+	 * @see edu.hu.clickwatch.model.impl.ClickWatchModelPackageImpl#getBackboneType()
+	 * @generated
+	 */
+	int BACKBONE_TYPE = 5;
+
+
+	/**
 	 * Returns the meta object for class '{@link edu.hu.clickwatch.model.Node <em>Node</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -762,6 +774,16 @@ public interface ClickWatchModelPackage extends EPackage {
 	EReference getMultiNode_Nodes();
 
 	/**
+	 * Returns the meta object for enum '{@link edu.hu.clickwatch.model.BackboneType <em>Backbone Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Backbone Type</em>'.
+	 * @see edu.hu.clickwatch.model.BackboneType
+	 * @generated
+	 */
+	EEnum getBackboneType();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1032,6 +1054,16 @@ public interface ClickWatchModelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference MULTI_NODE__NODES = eINSTANCE.getMultiNode_Nodes();
+
+		/**
+		 * The meta object literal for the '{@link edu.hu.clickwatch.model.BackboneType <em>Backbone Type</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see edu.hu.clickwatch.model.BackboneType
+		 * @see edu.hu.clickwatch.model.impl.ClickWatchModelPackageImpl#getBackboneType()
+		 * @generated
+		 */
+		EEnum BACKBONE_TYPE = eINSTANCE.getBackboneType();
 
 	}
 

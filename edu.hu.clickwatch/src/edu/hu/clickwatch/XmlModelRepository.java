@@ -165,7 +165,7 @@ public class XmlModelRepository {
 		return load(URI.createURI("transient.xml"), xml, EObject.class, false);
 	}
 	
-	public EPackage loadMetaModelFromXSD(URI xsdUri, String xsdStr) {
+	public synchronized EPackage loadMetaModelFromXSD(URI xsdUri, String xsdStr) {
 		EPackage result = metaModels.get(xsdUri);
 		if (result == null) {
 			XSDSchema xsd = loadXSD(xsdUri, xsdStr);	
