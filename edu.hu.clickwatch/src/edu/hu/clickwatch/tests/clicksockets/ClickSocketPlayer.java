@@ -17,7 +17,7 @@ import edu.hu.clickwatch.nodeadapter.INodeAdapter;
 
 public class ClickSocketPlayer {
 	
-	public final static long UPDATE_INTERVAL = 5000;
+	public final static long UPDATE_INTERVAL = 1000;
 	
 	private long start = -1;
 	

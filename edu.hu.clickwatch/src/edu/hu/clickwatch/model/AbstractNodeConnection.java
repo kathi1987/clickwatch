@@ -9,6 +9,7 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -419,6 +420,9 @@ public abstract class AbstractNodeConnection implements ErrorListener {
 		@Override
 		public void notifyChanged(Notification notification) {
 			super.notifyChanged(notification);
+			if (notification instanceof ChangeMark.ChangeMarkNotification) {
+				return;
+			}
 			if (notification.getEventType() != Notification.REMOVING_ADAPTER) {
 				Object notifier = notification.getNotifier();
 				while (notifier != null && 
