@@ -6,6 +6,7 @@
  */
 package edu.hu.clickwatch.model.impl;
 
+import edu.hu.clickwatch.model.BackboneType;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -139,7 +140,7 @@ public class NodeImpl extends EObjectImpl implements Node {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String BACKBONE_EDEFAULT = null;
+	protected static final BackboneType BACKBONE_EDEFAULT = BackboneType.WIRED;
 
 	/**
 	 * The cached value of the '{@link #getBackbone() <em>Backbone</em>}' attribute.
@@ -149,7 +150,7 @@ public class NodeImpl extends EObjectImpl implements Node {
 	 * @generated
 	 * @ordered
 	 */
-	protected String backbone = BACKBONE_EDEFAULT;
+	protected BackboneType backbone = BACKBONE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -271,7 +272,7 @@ public class NodeImpl extends EObjectImpl implements Node {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getBackbone() {
+	public BackboneType getBackbone() {
 		return backbone;
 	}
 
@@ -280,9 +281,9 @@ public class NodeImpl extends EObjectImpl implements Node {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setBackbone(String newBackbone) {
-		String oldBackbone = backbone;
-		backbone = newBackbone;
+	public void setBackbone(BackboneType newBackbone) {
+		BackboneType oldBackbone = backbone;
+		backbone = newBackbone == null ? BACKBONE_EDEFAULT : newBackbone;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ClickWatchModelPackage.NODE__BACKBONE, oldBackbone, backbone));
 	}
@@ -351,7 +352,7 @@ public class NodeImpl extends EObjectImpl implements Node {
 				setConnection(newValue);
 				return;
 			case ClickWatchModelPackage.NODE__BACKBONE:
-				setBackbone((String)newValue);
+				setBackbone((BackboneType)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -406,7 +407,7 @@ public class NodeImpl extends EObjectImpl implements Node {
 			case ClickWatchModelPackage.NODE__CONNECTION:
 				return CONNECTION_EDEFAULT == null ? connection != null : !CONNECTION_EDEFAULT.equals(connection);
 			case ClickWatchModelPackage.NODE__BACKBONE:
-				return BACKBONE_EDEFAULT == null ? backbone != null : !BACKBONE_EDEFAULT.equals(backbone);
+				return backbone != BACKBONE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}

@@ -6,8 +6,10 @@
  */
 package edu.hu.clickwatch.model.impl;
 
+import edu.hu.clickwatch.model.BackboneType;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
@@ -62,6 +64,13 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
 	 * @generated
 	 */
 	private EClass multiNodeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum backboneTypeEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -402,6 +411,15 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EEnum getBackboneType() {
+		return backboneTypeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public ClickWatchModelFactory getClickWatchModelFactory() {
 		return (ClickWatchModelFactory)getEFactoryInstance();
 	}
@@ -459,6 +477,9 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
 
 		multiNodeEClass = createEClass(MULTI_NODE);
 		createEReference(multiNodeEClass, MULTI_NODE__NODES);
+
+		// Create enums
+		backboneTypeEEnum = createEEnum(BACKBONE_TYPE);
 	}
 
 	/**
@@ -498,7 +519,7 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
 		initEReference(getNode_Elements(), this.getElement(), null, "elements", null, 0, -1, Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getNode_Connected(), ecorePackage.getEBoolean(), "connected", null, 0, 1, Node.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getNode_Connection(), ecorePackage.getEJavaObject(), "connection", null, 0, 1, Node.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getNode_Backbone(), ecorePackage.getEString(), "backbone", null, 0, 1, Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getNode_Backbone(), this.getBackboneType(), "backbone", "wired", 0, 1, Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(elementEClass, Element.class, "Element", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getElement_Name(), ecorePackage.getEString(), "name", null, 0, 1, Element.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -528,6 +549,11 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
 
 		initEClass(multiNodeEClass, MultiNode.class, "MultiNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getMultiNode_Nodes(), this.getNode(), null, "nodes", null, 0, -1, MultiNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		// Initialize enums and add enum literals
+		initEEnum(backboneTypeEEnum, BackboneType.class, "BackboneType");
+		addEEnumLiteral(backboneTypeEEnum, BackboneType.WIRED);
+		addEEnumLiteral(backboneTypeEEnum, BackboneType.WIRELESS);
 
 		// Create resource
 		createResource(eNS_URI);

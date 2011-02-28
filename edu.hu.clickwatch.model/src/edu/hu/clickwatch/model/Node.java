@@ -156,6 +156,8 @@ public interface Node extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Backbone</b></em>' attribute.
+	 * The default value is <code>"wired"</code>.
+	 * The literals are from the enumeration {@link edu.hu.clickwatch.model.BackboneType}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Backbone</em>' attribute isn't clear,
@@ -163,21 +165,23 @@ public interface Node extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Backbone</em>' attribute.
-	 * @see #setBackbone(String)
+	 * @see edu.hu.clickwatch.model.BackboneType
+	 * @see #setBackbone(BackboneType)
 	 * @see edu.hu.clickwatch.model.ClickWatchModelPackage#getNode_Backbone()
-	 * @model
+	 * @model default="wired"
 	 * @generated
 	 */
-	String getBackbone();
+	BackboneType getBackbone();
 
 	/**
 	 * Sets the value of the '{@link edu.hu.clickwatch.model.Node#getBackbone <em>Backbone</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Backbone</em>' attribute.
+	 * @see edu.hu.clickwatch.model.BackboneType
 	 * @see #getBackbone()
 	 * @generated
 	 */
-	void setBackbone(String value);
+	void setBackbone(BackboneType value);
 
 } // Node
