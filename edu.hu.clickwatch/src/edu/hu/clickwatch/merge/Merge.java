@@ -27,15 +27,17 @@ public class Merge {
 	}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public static boolean merge(Object mergedValue, Object newValue, final Operations op) {
+	public static boolean merge(final Object mergedValue, Object newValue, final Operations op) {
 		if (mergedValue == null && newValue == null) {
 			return false;
 		}
 		if (mergedValue != null && newValue == null) {
 			op.remove();
+			return true;
 		}
 		if (mergedValue == null && newValue != null) {
 			op.add();
+			return true;
 		}
 		if (mergedValue instanceof EObject && newValue instanceof EObject) {
 			final EObject eMergedValue = (EObject)mergedValue;
@@ -136,7 +138,7 @@ public class Merge {
 					}
 				});
 			}
-			
+			 
 		} else {
 			if (!mergedValue.equals(newValue)) {
 				op.replace();

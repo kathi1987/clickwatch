@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <edu.hu.clickwatch.model:Network xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:XMLSchema="http://www.w3.org/2001/XMLSchema" xmlns:edu.hu.clickwatch.model="edu.hu.clickwatch.model" name="HWL" updateIntervall="10000">
-  <subnetwork name="Outdoor">
+  <subnetwork name="Outdoor" updateIntervall="5000">
     <node iNetAdress="10.5.70.16" backbone="wireless">
       <element name="wireless">
         <handler name="address" canRead="true" canWrite="true">06-1B-B1-05-46-10</handler>
@@ -64,81 +64,43 @@ name	r.</handler>
       <element name="lt">
         <handler name="debug" canRead="true" canWrite="true">2</handler>
         <handler name="dijkstra_time" canRead="true">0.000000</handler>
-        <handler name="blacklist" canRead="true"/>
-        <handler name="hosts" canRead="true">06-1B-B1-05-3B-5D from_me: 0 to_me: 0 assosiated: false
-06-1B-B1-05-3B-6F from_me: 0 to_me: 0 assosiated: false
-06-1B-B1-05-3B-75 from_me: 0 to_me: 0 assosiated: false
-06-1B-B1-05-3B-93 from_me: 0 to_me: 0 assosiated: false
-06-1B-B1-05-3B-97 from_me: 0 to_me: 0 assosiated: false
-06-1B-B1-05-3B-99 from_me: 0 to_me: 0 assosiated: false
-06-1B-B1-05-3B-9F from_me: 0 to_me: 0 assosiated: false
+        <handler name="blacklist" canRead="true"></handler>
+        <handler name="hosts" canRead="true">06-1B-B1-05-3B-9F from_me: 0 to_me: 0 assosiated: false
 06-1B-B1-05-3B-A1 from_me: 0 to_me: 0 assosiated: false
 06-1B-B1-05-46-06 from_me: 0 to_me: 0 assosiated: false
+06-1B-B1-05-46-08 from_me: 0 to_me: 0 assosiated: false
 06-1B-B1-05-46-09 from_me: 0 to_me: 0 assosiated: false
-06-1B-B1-05-46-0C from_me: 0 to_me: 0 assosiated: false
 06-1B-B1-05-46-10 from_me: 0 to_me: 0 assosiated: false
 06-1B-B1-05-46-36 from_me: 0 to_me: 0 assosiated: false</handler>
-        <handler name="links" canRead="true">06-1B-B1-05-3B-97 06-1B-B1-05-46-10 9999 2282 13
-	06-1B-B1-05-46-10 06-1B-B1-05-3B-97 9999 2282 13
-	06-1B-B1-05-3B-75 06-1B-B1-05-46-0C 267 2270 29
-	06-1B-B1-05-46-0C 06-1B-B1-05-3B-75 267 2270 29
-	06-1B-B1-05-3B-97 06-1B-B1-05-3B-6F 1190 2272 3
-	06-1B-B1-05-3B-6F 06-1B-B1-05-3B-97 1190 2272 3
-	06-1B-B1-05-46-10 06-1B-B1-05-3B-93 1282 3132 1
-	06-1B-B1-05-3B-93 06-1B-B1-05-46-10 1282 3132 1
-	06-1B-B1-05-3B-A1 06-1B-B1-05-3B-9F 204 4181 1
-	06-1B-B1-05-3B-9F 06-1B-B1-05-3B-A1 204 4181 1
-	06-1B-B1-05-3B-93 06-1B-B1-05-3B-6F 108 2770 1
-	06-1B-B1-05-3B-6F 06-1B-B1-05-3B-93 108 2770 1
-	06-1B-B1-05-3B-6F 06-1B-B1-05-46-10 374 3955 1
-	06-1B-B1-05-46-10 06-1B-B1-05-3B-6F 374 3955 1
-	06-1B-B1-05-3B-A1 06-1B-B1-05-3B-93 2777 2998 1
-	06-1B-B1-05-3B-93 06-1B-B1-05-3B-A1 2777 2998 1
-	06-1B-B1-05-46-10 06-1B-B1-05-3B-A1 198 4190 1
-	06-1B-B1-05-3B-A1 06-1B-B1-05-46-10 198 4190 1
-	06-1B-B1-05-46-36 06-1B-B1-05-3B-9F 614 2291 2
-	06-1B-B1-05-3B-9F 06-1B-B1-05-46-36 614 2291 2
-	06-1B-B1-05-3B-75 06-1B-B1-05-3B-97 102 2180 222
-	06-1B-B1-05-3B-97 06-1B-B1-05-3B-75 102 2180 222
-	06-1B-B1-05-46-0C 06-1B-B1-05-3B-9F 320 178769 2
-	06-1B-B1-05-3B-9F 06-1B-B1-05-46-0C 320 178769 2
-	06-1B-B1-05-3B-99 06-1B-B1-05-46-0C 437 2184 29
-	06-1B-B1-05-46-0C 06-1B-B1-05-3B-99 437 2184 29
-	06-1B-B1-05-3B-75 06-1B-B1-05-3B-6F 9999 2262 3
-	06-1B-B1-05-3B-6F 06-1B-B1-05-3B-75 9999 2262 3
-	06-1B-B1-05-3B-9F 06-1B-B1-05-46-09 277 3782 2
-	06-1B-B1-05-46-09 06-1B-B1-05-3B-9F 277 3782 2
-	06-1B-B1-05-3B-97 06-1B-B1-05-46-0C 168 177065 29
-	06-1B-B1-05-46-0C 06-1B-B1-05-3B-97 168 177065 29
-	06-1B-B1-05-3B-93 06-1B-B1-05-46-0C 116 177594 1
-	06-1B-B1-05-46-0C 06-1B-B1-05-3B-93 116 177594 1
-	06-1B-B1-05-46-0C 06-1B-B1-05-46-10 307 178778 1
-	06-1B-B1-05-46-10 06-1B-B1-05-46-0C 307 178778 1
-	06-1B-B1-05-46-0C 06-1B-B1-05-3B-6F 100 178419 3
-	06-1B-B1-05-3B-6F 06-1B-B1-05-46-0C 100 178419 3
-	06-1B-B1-05-3B-93 06-1B-B1-05-46-09 961 2604 1
-	06-1B-B1-05-46-09 06-1B-B1-05-3B-93 961 2604 1
-	06-1B-B1-05-46-09 06-1B-B1-05-46-10 281 3792 1
-	06-1B-B1-05-46-10 06-1B-B1-05-46-09 281 3792 1
-	06-1B-B1-05-3B-5D 06-1B-B1-05-3B-97 104 2181 222
-	06-1B-B1-05-3B-97 06-1B-B1-05-3B-5D 104 2181 222
-	06-1B-B1-05-3B-97 06-1B-B1-05-3B-9F 357 2293 2
-	06-1B-B1-05-3B-9F 06-1B-B1-05-3B-97 357 2293 2
-	06-1B-B1-05-46-06 06-1B-B1-05-46-10 9999 2289 1
-	06-1B-B1-05-46-10 06-1B-B1-05-46-06 9999 2289 1
-	06-1B-B1-05-3B-99 06-1B-B1-05-3B-97 247 2091 222
-	06-1B-B1-05-3B-97 06-1B-B1-05-3B-99 247 2091 222
-	06-1B-B1-05-3B-93 06-1B-B1-05-3B-9F 558 3119 1
-	06-1B-B1-05-3B-9F 06-1B-B1-05-3B-93 558 3119 1
-	06-1B-B1-05-3B-9F 06-1B-B1-05-46-10 102 4308 1
-	06-1B-B1-05-46-10 06-1B-B1-05-3B-9F 102 4308 1
-	06-1B-B1-05-3B-9F 06-1B-B1-05-3B-6F 217 3947 2
-	06-1B-B1-05-3B-6F 06-1B-B1-05-3B-9F 217 3947 2
-	06-1B-B1-05-3B-A1 06-1B-B1-05-46-09 216 3664 1
-	06-1B-B1-05-46-09 06-1B-B1-05-3B-A1 216 3664 1</handler>
-        <handler name="routes_to" canRead="true"/>
-        <handler name="routes_from" canRead="true"/>
-        <handler name="routes" canRead="true"/>
+        <handler name="links" canRead="true">06-1B-B1-05-3B-A1 06-1B-B1-05-3B-9F 473 728 1
+	06-1B-B1-05-3B-9F 06-1B-B1-05-3B-A1 473 728 1
+	06-1B-B1-05-46-10 06-1B-B1-05-3B-A1 342 752 1
+	06-1B-B1-05-3B-A1 06-1B-B1-05-46-10 342 752 1
+	06-1B-B1-05-46-36 06-1B-B1-05-3B-9F 9999 135490 387
+	06-1B-B1-05-3B-9F 06-1B-B1-05-46-36 9999 135490 387
+	06-1B-B1-05-46-08 06-1B-B1-05-46-09 200 596 4
+	06-1B-B1-05-46-09 06-1B-B1-05-46-08 200 596 4
+	06-1B-B1-05-3B-9F 06-1B-B1-05-46-08 204 836 1
+	06-1B-B1-05-46-08 06-1B-B1-05-3B-9F 204 836 1
+	06-1B-B1-05-3B-9F 06-1B-B1-05-46-09 1086 637 1
+	06-1B-B1-05-46-09 06-1B-B1-05-3B-9F 1086 637 1
+	06-1B-B1-05-3B-9F 06-1B-B1-05-46-06 9999 424 81
+	06-1B-B1-05-46-06 06-1B-B1-05-3B-9F 9999 424 81
+	06-1B-B1-05-46-10 06-1B-B1-05-46-08 164 859 1
+	06-1B-B1-05-46-08 06-1B-B1-05-46-10 164 859 1
+	06-1B-B1-05-46-09 06-1B-B1-05-46-10 651 658 1
+	06-1B-B1-05-46-10 06-1B-B1-05-46-09 651 658 1
+	06-1B-B1-05-46-10 06-1B-B1-05-46-06 1157 3252 1
+	06-1B-B1-05-46-06 06-1B-B1-05-46-10 1157 3252 1
+	06-1B-B1-05-46-10 06-1B-B1-05-3B-9F 121 900 1
+	06-1B-B1-05-3B-9F 06-1B-B1-05-46-10 121 900 1
+	06-1B-B1-05-3B-A1 06-1B-B1-05-46-08 237 688 1
+	06-1B-B1-05-46-08 06-1B-B1-05-3B-A1 237 688 1
+	06-1B-B1-05-3B-A1 06-1B-B1-05-46-09 398 540 1
+	06-1B-B1-05-46-09 06-1B-B1-05-3B-A1 398 540 1</handler>
+        <handler name="routes_to" canRead="true"></handler>
+        <handler name="routes_from" canRead="true"></handler>
+        <handler name="routes" canRead="true"></handler>
         <handler name="handlers" canRead="true">update_link	w
 best_route_and_dijkstra	w
 best_route	w
@@ -167,8 +129,8 @@ name	r.</handler>
         <handler name="name" canRead="true">lt</handler>
       </element>
       <element name="sys_info">
-        <handler name="schema" canRead="true"/>
-        <handler name="systeminfo" canRead="true"/>
+        <handler name="schema" canRead="true"></handler>
+        <handler name="systeminfo" canRead="true"></handler>
         <handler name="debug" canRead="true" canWrite="true">2</handler>
         <handler name="handlers" canRead="true">schema	r
 systeminfo	r
@@ -186,7 +148,7 @@ name	r.</handler>
       </element>
       <element name="gps">
         <handler name="speed" canRead="true" canWrite="true">0.0</handler>
-        <handler name="gps_coord" canRead="true" canWrite="true">52.429780 13.530920 0.000470</handler>
+        <handler name="gps_coord" canRead="true" canWrite="true">52.429780 13.530910 0.000480</handler>
         <handler name="cart_coord" canRead="true" canWrite="true">0 0 0</handler>
         <handler name="debug" canRead="true" canWrite="true">2</handler>
         <handler name="handlers" canRead="true">speed	rw
@@ -200,18 +162,18 @@ class	r.
 name	r.</handler>
         <handler name="ports" canRead="true">0 inputs
 0 outputs</handler>
-        <handler name="config" canRead="true"/>
+        <handler name="config" canRead="true"></handler>
         <handler name="class" canRead="true">GPS</handler>
         <handler name="name" canRead="true">gps</handler>
       </element>
       <element name="seismo">
         <handler name="channelstatinfo" canRead="true"><node id="00-00-00-00-00-00">
-<gps long="1353092" lat="5242978" alt="47" HDOP="0"/>
-<seismo samplingrate="100" sample_count="1260" channels="4" last_update="1298636944890000">
-<chaninfo id="0" avg_value="18202" std_value="1359" min_value="13544" max_value="22688"/>
-<chaninfo id="1" avg_value="2211566" std_value="1970" min_value="2210344" max_value="2213192"/>
-<chaninfo id="2" avg_value="-385887" std_value="1241" min_value="-389104" max_value="-382936"/>
-<chaninfo id="3" avg_value="249" std_value="27" min_value="168" max_value="336"/>
+<gps long="1353091" lat="5242978" alt="48" HDOP="0"/>
+<seismo samplingrate="100" sample_count="1580" channels="4" last_update="1298903779060000">
+<chaninfo id="0" avg_value="22809" std_value="791" min_value="20304" max_value="25936"/>
+<chaninfo id="1" avg_value="2197920" std_value="1190" min_value="2196456" max_value="2199248"/>
+<chaninfo id="2" avg_value="-344264" std_value="1200" min_value="-347160" max_value="-341608"/>
+<chaninfo id="3" avg_value="244" std_value="32" min_value="160" max_value="336"/>
 </seismo>
 </node></handler>
         <handler name="debug" canRead="true" canWrite="true">2</handler>
@@ -239,7 +201,7 @@ name	r.</handler>
 push~	-	toMeAfterRouting [0], device_wifi/brnToMe [0]
 1 output
 push~	-	[0] BRN2EtherDecap@13</handler>
-        <handler name="config" canRead="true"/>
+        <handler name="config" canRead="true"></handler>
         <handler name="class" canRead="true">Null</handler>
         <handler name="name" canRead="true">Label_brnether</handler>
       </element>
@@ -338,13 +300,10 @@ name	r.</handler>
         </children>
         <children name="proberates">
           <handler name="rates" canRead="true">DEFAULT  2 12 22 108
-06-1B-B1-05-46-0C  2 12 22 108
+06-1B-B1-05-46-08  2 12 22 108
 06-1B-B1-05-46-09  2 12 22 108
 06-1B-B1-05-46-06  2 12 22 108
 06-1B-B1-05-3B-9F  2 12 22 108
-06-1B-B1-05-3B-97  2 12 22 108
-06-1B-B1-05-3B-93  2 12 22 108
-06-1B-B1-05-3B-6F  2 12 22 108
 06-1B-B1-05-3B-A1  2 12 22 108</handler>
           <handler name="debug" canRead="true" canWrite="true">false</handler>
           <handler name="handlers" canRead="true">remove	w
@@ -378,33 +337,27 @@ name	r.</handler>
         </children>
         <children name="link_stat">
           <handler name="schema" canRead="true"><XMLSchema:schema><XMLSchema:element name="tau"><XMLSchema:complexType><XMLSchema:attribute name="value" type="xs:int" use="required"/></XMLSchema:complexType></XMLSchema:element><XMLSchema:element name="probes"><XMLSchema:complexType><XMLSchema:sequence><XMLSchema:element ref="probe" maxOccurs="unbounded"/></XMLSchema:sequence><XMLSchema:attribute name="time" type="xs:decimal" use="required"/><XMLSchema:attribute name="id" type="xs:string" use="required"/></XMLSchema:complexType></XMLSchema:element><XMLSchema:element name="probe"><XMLSchema:complexType><XMLSchema:attribute name="size" type="xs:short" use="required"/><XMLSchema:attribute name="rate" type="xs:byte" use="required"/></XMLSchema:complexType></XMLSchema:element><XMLSchema:element name="period"><XMLSchema:complexType><XMLSchema:attribute name="value" type="xs:short" use="required"/></XMLSchema:complexType></XMLSchema:element><XMLSchema:element name="link_info"><XMLSchema:complexType><XMLSchema:attribute name="size" type="xs:short" use="required"/><XMLSchema:attribute name="rev" type="xs:byte" use="required"/><XMLSchema:attribute name="rate" type="xs:byte" use="required"/><XMLSchema:attribute name="fwd" type="xs:byte" use="required"/></XMLSchema:complexType></XMLSchema:element><XMLSchema:element name="link"><XMLSchema:complexType><XMLSchema:sequence><XMLSchema:element ref="link_info" maxOccurs="unbounded"/></XMLSchema:sequence><XMLSchema:attribute name="to" type="xs:string" use="required"/><XMLSchema:attribute name="tau" type="xs:int" use="required"/><XMLSchema:attribute name="seq" type="xs:int" use="required"/><XMLSchema:attribute name="period" type="xs:short" use="required"/><XMLSchema:attribute name="last_rx" type="xs:decimal" use="required"/></XMLSchema:complexType></XMLSchema:element><XMLSchema:element name="handlers"><XMLSchema:complexType><XMLSchema:sequence><XMLSchema:element ref="handler" maxOccurs="unbounded"/></XMLSchema:sequence><XMLSchema:attribute name="elem_name" use="required"><XMLSchema:simpleType><XMLSchema:restriction base="xs:string"><XMLSchema:enumeration value="BRN2LinkStat"/></XMLSchema:restriction></XMLSchema:simpleType></XMLSchema:attribute></XMLSchema:complexType></XMLSchema:element><XMLSchema:element name="handler"><XMLSchema:complexType><XMLSchema:choice><XMLSchema:element ref="badnodes"/><XMLSchema:element ref="entry"/><XMLSchema:element ref="period"/><XMLSchema:element ref="probes"/><XMLSchema:element ref="tau"/></XMLSchema:choice><XMLSchema:attribute name="name" use="required"><XMLSchema:simpleType><XMLSchema:restriction base="xs:string"><XMLSchema:enumeration value="bad_version"/><XMLSchema:enumeration value="bcast_stats"/><XMLSchema:enumeration value="period"/><XMLSchema:enumeration value="probes"/><XMLSchema:enumeration value="tau"/></XMLSchema:restriction></XMLSchema:simpleType></XMLSchema:attribute></XMLSchema:complexType></XMLSchema:element><XMLSchema:element name="entry"><XMLSchema:complexType><XMLSchema:sequence><XMLSchema:element ref="link" maxOccurs="unbounded"/></XMLSchema:sequence><XMLSchema:attribute name="time" type="xs:decimal" use="required"/><XMLSchema:attribute name="tau" type="xs:int" use="required"/><XMLSchema:attribute name="seq" type="xs:short" use="required"/><XMLSchema:attribute name="period" type="xs:short" use="required"/><XMLSchema:attribute name="from" type="xs:string" use="required"/></XMLSchema:complexType></XMLSchema:element><XMLSchema:element name="badnodes"><XMLSchema:complexType><XMLSchema:sequence><XMLSchema:element ref="badnode" maxOccurs="unbounded"/></XMLSchema:sequence><XMLSchema:attribute name="time" type="xs:decimal" use="required"/><XMLSchema:attribute name="id" type="xs:string" use="required"/></XMLSchema:complexType></XMLSchema:element><XMLSchema:element name="badnode"><XMLSchema:complexType><XMLSchema:attribute name="version" type="xs:byte" use="required"/><XMLSchema:attribute name="id" type="xs:string" use="required"/></XMLSchema:complexType></XMLSchema:element></XMLSchema:schema></handler>
-          <handler name="probes" canRead="true" canWrite="true"><probes id="06-1B-B1-05-46-10" time="1298636946.288455414">
+          <handler name="probes" canRead="true" canWrite="true"><probes id="06-1B-B1-05-46-10" time="1298903780.083665773">
               <probe rate="2" size="500"/>
             </probes></handler>
           <handler name="period" canRead="true" canWrite="true"><period value="2000"/></handler>
           <handler name="tau" canRead="true" canWrite="true"><tau value="100000"/></handler>
-          <handler name="bad_version" canRead="true"><badnodes id="06-1B-B1-05-46-10" time="1298636946.356681193"/></handler>
-          <handler name="bcast_stats" canRead="true"><entry from="06-1B-B1-05-46-10" period="2000" seq="2035" tau="100000" time="1298636946.366931780">
-              <link last_rx="4.769369780" period="2000" seq="2285" tau="100000" to="06-1B-B1-05-3B-6F">
-                <link_info fwd="58" rate="2" rev="44" size="500"/>
+          <handler name="bad_version" canRead="true"><badnodes id="06-1B-B1-05-46-10" time="1298903780.125564029"/></handler>
+          <handler name="bcast_stats" canRead="true"><entry from="06-1B-B1-05-46-10" period="2000" seq="463" tau="100000" time="1298903780.138627220">
+              <link last_rx="1.269949220" period="2000" seq="465" tau="100000" to="06-1B-B1-05-3B-9F">
+                <link_info fwd="100" rate="2" rev="80" size="500"/>
               </link>
-              <link last_rx="3.242066780" period="2000" seq="2291" tau="100000" to="06-1B-B1-05-3B-93">
-                <link_info fwd="26" rate="2" rev="28" size="500"/>
+              <link last_rx="2.161038220" period="2000" seq="465" tau="100000" to="06-1B-B1-05-3B-A1">
+                <link_info fwd="74" rate="2" rev="52" size="500"/>
               </link>
-              <link last_rx="1.932828780" period="2000" seq="1997" tau="100000" to="06-1B-B1-05-3B-9F">
-                <link_info fwd="98" rate="2" rev="100" size="500"/>
+              <link last_rx="82.846634220" period="2000" seq="3086" tau="100000" to="06-1B-B1-05-46-06">
+                <link_info fwd="72" rate="2" rev="10" size="500"/>
               </link>
-              <link last_rx="0.902848780" period="2000" seq="1802" tau="100000" to="06-1B-B1-05-3B-A1">
-                <link_info fwd="74" rate="2" rev="68" size="500"/>
+              <link last_rx="1.372566220" period="2000" seq="464" tau="100000" to="06-1B-B1-05-46-08">
+                <link_info fwd="82" rate="2" rev="72" size="500"/>
               </link>
-              <link last_rx="124.993201780" period="2000" seq="2229" tau="100000" to="06-1B-B1-05-46-06">
-                <link_info fwd="0" rate="2" rev="0" size="500"/>
-              </link>
-              <link last_rx="1.047213780" period="2000" seq="1801" tau="100000" to="06-1B-B1-05-46-09">
-                <link_info fwd="70" rate="2" rev="50" size="500"/>
-              </link>
-              <link last_rx="31.238905780" period="2000" seq="177083" tau="100000" to="06-1B-B1-05-46-0C">
-                <link_info fwd="58" rate="2" rev="52" size="500"/>
+              <link last_rx="53.276425220" period="2000" seq="438" tau="100000" to="06-1B-B1-05-46-09">
+                <link_info fwd="64" rate="2" rev="20" size="500"/>
               </link>
             </entry></handler>
           <handler name="debug" canRead="true" canWrite="true">2</handler>
@@ -464,39 +417,39 @@ push	-	[0] Discard@16</handler>
           <children name="cst">
             <handler name="channel" canRead="true">13</handler>
             <handler name="src_rssi" canRead="true">etheraddress	avg_rssi	sum_rssi	pkt_count</handler>
-            <handler name="no_src" canRead="true">20</handler>
-            <handler name="avg_rssi" canRead="true">24</handler>
+            <handler name="no_src" canRead="true">12</handler>
+            <handler name="avg_rssi" canRead="true">36</handler>
             <handler name="avg_noise" canRead="true">-96</handler>
             <handler name="hw_tx" canRead="true">0</handler>
             <handler name="hw_rx" canRead="true">100</handler>
             <handler name="hw_busy" canRead="true">100</handler>
             <handler name="tx" canRead="true">0</handler>
-            <handler name="rx" canRead="true">72</handler>
-            <handler name="busy" canRead="true">72</handler>
-            <handler name="stats_xml" canRead="true"><channelstats node="06-1B-B1-05-46-10" id="4060" length="1000" unit="ms">
-	<mac packets="612" rx_pkt="612" no_err_pkt="612" crc_err_pkt="0" phy_err_pkt="0" tx_pkt="0" zero_err_pkt="0" busy="72" rx="72" tx="0" noerr_rx="72" crc_rx="0" phy_rx="0" last_packet_time="1298636946.995061" no_src="20"/>
-	<mac_duration busy="729464" rx="729464" tx="0" noerr_rx="729464" crc_rx="0" phy_rx="0" unit="us"/>
-	<phy hwbusy="100" hwrx="100" hwtx="0" last_hw_stat_time="1298636946.761067717" avg_noise="-96" avg_rssi="24" channel="13"/>
+            <handler name="rx" canRead="true">82</handler>
+            <handler name="busy" canRead="true">82</handler>
+            <handler name="stats_xml" canRead="true"><channelstats node="06-1B-B1-05-46-10" id="926" length="1000" unit="ms">
+	<mac packets="855" rx_pkt="855" no_err_pkt="855" crc_err_pkt="0" phy_err_pkt="0" tx_pkt="0" zero_err_pkt="0" busy="82" rx="82" tx="0" noerr_rx="82" crc_rx="0" phy_rx="0" last_packet_time="1298903780.668394" no_src="12"/>
+	<mac_duration busy="822056" rx="822056" tx="0" noerr_rx="822056" crc_rx="0" phy_rx="0" unit="us"/>
+	<phy hwbusy="100" hwrx="100" hwtx="0" last_hw_stat_time="1298903780.258566879" avg_noise="-96" avg_rssi="36" channel="13"/>
 	<rssi>
 	</rssi>
 </channelstats></handler>
-            <handler name="stats" canRead="true">ID: 4060
+            <handler name="stats" canRead="true">ID: 926
 Time: 1000
 All packets: 0
-RXPackets: 612
-Busy: 72
-RX: 72
+RXPackets: 855
+Busy: 82
+RX: 82
 TX: 0
 HW available: true
 HW Busy: 100
 HW RX: 100
 HW TX: 0
-Last HW Busy: 81
-Last HW RX: 80
+Last HW Busy: 90
+Last HW RX: 89
 Last HW TX: 0
 Avg. Noise: -96
-Avg. Rssi: 24
-No. Src: 20</handler>
+Avg. Rssi: 36
+No. Src: 12</handler>
             <handler name="max_time" canRead="true" canWrite="true">1000</handler>
             <handler name="debug" canRead="true" canWrite="true">2</handler>
             <handler name="handlers" canRead="true">reset	wb
@@ -539,12 +492,12 @@ pull	-	device_wifi/wifidevice/ath_op_q [0]
 pull	-	device_wifi/wifidevice/Ath2Encap@3 [0]
 1 output
 pull	-	[0] device_wifi/wifidevice/rawdev/ToDevice@1</handler>
-            <handler name="config" canRead="true"/>
+            <handler name="config" canRead="true"></handler>
             <handler name="class" canRead="true">PrioSched</handler>
             <handler name="name" canRead="true">device_wifi/wifidevice/op_prio_s</handler>
           </children>
           <children name="ath_op">
-            <handler name="pkt_count" canRead="true">9257 7 9257 7 7</handler>
+            <handler name="pkt_count" canRead="true">12441 7 12441 7 7</handler>
             <handler name="debug" canRead="true" canWrite="true">4</handler>
             <handler name="handlers" canRead="true">pkt_count	r
 set_macclone	w
@@ -627,7 +580,7 @@ push~	-	[0] device_wifi/wifidevice/ath_op</handler>
             <handler name="name" canRead="true">device_wifi/wifidevice/dev_decap</handler>
           </children>
           <children name="rawwifidev_too_small_cnt">
-            <handler name="count_call" canRead="true" canWrite="true"/>
+            <handler name="count_call" canRead="true" canWrite="true"></handler>
             <handler name="byte_rate" canRead="true">0</handler>
             <handler name="bit_rate" canRead="true">0</handler>
             <handler name="rate" canRead="true">0</handler>
@@ -651,7 +604,7 @@ name	r.</handler>
 push~	-	device_wifi/wifidevice/dev_decap [1]
 1 output
 push~	-	[0] device_wifi/wifidevice/Discard@9</handler>
-            <handler name="config" canRead="true"/>
+            <handler name="config" canRead="true"></handler>
             <handler name="class" canRead="true">Counter</handler>
             <handler name="name" canRead="true">device_wifi/wifidevice/rawwifidev_too_small_cnt</handler>
           </children>
@@ -751,7 +704,7 @@ push~	-	device_wifi/lp_clf [1]
 2 outputs
 pull~	-	[1] device_wifi/lp_data_scheduler
 push~	-	[0] device_wifi/brnToMe</handler>
-          <handler name="config" canRead="true"/>
+          <handler name="config" canRead="true"></handler>
           <handler name="class" canRead="true">Suppressor</handler>
           <handler name="name" canRead="true">device_wifi/data_suppressor</handler>
         </children>
@@ -766,7 +719,7 @@ pull	-	device_wifi/lp_suppressor [0]
 pull	-	device_wifi/data_suppressor [0]
 1 output
 pull	-	[0] device_wifi/wifidevice/Ath2Encap@3</handler>
-          <handler name="config" canRead="true"/>
+          <handler name="config" canRead="true"></handler>
           <handler name="class" canRead="true">PrioSched</handler>
           <handler name="name" canRead="true">device_wifi/lp_data_scheduler</handler>
         </children>
@@ -783,14 +736,14 @@ push~	-	device_wifi/wifidevice/cst [0]
 2 outputs
 push~	-	[0] device_wifi/error_clf
 push	-	[0] device_wifi/Discard@17</handler>
-          <handler name="config" canRead="true"/>
+          <handler name="config" canRead="true"></handler>
           <handler name="class" canRead="true">FilterTX</handler>
           <handler name="name" canRead="true">device_wifi/filter_tx</handler>
         </children>
         <children name="error_clf">
           <handler name="phy" canRead="true">0</handler>
           <handler name="crc" canRead="true">0</handler>
-          <handler name="ok" canRead="true">382337</handler>
+          <handler name="ok" canRead="true">388649</handler>
           <handler name="handlers" canRead="true">phy	r
 crc	r
 ok	r
@@ -803,7 +756,7 @@ name	r.</handler>
 push~	-	device_wifi/filter_tx [0]
 1 output
 push~	-	[0] device_wifi/WifiDupeFilter@15</handler>
-          <handler name="config" canRead="true"/>
+          <handler name="config" canRead="true"></handler>
           <handler name="class" canRead="true">WifiErrorClassifier</handler>
           <handler name="name" canRead="true">device_wifi/error_clf</handler>
         </children>
@@ -963,7 +916,7 @@ name	r.</handler>
 pull~	-	device_wifi/lp_queue [0]
 1 output
 pull~	-	[0] device_wifi/lp_data_scheduler</handler>
-          <handler name="config" canRead="true"/>
+          <handler name="config" canRead="true"></handler>
           <handler name="class" canRead="true">Suppressor</handler>
           <handler name="name" canRead="true">device_wifi/lp_suppressor</handler>
         </children>
@@ -998,7 +951,7 @@ name	r.</handler>
           <handler name="name" canRead="true">routing/dsr_encap</handler>
         </children>
         <children name="querier">
-          <handler name="fixed_route" canRead="true" canWrite="true"/>
+          <handler name="fixed_route" canRead="true" canWrite="true"></handler>
           <handler name="debug" canRead="true" canWrite="true">2</handler>
           <handler name="handlers" canRead="true">flush_sb	w
 fixed_route_clear	w
@@ -1119,7 +1072,7 @@ push	-	routing/src_forwarder [2]
 2 outputs
 push	-	[0] routing/Discard@12
 push	-	[0] routing/err_forwarder</handler>
-          <handler name="config" canRead="true"/>
+          <handler name="config" canRead="true"></handler>
           <handler name="class" canRead="true">Tee</handler>
           <handler name="name" canRead="true">routing/tee_to_err_fwd</handler>
         </children>
@@ -1215,81 +1168,41 @@ name	r.</handler>
       <element name="lt">
         <handler name="debug" canRead="true" canWrite="true">2</handler>
         <handler name="dijkstra_time" canRead="true">0.000000</handler>
-        <handler name="blacklist" canRead="true"/>
-        <handler name="hosts" canRead="true">06-1B-B1-05-3B-5D from_me: 0 to_me: 0 assosiated: false
-06-1B-B1-05-3B-6F from_me: 0 to_me: 0 assosiated: false
-06-1B-B1-05-3B-75 from_me: 0 to_me: 0 assosiated: false
-06-1B-B1-05-3B-93 from_me: 0 to_me: 0 assosiated: false
-06-1B-B1-05-3B-97 from_me: 0 to_me: 0 assosiated: false
-06-1B-B1-05-3B-99 from_me: 0 to_me: 0 assosiated: false
-06-1B-B1-05-3B-9F from_me: 0 to_me: 0 assosiated: false
+        <handler name="blacklist" canRead="true"></handler>
+        <handler name="hosts" canRead="true">06-1B-B1-05-3B-9F from_me: 0 to_me: 0 assosiated: false
 06-1B-B1-05-3B-A1 from_me: 0 to_me: 0 assosiated: false
 06-1B-B1-05-46-06 from_me: 0 to_me: 0 assosiated: false
+06-1B-B1-05-46-08 from_me: 0 to_me: 0 assosiated: false
 06-1B-B1-05-46-09 from_me: 0 to_me: 0 assosiated: false
-06-1B-B1-05-46-0C from_me: 0 to_me: 0 assosiated: false
 06-1B-B1-05-46-10 from_me: 0 to_me: 0 assosiated: false
 06-1B-B1-05-46-36 from_me: 0 to_me: 0 assosiated: false</handler>
-        <handler name="links" canRead="true">06-1B-B1-05-3B-97 06-1B-B1-05-46-10 9999 2281 16
-	06-1B-B1-05-46-10 06-1B-B1-05-3B-97 9999 2281 16
-	06-1B-B1-05-3B-75 06-1B-B1-05-46-0C 315 2270 19
-	06-1B-B1-05-46-0C 06-1B-B1-05-3B-75 315 2270 19
-	06-1B-B1-05-3B-97 06-1B-B1-05-3B-6F 1302 2872 5
-	06-1B-B1-05-3B-6F 06-1B-B1-05-3B-97 1302 2872 5
-	06-1B-B1-05-3B-93 06-1B-B1-05-46-10 1479 2860 0
-	06-1B-B1-05-46-10 06-1B-B1-05-3B-93 1479 2860 0
-	06-1B-B1-05-3B-9F 06-1B-B1-05-3B-A1 216 4072 0
-	06-1B-B1-05-3B-A1 06-1B-B1-05-3B-9F 216 4072 0
-	06-1B-B1-05-3B-93 06-1B-B1-05-3B-6F 111 2599 0
-	06-1B-B1-05-3B-6F 06-1B-B1-05-3B-93 111 2599 0
-	06-1B-B1-05-46-10 06-1B-B1-05-3B-6F 410 3992 0
-	06-1B-B1-05-3B-6F 06-1B-B1-05-46-10 410 3992 0
-	06-1B-B1-05-3B-93 06-1B-B1-05-3B-A1 2777 2653 0
-	06-1B-B1-05-3B-A1 06-1B-B1-05-3B-93 2777 2653 0
-	06-1B-B1-05-3B-A1 06-1B-B1-05-46-10 193 4055 0
-	06-1B-B1-05-46-10 06-1B-B1-05-3B-A1 193 4055 0
-	06-1B-B1-05-3B-9F 06-1B-B1-05-46-36 675 2518 1
-	06-1B-B1-05-46-36 06-1B-B1-05-3B-9F 675 2518 1
-	06-1B-B1-05-3B-75 06-1B-B1-05-3B-97 104 2289 5
-	06-1B-B1-05-3B-97 06-1B-B1-05-3B-75 104 2289 5
-	06-1B-B1-05-3B-9F 06-1B-B1-05-46-0C 347 178107 1
-	06-1B-B1-05-46-0C 06-1B-B1-05-3B-9F 347 178107 1
-	06-1B-B1-05-3B-99 06-1B-B1-05-46-0C 494 2184 19
-	06-1B-B1-05-46-0C 06-1B-B1-05-3B-99 494 2184 19
-	06-1B-B1-05-3B-75 06-1B-B1-05-3B-6F 9999 2270 6
-	06-1B-B1-05-3B-6F 06-1B-B1-05-3B-75 9999 2270 6
-	06-1B-B1-05-3B-9F 06-1B-B1-05-46-09 277 3614 1
-	06-1B-B1-05-46-09 06-1B-B1-05-3B-9F 277 3614 1
-	06-1B-B1-05-46-0C 06-1B-B1-05-3B-97 229 177092 5
-	06-1B-B1-05-3B-97 06-1B-B1-05-46-0C 229 177092 5
-	06-1B-B1-05-3B-93 06-1B-B1-05-46-0C 119 177099 0
-	06-1B-B1-05-46-0C 06-1B-B1-05-3B-93 119 177099 0
-	06-1B-B1-05-46-0C 06-1B-B1-05-46-10 440 178091 0
-	06-1B-B1-05-46-10 06-1B-B1-05-46-0C 440 178091 0
-	06-1B-B1-05-46-0C 06-1B-B1-05-3B-6F 100 177828 6
-	06-1B-B1-05-3B-6F 06-1B-B1-05-46-0C 100 177828 6
-	06-1B-B1-05-3B-93 06-1B-B1-05-46-09 1388 2321 0
-	06-1B-B1-05-46-09 06-1B-B1-05-3B-93 1388 2321 0
-	06-1B-B1-05-46-10 06-1B-B1-05-46-09 285 3597 0
-	06-1B-B1-05-46-09 06-1B-B1-05-46-10 285 3597 0
-	06-1B-B1-05-3B-5D 06-1B-B1-05-3B-97 108 2291 5
-	06-1B-B1-05-3B-97 06-1B-B1-05-3B-5D 108 2291 5
-	06-1B-B1-05-3B-9F 06-1B-B1-05-3B-97 403 3151 1
-	06-1B-B1-05-3B-97 06-1B-B1-05-3B-9F 403 3151 1
-	06-1B-B1-05-46-06 06-1B-B1-05-46-10 9999 2290 0
-	06-1B-B1-05-46-10 06-1B-B1-05-46-06 9999 2290 0
-	06-1B-B1-05-3B-99 06-1B-B1-05-3B-97 274 2202 5
-	06-1B-B1-05-3B-97 06-1B-B1-05-3B-99 274 2202 5
-	06-1B-B1-05-3B-9F 06-1B-B1-05-3B-93 1275 2876 0
-	06-1B-B1-05-3B-93 06-1B-B1-05-3B-9F 1275 2876 0
-	06-1B-B1-05-3B-9F 06-1B-B1-05-46-10 104 4258 0
-	06-1B-B1-05-46-10 06-1B-B1-05-3B-9F 104 4258 0
-	06-1B-B1-05-3B-9F 06-1B-B1-05-3B-6F 231 4009 1
-	06-1B-B1-05-3B-6F 06-1B-B1-05-3B-9F 231 4009 1
-	06-1B-B1-05-3B-A1 06-1B-B1-05-46-09 222 3396 0
-	06-1B-B1-05-46-09 06-1B-B1-05-3B-A1 222 3396 0</handler>
-        <handler name="routes_to" canRead="true"/>
-        <handler name="routes_from" canRead="true"/>
-        <handler name="routes" canRead="true"/>
+        <handler name="links" canRead="true">06-1B-B1-05-3B-A1 06-1B-B1-05-3B-9F 445 707 0
+	06-1B-B1-05-3B-9F 06-1B-B1-05-3B-A1 445 707 0
+	06-1B-B1-05-46-10 06-1B-B1-05-3B-A1 250 701 0
+	06-1B-B1-05-3B-A1 06-1B-B1-05-46-10 250 701 0
+	06-1B-B1-05-3B-9F 06-1B-B1-05-46-36 9999 135494 387
+	06-1B-B1-05-46-36 06-1B-B1-05-3B-9F 9999 135494 387
+	06-1B-B1-05-46-08 06-1B-B1-05-46-09 212 546 0
+	06-1B-B1-05-46-09 06-1B-B1-05-46-08 212 546 0
+	06-1B-B1-05-3B-9F 06-1B-B1-05-46-08 204 852 0
+	06-1B-B1-05-46-08 06-1B-B1-05-3B-9F 204 852 0
+	06-1B-B1-05-3B-9F 06-1B-B1-05-46-09 1207 623 0
+	06-1B-B1-05-46-09 06-1B-B1-05-3B-9F 1207 623 0
+	06-1B-B1-05-46-10 06-1B-B1-05-46-08 164 845 0
+	06-1B-B1-05-46-08 06-1B-B1-05-46-10 164 845 0
+	06-1B-B1-05-46-09 06-1B-B1-05-46-10 710 614 0
+	06-1B-B1-05-46-10 06-1B-B1-05-46-09 710 614 0
+	06-1B-B1-05-46-06 06-1B-B1-05-46-10 1157 3127 0
+	06-1B-B1-05-46-10 06-1B-B1-05-46-06 1157 3127 0
+	06-1B-B1-05-46-10 06-1B-B1-05-3B-9F 100 922 0
+	06-1B-B1-05-3B-9F 06-1B-B1-05-46-10 100 922 0
+	06-1B-B1-05-3B-A1 06-1B-B1-05-46-08 230 631 0
+	06-1B-B1-05-46-08 06-1B-B1-05-3B-A1 230 631 0
+	06-1B-B1-05-3B-A1 06-1B-B1-05-46-09 398 506 1
+	06-1B-B1-05-46-09 06-1B-B1-05-3B-A1 398 506 1</handler>
+        <handler name="routes_to" canRead="true"></handler>
+        <handler name="routes_from" canRead="true"></handler>
+        <handler name="routes" canRead="true"></handler>
         <handler name="handlers" canRead="true">update_link	w
 best_route_and_dijkstra	w
 best_route	w
@@ -1318,8 +1231,8 @@ name	r.</handler>
         <handler name="name" canRead="true">lt</handler>
       </element>
       <element name="sys_info">
-        <handler name="schema" canRead="true"/>
-        <handler name="systeminfo" canRead="true"/>
+        <handler name="schema" canRead="true"></handler>
+        <handler name="systeminfo" canRead="true"></handler>
         <handler name="debug" canRead="true" canWrite="true">2</handler>
         <handler name="handlers" canRead="true">schema	r
 systeminfo	r
@@ -1337,7 +1250,7 @@ name	r.</handler>
       </element>
       <element name="gps">
         <handler name="speed" canRead="true" canWrite="true">0.0</handler>
-        <handler name="gps_coord" canRead="true" canWrite="true">52.429650 13.531030 0.000510</handler>
+        <handler name="gps_coord" canRead="true" canWrite="true">52.429650 13.531060 0.000500</handler>
         <handler name="cart_coord" canRead="true" canWrite="true">0 0 0</handler>
         <handler name="debug" canRead="true" canWrite="true">2</handler>
         <handler name="handlers" canRead="true">speed	rw
@@ -1351,18 +1264,18 @@ class	r.
 name	r.</handler>
         <handler name="ports" canRead="true">0 inputs
 0 outputs</handler>
-        <handler name="config" canRead="true"/>
+        <handler name="config" canRead="true"></handler>
         <handler name="class" canRead="true">GPS</handler>
         <handler name="name" canRead="true">gps</handler>
       </element>
       <element name="seismo">
         <handler name="channelstatinfo" canRead="true"><node id="00-00-00-00-00-00">
-<gps long="1353103" lat="5242965" alt="51" HDOP="0"/>
-<seismo samplingrate="100" sample_count="1320" channels="4" last_update="1298636948690000">
-<chaninfo id="0" avg_value="-87869" std_value="2272" min_value="-92816" max_value="-82816"/>
-<chaninfo id="1" avg_value="2140696" std_value="1555" min_value="2138896" max_value="2142296"/>
-<chaninfo id="2" avg_value="-56777" std_value="3517" min_value="-66528" max_value="-46984"/>
-<chaninfo id="3" avg_value="583" std_value="35" min_value="504" max_value="680"/>
+<gps long="1353106" lat="5242965" alt="50" HDOP="0"/>
+<seismo samplingrate="100" sample_count="1540" channels="4" last_update="1298903779460000">
+<chaninfo id="0" avg_value="-146876" std_value="2922" min_value="-154888" max_value="-138624"/>
+<chaninfo id="1" avg_value="2144116" std_value="1182" min_value="2142608" max_value="2145376"/>
+<chaninfo id="2" avg_value="-37345" std_value="1644" min_value="-43616" max_value="-31496"/>
+<chaninfo id="3" avg_value="590" std_value="34" min_value="480" max_value="680"/>
 </seismo>
 </node></handler>
         <handler name="debug" canRead="true" canWrite="true">2</handler>
@@ -1390,7 +1303,7 @@ name	r.</handler>
 push~	-	toMeAfterRouting [0], device_wifi/brnToMe [0]
 1 output
 push~	-	[0] BRN2EtherDecap@13</handler>
-        <handler name="config" canRead="true"/>
+        <handler name="config" canRead="true"></handler>
         <handler name="class" canRead="true">Null</handler>
         <handler name="name" canRead="true">Label_brnether</handler>
       </element>
@@ -1490,12 +1403,9 @@ name	r.</handler>
         <children name="proberates">
           <handler name="rates" canRead="true">DEFAULT  2 12 22 108
 06-1B-B1-05-46-36  2 12 22 108
-06-1B-B1-05-46-0C  2 12 22 108
+06-1B-B1-05-46-08  2 12 22 108
 06-1B-B1-05-46-09  2 12 22 108
-06-1B-B1-05-3B-97  2 12 22 108
-06-1B-B1-05-3B-93  2 12 22 108
 06-1B-B1-05-46-10  2 12 22 108
-06-1B-B1-05-3B-6F  2 12 22 108
 06-1B-B1-05-3B-A1  2 12 22 108</handler>
           <handler name="debug" canRead="true" canWrite="true">false</handler>
           <handler name="handlers" canRead="true">remove	w
@@ -1529,36 +1439,24 @@ name	r.</handler>
         </children>
         <children name="link_stat">
           <handler name="schema" canRead="true"><XMLSchema:schema><XMLSchema:element name="tau"><XMLSchema:complexType><XMLSchema:attribute name="value" type="xs:int" use="required"/></XMLSchema:complexType></XMLSchema:element><XMLSchema:element name="probes"><XMLSchema:complexType><XMLSchema:sequence><XMLSchema:element ref="probe" maxOccurs="unbounded"/></XMLSchema:sequence><XMLSchema:attribute name="time" type="xs:decimal" use="required"/><XMLSchema:attribute name="id" type="xs:string" use="required"/></XMLSchema:complexType></XMLSchema:element><XMLSchema:element name="probe"><XMLSchema:complexType><XMLSchema:attribute name="size" type="xs:short" use="required"/><XMLSchema:attribute name="rate" type="xs:byte" use="required"/></XMLSchema:complexType></XMLSchema:element><XMLSchema:element name="period"><XMLSchema:complexType><XMLSchema:attribute name="value" type="xs:short" use="required"/></XMLSchema:complexType></XMLSchema:element><XMLSchema:element name="link_info"><XMLSchema:complexType><XMLSchema:attribute name="size" type="xs:short" use="required"/><XMLSchema:attribute name="rev" type="xs:byte" use="required"/><XMLSchema:attribute name="rate" type="xs:byte" use="required"/><XMLSchema:attribute name="fwd" type="xs:byte" use="required"/></XMLSchema:complexType></XMLSchema:element><XMLSchema:element name="link"><XMLSchema:complexType><XMLSchema:sequence><XMLSchema:element ref="link_info" maxOccurs="unbounded"/></XMLSchema:sequence><XMLSchema:attribute name="to" type="xs:string" use="required"/><XMLSchema:attribute name="tau" type="xs:int" use="required"/><XMLSchema:attribute name="seq" type="xs:int" use="required"/><XMLSchema:attribute name="period" type="xs:short" use="required"/><XMLSchema:attribute name="last_rx" type="xs:decimal" use="required"/></XMLSchema:complexType></XMLSchema:element><XMLSchema:element name="handlers"><XMLSchema:complexType><XMLSchema:sequence><XMLSchema:element ref="handler" maxOccurs="unbounded"/></XMLSchema:sequence><XMLSchema:attribute name="elem_name" use="required"><XMLSchema:simpleType><XMLSchema:restriction base="xs:string"><XMLSchema:enumeration value="BRN2LinkStat"/></XMLSchema:restriction></XMLSchema:simpleType></XMLSchema:attribute></XMLSchema:complexType></XMLSchema:element><XMLSchema:element name="handler"><XMLSchema:complexType><XMLSchema:choice><XMLSchema:element ref="badnodes"/><XMLSchema:element ref="entry"/><XMLSchema:element ref="period"/><XMLSchema:element ref="probes"/><XMLSchema:element ref="tau"/></XMLSchema:choice><XMLSchema:attribute name="name" use="required"><XMLSchema:simpleType><XMLSchema:restriction base="xs:string"><XMLSchema:enumeration value="bad_version"/><XMLSchema:enumeration value="bcast_stats"/><XMLSchema:enumeration value="period"/><XMLSchema:enumeration value="probes"/><XMLSchema:enumeration value="tau"/></XMLSchema:restriction></XMLSchema:simpleType></XMLSchema:attribute></XMLSchema:complexType></XMLSchema:element><XMLSchema:element name="entry"><XMLSchema:complexType><XMLSchema:sequence><XMLSchema:element ref="link" maxOccurs="unbounded"/></XMLSchema:sequence><XMLSchema:attribute name="time" type="xs:decimal" use="required"/><XMLSchema:attribute name="tau" type="xs:int" use="required"/><XMLSchema:attribute name="seq" type="xs:short" use="required"/><XMLSchema:attribute name="period" type="xs:short" use="required"/><XMLSchema:attribute name="from" type="xs:string" use="required"/></XMLSchema:complexType></XMLSchema:element><XMLSchema:element name="badnodes"><XMLSchema:complexType><XMLSchema:sequence><XMLSchema:element ref="badnode" maxOccurs="unbounded"/></XMLSchema:sequence><XMLSchema:attribute name="time" type="xs:decimal" use="required"/><XMLSchema:attribute name="id" type="xs:string" use="required"/></XMLSchema:complexType></XMLSchema:element><XMLSchema:element name="badnode"><XMLSchema:complexType><XMLSchema:attribute name="version" type="xs:byte" use="required"/><XMLSchema:attribute name="id" type="xs:string" use="required"/></XMLSchema:complexType></XMLSchema:element></XMLSchema:schema></handler>
-          <handler name="probes" canRead="true" canWrite="true"><probes id="06-1B-B1-05-3B-9F" time="1298636950.817567884">
+          <handler name="probes" canRead="true" canWrite="true"><probes id="06-1B-B1-05-3B-9F" time="1298903780.544219745">
               <probe rate="2" size="500"/>
             </probes></handler>
           <handler name="period" canRead="true" canWrite="true"><period value="2000"/></handler>
           <handler name="tau" canRead="true" canWrite="true"><tau value="100000"/></handler>
-          <handler name="bad_version" canRead="true"><badnodes id="06-1B-B1-05-3B-9F" time="1298636950.882710359"/></handler>
-          <handler name="bcast_stats" canRead="true"><entry from="06-1B-B1-05-3B-9F" period="2000" seq="2000" tau="100000" time="1298636950.898143647">
-              <link last_rx="9.301098647" period="2000" seq="2285" tau="100000" to="06-1B-B1-05-3B-6F">
-                <link_info fwd="72" rate="2" rev="54" size="500"/>
+          <handler name="bad_version" canRead="true"><badnodes id="06-1B-B1-05-3B-9F" time="1298903780.594858364"/></handler>
+          <handler name="bcast_stats" canRead="true"><entry from="06-1B-B1-05-3B-9F" period="2000" seq="465" tau="100000" time="1298903780.610899262">
+              <link last_rx="2.636096262" period="2000" seq="465" tau="100000" to="06-1B-B1-05-3B-A1">
+                <link_info fwd="66" rate="2" rev="32" size="500"/>
               </link>
-              <link last_rx="3.645860647" period="2000" seq="2293" tau="100000" to="06-1B-B1-05-3B-93">
-                <link_info fwd="62" rate="2" rev="26" size="500"/>
+              <link last_rx="1.840453262" period="2000" seq="464" tau="100000" to="06-1B-B1-05-46-08">
+                <link_info fwd="66" rate="2" rev="72" size="500"/>
               </link>
-              <link last_rx="8.288195647" period="2000" seq="2289" tau="100000" to="06-1B-B1-05-3B-97">
-                <link_info fwd="62" rate="2" rev="36" size="500"/>
+              <link last_rx="29.506464262" period="2000" seq="450" tau="100000" to="06-1B-B1-05-46-09">
+                <link_info fwd="46" rate="2" rev="16" size="500"/>
               </link>
-              <link last_rx="3.590004647" period="2000" seq="1803" tau="100000" to="06-1B-B1-05-3B-A1">
-                <link_info fwd="72" rate="2" rev="66" size="500"/>
-              </link>
-              <link last_rx="22.741413647" period="2000" seq="1792" tau="100000" to="06-1B-B1-05-46-09">
-                <link_info fwd="72" rate="2" rev="46" size="500"/>
-              </link>
-              <link last_rx="22.324302647" period="2000" seq="177090" tau="100000" to="06-1B-B1-05-46-0C">
-                <link_info fwd="60" rate="2" rev="46" size="500"/>
-              </link>
-              <link last_rx="1.470546647" period="2000" seq="2037" tau="100000" to="06-1B-B1-05-46-10">
-                <link_info fwd="100" rate="2" rev="98" size="500"/>
-              </link>
-              <link last_rx="56.858332647" period="2000" seq="2265" tau="100000" to="06-1B-B1-05-46-36">
-                <link_info fwd="74" rate="2" rev="18" size="500"/>
+              <link last_rx="1.699560262" period="2000" seq="463" tau="100000" to="06-1B-B1-05-46-10">
+                <link_info fwd="82" rate="2" rev="100" size="500"/>
               </link>
             </entry></handler>
           <handler name="debug" canRead="true" canWrite="true">2</handler>
@@ -1618,39 +1516,39 @@ push	-	[0] Discard@16</handler>
           <children name="cst">
             <handler name="channel" canRead="true">13</handler>
             <handler name="src_rssi" canRead="true">etheraddress	avg_rssi	sum_rssi	pkt_count</handler>
-            <handler name="no_src" canRead="true">8</handler>
+            <handler name="no_src" canRead="true">11</handler>
             <handler name="avg_rssi" canRead="true">34</handler>
             <handler name="avg_noise" canRead="true">-96</handler>
             <handler name="hw_tx" canRead="true">0</handler>
-            <handler name="hw_rx" canRead="true">80</handler>
-            <handler name="hw_busy" canRead="true">85</handler>
+            <handler name="hw_rx" canRead="true">88</handler>
+            <handler name="hw_busy" canRead="true">90</handler>
             <handler name="tx" canRead="true">0</handler>
-            <handler name="rx" canRead="true">74</handler>
-            <handler name="busy" canRead="true">74</handler>
-            <handler name="stats_xml" canRead="true"><channelstats node="06-1B-B1-05-3B-9F" id="3979" length="1000" unit="ms">
-	<mac packets="720" rx_pkt="720" no_err_pkt="720" crc_err_pkt="0" phy_err_pkt="0" tx_pkt="0" zero_err_pkt="0" busy="74" rx="74" tx="0" noerr_rx="74" crc_rx="0" phy_rx="0" last_packet_time="1298636951.649585" no_src="15"/>
-	<mac_duration busy="748248" rx="748248" tx="0" noerr_rx="748248" crc_rx="0" phy_rx="0" unit="us"/>
-	<phy hwbusy="90" hwrx="87" hwtx="0" last_hw_stat_time="1298636951.562543580" avg_noise="-96" avg_rssi="33" channel="13"/>
+            <handler name="rx" canRead="true">81</handler>
+            <handler name="busy" canRead="true">81</handler>
+            <handler name="stats_xml" canRead="true"><channelstats node="06-1B-B1-05-3B-9F" id="926" length="1000" unit="ms">
+	<mac packets="844" rx_pkt="844" no_err_pkt="844" crc_err_pkt="0" phy_err_pkt="0" tx_pkt="0" zero_err_pkt="0" busy="81" rx="81" tx="0" noerr_rx="81" crc_rx="0" phy_rx="0" last_packet_time="1298903781.097330" no_src="11"/>
+	<mac_duration busy="812456" rx="812456" tx="0" noerr_rx="812456" crc_rx="0" phy_rx="0" unit="us"/>
+	<phy hwbusy="90" hwrx="88" hwtx="0" last_hw_stat_time="1298903780.362751425" avg_noise="-96" avg_rssi="34" channel="13"/>
 	<rssi>
 	</rssi>
 </channelstats></handler>
-            <handler name="stats" canRead="true">ID: 3979
+            <handler name="stats" canRead="true">ID: 926
 Time: 1000
 All packets: 0
-RXPackets: 720
-Busy: 74
-RX: 74
+RXPackets: 844
+Busy: 81
+RX: 81
 TX: 0
 HW available: true
 HW Busy: 90
-HW RX: 87
+HW RX: 88
 HW TX: 0
 Last HW Busy: 90
-Last HW RX: 87
+Last HW RX: 88
 Last HW TX: 0
 Avg. Noise: -96
-Avg. Rssi: 33
-No. Src: 15</handler>
+Avg. Rssi: 34
+No. Src: 11</handler>
             <handler name="max_time" canRead="true" canWrite="true">1000</handler>
             <handler name="debug" canRead="true" canWrite="true">2</handler>
             <handler name="handlers" canRead="true">reset	wb
@@ -1693,12 +1591,12 @@ pull	-	device_wifi/wifidevice/ath_op_q [0]
 pull	-	device_wifi/wifidevice/Ath2Encap@3 [0]
 1 output
 pull	-	[0] device_wifi/wifidevice/rawdev/ToDevice@1</handler>
-            <handler name="config" canRead="true"/>
+            <handler name="config" canRead="true"></handler>
             <handler name="class" canRead="true">PrioSched</handler>
             <handler name="name" canRead="true">device_wifi/wifidevice/op_prio_s</handler>
           </children>
           <children name="ath_op">
-            <handler name="pkt_count" canRead="true">8105 7 8105 7 7</handler>
+            <handler name="pkt_count" canRead="true">12050 8 12050 8 8</handler>
             <handler name="debug" canRead="true" canWrite="true">4</handler>
             <handler name="handlers" canRead="true">pkt_count	r
 set_macclone	w
@@ -1781,7 +1679,7 @@ push~	-	[0] device_wifi/wifidevice/ath_op</handler>
             <handler name="name" canRead="true">device_wifi/wifidevice/dev_decap</handler>
           </children>
           <children name="rawwifidev_too_small_cnt">
-            <handler name="count_call" canRead="true" canWrite="true"/>
+            <handler name="count_call" canRead="true" canWrite="true"></handler>
             <handler name="byte_rate" canRead="true">0</handler>
             <handler name="bit_rate" canRead="true">0</handler>
             <handler name="rate" canRead="true">0</handler>
@@ -1805,7 +1703,7 @@ name	r.</handler>
 push~	-	device_wifi/wifidevice/dev_decap [1]
 1 output
 push~	-	[0] device_wifi/wifidevice/Discard@9</handler>
-            <handler name="config" canRead="true"/>
+            <handler name="config" canRead="true"></handler>
             <handler name="class" canRead="true">Counter</handler>
             <handler name="name" canRead="true">device_wifi/wifidevice/rawwifidev_too_small_cnt</handler>
           </children>
@@ -1905,7 +1803,7 @@ push~	-	device_wifi/lp_clf [1]
 2 outputs
 pull~	-	[1] device_wifi/lp_data_scheduler
 push~	-	[0] device_wifi/brnToMe</handler>
-          <handler name="config" canRead="true"/>
+          <handler name="config" canRead="true"></handler>
           <handler name="class" canRead="true">Suppressor</handler>
           <handler name="name" canRead="true">device_wifi/data_suppressor</handler>
         </children>
@@ -1920,7 +1818,7 @@ pull	-	device_wifi/lp_suppressor [0]
 pull	-	device_wifi/data_suppressor [0]
 1 output
 pull	-	[0] device_wifi/wifidevice/Ath2Encap@3</handler>
-          <handler name="config" canRead="true"/>
+          <handler name="config" canRead="true"></handler>
           <handler name="class" canRead="true">PrioSched</handler>
           <handler name="name" canRead="true">device_wifi/lp_data_scheduler</handler>
         </children>
@@ -1937,14 +1835,14 @@ push~	-	device_wifi/wifidevice/cst [0]
 2 outputs
 push~	-	[0] device_wifi/error_clf
 push	-	[0] device_wifi/Discard@17</handler>
-          <handler name="config" canRead="true"/>
+          <handler name="config" canRead="true"></handler>
           <handler name="class" canRead="true">FilterTX</handler>
           <handler name="name" canRead="true">device_wifi/filter_tx</handler>
         </children>
         <children name="error_clf">
           <handler name="phy" canRead="true">0</handler>
           <handler name="crc" canRead="true">0</handler>
-          <handler name="ok" canRead="true">338682</handler>
+          <handler name="ok" canRead="true">380487</handler>
           <handler name="handlers" canRead="true">phy	r
 crc	r
 ok	r
@@ -1957,7 +1855,7 @@ name	r.</handler>
 push~	-	device_wifi/filter_tx [0]
 1 output
 push~	-	[0] device_wifi/WifiDupeFilter@15</handler>
-          <handler name="config" canRead="true"/>
+          <handler name="config" canRead="true"></handler>
           <handler name="class" canRead="true">WifiErrorClassifier</handler>
           <handler name="name" canRead="true">device_wifi/error_clf</handler>
         </children>
@@ -2117,7 +2015,7 @@ name	r.</handler>
 pull~	-	device_wifi/lp_queue [0]
 1 output
 pull~	-	[0] device_wifi/lp_data_scheduler</handler>
-          <handler name="config" canRead="true"/>
+          <handler name="config" canRead="true"></handler>
           <handler name="class" canRead="true">Suppressor</handler>
           <handler name="name" canRead="true">device_wifi/lp_suppressor</handler>
         </children>
@@ -2152,7 +2050,7 @@ name	r.</handler>
           <handler name="name" canRead="true">routing/dsr_encap</handler>
         </children>
         <children name="querier">
-          <handler name="fixed_route" canRead="true" canWrite="true"/>
+          <handler name="fixed_route" canRead="true" canWrite="true"></handler>
           <handler name="debug" canRead="true" canWrite="true">2</handler>
           <handler name="handlers" canRead="true">flush_sb	w
 fixed_route_clear	w
@@ -2273,7 +2171,7 @@ push	-	routing/src_forwarder [2]
 2 outputs
 push	-	[0] routing/Discard@12
 push	-	[0] routing/err_forwarder</handler>
-          <handler name="config" canRead="true"/>
+          <handler name="config" canRead="true"></handler>
           <handler name="class" canRead="true">Tee</handler>
           <handler name="name" canRead="true">routing/tee_to_err_fwd</handler>
         </children>
@@ -2369,62 +2267,41 @@ name	r.</handler>
       <element name="lt">
         <handler name="debug" canRead="true" canWrite="true">2</handler>
         <handler name="dijkstra_time" canRead="true">0.000000</handler>
-        <handler name="blacklist" canRead="true"/>
-        <handler name="hosts" canRead="true">06-1B-B1-05-3B-6F from_me: 0 to_me: 0 assosiated: false
-06-1B-B1-05-3B-75 from_me: 0 to_me: 0 assosiated: false
-06-1B-B1-05-3B-93 from_me: 0 to_me: 0 assosiated: false
-06-1B-B1-05-3B-97 from_me: 0 to_me: 0 assosiated: false
-06-1B-B1-05-3B-99 from_me: 0 to_me: 0 assosiated: false
-06-1B-B1-05-3B-9F from_me: 0 to_me: 0 assosiated: false
+        <handler name="blacklist" canRead="true"></handler>
+        <handler name="hosts" canRead="true">06-1B-B1-05-3B-9F from_me: 0 to_me: 0 assosiated: false
 06-1B-B1-05-3B-A1 from_me: 0 to_me: 0 assosiated: false
 06-1B-B1-05-46-06 from_me: 0 to_me: 0 assosiated: false
+06-1B-B1-05-46-08 from_me: 0 to_me: 0 assosiated: false
 06-1B-B1-05-46-09 from_me: 0 to_me: 0 assosiated: false
-06-1B-B1-05-46-0C from_me: 0 to_me: 0 assosiated: false
 06-1B-B1-05-46-10 from_me: 0 to_me: 0 assosiated: false
 06-1B-B1-05-46-36 from_me: 0 to_me: 0 assosiated: false</handler>
-        <handler name="links" canRead="true">06-1B-B1-05-3B-97 06-1B-B1-05-46-10 9999 2254 15
-	06-1B-B1-05-46-10 06-1B-B1-05-3B-97 9999 2254 15
-	06-1B-B1-05-3B-93 06-1B-B1-05-46-10 1373 2345 1
-	06-1B-B1-05-46-10 06-1B-B1-05-3B-93 1373 2345 1
-	06-1B-B1-05-3B-A1 06-1B-B1-05-3B-9F 204 3631 1
-	06-1B-B1-05-3B-9F 06-1B-B1-05-3B-A1 204 3631 1
-	06-1B-B1-05-3B-6F 06-1B-B1-05-3B-93 111 2279 15
-	06-1B-B1-05-3B-93 06-1B-B1-05-3B-6F 111 2279 15
-	06-1B-B1-05-3B-6F 06-1B-B1-05-46-10 391 2286 1
-	06-1B-B1-05-46-10 06-1B-B1-05-3B-6F 391 2286 1
-	06-1B-B1-05-3B-A1 06-1B-B1-05-3B-93 2777 2731 1
-	06-1B-B1-05-3B-93 06-1B-B1-05-3B-A1 2777 2731 1
-	06-1B-B1-05-3B-A1 06-1B-B1-05-46-10 198 3381 1
-	06-1B-B1-05-46-10 06-1B-B1-05-3B-A1 198 3381 1
-	06-1B-B1-05-46-36 06-1B-B1-05-3B-9F 675 2274 2
-	06-1B-B1-05-3B-9F 06-1B-B1-05-46-36 675 2274 2
-	06-1B-B1-05-46-0C 06-1B-B1-05-3B-9F 333 177092 2
-	06-1B-B1-05-3B-9F 06-1B-B1-05-46-0C 333 177092 2
-	06-1B-B1-05-46-09 06-1B-B1-05-3B-9F 312 3463 1
-	06-1B-B1-05-3B-9F 06-1B-B1-05-46-09 312 3463 1
-	06-1B-B1-05-46-0C 06-1B-B1-05-3B-93 113 177091 15
-	06-1B-B1-05-3B-93 06-1B-B1-05-46-0C 113 177091 15
-	06-1B-B1-05-46-0C 06-1B-B1-05-46-10 331 177091 1
-	06-1B-B1-05-46-10 06-1B-B1-05-46-0C 331 177091 1
-	06-1B-B1-05-46-09 06-1B-B1-05-3B-93 1207 2848 1
-	06-1B-B1-05-3B-93 06-1B-B1-05-46-09 1207 2848 1
-	06-1B-B1-05-46-09 06-1B-B1-05-46-10 198 3495 1
-	06-1B-B1-05-46-10 06-1B-B1-05-46-09 198 3495 1
-	06-1B-B1-05-3B-97 06-1B-B1-05-3B-9F 403 2289 2
-	06-1B-B1-05-3B-9F 06-1B-B1-05-3B-97 403 2289 2
-	06-1B-B1-05-46-06 06-1B-B1-05-46-10 9999 2273 1
-	06-1B-B1-05-46-10 06-1B-B1-05-46-06 9999 2273 1
-	06-1B-B1-05-3B-93 06-1B-B1-05-3B-9F 496 2519 2
-	06-1B-B1-05-3B-9F 06-1B-B1-05-3B-93 496 2519 2
-	06-1B-B1-05-3B-9F 06-1B-B1-05-46-10 102 2928 1
-	06-1B-B1-05-46-10 06-1B-B1-05-3B-9F 102 2928 1
-	06-1B-B1-05-3B-6F 06-1B-B1-05-3B-9F 231 2286 2
-	06-1B-B1-05-3B-9F 06-1B-B1-05-3B-6F 231 2286 2
-	06-1B-B1-05-3B-A1 06-1B-B1-05-46-09 216 3486 1
-	06-1B-B1-05-46-09 06-1B-B1-05-3B-A1 216 3486 1</handler>
-        <handler name="routes_to" canRead="true"/>
-        <handler name="routes_from" canRead="true"/>
-        <handler name="routes" canRead="true"/>
+        <handler name="links" canRead="true">06-1B-B1-05-3B-A1 06-1B-B1-05-3B-9F 340 580 7
+	06-1B-B1-05-3B-9F 06-1B-B1-05-3B-A1 340 580 7
+	06-1B-B1-05-46-10 06-1B-B1-05-3B-A1 213 594 7
+	06-1B-B1-05-3B-A1 06-1B-B1-05-46-10 213 594 7
+	06-1B-B1-05-46-36 06-1B-B1-05-3B-9F 9999 135437 382
+	06-1B-B1-05-3B-9F 06-1B-B1-05-46-36 9999 135437 382
+	06-1B-B1-05-46-08 06-1B-B1-05-46-09 193 885 0
+	06-1B-B1-05-46-09 06-1B-B1-05-46-08 193 885 0
+	06-1B-B1-05-3B-9F 06-1B-B1-05-46-08 193 677 1
+	06-1B-B1-05-46-08 06-1B-B1-05-3B-9F 193 677 1
+	06-1B-B1-05-3B-9F 06-1B-B1-05-46-09 1116 713 0
+	06-1B-B1-05-46-09 06-1B-B1-05-3B-9F 1116 713 0
+	06-1B-B1-05-46-10 06-1B-B1-05-46-08 156 690 1
+	06-1B-B1-05-46-08 06-1B-B1-05-46-10 156 690 1
+	06-1B-B1-05-46-09 06-1B-B1-05-46-10 657 725 0
+	06-1B-B1-05-46-10 06-1B-B1-05-46-09 657 725 0
+	06-1B-B1-05-46-06 06-1B-B1-05-46-10 534 3094 17
+	06-1B-B1-05-46-10 06-1B-B1-05-46-06 534 3094 17
+	06-1B-B1-05-46-10 06-1B-B1-05-3B-9F 119 526 10
+	06-1B-B1-05-3B-9F 06-1B-B1-05-46-10 119 526 10
+	06-1B-B1-05-3B-A1 06-1B-B1-05-46-08 216 753 1
+	06-1B-B1-05-46-08 06-1B-B1-05-3B-A1 216 753 1
+	06-1B-B1-05-3B-A1 06-1B-B1-05-46-09 329 788 0
+	06-1B-B1-05-46-09 06-1B-B1-05-3B-A1 329 788 0</handler>
+        <handler name="routes_to" canRead="true"></handler>
+        <handler name="routes_from" canRead="true"></handler>
+        <handler name="routes" canRead="true"></handler>
         <handler name="handlers" canRead="true">update_link	w
 best_route_and_dijkstra	w
 best_route	w
@@ -2453,8 +2330,8 @@ name	r.</handler>
         <handler name="name" canRead="true">lt</handler>
       </element>
       <element name="sys_info">
-        <handler name="schema" canRead="true"/>
-        <handler name="systeminfo" canRead="true"/>
+        <handler name="schema" canRead="true"></handler>
+        <handler name="systeminfo" canRead="true"></handler>
         <handler name="debug" canRead="true" canWrite="true">2</handler>
         <handler name="handlers" canRead="true">schema	r
 systeminfo	r
@@ -2486,12 +2363,12 @@ class	r.
 name	r.</handler>
         <handler name="ports" canRead="true">0 inputs
 0 outputs</handler>
-        <handler name="config" canRead="true"/>
+        <handler name="config" canRead="true"></handler>
         <handler name="class" canRead="true">GPS</handler>
         <handler name="name" canRead="true">gps</handler>
       </element>
       <element name="seismo">
-        <handler name="channelstatinfo" canRead="true"/>
+        <handler name="channelstatinfo" canRead="true"></handler>
         <handler name="debug" canRead="true" canWrite="true">2</handler>
         <handler name="handlers" canRead="true">channelstatinfo	r
 debug	rw
@@ -2517,7 +2394,7 @@ name	r.</handler>
 push~	-	toMeAfterRouting [0], device_wifi/brnToMe [0]
 1 output
 push~	-	[0] BRN2EtherDecap@13</handler>
-        <handler name="config" canRead="true"/>
+        <handler name="config" canRead="true"></handler>
         <handler name="class" canRead="true">Null</handler>
         <handler name="name" canRead="true">Label_brnether</handler>
       </element>
@@ -2616,9 +2493,8 @@ name	r.</handler>
         </children>
         <children name="proberates">
           <handler name="rates" canRead="true">DEFAULT  2 12 22 108
-06-1B-B1-05-46-0C  2 12 22 108
+06-1B-B1-05-46-08  2 12 22 108
 06-1B-B1-05-3B-9F  2 12 22 108
-06-1B-B1-05-3B-93  2 12 22 108
 06-1B-B1-05-46-10  2 12 22 108
 06-1B-B1-05-3B-A1  2 12 22 108</handler>
           <handler name="debug" canRead="true" canWrite="true">false</handler>
@@ -2653,24 +2529,24 @@ name	r.</handler>
         </children>
         <children name="link_stat">
           <handler name="schema" canRead="true"><XMLSchema:schema><XMLSchema:element name="tau"><XMLSchema:complexType><XMLSchema:attribute name="value" type="xs:int" use="required"/></XMLSchema:complexType></XMLSchema:element><XMLSchema:element name="probes"><XMLSchema:complexType><XMLSchema:sequence><XMLSchema:element ref="probe" maxOccurs="unbounded"/></XMLSchema:sequence><XMLSchema:attribute name="time" type="xs:decimal" use="required"/><XMLSchema:attribute name="id" type="xs:string" use="required"/></XMLSchema:complexType></XMLSchema:element><XMLSchema:element name="probe"><XMLSchema:complexType><XMLSchema:attribute name="size" type="xs:short" use="required"/><XMLSchema:attribute name="rate" type="xs:byte" use="required"/></XMLSchema:complexType></XMLSchema:element><XMLSchema:element name="period"><XMLSchema:complexType><XMLSchema:attribute name="value" type="xs:short" use="required"/></XMLSchema:complexType></XMLSchema:element><XMLSchema:element name="link_info"><XMLSchema:complexType><XMLSchema:attribute name="size" type="xs:short" use="required"/><XMLSchema:attribute name="rev" type="xs:byte" use="required"/><XMLSchema:attribute name="rate" type="xs:byte" use="required"/><XMLSchema:attribute name="fwd" type="xs:byte" use="required"/></XMLSchema:complexType></XMLSchema:element><XMLSchema:element name="link"><XMLSchema:complexType><XMLSchema:sequence><XMLSchema:element ref="link_info" maxOccurs="unbounded"/></XMLSchema:sequence><XMLSchema:attribute name="to" type="xs:string" use="required"/><XMLSchema:attribute name="tau" type="xs:int" use="required"/><XMLSchema:attribute name="seq" type="xs:int" use="required"/><XMLSchema:attribute name="period" type="xs:short" use="required"/><XMLSchema:attribute name="last_rx" type="xs:decimal" use="required"/></XMLSchema:complexType></XMLSchema:element><XMLSchema:element name="handlers"><XMLSchema:complexType><XMLSchema:sequence><XMLSchema:element ref="handler" maxOccurs="unbounded"/></XMLSchema:sequence><XMLSchema:attribute name="elem_name" use="required"><XMLSchema:simpleType><XMLSchema:restriction base="xs:string"><XMLSchema:enumeration value="BRN2LinkStat"/></XMLSchema:restriction></XMLSchema:simpleType></XMLSchema:attribute></XMLSchema:complexType></XMLSchema:element><XMLSchema:element name="handler"><XMLSchema:complexType><XMLSchema:choice><XMLSchema:element ref="badnodes"/><XMLSchema:element ref="entry"/><XMLSchema:element ref="period"/><XMLSchema:element ref="probes"/><XMLSchema:element ref="tau"/></XMLSchema:choice><XMLSchema:attribute name="name" use="required"><XMLSchema:simpleType><XMLSchema:restriction base="xs:string"><XMLSchema:enumeration value="bad_version"/><XMLSchema:enumeration value="bcast_stats"/><XMLSchema:enumeration value="period"/><XMLSchema:enumeration value="probes"/><XMLSchema:enumeration value="tau"/></XMLSchema:restriction></XMLSchema:simpleType></XMLSchema:attribute></XMLSchema:complexType></XMLSchema:element><XMLSchema:element name="entry"><XMLSchema:complexType><XMLSchema:sequence><XMLSchema:element ref="link" maxOccurs="unbounded"/></XMLSchema:sequence><XMLSchema:attribute name="time" type="xs:decimal" use="required"/><XMLSchema:attribute name="tau" type="xs:int" use="required"/><XMLSchema:attribute name="seq" type="xs:short" use="required"/><XMLSchema:attribute name="period" type="xs:short" use="required"/><XMLSchema:attribute name="from" type="xs:string" use="required"/></XMLSchema:complexType></XMLSchema:element><XMLSchema:element name="badnodes"><XMLSchema:complexType><XMLSchema:sequence><XMLSchema:element ref="badnode" maxOccurs="unbounded"/></XMLSchema:sequence><XMLSchema:attribute name="time" type="xs:decimal" use="required"/><XMLSchema:attribute name="id" type="xs:string" use="required"/></XMLSchema:complexType></XMLSchema:element><XMLSchema:element name="badnode"><XMLSchema:complexType><XMLSchema:attribute name="version" type="xs:byte" use="required"/><XMLSchema:attribute name="id" type="xs:string" use="required"/></XMLSchema:complexType></XMLSchema:element></XMLSchema:schema></handler>
-          <handler name="probes" canRead="true" canWrite="true"><probes id="06-1B-B1-05-46-09" time="1298636949.078075147">
+          <handler name="probes" canRead="true" canWrite="true"><probes id="06-1B-B1-05-46-09" time="1298903775.868466309">
               <probe rate="2" size="500"/>
             </probes></handler>
           <handler name="period" canRead="true" canWrite="true"><period value="2000"/></handler>
           <handler name="tau" canRead="true" canWrite="true"><tau value="100000"/></handler>
-          <handler name="bad_version" canRead="true"><badnodes id="06-1B-B1-05-46-09" time="1298636949.138677302"/></handler>
-          <handler name="bcast_stats" canRead="true"><entry from="06-1B-B1-05-46-09" period="2000" seq="1803" tau="100000" time="1298636949.156510924">
-              <link last_rx="1.903164924" period="2000" seq="2293" tau="100000" to="06-1B-B1-05-3B-93">
-                <link_info fwd="40" rate="2" rev="18" size="500"/>
+          <handler name="bad_version" canRead="true"><badnodes id="06-1B-B1-05-46-09" time="1298903775.974889373"/></handler>
+          <handler name="bcast_stats" canRead="true"><entry from="06-1B-B1-05-46-09" period="2000" seq="462" tau="100000" time="1298903776.010665437">
+              <link last_rx="12.792299437" period="2000" seq="457" tau="100000" to="06-1B-B1-05-3B-9F">
+                <link_info fwd="28" rate="2" rev="28" size="500"/>
               </link>
-              <link last_rx="4.721558924" period="2000" seq="1997" tau="100000" to="06-1B-B1-05-3B-9F">
-                <link_info fwd="50" rate="2" rev="60" size="500"/>
+              <link last_rx="1.698070437" period="2000" seq="463" tau="100000" to="06-1B-B1-05-3B-A1">
+                <link_info fwd="38" rate="2" rev="64" size="500"/>
               </link>
-              <link last_rx="1.847296924" period="2000" seq="1803" tau="100000" to="06-1B-B1-05-3B-A1">
-                <link_info fwd="66" rate="2" rev="66" size="500"/>
+              <link last_rx="3.338053437" period="2000" seq="461" tau="100000" to="06-1B-B1-05-46-08">
+                <link_info fwd="60" rate="2" rev="82" size="500"/>
               </link>
-              <link last_rx="3.659719924" period="2000" seq="2035" tau="100000" to="06-1B-B1-05-46-10">
-                <link_info fwd="50" rate="2" rev="70" size="500"/>
+              <link last_rx="1.161520437" period="2000" seq="461" tau="100000" to="06-1B-B1-05-46-10">
+                <link_info fwd="24" rate="2" rev="38" size="500"/>
               </link>
             </entry></handler>
           <handler name="debug" canRead="true" canWrite="true">2</handler>
@@ -2730,39 +2606,39 @@ push	-	[0] Discard@16</handler>
           <children name="cst">
             <handler name="channel" canRead="true">13</handler>
             <handler name="src_rssi" canRead="true">etheraddress	avg_rssi	sum_rssi	pkt_count</handler>
-            <handler name="no_src" canRead="true">10</handler>
+            <handler name="no_src" canRead="true">11</handler>
             <handler name="avg_rssi" canRead="true">20</handler>
             <handler name="avg_noise" canRead="true">-96</handler>
             <handler name="hw_tx" canRead="true">0</handler>
-            <handler name="hw_rx" canRead="true">82</handler>
-            <handler name="hw_busy" canRead="true">84</handler>
+            <handler name="hw_rx" canRead="true">100</handler>
+            <handler name="hw_busy" canRead="true">100</handler>
             <handler name="tx" canRead="true">0</handler>
-            <handler name="rx" canRead="true">67</handler>
-            <handler name="busy" canRead="true">67</handler>
-            <handler name="stats_xml" canRead="true"><channelstats node="06-1B-B1-05-46-09" id="3593" length="1000" unit="ms">
-	<mac packets="593" rx_pkt="593" no_err_pkt="593" crc_err_pkt="0" phy_err_pkt="0" tx_pkt="0" zero_err_pkt="0" busy="67" rx="67" tx="0" noerr_rx="67" crc_rx="0" phy_rx="0" last_packet_time="1298636949.713670" no_src="10"/>
-	<mac_duration busy="674200" rx="674200" tx="0" noerr_rx="674200" crc_rx="0" phy_rx="0" unit="us"/>
-	<phy hwbusy="84" hwrx="82" hwtx="0" last_hw_stat_time="1298636949.112428863" avg_noise="-96" avg_rssi="20" channel="13"/>
+            <handler name="rx" canRead="true">74</handler>
+            <handler name="busy" canRead="true">74</handler>
+            <handler name="stats_xml" canRead="true"><channelstats node="06-1B-B1-05-46-09" id="921" length="1000" unit="ms">
+	<mac packets="755" rx_pkt="755" no_err_pkt="755" crc_err_pkt="0" phy_err_pkt="0" tx_pkt="0" zero_err_pkt="0" busy="74" rx="74" tx="0" noerr_rx="74" crc_rx="0" phy_rx="0" last_packet_time="1298903776.930649" no_src="11"/>
+	<mac_duration busy="748752" rx="748752" tx="0" noerr_rx="748752" crc_rx="0" phy_rx="0" unit="us"/>
+	<phy hwbusy="100" hwrx="100" hwtx="0" last_hw_stat_time="1298903776.014477874" avg_noise="-96" avg_rssi="20" channel="13"/>
 	<rssi>
 	</rssi>
 </channelstats></handler>
-            <handler name="stats" canRead="true">ID: 3593
+            <handler name="stats" canRead="true">ID: 921
 Time: 1000
 All packets: 0
-RXPackets: 593
-Busy: 67
-RX: 67
+RXPackets: 755
+Busy: 74
+RX: 74
 TX: 0
 HW available: true
-HW Busy: 84
-HW RX: 82
+HW Busy: 100
+HW RX: 100
 HW TX: 0
-Last HW Busy: 84
-Last HW RX: 82
+Last HW Busy: 85
+Last HW RX: 84
 Last HW TX: 0
 Avg. Noise: -96
 Avg. Rssi: 20
-No. Src: 10</handler>
+No. Src: 11</handler>
             <handler name="max_time" canRead="true" canWrite="true">1000</handler>
             <handler name="debug" canRead="true" canWrite="true">2</handler>
             <handler name="handlers" canRead="true">reset	wb
@@ -2805,12 +2681,12 @@ pull	-	device_wifi/wifidevice/ath_op_q [0]
 pull	-	device_wifi/wifidevice/Ath2Encap@3 [0]
 1 output
 pull	-	[0] device_wifi/wifidevice/rawdev/ToDevice@1</handler>
-            <handler name="config" canRead="true"/>
+            <handler name="config" canRead="true"></handler>
             <handler name="class" canRead="true">PrioSched</handler>
             <handler name="name" canRead="true">device_wifi/wifidevice/op_prio_s</handler>
           </children>
           <children name="ath_op">
-            <handler name="pkt_count" canRead="true">7655 7 7655 7 7</handler>
+            <handler name="pkt_count" canRead="true">16391 12 16391 12 12</handler>
             <handler name="debug" canRead="true" canWrite="true">4</handler>
             <handler name="handlers" canRead="true">pkt_count	r
 set_macclone	w
@@ -2893,7 +2769,7 @@ push~	-	[0] device_wifi/wifidevice/ath_op</handler>
             <handler name="name" canRead="true">device_wifi/wifidevice/dev_decap</handler>
           </children>
           <children name="rawwifidev_too_small_cnt">
-            <handler name="count_call" canRead="true" canWrite="true"/>
+            <handler name="count_call" canRead="true" canWrite="true"></handler>
             <handler name="byte_rate" canRead="true">0</handler>
             <handler name="bit_rate" canRead="true">0</handler>
             <handler name="rate" canRead="true">0</handler>
@@ -2917,7 +2793,7 @@ name	r.</handler>
 push~	-	device_wifi/wifidevice/dev_decap [1]
 1 output
 push~	-	[0] device_wifi/wifidevice/Discard@9</handler>
-            <handler name="config" canRead="true"/>
+            <handler name="config" canRead="true"></handler>
             <handler name="class" canRead="true">Counter</handler>
             <handler name="name" canRead="true">device_wifi/wifidevice/rawwifidev_too_small_cnt</handler>
           </children>
@@ -3017,7 +2893,7 @@ push~	-	device_wifi/lp_clf [1]
 2 outputs
 pull~	-	[1] device_wifi/lp_data_scheduler
 push~	-	[0] device_wifi/brnToMe</handler>
-          <handler name="config" canRead="true"/>
+          <handler name="config" canRead="true"></handler>
           <handler name="class" canRead="true">Suppressor</handler>
           <handler name="name" canRead="true">device_wifi/data_suppressor</handler>
         </children>
@@ -3032,7 +2908,7 @@ pull	-	device_wifi/lp_suppressor [0]
 pull	-	device_wifi/data_suppressor [0]
 1 output
 pull	-	[0] device_wifi/wifidevice/Ath2Encap@3</handler>
-          <handler name="config" canRead="true"/>
+          <handler name="config" canRead="true"></handler>
           <handler name="class" canRead="true">PrioSched</handler>
           <handler name="name" canRead="true">device_wifi/lp_data_scheduler</handler>
         </children>
@@ -3049,14 +2925,14 @@ push~	-	device_wifi/wifidevice/cst [0]
 2 outputs
 push~	-	[0] device_wifi/error_clf
 push	-	[0] device_wifi/Discard@17</handler>
-          <handler name="config" canRead="true"/>
+          <handler name="config" canRead="true"></handler>
           <handler name="class" canRead="true">FilterTX</handler>
           <handler name="name" canRead="true">device_wifi/filter_tx</handler>
         </children>
         <children name="error_clf">
           <handler name="phy" canRead="true">0</handler>
           <handler name="crc" canRead="true">0</handler>
-          <handler name="ok" canRead="true">370426</handler>
+          <handler name="ok" canRead="true">340232</handler>
           <handler name="handlers" canRead="true">phy	r
 crc	r
 ok	r
@@ -3069,7 +2945,7 @@ name	r.</handler>
 push~	-	device_wifi/filter_tx [0]
 1 output
 push~	-	[0] device_wifi/WifiDupeFilter@15</handler>
-          <handler name="config" canRead="true"/>
+          <handler name="config" canRead="true"></handler>
           <handler name="class" canRead="true">WifiErrorClassifier</handler>
           <handler name="name" canRead="true">device_wifi/error_clf</handler>
         </children>
@@ -3229,7 +3105,7 @@ name	r.</handler>
 pull~	-	device_wifi/lp_queue [0]
 1 output
 pull~	-	[0] device_wifi/lp_data_scheduler</handler>
-          <handler name="config" canRead="true"/>
+          <handler name="config" canRead="true"></handler>
           <handler name="class" canRead="true">Suppressor</handler>
           <handler name="name" canRead="true">device_wifi/lp_suppressor</handler>
         </children>
@@ -3264,7 +3140,7 @@ name	r.</handler>
           <handler name="name" canRead="true">routing/dsr_encap</handler>
         </children>
         <children name="querier">
-          <handler name="fixed_route" canRead="true" canWrite="true"/>
+          <handler name="fixed_route" canRead="true" canWrite="true"></handler>
           <handler name="debug" canRead="true" canWrite="true">2</handler>
           <handler name="handlers" canRead="true">flush_sb	w
 fixed_route_clear	w
@@ -3385,7 +3261,7 @@ push	-	routing/src_forwarder [2]
 2 outputs
 push	-	[0] routing/Discard@12
 push	-	[0] routing/err_forwarder</handler>
-          <handler name="config" canRead="true"/>
+          <handler name="config" canRead="true"></handler>
           <handler name="class" canRead="true">Tee</handler>
           <handler name="name" canRead="true">routing/tee_to_err_fwd</handler>
         </children>
@@ -3481,61 +3357,41 @@ name	r.</handler>
       <element name="lt">
         <handler name="debug" canRead="true" canWrite="true">2</handler>
         <handler name="dijkstra_time" canRead="true">0.000000</handler>
-        <handler name="blacklist" canRead="true"/>
-        <handler name="hosts" canRead="true">06-1B-B1-05-3B-6F from_me: 0 to_me: 0 assosiated: false
-06-1B-B1-05-3B-93 from_me: 0 to_me: 0 assosiated: false
-06-1B-B1-05-3B-97 from_me: 0 to_me: 0 assosiated: false
-06-1B-B1-05-3B-99 from_me: 0 to_me: 0 assosiated: false
-06-1B-B1-05-3B-9F from_me: 0 to_me: 0 assosiated: false
+        <handler name="blacklist" canRead="true"></handler>
+        <handler name="hosts" canRead="true">06-1B-B1-05-3B-9F from_me: 0 to_me: 0 assosiated: false
 06-1B-B1-05-3B-A1 from_me: 0 to_me: 0 assosiated: false
 06-1B-B1-05-46-06 from_me: 0 to_me: 0 assosiated: false
+06-1B-B1-05-46-08 from_me: 0 to_me: 0 assosiated: false
 06-1B-B1-05-46-09 from_me: 0 to_me: 0 assosiated: false
-06-1B-B1-05-46-0C from_me: 0 to_me: 0 assosiated: false
 06-1B-B1-05-46-10 from_me: 0 to_me: 0 assosiated: false
 06-1B-B1-05-46-36 from_me: 0 to_me: 0 assosiated: false</handler>
-        <handler name="links" canRead="true">06-1B-B1-05-3B-97 06-1B-B1-05-46-10 9999 2258 16
-	06-1B-B1-05-46-10 06-1B-B1-05-3B-97 9999 2258 16
-	06-1B-B1-05-3B-93 06-1B-B1-05-46-10 1282 2301 0
-	06-1B-B1-05-46-10 06-1B-B1-05-3B-93 1282 2301 0
-	06-1B-B1-05-3B-A1 06-1B-B1-05-3B-9F 204 3652 0
-	06-1B-B1-05-3B-9F 06-1B-B1-05-3B-A1 204 3652 0
-	06-1B-B1-05-3B-6F 06-1B-B1-05-3B-93 113 2259 53
-	06-1B-B1-05-3B-93 06-1B-B1-05-3B-6F 113 2259 53
-	06-1B-B1-05-3B-6F 06-1B-B1-05-46-10 374 2285 0
-	06-1B-B1-05-46-10 06-1B-B1-05-3B-6F 374 2285 0
-	06-1B-B1-05-3B-A1 06-1B-B1-05-3B-93 2777 2596 0
-	06-1B-B1-05-3B-93 06-1B-B1-05-3B-A1 2777 2596 0
-	06-1B-B1-05-3B-A1 06-1B-B1-05-46-10 177 3521 0
-	06-1B-B1-05-46-10 06-1B-B1-05-3B-A1 177 3521 0
-	06-1B-B1-05-46-36 06-1B-B1-05-3B-9F 614 2278 3
-	06-1B-B1-05-3B-9F 06-1B-B1-05-46-36 614 2278 3
-	06-1B-B1-05-46-0C 06-1B-B1-05-3B-9F 320 177091 3
-	06-1B-B1-05-3B-9F 06-1B-B1-05-46-0C 320 177091 3
-	06-1B-B1-05-46-09 06-1B-B1-05-3B-9F 312 2963 0
-	06-1B-B1-05-3B-9F 06-1B-B1-05-46-09 312 2963 0
-	06-1B-B1-05-46-0C 06-1B-B1-05-3B-93 111 177070 53
-	06-1B-B1-05-3B-93 06-1B-B1-05-46-0C 111 177070 53
-	06-1B-B1-05-46-0C 06-1B-B1-05-46-10 307 177090 0
-	06-1B-B1-05-46-10 06-1B-B1-05-46-0C 307 177090 0
-	06-1B-B1-05-3B-93 06-1B-B1-05-46-09 1086 2288 0
-	06-1B-B1-05-46-09 06-1B-B1-05-3B-93 1086 2288 0
-	06-1B-B1-05-46-09 06-1B-B1-05-46-10 289 3350 0
-	06-1B-B1-05-46-10 06-1B-B1-05-46-09 289 3350 0
-	06-1B-B1-05-3B-97 06-1B-B1-05-3B-9F 357 2278 3
-	06-1B-B1-05-3B-9F 06-1B-B1-05-3B-97 357 2278 3
-	06-1B-B1-05-46-06 06-1B-B1-05-46-10 9999 2276 0
-	06-1B-B1-05-46-10 06-1B-B1-05-46-06 9999 2276 0
-	06-1B-B1-05-3B-93 06-1B-B1-05-3B-9F 462 2287 3
-	06-1B-B1-05-3B-9F 06-1B-B1-05-3B-93 462 2287 3
-	06-1B-B1-05-46-10 06-1B-B1-05-3B-9F 102 3099 0
-	06-1B-B1-05-3B-9F 06-1B-B1-05-46-10 102 3099 0
-	06-1B-B1-05-3B-6F 06-1B-B1-05-3B-9F 205 2280 3
-	06-1B-B1-05-3B-9F 06-1B-B1-05-3B-6F 205 2280 3
-	06-1B-B1-05-3B-A1 06-1B-B1-05-46-09 210 3193 0
-	06-1B-B1-05-46-09 06-1B-B1-05-3B-A1 210 3193 0</handler>
-        <handler name="routes_to" canRead="true"/>
-        <handler name="routes_from" canRead="true"/>
-        <handler name="routes" canRead="true"/>
+        <handler name="links" canRead="true">06-1B-B1-05-3B-A1 06-1B-B1-05-3B-9F 350 749 0
+	06-1B-B1-05-3B-9F 06-1B-B1-05-3B-A1 350 749 0
+	06-1B-B1-05-46-10 06-1B-B1-05-3B-A1 215 806 0
+	06-1B-B1-05-3B-A1 06-1B-B1-05-46-10 215 806 0
+	06-1B-B1-05-46-36 06-1B-B1-05-3B-9F 9999 135458 371
+	06-1B-B1-05-3B-9F 06-1B-B1-05-46-36 9999 135458 371
+	06-1B-B1-05-46-08 06-1B-B1-05-46-09 179 563 1
+	06-1B-B1-05-46-09 06-1B-B1-05-46-08 179 563 1
+	06-1B-B1-05-3B-9F 06-1B-B1-05-46-08 173 624 1
+	06-1B-B1-05-46-08 06-1B-B1-05-3B-9F 173 624 1
+	06-1B-B1-05-46-09 06-1B-B1-05-3B-9F 661 526 1
+	06-1B-B1-05-3B-9F 06-1B-B1-05-46-09 661 526 1
+	06-1B-B1-05-46-10 06-1B-B1-05-46-08 148 680 2
+	06-1B-B1-05-46-08 06-1B-B1-05-46-10 148 680 2
+	06-1B-B1-05-46-09 06-1B-B1-05-46-10 543 582 1
+	06-1B-B1-05-46-10 06-1B-B1-05-46-09 543 582 1
+	06-1B-B1-05-46-06 06-1B-B1-05-46-10 631 3108 2
+	06-1B-B1-05-46-10 06-1B-B1-05-46-06 631 3108 2
+	06-1B-B1-05-46-10 06-1B-B1-05-3B-9F 119 643 1
+	06-1B-B1-05-3B-9F 06-1B-B1-05-46-10 119 643 1
+	06-1B-B1-05-3B-A1 06-1B-B1-05-46-08 193 787 0
+	06-1B-B1-05-46-08 06-1B-B1-05-3B-A1 193 787 0
+	06-1B-B1-05-3B-A1 06-1B-B1-05-46-09 281 689 0
+	06-1B-B1-05-46-09 06-1B-B1-05-3B-A1 281 689 0</handler>
+        <handler name="routes_to" canRead="true"></handler>
+        <handler name="routes_from" canRead="true"></handler>
+        <handler name="routes" canRead="true"></handler>
         <handler name="handlers" canRead="true">update_link	w
 best_route_and_dijkstra	w
 best_route	w
@@ -3564,8 +3420,8 @@ name	r.</handler>
         <handler name="name" canRead="true">lt</handler>
       </element>
       <element name="sys_info">
-        <handler name="schema" canRead="true"/>
-        <handler name="systeminfo" canRead="true"/>
+        <handler name="schema" canRead="true"></handler>
+        <handler name="systeminfo" canRead="true"></handler>
         <handler name="debug" canRead="true" canWrite="true">2</handler>
         <handler name="handlers" canRead="true">schema	r
 systeminfo	r
@@ -3583,7 +3439,7 @@ name	r.</handler>
       </element>
       <element name="gps">
         <handler name="speed" canRead="true" canWrite="true">0.0</handler>
-        <handler name="gps_coord" canRead="true" canWrite="true">52.432090 13.534270 0.000560</handler>
+        <handler name="gps_coord" canRead="true" canWrite="true">52.432080 13.534240 0.000560</handler>
         <handler name="cart_coord" canRead="true" canWrite="true">0 0 0</handler>
         <handler name="debug" canRead="true" canWrite="true">2</handler>
         <handler name="handlers" canRead="true">speed	rw
@@ -3597,18 +3453,18 @@ class	r.
 name	r.</handler>
         <handler name="ports" canRead="true">0 inputs
 0 outputs</handler>
-        <handler name="config" canRead="true"/>
+        <handler name="config" canRead="true"></handler>
         <handler name="class" canRead="true">GPS</handler>
         <handler name="name" canRead="true">gps</handler>
       </element>
       <element name="seismo">
         <handler name="channelstatinfo" canRead="true"><node id="00-00-00-00-00-00">
-<gps long="1353427" lat="5243209" alt="56" HDOP="0"/>
-<seismo samplingrate="100" sample_count="1630" channels="4" last_update="1298636943880000">
-<chaninfo id="0" avg_value="-237044" std_value="5619" min_value="-258120" max_value="-219624"/>
-<chaninfo id="1" avg_value="2130123" std_value="1562" min_value="2128576" max_value="2131384"/>
-<chaninfo id="2" avg_value="-223807" std_value="5296" min_value="-237464" max_value="-209432"/>
-<chaninfo id="3" avg_value="-56" std_value="27" min_value="-144" max_value="40"/>
+<gps long="1353424" lat="5243208" alt="56" HDOP="0"/>
+<seismo samplingrate="100" sample_count="2190" channels="4" last_update="1298903763680000">
+<chaninfo id="0" avg_value="-239237" std_value="4944" min_value="-263304" max_value="-214456"/>
+<chaninfo id="1" avg_value="2142614" std_value="2055" min_value="2140640" max_value="2144584"/>
+<chaninfo id="2" avg_value="-177484" std_value="3978" min_value="-192584" max_value="-161232"/>
+<chaninfo id="3" avg_value="-37" std_value="28" min_value="-144" max_value="64"/>
 </seismo>
 </node></handler>
         <handler name="debug" canRead="true" canWrite="true">2</handler>
@@ -3636,7 +3492,7 @@ name	r.</handler>
 push~	-	toMeAfterRouting [0], device_wifi/brnToMe [0]
 1 output
 push~	-	[0] BRN2EtherDecap@13</handler>
-        <handler name="config" canRead="true"/>
+        <handler name="config" canRead="true"></handler>
         <handler name="class" canRead="true">Null</handler>
         <handler name="name" canRead="true">Label_brnether</handler>
       </element>
@@ -3735,9 +3591,9 @@ name	r.</handler>
         </children>
         <children name="proberates">
           <handler name="rates" canRead="true">DEFAULT  2 12 22 108
+06-1B-B1-05-46-08  2 12 22 108
 06-1B-B1-05-46-09  2 12 22 108
 06-1B-B1-05-3B-9F  2 12 22 108
-06-1B-B1-05-3B-93  2 12 22 108
 06-1B-B1-05-46-10  2 12 22 108</handler>
           <handler name="debug" canRead="true" canWrite="true">false</handler>
           <handler name="handlers" canRead="true">remove	w
@@ -3771,24 +3627,24 @@ name	r.</handler>
         </children>
         <children name="link_stat">
           <handler name="schema" canRead="true"><XMLSchema:schema><XMLSchema:element name="tau"><XMLSchema:complexType><XMLSchema:attribute name="value" type="xs:int" use="required"/></XMLSchema:complexType></XMLSchema:element><XMLSchema:element name="probes"><XMLSchema:complexType><XMLSchema:sequence><XMLSchema:element ref="probe" maxOccurs="unbounded"/></XMLSchema:sequence><XMLSchema:attribute name="time" type="xs:decimal" use="required"/><XMLSchema:attribute name="id" type="xs:string" use="required"/></XMLSchema:complexType></XMLSchema:element><XMLSchema:element name="probe"><XMLSchema:complexType><XMLSchema:attribute name="size" type="xs:short" use="required"/><XMLSchema:attribute name="rate" type="xs:byte" use="required"/></XMLSchema:complexType></XMLSchema:element><XMLSchema:element name="period"><XMLSchema:complexType><XMLSchema:attribute name="value" type="xs:short" use="required"/></XMLSchema:complexType></XMLSchema:element><XMLSchema:element name="link_info"><XMLSchema:complexType><XMLSchema:attribute name="size" type="xs:short" use="required"/><XMLSchema:attribute name="rev" type="xs:byte" use="required"/><XMLSchema:attribute name="rate" type="xs:byte" use="required"/><XMLSchema:attribute name="fwd" type="xs:byte" use="required"/></XMLSchema:complexType></XMLSchema:element><XMLSchema:element name="link"><XMLSchema:complexType><XMLSchema:sequence><XMLSchema:element ref="link_info" maxOccurs="unbounded"/></XMLSchema:sequence><XMLSchema:attribute name="to" type="xs:string" use="required"/><XMLSchema:attribute name="tau" type="xs:int" use="required"/><XMLSchema:attribute name="seq" type="xs:int" use="required"/><XMLSchema:attribute name="period" type="xs:short" use="required"/><XMLSchema:attribute name="last_rx" type="xs:decimal" use="required"/></XMLSchema:complexType></XMLSchema:element><XMLSchema:element name="handlers"><XMLSchema:complexType><XMLSchema:sequence><XMLSchema:element ref="handler" maxOccurs="unbounded"/></XMLSchema:sequence><XMLSchema:attribute name="elem_name" use="required"><XMLSchema:simpleType><XMLSchema:restriction base="xs:string"><XMLSchema:enumeration value="BRN2LinkStat"/></XMLSchema:restriction></XMLSchema:simpleType></XMLSchema:attribute></XMLSchema:complexType></XMLSchema:element><XMLSchema:element name="handler"><XMLSchema:complexType><XMLSchema:choice><XMLSchema:element ref="badnodes"/><XMLSchema:element ref="entry"/><XMLSchema:element ref="period"/><XMLSchema:element ref="probes"/><XMLSchema:element ref="tau"/></XMLSchema:choice><XMLSchema:attribute name="name" use="required"><XMLSchema:simpleType><XMLSchema:restriction base="xs:string"><XMLSchema:enumeration value="bad_version"/><XMLSchema:enumeration value="bcast_stats"/><XMLSchema:enumeration value="period"/><XMLSchema:enumeration value="probes"/><XMLSchema:enumeration value="tau"/></XMLSchema:restriction></XMLSchema:simpleType></XMLSchema:attribute></XMLSchema:complexType></XMLSchema:element><XMLSchema:element name="entry"><XMLSchema:complexType><XMLSchema:sequence><XMLSchema:element ref="link" maxOccurs="unbounded"/></XMLSchema:sequence><XMLSchema:attribute name="time" type="xs:decimal" use="required"/><XMLSchema:attribute name="tau" type="xs:int" use="required"/><XMLSchema:attribute name="seq" type="xs:short" use="required"/><XMLSchema:attribute name="period" type="xs:short" use="required"/><XMLSchema:attribute name="from" type="xs:string" use="required"/></XMLSchema:complexType></XMLSchema:element><XMLSchema:element name="badnodes"><XMLSchema:complexType><XMLSchema:sequence><XMLSchema:element ref="badnode" maxOccurs="unbounded"/></XMLSchema:sequence><XMLSchema:attribute name="time" type="xs:decimal" use="required"/><XMLSchema:attribute name="id" type="xs:string" use="required"/></XMLSchema:complexType></XMLSchema:element><XMLSchema:element name="badnode"><XMLSchema:complexType><XMLSchema:attribute name="version" type="xs:byte" use="required"/><XMLSchema:attribute name="id" type="xs:string" use="required"/></XMLSchema:complexType></XMLSchema:element></XMLSchema:schema></handler>
-          <handler name="probes" canRead="true" canWrite="true"><probes id="06-1B-B1-05-3B-A1" time="1298636945.791047603">
+          <handler name="probes" canRead="true" canWrite="true"><probes id="06-1B-B1-05-3B-A1" time="1298903766.789865907">
               <probe rate="2" size="500"/>
             </probes></handler>
           <handler name="period" canRead="true" canWrite="true"><period value="2000"/></handler>
           <handler name="tau" canRead="true" canWrite="true"><tau value="100000"/></handler>
-          <handler name="bad_version" canRead="true"><badnodes id="06-1B-B1-05-3B-A1" time="1298636945.863876969"/></handler>
-          <handler name="bcast_stats" canRead="true"><entry from="06-1B-B1-05-3B-A1" period="2000" seq="1802" tau="100000" time="1298636945.914621187">
-              <link last_rx="55.564851187" period="2000" seq="2264" tau="100000" to="06-1B-B1-05-3B-93">
-                <link_info fwd="90" rate="2" rev="4" size="500"/>
+          <handler name="bad_version" canRead="true"><badnodes id="06-1B-B1-05-3B-A1" time="1298903766.851174992"/></handler>
+          <handler name="bcast_stats" canRead="true"><entry from="06-1B-B1-05-3B-A1" period="2000" seq="459" tau="100000" time="1298903766.868836741">
+              <link last_rx="1.763854741" period="2000" seq="458" tau="100000" to="06-1B-B1-05-3B-9F">
+                <link_info fwd="42" rate="2" rev="70" size="500"/>
               </link>
-              <link last_rx="1.483516187" period="2000" seq="1997" tau="100000" to="06-1B-B1-05-3B-9F">
-                <link_info fwd="68" rate="2" rev="72" size="500"/>
+              <link last_rx="1.785142741" period="2000" seq="457" tau="100000" to="06-1B-B1-05-46-08">
+                <link_info fwd="74" rate="2" rev="68" size="500"/>
               </link>
-              <link last_rx="2.483544187" period="2000" seq="1800" tau="100000" to="06-1B-B1-05-46-09">
-                <link_info fwd="68" rate="2" rev="68" size="500"/>
+              <link last_rx="5.583531741" period="2000" seq="455" tau="100000" to="06-1B-B1-05-46-09">
+                <link_info fwd="74" rate="2" rev="46" size="500"/>
               </link>
-              <link last_rx="0.421519187" period="2000" seq="2035" tau="100000" to="06-1B-B1-05-46-10">
-                <link_info fwd="68" rate="2" rev="76" size="500"/>
+              <link last_rx="2.066055741" period="2000" seq="456" tau="100000" to="06-1B-B1-05-46-10">
+                <link_info fwd="60" rate="2" rev="76" size="500"/>
               </link>
             </entry></handler>
           <handler name="debug" canRead="true" canWrite="true">2</handler>
@@ -3848,39 +3704,39 @@ push	-	[0] Discard@16</handler>
           <children name="cst">
             <handler name="channel" canRead="true">13</handler>
             <handler name="src_rssi" canRead="true">etheraddress	avg_rssi	sum_rssi	pkt_count</handler>
-            <handler name="no_src" canRead="true">15</handler>
-            <handler name="avg_rssi" canRead="true">26</handler>
+            <handler name="no_src" canRead="true">19</handler>
+            <handler name="avg_rssi" canRead="true">30</handler>
             <handler name="avg_noise" canRead="true">-96</handler>
             <handler name="hw_tx" canRead="true">0</handler>
             <handler name="hw_rx" canRead="true">100</handler>
             <handler name="hw_busy" canRead="true">100</handler>
             <handler name="tx" canRead="true">0</handler>
-            <handler name="rx" canRead="true">54</handler>
-            <handler name="busy" canRead="true">54</handler>
-            <handler name="stats_xml" canRead="true"><channelstats node="06-1B-B1-05-3B-A1" id="3592" length="1000" unit="ms">
-	<mac packets="457" rx_pkt="457" no_err_pkt="457" crc_err_pkt="0" phy_err_pkt="0" tx_pkt="0" zero_err_pkt="0" busy="54" rx="54" tx="0" noerr_rx="54" crc_rx="0" phy_rx="0" last_packet_time="1298636948.017257" no_src="14"/>
-	<mac_duration busy="543949" rx="543949" tx="0" noerr_rx="543949" crc_rx="0" phy_rx="0" unit="us"/>
-	<phy hwbusy="100" hwrx="100" hwtx="0" last_hw_stat_time="1298636947.624622025" avg_noise="-96" avg_rssi="25" channel="13"/>
+            <handler name="rx" canRead="true">59</handler>
+            <handler name="busy" canRead="true">59</handler>
+            <handler name="stats_xml" canRead="true"><channelstats node="06-1B-B1-05-3B-A1" id="913" length="1000" unit="ms">
+	<mac packets="403" rx_pkt="403" no_err_pkt="403" crc_err_pkt="0" phy_err_pkt="0" tx_pkt="0" zero_err_pkt="0" busy="59" rx="59" tx="0" noerr_rx="59" crc_rx="0" phy_rx="0" last_packet_time="1298903768.023228" no_src="19"/>
+	<mac_duration busy="593672" rx="593672" tx="0" noerr_rx="593672" crc_rx="0" phy_rx="0" unit="us"/>
+	<phy hwbusy="100" hwrx="100" hwtx="0" last_hw_stat_time="1298903767.312740530" avg_noise="-96" avg_rssi="30" channel="13"/>
 	<rssi>
 	</rssi>
 </channelstats></handler>
-            <handler name="stats" canRead="true">ID: 3592
+            <handler name="stats" canRead="true">ID: 913
 Time: 1000
 All packets: 0
-RXPackets: 457
-Busy: 54
-RX: 54
+RXPackets: 403
+Busy: 59
+RX: 59
 TX: 0
 HW available: true
 HW Busy: 100
 HW RX: 100
 HW TX: 0
-Last HW Busy: 67
-Last HW RX: 65
+Last HW Busy: 75
+Last HW RX: 73
 Last HW TX: 0
 Avg. Noise: -96
-Avg. Rssi: 25
-No. Src: 14</handler>
+Avg. Rssi: 30
+No. Src: 19</handler>
             <handler name="max_time" canRead="true" canWrite="true">1000</handler>
             <handler name="debug" canRead="true" canWrite="true">2</handler>
             <handler name="handlers" canRead="true">reset	wb
@@ -3923,12 +3779,12 @@ pull	-	device_wifi/wifidevice/ath_op_q [0]
 pull	-	device_wifi/wifidevice/Ath2Encap@3 [0]
 1 output
 pull	-	[0] device_wifi/wifidevice/rawdev/ToDevice@1</handler>
-            <handler name="config" canRead="true"/>
+            <handler name="config" canRead="true"></handler>
             <handler name="class" canRead="true">PrioSched</handler>
             <handler name="name" canRead="true">device_wifi/wifidevice/op_prio_s</handler>
           </children>
           <children name="ath_op">
-            <handler name="pkt_count" canRead="true">8135 9 8135 9 9</handler>
+            <handler name="pkt_count" canRead="true">11583 12 11583 12 12</handler>
             <handler name="debug" canRead="true" canWrite="true">4</handler>
             <handler name="handlers" canRead="true">pkt_count	r
 set_macclone	w
@@ -4011,7 +3867,7 @@ push~	-	[0] device_wifi/wifidevice/ath_op</handler>
             <handler name="name" canRead="true">device_wifi/wifidevice/dev_decap</handler>
           </children>
           <children name="rawwifidev_too_small_cnt">
-            <handler name="count_call" canRead="true" canWrite="true"/>
+            <handler name="count_call" canRead="true" canWrite="true"></handler>
             <handler name="byte_rate" canRead="true">0</handler>
             <handler name="bit_rate" canRead="true">0</handler>
             <handler name="rate" canRead="true">0</handler>
@@ -4035,7 +3891,7 @@ name	r.</handler>
 push~	-	device_wifi/wifidevice/dev_decap [1]
 1 output
 push~	-	[0] device_wifi/wifidevice/Discard@9</handler>
-            <handler name="config" canRead="true"/>
+            <handler name="config" canRead="true"></handler>
             <handler name="class" canRead="true">Counter</handler>
             <handler name="name" canRead="true">device_wifi/wifidevice/rawwifidev_too_small_cnt</handler>
           </children>
@@ -4135,7 +3991,7 @@ push~	-	device_wifi/lp_clf [1]
 2 outputs
 pull~	-	[1] device_wifi/lp_data_scheduler
 push~	-	[0] device_wifi/brnToMe</handler>
-          <handler name="config" canRead="true"/>
+          <handler name="config" canRead="true"></handler>
           <handler name="class" canRead="true">Suppressor</handler>
           <handler name="name" canRead="true">device_wifi/data_suppressor</handler>
         </children>
@@ -4150,7 +4006,7 @@ pull	-	device_wifi/lp_suppressor [0]
 pull	-	device_wifi/data_suppressor [0]
 1 output
 pull	-	[0] device_wifi/wifidevice/Ath2Encap@3</handler>
-          <handler name="config" canRead="true"/>
+          <handler name="config" canRead="true"></handler>
           <handler name="class" canRead="true">PrioSched</handler>
           <handler name="name" canRead="true">device_wifi/lp_data_scheduler</handler>
         </children>
@@ -4167,14 +4023,14 @@ push~	-	device_wifi/wifidevice/cst [0]
 2 outputs
 push~	-	[0] device_wifi/error_clf
 push	-	[0] device_wifi/Discard@17</handler>
-          <handler name="config" canRead="true"/>
+          <handler name="config" canRead="true"></handler>
           <handler name="class" canRead="true">FilterTX</handler>
           <handler name="name" canRead="true">device_wifi/filter_tx</handler>
         </children>
         <children name="error_clf">
           <handler name="phy" canRead="true">0</handler>
           <handler name="crc" canRead="true">0</handler>
-          <handler name="ok" canRead="true">507016</handler>
+          <handler name="ok" canRead="true">281768</handler>
           <handler name="handlers" canRead="true">phy	r
 crc	r
 ok	r
@@ -4187,7 +4043,7 @@ name	r.</handler>
 push~	-	device_wifi/filter_tx [0]
 1 output
 push~	-	[0] device_wifi/WifiDupeFilter@15</handler>
-          <handler name="config" canRead="true"/>
+          <handler name="config" canRead="true"></handler>
           <handler name="class" canRead="true">WifiErrorClassifier</handler>
           <handler name="name" canRead="true">device_wifi/error_clf</handler>
         </children>
@@ -4347,7 +4203,7 @@ name	r.</handler>
 pull~	-	device_wifi/lp_queue [0]
 1 output
 pull~	-	[0] device_wifi/lp_data_scheduler</handler>
-          <handler name="config" canRead="true"/>
+          <handler name="config" canRead="true"></handler>
           <handler name="class" canRead="true">Suppressor</handler>
           <handler name="name" canRead="true">device_wifi/lp_suppressor</handler>
         </children>
@@ -4382,7 +4238,7 @@ name	r.</handler>
           <handler name="name" canRead="true">routing/dsr_encap</handler>
         </children>
         <children name="querier">
-          <handler name="fixed_route" canRead="true" canWrite="true"/>
+          <handler name="fixed_route" canRead="true" canWrite="true"></handler>
           <handler name="debug" canRead="true" canWrite="true">2</handler>
           <handler name="handlers" canRead="true">flush_sb	w
 fixed_route_clear	w
@@ -4503,7 +4359,7 @@ push	-	routing/src_forwarder [2]
 2 outputs
 push	-	[0] routing/Discard@12
 push	-	[0] routing/err_forwarder</handler>
-          <handler name="config" canRead="true"/>
+          <handler name="config" canRead="true"></handler>
           <handler name="class" canRead="true">Tee</handler>
           <handler name="name" canRead="true">routing/tee_to_err_fwd</handler>
         </children>
@@ -4536,7 +4392,1096 @@ push	-	[1] routing/src_forwarder</handler>
         </children>
       </element>
     </node>
-    <node iNetAdress="10.5.70.8" backbone="wireless"/>
+    <node iNetAdress="10.5.70.8" backbone="wireless">
+      <element name="wireless">
+        <handler name="address" canRead="true" canWrite="true">06-1B-B1-05-46-08</handler>
+        <handler name="deviceinfo" canRead="true"><device node="06-1B-B1-05-46-08" name="ath0" address="06-1B-B1-05-46-08" fix_address="06-1B-B1-05-46-08" type="WIRELESS"/></handler>
+        <handler name="debug" canRead="true" canWrite="true">2</handler>
+        <handler name="handlers" canRead="true">reset_address	w
+address	rw
+deviceinfo	r
+debug	rw
+handlers	r.
+ports	r.
+config	r.
+class	r.
+name	r.</handler>
+        <handler name="ports" canRead="true">0 inputs
+0 outputs</handler>
+        <handler name="config" canRead="true">DEVICENAME &quot;ath0&quot;, ETHERADDRESS deviceaddress, DEVICETYPE &quot;WIRELESS&quot;</handler>
+        <handler name="class" canRead="true">BRN2Device</handler>
+        <handler name="name" canRead="true">wireless</handler>
+      </element>
+      <element name="id">
+        <handler name="version" canRead="true" canWrite="true"><version name="wgt45">
+	<click_binary version="1.8.0" brn_version="0.0.1" mode="userlevel" md5_id="0000000068000000544b4808544b4808"/>
+	<click_script md5_id="4d000000222f746d702f736569736d6f"/>
+</version></handler>
+        <handler name="devinfo" canRead="true"><nodeidentity name="wgt45">
+	<device index="0" name="ath0" address="06-1B-B1-05-46-08" type="WIRELESS"/>
+</nodeidentity></handler>
+        <handler name="debug" canRead="true" canWrite="true">2</handler>
+        <handler name="handlers" canRead="true">version	rw
+nodename	w
+devinfo	r
+debug	rw
+handlers	r.
+ports	r.
+config	r.
+class	r.
+name	r.</handler>
+        <handler name="ports" canRead="true">0 inputs
+0 outputs</handler>
+        <handler name="config" canRead="true">NAME wgt45, DEVICES wireless</handler>
+        <handler name="class" canRead="true">BRN2NodeIdentity</handler>
+        <handler name="name" canRead="true">id</handler>
+      </element>
+      <element name="rc">
+        <handler name="active" canRead="true" canWrite="true">true</handler>
+        <handler name="debug" canRead="true" canWrite="true">0</handler>
+        <handler name="handlers" canRead="true">active	rw
+debug	rw
+handlers	r.
+ports	r.
+config	r.
+class	r.
+name	r.</handler>
+        <handler name="ports" canRead="true">0 inputs
+0 outputs</handler>
+        <handler name="config" canRead="true">DEBUG 0, ACTIVE true, DROP 0, SLICE 0, TTL 4</handler>
+        <handler name="class" canRead="true">Brn2RouteCache</handler>
+        <handler name="name" canRead="true">rc</handler>
+      </element>
+      <element name="lt">
+        <handler name="debug" canRead="true" canWrite="true">2</handler>
+        <handler name="dijkstra_time" canRead="true">0.000000</handler>
+        <handler name="blacklist" canRead="true"></handler>
+        <handler name="hosts" canRead="true">06-1B-B1-05-3B-9F from_me: 0 to_me: 0 assosiated: false
+06-1B-B1-05-3B-A1 from_me: 0 to_me: 0 assosiated: false
+06-1B-B1-05-46-06 from_me: 0 to_me: 0 assosiated: false
+06-1B-B1-05-46-08 from_me: 0 to_me: 0 assosiated: false
+06-1B-B1-05-46-09 from_me: 0 to_me: 0 assosiated: false
+06-1B-B1-05-46-10 from_me: 0 to_me: 0 assosiated: false
+06-1B-B1-05-46-36 from_me: 0 to_me: 0 assosiated: false</handler>
+        <handler name="links" canRead="true">06-1B-B1-05-3B-A1 06-1B-B1-05-3B-9F 340 707 1
+	06-1B-B1-05-3B-9F 06-1B-B1-05-3B-A1 340 707 1
+	06-1B-B1-05-46-10 06-1B-B1-05-3B-A1 221 735 1
+	06-1B-B1-05-3B-A1 06-1B-B1-05-46-10 221 735 1
+	06-1B-B1-05-46-36 06-1B-B1-05-3B-9F 9999 135473 376
+	06-1B-B1-05-3B-9F 06-1B-B1-05-46-36 9999 135473 376
+	06-1B-B1-05-46-08 06-1B-B1-05-46-09 176 786 1
+	06-1B-B1-05-46-09 06-1B-B1-05-46-08 176 786 1
+	06-1B-B1-05-3B-9F 06-1B-B1-05-46-08 178 839 1
+	06-1B-B1-05-46-08 06-1B-B1-05-3B-9F 178 839 1
+	06-1B-B1-05-3B-9F 06-1B-B1-05-46-09 992 710 2
+	06-1B-B1-05-46-09 06-1B-B1-05-3B-9F 992 710 2
+	06-1B-B1-05-46-10 06-1B-B1-05-46-08 141 866 1
+	06-1B-B1-05-46-08 06-1B-B1-05-46-10 141 866 1
+	06-1B-B1-05-46-09 06-1B-B1-05-46-10 488 735 1
+	06-1B-B1-05-46-10 06-1B-B1-05-46-09 488 735 1
+	06-1B-B1-05-46-06 06-1B-B1-05-46-10 771 3113 1
+	06-1B-B1-05-46-10 06-1B-B1-05-46-06 771 3113 1
+	06-1B-B1-05-46-10 06-1B-B1-05-3B-9F 119 790 1
+	06-1B-B1-05-3B-9F 06-1B-B1-05-46-10 119 790 1
+	06-1B-B1-05-3B-A1 06-1B-B1-05-46-08 198 784 1
+	06-1B-B1-05-46-08 06-1B-B1-05-3B-A1 198 784 1
+	06-1B-B1-05-3B-A1 06-1B-B1-05-46-09 293 654 1
+	06-1B-B1-05-46-09 06-1B-B1-05-3B-A1 293 654 1</handler>
+        <handler name="routes_to" canRead="true"></handler>
+        <handler name="routes_from" canRead="true"></handler>
+        <handler name="routes" canRead="true"></handler>
+        <handler name="handlers" canRead="true">update_link	w
+best_route_and_dijkstra	w
+best_route	w
+dijkstra	w
+blacklist_remove	w
+blacklist_add	w
+blacklist_clear	w
+clear	w
+debug	rw
+dijkstra_time	r
+blacklist	r
+hosts	r
+links	r
+routes_to	r
+routes_from	r
+routes	r
+handlers	r.
+ports	r.
+config	r.
+class	r.
+name	r.</handler>
+        <handler name="ports" canRead="true">0 inputs
+0 outputs</handler>
+        <handler name="config" canRead="true">NODEIDENTITY id, ROUTECACHE rc, STALE 500, SIMULATE false, CONSTMETRIC 1, MIN_LINK_METRIC_IN_ROUTE 9998</handler>
+        <handler name="class" canRead="true">Brn2LinkTable</handler>
+        <handler name="name" canRead="true">lt</handler>
+      </element>
+      <element name="sys_info">
+        <handler name="schema" canRead="true"></handler>
+        <handler name="systeminfo" canRead="true"></handler>
+        <handler name="debug" canRead="true" canWrite="true">2</handler>
+        <handler name="handlers" canRead="true">schema	r
+systeminfo	r
+debug	rw
+handlers	r.
+ports	r.
+config	r.
+class	r.
+name	r.</handler>
+        <handler name="ports" canRead="true">0 inputs
+0 outputs</handler>
+        <handler name="config" canRead="true">NODEIDENTITY id</handler>
+        <handler name="class" canRead="true">SystemInfo</handler>
+        <handler name="name" canRead="true">sys_info</handler>
+      </element>
+      <element name="gps">
+        <handler name="speed" canRead="true" canWrite="true">0.0</handler>
+        <handler name="gps_coord" canRead="true" canWrite="true">0.0 0.0 0.0</handler>
+        <handler name="cart_coord" canRead="true" canWrite="true">0 0 0</handler>
+        <handler name="debug" canRead="true" canWrite="true">2</handler>
+        <handler name="handlers" canRead="true">speed	rw
+gps_coord	rw
+cart_coord	rw
+debug	rw
+handlers	r.
+ports	r.
+config	r.
+class	r.
+name	r.</handler>
+        <handler name="ports" canRead="true">0 inputs
+0 outputs</handler>
+        <handler name="config" canRead="true"></handler>
+        <handler name="class" canRead="true">GPS</handler>
+        <handler name="name" canRead="true">gps</handler>
+      </element>
+      <element name="seismo">
+        <handler name="channelstatinfo" canRead="true"></handler>
+        <handler name="debug" canRead="true" canWrite="true">2</handler>
+        <handler name="handlers" canRead="true">channelstatinfo	r
+debug	rw
+handlers	r.
+ports	r.
+config	r.
+class	r.
+name	r.</handler>
+        <handler name="ports" canRead="true">1 input
+push~	-	FromSocket@10 [0]
+0 outputs</handler>
+        <handler name="config" canRead="true">GPS gps, CALCSTATS true, PRINT false</handler>
+        <handler name="class" canRead="true">Seismo</handler>
+        <handler name="name" canRead="true">seismo</handler>
+      </element>
+      <element name="Label_brnether">
+        <handler name="handlers" canRead="true">handlers	r.
+ports	r.
+config	r.
+class	r.
+name	r.</handler>
+        <handler name="ports" canRead="true">1 input
+push~	-	toMeAfterRouting [0], device_wifi/brnToMe [0]
+1 output
+push~	-	[0] BRN2EtherDecap@13</handler>
+        <handler name="config" canRead="true"></handler>
+        <handler name="class" canRead="true">Null</handler>
+        <handler name="name" canRead="true">Label_brnether</handler>
+      </element>
+      <element name="brn_clf">
+        <handler name="program" canRead="true">0   0/0a000000%ff000000  yes->[0]  no->step 1
+ 1   0/34000000%ff000000  yes->[1]  no->step 2
+ 2   0/28000000%ff000000  yes->[2]  no->step 3
+ 3   0/29000000%ff000000  yes->[3]  no->[4]
+safe length 1
+alignment offset 0</handler>
+        <handler name="handlers" canRead="true">program	r.
+handlers	r.
+ports	r.
+config	rw.
+class	r.
+name	r.</handler>
+        <handler name="ports" canRead="true">1 input
+push	-	BRN2EtherDecap@13 [0], BRN2EtherDecap@15 [0]
+5 outputs
+push	-	[0] routing/dsrclf
+push	-	[0] BRN2Decap@18
+push	-	[0] BRN2Decap@21
+push	-	[0] BRN2Decap@24
+push	-	[0] Discard@27</handler>
+        <handler name="config" canRead="true" canWrite="true">0/0a,
+                             0/34,
+                             0/28,
+                             0/29,
+                               -</handler>
+        <handler name="class" canRead="true">Classifier</handler>
+        <handler name="name" canRead="true">brn_clf</handler>
+      </element>
+      <element name="sf">
+        <handler name="stats" canRead="true"><flowstats node="06-1B-B1-05-46-08">
+</flowstats></handler>
+        <handler name="rxflows" canRead="true">RxFlows:</handler>
+        <handler name="txflows" canRead="true">TxFlows:</handler>
+        <handler name="debug" canRead="true" canWrite="true">4</handler>
+        <handler name="handlers" canRead="true">del_flow	w
+add_flow	w
+active	w
+reset	w
+stats	r
+rxflows	r
+txflows	r
+debug	rw
+handlers	r.
+ports	r.
+config	r.
+class	r.
+name	r.</handler>
+        <handler name="ports" canRead="true">1 input
+push	-	BRN2Decap@18 [0]
+1 output
+push	-	[0] BRN2EtherEncap@20</handler>
+        <handler name="config" canRead="true">HEADROOM 192, DEBUG 4</handler>
+        <handler name="class" canRead="true">BRN2SimpleFlow</handler>
+        <handler name="name" canRead="true">sf</handler>
+      </element>
+      <element name="toMeAfterRouting">
+        <handler name="debug" canRead="true" canWrite="true">492</handler>
+        <handler name="handlers" canRead="true">debug	rw
+handlers	r.
+ports	r.
+config	r.
+class	r.
+name	r.</handler>
+        <handler name="ports" canRead="true">1 input
+push	-	routing/src_forwarder [1]
+3 outputs
+push	-	[0] Label_brnether
+push	-	[0] Discard@31
+push	-	[0] device_wifi/Discard@30</handler>
+        <handler name="config" canRead="true">NODEIDENTITY id</handler>
+        <handler name="class" canRead="true">BRN2ToThisNode</handler>
+        <handler name="name" canRead="true">toMeAfterRouting</handler>
+      </element>
+      <element name="device_wifi">
+        <children name="rates">
+          <handler name="rates" canRead="true">DEFAULT  2 4 11 12 18 22 24 36 48 72 96 108</handler>
+          <handler name="debug" canRead="true" canWrite="true">false</handler>
+          <handler name="handlers" canRead="true">remove	w
+insert	w
+rates	r
+debug	rw
+handlers	r.
+ports	r.
+config	rw.
+class	r.
+name	r.</handler>
+          <handler name="ports" canRead="true">0 inputs
+0 outputs</handler>
+          <handler name="config" canRead="true" canWrite="true">DEFAULT 2 4 11 12 18 22 24 36 48 72 96 108</handler>
+          <handler name="class" canRead="true">AvailableRates</handler>
+          <handler name="name" canRead="true">device_wifi/rates</handler>
+        </children>
+        <children name="proberates">
+          <handler name="rates" canRead="true">DEFAULT  2 12 22 108
+06-1B-B1-05-46-09  2 12 22 108
+06-1B-B1-05-3B-9F  2 12 22 108
+06-1B-B1-05-46-10  2 12 22 108
+06-1B-B1-05-3B-A1  2 12 22 108</handler>
+          <handler name="debug" canRead="true" canWrite="true">false</handler>
+          <handler name="handlers" canRead="true">remove	w
+insert	w
+rates	r
+debug	rw
+handlers	r.
+ports	r.
+config	rw.
+class	r.
+name	r.</handler>
+          <handler name="ports" canRead="true">0 inputs
+0 outputs</handler>
+          <handler name="config" canRead="true" canWrite="true">DEFAULT 2 12 22 108</handler>
+          <handler name="class" canRead="true">AvailableRates</handler>
+          <handler name="name" canRead="true">device_wifi/proberates</handler>
+        </children>
+        <children name="etx_metric">
+          <handler name="debug" canRead="true" canWrite="true">2</handler>
+          <handler name="handlers" canRead="true">debug	rw
+handlers	r.
+ports	r.
+config	r.
+class	r.
+name	r.</handler>
+          <handler name="ports" canRead="true">0 inputs
+0 outputs</handler>
+          <handler name="config" canRead="true">lt</handler>
+          <handler name="class" canRead="true">BRN2ETXMetric</handler>
+          <handler name="name" canRead="true">device_wifi/etx_metric</handler>
+        </children>
+        <children name="link_stat">
+          <handler name="schema" canRead="true"><XMLSchema:schema><XMLSchema:element name="tau"><XMLSchema:complexType><XMLSchema:attribute name="value" type="xs:int" use="required"/></XMLSchema:complexType></XMLSchema:element><XMLSchema:element name="probes"><XMLSchema:complexType><XMLSchema:sequence><XMLSchema:element ref="probe" maxOccurs="unbounded"/></XMLSchema:sequence><XMLSchema:attribute name="time" type="xs:decimal" use="required"/><XMLSchema:attribute name="id" type="xs:string" use="required"/></XMLSchema:complexType></XMLSchema:element><XMLSchema:element name="probe"><XMLSchema:complexType><XMLSchema:attribute name="size" type="xs:short" use="required"/><XMLSchema:attribute name="rate" type="xs:byte" use="required"/></XMLSchema:complexType></XMLSchema:element><XMLSchema:element name="period"><XMLSchema:complexType><XMLSchema:attribute name="value" type="xs:short" use="required"/></XMLSchema:complexType></XMLSchema:element><XMLSchema:element name="link_info"><XMLSchema:complexType><XMLSchema:attribute name="size" type="xs:short" use="required"/><XMLSchema:attribute name="rev" type="xs:byte" use="required"/><XMLSchema:attribute name="rate" type="xs:byte" use="required"/><XMLSchema:attribute name="fwd" type="xs:byte" use="required"/></XMLSchema:complexType></XMLSchema:element><XMLSchema:element name="link"><XMLSchema:complexType><XMLSchema:sequence><XMLSchema:element ref="link_info" maxOccurs="unbounded"/></XMLSchema:sequence><XMLSchema:attribute name="to" type="xs:string" use="required"/><XMLSchema:attribute name="tau" type="xs:int" use="required"/><XMLSchema:attribute name="seq" type="xs:int" use="required"/><XMLSchema:attribute name="period" type="xs:short" use="required"/><XMLSchema:attribute name="last_rx" type="xs:decimal" use="required"/></XMLSchema:complexType></XMLSchema:element><XMLSchema:element name="handlers"><XMLSchema:complexType><XMLSchema:sequence><XMLSchema:element ref="handler" maxOccurs="unbounded"/></XMLSchema:sequence><XMLSchema:attribute name="elem_name" use="required"><XMLSchema:simpleType><XMLSchema:restriction base="xs:string"><XMLSchema:enumeration value="BRN2LinkStat"/></XMLSchema:restriction></XMLSchema:simpleType></XMLSchema:attribute></XMLSchema:complexType></XMLSchema:element><XMLSchema:element name="handler"><XMLSchema:complexType><XMLSchema:choice><XMLSchema:element ref="badnodes"/><XMLSchema:element ref="entry"/><XMLSchema:element ref="period"/><XMLSchema:element ref="probes"/><XMLSchema:element ref="tau"/></XMLSchema:choice><XMLSchema:attribute name="name" use="required"><XMLSchema:simpleType><XMLSchema:restriction base="xs:string"><XMLSchema:enumeration value="bad_version"/><XMLSchema:enumeration value="bcast_stats"/><XMLSchema:enumeration value="period"/><XMLSchema:enumeration value="probes"/><XMLSchema:enumeration value="tau"/></XMLSchema:restriction></XMLSchema:simpleType></XMLSchema:attribute></XMLSchema:complexType></XMLSchema:element><XMLSchema:element name="entry"><XMLSchema:complexType><XMLSchema:sequence><XMLSchema:element ref="link" maxOccurs="unbounded"/></XMLSchema:sequence><XMLSchema:attribute name="time" type="xs:decimal" use="required"/><XMLSchema:attribute name="tau" type="xs:int" use="required"/><XMLSchema:attribute name="seq" type="xs:short" use="required"/><XMLSchema:attribute name="period" type="xs:short" use="required"/><XMLSchema:attribute name="from" type="xs:string" use="required"/></XMLSchema:complexType></XMLSchema:element><XMLSchema:element name="badnodes"><XMLSchema:complexType><XMLSchema:sequence><XMLSchema:element ref="badnode" maxOccurs="unbounded"/></XMLSchema:sequence><XMLSchema:attribute name="time" type="xs:decimal" use="required"/><XMLSchema:attribute name="id" type="xs:string" use="required"/></XMLSchema:complexType></XMLSchema:element><XMLSchema:element name="badnode"><XMLSchema:complexType><XMLSchema:attribute name="version" type="xs:byte" use="required"/><XMLSchema:attribute name="id" type="xs:string" use="required"/></XMLSchema:complexType></XMLSchema:element></XMLSchema:schema></handler>
+          <handler name="probes" canRead="true" canWrite="true"><probes id="06-1B-B1-05-46-08" time="1298903769.767080120">
+              <probe rate="2" size="500"/>
+            </probes></handler>
+          <handler name="period" canRead="true" canWrite="true"><period value="2000"/></handler>
+          <handler name="tau" canRead="true" canWrite="true"><tau value="100000"/></handler>
+          <handler name="bad_version" canRead="true"><badnodes id="06-1B-B1-05-46-08" time="1298903769.813988434"/></handler>
+          <handler name="bcast_stats" canRead="true"><entry from="06-1B-B1-05-46-08" period="2000" seq="459" tau="100000" time="1298903769.829327857">
+              <link last_rx="0.573332857" period="2000" seq="460" tau="100000" to="06-1B-B1-05-3B-9F">
+                <link_info fwd="76" rate="2" rev="70" size="500"/>
+              </link>
+              <link last_rx="3.407406857" period="2000" seq="459" tau="100000" to="06-1B-B1-05-3B-A1">
+                <link_info fwd="68" rate="2" rev="70" size="500"/>
+              </link>
+              <link last_rx="4.667045857" period="2000" seq="457" tau="100000" to="06-1B-B1-05-46-09">
+                <link_info fwd="86" rate="2" rev="62" size="500"/>
+              </link>
+              <link last_rx="1.012828857" period="2000" seq="458" tau="100000" to="06-1B-B1-05-46-10">
+                <link_info fwd="74" rate="2" rev="84" size="500"/>
+              </link>
+            </entry></handler>
+          <handler name="debug" canRead="true" canWrite="true">2</handler>
+          <handler name="handlers" canRead="true">reset	w
+schema	r
+probes	rw
+period	rw
+tau	rw
+bad_version	r
+bcast_stats	r
+debug	rw
+handlers	r.
+ports	r.
+config	r.
+class	r.
+name	r.</handler>
+          <handler name="ports" canRead="true">1 input
+push	-	device_wifi/BRN2EtherDecap@23 [0]
+1 output
+push	-	[0] device_wifi/lp_etherencap</handler>
+          <handler name="config" canRead="true">DEVICE wireless,
+
+
+
+
+
+                            PERIOD 2000,
+                            TAU 100000,
+
+                            PROBES &quot;2 500&quot;,
+
+                            RT proberates,
+                            ETX etx_metric,
+                            DEBUG 2</handler>
+          <handler name="class" canRead="true">BRN2LinkStat</handler>
+          <handler name="name" canRead="true">device_wifi/link_stat</handler>
+        </children>
+        <children name="brnToMe">
+          <handler name="debug" canRead="true" canWrite="true">19</handler>
+          <handler name="handlers" canRead="true">debug	rw
+handlers	r.
+ports	r.
+config	r.
+class	r.
+name	r.</handler>
+          <handler name="ports" canRead="true">1 input
+push	-	device_wifi/data_suppressor [1]
+3 outputs
+push	-	[0] Label_brnether
+push	-	[0] BRN2EtherDecap@15
+push	-	[0] Discard@16</handler>
+          <handler name="config" canRead="true">NODEIDENTITY id</handler>
+          <handler name="class" canRead="true">BRN2ToThisNode</handler>
+          <handler name="name" canRead="true">device_wifi/brnToMe</handler>
+        </children>
+        <children name="wifidevice">
+          <children name="cst">
+            <handler name="channel" canRead="true">13</handler>
+            <handler name="src_rssi" canRead="true">etheraddress	avg_rssi	sum_rssi	pkt_count</handler>
+            <handler name="no_src" canRead="true">11</handler>
+            <handler name="avg_rssi" canRead="true">28</handler>
+            <handler name="avg_noise" canRead="true">-96</handler>
+            <handler name="hw_tx" canRead="true">0</handler>
+            <handler name="hw_rx" canRead="true">91</handler>
+            <handler name="hw_busy" canRead="true">92</handler>
+            <handler name="tx" canRead="true">0</handler>
+            <handler name="rx" canRead="true">84</handler>
+            <handler name="busy" canRead="true">84</handler>
+            <handler name="stats_xml" canRead="true"><channelstats node="06-1B-B1-05-46-08" id="915" length="1000" unit="ms">
+	<mac packets="798" rx_pkt="798" no_err_pkt="798" crc_err_pkt="0" phy_err_pkt="0" tx_pkt="0" zero_err_pkt="0" busy="84" rx="84" tx="0" noerr_rx="84" crc_rx="0" phy_rx="0" last_packet_time="1298903770.480525" no_src="11"/>
+	<mac_duration busy="848048" rx="848048" tx="0" noerr_rx="848048" crc_rx="0" phy_rx="0" unit="us"/>
+	<phy hwbusy="92" hwrx="91" hwtx="0" last_hw_stat_time="1298903769.953524137" avg_noise="-96" avg_rssi="28" channel="13"/>
+	<rssi>
+	</rssi>
+</channelstats></handler>
+            <handler name="stats" canRead="true">ID: 915
+Time: 1000
+All packets: 0
+RXPackets: 798
+Busy: 84
+RX: 84
+TX: 0
+HW available: true
+HW Busy: 92
+HW RX: 91
+HW TX: 0
+Last HW Busy: 92
+Last HW RX: 91
+Last HW TX: 0
+Avg. Noise: -96
+Avg. Rssi: 28
+No. Src: 11</handler>
+            <handler name="max_time" canRead="true" canWrite="true">1000</handler>
+            <handler name="debug" canRead="true" canWrite="true">2</handler>
+            <handler name="handlers" canRead="true">reset	wb
+channel	r
+src_rssi	r
+no_src	r
+avg_rssi	r
+avg_noise	r
+hw_tx	r
+hw_rx	r
+hw_busy	r
+tx	r
+rx	r
+busy	r
+stats_xml	r
+stats	r
+max_time	rw
+debug	rw
+handlers	r.
+ports	r.
+config	r.
+class	r.
+name	r.</handler>
+            <handler name="ports" canRead="true">1 input
+push	-	device_wifi/wifidevice/dev_decap [0]
+1 output
+push	-	[0] device_wifi/filter_tx</handler>
+            <handler name="config" canRead="true">DEVICE wireless, STATS_DURATION 1000, SAVE_DURATION 1000, PROCFILE &quot;/proc/net/madwifi/ath0/channel_utility&quot;, PROCINTERVAL 1000, RSSI_PER_NEIGHBOUR true, STATS_TIMER true, SMALL_STATS true</handler>
+            <handler name="class" canRead="true">ChannelStats</handler>
+            <handler name="name" canRead="true">device_wifi/wifidevice/cst</handler>
+          </children>
+          <children name="op_prio_s">
+            <handler name="handlers" canRead="true">handlers	r.
+ports	r.
+config	r.
+class	r.
+name	r.</handler>
+            <handler name="ports" canRead="true">2 inputs
+pull	-	device_wifi/wifidevice/ath_op_q [0]
+pull	-	device_wifi/wifidevice/Ath2Encap@3 [0]
+1 output
+pull	-	[0] device_wifi/wifidevice/rawdev/ToDevice@1</handler>
+            <handler name="config" canRead="true"></handler>
+            <handler name="class" canRead="true">PrioSched</handler>
+            <handler name="name" canRead="true">device_wifi/wifidevice/op_prio_s</handler>
+          </children>
+          <children name="ath_op">
+            <handler name="pkt_count" canRead="true">9779 7 9779 7 7</handler>
+            <handler name="debug" canRead="true" canWrite="true">4</handler>
+            <handler name="handlers" canRead="true">pkt_count	r
+set_macclone	w
+clear_hw_queues	w
+reset_pkt_count	w
+read_config	w
+cca_threshold	w
+reset_mac	w
+mac	w
+channel	w
+debug	rw
+handlers	r.
+ports	r.
+config	rw.
+class	r.
+name	r.</handler>
+            <handler name="ports" canRead="true">1 input
+push	-	device_wifi/wifidevice/dev_decap [2]
+1 output
+push	-	[0] device_wifi/wifidevice/ath_op_q</handler>
+            <handler name="config" canRead="true" canWrite="true">Wifidevice_config:
+Channel: 13
+cu treshold: 20
+cu update: 8
+cu anno mode: 1
+Queue 0: 4 10 3
+Queue 1: 4 10 7
+Queue 2: 3 4 2
+Queue 3: 2 3 2
+CCA treshold: 0
+Flags:
+ CCA: 0
+ Small Backoff: 0
+ Burst: 0
+ Channel Switch: 0
+ Macclone: 0</handler>
+            <handler name="class" canRead="true">Ath2Operation</handler>
+            <handler name="name" canRead="true">device_wifi/wifidevice/ath_op</handler>
+          </children>
+          <children name="ath_op_q">
+            <handler name="drops" canRead="true">0</handler>
+            <handler name="capacity" canRead="true" canWrite="true">10</handler>
+            <handler name="highwater_length" canRead="true">1</handler>
+            <handler name="length" canRead="true">0</handler>
+            <handler name="handlers" canRead="true">reset	wb
+reset_counts	wb
+drops	r
+capacity	rw.
+highwater_length	r
+length	r
+handlers	r.
+ports	r.
+config	rw.
+class	r.
+name	r.</handler>
+            <handler name="ports" canRead="true">1 input
+push	-	device_wifi/wifidevice/ath_op [0]
+1 output
+pull	-	[0] device_wifi/wifidevice/op_prio_s</handler>
+            <handler name="config" canRead="true" canWrite="true">10</handler>
+            <handler name="class" canRead="true">NotifierQueue</handler>
+            <handler name="name" canRead="true">device_wifi/wifidevice/ath_op_q</handler>
+          </children>
+          <children name="dev_decap">
+            <handler name="debug" canRead="true" canWrite="true">2</handler>
+            <handler name="handlers" canRead="true">debug	rw
+handlers	r.
+ports	r.
+config	r.
+class	r.
+name	r.</handler>
+            <handler name="ports" canRead="true">1 input
+push~	-	device_wifi/wifidevice/rawdev/BRN2SetDeviceAnno@3 [0]
+3 outputs
+push~	-	[0] device_wifi/wifidevice/cst
+push~	-	[0] device_wifi/wifidevice/rawwifidev_too_small_cnt
+push~	-	[0] device_wifi/wifidevice/ath_op</handler>
+            <handler name="config" canRead="true">ATHDECAP true, CHANNELSTATS cst</handler>
+            <handler name="class" canRead="true">Ath2Decap</handler>
+            <handler name="name" canRead="true">device_wifi/wifidevice/dev_decap</handler>
+          </children>
+          <children name="rawwifidev_too_small_cnt">
+            <handler name="count_call" canRead="true" canWrite="true"></handler>
+            <handler name="byte_rate" canRead="true">0</handler>
+            <handler name="bit_rate" canRead="true">0</handler>
+            <handler name="rate" canRead="true">0</handler>
+            <handler name="byte_count" canRead="true">0</handler>
+            <handler name="count" canRead="true">0</handler>
+            <handler name="handlers" canRead="true">byte_count_call	w
+count_call	rw
+reset_counts	wUb
+reset	wb
+byte_rate	r
+bit_rate	r
+rate	r
+byte_count	r
+count	r
+handlers	r.
+ports	r.
+config	r.
+class	r.
+name	r.</handler>
+            <handler name="ports" canRead="true">1 input
+push~	-	device_wifi/wifidevice/dev_decap [1]
+1 output
+push~	-	[0] device_wifi/wifidevice/Discard@9</handler>
+            <handler name="config" canRead="true"></handler>
+            <handler name="class" canRead="true">Counter</handler>
+            <handler name="name" canRead="true">device_wifi/wifidevice/rawwifidev_too_small_cnt</handler>
+          </children>
+        </children>
+        <children name="data_power">
+          <handler name="power" canRead="true" canWrite="true">61</handler>
+          <handler name="handlers" canRead="true">power	rw
+handlers	r.
+ports	r.
+config	rw.
+class	r.
+name	r.</handler>
+          <handler name="ports" canRead="true">1 input
+push~	-	SetEtherAddr@30 [0]
+1 output
+push~	-	[0] device_wifi/data_rate</handler>
+          <handler name="config" canRead="true" canWrite="true">61</handler>
+          <handler name="class" canRead="true">SetTXPower</handler>
+          <handler name="name" canRead="true">device_wifi/data_power</handler>
+        </children>
+        <children name="data_rate">
+          <handler name="tries" canRead="true" canWrite="true">11</handler>
+          <handler name="rate" canRead="true" canWrite="true">2</handler>
+          <handler name="handlers" canRead="true">tries	rw
+rate	rw
+handlers	r.
+ports	r.
+config	rw.
+class	r.
+name	r.</handler>
+          <handler name="ports" canRead="true">1 input
+push~	-	device_wifi/data_power [0]
+1 output
+push~	-	[0] device_wifi/brnwifi</handler>
+          <handler name="config" canRead="true" canWrite="true">RATE 2, TRIES 11</handler>
+          <handler name="class" canRead="true">SetTXRate</handler>
+          <handler name="name" canRead="true">device_wifi/data_rate</handler>
+        </children>
+        <children name="brnwifi">
+          <handler name="bssid" canRead="true" canWrite="true">00-00-00-00-00-00</handler>
+          <handler name="mode" canRead="true" canWrite="true">0</handler>
+          <handler name="debug" canRead="true" canWrite="true">false</handler>
+          <handler name="handlers" canRead="true">bssid	rw
+mode	rw
+debug	rw
+handlers	r.
+ports	r.
+config	rw.
+class	r.
+name	r.</handler>
+          <handler name="ports" canRead="true">1 input
+push~	-	device_wifi/data_rate [0]
+1 output
+push~	-	[0] device_wifi/data_queue</handler>
+          <handler name="config" canRead="true" canWrite="true">0x00, 0:0:0:0:0:0</handler>
+          <handler name="class" canRead="true">WifiEncap</handler>
+          <handler name="name" canRead="true">device_wifi/brnwifi</handler>
+        </children>
+        <children name="data_queue">
+          <handler name="drops" canRead="true">0</handler>
+          <handler name="capacity" canRead="true" canWrite="true">100</handler>
+          <handler name="highwater_length" canRead="true">0</handler>
+          <handler name="length" canRead="true">0</handler>
+          <handler name="handlers" canRead="true">reset	wb
+reset_counts	wb
+drops	r
+capacity	rw.
+highwater_length	r
+length	r
+handlers	r.
+ports	r.
+config	rw.
+class	r.
+name	r.</handler>
+          <handler name="ports" canRead="true">1 input
+push	-	device_wifi/brnwifi [0]
+1 output
+pull	-	[0] device_wifi/data_suppressor</handler>
+          <handler name="config" canRead="true" canWrite="true">100</handler>
+          <handler name="class" canRead="true">NotifierQueue</handler>
+          <handler name="name" canRead="true">device_wifi/data_queue</handler>
+        </children>
+        <children name="data_suppressor">
+          <handler name="active1" canRead="true" canWrite="true">true</handler>
+          <handler name="active0" canRead="true" canWrite="true">true</handler>
+          <handler name="handlers" canRead="true">reset	wb
+active1	rwc
+active0	rwc
+handlers	r.
+ports	r.
+config	r.
+class	r.
+name	r.</handler>
+          <handler name="ports" canRead="true">2 inputs
+pull~	-	device_wifi/data_queue [0]
+push~	-	device_wifi/lp_clf [1]
+2 outputs
+pull~	-	[1] device_wifi/lp_data_scheduler
+push~	-	[0] device_wifi/brnToMe</handler>
+          <handler name="config" canRead="true"></handler>
+          <handler name="class" canRead="true">Suppressor</handler>
+          <handler name="name" canRead="true">device_wifi/data_suppressor</handler>
+        </children>
+        <children name="lp_data_scheduler">
+          <handler name="handlers" canRead="true">handlers	r.
+ports	r.
+config	r.
+class	r.
+name	r.</handler>
+          <handler name="ports" canRead="true">2 inputs
+pull	-	device_wifi/lp_suppressor [0]
+pull	-	device_wifi/data_suppressor [0]
+1 output
+pull	-	[0] device_wifi/wifidevice/Ath2Encap@3</handler>
+          <handler name="config" canRead="true"></handler>
+          <handler name="class" canRead="true">PrioSched</handler>
+          <handler name="name" canRead="true">device_wifi/lp_data_scheduler</handler>
+        </children>
+        <children name="filter_tx">
+          <handler name="drops" canRead="true">0</handler>
+          <handler name="handlers" canRead="true">drops	r
+handlers	r.
+ports	r.
+config	r.
+class	r.
+name	r.</handler>
+          <handler name="ports" canRead="true">1 input
+push~	-	device_wifi/wifidevice/cst [0]
+2 outputs
+push~	-	[0] device_wifi/error_clf
+push	-	[0] device_wifi/Discard@17</handler>
+          <handler name="config" canRead="true"></handler>
+          <handler name="class" canRead="true">FilterTX</handler>
+          <handler name="name" canRead="true">device_wifi/filter_tx</handler>
+        </children>
+        <children name="error_clf">
+          <handler name="phy" canRead="true">0</handler>
+          <handler name="crc" canRead="true">0</handler>
+          <handler name="ok" canRead="true">343660</handler>
+          <handler name="handlers" canRead="true">phy	r
+crc	r
+ok	r
+handlers	r.
+ports	r.
+config	r.
+class	r.
+name	r.</handler>
+          <handler name="ports" canRead="true">1 input
+push~	-	device_wifi/filter_tx [0]
+1 output
+push~	-	[0] device_wifi/WifiDupeFilter@15</handler>
+          <handler name="config" canRead="true"></handler>
+          <handler name="class" canRead="true">WifiErrorClassifier</handler>
+          <handler name="name" canRead="true">device_wifi/error_clf</handler>
+        </children>
+        <children name="wififrame_clf">
+          <handler name="program" canRead="true">0   0/00000000%00400000  yes->step 1  no->[0]  short->yes
+ 1   0/00000000%0f000000  yes->[1]  no->[2]
+safe length 2
+alignment offset 0</handler>
+          <handler name="handlers" canRead="true">program	r.
+handlers	r.
+ports	r.
+config	rw.
+class	r.
+name	r.</handler>
+          <handler name="ports" canRead="true">1 input
+push	-	device_wifi/WifiDupeFilter@15 [0]
+3 outputs
+push	-	[0] device_wifi/Discard@18
+push	-	[0] device_wifi/Discard@19
+push	-	[0] device_wifi/WifiDecap@20</handler>
+          <handler name="config" canRead="true" canWrite="true">1/40%40,
+                                  0/00%0f,
+                                      -</handler>
+          <handler name="class" canRead="true">Classifier</handler>
+          <handler name="name" canRead="true">device_wifi/wififrame_clf</handler>
+        </children>
+        <children name="brn_ether_clf">
+          <handler name="program" canRead="true">0  12/80860000%ffff0000  yes->[0]  no->[1]
+safe length 14
+alignment offset 0</handler>
+          <handler name="handlers" canRead="true">program	r.
+handlers	r.
+ports	r.
+config	rw.
+class	r.
+name	r.</handler>
+          <handler name="ports" canRead="true">1 input
+push	-	device_wifi/WifiDecap@20 [0]
+2 outputs
+push	-	[0] device_wifi/lp_clf
+push	-	[0] device_wifi/Discard@29</handler>
+          <handler name="config" canRead="true" canWrite="true">12/8086, -</handler>
+          <handler name="class" canRead="true">Classifier</handler>
+          <handler name="name" canRead="true">device_wifi/brn_ether_clf</handler>
+        </children>
+        <children name="lp_clf">
+          <handler name="program" canRead="true">0  12/00000100%0000ff00  yes->[0]  no->[1]
+safe length 15
+alignment offset 0</handler>
+          <handler name="handlers" canRead="true">program	r.
+handlers	r.
+ports	r.
+config	rw.
+class	r.
+name	r.</handler>
+          <handler name="ports" canRead="true">1 input
+push	-	device_wifi/brn_ether_clf [0]
+2 outputs
+push	-	[0] device_wifi/BRN2EtherDecap@23
+push	-	[1] device_wifi/data_suppressor</handler>
+          <handler name="config" canRead="true" canWrite="true">14/01, -</handler>
+          <handler name="class" canRead="true">Classifier</handler>
+          <handler name="name" canRead="true">device_wifi/lp_clf</handler>
+        </children>
+        <children name="lp_etherencap">
+          <handler name="etht" canRead="true" canWrite="true">32902</handler>
+          <handler name="ethertype" canRead="true" canWrite="true">32902</handler>
+          <handler name="dst" canRead="true" canWrite="true">FF-FF-FF-FF-FF-FF</handler>
+          <handler name="src" canRead="true" canWrite="true">06-1B-B1-05-46-08</handler>
+          <handler name="handlers" canRead="true">etht	rwD
+ethertype	rw
+dst	rw
+src	rw
+handlers	r.
+ports	r.
+config	rw.
+class	r.
+name	r.</handler>
+          <handler name="ports" canRead="true">1 input
+push~	-	device_wifi/link_stat [0]
+1 output
+push~	-	[0] device_wifi/lp_power</handler>
+          <handler name="config" canRead="true" canWrite="true">0x8086, deviceaddress, ff:ff:ff:ff:ff:ff</handler>
+          <handler name="class" canRead="true">EtherEncap</handler>
+          <handler name="name" canRead="true">device_wifi/lp_etherencap</handler>
+        </children>
+        <children name="lp_power">
+          <handler name="power" canRead="true" canWrite="true">61</handler>
+          <handler name="handlers" canRead="true">power	rw
+handlers	r.
+ports	r.
+config	rw.
+class	r.
+name	r.</handler>
+          <handler name="ports" canRead="true">1 input
+push~	-	device_wifi/lp_etherencap [0]
+1 output
+push~	-	[0] device_wifi/lp_wifiencap</handler>
+          <handler name="config" canRead="true" canWrite="true">61</handler>
+          <handler name="class" canRead="true">SetTXPower</handler>
+          <handler name="name" canRead="true">device_wifi/lp_power</handler>
+        </children>
+        <children name="lp_wifiencap">
+          <handler name="bssid" canRead="true" canWrite="true">00-00-00-00-00-00</handler>
+          <handler name="mode" canRead="true" canWrite="true">0</handler>
+          <handler name="debug" canRead="true" canWrite="true">false</handler>
+          <handler name="handlers" canRead="true">bssid	rw
+mode	rw
+debug	rw
+handlers	r.
+ports	r.
+config	rw.
+class	r.
+name	r.</handler>
+          <handler name="ports" canRead="true">1 input
+push~	-	device_wifi/lp_power [0]
+1 output
+push~	-	[0] device_wifi/lp_queue</handler>
+          <handler name="config" canRead="true" canWrite="true">0x00, 0:0:0:0:0:0</handler>
+          <handler name="class" canRead="true">WifiEncap</handler>
+          <handler name="name" canRead="true">device_wifi/lp_wifiencap</handler>
+        </children>
+        <children name="lp_queue">
+          <handler name="drops" canRead="true">0</handler>
+          <handler name="capacity" canRead="true" canWrite="true">2</handler>
+          <handler name="highwater_length" canRead="true">1</handler>
+          <handler name="length" canRead="true">0</handler>
+          <handler name="handlers" canRead="true">reset	wb
+reset_counts	wb
+drops	r
+capacity	rw.
+highwater_length	r
+length	r
+handlers	r.
+ports	r.
+config	rw.
+class	r.
+name	r.</handler>
+          <handler name="ports" canRead="true">1 input
+push	-	device_wifi/lp_wifiencap [0]
+1 output
+pull	-	[0] device_wifi/lp_suppressor</handler>
+          <handler name="config" canRead="true" canWrite="true">2</handler>
+          <handler name="class" canRead="true">FrontDropQueue</handler>
+          <handler name="name" canRead="true">device_wifi/lp_queue</handler>
+        </children>
+        <children name="lp_suppressor">
+          <handler name="active0" canRead="true" canWrite="true">true</handler>
+          <handler name="handlers" canRead="true">reset	wb
+active0	rwc
+handlers	r.
+ports	r.
+config	r.
+class	r.
+name	r.</handler>
+          <handler name="ports" canRead="true">1 input
+pull~	-	device_wifi/lp_queue [0]
+1 output
+pull~	-	[0] device_wifi/lp_data_scheduler</handler>
+          <handler name="config" canRead="true"></handler>
+          <handler name="class" canRead="true">Suppressor</handler>
+          <handler name="name" canRead="true">device_wifi/lp_suppressor</handler>
+        </children>
+      </element>
+      <element name="routing">
+        <children name="dsr_decap">
+          <handler name="debug" canRead="true" canWrite="true">2</handler>
+          <handler name="handlers" canRead="true">debug	rw
+handlers	r.
+ports	r.
+config	r.
+class	r.
+name	r.</handler>
+          <handler name="ports" canRead="true">0 inputs
+0 outputs</handler>
+          <handler name="config" canRead="true">NODEIDENTITY id, LINKTABLE lt</handler>
+          <handler name="class" canRead="true">BRN2DSRDecap</handler>
+          <handler name="name" canRead="true">routing/dsr_decap</handler>
+        </children>
+        <children name="dsr_encap">
+          <handler name="debug" canRead="true" canWrite="true">2</handler>
+          <handler name="handlers" canRead="true">debug	rw
+handlers	r.
+ports	r.
+config	r.
+class	r.
+name	r.</handler>
+          <handler name="ports" canRead="true">0 inputs
+0 outputs</handler>
+          <handler name="config" canRead="true">NODEIDENTITY id, LINKTABLE lt</handler>
+          <handler name="class" canRead="true">BRN2DSREncap</handler>
+          <handler name="name" canRead="true">routing/dsr_encap</handler>
+        </children>
+        <children name="querier">
+          <handler name="fixed_route" canRead="true" canWrite="true"></handler>
+          <handler name="debug" canRead="true" canWrite="true">2</handler>
+          <handler name="handlers" canRead="true">flush_sb	w
+fixed_route_clear	w
+fixed_route	rw
+debug	rw
+handlers	r.
+ports	r.
+config	r.
+class	r.
+name	r.</handler>
+          <handler name="ports" canRead="true">1 input
+push	-	BRN2EtherEncap@20 [0], Idle@23 [0], Idle@26 [0]
+2 outputs
+push	-	[0] BRN2EtherEncap@29
+push	-	[0] routing/src_forwarder</handler>
+          <handler name="config" canRead="true">NODEIDENTITY id, LINKTABLE lt, DSRENCAP dsr_encap, DSRDECAP dsr_decap, METRIC device_wifi/etx_metric, DEBUG 2</handler>
+          <handler name="class" canRead="true">BRN2RouteQuerier</handler>
+          <handler name="name" canRead="true">routing/querier</handler>
+        </children>
+        <children name="req_forwarder">
+          <handler name="stats" canRead="true"><stats better_route="0"/></handler>
+          <handler name="debug" canRead="true" canWrite="true">2</handler>
+          <handler name="handlers" canRead="true">stats	r
+debug	rw
+handlers	r.
+ports	r.
+config	r.
+class	r.
+name	r.</handler>
+          <handler name="ports" canRead="true">1 input
+push	-	routing/dsrclf [0]
+2 outputs
+push	-	[0] BRN2EtherEncap@29
+push	-	[0] routing/rep_forwarder</handler>
+          <handler name="config" canRead="true">NODEIDENTITY id, LINKTABLE lt, DSRDECAP dsr_decap, DSRENCAP dsr_encap, ROUTEQUERIER querier, MINMETRIC 9998, ENABLE_DELAY_QUEUE true, DEBUG 2, LAST_HOP_OPT true</handler>
+          <handler name="class" canRead="true">BRN2RequestForwarder</handler>
+          <handler name="name" canRead="true">routing/req_forwarder</handler>
+        </children>
+        <children name="rep_forwarder">
+          <handler name="debug" canRead="true" canWrite="true">2</handler>
+          <handler name="handlers" canRead="true">debug	rw
+handlers	r.
+ports	r.
+config	r.
+class	r.
+name	r.</handler>
+          <handler name="ports" canRead="true">2 inputs
+push	-	routing/req_forwarder [1]
+push	-	routing/dsrclf [1]
+1 output
+push	-	[0] BRN2EtherEncap@29</handler>
+          <handler name="config" canRead="true">NODEIDENTITY id, LINKTABLE lt, DSRDECAP dsr_decap, ROUTEQUERIER querier, DSRENCAP dsr_encap</handler>
+          <handler name="class" canRead="true">BRN2ReplyForwarder</handler>
+          <handler name="name" canRead="true">routing/rep_forwarder</handler>
+        </children>
+        <children name="src_forwarder">
+          <handler name="debug" canRead="true" canWrite="true">2</handler>
+          <handler name="handlers" canRead="true">debug	rw
+handlers	r.
+ports	r.
+config	r.
+class	r.
+name	r.</handler>
+          <handler name="ports" canRead="true">2 inputs
+push	-	routing/querier [1]
+push	-	routing/dsrclf [3]
+3 outputs
+push	-	[0] routing/routing_peek
+push	-	[0] toMeAfterRouting
+push	-	[0] routing/tee_to_err_fwd</handler>
+          <handler name="config" canRead="true">NODEIDENTITY id, LINKTABLE lt, DSRENCAP dsr_encap, ROUTEQUERIER querier, DSRDECAP dsr_decap, DEBUG 2</handler>
+          <handler name="class" canRead="true">BRN2SrcForwarder</handler>
+          <handler name="name" canRead="true">routing/src_forwarder</handler>
+        </children>
+        <children name="err_forwarder">
+          <handler name="debug" canRead="true" canWrite="true">2</handler>
+          <handler name="handlers" canRead="true">debug	rw
+handlers	r.
+ports	r.
+config	r.
+class	r.
+name	r.</handler>
+          <handler name="ports" canRead="true">2 inputs
+push	-	Idle@17 [0], routing/tee_to_err_fwd [1]
+push	-	routing/dsrclf [2]
+1 output
+push	-	[0] BRN2EtherEncap@29</handler>
+          <handler name="config" canRead="true">NODEIDENTITY id, LINKTABLE lt, DSRENCAP dsr_encap, DSRDECAP dsr_decap, ROUTEQUERIER querier</handler>
+          <handler name="class" canRead="true">BRN2ErrorForwarder</handler>
+          <handler name="name" canRead="true">routing/err_forwarder</handler>
+        </children>
+        <children name="routing_peek">
+          <handler name="peek_info" canRead="true">Number of peek: 0</handler>
+          <handler name="debug" canRead="true" canWrite="true">2</handler>
+          <handler name="handlers" canRead="true">peek_info	r
+debug	rw
+handlers	r.
+ports	r.
+config	r.
+class	r.
+name	r.</handler>
+          <handler name="ports" canRead="true">1 input
+push	-	routing/src_forwarder [0]
+1 output
+push	-	[0] routing/BRN2EtherEncap@9</handler>
+          <handler name="config" canRead="true">DEBUG 2</handler>
+          <handler name="class" canRead="true">DSRPeek</handler>
+          <handler name="name" canRead="true">routing/routing_peek</handler>
+        </children>
+        <children name="tee_to_err_fwd">
+          <handler name="handlers" canRead="true">handlers	r.
+ports	r.
+config	r.
+class	r.
+name	r.</handler>
+          <handler name="ports" canRead="true">1 input
+push	-	routing/src_forwarder [2]
+2 outputs
+push	-	[0] routing/Discard@12
+push	-	[0] routing/err_forwarder</handler>
+          <handler name="config" canRead="true"></handler>
+          <handler name="class" canRead="true">Tee</handler>
+          <handler name="name" canRead="true">routing/tee_to_err_fwd</handler>
+        </children>
+        <children name="dsrclf">
+          <handler name="program" canRead="true">0   4/00000100%0000ff00  yes->[0]  no->step 1
+ 1   4/00000200%0000ff00  yes->[1]  no->step 2
+ 2   4/00000300%0000ff00  yes->[2]  no->step 3
+ 3   4/00000400%0000ff00  yes->[3]  no->[X]
+safe length 7
+alignment offset 0</handler>
+          <handler name="handlers" canRead="true">program	r.
+handlers	r.
+ports	r.
+config	rw.
+class	r.
+name	r.</handler>
+          <handler name="ports" canRead="true">1 input
+push	-	brn_clf [0]
+4 outputs
+push	-	[0] routing/req_forwarder
+push	-	[1] routing/rep_forwarder
+push	-	[1] routing/err_forwarder
+push	-	[1] routing/src_forwarder</handler>
+          <handler name="config" canRead="true" canWrite="true">6/01,
+                           6/02,
+                           6/03,
+                           6/04,</handler>
+          <handler name="class" canRead="true">Classifier</handler>
+          <handler name="name" canRead="true">routing/dsrclf</handler>
+        </children>
+      </element>
+    </node>
   </subnetwork>
   <subnetwork name="Indoor">
     <subnetwork name="ESZ">
