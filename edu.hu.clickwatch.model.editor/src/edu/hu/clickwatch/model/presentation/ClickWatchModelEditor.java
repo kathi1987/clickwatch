@@ -35,6 +35,7 @@ import org.eclipse.emf.common.ui.editor.ProblemEditorPart;
 import org.eclipse.emf.common.ui.viewer.IViewerProvider;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
@@ -43,12 +44,15 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.FeatureMap;
+import org.eclipse.emf.ecore.util.FeatureMapUtil;
+import org.eclipse.emf.ecore.util.FeatureMap.Entry;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xml.type.AnyType;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
 import org.eclipse.emf.edit.provider.AdapterFactoryItemDelegator;
+import org.eclipse.emf.edit.provider.AttributeValueWrapperItemProvider;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.FeatureMapEntryWrapperItemProvider;
 import org.eclipse.emf.edit.provider.IItemColorProvider;
@@ -557,7 +561,7 @@ public class ClickWatchModelEditor
 		initializeEditingDomain();
 	}
 	
-	public static class MyReflectiveItemProviderAdapterFactory extends ReflectiveItemProviderAdapterFactory implements IItemColorProvider {
+	public static class MyReflectiveItemProviderAdapterFactory extends ReflectiveItemProviderAdapterFactory {
 		ReflectiveItemProvider itemProvider = new ReflectiveItemProvider(this) {
 			@Override
 			public String getText(Object object) {
@@ -592,20 +596,58 @@ public class ClickWatchModelEditor
 				
 				return result;
 			}
+			
+			class MyFeatureMapEntryWrapperItemProvider extends FeatureMapEntryWrapperItemProvider implements IItemColorProvider {
+				
+				public MyFeatureMapEntryWrapperItemProvider(Entry entry,
+						EObject owner, EAttribute attribute, int index,
+						AdapterFactory adapterFactory,
+						ResourceLocator resourceLocator) {
+					super(entry, owner, attribute, index, adapterFactory, resourceLocator);
+				}
+
+				@Override
+				public String getText(Object object) {
+					if (((FeatureMap.Entry)value).getValue() instanceof AnyType) {
+						return ((FeatureMap.Entry) value).getEStructuralFeature().getName();
+					} else {
+						return value.toString();
+					}
+				}
+				
+				private final Object black = Display.getCurrent().getSystemColor(SWT.COLOR_BLACK);
+				private final Object yellow = Display.getCurrent().getSystemColor(SWT.COLOR_DARK_YELLOW);
+				private final Object red = Display.getCurrent().getSystemColor(SWT.COLOR_DARK_RED);
+				
+				@Override
+				public Object getForeground(Object object) {
+					if (object instanceof MyFeatureMapEntryWrapperItemProvider) {
+						FeatureMap.Entry entry = (FeatureMap.Entry)((MyFeatureMapEntryWrapperItemProvider)object).value;
+						EObject owner = (EObject)((MyFeatureMapEntryWrapperItemProvider)object).getOwner();
+						ChangeMark mark = ChangeMark.getChangeMark(owner);
+						if (mark != null && mark.isActive()) {
+							if (mark.getFeature() == entry.getEStructuralFeature()) {
+								return red;
+							}
+						}
+					} 
+					if (object instanceof EObject) {
+						ChangeMark mark = ChangeMark.getChangeMark((EObject)object);
+						if (mark != null && mark.isActive()) {
+							return yellow;
+						}
+					}
+					return black;
+				}
+			}
 
 			@Override
 			protected Object createWrapper(EObject object,
 					EStructuralFeature feature, Object value, int index) {
-				if (value instanceof FeatureMap.Entry && ((FeatureMap.Entry)value).getValue() instanceof AnyType) {
-					return new FeatureMapEntryWrapperItemProvider(
+				if (FeatureMapUtil.isFeatureMap(feature)) {
+					return new MyFeatureMapEntryWrapperItemProvider(
 							(FeatureMap.Entry) value, object, (EAttribute) feature,
-							index, adapterFactory, getResourceLocator()) {
-						@Override
-						public String getText(Object object) {
-							return ((FeatureMap.Entry) value).getEStructuralFeature()
-									.getName();
-						}
-					};
+							index, adapterFactory, getResourceLocator());
 				} else {
 					return super.createWrapper(object, feature, value, index);
 				}
@@ -617,35 +659,6 @@ public class ClickWatchModelEditor
 		public Adapter createAdapter(Notifier target) {
 			return itemProvider;
 		}
-		
-		private final static Object black = Display.getCurrent().getSystemColor(SWT.COLOR_GREEN);
-		private final static Object yellow = Display.getCurrent().getSystemColor(SWT.COLOR_YELLOW);
-		private final static Object red = Display.getCurrent().getSystemColor(SWT.COLOR_RED);
-		private final static Object white = Display.getCurrent().getSystemColor(SWT.COLOR_WHITE);
-		
-		@Override
-		public Object getForeground(Object object) {
-			if (object instanceof EObject) {
-				ChangeMark mark = ChangeMark.getChangeMark((EObject)object);
-				if (mark != null && mark.isActive() && mark.isDirectChange((EObject)object)) {
-					return red;
-				}
-			}
-			return black;
-		}
-
-
-		@Override
-		public Object getBackground(Object object) {
-			if (object instanceof EObject) {
-				ChangeMark mark = ChangeMark.getChangeMark((EObject)object);
-				if (mark != null && mark.isActive()) {
-					return yellow;
-				}
-			}
-			return white;
-		}
-
 	}
 
 	/**
@@ -1000,6 +1013,26 @@ public class ClickWatchModelEditor
 				selectionViewer.setInput(editingDomain.getResourceSet());
 				selectionViewer.setSelection(new StructuredSelection(editingDomain.getResourceSet().getResources().get(0)), true);
 				viewerPane.setTitle(editingDomain.getResourceSet());
+				
+				new Thread() {
+					@Override
+					public void run() {
+						while (true) {
+							getSite().getShell().getDisplay().asyncExec(new Runnable() {							
+								@Override
+								public void run() {
+									selectionViewer.refresh();
+								}
+							});
+							try {
+								Thread.sleep(500);
+							} catch (InterruptedException e) {
+								e.printStackTrace();
+							}
+						}
+					}
+					
+				}.start();
 
 				new AdapterFactoryTreeEditor(selectionViewer.getTree(), adapterFactory);
 
