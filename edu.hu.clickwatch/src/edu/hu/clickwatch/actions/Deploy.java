@@ -34,16 +34,48 @@ import edu.hu.clickwatch.util.SshConnectionFactory;
 import edu.hu.clickwatch.views.ResultView;
 
 /**
+ * Hot deployment: do not reconfigure wireless device; restart click
+ */
+class HotDeploy extends Deploy {
+	protected StringBuffer startScript(String host, boolean showProgressbar, Session session) throws Exception {
+		String command = "(cd /tmp/seismo; ./lib/standalone/seismo.sh delaystart )";
+		StringBuffer logMsg = null;
+		if (showProgressbar) {
+			logMsg = SshConnectionFactory.getInstance().execRemoteGUI(session, command, "Starting router conf on node " + host, shell);
+		} else {
+			logMsg = SshConnectionFactory.getInstance().execRemote(session, command);
+		}
+		return logMsg;
+	}
+}
+
+/**
+ * Full deployment: reconfigure wireless device + restart click
+ */
+class FullDeploy extends Deploy {
+	protected StringBuffer startScript(String host, boolean showProgressbar, Session session) throws Exception {
+		String command = "(cd /tmp/seismo; DRIVERSETUP=yes ./lib/standalone/seismo.sh delaystart)";
+		StringBuffer logMsg = null;
+		if (showProgressbar) {
+			logMsg = SshConnectionFactory.getInstance().execRemoteGUI(session, command, "Starting router conf on node " + host, shell);
+		} else {
+			logMsg = SshConnectionFactory.getInstance().execRemote(session, command);
+		}
+		return logMsg;
+	}
+}
+
+/**
  * Deploy a new Click configuration to remote nodes using ssh in parallel.
  * 
  * @author zubow
  */
-public class Deploy implements IObjectActionDelegate, SSHParams {
+public abstract class Deploy implements IObjectActionDelegate, SSHParams {
 	
 	@Inject
 	private XmlModelRepository xmlModelRepository;
 
-	private Shell shell;
+	protected Shell shell;
 	private IEditorPart editor = null;
 	private List<Node> node_lst;
 	private EObject currentResult = null;
@@ -380,7 +412,6 @@ public class Deploy implements IObjectActionDelegate, SSHParams {
 							canceled.value = true;
 							return;
 						}
-						
 						//monitor.worked(counter.get());
 		        	} catch(Exception e) {
 		    			System.err.println("Exception: " + e.getMessage());
@@ -491,13 +522,8 @@ public class Deploy implements IObjectActionDelegate, SSHParams {
 
 		// start
 		long startTime = System.currentTimeMillis();
-		String command = "(cd /tmp/seismo; ./lib/standalone/seismo.sh delaystart )";
-		StringBuffer logMsg = null;
-		if (showProgressbar) {
-			logMsg = SshConnectionFactory.getInstance().execRemoteGUI(session, command, "Starting router conf on node " + host, shell);
-		} else {
-			logMsg = SshConnectionFactory.getInstance().execRemote(session, command);
-		}
+		String command;
+		StringBuffer logMsg = startScript(host, showProgressbar, session);
 		log2Sout(logMsg.append("\n").append("Starting executed in ").append((System.currentTimeMillis() - startTime) / 1000).append(" sec"));
 		
 		// check log file after sleeping for 5 seconds
@@ -515,6 +541,9 @@ public class Deploy implements IObjectActionDelegate, SSHParams {
 		SshConnectionFactory.getInstance().closeSession(session);
 		return logstr;
 	}
+
+	// implemented by derived classes
+	abstract protected StringBuffer startScript(String host, boolean showProgressbar, Session session) throws Exception;
 	
 	private void log2Sout(StringBuffer sb) {
 		System.out.println(sb.toString());

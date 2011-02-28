@@ -14,6 +14,13 @@
                menubarPath="additions">
          </action>
          <action
+               class="edu.hu.clickwatch.GuiceAwareExecutableExtensionFactory:edu.hu.clickwatch.actions.HotDeploy"
+               enablesFor="+"
+               id="edu.hu.clickwatch.hotDeployAction"
+               label="HotDeploy"
+               menubarPath="additions">
+         </action>
+         <action
                class="edu.hu.clickwatch.GuiceAwareExecutableExtensionFactory:edu.hu.clickwatch.actions.Execute"
                enablesFor="+"
                id="edu.hu.clickwatch.execAction"
@@ -28,7 +35,7 @@
                menubarPath="additions">
          </action>
          <action
-               class="edu.hu.clickwatch.GuiceAwareExecutableExtensionFactory:edu.hu.clickwatch.actions.Deploy"
+               class="edu.hu.clickwatch.GuiceAwareExecutableExtensionFactory:edu.hu.clickwatch.actions.FullDeploy"
                enablesFor="+"
                id="edu.hu.clickwatch.deployAction"
                label="Deploy"

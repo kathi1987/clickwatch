@@ -8,12 +8,14 @@
 	</xsl:template>
 	<xsl:template match="text()"/>
 	<xsl:template match="node/seismo/chaninfo">
-		<xsl:variable name="nodeid" select="../../../../../elements[@name='id']/handlers[@name='devinfo']/nodeidentity/@name"/>
-		<seismo_stat>
-			<xsl:attribute name="node"><xsl:value-of select="$nodeid"/></xsl:attribute>
-			<xsl:attribute name="chanId"><xsl:value-of select="@id"/></xsl:attribute>
-			<xsl:attribute name="avgval"><xsl:value-of select="@avg_value"/></xsl:attribute>
-		</seismo_stat>
+	    <xsl:if test="@id &lt; 3">
+			<xsl:variable name="nodeid" select="../../../../../element[@name='id']/handler[@name='devinfo']/nodeidentity/device/@address"/>
+			<seismo_stat>
+				<xsl:attribute name="node"><xsl:value-of select="$nodeid"/></xsl:attribute>
+				<xsl:attribute name="chanId"><xsl:value-of select="@id"/></xsl:attribute>
+				<xsl:attribute name="avgval"><xsl:value-of select="@avg_value"/></xsl:attribute>
+			</seismo_stat>
+		</xsl:if>
 	</xsl:template>
 </xsl:stylesheet>
 
