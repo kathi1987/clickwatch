@@ -11,9 +11,7 @@ import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
 
-import com.google.inject.Guice;
-
-import edu.hu.clickwatch.GuiceModule;
+import edu.hu.clickwatch.ClickWatchPluginActivator;
 import edu.hu.clickwatch.model.AbstractNodeConnection;
 import edu.hu.clickwatch.model.ClickControlNodeConnection;
 import edu.hu.clickwatch.model.MultiNode;
@@ -61,9 +59,9 @@ public class Connect implements IObjectActionDelegate {
 			Node node = node_it.next();
 			if (node.getConnection() == null || !node.isConnected()) {
 				if (node instanceof MultiNode) {
-					nodeConnection = Guice.createInjector(new GuiceModule()).getInstance(MultiNodeNodeConnection.class);
+					nodeConnection = ClickWatchPluginActivator.getInstance().getInjector().getInstance(MultiNodeNodeConnection.class);
 				} else {
-					nodeConnection = Guice.createInjector(new GuiceModule()).getInstance(ClickControlNodeConnection.class);
+					nodeConnection = ClickWatchPluginActivator.getInstance().getInjector().getInstance(ClickControlNodeConnection.class);
 				}
 				node.setConnection(nodeConnection);
 				nodeConnection.setUp(node);

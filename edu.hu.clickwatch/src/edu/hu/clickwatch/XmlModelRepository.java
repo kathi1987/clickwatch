@@ -49,6 +49,10 @@ public class XmlModelRepository {
 		}
 	}
 	
+	public XmlModelRepository() {
+		super();
+	}
+	
 	public String getOriginalXml(EObject value) {
 		for (Adapter adapter: value.eAdapters()) {
 			if (adapter instanceof XmlStringAdapter) {
@@ -65,6 +69,7 @@ public class XmlModelRepository {
 	}
 	
 	private ResourceSet resourceSet = null;
+	private Map<URI, EPackage> metaModels = new HashMap<URI, EPackage>();
 	private Map<Object, Object> options = null;
 	
 	private void initialize() {
@@ -165,39 +170,45 @@ public class XmlModelRepository {
 	}
 	
 	public EPackage loadMetaModelFromXSD(URI xsdUri, String xsdStr) {
-		XSDSchema xsd = loadXSD(xsdUri, xsdStr);	
+		EPackage result = metaModels.get(xsdUri);
+		if (result == null) {
+			XSDSchema xsd = loadXSD(xsdUri, xsdStr);	
 		
-		Iterator<EObject> xsd_it = xsd.eAllContents();
-		while (xsd_it.hasNext()) {
-			EObject next = xsd_it.next();
-			if (next instanceof XSDComplexTypeDefinition) {
-				XSDComplexTypeDefinition complexTypeDefinition = (XSDComplexTypeDefinition)next;
-				if (complexTypeDefinition.getName() == null) {
-					EObject container = complexTypeDefinition.eContainer();
-					if (container instanceof XSDNamedComponent) {
-						String name = ((XSDNamedComponent)container).getName();
-						if (name != null) {
-							complexTypeDefinition.setName(name);
-							complexTypeDefinition.getElement().setAttributeNS(EcorePackage.eNS_URI, "name", name);
-						} else {
-							String alias = ((XSDNamedComponent)container).getAliasName();
-							if (!alias.contains("_._")) {
-								complexTypeDefinition.setName(alias);
-								complexTypeDefinition.getElement().setAttributeNS(EcorePackage.eNS_URI, "name", alias);
+			Iterator<EObject> xsd_it = xsd.eAllContents();
+			while (xsd_it.hasNext()) {
+				EObject next = xsd_it.next();
+				if (next instanceof XSDComplexTypeDefinition) {
+					XSDComplexTypeDefinition complexTypeDefinition = (XSDComplexTypeDefinition)next;
+					if (complexTypeDefinition.getName() == null) {
+						EObject container = complexTypeDefinition.eContainer();
+						if (container instanceof XSDNamedComponent) {
+							String name = ((XSDNamedComponent)container).getName();
+							if (name != null) {
+								complexTypeDefinition.setName(name);
+								complexTypeDefinition.getElement().setAttributeNS(EcorePackage.eNS_URI, "name", name);
+							} else {
+								String alias = ((XSDNamedComponent)container).getAliasName();
+								if (!alias.contains("_._")) {
+									complexTypeDefinition.setName(alias);
+									complexTypeDefinition.getElement().setAttributeNS(EcorePackage.eNS_URI, "name", alias);
+								}
 							}
 						}
 					}
 				}
 			}
+			
+			XSDEcoreBuilder xsdEcoreBuilder = new XSDEcoreBuilder();
+			xsdEcoreBuilder.generate(xsd);
+			Collection<EPackage> values = xsdEcoreBuilder.getTargetNamespaceToEPackageMap().values();
+			Preconditions.checkState(values.size() == 1);
+			result = values.iterator().next();
+			
+			result.setNsURI(xsdUri.toString());
+			metaModels.put(xsdUri, result);
+		} else {
+			System.out.println("metamodel is reused");
 		}
-		
-		XSDEcoreBuilder xsdEcoreBuilder = new XSDEcoreBuilder();
-		xsdEcoreBuilder.generate(xsd);
-		Collection<EPackage> values = xsdEcoreBuilder.getTargetNamespaceToEPackageMap().values();
-		Preconditions.checkState(values.size() == 1);
-		EPackage result = values.iterator().next();
-		
-		result.setNsURI(xsdUri.toString());
 		return result;		
 	}
 

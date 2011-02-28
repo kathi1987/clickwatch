@@ -51,6 +51,7 @@ import org.eclipse.emf.edit.domain.IEditingDomainProvider;
 import org.eclipse.emf.edit.provider.AdapterFactoryItemDelegator;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.FeatureMapEntryWrapperItemProvider;
+import org.eclipse.emf.edit.provider.IItemColorProvider;
 import org.eclipse.emf.edit.provider.ReflectiveItemProvider;
 import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
 import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory;
@@ -92,6 +93,7 @@ import org.eclipse.swt.events.ControlAdapter;
 import org.eclipse.swt.events.ControlEvent;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.ui.IActionBars;
@@ -109,6 +111,7 @@ import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.PropertySheet;
 import org.eclipse.ui.views.properties.PropertySheetPage;
 
+import edu.hu.clickwatch.model.ChangeMark;
 import edu.hu.clickwatch.model.provider.ClickWatchModelItemProviderAdapterFactory;
 
 /**
@@ -554,7 +557,7 @@ public class ClickWatchModelEditor
 		initializeEditingDomain();
 	}
 	
-	public static class MyReflectiveItemProviderAdapterFactory extends ReflectiveItemProviderAdapterFactory {
+	public static class MyReflectiveItemProviderAdapterFactory extends ReflectiveItemProviderAdapterFactory implements IItemColorProvider {
 		ReflectiveItemProvider itemProvider = new ReflectiveItemProvider(this) {
 			@Override
 			public String getText(Object object) {
@@ -590,7 +593,6 @@ public class ClickWatchModelEditor
 				return result;
 			}
 
-
 			@Override
 			protected Object createWrapper(EObject object,
 					EStructuralFeature feature, Object value, int index) {
@@ -608,11 +610,42 @@ public class ClickWatchModelEditor
 					return super.createWrapper(object, feature, value, index);
 				}
 			}
+			
+			
 		};
 		@Override
 		public Adapter createAdapter(Notifier target) {
 			return itemProvider;
 		}
+		
+		private final static Object black = Display.getCurrent().getSystemColor(SWT.COLOR_GREEN);
+		private final static Object yellow = Display.getCurrent().getSystemColor(SWT.COLOR_YELLOW);
+		private final static Object red = Display.getCurrent().getSystemColor(SWT.COLOR_RED);
+		private final static Object white = Display.getCurrent().getSystemColor(SWT.COLOR_WHITE);
+		
+		@Override
+		public Object getForeground(Object object) {
+			if (object instanceof EObject) {
+				ChangeMark mark = ChangeMark.getChangeMark((EObject)object);
+				if (mark != null && mark.isActive() && mark.isDirectChange((EObject)object)) {
+					return red;
+				}
+			}
+			return black;
+		}
+
+
+		@Override
+		public Object getBackground(Object object) {
+			if (object instanceof EObject) {
+				ChangeMark mark = ChangeMark.getChangeMark((EObject)object);
+				if (mark != null && mark.isActive()) {
+					return yellow;
+				}
+			}
+			return white;
+		}
+
 	}
 
 	/**
