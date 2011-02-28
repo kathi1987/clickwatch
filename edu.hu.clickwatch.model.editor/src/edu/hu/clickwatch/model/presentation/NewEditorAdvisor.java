@@ -16,6 +16,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.edit.ui.action.LoadResourceAction;
 import org.eclipse.emf.edit.ui.util.EditUIUtil;
+import edu.hu.clickwatch.model.presentation.NewEditorPlugin;
 import org.eclipse.equinox.app.IApplication;
 import org.eclipse.equinox.app.IApplicationContext;
 import org.eclipse.jface.action.GroupMarker;
@@ -376,9 +377,8 @@ public final class NewEditorAdvisor extends WorkbenchAdvisor {
 		 * @generated
 		 */
 		public void run(IAction action) {
-			String msg = "ClickWatch by Humboldt Wireless Lab (HWL) group.\nFor more information visit our website: http://hwl.hu-berlin.de/features/software/";
-			MessageDialog.openInformation(getWindow().getShell(), "ClickWatch by HWL",
-					msg);
+			MessageDialog.openInformation(getWindow().getShell(), getString("_UI_About_title"),
+			getString("_UI_About_text"));
 		}
 	}
 	

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<edu.hu.clickwatch.model:Network xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:XMLSchema="http://www.w3.org/2001/XMLSchema" xmlns:edu.hu.clickwatch.model="edu.hu.clickwatch.model" name="HWL">
+<edu.hu.clickwatch.model:Network xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:XMLSchema="http://www.w3.org/2001/XMLSchema" xmlns:edu.hu.clickwatch.model="edu.hu.clickwatch.model" name="HWL" updateIntervall="10000">
   <subnetwork name="Outdoor">
-    <node iNetAdress="10.5.70.16">
+    <node iNetAdress="10.5.70.16" backbone="wireless">
       <element name="wireless">
         <handler name="address" canRead="true" canWrite="true">06-1B-B1-05-46-10</handler>
         <handler name="deviceinfo" canRead="true"><device node="06-1B-B1-05-46-10" name="ath0" address="06-1B-B1-05-46-10" fix_address="06-1B-B1-05-46-10" type="WIRELESS"/></handler>
@@ -1152,7 +1152,7 @@ push	-	[1] routing/src_forwarder</handler>
         </children>
       </element>
     </node>
-    <node iNetAdress="10.5.59.159">
+    <node iNetAdress="10.5.59.159" backbone="wireless">
       <element name="wireless">
         <handler name="address" canRead="true" canWrite="true">06-1B-B1-05-3B-9F</handler>
         <handler name="deviceinfo" canRead="true"><device node="06-1B-B1-05-3B-9F" name="ath0" address="06-1B-B1-05-3B-9F" fix_address="06-1B-B1-05-3B-9F" type="WIRELESS"/></handler>
@@ -2306,7 +2306,7 @@ push	-	[1] routing/src_forwarder</handler>
         </children>
       </element>
     </node>
-    <node iNetAdress="10.5.70.9">
+    <node iNetAdress="10.5.70.9" backbone="wireless">
       <element name="wireless">
         <handler name="address" canRead="true" canWrite="true">06-1B-B1-05-46-09</handler>
         <handler name="deviceinfo" canRead="true"><device node="06-1B-B1-05-46-09" name="ath0" address="06-1B-B1-05-46-09" fix_address="06-1B-B1-05-46-09" type="WIRELESS"/></handler>
@@ -3418,7 +3418,7 @@ push	-	[1] routing/src_forwarder</handler>
         </children>
       </element>
     </node>
-    <node iNetAdress="10.5.59.161">
+    <node iNetAdress="10.5.59.161" backbone="wireless">
       <element name="wireless">
         <handler name="address" canRead="true" canWrite="true">06-1B-B1-05-3B-A1</handler>
         <handler name="deviceinfo" canRead="true"><device node="06-1B-B1-05-3B-A1" name="ath0" address="06-1B-B1-05-3B-A1" fix_address="06-1B-B1-05-3B-A1" type="WIRELESS"/></handler>
@@ -4536,6 +4536,7 @@ push	-	[1] routing/src_forwarder</handler>
         </children>
       </element>
     </node>
+    <node iNetAdress="10.5.70.8" backbone="wireless"/>
   </subnetwork>
   <subnetwork name="Indoor">
     <subnetwork name="ESZ">

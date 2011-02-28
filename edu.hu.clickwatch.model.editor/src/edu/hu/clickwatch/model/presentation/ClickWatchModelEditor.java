@@ -44,15 +44,14 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.FeatureMap;
-import org.eclipse.emf.ecore.util.FeatureMapUtil;
 import org.eclipse.emf.ecore.util.FeatureMap.Entry;
+import org.eclipse.emf.ecore.util.FeatureMapUtil;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xml.type.AnyType;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
 import org.eclipse.emf.edit.provider.AdapterFactoryItemDelegator;
-import org.eclipse.emf.edit.provider.AttributeValueWrapperItemProvider;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.FeatureMapEntryWrapperItemProvider;
 import org.eclipse.emf.edit.provider.IItemColorProvider;
@@ -115,7 +114,6 @@ import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.PropertySheet;
 import org.eclipse.ui.views.properties.PropertySheetPage;
 
-import edu.hu.clickwatch.model.ChangeMark;
 import edu.hu.clickwatch.model.provider.ClickWatchModelItemProviderAdapterFactory;
 
 /**
@@ -615,30 +613,30 @@ public class ClickWatchModelEditor
 					}
 				}
 				
-				private final Object black = Display.getCurrent().getSystemColor(SWT.COLOR_BLACK);
-				private final Object yellow = Display.getCurrent().getSystemColor(SWT.COLOR_DARK_YELLOW);
-				private final Object red = Display.getCurrent().getSystemColor(SWT.COLOR_DARK_RED);
+//				private final Object black = Display.getCurrent().getSystemColor(SWT.COLOR_BLACK);
+//				private final Object yellow = Display.getCurrent().getSystemColor(SWT.COLOR_DARK_YELLOW);
+//				private final Object red = Display.getCurrent().getSystemColor(SWT.COLOR_DARK_RED);
 				
-				@Override
-				public Object getForeground(Object object) {
-					if (object instanceof MyFeatureMapEntryWrapperItemProvider) {
-						FeatureMap.Entry entry = (FeatureMap.Entry)((MyFeatureMapEntryWrapperItemProvider)object).value;
-						EObject owner = (EObject)((MyFeatureMapEntryWrapperItemProvider)object).getOwner();
-						ChangeMark mark = ChangeMark.getChangeMark(owner);
-						if (mark != null && mark.isActive()) {
-							if (mark.getFeature() == entry.getEStructuralFeature()) {
-								return red;
-							}
-						}
-					} 
-					if (object instanceof EObject) {
-						ChangeMark mark = ChangeMark.getChangeMark((EObject)object);
-						if (mark != null && mark.isActive()) {
-							return yellow;
-						}
-					}
-					return black;
-				}
+//				@Override
+//				public Object getForeground(Object object) {
+//					if (object instanceof MyFeatureMapEntryWrapperItemProvider) {
+//						FeatureMap.Entry entry = (FeatureMap.Entry)((MyFeatureMapEntryWrapperItemProvider)object).value;
+//						EObject owner = (EObject)((MyFeatureMapEntryWrapperItemProvider)object).getOwner();
+//						ChangeMark mark = ChangeMark.getChangeMark(owner);
+//						if (mark != null && mark.isActive()) {
+//							if (mark.getFeature() == entry.getEStructuralFeature()) {
+//								return red;
+//							}
+//						}
+//					} 
+//					if (object instanceof EObject) {
+//						ChangeMark mark = ChangeMark.getChangeMark((EObject)object);
+//						if (mark != null && mark.isActive()) {
+//							return yellow;
+//						}
+//					}
+//					return black;
+//				}
 			}
 
 			@Override

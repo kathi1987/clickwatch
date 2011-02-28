@@ -115,13 +115,22 @@ public interface ClickWatchModelPackage extends EPackage {
 	int NODE__CONNECTION = 4;
 
 	/**
+	 * The feature id for the '<em><b>Backbone</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__BACKBONE = 5;
+
+	/**
 	 * The number of structural features of the '<em>Node</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NODE_FEATURE_COUNT = 5;
+	int NODE_FEATURE_COUNT = 6;
 
 	/**
 	 * The meta object id for the '{@link edu.hu.clickwatch.model.impl.ElementImpl <em>Element</em>}' class.
@@ -400,6 +409,15 @@ public interface ClickWatchModelPackage extends EPackage {
 	int MULTI_NODE__CONNECTION = NODE__CONNECTION;
 
 	/**
+	 * The feature id for the '<em><b>Backbone</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTI_NODE__BACKBONE = NODE__BACKBONE;
+
+	/**
 	 * The feature id for the '<em><b>Nodes</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -482,6 +500,17 @@ public interface ClickWatchModelPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getNode_Connection();
+
+	/**
+	 * Returns the meta object for the attribute '{@link edu.hu.clickwatch.model.Node#getBackbone <em>Backbone</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Backbone</em>'.
+	 * @see edu.hu.clickwatch.model.Node#getBackbone()
+	 * @see #getNode()
+	 * @generated
+	 */
+	EAttribute getNode_Backbone();
 
 	/**
 	 * Returns the meta object for class '{@link edu.hu.clickwatch.model.Element <em>Element</em>}'.
@@ -803,6 +832,14 @@ public interface ClickWatchModelPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute NODE__CONNECTION = eINSTANCE.getNode_Connection();
+
+		/**
+		 * The meta object literal for the '<em><b>Backbone</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute NODE__BACKBONE = eINSTANCE.getNode_Backbone();
 
 		/**
 		 * The meta object literal for the '{@link edu.hu.clickwatch.model.impl.ElementImpl <em>Element</em>}' class.
