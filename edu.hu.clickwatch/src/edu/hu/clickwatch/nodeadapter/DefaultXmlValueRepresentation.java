@@ -46,29 +46,34 @@ public class DefaultXmlValueRepresentation implements IExtendedValueRepresentati
 			return;
 		}
 		
+		FeatureMap any = handler.getAny();
+		FeatureMap mixed = handler.getMixed();
 		if (value instanceof ValueClass) {
 			Object anyValue = ((ValueClass)value).value;
 			EStructuralFeature anyFeature = ((ValueClass)value).feature;
 			
 			if (anyValue instanceof String) {
-				if (handler.getMixed().isEmpty()) {
-					handler.getMixed().add(FeatureMapUtil.createRawEntry(anyFeature, anyValue));
+				if (mixed.isEmpty()) {
+					mixed.add(FeatureMapUtil.createRawEntry(anyFeature, anyValue));
 				} else {
-					handler.getMixed().set(0, FeatureMapUtil.createRawEntry(anyFeature, anyValue));
+					mixed.set(0, FeatureMapUtil.createRawEntry(anyFeature, anyValue));
 				}
 			} else {
-				if (handler.getAny().isEmpty()) {
-					handler.getAny().add(FeatureMapUtil.createRawEntry(anyFeature, anyValue));
+				if (any.isEmpty()) {
+					any.add(FeatureMapUtil.createRawEntry(anyFeature, anyValue));
 				} else {
-					handler.getAny().set(0, FeatureMapUtil.createRawEntry(anyFeature, anyValue));
+					any.set(0, FeatureMapUtil.createRawEntry(anyFeature, anyValue));
 				}
 			}
 		} else {
-			Preconditions.checkState(!(handler.getAny().isEmpty() && handler.getMixed().isEmpty()));
-			if (handler.getAny().isEmpty()) {
-				handler.getMixed().setValue(0, value);
+			if (any.isEmpty()) {
+				if (mixed.isEmpty()) {
+					mixed.add(XMLTypePackage.eINSTANCE.getXMLTypeDocumentRoot_Text(), value);
+				} else {
+					mixed.setValue(0, value);
+				}
 			} else {
-				handler.getAny().setValue(0, value);
+				any.setValue(0, value);
 			}
 		}
 	}

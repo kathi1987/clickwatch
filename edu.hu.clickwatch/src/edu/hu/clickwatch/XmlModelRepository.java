@@ -49,10 +49,6 @@ public class XmlModelRepository {
 		}
 	}
 	
-	public XmlModelRepository() {
-		super();
-	}
-	
 	public String getOriginalXml(EObject value) {
 		for (Adapter adapter: value.eAdapters()) {
 			if (adapter instanceof XmlStringAdapter) {

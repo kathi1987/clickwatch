@@ -323,8 +323,7 @@ public class HandlerItemProvider
 					index, adapterFactory, getResourceLocator()) {
 				@Override
 				public String getText(Object object) {
-					return ((FeatureMap.Entry) value).getEStructuralFeature()
-							.getName();
+					return ((FeatureMap.Entry) value).getEStructuralFeature().getName();
 				}
 			};
 		} else {
@@ -344,19 +343,10 @@ public class HandlerItemProvider
 			if (mark != null && mark.isActive() && mark.isDirectChange((EObject)object)) {
 				return red;
 			}
-		}
-		return black;
-	}
-
-
-	@Override
-	public Object getBackground(Object object) {
-		if (object instanceof EObject) {
-			ChangeMark mark = ChangeMark.getChangeMark((EObject)object);
 			if (mark != null && mark.isActive()) {
 				return yellow;
 			}
 		}
-		return white;
+		return black;
 	}
 }
