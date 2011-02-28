@@ -34,6 +34,7 @@ import edu.hu.clickwatch.model.Node;
  *   <li>{@link edu.hu.clickwatch.model.impl.NodeImpl#getElements <em>Elements</em>}</li>
  *   <li>{@link edu.hu.clickwatch.model.impl.NodeImpl#isConnected <em>Connected</em>}</li>
  *   <li>{@link edu.hu.clickwatch.model.impl.NodeImpl#getConnection <em>Connection</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.model.impl.NodeImpl#getBackbone <em>Backbone</em>}</li>
  * </ul>
  * </p>
  *
@@ -129,6 +130,26 @@ public class NodeImpl extends EObjectImpl implements Node {
 	 * @ordered
 	 */
 	protected Object connection = CONNECTION_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getBackbone() <em>Backbone</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBackbone()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String BACKBONE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getBackbone() <em>Backbone</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBackbone()
+	 * @generated
+	 * @ordered
+	 */
+	protected String backbone = BACKBONE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -250,6 +271,27 @@ public class NodeImpl extends EObjectImpl implements Node {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getBackbone() {
+		return backbone;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setBackbone(String newBackbone) {
+		String oldBackbone = backbone;
+		backbone = newBackbone;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ClickWatchModelPackage.NODE__BACKBONE, oldBackbone, backbone));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -277,6 +319,8 @@ public class NodeImpl extends EObjectImpl implements Node {
 				return isConnected();
 			case ClickWatchModelPackage.NODE__CONNECTION:
 				return getConnection();
+			case ClickWatchModelPackage.NODE__BACKBONE:
+				return getBackbone();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -306,6 +350,9 @@ public class NodeImpl extends EObjectImpl implements Node {
 			case ClickWatchModelPackage.NODE__CONNECTION:
 				setConnection(newValue);
 				return;
+			case ClickWatchModelPackage.NODE__BACKBONE:
+				setBackbone((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -333,6 +380,9 @@ public class NodeImpl extends EObjectImpl implements Node {
 			case ClickWatchModelPackage.NODE__CONNECTION:
 				setConnection(CONNECTION_EDEFAULT);
 				return;
+			case ClickWatchModelPackage.NODE__BACKBONE:
+				setBackbone(BACKBONE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -355,6 +405,8 @@ public class NodeImpl extends EObjectImpl implements Node {
 				return connected != CONNECTED_EDEFAULT;
 			case ClickWatchModelPackage.NODE__CONNECTION:
 				return CONNECTION_EDEFAULT == null ? connection != null : !CONNECTION_EDEFAULT.equals(connection);
+			case ClickWatchModelPackage.NODE__BACKBONE:
+				return BACKBONE_EDEFAULT == null ? backbone != null : !BACKBONE_EDEFAULT.equals(backbone);
 		}
 		return super.eIsSet(featureID);
 	}

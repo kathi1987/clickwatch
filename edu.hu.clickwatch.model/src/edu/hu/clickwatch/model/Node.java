@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link edu.hu.clickwatch.model.Node#getElements <em>Elements</em>}</li>
  *   <li>{@link edu.hu.clickwatch.model.Node#isConnected <em>Connected</em>}</li>
  *   <li>{@link edu.hu.clickwatch.model.Node#getConnection <em>Connection</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.model.Node#getBackbone <em>Backbone</em>}</li>
  * </ul>
  * </p>
  *
@@ -152,5 +153,31 @@ public interface Node extends EObject {
 	 * @generated
 	 */
 	void setConnection(Object value);
+
+	/**
+	 * Returns the value of the '<em><b>Backbone</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Backbone</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Backbone</em>' attribute.
+	 * @see #setBackbone(String)
+	 * @see edu.hu.clickwatch.model.ClickWatchModelPackage#getNode_Backbone()
+	 * @model
+	 * @generated
+	 */
+	String getBackbone();
+
+	/**
+	 * Sets the value of the '{@link edu.hu.clickwatch.model.Node#getBackbone <em>Backbone</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Backbone</em>' attribute.
+	 * @see #getBackbone()
+	 * @generated
+	 */
+	void setBackbone(String value);
 
 } // Node
