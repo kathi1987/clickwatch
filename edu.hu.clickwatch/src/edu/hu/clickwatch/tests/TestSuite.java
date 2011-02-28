@@ -7,6 +7,7 @@ public class TestSuite {
 		junit.framework.TestSuite suite = new junit.framework.TestSuite(TestSuite.class.getName());
 		//$JUnit-BEGIN$
 		suite.addTestSuite(XmlModelRepositoryTest.class);
+		suite.addTestSuite(MergeTests.class);
 		suite.addTestSuite(ClickControlNodeAdapterTest.class);
 		suite.addTestSuite(ClickControlNodeXmlValuesAdapterTest.class);
 		suite.addTestSuite(ClickControlXSDNodeAdapterTest.class);

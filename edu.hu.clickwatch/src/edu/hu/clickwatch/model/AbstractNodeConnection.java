@@ -389,16 +389,10 @@ public abstract class AbstractNodeConnection implements ErrorListener {
 						connection.ensureHandlerIsListening(oldItem);
 						if (newItem.isCanRead()) {
 							INodeAdapter nodeAdapter = connection.getNodeAdapter();
-							connection.modelChangeListener.disable();
-							boolean hasChanged = nodeAdapter.getValueRepresentation(oldItem).merge(oldItem, 
+							connection.modelChangeListener.setMode(HandlerModelAdapter.LISTEN_FOR_ADAPTER);
+							nodeAdapter.getValueRepresentation(oldItem).merge(oldItem, 
 									nodeAdapter.getValueRepresentation(newItem).get(newItem));
-							
-							if (hasChanged) {
-								if (oldItem.isWatch() || ((Element) oldItem.eContainer()).isWatch()) {
-									oldItem.setChanged(true);
-								}
-							}
-							connection.modelChangeListener.enable();
+							connection.modelChangeListener.setMode(HandlerModelAdapter.LISTEN_FOR_USER);
 						}
 					}
 				}.run(element.getHandlers(), updatedElementCopy.getHandlers());
@@ -420,11 +414,12 @@ public abstract class AbstractNodeConnection implements ErrorListener {
 	 */
 	private class HandlerModelAdapter extends EContentAdapter {
 
-		private boolean enabled = true;
+		private int mode = LISTEN_FOR_USER;
 
 		@Override
 		public void notifyChanged(Notification notification) {
-			if (enabled && notification.getEventType() != Notification.REMOVING_ADAPTER) {
+			super.notifyChanged(notification);
+			if (notification.getEventType() != Notification.REMOVING_ADAPTER) {
 				Object notifier = notification.getNotifier();
 				while (notifier != null && 
 						notifier instanceof EObject && !(notifier instanceof Handler)) {
@@ -434,7 +429,13 @@ public abstract class AbstractNodeConnection implements ErrorListener {
 					Handler handler = (Handler)notifier;
 					
 					if (getNodeAdapter().getValueRepresentation(handler).isNotificationChangingValue(notification)) {
-						propagateHandlerValueChangeToReality(handler, getNodeAdapter().getValueRepresentation(handler).get(handler));
+						if (mode == LISTEN_FOR_USER) {
+							handlerUserNotification(notification, handler);
+						} else if (mode == LISTEN_FOR_ADAPTER) {
+							handlerAdapterNotification(notification, handler);
+						} else {
+							Preconditions.checkState(false);
+						}
 					}
 					if (ClickWatchModelPackage.eINSTANCE.getHandler_Watch().equals(
 							notification.getFeature())) {
@@ -444,14 +445,30 @@ public abstract class AbstractNodeConnection implements ErrorListener {
 					}	
 				}
 			}
+			
+		}
+		
+		private void handlerAdapterNotification(Notification notification, Handler handler) {
+			if (handler.isWatch() || ((Element) handler.eContainer()).isWatch()) {
+				handler.setChanged(true);
+			}
+//			if (notification.getNotifier() instanceof EObject) {
+//				ChangeMark.addChangeMark((EObject)notification.getNotifier(), 
+//						(EStructuralFeature)notification.getFeature(), notification.getNewValue());
+//			}
 		}
 
-		public void disable() {
-			enabled = false;
+		private void handlerUserNotification(Notification notification, Handler handler) {
+			propagateHandlerValueChangeToReality(handler, 
+					getNodeAdapter().getValueRepresentation(handler).get(handler));
 		}
-
-		public void enable() {
-			enabled = true;
+		
+		public static final int LISTEN_FOR_USER = 0;
+		
+		public static final int LISTEN_FOR_ADAPTER = 1;
+		
+		public void setMode(int mode) {
+			this.mode = mode;
 		}
 	};
 	

@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.FeatureMapEntryWrapperItemProvider;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
+import org.eclipse.emf.edit.provider.IItemColorProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
@@ -28,7 +29,10 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.Display;
 
+import edu.hu.clickwatch.model.ChangeMark;
 import edu.hu.clickwatch.model.ClickWatchModelPackage;
 import edu.hu.clickwatch.model.Handler;
 
@@ -45,7 +49,7 @@ public class HandlerItemProvider
 		IStructuredItemContentProvider,
 		ITreeItemContentProvider,
 		IItemLabelProvider,
-		//IItemColorProvider,
+		IItemColorProvider,
 		IItemPropertySource {
 	
 	/**
@@ -330,16 +334,31 @@ public class HandlerItemProvider
 		}
 	}
 	
-	/**
-	 * @generated NOT
-	 */
-	//private final static Object green = Display.getCurrent().getSystemColor(SWT.COLOR_GREEN);
+	private final static Object black = Display.getCurrent().getSystemColor(SWT.COLOR_BLACK);
+	private final static Object yellow = Display.getCurrent().getSystemColor(SWT.COLOR_YELLOW);
+	private final static Object red = Display.getCurrent().getSystemColor(SWT.COLOR_RED);
+	private final static Object white = Display.getCurrent().getSystemColor(SWT.COLOR_WHITE);
+	
+	@Override
+	public Object getForeground(Object object) {
+		if (object instanceof EObject) {
+			ChangeMark mark = ChangeMark.getChangeMark((EObject)object);
+			if (mark != null && mark.isActive() && mark.isDirectChange((EObject)object)) {
+				return red;
+			}
+		}
+		return black;
+	}
 
-	/** 
-	 * @generated NOT
-	 */
-//	@Override
-//	public Object getForeground(Object object) {
-//		return green;
-//	}
+
+	@Override
+	public Object getBackground(Object object) {
+		if (object instanceof EObject) {
+			ChangeMark mark = ChangeMark.getChangeMark((EObject)object);
+			if (mark != null && mark.isActive()) {
+				return yellow;
+			}
+		}
+		return white;
+	}
 }

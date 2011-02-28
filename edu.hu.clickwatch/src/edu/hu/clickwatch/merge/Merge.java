@@ -1,7 +1,5 @@
 package edu.hu.clickwatch.merge;
 
-import java.util.logging.Logger;
-
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -49,29 +47,29 @@ public class Merge {
 			boolean hasChanged = false;
 			for(final EStructuralFeature feature: eMergedValue.eClass().getEAllStructuralFeatures()) {
 				if (!feature.isDerived()) {
-					try {
-						if (merge(eMergedValue.eGet(feature), eNewValue.eGet(feature), new Operations() {						
-							@Override
-							public void replace() {
-								eMergedValue.eSet(feature, copy(eNewValue.eGet(feature)));
-							}
-							
-							@Override
-							public void remove() {
-								eMergedValue.eUnset(feature);
-							}
-							
-							@Override
-							public void add() {
-								replace();			
-							}
-						})) {
-							hasChanged = true;
-						}
-					} catch (IllegalArgumentException e) {
-						Logger.getLogger(Merge.class.getName()).warning("missing feature during value merge; this should not happen");
+					EStructuralFeature eNewValueFeature = eNewValue.eClass().getEStructuralFeature(feature.getFeatureID());
+					if (eNewValueFeature == null) {
+						// meta-model has changed
 						op.replace();
 						return true;
+					}
+					if (merge(eMergedValue.eGet(feature), eNewValue.eGet(eNewValueFeature), new Operations() {						
+						@Override
+						public void replace() {
+							eMergedValue.eSet(feature, copy(eNewValue.eGet(feature)));
+						}
+						
+						@Override
+						public void remove() {
+							eMergedValue.eUnset(feature);
+						}
+						
+						@Override
+						public void add() {
+							replace();			
+						}
+					})) {
+						hasChanged = true;
 					}
 				}
 			}
@@ -160,9 +158,5 @@ public class Merge {
 		} else {
 			return object;
 		}
-	}
-	
-	public static void markChanged(Object modelValue) {
-		
 	}
 }
