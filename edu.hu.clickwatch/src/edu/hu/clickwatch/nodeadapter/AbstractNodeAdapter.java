@@ -19,6 +19,7 @@ import com.google.inject.ImplementedBy;
 import com.google.inject.Inject;
 
 import edu.hu.clickcontrol.IClickSocket;
+import edu.hu.clickwatch.merge.Diff;
 import edu.hu.clickwatch.model.ClickWatchModelFactory;
 import edu.hu.clickwatch.model.Element;
 import edu.hu.clickwatch.model.Handler;
@@ -340,9 +341,9 @@ public abstract class AbstractNodeAdapter implements INodeAdapter {
 		}
 
 		@Override
-		public boolean merge(Handler mergee, Object newVaule) {
+		public boolean merge(Handler mergee, Object newVaule, Diff diff) {
 			try {
-				return source.merge(mergee, newVaule);
+				return source.merge(mergee, newVaule, diff);
 			} catch (Throwable e) {
 				handle(e);
 				return false;

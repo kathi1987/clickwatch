@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
 
+import edu.hu.clickwatch.merge.Diff;
 import edu.hu.clickwatch.model.AbstractNodeConnection;
 import edu.hu.clickwatch.model.ClickWatchModelFactory;
 import edu.hu.clickwatch.model.ClickWatchModelPackage;
@@ -150,7 +151,7 @@ public class MultiNodeAdapter implements INodeAdapter {
 			
 			
 			@Override
-			public boolean merge(Handler mergee, Object newValue) {
+			public boolean merge(Handler mergee, Object newValue, Diff diff) {
 				return false;
 			}
 		};

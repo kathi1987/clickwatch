@@ -24,6 +24,7 @@ import com.google.common.base.Throwables;
 import com.google.inject.Inject;
 
 import edu.hu.clickwatch.XmlModelRepository;
+import edu.hu.clickwatch.merge.Diff;
 import edu.hu.clickwatch.merge.Merge;
 import edu.hu.clickwatch.model.ClickWatchModelPackage;
 import edu.hu.clickwatch.model.Element;
@@ -114,8 +115,8 @@ public class ClickControlXSDNodeAdapter extends AbstractNodeAdapter {
 		}
 		
 		@Override
-		public boolean merge(final Handler mergee, final Object newValue) {
-			return Merge.merge(get(mergee), newValue, new Merge.SimpleOperations() {			
+		public boolean merge(final Handler mergee, final Object newValue, final Diff diff) {
+			return Merge.merge(get(mergee), newValue, diff, new Merge.SimpleOperations() {			
 				@Override
 				public void replace() {
 					set(mergee, newValue);

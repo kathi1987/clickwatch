@@ -3,6 +3,7 @@ package edu.hu.clickwatch.nodeadapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 
+import edu.hu.clickwatch.merge.Diff;
 import edu.hu.clickwatch.model.Handler;
 import edu.hu.clickwatch.nodeadapter.AbstractNodeAdapter.IExtendedValueRepresentation;
 
@@ -40,7 +41,7 @@ public class ConstantValueRepresentation implements IExtendedValueRepresentation
 	}
 
 	@Override
-	public boolean merge(Handler mergee, Object newVaule) {
+	public boolean merge(Handler mergee, Object newVaule, Diff diff) {
 		return false;
 	}
 }

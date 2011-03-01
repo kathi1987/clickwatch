@@ -16,14 +16,10 @@ import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.util.FeatureMapUtil;
-import org.eclipse.emf.ecore.xml.type.XMLTypeFactory;
-import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.FeatureMapEntryWrapperItemProvider;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemColorProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
@@ -32,10 +28,7 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.widgets.Display;
 
-import edu.hu.clickwatch.model.ChangeMark;
 import edu.hu.clickwatch.model.ClickWatchModelPackage;
 import edu.hu.clickwatch.model.Handler;
 
@@ -329,23 +322,5 @@ public class HandlerItemProvider
 		} else {
 			return super.createWrapper(object, feature, value, index);
 		}
-	}
-	
-	private final static Object black = Display.getCurrent().getSystemColor(SWT.COLOR_BLACK);
-	private final static Object yellow = Display.getCurrent().getSystemColor(SWT.COLOR_DARK_YELLOW);
-	private final static Object red = Display.getCurrent().getSystemColor(SWT.COLOR_DARK_RED);
-	
-	@Override
-	public Object getForeground(Object object) {
-		if (object instanceof EObject) {
-			ChangeMark mark = ChangeMark.getChangeMark((EObject)object);
-			if (mark != null && mark.isActive() && mark.isDirectChange((EObject)object)) {
-				return red;
-			}
-			if (mark != null && mark.isActive()) {
-				return yellow;
-			}
-		}
-		return black;
 	}
 }

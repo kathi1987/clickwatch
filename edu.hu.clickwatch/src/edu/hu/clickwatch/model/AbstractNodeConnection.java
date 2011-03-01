@@ -1,6 +1,9 @@
 package edu.hu.clickwatch.model;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.PatternSyntaxException;
@@ -28,6 +31,8 @@ import com.google.common.collect.Sets;
 
 import edu.hu.clickwatch.actions.Connect;
 import edu.hu.clickwatch.actions.Disconnect;
+import edu.hu.clickwatch.merge.Diff;
+import edu.hu.clickwatch.model.presentation.ClickWatchModelEditor;
 import edu.hu.clickwatch.nodeadapter.AbstractNodeAdapter;
 import edu.hu.clickwatch.nodeadapter.AbstractNodeAdapter.ErrorListener;
 import edu.hu.clickwatch.nodeadapter.INodeAdapter;
@@ -72,7 +77,7 @@ public abstract class AbstractNodeConnection implements ErrorListener {
 	private final static int UPDATE_INTERVALL_DEFAULT = 5000;
 	private int updateIntervall = UPDATE_INTERVALL_DEFAULT;
 	
-	private IEditorPart editor = null;
+	private ClickWatchModelEditor editor = null;
 	private boolean isScheduledForDisconnect = false;
 	private boolean hasError = false;
 	
@@ -184,11 +189,20 @@ public abstract class AbstractNodeConnection implements ErrorListener {
 		runInGUI(new Runnable() {
 			@Override
 			public void run() {
-				updater.update(AbstractNodeConnection.this, node, updatedNodeCopy);
+				final Collection<ChangeMark> changeMarks = new HashSet<ChangeMark>();
+				updater.update(AbstractNodeConnection.this, node, updatedNodeCopy, new Diff(new Diff.AddEntry() {
+					@Override
+					public void addEntry(EObject object,
+							EStructuralFeature feature, Object oldValue,
+							Object newValue) {
+						changeMarks.add(new ChangeMark(object, feature, newValue));
+					}										
+				}));
 				if (!node.isConnected()) {
 
 				}
 				node.setConnected(true);
+				editor.markChanges(changeMarks);
 			}
 		});
 		EcoreUtil.delete(updatedNodeCopy, true);
@@ -331,10 +345,13 @@ public abstract class AbstractNodeConnection implements ErrorListener {
 	 */
 	private static class SynchronizedUpdater { //implements Runnable {
 		AbstractNodeConnection connection;
+		Diff diff;
 		
-		synchronized void update(AbstractNodeConnection connection, Node modelNode, Node newRealNode) {
-			this.connection = connection;			
+		synchronized Diff update(AbstractNodeConnection connection, Node modelNode, Node newRealNode, Diff diff) {
+			this.connection = connection;
+			this.diff = diff;
 			new ElementListUpdater(modelNode.getElements()).run(modelNode.getElements(), newRealNode.getElements());
+			return diff;
 		}
 		
 		class ElementListUpdater extends ListUpdater<Element> {
@@ -392,7 +409,7 @@ public abstract class AbstractNodeConnection implements ErrorListener {
 							INodeAdapter nodeAdapter = connection.getNodeAdapter();
 							connection.modelChangeListener.setMode(HandlerModelAdapter.LISTEN_FOR_ADAPTER);
 							nodeAdapter.getValueRepresentation(oldItem).merge(oldItem, 
-									nodeAdapter.getValueRepresentation(newItem).get(newItem));
+									nodeAdapter.getValueRepresentation(newItem).get(newItem), diff);
 							connection.modelChangeListener.setMode(HandlerModelAdapter.LISTEN_FOR_USER);
 						}
 					}
@@ -491,7 +508,7 @@ public abstract class AbstractNodeConnection implements ErrorListener {
 	 */
 	public void connect(IEditorPart editorPart) {
 		installPartListener(closeListener);
-		this.editor = editorPart;
+		this.editor = (ClickWatchModelEditor)editorPart;
 
 		if (node.isConnected()) {
 			return;

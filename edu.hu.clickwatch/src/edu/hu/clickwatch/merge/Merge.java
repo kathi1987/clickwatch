@@ -27,21 +27,26 @@ public class Merge {
 	}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public static boolean merge(Object mergedValue, Object newValue, final Operations op) {
+	public static boolean merge(Object mergedValue, Object newValue, final Diff diff, final Operations op) {
 		if (mergedValue == null && newValue == null) {
 			return false;
 		}
 		if (mergedValue != null && newValue == null) {
 			op.remove();
+			diff.addEntry(mergedValue, null);
+			return true;
 		}
 		if (mergedValue == null && newValue != null) {
 			op.add();
+			diff.addEntry(null, newValue);
+			return true;
 		}
 		if (mergedValue instanceof EObject && newValue instanceof EObject) {
 			final EObject eMergedValue = (EObject)mergedValue;
 			final EObject eNewValue = (EObject)newValue;
 			if (!eMergedValue.eClass().getName().equals(eNewValue.eClass().getName())) {
 				op.replace();
+				diff.addEntry(mergedValue, newValue);
 				return true;
 			}
 			boolean hasChanged = false;
@@ -50,10 +55,12 @@ public class Merge {
 					EStructuralFeature eNewValueFeature = eNewValue.eClass().getEStructuralFeature(feature.getFeatureID());
 					if (eNewValueFeature == null) {
 						// meta-model has changed
+						diff.addEntry(mergedValue, newValue);
 						op.replace();
 						return true;
 					}
-					if (merge(eMergedValue.eGet(feature), eNewValue.eGet(eNewValueFeature), new Operations() {						
+					if (merge(eMergedValue.eGet(feature), eNewValue.eGet(eNewValueFeature), diff.getDiff(eMergedValue, feature),
+							new Operations() {						
 						@Override
 						public void replace() {
 							eMergedValue.eSet(feature, copy(eNewValue.eGet(feature)));
@@ -83,7 +90,7 @@ public class Merge {
 			int i;
 			for (i = 0; i < lOneSize; i++) {
 				final int fi = i;
-				if (merge(lMergedValue.get(i), lNewValue.get(i), new Operations() {					
+				if (merge(lMergedValue.get(i), lNewValue.get(i), diff, new Operations() {					
 					@Override
 					public void replace() {
 						lMergedValue.set(fi, copy(lNewValue.get(fi)));
@@ -119,9 +126,10 @@ public class Merge {
 			final FeatureMap.Entry fNewValue = (FeatureMap.Entry)newValue;
 			if (!fMergedValue.getEStructuralFeature().getName().equals(fNewValue.getEStructuralFeature().getName())) {
 				op.replace();
+				diff.addEntry(fMergedValue, fNewValue);
 				return true;
 			} else {
-				return merge(fMergedValue.getValue(), fNewValue.getValue(), new Operations() {					
+				return merge(fMergedValue.getValue(), fNewValue.getValue(), diff.getDiff(fMergedValue.getEStructuralFeature()), new Operations() {					
 					@Override
 					public void replace() {
 						op.replace();
@@ -140,6 +148,7 @@ public class Merge {
 		} else {
 			if (!mergedValue.equals(newValue)) {
 				op.replace();
+				diff.addEntry(mergedValue, newValue);
 				return true;
 			} else {
 				return false;

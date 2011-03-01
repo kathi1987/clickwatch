@@ -2,6 +2,7 @@ package edu.hu.clickwatch.nodeadapter;
 
 import org.eclipse.emf.common.notify.Notification;
 
+import edu.hu.clickwatch.merge.Diff;
 import edu.hu.clickwatch.model.AbstractNodeConnection;
 import edu.hu.clickwatch.model.Handler;
 
@@ -34,5 +35,5 @@ public interface IValueRepresentation {
 	 * @return True if the new value is different from the existing value of the
 	 *         handler that is merged into (mergee).
 	 */
-	public boolean merge(Handler mergee, Object newVaule);
+	public boolean merge(Handler mergee, Object newVaule, Diff diff);
 }

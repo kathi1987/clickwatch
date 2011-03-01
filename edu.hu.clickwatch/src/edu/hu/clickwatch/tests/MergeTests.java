@@ -10,6 +10,7 @@ import org.eclipse.emf.ecore.EPackage;
 
 import edu.hu.clickwatch.ClickWatchStandaloneSetup;
 import edu.hu.clickwatch.XmlModelRepository;
+import edu.hu.clickwatch.merge.Diff;
 import edu.hu.clickwatch.merge.Merge;
 
 public class MergeTests extends TestCase {
@@ -27,7 +28,7 @@ public class MergeTests extends TestCase {
 		EObject orig = mergedValue;
 		EObject newValue = xmlModelRepository.deserializeXml(newValueStr);
 		
-		boolean result = Merge.merge(mergedValue, newValue, new Merge.Operations() {			
+		boolean result = Merge.merge(mergedValue, newValue, new Diff(null), new Merge.Operations() {			
 			@Override
 			public void replace() {
 				assertFalse(true);
@@ -63,7 +64,7 @@ public class MergeTests extends TestCase {
 		EObject orig = mergedValue;
 		EObject newValue = xmlModelRepository.deserializeModel(metaModel, newValueStr);
 		
-		boolean result = Merge.merge(mergedValue, newValue, new Merge.Operations() {			
+		boolean result = Merge.merge(mergedValue, newValue, new Diff(null), new Merge.Operations() {			
 			@Override
 			public void replace() {
 				assertFalse(true);
