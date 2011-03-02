@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import click.ControlSocket;
@@ -80,18 +81,38 @@ public abstract class AbstractNodeAdapter implements INodeAdapter {
 				+ " needs to be connected first");
 	}
 
+	protected abstract void createAndSetModelValue(Handler handler,
+			String string);
+
 	/**
-	 * Retrieves element and handler information from the remote node and
-	 * populates a given empty {@link Node} model with it.
+	 * Allows extending classes to ignore elements. Currently elements with "@"
+	 * in their names are ignored.
 	 * 
-	 * @param internalNodeCopy
-	 *            , the empty node.
-	 * @param cs
-	 *            , the {@link IClickSocket} that should be used to retrieve the
-	 *            node information.
+	 * @param name
+	 *            , name of the element.
+	 * @return true, iff the element should be ignored.
 	 */
-	protected void retrieveAndPopulateInternalNodeCopy(Node internalNodeCopy,
-			IClickSocket cs) {
+	protected boolean ignoreElement(String name) {
+		return name.contains("@");
+	}
+
+	protected boolean ignoreHandler(String name) {
+		return false;
+	}
+
+	/**
+	 * Filter is a regular expression of this type:
+	 * element_regexp/handler_regexp called per node (non-Javadoc)
+	 * 
+	 * @see edu.hu.clickwatch.nodeadapter.INodeAdapter#retrieve(java.lang.String)
+	 */
+	@Override
+	public Node retrieve(String elemFilters, String handFilter) {
+		ensureConnected();
+		internalNodeCopy = modelFactory.createNode();
+		internalNodeCopy.setINetAdress(host);
+		internalNodeCopy.setPort(port);
+		
 		Map<String, Element> elementMap = new HashMap<String, Element>();
 		List<String> configElementNames = null;
 		try {
@@ -145,72 +166,46 @@ public abstract class AbstractNodeAdapter implements INodeAdapter {
 						element.getHandlers().add(newHandler);
 					}
 				}
+			}
+		}
+		
+		filterInternalNodeCopy(elemFilters, handFilter);
 
-				for (Handler handler : element.getHandlers()) {
-					if (handler.isCanRead()
-							&& !ignoreHandler(handler.getName())) {
-						char data[] = null;
-						try {
-							data = cs.read(element.getElementPath(),
-									handler.getName());
-						} catch (Throwable e) {
-							Throwables.propagate(e);
-						}
+		Iterator<EObject> it = internalNodeCopy.eAllContents();
+		while (it.hasNext()) {
+			EObject next = it.next();
+			if (next instanceof Handler) {
+				Handler handler = (Handler)next;
+				if (handler.isCanRead()
+						&& !ignoreHandler(handler.getName())) {
+					char data[] = null;
+					try {
+						data = cs.read(((Element)handler.eContainer()).getElementPath(),
+								handler.getName());
+					} catch (Throwable e) {
+						Throwables.propagate(e);
+					}
 
-						try {
-							createAndSetModelValue(handler, new String(data));
-						} catch (Throwable e) {
-							logger.log(IStatus.ERROR,
-									"Exception while creating model for "
-											+ handler + " from "
-											+ new String(data), e);
-						}
+					try {
+						createAndSetModelValue(handler, new String(data));
+					} catch (Throwable e) {
+						logger.log(IStatus.ERROR,
+								"Exception while creating model for "
+										+ handler + " from "
+										+ new String(data), e);
 					}
 				}
 			}
 		}
+		//return EcoreUtil.copy(internalNodeCopy); //necessary??
+		return internalNodeCopy;
 	}
-
-	protected abstract void createAndSetModelValue(Handler handler,
-			String string);
-
-	private void retrieveInternalNodeCopy() {
-		ensureConnected();
-		internalNodeCopy = modelFactory.createNode();
-		internalNodeCopy.setINetAdress(host);
-		internalNodeCopy.setPort(port);
-		retrieveAndPopulateInternalNodeCopy(internalNodeCopy, cs);
-	}
-
-	/**
-	 * Allows extending classes to ignore elements. Currently elements with "@"
-	 * in their names are ignored.
-	 * 
-	 * @param name
-	 *            , name of the element.
-	 * @return true, iff the element should be ignored.
-	 */
-	protected boolean ignoreElement(String name) {
-		return name.contains("@");
-	}
-
-	protected boolean ignoreHandler(String name) {
-		return false;
-	}
-
-	/**
-	 * Filter is a regular expression of this type:
-	 * element_regexp/handler_regexp called per node (non-Javadoc)
-	 * 
-	 * @see edu.hu.clickwatch.nodeadapter.INodeAdapter#retrieve(java.lang.String)
-	 */
-	@Override
-	public Node retrieve(String elemFilters, String handFilter) {
-		retrieveInternalNodeCopy();
+	
+	private void filterInternalNodeCopy(String elemFilters, String handFilter) {
 		// filter internal node copy
 		if ((elemFilters == null || elemFilters.trim().equals(""))
 				&& (handFilter == null || handFilter.trim().equals(""))) {
-			return EcoreUtil.copy(internalNodeCopy);
+			return;
 		}
 
 		if (elemFilters == null) {
@@ -224,7 +219,7 @@ public abstract class AbstractNodeAdapter implements INodeAdapter {
 		Iterator<Element> elem_it = internalNodeCopy.getElements().iterator();
 		// recursive checker
 		filterMatched(elem_it, elemFilter, 0, handFilter);
-		return EcoreUtil.copy(internalNodeCopy);
+
 	}
 
 	// recursive filter

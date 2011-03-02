@@ -1,13 +1,11 @@
 package edu.hu.clickwatch.merge;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -92,12 +90,12 @@ public class Merger {
 		final Map<Object, Item> newIdentityMap = createIdentityMap(context, lNewValue);
 		Set<Object> oldIdentities = oldIdentityMap.keySet();
 		Set<Object> newIdentities = newIdentityMap.keySet();
-		List<Item> itemsToRemove = new ArrayList<Item>();
+		Item[] toRemove = new Item[oldIdentities.size()];
 		for (Object oldIdentity: oldIdentities) {
 			Item oldItem = oldIdentityMap.get(oldIdentity);
 			Item newItem = newIdentityMap.get(oldIdentity);
 			if (newItem == null) {
-				itemsToRemove.add(oldItem);
+				toRemove[oldItem.index] = oldItem;
 			} else {
 				boolean equals = merge(context, oldItem.object, newItem.object);
 				if (!equals) {
@@ -108,10 +106,13 @@ public class Merger {
 				}
 			}
 		}
-		for (Item toRemove: itemsToRemove) {
-			lOldValue.remove(toRemove.index);
-			configuration.handleDiffernce(context, toRemove.object, null, toRemove.index);
-			configuration.dispose(context, toRemove.object);			
+		for (int i = toRemove.length - 1; i >= 0; i--) {
+			Item item = toRemove[i];
+			if (item != null) {
+				lOldValue.remove(item.index);
+				configuration.handleDiffernce(context, item.object, null, item.index);
+				configuration.dispose(context, item.object);
+			}
 		}
 		for (Object newIdentity: newIdentities) {
 			if (oldIdentityMap.get(newIdentity) == null) {
