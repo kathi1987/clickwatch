@@ -10,13 +10,16 @@ import edu.hu.clickwatch.XmlModelRepository;
 import edu.hu.clickwatch.merge.DefaultMergeConfiguration;
 import edu.hu.clickwatch.merge.IMergeConfiguration;
 import edu.hu.clickwatch.merge.Merger;
+import edu.hu.clickwatch.model.ClickWatchMergeConfiguration;
+import edu.hu.clickwatch.model.ClickWatchModelFactory;
+import edu.hu.clickwatch.model.Element;
 
 public class MergeTests extends AbstractTest {
 
 	private XmlModelRepository xmlModelRepository;
 	private Merger merger;
 	
-	private static class RegisterChangesConfiguration extends DefaultMergeConfiguration {
+	private static class RegisterChangesConfiguration extends ClickWatchMergeConfiguration {
 		boolean changed = false;
 
 		@Override
@@ -75,6 +78,24 @@ public class MergeTests extends AbstractTest {
 		return mergedValue;
 	}
 	
+	private EObject performMergeCW(String mergedValueStr, String newValueStr, boolean changedModel) {
+		mergedValueStr = "<edu.hu.clickwatch.model:Element xmlns:edu.hu.clickwatch.model='edu.hu.clickwatch.model'>" + mergedValueStr + "</edu.hu.clickwatch.model:Element>";
+		newValueStr = "<edu.hu.clickwatch.model:Element xmlns:edu.hu.clickwatch.model='edu.hu.clickwatch.model'>" + newValueStr + "</edu.hu.clickwatch.model:Element>";
+		
+		EObject mergedValue = xmlModelRepository.deserializeXml(mergedValueStr);
+		EObject orig = mergedValue;
+		EObject newValue = xmlModelRepository.deserializeXml(newValueStr);
+		
+		((RegisterChangesConfiguration)merger.getConfiguration()).changed = false;
+		boolean result = merger.merge(mergedValue, newValue);
+	
+		assertEquals(true, result);
+		assertEquals(changedModel, ((RegisterChangesConfiguration)merger.getConfiguration()).changed);
+		assertEquals(orig, mergedValue);
+		assertEquals(xmlModelRepository.serializeXml(newValue), xmlModelRepository.serializeXml(mergedValue));
+		return mergedValue;
+	}
+	
 	public void testGeneral() {
 		performMergeXML("<foo/>", "<foo/>", false);
 	}
@@ -124,4 +145,15 @@ public class MergeTests extends AbstractTest {
 		// performMergeXSD("<entry seq='16'/>", "<entry/>", true); fails for technical reasons, i.e. seq is int and empty int is 0 not empty
 	}
 
+	public void testCWModel() {
+		performMergeCW(
+				"<handler name='ls'><A/></handler>", 
+				"<handler name='ls'><A/></handler><handler name='r'><B/></handler>", true); 
+		performMergeCW(
+				"<handler name='r'><A/><B/></handler>", 
+				"<handler name='r'><A/><B/></handler><handler name='ls'><B/></handler>", true); 
+		performMergeCW( 
+				"<handler name='ls'><A/></handler><handler name='r'><B/></handler>", 
+				"<handler name='ls'><A/></handler>", true); 
+	}
 }

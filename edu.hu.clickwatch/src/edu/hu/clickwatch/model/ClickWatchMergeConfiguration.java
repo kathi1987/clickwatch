@@ -53,7 +53,7 @@ public class ClickWatchMergeConfiguration extends DefaultMergeConfiguration {
 	@Override
 	public boolean hasIdentity(IContext context) {
 		EStructuralFeature feature = context.getFeature();
-		return feature == elementsFeature || feature == handlersFeature ||
+		return feature == elementsFeature || feature == handlersFeature || feature == childrenFeature ||
 				super.hasIdentity(context);
 	}
 	

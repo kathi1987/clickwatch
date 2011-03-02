@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.FeatureMap;
 
+import com.google.common.base.Preconditions;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
@@ -90,13 +91,15 @@ public class Merger {
 		final Map<Object, Item> newIdentityMap = createIdentityMap(context, lNewValue);
 		Set<Object> oldIdentities = oldIdentityMap.keySet();
 		Set<Object> newIdentities = newIdentityMap.keySet();
-		Item[] toRemove = new Item[oldIdentities.size()];
+		Item[] toRemove = new Item[lOldValue.size()];
 		for (Object oldIdentity: oldIdentities) {
 			Item oldItem = oldIdentityMap.get(oldIdentity);
 			Item newItem = newIdentityMap.get(oldIdentity);
 			if (newItem == null) {
 				toRemove[oldItem.index] = oldItem;
 			} else {
+				Preconditions.checkState(configuration.identity(context, oldItem.object).equals(
+						configuration.identity(context, newItem.object)));
 				boolean equals = merge(context, oldItem.object, newItem.object);
 				if (!equals) {
 					Object newCreatedValue = configuration.create(context, newItem.object);
@@ -126,6 +129,9 @@ public class Merger {
 	
 	private void mergeListByIndices(MergeContext context, 
 			List<Object> lOldValue, List<Object> lNewValue) {
+		if (context.feature.getName().contains("andle")) {
+			System.out.println(context.feature.getName());
+		}
 		int oldValueSize = lOldValue.size();
 		int newValueSize = lNewValue.size();
 		int lOneSize = Math.min(oldValueSize, newValueSize);
