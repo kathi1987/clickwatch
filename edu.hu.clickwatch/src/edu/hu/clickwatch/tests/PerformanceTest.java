@@ -11,7 +11,7 @@ import com.google.inject.Guice;
 import com.google.inject.Injector;
 
 import edu.hu.clickcontrol.IClickSocket;
-import edu.hu.clickwatch.GuiceModule;
+import edu.hu.clickwatch.ClickWatchModule;
 import edu.hu.clickwatch.XmlModelRepository;
 import edu.hu.clickwatch.model.ClickWatchModelFactory;
 import edu.hu.clickwatch.model.Network;
@@ -34,7 +34,7 @@ public class PerformanceTest extends TestCase {
 
 	private void performTest(final Class<? extends INodeAdapter> adapterClass, int numberOfElements, int numberOfHandler, int numberOfUpdates, int reportOnEach) {	
 		final IClickSocket clickSocket = TestUtil.createClickSocket(numberOfElements, numberOfHandler, true);
-		Injector injector = Guice.createInjector(new GuiceModule() {
+		Injector injector = Guice.createInjector(new ClickWatchModule() {
 			@Override
 			protected void overrideConfigure() {
 				bind(IClickSocket.class).toInstance(clickSocket);
@@ -112,7 +112,7 @@ public class PerformanceTest extends TestCase {
 		long reportOnEach = 10;
 		
 		final IClickSocket clickSocket = TestUtil.createClickSocket(30, 10, false);
-		Injector injector = Guice.createInjector(new GuiceModule() {
+		Injector injector = Guice.createInjector(new ClickWatchModule() {
 			@Override
 			protected void overrideConfigure() {
 				bind(IClickSocket.class).toInstance(clickSocket);

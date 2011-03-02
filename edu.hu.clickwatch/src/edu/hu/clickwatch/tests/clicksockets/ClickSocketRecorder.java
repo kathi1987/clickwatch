@@ -13,7 +13,7 @@ import com.google.inject.Guice;
 import com.google.inject.Injector;
 
 import edu.hu.clickwatch.ClickWatchStandaloneSetup;
-import edu.hu.clickwatch.GuiceModule;
+import edu.hu.clickwatch.ClickWatchModule;
 import edu.hu.clickwatch.model.ClickWatchModelFactory;
 import edu.hu.clickwatch.model.Network;
 import edu.hu.clickwatch.model.Node;
@@ -29,7 +29,7 @@ public class ClickSocketRecorder {
 
 	public ClickSocketRecorder() {
 		ClickWatchStandaloneSetup.doSetup();
-		injector = Guice.createInjector(new GuiceModule() {
+		injector = Guice.createInjector(new ClickWatchModule() {
 			@Override
 			protected void overrideConfigure() {
 				bind(INodeAdapter.class).to(ClickControlNodeAdapter.class);

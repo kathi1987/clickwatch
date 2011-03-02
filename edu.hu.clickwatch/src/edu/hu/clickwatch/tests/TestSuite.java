@@ -11,7 +11,8 @@ public class TestSuite {
 		suite.addTestSuite(ClickControlNodeAdapterTest.class);
 		suite.addTestSuite(ClickControlNodeXmlValuesAdapterTest.class);
 		suite.addTestSuite(ClickControlXSDNodeAdapterTest.class);
-		suite.addTestSuite(ConnectionTest.class);
+		suite.addTestSuite(ClickControlXSDNodeAdapterPlayerTest.class);
+		suite.addTestSuite(ClickControlNodeConnectionXmlValuesTest.class);
 		//$JUnit-END$
 		return suite;
 	}

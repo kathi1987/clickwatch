@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.xml.type.AnyType;
 import click.ControlSocket.HandlerInfo;
 
 import com.google.common.base.Preconditions;
+import com.google.inject.Singleton;
 
 import edu.hu.clickcontrol.IClickSocket;
 import edu.hu.clickwatch.model.Element;
@@ -27,7 +28,36 @@ public class TestUtil {
 		return createClickSocket(numberOfElements, numberOfHandlers, false);
 	}
 	
-	public static IClickSocket createClickSocket(final int numberOfElements, final int numberOfHandlers, final boolean isChanging) {
+	@Singleton
+	public static class ClickSocketWrapper extends ClickSocketTestImpl {
+		private ClickSocketTestImpl source;
+		
+		public void setSource(ClickSocketTestImpl source) {
+			this.source = source;
+		}
+
+		@Override
+		public String[] getElements() {
+			return source.getElements();
+		}
+
+		@Override
+		public HandlerInfo[] getHandler(String element) {
+			return source.getHandler(element);
+		}
+
+		@Override
+		public String getValue(String element, String handler) {
+			return source.getValue(element, handler);
+		}
+
+		@Override
+		public void handleWrite(String element, String handler, String value) {
+			source.handleWrite(element, handler, value);
+		}
+	}
+	
+	public static ClickSocketTestImpl createClickSocket(final int numberOfElements, final int numberOfHandlers, final boolean isChanging) {
 		return new ClickSocketTestImpl() {	
 			int change = 0;
 			

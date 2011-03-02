@@ -21,8 +21,7 @@ import edu.hu.clickwatch.model.Node;
 
 public class ClickSocketPlayerSocketImpl extends ClickSocketTestImpl {
 
-	@Inject
-	ClickSocketPlayer player;
+	@Inject private ClickSocketPlayer player;
 	
 	private Node node = null;
 	private long lastUpdate = 0;

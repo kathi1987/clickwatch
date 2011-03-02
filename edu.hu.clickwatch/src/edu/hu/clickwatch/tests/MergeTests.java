@@ -2,56 +2,57 @@ package edu.hu.clickwatch.tests;
 
 import java.io.IOException;
 
-import junit.framework.TestCase;
-
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
-import edu.hu.clickwatch.ClickWatchStandaloneSetup;
 import edu.hu.clickwatch.XmlModelRepository;
-import edu.hu.clickwatch.merge.Diff;
-import edu.hu.clickwatch.merge.Merge;
+import edu.hu.clickwatch.merge.DefaultMergeConfiguration;
+import edu.hu.clickwatch.merge.IMergeConfiguration;
+import edu.hu.clickwatch.merge.Merger;
 
-public class MergeTests extends TestCase {
+public class MergeTests extends AbstractTest {
 
 	private XmlModelRepository xmlModelRepository;
+	private Merger merger;
+	
+	private static class RegisterChangesConfiguration extends DefaultMergeConfiguration {
+		boolean changed = false;
+
+		@Override
+		public void handleDiffernce(IContext context, Object oldValue,
+				Object newValue, int index) {
+			changed = true;
+		}
+	}
 
 	@Override
-	protected void setUp() throws Exception {
-		ClickWatchStandaloneSetup.doSetup();
-		xmlModelRepository = new XmlModelRepository();
+	protected Class<? extends IMergeConfiguration> getMergeConfigurationClass() {
+		return RegisterChangesConfiguration.class;
+	}
+
+	@Override
+	protected void additionalSetUp() {
+		merger = injector.getInstance(Merger.class);
+		xmlModelRepository = injector.getInstance(XmlModelRepository.class);
 	}
 	
-	private EObject performMergeXML(String mergedValueStr, String newValueStr, boolean changing) {
+	private EObject performMergeXML(String mergedValueStr, String newValueStr, boolean changedModel) {
 		EObject mergedValue = xmlModelRepository.deserializeXml(mergedValueStr);
 		EObject orig = mergedValue;
 		EObject newValue = xmlModelRepository.deserializeXml(newValueStr);
 		
-		boolean result = Merge.merge(mergedValue, newValue, new Diff(null), new Merge.Operations() {			
-			@Override
-			public void replace() {
-				assertFalse(true);
-			}
-			
-			@Override
-			public void remove() {
-				assertFalse(true);
-			}
-			
-			@Override
-			public void add() {
-				assertFalse(true);
-			}
-		});
+		((RegisterChangesConfiguration)merger.getConfiguration()).changed = false;
+		boolean result = merger.merge(mergedValue, newValue);
 	
-		assertEquals(changing, result);
+		assertEquals(true, result);
+		assertEquals(changedModel, ((RegisterChangesConfiguration)merger.getConfiguration()).changed);
 		assertEquals(orig, mergedValue);
 		assertEquals(xmlModelRepository.serializeXml(newValue), xmlModelRepository.serializeXml(mergedValue));
 		return mergedValue;
 	}
 	
-	private EObject performMergeXSD(String mergedValueStr, String newValueStr, boolean changing) {
+	private EObject performMergeXSD(String mergedValueStr, String newValueStr, boolean changedModel) {
 		EPackage metaModel = null;
 		try {
 			metaModel = xmlModelRepository.loadMetaModelFromXSD(URI.createFileURI(XmlModelRepositoryTest.LINK_STAT_XSD), 
@@ -64,24 +65,11 @@ public class MergeTests extends TestCase {
 		EObject orig = mergedValue;
 		EObject newValue = xmlModelRepository.deserializeModel(metaModel, newValueStr);
 		
-		boolean result = Merge.merge(mergedValue, newValue, new Diff(null), new Merge.Operations() {			
-			@Override
-			public void replace() {
-				assertFalse(true);
-			}
-			
-			@Override
-			public void remove() {
-				assertFalse(true);
-			}
-			
-			@Override
-			public void add() {
-				assertFalse(true);
-			}
-		});
+		((RegisterChangesConfiguration)merger.getConfiguration()).changed = false;
+		boolean result = merger.merge(mergedValue, newValue);
 	
-		assertEquals(changing, result);
+		assertEquals(true, result);
+		assertEquals(changedModel, ((RegisterChangesConfiguration)merger.getConfiguration()).changed);
 		assertEquals(orig, mergedValue);
 		assertEquals(xmlModelRepository.serializeModel(metaModel, newValue), xmlModelRepository.serializeModel(metaModel, mergedValue));
 		return mergedValue;
@@ -106,6 +94,7 @@ public class MergeTests extends TestCase {
 		performMergeXML("<foo attr='ATTR'>TEXT</foo>", "<foo attr='ATTR' attr2='ATTR2'>TEXT</foo>", true);
 		performMergeXML("<foo attr='ATTR' attr2='ATTR'>TEXT</foo>", "<foo attr='ATTR' attr2='ATTR'>TEXT</foo>", false);
 		performMergeXML("<foo attr='ATTR' attr2='ATTR'>TEXT</foo>", "<foo attr2='ATTR' attr='ATTR'>TEXT</foo>", true);
+		performMergeXML("<foo attr='ATTR' attr2='ATTR2'>TEXT</foo>", "<foo attr2='ATTR2' attr='ATTR'>TEXT</foo>", true);
 	}
 	
 	public void testElements() {
@@ -134,4 +123,5 @@ public class MergeTests extends TestCase {
 		performMergeXSD("<entry seq='16'/>", "<entry seq='32'/>", true);
 		// performMergeXSD("<entry seq='16'/>", "<entry/>", true); fails for technical reasons, i.e. seq is int and empty int is 0 not empty
 	}
+
 }

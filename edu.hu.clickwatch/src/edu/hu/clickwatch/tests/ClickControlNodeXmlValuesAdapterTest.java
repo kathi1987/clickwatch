@@ -2,6 +2,7 @@ package edu.hu.clickwatch.tests;
 
 import com.google.common.base.Throwables;
 
+import edu.hu.clickwatch.XmlModelRepository;
 import edu.hu.clickwatch.model.Node;
 import edu.hu.clickwatch.nodeadapter.ClickControlNodeXmlValuesAdapter;
 import edu.hu.clickwatch.nodeadapter.INodeAdapter;
@@ -12,11 +13,11 @@ public class ClickControlNodeXmlValuesAdapterTest extends ClickControlNodeAdapte
 
 	@Override
 	protected Object getNewHandlerValue(String strValue) {
-		return guiceModule.getXmlModelRepository().createXMLText(strValue);
+		return injector.getInstance(XmlModelRepository.class).createXMLText(strValue);
 	}
 
 	@Override
-	protected Class<? extends INodeAdapter> getClickControlNodeAdapterClass() {
+	protected Class<? extends INodeAdapter> getNodeAdapterClass() {
 		return ClickControlNodeXmlValuesAdapter.class;
 	}
 	
@@ -30,7 +31,7 @@ public class ClickControlNodeXmlValuesAdapterTest extends ClickControlNodeAdapte
 		}
 		
 		assertTrue(modelAdapter.isConnected());
-		assertTrue(clickSocket.isConnected());
+		assertTrue(clickSocketWrapper.isConnected());
 	}
 
 	public void testRetrieveWithXmlValues() {

@@ -1,18 +1,9 @@
 package edu.hu.clickwatch.model;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
 import java.util.regex.PatternSyntaxException;
 
-import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -22,19 +13,14 @@ import org.eclipse.ui.IPartListener;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
 
-import com.google.common.base.Function;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Throwables;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
+import com.google.inject.Inject;
 
 import edu.hu.clickwatch.actions.Connect;
 import edu.hu.clickwatch.actions.Disconnect;
-import edu.hu.clickwatch.merge.Diff;
+import edu.hu.clickwatch.merge.Merger;
 import edu.hu.clickwatch.model.presentation.ClickWatchModelEditor;
-import edu.hu.clickwatch.nodeadapter.AbstractNodeAdapter;
-import edu.hu.clickwatch.nodeadapter.AbstractNodeAdapter.ErrorListener;
 import edu.hu.clickwatch.nodeadapter.INodeAdapter;
 
 /**
@@ -69,48 +55,21 @@ import edu.hu.clickwatch.nodeadapter.INodeAdapter;
  * @author Markus Scheidgen
  * 
  */
-public abstract class AbstractNodeConnection implements ErrorListener {
+public abstract class AbstractNodeConnection {
 
 	private Node node;
-	private String elemFilter = null;
-	private String handFilter = null;
 	private final static int UPDATE_INTERVALL_DEFAULT = 5000;
-	private int updateIntervall = UPDATE_INTERVALL_DEFAULT;
 	
 	private ClickWatchModelEditor editor = null;
+	
 	private boolean isScheduledForDisconnect = false;
 	private boolean hasError = false;
 	
-	private Throwable unreportedError = null;
-	private boolean haveReportedAnError = false;
+	private final HandlerModelAdapter modelChangeListener = new HandlerModelAdapter(); 
 	
-	private Adapter filterListener = new AdapterImpl() {
-		@Override
-		public void notifyChanged(Notification notification) {
-			if (notification.getFeature() == ClickWatchModelPackage.eINSTANCE.getNetwork_ElementFilter()) {
-				String newElemFilter = notification.getNewStringValue();
-				if (validateFilter(newElemFilter, "element")) {
-					elemFilter = newElemFilter;
-				} else {
-					elemFilter = "";
-				}
-			}
-			if (notification.getFeature() == ClickWatchModelPackage.eINSTANCE.getNetwork_HandlerFilter()) {
-				String newHandFilter = notification.getNewStringValue();
-				if (validateFilter(newHandFilter, "handler")) {
-					handFilter = newHandFilter;
-				} else {
-					handFilter = "";
-				}
-			}
-			if (notification.getFeature() == ClickWatchModelPackage.eINSTANCE.getNetwork_UpdateIntervall()) {
-				updateIntervall = notification.getNewIntValue();
-			}
-		}
-	};
+	@Inject Merger merger;
 
 	private boolean validateFilter(String newFilter, String type) {
-		// filter internal node copy
 		if ( newFilter == null || newFilter.trim().equals("") ) {
 			return true;	
 		}
@@ -143,11 +102,9 @@ public abstract class AbstractNodeConnection implements ErrorListener {
 			try {
 				if (!getNodeAdapter().isConnected()) {
 					getNodeAdapter().connect();
-					installErrorListener(getNodeAdapter());
 				}
 				while (!isScheduledForDisconnect()) {
 					runUpdate();
-					reportPossibleError();
 				}
 			} catch (final Exception ex) {
 				runInGUI(new Runnable() {
@@ -161,7 +118,6 @@ public abstract class AbstractNodeConnection implements ErrorListener {
 						+ " occured:\n" + ex.getMessage());
 			} finally {
 				getNodeAdapter().disconnect();
-				uninstallErrorListener(getNodeAdapter());
 				runInGUI(new Runnable() {
 					@Override
 					public void run() {
@@ -171,38 +127,25 @@ public abstract class AbstractNodeConnection implements ErrorListener {
 			}
 		}
 	}
-	
-	private void uninstallErrorListener(INodeAdapter nodeAdapter) {
-		if (nodeAdapter instanceof AbstractNodeAdapter) {
-			((AbstractNodeAdapter)nodeAdapter).addErrorListener(this);
-		}
-	}
-
-	private void installErrorListener(INodeAdapter nodeAdapter) {
-		if (nodeAdapter instanceof AbstractNodeAdapter) {
-			((AbstractNodeAdapter)nodeAdapter).removeErrorListener(this);
-		}
-	}
 
 	public void runUpdate() {
+		String elemFilter = getNetwork().getElementFilter();
+		String handFilter = getNetwork().getHandlerFilter();
+		validateFilter(elemFilter, "element");
+		validateFilter(elemFilter, "handler");
 		final Node updatedNodeCopy = getNodeAdapter().retrieve(elemFilter, handFilter);
 		runInGUI(new Runnable() {
 			@Override
 			public void run() {
-				final Collection<ChangeMark> changeMarks = new HashSet<ChangeMark>();
-				updater.update(AbstractNodeConnection.this, node, updatedNodeCopy, new Diff(new Diff.AddEntry() {
-					@Override
-					public void addEntry(EObject object,
-							EStructuralFeature feature, Object oldValue,
-							Object newValue) {
-						changeMarks.add(new ChangeMark(object, feature, newValue));
-					}										
-				}));
-				if (!node.isConnected()) {
-
-				}
+				((ClickWatchMergeConfiguration)merger.getConfiguration()).reset();
+				modelChangeListener.setMode(HandlerModelAdapter.LISTEN_FOR_ADAPTER);
+				merger.merge(node, updatedNodeCopy);
+				modelChangeListener.setMode(HandlerModelAdapter.LISTEN_FOR_USER);
 				node.setConnected(true);
-				editor.markChanges(changeMarks);
+				if (editor != null) { // editor can be null in tests
+					editor.markChanges(node, ((ClickWatchMergeConfiguration)
+							merger.getConfiguration()).getChanges());
+				}
 			}
 		});
 		EcoreUtil.delete(updatedNodeCopy, true);
@@ -211,6 +154,7 @@ public abstract class AbstractNodeConnection implements ErrorListener {
 	
 	protected void sleepUntilNextUpdate() {
 		try {
+			int updateIntervall = getNetwork().getUpdateIntervall();
 			if (updateIntervall == 0) {
 				Thread.sleep(UPDATE_INTERVALL_DEFAULT);
 			} else {
@@ -226,18 +170,16 @@ public abstract class AbstractNodeConnection implements ErrorListener {
 	 */
 	private class SetValueInRealityRunnable implements Runnable {
 		final Handler handler;
-		final Object value;
 
-		public SetValueInRealityRunnable(Handler handler, Object value) {
+		public SetValueInRealityRunnable(Handler handler) {
 			super();
 			this.handler = handler;
-			this.value = value;
 		}
 
 		@Override
 		public void run() {
 			if (getNodeAdapter().isConnected()) {
-				getNodeAdapter().updateHandlerValue(handler, value);
+				getNodeAdapter().updateHandlerValue(handler);
 			}
 		}
 	}
@@ -289,139 +231,9 @@ public abstract class AbstractNodeConnection implements ErrorListener {
 		return isScheduledForDisconnect || hasError;
 	}
 
-	private abstract static class ListUpdater<T> {
-
-		void run(List<T> oldList, List<T> newList) {
-			final Map<String, T> oldItemsMap = new HashMap<String, T>();
-			ImmutableSet<String> items = ImmutableSet.copyOf(Lists.transform(
-					oldList, new Function<T, String>() {
-						@Override
-						public String apply(T input) {
-							String name = getName(input);
-							oldItemsMap.put(name, input);
-							return name;
-						}
-					}));
-			final Map<String, T> newItemsMap = new HashMap<String, T>();
-			ImmutableSet<String> updatedItemsCopy = ImmutableSet.copyOf(Lists
-					.transform(newList, new Function<T, String>() {
-						@Override
-						public String apply(T input) {
-							String name = getName(input);
-							newItemsMap.put(name, input);
-							return name;
-						}
-					}));
-			for (String notLongerExistingItemName : Sets.difference(items,
-					updatedItemsCopy)) {
-				removeItem(oldItemsMap.get(notLongerExistingItemName));
-			}
-			for (String newItemName : Sets.difference(updatedItemsCopy, items)) {
-				addItem(newItemsMap.get(newItemName));
-			}
-			for (T updatedItemCopy : newList) {
-				for (T item : oldList) {
-					if (getName(item).equals(getName(updatedItemCopy))) {
-						update(item, updatedItemCopy);
-					}
-				}
-			}
-		}
-
-		protected abstract void removeItem(T oldItem);
-
-		protected abstract void addItem(T newItem);
-
-		protected abstract void update(T oldItem, T newItem);
-
-		protected abstract String getName(T item);
-	}
-	
-	private static final SynchronizedUpdater updater = new SynchronizedUpdater();
-
-	/**
-	 * Runnable used to update the model with data retrieved from the real node.
-	 * Should be run in GUI-Thread.
-	 */
-	private static class SynchronizedUpdater { //implements Runnable {
-		AbstractNodeConnection connection;
-		Diff diff;
-		
-		synchronized Diff update(AbstractNodeConnection connection, Node modelNode, Node newRealNode, Diff diff) {
-			this.connection = connection;
-			this.diff = diff;
-			new ElementListUpdater(modelNode.getElements()).run(modelNode.getElements(), newRealNode.getElements());
-			return diff;
-		}
-		
-		class ElementListUpdater extends ListUpdater<Element> {
-			
-			final List<Element> modelElements;
-			
-			public ElementListUpdater(List<Element> modelElements) {
-				super();
-				this.modelElements = modelElements;
-			}
-
-			public void run(List<Element> oldList, List<Element> newList) {
-				super.run(oldList, newList);
-			}
-
-			@Override
-			protected void removeItem(Element oldItem) {
-				EcoreUtil.delete(oldItem, true);
-			}
-
-			@Override
-			protected void addItem(Element newItem) {
-				modelElements.add(EcoreUtil.copy(newItem));
-			}
-
-			@Override
-			protected String getName(Element item) {
-				return item.getName();
-			}
-
-			@Override
-			protected void update(final Element element,
-					final Element updatedElementCopy) {
-				new ElementListUpdater(element.getChildren()).run(element.getChildren(), updatedElementCopy.getChildren());
-				new ListUpdater<Handler>() {
-					@Override
-					protected void removeItem(Handler oldItem) {
-						EcoreUtil.delete(oldItem, true);
-					}
-
-					@Override
-					protected void addItem(Handler newItem) {
-						element.getHandlers().add(EcoreUtil.copy(newItem));
-					}
-
-					@Override
-					protected String getName(Handler item) {
-						return item.getName();
-					}
-
-					@Override
-					protected void update(Handler oldItem, Handler newItem) {
-						connection.ensureHandlerIsListening(oldItem);
-						if (newItem.isCanRead()) {
-							INodeAdapter nodeAdapter = connection.getNodeAdapter();
-							connection.modelChangeListener.setMode(HandlerModelAdapter.LISTEN_FOR_ADAPTER);
-							nodeAdapter.getValueRepresentation(oldItem).merge(oldItem, 
-									nodeAdapter.getValueRepresentation(newItem).get(newItem), diff);
-							connection.modelChangeListener.setMode(HandlerModelAdapter.LISTEN_FOR_USER);
-						}
-					}
-				}.run(element.getHandlers(), updatedElementCopy.getHandlers());
-			}
-		};
-	}
-
-	public final void propagateHandlerValueChangeToReality(Handler handler,
-			Object value) {
+	public final void propagateHandlerValueChangeToReality(Handler handler) {
 		if (node.isConnected()) {
-			runInExtraThread(new SetValueInRealityRunnable(handler, value));
+			runInExtraThread(new SetValueInRealityRunnable(handler));
 		}
 	}
 
@@ -439,6 +251,9 @@ public abstract class AbstractNodeConnection implements ErrorListener {
 			super.notifyChanged(notification);
 			if (notification.getEventType() != Notification.REMOVING_ADAPTER) {
 				Object notifier = notification.getNotifier();
+				if (notifier instanceof Node || notifier instanceof Element) {
+					return;
+				}
 				while (notifier != null && 
 						notifier instanceof EObject && !(notifier instanceof Handler)) {
 					notifier = ((EObject)notifier).eContainer();
@@ -446,7 +261,7 @@ public abstract class AbstractNodeConnection implements ErrorListener {
 				if (notifier != null && notifier instanceof Handler) {
 					Handler handler = (Handler)notifier;
 					
-					if (getNodeAdapter().getValueRepresentation(handler).isNotificationChangingValue(notification)) {
+					if (isNotificationChangingValue(notification)) {
 						if (mode == LISTEN_FOR_USER) {
 							handlerUserNotification(notification, handler);
 						} else if (mode == LISTEN_FOR_ADAPTER) {
@@ -466,20 +281,23 @@ public abstract class AbstractNodeConnection implements ErrorListener {
 			
 		}
 		
+		private boolean isNotificationChangingValue(Notification notification) {
+			if (notification.getNotifier() instanceof Handler) {
+				return notification.getFeature() == ClickWatchModelPackage.eINSTANCE.getHandler_Any() ||
+						notification.getFeature() == ClickWatchModelPackage.eINSTANCE.getHandler_Mixed();
+			} else {
+				return true;
+			}
+		}
+
 		private void handlerAdapterNotification(Notification notification, Handler handler) {
 			if (handler.isWatch() || ((Element) handler.eContainer()).isWatch()) {
 				handler.setChanged(true);
 			}
-			// TODO did not get colorful markings of recently changed object and attribute to work -> need to change strategy 
-//			if (notification.getNotifier() instanceof EObject) {
-//				ChangeMark.addChangeMark((EObject)notification.getNotifier(), 
-//						(EStructuralFeature)notification.getFeature(), notification.getNewValue());
-//			}
 		}
 
 		private void handlerUserNotification(Notification notification, Handler handler) {
-			propagateHandlerValueChangeToReality(handler, 
-					getNodeAdapter().getValueRepresentation(handler).get(handler));
+			propagateHandlerValueChangeToReality(handler);
 		}
 		
 		public static final int LISTEN_FOR_USER = 0;
@@ -490,13 +308,6 @@ public abstract class AbstractNodeConnection implements ErrorListener {
 			this.mode = mode;
 		}
 	};
-	
-	private final HandlerModelAdapter modelChangeListener = new HandlerModelAdapter();
-
-	private void ensureHandlerIsListening(Handler handler) {
-		handler.eAdapters().remove(modelChangeListener);
-		handler.eAdapters().add(modelChangeListener);
-	}
 
 	/**
 	 * Connects to the remote node and starts continuous updates of the model
@@ -513,33 +324,14 @@ public abstract class AbstractNodeConnection implements ErrorListener {
 		if (node.isConnected()) {
 			return;
 		}
-		Network network = getNetwork(node);
-		network.eAdapters().add(filterListener);
-
-		String newElemFilter = network.getElementFilter();
-		if (validateFilter(newElemFilter, "element")) {
-			elemFilter = newElemFilter;
-		} else {
-			elemFilter = "";
-		}
-		
-		String newHandFilter = network.getHandlerFilter();
-		if (validateFilter(newHandFilter, "handler")) {
-			handFilter = newHandFilter;
-		} else {
-			handFilter = "";
-		}
-
-		updateIntervall = network.getUpdateIntervall();
+		node.eAdapters().add(modelChangeListener);
 		runContinuousUpdate();
 	}
 	
-	private Network getNetwork(Node node) {
+	private Network getNetwork() {
 		EObject container = node.eContainer();
 		if (container instanceof Network) {
 			return (Network)container;
-		} else if (container instanceof Node) {
-			return getNetwork((Node)container);
 		} else {
 			Preconditions.checkArgument(false, "Node must be contained in a network");
 			return null;
@@ -555,7 +347,7 @@ public abstract class AbstractNodeConnection implements ErrorListener {
 	 */
 	public synchronized void disconnect() {
 		unInstallPartListener(closeListener);
-		getNetwork(node).eAdapters().remove(filterListener);
+		node.eAdapters().remove(modelChangeListener);
 		isScheduledForDisconnect = true;
 	}
 
@@ -605,25 +397,20 @@ public abstract class AbstractNodeConnection implements ErrorListener {
 	protected void unInstallPartListener(IPartListener listener) {
 		PlatformUI.getWorkbench().getActiveWorkbenchWindow().getPartService().removePartListener(closeListener);
 	}
-
-	@Override
-	public void handlerError(Throwable e) {
-		unreportedError = e;
-	}
 	
-	private synchronized void reportPossibleError() {
-		if (unreportedError != null) {
-			if (haveReportedAnError) {
-				System.err.println("Exception " + unreportedError.getClass().getName()
-						+ " occured: " + unreportedError.getMessage()
-						+ ". Trying to keep node connection alive though.");
-			} else {
-				showMessage("Exception", "Exception " + unreportedError.getClass().getName()
-						+ " occured: " + unreportedError.getMessage()
-						+ ". Trying to keep node connection alive though. All other errors for this node are written to System.err");
-				haveReportedAnError = true;
-			}
-			unreportedError = null;
-		}
-	}
+//	private synchronized void reportPossibleError() {
+//		if (unreportedError != null) {
+//			if (haveReportedAnError) {
+//				System.err.println("Exception " + unreportedError.getClass().getName()
+//						+ " occured: " + unreportedError.getMessage()
+//						+ ". Trying to keep node connection alive though.");
+//			} else {
+//				showMessage("Exception", "Exception " + unreportedError.getClass().getName()
+//						+ " occured: " + unreportedError.getMessage()
+//						+ ". Trying to keep node connection alive though. All other errors for this node are written to System.err");
+//				haveReportedAnError = true;
+//			}
+//			unreportedError = null;
+//		}
+//	}
 }

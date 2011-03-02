@@ -2,12 +2,8 @@ package edu.hu.clickwatch.nodeadapter;
 
 import java.util.List;
 
-import org.eclipse.emf.common.notify.Notification;
-
-import edu.hu.clickwatch.merge.Diff;
 import edu.hu.clickwatch.model.AbstractNodeConnection;
 import edu.hu.clickwatch.model.ClickWatchModelFactory;
-import edu.hu.clickwatch.model.ClickWatchModelPackage;
 import edu.hu.clickwatch.model.Element;
 import edu.hu.clickwatch.model.Handler;
 import edu.hu.clickwatch.model.MultiNode;
@@ -111,7 +107,7 @@ public class MultiNodeAdapter implements INodeAdapter {
 	 * facilitates the {@link AbstractNodeConnection} of the node models.
 	 */
 	@Override
-	public void updateHandlerValue(Handler handler, Object value) {
+	public void updateHandlerValue(Handler handler) {
 		for (Node node: getNodes()) {
 			if (!(node instanceof MultiNode)) {
 				String elementName = ((Element)handler.eContainer()).getName();
@@ -120,7 +116,7 @@ public class MultiNodeAdapter implements INodeAdapter {
 						for (Handler nodeHander: element.getHandlers()) {
 							if (nodeHander.getName().equals(handler.getName())) {
 								if (node.isConnected()) {
-									((AbstractNodeConnection)node.getConnection()).propagateHandlerValueChangeToReality(handler, value);
+									((AbstractNodeConnection)node.getConnection()).propagateHandlerValueChangeToReality(handler);
 								}
 							}	
 						}
@@ -128,32 +124,5 @@ public class MultiNodeAdapter implements INodeAdapter {
 				}
 			}
 		}
-	}
-
-	@Override
-	public IValueRepresentation getValueRepresentation(Handler handler) {
-		return new IValueRepresentation() {			
-			
-			@Override
-			public boolean isNotificationChangingValue(Notification notification) {
-				if (notification.getNotifier() instanceof Handler) {
-					return notification.getFeature() == ClickWatchModelPackage.eINSTANCE.getHandler_Any() ||
-							notification.getFeature() == ClickWatchModelPackage.eINSTANCE.getHandler_Mixed();
-				} else {
-					return true;
-				}
-			}
-			
-			@Override
-			public Object get(Handler handler) {
-				return null; // TODO
-			}
-			
-			
-			@Override
-			public boolean merge(Handler mergee, Object newValue, Diff diff) {
-				return false;
-			}
-		};
 	}
 }
