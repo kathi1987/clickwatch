@@ -129,6 +129,7 @@ public abstract class AbstractNodeConnection {
 	}
 
 	public void runUpdate() {
+		node.setRetrieving(true);
 		String elemFilter = getNetwork().getElementFilter();
 		String handFilter = getNetwork().getHandlerFilter();
 		validateFilter(elemFilter, "element");
@@ -149,6 +150,7 @@ public abstract class AbstractNodeConnection {
 			}
 		});
 		EcoreUtil.delete(updatedNodeCopy, true);
+		node.setRetrieving(false);
 		sleepUntilNextUpdate();
 	}
 	

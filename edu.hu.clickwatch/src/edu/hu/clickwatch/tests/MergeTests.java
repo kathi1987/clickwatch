@@ -7,12 +7,9 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
 import edu.hu.clickwatch.XmlModelRepository;
-import edu.hu.clickwatch.merge.DefaultMergeConfiguration;
 import edu.hu.clickwatch.merge.IMergeConfiguration;
 import edu.hu.clickwatch.merge.Merger;
 import edu.hu.clickwatch.model.ClickWatchMergeConfiguration;
-import edu.hu.clickwatch.model.ClickWatchModelFactory;
-import edu.hu.clickwatch.model.Element;
 
 public class MergeTests extends AbstractTest {
 

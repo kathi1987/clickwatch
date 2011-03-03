@@ -204,6 +204,33 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getNode_Retrieving() {
+		return (EAttribute)nodeEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getNode_HasRecord() {
+		return (EAttribute)nodeEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getNode_Recording() {
+		return (EAttribute)nodeEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getElement() {
 		return elementEClass;
 	}
@@ -450,6 +477,9 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
 		createEAttribute(nodeEClass, NODE__CONNECTED);
 		createEAttribute(nodeEClass, NODE__CONNECTION);
 		createEAttribute(nodeEClass, NODE__BACKBONE);
+		createEAttribute(nodeEClass, NODE__RETRIEVING);
+		createEAttribute(nodeEClass, NODE__HAS_RECORD);
+		createEAttribute(nodeEClass, NODE__RECORDING);
 
 		elementEClass = createEClass(ELEMENT);
 		createEAttribute(elementEClass, ELEMENT__NAME);
@@ -517,9 +547,12 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
 		initEAttribute(getNode_INetAdress(), ecorePackage.getEString(), "iNetAdress", "localhost", 0, 1, Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getNode_Port(), ecorePackage.getEString(), "port", "7777", 0, 1, Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getNode_Elements(), this.getElement(), null, "elements", null, 0, -1, Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getNode_Connected(), ecorePackage.getEBoolean(), "connected", null, 0, 1, Node.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getNode_Connected(), ecorePackage.getEBoolean(), "connected", "false", 0, 1, Node.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getNode_Connection(), ecorePackage.getEJavaObject(), "connection", null, 0, 1, Node.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getNode_Backbone(), this.getBackboneType(), "backbone", "wired", 0, 1, Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getNode_Backbone(), this.getBackboneType(), "backbone", "unkown", 0, 1, Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getNode_Retrieving(), ecorePackage.getEBoolean(), "retrieving", "false", 0, 1, Node.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getNode_HasRecord(), ecorePackage.getEBoolean(), "hasRecord", "false", 0, 1, Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getNode_Recording(), ecorePackage.getEBoolean(), "recording", "false", 0, 1, Node.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(elementEClass, Element.class, "Element", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getElement_Name(), ecorePackage.getEString(), "name", null, 0, 1, Element.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -554,6 +587,7 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
 		initEEnum(backboneTypeEEnum, BackboneType.class, "BackboneType");
 		addEEnumLiteral(backboneTypeEEnum, BackboneType.WIRED);
 		addEEnumLiteral(backboneTypeEEnum, BackboneType.WIRELESS);
+		addEEnumLiteral(backboneTypeEEnum, BackboneType.UNKNOWN);
 
 		// Create resource
 		createResource(eNS_URI);

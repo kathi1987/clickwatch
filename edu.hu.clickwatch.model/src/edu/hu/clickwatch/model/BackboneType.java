@@ -40,7 +40,15 @@ public enum BackboneType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	WIRELESS(1, "wireless", "wireless");
+	WIRELESS(1, "wireless", "wireless"), /**
+	 * The '<em><b>Unknown</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #UNKNOWN_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	UNKNOWN(2, "unknown", "unknown");
 
 	/**
 	 * The '<em><b>Wired</b></em>' literal value.
@@ -73,6 +81,21 @@ public enum BackboneType implements Enumerator {
 	public static final int WIRELESS_VALUE = 1;
 
 	/**
+	 * The '<em><b>Unknown</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>Unknown</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #UNKNOWN
+	 * @model name="unknown"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int UNKNOWN_VALUE = 2;
+
+	/**
 	 * An array of all the '<em><b>Backbone Type</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -82,6 +105,7 @@ public enum BackboneType implements Enumerator {
 		new BackboneType[] {
 			WIRED,
 			WIRELESS,
+			UNKNOWN,
 		};
 
 	/**
@@ -134,6 +158,7 @@ public enum BackboneType implements Enumerator {
 		switch (value) {
 			case WIRED_VALUE: return WIRED;
 			case WIRELESS_VALUE: return WIRELESS;
+			case UNKNOWN_VALUE: return UNKNOWN;
 		}
 		return null;
 	}
