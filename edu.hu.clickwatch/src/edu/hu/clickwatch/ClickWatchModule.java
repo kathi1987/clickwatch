@@ -10,7 +10,7 @@ import com.google.inject.Provides;
 import edu.hu.clickcontrol.IClickSocket;
 import edu.hu.clickwatch.merge.IMergeConfiguration;
 import edu.hu.clickwatch.merge.MergeModule;
-import edu.hu.clickwatch.model.ClickWatchMergeConfiguration;
+import edu.hu.clickwatch.model.ClickWatchNodeMergeConfiguration;
 import edu.hu.clickwatch.nodeadapter.ClickControlXSDNodeAdapter;
 import edu.hu.clickwatch.nodeadapter.INodeAdapter;
 import edu.hu.clickwatch.tests.clicksockets.ClickSocketPlayer;
@@ -33,7 +33,7 @@ public class ClickWatchModule extends AbstractModule {
 	@Override
 	protected final void configure() {
 		install(new MergeModule());
-		bind(IMergeConfiguration.class).to(ClickWatchMergeConfiguration.class);
+		bind(IMergeConfiguration.class).to(ClickWatchNodeMergeConfiguration.class);
 		overrideConfigure();
 	}
 	

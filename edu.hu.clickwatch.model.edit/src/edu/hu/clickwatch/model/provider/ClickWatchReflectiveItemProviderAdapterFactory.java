@@ -18,11 +18,14 @@ import org.eclipse.emf.ecore.util.FeatureMapUtil;
 import org.eclipse.emf.ecore.xml.type.AnyType;
 import org.eclipse.emf.edit.EMFEditPlugin;
 import org.eclipse.emf.edit.command.CommandParameter;
+import org.eclipse.emf.edit.provider.ComposedImage;
 import org.eclipse.emf.edit.provider.DelegatingWrapperItemProvider;
 import org.eclipse.emf.edit.provider.FeatureMapEntryWrapperItemProvider;
 import org.eclipse.emf.edit.provider.IItemColorProvider;
 import org.eclipse.emf.edit.provider.ReflectiveItemProvider;
 import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
+
+import edu.hu.clickwatch.model.IsRecordedAdapter;
 
 /**
  * This is a customized {@link ReflectiveItemProviderAdapterFactory}. It serves
@@ -133,7 +136,7 @@ public class ClickWatchReflectiveItemProviderAdapterFactory extends ReflectiveIt
 		@Override
 		public String getText(Object object) {
 			if (object instanceof EObject) {
-				String result = ((EObject)object).eClass().getName();
+				String result = ((EObject)object).eClass().getName() ;
 				if (result == null) {
 					return super.getText(object);
 				} else {
@@ -144,6 +147,21 @@ public class ClickWatchReflectiveItemProviderAdapterFactory extends ReflectiveIt
 			}
 		}
 		
+		@Override
+		public Object getImage(Object object) {
+			if (object instanceof EObject) {
+				for (Adapter adapter: ((EObject)object).eAdapters()) {
+					if (adapter.equals(new IsRecordedAdapter())) {
+						List<Object> images = new ArrayList<Object>();
+						images.add(super.getImage(object));
+						images.add(NewEditPlugin.INSTANCE.getImage("full/ovr16/recording"));
+						return new ComposedImage(images);
+					}
+				}
+			}
+			return super.getImage(object);
+		}
+
 		@Override
 		public Collection<?> getChildren(Object object) {
 			Collection<Object> result = new ArrayList<Object>();

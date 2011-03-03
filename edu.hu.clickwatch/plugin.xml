@@ -55,6 +55,27 @@
                label="Configure"
                menubarPath="additions">
          </action>
+         <action
+               class="edu.hu.clickwatch.actions.StartRecord"
+               enablesFor="+"
+               id="edu.hu.clickwatch.startRecordAction"
+               label="Start record"
+               menubarPath="additions">
+         </action>
+         <action
+               class="edu.hu.clickwatch.actions.StopRecord"
+               enablesFor="+"
+               id="edu.hu.clickwatch.stopRecordAction"
+               label="Stop record"
+               menubarPath="additions">
+         </action>
+         <action
+               class="edu.hu.clickwatch.actions.ClearRecord"
+               enablesFor="+"
+               id="edu.hu.clickwatch.clearRecordAction"
+               label="Clear record"
+               menubarPath="additions">
+         </action>
       </objectContribution>
       <objectContribution
             id="edu.hu.clickwatch.NetworkContribution"

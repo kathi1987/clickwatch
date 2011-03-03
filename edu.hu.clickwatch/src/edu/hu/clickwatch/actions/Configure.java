@@ -1,11 +1,6 @@
 package edu.hu.clickwatch.actions;
 
-import java.util.List;
-
 import org.eclipse.jface.action.IAction;
-import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -18,10 +13,6 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
-import org.eclipse.ui.IActionDelegate;
-import org.eclipse.ui.IEditorPart;
-import org.eclipse.ui.IObjectActionDelegate;
-import org.eclipse.ui.IWorkbenchPart;
 
 import edu.hu.clickwatch.model.AbstractNodeConnection;
 import edu.hu.clickwatch.model.Node;
@@ -32,7 +23,7 @@ import edu.hu.clickwatch.model.Node;
  * 
  * @author zubow
  */
-public class Configure implements IObjectActionDelegate {
+public class Configure extends AbstractNodeAction{
 
 	/**
 	 * Input dialog for setting-up wifi specific parameters 
@@ -306,31 +297,6 @@ public class Configure implements IObjectActionDelegate {
 		}
 	}
 
-	private Shell shell;
-	private IEditorPart editor = null;
-	private List<Node> node_lst;
-
-	/**
-	 * Constructor for Action1.
-	 */
-	public Configure() {
-		super();
-	}
-
-	/**
-	 * @see IObjectActionDelegate#setActivePart(IAction, IWorkbenchPart)
-	 */
-	@Override
-	public void setActivePart(IAction action, IWorkbenchPart targetPart) {
-		if (targetPart instanceof IEditorPart) {
-			editor = (IEditorPart) targetPart;
-			shell = targetPart.getSite().getShell();
-		}
-	}
-
-	/**
-	 * @see IActionDelegate#run(IAction)
-	 */
 	@Override
 	public void run(IAction action) {
 		if (node_lst == null || node_lst.isEmpty()) {
@@ -370,21 +336,6 @@ public class Configure implements IObjectActionDelegate {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-		}
-	}
-
-	/**
-	 * @see IActionDelegate#selectionChanged(IAction, ISelection)
-	 */
-	@Override
-	@SuppressWarnings("unchecked")
-	public void selectionChanged(IAction action, ISelection selection) {
-		try {
-			IStructuredSelection sec = ((IStructuredSelection) selection);
-			node_lst = sec.toList();
-		} catch (Exception e) {
-			MessageDialog.openError(editor.getSite().getShell(),
-					"Clickwatch Error", "ErrorMsg:" + e.getMessage());
 		}
 	}
 }

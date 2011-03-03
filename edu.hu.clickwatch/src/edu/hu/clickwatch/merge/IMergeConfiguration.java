@@ -17,10 +17,12 @@ import com.google.inject.ImplementedBy;
 public interface IMergeConfiguration {
 
 	public static final int NO_INDEX = -1;
-	
+
 	public interface IContext {
 		public EObject getContainer();
+
 		public Object getOwner();
+
 		public EStructuralFeature getFeature();
 	}
 
@@ -34,7 +36,8 @@ public interface IMergeConfiguration {
 	 *            value that is necessary used as a replacement, see
 	 *            {@link #create(EObject, Object, EStructuralFeature, Object)}).
 	 */
-	public void handleDiffernce(IContext context, Object oldValue, Object newValue, int index);
+	public void handleDiffernce(IContext context, Object oldValue,
+			Object newValue, int index);
 
 	/**
 	 * Clients can determined, if merge shall take a feature into account or
@@ -72,8 +75,22 @@ public interface IMergeConfiguration {
 	 *            The old value that needs to be disposed.
 	 */
 	public void dispose(IContext context, Object oldValue);
-	
+
+	/**
+	 * Returns the unique identity of an object. Identities are used to identify
+	 * two objects as the some object.
+	 */
 	public Object identity(IContext context, Object value);
-	
+
+	/**
+	 * Determines whether values of the given context have identity and shall be merged
+	 * bases on their identity.
+	 */
 	public boolean hasIdentity(IContext context);
+	
+	/**
+	 * Determines whether the given value shall replace (or be replaced) or whether merge shall
+	 * simply add new value to exisiting value.
+	 */
+	public boolean isToAdd(IContext context, Object oldValue, Object newValue);
 }

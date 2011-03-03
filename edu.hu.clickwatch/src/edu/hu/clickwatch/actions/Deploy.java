@@ -12,17 +12,11 @@ import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
-import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.FileDialog;
-import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IActionDelegate;
-import org.eclipse.ui.IEditorPart;
-import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IViewReference;
-import org.eclipse.ui.IWorkbenchPart;
 
 import com.google.inject.Inject;
 import com.jcraft.jsch.Session;
@@ -70,14 +64,11 @@ class FullDeploy extends Deploy {
  * 
  * @author zubow
  */
-public abstract class Deploy implements IObjectActionDelegate, SSHParams {
+public abstract class Deploy extends AbstractNodeAction implements SSHParams {
 	
 	@Inject
 	private XmlModelRepository xmlModelRepository;
 
-	protected Shell shell;
-	private IEditorPart editor = null;
-	private List<Node> node_lst;
 	private EObject currentResult = null;
 	
 	public class Marker {
@@ -284,24 +275,6 @@ public abstract class Deploy implements IObjectActionDelegate, SSHParams {
 			canceled = true;
 		}
 	}	
-
-	/**
-	 * Constructor for Action1.
-	 */
-	public Deploy() {
-		super();
-	}
-
-	/**
-	 * @see IObjectActionDelegate#setActivePart(IAction, IWorkbenchPart)
-	 */
-	@Override
-	public void setActivePart(IAction action, IWorkbenchPart targetPart) {
-		if (targetPart instanceof IEditorPart) {
-			editor = (IEditorPart)targetPart;
-			shell = targetPart.getSite().getShell();
-		}
-	}
 
 	/**
 	 * @see IActionDelegate#run(IAction)
@@ -607,19 +580,5 @@ public abstract class Deploy implements IObjectActionDelegate, SSHParams {
 		}
 		
 		MessageDialog.openInformation(editor.getSite().getShell(), "Result stats", txtExc.toString());		
-	}
-	
-	/**
-	 * @see IActionDelegate#selectionChanged(IAction, ISelection)
-	 */
-	@Override
-	@SuppressWarnings("unchecked")
-	public void selectionChanged(IAction action, ISelection selection) {
-		try {
-			IStructuredSelection sec = ((IStructuredSelection)selection);
-			node_lst = sec.toList();
-		} catch (Exception e) {
-			MessageDialog.openError(editor.getSite().getShell(), "Clickwatch Error", "ErrorMsg:" + e.getMessage());
-		}
 	}
 }

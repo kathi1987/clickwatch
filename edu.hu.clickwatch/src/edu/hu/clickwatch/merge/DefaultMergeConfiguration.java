@@ -48,4 +48,8 @@ public class DefaultMergeConfiguration implements IMergeConfiguration {
 		return false;
 	}
 
+	@Override
+	public boolean isToAdd(IContext context, Object oldValue, Object newValue) {
+		return false;
+	}
 }

@@ -9,14 +9,14 @@ import org.eclipse.emf.ecore.EPackage;
 import edu.hu.clickwatch.XmlModelRepository;
 import edu.hu.clickwatch.merge.IMergeConfiguration;
 import edu.hu.clickwatch.merge.Merger;
-import edu.hu.clickwatch.model.ClickWatchMergeConfiguration;
+import edu.hu.clickwatch.model.ClickWatchNodeMergeConfiguration;
 
 public class MergeTests extends AbstractTest {
 
 	private XmlModelRepository xmlModelRepository;
 	private Merger merger;
 	
-	private static class RegisterChangesConfiguration extends ClickWatchMergeConfiguration {
+	private static class RegisterChangesConfiguration extends ClickWatchNodeMergeConfiguration {
 		boolean changed = false;
 
 		@Override
@@ -24,6 +24,12 @@ public class MergeTests extends AbstractTest {
 				Object newValue, int index) {
 			changed = true;
 		}
+
+		@Override
+		public boolean isToAdd(IContext context, Object oldValue,
+				Object newValue) {
+			return false;
+		}		
 	}
 
 	@Override
@@ -48,7 +54,11 @@ public class MergeTests extends AbstractTest {
 		assertEquals(true, result);
 		assertEquals(changedModel, ((RegisterChangesConfiguration)merger.getConfiguration()).changed);
 		assertEquals(orig, mergedValue);
-		assertEquals(xmlModelRepository.serializeXml(newValue), xmlModelRepository.serializeXml(mergedValue));
+		boolean eEquals = merger.eEquals(mergedValue, newValue);
+		if (!eEquals) {
+			assertEquals(xmlModelRepository.serializeXml(newValue), xmlModelRepository.serializeXml(mergedValue));
+		}
+		assertTrue(eEquals);
 		return mergedValue;
 	}
 	
@@ -71,7 +81,11 @@ public class MergeTests extends AbstractTest {
 		assertEquals(true, result);
 		assertEquals(changedModel, ((RegisterChangesConfiguration)merger.getConfiguration()).changed);
 		assertEquals(orig, mergedValue);
-		assertEquals(xmlModelRepository.serializeModel(metaModel, newValue), xmlModelRepository.serializeModel(metaModel, mergedValue));
+		boolean eEquals = merger.eEquals(mergedValue, newValue);
+		if (!eEquals) {
+			assertEquals(xmlModelRepository.serializeXml(newValue), xmlModelRepository.serializeXml(mergedValue));
+		}
+		assertTrue(eEquals);
 		return mergedValue;
 	}
 	
@@ -89,7 +103,11 @@ public class MergeTests extends AbstractTest {
 		assertEquals(true, result);
 		assertEquals(changedModel, ((RegisterChangesConfiguration)merger.getConfiguration()).changed);
 		assertEquals(orig, mergedValue);
-		assertEquals(xmlModelRepository.serializeXml(newValue), xmlModelRepository.serializeXml(mergedValue));
+		boolean eEquals = merger.eEquals(mergedValue, newValue);
+		if (!eEquals) {
+			assertEquals(xmlModelRepository.serializeXml(newValue), xmlModelRepository.serializeXml(mergedValue));
+		}
+		assertTrue(eEquals);
 		return mergedValue;
 	}
 	

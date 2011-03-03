@@ -87,6 +87,7 @@ public abstract class AbstractNodeConnection {
 	public void setUp(Node node) {
 		Preconditions.checkNotNull(node);
 		this.node = node;
+		((ClickWatchNodeMergeConfiguration)merger.getConfiguration()).setNode(node);
 	}
 
 	public abstract INodeAdapter getNodeAdapter();
@@ -138,13 +139,13 @@ public abstract class AbstractNodeConnection {
 		runInGUI(new Runnable() {
 			@Override
 			public void run() {
-				((ClickWatchMergeConfiguration)merger.getConfiguration()).reset();
+				((ClickWatchNodeMergeConfiguration)merger.getConfiguration()).reset();
 				modelChangeListener.setMode(HandlerModelAdapter.LISTEN_FOR_ADAPTER);
 				merger.merge(node, updatedNodeCopy);
 				modelChangeListener.setMode(HandlerModelAdapter.LISTEN_FOR_USER);
 				node.setConnected(true);
 				if (editor != null) { // editor can be null in tests
-					editor.markChanges(node, ((ClickWatchMergeConfiguration)
+					editor.markChanges(node, ((ClickWatchNodeMergeConfiguration)
 							merger.getConfiguration()).getChanges());
 				}
 			}

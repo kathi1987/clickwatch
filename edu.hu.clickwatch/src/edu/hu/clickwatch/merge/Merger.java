@@ -1,5 +1,6 @@
 package edu.hu.clickwatch.merge;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,11 +14,9 @@ import org.eclipse.emf.ecore.util.FeatureMap;
 
 import com.google.common.base.Preconditions;
 import com.google.inject.Inject;
-import com.google.inject.Singleton;
 
 import edu.hu.clickwatch.util.ILogger;
 
-@Singleton
 public class Merger {
 
 	@Inject private IMergeConfiguration configuration;
@@ -132,6 +131,7 @@ public class Merger {
 		if (context.feature.getName().contains("andle")) {
 			System.out.println(context.feature.getName());
 		}
+		List<Object> toAdd = new ArrayList<Object>();
 		int oldValueSize = lOldValue.size();
 		int newValueSize = lNewValue.size();
 		int lOneSize = Math.min(oldValueSize, newValueSize);
@@ -139,20 +139,26 @@ public class Merger {
 		for (i = 0; i < lOneSize; i++) {
 			Object oldValue = lOldValue.get(i);
 			Object newValue = lNewValue.get(i);
-			boolean equals = merge(context, oldValue, newValue);
-			if (!equals) {
-				Object newCreatedValue = configuration.create(context, newValue);
-				lOldValue.set(i, newCreatedValue);
-				configuration.handleDiffernce(context, oldValue, newCreatedValue, i);
-				configuration.dispose(context, oldValue);				
+			if (configuration.isToAdd(context, oldValue, newValue)) {
+				toAdd.add(newValue);
+			} else {
+				boolean equals = merge(context, oldValue, newValue);
+				if (!equals) {
+					Object newCreatedValue = configuration.create(context, newValue);
+					lOldValue.set(i, newCreatedValue);
+					configuration.handleDiffernce(context, oldValue, newCreatedValue, i);
+					configuration.dispose(context, oldValue);				
+				}
 			}
 		}
 		int lastIndex = i;
 		if (i < oldValueSize) {			
 			for (; i < oldValueSize; i++) {
-				Object oldValue = lOldValue.remove(lastIndex);					
-				configuration.handleDiffernce(context, oldValue, null, lastIndex);
-				configuration.dispose(context, oldValue);
+				if (!configuration.isToAdd(context, lOldValue.get(lastIndex), null)) {
+					Object oldValue = lOldValue.remove(lastIndex);					
+					configuration.handleDiffernce(context, oldValue, null, lastIndex);
+					configuration.dispose(context, oldValue);
+				}
 			}
 		} else if (i < newValueSize) {
 			for (; i < newValueSize; i++) {
@@ -160,6 +166,11 @@ public class Merger {
 				lOldValue.add(newCreatedValue);
 				configuration.handleDiffernce(context, null, newCreatedValue, lOldValue.size() - 1);
 			}
+		}
+		for (Object value: toAdd) {
+			Object newCreatedValue = configuration.create(context, value);
+			lOldValue.add(newCreatedValue);
+			configuration.handleDiffernce(context, null, newCreatedValue, lOldValue.size() - 1);
 		}
 	}
 	
@@ -244,6 +255,62 @@ public class Merger {
 			}
 		} else {
 			return oldValue.equals(newValue);
+		}
+	}
+	
+	public synchronized boolean eEquals(EObject oldValue, EObject newValue) {
+		return eEquals(new MergeContext(null, null, null), oldValue, newValue);
+	}
+	
+	private boolean eEquals(MergeContext context, Object oldValue, Object newValue) {
+		try {
+			return eEqualsInternal(context, oldValue, newValue);
+		} catch (Throwable e) {
+			logger.log(IStatus.ERROR, "Exception during equals of " + context, e);
+			return false;
+		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	private boolean eEqualsInternal(MergeContext context, Object one, Object two) {
+		if (one == null || two == null) {
+			return one == two;
+		}
+		if (one instanceof EObject && two instanceof EObject) {
+			EObject eOne = (EObject)one;
+			EObject eTwo = (EObject)two;
+			EClass eClass = eOne.eClass();
+			if (!eClass.getName().equals(eTwo.eClass().getName())) {
+				return false;
+			}
+			boolean isEqual = true;
+			for (EStructuralFeature feature: eClass.getEAllStructuralFeatures()) {
+				MergeContext createChildContext = context.createChildContext(eOne, feature);
+				if (!feature.isDerived() && configuration.consider(createChildContext)) {					
+					isEqual &= eEquals(createChildContext, 
+							eOne.eGet(feature), eTwo.eGet(feature));
+				}
+			}
+			return isEqual;
+		} else if (one instanceof List && two instanceof List) {
+			List<Object> lOne = (List<Object>)one;
+			List<Object> lTwo = (List<Object>)two;
+			int lOneSize = lOne.size();
+			if (lOneSize != lTwo.size()) {
+				return false;
+			}
+ 			boolean isEqual = true;
+ 			for (int i = 0; i < lOneSize; i++) {
+ 				isEqual &= eEquals(context, lOne.get(i), lTwo.get(i));
+ 			}
+ 			return isEqual;
+		} else if (one instanceof FeatureMap.Entry && two instanceof FeatureMap.Entry) {
+			FeatureMap.Entry fOne = (FeatureMap.Entry)one;
+			FeatureMap.Entry fTwo = (FeatureMap.Entry)two;
+			return fOne.getEStructuralFeature().getName().equals(fTwo.getEStructuralFeature().getName()) &&
+					eEquals(context.createChildContext(fOne), fOne.getValue(), fTwo.getValue());
+		} else {
+			return one.equals(two);
 		}
 	}
 }

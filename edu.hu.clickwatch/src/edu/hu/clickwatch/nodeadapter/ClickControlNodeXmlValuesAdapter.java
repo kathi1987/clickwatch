@@ -40,7 +40,7 @@ public class ClickControlNodeXmlValuesAdapter extends AbstractNodeAdapter {
 					if (map.isEmpty()) {
 						map.add(FeatureMapUtil.createRawEntry(anyFeature, anyValue));
 					} else {
-						map.set(0, FeatureMapUtil.createTextEntry((String)anyValue));
+						map.set(0, FeatureMapUtil.createRawEntry(anyFeature, anyValue));
 					}
 					EcoreUtil.delete(xml, true);
 					return;
