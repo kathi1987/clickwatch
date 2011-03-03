@@ -558,7 +558,6 @@ public class ClickWatchModelEditor
 	public class ColoredReflectiveItemProviderAdapterFactory extends ClickWatchReflectiveItemProviderAdapterFactory {
 
 		private final Object black = Display.getCurrent().getSystemColor(SWT.COLOR_BLACK);
-		private final Object yellow = Display.getCurrent().getSystemColor(SWT.COLOR_DARK_YELLOW);
 		private final Object red = Display.getCurrent().getSystemColor(SWT.COLOR_DARK_RED);
 		
 		@Override
@@ -1338,11 +1337,11 @@ public class ClickWatchModelEditor
 	 * This is for implementing {@link IEditorPart} and simply tests the command stack.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public boolean isDirty() {
-		return ((BasicCommandStack)editingDomain.getCommandStack()).isSaveNeeded();
+		return hasBeenChanged || ((BasicCommandStack)editingDomain.getCommandStack()).isSaveNeeded();
 	}
 
 	/**
@@ -1396,6 +1395,7 @@ public class ClickWatchModelEditor
 			// Refresh the necessary state.
 			//
 			((BasicCommandStack)editingDomain.getCommandStack()).saveIsDone();
+			hasBeenChanged = false;
 			firePropertyChange(IEditorPart.PROP_DIRTY);
 		}
 		catch (Exception exception) {
@@ -1678,6 +1678,14 @@ public class ClickWatchModelEditor
 	}
 	
 	private Collection<ChangeMark> recentChanges = null;
+	private boolean hasBeenChanged = false;
+	
+	private void changed() {
+		if (!hasBeenChanged) {
+			hasBeenChanged = true;
+			firePropertyChange(IEditorPart.PROP_DIRTY);	
+		}
+	}
 	
 	private boolean hasChanged(EObject object, EStructuralFeature feature) {
 		if (recentChanges == null) {
@@ -1691,6 +1699,9 @@ public class ClickWatchModelEditor
 	 * @generated NOT
 	 */
 	public void markChanges(Node node, Collection<ChangeMark> changes) {
+		if (!changes.isEmpty()) {
+			changed();
+		}
 		recentChanges = changes;
 		NotificationImpl notification = 
 			new ENotificationImpl((InternalEObject)node, 0, ClickWatchModelPackage.eINSTANCE.getNode_Elements(), null, null);

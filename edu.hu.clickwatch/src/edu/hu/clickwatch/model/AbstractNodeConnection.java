@@ -397,20 +397,4 @@ public abstract class AbstractNodeConnection {
 	protected void unInstallPartListener(IPartListener listener) {
 		PlatformUI.getWorkbench().getActiveWorkbenchWindow().getPartService().removePartListener(closeListener);
 	}
-	
-//	private synchronized void reportPossibleError() {
-//		if (unreportedError != null) {
-//			if (haveReportedAnError) {
-//				System.err.println("Exception " + unreportedError.getClass().getName()
-//						+ " occured: " + unreportedError.getMessage()
-//						+ ". Trying to keep node connection alive though.");
-//			} else {
-//				showMessage("Exception", "Exception " + unreportedError.getClass().getName()
-//						+ " occured: " + unreportedError.getMessage()
-//						+ ". Trying to keep node connection alive though. All other errors for this node are written to System.err");
-//				haveReportedAnError = true;
-//			}
-//			unreportedError = null;
-//		}
-//	}
 }
