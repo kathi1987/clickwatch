@@ -490,7 +490,7 @@ public abstract class Deploy implements IObjectActionDelegate, SSHParams {
 			}
 			long tx_dur = ((System.currentTimeMillis() - startTime) / 1000);
 			double avg_thr = file_sz / (double)tx_dur;
-			String msg = "Copy file executed in " + tx_dur + " sec with an avg. throughput of " + avg_thr;
+			String msg = "Copy file executed in " + tx_dur + " sec with an avg. throughput of " + avg_thr + " bytes/s";
 			System.out.println(msg);
 			results.append("\n").append(msg).append("\n");
 		}
