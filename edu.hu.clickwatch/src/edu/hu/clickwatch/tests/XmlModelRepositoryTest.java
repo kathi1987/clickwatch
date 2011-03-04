@@ -8,8 +8,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-import junit.framework.TestCase;
-
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
@@ -33,7 +31,6 @@ import com.google.common.base.Function;
 import com.google.common.base.Throwables;
 import com.google.common.collect.Collections2;
 
-import edu.hu.clickwatch.ClickWatchStandaloneSetup;
 import edu.hu.clickwatch.XmlModelRepository;
 import edu.hu.clickwatch.model.ClickWatchModelFactory;
 import edu.hu.clickwatch.model.ClickWatchModelPackage;
@@ -42,7 +39,7 @@ import edu.hu.clickwatch.model.Handler;
 import edu.hu.clickwatch.model.Network;
 import edu.hu.clickwatch.model.Node;
 
-public class XmlModelRepositoryTest extends TestCase {
+public class XmlModelRepositoryTest extends AbstractTest {
 	
 	public final static String LINK_STAT_XSD = "src/" + XmlModelRepositoryTest.class.getPackage().getName().replace(".", "/") + "/link_stat.xsd";
 	public final static String LINK_STAT_XML = "src/" + XmlModelRepositoryTest.class.getPackage().getName().replace(".", "/") + "/link_stat_test.xml";
@@ -50,9 +47,8 @@ public class XmlModelRepositoryTest extends TestCase {
 	private XmlModelRepository xmlModelRepository = null;
 
 	@Override
-	protected void setUp() throws Exception {
-		ClickWatchStandaloneSetup.doSetup();
-		xmlModelRepository = new XmlModelRepository();
+	protected void additionalSetUp() {
+		xmlModelRepository = injector.getInstance(XmlModelRepository.class);
 	}
 	
 	public void testDeserialize() {		

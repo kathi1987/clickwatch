@@ -1,11 +1,12 @@
 package edu.hu.clickwatch.nodeadapter;
 
-import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
+import org.eclipse.emf.ecore.util.FeatureMap;
+import org.eclipse.emf.ecore.util.FeatureMapUtil;
 
-import com.google.inject.Inject;
+import com.google.common.base.Preconditions;
 
 import edu.hu.clickcontrol.IClickSocket;
-import edu.hu.clickwatch.GuiceModule;
+import edu.hu.clickwatch.ClickWatchModule;
 import edu.hu.clickwatch.model.ClickWatchModelPackage;
 import edu.hu.clickwatch.model.Handler;
 
@@ -15,25 +16,37 @@ import edu.hu.clickwatch.model.Handler;
  * vice versa. Each adapter instance represents a connections to a click node.
  * 
  * The click control API is accessed through a {@link IClickSocket}
- * implementation. The implementation can be bind via DI and {@link GuiceModule}
+ * implementation. The implementation can be bind via DI and {@link ClickWatchModule}
  * .
  * 
  * @author Markus Scheidgen
  */
 public class ClickControlNodeAdapter extends AbstractNodeAdapter {
-	
-	@Inject
-	private MyDefaultXmlValueRepresentation defaultValueRepresentation;
-	
-	private static class MyDefaultXmlValueRepresentation extends DefaultXmlValueRepresentation {
-		@Override
-		public Object createModelValue(String plainRealValue) {
-			return new ValueClass(plainRealValue, XMLTypePackage.eINSTANCE.getXMLTypeDocumentRoot_Text());
-		}		
+
+	@Override
+	protected void createAndSetModelValue(Handler handler, String string) {
+		if (string == null) {
+			return;
+		}
+		
+		FeatureMap.Entry entry = FeatureMapUtil.createTextEntry(string);
+		if (!handler.getMixed().isEmpty()) {
+			handler.getMixed().set(0, entry);
+		} else {
+			handler.getMixed().add(entry);
+		}
 	}
 
 	@Override
-	protected IExtendedValueRepresentation getExtendedValueRepresentation(Handler handler) {
-		return defaultValueRepresentation;
+	protected String createPlainRealValue(Handler handler) {
+		if (handler.getMixed().isEmpty()) {
+			return null;
+		} else {
+			Object value = handler.getMixed().getValue(0);
+			Preconditions.checkState(value instanceof String);
+			return (String)value;
+		}
 	}
+	
+	
 }

@@ -58,7 +58,6 @@ public interface INodeAdapter {
 	 *            additional check of the value and no exception will be thrown
 	 *            if the value is invalid for the handler.
 	 */
-	public void updateHandlerValue(Handler handler, Object value);
+	public void updateHandlerValue(Handler handler);
 	
-	public IValueRepresentation getValueRepresentation(Handler handler);
 }

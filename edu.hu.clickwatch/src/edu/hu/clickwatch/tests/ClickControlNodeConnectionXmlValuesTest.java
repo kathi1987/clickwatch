@@ -2,25 +2,19 @@ package edu.hu.clickwatch.tests;
 
 import java.util.ConcurrentModificationException;
 
-import junit.framework.TestCase;
 import click.ControlSocket.HandlerInfo;
-
-import com.google.inject.Guice;
-import com.google.inject.Injector;
-
 import edu.hu.clickcontrol.IClickSocket;
-import edu.hu.clickwatch.GuiceModule;
 import edu.hu.clickwatch.model.ClickWatchModelFactory;
 import edu.hu.clickwatch.model.Network;
 import edu.hu.clickwatch.model.Node;
 import edu.hu.clickwatch.nodeadapter.ClickControlNodeXmlValuesAdapter;
 import edu.hu.clickwatch.nodeadapter.INodeAdapter;
+import edu.hu.clickwatch.tests.TestUtil.ClickSocketWrapper;
 import edu.hu.clickwatch.tests.clicksockets.ClickSocketTestImpl;
 
-public class ConnectionTest extends TestCase {
+public class ClickControlNodeConnectionXmlValuesTest extends AbstractTest {
 
 	private int exit = 0;
-	private Injector injector = null;
 	private Network network = null;
 	
 	private Throwable exception = null;
@@ -28,24 +22,25 @@ public class ConnectionTest extends TestCase {
 	private static final ClickWatchModelFactory factory = ClickWatchModelFactory.eINSTANCE;
 	
 	@Override
-	public void setUp() {
-		setUp(TestUtil.createClickSocket(10, 1, false));
-	}
-	
-	public void setUp(final IClickSocket clickSocket) {
+	protected void additionalSetUp() {
 		exception = null;
 		exit = 0;
-		injector = Guice.createInjector(new GuiceModule() {
-			@Override
-			protected void overrideConfigure() {
-				bind(IClickSocket.class).toInstance(clickSocket);
-				bind(INodeAdapter.class).to(ClickControlNodeXmlValuesAdapter.class);
-			}			
-		});
-		
 		network = factory.createNetwork();
+		((ClickSocketWrapper)injector.getInstance(IClickSocket.class)).setSource(TestUtil.createClickSocket(10, 1, false));
 	}
 	
+	@Override
+	protected Class<? extends INodeAdapter> getNodeAdapterClass() {
+		return ClickControlNodeXmlValuesAdapter.class;
+	}
+
+	@Override
+	protected Class<? extends IClickSocket> getClickSocketClass() {
+		return ClickSocketWrapper.class;
+	}
+
+
+
 	private void waitForExit(int exit) {
 		while (this.exit < exit && this.exit >= 0) {
 			try {
@@ -142,7 +137,8 @@ public class ConnectionTest extends TestCase {
 	}
 	
 	public void testFilter() {
-		setUp(new ClickSocketTestImpl() {			
+		((ClickSocketWrapper)injector.getInstance(IClickSocket.class)).setSource(
+				new ClickSocketTestImpl() {			
 			@Override
 			public void handleWrite(String element, String handler, String value) {
 				// emtpy

@@ -16,11 +16,17 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="connected" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        transient="true"/>
+        transient="true" defaultValueLiteral="false"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="connection" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"
         transient="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="backbone" eType="#//BackboneType"
         defaultValueLiteral="unkown"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="retrieving" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        transient="true" defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hasRecord" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="recording" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        transient="true" defaultValueLiteral="false"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Element">
     <eOperations name="getElementPath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

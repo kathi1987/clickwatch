@@ -36,6 +36,9 @@ import edu.hu.clickwatch.model.Node;
  *   <li>{@link edu.hu.clickwatch.model.impl.NodeImpl#isConnected <em>Connected</em>}</li>
  *   <li>{@link edu.hu.clickwatch.model.impl.NodeImpl#getConnection <em>Connection</em>}</li>
  *   <li>{@link edu.hu.clickwatch.model.impl.NodeImpl#getBackbone <em>Backbone</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.model.impl.NodeImpl#isRetrieving <em>Retrieving</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.model.impl.NodeImpl#isHasRecord <em>Has Record</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.model.impl.NodeImpl#isRecording <em>Recording</em>}</li>
  * </ul>
  * </p>
  *
@@ -151,6 +154,66 @@ public class NodeImpl extends EObjectImpl implements Node {
 	 * @ordered
 	 */
 	protected BackboneType backbone = BACKBONE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isRetrieving() <em>Retrieving</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isRetrieving()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean RETRIEVING_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isRetrieving() <em>Retrieving</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isRetrieving()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean retrieving = RETRIEVING_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isHasRecord() <em>Has Record</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isHasRecord()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean HAS_RECORD_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isHasRecord() <em>Has Record</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isHasRecord()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean hasRecord = HAS_RECORD_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isRecording() <em>Recording</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isRecording()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean RECORDING_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isRecording() <em>Recording</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isRecording()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean recording = RECORDING_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -293,6 +356,69 @@ public class NodeImpl extends EObjectImpl implements Node {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isRetrieving() {
+		return retrieving;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setRetrieving(boolean newRetrieving) {
+		boolean oldRetrieving = retrieving;
+		retrieving = newRetrieving;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ClickWatchModelPackage.NODE__RETRIEVING, oldRetrieving, retrieving));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isHasRecord() {
+		return hasRecord;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setHasRecord(boolean newHasRecord) {
+		boolean oldHasRecord = hasRecord;
+		hasRecord = newHasRecord;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ClickWatchModelPackage.NODE__HAS_RECORD, oldHasRecord, hasRecord));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isRecording() {
+		return recording;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setRecording(boolean newRecording) {
+		boolean oldRecording = recording;
+		recording = newRecording;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ClickWatchModelPackage.NODE__RECORDING, oldRecording, recording));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -322,6 +448,12 @@ public class NodeImpl extends EObjectImpl implements Node {
 				return getConnection();
 			case ClickWatchModelPackage.NODE__BACKBONE:
 				return getBackbone();
+			case ClickWatchModelPackage.NODE__RETRIEVING:
+				return isRetrieving();
+			case ClickWatchModelPackage.NODE__HAS_RECORD:
+				return isHasRecord();
+			case ClickWatchModelPackage.NODE__RECORDING:
+				return isRecording();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -354,6 +486,15 @@ public class NodeImpl extends EObjectImpl implements Node {
 			case ClickWatchModelPackage.NODE__BACKBONE:
 				setBackbone((BackboneType)newValue);
 				return;
+			case ClickWatchModelPackage.NODE__RETRIEVING:
+				setRetrieving((Boolean)newValue);
+				return;
+			case ClickWatchModelPackage.NODE__HAS_RECORD:
+				setHasRecord((Boolean)newValue);
+				return;
+			case ClickWatchModelPackage.NODE__RECORDING:
+				setRecording((Boolean)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -384,6 +525,15 @@ public class NodeImpl extends EObjectImpl implements Node {
 			case ClickWatchModelPackage.NODE__BACKBONE:
 				setBackbone(BACKBONE_EDEFAULT);
 				return;
+			case ClickWatchModelPackage.NODE__RETRIEVING:
+				setRetrieving(RETRIEVING_EDEFAULT);
+				return;
+			case ClickWatchModelPackage.NODE__HAS_RECORD:
+				setHasRecord(HAS_RECORD_EDEFAULT);
+				return;
+			case ClickWatchModelPackage.NODE__RECORDING:
+				setRecording(RECORDING_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -408,6 +558,12 @@ public class NodeImpl extends EObjectImpl implements Node {
 				return CONNECTION_EDEFAULT == null ? connection != null : !CONNECTION_EDEFAULT.equals(connection);
 			case ClickWatchModelPackage.NODE__BACKBONE:
 				return backbone != BACKBONE_EDEFAULT;
+			case ClickWatchModelPackage.NODE__RETRIEVING:
+				return retrieving != RETRIEVING_EDEFAULT;
+			case ClickWatchModelPackage.NODE__HAS_RECORD:
+				return hasRecord != HAS_RECORD_EDEFAULT;
+			case ClickWatchModelPackage.NODE__RECORDING:
+				return recording != RECORDING_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}

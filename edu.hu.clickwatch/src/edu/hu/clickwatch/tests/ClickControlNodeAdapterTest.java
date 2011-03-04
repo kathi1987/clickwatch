@@ -1,30 +1,28 @@
 package edu.hu.clickwatch.tests;
 
-import junit.framework.TestCase;
+import org.eclipse.emf.ecore.util.FeatureMapUtil;
+
 import click.ControlSocket.HandlerInfo;
 
 import com.google.common.base.Throwables;
-import com.google.inject.Guice;
-import com.google.inject.Injector;
 
 import edu.hu.clickcontrol.IClickSocket;
-import edu.hu.clickwatch.GuiceModule;
 import edu.hu.clickwatch.XmlModelRepository;
 import edu.hu.clickwatch.model.Handler;
 import edu.hu.clickwatch.model.Node;
 import edu.hu.clickwatch.nodeadapter.ClickControlNodeAdapter;
 import edu.hu.clickwatch.nodeadapter.INodeAdapter;
+import edu.hu.clickwatch.tests.TestUtil.ClickSocketWrapper;
 import edu.hu.clickwatch.tests.clicksockets.ClickSocketTestImpl;
 
-public class ClickControlNodeAdapterTest extends TestCase {
+public class ClickControlNodeAdapterTest extends AbstractTest {
 
 	protected static final String port = "7777";
 	protected static final String iPAddress = "192.168.3.31";
 
-	protected GuiceModule guiceModule = null;
 	protected INodeAdapter modelAdapter = null;
-	protected ClickSocketTestImpl clickSocket = null;
 	protected XmlModelRepository xmlModelRepository = null;
+	protected ClickSocketWrapper clickSocketWrapper = null;
 		
 	private class ClickSocketDefaultTestImpl extends ClickSocketTestImpl {
 
@@ -53,33 +51,25 @@ public class ClickControlNodeAdapterTest extends TestCase {
 	protected String getTestValue() {
 		return "value";
 	}
-	
-	
+
 	@Override
-	protected void setUp() throws Exception {
-		setUp(new ClickSocketDefaultTestImpl());
+	protected Class<? extends IClickSocket> getClickSocketClass() {
+		return ClickSocketWrapper.class;
 	}
 
-	private void setUp(final ClickSocketTestImpl clickSocket) {
-		this.clickSocket = clickSocket;
-		guiceModule = new GuiceModule() {
-			@Override
-			protected void overrideConfigure() {
-				bind(IClickSocket.class).toInstance(clickSocket);
-				if (getClickControlNodeAdapterClass() != null) {
-					bind(INodeAdapter.class).to(getClickControlNodeAdapterClass());
-				}
-			}			
-		};
-		Injector injector = Guice.createInjector(guiceModule);
-		modelAdapter = injector.getInstance(INodeAdapter.class);
-		xmlModelRepository = injector.getInstance(XmlModelRepository.class);
-	}
-	
-	protected Class<? extends INodeAdapter> getClickControlNodeAdapterClass() {
+	@Override
+	protected Class<? extends INodeAdapter> getNodeAdapterClass() {
 		return ClickControlNodeAdapter.class;
 	}
-	
+
+	@Override
+	protected void additionalSetUp() {
+		modelAdapter = injector.getInstance(INodeAdapter.class);
+		xmlModelRepository = injector.getInstance(XmlModelRepository.class);
+		clickSocketWrapper = (ClickSocketWrapper)injector.getInstance(IClickSocket.class);
+		clickSocketWrapper.setSource(new ClickSocketDefaultTestImpl());
+	}
+		
 	private void checkDefaultNode(Node node) {		
 		assertEquals(1, node.getElements().size());
 		assertEquals("elem", node.getElements().get(0).getName());
@@ -99,7 +89,7 @@ public class ClickControlNodeAdapterTest extends TestCase {
 		}
 		
 		assertTrue(modelAdapter.isConnected());
-		assertTrue(clickSocket.isConnected());
+		assertTrue(clickSocketWrapper.isConnected());
 	}
 	
 	public void testRetrieveAll() {
@@ -110,7 +100,7 @@ public class ClickControlNodeAdapterTest extends TestCase {
 	}
 	
 	public void testRetrieveAllWithMultipleElements() {
-		setUp(new ClickSocketDefaultTestImpl() {
+		clickSocketWrapper.setSource(new ClickSocketDefaultTestImpl() {
 			@Override
 			public String[] getElements() {
 				return new String[] { "e1", "e2", "e3" };
@@ -135,12 +125,12 @@ public class ClickControlNodeAdapterTest extends TestCase {
 		checkDefaultNode(node);
 		
 		Handler handler = node.getElements().get(0).getHandlers().get(0);
-		Object value = modelAdapter.getValueRepresentation(handler).get(handler);
+		Object value = handler.getMixed().getValue(0);
 		assertEquals("value", value);
 	}
 	
 	public void testUpdateHandlerValue() {
-		setUp(new ClickSocketDefaultTestImpl() {
+		clickSocketWrapper.setSource(new ClickSocketDefaultTestImpl() {
 			@Override
 			public void handleWrite(String element, String handler, String value) {
 				assertEquals("newValue", value);
@@ -152,8 +142,9 @@ public class ClickControlNodeAdapterTest extends TestCase {
 		Node node = modelAdapter.retrieve(null, null);
 		checkDefaultNode(node);
 		
-		Handler handler = node.getElements().get(0).getHandlers().get(0); 
-		modelAdapter.updateHandlerValue(handler, "newValue");
+		Handler handler = node.getElements().get(0).getHandlers().get(0);
+		handler.getMixed().set(0, FeatureMapUtil.createTextEntry("newValue"));
+		modelAdapter.updateHandlerValue(handler);
 	}
 	
 	protected Object getNewHandlerValue(String strValue) {
@@ -165,7 +156,7 @@ public class ClickControlNodeAdapterTest extends TestCase {
 		
 		modelAdapter.disconnect();
 		assertFalse(modelAdapter.isConnected());
-		assertFalse(clickSocket.isConnected());
+		assertFalse(clickSocketWrapper.isConnected());
 	}
 
 }

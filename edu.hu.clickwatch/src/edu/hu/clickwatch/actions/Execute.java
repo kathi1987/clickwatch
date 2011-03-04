@@ -7,8 +7,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -91,14 +89,11 @@ class ExecWorkerThread extends Thread {
  * Exec remote code via ssh.
  * @author zubow
  */
-public class Execute implements IObjectActionDelegate {
+public class Execute extends AbstractNodeAction {
 	
 	@Inject
 	private XmlModelRepository xmlModelRepository;
 
-	private Shell shell;
-	private IEditorPart editor = null;
-	private List<Node> node_lst;
 	private EObject currentResult = null;
 
 	/**
@@ -332,9 +327,6 @@ public class Execute implements IObjectActionDelegate {
 		}
 	}
 
-	/**
-	 * At the end display the statistics about failed execs
-	 */
 	private void showExceptions(List<String> nodeNames, List<Exception> exceptions) {
 		StringBuffer txtExc = new StringBuffer();
 		for (int i=0; i<exceptions.size(); i++) {
@@ -348,19 +340,5 @@ public class Execute implements IObjectActionDelegate {
 		}
 		
 		MessageDialog.openError(editor.getSite().getShell(), "Result stats", txtExc.toString());		
-	}
-	
-	/**
-	 * @see IActionDelegate#selectionChanged(IAction, ISelection)
-	 */
-	@Override
-	@SuppressWarnings("unchecked")
-	public void selectionChanged(IAction action, ISelection selection) {
-		try {
-			IStructuredSelection sec = ((IStructuredSelection)selection);
-			node_lst = sec.toList();
-		} catch (Exception e) {
-			MessageDialog.openError(editor.getSite().getShell(), "Clickwatch Error", "ErrorMsg:" + e.getMessage());
-		}
 	}
 }

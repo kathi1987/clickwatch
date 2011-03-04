@@ -33,7 +33,9 @@ import org.eclipse.xsd.util.XSDResourceImpl;
 
 import com.google.common.base.Preconditions;
 import com.google.common.base.Throwables;
+import com.google.inject.Singleton;
 
+@Singleton
 public class XmlModelRepository {
 	
 	private class XmlStringAdapter extends AdapterImpl {

@@ -125,13 +125,40 @@ public interface ClickWatchModelPackage extends EPackage {
 	int NODE__BACKBONE = 5;
 
 	/**
+	 * The feature id for the '<em><b>Retrieving</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__RETRIEVING = 6;
+
+	/**
+	 * The feature id for the '<em><b>Has Record</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__HAS_RECORD = 7;
+
+	/**
+	 * The feature id for the '<em><b>Recording</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__RECORDING = 8;
+
+	/**
 	 * The number of structural features of the '<em>Node</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NODE_FEATURE_COUNT = 6;
+	int NODE_FEATURE_COUNT = 9;
 
 	/**
 	 * The meta object id for the '{@link edu.hu.clickwatch.model.impl.ElementImpl <em>Element</em>}' class.
@@ -419,6 +446,33 @@ public interface ClickWatchModelPackage extends EPackage {
 	int MULTI_NODE__BACKBONE = NODE__BACKBONE;
 
 	/**
+	 * The feature id for the '<em><b>Retrieving</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTI_NODE__RETRIEVING = NODE__RETRIEVING;
+
+	/**
+	 * The feature id for the '<em><b>Has Record</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTI_NODE__HAS_RECORD = NODE__HAS_RECORD;
+
+	/**
+	 * The feature id for the '<em><b>Recording</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTI_NODE__RECORDING = NODE__RECORDING;
+
+	/**
 	 * The feature id for the '<em><b>Nodes</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -523,6 +577,39 @@ public interface ClickWatchModelPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getNode_Backbone();
+
+	/**
+	 * Returns the meta object for the attribute '{@link edu.hu.clickwatch.model.Node#isRetrieving <em>Retrieving</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Retrieving</em>'.
+	 * @see edu.hu.clickwatch.model.Node#isRetrieving()
+	 * @see #getNode()
+	 * @generated
+	 */
+	EAttribute getNode_Retrieving();
+
+	/**
+	 * Returns the meta object for the attribute '{@link edu.hu.clickwatch.model.Node#isHasRecord <em>Has Record</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Has Record</em>'.
+	 * @see edu.hu.clickwatch.model.Node#isHasRecord()
+	 * @see #getNode()
+	 * @generated
+	 */
+	EAttribute getNode_HasRecord();
+
+	/**
+	 * Returns the meta object for the attribute '{@link edu.hu.clickwatch.model.Node#isRecording <em>Recording</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Recording</em>'.
+	 * @see edu.hu.clickwatch.model.Node#isRecording()
+	 * @see #getNode()
+	 * @generated
+	 */
+	EAttribute getNode_Recording();
 
 	/**
 	 * Returns the meta object for class '{@link edu.hu.clickwatch.model.Element <em>Element</em>}'.
@@ -862,6 +949,30 @@ public interface ClickWatchModelPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute NODE__BACKBONE = eINSTANCE.getNode_Backbone();
+
+		/**
+		 * The meta object literal for the '<em><b>Retrieving</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute NODE__RETRIEVING = eINSTANCE.getNode_Retrieving();
+
+		/**
+		 * The meta object literal for the '<em><b>Has Record</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute NODE__HAS_RECORD = eINSTANCE.getNode_HasRecord();
+
+		/**
+		 * The meta object literal for the '<em><b>Recording</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute NODE__RECORDING = eINSTANCE.getNode_Recording();
 
 		/**
 		 * The meta object literal for the '{@link edu.hu.clickwatch.model.impl.ElementImpl <em>Element</em>}' class.

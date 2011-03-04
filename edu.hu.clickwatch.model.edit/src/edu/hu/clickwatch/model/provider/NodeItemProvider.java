@@ -7,14 +7,20 @@
 package edu.hu.clickwatch.model.provider;
 
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
+import org.eclipse.emf.edit.provider.ComposedImage;
+import org.eclipse.emf.edit.provider.ComposedImage.Point;
+import org.eclipse.emf.edit.provider.ComposedImage.Size;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
@@ -70,6 +76,9 @@ public class NodeItemProvider
 			addConnectedPropertyDescriptor(object);
 			addConnectionPropertyDescriptor(object);
 			addBackbonePropertyDescriptor(object);
+			addRetrievingPropertyDescriptor(object);
+			addHasRecordPropertyDescriptor(object);
+			addRecordingPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -185,6 +194,72 @@ public class NodeItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Retrieving feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addRetrievingPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Node_retrieving_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Node_retrieving_feature", "_UI_Node_type"),
+				 ClickWatchModelPackage.Literals.NODE__RETRIEVING,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Has Record feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addHasRecordPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Node_hasRecord_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Node_hasRecord_feature", "_UI_Node_type"),
+				 ClickWatchModelPackage.Literals.NODE__HAS_RECORD,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Recording feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addRecordingPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Node_recording_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Node_recording_feature", "_UI_Node_type"),
+				 ClickWatchModelPackage.Literals.NODE__RECORDING,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -213,20 +288,77 @@ public class NodeItemProvider
 
 		return super.getChildFeature(object, child);
 	}
+	
+	/**
+	 * @generated NOT
+	 */
+	private static class NodeImage extends ComposedImage {
+		private static final int NODE = 0;
+		private static final int CONNECTED = 1;
+		private static final int BACKBONE = 2;
+		private static final int RECORD = 3;
+		
+		Map<Object, Integer> imageMap;
+
+		public NodeImage(List<Object> images, Map<Object, Integer> imageMap) {
+			super(images);
+			this.imageMap = imageMap;
+		}
+
+		@Override
+		public List<Point> getDrawPoints(Size size) {
+			List<Point> result = new ArrayList<ComposedImage.Point>();
+			for (Object image: images) {				
+				Integer pos = imageMap.get(image);
+				if (pos.equals(NODE)) {
+					result.add(new Point());
+				} else if (pos.equals(CONNECTED)) {
+					result.add(new Point());
+				} else if (pos.equals(BACKBONE)) {
+					Point point = new Point();
+					point.x = size.width - 7;
+					point.y = size.height - 7;
+					result.add(point);
+				} else if (pos.equals(RECORD)) {
+					Point point = new Point();
+					point.x = 0;
+					point.y = size.height - 7;
+					result.add(point);
+				}
+			}
+			return result;
+		}
+	}
 
 	/**
 	 * This returns Node.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public Object getImage(Object object) {
-		if (((Node)object).getBackbone() == BackboneType.WIRELESS) {
-			return overlayImage(object, getResourceLocator().getImage("full/obj16/Node_wireless"));
-		} else {
-			return overlayImage(object, getResourceLocator().getImage("full/obj16/Node"));
+		Map<Object, Integer> imageMap = new HashMap<Object, Integer>();
+		List<Object> images = new ArrayList<Object>();
+		Node node = (Node)object;
+		if (node.getBackbone() == BackboneType.WIRELESS) {
+			imageMap.put(getResourceLocator().getImage("full/ovr16/wireless"), NodeImage.BACKBONE);
 		}
+		if (node.isConnected() && !node.isRetrieving()) {
+			imageMap.put(getResourceLocator().getImage("full/ovr16/connected"), NodeImage.CONNECTED);
+		} else if (node.isRetrieving()) {
+			imageMap.put(getResourceLocator().getImage("full/ovr16/retrieving"), NodeImage.CONNECTED);
+		}
+		if (node.isRecording()) {
+			imageMap.put(getResourceLocator().getImage("full/ovr16/recording"), NodeImage.RECORD);
+		} else if (node.isHasRecord()) {
+			imageMap.put(getResourceLocator().getImage("full/ovr16/hasrecord"), NodeImage.RECORD);
+		}
+		images.add(getResourceLocator().getImage("full/obj16/Node"));
+		images.addAll(imageMap.keySet());
+		imageMap.put(getResourceLocator().getImage("full/obj16/Node"), NodeImage.NODE);
+		
+		return new NodeImage(images, imageMap);
 	}
 
 	/**
@@ -246,7 +378,21 @@ public class NodeItemProvider
 			address += ":" + node.getPort();
 		}
 		
-		return address + " " + (node.isConnected() ? "(connected)" : "(not connected)");
+		StringBuffer result = new StringBuffer(address + " (");
+		if (node.isConnected()) {
+			result.append("connected");
+		} else {
+			result.append("not connected");
+		}
+		if (node.isHasRecord()) {
+			result.append(", has record");
+		}
+		if (node.isRecording()) {
+			result.append(", is recording");
+		}
+		result.append(")");
+		
+		return result.toString();
 	}
 
 	/**
@@ -266,6 +412,9 @@ public class NodeItemProvider
 			case ClickWatchModelPackage.NODE__CONNECTED:
 			case ClickWatchModelPackage.NODE__CONNECTION:
 			case ClickWatchModelPackage.NODE__BACKBONE:
+			case ClickWatchModelPackage.NODE__RETRIEVING:
+			case ClickWatchModelPackage.NODE__HAS_RECORD:
+			case ClickWatchModelPackage.NODE__RECORDING:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case ClickWatchModelPackage.NODE__ELEMENTS:

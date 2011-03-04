@@ -2,20 +2,19 @@ package edu.hu.clickwatch.nodeadapter;
 
 import java.io.IOException;
 import java.net.InetAddress;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import click.ControlSocket;
 
 import com.google.common.base.Preconditions;
 import com.google.common.base.Throwables;
-import com.google.inject.ImplementedBy;
 import com.google.inject.Inject;
 
 import edu.hu.clickcontrol.IClickSocket;
@@ -23,11 +22,12 @@ import edu.hu.clickwatch.model.ClickWatchModelFactory;
 import edu.hu.clickwatch.model.Element;
 import edu.hu.clickwatch.model.Handler;
 import edu.hu.clickwatch.model.Node;
+import edu.hu.clickwatch.util.ILogger;
 
 public abstract class AbstractNodeAdapter implements INodeAdapter {
-	
-	@Inject
-	private IClickSocket cs;
+
+	@Inject private IClickSocket cs;
+	@Inject private ILogger logger;
 
 	private boolean isConnected = false;
 	private static final ClickWatchModelFactory modelFactory = ClickWatchModelFactory.eINSTANCE;
@@ -35,22 +35,9 @@ public abstract class AbstractNodeAdapter implements INodeAdapter {
 
 	private String host = null;
 	private String port = null;
-	
-	private final List<ErrorListener> errorListeners = new ArrayList<AbstractNodeAdapter.ErrorListener>();
-	
+
 	public interface ErrorListener {
 		public void handlerError(Throwable e);
-	}
-
-	@ImplementedBy(DefaultXmlValueRepresentation.class)
-	public interface IExtendedValueRepresentation extends IValueRepresentation {
-		
-		public Object createModelValue(String plainRealValue);
-		
-		public String createPlainRealValue(Object modelValue);
-		
-		public void set(Handler handler, Object value);
-	
 	}
 
 	public synchronized void setUp(String host, String port) {
@@ -94,30 +81,51 @@ public abstract class AbstractNodeAdapter implements INodeAdapter {
 				+ " needs to be connected first");
 	}
 
+	protected abstract void createAndSetModelValue(Handler handler,
+			String string);
+
 	/**
-	 * Retrieves element and handler information from the remote node and
-	 * populates a given empty {@link Node} model with it.
+	 * Allows extending classes to ignore elements. Currently elements with "@"
+	 * in their names are ignored.
 	 * 
-	 * @param internalNodeCopy
-	 *            , the empty node.
-	 * @param cs
-	 *            , the {@link IClickSocket} that should be used to retrieve the
-	 *            node information.
+	 * @param name
+	 *            , name of the element.
+	 * @return true, iff the element should be ignored.
 	 */
-	protected void retrieveAndPopulateInternalNodeCopy(Node internalNodeCopy,
-			IClickSocket cs) {
+	protected boolean ignoreElement(String name) {
+		return name.contains("@");
+	}
+
+	protected boolean ignoreHandler(String name) {
+		return false;
+	}
+
+	/**
+	 * Filter is a regular expression of this type:
+	 * element_regexp/handler_regexp called per node (non-Javadoc)
+	 * 
+	 * @see edu.hu.clickwatch.nodeadapter.INodeAdapter#retrieve(java.lang.String)
+	 */
+	@Override
+	public Node retrieve(String elemFilters, String handFilter) {
+		ensureConnected();
+		internalNodeCopy = modelFactory.createNode();
+		internalNodeCopy.setINetAdress(host);
+		internalNodeCopy.setPort(port);
+		
 		Map<String, Element> elementMap = new HashMap<String, Element>();
 		List<String> configElementNames = null;
 		try {
 			configElementNames = cs.getConfigElementNames();
 			for (Object elementNameObject : configElementNames) {
 				String elementName = elementNameObject.toString();
-				if (!ignoreElement(elementName)) {					
+				if (!ignoreElement(elementName)) {
 					String[] elementPath = elementName.split("/");
 					String elementNamePrefix = null;
 					Element parent = null;
-					for (String elementPathItem: elementPath) {
-						elementNamePrefix = elementNamePrefix == null ? elementPathItem : elementNamePrefix + "/" + elementPathItem;
+					for (String elementPathItem : elementPath) {
+						elementNamePrefix = elementNamePrefix == null ? elementPathItem
+								: elementNamePrefix + "/" + elementPathItem;
 						Element element = elementMap.get(elementNamePrefix);
 						if (element == null) {
 							element = modelFactory.createElement();
@@ -137,17 +145,17 @@ public abstract class AbstractNodeAdapter implements INodeAdapter {
 			Throwables.propagate(e);
 		}
 
-		for (String elementPath: configElementNames) {
+		for (String elementPath : configElementNames) {
 			if (!ignoreElement(elementPath)) {
 				List<ControlSocket.HandlerInfo> handlerInfos = null;
 				Element element = elementMap.get(elementPath);
 				Preconditions.checkState(element != null);
-				try {				
+				try {
 					handlerInfos = cs.getElementHandlers(elementPath);
 				} catch (Throwable e) {
 					Throwables.propagate(e);
 				}
-	
+
 				for (ControlSocket.HandlerInfo handlerInfo : handlerInfos) {
 					Handler newHandler = ClickWatchModelFactory.eINSTANCE
 							.createHandler();
@@ -158,90 +166,80 @@ public abstract class AbstractNodeAdapter implements INodeAdapter {
 						element.getHandlers().add(newHandler);
 					}
 				}
-	
-				for (Handler handler : element.getHandlers()) {
-					if (handler.isCanRead() && !ignoreHandler(handler.getName())) {
-						char data[] = null;
-						try {							
-							data = cs.read(element.getElementPath(), handler.getName());
-						} catch (Throwable e) {
-							Throwables.propagate(e);
-						}
-						
-						IExtendedValueRepresentation valueRep = getExtendedValueRepresentation(handler);
-						valueRep.set(handler, valueRep.createModelValue(new String(data)));				
+			}
+		}
+		
+		filterInternalNodeCopy(elemFilters, handFilter);
+
+		Iterator<EObject> it = internalNodeCopy.eAllContents();
+		while (it.hasNext()) {
+			EObject next = it.next();
+			if (next instanceof Handler) {
+				Handler handler = (Handler)next;
+				if (handler.isCanRead()
+						&& !ignoreHandler(handler.getName())) {
+					char data[] = null;
+					try {
+						data = cs.read(((Element)handler.eContainer()).getElementPath(),
+								handler.getName());
+					} catch (Throwable e) {
+						Throwables.propagate(e);
+					}
+
+					try {
+						createAndSetModelValue(handler, new String(data));
+					} catch (Throwable e) {
+						logger.log(IStatus.ERROR,
+								"Exception while creating model for "
+										+ handler + " from "
+										+ new String(data), e);
 					}
 				}
 			}
 		}
+		//return EcoreUtil.copy(internalNodeCopy); //necessary??
+		return internalNodeCopy;
 	}
 	
-	private void retrieveInternalNodeCopy() {
-		ensureConnected();
-		internalNodeCopy = modelFactory.createNode();
-		internalNodeCopy.setINetAdress(host);
-		internalNodeCopy.setPort(port);
-		retrieveAndPopulateInternalNodeCopy(internalNodeCopy, cs);
-	}
-
-	/**
-	 * Allows extending classes to ignore elements. Currently elements with "@"
-	 * in their names are ignored.
-	 * 
-	 * @param name
-	 *            , name of the element.
-	 * @return true, iff the element should be ignored.
-	 */
-	protected boolean ignoreElement(String name) {
-		return name.contains("@");
-	}
-	
-	protected boolean ignoreHandler(String name) {
-		return false;
-	}
-
-	/**
-	 * Filter is a regular expression of this type: element_regexp/handler_regexp 
-	 * called per node
-	 * (non-Javadoc)
-	 * @see edu.hu.clickwatch.nodeadapter.INodeAdapter#retrieve(java.lang.String)
-	 */
-	@Override
-	public Node retrieve(String elemFilters, String handFilter) {
-		retrieveInternalNodeCopy();
+	private void filterInternalNodeCopy(String elemFilters, String handFilter) {
 		// filter internal node copy
-		if ( (elemFilters == null || elemFilters.trim().equals("")) && (handFilter == null || handFilter.trim().equals("")) ) {
-			return EcoreUtil.copy(internalNodeCopy);	
+		if ((elemFilters == null || elemFilters.trim().equals(""))
+				&& (handFilter == null || handFilter.trim().equals(""))) {
+			return;
 		}
-		
+
 		if (elemFilters == null) {
 			elemFilters = "";
 		}
 		if (handFilter == null) {
 			handFilter = "";
 		}
-		
+
 		String[] elemFilter = elemFilters.split("/");
 		Iterator<Element> elem_it = internalNodeCopy.getElements().iterator();
-		// recusrive checker
+		// recursive checker
 		filterMatched(elem_it, elemFilter, 0, handFilter);
-		return EcoreUtil.copy(internalNodeCopy);
+
 	}
-	
+
 	// recursive filter
-	private void filterMatched(Iterator<Element> elem_it, String[] elemFilter, int idx, String handFilter) {
+	private void filterMatched(Iterator<Element> elem_it, String[] elemFilter,
+			int idx, String handFilter) {
 		while (elem_it.hasNext()) {
 			Element elem = elem_it.next();
-			if ( (elemFilter.length > idx) && !java.util.regex.Pattern.compile(elemFilter[idx]).matcher(elem.getName()).find()) {
+			if ((elemFilter.length > idx)
+					&& !java.util.regex.Pattern.compile(elemFilter[idx])
+							.matcher(elem.getName()).find()) {
 				// does not match; remove it
 				elem_it.remove();
 				continue; // no need to check the children nodes
 			}
 			Iterator<Handler> hand_it = elem.getHandlers().iterator();
-			
+
 			while (hand_it.hasNext()) {
 				Handler hand = hand_it.next();
-				if (!java.util.regex.Pattern.compile(handFilter).matcher(hand.getName()).find()) {
+				if (!java.util.regex.Pattern.compile(handFilter)
+						.matcher(hand.getName()).find()) {
 					// does not match; remove it
 					hand_it.remove();
 				}
@@ -249,118 +247,31 @@ public abstract class AbstractNodeAdapter implements INodeAdapter {
 
 			// recursive call
 			if (elem.getChildren().size() > 0) {
-				filterMatched(elem.getChildren().iterator(), elemFilter, idx+1, handFilter);
+				filterMatched(elem.getChildren().iterator(), elemFilter,
+						idx + 1, handFilter);
 			}
 		}
 	}
 
 	@Override
-	public final synchronized void updateHandlerValue(Handler handler, Object value) {
+	public final synchronized void updateHandlerValue(Handler handler) {
 		Preconditions.checkArgument(handler.isCanWrite());
-		
+
 		ensureConnected();
-		Element element = (Element)handler.eContainer();
-		
+		Element element = (Element) handler.eContainer();
+
 		try {
-			IExtendedValueRepresentation valueRep = (IExtendedValueRepresentation)getValueRepresentation(handler);
-			cs.write(element.getElementPath(), handler.getName(), valueRep.createPlainRealValue(value).toCharArray());
+			cs.write(element.getElementPath(), handler.getName(),
+					createPlainRealValue(handler).toCharArray());
 		} catch (Throwable e) {
 			Throwables.propagate(e);
 		}
 	}
 
-	public void addErrorListener(ErrorListener listener) {
-		errorListeners.add(listener);
-	}
-	
-	public void removeErrorListener(ErrorListener listener) {
-		errorListeners.remove(listener);
-	}
-	
-	private void handle(Throwable e) {
-		for (ErrorListener errorListener: errorListeners) {
-			errorListener.handlerError(e);
-		}
-	}
+	protected abstract String createPlainRealValue(Handler handler);
 
-	private class ExtentValueRepresentationErrorHandlerWrapper implements IExtendedValueRepresentation {
-		final IExtendedValueRepresentation source;
-
-		public ExtentValueRepresentationErrorHandlerWrapper(IExtendedValueRepresentation source) {
-			this.source = source;
-		}
-		
-		@Override
-		public boolean isNotificationChangingValue(Notification notification) {
-			try {
-				return source.isNotificationChangingValue(notification);
-			} catch (Throwable e) {
-				handle(e);
-				return false;
-			}
-		}
-
-		@Override
-		public Object get(Handler handler) {
-			try {
-				return source.get(handler);
-			} catch (Throwable e) {
-				handle(e);
-				return null;
-			}
-		}
-
-		@Override
-		public void set(Handler handler, Object value) {
-			try {
-				source.set(handler, value);
-			} catch (Throwable e) {
-				handle(e);
-			}
-		}
-
-		@Override
-		public Object createModelValue(String plainRealValue) {
-			try {
-				return source.createModelValue(plainRealValue);
-			} catch (Throwable e) {
-				handle(e);
-				return null;
-			}
-		}
-
-		@Override
-		public String createPlainRealValue(Object modelValue) {
-			try {
-				return source.createPlainRealValue(modelValue);
-			} catch (Throwable e) {
-				handle(e);
-				return null;
-			}
-		}
-
-		@Override
-		public boolean merge(Handler mergee, Object newVaule) {
-			try {
-				return source.merge(mergee, newVaule);
-			} catch (Throwable e) {
-				handle(e);
-				return false;
-			}
-		}
-		
-		
-	}
-	
-	@Override
-	public final IValueRepresentation getValueRepresentation(Handler handler) {
-		return new ExtentValueRepresentationErrorHandlerWrapper(getExtendedValueRepresentation(handler));
-	}
-	
 	protected IClickSocket getClickSocket() {
 		return cs;
 	}
 
-	protected abstract IExtendedValueRepresentation getExtendedValueRepresentation(Handler handler);
-	
 }

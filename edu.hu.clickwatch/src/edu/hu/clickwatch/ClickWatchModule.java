@@ -5,22 +5,35 @@ import java.net.URISyntaxException;
 import org.eclipse.emf.common.util.URI;
 
 import com.google.inject.AbstractModule;
+import com.google.inject.Provides;
 
 import edu.hu.clickcontrol.IClickSocket;
+import edu.hu.clickwatch.merge.IMergeConfiguration;
+import edu.hu.clickwatch.merge.MergeModule;
+import edu.hu.clickwatch.model.ClickWatchNodeMergeConfiguration;
 import edu.hu.clickwatch.nodeadapter.ClickControlXSDNodeAdapter;
 import edu.hu.clickwatch.nodeadapter.INodeAdapter;
 import edu.hu.clickwatch.tests.clicksockets.ClickSocketPlayer;
 import edu.hu.clickwatch.tests.clicksockets.ClickSocketPlayerSocketImpl;
+import edu.hu.clickwatch.util.ILogger;
 
-public class GuiceModule extends AbstractModule {
-	
-	private final XmlModelRepository xmlModelRepository = new XmlModelRepository();
+public class ClickWatchModule extends AbstractModule {
 	
 	private ClickSocketPlayer player = null;
+	private ILogger logger = null;
+	
+	@Provides ILogger getLogger() {
+		return logger;
+	}
+	
+	public void setLogger(ILogger logger) {
+		this.logger = logger;
+	}
 
 	@Override
 	protected final void configure() {
-		bind(XmlModelRepository.class).toInstance(xmlModelRepository);
+		install(new MergeModule());
+		bind(IMergeConfiguration.class).to(ClickWatchNodeMergeConfiguration.class);
 		overrideConfigure();
 	}
 	
@@ -50,7 +63,4 @@ public class GuiceModule extends AbstractModule {
 		bind(IClickSocket.class).to(ClickSocketPlayerSocketImpl.class);
 	}
 
-	public XmlModelRepository getXmlModelRepository() {
-		return xmlModelRepository;
-	}
 }

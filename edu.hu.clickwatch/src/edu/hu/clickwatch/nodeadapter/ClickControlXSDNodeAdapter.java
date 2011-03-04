@@ -3,7 +3,6 @@ package edu.hu.clickwatch.nodeadapter;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
@@ -24,46 +23,32 @@ import com.google.common.base.Throwables;
 import com.google.inject.Inject;
 
 import edu.hu.clickwatch.XmlModelRepository;
-import edu.hu.clickwatch.merge.Merge;
-import edu.hu.clickwatch.model.ClickWatchModelPackage;
 import edu.hu.clickwatch.model.Element;
 import edu.hu.clickwatch.model.Handler;
 
-public class ClickControlXSDNodeAdapter extends AbstractNodeAdapter {
+public class ClickControlXSDNodeAdapter extends ClickControlNodeXmlValuesAdapter {
 	
-	@Inject
-	private DefaultXmlValueRepresentation defaultXmlValueRep;
-	
-	@Inject
-	private XmlModelRepository xmlModelRepository;
+	@Inject private XmlModelRepository xmlModelRepository;
 	
 	public static final String XSD_HANDLER_NAME = "schema";
-	
-	private Map<Handler, IExtendedValueRepresentation> valueReps = 
-			new HashMap<Handler, AbstractNodeAdapter.IExtendedValueRepresentation>();
-	
-	private static final EPackage NULL_PACKAGE = EcoreFactory.eINSTANCE.createEPackage();
+	private Map<String, EPackage> metaModels = new HashMap<String, EPackage>();
 	private Map<String, EPackage> metaModelsForElementPaths = new HashMap<String, EPackage>();
+	private static final EPackage NULL_PACKAGE = EcoreFactory.eINSTANCE.createEPackage();
 	
-	private class XSDValueRepresentation implements IExtendedValueRepresentation {
-		
-		final EPackage metaModel;
-		
-		public XSDValueRepresentation(EPackage metaModel) {
-			this.metaModel = metaModel;
-		}
-		
-		@Override
-		public void set(Handler handler, Object value) {
-			if (value == null) {
-				return;
-			}
+	@Override
+	protected void createAndSetModelValue(Handler handler, String plainRealValue) {
+		EPackage metaModel = getMetaModel(handler);
+		if (metaModel == null) {
+			super.createAndSetModelValue(handler, plainRealValue);
+		} else {
+			EObject documentRoot = xmlModelRepository.deserializeModel(metaModel, plainRealValue);
+			EObject modelValue = documentRoot.eContents().get(0);
+			EcoreUtil.remove(modelValue);
+			EcoreUtil.delete(documentRoot, true);
 			
-			Preconditions.checkArgument(value instanceof EObject);
-
 			EStructuralFeature valueFeature = null;
 			for (EStructuralFeature aFeature: ((EClass)metaModel.getEClassifier("DocumentRoot")).getEStructuralFeatures()) {
-				if (aFeature.getEType().isInstance(value)) {
+				if (aFeature.getEType().isInstance(modelValue)) {
 					valueFeature = aFeature;
 				}
 			}
@@ -72,58 +57,32 @@ public class ClickControlXSDNodeAdapter extends AbstractNodeAdapter {
 			
 			handler.getMixed().clear();
 			handler.getAny().clear();
-			handler.getAny().add(FeatureMapUtil.createRawEntry(valueFeature, value));
+			handler.getAny().add(FeatureMapUtil.createRawEntry(valueFeature, modelValue));
 		}
-		
-		@Override
-		public boolean isNotificationChangingValue(Notification notification) {
-			if (notification.getNotifier() instanceof Handler) {
-				return notification.getFeature() == ClickWatchModelPackage.eINSTANCE.getHandler_Any() ||
-						notification.getFeature() == ClickWatchModelPackage.eINSTANCE.getHandler_Mixed();
-			} else {
-				return true;
-			}
-		}
-		
-		@Override
-		public Object get(Handler handler) {
+	}
+
+	@Override
+	protected String createPlainRealValue(Handler handler) {
+		EPackage metaModel = getMetaModel(handler);
+		if (metaModel == null) {
+			return super.createPlainRealValue(handler);
+		} else {
 			FeatureMap mixed = handler.getMixed();
+			Object modelValue;
 			if (mixed.isEmpty()) {
 				if (handler.getAny().isEmpty()) {
-					return null;
+					modelValue = null;
 				} else {
-					return handler.getAny().getValue(0);
+					modelValue = handler.getAny().getValue(0);
 				}
 			} else {
-				return mixed.getValue(0);
+				modelValue = mixed.getValue(0);
 			}
+			Preconditions.checkState(modelValue instanceof EObject);
+			return xmlModelRepository.serializeModel(metaModel, (EObject)modelValue);	
 		}
-		
-		@Override
-		public String createPlainRealValue(Object modelValue) {
-			return xmlModelRepository.serializeModel(metaModel, (EObject)modelValue);
-		}
-		
-		@Override
-		public Object createModelValue(String plainRealValue) {			
-			EObject documentRoot = xmlModelRepository.deserializeModel(metaModel, plainRealValue);
-			EObject result = documentRoot.eContents().get(0);
-			EcoreUtil.remove(result);
-			EcoreUtil.delete(documentRoot, true);
-			return result;
-		}
-		
-		@Override
-		public boolean merge(final Handler mergee, final Object newValue) {
-			return Merge.merge(get(mergee), newValue, new Merge.SimpleOperations() {			
-				@Override
-				public void replace() {
-					set(mergee, newValue);
-				}
-			});
-		}
-	};
-	
+	}
+
 	private EPackage getMetaModelFromXSD(Element element) {
 		String elementPath = element.getElementPath();
 		EPackage result = metaModelsForElementPaths.get(elementPath);
@@ -165,18 +124,18 @@ public class ClickControlXSDNodeAdapter extends AbstractNodeAdapter {
 			return result;
 		}
 	}
-
-	@Override
-	protected IExtendedValueRepresentation getExtendedValueRepresentation(Handler handler) {
-		IExtendedValueRepresentation result = valueReps.get(handler);
+	
+	private EPackage getMetaModel(Handler handler) {
+		String handlerPath = ((Element)handler.eContainer()).getElementPath() + "/" + handler.getName();
+		EPackage result = metaModels.get(handlerPath);
 		if (result == null) {
 			Element element = (Element)handler.eContainer();
 			EPackage metaModel = getMetaModelFromXSD(element);			
 			if (metaModel == NULL_PACKAGE) {
-				result = defaultXmlValueRep;
+				result = NULL_PACKAGE;
 			} else {
 				if (XSD_HANDLER_NAME.equals(handler.getName())) {
-					result = defaultXmlValueRep;
+					result = NULL_PACKAGE;
 				} else {
 					EClass handlerClass = (EClass)metaModel.getEClassifier("handler");
 					EEnum eEnum = (EEnum)handlerClass.getEStructuralFeature("name").getEType();
@@ -188,14 +147,19 @@ public class ClickControlXSDNodeAdapter extends AbstractNodeAdapter {
 						}
 					}
 					if (handlerIsCoveredByXSD) {
-						result = new XSDValueRepresentation(metaModel);
+						result = metaModel;
 					} else {
-						result = defaultXmlValueRep;
+						result = NULL_PACKAGE;
 					}
 				}
 			}
-			valueReps.put(handler, result);
+			metaModels.put(handlerPath, result);
 		} 
-		return result;
+		
+		if (result == NULL_PACKAGE) {
+			return null;
+		} else {
+			return result;
+		}
 	}
 }

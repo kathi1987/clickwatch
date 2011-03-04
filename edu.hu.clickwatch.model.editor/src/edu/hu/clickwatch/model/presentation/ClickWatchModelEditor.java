@@ -25,37 +25,29 @@ import org.eclipse.emf.common.command.BasicCommandStack;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CommandStack;
 import org.eclipse.emf.common.command.CommandStackListener;
-import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.Notifier;
+import org.eclipse.emf.common.notify.impl.NotificationImpl;
 import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.emf.common.ui.ViewerPane;
 import org.eclipse.emf.common.ui.editor.ProblemEditorPart;
 import org.eclipse.emf.common.ui.viewer.IViewerProvider;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
-import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.ecore.util.FeatureMap;
-import org.eclipse.emf.ecore.util.FeatureMap.Entry;
-import org.eclipse.emf.ecore.util.FeatureMapUtil;
 import org.eclipse.emf.ecore.xmi.XMLResource;
-import org.eclipse.emf.ecore.xml.type.AnyType;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
 import org.eclipse.emf.edit.provider.AdapterFactoryItemDelegator;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
-import org.eclipse.emf.edit.provider.FeatureMapEntryWrapperItemProvider;
-import org.eclipse.emf.edit.provider.IItemColorProvider;
-import org.eclipse.emf.edit.provider.ReflectiveItemProvider;
 import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
 import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory;
 import org.eclipse.emf.edit.ui.action.EditingDomainActionBarContributor;
@@ -120,7 +112,12 @@ import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.PropertySheet;
 import org.eclipse.ui.views.properties.PropertySheetPage;
 
+import edu.hu.clickwatch.model.ChangeMark;
+import edu.hu.clickwatch.model.ClickWatchModelPackage;
+import edu.hu.clickwatch.model.Node;
 import edu.hu.clickwatch.model.provider.ClickWatchModelItemProviderAdapterFactory;
+import edu.hu.clickwatch.model.provider.ClickWatchReflectiveItemProviderAdapterFactory;
+import edu.hu.clickwatch.model.provider.NodeItemProvider;
 
 /**
  * This is an example of a ClickWatchModel model editor.
@@ -565,104 +562,21 @@ public class ClickWatchModelEditor
 		initializeEditingDomain();
 	}
 	
-	public static class MyReflectiveItemProviderAdapterFactory extends ReflectiveItemProviderAdapterFactory {
-		ReflectiveItemProvider itemProvider = new ReflectiveItemProvider(this) {
-			@Override
-			public String getText(Object object) {
-				if (object instanceof EObject) {
-					String result = ((EObject)object).eClass().getName();
-					if (result == null) {
-						return super.getText(object);
-					} else {
-						return result;
-					}
-				} else {
-					return super.getText(object);
-				}
-			}
-			
-			
-			@Override
-			public Collection<?> getChildren(Object object) {
-				Collection<Object> result = new ArrayList<Object>();
-				for(Object child: super.getChildren(object)) {	
-					boolean ommit = false;
-					if (child instanceof FeatureMapEntryWrapperItemProvider) {
-						Object value = ((FeatureMap.Entry)((FeatureMapEntryWrapperItemProvider)child).getValue()).getValue();
-						if (value instanceof String && ((String)value).trim().equals("")) {
-							ommit = true;
-						}
-					}
-					if (!ommit) {
-						result.add(child);
-					}
-				}
-				
-				return result;
-			}
-			
-			class MyFeatureMapEntryWrapperItemProvider extends FeatureMapEntryWrapperItemProvider implements IItemColorProvider {
-				
-				public MyFeatureMapEntryWrapperItemProvider(Entry entry,
-						EObject owner, EAttribute attribute, int index,
-						AdapterFactory adapterFactory,
-						ResourceLocator resourceLocator) {
-					super(entry, owner, attribute, index, adapterFactory, resourceLocator);
-				}
+	public class ColoredReflectiveItemProviderAdapterFactory extends ClickWatchReflectiveItemProviderAdapterFactory {
 
-				@Override
-				public String getText(Object object) {
-					if (((FeatureMap.Entry)value).getValue() instanceof AnyType) {
-						return ((FeatureMap.Entry) value).getEStructuralFeature().getName();
-					} else {
-						return value.toString();
-					}
-				}
-				
-//				private final Object black = Display.getCurrent().getSystemColor(SWT.COLOR_BLACK);
-//				private final Object yellow = Display.getCurrent().getSystemColor(SWT.COLOR_DARK_YELLOW);
-//				private final Object red = Display.getCurrent().getSystemColor(SWT.COLOR_DARK_RED);
-				
-//				@Override
-//				public Object getForeground(Object object) {
-//					if (object instanceof MyFeatureMapEntryWrapperItemProvider) {
-//						FeatureMap.Entry entry = (FeatureMap.Entry)((MyFeatureMapEntryWrapperItemProvider)object).value;
-//						EObject owner = (EObject)((MyFeatureMapEntryWrapperItemProvider)object).getOwner();
-//						ChangeMark mark = ChangeMark.getChangeMark(owner);
-//						if (mark != null && mark.isActive()) {
-//							if (mark.getFeature() == entry.getEStructuralFeature()) {
-//								return red;
-//							}
-//						}
-//					} 
-//					if (object instanceof EObject) {
-//						ChangeMark mark = ChangeMark.getChangeMark((EObject)object);
-//						if (mark != null && mark.isActive()) {
-//							return yellow;
-//						}
-//					}
-//					return black;
-//				}
-			}
-
-			@Override
-			protected Object createWrapper(EObject object,
-					EStructuralFeature feature, Object value, int index) {
-				if (FeatureMapUtil.isFeatureMap(feature)) {
-					return new MyFeatureMapEntryWrapperItemProvider(
-							(FeatureMap.Entry) value, object, (EAttribute) feature,
-							index, adapterFactory, getResourceLocator());
-				} else {
-					return super.createWrapper(object, feature, value, index);
-				}
-			}
-			
-			
-		};
+		private final Object black = Display.getCurrent().getSystemColor(SWT.COLOR_BLACK);
+		private final Object red = Display.getCurrent().getSystemColor(SWT.COLOR_DARK_RED);
+		
 		@Override
-		public Adapter createAdapter(Notifier target) {
-			return itemProvider;
+		public Object getForeground(EObject object, EStructuralFeature feature,
+				Object value) {
+			if (ClickWatchModelEditor.this.hasChanged(object, feature)) {
+				return red;
+			} else {
+				return black;
+			}
 		}
+
 	}
 
 	/**
@@ -678,7 +592,7 @@ public class ClickWatchModelEditor
 
 		adapterFactory.addAdapterFactory(new ResourceItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new ClickWatchModelItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new MyReflectiveItemProviderAdapterFactory());
+		adapterFactory.addAdapterFactory(new ColoredReflectiveItemProviderAdapterFactory());
 
 		// Create the command stack that will notify this editor as commands are executed.
 		//
@@ -1012,31 +926,11 @@ public class ClickWatchModelEditor
 
 				selectionViewer = (TreeViewer)viewerPane.getViewer();
 				selectionViewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));
-
+				// to use AdapterFactoryLabelProvider.ColorProvider is key to get colors
 				selectionViewer.setLabelProvider(new AdapterFactoryLabelProvider.ColorProvider(adapterFactory, selectionViewer));
 				selectionViewer.setInput(editingDomain.getResourceSet());
 				selectionViewer.setSelection(new StructuredSelection(editingDomain.getResourceSet().getResources().get(0)), true);
 				viewerPane.setTitle(editingDomain.getResourceSet());
-				
-				new Thread() {
-					@Override
-					public void run() {
-						while (true) {
-							getSite().getShell().getDisplay().asyncExec(new Runnable() {							
-								@Override
-								public void run() {
-									selectionViewer.refresh();
-								}
-							});
-							try {
-								Thread.sleep(500);
-							} catch (InterruptedException e) {
-								e.printStackTrace();
-							}
-						}
-					}
-					
-				}.start();
 
 				new AdapterFactoryTreeEditor(selectionViewer.getTree(), adapterFactory);
 
@@ -1450,11 +1344,11 @@ public class ClickWatchModelEditor
 	 * This is for implementing {@link IEditorPart} and simply tests the command stack.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public boolean isDirty() {
-		return ((BasicCommandStack)editingDomain.getCommandStack()).isSaveNeeded();
+		return hasBeenChanged || ((BasicCommandStack)editingDomain.getCommandStack()).isSaveNeeded();
 	}
 
 	/**
@@ -1508,6 +1402,7 @@ public class ClickWatchModelEditor
 			// Refresh the necessary state.
 			//
 			((BasicCommandStack)editingDomain.getCommandStack()).saveIsDone();
+			hasBeenChanged = false;
 			firePropertyChange(IEditorPart.PROP_DIRTY);
 		}
 		catch (Exception exception) {
@@ -1787,5 +1682,36 @@ public class ClickWatchModelEditor
 	 */
 	protected boolean showOutlineView() {
 		return true;
+	}
+	
+	private Collection<ChangeMark> recentChanges = null;
+	private boolean hasBeenChanged = false;
+	
+	private void changed() {
+		if (!hasBeenChanged) {
+			hasBeenChanged = true;
+			firePropertyChange(IEditorPart.PROP_DIRTY);	
+		}
+	}
+	
+	private boolean hasChanged(EObject object, EStructuralFeature feature) {
+		if (recentChanges == null) {
+			return false;
+		} else {
+			return recentChanges.contains(new ChangeMark(object, feature, null));
+		}
+	}
+
+	/**
+	 * @generated NOT
+	 */
+	public void markChanges(Node node, Collection<ChangeMark> changes) {
+		if (!changes.isEmpty()) {
+			changed();
+		}
+		recentChanges = changes;
+		NotificationImpl notification = 
+			new ENotificationImpl((InternalEObject)node, 0, ClickWatchModelPackage.eINSTANCE.getNode_Elements(), null, null);
+		((NodeItemProvider)adapterFactory.adapt(node, node)).notifyChanged(notification);
 	}
 }
