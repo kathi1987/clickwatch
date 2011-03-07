@@ -9,6 +9,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.change.FeatureMapEntry;
 import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.xml.type.AnyType;
 
@@ -128,16 +129,17 @@ public class ClickWatchNodeMergeConfiguration extends DefaultMergeConfiguration 
 			return false;
 		}
 		if (node.isRecording()) {
-			Long oldValueTime = getTime(oldValue);
-			if (newValue == null) {
-				return oldValueTime != null;
-			}
-			Long newValueTime = getTime(newValue);
-			if (newValueTime != null && oldValueTime != null) {
-				return newValueTime != oldValueTime;
-			} else {
-				return false;
-			}
+			return context.getFeature() == anyFeature || context.getFeature() == mixedFeature;
+//			Long oldValueTime = getTime(oldValue);
+//			if (newValue == null) {
+//				return oldValueTime != null;
+//			}
+//			Long newValueTime = getTime(newValue);
+//			if (newValueTime != null && oldValueTime != null) {
+//				return newValueTime != oldValueTime;
+//			} else {
+//				return false;
+//			}
 		} else if (node.isHasRecord()) {
 			if (oldValue instanceof FeatureMap.Entry) {
 				FeatureMap.Entry fOldValue = (FeatureMap.Entry)oldValue;
@@ -157,7 +159,8 @@ public class ClickWatchNodeMergeConfiguration extends DefaultMergeConfiguration 
 	@Override
 	public Object create(IContext context, Object newValue) {
 		Object result = super.create(context, newValue);
-		if (newValue instanceof EObject && getTime(newValue) != null && node.isRecording()) {
+		//if (newValue instanceof EObject && getTime(newValue) != null && node.isRecording()) {
+		if (newValue instanceof EObject && (context.getFeature() == anyFeature || context.getFeature() == mixedFeature) && node.isRecording()) {
 			((EObject)result).eAdapters().add(isRecordedAdapter);
 			node.setHasRecord(true);
 		}
