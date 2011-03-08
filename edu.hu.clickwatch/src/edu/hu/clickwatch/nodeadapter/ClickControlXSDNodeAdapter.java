@@ -118,7 +118,7 @@ public class ClickControlXSDNodeAdapter extends ClickControlNodeXmlValuesAdapter
 			return null;
 		}
 		
-		if (result == null || result.trim().equals("")) {
+		if (result == null || result.trim().equals("") || !result.contains("<")) {
 			return null;
 		} else {
 			return result;
