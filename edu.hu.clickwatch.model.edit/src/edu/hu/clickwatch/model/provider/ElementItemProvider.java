@@ -28,6 +28,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import edu.hu.clickwatch.model.ClickWatchModelFactory;
 import edu.hu.clickwatch.model.ClickWatchModelPackage;
 import edu.hu.clickwatch.model.Element;
+import edu.hu.clickwatch.model.Handler;
 
 /**
  * This is the item provider adapter for a {@link edu.hu.clickwatch.model.Element} object.
@@ -163,7 +164,7 @@ public class ElementItemProvider
 	 * @generated NOT
 	 */
 	@Override
-	public String getText(Object object) {
+	public String getText(Object object) {	
 		String result = "";
 		Element element = (Element)object;
 		if (element.getName() == null) {
@@ -171,6 +172,21 @@ public class ElementItemProvider
 		} else {
 			result += element.getName();
 		}
+		
+		String className = null;
+		for (Handler handler: element.getHandlers()) {
+			if ("class".equals(handler.getName().toLowerCase()) && handler.getMixed().size() == 1) {
+				Object classNameValue = handler.getMixed().getValue(0);
+				if (classNameValue instanceof String) {
+					className = (String)classNameValue;
+				}
+			}
+		}
+		
+		if (className != null) {
+			result += ":" + className;
+		}
+		
 		if (element.isWatch()) {
 			result += " (watched)";
 		}
