@@ -7,6 +7,7 @@
 package edu.hu.clickwatch.model.provider;
 
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -29,11 +30,13 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ItemProvider;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import edu.hu.clickwatch.model.ClickWatchModelPackage;
 import edu.hu.clickwatch.model.Handler;
+import edu.hu.clickwatch.model.IsRecordedAdapter;
 
 /**
  * This is the item provider adapter for a {@link edu.hu.clickwatch.model.Handler} object.
@@ -325,5 +328,31 @@ public class HandlerItemProvider
 		} else {
 			return super.createWrapper(object, feature, value, index);
 		}
+	}
+
+	@Override
+	public Collection<?> getChildren(Object object) {
+		IsRecordedAdapter isRecordedAdapter = new IsRecordedAdapter();
+		Collection<Object> children = new ArrayList<Object>();
+		for(Object child: super.getChildren(object)) {
+			boolean isRecorded = false;
+			Object value = ((FeatureMapEntryWrapperItemProvider)child).getValue();
+			if (value instanceof FeatureMap.Entry) {
+				Object fmeValue = ((FeatureMap.Entry)value).getValue();
+				if (fmeValue instanceof EObject) {
+					AdapterLoop: for(Object adapter: ((EObject)fmeValue).eAdapters()) {
+						if (adapter.equals(isRecordedAdapter)) {
+							isRecorded = true;
+							break AdapterLoop;
+						}
+					}
+				}
+			}
+				
+			if (!isRecorded) {
+				children.add(child);
+			}
+		}
+		return children;
 	}
 }
