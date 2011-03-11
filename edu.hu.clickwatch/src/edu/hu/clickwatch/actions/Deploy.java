@@ -2,6 +2,7 @@ package edu.hu.clickwatch.actions;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.net.InetAddress;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,6 +42,10 @@ class HotDeploy extends Deploy {
 		}
 		return logMsg;
 	}
+	protected boolean busyWait() throws Exception {
+		// no waiting
+		return false;
+	}
 }
 
 /**
@@ -56,6 +61,11 @@ class FullDeploy extends Deploy {
 			logMsg = SshConnectionFactory.getInstance().execRemote(session, command);
 		}
 		return logMsg;
+	}
+
+	protected boolean busyWait() throws Exception {
+		// wait so that the driver reconfiguration can settle down
+		return true;
 	}
 }
 
@@ -248,6 +258,9 @@ public abstract class Deploy extends AbstractNodeAction implements SSHParams {
 				System.out.println("starting on node " + iNodeAddr + " called.");
 				try {
 					result = startRemote(iNodeAddr, false);
+					if (result == null) {
+						exception = new Exception("Canceled.");
+					}
 				} catch (Exception e) {
 					System.err.println("ErrorMsg:" + e.getMessage());
 					exception = e;			
@@ -274,6 +287,54 @@ public abstract class Deploy extends AbstractNodeAction implements SSHParams {
 		public void cancel() {
 			canceled = true;
 		}
+		
+		/**
+		 * Start router configuration
+		 */
+		public String startRemote(String host, boolean showProgressbar) throws Exception {
+			
+			// init ssh
+			Session session = SshConnectionFactory.getInstance().createSession(SSH_USER, host);
+
+			// start
+			long startTime = System.currentTimeMillis();
+			String command;
+			StringBuffer logMsg = startScript(host, showProgressbar, session);
+			log2Sout(logMsg.append("\n").append("Starting executed in ").append((System.currentTimeMillis() - startTime) / 1000).append(" sec"));
+
+			if (busyWait()) {
+				// give some time to configure devices
+				sleep(10000);
+				
+				// busy waiting in case the node is not reachable
+				while (true) {
+					int timeOut = 3000; // I recommend 3 seconds at least
+					boolean status = InetAddress.getByName(host).isReachable(timeOut);
+					if (status) {
+						System.out.println("Host: " + host + " is available again.");
+						break;
+					}
+					sleep(1000);
+					if (canceled)
+						return null;
+			    }
+			}
+			
+			// check log file after sleeping for 5 seconds
+			startTime = System.currentTimeMillis();
+			command = "(sleep 5; cd /tmp; cat seismo_brn.log )";
+			if (showProgressbar) {
+				logMsg = SshConnectionFactory.getInstance().execRemoteGUI(session, command, "Fetching log file from node " + host, shell);
+			} else {
+				logMsg = SshConnectionFactory.getInstance().execRemote(session, command);
+			}
+			String logstr = logMsg.toString();
+			log2Sout(logMsg.append("\n").append("Fetching log-file executed in ").append((System.currentTimeMillis() - startTime) / 1000).append(" sec"));
+
+			// close session
+			SshConnectionFactory.getInstance().closeSession(session);
+			return logstr;
+		}		
 	}	
 
 	/**
@@ -485,38 +546,11 @@ public abstract class Deploy extends AbstractNodeAction implements SSHParams {
 		return results.toString();
 	}
 	
-	/**
-	 * Start router configuration
-	 */
-	public String startRemote(String host, boolean showProgressbar) throws Exception {
-		
-		// init ssh
-		Session session = SshConnectionFactory.getInstance().createSession(SSH_USER, host);
-
-		// start
-		long startTime = System.currentTimeMillis();
-		String command;
-		StringBuffer logMsg = startScript(host, showProgressbar, session);
-		log2Sout(logMsg.append("\n").append("Starting executed in ").append((System.currentTimeMillis() - startTime) / 1000).append(" sec"));
-		
-		// check log file after sleeping for 5 seconds
-		startTime = System.currentTimeMillis();
-		command = "(sleep 5; cd /tmp; cat seismo_brn.log )";
-		if (showProgressbar) {
-			logMsg = SshConnectionFactory.getInstance().execRemoteGUI(session, command, "Fetching log file from node " + host, shell);
-		} else {
-			logMsg = SshConnectionFactory.getInstance().execRemote(session, command);
-		}
-		String logstr = logMsg.toString();
-		log2Sout(logMsg.append("\n").append("Fetching log-file executed in ").append((System.currentTimeMillis() - startTime) / 1000).append(" sec"));
-
-		// close session
-		SshConnectionFactory.getInstance().closeSession(session);
-		return logstr;
-	}
-
 	// implemented by derived classes
 	abstract protected StringBuffer startScript(String host, boolean showProgressbar, Session session) throws Exception;
+
+	// implemented by derived classes
+	abstract protected boolean busyWait() throws Exception;
 	
 	private void log2Sout(StringBuffer sb) {
 		System.out.println(sb.toString());
