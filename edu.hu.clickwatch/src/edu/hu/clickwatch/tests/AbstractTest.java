@@ -11,7 +11,6 @@ import com.google.inject.Injector;
 import edu.hu.clickcontrol.ClickSocketImpl;
 import edu.hu.clickcontrol.IClickSocket;
 import edu.hu.clickwatch.ClickWatchStandaloneSetup;
-import edu.hu.clickwatch.merge.DefaultMergeConfiguration;
 import edu.hu.clickwatch.merge.IMergeConfiguration;
 import edu.hu.clickwatch.merge.MergeModule;
 import edu.hu.clickwatch.model.ClickWatchNodeMergeConfiguration;

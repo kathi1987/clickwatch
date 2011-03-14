@@ -1,0 +1,15 @@
+«IMPORT SpecificMetaModel»
+
+«EXTENSION edu::hu::clickwatch::examples::links::seismo_stats»
+
+«DEFINE Main FOR Network»
+«FILE "output.xml"-»
+<seismo_stats>
+«FOREACH nodes.seismo_stats() AS seismo_stat-»
+«IF seismo_stat != null-»
+  <seismo_stat node="«seismo_stat.get(0)»" chanId="«seismo_stat.get(1)»" avgval="«seismo_stat.get(2)»"/> 
+«ENDIF-»
+«ENDFOREACH-»
+</seismo_stats>
+«ENDFILE-»
+«ENDDEFINE»

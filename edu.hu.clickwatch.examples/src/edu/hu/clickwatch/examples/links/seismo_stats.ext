@@ -1,0 +1,11 @@
+
+import SpecificMetaModel;
+
+seismo_stats(Node node):
+	let seismo = node.seismo.channelstatinfo.node.seismo:
+	let nodeid = node.id.devinfo.nodeidentity.device.address:
+	seismo.chaninfo.select(e|e.id < 3).collect(chaninfo| 
+		{nodeid, chaninfo.id ,chaninfo.avg_value});
+
+performAnalysis(Network network):
+	network.nodes.collect(n|n.seismo_stats());

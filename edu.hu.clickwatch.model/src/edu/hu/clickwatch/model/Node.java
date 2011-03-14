@@ -160,7 +160,7 @@ public interface Node extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Backbone</b></em>' attribute.
-	 * The default value is <code>"unkown"</code>.
+	 * The default value is <code>"unknown"</code>.
 	 * The literals are from the enumeration {@link edu.hu.clickwatch.model.BackboneType}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -172,7 +172,7 @@ public interface Node extends EObject {
 	 * @see edu.hu.clickwatch.model.BackboneType
 	 * @see #setBackbone(BackboneType)
 	 * @see edu.hu.clickwatch.model.ClickWatchModelPackage#getNode_Backbone()
-	 * @model default="unkown"
+	 * @model default="unknown"
 	 * @generated
 	 */
 	BackboneType getBackbone();

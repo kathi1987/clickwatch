@@ -20,7 +20,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="connection" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"
         transient="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="backbone" eType="#//BackboneType"
-        defaultValueLiteral="unkown"/>
+        defaultValueLiteral="unknown"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="retrieving" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         transient="true" defaultValueLiteral="false"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="hasRecord" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"

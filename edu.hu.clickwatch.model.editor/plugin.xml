@@ -98,5 +98,16 @@
             contributorClass="edu.hu.clickwatch.model.presentation.ClickWatchModelActionBarContributor">
       </editor>
    </extension>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <wizard
+            category="edu.hu.clickwatch.analysis.WizardCategory"
+            class="edu.hu.clickwatch.model.presentation.ClickWatchModelModelWizard"
+            icon="icons/full/obj16/ClickWatchModelModelFile.gif"
+            id="edu.hu.clickwatch.model.editor.ClickWatchModelModelWizard"
+            name="ClickWatch model"
+            project="false">
+      </wizard>
+   </extension>
 
 </plugin>

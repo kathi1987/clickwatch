@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: analysis
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0
+Bundle-SymbolicName: analysis; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.xtend,
+ org.eclipse.xtend.typesystem.emf,
+ org.eclipse.emf.ecore.xmi,
+ edu.hu.clickwatch.model,
+ org.eclipse.xpand
+Import-Package: org.antlr.runtime;version="3.0.0",
+ org.apache.commons.logging
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
