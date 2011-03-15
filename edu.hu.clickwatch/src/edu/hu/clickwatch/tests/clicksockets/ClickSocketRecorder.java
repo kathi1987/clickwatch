@@ -1,12 +1,15 @@
 package edu.hu.clickwatch.tests.clicksockets;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecore.xmi.XMLResource;
 
 import com.google.common.base.Throwables;
 import com.google.inject.Guice;
@@ -19,22 +22,32 @@ import edu.hu.clickwatch.model.Network;
 import edu.hu.clickwatch.model.Node;
 import edu.hu.clickwatch.nodeadapter.ClickControlNodeAdapter;
 import edu.hu.clickwatch.nodeadapter.INodeAdapter;
+import edu.hu.clickwatch.util.ILogger;
 
 public class ClickSocketRecorder {
 
 	private Injector injector;
 	
-	private static long UPDATE_INTERVALL = 1000;
-	private static int NUMBER_OF_RECORDS = 10;
+	private static long UPDATE_INTERVALL = 0;
+	private static int NUMBER_OF_RECORDS = 30;
 
 	public ClickSocketRecorder() {
 		ClickWatchStandaloneSetup.doSetup();
-		injector = Guice.createInjector(new ClickWatchModule() {
+		ClickWatchModule clickWatchModule = new ClickWatchModule() {
 			@Override
 			protected void overrideConfigure() {
 				bind(INodeAdapter.class).to(ClickControlNodeAdapter.class);
 			}
+		};
+		clickWatchModule.setLogger(new ILogger() {
+			
+			@Override
+			public void log(int status, String message, Throwable exception) {
+				System.out.println(message + ":\n");
+				exception.printStackTrace();
+			}
 		});
+		injector = Guice.createInjector(clickWatchModule);
 	}
 
 	public void record(String[] args) {
@@ -42,11 +55,15 @@ public class ClickSocketRecorder {
 		ResourceSet rs = new ResourceSetImpl();
 		Resource resource = rs.createResource(URI.createFileURI(recordFile));
 		
+		Map<Object, Object> options = new HashMap<Object, Object>();
+		options.put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);
+		
 		for (int record = 0; record < NUMBER_OF_RECORDS; record++) {
+			System.out.println("start to retrieve data in round " + record);
 			Network result = ClickWatchModelFactory.eINSTANCE.createNetwork();
-			RetrieveLoop: for (int i = 1; i < args.length; i = i + 2) {
+			RetrieveLoop: for (int i = 1; i < args.length; i++) {
 				String host = args[i];
-				String port = args[i + 1];
+				String port = "7777";
 	
 				Node node = null;
 				try {
@@ -60,6 +77,7 @@ public class ClickSocketRecorder {
 					continue RetrieveLoop;
 				}
 				result.getNodes().add(node);
+				System.out.println("successfully retrieved one set of data from " + host);
 			}
 			resource.getContents().add(result);
 			
@@ -71,7 +89,7 @@ public class ClickSocketRecorder {
 		}
 
 		try {
-			resource.save(null);
+			resource.save(options);
 		} catch (IOException e) {
 			e.printStackTrace();
 			Throwables.propagate(e);

@@ -55,7 +55,10 @@ public class ClickSocketPlayerSocketImpl extends ClickSocketTestImpl {
 					HandlerInfo handlerInfo = new HandlerInfo(
 							elementPath, handlerName, handler.isCanRead(), handler.isCanWrite());
 					handlers.put(elementPath, handlerInfo);
-					String value = ((String)handler.getMixed().getValue(0)).trim();
+					String value = "";
+					if (!handler.getMixed().isEmpty()) {
+						value = ((String)handler.getMixed().getValue(0)).trim();	
+					}
 					values.put(elementPath + "/" + handlerName, value);
 				}
 			}

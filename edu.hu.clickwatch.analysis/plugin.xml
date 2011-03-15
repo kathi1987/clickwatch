@@ -51,14 +51,5 @@
             name="Create specific ClickWatch models">
       </command>
    </extension>
-   <extension
-         id="id1"
-         point="org.eclipse.core.resources.natures">
-      <runtime>
-         <run
-               class="edu.hu.clickwatch.analysis.ProjectNature1">
-         </run>
-      </runtime>
-   </extension>
 	
 </plugin>

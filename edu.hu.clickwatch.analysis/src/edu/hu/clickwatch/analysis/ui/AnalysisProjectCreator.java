@@ -43,7 +43,7 @@ public class AnalysisProjectCreator extends WorkspaceModifyOperation {
 	
 	protected AnalysisProjectInfo info;
 	protected final String srcFolderName = "src";
-	protected final String template = "edu::hu::clickwatch::analysis::Template::main";
+	protected final String template = this.getClass().getPackage().getName().replace(".", "::") + "::Template::main";
 	
 	private class ProjectFactory extends PluginProjectFactory {
 		ProjectFactory() {
@@ -64,7 +64,7 @@ public class AnalysisProjectCreator extends WorkspaceModifyOperation {
 			projectFactory.addFolders(Arrays.asList(new String[] {srcFolderName}));
 			projectFactory.setProjectName(info.getProjectName());
 			projectFactory.addProjectNatures(JavaCore.NATURE_ID, "org.eclipse.pde.PluginNature", "xtendXPandNature");
-			projectFactory.setLocation(info.getLocationPath());
+			//projectFactory.setLocation(info.getLocationPath());
 			
 			projectFactory.addRequiredBundles(Arrays.asList(new String[] { 
 					"org.eclipse.xtend", 
@@ -75,6 +75,7 @@ public class AnalysisProjectCreator extends WorkspaceModifyOperation {
 			projectFactory.addImportedPackages(Arrays.asList(new String[] {"org.apache.commons.logging","org.antlr.runtime"}));
 			
 			IProject project = projectFactory.createProject(new SubProgressMonitor(monitor, 1), null);
+			project.refreshLocal(IResource.DEPTH_INFINITE, monitor);
 			
 			try {
 				generateModels(project);

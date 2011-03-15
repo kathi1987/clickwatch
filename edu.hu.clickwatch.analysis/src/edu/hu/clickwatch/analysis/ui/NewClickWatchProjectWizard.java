@@ -12,11 +12,11 @@ import org.eclipse.ui.IWorkbench;
 
 public class NewClickWatchProjectWizard extends Wizard implements INewWizard {
 
-	private WizardNewAnalysisCreationPage mainPage;
+	private WizardNewClickWatchCreationPage mainPage;
 	private IWorkbench workbench;
 	private IStructuredSelection selection;
 	
-	AnalysisProjectCreator creator = new AnalysisProjectCreator();
+	private ClickWatchProjectCreator creator = new ClickWatchProjectCreator();
 
 	public NewClickWatchProjectWizard() {
 		setWindowTitle("New Analysis project");
@@ -35,7 +35,7 @@ public class NewClickWatchProjectWizard extends Wizard implements INewWizard {
 	@Override
 	public void addPages() {
 		super.addPages();
-		mainPage = new WizardNewAnalysisCreationPage("mainPage", this.selection); //$NON-NLS-1$
+		mainPage = new WizardNewClickWatchCreationPage("mainPage", this.selection); //$NON-NLS-1$
 		addPage(mainPage);
 	}
 	

@@ -1,6 +1,5 @@
 package edu.hu.clickwatch.analysis.ui;
 
-import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.widgets.Composite;
@@ -19,13 +18,19 @@ public class WizardNewClickWatchCreationPage extends WizardNewAnalysisCreationPa
 
 	@Override
 	public URI getClickWatchModel() {
-		return URI.createPlatformResourceURI("", true);
+		return URI.createPlatformResourceURI(getProjectName() + "/" + clickWatchModelField.getText(), true);
 	}
 
 	@Override
-	protected void setClickWatchModelFieldDefaults(IFile file) {
-		clickWatchModelField.setText("example.clickwatchmodel");
+	protected void setClickWatchModelFieldDefaults() {
+		clickWatchModelField.setText("src/example.clickwatchmodel");
 	}
 
+	@Override
+	protected String getDefaultProjectName() {
+		return "clickwatch";
+	}
+
+	
 	
 }

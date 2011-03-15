@@ -41,10 +41,14 @@ public class WizardNewAnalysisCreationPage extends WizardNewProjectCreationPage 
 		setTitle("New Analysis project");
 		setDescription("Creates a skeleton project with all you need to analyse a ClickWatch model.");
 	}
+	
+	protected String getDefaultProjectName() {
+		return "analysis";
+	}
 
 	@Override
 	public void createControl(Composite parent) {
-		final String projectsuffix = findNextValidProjectSuffix("", "analysis"); //$NON-NLS-1$ //$NON-NLS-2$
+		final String projectsuffix = findNextValidProjectSuffix("", getDefaultProjectName()); //$NON-NLS-1$ //$NON-NLS-2$
 		// We need to set the initial project name before calling super.createControl()
 		// This calls the validate page and since our controls are not yet created we need to check for
 		// that case for avoiding an NPE
@@ -65,17 +69,16 @@ public class WizardNewAnalysisCreationPage extends WizardNewProjectCreationPage 
 	}
 
 	protected void setDefaults(String projectSuffix) {
-		Object firstElement = selection.getFirstElement();
-		if (firstElement != null && firstElement instanceof IFile) {
-			IFile file = (IFile)firstElement;
-			setClickWatchModelFieldDefaults(file);	
-		}
+		setClickWatchModelFieldDefaults();
 		validatePage();
 	}
 
-	protected void setClickWatchModelFieldDefaults(IFile file) {
-		clickWatchModelField.setText(URI.createPlatformResourceURI(
-				file.getFullPath().toString(), true).toString());
+	protected void setClickWatchModelFieldDefaults() {
+		Object firstElement = selection.getFirstElement();
+		if (firstElement != null && firstElement instanceof IFile) {
+			IFile file = (IFile)firstElement;
+			clickWatchModelField.setText(URI.createPlatformResourceURI(file.getFullPath().toString(), true).toString());
+		}
 	}
 
 	protected int indexOfDefault(List<String> contributions) {
@@ -170,7 +173,7 @@ public class WizardNewAnalysisCreationPage extends WizardNewProjectCreationPage 
 				}
 
 				if (file != null) {
-					setClickWatchModelFieldDefaults(file);
+					setClickWatchModelFieldDefaults();
 				}
 			}
 		});   

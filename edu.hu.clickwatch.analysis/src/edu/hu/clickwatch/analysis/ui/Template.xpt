@@ -28,16 +28,16 @@ public class Main {
 		
 		ResourceSet resourceSet = new ResourceSetImpl();
 		resourceSet.getLoadOptions().put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);
-		Resource metaModelResource = resourceSet.getResource(URI.createFileURI("src/edu/hu/clickwatch/examples/links/SpecificMetaModel.ecore"), true);		
+		Resource metaModelResource = resourceSet.getResource(URI.createFileURI("src/SpecificMetaModel.ecore"), true);		
 		metaModel = (EPackage)metaModelResource.getContents().get(0);
 		EPackage.Registry.INSTANCE.put(metaModel.getNsURI(), metaModel);
 		
-		Resource modelResource = resourceSet.getResource(URI.createFileURI("src/edu/hu/clickwatch/examples/links/SpecificModel.scwm"), true);
+		Resource modelResource = resourceSet.getResource(URI.createFileURI("src/SpecificModel.scwm"), true);
 		model = modelResource.getContents().get(0);
 	}
 	
 	public void evalXtend() {	
-		XtendFacade f = XtendFacade.create("edu::hu::clickwatch::examples::links::seismo_stats");
+		XtendFacade f = XtendFacade.create("analysis");
 		f.registerMetaModel(new EmfMetaModel(metaModel));
 		
 		System.out.println(f.call("performAnalysis", new Object[]{model}));
@@ -46,14 +46,14 @@ public class Main {
 	public void executeXpand() {
 		OutputImpl output = new OutputImpl();
 		output.addOutlet(new Outlet(false, "iso-8859-1", null, true,
-				"src/edu/hu/clickwatch/examples/links/"));
+				"src"));
 
 		XpandExecutionContextImpl execCtx = new XpandExecutionContextImpl(output, null);
 		execCtx.getResourceManager().setFileEncoding("iso-8859-1"); //$NON-NLS-1$
 		execCtx.registerMetaModel(new EmfMetaModel(metaModel));
 
 		XpandFacade facade = XpandFacade.create(execCtx);
-		facade.evaluate("edu::hu::clickwatch::examples::links::seismo_stats::Main", model);
+		facade.evaluate("analysis::Main", model);
 	}
 	
 	public static void main(String[] args) {
@@ -70,9 +70,9 @@ public class Main {
 import SpecificMetaModel;
 
 nodeinfo(Node node):
-	node.iNetAddress;
+	node.iNetAdress;
 
 performAnalysis(Network network):
-	"Hello Nodes: " + network.collect(e|e.nodeinfo());
+	"Hello Nodes: " + network.nodes.collect(e|e.nodeinfo());
 «ENDFILE»
 «ENDDEFINE»
