@@ -237,9 +237,6 @@ public class SpecificModelGenerator {
 			if (feature == ClickWatchModelPackage.eINSTANCE.getElement_Handlers()) {
 				Handler sourceHandler = (Handler)((EList)source.eGet(feature)).get(i);
 				String sourceHandlerName = sourceHandler.getName();
-				if (sourceHandlerName.equals("address")) {
-					System.out.println("addess");
-				}
 				if (!Arrays.asList(SpecificMetaModelGenerator.ommitedHandlerNames).contains(sourceHandlerName)) {
 					EList targetList = (EList)target.eGet(target.eClass().getEStructuralFeature(feature.getName()));
 					Object featureValueCopy = targetList.get(targetList.size() - 1);

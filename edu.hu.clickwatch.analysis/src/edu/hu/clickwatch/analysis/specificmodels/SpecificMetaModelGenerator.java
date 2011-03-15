@@ -219,7 +219,10 @@ public class SpecificMetaModelGenerator {
 				Preconditions.checkState(false);
 			}
 			feature.setName(featureName);
-			clazz.getEStructuralFeatures().add(feature);	
+			clazz.getEStructuralFeatures().add(feature);
+			if (feature instanceof EReference) {
+				addContainerRef(clazz, feature.getName());
+			}
 			contextFeatures.add(featureName);
 		} else {
 			if (value instanceof EObject) {
@@ -247,6 +250,16 @@ public class SpecificMetaModelGenerator {
 			}
 		}
 	} 
+	
+	private void addContainerRef(EClass clazz, String featureName) {
+		EReference containmentFeature = (EReference)clazz.getEStructuralFeature(featureName);
+		EClass containedClass = (EClass)containmentFeature.getEType();
+		EReference containerFeature = EcoreFactory.eINSTANCE.createEReference();
+		containerFeature.setName("eContainer_" + clazz.getName());
+		containerFeature.setEType(clazz);
+		containedClass.getEStructuralFeatures().add(containerFeature);
+		containerFeature.setEOpposite(containmentFeature);
+	}
 	
 	private void addNetwork(Network network) {
 		newClass(ClickWatchModelPackage.eINSTANCE.getNetwork());
@@ -281,6 +294,7 @@ public class SpecificMetaModelGenerator {
 			feature.setEType(elementClass);
 			feature.setContainment(true);
 			clazz.getEStructuralFeatures().add(feature);
+			addContainerRef(clazz, feature.getName());
 		}
 		for (Element child: element.getChildren()) {
 			addElement(elementClass, child);
@@ -308,6 +322,7 @@ public class SpecificMetaModelGenerator {
 			feature.setContainment(true);
 			feature.setEType(handlerClass);
 			clazz.getEStructuralFeatures().add(feature);
+			addContainerRef(clazz, feature.getName());
 		}
 		Preconditions.checkState(handlerClass != null && handlerClass.eContainer() == pkg);
 		List<FeatureMap.Entry> entries = new ArrayList<FeatureMap.Entry>();

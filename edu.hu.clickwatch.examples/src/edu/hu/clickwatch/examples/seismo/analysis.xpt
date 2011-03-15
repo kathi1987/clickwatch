@@ -1,6 +1,6 @@
 «IMPORT SpecificMetaModel»
 
-«EXTENSION edu::hu::clickwatch::examples::links::seismo_stats»
+«EXTENSION edu::hu::clickwatch::examples::seismo::analysis»
 
 «DEFINE Main FOR Network»
 «FILE "output.xml"-»
