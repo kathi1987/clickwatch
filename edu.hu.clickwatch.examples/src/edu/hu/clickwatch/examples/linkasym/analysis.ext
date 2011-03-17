@@ -20,7 +20,7 @@ cached reverse_link_info(Network network, link_info li):
 	let toAddr = li.eContainer_link.to:
 	let fromAddr = li.eContainer_link.eContainer_entry.from:
 	let toNode = node(network, toAddr): 
-		toNode.device_wifi.link_stat.bcast_stats.entry.link.select(l|
+		toNode.device_wifi.link_stat.bcast_stats.entry.link.select(l| l.to == fromAddr &&
 				l.link_info.rate == li.rate && l.link_info.size == li.size).first().link_info;
 				
 cached cst_stats(Network network, String addr):

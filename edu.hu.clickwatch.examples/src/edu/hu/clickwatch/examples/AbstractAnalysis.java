@@ -1,5 +1,8 @@
 package edu.hu.clickwatch.examples;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -19,6 +22,8 @@ public class AbstractAnalysis {
 	private EPackage metaModel = null;
 	private EObject model = null;
 	
+	private List<EPackage> additionalMetaModels = new ArrayList<EPackage>();
+	
 	private void initialize() {
 		if (metaModel == null || model == null) {
 			Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("scwm", new XMIResourceFactoryImpl());
@@ -35,15 +40,43 @@ public class AbstractAnalysis {
 		}
 	}
 	
-	public void evalXtend(String xtend) {	
+	public void registerPackage(EPackage thePackage) {
+		EPackage.Registry.INSTANCE.put(thePackage.getNsURI(), thePackage);
+		additionalMetaModels.add(thePackage);
+	}
+	
+	public Object evalXtend(String xtend) {	
 		initialize();
 		XtendFacade f = XtendFacade.create(xtend);
 		f.registerMetaModel(new EmfMetaModel(metaModel));
+		for (EPackage additionalMetaModel: additionalMetaModels) {
+			f.registerMetaModel(new EmfMetaModel(additionalMetaModel));
+		}
 		
-		System.out.println(f.call("performAnalysis", new Object[]{model}));
+		return f.call("performAnalysis", new Object[]{model});		
 	}
 	
 	public void executeXpand(String xpand, String outputDir) {
+		initialize();
+		OutputImpl output = new OutputImpl();
+		output.addOutlet(new Outlet(false, "iso-8859-1", null, true, outputDir));
+
+		XpandExecutionContextImpl execCtx = new XpandExecutionContextImpl(output, null);
+		execCtx.getResourceManager().setFileEncoding("iso-8859-1"); //$NON-NLS-1$
+		execCtx.registerMetaModel(new EmfMetaModel(metaModel));
+		for (EPackage additionalMetaModel: additionalMetaModels) {
+			execCtx.registerMetaModel(new EmfMetaModel(additionalMetaModel));
+		}
+
+		XpandFacade facade = XpandFacade.create(execCtx);
+		
+		long startTime = System.currentTimeMillis();
+		facade.evaluate(xpand, model);
+		long stopTime = System.currentTimeMillis();
+		System.out.println("Xpand execution took " + (stopTime - startTime) + " ms");
+	}
+	
+	public void executeXpand(String xpand, String outputDir, Object model) {
 		initialize();
 		OutputImpl output = new OutputImpl();
 		output.addOutlet(new Outlet(false, "iso-8859-1", null, true, outputDir));
