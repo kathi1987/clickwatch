@@ -8,8 +8,10 @@
 	</xsl:template>
 	<xsl:template match="text()"/>
 	<xsl:template match="handler[@name='channelstatinfo']">
+			<xsl:variable name="nodeIP" select="../../@iNetAdress"/>
 			<xsl:variable name="nodeid" select="../../element[@name='id']/handler[@name='devinfo']/nodeidentity/device/@address"/>
 			<gps_stat>
+     			<xsl:attribute name="ip"><xsl:value-of select="$nodeIP"/></xsl:attribute>
      			<xsl:attribute name="id"><xsl:value-of select="$nodeid"/></xsl:attribute>
 				<xsl:attribute name="long"><xsl:value-of select="node/gps/@long"/></xsl:attribute>
 				<xsl:attribute name="lat"><xsl:value-of select="node/gps/@lat"/></xsl:attribute>
