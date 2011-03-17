@@ -349,9 +349,9 @@ public class HandlerItemProvider
 				}
 			}
 				
-			if (!isRecorded) {
+			//if (!isRecorded) {
 				children.add(child);
-			}
+			//}
 		}
 		return children;
 	}

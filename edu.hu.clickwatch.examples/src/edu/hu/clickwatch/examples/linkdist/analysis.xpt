@@ -1,0 +1,16 @@
+«IMPORT SpecificMetaModel»
+«IMPORT ldp»
+
+«EXTENSION edu::hu::clickwatch::examples::linkdist::analysis»
+
+«DEFINE Main FOR Network»
+«FILE "output.xml"-»
+<plot>
+«FOREACH distanceQualityPlot().links AS link-»
+«IF link.distance > 0 && link.distance < 2000 && link.rssi > 0 && link.rssi < 64-»
+  <link src="«link.srcAddr»" dst="«link.destAddr»" distance="«link.distance»" rssi="«link.rssi»"/>
+«ENDIF-»
+«ENDFOREACH-»
+</plot>
+«ENDFILE-»
+«ENDDEFINE»

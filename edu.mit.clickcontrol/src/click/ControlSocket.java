@@ -91,7 +91,6 @@ public class ControlSocket {
 		 * setup connection to the node's click ControlSocket
 		 */
 		_sock = new Socket(_host, _port);
-		System.out.println("connected +++++");
 		_sock.setSoTimeout(_sock_timeout);
 
 		InputStream is = _sock.getInputStream();

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+	<extension
+		point="org.eclipse.ui.newWizards">
+		<category
+			name="%Wizard_Category"
+			id="edu.hu.clickwatch.analysis.WizardCategory">
+		</category>
+		<wizard
+			category="edu.hu.clickwatch.analysis.WizardCategory"
+			class="edu.hu.clickwatch.analysis.ui.NewAnalysisProjectWizard"
+			icon="icons/Analysis.gif"
+			id="edu.hu.clickwatch.analysis.NewAnalysisProjectWizard"
+			name="%Analysis_Project"
+			project="true">
+		</wizard>
+  <wizard
+        category="edu.hu.clickwatch.analysis.WizardCategory"
+        class="edu.hu.clickwatch.analysis.ui.NewClickWatchProjectWizard"
+        icon="icons/Analysis.gif"
+        id="edu.hu.clickwatch.analysis.NewClickWatchProjectWizard"
+        name="%ClickWatch_Project"
+        project="true">
+  </wizard>
+	</extension>
+	
+	<extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="popup:org.eclipse.jdt.ui.PackageExplorer">
+         <command
+               commandId="edu.hu.clickwatch.analysis.CreateConcreteModels"
+               label="Create specific ClickWatch models"
+               style="push">
+            <visibleWhen checkEnabled="true">
+               <iterate>
+       			  <adapt type="org.eclipse.core.resources.IResource">
+          			<test property="org.eclipse.core.resources.name" value="*.clickwatchmodel"/>
+       			  </adapt>
+    		   </iterate>
+            </visibleWhen>
+         </command>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="edu.hu.clickwatch.analysis.ui.CreateConcreteModelsHandler"
+            id="edu.hu.clickwatch.analysis.CreateConcreteModels"
+            name="Create specific ClickWatch models">
+      </command>
+   </extension>
+	
+</plugin>

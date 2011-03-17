@@ -143,7 +143,7 @@ public class NodeImpl extends EObjectImpl implements Node {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final BackboneType BACKBONE_EDEFAULT = BackboneType.WIRED;
+	protected static final BackboneType BACKBONE_EDEFAULT = BackboneType.UNKNOWN;
 
 	/**
 	 * The cached value of the '{@link #getBackbone() <em>Backbone</em>}' attribute.

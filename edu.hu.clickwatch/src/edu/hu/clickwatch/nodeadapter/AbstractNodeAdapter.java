@@ -51,7 +51,7 @@ public abstract class AbstractNodeAdapter implements INodeAdapter {
 		Preconditions.checkNotNull(host);
 
 		try {
-			cs.connect(InetAddress.getByName(host), new Integer(port));
+			cs.connect(InetAddress.getByName(host.trim()), new Integer(port.trim()));
 			isConnected = true;
 		} catch (IOException e) {
 			Throwables.propagate(e);
