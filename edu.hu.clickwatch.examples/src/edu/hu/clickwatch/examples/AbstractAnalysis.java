@@ -84,7 +84,10 @@ public class AbstractAnalysis {
 		XpandExecutionContextImpl execCtx = new XpandExecutionContextImpl(output, null);
 		execCtx.getResourceManager().setFileEncoding("iso-8859-1"); //$NON-NLS-1$
 		execCtx.registerMetaModel(new EmfMetaModel(metaModel));
-
+		for (EPackage additionalMetaModel: additionalMetaModels) {
+			execCtx.registerMetaModel(new EmfMetaModel(additionalMetaModel));
+		}
+		
 		XpandFacade facade = XpandFacade.create(execCtx);
 		
 		long startTime = System.currentTimeMillis();

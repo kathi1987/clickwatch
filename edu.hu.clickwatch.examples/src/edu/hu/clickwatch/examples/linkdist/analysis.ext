@@ -11,9 +11,15 @@ Real distance(String lat1, String lon1, String lat2, String lon2):
 
 all_nodes(Network network):
 	network.nodes;
+	
+address(Node node):
+	node.device_wifi.link_stat.bcast_stats.entry.from;
+	
+hwbusy(Node node):
+	node.device_wifi.wifidevice.cst.stats_xml.channelstats.phy.hwbusy;
 
 cached node(Network network, String address):
-	network.all_nodes().select(n|n.device_wifi.link_stat.bcast_stats.entry.from == address).first();
+	network.all_nodes().select(n|n.address() == address).first();
 
 link(Network network, String addr1, String addr2):
 	let result = new ldp::Link:
@@ -36,4 +42,7 @@ links(Network network):
 	network.all_nodes().collect(e|network.links(e)).flatten();
 	   
 distanceQualityPlot(Network network):
-	let plot = new Plot: plot.links.addAll(network.links()) -> plot;
+	let plot = new Plot: plot.links.addAll(network.links().select(link|link.distance > 0 && link.distance < 2000 && link.rssi > 0 && link.rssi < 64)) -> plot;
+	
+performAnalysis(Network network):
+	network.distanceQualityPlot();

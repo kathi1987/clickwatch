@@ -1779,14 +1779,6 @@
         eOpposite="#//Node/seismo"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="channelstatinfo" eType="#//channelstatinfo"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="debug" eType="#//debug"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ports" eType="#//ports"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="config" eType="#//config"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="#//class"
-        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="chaninfo" upperBound="-1"
         eType="#//chaninfo" containment="true"/>
@@ -1796,11 +1788,65 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="last_update" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBigInteger"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_node" eType="#//node"
         eOpposite="#//node/seismo"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="debug" eType="#//debug"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ports" eType="#//ports"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="config" eType="#//config"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="#//class"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="channelstatinfo" eSuperTypes="#//Handler">
     <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_seismo" eType="#//seismo"
         eOpposite="#//seismo/channelstatinfo"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="node" eType="#//node" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="node">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="gps" eType="#//gps" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="seismo" eType="#//seismo"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="time" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_channelstatinfo"
+        eType="#//channelstatinfo" eOpposite="#//channelstatinfo/node"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="gps" eSuperTypes="#//Element">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="lat" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="long" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="alt" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="HDOP" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_node" eType="#//node"
+        eOpposite="#//node/gps"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_Node" eType="#//Node"
+        eOpposite="#//Node/gps"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="gps_coord" eType="#//gps_coord"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="time" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="speed" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_gps_coord" eType="#//gps_coord"
+        eOpposite="#//gps_coord/gps"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cart_coord" eType="#//cart_coord"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="debug" eType="#//debug"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ports" eType="#//ports"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="config" eType="#//config"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="#//class"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="chaninfo">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="avg_value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="std_value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="min_value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="max_value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_seismo" eType="#//seismo"
+        eOpposite="#//seismo/chaninfo"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Label_brnether" eSuperTypes="#//Element">
     <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_Node" eType="#//Node"
@@ -1836,33 +1882,6 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="#//class"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="gps" eSuperTypes="#//Element">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_Node" eType="#//Node"
-        eOpposite="#//Node/gps"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="gps_coord" eType="#//gps_coord"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="time" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="lat" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="long" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="alt" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="speed" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_gps_coord" eType="#//gps_coord"
-        eOpposite="#//gps_coord/gps"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="cart_coord" eType="#//cart_coord"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="debug" eType="#//debug"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ports" eType="#//ports"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="config" eType="#//config"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="#//class"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="HDOP" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_node" eType="#//node"
-        eOpposite="#//node/gps"/>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="gps_coord" eSuperTypes="#//Handler">
     <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_gps" eType="#//gps"
         eOpposite="#//gps/gps_coord"/>
@@ -1872,24 +1891,5 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_gps" eType="#//gps"
         eOpposite="#//gps/cart_coord"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="node">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="gps" eType="#//gps" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="seismo" eType="#//seismo"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="time" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_channelstatinfo"
-        eType="#//channelstatinfo" eOpposite="#//channelstatinfo/node"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="chaninfo">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="avg_value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="std_value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="min_value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="max_value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_seismo" eType="#//seismo"
-        eOpposite="#//seismo/chaninfo"/>
   </eClassifiers>
 </ecore:EPackage>

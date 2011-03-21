@@ -80,4 +80,19 @@ public class GeoUtil {
 			return (Math.round(s));// + ' m';
 		}
 	}
+	
+	public long lat(String lat) {
+		double latd = Double.parseDouble(lat);
+		return Math.round((latd - 52.428)*111300);
+	}
+	
+	public long lon(String lon) {
+		double latd = Double.parseDouble(lon);
+		return Math.round((latd - 13.53)*71500);
+	}
+	
+	public static void main(String args[]) {
+		System.out.println(vincentyDistance("52.431521", "13.532865", "52.42856", "13.532865")); 
+		System.out.println(vincentyDistance("52.431521", "13.532865", "52.431521", "13.52715"));
+	}
 }
