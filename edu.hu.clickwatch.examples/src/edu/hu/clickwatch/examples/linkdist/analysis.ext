@@ -2,6 +2,9 @@
 import SpecificMetaModel;
 import ldp;
 
+Real log10(String x):
+	JAVA edu.hu.clickwatch.examples.linkdist.GeoUtil.log10(java.lang.String);
+
 Real plain_distance(String lat1, String lon1, String lat2, String lon2):
    JAVA edu.hu.clickwatch.examples.linkdist.GeoUtil.vincentyDistance(java.lang.String, java.lang.String, java.lang.String, java.lang.String);
    

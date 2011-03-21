@@ -2,6 +2,10 @@ package edu.hu.clickwatch.examples.linkdist;
 
 public class GeoUtil {
 	
+	public static String log10(String val) {
+		return "" + Math.log(Double.parseDouble(val));
+	}
+	
 	static double deg2rad(String deg) {
 		return (Double.parseDouble(deg) * Math.PI / 180.0);
 	}
