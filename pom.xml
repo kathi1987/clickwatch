@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>edu.hu.clickwatch</groupId>
+  <artifactId>clickwatch</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <modules>
+    <module>com.google.guava</module>
+    <module>com.google.guice</module>
+    <module>edu.hu.clickwatch</module>
+    <module>edu.hu.clickwatch.analysis</module>
+    <module>edu.hu.clickwatch.examples</module>
+    <module>edu.hu.clickwatch.feature</module>
+    <module>edu.hu.clickwatch.model</module>
+    <module>edu.hu.clickwatch.model.edit</module>
+    <module>edu.hu.clickwatch.model.editor</module>
+    <module>edu.hu.clickwatch.server</module>
+    <module>edu.mit.clickcontrol</module>
+    <module>org.eclipse.wst.sse.core</module>
+    <module>org.eclipse.wst.sse.ui</module>
+    <module>org.eclipse.wst.xml.core</module>
+    <module>org.eclipse.wst.xml.ui</module>
+    <module>org.eclipse.wst.xsl.ui</module>
+  </modules>
+
+  <properties>
+    <tycho-version>0.11.0</tycho-version>
+    <build.qualifier>'v'yyyyMMddHHmm</build.qualifier>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <build>
+	  <sourceDirectory>src</sourceDirectory>
+    <plugins>
+      <plugin>
+        <groupId>org.sonatype.tycho</groupId>
+        <artifactId>tycho-maven-plugin</artifactId>
+        <version>${tycho-version}</version>
+        <extensions>true</extensions>
+      </plugin>
+			<plugin>			                                                    
+			  <groupId>org.sonatype.tycho</groupId>			                                                 
+			  <artifactId>maven-osgi-packaging-plugin</artifactId>			                                                 
+			  <version>${tycho-version}</version>			                                                
+			  <configuration>			                                                        
+				  <format>${build.qualifier}</format>			                                                       		                                                
+				  <archiveSite>true</archiveSite>			                                                
+				  <target>site</target>
+				</configuration>
+		  </plugin>	
+        <plugin>
+          <groupId>org.sonatype.tycho</groupId>
+          <artifactId>maven-osgi-compiler-plugin</artifactId>
+          <version>${tycho-version}</version>
+          <configuration>
+	          <source>1.6</source>
+						<target>1.6</target>						
+            <encoding>UTF-8</encoding>
+          </configuration>
+        </plugin>
+				<plugin>
+          <!-- TODO remove workaround when
+             https://issues.sonatype.org/browse/TYCHO-473
+             is fixed -->
+          <groupId>org.sonatype.tycho</groupId>
+          <artifactId>maven-osgi-source-plugin</artifactId>
+          <version>${tycho-version}</version>
+          <executions>
+            <execution>
+              <id>attach-source</id>
+              <phase>process-classes</phase>
+              <goals>
+                <goal>plugin-source</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+    </plugins>
+  </build>
+</project>
