@@ -3,7 +3,9 @@ package edu.hu.clickwatch.server;
 import java.util.ArrayList;
 import java.util.regex.PatternSyntaxException;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.osgi.service.log.LogService;
 
@@ -11,6 +13,9 @@ import com.google.common.base.Preconditions;
 import com.google.common.base.Throwables;
 import com.google.inject.Inject;
 
+import edu.hu.clickwatch.model.ClickWatchModelPackage;
+import edu.hu.clickwatch.model.Element;
+import edu.hu.clickwatch.model.Handler;
 import edu.hu.clickwatch.model.Network;
 import edu.hu.clickwatch.model.Node;
 
@@ -37,6 +42,9 @@ public class NodeConnection {
 	private ArrayList<String> mFilterList;
 	/** Access to the OSGi log service */
 	private LogService mLogService = null;
+	/** */
+	private final HandlerModelAdapter mModelChangeListener = new HandlerModelAdapter(); 
+
 	
 	public NodeConnection(){
 		mLogService = ServerPluginActivator.getInstance().getLogService();
@@ -88,7 +96,6 @@ public class NodeConnection {
 	public INodeAdapter getNodeAdapter() {
 		return mNodeAdapter;
 	}
-
 	
 	public boolean setFilter(String pFilter, String pType){
 		if(this.validateFilter(pFilter, pType)){
@@ -164,7 +171,6 @@ public class NodeConnection {
 	}
 	
 	protected void runThread(final Runnable runnable) {
-		
 		new Thread(new Runnable() {
 			@Override
 			public void run() {
@@ -201,4 +207,147 @@ public class NodeConnection {
 		mNode.setRetrieving(false);
 		sleepUntilNextUpdate();
 	}
+	
+	/**
+	 * Runnable used to write a handler value. Should be run in extra thread.
+	 */
+	private class SetValueInRealityRunnable implements Runnable {
+		final Handler handler;
+
+		public SetValueInRealityRunnable(Handler handler) {
+			super();
+			this.handler = handler;
+		}
+
+		@Override
+		public void run() {
+			if (getNodeAdapter().isConnected()) {
+				getNodeAdapter().updateHandlerValue(handler);
+			}
+		}
+	}
+	
+	protected void runInExtraThread(final Runnable runnable) {
+		new Thread() {
+			@Override
+			public void run() {
+				try {
+					runnable.run();
+				} catch (final RuntimeException e) {
+					runThread(new Runnable() {
+						@Override
+						public void run() {
+							mLogService.log(LogService.LOG_ERROR, "Exception " + e.getClass().getName() + " occured: " + e.getMessage());
+						}
+					});
+				}
+			}
+		}.start();
+	}
+	
+	public final void propagateHandlerValueChangeToReality(Handler pHandler) {
+		if (mNode.isConnected()) {
+			runInExtraThread(new SetValueInRealityRunnable(pHandler));
+		}
+	}
+	
+	protected void runContinuousUpdate() {
+		runInExtraThread(new ContinuousUpdateRunnable());
+	}
+	
+	/**
+	 * Connects to the remote node and starts continuous updates of the model
+	 * with new data from the remote node.
+	 * 
+	 * @param editorPart
+	 *            , the editor part to open message windows and to listen for
+	 *            close to realise automatic disconnect on editor close.
+	 */
+	public void connect() {
+		if (mNode.isConnected()) {
+			return;
+		}
+		mNode.eAdapters().add(mModelChangeListener);
+		runContinuousUpdate();
+	}
+	
+	/**
+	 * Disconnects from the remote note in the next possible moment.
+	 */
+	public synchronized void disconnect() {
+		mNode.eAdapters().remove(mModelChangeListener);
+		isScheduledForDisconnect = true;
+	}
+
+	/**
+	 * EMF adapter used to listen to handler changes in the model. Is the value
+	 * of handler changed, the value is also written to the handler in the real
+	 * node.
+	 */
+	private class HandlerModelAdapter extends EContentAdapter {
+
+		private int mode = LISTEN_FOR_USER;
+
+		@Override
+		public void notifyChanged(Notification notification) {
+			super.notifyChanged(notification);
+			if (notification.getEventType() != Notification.REMOVING_ADAPTER) {
+				Object notifier = notification.getNotifier();
+				if (notifier instanceof Node || notifier instanceof Element) {
+					return;
+				}
+				while (notifier != null && 
+						notifier instanceof EObject && !(notifier instanceof Handler)) {
+					notifier = ((EObject)notifier).eContainer();
+				}
+				if (notifier != null && notifier instanceof Handler) {
+					Handler handler = (Handler)notifier;
+					
+					if (isNotificationChangingValue(notification)) {
+						if (mode == LISTEN_FOR_USER) {
+							handlerUserNotification(notification, handler);
+						} else if (mode == LISTEN_FOR_ADAPTER) {
+							handlerAdapterNotification(notification, handler);
+						} else {
+							Preconditions.checkState(false);
+						}
+					}
+					if (ClickWatchModelPackage.eINSTANCE.getHandler_Watch().equals(
+							notification.getFeature())) {
+						if (notification.getNewBooleanValue()) {
+							((Element) handler.eContainer()).setWatch(true);
+						}
+					}	
+				}
+			}
+			
+		}
+		
+		private boolean isNotificationChangingValue(Notification notification) {
+			if (notification.getNotifier() instanceof Handler) {
+				return notification.getFeature() == ClickWatchModelPackage.eINSTANCE.getHandler_Any() ||
+						notification.getFeature() == ClickWatchModelPackage.eINSTANCE.getHandler_Mixed();
+			} else {
+				return true;
+			}
+		}
+
+		private void handlerAdapterNotification(Notification notification, Handler handler) {
+			if (handler.isWatch() || ((Element) handler.eContainer()).isWatch()) {
+				handler.setChanged(true);
+			}
+		}
+
+		private void handlerUserNotification(Notification notification, Handler handler) {
+			propagateHandlerValueChangeToReality(handler);
+		}
+		
+		public static final int LISTEN_FOR_USER = 0;
+		
+		public static final int LISTEN_FOR_ADAPTER = 1;
+		
+		public void setMode(int mode) {
+			this.mode = mode;
+		}
+	};
 }
