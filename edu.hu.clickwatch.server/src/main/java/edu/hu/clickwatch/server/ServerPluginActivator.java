@@ -12,6 +12,8 @@ public class ServerPluginActivator implements BundleActivator {
 
 	private LogService mLogService = null;
 	
+	private Server mServer = null;
+	
 	private static ServerPluginActivator mInstance;
 	
 	public BundleContext getContext() {
@@ -33,11 +35,10 @@ public class ServerPluginActivator implements BundleActivator {
         logServiceTracker.open();
         //
         mLogService = (LogService) logServiceTracker.getService();
-
 		// Setup server component, read configuration
-		Server server = new Server("TODO 1", "TODO 2");
+		mServer = new Server("TODO 1", "TODO 2");
 		// Initialize server
-		server.initialize();
+		mServer.initialize();
 	}
 
 	/*
@@ -45,6 +46,9 @@ public class ServerPluginActivator implements BundleActivator {
 	 * @see org.osgi.framework.BundleActivator#stop(org.osgi.framework.BundleContext)
 	 */
 	public void stop(BundleContext bundleContext) throws Exception {
+		if(mServer != null){
+			mServer.shutdown();
+		}
 		mContext = null;
 	}
 

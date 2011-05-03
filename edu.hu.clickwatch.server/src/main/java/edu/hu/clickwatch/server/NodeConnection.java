@@ -16,7 +16,6 @@ import com.google.inject.Inject;
 import edu.hu.clickwatch.model.ClickWatchModelPackage;
 import edu.hu.clickwatch.model.Element;
 import edu.hu.clickwatch.model.Handler;
-import edu.hu.clickwatch.model.Network;
 import edu.hu.clickwatch.model.Node;
 
 /**
@@ -38,12 +37,14 @@ public class NodeConnection {
 	/** A node adapter which holds the actual connection to a node */
 	@Inject
 	private INodeAdapter mNodeAdapter;	
-	/** A list with filters for a single node */
-	private ArrayList<String> mFilterList;
 	/** Access to the OSGi log service */
 	private LogService mLogService = null;
 	/** */
 	private final HandlerModelAdapter mModelChangeListener = new HandlerModelAdapter(); 
+	/** */
+	private String mElementFilter = "";
+	/** */
+	private String mHandlerFilter = "";
 
 	
 	public NodeConnection(){
@@ -97,15 +98,6 @@ public class NodeConnection {
 		return mNodeAdapter;
 	}
 	
-	public boolean setFilter(String pFilter, String pType){
-		if(this.validateFilter(pFilter, pType)){
-			// TODO: This should be fixed to an hashmap, otherwise the type information gets lost
-			this.mFilterList.add(pFilter);
-			
-		}	
-		return false;
-	}
-	
 	public boolean removeFilter(String pFilter){
 		// TODO: Implement method which removes a certain filter from the list
 		return false;
@@ -116,27 +108,9 @@ public class NodeConnection {
 	 */
 	protected void sleepUntilNextUpdate() {
 		try {
-			long updateIntervall = getNetwork().getUpdateIntervall();
-			if (updateIntervall == 0) {
-				Thread.sleep(mUpdateInterval);
-			} else {
-				Thread.sleep(updateIntervall);
-			}
+			Thread.sleep(mUpdateInterval);
 		} catch (InterruptedException e) {
 			Throwables.propagate(e);
-		}
-	}
-	
-	/**
-	 * 
-	 */
-	private Network getNetwork() {
-		EObject container = this.mNode.eContainer();
-		if (container instanceof Network) {
-			return (Network)container;
-		} else {
-			Preconditions.checkArgument(false, "Node must be contained in a network");
-			return null;
 		}
 	}
 	
@@ -186,11 +160,10 @@ public class NodeConnection {
 	
 	public void runUpdate() {
 		mNode.setRetrieving(true);
-		String elemFilter = getNetwork().getElementFilter();
-		String handFilter = getNetwork().getHandlerFilter();
-		validateFilter(elemFilter, "Element");
-		validateFilter(handFilter, "Handler");
-		final Node updatedNodeCopy = getNodeAdapter().retrieve(elemFilter, handFilter);
+		// TODO: Does this really work?
+		validateFilter(mElementFilter, "Element");
+		validateFilter(mHandlerFilter, "Handler");
+		final Node updatedNodeCopy = getNodeAdapter().retrieve(mElementFilter, mHandlerFilter);
 		runThread(new Runnable() {
 			@Override
 			public void run() {
@@ -346,8 +319,25 @@ public class NodeConnection {
 		
 		public static final int LISTEN_FOR_ADAPTER = 1;
 		
-		public void setMode(int mode) {
+		public void setMode(final int mode) {
 			this.mode = mode;
 		}
 	};
+
+	
+	public boolean setHandlerFilter(final String pHandlerFilter){
+		if(this.validateFilter(pHandlerFilter, "Handler")){
+			mHandlerFilter = pHandlerFilter;
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean setElementFilter(final String pElementFilter){
+		if(this.validateFilter(pElementFilter, "Element")){
+			mElementFilter = pElementFilter;
+			return true;
+		}
+		return false;
+	}
 }
