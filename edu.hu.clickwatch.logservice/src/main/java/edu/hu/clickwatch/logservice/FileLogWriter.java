@@ -8,7 +8,7 @@ import org.osgi.service.log.LogEntry;
 import org.osgi.service.log.LogListener;
 
 public final class FileLogWriter implements LogListener {
-
+// TODO: Update a log write for all log levels (one file per log level and one overall file)
 	private BufferedWriter mWriter = null;
 	
 	public FileLogWriter(final String pFileName) {
