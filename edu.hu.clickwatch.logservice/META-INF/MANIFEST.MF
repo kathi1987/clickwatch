@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: logservice
+Bundle-SymbolicName: edu.hu.clickwatch.logservice
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: edu.hu.clickwatch.logservice.Activator
+Require-Bundle: org.eclipse.core.runtime
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Import-Package: org.osgi.service.log;version="1.3.0"
