@@ -5,22 +5,25 @@
 
 	<xs:complexType name="configurationType">
 		<xs:sequence>
-			<xs:element name="network" type="networkType" minOccurs="1"/>
+			<xs:element name="network" type="networkType" minOccurs="1"  maxOccurs="unbounded"/>
 		</xs:sequence>
 		<xs:attribute name="logDirectorys" type="xs:string"/>
 	</xs:complexType>
 
 	<xs:complexType name="networkType">
 		<xs:sequence>
-			<xs:element name="node" type="nodeType"/>
+			<xs:element name="node" type="nodeType" minOccurs="1"  maxOccurs="unbounded"/>
 		</xs:sequence>
 		<xs:attribute name="name" type="xs:string" use="required"/>
+		<xs:attribute name="updateInterval" type="xs:int" use="required"/>
 	</xs:complexType>
 
 	<xs:complexType name="nodeType">
 		<xs:attribute name="address" type="addressType" use="required"/>
 		<xs:attribute name="protocol" type="protocolType" use="required"/>
 		<xs:attribute name="port" type="portType" use="required"/>
+		<xs:attribute name="elementFilter" type="xs:string" use="optional"/>
+		<xs:attribute name="handlerFilter" type="xs:string" use="optional"/>
 	</xs:complexType>
 
 	<xs:simpleType name="protocolType">
