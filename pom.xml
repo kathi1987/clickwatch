@@ -17,6 +17,7 @@
     <module>edu.hu.clickwatch.model.edit</module>
     <module>edu.hu.clickwatch.model.editor</module>
     <module>edu.hu.clickwatch.server</module>
+    <module>edu.hu.clickwatch.logservice</module>
     <module>edu.mit.clickcontrol</module>
     <module>org.eclipse.wst.sse.core</module>
     <module>org.eclipse.wst.sse.ui</module>
