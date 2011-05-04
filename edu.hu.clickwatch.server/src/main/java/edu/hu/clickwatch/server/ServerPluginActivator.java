@@ -35,10 +35,12 @@ public class ServerPluginActivator implements BundleActivator {
         logServiceTracker.open();
         //
         mLogService = (LogService) logServiceTracker.getService();
-		// Setup server component, read configuration
+		// TODO: Fixme. Set configuration directory to the right directory / Setup server component, read configuration
 		mServer = new Server("TODO 1", "TODO 2");
 		// Initialize server
 		mServer.initialize();
+		// Print status information
+        mLogService.log(LogService.LOG_DEBUG, "Plugin: Server Plugin initialized");
 	}
 
 	/*

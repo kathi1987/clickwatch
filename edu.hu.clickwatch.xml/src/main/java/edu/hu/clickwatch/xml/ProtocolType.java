@@ -28,6 +28,7 @@ import javax.xml.bind.annotation.XmlType;
  * </pre>
  * 
  */
+@SuppressWarnings("restriction")
 @XmlType(name = "protocolType")
 @XmlEnum
 public enum ProtocolType {

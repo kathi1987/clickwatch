@@ -8,7 +8,7 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   <groupId>edu.hu.clickwatch</groupId>
-  <artifactId>edu.hu.clickwatch.xml</artifactId>
+  <artifactId>edu.hu.clickwatch.cdo</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>eclipse-plugin</packaging>
 </project>
