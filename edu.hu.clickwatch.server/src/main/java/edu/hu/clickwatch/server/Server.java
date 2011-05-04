@@ -65,9 +65,7 @@ public class Server {
 					// Set ip address
 					nodeModel.setINetAdress(node.getAddress());
 					// Set port
-					nodeModel.setPort(Integer.toString(node.getPort()));	
-					
-
+					nodeModel.setPort(Integer.toString(node.getPort()));			
 					// Set up node connection
 					NodeConnection nodeConnection = new NodeConnection();
 					// Add node to node connection

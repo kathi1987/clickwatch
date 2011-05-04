@@ -1,6 +1,5 @@
 package edu.hu.clickwatch.server;
 
-import java.util.ArrayList;
 import java.util.regex.PatternSyntaxException;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -318,10 +317,10 @@ public class NodeConnection {
 		public static final int LISTEN_FOR_USER = 0;
 		
 		public static final int LISTEN_FOR_ADAPTER = 1;
-		
+		/*
 		public void setMode(final int mode) {
 			this.mode = mode;
-		}
+		}*/
 	};
 
 	
