@@ -7,13 +7,13 @@ import org.osgi.util.tracker.ServiceTracker;
 
 
 public class ServerPluginActivator implements BundleActivator {
-
+	/** */
 	private BundleContext mContext;
-
+	/** */
 	private LogService mLogService = null;
-	
+	/** */
 	private Server mServer = null;
-	
+	/** */
 	private static ServerPluginActivator mInstance;
 	
 	public BundleContext getContext() {
@@ -36,7 +36,7 @@ public class ServerPluginActivator implements BundleActivator {
         //
         mLogService = (LogService) logServiceTracker.getService();
 		// TODO: Fixme. Set configuration directory to the right directory / Setup server component, read configuration
-		mServer = new Server("TODO 1", "TODO 2");
+		mServer = new Server("TODO 1");
 		// Initialize server
 		mServer.initialize();
 		// Print status information

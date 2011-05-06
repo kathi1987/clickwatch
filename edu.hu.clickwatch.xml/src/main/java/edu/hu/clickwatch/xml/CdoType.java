@@ -15,19 +15,17 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for nodeType complex type.
+ * <p>Java class for cdoType complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="nodeType">
+ * &lt;complexType name="cdoType">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;attribute name="address" use="required" type="{}addressType" />
- *       &lt;attribute name="protocol" use="required" type="{}protocolType" />
  *       &lt;attribute name="port" use="required" type="{}portType" />
- *       &lt;attribute name="elementFilter" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="handlerFilter" type="{http://www.w3.org/2001/XMLSchema}string" />
+ *       &lt;attribute name="repository" use="required" type="{http://www.w3.org/2001/XMLSchema}string" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -37,19 +35,15 @@ import javax.xml.bind.annotation.XmlType;
  */
 @SuppressWarnings("restriction")
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "nodeType")
-public class NodeType {
+@XmlType(name = "cdoType")
+public class CdoType {
 
     @XmlAttribute(required = true)
     protected String address;
     @XmlAttribute(required = true)
-    protected ProtocolType protocol;
-    @XmlAttribute(required = true)
     protected int port;
-    @XmlAttribute
-    protected String elementFilter;
-    @XmlAttribute
-    protected String handlerFilter;
+    @XmlAttribute(required = true)
+    protected String repository;
 
     /**
      * Gets the value of the address property.
@@ -76,30 +70,6 @@ public class NodeType {
     }
 
     /**
-     * Gets the value of the protocol property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ProtocolType }
-     *     
-     */
-    public ProtocolType getProtocol() {
-        return protocol;
-    }
-
-    /**
-     * Sets the value of the protocol property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ProtocolType }
-     *     
-     */
-    public void setProtocol(ProtocolType value) {
-        this.protocol = value;
-    }
-
-    /**
      * Gets the value of the port property.
      * 
      */
@@ -116,51 +86,27 @@ public class NodeType {
     }
 
     /**
-     * Gets the value of the elementFilter property.
+     * Gets the value of the repository property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getElementFilter() {
-        return elementFilter;
+    public String getRepository() {
+        return repository;
     }
 
     /**
-     * Sets the value of the elementFilter property.
+     * Sets the value of the repository property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setElementFilter(String value) {
-        this.elementFilter = value;
-    }
-
-    /**
-     * Gets the value of the handlerFilter property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getHandlerFilter() {
-        return handlerFilter;
-    }
-
-    /**
-     * Sets the value of the handlerFilter property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setHandlerFilter(String value) {
-        this.handlerFilter = value;
+    public void setRepository(String value) {
+        this.repository = value;
     }
 
 }

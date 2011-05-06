@@ -6,16 +6,24 @@
 	<xs:complexType name="configurationType">
 		<xs:sequence>
 			<xs:element name="network" type="networkType" minOccurs="1"  maxOccurs="unbounded"/>
+			<xs:element name="cdo" type="cdoType" minOccurs="1"  maxOccurs="unbounded"/>
 		</xs:sequence>
-		<xs:attribute name="logDirectorys" type="xs:string"/>
+		<xs:attribute name="logDirectory" type="xs:string"/>
 	</xs:complexType>
 
 	<xs:complexType name="networkType">
 		<xs:sequence>
 			<xs:element name="node" type="nodeType" minOccurs="1"  maxOccurs="unbounded"/>
+			<xs:element name="network" type="networkType" maxOccurs="unbounded"/>
 		</xs:sequence>
 		<xs:attribute name="name" type="xs:string" use="required"/>
 		<xs:attribute name="updateInterval" type="xs:int" use="required"/>
+	</xs:complexType>
+
+	<xs:complexType name="cdoType">
+		<xs:attribute name="address" type="addressType" use="required"/>
+		<xs:attribute name="port" type="portType" use="required"/>
+		<xs:attribute name="repository" type="xs:string" use="required"/>
 	</xs:complexType>
 
 	<xs:complexType name="nodeType">

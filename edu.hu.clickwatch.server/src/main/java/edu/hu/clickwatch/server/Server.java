@@ -28,27 +28,26 @@ public class Server {
 	/**	The array list holds a list of node connections */
 	private ArrayList<NodeConnection> mConnectionList;
 	/** The java representation of the xml based network configuration file */
-	private ConfigurationType mNetworkConfiguration;
+	private ConfigurationType mConfiguration;
 	
-	public Server(final String pDatabaseConfiguration, final String pNetworkConfiguration){
-		
+	public Server(final String pConfiguration){	
 		mLogService = ServerPluginActivator.getInstance().getLogService();
 		
 		try {
 			JAXBContext context = JAXBContext.newInstance("edu.hu.clickwatch.xml.ConfigurationType");
 	        Unmarshaller unmarshaller = context.createUnmarshaller();
-	        mNetworkConfiguration = (ConfigurationType) unmarshaller.unmarshal(new File(pNetworkConfiguration));
+	        mConfiguration = (ConfigurationType) unmarshaller.unmarshal(new File(pConfiguration));
 		} catch (JAXBException e) {
 			e.printStackTrace();
 		} 
 	}
 	
 	public boolean initialize(){
-		if(mNetworkConfiguration != null){
+		if(mConfiguration != null){
 			// Initialize array list
 			mConnectionList = new ArrayList<NodeConnection>();
 			// Iterate through network list in xml configuration
-			for(NetworkType network : mNetworkConfiguration.getNetwork()){
+			for(NetworkType network : mConfiguration.getNetwork()){
 				mLogService.log(LogService.LOG_DEBUG, "Server: Create network " + network.getName());
 				// Create a new network model
 				Network networkModel = ClickWatchModelFactory.eINSTANCE.createNetwork();
