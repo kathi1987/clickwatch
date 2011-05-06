@@ -6,3 +6,7 @@ Bundle-Version: 0.0.1.qualifier
 Bundle-Activator: edu.hu.clickwatch.cdo.Activator
 Import-Package: org.osgi.framework;version="1.3.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Require-Bundle: org.eclipse.emf.cdo;bundle-version="3.0.1",
+ org.eclipse.net4j;bundle-version="3.0.1",
+ org.eclipse.net4j.tcp;bundle-version="3.0.1",
+ org.eclipse.emf.cdo.net4j;bundle-version="3.0.1"
