@@ -13,13 +13,19 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.xtend;bundle-version="1.0.1",
  org.eclipse.xtext.ui;bundle-version="1.0.1",
  org.eclipse.ui.ide;bundle-version="3.6.1",
- edu.hu.clickwatch;bundle-version="0.1.0",
+ edu.hu.clickwatch;bundle-version="0.1.0";visibility:=reexport,
  org.eclipse.jdt.launching;bundle-version="3.5.100",
  org.eclipse.pde.core;bundle-version="3.6.1",
  com.google.guava;bundle-version="0.0.7",
  org.eclipse.core.expressions;bundle-version="3.4.200",
- org.junit4;bundle-version="4.8.1"
+ org.junit4;bundle-version="4.8.1",
+ org.eclipse.graphiti;bundle-version="0.7.0",
+ org.eclipse.graphiti.examples.common;bundle-version="0.7.0",
+ org.eclipse.graphiti.ui;bundle-version="0.7.0",
+ org.eclipse.ui.views.properties.tabbed;bundle-version="3.5.100",
+ org.eclipse.emf.transaction;bundle-version="1.4.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Export-Package: edu.hu.clickwatch.analysis.specificmodels,
+Export-Package: edu.hu.clickwatch.analysis.automated,
+ edu.hu.clickwatch.analysis.specificmodels,
  edu.hu.clickwatch.analysis.ui

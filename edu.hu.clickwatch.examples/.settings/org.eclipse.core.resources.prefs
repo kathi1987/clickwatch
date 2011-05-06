@@ -1,5 +1,8 @@
-#Mon Mar 21 11:54:11 CET 2011
+#Mon Apr 11 13:21:00 CEST 2011
 eclipse.preferences.version=1
+encoding//src/edu/hu/clickwatch/examples/lifd/analysis.xpt=ISO-8859-1
+encoding//src/edu/hu/clickwatch/examples/lifd/topology.ecore=UTF-8
+encoding//src/edu/hu/clickwatch/examples/lifd/topology.ecorediag=UTF-8
 encoding//src/edu/hu/clickwatch/examples/linkasym/analysis.xpt=ISO-8859-1
 encoding//src/edu/hu/clickwatch/examples/linkdist/analysis.xpt=ISO-8859-1
 encoding//src/edu/hu/clickwatch/examples/linkdist/html_gmaps.xpt=ISO-8859-1

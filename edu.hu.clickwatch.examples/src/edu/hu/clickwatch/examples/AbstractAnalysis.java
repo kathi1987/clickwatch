@@ -19,22 +19,42 @@ import org.eclipse.xtend.XtendFacade;
 import org.eclipse.xtend.typesystem.emf.EmfMetaModel;
 
 public class AbstractAnalysis {
-	private EPackage metaModel = null;
-	private EObject model = null;
+	protected EPackage metaModel = null;
+	protected EObject model = null;
 	
 	private List<EPackage> additionalMetaModels = new ArrayList<EPackage>();
 	
-	private void initialize() {
-		if (metaModel == null || model == null) {
-			Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("scwm", new XMIResourceFactoryImpl());
+	protected void initialize() {
+		initializeModel();
+	}
+	
+	protected void initializeMetaModel() {
+		if (metaModel == null) {
 			Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("ecore", new XMIResourceFactoryImpl());
 			
 			ResourceSet resourceSet = new ResourceSetImpl();
 			resourceSet.getLoadOptions().put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);
-			Resource metaModelResource = resourceSet.getResource(URI.createFileURI("src/edu/hu/clickwatch/examples/SpecificMetaModel.ecore"), true);		
+			Resource metaModelResource = resourceSet.getResource(getMetaModelURI(), true);		
 			metaModel = (EPackage)metaModelResource.getContents().get(0);
 			EPackage.Registry.INSTANCE.put(metaModel.getNsURI(), metaModel);
+		}
+	}
+	
+	protected URI getMetaModelURI() {
+		return URI.createFileURI("src/edu/hu/clickwatch/examples/SpecificMetaModel.ecore");
+	}
+	
+	protected URI getModelURI() {
+		return URI.createFileURI("src/edu/hu/clickwatch/examples/SpecificModel.scwm");
+	}
+	
+	protected void initializeModel() {
+		initializeMetaModel();
+		if (model == null) {
+			Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("scwm", new XMIResourceFactoryImpl());
 			
+			ResourceSet resourceSet = new ResourceSetImpl();
+			resourceSet.getLoadOptions().put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);	
 			Resource modelResource = resourceSet.getResource(URI.createFileURI("src/edu/hu/clickwatch/examples/SpecificModel.scwm"), true);
 			model = modelResource.getContents().get(0);
 		}
@@ -46,6 +66,10 @@ public class AbstractAnalysis {
 	}
 	
 	public Object evalXtend(String xtend) {	
+		return evalXtend(xtend, model);
+	}
+	
+	public Object evalXtend(String xtend, Object[] objects) {
 		initialize();
 		XtendFacade f = XtendFacade.create(xtend);
 		f.registerMetaModel(new EmfMetaModel(metaModel));
@@ -53,7 +77,11 @@ public class AbstractAnalysis {
 			f.registerMetaModel(new EmfMetaModel(additionalMetaModel));
 		}
 		
-		return f.call("performAnalysis", new Object[]{model});		
+		return f.call("performAnalysis", objects);
+	}
+	
+	public Object evalXtend(String xtend, Object object) {
+		return evalXtend(xtend, new Object[] {object});
 	}
 	
 	public void executeXpand(String xpand, String outputDir) {
@@ -94,5 +122,9 @@ public class AbstractAnalysis {
 		facade.evaluate(xpand, model);
 		long stopTime = System.currentTimeMillis();
 		System.out.println("Xpand execution took " + (stopTime - startTime) + " ms");
+	}
+	
+	public String getQualifiedName(String name) {
+		return getClass().getPackage().getName().replace(".", "::") + "::" + name;
 	}
 }
