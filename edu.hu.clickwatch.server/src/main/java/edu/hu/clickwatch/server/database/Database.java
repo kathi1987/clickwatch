@@ -1,21 +1,24 @@
-package edu.hu.clickwatch.cdo;
+package edu.hu.clickwatch.server.database;
 
 import org.eclipse.emf.cdo.eresource.CDOResource;
 import org.eclipse.emf.cdo.net4j.CDONet4jUtil;
 import org.eclipse.emf.cdo.net4j.CDOSessionConfiguration;
+import org.eclipse.emf.cdo.session.CDOSession;
 import org.eclipse.emf.cdo.transaction.CDOTransaction;
-import org.eclipse.emf.cdo.util.CommitException;
-import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.net4j.Net4jUtil;
+import org.eclipse.net4j.connector.IConnector;
 import org.eclipse.net4j.tcp.TCPUtil;
 import org.eclipse.net4j.util.container.ContainerUtil;
+import org.eclipse.net4j.util.container.IManagedContainer;
 
-public class Server {
+
+
+public class Database {
 	/**
 	 * 
 	 */
-	private Handler mHandler = null;
+	private Connection mHandler = null;
 	/**
 	 * 
 	 */
@@ -28,8 +31,51 @@ public class Server {
 	/**
 	 * 
 	 */
-	public Server(){
+	public Database(){
 				
+	}
+	
+	private class Connection {
+		/** */
+		private CDOSession mSession;
+		/** */
+		private CDOTransaction mTransaction;
+		/** */
+		private IConnector mConnector;
+		/** */
+		private IManagedContainer mContainer;
+		
+		public CDOSession getSession() {
+			return mSession;
+		}
+		
+		public void setSession(final CDOSession pSession) {
+			this.mSession = pSession;
+		}
+		
+		public CDOTransaction getTransaction() {
+			return mTransaction;
+		}
+		
+		public void setTransaction(final CDOTransaction pTransaction) {
+			this.mTransaction = pTransaction;
+		}
+
+		public IConnector getConnector() {
+			return mConnector;
+		}
+
+		public void setConnector(final IConnector pConnector) {
+			this.mConnector = pConnector;
+		}
+
+		public IManagedContainer getContainer() {
+			return mContainer;
+		}
+
+		public void setContainer(final IManagedContainer pContainer) {
+			this.mContainer = pContainer;
+		}
 	}
 	
 	/**
@@ -38,7 +84,7 @@ public class Server {
 	 */
 	public void openSession(final String pAddress, final String pRepositoryName){
 		if(this.mHandler == null){
-			this.mHandler = new Handler();
+			this.mHandler = new Connection();
 			//
 			this.mHandler.setContainer(ContainerUtil.createContainer());
 			// Register net4j factories
@@ -64,7 +110,7 @@ public class Server {
 			// cdoSession.getPackageRegistry().putEPackage(CompanyPackage.eINSTANCE);
 		}	
 	}
-		
+	
 	public void openTransaction(final String pResource){
 		if(this.mHandler != null){
 			//

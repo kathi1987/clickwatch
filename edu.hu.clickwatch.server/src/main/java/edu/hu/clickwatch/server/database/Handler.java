@@ -1,7 +1,8 @@
-package edu.hu.clickwatch.cdo;
+package edu.hu.clickwatch.server.database;
 
 import org.eclipse.emf.cdo.session.CDOSession;
 import org.eclipse.emf.cdo.transaction.CDOTransaction;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.net4j.connector.IConnector;
 import org.eclipse.net4j.util.container.IManagedContainer;
 
@@ -9,11 +10,14 @@ public class Handler {
 	/** */
 	private CDOSession mSession;
 	/** */
-	private CDOTransaction mTransaction;
+	private CDOTransaction mTransaction = null;
 	/** */
 	private IConnector mConnector;
 	/** */
 	private IManagedContainer mContainer;
+	/** */
+	private EObject mModel;
+	
 	
 	public CDOSession getSession() {
 		return mSession;
@@ -48,3 +52,4 @@ public class Handler {
 	}
 
 }
+

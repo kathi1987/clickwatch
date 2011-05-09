@@ -47,7 +47,7 @@ public final class FileLogWriter implements LogListener {
 		}
 	}
 	
-	public void stop(){
+	public void close(){
 		for(BufferedWriter writer : this.logFileList.values()){
 			try {
 				writer.close();
