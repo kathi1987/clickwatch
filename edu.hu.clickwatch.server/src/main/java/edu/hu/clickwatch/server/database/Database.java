@@ -12,20 +12,14 @@ import org.eclipse.net4j.tcp.TCPUtil;
 import org.eclipse.net4j.util.container.ContainerUtil;
 import org.eclipse.net4j.util.container.IManagedContainer;
 
+import edu.hu.clickwatch.model.Node;
+
 
 
 public class Database {
-	/**
-	 * 
-	 */
+	/** */
 	private Connection mHandler = null;
-	/**
-	 * 
-	 */
-	private CDOTransaction mTransaction = null;
-	/**
-	 * 
-	 */
+	/** */
 	private EObject mModel;
 	
 	/**
@@ -114,13 +108,16 @@ public class Database {
 	public void openTransaction(final String pResource){
 		if(this.mHandler != null){
 			//
-			this.mTransaction = this.mHandler.getSession().openTransaction();
+			CDOTransaction transaction = this.mHandler.getSession().openTransaction();
 			//
-			CDOResource resource = this.mTransaction.getOrCreateResource(pResource);
+			CDOResource resource = transaction.getOrCreateResource(pResource);
 			//
 			System.out.println("First");
 			
 			for(EObject obj : resource.getContents()){
+				if(obj instanceof Node){
+					
+				}
 //				if(obj instanceof Library){
 //					System.out.println(((Library)obj).getName());
 //				}
@@ -141,12 +138,11 @@ public class Database {
 	}
 	
 	public void commitTransaction(){
-		/*
 		try {
-		this.mTransaction.commit();
+			this.mHandler.getTransaction().commit();
 		} catch (CommitException commitException) {
 			commitException.printStackTrace();
-		}*/
+		}
 	}
 	
 	public void rollbackTransaction(){
