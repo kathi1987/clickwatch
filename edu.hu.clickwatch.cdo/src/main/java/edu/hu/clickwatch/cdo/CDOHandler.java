@@ -1,10 +1,11 @@
-package edu.hu.clickwatch.server.database;
+package edu.hu.clickwatch.cdo;
 
 import org.eclipse.emf.cdo.eresource.CDOResource;
 import org.eclipse.emf.cdo.net4j.CDONet4jUtil;
 import org.eclipse.emf.cdo.net4j.CDOSessionConfiguration;
 import org.eclipse.emf.cdo.session.CDOSession;
 import org.eclipse.emf.cdo.transaction.CDOTransaction;
+import org.eclipse.emf.cdo.util.CommitException;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.net4j.Net4jUtil;
 import org.eclipse.net4j.connector.IConnector;
@@ -12,37 +13,18 @@ import org.eclipse.net4j.tcp.TCPUtil;
 import org.eclipse.net4j.util.container.ContainerUtil;
 import org.eclipse.net4j.util.container.IManagedContainer;
 
-<<<<<<< HEAD
 import edu.hu.clickwatch.model.Node;
 
-
-
-public class Database {
+public class CDOHandler {
 	/** */
 	private Connection mHandler = null;
 	/** */
-=======
-
-
-public class Database {
-	/**
-	 * 
-	 */
-	private Connection mHandler = null;
-	/**
-	 * 
-	 */
-	private CDOTransaction mTransaction = null;
-	/**
-	 * 
-	 */
->>>>>>> 5b9f62fe7de02dc479756d1abb7bdeedbffa1201
 	private EObject mModel;
 	
 	/**
 	 * 
 	 */
-	public Database(){
+	public CDOHandler(){
 				
 	}
 	
@@ -125,25 +107,16 @@ public class Database {
 	public void openTransaction(final String pResource){
 		if(this.mHandler != null){
 			//
-<<<<<<< HEAD
 			CDOTransaction transaction = this.mHandler.getSession().openTransaction();
 			//
 			CDOResource resource = transaction.getOrCreateResource(pResource);
-=======
-			this.mTransaction = this.mHandler.getSession().openTransaction();
-			//
-			CDOResource resource = this.mTransaction.getOrCreateResource(pResource);
->>>>>>> 5b9f62fe7de02dc479756d1abb7bdeedbffa1201
 			//
 			System.out.println("First");
 			
 			for(EObject obj : resource.getContents()){
-<<<<<<< HEAD
 				if(obj instanceof Node){
 					
 				}
-=======
->>>>>>> 5b9f62fe7de02dc479756d1abb7bdeedbffa1201
 //				if(obj instanceof Library){
 //					System.out.println(((Library)obj).getName());
 //				}
@@ -164,24 +137,15 @@ public class Database {
 	}
 	
 	public void commitTransaction(){
-<<<<<<< HEAD
 		try {
 			this.mHandler.getTransaction().commit();
 		} catch (CommitException commitException) {
 			commitException.printStackTrace();
 		}
-=======
-		/*
-		try {
-		this.mTransaction.commit();
-		} catch (CommitException commitException) {
-			commitException.printStackTrace();
-		}*/
->>>>>>> 5b9f62fe7de02dc479756d1abb7bdeedbffa1201
 	}
 	
 	public void rollbackTransaction(){
-		this.mTransaction.rollback();
+		this.mHandler.getTransaction().rollback();
 	}
 		
 	public void closeSession(){
