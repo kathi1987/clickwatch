@@ -7,7 +7,8 @@ Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Export-Package: edu.hu.clickwatch.examples.linkdist.ldp,
+Export-Package: edu.hu.clickwatch.examples,
+ edu.hu.clickwatch.examples.linkdist.ldp,
  edu.hu.clickwatch.examples.linkdist.ldp.impl,
  edu.hu.clickwatch.examples.linkdist.ldp.util
 Require-Bundle: org.eclipse.core.runtime,
@@ -16,7 +17,10 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore.xmi,
  edu.hu.clickwatch.model,
  org.eclipse.xpand,
- org.eclipse.emf.ecore;visibility:=reexport
+ org.eclipse.emf.ecore;visibility:=reexport,
+ edu.hu.clickwatch.analysis,
+ org.eclipse.ui;bundle-version="3.6.1"
 Bundle-ActivationPolicy: lazy
 Import-Package: org.antlr.runtime;version="3.0.0",
  org.apache.commons.logging
+Bundle-Activator: edu.hu.clickwatch.examples.ClickWatchExamplesPluginActivator

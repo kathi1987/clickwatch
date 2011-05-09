@@ -1,0 +1,17 @@
+«IMPORT topology»
+
+«DEFINE Main FOR Topology»
+«FILE "output.xml"-»
+«FOREACH nodes AS node-»
+IP = «node.ip»
+MAC = «node.mac»
+Incomming =
+«FOREACH node.incomming AS link-»
+	«link.source.ip» Delta PDR= «link.reverse.pdr - link.pdr», F_PDR = «link.pdr», R_PDR = «link.reverse.pdr»
+«ENDFOREACH-»
+Delta PDR over threshold 0.25 = «node.incomming.select(e|e.reverse.pdr - e.pdr  > 25).size»
+Asym in % = «node.incomming.select(e|e.reverse.pdr - e.pdr > 25).size * 100 / node.incomming.collect(e|e.reverse).size»
+######################
+«ENDFOREACH-»
+«ENDFILE-»
+«ENDDEFINE»
