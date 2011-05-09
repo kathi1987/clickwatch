@@ -1,4 +1,6 @@
-package edu.hu.clickwatch.server;
+package edu.hu.clickwatch.server.management;
+
+import edu.hu.clickwatch.server.Server;
 
 
 public class ServerMBean implements IServerMBean {

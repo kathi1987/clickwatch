@@ -1,4 +1,4 @@
-package edu.hu.clickwatch.server;
+package edu.hu.clickwatch.server.management;
 
 public interface IServerMBean {
 	public void shutdown();

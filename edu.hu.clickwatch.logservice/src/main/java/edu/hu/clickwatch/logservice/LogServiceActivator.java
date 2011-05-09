@@ -93,7 +93,7 @@ public class LogServiceActivator implements BundleActivator {
             iterator.remove();
         }
         // Close the log files
-        this.mFileLogWriter.stop();
+        this.mFileLogWriter.close();
 
 		this.mContext = null;
 	}
