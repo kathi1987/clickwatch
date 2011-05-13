@@ -29,18 +29,34 @@ public class Server {
 	private ArrayList<NodeConnection> mConnectionList;
 	/** The java representation of the xml based network configuration file */
 	private ConfigurationType mConfiguration;
+	/** Location of the configuration file */
+	private String mConfigurationFile;
+	
+	public Server(){
+		
+	}
 	
 	public Server(final String pConfiguration){	
+		
 		mLogService = ServerPluginActivator.getInstance().getLogService();
 		
+		this.mConfigurationFile = pConfiguration;
+		
+		this.readConfigurationFile();
+	}
+	
+	public void readConfigurationFile(){
 		try {
-			JAXBContext context = JAXBContext.newInstance("edu.hu.clickwatch.xml.ConfigurationType");
+			ClassLoader classLoader = edu.hu.clickwatch.xml.ObjectFactory.class.getClassLoader();
+
+			JAXBContext context = JAXBContext.newInstance("edu.hu.clickwatch.xml.ConfigurationType", classLoader);
 	        Unmarshaller unmarshaller = context.createUnmarshaller();
-	        mConfiguration = (ConfigurationType) unmarshaller.unmarshal(new File(pConfiguration));
+	        mConfiguration = (ConfigurationType) unmarshaller.unmarshal(new File(this.mConfigurationFile));
 		} catch (JAXBException e) {
 			e.printStackTrace();
-		} 
+		} 	
 	}
+	
 	
 	public boolean initialize(){
 		if(mConfiguration != null){
@@ -105,5 +121,16 @@ public class Server {
 				connection.disconnect();
 			}
 		}
+	}
+
+	public String getConfigurationFile() {
+		return mConfigurationFile;
+	}
+
+	public void setConfigurationFile(String mConfigurationFile) {
+		
+		this.mConfigurationFile = mConfigurationFile;
+		
+		this.readConfigurationFile();
 	}
 }

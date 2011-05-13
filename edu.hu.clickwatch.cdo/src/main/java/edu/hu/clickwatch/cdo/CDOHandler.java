@@ -28,6 +28,9 @@ public class CDOHandler {
 				
 	}
 	
+	/**
+	 * 
+	 */
 	private class Connection {
 		/** */
 		private CDOSession mSession;
@@ -48,10 +51,6 @@ public class CDOHandler {
 		
 		public CDOTransaction getTransaction() {
 			return mTransaction;
-		}
-		
-		public void setTransaction(final CDOTransaction pTransaction) {
-			this.mTransaction = pTransaction;
 		}
 
 		public IConnector getConnector() {

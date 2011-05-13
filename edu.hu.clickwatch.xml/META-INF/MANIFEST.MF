@@ -5,4 +5,8 @@ Bundle-SymbolicName: edu.hu.clickwatch.xml
 Bundle-Version: 0.0.1.qualifier
 Export-Package: edu.hu.clickwatch.xml
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Import-Package: javax.xml.bind.annotation
+Import-Package: javax.xml.bind,
+ org.osgi.framework
+Bundle-Activator: edu.hu.clickwatch.xml.Activator
+Require-Bundle: org.eclipse.osgi,
+ org.eclipse.persistence.moxy;bundle-version="2.2.0"

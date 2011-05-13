@@ -6,6 +6,7 @@ Bundle-Version: 1.0.0
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
+Bundle-Activator: edu.hu.clickwatch.examples.ClickWatchExamplesPluginActivator
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: edu.hu.clickwatch.examples,
  edu.hu.clickwatch.examples.linkdist.ldp,
@@ -23,4 +24,3 @@ Require-Bundle: org.eclipse.core.runtime,
 Bundle-ActivationPolicy: lazy
 Import-Package: org.antlr.runtime;version="3.0.0",
  org.apache.commons.logging
-Bundle-Activator: edu.hu.clickwatch.examples.ClickWatchExamplesPluginActivator
