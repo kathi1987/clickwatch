@@ -13,22 +13,23 @@
  * </copyright>
  *
  *******************************************************************************/
-package edu.hu.clickwatch.analysis.composition;
+package edu.hu.clickwatch.analysis.composition.property;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.graphiti.mm.pictograms.PictogramElement;
 import org.eclipse.graphiti.services.Graphiti;
+import org.eclipse.graphiti.ui.platform.AbstractPropertySectionFilter;
 
-public class PropertyUtil {
+import edu.hu.clickwatch.analysis.composition.model.Transformation;
 
-	public static final String SHAPE_KEY = "shape-id"; //$NON-NLS-1$
+public class TransformationFilter extends AbstractPropertySectionFilter {
 
-	public static final String SHAPE_VALUE_E_CLASS = "e-class"; //$NON-NLS-1$
-
-	public static final void setEClassShape(PictogramElement pe) {
-		Graphiti.getPeService().setPropertyValue(pe, SHAPE_KEY, SHAPE_VALUE_E_CLASS);
-	}
-
-	public static boolean isEClassShape(PictogramElement pe) {
-		return SHAPE_VALUE_E_CLASS.equals(Graphiti.getPeService().getPropertyValue(pe, SHAPE_KEY));
+	@Override
+	protected boolean accept(PictogramElement pe) {
+		EObject bo = Graphiti.getLinkService().getBusinessObjectForLinkedPictogramElement(pe);
+		if (bo instanceof Transformation) {
+			return true;
+		}
+		return false;
 	}
 }

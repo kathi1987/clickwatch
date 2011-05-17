@@ -26,16 +26,18 @@ import edu.hu.clickwatch.analysis.composition.model.CompositionFactory;
 import edu.hu.clickwatch.analysis.composition.model.Node;
 import edu.hu.clickwatch.analysis.composition.model.Transformation;
 
-public class CompositionCreateTransformationFeature extends AbstractCreateConnectionFeature {
+public class CreateTransformationFeature extends AbstractCreateConnectionFeature {
 
-	public CompositionCreateTransformationFeature(IFeatureProvider fp) {
-		// provide name and description for the UI, e.g. the palette
+	public CreateTransformationFeature(IFeatureProvider fp) {
 		super(fp, "Transformation", "Create Transformation"); //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
+	protected CreateTransformationFeature(IFeatureProvider fp,
+			String name, String description) {
+		super(fp, name, description);
+	}
+
 	public boolean canCreate(ICreateConnectionContext context) {
-		// return true if both anchors belong to a EClass
-		// and those EClasses are not identical
 		Node source = getNode(context.getSourceAnchor());
 		Node target = getNode(context.getTargetAnchor());
 		if (source != null && target != null && source != target) {
@@ -45,7 +47,6 @@ public class CompositionCreateTransformationFeature extends AbstractCreateConnec
 	}
 
 	public boolean canStartConnection(ICreateConnectionContext context) {
-		// return true if start anchor belongs to a EClass
 		if (getNode(context.getSourceAnchor()) != null) {
 			return true;
 		}
@@ -55,19 +56,18 @@ public class CompositionCreateTransformationFeature extends AbstractCreateConnec
 	public Connection create(ICreateConnectionContext context) {
 		Connection newConnection = null;
 
-		// get EClasses which should be connected
 		Node source = getNode(context.getSourceAnchor());
 		Node target = getNode(context.getTargetAnchor());
 
 		if (source != null && target != null) {
-			// create new business object
 			Transformation transformation = createTransformation(source, target);
 
-			// add connection for business object
 			AddConnectionContext addContext = new AddConnectionContext(context.getSourceAnchor(), context.getTargetAnchor());
 			addContext.setNewObject(transformation);
 			newConnection = (Connection) getFeatureProvider().addIfPossible(addContext);
 		}
+		
+		getFeatureProvider().getDirectEditingInfo().setActive(true);
 
 		return newConnection;
 	}
@@ -83,11 +83,16 @@ public class CompositionCreateTransformationFeature extends AbstractCreateConnec
 	}
 
 	private Transformation createTransformation(Node source, Node target) {
-		Transformation transformation = CompositionFactory.eINSTANCE.createTransformation();
-		transformation.setLabel("new Transformation"); //$NON-NLS-1$
+		Transformation transformation = createTransformation();
 		transformation.setSource(source);
 		transformation.setTarget(target);
 		getDiagram().eResource().getContents().add(transformation);
+		return transformation;
+	}
+	
+	protected Transformation createTransformation() {
+		Transformation transformation = CompositionFactory.eINSTANCE.createTransformation();
+		transformation.setLabel("Transformation"); //$NON-NLS-1$
 		return transformation;
 	}
 

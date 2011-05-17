@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <package
+            uri="http://compositionmodel/1.0"
+            class="edu.hu.clickwatch.analysis.composition.model.CompositionPackage"/>
+   </extension>
+
    <extension-point id="edu.hu.clickwatch.analysis.AutoAnalysis" name="Automated analysis" schema="schema/edu.hu.clickwatch.analysis.AutoAnalysis.exsd"/>
 	<extension
 		point="org.eclipse.ui.newWizards">
@@ -133,26 +139,21 @@
 	    point="org.eclipse.ui.views.properties.tabbed.propertySections">
 	    <propertySections contributorId="cwc.PropertyContributor">
 	        <propertySection tab="graphiti.main.tab"            
-	         class="edu.hu.clickwatch.analysis.composition.property.CompositionModelNodeSection"
-	         filter="edu.hu.clickwatch.analysis.composition.property.CompositionModelNodeFilter"
-	         id="graphiti.main.tab.emfclass">
+	         class="edu.hu.clickwatch.analysis.composition.property.ModelNodeSection"
+	         filter="edu.hu.clickwatch.analysis.composition.property.ModelNodeFilter"
+	         id="edu.hu.clickwatch.analysis.composition.ModelNode">
 	        </propertySection>
+         <propertySection
+               class="edu.hu.clickwatch.analysis.composition.property.TransformationSection"
+               filter="edu.hu.clickwatch.analysis.composition.property.TransformationFilter"
+               id="edu.hu.clickwatch.analysis.composition.Transformation"
+               tab="graphiti.main.tab">
+         </propertySection>
 	    </propertySections>
 	</extension>
  
 	<extension point="org.eclipse.ui.commands">
 		<command id="edu.hu.clickwatch.analysis.composition.commands.createDiagramWithAllClasses" name="Create Diagram with all Classes" /> 
-	</extension>
-
-	<extension point="org.eclipse.ui.handlers">
-		<handler commandId="edu.hu.clickwatch.analysis.composition.commands.createDiagramWithAllClasses" class="edu.hu.clickwatch.analysis.composition.handlers.CreateDiagramWithAllClassesHandler">
-			<enabledWhen>
-				<reference definitionId="edu.hu.clickwatch.analysis.composition.definitions.OneEClassesNodeSelected" /> 
-			</enabledWhen>
-			<activeWhen>
-				<reference definitionId="edu.hu.clickwatch.analysis.composition.definitions.OneEClassesNodeSelected" /> 
-			</activeWhen>
-		</handler>
 	</extension>
 
 	<extension point="org.eclipse.ui.menus">
@@ -176,5 +177,21 @@
 			</and>
 		</definition>
 	</extension>
+ <extension
+       point="org.eclipse.ui.views">
+    <view
+          category="edu.hu.clickwatch.viewCategory"
+          class="edu.hu.clickwatch.analysis.composition.ModelView"
+          icon="icons/sample.gif"
+          id="edu.hu.clickwatch.analysis.composition.ModelView.ModelView"
+          name="Model View">
+    </view>
+ </extension>
+ <extension
+       point="org.eclipse.help.contexts">
+    <contexts
+          file="contexts.xml">
+    </contexts>
+ </extension>
 	<!-- end of extensions for the Composition editor -->
 </plugin>

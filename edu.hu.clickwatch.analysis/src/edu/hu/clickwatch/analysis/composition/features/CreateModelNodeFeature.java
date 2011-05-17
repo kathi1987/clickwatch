@@ -21,15 +21,17 @@ import org.eclipse.graphiti.features.context.ICreateContext;
 import edu.hu.clickwatch.analysis.composition.model.CompositionFactory;
 import edu.hu.clickwatch.analysis.composition.model.Node;
 
-public class CompositionCreateDataSetNodeFeature extends AbstractCreateNodeFeature {
+public class CreateModelNodeFeature extends AbstractCreateNodeFeature {
 
-	public CompositionCreateDataSetNodeFeature(IFeatureProvider fp) {
+	public CreateModelNodeFeature(IFeatureProvider fp) {
 		// set name and description of the creation feature
-		super(fp, "DataSet", "Create DataSet"); //$NON-NLS-1$ //$NON-NLS-2$
+		super(fp, "Model", "Create Model"); //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	@Override
 	protected Node createNode(ICreateContext context) {
-		return CompositionFactory.eINSTANCE.createDataSetNode();
+		Node result =  CompositionFactory.eINSTANCE.createModelNode();
+		result.setLabel("Model");
+		return result;
 	}
 }

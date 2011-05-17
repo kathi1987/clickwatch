@@ -20,20 +20,20 @@ import org.eclipse.graphiti.features.context.IDirectEditingContext;
 import org.eclipse.graphiti.features.impl.AbstractDirectEditingFeature;
 import org.eclipse.graphiti.mm.algorithms.GraphicsAlgorithm;
 import org.eclipse.graphiti.mm.algorithms.Text;
+import org.eclipse.graphiti.mm.pictograms.ConnectionDecorator;
 import org.eclipse.graphiti.mm.pictograms.PictogramElement;
 import org.eclipse.graphiti.mm.pictograms.Shape;
 
-import edu.hu.clickwatch.analysis.composition.model.ModelNode;
+import edu.hu.clickwatch.analysis.composition.model.Element;
+import edu.hu.clickwatch.analysis.composition.model.Node;
 
-public class CompositionDirectEditModelNodeFeature extends AbstractDirectEditingFeature {
+public class DirectEditElementFeature extends AbstractDirectEditingFeature {
 
-	public CompositionDirectEditModelNodeFeature(IFeatureProvider fp) {
+	public DirectEditElementFeature(IFeatureProvider fp) {
 		super(fp);
 	}
 
 	public int getEditingType() {
-		// there are several possible editor-types supported:
-		// text-field, checkbox, color-chooser, combobox, ...
 		return TYPE_TEXT;
 	}
 
@@ -42,50 +42,38 @@ public class CompositionDirectEditModelNodeFeature extends AbstractDirectEditing
 		PictogramElement pe = context.getPictogramElement();
 		Object bo = getBusinessObjectForPictogramElement(pe);
 		GraphicsAlgorithm ga = context.getGraphicsAlgorithm();
-		// support direct editing, if it is a EClass, and the user clicked
-		// directly on the text and not somewhere else in the rectangle
-		if (bo instanceof ModelNode && ga instanceof Text) {
-			// EClass eClass = (EClass) bo;
-			// additionally the flag isFrozen must be false
-			// return !eClass.isFrozen();
+		if (bo instanceof Element && ga instanceof Text) {
 			return true;
 		}
-		// direct editing not supported in all other cases
 		return false;
 	}
 
 	public String getInitialValue(IDirectEditingContext context) {
-		// return the current name of the EClass
 		PictogramElement pe = context.getPictogramElement();
-		ModelNode modelNode = (ModelNode) getBusinessObjectForPictogramElement(pe);
-		return modelNode.getLabel();
+		Node node = (Node) getBusinessObjectForPictogramElement(pe);
+		return node.getLabel();
 	}
 
 	@Override
 	public String checkValueValid(String value, IDirectEditingContext context) {
 		if (value.length() < 1)
-			return "Please enter any text as class name."; //$NON-NLS-1$
+			return "Please enter any text as element name."; //$NON-NLS-1$
 		if (value.contains(" ")) //$NON-NLS-1$
-			return "Spaces are not allowed in class names."; //$NON-NLS-1$
+			return "Spaces are not allowed in element names."; //$NON-NLS-1$
 		if (value.contains("\n")) //$NON-NLS-1$
-			return "Line breakes are not allowed in class names."; //$NON-NLS-1$
+			return "Line breakes are not allowed in element names."; //$NON-NLS-1$
 
-		// null means, that the value is valid
 		return null;
 	}
 
 	public void setValue(String value, IDirectEditingContext context) {
-		// set the new name for the EClass
 		PictogramElement pe = context.getPictogramElement();
-		ModelNode modelNode = (ModelNode) getBusinessObjectForPictogramElement(pe);
-		modelNode.setLabel(value);
-
-		// Explicitly update the shape to display the new value in the diagram
-		// Note, that this might not be necessary in future versions of Graphiti
-		// (currently in discussion)
-
-		// we know, that pe is the Shape of the Text, so its container is the
-		// main shape of the EClass
-		updatePictogramElement(((Shape) pe).getContainer());
+		Node node = (Node) getBusinessObjectForPictogramElement(pe);
+		node.setLabel(value);
+		if (pe instanceof Shape) {
+			updatePictogramElement(((Shape)pe).getContainer());
+		} else if (pe instanceof ConnectionDecorator) {
+			updatePictogramElement(((ConnectionDecorator)pe).getConnection());
+		}
 	}
 }

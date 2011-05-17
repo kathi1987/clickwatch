@@ -20,28 +20,32 @@ import org.eclipse.graphiti.features.IReason;
 import org.eclipse.graphiti.features.context.IUpdateContext;
 import org.eclipse.graphiti.features.impl.AbstractUpdateFeature;
 import org.eclipse.graphiti.features.impl.Reason;
+import org.eclipse.graphiti.mm.algorithms.Ellipse;
 import org.eclipse.graphiti.mm.algorithms.Text;
+import org.eclipse.graphiti.mm.pictograms.Connection;
+import org.eclipse.graphiti.mm.pictograms.ConnectionDecorator;
 import org.eclipse.graphiti.mm.pictograms.ContainerShape;
 import org.eclipse.graphiti.mm.pictograms.PictogramElement;
 import org.eclipse.graphiti.mm.pictograms.Shape;
 
+import edu.hu.clickwatch.analysis.composition.model.Element;
 import edu.hu.clickwatch.analysis.composition.model.ModelNode;
 
-public class CompositionUpdateModelNodeFeature extends AbstractUpdateFeature {
+public class UpdateElementFeature extends AbstractUpdateFeature {
 
-	public CompositionUpdateModelNodeFeature(IFeatureProvider fp) {
+	public UpdateElementFeature(IFeatureProvider fp) {
 		super(fp);
 	}
 
 	public boolean canUpdate(IUpdateContext context) {
-		// return true, if linked business object is an EClass
 		Object bo = getBusinessObjectForPictogramElement(context.getPictogramElement());
-		return (bo instanceof ModelNode);
+		return (bo instanceof Element);
 	}
 
 	public IReason updateNeeded(IUpdateContext context) {
-		// retrieve name from pictogram model
 		String pictogramName = null;
+		boolean isModelNode = false;
+		boolean hasModel = false;
 		PictogramElement pictogramElement = context.getPictogramElement();
 		if (pictogramElement instanceof ContainerShape) {
 			ContainerShape cs = (ContainerShape) pictogramElement;
@@ -49,44 +53,70 @@ public class CompositionUpdateModelNodeFeature extends AbstractUpdateFeature {
 				if (shape.getGraphicsAlgorithm() instanceof Text) {
 					Text text = (Text) shape.getGraphicsAlgorithm();
 					pictogramName = text.getValue();
+				} 
+				if (shape.getGraphicsAlgorithm() instanceof Ellipse) {
+					isModelNode = true;
+					hasModel = ((Ellipse)shape.getGraphicsAlgorithm()).getTransparency() == 0;
+				}
+			}
+		} else if (pictogramElement instanceof Connection) {
+			Connection c = (Connection) pictogramElement;
+			for (ConnectionDecorator decorator : c.getConnectionDecorators()) {
+				if (decorator.getGraphicsAlgorithm() instanceof Text) {
+					Text text = (Text) decorator.getGraphicsAlgorithm();
+					pictogramName = text.getValue();
 				}
 			}
 		}
 
-		// retrieve name from business model
 		String businessName = null;
 		Object bo = getBusinessObjectForPictogramElement(pictogramElement);
-		if (bo instanceof ModelNode) {
-			ModelNode modelNode = (ModelNode) bo;
-			businessName = modelNode.getLabel();
+		if (bo instanceof Element) {
+			Element element = (Element) bo;
+			businessName = element.getLabel();
 		}
 
-		// update needed, if names are different
 		boolean updateNameNeeded = ((pictogramName == null && businessName != null) || (pictogramName != null && !pictogramName
 				.equals(businessName)));
 		if (updateNameNeeded) {
 			return Reason.createTrueReason("Name is out of date"); //$NON-NLS-1$
+		} else if (isModelNode && ((ModelNode)bo).isHasModel() != hasModel) {
+			return Reason.createTrueReason("Model status is out of date"); //$NON-NLS-1$
 		} else {
 			return Reason.createFalseReason();
 		}
 	}
 
 	public boolean update(IUpdateContext context) {
-		// retrieve name from business model
 		String businessName = null;
 		PictogramElement pictogramElement = context.getPictogramElement();
 		Object bo = getBusinessObjectForPictogramElement(pictogramElement);
-		if (bo instanceof ModelNode) {
-			ModelNode modelNode = (ModelNode) bo;
-			businessName = modelNode.getLabel();
+		if (bo instanceof Element) {
+			Element element = (Element) bo;
+			businessName = element.getLabel();
 		}
 
-		// Set name in pictogram model
 		if (pictogramElement instanceof ContainerShape) {
 			ContainerShape cs = (ContainerShape) pictogramElement;
-			for (Shape shape : cs.getChildren()) {
+			boolean hasChanged = false;
+			for (Shape shape : cs.getChildren()) {				
 				if (shape.getGraphicsAlgorithm() instanceof Text) {
 					Text text = (Text) shape.getGraphicsAlgorithm();
+					text.setValue(businessName);
+					hasChanged = true;
+				}
+				if (shape.getGraphicsAlgorithm() instanceof Ellipse) {
+					Ellipse ellipse = (Ellipse) shape.getGraphicsAlgorithm();
+					ellipse.setTransparency(((ModelNode)bo).isHasModel() ? 0.0: 1.0);
+					hasChanged = true;
+				}				
+			}
+			return hasChanged;
+		} else if (pictogramElement instanceof Connection) {
+			Connection c = (Connection)pictogramElement;
+			for (ConnectionDecorator decorator: c.getConnectionDecorators()) {
+				if (decorator.getGraphicsAlgorithm() instanceof Text) {
+					Text text = (Text) decorator.getGraphicsAlgorithm();
 					text.setValue(businessName);
 					return true;
 				}

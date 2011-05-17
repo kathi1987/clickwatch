@@ -52,7 +52,8 @@ import org.eclipse.graphiti.tb.IDecorator;
 import org.eclipse.graphiti.tb.ImageDecorator;
 
 import edu.hu.clickwatch.analysis.composition.CompositionImageProvider;
-import edu.hu.clickwatch.analysis.composition.features.CompositionRenameModelNodeFeature;
+import edu.hu.clickwatch.analysis.composition.features.RenameElementFeature;
+import edu.hu.clickwatch.analysis.composition.model.Node;
 
 public class CompositionToolBehaviorProvider extends DefaultToolBehaviorProvider {
 
@@ -178,10 +179,12 @@ public class CompositionToolBehaviorProvider extends DefaultToolBehaviorProvider
 
 	@Override
 	public ICustomFeature getDoubleClickFeature(IDoubleClickContext context) {
-		ICustomFeature customFeature = new CompositionRenameModelNodeFeature(getFeatureProvider());
-		// canExecute() tests especially if the context contains a EClass
-		if (customFeature.canExecute(context)) {
-			return customFeature;
+		IFeatureProvider featureProvider = getFeatureProvider();
+		ICustomFeature[] possibleFeatures = new ICustomFeature[] { new RenameElementFeature(featureProvider) }; 
+		for (ICustomFeature customFeature: possibleFeatures) {
+			if (customFeature.canExecute(context)) {
+				return customFeature;
+			}
 		}
 
 		return super.getDoubleClickFeature(context);
@@ -189,6 +192,7 @@ public class CompositionToolBehaviorProvider extends DefaultToolBehaviorProvider
 
 	@Override
 	public IDecorator[] getDecorators(PictogramElement pe) {
+		// TODO
 		IFeatureProvider featureProvider = getFeatureProvider();
 		Object bo = featureProvider.getBusinessObjectForPictogramElement(pe);
 		if (bo instanceof EClass) {
@@ -208,9 +212,8 @@ public class CompositionToolBehaviorProvider extends DefaultToolBehaviorProvider
 	public GraphicsAlgorithm[] getClickArea(PictogramElement pe) {
 		IFeatureProvider featureProvider = getFeatureProvider();
 		Object bo = featureProvider.getBusinessObjectForPictogramElement(pe);
-		if (bo instanceof EClass) {
-			GraphicsAlgorithm invisible = pe.getGraphicsAlgorithm();
-			GraphicsAlgorithm rectangle = invisible.getGraphicsAlgorithmChildren().get(0);
+		if (bo instanceof Node) {
+			GraphicsAlgorithm rectangle = pe.getGraphicsAlgorithm();
 			return new GraphicsAlgorithm[] { rectangle };
 		}
 		return super.getClickArea(pe);
@@ -220,7 +223,7 @@ public class CompositionToolBehaviorProvider extends DefaultToolBehaviorProvider
 	public GraphicsAlgorithm getSelectionBorder(PictogramElement pe) {
 		IFeatureProvider featureProvider = getFeatureProvider();
 		Object bo = featureProvider.getBusinessObjectForPictogramElement(pe);
-		if (bo instanceof EClass) {
+		if (bo instanceof Node) {
 			GraphicsAlgorithm invisible = pe.getGraphicsAlgorithm();
 			EList<GraphicsAlgorithm> graphicsAlgorithmChildren = invisible.getGraphicsAlgorithmChildren();
 			if (!graphicsAlgorithmChildren.isEmpty()) {

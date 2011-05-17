@@ -19,17 +19,20 @@ import org.eclipse.graphiti.features.IFeatureProvider;
 import org.eclipse.graphiti.features.context.ICreateContext;
 
 import edu.hu.clickwatch.analysis.composition.model.CompositionFactory;
+import edu.hu.clickwatch.analysis.composition.model.MeasureNode;
 import edu.hu.clickwatch.analysis.composition.model.Node;
 
-public class CompositionCreateMeasureNodeFeature extends AbstractCreateNodeFeature {
+public class CreateMeasureNodeFeature extends AbstractCreateNodeFeature {
 
-	public CompositionCreateMeasureNodeFeature(IFeatureProvider fp) {
+	public CreateMeasureNodeFeature(IFeatureProvider fp) {
 		// set name and description of the creation feature
 		super(fp, "Measure", "Create Measure"); //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	@Override
 	protected Node createNode(ICreateContext context) {
-		return CompositionFactory.eINSTANCE.createMeasureNode();
+		MeasureNode result =  CompositionFactory.eINSTANCE.createMeasureNode();
+		result.setLabel("Measure");
+		return result;
 	}
 }

@@ -23,7 +23,8 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.graphiti.examples.common;bundle-version="0.7.0",
  org.eclipse.graphiti.ui;bundle-version="0.7.0",
  org.eclipse.ui.views.properties.tabbed;bundle-version="3.5.100",
- org.eclipse.emf.transaction;bundle-version="1.4.0"
+ org.eclipse.emf.transaction;bundle-version="1.4.0",
+ org.eclipse.xtend.typesystem.emf;bundle-version="1.0.1"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: edu.hu.clickwatch.analysis.automated,

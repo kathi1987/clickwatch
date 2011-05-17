@@ -36,4 +36,11 @@ public class CompositionDiagramTypeProvider extends AbstractDiagramTypeProvider 
         }
         return toolBehaviorProviders;
     }
+
+	@Override
+	public boolean isAutoUpdateAtStartup() {
+		return true;
+	}
+    
+    
 }

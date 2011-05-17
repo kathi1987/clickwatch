@@ -22,7 +22,7 @@ import org.eclipse.graphiti.ui.platform.AbstractPropertySectionFilter;
 
 import edu.hu.clickwatch.analysis.composition.model.ModelNode;
 
-public class CompositionModelNodeFilter extends AbstractPropertySectionFilter {
+public class ModelNodeFilter extends AbstractPropertySectionFilter {
 
 	@Override
 	protected boolean accept(PictogramElement pe) {

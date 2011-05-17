@@ -238,6 +238,24 @@ public class CompositionPackageImpl extends EPackageImpl implements CompositionP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getTransformation_TransformationUri() {
+		return (EAttribute)transformationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTransformation_TransformationFunction() {
+		return (EAttribute)transformationEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getElement() {
 		return elementEClass;
 	}
@@ -258,6 +276,60 @@ public class CompositionPackageImpl extends EPackageImpl implements CompositionP
 	 */
 	public EClass getModelNode() {
 		return modelNodeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getModelNode_MetaModelResource() {
+		return (EAttribute)modelNodeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getModelNode_InferedType() {
+		return (EAttribute)modelNodeEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getModelNode_MetaModelClass() {
+		return (EAttribute)modelNodeEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getModelNode_ModelResource() {
+		return (EAttribute)modelNodeEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getModelNode_Persistent() {
+		return (EAttribute)modelNodeEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getModelNode_HasModel() {
+		return (EAttribute)modelNodeEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -402,11 +474,19 @@ public class CompositionPackageImpl extends EPackageImpl implements CompositionP
 		createEReference(nodeEClass, NODE__OUTGOING);
 
 		transformationEClass = createEClass(TRANSFORMATION);
+		createEAttribute(transformationEClass, TRANSFORMATION__TRANSFORMATION_URI);
+		createEAttribute(transformationEClass, TRANSFORMATION__TRANSFORMATION_FUNCTION);
 
 		elementEClass = createEClass(ELEMENT);
 		createEAttribute(elementEClass, ELEMENT__LABEL);
 
 		modelNodeEClass = createEClass(MODEL_NODE);
+		createEAttribute(modelNodeEClass, MODEL_NODE__META_MODEL_RESOURCE);
+		createEAttribute(modelNodeEClass, MODEL_NODE__INFERED_TYPE);
+		createEAttribute(modelNodeEClass, MODEL_NODE__META_MODEL_CLASS);
+		createEAttribute(modelNodeEClass, MODEL_NODE__MODEL_RESOURCE);
+		createEAttribute(modelNodeEClass, MODEL_NODE__PERSISTENT);
+		createEAttribute(modelNodeEClass, MODEL_NODE__HAS_MODEL);
 
 		dataSetNodeEClass = createEClass(DATA_SET_NODE);
 
@@ -482,11 +562,19 @@ public class CompositionPackageImpl extends EPackageImpl implements CompositionP
 		initEReference(getNode_Outgoing(), this.getEdge(), null, "outgoing", null, 0, -1, Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(transformationEClass, Transformation.class, "Transformation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getTransformation_TransformationUri(), ecorePackage.getEString(), "transformationUri", null, 0, 1, Transformation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTransformation_TransformationFunction(), ecorePackage.getEString(), "transformationFunction", null, 0, 1, Transformation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(elementEClass, Element.class, "Element", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getElement_Label(), ecorePackage.getEString(), "label", null, 0, 1, Element.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(modelNodeEClass, ModelNode.class, "ModelNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getModelNode_MetaModelResource(), ecorePackage.getEString(), "metaModelResource", null, 0, 1, ModelNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getModelNode_InferedType(), ecorePackage.getEBoolean(), "inferedType", "true", 0, 1, ModelNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getModelNode_MetaModelClass(), ecorePackage.getEString(), "metaModelClass", null, 0, 1, ModelNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getModelNode_ModelResource(), ecorePackage.getEString(), "modelResource", null, 0, 1, ModelNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getModelNode_Persistent(), ecorePackage.getEBoolean(), "persistent", "false", 0, 1, ModelNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getModelNode_HasModel(), ecorePackage.getEBoolean(), "hasModel", "false", 0, 1, ModelNode.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(dataSetNodeEClass, DataSetNode.class, "DataSetNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

@@ -226,13 +226,31 @@ public interface CompositionPackage extends EPackage {
 	int TRANSFORMATION__TARGET = EDGE__TARGET;
 
 	/**
+	 * The feature id for the '<em><b>Transformation Uri</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSFORMATION__TRANSFORMATION_URI = EDGE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Transformation Function</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSFORMATION__TRANSFORMATION_FUNCTION = EDGE_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Transformation</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSFORMATION_FEATURE_COUNT = EDGE_FEATURE_COUNT + 0;
+	int TRANSFORMATION_FEATURE_COUNT = EDGE_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link edu.hu.clickwatch.analysis.composition.model.impl.ModelNodeImpl <em>Model Node</em>}' class.
@@ -281,13 +299,67 @@ public interface CompositionPackage extends EPackage {
 	int MODEL_NODE__OUTGOING = NODE__OUTGOING;
 
 	/**
+	 * The feature id for the '<em><b>Meta Model Resource</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL_NODE__META_MODEL_RESOURCE = NODE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Infered Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL_NODE__INFERED_TYPE = NODE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Meta Model Class</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL_NODE__META_MODEL_CLASS = NODE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Model Resource</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL_NODE__MODEL_RESOURCE = NODE_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Persistent</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL_NODE__PERSISTENT = NODE_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Has Model</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL_NODE__HAS_MODEL = NODE_FEATURE_COUNT + 5;
+
+	/**
 	 * The number of structural features of the '<em>Model Node</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_NODE_FEATURE_COUNT = NODE_FEATURE_COUNT + 0;
+	int MODEL_NODE_FEATURE_COUNT = NODE_FEATURE_COUNT + 6;
 
 	/**
 	 * The meta object id for the '{@link edu.hu.clickwatch.analysis.composition.model.impl.DataSetNodeImpl <em>Data Set Node</em>}' class.
@@ -437,13 +509,31 @@ public interface CompositionPackage extends EPackage {
 	int TIMED_TRANSFORMATION__TARGET = EDGE__TARGET;
 
 	/**
+	 * The feature id for the '<em><b>Transformation Uri</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIMED_TRANSFORMATION__TRANSFORMATION_URI = EDGE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Transformation Function</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIMED_TRANSFORMATION__TRANSFORMATION_FUNCTION = EDGE_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Timed Transformation</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TIMED_TRANSFORMATION_FEATURE_COUNT = EDGE_FEATURE_COUNT + 0;
+	int TIMED_TRANSFORMATION_FEATURE_COUNT = EDGE_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link edu.hu.clickwatch.analysis.composition.model.impl.MappedTransformationImpl <em>Mapped Transformation</em>}' class.
@@ -483,13 +573,31 @@ public interface CompositionPackage extends EPackage {
 	int MAPPED_TRANSFORMATION__TARGET = EDGE__TARGET;
 
 	/**
+	 * The feature id for the '<em><b>Transformation Uri</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAPPED_TRANSFORMATION__TRANSFORMATION_URI = EDGE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Transformation Function</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAPPED_TRANSFORMATION__TRANSFORMATION_FUNCTION = EDGE_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Mapped Transformation</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MAPPED_TRANSFORMATION_FEATURE_COUNT = EDGE_FEATURE_COUNT + 0;
+	int MAPPED_TRANSFORMATION_FEATURE_COUNT = EDGE_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link edu.hu.clickwatch.analysis.composition.model.impl.VisualizationImpl <em>Visualization</em>}' class.
@@ -730,6 +838,28 @@ public interface CompositionPackage extends EPackage {
 	EClass getTransformation();
 
 	/**
+	 * Returns the meta object for the attribute '{@link edu.hu.clickwatch.analysis.composition.model.Transformation#getTransformationUri <em>Transformation Uri</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Transformation Uri</em>'.
+	 * @see edu.hu.clickwatch.analysis.composition.model.Transformation#getTransformationUri()
+	 * @see #getTransformation()
+	 * @generated
+	 */
+	EAttribute getTransformation_TransformationUri();
+
+	/**
+	 * Returns the meta object for the attribute '{@link edu.hu.clickwatch.analysis.composition.model.Transformation#getTransformationFunction <em>Transformation Function</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Transformation Function</em>'.
+	 * @see edu.hu.clickwatch.analysis.composition.model.Transformation#getTransformationFunction()
+	 * @see #getTransformation()
+	 * @generated
+	 */
+	EAttribute getTransformation_TransformationFunction();
+
+	/**
 	 * Returns the meta object for class '{@link edu.hu.clickwatch.analysis.composition.model.Element <em>Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -759,6 +889,72 @@ public interface CompositionPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getModelNode();
+
+	/**
+	 * Returns the meta object for the attribute '{@link edu.hu.clickwatch.analysis.composition.model.ModelNode#getMetaModelResource <em>Meta Model Resource</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Meta Model Resource</em>'.
+	 * @see edu.hu.clickwatch.analysis.composition.model.ModelNode#getMetaModelResource()
+	 * @see #getModelNode()
+	 * @generated
+	 */
+	EAttribute getModelNode_MetaModelResource();
+
+	/**
+	 * Returns the meta object for the attribute '{@link edu.hu.clickwatch.analysis.composition.model.ModelNode#isInferedType <em>Infered Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Infered Type</em>'.
+	 * @see edu.hu.clickwatch.analysis.composition.model.ModelNode#isInferedType()
+	 * @see #getModelNode()
+	 * @generated
+	 */
+	EAttribute getModelNode_InferedType();
+
+	/**
+	 * Returns the meta object for the attribute '{@link edu.hu.clickwatch.analysis.composition.model.ModelNode#getMetaModelClass <em>Meta Model Class</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Meta Model Class</em>'.
+	 * @see edu.hu.clickwatch.analysis.composition.model.ModelNode#getMetaModelClass()
+	 * @see #getModelNode()
+	 * @generated
+	 */
+	EAttribute getModelNode_MetaModelClass();
+
+	/**
+	 * Returns the meta object for the attribute '{@link edu.hu.clickwatch.analysis.composition.model.ModelNode#getModelResource <em>Model Resource</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Model Resource</em>'.
+	 * @see edu.hu.clickwatch.analysis.composition.model.ModelNode#getModelResource()
+	 * @see #getModelNode()
+	 * @generated
+	 */
+	EAttribute getModelNode_ModelResource();
+
+	/**
+	 * Returns the meta object for the attribute '{@link edu.hu.clickwatch.analysis.composition.model.ModelNode#isPersistent <em>Persistent</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Persistent</em>'.
+	 * @see edu.hu.clickwatch.analysis.composition.model.ModelNode#isPersistent()
+	 * @see #getModelNode()
+	 * @generated
+	 */
+	EAttribute getModelNode_Persistent();
+
+	/**
+	 * Returns the meta object for the attribute '{@link edu.hu.clickwatch.analysis.composition.model.ModelNode#isHasModel <em>Has Model</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Has Model</em>'.
+	 * @see edu.hu.clickwatch.analysis.composition.model.ModelNode#isHasModel()
+	 * @see #getModelNode()
+	 * @generated
+	 */
+	EAttribute getModelNode_HasModel();
 
 	/**
 	 * Returns the meta object for class '{@link edu.hu.clickwatch.analysis.composition.model.DataSetNode <em>Data Set Node</em>}'.
@@ -950,6 +1146,22 @@ public interface CompositionPackage extends EPackage {
 		EClass TRANSFORMATION = eINSTANCE.getTransformation();
 
 		/**
+		 * The meta object literal for the '<em><b>Transformation Uri</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TRANSFORMATION__TRANSFORMATION_URI = eINSTANCE.getTransformation_TransformationUri();
+
+		/**
+		 * The meta object literal for the '<em><b>Transformation Function</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TRANSFORMATION__TRANSFORMATION_FUNCTION = eINSTANCE.getTransformation_TransformationFunction();
+
+		/**
 		 * The meta object literal for the '{@link edu.hu.clickwatch.analysis.composition.model.impl.ElementImpl <em>Element</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -976,6 +1188,54 @@ public interface CompositionPackage extends EPackage {
 		 * @generated
 		 */
 		EClass MODEL_NODE = eINSTANCE.getModelNode();
+
+		/**
+		 * The meta object literal for the '<em><b>Meta Model Resource</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MODEL_NODE__META_MODEL_RESOURCE = eINSTANCE.getModelNode_MetaModelResource();
+
+		/**
+		 * The meta object literal for the '<em><b>Infered Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MODEL_NODE__INFERED_TYPE = eINSTANCE.getModelNode_InferedType();
+
+		/**
+		 * The meta object literal for the '<em><b>Meta Model Class</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MODEL_NODE__META_MODEL_CLASS = eINSTANCE.getModelNode_MetaModelClass();
+
+		/**
+		 * The meta object literal for the '<em><b>Model Resource</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MODEL_NODE__MODEL_RESOURCE = eINSTANCE.getModelNode_ModelResource();
+
+		/**
+		 * The meta object literal for the '<em><b>Persistent</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MODEL_NODE__PERSISTENT = eINSTANCE.getModelNode_Persistent();
+
+		/**
+		 * The meta object literal for the '<em><b>Has Model</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MODEL_NODE__HAS_MODEL = eINSTANCE.getModelNode_HasModel();
 
 		/**
 		 * The meta object literal for the '{@link edu.hu.clickwatch.analysis.composition.model.impl.DataSetNodeImpl <em>Data Set Node</em>}' class.

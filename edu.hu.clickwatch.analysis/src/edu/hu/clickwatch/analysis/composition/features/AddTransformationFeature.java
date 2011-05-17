@@ -15,13 +15,16 @@
  *******************************************************************************/
 package edu.hu.clickwatch.analysis.composition.features;
 
+import org.eclipse.graphiti.features.IDirectEditingInfo;
 import org.eclipse.graphiti.features.IFeatureProvider;
 import org.eclipse.graphiti.features.context.IAddConnectionContext;
 import org.eclipse.graphiti.features.context.IAddContext;
 import org.eclipse.graphiti.features.impl.AbstractAddFeature;
 import org.eclipse.graphiti.mm.GraphicsAlgorithmContainer;
+import org.eclipse.graphiti.mm.algorithms.Ellipse;
 import org.eclipse.graphiti.mm.algorithms.Polyline;
 import org.eclipse.graphiti.mm.algorithms.Text;
+import org.eclipse.graphiti.mm.algorithms.styles.LineStyle;
 import org.eclipse.graphiti.mm.pictograms.Connection;
 import org.eclipse.graphiti.mm.pictograms.ConnectionDecorator;
 import org.eclipse.graphiti.mm.pictograms.PictogramElement;
@@ -29,12 +32,16 @@ import org.eclipse.graphiti.services.Graphiti;
 import org.eclipse.graphiti.services.IGaService;
 import org.eclipse.graphiti.services.IPeCreateService;
 
-import edu.hu.clickwatch.analysis.composition.StyleUtil;
+import edu.hu.clickwatch.analysis.composition.Style;
+import edu.hu.clickwatch.analysis.composition.model.MappedTransformation;
+import edu.hu.clickwatch.analysis.composition.model.TimedTransformation;
 import edu.hu.clickwatch.analysis.composition.model.Transformation;
 
-public class CompositionAddTransformationFeature extends AbstractAddFeature {
+public class AddTransformationFeature extends AbstractAddFeature {
 
-	public CompositionAddTransformationFeature(IFeatureProvider fp) {
+	private static final int MAPPED_TRANSITION_DECORATOR_SIZE = 10;
+
+	public AddTransformationFeature(IFeatureProvider fp) {
 		super(fp);
 	}
 
@@ -43,40 +50,49 @@ public class CompositionAddTransformationFeature extends AbstractAddFeature {
 		Transformation addedTransformation = (Transformation) context.getNewObject();
 
 		IPeCreateService peCreateService = Graphiti.getPeCreateService();
-		// CONNECTION WITH POLYLINE
+
 		Connection connection = peCreateService.createFreeFormConnection(getDiagram());
 		connection.setStart(addConContext.getSourceAnchor());
 		connection.setEnd(addConContext.getTargetAnchor());
 
 		IGaService gaService = Graphiti.getGaService();
 		Polyline polyline = gaService.createPolyline(connection);
-		polyline.setStyle(StyleUtil.getStyleForEClass(getDiagram()));
+		polyline.setForeground(manageColor(Style.SHAPE_FOREGROUND));
+		if (addedTransformation instanceof TimedTransformation) {
+			polyline.setLineStyle(LineStyle.DASHDOT);
+		}
 
 		// create link and wire it
 		link(connection, addedTransformation);
 
-		// add dynamic text decorator for the reference name
 		ConnectionDecorator textDecorator = peCreateService.createConnectionDecorator(connection, true, 0.5, true);
 		Text text = gaService.createDefaultText(textDecorator);
-		text.setStyle(StyleUtil.getStyleForEClassText((getDiagram())));
+		text.getFont().setSize(12);
+		text.setForeground(manageColor(Style.TEXT_FOREGROUND));
 		gaService.setLocation(text, 10, 0);
-		// set reference name in the text decorator
 		Transformation transformation = (Transformation) context.getNewObject();
 		text.setValue(transformation.getLabel());
+		
+		link(textDecorator, addedTransformation);		
 
-		// add static graphical decorators (composition and navigable)
+		final IDirectEditingInfo directEditingInfo = getFeatureProvider().getDirectEditingInfo();
+		directEditingInfo.setMainPictogramElement(connection);
+		directEditingInfo.setPictogramElement(textDecorator);
+		directEditingInfo.setGraphicsAlgorithm(text);
+
 		ConnectionDecorator cd;
 		cd = peCreateService.createConnectionDecorator(connection, false, 1.0, true);
 		createArrow(cd);
-		//		cd = PeUtil.createConnectionDecorator(connection, false, 1.0, true);
-		//		createRhombus(cd);
-
+		
+		if (transformation instanceof MappedTransformation) {
+			cd = peCreateService.createConnectionDecorator(connection, false, 0, true);
+			createCircle(cd).setForeground(manageColor(Style.SHAPE_FOREGROUND));
+		}
+		
 		return connection;
 	}
 
 	public boolean canAdd(IAddContext context) {
-		// return true if given business object is an EReference
-		// note, that the context must be an instance of IAddConnectionContext
 		if (context instanceof IAddConnectionContext && context.getNewObject() instanceof Transformation) {
 			return true;
 		}
@@ -84,16 +100,14 @@ public class CompositionAddTransformationFeature extends AbstractAddFeature {
 	}
 
 	private Polyline createArrow(GraphicsAlgorithmContainer gaContainer) {
-		Polyline polyline = Graphiti.getGaCreateService().createPolyline(gaContainer, new int[] { -7, 4, 0, 0, -7, -4 });
-		polyline.setStyle(StyleUtil.getStyleForEClass(getDiagram()));
-		return polyline;
+		return Graphiti.getGaCreateService().createPolyline(gaContainer, new int[] { -7, 4, 0, 0, -7, -4 });
 	}
 
-	//	private Polygon createRhombus(GraphicsAlgorithmContainer gaContainer) {
-	//		Polygon polygon = GaUtil.createPolygon(gaContainer, new int[] { 0, 0, -10, 10, -20, 0, -10, -10 });
-	//		polygon.setForeground(manageColor(IColorConstant.BLACK));
-	//		polygon.setBackground(manageColor(IColorConstant.BLACK));
-	//		polygon.setLineWidth(2);
-	//		return polygon;
-	//	}
+	private Ellipse createCircle(GraphicsAlgorithmContainer gaContainer) {
+		IGaService gaService = Graphiti.getGaService();
+		Ellipse ellipse = gaService.createEllipse(gaContainer);
+		ellipse.setFilled(true);
+		gaService.setLocationAndSize(ellipse, 0, 0, MAPPED_TRANSITION_DECORATOR_SIZE, MAPPED_TRANSITION_DECORATOR_SIZE);
+		return ellipse;
+	}
 }

@@ -16,20 +16,29 @@
 package edu.hu.clickwatch.analysis.composition.features;
 
 import org.eclipse.graphiti.features.IFeatureProvider;
-import org.eclipse.graphiti.features.context.ICreateContext;
+import org.eclipse.graphiti.features.context.IMoveShapeContext;
+import org.eclipse.graphiti.features.impl.DefaultMoveShapeFeature;
+import org.eclipse.graphiti.mm.pictograms.Shape;
 
-import edu.hu.clickwatch.analysis.composition.model.CompositionFactory;
 import edu.hu.clickwatch.analysis.composition.model.Node;
 
-public class CompositionCreateModelNodeFeature extends AbstractCreateNodeFeature {
+public class MoveNodeFeature extends DefaultMoveShapeFeature {
 
-	public CompositionCreateModelNodeFeature(IFeatureProvider fp) {
-		// set name and description of the creation feature
-		super(fp, "Model", "Create Model"); //$NON-NLS-1$ //$NON-NLS-2$
+	public MoveNodeFeature(IFeatureProvider fp) {
+		super(fp);
 	}
 
 	@Override
-	protected Node createNode(ICreateContext context) {
-		return CompositionFactory.eINSTANCE.createModelNode();
+	public boolean canMoveShape(IMoveShapeContext context) {
+		boolean canMove = super.canMoveShape(context);
+
+		if (canMove) {
+			Shape shape = context.getShape();
+			Object bo = getBusinessObjectForPictogramElement(shape);
+			if (bo instanceof Node) {
+				return true;
+			}
+		}
+		return canMove;
 	}
 }

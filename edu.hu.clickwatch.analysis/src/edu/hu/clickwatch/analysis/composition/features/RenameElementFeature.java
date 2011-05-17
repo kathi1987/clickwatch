@@ -21,33 +21,31 @@ import org.eclipse.graphiti.features.context.ICustomContext;
 import org.eclipse.graphiti.features.custom.AbstractCustomFeature;
 import org.eclipse.graphiti.mm.pictograms.PictogramElement;
 
-import edu.hu.clickwatch.analysis.composition.model.ModelNode;
+import edu.hu.clickwatch.analysis.composition.model.Element;
 
-public class CompositionRenameModelNodeFeature extends AbstractCustomFeature {
+public class RenameElementFeature extends AbstractCustomFeature {
 
-	public CompositionRenameModelNodeFeature(IFeatureProvider fp) {
+	public RenameElementFeature(IFeatureProvider fp) {
 		super(fp);
 	}
 
 	@Override
 	public String getName() {
-		return "Re-label Model"; //$NON-NLS-1$
+		return "Re-label element"; //$NON-NLS-1$
 	}
 
 	@Override
 	public String getDescription() {
-		return "Change the label of the Model"; //$NON-NLS-1$
+		return "Change the label of the element"; //$NON-NLS-1$
 	}
 
 	@Override
 	public boolean canExecute(ICustomContext context) {
-		// allow rename if exactly one pictogram element
-		// representing an EClass is selected
 		boolean ret = false;
 		PictogramElement[] pes = context.getPictogramElements();
 		if (pes != null && pes.length == 1) {
 			Object bo = getBusinessObjectForPictogramElement(pes[0]);
-			if (bo instanceof ModelNode) {
+			if (bo instanceof Element) {
 				ret = true;
 			}
 		}
@@ -58,13 +56,13 @@ public class CompositionRenameModelNodeFeature extends AbstractCustomFeature {
 		PictogramElement[] pes = context.getPictogramElements();
 		if (pes != null && pes.length == 1) {
 			Object bo = getBusinessObjectForPictogramElement(pes[0]);
-			if (bo instanceof ModelNode) {
-				ModelNode modelNode = (ModelNode) bo;
-				String currentName = modelNode.getLabel();
+			if (bo instanceof Element) {
+				Element element = (Element) bo;
+				String currentLabel = element.getLabel();
 				// ask user for a new class name
-				String newName = ExampleUtil.askString(getName(), getDescription(), currentName);
-				if (newName != null) {
-					modelNode.setLabel(newName);
+				String newLabel = ExampleUtil.askString(getName(), getDescription(), currentLabel);
+				if (newLabel != null) {
+					element.setLabel(newLabel);
 				}
 			}
 		}

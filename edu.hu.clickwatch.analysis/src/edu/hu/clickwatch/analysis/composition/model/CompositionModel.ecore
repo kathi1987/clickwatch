@@ -9,11 +9,25 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="outgoing" upperBound="-1"
         eType="#//Edge"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Transformation" eSuperTypes="#//Edge"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Transformation" eSuperTypes="#//Edge">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="transformationUri" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="transformationFunction"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Element">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="label" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ModelNode" eSuperTypes="#//Node #//DataNode"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ModelNode" eSuperTypes="#//Node #//DataNode">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="metaModelResource" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="inferedType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="metaModelClass" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="modelResource" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="persistent" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hasModel" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        transient="true" defaultValueLiteral="false"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DataSetNode" eSuperTypes="#//Node #//DataNode"/>
   <eClassifiers xsi:type="ecore:EClass" name="MeasureNode" eSuperTypes="#//Node #//DataNode"/>
   <eClassifiers xsi:type="ecore:EClass" name="Edge" eSuperTypes="#//Element">
