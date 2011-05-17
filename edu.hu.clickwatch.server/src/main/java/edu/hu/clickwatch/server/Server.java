@@ -12,9 +12,9 @@ import org.osgi.service.log.LogService;
 import edu.hu.clickwatch.model.ClickWatchModelFactory;
 import edu.hu.clickwatch.model.Network;
 import edu.hu.clickwatch.model.Node;
-import edu.hu.clickwatch.xml.ConfigurationType;
+/*import edu.hu.clickwatch.xml.ConfigurationType;
 import edu.hu.clickwatch.xml.NetworkType;
-import edu.hu.clickwatch.xml.NodeType;
+import edu.hu.clickwatch.xml.NodeType;*/
 
 /**
  * The server component stores the database and network connection configuration as well as
@@ -28,7 +28,7 @@ public class Server {
 	/**	The array list holds a list of node connections */
 	private ArrayList<NodeConnection> mConnectionList;
 	/** The java representation of the xml based network configuration file */
-	private ConfigurationType mConfiguration;
+//s	private ConfigurationType mConfiguration;
 	/** Location of the configuration file */
 	private String mConfigurationFile;
 	
@@ -45,7 +45,7 @@ public class Server {
 		this.readConfigurationFile();
 	}
 	
-	public void readConfigurationFile(){
+	public void readConfigurationFile(){/*
 		try {
 			ClassLoader classLoader = edu.hu.clickwatch.xml.ObjectFactory.class.getClassLoader();
 
@@ -54,11 +54,12 @@ public class Server {
 	        mConfiguration = (ConfigurationType) unmarshaller.unmarshal(new File(this.mConfigurationFile));
 		} catch (JAXBException e) {
 			e.printStackTrace();
-		} 	
+		} 	*/
 	}
 	
 	
 	public boolean initialize(){
+		/*
 		if(mConfiguration != null){
 			// Initialize array list
 			mConnectionList = new ArrayList<NodeConnection>();
@@ -102,6 +103,7 @@ public class Server {
 				}
 			}
 		}
+		*/
 		return false;
 	}
 	

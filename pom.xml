@@ -20,13 +20,8 @@
     <module>edu.hu.clickwatch.server</module>
 <!--
     <module>edu.hu.clickwatch.server.tests</module>
--->
-<!--
-    <module>org.dynamicjava.jaxb-api </module>
-    <module>org.dynamicjava.jpa-api </module>
-    <module>org.dynamicjava.stax-api </module>
--->
     <module>edu.hu.clickwatch.xml</module>
+-->
     <module>edu.hu.clickwatch.logservice</module>
     <module>edu.mit.clickcontrol</module>
     <module>org.eclipse.wst.sse.core</module>
