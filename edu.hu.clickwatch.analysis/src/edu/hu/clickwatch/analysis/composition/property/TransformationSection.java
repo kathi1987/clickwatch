@@ -18,6 +18,8 @@ package edu.hu.clickwatch.analysis.composition.property;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.core.resources.IFile;
@@ -45,7 +47,6 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
-import org.eclipse.swt.widgets.Widget;
 import org.eclipse.ui.statushandlers.StatusManager;
 import org.eclipse.ui.views.properties.tabbed.ITabbedPropertyConstants;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
@@ -58,20 +59,21 @@ import edu.hu.clickwatch.analysis.composition.model.ModelNode;
 import edu.hu.clickwatch.analysis.composition.model.ModelUtil;
 import edu.hu.clickwatch.analysis.composition.model.Node;
 import edu.hu.clickwatch.analysis.composition.model.Transformation;
+import edu.hu.clickwatch.analysis.composition.model.TransformationKind;
+import edu.hu.clickwatch.analysis.composition.transformations.IPredefinedTransformation;
+import edu.hu.clickwatch.analysis.composition.transformations.PredefinedTransformationsUtil;
+import edu.hu.clickwatch.analysis.composition.transformations.TransformationException;
 import edu.hu.clickwatch.analysis.ui.Activator;
 
 public class TransformationSection extends GFPropertySection implements ITabbedPropertyConstants {
 
-	private static final String JAVA = "Java";
-	private static final String XPAND = "Xpand";
-	private static final String XTEND = "Xtend";
-	private static final String PREDEFINED = "predefined";
 	private Text labelText;
 	private Button selectXtendButton;
 	private Text xtendText;
 	private Text xtendFuncText;
 	private Button executeButton;
 	private CCombo transCombo;
+	private CCombo predefinedTransCombo;
 	
 	private List<Control> xtendWidgets = new ArrayList<Control>();
 	private List<Control> predefinedWidgets = new ArrayList<Control>();
@@ -121,20 +123,40 @@ public class TransformationSection extends GFPropertySection implements ITabbedP
 		data.top = new FormAttachment(labelText, VSPACE);
 		transformationLabel.setLayoutData(data);
 		
-		transCombo = factory.createCCombo(composite, SWT.DROP_DOWN);
-		transCombo.setItems(new String[] { PREDEFINED, XTEND, XPAND, JAVA });
+		executeButton = factory.createButton(composite, "execute", SWT.PUSH);
 		data = new FormData();
-		data.left = new FormAttachment(0, STANDARD_LABEL_WIDTH+HSPACE*2);
-		data.right = new FormAttachment(0, STANDARD_LABEL_WIDTH*2+HSPACE*2);
+		data.left = new FormAttachment(100, -100);
+		data.right = new FormAttachment(100, 0);
 		data.top = new FormAttachment(transformationLabel, 0, SWT.CENTER);
-		transCombo.setText(PREDEFINED);
+		executeButton.setLayoutData(data);
+		executeButton.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				executeTransformation();
+			}
+		});
+		
+		transCombo = factory.createCCombo(composite, SWT.DROP_DOWN);
+		transCombo.setItems(new String[] { 
+				TransformationKind.PREDEFINED.toString(), 
+				TransformationKind.XTEND.toString(), 
+				TransformationKind.XPAND.toString(), 
+				TransformationKind.JAVA.toString() });
+		data = new FormData();
+		data.left = new FormAttachment(transformationLabel, HSPACE);
+		data.right = new FormAttachment(executeButton, -HSPACE);
+		data.top = new FormAttachment(transformationLabel, 0, SWT.CENTER);
+		transCombo.setText(TransformationKind.PREDEFINED.toString());
 		transCombo.setLayoutData(data);
 		transCombo.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				switchTransformation();
+				setTransformationKind();
 			}
 		});
+		
+
 		
 		CLabel xtendLabel = factory.createCLabel(composite, "Xtend:"); //$NON-NLS-1$
 		data = new FormData();
@@ -206,22 +228,46 @@ public class TransformationSection extends GFPropertySection implements ITabbedP
 		});
 		xtendWidgets.add(xtendFuncText);
 		
-		executeButton = factory.createButton(composite, "execute", SWT.PUSH);
+		predefinedTransCombo = factory.createCCombo(composite, SWT.DROP_DOWN);
+		Collection<String> predefinedTransNames = PredefinedTransformationsUtil.getPredefinedTransformations().keySet();
+		String[] predefinedTransItems = new String[predefinedTransNames.size()];
+		Iterator<String> it = predefinedTransNames.iterator();
+		for (int i = 0; i < predefinedTransNames.size(); i++) {
+			predefinedTransItems[i] = it.next();
+		}
+		predefinedTransCombo.setItems(predefinedTransItems);
 		data = new FormData();
-		data.left = new FormAttachment(transCombo, HSPACE);
+		data.left = new FormAttachment(0, STANDARD_LABEL_WIDTH+HSPACE*2);
 		data.right = new FormAttachment(100, 0);
-		data.top = new FormAttachment(transCombo, 0, SWT.CENTER);
-		executeButton.setLayoutData(data);
-		executeButton.addSelectionListener(new SelectionAdapter() {
+		data.top = new FormAttachment(transformationLabel, VSPACE);
+		predefinedTransCombo.setLayoutData(data);
+		predefinedTransCombo.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				executeTransformation();
+				// TODO
 			}
 		});
+		predefinedTransCombo.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				setPredefinedTransformation(predefinedTransCombo.getText());
+			}
+		});
+		predefinedWidgets.add(predefinedTransCombo);
 		
 		switchTransformation();
 	}
 	
+	private void setPredefinedTransformation(final String text) {
+		final Transformation transformation = getSelectedTransformation();
+		TransactionUtil.runSafely(new Runnable() {
+			@Override
+			public void run() {
+				transformation.setPredefinedTransformation(text);
+			}
+		}, transformation);
+	}
+
 	private EPackage loadMetaModel(ResourceSet rs, ModelNode node) throws IOException {
 		URI uri = URI.createURI(node.getMetaModelResource());
 		Resource metaModelResource = rs.getResource(uri, false);
@@ -237,18 +283,72 @@ public class TransformationSection extends GFPropertySection implements ITabbedP
 	}
 	
 	private void executeTransformation() {
-		Transformation transformation = getSelectedTransformation();
+		if (transCombo.getText().equals(TransformationKind.PREDEFINED.toString())) {
+			executePredefinedTransformation();
+		} else if (transCombo.getText().equals(TransformationKind.XTEND.toString())) {
+			executeXtendTransformation();
+		} else if (transCombo.getText().equals(TransformationKind.XPAND.toString())) {
+			raiseError("not supported yet");
+		} else if (transCombo.getText().equals(TransformationKind.JAVA.toString())) {
+			raiseError("not supported yet");
+		}
+	}
+	
+	private void executePredefinedTransformation() {
+		final Transformation transformation = getSelectedTransformation();
+		String predefinedTransformationName = predefinedTransCombo.getText();
+		final IPredefinedTransformation predefinedTransformation = 
+				PredefinedTransformationsUtil.getPredefinedTransformations().get(predefinedTransformationName);
+		if (predefinedTransformation == null) {
+			raiseError("unknown transformation " + predefinedTransformationName); return;
+		}
 		
-		String xtendUri = transformation.getTransformationUri();
-		if (xtendUri == null) {
-			Status myStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, "No transformation specified", null);
-			StatusManager.getManager().handle(myStatus, StatusManager.SHOW);
-			return;
+		final ModelSet models = getModels(false, false);
+		if (models != null) {
+			try {
+				TransactionUtil.runSafely(new Runnable() {
+					@Override
+					public void run() {
+						try {
+							predefinedTransformation.execute(models.sourceModel.model, models.targetModel.model);
+							ModelUtil.addModelToModelNode((ModelNode)transformation.getTarget(), models.targetModel.model);
+						} catch (TransformationException e) {
+							e.printStackTrace();
+							raiseError("transformation exception");			
+						}
+					}
+				}, transformation);
+			} catch (Exception e) {
+				e.printStackTrace();
+				raiseError("exception during transformation");
+			}
 		}
-		String xtendFunction = transformation.getTransformationFunction();
-		if (xtendFunction == null) {
-			xtendFunction = "performTransformation";
+	}
+	
+	private class Model {
+		final Resource model;
+		final EPackage metaModel;
+		public Model(Resource model, EPackage metaModel) {
+			super();
+			this.model = model;
+			this.metaModel = metaModel;
 		}
+	}
+	
+	private class ModelSet {
+		final Model sourceModel;
+		final Model targetModel;
+		public ModelSet(Model sourceModel, Model targetModel) {
+			super();
+			this.sourceModel = sourceModel;
+			this.targetModel = targetModel;
+		}
+	}
+	
+	private ModelSet getModels(
+			boolean requireSourceMetaModel, 
+			boolean requireTargetMetaModel) {
+		Transformation transformation = getSelectedTransformation();
 		
 		try {
 			Node source = transformation.getSource();
@@ -263,16 +363,23 @@ public class TransformationSection extends GFPropertySection implements ITabbedP
 				if (sourceModelNode.isHasModel()) {
 					sourceModel = ModelUtil.getModelFromModelNode(sourceModelNode);								
 				} else {
-					raiseError("no source model found"); return;
+					raiseError("no source model found"); return null;
 				}
 				
 				ResourceSet rs = sourceModel.getResourceSet();
 				
-				EPackage sourceMetaModel = loadMetaModel(rs, sourceModelNode);
-				EPackage targetMetaModel = loadMetaModel(rs, targetModelNode);
+				EPackage sourceMetaModel = null;
+				if (requireSourceMetaModel) {
+					sourceMetaModel = loadMetaModel(rs, sourceModelNode);
+				}
+				EPackage targetMetaModel = null;
+				if (requireTargetMetaModel) {
+					targetMetaModel = loadMetaModel(rs, targetModelNode);
+				}
 				
-				if (sourceModelNode.isInferedType() || targetModelNode.isInferedType()) {
-					raiseError("infered meta-models are not supported yet"); return;
+				if ((requireSourceMetaModel && sourceModelNode.isInferedType()) || 
+						(requireTargetMetaModel && targetModelNode.isInferedType())) {
+					raiseError("infered meta-models are not supported yet"); return null;
 				}
 				
 				if (targetModelNode.isPersistent()) {
@@ -283,18 +390,47 @@ public class TransformationSection extends GFPropertySection implements ITabbedP
 						targetModel = rs.createResource(URI.createURI(targetModelNode.getModelResource()));
 					}
 				} else {
-					raiseError("non persistent target models are not supported yet"); return;
+					raiseError("non persistent target models are not supported yet"); return null;
 				}	
 				
+				return new ModelSet(new Model(sourceModel, sourceMetaModel), new Model(targetModel, targetMetaModel));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			Status myStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, "Could not run transformation", e);
+			StatusManager.getManager().handle(myStatus, StatusManager.SHOW);
+			return null;
+		}
+		
+		raiseError("could not run transformation"); return null;
+	}
+	
+	private void executeXtendTransformation() {
+		Transformation transformation = getSelectedTransformation();
+		
+		String xtendUri = transformation.getTransformationUri();
+		if (xtendUri == null) {
+			Status myStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, "No transformation specified", null);
+			StatusManager.getManager().handle(myStatus, StatusManager.SHOW);
+			return;
+		}
+		String xtendFunction = transformation.getTransformationFunction();
+		if (xtendFunction == null) {
+			xtendFunction = "performTransformation";
+		}
+		
+		try {
+			ModelSet models = getModels(true, true);
+			if (models != null) {
 				XtendFacade f = XtendFacade.create();
-				f.registerMetaModel(new EmfMetaModel(sourceMetaModel));
-				f.registerMetaModel(new EmfMetaModel(targetMetaModel));
+				f.registerMetaModel(new EmfMetaModel(models.sourceModel.metaModel));
+				f.registerMetaModel(new EmfMetaModel(models.targetModel.metaModel));
 				f = f.cloneWithExtensions(read(URIConverter.INSTANCE.createInputStream(URI.createURI(xtendUri))));
 				
-				final Object result = f.call(xtendFunction, new Object[] { sourceModel.getContents().get(0)});
+				final Object result = f.call(xtendFunction, new Object[] { models.sourceModel.model.getContents().get(0)});
 				
-				final Resource finalTargetModel = targetModel;
-				final ModelNode finalTargetModelNode = targetModelNode;
+				final Resource finalTargetModel = models.targetModel.model;
+				final ModelNode finalTargetModelNode = (ModelNode)transformation.getTarget();
 				if (!(result instanceof EObject)) {
 					raiseError("invalid transformation result"); return;
 				} else {
@@ -370,9 +506,12 @@ public class TransformationSection extends GFPropertySection implements ITabbedP
 			String label = transformation.getLabel();
 			labelText.setText(label == null ? "" : label); //$NON-NLS-1$
 			String transformationFunction = transformation.getTransformationFunction();
+			transCombo.setText(transformation.getKind().toString());
 			xtendFuncText.setText(transformationFunction == null ? "" : transformationFunction);
 			String transformationUri = transformation.getTransformationUri();
 			xtendText.setText(transformationUri == null ? "" : transformationUri);
+			String predefinedTransformation = transformation.getPredefinedTransformation();
+			predefinedTransCombo.setText(predefinedTransformation == null ? "": predefinedTransformation);
 		}
 		
 		switchTransformation();
@@ -384,15 +523,37 @@ public class TransformationSection extends GFPropertySection implements ITabbedP
 		setVisibility(xpandWidgets, false);
 		setVisibility(javaWidgets, false);
 		
-		if (transCombo.getText().equals(PREDEFINED)) {
+		if (transCombo.getText().equals(TransformationKind.PREDEFINED.toString())) {
 			setVisibility(predefinedWidgets, true);
-		} else if (transCombo.getText().equals(XTEND)) {
+		} else if (transCombo.getText().equals(TransformationKind.XTEND.toString())) {
 			setVisibility(xtendWidgets, true);
-		} else if (transCombo.getText().equals(XPAND)) {
+		} else if (transCombo.getText().equals(TransformationKind.XPAND.toString())) {
 			setVisibility(xpandWidgets, true);
-		} else if (transCombo.getText().equals(JAVA)) {
+		} else if (transCombo.getText().equals(TransformationKind.JAVA.toString())) {
 			setVisibility(javaWidgets, true);
 		}
+	}
+	
+	private void setTransformationKind() {
+		TransformationKind kind = null;
+		if (transCombo.getText().equals(TransformationKind.PREDEFINED.toString())) {
+			kind = TransformationKind.PREDEFINED;
+		} else if (transCombo.getText().equals(TransformationKind.XTEND.toString())) {
+			kind = TransformationKind.XTEND;
+		} else if (transCombo.getText().equals(TransformationKind.XPAND.toString())) {
+			kind = TransformationKind.XPAND;
+		} else if (transCombo.getText().equals(TransformationKind.JAVA.toString())) {
+			kind = TransformationKind.JAVA;
+		}
+		
+		final Transformation transformation = getSelectedTransformation();
+		final TransformationKind finalKind = kind;
+		TransactionUtil.runSafely(new Runnable() {
+			@Override
+			public void run() {
+				transformation.setKind(finalKind);
+			}
+		}, transformation);
 	}
 	
 	private void setVisibility(List<Control> widgets, boolean visiblity) {

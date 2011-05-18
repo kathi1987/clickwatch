@@ -8,6 +8,7 @@
    </extension>
 
    <extension-point id="edu.hu.clickwatch.analysis.AutoAnalysis" name="Automated analysis" schema="schema/edu.hu.clickwatch.analysis.AutoAnalysis.exsd"/>
+   <extension-point id="edu.hu.clickwatch.analysis.composition.PredefinedTransformation" name="Predefined transformation" schema="schema/edu.hu.clickwatch.analysis.composition.PredefinedTransformation.exsd"/>
 	<extension
 		point="org.eclipse.ui.newWizards">
 		<category
@@ -192,6 +193,13 @@
     <contexts
           file="contexts.xml">
     </contexts>
+ </extension>
+ <extension
+       point="edu.hu.clickwatch.analysis.composition.PredefinedTransformation">
+    <transformation
+          class="edu.hu.clickwatch.analysis.composition.transformations.CreateSpecificModel"
+          name="Create specific model">
+    </transformation>
  </extension>
 	<!-- end of extensions for the Composition editor -->
 </plugin>

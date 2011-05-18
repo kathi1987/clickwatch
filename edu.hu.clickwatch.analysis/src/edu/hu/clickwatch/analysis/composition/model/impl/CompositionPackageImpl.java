@@ -6,6 +6,13 @@
  */
 package edu.hu.clickwatch.analysis.composition.model.impl;
 
+import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.impl.EPackageImpl;
+
 import edu.hu.clickwatch.analysis.composition.model.Composition;
 import edu.hu.clickwatch.analysis.composition.model.CompositionFactory;
 import edu.hu.clickwatch.analysis.composition.model.CompositionPackage;
@@ -19,15 +26,9 @@ import edu.hu.clickwatch.analysis.composition.model.ModelNode;
 import edu.hu.clickwatch.analysis.composition.model.Node;
 import edu.hu.clickwatch.analysis.composition.model.TimedTransformation;
 import edu.hu.clickwatch.analysis.composition.model.Transformation;
+import edu.hu.clickwatch.analysis.composition.model.TransformationKind;
 import edu.hu.clickwatch.analysis.composition.model.Visualization;
 import edu.hu.clickwatch.analysis.composition.model.Visualizer;
-
-import org.eclipse.emf.ecore.EAttribute;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EReference;
-
-import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -126,6 +127,13 @@ public class CompositionPackageImpl extends EPackageImpl implements CompositionP
 	 * @generated
 	 */
 	private EClass compositionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum transformationKindEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -249,6 +257,24 @@ public class CompositionPackageImpl extends EPackageImpl implements CompositionP
 	 */
 	public EAttribute getTransformation_TransformationFunction() {
 		return (EAttribute)transformationEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTransformation_Kind() {
+		return (EAttribute)transformationEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTransformation_PredefinedTransformation() {
+		return (EAttribute)transformationEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -445,6 +471,15 @@ public class CompositionPackageImpl extends EPackageImpl implements CompositionP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EEnum getTransformationKind() {
+		return transformationKindEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public CompositionFactory getCompositionFactory() {
 		return (CompositionFactory)getEFactoryInstance();
 	}
@@ -476,6 +511,8 @@ public class CompositionPackageImpl extends EPackageImpl implements CompositionP
 		transformationEClass = createEClass(TRANSFORMATION);
 		createEAttribute(transformationEClass, TRANSFORMATION__TRANSFORMATION_URI);
 		createEAttribute(transformationEClass, TRANSFORMATION__TRANSFORMATION_FUNCTION);
+		createEAttribute(transformationEClass, TRANSFORMATION__KIND);
+		createEAttribute(transformationEClass, TRANSFORMATION__PREDEFINED_TRANSFORMATION);
 
 		elementEClass = createEClass(ELEMENT);
 		createEAttribute(elementEClass, ELEMENT__LABEL);
@@ -508,6 +545,9 @@ public class CompositionPackageImpl extends EPackageImpl implements CompositionP
 
 		compositionEClass = createEClass(COMPOSITION);
 		createEReference(compositionEClass, COMPOSITION__CONTENTS);
+
+		// Create enums
+		transformationKindEEnum = createEEnum(TRANSFORMATION_KIND);
 	}
 
 	/**
@@ -564,6 +604,8 @@ public class CompositionPackageImpl extends EPackageImpl implements CompositionP
 		initEClass(transformationEClass, Transformation.class, "Transformation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTransformation_TransformationUri(), ecorePackage.getEString(), "transformationUri", null, 0, 1, Transformation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTransformation_TransformationFunction(), ecorePackage.getEString(), "transformationFunction", null, 0, 1, Transformation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTransformation_Kind(), this.getTransformationKind(), "kind", "predefined", 0, 1, Transformation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTransformation_PredefinedTransformation(), ecorePackage.getEString(), "predefinedTransformation", null, 0, 1, Transformation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(elementEClass, Element.class, "Element", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getElement_Label(), ecorePackage.getEString(), "label", null, 0, 1, Element.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -596,6 +638,13 @@ public class CompositionPackageImpl extends EPackageImpl implements CompositionP
 
 		initEClass(compositionEClass, Composition.class, "Composition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getComposition_Contents(), this.getElement(), null, "contents", null, 0, -1, Composition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		// Initialize enums and add enum literals
+		initEEnum(transformationKindEEnum, TransformationKind.class, "TransformationKind");
+		addEEnumLiteral(transformationKindEEnum, TransformationKind.PREDEFINED);
+		addEEnumLiteral(transformationKindEEnum, TransformationKind.XTEND);
+		addEEnumLiteral(transformationKindEEnum, TransformationKind.XPAND);
+		addEEnumLiteral(transformationKindEEnum, TransformationKind.JAVA);
 
 		// Create resource
 		createResource(eNS_URI);

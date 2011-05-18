@@ -7,14 +7,29 @@
 package edu.hu.clickwatch.analysis.composition.model.impl;
 
 import edu.hu.clickwatch.analysis.composition.model.*;
-
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+
+import edu.hu.clickwatch.analysis.composition.model.Composition;
+import edu.hu.clickwatch.analysis.composition.model.CompositionFactory;
+import edu.hu.clickwatch.analysis.composition.model.CompositionPackage;
+import edu.hu.clickwatch.analysis.composition.model.DataNode;
+import edu.hu.clickwatch.analysis.composition.model.DataSetNode;
+import edu.hu.clickwatch.analysis.composition.model.Edge;
+import edu.hu.clickwatch.analysis.composition.model.Element;
+import edu.hu.clickwatch.analysis.composition.model.MappedTransformation;
+import edu.hu.clickwatch.analysis.composition.model.MeasureNode;
+import edu.hu.clickwatch.analysis.composition.model.ModelNode;
+import edu.hu.clickwatch.analysis.composition.model.Node;
+import edu.hu.clickwatch.analysis.composition.model.TimedTransformation;
+import edu.hu.clickwatch.analysis.composition.model.Transformation;
+import edu.hu.clickwatch.analysis.composition.model.TransformationKind;
+import edu.hu.clickwatch.analysis.composition.model.Visualization;
+import edu.hu.clickwatch.analysis.composition.model.Visualizer;
 
 /**
  * <!-- begin-user-doc -->
@@ -75,6 +90,36 @@ public class CompositionFactoryImpl extends EFactoryImpl implements CompositionF
 			case CompositionPackage.COMPOSITION: return createComposition();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object createFromString(EDataType eDataType, String initialValue) {
+		switch (eDataType.getClassifierID()) {
+			case CompositionPackage.TRANSFORMATION_KIND:
+				return createTransformationKindFromString(eDataType, initialValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String convertToString(EDataType eDataType, Object instanceValue) {
+		switch (eDataType.getClassifierID()) {
+			case CompositionPackage.TRANSFORMATION_KIND:
+				return convertTransformationKindToString(eDataType, instanceValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
@@ -206,6 +251,26 @@ public class CompositionFactoryImpl extends EFactoryImpl implements CompositionF
 	public Composition createComposition() {
 		CompositionImpl composition = new CompositionImpl();
 		return composition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TransformationKind createTransformationKindFromString(EDataType eDataType, String initialValue) {
+		TransformationKind result = TransformationKind.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertTransformationKindToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
 	}
 
 	/**

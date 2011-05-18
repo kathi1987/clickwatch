@@ -8,6 +8,7 @@ package edu.hu.clickwatch.analysis.composition.model;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -244,13 +245,31 @@ public interface CompositionPackage extends EPackage {
 	int TRANSFORMATION__TRANSFORMATION_FUNCTION = EDGE_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Kind</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSFORMATION__KIND = EDGE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Predefined Transformation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSFORMATION__PREDEFINED_TRANSFORMATION = EDGE_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Transformation</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSFORMATION_FEATURE_COUNT = EDGE_FEATURE_COUNT + 2;
+	int TRANSFORMATION_FEATURE_COUNT = EDGE_FEATURE_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link edu.hu.clickwatch.analysis.composition.model.impl.ModelNodeImpl <em>Model Node</em>}' class.
@@ -527,13 +546,31 @@ public interface CompositionPackage extends EPackage {
 	int TIMED_TRANSFORMATION__TRANSFORMATION_FUNCTION = EDGE_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Kind</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIMED_TRANSFORMATION__KIND = EDGE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Predefined Transformation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIMED_TRANSFORMATION__PREDEFINED_TRANSFORMATION = EDGE_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Timed Transformation</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TIMED_TRANSFORMATION_FEATURE_COUNT = EDGE_FEATURE_COUNT + 2;
+	int TIMED_TRANSFORMATION_FEATURE_COUNT = EDGE_FEATURE_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link edu.hu.clickwatch.analysis.composition.model.impl.MappedTransformationImpl <em>Mapped Transformation</em>}' class.
@@ -591,13 +628,31 @@ public interface CompositionPackage extends EPackage {
 	int MAPPED_TRANSFORMATION__TRANSFORMATION_FUNCTION = EDGE_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Kind</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAPPED_TRANSFORMATION__KIND = EDGE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Predefined Transformation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAPPED_TRANSFORMATION__PREDEFINED_TRANSFORMATION = EDGE_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Mapped Transformation</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MAPPED_TRANSFORMATION_FEATURE_COUNT = EDGE_FEATURE_COUNT + 2;
+	int MAPPED_TRANSFORMATION_FEATURE_COUNT = EDGE_FEATURE_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link edu.hu.clickwatch.analysis.composition.model.impl.VisualizationImpl <em>Visualization</em>}' class.
@@ -785,6 +840,16 @@ public interface CompositionPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link edu.hu.clickwatch.analysis.composition.model.TransformationKind <em>Transformation Kind</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see edu.hu.clickwatch.analysis.composition.model.TransformationKind
+	 * @see edu.hu.clickwatch.analysis.composition.model.impl.CompositionPackageImpl#getTransformationKind()
+	 * @generated
+	 */
+	int TRANSFORMATION_KIND = 13;
+
+	/**
 	 * Returns the meta object for class '{@link edu.hu.clickwatch.analysis.composition.model.Node <em>Node</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -858,6 +923,28 @@ public interface CompositionPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getTransformation_TransformationFunction();
+
+	/**
+	 * Returns the meta object for the attribute '{@link edu.hu.clickwatch.analysis.composition.model.Transformation#getKind <em>Kind</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Kind</em>'.
+	 * @see edu.hu.clickwatch.analysis.composition.model.Transformation#getKind()
+	 * @see #getTransformation()
+	 * @generated
+	 */
+	EAttribute getTransformation_Kind();
+
+	/**
+	 * Returns the meta object for the attribute '{@link edu.hu.clickwatch.analysis.composition.model.Transformation#getPredefinedTransformation <em>Predefined Transformation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Predefined Transformation</em>'.
+	 * @see edu.hu.clickwatch.analysis.composition.model.Transformation#getPredefinedTransformation()
+	 * @see #getTransformation()
+	 * @generated
+	 */
+	EAttribute getTransformation_PredefinedTransformation();
 
 	/**
 	 * Returns the meta object for class '{@link edu.hu.clickwatch.analysis.composition.model.Element <em>Element</em>}'.
@@ -1080,6 +1167,16 @@ public interface CompositionPackage extends EPackage {
 	EReference getComposition_Contents();
 
 	/**
+	 * Returns the meta object for enum '{@link edu.hu.clickwatch.analysis.composition.model.TransformationKind <em>Transformation Kind</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Transformation Kind</em>'.
+	 * @see edu.hu.clickwatch.analysis.composition.model.TransformationKind
+	 * @generated
+	 */
+	EEnum getTransformationKind();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1160,6 +1257,22 @@ public interface CompositionPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute TRANSFORMATION__TRANSFORMATION_FUNCTION = eINSTANCE.getTransformation_TransformationFunction();
+
+		/**
+		 * The meta object literal for the '<em><b>Kind</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TRANSFORMATION__KIND = eINSTANCE.getTransformation_Kind();
+
+		/**
+		 * The meta object literal for the '<em><b>Predefined Transformation</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TRANSFORMATION__PREDEFINED_TRANSFORMATION = eINSTANCE.getTransformation_PredefinedTransformation();
 
 		/**
 		 * The meta object literal for the '{@link edu.hu.clickwatch.analysis.composition.model.impl.ElementImpl <em>Element</em>}' class.
@@ -1350,6 +1463,16 @@ public interface CompositionPackage extends EPackage {
 		 * @generated
 		 */
 		EReference COMPOSITION__CONTENTS = eINSTANCE.getComposition_Contents();
+
+		/**
+		 * The meta object literal for the '{@link edu.hu.clickwatch.analysis.composition.model.TransformationKind <em>Transformation Kind</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see edu.hu.clickwatch.analysis.composition.model.TransformationKind
+		 * @see edu.hu.clickwatch.analysis.composition.model.impl.CompositionPackageImpl#getTransformationKind()
+		 * @generated
+		 */
+		EEnum TRANSFORMATION_KIND = eINSTANCE.getTransformationKind();
 
 	}
 

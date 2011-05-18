@@ -6,12 +6,13 @@
  */
 package edu.hu.clickwatch.analysis.composition.model.impl;
 
-import edu.hu.clickwatch.analysis.composition.model.CompositionPackage;
-import edu.hu.clickwatch.analysis.composition.model.Transformation;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import edu.hu.clickwatch.analysis.composition.model.CompositionPackage;
+import edu.hu.clickwatch.analysis.composition.model.Transformation;
+import edu.hu.clickwatch.analysis.composition.model.TransformationKind;
 
 /**
  * <!-- begin-user-doc -->
@@ -22,6 +23,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <ul>
  *   <li>{@link edu.hu.clickwatch.analysis.composition.model.impl.TransformationImpl#getTransformationUri <em>Transformation Uri</em>}</li>
  *   <li>{@link edu.hu.clickwatch.analysis.composition.model.impl.TransformationImpl#getTransformationFunction <em>Transformation Function</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.analysis.composition.model.impl.TransformationImpl#getKind <em>Kind</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.analysis.composition.model.impl.TransformationImpl#getPredefinedTransformation <em>Predefined Transformation</em>}</li>
  * </ul>
  * </p>
  *
@@ -64,6 +67,44 @@ public class TransformationImpl extends EdgeImpl implements Transformation {
 	 * @ordered
 	 */
 	protected String transformationFunction = TRANSFORMATION_FUNCTION_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getKind() <em>Kind</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getKind()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final TransformationKind KIND_EDEFAULT = TransformationKind.PREDEFINED;
+	/**
+	 * The cached value of the '{@link #getKind() <em>Kind</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getKind()
+	 * @generated
+	 * @ordered
+	 */
+	protected TransformationKind kind = KIND_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getPredefinedTransformation() <em>Predefined Transformation</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPredefinedTransformation()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String PREDEFINED_TRANSFORMATION_EDEFAULT = null;
+	/**
+	 * The cached value of the '{@link #getPredefinedTransformation() <em>Predefined Transformation</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPredefinedTransformation()
+	 * @generated
+	 * @ordered
+	 */
+	protected String predefinedTransformation = PREDEFINED_TRANSFORMATION_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -131,6 +172,48 @@ public class TransformationImpl extends EdgeImpl implements Transformation {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public TransformationKind getKind() {
+		return kind;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setKind(TransformationKind newKind) {
+		TransformationKind oldKind = kind;
+		kind = newKind == null ? KIND_EDEFAULT : newKind;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CompositionPackage.TRANSFORMATION__KIND, oldKind, kind));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getPredefinedTransformation() {
+		return predefinedTransformation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPredefinedTransformation(String newPredefinedTransformation) {
+		String oldPredefinedTransformation = predefinedTransformation;
+		predefinedTransformation = newPredefinedTransformation;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CompositionPackage.TRANSFORMATION__PREDEFINED_TRANSFORMATION, oldPredefinedTransformation, predefinedTransformation));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -138,6 +221,10 @@ public class TransformationImpl extends EdgeImpl implements Transformation {
 				return getTransformationUri();
 			case CompositionPackage.TRANSFORMATION__TRANSFORMATION_FUNCTION:
 				return getTransformationFunction();
+			case CompositionPackage.TRANSFORMATION__KIND:
+				return getKind();
+			case CompositionPackage.TRANSFORMATION__PREDEFINED_TRANSFORMATION:
+				return getPredefinedTransformation();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -155,6 +242,12 @@ public class TransformationImpl extends EdgeImpl implements Transformation {
 				return;
 			case CompositionPackage.TRANSFORMATION__TRANSFORMATION_FUNCTION:
 				setTransformationFunction((String)newValue);
+				return;
+			case CompositionPackage.TRANSFORMATION__KIND:
+				setKind((TransformationKind)newValue);
+				return;
+			case CompositionPackage.TRANSFORMATION__PREDEFINED_TRANSFORMATION:
+				setPredefinedTransformation((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -174,6 +267,12 @@ public class TransformationImpl extends EdgeImpl implements Transformation {
 			case CompositionPackage.TRANSFORMATION__TRANSFORMATION_FUNCTION:
 				setTransformationFunction(TRANSFORMATION_FUNCTION_EDEFAULT);
 				return;
+			case CompositionPackage.TRANSFORMATION__KIND:
+				setKind(KIND_EDEFAULT);
+				return;
+			case CompositionPackage.TRANSFORMATION__PREDEFINED_TRANSFORMATION:
+				setPredefinedTransformation(PREDEFINED_TRANSFORMATION_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -190,6 +289,10 @@ public class TransformationImpl extends EdgeImpl implements Transformation {
 				return TRANSFORMATION_URI_EDEFAULT == null ? transformationUri != null : !TRANSFORMATION_URI_EDEFAULT.equals(transformationUri);
 			case CompositionPackage.TRANSFORMATION__TRANSFORMATION_FUNCTION:
 				return TRANSFORMATION_FUNCTION_EDEFAULT == null ? transformationFunction != null : !TRANSFORMATION_FUNCTION_EDEFAULT.equals(transformationFunction);
+			case CompositionPackage.TRANSFORMATION__KIND:
+				return kind != KIND_EDEFAULT;
+			case CompositionPackage.TRANSFORMATION__PREDEFINED_TRANSFORMATION:
+				return PREDEFINED_TRANSFORMATION_EDEFAULT == null ? predefinedTransformation != null : !PREDEFINED_TRANSFORMATION_EDEFAULT.equals(predefinedTransformation);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -208,6 +311,10 @@ public class TransformationImpl extends EdgeImpl implements Transformation {
 		result.append(transformationUri);
 		result.append(", transformationFunction: ");
 		result.append(transformationFunction);
+		result.append(", kind: ");
+		result.append(kind);
+		result.append(", predefinedTransformation: ");
+		result.append(predefinedTransformation);
 		result.append(')');
 		return result.toString();
 	}
