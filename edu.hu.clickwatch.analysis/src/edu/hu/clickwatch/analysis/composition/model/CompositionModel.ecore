@@ -17,6 +17,12 @@
         defaultValueLiteral="predefined"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="predefinedTransformation"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="input" eType="#//ParameterSpec"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="output" eType="#//ParameterSpec"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetSpec" eType="#//TargetSpec"
+        defaultValueLiteral="add"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Element">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="label" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -39,7 +45,6 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//Node"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TimedTransformation" eSuperTypes="#//Edge #//Transformation"/>
-  <eClassifiers xsi:type="ecore:EClass" name="MappedTransformation" eSuperTypes="#//Edge #//Transformation"/>
   <eClassifiers xsi:type="ecore:EClass" name="Visualization" eSuperTypes="#//Node"/>
   <eClassifiers xsi:type="ecore:EClass" name="Visualizer" eSuperTypes="#//Edge"/>
   <eClassifiers xsi:type="ecore:EClass" name="DataNode" eSuperTypes="#//Node"/>
@@ -52,5 +57,20 @@
     <eLiterals name="xtend" value="1"/>
     <eLiterals name="xpand" value="2"/>
     <eLiterals name="java" value="3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ParameterSpec">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="kind" eType="#//ParameterSpecKind"
+        defaultValueLiteral="root"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mapClassKey" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="listQuery" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="TargetSpec">
+    <eLiterals name="existing"/>
+    <eLiterals name="add" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ParameterSpecKind">
+    <eLiterals name="root"/>
+    <eLiterals name="map" value="1"/>
+    <eLiterals name="list" value="2"/>
   </eClassifiers>
 </ecore:EPackage>

@@ -21,7 +21,6 @@ import org.eclipse.graphiti.features.context.IAddConnectionContext;
 import org.eclipse.graphiti.features.context.IAddContext;
 import org.eclipse.graphiti.features.impl.AbstractAddFeature;
 import org.eclipse.graphiti.mm.GraphicsAlgorithmContainer;
-import org.eclipse.graphiti.mm.algorithms.Ellipse;
 import org.eclipse.graphiti.mm.algorithms.Polyline;
 import org.eclipse.graphiti.mm.algorithms.Text;
 import org.eclipse.graphiti.mm.algorithms.styles.LineStyle;
@@ -33,13 +32,12 @@ import org.eclipse.graphiti.services.IGaService;
 import org.eclipse.graphiti.services.IPeCreateService;
 
 import edu.hu.clickwatch.analysis.composition.Style;
-import edu.hu.clickwatch.analysis.composition.model.MappedTransformation;
 import edu.hu.clickwatch.analysis.composition.model.TimedTransformation;
 import edu.hu.clickwatch.analysis.composition.model.Transformation;
 
 public class AddTransformationFeature extends AbstractAddFeature {
 
-	private static final int MAPPED_TRANSITION_DECORATOR_SIZE = 10;
+//	private static final int MAPPED_TRANSITION_DECORATOR_SIZE = 10;
 
 	public AddTransformationFeature(IFeatureProvider fp) {
 		super(fp);
@@ -84,10 +82,10 @@ public class AddTransformationFeature extends AbstractAddFeature {
 		cd = peCreateService.createConnectionDecorator(connection, false, 1.0, true);
 		createArrow(cd);
 		
-		if (transformation instanceof MappedTransformation) {
-			cd = peCreateService.createConnectionDecorator(connection, false, 0, true);
-			createCircle(cd).setForeground(manageColor(Style.SHAPE_FOREGROUND));
-		}
+//		if (transformation instanceof MappedTransformation) {
+//			cd = peCreateService.createConnectionDecorator(connection, false, 0, true);
+//			createCircle(cd).setForeground(manageColor(Style.SHAPE_FOREGROUND));
+//		}
 		
 		return connection;
 	}
@@ -103,11 +101,11 @@ public class AddTransformationFeature extends AbstractAddFeature {
 		return Graphiti.getGaCreateService().createPolyline(gaContainer, new int[] { -7, 4, 0, 0, -7, -4 });
 	}
 
-	private Ellipse createCircle(GraphicsAlgorithmContainer gaContainer) {
-		IGaService gaService = Graphiti.getGaService();
-		Ellipse ellipse = gaService.createEllipse(gaContainer);
-		ellipse.setFilled(true);
-		gaService.setLocationAndSize(ellipse, 0, 0, MAPPED_TRANSITION_DECORATOR_SIZE, MAPPED_TRANSITION_DECORATOR_SIZE);
-		return ellipse;
-	}
+//	private Ellipse createCircle(GraphicsAlgorithmContainer gaContainer) {
+//		IGaService gaService = Graphiti.getGaService();
+//		Ellipse ellipse = gaService.createEllipse(gaContainer);
+//		ellipse.setFilled(true);
+//		gaService.setLocationAndSize(ellipse, 0, 0, MAPPED_TRANSITION_DECORATOR_SIZE, MAPPED_TRANSITION_DECORATOR_SIZE);
+//		return ellipse;
+//	}
 }

@@ -1,9 +1,9 @@
 package edu.hu.clickwatch.analysis.composition.transformations;
 
-import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.EObject;
 
 public interface IPredefinedTransformation {
 	
-	public void execute(Resource sourceModel, Resource targetModel) throws TransformationException;
+	public EObject execute(EObject source, EObject target) throws TransformationException;
 
 }

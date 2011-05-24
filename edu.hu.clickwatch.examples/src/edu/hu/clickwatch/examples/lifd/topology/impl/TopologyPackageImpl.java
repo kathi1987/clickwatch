@@ -6,6 +6,7 @@
  */
 package edu.hu.clickwatch.examples.lifd.topology.impl;
 
+import edu.hu.clickwatch.examples.lifd.topology.Gps;
 import edu.hu.clickwatch.examples.lifd.topology.Link;
 import edu.hu.clickwatch.examples.lifd.topology.Node;
 import edu.hu.clickwatch.examples.lifd.topology.Topology;
@@ -46,6 +47,13 @@ public class TopologyPackageImpl extends EPackageImpl implements TopologyPackage
 	 * @generated
 	 */
 	private EClass topologyEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass gpsEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -158,6 +166,15 @@ public class TopologyPackageImpl extends EPackageImpl implements TopologyPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getNode_Gps() {
+		return (EReference)nodeEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getLink() {
 		return linkEClass;
 	}
@@ -230,6 +247,33 @@ public class TopologyPackageImpl extends EPackageImpl implements TopologyPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getGps() {
+		return gpsEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getGps_Long() {
+		return (EAttribute)gpsEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getGps_Lat() {
+		return (EAttribute)gpsEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public TopologyFactory getTopologyFactory() {
 		return (TopologyFactory)getEFactoryInstance();
 	}
@@ -258,6 +302,7 @@ public class TopologyPackageImpl extends EPackageImpl implements TopologyPackage
 		createEAttribute(nodeEClass, NODE__MAC);
 		createEReference(nodeEClass, NODE__OUTGOING);
 		createEReference(nodeEClass, NODE__INCOMMING);
+		createEReference(nodeEClass, NODE__GPS);
 
 		linkEClass = createEClass(LINK);
 		createEReference(linkEClass, LINK__SOURCE);
@@ -268,6 +313,10 @@ public class TopologyPackageImpl extends EPackageImpl implements TopologyPackage
 		topologyEClass = createEClass(TOPOLOGY);
 		createEReference(topologyEClass, TOPOLOGY__NODES);
 		createEReference(topologyEClass, TOPOLOGY__LINKS);
+
+		gpsEClass = createEClass(GPS);
+		createEAttribute(gpsEClass, GPS__LONG);
+		createEAttribute(gpsEClass, GPS__LAT);
 	}
 
 	/**
@@ -305,6 +354,7 @@ public class TopologyPackageImpl extends EPackageImpl implements TopologyPackage
 		initEAttribute(getNode_Mac(), ecorePackage.getEString(), "mac", null, 0, 1, Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getNode_Outgoing(), this.getLink(), this.getLink_Source(), "outgoing", null, 0, -1, Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getNode_Incomming(), this.getLink(), this.getLink_Target(), "incomming", null, 0, -1, Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getNode_Gps(), this.getGps(), null, "gps", null, 0, 1, Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(linkEClass, Link.class, "Link", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getLink_Source(), this.getNode(), this.getNode_Outgoing(), "source", null, 0, 1, Link.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -315,6 +365,10 @@ public class TopologyPackageImpl extends EPackageImpl implements TopologyPackage
 		initEClass(topologyEClass, Topology.class, "Topology", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTopology_Nodes(), this.getNode(), null, "nodes", null, 0, -1, Topology.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTopology_Links(), this.getLink(), null, "links", null, 0, -1, Topology.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(gpsEClass, Gps.class, "Gps", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getGps_Long(), ecorePackage.getEString(), "long", null, 0, 1, Gps.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGps_Lat(), ecorePackage.getEString(), "lat", null, 0, 1, Gps.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

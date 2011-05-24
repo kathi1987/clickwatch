@@ -63,6 +63,7 @@ public class TopologyFactoryImpl extends EFactoryImpl implements TopologyFactory
 			case TopologyPackage.NODE: return createNode();
 			case TopologyPackage.LINK: return createLink();
 			case TopologyPackage.TOPOLOGY: return createTopology();
+			case TopologyPackage.GPS: return createGps();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -96,6 +97,16 @@ public class TopologyFactoryImpl extends EFactoryImpl implements TopologyFactory
 	public Topology createTopology() {
 		TopologyImpl topology = new TopologyImpl();
 		return topology;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Gps createGps() {
+		GpsImpl gps = new GpsImpl();
+		return gps;
 	}
 
 	/**

@@ -15,23 +15,14 @@
  *******************************************************************************/
 package edu.hu.clickwatch.analysis.composition.property;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.core.resources.IFile;
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.ui.dialogs.WorkspaceResourceDialog;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.URIConverter;
 import org.eclipse.graphiti.mm.pictograms.PictogramElement;
 import org.eclipse.graphiti.services.Graphiti;
 import org.eclipse.graphiti.ui.platform.GFPropertySection;
@@ -47,23 +38,14 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
-import org.eclipse.ui.statushandlers.StatusManager;
 import org.eclipse.ui.views.properties.tabbed.ITabbedPropertyConstants;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetWidgetFactory;
-import org.eclipse.xtend.XtendFacade;
-import org.eclipse.xtend.typesystem.emf.EmfMetaModel;
 
-import edu.hu.clickwatch.XmlModelRepository;
-import edu.hu.clickwatch.analysis.composition.model.ModelNode;
-import edu.hu.clickwatch.analysis.composition.model.ModelUtil;
-import edu.hu.clickwatch.analysis.composition.model.Node;
 import edu.hu.clickwatch.analysis.composition.model.Transformation;
 import edu.hu.clickwatch.analysis.composition.model.TransformationKind;
-import edu.hu.clickwatch.analysis.composition.transformations.IPredefinedTransformation;
 import edu.hu.clickwatch.analysis.composition.transformations.PredefinedTransformationsUtil;
-import edu.hu.clickwatch.analysis.composition.transformations.TransformationException;
-import edu.hu.clickwatch.analysis.ui.Activator;
+import edu.hu.clickwatch.analysis.composition.transformations.TransformationEngine;
 
 public class TransformationSection extends GFPropertySection implements ITabbedPropertyConstants {
 
@@ -132,7 +114,7 @@ public class TransformationSection extends GFPropertySection implements ITabbedP
 		executeButton.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				executeTransformation();
+				new TransformationEngine(getSelectedTransformation()).executeTransformation();
 			}
 		});
 		
@@ -268,201 +250,6 @@ public class TransformationSection extends GFPropertySection implements ITabbedP
 		}, transformation);
 	}
 
-	private EPackage loadMetaModel(ResourceSet rs, ModelNode node) throws IOException {
-		URI uri = URI.createURI(node.getMetaModelResource());
-		Resource metaModelResource = rs.getResource(uri, false);
-		if (metaModelResource == null) {
-			metaModelResource = rs.createResource(uri);
-		}
-		if (!metaModelResource.isLoaded()) {
-			metaModelResource.load(XmlModelRepository.defaultLoadSaveOptions());
-		}
-		EPackage metaModel = (EPackage)metaModelResource.getContents().get(0);
-		EPackage.Registry.INSTANCE.put(metaModel.getNsURI(), metaModel);
-		return metaModel;
-	}
-	
-	private void executeTransformation() {
-		if (transCombo.getText().equals(TransformationKind.PREDEFINED.toString())) {
-			executePredefinedTransformation();
-		} else if (transCombo.getText().equals(TransformationKind.XTEND.toString())) {
-			executeXtendTransformation();
-		} else if (transCombo.getText().equals(TransformationKind.XPAND.toString())) {
-			raiseError("not supported yet");
-		} else if (transCombo.getText().equals(TransformationKind.JAVA.toString())) {
-			raiseError("not supported yet");
-		}
-	}
-	
-	private void executePredefinedTransformation() {
-		final Transformation transformation = getSelectedTransformation();
-		String predefinedTransformationName = predefinedTransCombo.getText();
-		final IPredefinedTransformation predefinedTransformation = 
-				PredefinedTransformationsUtil.getPredefinedTransformations().get(predefinedTransformationName);
-		if (predefinedTransformation == null) {
-			raiseError("unknown transformation " + predefinedTransformationName); return;
-		}
-		
-		final ModelSet models = getModels(false, false);
-		if (models != null) {
-			try {
-				TransactionUtil.runSafely(new Runnable() {
-					@Override
-					public void run() {
-						try {
-							predefinedTransformation.execute(models.sourceModel.model, models.targetModel.model);
-							ModelUtil.addModelToModelNode((ModelNode)transformation.getTarget(), models.targetModel.model);
-						} catch (TransformationException e) {
-							e.printStackTrace();
-							raiseError("transformation exception");			
-						}
-					}
-				}, transformation);
-			} catch (Exception e) {
-				e.printStackTrace();
-				raiseError("exception during transformation");
-			}
-		}
-	}
-	
-	private class Model {
-		final Resource model;
-		final EPackage metaModel;
-		public Model(Resource model, EPackage metaModel) {
-			super();
-			this.model = model;
-			this.metaModel = metaModel;
-		}
-	}
-	
-	private class ModelSet {
-		final Model sourceModel;
-		final Model targetModel;
-		public ModelSet(Model sourceModel, Model targetModel) {
-			super();
-			this.sourceModel = sourceModel;
-			this.targetModel = targetModel;
-		}
-	}
-	
-	private ModelSet getModels(
-			boolean requireSourceMetaModel, 
-			boolean requireTargetMetaModel) {
-		Transformation transformation = getSelectedTransformation();
-		
-		try {
-			Node source = transformation.getSource();
-			Node target = transformation.getTarget();
-			
-			if (source instanceof ModelNode && target instanceof ModelNode) {
-				ModelNode sourceModelNode = (ModelNode)source;
-				ModelNode targetModelNode = (ModelNode)target;
-				
-				Resource sourceModel = null;
-				Resource targetModel = null;
-				if (sourceModelNode.isHasModel()) {
-					sourceModel = ModelUtil.getModelFromModelNode(sourceModelNode);								
-				} else {
-					raiseError("no source model found"); return null;
-				}
-				
-				ResourceSet rs = sourceModel.getResourceSet();
-				
-				EPackage sourceMetaModel = null;
-				if (requireSourceMetaModel) {
-					sourceMetaModel = loadMetaModel(rs, sourceModelNode);
-				}
-				EPackage targetMetaModel = null;
-				if (requireTargetMetaModel) {
-					targetMetaModel = loadMetaModel(rs, targetModelNode);
-				}
-				
-				if ((requireSourceMetaModel && sourceModelNode.isInferedType()) || 
-						(requireTargetMetaModel && targetModelNode.isInferedType())) {
-					raiseError("infered meta-models are not supported yet"); return null;
-				}
-				
-				if (targetModelNode.isPersistent()) {
-					if (targetModelNode.isHasModel()) {
-						targetModel = ModelUtil.getModelFromModelNode(targetModelNode);
-						targetModel.getContents().clear();
-					} else {
-						targetModel = rs.createResource(URI.createURI(targetModelNode.getModelResource()));
-					}
-				} else {
-					raiseError("non persistent target models are not supported yet"); return null;
-				}	
-				
-				return new ModelSet(new Model(sourceModel, sourceMetaModel), new Model(targetModel, targetMetaModel));
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			Status myStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, "Could not run transformation", e);
-			StatusManager.getManager().handle(myStatus, StatusManager.SHOW);
-			return null;
-		}
-		
-		raiseError("could not run transformation"); return null;
-	}
-	
-	private void executeXtendTransformation() {
-		Transformation transformation = getSelectedTransformation();
-		
-		String xtendUri = transformation.getTransformationUri();
-		if (xtendUri == null) {
-			Status myStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, "No transformation specified", null);
-			StatusManager.getManager().handle(myStatus, StatusManager.SHOW);
-			return;
-		}
-		String xtendFunction = transformation.getTransformationFunction();
-		if (xtendFunction == null) {
-			xtendFunction = "performTransformation";
-		}
-		
-		try {
-			ModelSet models = getModels(true, true);
-			if (models != null) {
-				XtendFacade f = XtendFacade.create();
-				f.registerMetaModel(new EmfMetaModel(models.sourceModel.metaModel));
-				f.registerMetaModel(new EmfMetaModel(models.targetModel.metaModel));
-				f = f.cloneWithExtensions(read(URIConverter.INSTANCE.createInputStream(URI.createURI(xtendUri))));
-				
-				final Object result = f.call(xtendFunction, new Object[] { models.sourceModel.model.getContents().get(0)});
-				
-				final Resource finalTargetModel = models.targetModel.model;
-				final ModelNode finalTargetModelNode = (ModelNode)transformation.getTarget();
-				if (!(result instanceof EObject)) {
-					raiseError("invalid transformation result"); return;
-				} else {
-					TransactionUtil.runSafely(new Runnable() {
-						@Override
-						public void run() {
-							finalTargetModel.getContents().add((EObject)result);
-							if (!finalTargetModelNode.isHasModel()) {
-								ModelUtil.addModelToModelNode(finalTargetModelNode, finalTargetModel);
-							}
-						}
-					}, transformation);
-					
-				}
-				
-				return;
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			Status myStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, "Could not run transformation", e);
-			StatusManager.getManager().handle(myStatus, StatusManager.SHOW);
-			return;
-		}
-		
-		raiseError("could not run transformation");
-	}
-	
-	private void raiseError(String string) {
-		Status myStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, string, null);
-		StatusManager.getManager().handle(myStatus, StatusManager.SHOW);
-	}
-
 	private void setXtendFunc(final String text) {
 		final Transformation transformation = getSelectedTransformation();
 		TransactionUtil.runSafely(new Runnable() {
@@ -560,14 +347,5 @@ public class TransformationSection extends GFPropertySection implements ITabbedP
 		for (Control widget: widgets) {
 			widget.setVisible(visiblity);
 		}
-	}
-	
-	private String read (InputStream in) throws IOException {
-	    StringBuffer out = new StringBuffer();
-	    byte[] b = new byte[4096];
-	    for (int n; (n = in.read(b)) != -1;) {
-	        out.append(new String(b, 0, n));
-	    }
-	    return out.toString();
 	}
 }

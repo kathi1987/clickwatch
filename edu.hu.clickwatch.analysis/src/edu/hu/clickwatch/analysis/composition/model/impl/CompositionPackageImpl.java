@@ -20,10 +20,12 @@ import edu.hu.clickwatch.analysis.composition.model.DataNode;
 import edu.hu.clickwatch.analysis.composition.model.DataSetNode;
 import edu.hu.clickwatch.analysis.composition.model.Edge;
 import edu.hu.clickwatch.analysis.composition.model.Element;
-import edu.hu.clickwatch.analysis.composition.model.MappedTransformation;
 import edu.hu.clickwatch.analysis.composition.model.MeasureNode;
 import edu.hu.clickwatch.analysis.composition.model.ModelNode;
 import edu.hu.clickwatch.analysis.composition.model.Node;
+import edu.hu.clickwatch.analysis.composition.model.ParameterSpec;
+import edu.hu.clickwatch.analysis.composition.model.ParameterSpecKind;
+import edu.hu.clickwatch.analysis.composition.model.TargetSpec;
 import edu.hu.clickwatch.analysis.composition.model.TimedTransformation;
 import edu.hu.clickwatch.analysis.composition.model.Transformation;
 import edu.hu.clickwatch.analysis.composition.model.TransformationKind;
@@ -98,13 +100,6 @@ public class CompositionPackageImpl extends EPackageImpl implements CompositionP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass mappedTransformationEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EClass visualizationEClass = null;
 
 	/**
@@ -133,7 +128,28 @@ public class CompositionPackageImpl extends EPackageImpl implements CompositionP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass parameterSpecEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EEnum transformationKindEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum targetSpecEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum parameterSpecKindEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -282,6 +298,33 @@ public class CompositionPackageImpl extends EPackageImpl implements CompositionP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getTransformation_Input() {
+		return (EReference)transformationEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getTransformation_Output() {
+		return (EReference)transformationEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTransformation_TargetSpec() {
+		return (EAttribute)transformationEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getElement() {
 		return elementEClass;
 	}
@@ -417,15 +460,6 @@ public class CompositionPackageImpl extends EPackageImpl implements CompositionP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getMappedTransformation() {
-		return mappedTransformationEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getVisualization() {
 		return visualizationEClass;
 	}
@@ -471,8 +505,62 @@ public class CompositionPackageImpl extends EPackageImpl implements CompositionP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getParameterSpec() {
+		return parameterSpecEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getParameterSpec_Kind() {
+		return (EAttribute)parameterSpecEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getParameterSpec_MapClassKey() {
+		return (EAttribute)parameterSpecEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getParameterSpec_ListQuery() {
+		return (EAttribute)parameterSpecEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getTransformationKind() {
 		return transformationKindEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getTargetSpec() {
+		return targetSpecEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getParameterSpecKind() {
+		return parameterSpecKindEEnum;
 	}
 
 	/**
@@ -513,6 +601,9 @@ public class CompositionPackageImpl extends EPackageImpl implements CompositionP
 		createEAttribute(transformationEClass, TRANSFORMATION__TRANSFORMATION_FUNCTION);
 		createEAttribute(transformationEClass, TRANSFORMATION__KIND);
 		createEAttribute(transformationEClass, TRANSFORMATION__PREDEFINED_TRANSFORMATION);
+		createEReference(transformationEClass, TRANSFORMATION__INPUT);
+		createEReference(transformationEClass, TRANSFORMATION__OUTPUT);
+		createEAttribute(transformationEClass, TRANSFORMATION__TARGET_SPEC);
 
 		elementEClass = createEClass(ELEMENT);
 		createEAttribute(elementEClass, ELEMENT__LABEL);
@@ -535,8 +626,6 @@ public class CompositionPackageImpl extends EPackageImpl implements CompositionP
 
 		timedTransformationEClass = createEClass(TIMED_TRANSFORMATION);
 
-		mappedTransformationEClass = createEClass(MAPPED_TRANSFORMATION);
-
 		visualizationEClass = createEClass(VISUALIZATION);
 
 		visualizerEClass = createEClass(VISUALIZER);
@@ -546,8 +635,15 @@ public class CompositionPackageImpl extends EPackageImpl implements CompositionP
 		compositionEClass = createEClass(COMPOSITION);
 		createEReference(compositionEClass, COMPOSITION__CONTENTS);
 
+		parameterSpecEClass = createEClass(PARAMETER_SPEC);
+		createEAttribute(parameterSpecEClass, PARAMETER_SPEC__KIND);
+		createEAttribute(parameterSpecEClass, PARAMETER_SPEC__MAP_CLASS_KEY);
+		createEAttribute(parameterSpecEClass, PARAMETER_SPEC__LIST_QUERY);
+
 		// Create enums
 		transformationKindEEnum = createEEnum(TRANSFORMATION_KIND);
+		targetSpecEEnum = createEEnum(TARGET_SPEC);
+		parameterSpecKindEEnum = createEEnum(PARAMETER_SPEC_KIND);
 	}
 
 	/**
@@ -589,8 +685,6 @@ public class CompositionPackageImpl extends EPackageImpl implements CompositionP
 		edgeEClass.getESuperTypes().add(this.getElement());
 		timedTransformationEClass.getESuperTypes().add(this.getEdge());
 		timedTransformationEClass.getESuperTypes().add(this.getTransformation());
-		mappedTransformationEClass.getESuperTypes().add(this.getEdge());
-		mappedTransformationEClass.getESuperTypes().add(this.getTransformation());
 		visualizationEClass.getESuperTypes().add(this.getNode());
 		visualizerEClass.getESuperTypes().add(this.getEdge());
 		dataNodeEClass.getESuperTypes().add(this.getNode());
@@ -606,6 +700,9 @@ public class CompositionPackageImpl extends EPackageImpl implements CompositionP
 		initEAttribute(getTransformation_TransformationFunction(), ecorePackage.getEString(), "transformationFunction", null, 0, 1, Transformation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTransformation_Kind(), this.getTransformationKind(), "kind", "predefined", 0, 1, Transformation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTransformation_PredefinedTransformation(), ecorePackage.getEString(), "predefinedTransformation", null, 0, 1, Transformation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTransformation_Input(), this.getParameterSpec(), null, "input", null, 0, 1, Transformation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTransformation_Output(), this.getParameterSpec(), null, "output", null, 0, 1, Transformation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTransformation_TargetSpec(), this.getTargetSpec(), "targetSpec", "add", 0, 1, Transformation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(elementEClass, Element.class, "Element", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getElement_Label(), ecorePackage.getEString(), "label", null, 0, 1, Element.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -628,8 +725,6 @@ public class CompositionPackageImpl extends EPackageImpl implements CompositionP
 
 		initEClass(timedTransformationEClass, TimedTransformation.class, "TimedTransformation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(mappedTransformationEClass, MappedTransformation.class, "MappedTransformation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
 		initEClass(visualizationEClass, Visualization.class, "Visualization", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(visualizerEClass, Visualizer.class, "Visualizer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -639,12 +734,26 @@ public class CompositionPackageImpl extends EPackageImpl implements CompositionP
 		initEClass(compositionEClass, Composition.class, "Composition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getComposition_Contents(), this.getElement(), null, "contents", null, 0, -1, Composition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(parameterSpecEClass, ParameterSpec.class, "ParameterSpec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getParameterSpec_Kind(), this.getParameterSpecKind(), "kind", "root", 0, 1, ParameterSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getParameterSpec_MapClassKey(), ecorePackage.getEString(), "mapClassKey", null, 0, 1, ParameterSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getParameterSpec_ListQuery(), ecorePackage.getEString(), "listQuery", null, 0, 1, ParameterSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		// Initialize enums and add enum literals
 		initEEnum(transformationKindEEnum, TransformationKind.class, "TransformationKind");
 		addEEnumLiteral(transformationKindEEnum, TransformationKind.PREDEFINED);
 		addEEnumLiteral(transformationKindEEnum, TransformationKind.XTEND);
 		addEEnumLiteral(transformationKindEEnum, TransformationKind.XPAND);
 		addEEnumLiteral(transformationKindEEnum, TransformationKind.JAVA);
+
+		initEEnum(targetSpecEEnum, TargetSpec.class, "TargetSpec");
+		addEEnumLiteral(targetSpecEEnum, TargetSpec.EXISTING);
+		addEEnumLiteral(targetSpecEEnum, TargetSpec.ADD);
+
+		initEEnum(parameterSpecKindEEnum, ParameterSpecKind.class, "ParameterSpecKind");
+		addEEnumLiteral(parameterSpecKindEEnum, ParameterSpecKind.ROOT);
+		addEEnumLiteral(parameterSpecKindEEnum, ParameterSpecKind.MAP);
+		addEEnumLiteral(parameterSpecKindEEnum, ParameterSpecKind.LIST);
 
 		// Create resource
 		createResource(eNS_URI);

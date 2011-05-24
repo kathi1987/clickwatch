@@ -6,6 +6,7 @@
  */
 package edu.hu.clickwatch.examples.lifd.topology.impl;
 
+import edu.hu.clickwatch.examples.lifd.topology.Gps;
 import edu.hu.clickwatch.examples.lifd.topology.Link;
 import edu.hu.clickwatch.examples.lifd.topology.Node;
 import edu.hu.clickwatch.examples.lifd.topology.TopologyPackage;
@@ -37,6 +38,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link edu.hu.clickwatch.examples.lifd.topology.impl.NodeImpl#getMac <em>Mac</em>}</li>
  *   <li>{@link edu.hu.clickwatch.examples.lifd.topology.impl.NodeImpl#getOutgoing <em>Outgoing</em>}</li>
  *   <li>{@link edu.hu.clickwatch.examples.lifd.topology.impl.NodeImpl#getIncomming <em>Incomming</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.examples.lifd.topology.impl.NodeImpl#getGps <em>Gps</em>}</li>
  * </ul>
  * </p>
  *
@@ -102,6 +104,16 @@ public class NodeImpl extends EObjectImpl implements Node {
 	 * @ordered
 	 */
 	protected EList<Link> incomming;
+
+	/**
+	 * The cached value of the '{@link #getGps() <em>Gps</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getGps()
+	 * @generated
+	 * @ordered
+	 */
+	protected Gps gps;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -193,6 +205,49 @@ public class NodeImpl extends EObjectImpl implements Node {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Gps getGps() {
+		return gps;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetGps(Gps newGps, NotificationChain msgs) {
+		Gps oldGps = gps;
+		gps = newGps;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, TopologyPackage.NODE__GPS, oldGps, newGps);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setGps(Gps newGps) {
+		if (newGps != gps) {
+			NotificationChain msgs = null;
+			if (gps != null)
+				msgs = ((InternalEObject)gps).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - TopologyPackage.NODE__GPS, null, msgs);
+			if (newGps != null)
+				msgs = ((InternalEObject)newGps).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - TopologyPackage.NODE__GPS, null, msgs);
+			msgs = basicSetGps(newGps, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TopologyPackage.NODE__GPS, newGps, newGps));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -217,6 +272,8 @@ public class NodeImpl extends EObjectImpl implements Node {
 				return ((InternalEList<?>)getOutgoing()).basicRemove(otherEnd, msgs);
 			case TopologyPackage.NODE__INCOMMING:
 				return ((InternalEList<?>)getIncomming()).basicRemove(otherEnd, msgs);
+			case TopologyPackage.NODE__GPS:
+				return basicSetGps(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -237,6 +294,8 @@ public class NodeImpl extends EObjectImpl implements Node {
 				return getOutgoing();
 			case TopologyPackage.NODE__INCOMMING:
 				return getIncomming();
+			case TopologyPackage.NODE__GPS:
+				return getGps();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -264,6 +323,9 @@ public class NodeImpl extends EObjectImpl implements Node {
 				getIncomming().clear();
 				getIncomming().addAll((Collection<? extends Link>)newValue);
 				return;
+			case TopologyPackage.NODE__GPS:
+				setGps((Gps)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -288,6 +350,9 @@ public class NodeImpl extends EObjectImpl implements Node {
 			case TopologyPackage.NODE__INCOMMING:
 				getIncomming().clear();
 				return;
+			case TopologyPackage.NODE__GPS:
+				setGps((Gps)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -308,6 +373,8 @@ public class NodeImpl extends EObjectImpl implements Node {
 				return outgoing != null && !outgoing.isEmpty();
 			case TopologyPackage.NODE__INCOMMING:
 				return incomming != null && !incomming.isEmpty();
+			case TopologyPackage.NODE__GPS:
+				return gps != null;
 		}
 		return super.eIsSet(featureID);
 	}

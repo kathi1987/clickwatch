@@ -24,6 +24,9 @@ import org.eclipse.graphiti.mm.pictograms.Connection;
 
 import edu.hu.clickwatch.analysis.composition.model.CompositionFactory;
 import edu.hu.clickwatch.analysis.composition.model.Node;
+import edu.hu.clickwatch.analysis.composition.model.ParameterSpec;
+import edu.hu.clickwatch.analysis.composition.model.ParameterSpecKind;
+import edu.hu.clickwatch.analysis.composition.model.TargetSpec;
 import edu.hu.clickwatch.analysis.composition.model.Transformation;
 
 public class CreateTransformationFeature extends AbstractCreateConnectionFeature {
@@ -86,6 +89,15 @@ public class CreateTransformationFeature extends AbstractCreateConnectionFeature
 		Transformation transformation = createTransformation();
 		transformation.setSource(source);
 		transformation.setTarget(target);
+		
+		ParameterSpec input = CompositionFactory.eINSTANCE.createParameterSpec();
+		input.setKind(ParameterSpecKind.ROOT);
+		ParameterSpec output = CompositionFactory.eINSTANCE.createParameterSpec();
+		output.setKind(ParameterSpecKind.ROOT);
+		transformation.setInput(input);
+		transformation.setOutput(output);
+		transformation.setTargetSpec(TargetSpec.ADD);
+		
 		getDiagram().eResource().getContents().add(transformation);
 		return transformation;
 	}

@@ -263,13 +263,40 @@ public interface CompositionPackage extends EPackage {
 	int TRANSFORMATION__PREDEFINED_TRANSFORMATION = EDGE_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Input</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSFORMATION__INPUT = EDGE_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Output</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSFORMATION__OUTPUT = EDGE_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>Target Spec</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSFORMATION__TARGET_SPEC = EDGE_FEATURE_COUNT + 6;
+
+	/**
 	 * The number of structural features of the '<em>Transformation</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSFORMATION_FEATURE_COUNT = EDGE_FEATURE_COUNT + 4;
+	int TRANSFORMATION_FEATURE_COUNT = EDGE_FEATURE_COUNT + 7;
 
 	/**
 	 * The meta object id for the '{@link edu.hu.clickwatch.analysis.composition.model.impl.ModelNodeImpl <em>Model Node</em>}' class.
@@ -564,95 +591,40 @@ public interface CompositionPackage extends EPackage {
 	int TIMED_TRANSFORMATION__PREDEFINED_TRANSFORMATION = EDGE_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Input</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIMED_TRANSFORMATION__INPUT = EDGE_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Output</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIMED_TRANSFORMATION__OUTPUT = EDGE_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>Target Spec</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIMED_TRANSFORMATION__TARGET_SPEC = EDGE_FEATURE_COUNT + 6;
+
+	/**
 	 * The number of structural features of the '<em>Timed Transformation</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TIMED_TRANSFORMATION_FEATURE_COUNT = EDGE_FEATURE_COUNT + 4;
-
-	/**
-	 * The meta object id for the '{@link edu.hu.clickwatch.analysis.composition.model.impl.MappedTransformationImpl <em>Mapped Transformation</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see edu.hu.clickwatch.analysis.composition.model.impl.MappedTransformationImpl
-	 * @see edu.hu.clickwatch.analysis.composition.model.impl.CompositionPackageImpl#getMappedTransformation()
-	 * @generated
-	 */
-	int MAPPED_TRANSFORMATION = 8;
-
-	/**
-	 * The feature id for the '<em><b>Label</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MAPPED_TRANSFORMATION__LABEL = EDGE__LABEL;
-
-	/**
-	 * The feature id for the '<em><b>Source</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MAPPED_TRANSFORMATION__SOURCE = EDGE__SOURCE;
-
-	/**
-	 * The feature id for the '<em><b>Target</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MAPPED_TRANSFORMATION__TARGET = EDGE__TARGET;
-
-	/**
-	 * The feature id for the '<em><b>Transformation Uri</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MAPPED_TRANSFORMATION__TRANSFORMATION_URI = EDGE_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Transformation Function</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MAPPED_TRANSFORMATION__TRANSFORMATION_FUNCTION = EDGE_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Kind</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MAPPED_TRANSFORMATION__KIND = EDGE_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Predefined Transformation</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MAPPED_TRANSFORMATION__PREDEFINED_TRANSFORMATION = EDGE_FEATURE_COUNT + 3;
-
-	/**
-	 * The number of structural features of the '<em>Mapped Transformation</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MAPPED_TRANSFORMATION_FEATURE_COUNT = EDGE_FEATURE_COUNT + 4;
+	int TIMED_TRANSFORMATION_FEATURE_COUNT = EDGE_FEATURE_COUNT + 7;
 
 	/**
 	 * The meta object id for the '{@link edu.hu.clickwatch.analysis.composition.model.impl.VisualizationImpl <em>Visualization</em>}' class.
@@ -662,7 +634,7 @@ public interface CompositionPackage extends EPackage {
 	 * @see edu.hu.clickwatch.analysis.composition.model.impl.CompositionPackageImpl#getVisualization()
 	 * @generated
 	 */
-	int VISUALIZATION = 9;
+	int VISUALIZATION = 8;
 
 	/**
 	 * The feature id for the '<em><b>Label</b></em>' attribute.
@@ -717,7 +689,7 @@ public interface CompositionPackage extends EPackage {
 	 * @see edu.hu.clickwatch.analysis.composition.model.impl.CompositionPackageImpl#getVisualizer()
 	 * @generated
 	 */
-	int VISUALIZER = 10;
+	int VISUALIZER = 9;
 
 	/**
 	 * The feature id for the '<em><b>Label</b></em>' attribute.
@@ -763,7 +735,7 @@ public interface CompositionPackage extends EPackage {
 	 * @see edu.hu.clickwatch.analysis.composition.model.impl.CompositionPackageImpl#getDataNode()
 	 * @generated
 	 */
-	int DATA_NODE = 11;
+	int DATA_NODE = 10;
 
 	/**
 	 * The feature id for the '<em><b>Label</b></em>' attribute.
@@ -818,7 +790,7 @@ public interface CompositionPackage extends EPackage {
 	 * @see edu.hu.clickwatch.analysis.composition.model.impl.CompositionPackageImpl#getComposition()
 	 * @generated
 	 */
-	int COMPOSITION = 12;
+	int COMPOSITION = 11;
 
 	/**
 	 * The feature id for the '<em><b>Contents</b></em>' containment reference list.
@@ -840,6 +812,52 @@ public interface CompositionPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link edu.hu.clickwatch.analysis.composition.model.impl.ParameterSpecImpl <em>Parameter Spec</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see edu.hu.clickwatch.analysis.composition.model.impl.ParameterSpecImpl
+	 * @see edu.hu.clickwatch.analysis.composition.model.impl.CompositionPackageImpl#getParameterSpec()
+	 * @generated
+	 */
+	int PARAMETER_SPEC = 12;
+
+	/**
+	 * The feature id for the '<em><b>Kind</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER_SPEC__KIND = 0;
+
+	/**
+	 * The feature id for the '<em><b>Map Class Key</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER_SPEC__MAP_CLASS_KEY = 1;
+
+	/**
+	 * The feature id for the '<em><b>List Query</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER_SPEC__LIST_QUERY = 2;
+
+	/**
+	 * The number of structural features of the '<em>Parameter Spec</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER_SPEC_FEATURE_COUNT = 3;
+
+	/**
 	 * The meta object id for the '{@link edu.hu.clickwatch.analysis.composition.model.TransformationKind <em>Transformation Kind</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -848,6 +866,26 @@ public interface CompositionPackage extends EPackage {
 	 * @generated
 	 */
 	int TRANSFORMATION_KIND = 13;
+
+	/**
+	 * The meta object id for the '{@link edu.hu.clickwatch.analysis.composition.model.TargetSpec <em>Target Spec</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see edu.hu.clickwatch.analysis.composition.model.TargetSpec
+	 * @see edu.hu.clickwatch.analysis.composition.model.impl.CompositionPackageImpl#getTargetSpec()
+	 * @generated
+	 */
+	int TARGET_SPEC = 14;
+
+	/**
+	 * The meta object id for the '{@link edu.hu.clickwatch.analysis.composition.model.ParameterSpecKind <em>Parameter Spec Kind</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see edu.hu.clickwatch.analysis.composition.model.ParameterSpecKind
+	 * @see edu.hu.clickwatch.analysis.composition.model.impl.CompositionPackageImpl#getParameterSpecKind()
+	 * @generated
+	 */
+	int PARAMETER_SPEC_KIND = 15;
 
 	/**
 	 * Returns the meta object for class '{@link edu.hu.clickwatch.analysis.composition.model.Node <em>Node</em>}'.
@@ -945,6 +983,39 @@ public interface CompositionPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getTransformation_PredefinedTransformation();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link edu.hu.clickwatch.analysis.composition.model.Transformation#getInput <em>Input</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Input</em>'.
+	 * @see edu.hu.clickwatch.analysis.composition.model.Transformation#getInput()
+	 * @see #getTransformation()
+	 * @generated
+	 */
+	EReference getTransformation_Input();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link edu.hu.clickwatch.analysis.composition.model.Transformation#getOutput <em>Output</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Output</em>'.
+	 * @see edu.hu.clickwatch.analysis.composition.model.Transformation#getOutput()
+	 * @see #getTransformation()
+	 * @generated
+	 */
+	EReference getTransformation_Output();
+
+	/**
+	 * Returns the meta object for the attribute '{@link edu.hu.clickwatch.analysis.composition.model.Transformation#getTargetSpec <em>Target Spec</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Target Spec</em>'.
+	 * @see edu.hu.clickwatch.analysis.composition.model.Transformation#getTargetSpec()
+	 * @see #getTransformation()
+	 * @generated
+	 */
+	EAttribute getTransformation_TargetSpec();
 
 	/**
 	 * Returns the meta object for class '{@link edu.hu.clickwatch.analysis.composition.model.Element <em>Element</em>}'.
@@ -1106,16 +1177,6 @@ public interface CompositionPackage extends EPackage {
 	EClass getTimedTransformation();
 
 	/**
-	 * Returns the meta object for class '{@link edu.hu.clickwatch.analysis.composition.model.MappedTransformation <em>Mapped Transformation</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Mapped Transformation</em>'.
-	 * @see edu.hu.clickwatch.analysis.composition.model.MappedTransformation
-	 * @generated
-	 */
-	EClass getMappedTransformation();
-
-	/**
 	 * Returns the meta object for class '{@link edu.hu.clickwatch.analysis.composition.model.Visualization <em>Visualization</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1167,6 +1228,49 @@ public interface CompositionPackage extends EPackage {
 	EReference getComposition_Contents();
 
 	/**
+	 * Returns the meta object for class '{@link edu.hu.clickwatch.analysis.composition.model.ParameterSpec <em>Parameter Spec</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Parameter Spec</em>'.
+	 * @see edu.hu.clickwatch.analysis.composition.model.ParameterSpec
+	 * @generated
+	 */
+	EClass getParameterSpec();
+
+	/**
+	 * Returns the meta object for the attribute '{@link edu.hu.clickwatch.analysis.composition.model.ParameterSpec#getKind <em>Kind</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Kind</em>'.
+	 * @see edu.hu.clickwatch.analysis.composition.model.ParameterSpec#getKind()
+	 * @see #getParameterSpec()
+	 * @generated
+	 */
+	EAttribute getParameterSpec_Kind();
+
+	/**
+	 * Returns the meta object for the attribute '{@link edu.hu.clickwatch.analysis.composition.model.ParameterSpec#getMapClassKey <em>Map Class Key</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Map Class Key</em>'.
+	 * @see edu.hu.clickwatch.analysis.composition.model.ParameterSpec#getMapClassKey()
+	 * @see #getParameterSpec()
+	 * @generated
+	 */
+	EAttribute getParameterSpec_MapClassKey();
+
+	/**
+	 * Returns the meta object for the attribute '{@link edu.hu.clickwatch.analysis.composition.model.ParameterSpec#getListQuery <em>List Query</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>List Query</em>'.
+	 * @see edu.hu.clickwatch.analysis.composition.model.ParameterSpec#getListQuery()
+	 * @see #getParameterSpec()
+	 * @generated
+	 */
+	EAttribute getParameterSpec_ListQuery();
+
+	/**
 	 * Returns the meta object for enum '{@link edu.hu.clickwatch.analysis.composition.model.TransformationKind <em>Transformation Kind</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1175,6 +1279,26 @@ public interface CompositionPackage extends EPackage {
 	 * @generated
 	 */
 	EEnum getTransformationKind();
+
+	/**
+	 * Returns the meta object for enum '{@link edu.hu.clickwatch.analysis.composition.model.TargetSpec <em>Target Spec</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Target Spec</em>'.
+	 * @see edu.hu.clickwatch.analysis.composition.model.TargetSpec
+	 * @generated
+	 */
+	EEnum getTargetSpec();
+
+	/**
+	 * Returns the meta object for enum '{@link edu.hu.clickwatch.analysis.composition.model.ParameterSpecKind <em>Parameter Spec Kind</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Parameter Spec Kind</em>'.
+	 * @see edu.hu.clickwatch.analysis.composition.model.ParameterSpecKind
+	 * @generated
+	 */
+	EEnum getParameterSpecKind();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -1273,6 +1397,30 @@ public interface CompositionPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute TRANSFORMATION__PREDEFINED_TRANSFORMATION = eINSTANCE.getTransformation_PredefinedTransformation();
+
+		/**
+		 * The meta object literal for the '<em><b>Input</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TRANSFORMATION__INPUT = eINSTANCE.getTransformation_Input();
+
+		/**
+		 * The meta object literal for the '<em><b>Output</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TRANSFORMATION__OUTPUT = eINSTANCE.getTransformation_Output();
+
+		/**
+		 * The meta object literal for the '<em><b>Target Spec</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TRANSFORMATION__TARGET_SPEC = eINSTANCE.getTransformation_TargetSpec();
 
 		/**
 		 * The meta object literal for the '{@link edu.hu.clickwatch.analysis.composition.model.impl.ElementImpl <em>Element</em>}' class.
@@ -1407,16 +1555,6 @@ public interface CompositionPackage extends EPackage {
 		EClass TIMED_TRANSFORMATION = eINSTANCE.getTimedTransformation();
 
 		/**
-		 * The meta object literal for the '{@link edu.hu.clickwatch.analysis.composition.model.impl.MappedTransformationImpl <em>Mapped Transformation</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see edu.hu.clickwatch.analysis.composition.model.impl.MappedTransformationImpl
-		 * @see edu.hu.clickwatch.analysis.composition.model.impl.CompositionPackageImpl#getMappedTransformation()
-		 * @generated
-		 */
-		EClass MAPPED_TRANSFORMATION = eINSTANCE.getMappedTransformation();
-
-		/**
 		 * The meta object literal for the '{@link edu.hu.clickwatch.analysis.composition.model.impl.VisualizationImpl <em>Visualization</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1465,6 +1603,40 @@ public interface CompositionPackage extends EPackage {
 		EReference COMPOSITION__CONTENTS = eINSTANCE.getComposition_Contents();
 
 		/**
+		 * The meta object literal for the '{@link edu.hu.clickwatch.analysis.composition.model.impl.ParameterSpecImpl <em>Parameter Spec</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see edu.hu.clickwatch.analysis.composition.model.impl.ParameterSpecImpl
+		 * @see edu.hu.clickwatch.analysis.composition.model.impl.CompositionPackageImpl#getParameterSpec()
+		 * @generated
+		 */
+		EClass PARAMETER_SPEC = eINSTANCE.getParameterSpec();
+
+		/**
+		 * The meta object literal for the '<em><b>Kind</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PARAMETER_SPEC__KIND = eINSTANCE.getParameterSpec_Kind();
+
+		/**
+		 * The meta object literal for the '<em><b>Map Class Key</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PARAMETER_SPEC__MAP_CLASS_KEY = eINSTANCE.getParameterSpec_MapClassKey();
+
+		/**
+		 * The meta object literal for the '<em><b>List Query</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PARAMETER_SPEC__LIST_QUERY = eINSTANCE.getParameterSpec_ListQuery();
+
+		/**
 		 * The meta object literal for the '{@link edu.hu.clickwatch.analysis.composition.model.TransformationKind <em>Transformation Kind</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1473,6 +1645,26 @@ public interface CompositionPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum TRANSFORMATION_KIND = eINSTANCE.getTransformationKind();
+
+		/**
+		 * The meta object literal for the '{@link edu.hu.clickwatch.analysis.composition.model.TargetSpec <em>Target Spec</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see edu.hu.clickwatch.analysis.composition.model.TargetSpec
+		 * @see edu.hu.clickwatch.analysis.composition.model.impl.CompositionPackageImpl#getTargetSpec()
+		 * @generated
+		 */
+		EEnum TARGET_SPEC = eINSTANCE.getTargetSpec();
+
+		/**
+		 * The meta object literal for the '{@link edu.hu.clickwatch.analysis.composition.model.ParameterSpecKind <em>Parameter Spec Kind</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see edu.hu.clickwatch.analysis.composition.model.ParameterSpecKind
+		 * @see edu.hu.clickwatch.analysis.composition.model.impl.CompositionPackageImpl#getParameterSpecKind()
+		 * @generated
+		 */
+		EEnum PARAMETER_SPEC_KIND = eINSTANCE.getParameterSpecKind();
 
 	}
 

@@ -50,8 +50,8 @@ import edu.hu.clickwatch.analysis.composition.features.AddDataSetNodeFeature;
 import edu.hu.clickwatch.analysis.composition.features.AddMeasureNodeFeature;
 import edu.hu.clickwatch.analysis.composition.features.AddModelNodeFeature;
 import edu.hu.clickwatch.analysis.composition.features.AddTransformationFeature;
+import edu.hu.clickwatch.analysis.composition.features.CopyNodeFeature;
 import edu.hu.clickwatch.analysis.composition.features.CreateDataSetNodeFeature;
-import edu.hu.clickwatch.analysis.composition.features.CreateMappedTransformationFeature;
 import edu.hu.clickwatch.analysis.composition.features.CreateMeasureNodeFeature;
 import edu.hu.clickwatch.analysis.composition.features.CreateModelNodeFeature;
 import edu.hu.clickwatch.analysis.composition.features.CreateTimedTransformationFeature;
@@ -60,10 +60,9 @@ import edu.hu.clickwatch.analysis.composition.features.DirectEditElementFeature;
 import edu.hu.clickwatch.analysis.composition.features.LayoutDataSetNodeFeature;
 import edu.hu.clickwatch.analysis.composition.features.LayoutMeasureNodeFeature;
 import edu.hu.clickwatch.analysis.composition.features.LayoutModelNodeFeature;
-import edu.hu.clickwatch.analysis.composition.features.RenameElementFeature;
-import edu.hu.clickwatch.analysis.composition.features.CopyNodeFeature;
 import edu.hu.clickwatch.analysis.composition.features.MoveNodeFeature;
 import edu.hu.clickwatch.analysis.composition.features.PasteNodeFeature;
+import edu.hu.clickwatch.analysis.composition.features.RenameElementFeature;
 import edu.hu.clickwatch.analysis.composition.features.UpdateElementFeature;
 import edu.hu.clickwatch.analysis.composition.model.DataSetNode;
 import edu.hu.clickwatch.analysis.composition.model.Element;
@@ -157,7 +156,6 @@ public class CompositionFeatureProvider extends DefaultFeatureProvider {
 	public ICreateConnectionFeature[] getCreateConnectionFeatures() {
 		return new ICreateConnectionFeature[] { 
 				new CreateTransformationFeature(this),
-				new CreateMappedTransformationFeature(this),
 				new CreateTimedTransformationFeature(this)
 		};
 	}

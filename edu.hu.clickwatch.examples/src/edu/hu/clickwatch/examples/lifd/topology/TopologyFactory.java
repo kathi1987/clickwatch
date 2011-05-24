@@ -53,6 +53,15 @@ public interface TopologyFactory extends EFactory {
 	Topology createTopology();
 
 	/**
+	 * Returns a new object of class '<em>Gps</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Gps</em>'.
+	 * @generated
+	 */
+	Gps createGps();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

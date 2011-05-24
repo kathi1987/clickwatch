@@ -10,6 +10,7 @@
         eType="#//Link" eOpposite="#//Link/source"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="incomming" upperBound="-1"
         eType="#//Link" eOpposite="#//Link/target"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="gps" eType="#//Gps" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Link">
     <eStructuralFeatures xsi:type="ecore:EReference" name="source" eType="#//Node"
@@ -24,5 +25,9 @@
         eType="#//Node" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="links" upperBound="-1"
         eType="#//Link" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Gps">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="long" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="lat" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
 </ecore:EPackage>

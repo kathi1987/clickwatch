@@ -98,15 +98,6 @@ public interface CompositionFactory extends EFactory {
 	TimedTransformation createTimedTransformation();
 
 	/**
-	 * Returns a new object of class '<em>Mapped Transformation</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Mapped Transformation</em>'.
-	 * @generated
-	 */
-	MappedTransformation createMappedTransformation();
-
-	/**
 	 * Returns a new object of class '<em>Visualization</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -141,6 +132,15 @@ public interface CompositionFactory extends EFactory {
 	 * @generated
 	 */
 	Composition createComposition();
+
+	/**
+	 * Returns a new object of class '<em>Parameter Spec</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Parameter Spec</em>'.
+	 * @generated
+	 */
+	ParameterSpec createParameterSpec();
 
 	/**
 	 * Returns the package supported by this factory.

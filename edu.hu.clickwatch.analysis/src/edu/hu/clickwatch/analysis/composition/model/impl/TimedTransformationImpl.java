@@ -7,10 +7,14 @@
 package edu.hu.clickwatch.analysis.composition.model.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import edu.hu.clickwatch.analysis.composition.model.CompositionPackage;
+import edu.hu.clickwatch.analysis.composition.model.ParameterSpec;
+import edu.hu.clickwatch.analysis.composition.model.TargetSpec;
 import edu.hu.clickwatch.analysis.composition.model.TimedTransformation;
 import edu.hu.clickwatch.analysis.composition.model.Transformation;
 import edu.hu.clickwatch.analysis.composition.model.TransformationKind;
@@ -26,6 +30,9 @@ import edu.hu.clickwatch.analysis.composition.model.TransformationKind;
  *   <li>{@link edu.hu.clickwatch.analysis.composition.model.impl.TimedTransformationImpl#getTransformationFunction <em>Transformation Function</em>}</li>
  *   <li>{@link edu.hu.clickwatch.analysis.composition.model.impl.TimedTransformationImpl#getKind <em>Kind</em>}</li>
  *   <li>{@link edu.hu.clickwatch.analysis.composition.model.impl.TimedTransformationImpl#getPredefinedTransformation <em>Predefined Transformation</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.analysis.composition.model.impl.TimedTransformationImpl#getInput <em>Input</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.analysis.composition.model.impl.TimedTransformationImpl#getOutput <em>Output</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.analysis.composition.model.impl.TimedTransformationImpl#getTargetSpec <em>Target Spec</em>}</li>
  * </ul>
  * </p>
  *
@@ -106,6 +113,43 @@ public class TimedTransformationImpl extends EdgeImpl implements TimedTransforma
 	 * @ordered
 	 */
 	protected String predefinedTransformation = PREDEFINED_TRANSFORMATION_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getInput() <em>Input</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInput()
+	 * @generated
+	 * @ordered
+	 */
+	protected ParameterSpec input;
+	/**
+	 * The cached value of the '{@link #getOutput() <em>Output</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOutput()
+	 * @generated
+	 * @ordered
+	 */
+	protected ParameterSpec output;
+	/**
+	 * The default value of the '{@link #getTargetSpec() <em>Target Spec</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTargetSpec()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final TargetSpec TARGET_SPEC_EDEFAULT = TargetSpec.ADD;
+	/**
+	 * The cached value of the '{@link #getTargetSpec() <em>Target Spec</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTargetSpec()
+	 * @generated
+	 * @ordered
+	 */
+	protected TargetSpec targetSpec = TARGET_SPEC_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -215,6 +259,129 @@ public class TimedTransformationImpl extends EdgeImpl implements TimedTransforma
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public ParameterSpec getInput() {
+		return input;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetInput(ParameterSpec newInput, NotificationChain msgs) {
+		ParameterSpec oldInput = input;
+		input = newInput;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CompositionPackage.TIMED_TRANSFORMATION__INPUT, oldInput, newInput);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setInput(ParameterSpec newInput) {
+		if (newInput != input) {
+			NotificationChain msgs = null;
+			if (input != null)
+				msgs = ((InternalEObject)input).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CompositionPackage.TIMED_TRANSFORMATION__INPUT, null, msgs);
+			if (newInput != null)
+				msgs = ((InternalEObject)newInput).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CompositionPackage.TIMED_TRANSFORMATION__INPUT, null, msgs);
+			msgs = basicSetInput(newInput, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CompositionPackage.TIMED_TRANSFORMATION__INPUT, newInput, newInput));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ParameterSpec getOutput() {
+		return output;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetOutput(ParameterSpec newOutput, NotificationChain msgs) {
+		ParameterSpec oldOutput = output;
+		output = newOutput;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CompositionPackage.TIMED_TRANSFORMATION__OUTPUT, oldOutput, newOutput);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setOutput(ParameterSpec newOutput) {
+		if (newOutput != output) {
+			NotificationChain msgs = null;
+			if (output != null)
+				msgs = ((InternalEObject)output).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CompositionPackage.TIMED_TRANSFORMATION__OUTPUT, null, msgs);
+			if (newOutput != null)
+				msgs = ((InternalEObject)newOutput).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CompositionPackage.TIMED_TRANSFORMATION__OUTPUT, null, msgs);
+			msgs = basicSetOutput(newOutput, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CompositionPackage.TIMED_TRANSFORMATION__OUTPUT, newOutput, newOutput));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TargetSpec getTargetSpec() {
+		return targetSpec;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTargetSpec(TargetSpec newTargetSpec) {
+		TargetSpec oldTargetSpec = targetSpec;
+		targetSpec = newTargetSpec == null ? TARGET_SPEC_EDEFAULT : newTargetSpec;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CompositionPackage.TIMED_TRANSFORMATION__TARGET_SPEC, oldTargetSpec, targetSpec));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case CompositionPackage.TIMED_TRANSFORMATION__INPUT:
+				return basicSetInput(null, msgs);
+			case CompositionPackage.TIMED_TRANSFORMATION__OUTPUT:
+				return basicSetOutput(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -226,6 +393,12 @@ public class TimedTransformationImpl extends EdgeImpl implements TimedTransforma
 				return getKind();
 			case CompositionPackage.TIMED_TRANSFORMATION__PREDEFINED_TRANSFORMATION:
 				return getPredefinedTransformation();
+			case CompositionPackage.TIMED_TRANSFORMATION__INPUT:
+				return getInput();
+			case CompositionPackage.TIMED_TRANSFORMATION__OUTPUT:
+				return getOutput();
+			case CompositionPackage.TIMED_TRANSFORMATION__TARGET_SPEC:
+				return getTargetSpec();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -249,6 +422,15 @@ public class TimedTransformationImpl extends EdgeImpl implements TimedTransforma
 				return;
 			case CompositionPackage.TIMED_TRANSFORMATION__PREDEFINED_TRANSFORMATION:
 				setPredefinedTransformation((String)newValue);
+				return;
+			case CompositionPackage.TIMED_TRANSFORMATION__INPUT:
+				setInput((ParameterSpec)newValue);
+				return;
+			case CompositionPackage.TIMED_TRANSFORMATION__OUTPUT:
+				setOutput((ParameterSpec)newValue);
+				return;
+			case CompositionPackage.TIMED_TRANSFORMATION__TARGET_SPEC:
+				setTargetSpec((TargetSpec)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -274,6 +456,15 @@ public class TimedTransformationImpl extends EdgeImpl implements TimedTransforma
 			case CompositionPackage.TIMED_TRANSFORMATION__PREDEFINED_TRANSFORMATION:
 				setPredefinedTransformation(PREDEFINED_TRANSFORMATION_EDEFAULT);
 				return;
+			case CompositionPackage.TIMED_TRANSFORMATION__INPUT:
+				setInput((ParameterSpec)null);
+				return;
+			case CompositionPackage.TIMED_TRANSFORMATION__OUTPUT:
+				setOutput((ParameterSpec)null);
+				return;
+			case CompositionPackage.TIMED_TRANSFORMATION__TARGET_SPEC:
+				setTargetSpec(TARGET_SPEC_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -294,6 +485,12 @@ public class TimedTransformationImpl extends EdgeImpl implements TimedTransforma
 				return kind != KIND_EDEFAULT;
 			case CompositionPackage.TIMED_TRANSFORMATION__PREDEFINED_TRANSFORMATION:
 				return PREDEFINED_TRANSFORMATION_EDEFAULT == null ? predefinedTransformation != null : !PREDEFINED_TRANSFORMATION_EDEFAULT.equals(predefinedTransformation);
+			case CompositionPackage.TIMED_TRANSFORMATION__INPUT:
+				return input != null;
+			case CompositionPackage.TIMED_TRANSFORMATION__OUTPUT:
+				return output != null;
+			case CompositionPackage.TIMED_TRANSFORMATION__TARGET_SPEC:
+				return targetSpec != TARGET_SPEC_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -311,6 +508,9 @@ public class TimedTransformationImpl extends EdgeImpl implements TimedTransforma
 				case CompositionPackage.TIMED_TRANSFORMATION__TRANSFORMATION_FUNCTION: return CompositionPackage.TRANSFORMATION__TRANSFORMATION_FUNCTION;
 				case CompositionPackage.TIMED_TRANSFORMATION__KIND: return CompositionPackage.TRANSFORMATION__KIND;
 				case CompositionPackage.TIMED_TRANSFORMATION__PREDEFINED_TRANSFORMATION: return CompositionPackage.TRANSFORMATION__PREDEFINED_TRANSFORMATION;
+				case CompositionPackage.TIMED_TRANSFORMATION__INPUT: return CompositionPackage.TRANSFORMATION__INPUT;
+				case CompositionPackage.TIMED_TRANSFORMATION__OUTPUT: return CompositionPackage.TRANSFORMATION__OUTPUT;
+				case CompositionPackage.TIMED_TRANSFORMATION__TARGET_SPEC: return CompositionPackage.TRANSFORMATION__TARGET_SPEC;
 				default: return -1;
 			}
 		}
@@ -330,6 +530,9 @@ public class TimedTransformationImpl extends EdgeImpl implements TimedTransforma
 				case CompositionPackage.TRANSFORMATION__TRANSFORMATION_FUNCTION: return CompositionPackage.TIMED_TRANSFORMATION__TRANSFORMATION_FUNCTION;
 				case CompositionPackage.TRANSFORMATION__KIND: return CompositionPackage.TIMED_TRANSFORMATION__KIND;
 				case CompositionPackage.TRANSFORMATION__PREDEFINED_TRANSFORMATION: return CompositionPackage.TIMED_TRANSFORMATION__PREDEFINED_TRANSFORMATION;
+				case CompositionPackage.TRANSFORMATION__INPUT: return CompositionPackage.TIMED_TRANSFORMATION__INPUT;
+				case CompositionPackage.TRANSFORMATION__OUTPUT: return CompositionPackage.TIMED_TRANSFORMATION__OUTPUT;
+				case CompositionPackage.TRANSFORMATION__TARGET_SPEC: return CompositionPackage.TIMED_TRANSFORMATION__TARGET_SPEC;
 				default: return -1;
 			}
 		}
@@ -354,6 +557,8 @@ public class TimedTransformationImpl extends EdgeImpl implements TimedTransforma
 		result.append(kind);
 		result.append(", predefinedTransformation: ");
 		result.append(predefinedTransformation);
+		result.append(", targetSpec: ");
+		result.append(targetSpec);
 		result.append(')');
 		return result.toString();
 	}

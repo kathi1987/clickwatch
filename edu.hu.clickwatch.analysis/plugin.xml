@@ -122,7 +122,7 @@
 	<extension
 	    point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
 	    <propertyContributor contributorId="cwc.PropertyContributor">
-	        <propertyCategory category="Graphiti">
+	        <propertyCategory category="ClickWatch">
 	        </propertyCategory>
 	    </propertyContributor>
 	</extension>
@@ -130,16 +130,30 @@
 	<extension
 	    point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
 	    <propertyTabs contributorId="cwc.PropertyContributor">
-	        <propertyTab label="Main" category="Graphiti" 
-	            id="graphiti.main.tab">
+	        <propertyTab
+               category="ClickWatch"
+               id="edu.hu.clickwatch.analysis.composition.MainTab"
+               label="Main">
 	        </propertyTab>
+         <propertyTab
+               afterTab="edu.hu.clickwatch.analysis.composition.InputTab"
+               category="ClickWatch"
+               id="edu.hu.clickwatch.analysis.composition.OutputTab"
+               label="Output">
+         </propertyTab>
+         <propertyTab
+               afterTab="edu.hu.clickwatch.analysis.composition.MainTab"
+               category="ClickWatch"
+               id="edu.hu.clickwatch.analysis.composition.InputTab"
+               label="Input">
+         </propertyTab>
 	    </propertyTabs>
 	</extension>
 	 
 	<extension
 	    point="org.eclipse.ui.views.properties.tabbed.propertySections">
 	    <propertySections contributorId="cwc.PropertyContributor">
-	        <propertySection tab="graphiti.main.tab"            
+	        <propertySection tab="edu.hu.clickwatch.analysis.composition.MainTab"            
 	         class="edu.hu.clickwatch.analysis.composition.property.ModelNodeSection"
 	         filter="edu.hu.clickwatch.analysis.composition.property.ModelNodeFilter"
 	         id="edu.hu.clickwatch.analysis.composition.ModelNode">
@@ -148,7 +162,19 @@
                class="edu.hu.clickwatch.analysis.composition.property.TransformationSection"
                filter="edu.hu.clickwatch.analysis.composition.property.TransformationFilter"
                id="edu.hu.clickwatch.analysis.composition.Transformation"
-               tab="graphiti.main.tab">
+               tab="edu.hu.clickwatch.analysis.composition.MainTab">
+         </propertySection>
+         <propertySection
+               class="edu.hu.clickwatch.analysis.composition.property.TransformationOutputSection"
+               filter="edu.hu.clickwatch.analysis.composition.property.TransformationFilter"
+               id="edu.hu.clickwatch.analysis.composition.TransformationOutput"
+               tab="edu.hu.clickwatch.analysis.composition.OutputTab">
+         </propertySection>
+         <propertySection
+               class="edu.hu.clickwatch.analysis.composition.property.TransformationInputSection"
+               filter="edu.hu.clickwatch.analysis.composition.property.TransformationFilter"
+               id="edu.hu.clickwatch.analysis.composition.TransformationInput"
+               tab="edu.hu.clickwatch.analysis.composition.InputTab">
          </propertySection>
 	    </propertySections>
 	</extension>
@@ -178,6 +204,7 @@
 			</and>
 		</definition>
 	</extension>
+	<!-- end of extensions for the Composition editor -->
  <extension
        point="org.eclipse.ui.views">
     <view
@@ -201,5 +228,5 @@
           name="Create specific model">
     </transformation>
  </extension>
-	<!-- end of extensions for the Composition editor -->
+
 </plugin>

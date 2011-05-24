@@ -60,6 +60,30 @@
     <element xmi:type="ecore:EClass" href="topology.ecore#//Topology"/>
     <layoutConstraint xmi:type="notation:Bounds" xmi:id="_oYda8mQYEeCX-bnLWNzj7g" x="45" y="27" width="426"/>
   </children>
+  <children xmi:type="notation:Node" xmi:id="_MvzLkIXzEeC4xJUsZsuh8w" type="1001">
+    <children xmi:type="notation:Node" xmi:id="_Mv0ZsIXzEeC4xJUsZsuh8w" type="4001"/>
+    <children xmi:type="notation:Node" xmi:id="_Mv1AwIXzEeC4xJUsZsuh8w" type="5001">
+      <children xmi:type="notation:Node" xmi:id="_RBoNIIXzEeC4xJUsZsuh8w" type="2001">
+        <element xmi:type="ecore:EAttribute" href="topology.ecore#//Gps/long"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_RBoNIYXzEeC4xJUsZsuh8w"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_R2Fv8IXzEeC4xJUsZsuh8w" type="2001">
+        <element xmi:type="ecore:EAttribute" href="topology.ecore#//Gps/lat"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_R2Fv8YXzEeC4xJUsZsuh8w"/>
+      </children>
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_Mv1AwYXzEeC4xJUsZsuh8w"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_Mv1AwoXzEeC4xJUsZsuh8w"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_Mv1Aw4XzEeC4xJUsZsuh8w"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_Mv1n0IXzEeC4xJUsZsuh8w" type="5002">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_Mv1n0YXzEeC4xJUsZsuh8w"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_Mv1n0oXzEeC4xJUsZsuh8w"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_Mv1n04XzEeC4xJUsZsuh8w"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_MvzLkYXzEeC4xJUsZsuh8w" fontColor="4210752" fontName="Lucida Grande" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EClass" href="topology.ecore#//Gps"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MvzLkoXzEeC4xJUsZsuh8w" x="63" y="405"/>
+  </children>
   <styles xmi:type="notation:DiagramStyle" xmi:id="_6Z9uAmQXEeCX-bnLWNzj7g"/>
   <element xmi:type="ecore:EPackage" href="topology.ecore#/"/>
   <edges xmi:type="notation:Edge" xmi:id="_NmmiAGQYEeCX-bnLWNzj7g" type="3002" source="_7vJ_UGQXEeCX-bnLWNzj7g" target="_9bzHUGQXEeCX-bnLWNzj7g">
@@ -158,5 +182,18 @@
     <element xmi:type="ecore:EReference" href="topology.ecore#//Link/reverse"/>
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_OVVBg2QeEeC51vagh__IOA" points="[18, 0, 50, -10]$[62, 0, 94, -10]$[62, 127, 94, 117]$[-32, 127, 0, 117]$[-32, 92, 0, 82]"/>
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_OVahEGQeEeC51vagh__IOA" id="(0.8235294117647058,0.43636363636363634)"/>
+  </edges>
+  <edges xmi:type="notation:Edge" xmi:id="_NpkFIIXzEeC4xJUsZsuh8w" type="3002" source="_7vJ_UGQXEeCX-bnLWNzj7g" target="_MvzLkIXzEeC4xJUsZsuh8w">
+    <children xmi:type="notation:Node" xmi:id="_NplTQIXzEeC4xJUsZsuh8w" type="4011">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_NplTQYXzEeC4xJUsZsuh8w" x="3" y="-16"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_Npl6UIXzEeC4xJUsZsuh8w" type="4012">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_Npl6UYXzEeC4xJUsZsuh8w" x="-4" y="10"/>
+    </children>
+    <styles xmi:type="notation:ConnectorStyle" xmi:id="_NpkFIYXzEeC4xJUsZsuh8w" lineColor="4210752"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_NpkFIoXzEeC4xJUsZsuh8w" fontColor="4210752" fontName="Lucida Grande" fontHeight="10"/>
+    <element xmi:type="ecore:EReference" href="topology.ecore#//Node/gps"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_NpkFI4XzEeC4xJUsZsuh8w" points="[17, 20, -98, -95]$[165, 127, 50, 12]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_NppksIXzEeC4xJUsZsuh8w" id="(0.4883720930232558,0.8787878787878788)"/>
   </edges>
 </notation:Diagram>
