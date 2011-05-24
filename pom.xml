@@ -18,9 +18,7 @@
     <module>edu.hu.clickwatch.model.editor</module>
     <module>edu.hu.clickwatch.cdo</module>
     <module>edu.hu.clickwatch.server</module>
-<!--
     <module>edu.hu.clickwatch.server.tests</module>
--->
     <module>edu.hu.clickwatch.xml</module>
     <module>edu.hu.clickwatch.xml.tests</module>
     <module>edu.hu.clickwatch.logservice</module>

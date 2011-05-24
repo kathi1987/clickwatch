@@ -1,5 +1,7 @@
 package edu.hu.clickwatch.cdo;
 
+import java.math.BigInteger;
+
 import org.eclipse.emf.cdo.eresource.CDOResource;
 import org.eclipse.emf.cdo.net4j.CDONet4jUtil;
 import org.eclipse.emf.cdo.net4j.CDOSessionConfiguration;
@@ -20,12 +22,23 @@ public class CDOHandler {
 	private Connection mHandler = null;
 	/** */
 	private EObject mModel;
+	/** */
+	private String mAddress;
+	/** */
+	private String mRepository;
+	/** TODO: Nachpruefen ob der port auf was anderes gesetzt werden kann */
+	private BigInteger mPort;
 	
 	/**
+	 * @param pRepository 
+	 * @param pPort 
+	 * @param pAddress 
 	 * 
 	 */
-	public CDOHandler(){
-				
+	public CDOHandler(final String pAddress, final BigInteger pPort, final String pRepository){
+		this.mAddress = pAddress;
+		this.mPort = pPort;
+		this.mRepository = pRepository;
 	}
 	
 	/**
@@ -74,7 +87,7 @@ public class CDOHandler {
 	 *
 	 * 
 	 */
-	public void openSession(final String pAddress, final String pRepositoryName){
+	public void openSession(){
 		if(this.mHandler == null){
 			this.mHandler = new Connection();
 			//
@@ -88,13 +101,13 @@ public class CDOHandler {
 			// Activate
 			this.mHandler.getContainer().activate();
 			//
-			this.mHandler.setConnector(TCPUtil.getConnector(this.mHandler.getContainer(), pAddress));
+			this.mHandler.setConnector(TCPUtil.getConnector(this.mHandler.getContainer(), this.mAddress));
 			// Create configuration
 			CDOSessionConfiguration configuration = CDONet4jUtil.createSessionConfiguration();
 			//
 			configuration.setConnector(this.mHandler.getConnector());
 			//
-			configuration.setRepositoryName(pRepositoryName); 
+			configuration.setRepositoryName(this.mRepository); 
 			//
 			this.mHandler.setSession(configuration.openSession());
 			// Test

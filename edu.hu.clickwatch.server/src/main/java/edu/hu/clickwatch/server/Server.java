@@ -1,20 +1,18 @@
 package edu.hu.clickwatch.server;
 
-import java.io.File;
 import java.util.ArrayList;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Unmarshaller;
-
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.osgi.service.log.LogService;
 
+import Configuration.CdoType;
+import Configuration.NetworkType;
+import Configuration.NodeType;
+import edu.hu.clickwatch.cdo.CDOHandler;
 import edu.hu.clickwatch.model.ClickWatchModelFactory;
 import edu.hu.clickwatch.model.Network;
 import edu.hu.clickwatch.model.Node;
-/*import edu.hu.clickwatch.xml.ConfigurationType;
-import edu.hu.clickwatch.xml.NetworkType;
-import edu.hu.clickwatch.xml.NodeType;*/
 
 /**
  * The server component stores the database and network connection configuration as well as
@@ -27,67 +25,47 @@ public class Server {
 	private LogService mLogService = null;
 	/**	The array list holds a list of node connections */
 	private ArrayList<NodeConnection> mConnectionList;
-	/** The java representation of the xml based network configuration file */
-//s	private ConfigurationType mConfiguration;
+	/** The configuration file reader */
+	private ConfigurationFileReader mConfigurationFileReader;
 	/** Location of the configuration file */
 	private String mConfigurationFile;
-	
-	public Server(){
-		
-	}
+	/** A handler for the CDO connection */
+	private CDOHandler mDatabaseHandler;
 	
 	public Server(final String pConfiguration){	
-		
+		//
 		mLogService = ServerPluginActivator.getInstance().getLogService();
-		
-		this.mConfigurationFile = pConfiguration;
-		
-		this.readConfigurationFile();
+		//
+		this.mConfigurationFile = pConfiguration;	
+		//
+		this.mConfigurationFileReader = new ConfigurationFileReader(this.mConfigurationFile);
 	}
 	
-	public void readConfigurationFile(){/*
-		try {
-			ClassLoader classLoader = edu.hu.clickwatch.xml.ObjectFactory.class.getClassLoader();
-
-			JAXBContext context = JAXBContext.newInstance("edu.hu.clickwatch.xml.ConfigurationType", classLoader);
-	        Unmarshaller unmarshaller = context.createUnmarshaller();
-	        mConfiguration = (ConfigurationType) unmarshaller.unmarshal(new File(this.mConfigurationFile));
-		} catch (JAXBException e) {
-			e.printStackTrace();
-		} 	*/
-	}
-	
-	
-	public boolean initialize(){
-		/*
-		if(mConfiguration != null){
+	public synchronized boolean initialize(){
+		Resource resource = this.mConfigurationFileReader.readConfigurationFile();
+		
+		if(resource != null){
 			// Initialize array list
 			mConnectionList = new ArrayList<NodeConnection>();
-			// Iterate through network list in xml configuration
-			for(NetworkType network : mConfiguration.getNetwork()){
-				mLogService.log(LogService.LOG_DEBUG, "Server: Create network " + network.getName());
-				// Create a new network model
-				Network networkModel = ClickWatchModelFactory.eINSTANCE.createNetwork();
-				// Set name of network model
-				networkModel.setName(network.getName());
-				// Set update interval
-				networkModel.setUpdateIntervall(network.getUpdateInterval());
-				
-				// Iterate through nodes in network
-				for(NodeType node : network.getNode()){
+			
+			for(EObject eObject : resource.getContents()){
+				if(eObject instanceof NodeType){	
+					NodeType node = (NodeType)eObject;
+					// Debug
+					mLogService.log(LogService.LOG_DEBUG, "Server: Create node " + node.getAddress());		
 					mLogService.log(LogService.LOG_DEBUG, "Server: Create node " + node.getAddress());
 					// Create a new node model
 					Node nodeModel = ClickWatchModelFactory.eINSTANCE.createNode();
 					// Set ip address
 					nodeModel.setINetAdress(node.getAddress());
 					// Set port
-					nodeModel.setPort(Integer.toString(node.getPort()));			
+					nodeModel.setPort(node.getPort().toString());			
 					// Set up node connection
 					NodeConnection nodeConnection = new NodeConnection();
 					// Add node to node connection
 					nodeConnection.setUp(nodeModel);
-					// Set up update interval
-					nodeConnection.setUpdateInterval(network.getUpdateInterval());
+					// Fixme: Set up update interval
+					//nodeConnection.setUpdateInterval(network.getUpdateInterval());
 					// Set element filter if necessary
 					if(node.getElementFilter() != null){
 						nodeConnection.setElementFilter(node.getElementFilter());
@@ -100,10 +78,28 @@ public class Server {
 					nodeConnection.connect();				
 					// Add node connection to array list
 					mConnectionList.add(nodeConnection);
+				}else if(eObject instanceof NetworkType){
+					NetworkType network = (NetworkType)eObject;
+					// Debug
+					mLogService.log(LogService.LOG_DEBUG, "Server: Create network " + network.getName());					
+					// Create a new network model
+					Network networkModel = ClickWatchModelFactory.eINSTANCE.createNetwork();
+					// Set name of network model
+					networkModel.setName(network.getName());
+					// Set update interval
+					networkModel.setUpdateIntervall(network.getUpdateInterval());	
+				} else if(eObject instanceof CdoType) {
+					CdoType cdo = (CdoType) eObject;
+					//
+					this.mDatabaseHandler = new CDOHandler(cdo.getAddress(), cdo.getPort(), cdo.getRepository());
+					
+				} else {
+					
 				}
 			}
+			// TODO: Aehm, soll das so sein
+			return true;
 		}
-		*/
 		return false;
 	}
 	
@@ -111,11 +107,11 @@ public class Server {
 		return mConnectionList;
 	}
 
-	public void setConnectionList(ArrayList<NodeConnection> pConnectionList) {
+	public synchronized void setConnectionList(ArrayList<NodeConnection> pConnectionList) {
 		this.mConnectionList = pConnectionList;
 	}	
 	
-	public void shutdown(){
+	public synchronized void shutdown(){
 		mLogService.log(LogService.LOG_DEBUG, "Server: Prepare to shutdown");
 		if(mConnectionList != null){
 			for(NodeConnection connection : mConnectionList){
@@ -129,10 +125,12 @@ public class Server {
 		return mConfigurationFile;
 	}
 
-	public void setConfigurationFile(String mConfigurationFile) {
-		
+	public synchronized void setConfigurationFile(String mConfigurationFile) {
+		// Set configuration file
 		this.mConfigurationFile = mConfigurationFile;
+		// Reset configuration or add it to configuration
 		
-		this.readConfigurationFile();
+		// Set up connections
 	}
+	
 }

@@ -12,6 +12,7 @@ import com.google.common.base.Preconditions;
 import com.google.common.base.Throwables;
 import com.google.inject.Inject;
 
+import edu.hu.clickwatch.cdo.CDOHandler;
 import edu.hu.clickwatch.model.ClickWatchModelPackage;
 import edu.hu.clickwatch.model.Element;
 import edu.hu.clickwatch.model.Handler;
@@ -20,7 +21,10 @@ import edu.hu.clickwatch.model.Node;
 /**
  * The class is responsible for a connection to a single node. It holds the update interval
  * for a specific node, a list of filters as well as a connection to the database in order
- * to store handler values of a single node
+ * to store handler values of a single node in a database. 
+ * 
+ * Storing values of a node in database is optional. If a database connection is not set, 
+ * values of a node are written to a plain text file. 
  * 
  * @author Michael Frey, Markus Scheidgen
  */
@@ -38,16 +42,22 @@ public class NodeConnection {
 	private INodeAdapter mNodeAdapter;	
 	/** Access to the OSGi log service */
 	private LogService mLogService = null;
-	/** */
+	/** An model adapter for a single node */
 	private final HandlerModelAdapter mModelChangeListener = new HandlerModelAdapter(); 
-	/** */
+	/** The element filter of a node */
 	private String mElementFilter = "";
-	/** */
+	/** The handler filter of a node */
 	private String mHandlerFilter = "";
-
+	/** The connection to a CDO database */
+	private CDOHandler mDatabaseHandler;
 	
 	public NodeConnection(){
 		mLogService = ServerPluginActivator.getInstance().getLogService();
+	}
+	
+	public NodeConnection(final CDOHandler pDatabaseHandler){
+		super();
+		this.mDatabaseHandler = pDatabaseHandler;
 	}
 	
 	public long getUpdateInterval() {
@@ -118,7 +128,6 @@ public class NodeConnection {
 	 * the model with this configuration continuously. Should be run in extra
 	 * thread.
 	 */
-	
 	private class ContinuousUpdateRunnable implements Runnable {
 		@Override
 		public void run() {
@@ -338,5 +347,13 @@ public class NodeConnection {
 			return true;
 		}
 		return false;
+	}
+
+	public CDOHandler getDatabaseHandler() {
+		return mDatabaseHandler;
+	}
+
+	public void setDatabaseHandler(final CDOHandler pDatabaseHandler) {
+		this.mDatabaseHandler = pDatabaseHandler;
 	}
 }
