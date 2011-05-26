@@ -59,7 +59,7 @@ public class LayoutModelNodeFeature extends AbstractLayoutFeature {
 			EObject next = i.next();
 			if (next instanceof Ellipse) {				
 				EList<EObject> businessObjects = context.getPictogramElement().getLink().getBusinessObjects();
-				((Ellipse)next).setTransparency(((ModelNode)businessObjects.get(0)).isHasModel() ? 0.0 : 1.0);
+				((Ellipse)next).setTransparency(((ModelNode)businessObjects.get(0)).isHasData() ? 0.0 : 1.0);
 			} else if (next instanceof GraphicsAlgorithm) {
 				GraphicsAlgorithm ga = (GraphicsAlgorithm)next;
 				gaService.setWidth(ga, width);

@@ -143,6 +143,24 @@ public interface CompositionFactory extends EFactory {
 	ParameterSpec createParameterSpec();
 
 	/**
+	 * Returns a new object of class '<em>Data Set</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Data Set</em>'.
+	 * @generated
+	 */
+	DataSet createDataSet();
+
+	/**
+	 * Returns a new object of class '<em>Measure</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Measure</em>'.
+	 * @generated
+	 */
+	Measure createMeasure();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

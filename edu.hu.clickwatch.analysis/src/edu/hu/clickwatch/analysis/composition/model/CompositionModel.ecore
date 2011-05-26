@@ -35,11 +35,14 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="modelResource" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="persistent" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         defaultValueLiteral="false"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hasModel" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        transient="true" defaultValueLiteral="false"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DataSetNode" eSuperTypes="#//Node #//DataNode"/>
-  <eClassifiers xsi:type="ecore:EClass" name="MeasureNode" eSuperTypes="#//Node #//DataNode"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DataSetNode" eSuperTypes="#//Node #//DataNode">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="data" eType="#//DataSet"
+        transient="true" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MeasureNode" eSuperTypes="#//Node #//DataNode">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="data" eType="#//Measure"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Edge" eSuperTypes="#//Element">
     <eStructuralFeatures xsi:type="ecore:EReference" name="source" eType="#//Node"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//Node"/>
@@ -47,7 +50,10 @@
   <eClassifiers xsi:type="ecore:EClass" name="TimedTransformation" eSuperTypes="#//Edge #//Transformation"/>
   <eClassifiers xsi:type="ecore:EClass" name="Visualization" eSuperTypes="#//Node"/>
   <eClassifiers xsi:type="ecore:EClass" name="Visualizer" eSuperTypes="#//Edge"/>
-  <eClassifiers xsi:type="ecore:EClass" name="DataNode" eSuperTypes="#//Node"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DataNode" eSuperTypes="#//Node">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hasData" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        transient="true" defaultValueLiteral="false"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Composition">
     <eStructuralFeatures xsi:type="ecore:EReference" name="contents" upperBound="-1"
         eType="#//Element" containment="true"/>
@@ -72,5 +78,15 @@
     <eLiterals name="root"/>
     <eLiterals name="map" value="1"/>
     <eLiterals name="list" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DataSet">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="intValues" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="doubleValues" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Measure">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="intValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="doubleValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
   </eClassifiers>
 </ecore:EPackage>

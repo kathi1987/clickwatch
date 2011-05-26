@@ -6,6 +6,7 @@
  */
 package edu.hu.clickwatch.analysis.composition.model.impl;
 
+import edu.hu.clickwatch.analysis.composition.model.*;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
@@ -89,6 +90,8 @@ public class CompositionFactoryImpl extends EFactoryImpl implements CompositionF
 			case CompositionPackage.DATA_NODE: return createDataNode();
 			case CompositionPackage.COMPOSITION: return createComposition();
 			case CompositionPackage.PARAMETER_SPEC: return createParameterSpec();
+			case CompositionPackage.DATA_SET: return createDataSet();
+			case CompositionPackage.MEASURE: return createMeasure();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -260,6 +263,26 @@ public class CompositionFactoryImpl extends EFactoryImpl implements CompositionF
 	public ParameterSpec createParameterSpec() {
 		ParameterSpecImpl parameterSpec = new ParameterSpecImpl();
 		return parameterSpec;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DataSet createDataSet() {
+		DataSetImpl dataSet = new DataSetImpl();
+		return dataSet;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Measure createMeasure() {
+		MeasureImpl measure = new MeasureImpl();
+		return measure;
 	}
 
 	/**

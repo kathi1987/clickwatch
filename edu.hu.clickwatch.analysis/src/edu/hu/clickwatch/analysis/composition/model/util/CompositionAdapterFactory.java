@@ -124,6 +124,14 @@ public class CompositionAdapterFactory extends AdapterFactoryImpl {
 				return createParameterSpecAdapter();
 			}
 			@Override
+			public Adapter caseDataSet(DataSet object) {
+				return createDataSetAdapter();
+			}
+			@Override
+			public Adapter caseMeasure(Measure object) {
+				return createMeasureAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -322,6 +330,34 @@ public class CompositionAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createParameterSpecAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link edu.hu.clickwatch.analysis.composition.model.DataSet <em>Data Set</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see edu.hu.clickwatch.analysis.composition.model.DataSet
+	 * @generated
+	 */
+	public Adapter createDataSetAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link edu.hu.clickwatch.analysis.composition.model.Measure <em>Measure</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see edu.hu.clickwatch.analysis.composition.model.Measure
+	 * @generated
+	 */
+	public Adapter createMeasureAdapter() {
 		return null;
 	}
 

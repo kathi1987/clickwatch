@@ -17,9 +17,11 @@ import edu.hu.clickwatch.analysis.composition.model.Composition;
 import edu.hu.clickwatch.analysis.composition.model.CompositionFactory;
 import edu.hu.clickwatch.analysis.composition.model.CompositionPackage;
 import edu.hu.clickwatch.analysis.composition.model.DataNode;
+import edu.hu.clickwatch.analysis.composition.model.DataSet;
 import edu.hu.clickwatch.analysis.composition.model.DataSetNode;
 import edu.hu.clickwatch.analysis.composition.model.Edge;
 import edu.hu.clickwatch.analysis.composition.model.Element;
+import edu.hu.clickwatch.analysis.composition.model.Measure;
 import edu.hu.clickwatch.analysis.composition.model.MeasureNode;
 import edu.hu.clickwatch.analysis.composition.model.ModelNode;
 import edu.hu.clickwatch.analysis.composition.model.Node;
@@ -129,6 +131,20 @@ public class CompositionPackageImpl extends EPackageImpl implements CompositionP
 	 * @generated
 	 */
 	private EClass parameterSpecEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass dataSetEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass measureEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -397,15 +413,6 @@ public class CompositionPackageImpl extends EPackageImpl implements CompositionP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getModelNode_HasModel() {
-		return (EAttribute)modelNodeEClass.getEStructuralFeatures().get(5);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getDataSetNode() {
 		return dataSetNodeEClass;
 	}
@@ -415,8 +422,26 @@ public class CompositionPackageImpl extends EPackageImpl implements CompositionP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getDataSetNode_Data() {
+		return (EReference)dataSetNodeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getMeasureNode() {
 		return measureNodeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getMeasureNode_Data() {
+		return (EReference)measureNodeEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -487,6 +512,15 @@ public class CompositionPackageImpl extends EPackageImpl implements CompositionP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getDataNode_HasData() {
+		return (EAttribute)dataNodeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getComposition() {
 		return compositionEClass;
 	}
@@ -534,6 +568,60 @@ public class CompositionPackageImpl extends EPackageImpl implements CompositionP
 	 */
 	public EAttribute getParameterSpec_ListQuery() {
 		return (EAttribute)parameterSpecEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getDataSet() {
+		return dataSetEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getDataSet_IntValues() {
+		return (EAttribute)dataSetEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getDataSet_DoubleValues() {
+		return (EAttribute)dataSetEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getMeasure() {
+		return measureEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMeasure_IntValue() {
+		return (EAttribute)measureEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMeasure_DoubleValue() {
+		return (EAttribute)measureEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -614,11 +702,12 @@ public class CompositionPackageImpl extends EPackageImpl implements CompositionP
 		createEAttribute(modelNodeEClass, MODEL_NODE__META_MODEL_CLASS);
 		createEAttribute(modelNodeEClass, MODEL_NODE__MODEL_RESOURCE);
 		createEAttribute(modelNodeEClass, MODEL_NODE__PERSISTENT);
-		createEAttribute(modelNodeEClass, MODEL_NODE__HAS_MODEL);
 
 		dataSetNodeEClass = createEClass(DATA_SET_NODE);
+		createEReference(dataSetNodeEClass, DATA_SET_NODE__DATA);
 
 		measureNodeEClass = createEClass(MEASURE_NODE);
+		createEReference(measureNodeEClass, MEASURE_NODE__DATA);
 
 		edgeEClass = createEClass(EDGE);
 		createEReference(edgeEClass, EDGE__SOURCE);
@@ -631,6 +720,7 @@ public class CompositionPackageImpl extends EPackageImpl implements CompositionP
 		visualizerEClass = createEClass(VISUALIZER);
 
 		dataNodeEClass = createEClass(DATA_NODE);
+		createEAttribute(dataNodeEClass, DATA_NODE__HAS_DATA);
 
 		compositionEClass = createEClass(COMPOSITION);
 		createEReference(compositionEClass, COMPOSITION__CONTENTS);
@@ -639,6 +729,14 @@ public class CompositionPackageImpl extends EPackageImpl implements CompositionP
 		createEAttribute(parameterSpecEClass, PARAMETER_SPEC__KIND);
 		createEAttribute(parameterSpecEClass, PARAMETER_SPEC__MAP_CLASS_KEY);
 		createEAttribute(parameterSpecEClass, PARAMETER_SPEC__LIST_QUERY);
+
+		dataSetEClass = createEClass(DATA_SET);
+		createEAttribute(dataSetEClass, DATA_SET__INT_VALUES);
+		createEAttribute(dataSetEClass, DATA_SET__DOUBLE_VALUES);
+
+		measureEClass = createEClass(MEASURE);
+		createEAttribute(measureEClass, MEASURE__INT_VALUE);
+		createEAttribute(measureEClass, MEASURE__DOUBLE_VALUE);
 
 		// Create enums
 		transformationKindEEnum = createEEnum(TRANSFORMATION_KIND);
@@ -713,11 +811,12 @@ public class CompositionPackageImpl extends EPackageImpl implements CompositionP
 		initEAttribute(getModelNode_MetaModelClass(), ecorePackage.getEString(), "metaModelClass", null, 0, 1, ModelNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getModelNode_ModelResource(), ecorePackage.getEString(), "modelResource", null, 0, 1, ModelNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getModelNode_Persistent(), ecorePackage.getEBoolean(), "persistent", "false", 0, 1, ModelNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getModelNode_HasModel(), ecorePackage.getEBoolean(), "hasModel", "false", 0, 1, ModelNode.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(dataSetNodeEClass, DataSetNode.class, "DataSetNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getDataSetNode_Data(), this.getDataSet(), null, "data", null, 0, 1, DataSetNode.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(measureNodeEClass, MeasureNode.class, "MeasureNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getMeasureNode_Data(), this.getMeasure(), null, "data", null, 0, 1, MeasureNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(edgeEClass, Edge.class, "Edge", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEdge_Source(), this.getNode(), null, "source", null, 0, 1, Edge.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -730,6 +829,7 @@ public class CompositionPackageImpl extends EPackageImpl implements CompositionP
 		initEClass(visualizerEClass, Visualizer.class, "Visualizer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(dataNodeEClass, DataNode.class, "DataNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getDataNode_HasData(), ecorePackage.getEBoolean(), "hasData", "false", 0, 1, DataNode.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(compositionEClass, Composition.class, "Composition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getComposition_Contents(), this.getElement(), null, "contents", null, 0, -1, Composition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -738,6 +838,14 @@ public class CompositionPackageImpl extends EPackageImpl implements CompositionP
 		initEAttribute(getParameterSpec_Kind(), this.getParameterSpecKind(), "kind", "root", 0, 1, ParameterSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getParameterSpec_MapClassKey(), ecorePackage.getEString(), "mapClassKey", null, 0, 1, ParameterSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getParameterSpec_ListQuery(), ecorePackage.getEString(), "listQuery", null, 0, 1, ParameterSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(dataSetEClass, DataSet.class, "DataSet", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getDataSet_IntValues(), ecorePackage.getEInt(), "intValues", null, 0, -1, DataSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDataSet_DoubleValues(), ecorePackage.getEDouble(), "doubleValues", null, 0, -1, DataSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(measureEClass, Measure.class, "Measure", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getMeasure_IntValue(), ecorePackage.getEInt(), "intValue", null, 0, 1, Measure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMeasure_DoubleValue(), ecorePackage.getEDouble(), "doubleValue", null, 0, 1, Measure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(transformationKindEEnum, TransformationKind.class, "TransformationKind");

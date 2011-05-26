@@ -28,8 +28,8 @@ import org.eclipse.graphiti.mm.pictograms.ContainerShape;
 import org.eclipse.graphiti.mm.pictograms.PictogramElement;
 import org.eclipse.graphiti.mm.pictograms.Shape;
 
+import edu.hu.clickwatch.analysis.composition.model.DataNode;
 import edu.hu.clickwatch.analysis.composition.model.Element;
-import edu.hu.clickwatch.analysis.composition.model.ModelNode;
 
 public class UpdateElementFeature extends AbstractUpdateFeature {
 
@@ -44,7 +44,7 @@ public class UpdateElementFeature extends AbstractUpdateFeature {
 
 	public IReason updateNeeded(IUpdateContext context) {
 		String pictogramName = null;
-		boolean isModelNode = false;
+		boolean isDataNode = false;
 		boolean hasModel = false;
 		PictogramElement pictogramElement = context.getPictogramElement();
 		if (pictogramElement instanceof ContainerShape) {
@@ -55,7 +55,7 @@ public class UpdateElementFeature extends AbstractUpdateFeature {
 					pictogramName = text.getValue();
 				} 
 				if (shape.getGraphicsAlgorithm() instanceof Ellipse) {
-					isModelNode = true;
+					isDataNode = true;
 					hasModel = ((Ellipse)shape.getGraphicsAlgorithm()).getTransparency() == 0;
 				}
 			}
@@ -80,7 +80,7 @@ public class UpdateElementFeature extends AbstractUpdateFeature {
 				.equals(businessName)));
 		if (updateNameNeeded) {
 			return Reason.createTrueReason("Name is out of date"); //$NON-NLS-1$
-		} else if (isModelNode && ((ModelNode)bo).isHasModel() != hasModel) {
+		} else if (isDataNode && ((DataNode)bo).isHasData() != hasModel) {
 			return Reason.createTrueReason("Model status is out of date"); //$NON-NLS-1$
 		} else {
 			return Reason.createFalseReason();
@@ -107,7 +107,7 @@ public class UpdateElementFeature extends AbstractUpdateFeature {
 				}
 				if (shape.getGraphicsAlgorithm() instanceof Ellipse) {
 					Ellipse ellipse = (Ellipse) shape.getGraphicsAlgorithm();
-					ellipse.setTransparency(((ModelNode)bo).isHasModel() ? 0.0: 1.0);
+					ellipse.setTransparency(((DataNode)bo).isHasData() ? 0.0: 1.0);
 					hasChanged = true;
 				}				
 			}

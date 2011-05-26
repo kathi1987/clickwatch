@@ -18,12 +18,10 @@ import org.eclipse.graphiti.services.IGaService;
 import org.eclipse.graphiti.services.IPeCreateService;
 
 import edu.hu.clickwatch.analysis.composition.Style;
+import edu.hu.clickwatch.analysis.composition.model.DataNode;
 import edu.hu.clickwatch.analysis.composition.model.ModelNode;
-import edu.hu.clickwatch.analysis.composition.model.Node;
 
 public class AddModelNodeFeature extends AbstractAddShapeFeature implements Style {
-	
-
  
     public AddModelNodeFeature(IFeatureProvider fp) {
         super(fp);
@@ -43,18 +41,9 @@ public class AddModelNodeFeature extends AbstractAddShapeFeature implements Styl
     }
     
     protected GraphicsAlgorithm addSpecificShape(IAddContext context, ContainerShape containerShape) {
-    	ModelNode addedNode = (ModelNode)context.getNewObject();
-    	IPeCreateService peCreateService = Graphiti.getPeCreateService();
     	IGaService gaService = Graphiti.getGaService();
         RoundedRectangle roundedRectangle = gaService.createRoundedRectangle(containerShape, 5, 5);
         stylizeShape(roundedRectangle);
-        
-        Shape shape = peCreateService.createShape(containerShape, false);
-        Ellipse ellipse = gaService.createEllipse(shape);
-        gaService.setLocationAndSize(ellipse, 5, 5, 5, 5);
-        ellipse.setBackground(manageColor(Style.MODEL_MARKER_BACKGROUND));
-        ellipse.setFilled(true);
-        ellipse.setTransparency(addedNode.isHasModel() ? 0.0 : 1.0);
         
         return roundedRectangle;
     }
@@ -66,7 +55,7 @@ public class AddModelNodeFeature extends AbstractAddShapeFeature implements Styl
     }
  
     public PictogramElement add(IAddContext context) {
-    	Node addedNode = (Node)context.getNewObject();
+    	DataNode addedNode = (DataNode)context.getNewObject();
         Diagram targetDiagram = (Diagram) context.getTargetContainer();
  
         IPeCreateService peCreateService = Graphiti.getPeCreateService();
@@ -78,6 +67,14 @@ public class AddModelNodeFeature extends AbstractAddShapeFeature implements Styl
         int height = LayoutNodeHelper.getHeight(context.getHeight());
         
         GraphicsAlgorithm specificShape = addSpecificShape(context, containerShape);
+        
+        Shape dataShape = peCreateService.createShape(containerShape, false);
+        Ellipse ellipse = gaService.createEllipse(dataShape);
+        gaService.setLocationAndSize(ellipse, 5, 5, 5, 5);
+        ellipse.setBackground(manageColor(Style.MODEL_MARKER_BACKGROUND));
+        ellipse.setFilled(true);
+        ellipse.setTransparency(addedNode.isHasData() ? 0.0 : 1.0);
+        
         gaService.setLocationAndSize(specificShape, context.getX(), context.getY(), width, height);
         
         if (addedNode.eResource() == null) {

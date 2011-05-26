@@ -9,8 +9,6 @@ import java.util.List;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -21,6 +19,9 @@ import org.eclipse.xtend.XtendFacade;
 import org.eclipse.xtend.typesystem.emf.EmfMetaModel;
 
 import edu.hu.clickwatch.XmlModelRepository;
+import edu.hu.clickwatch.analysis.composition.model.CompositionFactory;
+import edu.hu.clickwatch.analysis.composition.model.DataSet;
+import edu.hu.clickwatch.analysis.composition.model.DataSetNode;
 import edu.hu.clickwatch.analysis.composition.model.ModelNode;
 import edu.hu.clickwatch.analysis.composition.model.ModelUtil;
 import edu.hu.clickwatch.analysis.composition.model.Node;
@@ -72,11 +73,35 @@ public class TransformationEngine {
 				TransactionUtil.runSafely(new Runnable() {
 					@Override
 					public void run() {
-						EObject transformationResult = executeTransformation(source, null);
+						Object transformationResult = executeTransformation(source, null);
 						if (transformationResult == null) {
 							raiseError("invalid transformation result"); return;
 						}
-						models.targetModel.model.getContents().add(transformationResult);
+						
+						Node targetNode = transformation.getTarget();
+						if (targetNode instanceof ModelNode) {
+							if (transformationResult instanceof EObject) {
+								models.targetModel.model.getContents().add((EObject)transformationResult);
+							} else {
+								raiseError("invalid transformation result");
+							}
+						} else if (targetNode instanceof DataSetNode) {
+							DataSetNode targetDSNode = (DataSetNode)targetNode;
+							DataSet ds = ((DataSetNode)targetNode).getData();
+							if (ds == null) {
+								ds = CompositionFactory.eINSTANCE.createDataSet();
+								targetDSNode.setData(ds);								
+							}
+							targetDSNode.setHasData(true);
+							
+							if (transformationResult instanceof Double) {
+								ds.getDoubleValues().add((Double)transformationResult);
+							} else if (transformationResult instanceof Integer) {
+								ds.getIntValues().add((Integer)transformationResult);
+							} else {
+								raiseError("not supported");
+							}
+						}
 					}
 				}, transformation);
 			}
@@ -84,17 +109,19 @@ public class TransformationEngine {
 			raiseError("target spec is not supported");
 		}
 		
-		if (!models.targetModel.model.getContents().isEmpty() && transformation.getTarget() instanceof ModelNode) {
-			TransactionUtil.runSafely(new Runnable() {
-				@Override
-				public void run() {
-					ModelUtil.addModelToModelNode((ModelNode)transformation.getTarget(), models.targetModel.model);
-				}
-			}, transformation);
+		if (models.targetModel != null) {
+			if (!models.targetModel.model.getContents().isEmpty() && transformation.getTarget() instanceof ModelNode) {
+				TransactionUtil.runSafely(new Runnable() {
+					@Override
+					public void run() {
+						ModelUtil.addModelToModelNode((ModelNode)transformation.getTarget(), models.targetModel.model);
+					}
+				}, transformation);
+			}
 		}
 	}
 	
-	private EObject executeTransformation(EObject source, EObject target) {
+	private Object executeTransformation(EObject source, EObject target) {
 		TransformationKind kind = transformation.getKind();
 		if (kind == TransformationKind.XTEND) {
 			return executeXtendTransformation(source, target);
@@ -106,7 +133,7 @@ public class TransformationEngine {
 		}
 	}
 	
-	private EObject executePredefinedTransformation(EObject source, EObject target) {
+	private Object executePredefinedTransformation(EObject source, EObject target) {
 		String predefinedTransformationName = transformation.getPredefinedTransformation();
 		final IPredefinedTransformation predefinedTransformation = 
 				PredefinedTransformationsUtil.getPredefinedTransformations().get(predefinedTransformationName);
@@ -139,8 +166,8 @@ public class TransformationEngine {
 	}
 	
 	private class ModelSet {
-		final Model sourceModel;
-		final Model targetModel;
+		Model sourceModel;
+		Model targetModel;
 		public ModelSet(Model sourceModel, Model targetModel) {
 			super();
 			this.sourceModel = sourceModel;
@@ -151,41 +178,49 @@ public class TransformationEngine {
 	private ModelSet getModels(
 			boolean requireSourceMetaModel, 
 			boolean requireTargetMetaModel) {
-		
+		ModelSet result = new ModelSet(null, null);
+		ResourceSet rs = null;
 		try {
 			Node source = transformation.getSource();
 			Node target = transformation.getTarget();
 			
-			if (source instanceof ModelNode && target instanceof ModelNode) {
+			if (source instanceof ModelNode) {
 				ModelNode sourceModelNode = (ModelNode)source;
-				ModelNode targetModelNode = (ModelNode)target;
-				
 				Resource sourceModel = null;
-				Resource targetModel = null;
-				if (sourceModelNode.isHasModel()) {
+				if (sourceModelNode.isHasData()) {
 					sourceModel = ModelUtil.getModelFromModelNode(sourceModelNode);								
 				} else {
 					raiseError("no source model found"); return null;
 				}
 				
-				ResourceSet rs = sourceModel.getResourceSet();
+				rs = sourceModel.getResourceSet();
 				
 				EPackage sourceMetaModel = null;
 				if (requireSourceMetaModel) {
 					sourceMetaModel = loadMetaModel(rs, sourceModelNode);
 				}
+				
+				if (requireSourceMetaModel && sourceModelNode.isInferedType()) {
+					raiseError("infered meta-models are not supported yet"); return null;
+				}
+				result.sourceModel = new Model(sourceModel, sourceMetaModel);
+			}
+			if (target instanceof ModelNode) {
+				
+				ModelNode targetModelNode = (ModelNode)target;
+				Resource targetModel = null;
+				
 				EPackage targetMetaModel = null;
 				if (requireTargetMetaModel) {
 					targetMetaModel = loadMetaModel(rs, targetModelNode);
 				}
 				
-				if ((requireSourceMetaModel && sourceModelNode.isInferedType()) || 
-						(requireTargetMetaModel && targetModelNode.isInferedType())) {
+				if (requireTargetMetaModel && targetModelNode.isInferedType()) {
 					raiseError("infered meta-models are not supported yet"); return null;
 				}
 				
 				if (targetModelNode.isPersistent()) {
-					if (targetModelNode.isHasModel()) {
+					if (targetModelNode.isHasData()) {
 						targetModel = ModelUtil.getModelFromModelNode(targetModelNode);
 					} else {
 						targetModel = rs.createResource(URI.createURI(targetModelNode.getModelResource()));
@@ -194,20 +229,22 @@ public class TransformationEngine {
 					raiseError("non persistent target models are not supported yet"); return null;
 				}	
 				
-				return new ModelSet(new Model(sourceModel, sourceMetaModel), new Model(targetModel, targetMetaModel));
+				result.targetModel = new Model(targetModel, targetMetaModel);
 			}
+			return result;
 		} catch (Exception e) {
 			e.printStackTrace();
 			Status myStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, "Could not run transformation", e);
 			StatusManager.getManager().handle(myStatus, StatusManager.SHOW);
 			return null;
 		}
-		
-		raiseError("could not run transformation"); return null;
 	}
 	
-	private List<EObject> getArgument(Model model) {
+	private List<EObject> getArgument(Model model) {		
 		List<EObject> result = new ArrayList<EObject>();
+		if (model == null) {
+			return result;
+		}
 		if (transformation.getInput().getKind() == ParameterSpecKind.ROOT) {
 			if (!model.model.getContents().isEmpty()) {
 				result.add(model.model.getContents().get(0));
@@ -227,7 +264,7 @@ public class TransformationEngine {
 		return result;
 	}
 	
-	private EObject executeXtendTransformation(EObject source, EObject target) {
+	private Object executeXtendTransformation(EObject source, EObject target) {
 		String xtendUri = transformation.getTransformationUri();
 		if (xtendUri == null) {
 			Status myStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, "No transformation specified", null);
@@ -242,8 +279,12 @@ public class TransformationEngine {
 		try {
 			if (models != null) {
 				XtendFacade f = XtendFacade.create();
-				f.registerMetaModel(new EmfMetaModel(models.sourceModel.metaModel));
-				f.registerMetaModel(new EmfMetaModel(models.targetModel.metaModel));
+				if (models.sourceModel != null) {
+					f.registerMetaModel(new EmfMetaModel(models.sourceModel.metaModel));
+				}
+				if (models.targetModel != null) {
+					f.registerMetaModel(new EmfMetaModel(models.targetModel.metaModel));
+				}
 				f = f.cloneWithExtensions(read(URIConverter.INSTANCE.createInputStream(URI.createURI(xtendUri))));
 				
 				Object[] arguments;
@@ -253,13 +294,7 @@ public class TransformationEngine {
 					arguments =  new Object[] { source, target };
 				}
 				
-				Object result = f.call(xtendFunction, arguments);
-				
-				if (!(result instanceof EObject)) {
-					return null;
-				} else {
-					return (EObject)result;
-				}
+				return f.call(xtendFunction, arguments);				
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

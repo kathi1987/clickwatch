@@ -20,7 +20,6 @@ package edu.hu.clickwatch.analysis.composition.model;
  *   <li>{@link edu.hu.clickwatch.analysis.composition.model.ModelNode#getMetaModelClass <em>Meta Model Class</em>}</li>
  *   <li>{@link edu.hu.clickwatch.analysis.composition.model.ModelNode#getModelResource <em>Model Resource</em>}</li>
  *   <li>{@link edu.hu.clickwatch.analysis.composition.model.ModelNode#isPersistent <em>Persistent</em>}</li>
- *   <li>{@link edu.hu.clickwatch.analysis.composition.model.ModelNode#isHasModel <em>Has Model</em>}</li>
  * </ul>
  * </p>
  *
@@ -161,31 +160,4 @@ public interface ModelNode extends Node, DataNode {
 	 * @generated
 	 */
 	void setPersistent(boolean value);
-
-	/**
-	 * Returns the value of the '<em><b>Has Model</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Has Model</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Has Model</em>' attribute.
-	 * @see #setHasModel(boolean)
-	 * @see edu.hu.clickwatch.analysis.composition.model.CompositionPackage#getModelNode_HasModel()
-	 * @model default="false" transient="true"
-	 * @generated
-	 */
-	boolean isHasModel();
-
-	/**
-	 * Sets the value of the '{@link edu.hu.clickwatch.analysis.composition.model.ModelNode#isHasModel <em>Has Model</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Has Model</em>' attribute.
-	 * @see #isHasModel()
-	 * @generated
-	 */
-	void setHasModel(boolean value);
 } // ModelNode

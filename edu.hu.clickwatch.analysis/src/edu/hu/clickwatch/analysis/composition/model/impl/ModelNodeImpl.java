@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import edu.hu.clickwatch.analysis.composition.model.CompositionPackage;
+import edu.hu.clickwatch.analysis.composition.model.DataNode;
 import edu.hu.clickwatch.analysis.composition.model.ModelNode;
 
 /**
@@ -20,18 +21,36 @@ import edu.hu.clickwatch.analysis.composition.model.ModelNode;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link edu.hu.clickwatch.analysis.composition.model.impl.ModelNodeImpl#isHasData <em>Has Data</em>}</li>
  *   <li>{@link edu.hu.clickwatch.analysis.composition.model.impl.ModelNodeImpl#getMetaModelResource <em>Meta Model Resource</em>}</li>
  *   <li>{@link edu.hu.clickwatch.analysis.composition.model.impl.ModelNodeImpl#isInferedType <em>Infered Type</em>}</li>
  *   <li>{@link edu.hu.clickwatch.analysis.composition.model.impl.ModelNodeImpl#getMetaModelClass <em>Meta Model Class</em>}</li>
  *   <li>{@link edu.hu.clickwatch.analysis.composition.model.impl.ModelNodeImpl#getModelResource <em>Model Resource</em>}</li>
  *   <li>{@link edu.hu.clickwatch.analysis.composition.model.impl.ModelNodeImpl#isPersistent <em>Persistent</em>}</li>
- *   <li>{@link edu.hu.clickwatch.analysis.composition.model.impl.ModelNodeImpl#isHasModel <em>Has Model</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
 public class ModelNodeImpl extends NodeImpl implements ModelNode {
+	/**
+	 * The default value of the '{@link #isHasData() <em>Has Data</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isHasData()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean HAS_DATA_EDEFAULT = false;
+	/**
+	 * The cached value of the '{@link #isHasData() <em>Has Data</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isHasData()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean hasData = HAS_DATA_EDEFAULT;
 	/**
 	 * The default value of the '{@link #getMetaModelResource() <em>Meta Model Resource</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -123,24 +142,6 @@ public class ModelNodeImpl extends NodeImpl implements ModelNode {
 	 */
 	protected boolean persistent = PERSISTENT_EDEFAULT;
 	/**
-	 * The default value of the '{@link #isHasModel() <em>Has Model</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isHasModel()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean HAS_MODEL_EDEFAULT = false;
-	/**
-	 * The cached value of the '{@link #isHasModel() <em>Has Model</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isHasModel()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean hasModel = HAS_MODEL_EDEFAULT;
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -157,6 +158,27 @@ public class ModelNodeImpl extends NodeImpl implements ModelNode {
 	@Override
 	protected EClass eStaticClass() {
 		return CompositionPackage.Literals.MODEL_NODE;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isHasData() {
+		return hasData;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setHasData(boolean newHasData) {
+		boolean oldHasData = hasData;
+		hasData = newHasData;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CompositionPackage.MODEL_NODE__HAS_DATA, oldHasData, hasData));
 	}
 
 	/**
@@ -269,30 +291,11 @@ public class ModelNodeImpl extends NodeImpl implements ModelNode {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isHasModel() {
-		return hasModel;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setHasModel(boolean newHasModel) {
-		boolean oldHasModel = hasModel;
-		hasModel = newHasModel;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CompositionPackage.MODEL_NODE__HAS_MODEL, oldHasModel, hasModel));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case CompositionPackage.MODEL_NODE__HAS_DATA:
+				return isHasData();
 			case CompositionPackage.MODEL_NODE__META_MODEL_RESOURCE:
 				return getMetaModelResource();
 			case CompositionPackage.MODEL_NODE__INFERED_TYPE:
@@ -303,8 +306,6 @@ public class ModelNodeImpl extends NodeImpl implements ModelNode {
 				return getModelResource();
 			case CompositionPackage.MODEL_NODE__PERSISTENT:
 				return isPersistent();
-			case CompositionPackage.MODEL_NODE__HAS_MODEL:
-				return isHasModel();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -317,6 +318,9 @@ public class ModelNodeImpl extends NodeImpl implements ModelNode {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case CompositionPackage.MODEL_NODE__HAS_DATA:
+				setHasData((Boolean)newValue);
+				return;
 			case CompositionPackage.MODEL_NODE__META_MODEL_RESOURCE:
 				setMetaModelResource((String)newValue);
 				return;
@@ -332,9 +336,6 @@ public class ModelNodeImpl extends NodeImpl implements ModelNode {
 			case CompositionPackage.MODEL_NODE__PERSISTENT:
 				setPersistent((Boolean)newValue);
 				return;
-			case CompositionPackage.MODEL_NODE__HAS_MODEL:
-				setHasModel((Boolean)newValue);
-				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -347,6 +348,9 @@ public class ModelNodeImpl extends NodeImpl implements ModelNode {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case CompositionPackage.MODEL_NODE__HAS_DATA:
+				setHasData(HAS_DATA_EDEFAULT);
+				return;
 			case CompositionPackage.MODEL_NODE__META_MODEL_RESOURCE:
 				setMetaModelResource(META_MODEL_RESOURCE_EDEFAULT);
 				return;
@@ -362,9 +366,6 @@ public class ModelNodeImpl extends NodeImpl implements ModelNode {
 			case CompositionPackage.MODEL_NODE__PERSISTENT:
 				setPersistent(PERSISTENT_EDEFAULT);
 				return;
-			case CompositionPackage.MODEL_NODE__HAS_MODEL:
-				setHasModel(HAS_MODEL_EDEFAULT);
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -377,6 +378,8 @@ public class ModelNodeImpl extends NodeImpl implements ModelNode {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case CompositionPackage.MODEL_NODE__HAS_DATA:
+				return hasData != HAS_DATA_EDEFAULT;
 			case CompositionPackage.MODEL_NODE__META_MODEL_RESOURCE:
 				return META_MODEL_RESOURCE_EDEFAULT == null ? metaModelResource != null : !META_MODEL_RESOURCE_EDEFAULT.equals(metaModelResource);
 			case CompositionPackage.MODEL_NODE__INFERED_TYPE:
@@ -387,10 +390,40 @@ public class ModelNodeImpl extends NodeImpl implements ModelNode {
 				return MODEL_RESOURCE_EDEFAULT == null ? modelResource != null : !MODEL_RESOURCE_EDEFAULT.equals(modelResource);
 			case CompositionPackage.MODEL_NODE__PERSISTENT:
 				return persistent != PERSISTENT_EDEFAULT;
-			case CompositionPackage.MODEL_NODE__HAS_MODEL:
-				return hasModel != HAS_MODEL_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == DataNode.class) {
+			switch (derivedFeatureID) {
+				case CompositionPackage.MODEL_NODE__HAS_DATA: return CompositionPackage.DATA_NODE__HAS_DATA;
+				default: return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == DataNode.class) {
+			switch (baseFeatureID) {
+				case CompositionPackage.DATA_NODE__HAS_DATA: return CompositionPackage.MODEL_NODE__HAS_DATA;
+				default: return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
 	/**
@@ -403,7 +436,9 @@ public class ModelNodeImpl extends NodeImpl implements ModelNode {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (metaModelResource: ");
+		result.append(" (hasData: ");
+		result.append(hasData);
+		result.append(", metaModelResource: ");
 		result.append(metaModelResource);
 		result.append(", inferedType: ");
 		result.append(inferedType);
@@ -413,8 +448,6 @@ public class ModelNodeImpl extends NodeImpl implements ModelNode {
 		result.append(modelResource);
 		result.append(", persistent: ");
 		result.append(persistent);
-		result.append(", hasModel: ");
-		result.append(hasModel);
 		result.append(')');
 		return result.toString();
 	}

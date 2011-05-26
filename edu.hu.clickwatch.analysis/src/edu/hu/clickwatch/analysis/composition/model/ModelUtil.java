@@ -28,7 +28,7 @@ public class ModelUtil {
 			eAdapters.remove(oldAdapter);
 		}
 		eAdapters.add(new ModelAdapter(model));
-		node.setHasModel(true);
+		node.setHasData(true);
 	}
 
 	public static void removeModelFromModelNode(ModelNode node) {
@@ -42,7 +42,7 @@ public class ModelUtil {
 		if (oldAdapter != null) {
 			eAdapters.remove(oldAdapter);
 		}
-		node.setHasModel(false);
+		node.setHasData(false);
 	}
 
 	public static Resource getModelFromModelNode(ModelNode node) {

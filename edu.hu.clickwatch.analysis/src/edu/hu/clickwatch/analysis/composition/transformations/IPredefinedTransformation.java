@@ -4,6 +4,6 @@ import org.eclipse.emf.ecore.EObject;
 
 public interface IPredefinedTransformation {
 	
-	public EObject execute(EObject source, EObject target) throws TransformationException;
+	public Object execute(EObject source, EObject target) throws TransformationException;
 
 }

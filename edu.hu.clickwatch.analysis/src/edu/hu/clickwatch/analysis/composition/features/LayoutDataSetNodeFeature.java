@@ -15,7 +15,9 @@ import org.eclipse.graphiti.mm.pictograms.PictogramElement;
 import org.eclipse.graphiti.services.Graphiti;
 import org.eclipse.graphiti.services.IGaService;
 
+import edu.hu.clickwatch.analysis.composition.model.DataNode;
 import edu.hu.clickwatch.analysis.composition.model.DataSetNode;
+import edu.hu.clickwatch.analysis.composition.model.ModelNode;
 
 public class LayoutDataSetNodeFeature  extends AbstractLayoutFeature {
 
@@ -44,7 +46,10 @@ public class LayoutDataSetNodeFeature  extends AbstractLayoutFeature {
 		int ellipse_i = 0;
 		while (i.hasNext()) {
 			EObject next = i.next();
-			if (next instanceof Ellipse) {
+			if (next instanceof Ellipse && ((Ellipse)next).getHeight() == 5) { // TODO ugly comparison				
+				EList<EObject> businessObjects = context.getPictogramElement().getLink().getBusinessObjects();
+				((Ellipse)next).setTransparency(((DataNode)businessObjects.get(0)).isHasData() ? 0.0 : 1.0);
+			} else if (next instanceof Ellipse) {
 				Ellipse ellipse = (Ellipse)next;
 		    	gaService.setLocationAndSize(ellipse, (width-24-8+ellipse_i*4), 4+ellipse_i*2, 20, 20);
 		    	ellipse_i++;

@@ -345,13 +345,22 @@ public interface CompositionPackage extends EPackage {
 	int MODEL_NODE__OUTGOING = NODE__OUTGOING;
 
 	/**
+	 * The feature id for the '<em><b>Has Data</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL_NODE__HAS_DATA = NODE_FEATURE_COUNT + 0;
+
+	/**
 	 * The feature id for the '<em><b>Meta Model Resource</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_NODE__META_MODEL_RESOURCE = NODE_FEATURE_COUNT + 0;
+	int MODEL_NODE__META_MODEL_RESOURCE = NODE_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Infered Type</b></em>' attribute.
@@ -360,7 +369,7 @@ public interface CompositionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_NODE__INFERED_TYPE = NODE_FEATURE_COUNT + 1;
+	int MODEL_NODE__INFERED_TYPE = NODE_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Meta Model Class</b></em>' attribute.
@@ -369,7 +378,7 @@ public interface CompositionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_NODE__META_MODEL_CLASS = NODE_FEATURE_COUNT + 2;
+	int MODEL_NODE__META_MODEL_CLASS = NODE_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Model Resource</b></em>' attribute.
@@ -378,7 +387,7 @@ public interface CompositionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_NODE__MODEL_RESOURCE = NODE_FEATURE_COUNT + 3;
+	int MODEL_NODE__MODEL_RESOURCE = NODE_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Persistent</b></em>' attribute.
@@ -387,16 +396,7 @@ public interface CompositionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_NODE__PERSISTENT = NODE_FEATURE_COUNT + 4;
-
-	/**
-	 * The feature id for the '<em><b>Has Model</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODEL_NODE__HAS_MODEL = NODE_FEATURE_COUNT + 5;
+	int MODEL_NODE__PERSISTENT = NODE_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of structural features of the '<em>Model Node</em>' class.
@@ -454,13 +454,31 @@ public interface CompositionPackage extends EPackage {
 	int DATA_SET_NODE__OUTGOING = NODE__OUTGOING;
 
 	/**
+	 * The feature id for the '<em><b>Has Data</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET_NODE__HAS_DATA = NODE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Data</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET_NODE__DATA = NODE_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Data Set Node</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_SET_NODE_FEATURE_COUNT = NODE_FEATURE_COUNT + 0;
+	int DATA_SET_NODE_FEATURE_COUNT = NODE_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link edu.hu.clickwatch.analysis.composition.model.impl.MeasureNodeImpl <em>Measure Node</em>}' class.
@@ -509,13 +527,31 @@ public interface CompositionPackage extends EPackage {
 	int MEASURE_NODE__OUTGOING = NODE__OUTGOING;
 
 	/**
+	 * The feature id for the '<em><b>Has Data</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MEASURE_NODE__HAS_DATA = NODE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Data</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MEASURE_NODE__DATA = NODE_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Measure Node</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MEASURE_NODE_FEATURE_COUNT = NODE_FEATURE_COUNT + 0;
+	int MEASURE_NODE_FEATURE_COUNT = NODE_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link edu.hu.clickwatch.analysis.composition.model.impl.TimedTransformationImpl <em>Timed Transformation</em>}' class.
@@ -774,13 +810,22 @@ public interface CompositionPackage extends EPackage {
 	int DATA_NODE__OUTGOING = NODE__OUTGOING;
 
 	/**
+	 * The feature id for the '<em><b>Has Data</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_NODE__HAS_DATA = NODE_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Data Node</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_NODE_FEATURE_COUNT = NODE_FEATURE_COUNT + 0;
+	int DATA_NODE_FEATURE_COUNT = NODE_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link edu.hu.clickwatch.analysis.composition.model.impl.CompositionImpl <em>Composition</em>}' class.
@@ -858,6 +903,80 @@ public interface CompositionPackage extends EPackage {
 	int PARAMETER_SPEC_FEATURE_COUNT = 3;
 
 	/**
+	 * The meta object id for the '{@link edu.hu.clickwatch.analysis.composition.model.impl.DataSetImpl <em>Data Set</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see edu.hu.clickwatch.analysis.composition.model.impl.DataSetImpl
+	 * @see edu.hu.clickwatch.analysis.composition.model.impl.CompositionPackageImpl#getDataSet()
+	 * @generated
+	 */
+	int DATA_SET = 13;
+
+	/**
+	 * The feature id for the '<em><b>Int Values</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET__INT_VALUES = 0;
+
+	/**
+	 * The feature id for the '<em><b>Double Values</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET__DOUBLE_VALUES = 1;
+
+	/**
+	 * The number of structural features of the '<em>Data Set</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET_FEATURE_COUNT = 2;
+
+	/**
+	 * The meta object id for the '{@link edu.hu.clickwatch.analysis.composition.model.impl.MeasureImpl <em>Measure</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see edu.hu.clickwatch.analysis.composition.model.impl.MeasureImpl
+	 * @see edu.hu.clickwatch.analysis.composition.model.impl.CompositionPackageImpl#getMeasure()
+	 * @generated
+	 */
+	int MEASURE = 14;
+
+	/**
+	 * The feature id for the '<em><b>Int Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MEASURE__INT_VALUE = 0;
+
+	/**
+	 * The feature id for the '<em><b>Double Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MEASURE__DOUBLE_VALUE = 1;
+
+	/**
+	 * The number of structural features of the '<em>Measure</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MEASURE_FEATURE_COUNT = 2;
+
+	/**
 	 * The meta object id for the '{@link edu.hu.clickwatch.analysis.composition.model.TransformationKind <em>Transformation Kind</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -865,7 +984,7 @@ public interface CompositionPackage extends EPackage {
 	 * @see edu.hu.clickwatch.analysis.composition.model.impl.CompositionPackageImpl#getTransformationKind()
 	 * @generated
 	 */
-	int TRANSFORMATION_KIND = 13;
+	int TRANSFORMATION_KIND = 15;
 
 	/**
 	 * The meta object id for the '{@link edu.hu.clickwatch.analysis.composition.model.TargetSpec <em>Target Spec</em>}' enum.
@@ -875,7 +994,7 @@ public interface CompositionPackage extends EPackage {
 	 * @see edu.hu.clickwatch.analysis.composition.model.impl.CompositionPackageImpl#getTargetSpec()
 	 * @generated
 	 */
-	int TARGET_SPEC = 14;
+	int TARGET_SPEC = 16;
 
 	/**
 	 * The meta object id for the '{@link edu.hu.clickwatch.analysis.composition.model.ParameterSpecKind <em>Parameter Spec Kind</em>}' enum.
@@ -885,7 +1004,7 @@ public interface CompositionPackage extends EPackage {
 	 * @see edu.hu.clickwatch.analysis.composition.model.impl.CompositionPackageImpl#getParameterSpecKind()
 	 * @generated
 	 */
-	int PARAMETER_SPEC_KIND = 15;
+	int PARAMETER_SPEC_KIND = 17;
 
 	/**
 	 * Returns the meta object for class '{@link edu.hu.clickwatch.analysis.composition.model.Node <em>Node</em>}'.
@@ -1104,17 +1223,6 @@ public interface CompositionPackage extends EPackage {
 	EAttribute getModelNode_Persistent();
 
 	/**
-	 * Returns the meta object for the attribute '{@link edu.hu.clickwatch.analysis.composition.model.ModelNode#isHasModel <em>Has Model</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Has Model</em>'.
-	 * @see edu.hu.clickwatch.analysis.composition.model.ModelNode#isHasModel()
-	 * @see #getModelNode()
-	 * @generated
-	 */
-	EAttribute getModelNode_HasModel();
-
-	/**
 	 * Returns the meta object for class '{@link edu.hu.clickwatch.analysis.composition.model.DataSetNode <em>Data Set Node</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1125,6 +1233,17 @@ public interface CompositionPackage extends EPackage {
 	EClass getDataSetNode();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link edu.hu.clickwatch.analysis.composition.model.DataSetNode#getData <em>Data</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Data</em>'.
+	 * @see edu.hu.clickwatch.analysis.composition.model.DataSetNode#getData()
+	 * @see #getDataSetNode()
+	 * @generated
+	 */
+	EReference getDataSetNode_Data();
+
+	/**
 	 * Returns the meta object for class '{@link edu.hu.clickwatch.analysis.composition.model.MeasureNode <em>Measure Node</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1133,6 +1252,17 @@ public interface CompositionPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getMeasureNode();
+
+	/**
+	 * Returns the meta object for the reference '{@link edu.hu.clickwatch.analysis.composition.model.MeasureNode#getData <em>Data</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Data</em>'.
+	 * @see edu.hu.clickwatch.analysis.composition.model.MeasureNode#getData()
+	 * @see #getMeasureNode()
+	 * @generated
+	 */
+	EReference getMeasureNode_Data();
 
 	/**
 	 * Returns the meta object for class '{@link edu.hu.clickwatch.analysis.composition.model.Edge <em>Edge</em>}'.
@@ -1207,6 +1337,17 @@ public interface CompositionPackage extends EPackage {
 	EClass getDataNode();
 
 	/**
+	 * Returns the meta object for the attribute '{@link edu.hu.clickwatch.analysis.composition.model.DataNode#isHasData <em>Has Data</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Has Data</em>'.
+	 * @see edu.hu.clickwatch.analysis.composition.model.DataNode#isHasData()
+	 * @see #getDataNode()
+	 * @generated
+	 */
+	EAttribute getDataNode_HasData();
+
+	/**
 	 * Returns the meta object for class '{@link edu.hu.clickwatch.analysis.composition.model.Composition <em>Composition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1269,6 +1410,70 @@ public interface CompositionPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getParameterSpec_ListQuery();
+
+	/**
+	 * Returns the meta object for class '{@link edu.hu.clickwatch.analysis.composition.model.DataSet <em>Data Set</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Data Set</em>'.
+	 * @see edu.hu.clickwatch.analysis.composition.model.DataSet
+	 * @generated
+	 */
+	EClass getDataSet();
+
+	/**
+	 * Returns the meta object for the attribute list '{@link edu.hu.clickwatch.analysis.composition.model.DataSet#getIntValues <em>Int Values</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Int Values</em>'.
+	 * @see edu.hu.clickwatch.analysis.composition.model.DataSet#getIntValues()
+	 * @see #getDataSet()
+	 * @generated
+	 */
+	EAttribute getDataSet_IntValues();
+
+	/**
+	 * Returns the meta object for the attribute list '{@link edu.hu.clickwatch.analysis.composition.model.DataSet#getDoubleValues <em>Double Values</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Double Values</em>'.
+	 * @see edu.hu.clickwatch.analysis.composition.model.DataSet#getDoubleValues()
+	 * @see #getDataSet()
+	 * @generated
+	 */
+	EAttribute getDataSet_DoubleValues();
+
+	/**
+	 * Returns the meta object for class '{@link edu.hu.clickwatch.analysis.composition.model.Measure <em>Measure</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Measure</em>'.
+	 * @see edu.hu.clickwatch.analysis.composition.model.Measure
+	 * @generated
+	 */
+	EClass getMeasure();
+
+	/**
+	 * Returns the meta object for the attribute '{@link edu.hu.clickwatch.analysis.composition.model.Measure#getIntValue <em>Int Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Int Value</em>'.
+	 * @see edu.hu.clickwatch.analysis.composition.model.Measure#getIntValue()
+	 * @see #getMeasure()
+	 * @generated
+	 */
+	EAttribute getMeasure_IntValue();
+
+	/**
+	 * Returns the meta object for the attribute '{@link edu.hu.clickwatch.analysis.composition.model.Measure#getDoubleValue <em>Double Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Double Value</em>'.
+	 * @see edu.hu.clickwatch.analysis.composition.model.Measure#getDoubleValue()
+	 * @see #getMeasure()
+	 * @generated
+	 */
+	EAttribute getMeasure_DoubleValue();
 
 	/**
 	 * Returns the meta object for enum '{@link edu.hu.clickwatch.analysis.composition.model.TransformationKind <em>Transformation Kind</em>}'.
@@ -1491,14 +1696,6 @@ public interface CompositionPackage extends EPackage {
 		EAttribute MODEL_NODE__PERSISTENT = eINSTANCE.getModelNode_Persistent();
 
 		/**
-		 * The meta object literal for the '<em><b>Has Model</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute MODEL_NODE__HAS_MODEL = eINSTANCE.getModelNode_HasModel();
-
-		/**
 		 * The meta object literal for the '{@link edu.hu.clickwatch.analysis.composition.model.impl.DataSetNodeImpl <em>Data Set Node</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1509,6 +1706,14 @@ public interface CompositionPackage extends EPackage {
 		EClass DATA_SET_NODE = eINSTANCE.getDataSetNode();
 
 		/**
+		 * The meta object literal for the '<em><b>Data</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DATA_SET_NODE__DATA = eINSTANCE.getDataSetNode_Data();
+
+		/**
 		 * The meta object literal for the '{@link edu.hu.clickwatch.analysis.composition.model.impl.MeasureNodeImpl <em>Measure Node</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1517,6 +1722,14 @@ public interface CompositionPackage extends EPackage {
 		 * @generated
 		 */
 		EClass MEASURE_NODE = eINSTANCE.getMeasureNode();
+
+		/**
+		 * The meta object literal for the '<em><b>Data</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MEASURE_NODE__DATA = eINSTANCE.getMeasureNode_Data();
 
 		/**
 		 * The meta object literal for the '{@link edu.hu.clickwatch.analysis.composition.model.impl.EdgeImpl <em>Edge</em>}' class.
@@ -1585,6 +1798,14 @@ public interface CompositionPackage extends EPackage {
 		EClass DATA_NODE = eINSTANCE.getDataNode();
 
 		/**
+		 * The meta object literal for the '<em><b>Has Data</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DATA_NODE__HAS_DATA = eINSTANCE.getDataNode_HasData();
+
+		/**
 		 * The meta object literal for the '{@link edu.hu.clickwatch.analysis.composition.model.impl.CompositionImpl <em>Composition</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1635,6 +1856,58 @@ public interface CompositionPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PARAMETER_SPEC__LIST_QUERY = eINSTANCE.getParameterSpec_ListQuery();
+
+		/**
+		 * The meta object literal for the '{@link edu.hu.clickwatch.analysis.composition.model.impl.DataSetImpl <em>Data Set</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see edu.hu.clickwatch.analysis.composition.model.impl.DataSetImpl
+		 * @see edu.hu.clickwatch.analysis.composition.model.impl.CompositionPackageImpl#getDataSet()
+		 * @generated
+		 */
+		EClass DATA_SET = eINSTANCE.getDataSet();
+
+		/**
+		 * The meta object literal for the '<em><b>Int Values</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DATA_SET__INT_VALUES = eINSTANCE.getDataSet_IntValues();
+
+		/**
+		 * The meta object literal for the '<em><b>Double Values</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DATA_SET__DOUBLE_VALUES = eINSTANCE.getDataSet_DoubleValues();
+
+		/**
+		 * The meta object literal for the '{@link edu.hu.clickwatch.analysis.composition.model.impl.MeasureImpl <em>Measure</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see edu.hu.clickwatch.analysis.composition.model.impl.MeasureImpl
+		 * @see edu.hu.clickwatch.analysis.composition.model.impl.CompositionPackageImpl#getMeasure()
+		 * @generated
+		 */
+		EClass MEASURE = eINSTANCE.getMeasure();
+
+		/**
+		 * The meta object literal for the '<em><b>Int Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MEASURE__INT_VALUE = eINSTANCE.getMeasure_IntValue();
+
+		/**
+		 * The meta object literal for the '<em><b>Double Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MEASURE__DOUBLE_VALUE = eINSTANCE.getMeasure_DoubleValue();
 
 		/**
 		 * The meta object literal for the '{@link edu.hu.clickwatch.analysis.composition.model.TransformationKind <em>Transformation Kind</em>}' enum.

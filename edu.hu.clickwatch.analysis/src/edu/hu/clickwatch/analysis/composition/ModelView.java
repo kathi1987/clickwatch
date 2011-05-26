@@ -17,6 +17,9 @@ import org.eclipse.ui.ISelectionListener;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.part.ViewPart;
 
+import edu.hu.clickwatch.analysis.composition.model.DataNode;
+import edu.hu.clickwatch.analysis.composition.model.DataSetNode;
+import edu.hu.clickwatch.analysis.composition.model.MeasureNode;
 import edu.hu.clickwatch.analysis.composition.model.ModelNode;
 import edu.hu.clickwatch.analysis.composition.model.ModelUtil;
 import edu.hu.clickwatch.model.provider.ClickWatchModelItemProviderAdapterFactory;
@@ -58,12 +61,20 @@ public class ModelView extends ViewPart implements ISelectionListener {
 				EObject[] bos = Graphiti.getLinkService().getAllBusinessObjectsForLinkedPictogramElement(pes[0]);
 				if (bos.length > 0) {
 					EObject bo = bos[0];
-					if (bo instanceof ModelNode) {
-						ModelNode node = (ModelNode)bo;
-						if (node.isHasModel()) {
-							Resource model = ModelUtil.getModelFromModelNode(node);
-							setInput(model);
-							return;
+					if (bo instanceof DataNode) {
+						DataNode node = (DataNode)bo;
+						if (node.isHasData()) {
+							if (node instanceof ModelNode) {
+								Resource model = ModelUtil.getModelFromModelNode((ModelNode)node);
+								setInput(model);
+								return;
+							} else if (node instanceof DataSetNode) {
+								setInput(((DataSetNode)node).getData());
+								return;
+							} else if (node instanceof MeasureNode) {
+								setInput(((MeasureNode)node).getData());
+								return;
+							}
 						}
 					}
 				}
