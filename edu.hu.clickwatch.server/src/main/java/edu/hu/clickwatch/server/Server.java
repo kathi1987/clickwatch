@@ -24,7 +24,7 @@ public class Server {
 	/** Access to the OSGi log service */
 	private LogService mLogService = null;
 	/**	The array list holds a list of node connections */
-	private ArrayList<NodeConnection> mConnectionList;
+	private ArrayList<NodeConnection> mConnectionList = new ArrayList<NodeConnection>();
 	/** The configuration file reader */
 	private ConfigurationFileReader mConfigurationFileReader;
 	/** Location of the configuration file */
@@ -34,10 +34,10 @@ public class Server {
 	
 	public Server(final String pConfiguration){	
 		//
-		mLogService = ServerPluginActivator.getInstance().getLogService();
-		//
+		//mLogService = ServerPluginActivator.getInstance().getLogService();
+		// Set the location of the configuration file
 		this.mConfigurationFile = pConfiguration;	
-		//
+		// Initialize the configuration file reader 
 		this.mConfigurationFileReader = new ConfigurationFileReader(this.mConfigurationFile);
 	}
 	
@@ -52,8 +52,8 @@ public class Server {
 				if(eObject instanceof NodeType){	
 					NodeType node = (NodeType)eObject;
 					// Debug
-					mLogService.log(LogService.LOG_DEBUG, "Server: Create node " + node.getAddress());		
-					mLogService.log(LogService.LOG_DEBUG, "Server: Create node " + node.getAddress());
+					//mLogService.log(LogService.LOG_DEBUG, "Server: Create node " + node.getAddress());		
+					//mLogService.log(LogService.LOG_DEBUG, "Server: Create node " + node.getAddress());
 					// Create a new node model
 					Node nodeModel = ClickWatchModelFactory.eINSTANCE.createNode();
 					// Set ip address
@@ -81,12 +81,12 @@ public class Server {
 				}else if(eObject instanceof NetworkType){
 					NetworkType network = (NetworkType)eObject;
 					// Debug
-					mLogService.log(LogService.LOG_DEBUG, "Server: Create network " + network.getName());					
+					//mLogService.log(LogService.LOG_DEBUG, "Server: Create network " + network.getName());					
 					// Create a new network model
 					Network networkModel = ClickWatchModelFactory.eINSTANCE.createNetwork();
 					// Set name of network model
 					networkModel.setName(network.getName());
-					// Set update interval
+					/// Set update interval
 					networkModel.setUpdateIntervall(network.getUpdateInterval());	
 				} else if(eObject instanceof CdoType) {
 					CdoType cdo = (CdoType) eObject;
@@ -112,10 +112,10 @@ public class Server {
 	}	
 	
 	public synchronized void shutdown(){
-		mLogService.log(LogService.LOG_DEBUG, "Server: Prepare to shutdown");
+		//mLogService.log(LogService.LOG_DEBUG, "Server: Prepare to shutdown");
 		if(mConnectionList != null){
 			for(NodeConnection connection : mConnectionList){
-				mLogService.log(LogService.LOG_DEBUG, "Server: Disconnect host " + connection.getNode().getINetAdress());
+			//	mLogService.log(LogService.LOG_DEBUG, "Server: Disconnect host " + connection.getNode().getINetAdress());
 				connection.disconnect();
 			}
 		}
@@ -131,6 +131,15 @@ public class Server {
 		// Reset configuration or add it to configuration
 		
 		// Set up connections
+	}
+
+	public ConfigurationFileReader getConfigurationFileReader() {
+		return mConfigurationFileReader;
+	}
+
+	public void setConfigurationFileReader(
+			ConfigurationFileReader pConfigurationFileReader) {
+		this.mConfigurationFileReader = pConfigurationFileReader;
 	}
 	
 }

@@ -1,4 +1,3 @@
-<xml version="1.0" encoding="UTF-8" standalone="yes">
   <configuration logDirectory="/tmp">
     <!-- --> 
     <network name="Humboldt Wireless Lab" updateInterval="1000">
@@ -6,6 +5,5 @@
     </network>
 
     <!-- --> 
-    <cdo address="141.20.37.89" port="1025" repository="clickwatch">
+    <cdo address="141.20.37.89" port="1025" repository="clickwatch"/>
   </configuration>
-</xml>
