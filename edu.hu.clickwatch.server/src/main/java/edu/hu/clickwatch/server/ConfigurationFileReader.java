@@ -9,7 +9,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.Diagnostician;
-import org.osgi.service.log.LogService;
+//import org.osgi.service.log.LogService;
 
 import Configuration.ConfigurationPackage;
 import Configuration.util.ConfigurationResourceFactoryImpl;
@@ -20,7 +20,7 @@ import Configuration.util.ConfigurationResourceFactoryImpl;
  */
 public class ConfigurationFileReader {
 	/** Access to the OSGi log service */
-	private LogService mLogService = null;
+//	private LogService mLogService = null;
 	/** Resource set for holding resources */
 	private ResourceSet mResourceSet;
 	/** The configuration file which will be read */

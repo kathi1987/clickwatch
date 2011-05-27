@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.osgi.service.log.LogService;
+//import org.osgi.service.log.LogService;
 
 import Configuration.CdoType;
 import Configuration.NetworkType;
@@ -22,7 +22,7 @@ import edu.hu.clickwatch.model.Node;
  */
 public class Server {
 	/** Access to the OSGi log service */
-	private LogService mLogService = null;
+//	private LogService mLogService = null;
 	/**	The array list holds a list of node connections */
 	private ArrayList<NodeConnection> mConnectionList = new ArrayList<NodeConnection>();
 	/** The configuration file reader */

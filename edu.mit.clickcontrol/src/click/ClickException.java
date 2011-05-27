@@ -26,6 +26,11 @@ package click;
 
 public class ClickException extends Exception {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3374608720708487134L;
+
 	ClickException() {
 		super("Click error");
 	}
@@ -35,6 +40,11 @@ public class ClickException extends Exception {
 	}
 
 	static public class NoSuchElementException extends ClickException {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = -3826537815261991829L;
+
 		NoSuchElementException() {
 			super("No such element");
 		}
@@ -45,6 +55,10 @@ public class ClickException extends Exception {
 	}
 
 	static public class HandlerException extends ClickException {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 3247790833641963157L;
 		private String _handlerId;
 
 		HandlerException(String handlerId, String description) {
@@ -58,6 +72,11 @@ public class ClickException extends Exception {
 	}
 
 	static public class NoSuchHandlerException extends HandlerException {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = -7885335970407830228L;
+
 		NoSuchHandlerException() {
 			super("", "No such handler");
 		}
@@ -68,6 +87,11 @@ public class ClickException extends Exception {
 	}
 
 	static public class PermissionDeniedException extends HandlerException {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 7001709267868175299L;
+
 		PermissionDeniedException() {
 			super("", "Permission denied calling handler");
 		}
@@ -78,6 +102,11 @@ public class ClickException extends Exception {
 	}
 
 	static public class HandlerErrorException extends HandlerException {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = -7077656738830869497L;
+
 		HandlerErrorException() {
 			super("", "Unspecified error calling handler");
 		}
@@ -88,6 +117,11 @@ public class ClickException extends Exception {
 	}
 
 	static public class HandlerFormatException extends HandlerException {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 648868605962857401L;
+
 		HandlerFormatException() {
 			super("", "Unspecified error calling handler");
 		}

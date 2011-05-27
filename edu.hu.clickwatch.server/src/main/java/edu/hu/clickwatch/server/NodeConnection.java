@@ -6,7 +6,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.osgi.service.log.LogService;
+//import org.osgi.service.log.LogService;
 
 import com.google.common.base.Preconditions;
 import com.google.common.base.Throwables;
@@ -41,7 +41,7 @@ public class NodeConnection {
 	@Inject
 	private INodeAdapter mNodeAdapter;	
 	/** Access to the OSGi log service */
-	private LogService mLogService = null;
+	//private LogService mLogService = null;
 	/** An model adapter for a single node */
 	private final HandlerModelAdapter mModelChangeListener = new HandlerModelAdapter(); 
 	/** The element filter of a node */
@@ -52,7 +52,7 @@ public class NodeConnection {
 	private CDOHandler mDatabaseHandler;
 	
 	public NodeConnection(){
-		mLogService = ServerPluginActivator.getInstance().getLogService();
+		// mLogService = ServerPluginActivator.getInstance().getLogService();
 	}
 	
 	public NodeConnection(final CDOHandler pDatabaseHandler){
@@ -76,7 +76,7 @@ public class NodeConnection {
 		try {
 			java.util.regex.Pattern.compile(pNewFilter);
 		} catch (PatternSyntaxException pe) {
-			mLogService.log(LogService.LOG_WARNING, "Malformed Filter: " + "The " + pType + " filter is malformed. Ignoring filter.");
+			//mLogService.log(LogService.LOG_WARNING, "Malformed Filter: " + "The " + pType + " filter is malformed. Ignoring filter.");
 			return false;
 		}
 		return true;
@@ -139,7 +139,7 @@ public class NodeConnection {
 					runUpdate();
 				}
 			} catch (final Exception e) {
-				mLogService.log(LogService.LOG_ERROR, "Exception " + e.getClass().getName() + " occurred: " + e.getMessage() + "."); 
+				//mLogService.log(LogService.LOG_ERROR, "Exception " + e.getClass().getName() + " occurred: " + e.getMessage() + "."); 
 			} finally {
 				getNodeAdapter().disconnect();
 				runThread(new Runnable() {
@@ -160,7 +160,7 @@ public class NodeConnection {
 					runnable.run();
 				} catch (RuntimeException e) {
 					mHasError = true;
-					mLogService.log(LogService.LOG_ERROR, "Exception " + e.getClass().getName() + " occurred: " + e.getMessage() + ". Node is forced to disconnect."); 
+				//	mLogService.log(LogService.LOG_ERROR, "Exception " + e.getClass().getName() + " occurred: " + e.getMessage() + ". Node is forced to disconnect."); 
 				}
 			}
 		}).start();
@@ -218,7 +218,7 @@ public class NodeConnection {
 					runThread(new Runnable() {
 						@Override
 						public void run() {
-							mLogService.log(LogService.LOG_ERROR, "Exception " + e.getClass().getName() + " occured: " + e.getMessage());
+						//	mLogService.log(LogService.LOG_ERROR, "Exception " + e.getClass().getName() + " occured: " + e.getMessage());
 						}
 					});
 				}
