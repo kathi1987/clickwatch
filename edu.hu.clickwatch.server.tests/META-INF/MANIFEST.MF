@@ -8,5 +8,7 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Require-Bundle: org.junit;bundle-version="4.8.1",
  edu.hu.clickwatch.server;bundle-version="0.0.1",
  org.eclipse.emf.common;bundle-version="2.6.0",
- org.eclipse.emf.ecore;bundle-version="2.6.1"
+ org.eclipse.emf.ecore;bundle-version="2.6.1",
+ com.google.guice;bundle-version="3.0.0",
+ com.google.inject;bundle-version="2.0.0"
 Bundle-ClassPath: junit-4.9b2.jar

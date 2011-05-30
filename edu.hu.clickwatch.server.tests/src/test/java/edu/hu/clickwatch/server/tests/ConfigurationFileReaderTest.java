@@ -10,7 +10,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.junit.Before;
 import org.junit.Test;
 
-import edu.hu.clickwatch.server.ConfigurationFileReader;
+import edu.hu.clickwatch.server.configuration.ConfigurationFileReader;
 
 
 /**
@@ -19,7 +19,7 @@ import edu.hu.clickwatch.server.ConfigurationFileReader;
  */
 public class ConfigurationFileReaderTest {
 	/** The path to the standard configuration file which is used in this junit test */
-	private String mConfigurationFile = "src/test/resources/" + ServerTest.class.getPackage().getName().replace(".", "/") + "/configuration.xml";
+	private String mConfigurationFile = "src/test/resources/" + ClickWatchServerTest.class.getPackage().getName().replace(".", "/") + "/configuration.xml";
 	/** The configuration file reader object */
 	private ConfigurationFileReader mReader = null;
 	
@@ -48,7 +48,7 @@ public class ConfigurationFileReaderTest {
 	@Test
 	public void setConfigurationFileTest(){
 		// A path to the new alterantive configuration file
-		String alternateConfigurationFile = "src/test/resources/" + ServerTest.class.getPackage().getName().replace(".", "/") + "/test.xml";
+		String alternateConfigurationFile = "src/test/resources/" + ClickWatchServerTest.class.getPackage().getName().replace(".", "/") + "/test.xml";
 		// Create a new alternative configuration file
 		File alternativeFile = new File(alternateConfigurationFile);
 		// Save the original file stored in the configuration file reader

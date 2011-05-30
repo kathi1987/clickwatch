@@ -6,19 +6,19 @@ import org.eclipse.emf.common.util.URI;
 import org.junit.Before;
 import org.junit.Test;
 
-import edu.hu.clickwatch.server.RecordedModelReader;
+import edu.hu.clickwatch.server.ClickWatchServerPlayer;
 
 
 public class RecordedModelReaderTest {
 	/** */
-	private String mRecordedFileLocation = "src/test/resources/" + ServerTest.class.getPackage().getName().replace(".", "/") + "/record.clickwatchmodel";
+	private String mRecordedFileLocation = "src/test/resources/" + ClickWatchServerTest.class.getPackage().getName().replace(".", "/") + "/record.clickwatchmodel";
 	/** */
-	private RecordedModelReader reader;
+	private ClickWatchServerPlayer reader;
 	
 	@Before
 	public void initialize() {
 		// Instantiate the reader 
-		reader = new RecordedModelReader();		
+		reader = new ClickWatchServerPlayer();		
 	}
 	
 	@Test
