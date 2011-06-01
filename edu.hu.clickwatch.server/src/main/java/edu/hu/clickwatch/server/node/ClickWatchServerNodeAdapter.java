@@ -11,7 +11,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.util.FeatureMapUtil;
-import org.osgi.service.log.LogService;
+//import org.osgi.service.log.LogService;
 
 import click.ControlSocket;
 
@@ -41,7 +41,7 @@ public class ClickWatchServerNodeAdapter implements INodeAdapter {
 	private static final ClickWatchModelFactory modelFactory = ClickWatchModelFactory.eINSTANCE;
 
 	/** Access to the OSGi log service */
-	private LogService mLogService = null;
+//	private LogService mLogService = null;
 	
 	public ClickWatchServerNodeAdapter(){
 		//mLogService = ClickWatchServerPluginActivator.getInstance().getLogService();
@@ -190,7 +190,7 @@ public class ClickWatchServerNodeAdapter implements INodeAdapter {
 					try {
 						createAndSetModelValue(handler, new String(data));
 					} catch (Throwable e) {
-						mLogService.log(LogService.LOG_ERROR,"Exception: Exception while creating model for " + handler + " from " + new String(data), e);
+						//mLogService.log(LogService.LOG_ERROR,"Exception: Exception while creating model for " + handler + " from " + new String(data), e);
 					}
 				}
 			}
