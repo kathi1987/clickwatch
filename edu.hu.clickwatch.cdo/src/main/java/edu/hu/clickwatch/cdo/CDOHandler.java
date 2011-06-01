@@ -17,7 +17,7 @@ import org.eclipse.net4j.util.container.IManagedContainer;
 
 import edu.hu.clickwatch.model.Node;
 
-public class CDOHandler {
+public class CDOHandler implements ICDOHandler {
 	/** */
 	private Connection mHandler = null;
 	/** */
@@ -87,6 +87,7 @@ public class CDOHandler {
 	 *
 	 * 
 	 */
+	@Override
 	public void openSession(){
 		if(this.mHandler == null){
 			this.mHandler = new Connection();
@@ -116,6 +117,7 @@ public class CDOHandler {
 		}	
 	}
 	
+	@Override
 	public void openTransaction(final String pResource){
 		if(this.mHandler != null){
 			//
@@ -147,7 +149,8 @@ public class CDOHandler {
 			
 		}
 	}
-	
+
+	@Override
 	public void commitTransaction(){
 		try {
 			this.mHandler.getTransaction().commit();
@@ -155,11 +158,13 @@ public class CDOHandler {
 			commitException.printStackTrace();
 		}
 	}
-	
+
+	@Override
 	public void rollbackTransaction(){
 		this.mHandler.getTransaction().rollback();
 	}
-		
+	
+	@Override
 	public void closeSession(){
 		if(!this.mHandler.getSession().isClosed()){
 			this.mHandler.getSession().close();
@@ -174,10 +179,12 @@ public class CDOHandler {
 		}
 	}
 
+	@Override
 	public EObject getModel() {
 		return mModel;
 	}
 
+	@Override
 	public void setModel(EObject pModel) {
 		this.mModel = pModel;
 	}
