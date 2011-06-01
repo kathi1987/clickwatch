@@ -26,9 +26,6 @@ public class ClickWatchServerSocketPlayer  {
 	public static class PlayerModule extends AbstractModule {
 		@Override
 		protected void configure() {
-			/*
-			String record = 
-						"src/main/resources/" + ClickWatchServerSocketPlayer.class.getPackage().getName().replace(".", "/") + "/record.clickwatchmodel";*/		
 			String record = 
 				"src/test/resources/edu/hu/clickwatch/server/tests/record.clickwatchmodel";
 			ClickWatchServerSocketPlayer player = new ClickWatchServerSocketPlayer();

@@ -12,5 +12,7 @@ Require-Bundle: org.junit;bundle-version="4.8.1",
  org.eclipse.emf.ecore;bundle-version="2.6.1",
  com.google.guice;bundle-version="3.0.0",
  com.google.inject;bundle-version="2.0.0",
- edu.hu.clickwatch.model;bundle-version="1.0.0"
+ edu.hu.clickwatch.model;bundle-version="1.0.0",
+ edu.mit.clickcontrol,
+ com.google.guava;bundle-version="0.0.7"
 Bundle-ClassPath: junit-4.9b2.jar

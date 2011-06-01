@@ -21,7 +21,7 @@ import edu.hu.clickwatch.server.node.ClickWatchServerNodeConnection;
  * 
  * @author Michael Frey
  */
-public class ClickWatchServer {
+public class ClickWatchServer implements IClickWatchServer {
 	/** Access to the OSGi log service */
 //	private LogService mLogService = null;
 	/**	The array list holds a list of node connections */
@@ -42,6 +42,7 @@ public class ClickWatchServer {
 		this.mConfigurationFileReader = new ConfigurationFileReader(this.mConfigurationFile);
 	}
 	
+	@Override
 	public synchronized boolean readConfiguration(){
 		Resource resource = this.mConfigurationFileReader.readConfigurationFile();
 		
@@ -102,6 +103,7 @@ public class ClickWatchServer {
 		return false;
 	}
 	
+	@Override
 	public void activateConfiguration(){
 		for(int i = 0; i < this.mConnectionList.size(); i++){
 			// Set database handler
@@ -111,15 +113,17 @@ public class ClickWatchServer {
 		}
 	}
 	
-	
+	@Override
 	public ArrayList<ClickWatchServerNodeConnection> getConnectionList() {
 		return mConnectionList;
 	}
 
+	@Override
 	public synchronized void setConnectionList(ArrayList<ClickWatchServerNodeConnection> pConnectionList) {
 		this.mConnectionList = pConnectionList;
 	}	
 	
+	@Override
 	public synchronized void shutdown(){
 		//mLogService.log(LogService.LOG_DEBUG, "Server: Prepare to shutdown");
 		if(mConnectionList != null){
@@ -130,13 +134,15 @@ public class ClickWatchServer {
 		}
 	}
 
+	@Override
 	public String getConfigurationFile() {
 		return mConfigurationFile;
 	}
 
-	public synchronized void setConfigurationFile(String mConfigurationFile) {
+	@Override
+	public synchronized void setConfigurationFile(String pConfigurationFile) {
 		// Set configuration file
-		this.mConfigurationFile = mConfigurationFile;
+		this.mConfigurationFile = pConfigurationFile;
 		// Reset configuration or add it to configuration
 		
 		// Set up connections

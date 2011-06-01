@@ -1,9 +1,6 @@
 package edu.hu.clickwatch.server.tests;
 
 import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Suite.SuiteClasses;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.Guice;

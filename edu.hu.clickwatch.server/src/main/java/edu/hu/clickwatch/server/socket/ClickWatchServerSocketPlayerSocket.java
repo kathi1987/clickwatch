@@ -23,7 +23,6 @@ import edu.hu.clickcontrol.IClickSocket;
 import edu.hu.clickwatch.model.Element;
 import edu.hu.clickwatch.model.Handler;
 import edu.hu.clickwatch.model.Node;
-import edu.hu.clickwatch.server.ClickWatchServerPlayer;
 
 /**
  *
@@ -35,7 +34,7 @@ public class ClickWatchServerSocketPlayerSocket implements IClickSocket {
 	protected InetAddress host;
 	protected int port;
 	
-	@Inject private ClickWatchServerPlayer player;
+	@Inject private ClickWatchServerSocketPlayer player;
 	
 	private Node node = null;
 	private long lastUpdate = 0;
