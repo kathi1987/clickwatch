@@ -322,16 +322,29 @@ public class TransformationEngine {
 	}
 	
 	private EPackage loadMetaModel(ResourceSet rs, ModelNode node) throws IOException {
-		URI uri = URI.createURI(node.getMetaModelResource());
-		Resource metaModelResource = rs.getResource(uri, false);
-		if (metaModelResource == null) {
-			metaModelResource = rs.createResource(uri);
+		if (node.getMetaModelResource() != null) {
+		
+			URI uri = URI.createURI(node.getMetaModelResource());
+			Resource metaModelResource = rs.getResource(uri, false);
+			if (metaModelResource == null) {
+				metaModelResource = rs.createResource(uri);
+			}
+			if (!metaModelResource.isLoaded()) {
+				metaModelResource.load(XmlModelRepository.defaultLoadSaveOptions());
+			}
+			EPackage metaModel = (EPackage)metaModelResource.getContents().get(0);
+			EPackage.Registry.INSTANCE.put(metaModel.getNsURI(), metaModel);
+			return metaModel;
+		} else if (node.getRegisteredPackage() != null) {
+			EPackage metaModel = EPackage.Registry.INSTANCE.getEPackage(node.getRegisteredPackage());
+			if (metaModel == null) {
+				raiseError("registered package does not exist");
+				return null;
+			}
+			return (EPackage)metaModel;
+		} else {
+			raiseError("no meta-model given");
+			return null;
 		}
-		if (!metaModelResource.isLoaded()) {
-			metaModelResource.load(XmlModelRepository.defaultLoadSaveOptions());
-		}
-		EPackage metaModel = (EPackage)metaModelResource.getContents().get(0);
-		EPackage.Registry.INSTANCE.put(metaModel.getNsURI(), metaModel);
-		return metaModel;
 	}
 }

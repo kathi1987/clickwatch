@@ -20,6 +20,7 @@ package edu.hu.clickwatch.analysis.composition.model;
  *   <li>{@link edu.hu.clickwatch.analysis.composition.model.ModelNode#getMetaModelClass <em>Meta Model Class</em>}</li>
  *   <li>{@link edu.hu.clickwatch.analysis.composition.model.ModelNode#getModelResource <em>Model Resource</em>}</li>
  *   <li>{@link edu.hu.clickwatch.analysis.composition.model.ModelNode#isPersistent <em>Persistent</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.analysis.composition.model.ModelNode#getRegisteredPackage <em>Registered Package</em>}</li>
  * </ul>
  * </p>
  *
@@ -160,4 +161,30 @@ public interface ModelNode extends Node, DataNode {
 	 * @generated
 	 */
 	void setPersistent(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Registered Package</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Registered Package</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Registered Package</em>' attribute.
+	 * @see #setRegisteredPackage(String)
+	 * @see edu.hu.clickwatch.analysis.composition.model.CompositionPackage#getModelNode_RegisteredPackage()
+	 * @model
+	 * @generated
+	 */
+	String getRegisteredPackage();
+
+	/**
+	 * Sets the value of the '{@link edu.hu.clickwatch.analysis.composition.model.ModelNode#getRegisteredPackage <em>Registered Package</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Registered Package</em>' attribute.
+	 * @see #getRegisteredPackage()
+	 * @generated
+	 */
+	void setRegisteredPackage(String value);
 } // ModelNode

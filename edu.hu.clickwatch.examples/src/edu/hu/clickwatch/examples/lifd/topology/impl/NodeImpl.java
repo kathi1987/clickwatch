@@ -6,26 +6,22 @@
  */
 package edu.hu.clickwatch.examples.lifd.topology.impl;
 
-import edu.hu.clickwatch.examples.lifd.topology.Gps;
-import edu.hu.clickwatch.examples.lifd.topology.Link;
-import edu.hu.clickwatch.examples.lifd.topology.Node;
-import edu.hu.clickwatch.examples.lifd.topology.TopologyPackage;
-
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
+import edu.hu.clickwatch.examples.lifd.topology.Gps;
+import edu.hu.clickwatch.examples.lifd.topology.Link;
+import edu.hu.clickwatch.examples.lifd.topology.Node;
+import edu.hu.clickwatch.examples.lifd.topology.TopologyPackage;
 
 /**
  * <!-- begin-user-doc -->

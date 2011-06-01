@@ -17,7 +17,6 @@ import org.eclipse.graphiti.services.IGaService;
 
 import edu.hu.clickwatch.analysis.composition.model.DataNode;
 import edu.hu.clickwatch.analysis.composition.model.DataSetNode;
-import edu.hu.clickwatch.analysis.composition.model.ModelNode;
 
 public class LayoutDataSetNodeFeature  extends AbstractLayoutFeature {
 

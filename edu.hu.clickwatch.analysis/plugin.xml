@@ -5,10 +5,15 @@
       <package
             uri="http://compositionmodel/1.0"
             class="edu.hu.clickwatch.analysis.composition.model.CompositionPackage"/>
+      <package
+            class="edu.hu.clickwatch.analysis.models.topology.TopologyPackage"
+            uri="http://de.hu.clickwatch.topology/1.0">
+      </package>
    </extension>
 
    <extension-point id="edu.hu.clickwatch.analysis.AutoAnalysis" name="Automated analysis" schema="schema/edu.hu.clickwatch.analysis.AutoAnalysis.exsd"/>
    <extension-point id="edu.hu.clickwatch.analysis.composition.PredefinedTransformation" name="Predefined transformation" schema="schema/edu.hu.clickwatch.analysis.composition.PredefinedTransformation.exsd"/>
+   <extension-point id="edu.hu.clickwatch.analysis.composition.Visualization" name="Visualization" schema="schema/edu.hu.clickwatch.analysis.composition.Visualization.exsd"/>
 	<extension
 		point="org.eclipse.ui.newWizards">
 		<category
@@ -147,6 +152,12 @@
                id="edu.hu.clickwatch.analysis.composition.InputTab"
                label="Input">
          </propertyTab>
+         <propertyTab
+               afterTab="edu.hu.clickwatch.analysis.composition.MainTab"
+               category="ClickWatch"
+               id="edu.hu.clickwatch.analysis.composition.VisualizationTab"
+               label="Visualization">
+         </propertyTab>
 	    </propertyTabs>
 	</extension>
 	 
@@ -175,6 +186,12 @@
                filter="edu.hu.clickwatch.analysis.composition.property.TransformationFilter"
                id="edu.hu.clickwatch.analysis.composition.TransformationInput"
                tab="edu.hu.clickwatch.analysis.composition.InputTab">
+         </propertySection>
+         <propertySection
+               class="edu.hu.clickwatch.analysis.composition.property.DataNodeVisualizationSection"
+               filter="edu.hu.clickwatch.analysis.composition.property.DataNodeFilter"
+               id="edu.hu.clickwatch.analysis.composition.Visualization"
+               tab="edu.hu.clickwatch.analysis.composition.VisualizationTab">
          </propertySection>
 	    </propertySections>
 	</extension>
@@ -214,6 +231,13 @@
           id="edu.hu.clickwatch.analysis.composition.ModelView.ModelView"
           name="Model View">
     </view>
+    <view
+          category="edu.hu.clickwatch.viewCategory"
+          class="edu.hu.clickwatch.analysis.composition.VisualizationView"
+          icon="icons/sample.gif"
+          id="edu.hu.clickwatch.analysis.composition.VisualizationView"
+          name="Visualization View">
+    </view>
  </extension>
  <extension
        point="org.eclipse.help.contexts">
@@ -227,6 +251,17 @@
           class="edu.hu.clickwatch.analysis.composition.transformations.CreateSpecificModel"
           name="Create specific model">
     </transformation>
+ </extension>
+ <extension
+       point="edu.hu.clickwatch.analysis.composition.Visualization">
+    <visualization
+          class="edu.hu.clickwatch.analysis.composition.visualization.HistogramVisualization"
+          name="Histogram">
+    </visualization>
+    <visualization
+          class="edu.hu.clickwatch.analysis.composition.visualization.TopologyVisualization"
+          name="Topology">
+    </visualization>
  </extension>
 
 </plugin>

@@ -104,14 +104,6 @@ public class CompositionAdapterFactory extends AdapterFactoryImpl {
 				return createTimedTransformationAdapter();
 			}
 			@Override
-			public Adapter caseVisualization(Visualization object) {
-				return createVisualizationAdapter();
-			}
-			@Override
-			public Adapter caseVisualizer(Visualizer object) {
-				return createVisualizerAdapter();
-			}
-			@Override
 			public Adapter caseDataNode(DataNode object) {
 				return createDataNodeAdapter();
 			}
@@ -130,6 +122,10 @@ public class CompositionAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseMeasure(Measure object) {
 				return createMeasureAdapter();
+			}
+			@Override
+			public Adapter caseVisualization(Visualization object) {
+				return createVisualizationAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -274,20 +270,6 @@ public class CompositionAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createVisualizationAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link edu.hu.clickwatch.analysis.composition.model.Visualizer <em>Visualizer</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see edu.hu.clickwatch.analysis.composition.model.Visualizer
-	 * @generated
-	 */
-	public Adapter createVisualizerAdapter() {
 		return null;
 	}
 

@@ -7,7 +7,6 @@
 package edu.hu.clickwatch.examples.lifd.topology;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**

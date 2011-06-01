@@ -107,15 +107,6 @@ public interface CompositionFactory extends EFactory {
 	Visualization createVisualization();
 
 	/**
-	 * Returns a new object of class '<em>Visualizer</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Visualizer</em>'.
-	 * @generated
-	 */
-	Visualizer createVisualizer();
-
-	/**
 	 * Returns a new object of class '<em>Data Node</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

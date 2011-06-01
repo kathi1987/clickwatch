@@ -7,12 +7,15 @@
 package edu.hu.clickwatch.analysis.composition.model.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import edu.hu.clickwatch.analysis.composition.model.CompositionPackage;
 import edu.hu.clickwatch.analysis.composition.model.DataNode;
 import edu.hu.clickwatch.analysis.composition.model.ModelNode;
+import edu.hu.clickwatch.analysis.composition.model.Visualization;
 
 /**
  * <!-- begin-user-doc -->
@@ -22,11 +25,13 @@ import edu.hu.clickwatch.analysis.composition.model.ModelNode;
  * The following features are implemented:
  * <ul>
  *   <li>{@link edu.hu.clickwatch.analysis.composition.model.impl.ModelNodeImpl#isHasData <em>Has Data</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.analysis.composition.model.impl.ModelNodeImpl#getVisualization <em>Visualization</em>}</li>
  *   <li>{@link edu.hu.clickwatch.analysis.composition.model.impl.ModelNodeImpl#getMetaModelResource <em>Meta Model Resource</em>}</li>
  *   <li>{@link edu.hu.clickwatch.analysis.composition.model.impl.ModelNodeImpl#isInferedType <em>Infered Type</em>}</li>
  *   <li>{@link edu.hu.clickwatch.analysis.composition.model.impl.ModelNodeImpl#getMetaModelClass <em>Meta Model Class</em>}</li>
  *   <li>{@link edu.hu.clickwatch.analysis.composition.model.impl.ModelNodeImpl#getModelResource <em>Model Resource</em>}</li>
  *   <li>{@link edu.hu.clickwatch.analysis.composition.model.impl.ModelNodeImpl#isPersistent <em>Persistent</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.analysis.composition.model.impl.ModelNodeImpl#getRegisteredPackage <em>Registered Package</em>}</li>
  * </ul>
  * </p>
  *
@@ -51,6 +56,15 @@ public class ModelNodeImpl extends NodeImpl implements ModelNode {
 	 * @ordered
 	 */
 	protected boolean hasData = HAS_DATA_EDEFAULT;
+	/**
+	 * The cached value of the '{@link #getVisualization() <em>Visualization</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVisualization()
+	 * @generated
+	 * @ordered
+	 */
+	protected Visualization visualization;
 	/**
 	 * The default value of the '{@link #getMetaModelResource() <em>Meta Model Resource</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -142,6 +156,24 @@ public class ModelNodeImpl extends NodeImpl implements ModelNode {
 	 */
 	protected boolean persistent = PERSISTENT_EDEFAULT;
 	/**
+	 * The default value of the '{@link #getRegisteredPackage() <em>Registered Package</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRegisteredPackage()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String REGISTERED_PACKAGE_EDEFAULT = null;
+	/**
+	 * The cached value of the '{@link #getRegisteredPackage() <em>Registered Package</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRegisteredPackage()
+	 * @generated
+	 * @ordered
+	 */
+	protected String registeredPackage = REGISTERED_PACKAGE_EDEFAULT;
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -179,6 +211,49 @@ public class ModelNodeImpl extends NodeImpl implements ModelNode {
 		hasData = newHasData;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CompositionPackage.MODEL_NODE__HAS_DATA, oldHasData, hasData));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Visualization getVisualization() {
+		return visualization;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetVisualization(Visualization newVisualization, NotificationChain msgs) {
+		Visualization oldVisualization = visualization;
+		visualization = newVisualization;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CompositionPackage.MODEL_NODE__VISUALIZATION, oldVisualization, newVisualization);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setVisualization(Visualization newVisualization) {
+		if (newVisualization != visualization) {
+			NotificationChain msgs = null;
+			if (visualization != null)
+				msgs = ((InternalEObject)visualization).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CompositionPackage.MODEL_NODE__VISUALIZATION, null, msgs);
+			if (newVisualization != null)
+				msgs = ((InternalEObject)newVisualization).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CompositionPackage.MODEL_NODE__VISUALIZATION, null, msgs);
+			msgs = basicSetVisualization(newVisualization, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CompositionPackage.MODEL_NODE__VISUALIZATION, newVisualization, newVisualization));
 	}
 
 	/**
@@ -291,11 +366,48 @@ public class ModelNodeImpl extends NodeImpl implements ModelNode {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getRegisteredPackage() {
+		return registeredPackage;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setRegisteredPackage(String newRegisteredPackage) {
+		String oldRegisteredPackage = registeredPackage;
+		registeredPackage = newRegisteredPackage;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CompositionPackage.MODEL_NODE__REGISTERED_PACKAGE, oldRegisteredPackage, registeredPackage));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case CompositionPackage.MODEL_NODE__VISUALIZATION:
+				return basicSetVisualization(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case CompositionPackage.MODEL_NODE__HAS_DATA:
 				return isHasData();
+			case CompositionPackage.MODEL_NODE__VISUALIZATION:
+				return getVisualization();
 			case CompositionPackage.MODEL_NODE__META_MODEL_RESOURCE:
 				return getMetaModelResource();
 			case CompositionPackage.MODEL_NODE__INFERED_TYPE:
@@ -306,6 +418,8 @@ public class ModelNodeImpl extends NodeImpl implements ModelNode {
 				return getModelResource();
 			case CompositionPackage.MODEL_NODE__PERSISTENT:
 				return isPersistent();
+			case CompositionPackage.MODEL_NODE__REGISTERED_PACKAGE:
+				return getRegisteredPackage();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -320,6 +434,9 @@ public class ModelNodeImpl extends NodeImpl implements ModelNode {
 		switch (featureID) {
 			case CompositionPackage.MODEL_NODE__HAS_DATA:
 				setHasData((Boolean)newValue);
+				return;
+			case CompositionPackage.MODEL_NODE__VISUALIZATION:
+				setVisualization((Visualization)newValue);
 				return;
 			case CompositionPackage.MODEL_NODE__META_MODEL_RESOURCE:
 				setMetaModelResource((String)newValue);
@@ -336,6 +453,9 @@ public class ModelNodeImpl extends NodeImpl implements ModelNode {
 			case CompositionPackage.MODEL_NODE__PERSISTENT:
 				setPersistent((Boolean)newValue);
 				return;
+			case CompositionPackage.MODEL_NODE__REGISTERED_PACKAGE:
+				setRegisteredPackage((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -350,6 +470,9 @@ public class ModelNodeImpl extends NodeImpl implements ModelNode {
 		switch (featureID) {
 			case CompositionPackage.MODEL_NODE__HAS_DATA:
 				setHasData(HAS_DATA_EDEFAULT);
+				return;
+			case CompositionPackage.MODEL_NODE__VISUALIZATION:
+				setVisualization((Visualization)null);
 				return;
 			case CompositionPackage.MODEL_NODE__META_MODEL_RESOURCE:
 				setMetaModelResource(META_MODEL_RESOURCE_EDEFAULT);
@@ -366,6 +489,9 @@ public class ModelNodeImpl extends NodeImpl implements ModelNode {
 			case CompositionPackage.MODEL_NODE__PERSISTENT:
 				setPersistent(PERSISTENT_EDEFAULT);
 				return;
+			case CompositionPackage.MODEL_NODE__REGISTERED_PACKAGE:
+				setRegisteredPackage(REGISTERED_PACKAGE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -380,6 +506,8 @@ public class ModelNodeImpl extends NodeImpl implements ModelNode {
 		switch (featureID) {
 			case CompositionPackage.MODEL_NODE__HAS_DATA:
 				return hasData != HAS_DATA_EDEFAULT;
+			case CompositionPackage.MODEL_NODE__VISUALIZATION:
+				return visualization != null;
 			case CompositionPackage.MODEL_NODE__META_MODEL_RESOURCE:
 				return META_MODEL_RESOURCE_EDEFAULT == null ? metaModelResource != null : !META_MODEL_RESOURCE_EDEFAULT.equals(metaModelResource);
 			case CompositionPackage.MODEL_NODE__INFERED_TYPE:
@@ -390,6 +518,8 @@ public class ModelNodeImpl extends NodeImpl implements ModelNode {
 				return MODEL_RESOURCE_EDEFAULT == null ? modelResource != null : !MODEL_RESOURCE_EDEFAULT.equals(modelResource);
 			case CompositionPackage.MODEL_NODE__PERSISTENT:
 				return persistent != PERSISTENT_EDEFAULT;
+			case CompositionPackage.MODEL_NODE__REGISTERED_PACKAGE:
+				return REGISTERED_PACKAGE_EDEFAULT == null ? registeredPackage != null : !REGISTERED_PACKAGE_EDEFAULT.equals(registeredPackage);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -404,6 +534,7 @@ public class ModelNodeImpl extends NodeImpl implements ModelNode {
 		if (baseClass == DataNode.class) {
 			switch (derivedFeatureID) {
 				case CompositionPackage.MODEL_NODE__HAS_DATA: return CompositionPackage.DATA_NODE__HAS_DATA;
+				case CompositionPackage.MODEL_NODE__VISUALIZATION: return CompositionPackage.DATA_NODE__VISUALIZATION;
 				default: return -1;
 			}
 		}
@@ -420,6 +551,7 @@ public class ModelNodeImpl extends NodeImpl implements ModelNode {
 		if (baseClass == DataNode.class) {
 			switch (baseFeatureID) {
 				case CompositionPackage.DATA_NODE__HAS_DATA: return CompositionPackage.MODEL_NODE__HAS_DATA;
+				case CompositionPackage.DATA_NODE__VISUALIZATION: return CompositionPackage.MODEL_NODE__VISUALIZATION;
 				default: return -1;
 			}
 		}
@@ -448,6 +580,8 @@ public class ModelNodeImpl extends NodeImpl implements ModelNode {
 		result.append(modelResource);
 		result.append(", persistent: ");
 		result.append(persistent);
+		result.append(", registeredPackage: ");
+		result.append(registeredPackage);
 		result.append(')');
 		return result.toString();
 	}

@@ -354,13 +354,22 @@ public interface CompositionPackage extends EPackage {
 	int MODEL_NODE__HAS_DATA = NODE_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Visualization</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL_NODE__VISUALIZATION = NODE_FEATURE_COUNT + 1;
+
+	/**
 	 * The feature id for the '<em><b>Meta Model Resource</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_NODE__META_MODEL_RESOURCE = NODE_FEATURE_COUNT + 1;
+	int MODEL_NODE__META_MODEL_RESOURCE = NODE_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Infered Type</b></em>' attribute.
@@ -369,7 +378,7 @@ public interface CompositionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_NODE__INFERED_TYPE = NODE_FEATURE_COUNT + 2;
+	int MODEL_NODE__INFERED_TYPE = NODE_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Meta Model Class</b></em>' attribute.
@@ -378,7 +387,7 @@ public interface CompositionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_NODE__META_MODEL_CLASS = NODE_FEATURE_COUNT + 3;
+	int MODEL_NODE__META_MODEL_CLASS = NODE_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Model Resource</b></em>' attribute.
@@ -387,7 +396,7 @@ public interface CompositionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_NODE__MODEL_RESOURCE = NODE_FEATURE_COUNT + 4;
+	int MODEL_NODE__MODEL_RESOURCE = NODE_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Persistent</b></em>' attribute.
@@ -396,7 +405,16 @@ public interface CompositionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_NODE__PERSISTENT = NODE_FEATURE_COUNT + 5;
+	int MODEL_NODE__PERSISTENT = NODE_FEATURE_COUNT + 6;
+
+	/**
+	 * The feature id for the '<em><b>Registered Package</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL_NODE__REGISTERED_PACKAGE = NODE_FEATURE_COUNT + 7;
 
 	/**
 	 * The number of structural features of the '<em>Model Node</em>' class.
@@ -405,7 +423,7 @@ public interface CompositionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_NODE_FEATURE_COUNT = NODE_FEATURE_COUNT + 6;
+	int MODEL_NODE_FEATURE_COUNT = NODE_FEATURE_COUNT + 8;
 
 	/**
 	 * The meta object id for the '{@link edu.hu.clickwatch.analysis.composition.model.impl.DataSetNodeImpl <em>Data Set Node</em>}' class.
@@ -463,13 +481,22 @@ public interface CompositionPackage extends EPackage {
 	int DATA_SET_NODE__HAS_DATA = NODE_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Visualization</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_SET_NODE__VISUALIZATION = NODE_FEATURE_COUNT + 1;
+
+	/**
 	 * The feature id for the '<em><b>Data</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_SET_NODE__DATA = NODE_FEATURE_COUNT + 1;
+	int DATA_SET_NODE__DATA = NODE_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Data Set Node</em>' class.
@@ -478,7 +505,7 @@ public interface CompositionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_SET_NODE_FEATURE_COUNT = NODE_FEATURE_COUNT + 2;
+	int DATA_SET_NODE_FEATURE_COUNT = NODE_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link edu.hu.clickwatch.analysis.composition.model.impl.MeasureNodeImpl <em>Measure Node</em>}' class.
@@ -536,13 +563,22 @@ public interface CompositionPackage extends EPackage {
 	int MEASURE_NODE__HAS_DATA = NODE_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Visualization</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MEASURE_NODE__VISUALIZATION = NODE_FEATURE_COUNT + 1;
+
+	/**
 	 * The feature id for the '<em><b>Data</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MEASURE_NODE__DATA = NODE_FEATURE_COUNT + 1;
+	int MEASURE_NODE__DATA = NODE_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Measure Node</em>' class.
@@ -551,7 +587,7 @@ public interface CompositionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MEASURE_NODE_FEATURE_COUNT = NODE_FEATURE_COUNT + 2;
+	int MEASURE_NODE_FEATURE_COUNT = NODE_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link edu.hu.clickwatch.analysis.composition.model.impl.TimedTransformationImpl <em>Timed Transformation</em>}' class.
@@ -670,98 +706,7 @@ public interface CompositionPackage extends EPackage {
 	 * @see edu.hu.clickwatch.analysis.composition.model.impl.CompositionPackageImpl#getVisualization()
 	 * @generated
 	 */
-	int VISUALIZATION = 8;
-
-	/**
-	 * The feature id for the '<em><b>Label</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VISUALIZATION__LABEL = NODE__LABEL;
-
-	/**
-	 * The feature id for the '<em><b>EReference0</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VISUALIZATION__EREFERENCE0 = NODE__EREFERENCE0;
-
-	/**
-	 * The feature id for the '<em><b>EReference1</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VISUALIZATION__EREFERENCE1 = NODE__EREFERENCE1;
-
-	/**
-	 * The feature id for the '<em><b>Outgoing</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VISUALIZATION__OUTGOING = NODE__OUTGOING;
-
-	/**
-	 * The number of structural features of the '<em>Visualization</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VISUALIZATION_FEATURE_COUNT = NODE_FEATURE_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link edu.hu.clickwatch.analysis.composition.model.impl.VisualizerImpl <em>Visualizer</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see edu.hu.clickwatch.analysis.composition.model.impl.VisualizerImpl
-	 * @see edu.hu.clickwatch.analysis.composition.model.impl.CompositionPackageImpl#getVisualizer()
-	 * @generated
-	 */
-	int VISUALIZER = 9;
-
-	/**
-	 * The feature id for the '<em><b>Label</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VISUALIZER__LABEL = EDGE__LABEL;
-
-	/**
-	 * The feature id for the '<em><b>Source</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VISUALIZER__SOURCE = EDGE__SOURCE;
-
-	/**
-	 * The feature id for the '<em><b>Target</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VISUALIZER__TARGET = EDGE__TARGET;
-
-	/**
-	 * The number of structural features of the '<em>Visualizer</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VISUALIZER_FEATURE_COUNT = EDGE_FEATURE_COUNT + 0;
+	int VISUALIZATION = 13;
 
 	/**
 	 * The meta object id for the '{@link edu.hu.clickwatch.analysis.composition.model.impl.DataNodeImpl <em>Data Node</em>}' class.
@@ -771,7 +716,7 @@ public interface CompositionPackage extends EPackage {
 	 * @see edu.hu.clickwatch.analysis.composition.model.impl.CompositionPackageImpl#getDataNode()
 	 * @generated
 	 */
-	int DATA_NODE = 10;
+	int DATA_NODE = 8;
 
 	/**
 	 * The feature id for the '<em><b>Label</b></em>' attribute.
@@ -819,13 +764,22 @@ public interface CompositionPackage extends EPackage {
 	int DATA_NODE__HAS_DATA = NODE_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Visualization</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_NODE__VISUALIZATION = NODE_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Data Node</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_NODE_FEATURE_COUNT = NODE_FEATURE_COUNT + 1;
+	int DATA_NODE_FEATURE_COUNT = NODE_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link edu.hu.clickwatch.analysis.composition.model.impl.CompositionImpl <em>Composition</em>}' class.
@@ -835,7 +789,7 @@ public interface CompositionPackage extends EPackage {
 	 * @see edu.hu.clickwatch.analysis.composition.model.impl.CompositionPackageImpl#getComposition()
 	 * @generated
 	 */
-	int COMPOSITION = 11;
+	int COMPOSITION = 9;
 
 	/**
 	 * The feature id for the '<em><b>Contents</b></em>' containment reference list.
@@ -864,7 +818,7 @@ public interface CompositionPackage extends EPackage {
 	 * @see edu.hu.clickwatch.analysis.composition.model.impl.CompositionPackageImpl#getParameterSpec()
 	 * @generated
 	 */
-	int PARAMETER_SPEC = 12;
+	int PARAMETER_SPEC = 10;
 
 	/**
 	 * The feature id for the '<em><b>Kind</b></em>' attribute.
@@ -910,7 +864,7 @@ public interface CompositionPackage extends EPackage {
 	 * @see edu.hu.clickwatch.analysis.composition.model.impl.CompositionPackageImpl#getDataSet()
 	 * @generated
 	 */
-	int DATA_SET = 13;
+	int DATA_SET = 11;
 
 	/**
 	 * The feature id for the '<em><b>Int Values</b></em>' attribute list.
@@ -947,7 +901,7 @@ public interface CompositionPackage extends EPackage {
 	 * @see edu.hu.clickwatch.analysis.composition.model.impl.CompositionPackageImpl#getMeasure()
 	 * @generated
 	 */
-	int MEASURE = 14;
+	int MEASURE = 12;
 
 	/**
 	 * The feature id for the '<em><b>Int Value</b></em>' attribute.
@@ -977,6 +931,24 @@ public interface CompositionPackage extends EPackage {
 	int MEASURE_FEATURE_COUNT = 2;
 
 	/**
+	 * The feature id for the '<em><b>Kind</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VISUALIZATION__KIND = 0;
+
+	/**
+	 * The number of structural features of the '<em>Visualization</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VISUALIZATION_FEATURE_COUNT = 1;
+
+	/**
 	 * The meta object id for the '{@link edu.hu.clickwatch.analysis.composition.model.TransformationKind <em>Transformation Kind</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -984,7 +956,7 @@ public interface CompositionPackage extends EPackage {
 	 * @see edu.hu.clickwatch.analysis.composition.model.impl.CompositionPackageImpl#getTransformationKind()
 	 * @generated
 	 */
-	int TRANSFORMATION_KIND = 15;
+	int TRANSFORMATION_KIND = 14;
 
 	/**
 	 * The meta object id for the '{@link edu.hu.clickwatch.analysis.composition.model.TargetSpec <em>Target Spec</em>}' enum.
@@ -994,7 +966,7 @@ public interface CompositionPackage extends EPackage {
 	 * @see edu.hu.clickwatch.analysis.composition.model.impl.CompositionPackageImpl#getTargetSpec()
 	 * @generated
 	 */
-	int TARGET_SPEC = 16;
+	int TARGET_SPEC = 15;
 
 	/**
 	 * The meta object id for the '{@link edu.hu.clickwatch.analysis.composition.model.ParameterSpecKind <em>Parameter Spec Kind</em>}' enum.
@@ -1004,7 +976,7 @@ public interface CompositionPackage extends EPackage {
 	 * @see edu.hu.clickwatch.analysis.composition.model.impl.CompositionPackageImpl#getParameterSpecKind()
 	 * @generated
 	 */
-	int PARAMETER_SPEC_KIND = 17;
+	int PARAMETER_SPEC_KIND = 16;
 
 	/**
 	 * Returns the meta object for class '{@link edu.hu.clickwatch.analysis.composition.model.Node <em>Node</em>}'.
@@ -1223,6 +1195,17 @@ public interface CompositionPackage extends EPackage {
 	EAttribute getModelNode_Persistent();
 
 	/**
+	 * Returns the meta object for the attribute '{@link edu.hu.clickwatch.analysis.composition.model.ModelNode#getRegisteredPackage <em>Registered Package</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Registered Package</em>'.
+	 * @see edu.hu.clickwatch.analysis.composition.model.ModelNode#getRegisteredPackage()
+	 * @see #getModelNode()
+	 * @generated
+	 */
+	EAttribute getModelNode_RegisteredPackage();
+
+	/**
 	 * Returns the meta object for class '{@link edu.hu.clickwatch.analysis.composition.model.DataSetNode <em>Data Set Node</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1317,14 +1300,15 @@ public interface CompositionPackage extends EPackage {
 	EClass getVisualization();
 
 	/**
-	 * Returns the meta object for class '{@link edu.hu.clickwatch.analysis.composition.model.Visualizer <em>Visualizer</em>}'.
+	 * Returns the meta object for the attribute '{@link edu.hu.clickwatch.analysis.composition.model.Visualization#getKind <em>Kind</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Visualizer</em>'.
-	 * @see edu.hu.clickwatch.analysis.composition.model.Visualizer
+	 * @return the meta object for the attribute '<em>Kind</em>'.
+	 * @see edu.hu.clickwatch.analysis.composition.model.Visualization#getKind()
+	 * @see #getVisualization()
 	 * @generated
 	 */
-	EClass getVisualizer();
+	EAttribute getVisualization_Kind();
 
 	/**
 	 * Returns the meta object for class '{@link edu.hu.clickwatch.analysis.composition.model.DataNode <em>Data Node</em>}'.
@@ -1346,6 +1330,17 @@ public interface CompositionPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getDataNode_HasData();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link edu.hu.clickwatch.analysis.composition.model.DataNode#getVisualization <em>Visualization</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Visualization</em>'.
+	 * @see edu.hu.clickwatch.analysis.composition.model.DataNode#getVisualization()
+	 * @see #getDataNode()
+	 * @generated
+	 */
+	EReference getDataNode_Visualization();
 
 	/**
 	 * Returns the meta object for class '{@link edu.hu.clickwatch.analysis.composition.model.Composition <em>Composition</em>}'.
@@ -1696,6 +1691,14 @@ public interface CompositionPackage extends EPackage {
 		EAttribute MODEL_NODE__PERSISTENT = eINSTANCE.getModelNode_Persistent();
 
 		/**
+		 * The meta object literal for the '<em><b>Registered Package</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MODEL_NODE__REGISTERED_PACKAGE = eINSTANCE.getModelNode_RegisteredPackage();
+
+		/**
 		 * The meta object literal for the '{@link edu.hu.clickwatch.analysis.composition.model.impl.DataSetNodeImpl <em>Data Set Node</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1778,14 +1781,12 @@ public interface CompositionPackage extends EPackage {
 		EClass VISUALIZATION = eINSTANCE.getVisualization();
 
 		/**
-		 * The meta object literal for the '{@link edu.hu.clickwatch.analysis.composition.model.impl.VisualizerImpl <em>Visualizer</em>}' class.
+		 * The meta object literal for the '<em><b>Kind</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see edu.hu.clickwatch.analysis.composition.model.impl.VisualizerImpl
-		 * @see edu.hu.clickwatch.analysis.composition.model.impl.CompositionPackageImpl#getVisualizer()
 		 * @generated
 		 */
-		EClass VISUALIZER = eINSTANCE.getVisualizer();
+		EAttribute VISUALIZATION__KIND = eINSTANCE.getVisualization_Kind();
 
 		/**
 		 * The meta object literal for the '{@link edu.hu.clickwatch.analysis.composition.model.impl.DataNodeImpl <em>Data Node</em>}' class.
@@ -1804,6 +1805,14 @@ public interface CompositionPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute DATA_NODE__HAS_DATA = eINSTANCE.getDataNode_HasData();
+
+		/**
+		 * The meta object literal for the '<em><b>Visualization</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DATA_NODE__VISUALIZATION = eINSTANCE.getDataNode_Visualization();
 
 		/**
 		 * The meta object literal for the '{@link edu.hu.clickwatch.analysis.composition.model.impl.CompositionImpl <em>Composition</em>}' class.

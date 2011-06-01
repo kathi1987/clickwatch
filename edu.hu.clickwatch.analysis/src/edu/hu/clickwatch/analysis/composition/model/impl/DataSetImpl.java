@@ -6,18 +6,15 @@
  */
 package edu.hu.clickwatch.analysis.composition.model.impl;
 
-import edu.hu.clickwatch.analysis.composition.model.CompositionPackage;
-import edu.hu.clickwatch.analysis.composition.model.DataSet;
-
 import java.util.Collection;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
+
+import edu.hu.clickwatch.analysis.composition.model.CompositionPackage;
+import edu.hu.clickwatch.analysis.composition.model.DataSet;
 
 /**
  * <!-- begin-user-doc -->

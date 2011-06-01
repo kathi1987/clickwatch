@@ -6,15 +6,18 @@
  */
 package edu.hu.clickwatch.examples.lifd.topology.impl;
 
-import edu.hu.clickwatch.examples.lifd.topology.*;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+
+import edu.hu.clickwatch.examples.lifd.topology.Gps;
+import edu.hu.clickwatch.examples.lifd.topology.Link;
+import edu.hu.clickwatch.examples.lifd.topology.Node;
+import edu.hu.clickwatch.examples.lifd.topology.Topology;
+import edu.hu.clickwatch.examples.lifd.topology.TopologyFactory;
+import edu.hu.clickwatch.examples.lifd.topology.TopologyPackage;
 
 /**
  * <!-- begin-user-doc -->

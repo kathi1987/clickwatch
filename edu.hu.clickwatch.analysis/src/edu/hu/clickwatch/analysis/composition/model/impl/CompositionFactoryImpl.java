@@ -6,7 +6,6 @@
  */
 package edu.hu.clickwatch.analysis.composition.model.impl;
 
-import edu.hu.clickwatch.analysis.composition.model.*;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
@@ -18,9 +17,11 @@ import edu.hu.clickwatch.analysis.composition.model.Composition;
 import edu.hu.clickwatch.analysis.composition.model.CompositionFactory;
 import edu.hu.clickwatch.analysis.composition.model.CompositionPackage;
 import edu.hu.clickwatch.analysis.composition.model.DataNode;
+import edu.hu.clickwatch.analysis.composition.model.DataSet;
 import edu.hu.clickwatch.analysis.composition.model.DataSetNode;
 import edu.hu.clickwatch.analysis.composition.model.Edge;
 import edu.hu.clickwatch.analysis.composition.model.Element;
+import edu.hu.clickwatch.analysis.composition.model.Measure;
 import edu.hu.clickwatch.analysis.composition.model.MeasureNode;
 import edu.hu.clickwatch.analysis.composition.model.ModelNode;
 import edu.hu.clickwatch.analysis.composition.model.Node;
@@ -31,7 +32,6 @@ import edu.hu.clickwatch.analysis.composition.model.TimedTransformation;
 import edu.hu.clickwatch.analysis.composition.model.Transformation;
 import edu.hu.clickwatch.analysis.composition.model.TransformationKind;
 import edu.hu.clickwatch.analysis.composition.model.Visualization;
-import edu.hu.clickwatch.analysis.composition.model.Visualizer;
 
 /**
  * <!-- begin-user-doc -->
@@ -85,13 +85,12 @@ public class CompositionFactoryImpl extends EFactoryImpl implements CompositionF
 			case CompositionPackage.MEASURE_NODE: return createMeasureNode();
 			case CompositionPackage.EDGE: return createEdge();
 			case CompositionPackage.TIMED_TRANSFORMATION: return createTimedTransformation();
-			case CompositionPackage.VISUALIZATION: return createVisualization();
-			case CompositionPackage.VISUALIZER: return createVisualizer();
 			case CompositionPackage.DATA_NODE: return createDataNode();
 			case CompositionPackage.COMPOSITION: return createComposition();
 			case CompositionPackage.PARAMETER_SPEC: return createParameterSpec();
 			case CompositionPackage.DATA_SET: return createDataSet();
 			case CompositionPackage.MEASURE: return createMeasure();
+			case CompositionPackage.VISUALIZATION: return createVisualization();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -223,16 +222,6 @@ public class CompositionFactoryImpl extends EFactoryImpl implements CompositionF
 	public Visualization createVisualization() {
 		VisualizationImpl visualization = new VisualizationImpl();
 		return visualization;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Visualizer createVisualizer() {
-		VisualizerImpl visualizer = new VisualizerImpl();
-		return visualizer;
 	}
 
 	/**

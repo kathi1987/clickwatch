@@ -16,6 +16,7 @@ package edu.hu.clickwatch.analysis.composition.model;
  * The following features are supported:
  * <ul>
  *   <li>{@link edu.hu.clickwatch.analysis.composition.model.DataNode#isHasData <em>Has Data</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.analysis.composition.model.DataNode#getVisualization <em>Visualization</em>}</li>
  * </ul>
  * </p>
  *
@@ -51,4 +52,30 @@ public interface DataNode extends Node {
 	 * @generated
 	 */
 	void setHasData(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Visualization</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Visualization</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Visualization</em>' containment reference.
+	 * @see #setVisualization(Visualization)
+	 * @see edu.hu.clickwatch.analysis.composition.model.CompositionPackage#getDataNode_Visualization()
+	 * @model containment="true"
+	 * @generated
+	 */
+	Visualization getVisualization();
+
+	/**
+	 * Sets the value of the '{@link edu.hu.clickwatch.analysis.composition.model.DataNode#getVisualization <em>Visualization</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Visualization</em>' containment reference.
+	 * @see #getVisualization()
+	 * @generated
+	 */
+	void setVisualization(Visualization value);
 } // DataNode

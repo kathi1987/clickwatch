@@ -68,6 +68,8 @@ public class ModelNodeSection extends GFPropertySection implements ITabbedProper
 	private Text metaModelClassText;
 	private Button selectMetaModelResource;
 	private Button selectMetaModelClass;
+	private Text registeredPackageText;
+	private Button selectRegisteredPackage;
 	private Button isPersistentButton;
 	private Text modelResourceText;
 	private Button selectModelResource;
@@ -209,11 +211,57 @@ public class ModelNodeSection extends GFPropertySection implements ITabbedProper
 			}
 		});
 		
+		CLabel registeredPackageLabel = factory.createCLabel(composite, "Package:"); //$NON-NLS-1$
+		data = new FormData();
+		data.left = new FormAttachment(0, STANDARD_LABEL_WIDTH+HSPACE*2);
+		data.right = new FormAttachment(0, STANDARD_LABEL_WIDTH*2+HSPACE*2);
+		data.top = new FormAttachment(metaModelClassText, VSPACE);
+		registeredPackageLabel.setLayoutData(data);
+		
+		selectRegisteredPackage = factory.createButton(composite, "...", SWT.PUSH);
+		selectRegisteredPackage.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent selectionEvent) {
+				RegisteredPackageDialog registeredPackageDialog = new RegisteredPackageDialog(shell);
+				registeredPackageDialog.open();
+				Object[] result = registeredPackageDialog.getResult();
+				Object thePackage = null;
+				if (result.length != 0) {
+					thePackage = result[0];
+				}
+
+				if (thePackage != null && thePackage instanceof String) {
+					setRegisteredPackage((String)thePackage);
+					refresh();
+				}
+			}
+		});
+		data = new FormData();
+		data.left = new FormAttachment(100, -30);
+		data.right = new FormAttachment(100, 0);
+		data.top = new FormAttachment(registeredPackageLabel, 0, SWT.CENTER);
+		selectRegisteredPackage.setLayoutData(data);
+
+		registeredPackageText = factory.createText(composite, ""); //$NON-NLS-1$
+		registeredPackageText.setEditable(true);
+		data = new FormData();
+		data.left = new FormAttachment(registeredPackageLabel, HSPACE);
+		data.right = new FormAttachment(selectRegisteredPackage, -HSPACE);
+		data.top = new FormAttachment(registeredPackageLabel, 0, SWT.CENTER);
+		registeredPackageText.setLayoutData(data);
+		registeredPackageText.addFocusListener(new AbstractFocusLostListener() {
+			@Override
+			protected void handleFocusLost() {
+				setRegisteredPackage(registeredPackageText.getText()); // TODO
+			}
+		});
+		
+		
 		CLabel modelLabel = factory.createCLabel(composite, "Model:"); //$NON-NLS-1$
 		data = new FormData();
 		data.left = new FormAttachment(0, 0);
 		data.right = new FormAttachment(0, STANDARD_LABEL_WIDTH);
-		data.top = new FormAttachment(metaModelClassLabel, VSPACE);
+		data.top = new FormAttachment(registeredPackageLabel, VSPACE);
 		modelLabel.setLayoutData(data);
 		
 		isPersistentButton = factory.createButton(composite, "persistent", SWT.CHECK);
@@ -308,6 +356,17 @@ public class ModelNodeSection extends GFPropertySection implements ITabbedProper
 		});
 	}
 	
+	protected void setRegisteredPackage(final String nsURI) {
+		final ModelNode node = getSelectedNode();
+		TransactionUtil.runSafely(new Runnable() {
+			@Override
+			public void run() {
+				node.setRegisteredPackage(nsURI);
+				node.setMetaModelResource(null);
+			}
+		}, node);
+	}
+
 	protected void clearModel() {
 		PictogramElement pe = getSelectedPictogramElement();
 		if (pe != null) {
@@ -384,6 +443,7 @@ public class ModelNodeSection extends GFPropertySection implements ITabbedProper
 			@Override
 			public void run() {
 				node.setMetaModelResource(text);
+				node.setRegisteredPackage(null);
 			}
 		}, node);
 	}
@@ -454,8 +514,12 @@ public class ModelNodeSection extends GFPropertySection implements ITabbedProper
 			modelResourceText.setText(modelResource == null ? "": modelResource);
 			metaModelClassText.setEnabled(!hasInferedType);
 			metaModelResourceText.setEnabled(!hasInferedType);
+			String registeredPackage = modelNode.getRegisteredPackage();
+			registeredPackageText.setText(registeredPackage == null ? "" : registeredPackage);
+			registeredPackageText.setEnabled(!hasInferedType);
 			selectMetaModelClass.setEnabled(!hasInferedType);
 			selectMetaModelResource.setEnabled(!hasInferedType);
+			selectRegisteredPackage.setEnabled(!hasInferedType);
 			modelResourceText.setEnabled(isPersistent);
 			loadModel.setEnabled(isPersistent);
 			saveModel.setEnabled(isPersistent);

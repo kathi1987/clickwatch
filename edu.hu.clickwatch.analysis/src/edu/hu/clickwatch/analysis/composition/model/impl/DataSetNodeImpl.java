@@ -6,16 +6,17 @@
  */
 package edu.hu.clickwatch.analysis.composition.model.impl;
 
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import edu.hu.clickwatch.analysis.composition.model.CompositionPackage;
 import edu.hu.clickwatch.analysis.composition.model.DataNode;
 import edu.hu.clickwatch.analysis.composition.model.DataSet;
 import edu.hu.clickwatch.analysis.composition.model.DataSetNode;
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
+import edu.hu.clickwatch.analysis.composition.model.Visualization;
 
 /**
  * <!-- begin-user-doc -->
@@ -25,6 +26,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
  * The following features are implemented:
  * <ul>
  *   <li>{@link edu.hu.clickwatch.analysis.composition.model.impl.DataSetNodeImpl#isHasData <em>Has Data</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.analysis.composition.model.impl.DataSetNodeImpl#getVisualization <em>Visualization</em>}</li>
  *   <li>{@link edu.hu.clickwatch.analysis.composition.model.impl.DataSetNodeImpl#getData <em>Data</em>}</li>
  * </ul>
  * </p>
@@ -50,6 +52,15 @@ public class DataSetNodeImpl extends NodeImpl implements DataSetNode {
 	 * @ordered
 	 */
 	protected boolean hasData = HAS_DATA_EDEFAULT;
+	/**
+	 * The cached value of the '{@link #getVisualization() <em>Visualization</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVisualization()
+	 * @generated
+	 * @ordered
+	 */
+	protected Visualization visualization;
 	/**
 	 * The cached value of the '{@link #getData() <em>Data</em>}' containment reference.
 	 * <!-- begin-user-doc -->
@@ -105,6 +116,49 @@ public class DataSetNodeImpl extends NodeImpl implements DataSetNode {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Visualization getVisualization() {
+		return visualization;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetVisualization(Visualization newVisualization, NotificationChain msgs) {
+		Visualization oldVisualization = visualization;
+		visualization = newVisualization;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CompositionPackage.DATA_SET_NODE__VISUALIZATION, oldVisualization, newVisualization);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setVisualization(Visualization newVisualization) {
+		if (newVisualization != visualization) {
+			NotificationChain msgs = null;
+			if (visualization != null)
+				msgs = ((InternalEObject)visualization).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CompositionPackage.DATA_SET_NODE__VISUALIZATION, null, msgs);
+			if (newVisualization != null)
+				msgs = ((InternalEObject)newVisualization).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CompositionPackage.DATA_SET_NODE__VISUALIZATION, null, msgs);
+			msgs = basicSetVisualization(newVisualization, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CompositionPackage.DATA_SET_NODE__VISUALIZATION, newVisualization, newVisualization));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public DataSet getData() {
 		return data;
 	}
@@ -151,6 +205,8 @@ public class DataSetNodeImpl extends NodeImpl implements DataSetNode {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+			case CompositionPackage.DATA_SET_NODE__VISUALIZATION:
+				return basicSetVisualization(null, msgs);
 			case CompositionPackage.DATA_SET_NODE__DATA:
 				return basicSetData(null, msgs);
 		}
@@ -167,6 +223,8 @@ public class DataSetNodeImpl extends NodeImpl implements DataSetNode {
 		switch (featureID) {
 			case CompositionPackage.DATA_SET_NODE__HAS_DATA:
 				return isHasData();
+			case CompositionPackage.DATA_SET_NODE__VISUALIZATION:
+				return getVisualization();
 			case CompositionPackage.DATA_SET_NODE__DATA:
 				return getData();
 		}
@@ -183,6 +241,9 @@ public class DataSetNodeImpl extends NodeImpl implements DataSetNode {
 		switch (featureID) {
 			case CompositionPackage.DATA_SET_NODE__HAS_DATA:
 				setHasData((Boolean)newValue);
+				return;
+			case CompositionPackage.DATA_SET_NODE__VISUALIZATION:
+				setVisualization((Visualization)newValue);
 				return;
 			case CompositionPackage.DATA_SET_NODE__DATA:
 				setData((DataSet)newValue);
@@ -202,6 +263,9 @@ public class DataSetNodeImpl extends NodeImpl implements DataSetNode {
 			case CompositionPackage.DATA_SET_NODE__HAS_DATA:
 				setHasData(HAS_DATA_EDEFAULT);
 				return;
+			case CompositionPackage.DATA_SET_NODE__VISUALIZATION:
+				setVisualization((Visualization)null);
+				return;
 			case CompositionPackage.DATA_SET_NODE__DATA:
 				setData((DataSet)null);
 				return;
@@ -219,6 +283,8 @@ public class DataSetNodeImpl extends NodeImpl implements DataSetNode {
 		switch (featureID) {
 			case CompositionPackage.DATA_SET_NODE__HAS_DATA:
 				return hasData != HAS_DATA_EDEFAULT;
+			case CompositionPackage.DATA_SET_NODE__VISUALIZATION:
+				return visualization != null;
 			case CompositionPackage.DATA_SET_NODE__DATA:
 				return data != null;
 		}
@@ -235,6 +301,7 @@ public class DataSetNodeImpl extends NodeImpl implements DataSetNode {
 		if (baseClass == DataNode.class) {
 			switch (derivedFeatureID) {
 				case CompositionPackage.DATA_SET_NODE__HAS_DATA: return CompositionPackage.DATA_NODE__HAS_DATA;
+				case CompositionPackage.DATA_SET_NODE__VISUALIZATION: return CompositionPackage.DATA_NODE__VISUALIZATION;
 				default: return -1;
 			}
 		}
@@ -251,6 +318,7 @@ public class DataSetNodeImpl extends NodeImpl implements DataSetNode {
 		if (baseClass == DataNode.class) {
 			switch (baseFeatureID) {
 				case CompositionPackage.DATA_NODE__HAS_DATA: return CompositionPackage.DATA_SET_NODE__HAS_DATA;
+				case CompositionPackage.DATA_NODE__VISUALIZATION: return CompositionPackage.DATA_SET_NODE__VISUALIZATION;
 				default: return -1;
 			}
 		}

@@ -6,23 +6,19 @@
  */
 package edu.hu.clickwatch.examples.linkdist.ldp.impl;
 
-import edu.hu.clickwatch.examples.linkdist.ldp.Link;
-import edu.hu.clickwatch.examples.linkdist.ldp.LinkDistPlotPackage;
-import edu.hu.clickwatch.examples.linkdist.ldp.Plot;
-
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
+import edu.hu.clickwatch.examples.linkdist.ldp.Link;
+import edu.hu.clickwatch.examples.linkdist.ldp.LinkDistPlotPackage;
+import edu.hu.clickwatch.examples.linkdist.ldp.Plot;
 
 /**
  * <!-- begin-user-doc -->

@@ -6,15 +6,13 @@
  */
 package edu.hu.clickwatch.analysis.composition.model.impl;
 
-import edu.hu.clickwatch.analysis.composition.model.CompositionPackage;
-import edu.hu.clickwatch.analysis.composition.model.Measure;
-
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+
+import edu.hu.clickwatch.analysis.composition.model.CompositionPackage;
+import edu.hu.clickwatch.analysis.composition.model.Measure;
 
 /**
  * <!-- begin-user-doc -->

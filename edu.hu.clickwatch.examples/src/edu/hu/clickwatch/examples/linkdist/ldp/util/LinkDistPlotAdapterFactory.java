@@ -6,14 +6,14 @@
  */
 package edu.hu.clickwatch.examples.linkdist.ldp.util;
 
-import edu.hu.clickwatch.examples.linkdist.ldp.*;
-
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
-
 import org.eclipse.emf.ecore.EObject;
+
+import edu.hu.clickwatch.examples.linkdist.ldp.Link;
+import edu.hu.clickwatch.examples.linkdist.ldp.LinkDistPlotPackage;
+import edu.hu.clickwatch.examples.linkdist.ldp.Plot;
 
 /**
  * <!-- begin-user-doc -->

@@ -6,19 +6,18 @@
  */
 package edu.hu.clickwatch.examples.lifd.topology.impl;
 
+import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.impl.EPackageImpl;
+
 import edu.hu.clickwatch.examples.lifd.topology.Gps;
 import edu.hu.clickwatch.examples.lifd.topology.Link;
 import edu.hu.clickwatch.examples.lifd.topology.Node;
 import edu.hu.clickwatch.examples.lifd.topology.Topology;
 import edu.hu.clickwatch.examples.lifd.topology.TopologyFactory;
 import edu.hu.clickwatch.examples.lifd.topology.TopologyPackage;
-
-import org.eclipse.emf.ecore.EAttribute;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EReference;
-
-import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 /**
  * <!-- begin-user-doc -->

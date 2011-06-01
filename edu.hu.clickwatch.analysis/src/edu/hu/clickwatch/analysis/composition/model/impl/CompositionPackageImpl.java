@@ -32,7 +32,6 @@ import edu.hu.clickwatch.analysis.composition.model.TimedTransformation;
 import edu.hu.clickwatch.analysis.composition.model.Transformation;
 import edu.hu.clickwatch.analysis.composition.model.TransformationKind;
 import edu.hu.clickwatch.analysis.composition.model.Visualization;
-import edu.hu.clickwatch.analysis.composition.model.Visualizer;
 
 /**
  * <!-- begin-user-doc -->
@@ -103,13 +102,6 @@ public class CompositionPackageImpl extends EPackageImpl implements CompositionP
 	 * @generated
 	 */
 	private EClass visualizationEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass visualizerEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -413,6 +405,15 @@ public class CompositionPackageImpl extends EPackageImpl implements CompositionP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getModelNode_RegisteredPackage() {
+		return (EAttribute)modelNodeEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getDataSetNode() {
 		return dataSetNodeEClass;
 	}
@@ -494,8 +495,8 @@ public class CompositionPackageImpl extends EPackageImpl implements CompositionP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getVisualizer() {
-		return visualizerEClass;
+	public EAttribute getVisualization_Kind() {
+		return (EAttribute)visualizationEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -514,6 +515,15 @@ public class CompositionPackageImpl extends EPackageImpl implements CompositionP
 	 */
 	public EAttribute getDataNode_HasData() {
 		return (EAttribute)dataNodeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getDataNode_Visualization() {
+		return (EReference)dataNodeEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -702,6 +712,7 @@ public class CompositionPackageImpl extends EPackageImpl implements CompositionP
 		createEAttribute(modelNodeEClass, MODEL_NODE__META_MODEL_CLASS);
 		createEAttribute(modelNodeEClass, MODEL_NODE__MODEL_RESOURCE);
 		createEAttribute(modelNodeEClass, MODEL_NODE__PERSISTENT);
+		createEAttribute(modelNodeEClass, MODEL_NODE__REGISTERED_PACKAGE);
 
 		dataSetNodeEClass = createEClass(DATA_SET_NODE);
 		createEReference(dataSetNodeEClass, DATA_SET_NODE__DATA);
@@ -715,12 +726,9 @@ public class CompositionPackageImpl extends EPackageImpl implements CompositionP
 
 		timedTransformationEClass = createEClass(TIMED_TRANSFORMATION);
 
-		visualizationEClass = createEClass(VISUALIZATION);
-
-		visualizerEClass = createEClass(VISUALIZER);
-
 		dataNodeEClass = createEClass(DATA_NODE);
 		createEAttribute(dataNodeEClass, DATA_NODE__HAS_DATA);
+		createEReference(dataNodeEClass, DATA_NODE__VISUALIZATION);
 
 		compositionEClass = createEClass(COMPOSITION);
 		createEReference(compositionEClass, COMPOSITION__CONTENTS);
@@ -737,6 +745,9 @@ public class CompositionPackageImpl extends EPackageImpl implements CompositionP
 		measureEClass = createEClass(MEASURE);
 		createEAttribute(measureEClass, MEASURE__INT_VALUE);
 		createEAttribute(measureEClass, MEASURE__DOUBLE_VALUE);
+
+		visualizationEClass = createEClass(VISUALIZATION);
+		createEAttribute(visualizationEClass, VISUALIZATION__KIND);
 
 		// Create enums
 		transformationKindEEnum = createEEnum(TRANSFORMATION_KIND);
@@ -783,8 +794,6 @@ public class CompositionPackageImpl extends EPackageImpl implements CompositionP
 		edgeEClass.getESuperTypes().add(this.getElement());
 		timedTransformationEClass.getESuperTypes().add(this.getEdge());
 		timedTransformationEClass.getESuperTypes().add(this.getTransformation());
-		visualizationEClass.getESuperTypes().add(this.getNode());
-		visualizerEClass.getESuperTypes().add(this.getEdge());
 		dataNodeEClass.getESuperTypes().add(this.getNode());
 
 		// Initialize classes and features; add operations and parameters
@@ -811,6 +820,7 @@ public class CompositionPackageImpl extends EPackageImpl implements CompositionP
 		initEAttribute(getModelNode_MetaModelClass(), ecorePackage.getEString(), "metaModelClass", null, 0, 1, ModelNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getModelNode_ModelResource(), ecorePackage.getEString(), "modelResource", null, 0, 1, ModelNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getModelNode_Persistent(), ecorePackage.getEBoolean(), "persistent", "false", 0, 1, ModelNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getModelNode_RegisteredPackage(), ecorePackage.getEString(), "registeredPackage", null, 0, 1, ModelNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(dataSetNodeEClass, DataSetNode.class, "DataSetNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDataSetNode_Data(), this.getDataSet(), null, "data", null, 0, 1, DataSetNode.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -824,12 +834,9 @@ public class CompositionPackageImpl extends EPackageImpl implements CompositionP
 
 		initEClass(timedTransformationEClass, TimedTransformation.class, "TimedTransformation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(visualizationEClass, Visualization.class, "Visualization", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(visualizerEClass, Visualizer.class, "Visualizer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
 		initEClass(dataNodeEClass, DataNode.class, "DataNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDataNode_HasData(), ecorePackage.getEBoolean(), "hasData", "false", 0, 1, DataNode.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDataNode_Visualization(), this.getVisualization(), null, "visualization", null, 0, 1, DataNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(compositionEClass, Composition.class, "Composition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getComposition_Contents(), this.getElement(), null, "contents", null, 0, -1, Composition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -846,6 +853,9 @@ public class CompositionPackageImpl extends EPackageImpl implements CompositionP
 		initEClass(measureEClass, Measure.class, "Measure", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getMeasure_IntValue(), ecorePackage.getEInt(), "intValue", null, 0, 1, Measure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMeasure_DoubleValue(), ecorePackage.getEDouble(), "doubleValue", null, 0, 1, Measure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(visualizationEClass, Visualization.class, "Visualization", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getVisualization_Kind(), ecorePackage.getEString(), "kind", null, 0, 1, Visualization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(transformationKindEEnum, TransformationKind.class, "TransformationKind");

@@ -35,7 +35,7 @@
       <link businessObjects="/4"/>
       <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="/0/@connections.3" incomingConnections="/0/@connections.1 /0/@connections.2"/>
       <children visible="true">
-        <graphicsAlgorithm xsi:type="al:Ellipse" background="/0/@colors.3" width="5" height="5" x="5" y="5"/>
+        <graphicsAlgorithm xsi:type="al:Ellipse" background="/0/@colors.3" transparency="1.0" width="5" height="5" x="5" y="5"/>
       </children>
       <children visible="true">
         <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.4" width="80" height="30" horizontalAlignment="ALIGNMENT_CENTER" value="Topology">
@@ -60,7 +60,7 @@
       <link businessObjects="/7"/>
       <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="/0/@connections.3"/>
       <children visible="true">
-        <graphicsAlgorithm xsi:type="al:Ellipse" background="/0/@colors.3" width="5" height="5" x="5" y="5"/>
+        <graphicsAlgorithm xsi:type="al:Ellipse" background="/0/@colors.3" transparency="1.0" width="5" height="5" x="5" y="5"/>
       </children>
       <children visible="true">
         <graphicsAlgorithm xsi:type="al:Text" foreground="/0/@colors.4" width="80" height="30" horizontalAlignment="ALIGNMENT_CENTER" value="Distances">
@@ -152,7 +152,7 @@
     <output/>
   </comp:Transformation>
   <comp:ModelNode label="Topology" metaModelResource="platform:/resource/edu.hu.clickwatch.examples/src/edu/hu/clickwatch/examples/lifd/topology.ecore" inferedType="false" modelResource="fake2.xml" persistent="true"/>
-  <comp:Transformation label="createTopology" source="/2" target="/4" transformationUri="platform:/resource/edu.hu.clickwatch.examples/src/edu/hu/clickwatch/examples/lifd/createTopology.ext" transformationFunction="performAnalysis" kind="xtend">
+  <comp:Transformation label="createTopology" source="/2" target="/4" transformationUri="platform:/resource/edu.hu.clickwatch.examples/src/edu/hu/clickwatch/examples/composition/createTopology.ext" transformationFunction="performAnalysis" kind="xtend">
     <input/>
     <output/>
   </comp:Transformation>
