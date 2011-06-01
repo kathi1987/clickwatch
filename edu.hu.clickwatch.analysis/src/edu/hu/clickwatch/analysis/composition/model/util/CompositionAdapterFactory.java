@@ -104,24 +104,28 @@ public class CompositionAdapterFactory extends AdapterFactoryImpl {
 				return createTimedTransformationAdapter();
 			}
 			@Override
-			public Adapter caseMappedTransformation(MappedTransformation object) {
-				return createMappedTransformationAdapter();
-			}
-			@Override
-			public Adapter caseVisualization(Visualization object) {
-				return createVisualizationAdapter();
-			}
-			@Override
-			public Adapter caseVisualizer(Visualizer object) {
-				return createVisualizerAdapter();
-			}
-			@Override
 			public Adapter caseDataNode(DataNode object) {
 				return createDataNodeAdapter();
 			}
 			@Override
 			public Adapter caseComposition(Composition object) {
 				return createCompositionAdapter();
+			}
+			@Override
+			public Adapter caseParameterSpec(ParameterSpec object) {
+				return createParameterSpecAdapter();
+			}
+			@Override
+			public Adapter caseDataSet(DataSet object) {
+				return createDataSetAdapter();
+			}
+			@Override
+			public Adapter caseMeasure(Measure object) {
+				return createMeasureAdapter();
+			}
+			@Override
+			public Adapter caseVisualization(Visualization object) {
+				return createVisualizationAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -256,20 +260,6 @@ public class CompositionAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link edu.hu.clickwatch.analysis.composition.model.MappedTransformation <em>Mapped Transformation</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see edu.hu.clickwatch.analysis.composition.model.MappedTransformation
-	 * @generated
-	 */
-	public Adapter createMappedTransformationAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link edu.hu.clickwatch.analysis.composition.model.Visualization <em>Visualization</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -280,20 +270,6 @@ public class CompositionAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createVisualizationAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link edu.hu.clickwatch.analysis.composition.model.Visualizer <em>Visualizer</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see edu.hu.clickwatch.analysis.composition.model.Visualizer
-	 * @generated
-	 */
-	public Adapter createVisualizerAdapter() {
 		return null;
 	}
 
@@ -322,6 +298,48 @@ public class CompositionAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createCompositionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link edu.hu.clickwatch.analysis.composition.model.ParameterSpec <em>Parameter Spec</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see edu.hu.clickwatch.analysis.composition.model.ParameterSpec
+	 * @generated
+	 */
+	public Adapter createParameterSpecAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link edu.hu.clickwatch.analysis.composition.model.DataSet <em>Data Set</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see edu.hu.clickwatch.analysis.composition.model.DataSet
+	 * @generated
+	 */
+	public Adapter createDataSetAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link edu.hu.clickwatch.analysis.composition.model.Measure <em>Measure</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see edu.hu.clickwatch.analysis.composition.model.Measure
+	 * @generated
+	 */
+	public Adapter createMeasureAdapter() {
 		return null;
 	}
 

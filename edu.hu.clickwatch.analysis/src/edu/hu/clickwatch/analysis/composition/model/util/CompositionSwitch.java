@@ -151,31 +151,6 @@ public class CompositionSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case CompositionPackage.MAPPED_TRANSFORMATION: {
-				MappedTransformation mappedTransformation = (MappedTransformation)theEObject;
-				T result = caseMappedTransformation(mappedTransformation);
-				if (result == null) result = caseTransformation(mappedTransformation);
-				if (result == null) result = caseEdge(mappedTransformation);
-				if (result == null) result = caseElement(mappedTransformation);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case CompositionPackage.VISUALIZATION: {
-				Visualization visualization = (Visualization)theEObject;
-				T result = caseVisualization(visualization);
-				if (result == null) result = caseNode(visualization);
-				if (result == null) result = caseElement(visualization);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case CompositionPackage.VISUALIZER: {
-				Visualizer visualizer = (Visualizer)theEObject;
-				T result = caseVisualizer(visualizer);
-				if (result == null) result = caseEdge(visualizer);
-				if (result == null) result = caseElement(visualizer);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case CompositionPackage.DATA_NODE: {
 				DataNode dataNode = (DataNode)theEObject;
 				T result = caseDataNode(dataNode);
@@ -187,6 +162,30 @@ public class CompositionSwitch<T> {
 			case CompositionPackage.COMPOSITION: {
 				Composition composition = (Composition)theEObject;
 				T result = caseComposition(composition);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CompositionPackage.PARAMETER_SPEC: {
+				ParameterSpec parameterSpec = (ParameterSpec)theEObject;
+				T result = caseParameterSpec(parameterSpec);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CompositionPackage.DATA_SET: {
+				DataSet dataSet = (DataSet)theEObject;
+				T result = caseDataSet(dataSet);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CompositionPackage.MEASURE: {
+				Measure measure = (Measure)theEObject;
+				T result = caseMeasure(measure);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CompositionPackage.VISUALIZATION: {
+				Visualization visualization = (Visualization)theEObject;
+				T result = caseVisualization(visualization);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -315,21 +314,6 @@ public class CompositionSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Mapped Transformation</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Mapped Transformation</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseMappedTransformation(MappedTransformation object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Visualization</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -341,21 +325,6 @@ public class CompositionSwitch<T> {
 	 * @generated
 	 */
 	public T caseVisualization(Visualization object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Visualizer</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Visualizer</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseVisualizer(Visualizer object) {
 		return null;
 	}
 
@@ -386,6 +355,51 @@ public class CompositionSwitch<T> {
 	 * @generated
 	 */
 	public T caseComposition(Composition object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Parameter Spec</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Parameter Spec</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseParameterSpec(ParameterSpec object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Data Set</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Data Set</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDataSet(DataSet object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Measure</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Measure</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseMeasure(Measure object) {
 		return null;
 	}
 

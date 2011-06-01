@@ -106,13 +106,22 @@ public interface TopologyPackage extends EPackage {
 	int NODE__INCOMMING = 3;
 
 	/**
+	 * The feature id for the '<em><b>Gps</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__GPS = 4;
+
+	/**
 	 * The number of structural features of the '<em>Node</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NODE_FEATURE_COUNT = 4;
+	int NODE_FEATURE_COUNT = 5;
 
 	/**
 	 * The meta object id for the '{@link edu.hu.clickwatch.examples.lifd.topology.impl.LinkImpl <em>Link</em>}' class.
@@ -208,6 +217,44 @@ public interface TopologyPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link edu.hu.clickwatch.examples.lifd.topology.impl.GpsImpl <em>Gps</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see edu.hu.clickwatch.examples.lifd.topology.impl.GpsImpl
+	 * @see edu.hu.clickwatch.examples.lifd.topology.impl.TopologyPackageImpl#getGps()
+	 * @generated
+	 */
+	int GPS = 3;
+
+	/**
+	 * The feature id for the '<em><b>Long</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GPS__LONG = 0;
+
+	/**
+	 * The feature id for the '<em><b>Lat</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GPS__LAT = 1;
+
+	/**
+	 * The number of structural features of the '<em>Gps</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GPS_FEATURE_COUNT = 2;
+
+
+	/**
 	 * Returns the meta object for class '{@link edu.hu.clickwatch.examples.lifd.topology.Node <em>Node</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -260,6 +307,17 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getNode_Incomming();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link edu.hu.clickwatch.examples.lifd.topology.Node#getGps <em>Gps</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Gps</em>'.
+	 * @see edu.hu.clickwatch.examples.lifd.topology.Node#getGps()
+	 * @see #getNode()
+	 * @generated
+	 */
+	EReference getNode_Gps();
 
 	/**
 	 * Returns the meta object for class '{@link edu.hu.clickwatch.examples.lifd.topology.Link <em>Link</em>}'.
@@ -348,6 +406,38 @@ public interface TopologyPackage extends EPackage {
 	EReference getTopology_Links();
 
 	/**
+	 * Returns the meta object for class '{@link edu.hu.clickwatch.examples.lifd.topology.Gps <em>Gps</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Gps</em>'.
+	 * @see edu.hu.clickwatch.examples.lifd.topology.Gps
+	 * @generated
+	 */
+	EClass getGps();
+
+	/**
+	 * Returns the meta object for the attribute '{@link edu.hu.clickwatch.examples.lifd.topology.Gps#getLong <em>Long</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Long</em>'.
+	 * @see edu.hu.clickwatch.examples.lifd.topology.Gps#getLong()
+	 * @see #getGps()
+	 * @generated
+	 */
+	EAttribute getGps_Long();
+
+	/**
+	 * Returns the meta object for the attribute '{@link edu.hu.clickwatch.examples.lifd.topology.Gps#getLat <em>Lat</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Lat</em>'.
+	 * @see edu.hu.clickwatch.examples.lifd.topology.Gps#getLat()
+	 * @see #getGps()
+	 * @generated
+	 */
+	EAttribute getGps_Lat();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -410,6 +500,14 @@ public interface TopologyPackage extends EPackage {
 		 * @generated
 		 */
 		EReference NODE__INCOMMING = eINSTANCE.getNode_Incomming();
+
+		/**
+		 * The meta object literal for the '<em><b>Gps</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference NODE__GPS = eINSTANCE.getNode_Gps();
 
 		/**
 		 * The meta object literal for the '{@link edu.hu.clickwatch.examples.lifd.topology.impl.LinkImpl <em>Link</em>}' class.
@@ -478,6 +576,32 @@ public interface TopologyPackage extends EPackage {
 		 * @generated
 		 */
 		EReference TOPOLOGY__LINKS = eINSTANCE.getTopology_Links();
+
+		/**
+		 * The meta object literal for the '{@link edu.hu.clickwatch.examples.lifd.topology.impl.GpsImpl <em>Gps</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see edu.hu.clickwatch.examples.lifd.topology.impl.GpsImpl
+		 * @see edu.hu.clickwatch.examples.lifd.topology.impl.TopologyPackageImpl#getGps()
+		 * @generated
+		 */
+		EClass GPS = eINSTANCE.getGps();
+
+		/**
+		 * The meta object literal for the '<em><b>Long</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GPS__LONG = eINSTANCE.getGps_Long();
+
+		/**
+		 * The meta object literal for the '<em><b>Lat</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GPS__LAT = eINSTANCE.getGps_Lat();
 
 	}
 

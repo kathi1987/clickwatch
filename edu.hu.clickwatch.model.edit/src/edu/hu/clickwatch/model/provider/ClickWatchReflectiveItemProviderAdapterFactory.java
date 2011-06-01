@@ -178,7 +178,7 @@ public class ClickWatchReflectiveItemProviderAdapterFactory extends ReflectiveIt
 				}
 			}
 			
-			if (object instanceof DynamicEObjectImpl) {
+			if (object instanceof EObject) {
 				EObject eObject = (EObject)object;
 				for (EStructuralFeature feature: eObject.eClass().getEAllAttributes()) {
 					if (feature.isMany()) {

@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <package
+            uri="http://compositionmodel/1.0"
+            class="edu.hu.clickwatch.analysis.composition.model.CompositionPackage"/>
+      <package
+            class="edu.hu.clickwatch.analysis.models.topology.TopologyPackage"
+            uri="http://de.hu.clickwatch.topology/1.0">
+      </package>
+   </extension>
+
    <extension-point id="edu.hu.clickwatch.analysis.AutoAnalysis" name="Automated analysis" schema="schema/edu.hu.clickwatch.analysis.AutoAnalysis.exsd"/>
+   <extension-point id="edu.hu.clickwatch.analysis.composition.PredefinedTransformation" name="Predefined transformation" schema="schema/edu.hu.clickwatch.analysis.composition.PredefinedTransformation.exsd"/>
+   <extension-point id="edu.hu.clickwatch.analysis.composition.Visualization" name="Visualization" schema="schema/edu.hu.clickwatch.analysis.composition.Visualization.exsd"/>
 	<extension
 		point="org.eclipse.ui.newWizards">
 		<category
@@ -115,7 +127,7 @@
 	<extension
 	    point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
 	    <propertyContributor contributorId="cwc.PropertyContributor">
-	        <propertyCategory category="Graphiti">
+	        <propertyCategory category="ClickWatch">
 	        </propertyCategory>
 	    </propertyContributor>
 	</extension>
@@ -123,36 +135,69 @@
 	<extension
 	    point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
 	    <propertyTabs contributorId="cwc.PropertyContributor">
-	        <propertyTab label="Main" category="Graphiti" 
-	            id="graphiti.main.tab">
+	        <propertyTab
+               category="ClickWatch"
+               id="edu.hu.clickwatch.analysis.composition.MainTab"
+               label="Main">
 	        </propertyTab>
+         <propertyTab
+               afterTab="edu.hu.clickwatch.analysis.composition.InputTab"
+               category="ClickWatch"
+               id="edu.hu.clickwatch.analysis.composition.OutputTab"
+               label="Output">
+         </propertyTab>
+         <propertyTab
+               afterTab="edu.hu.clickwatch.analysis.composition.MainTab"
+               category="ClickWatch"
+               id="edu.hu.clickwatch.analysis.composition.InputTab"
+               label="Input">
+         </propertyTab>
+         <propertyTab
+               afterTab="edu.hu.clickwatch.analysis.composition.MainTab"
+               category="ClickWatch"
+               id="edu.hu.clickwatch.analysis.composition.VisualizationTab"
+               label="Visualization">
+         </propertyTab>
 	    </propertyTabs>
 	</extension>
 	 
 	<extension
 	    point="org.eclipse.ui.views.properties.tabbed.propertySections">
 	    <propertySections contributorId="cwc.PropertyContributor">
-	        <propertySection tab="graphiti.main.tab"            
-	         class="edu.hu.clickwatch.analysis.composition.property.CompositionModelNodeSection"
-	         filter="edu.hu.clickwatch.analysis.composition.property.CompositionModelNodeFilter"
-	         id="graphiti.main.tab.emfclass">
+	        <propertySection tab="edu.hu.clickwatch.analysis.composition.MainTab"            
+	         class="edu.hu.clickwatch.analysis.composition.property.ModelNodeSection"
+	         filter="edu.hu.clickwatch.analysis.composition.property.ModelNodeFilter"
+	         id="edu.hu.clickwatch.analysis.composition.ModelNode">
 	        </propertySection>
+         <propertySection
+               class="edu.hu.clickwatch.analysis.composition.property.TransformationSection"
+               filter="edu.hu.clickwatch.analysis.composition.property.TransformationFilter"
+               id="edu.hu.clickwatch.analysis.composition.Transformation"
+               tab="edu.hu.clickwatch.analysis.composition.MainTab">
+         </propertySection>
+         <propertySection
+               class="edu.hu.clickwatch.analysis.composition.property.TransformationOutputSection"
+               filter="edu.hu.clickwatch.analysis.composition.property.TransformationFilter"
+               id="edu.hu.clickwatch.analysis.composition.TransformationOutput"
+               tab="edu.hu.clickwatch.analysis.composition.OutputTab">
+         </propertySection>
+         <propertySection
+               class="edu.hu.clickwatch.analysis.composition.property.TransformationInputSection"
+               filter="edu.hu.clickwatch.analysis.composition.property.TransformationFilter"
+               id="edu.hu.clickwatch.analysis.composition.TransformationInput"
+               tab="edu.hu.clickwatch.analysis.composition.InputTab">
+         </propertySection>
+         <propertySection
+               class="edu.hu.clickwatch.analysis.composition.property.DataNodeVisualizationSection"
+               filter="edu.hu.clickwatch.analysis.composition.property.DataNodeFilter"
+               id="edu.hu.clickwatch.analysis.composition.Visualization"
+               tab="edu.hu.clickwatch.analysis.composition.VisualizationTab">
+         </propertySection>
 	    </propertySections>
 	</extension>
  
 	<extension point="org.eclipse.ui.commands">
 		<command id="edu.hu.clickwatch.analysis.composition.commands.createDiagramWithAllClasses" name="Create Diagram with all Classes" /> 
-	</extension>
-
-	<extension point="org.eclipse.ui.handlers">
-		<handler commandId="edu.hu.clickwatch.analysis.composition.commands.createDiagramWithAllClasses" class="edu.hu.clickwatch.analysis.composition.handlers.CreateDiagramWithAllClassesHandler">
-			<enabledWhen>
-				<reference definitionId="edu.hu.clickwatch.analysis.composition.definitions.OneEClassesNodeSelected" /> 
-			</enabledWhen>
-			<activeWhen>
-				<reference definitionId="edu.hu.clickwatch.analysis.composition.definitions.OneEClassesNodeSelected" /> 
-			</activeWhen>
-		</handler>
 	</extension>
 
 	<extension point="org.eclipse.ui.menus">
@@ -177,4 +222,46 @@
 		</definition>
 	</extension>
 	<!-- end of extensions for the Composition editor -->
+ <extension
+       point="org.eclipse.ui.views">
+    <view
+          category="edu.hu.clickwatch.viewCategory"
+          class="edu.hu.clickwatch.analysis.composition.ModelView"
+          icon="icons/sample.gif"
+          id="edu.hu.clickwatch.analysis.composition.ModelView.ModelView"
+          name="Model View">
+    </view>
+    <view
+          category="edu.hu.clickwatch.viewCategory"
+          class="edu.hu.clickwatch.analysis.composition.VisualizationView"
+          icon="icons/sample.gif"
+          id="edu.hu.clickwatch.analysis.composition.VisualizationView"
+          name="Visualization View">
+    </view>
+ </extension>
+ <extension
+       point="org.eclipse.help.contexts">
+    <contexts
+          file="contexts.xml">
+    </contexts>
+ </extension>
+ <extension
+       point="edu.hu.clickwatch.analysis.composition.PredefinedTransformation">
+    <transformation
+          class="edu.hu.clickwatch.analysis.composition.transformations.CreateSpecificModel"
+          name="Create specific model">
+    </transformation>
+ </extension>
+ <extension
+       point="edu.hu.clickwatch.analysis.composition.Visualization">
+    <visualization
+          class="edu.hu.clickwatch.analysis.composition.visualization.HistogramVisualization"
+          name="Histogram">
+    </visualization>
+    <visualization
+          class="edu.hu.clickwatch.analysis.composition.visualization.TopologyVisualization"
+          name="Topology">
+    </visualization>
+ </extension>
+
 </plugin>

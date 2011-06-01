@@ -98,15 +98,6 @@ public interface CompositionFactory extends EFactory {
 	TimedTransformation createTimedTransformation();
 
 	/**
-	 * Returns a new object of class '<em>Mapped Transformation</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Mapped Transformation</em>'.
-	 * @generated
-	 */
-	MappedTransformation createMappedTransformation();
-
-	/**
 	 * Returns a new object of class '<em>Visualization</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -114,15 +105,6 @@ public interface CompositionFactory extends EFactory {
 	 * @generated
 	 */
 	Visualization createVisualization();
-
-	/**
-	 * Returns a new object of class '<em>Visualizer</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Visualizer</em>'.
-	 * @generated
-	 */
-	Visualizer createVisualizer();
 
 	/**
 	 * Returns a new object of class '<em>Data Node</em>'.
@@ -141,6 +123,33 @@ public interface CompositionFactory extends EFactory {
 	 * @generated
 	 */
 	Composition createComposition();
+
+	/**
+	 * Returns a new object of class '<em>Parameter Spec</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Parameter Spec</em>'.
+	 * @generated
+	 */
+	ParameterSpec createParameterSpec();
+
+	/**
+	 * Returns a new object of class '<em>Data Set</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Data Set</em>'.
+	 * @generated
+	 */
+	DataSet createDataSet();
+
+	/**
+	 * Returns a new object of class '<em>Measure</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Measure</em>'.
+	 * @generated
+	 */
+	Measure createMeasure();
 
 	/**
 	 * Returns the package supported by this factory.

@@ -6,15 +6,18 @@
  */
 package edu.hu.clickwatch.examples.lifd.topology.impl;
 
-import edu.hu.clickwatch.examples.lifd.topology.*;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+
+import edu.hu.clickwatch.examples.lifd.topology.Gps;
+import edu.hu.clickwatch.examples.lifd.topology.Link;
+import edu.hu.clickwatch.examples.lifd.topology.Node;
+import edu.hu.clickwatch.examples.lifd.topology.Topology;
+import edu.hu.clickwatch.examples.lifd.topology.TopologyFactory;
+import edu.hu.clickwatch.examples.lifd.topology.TopologyPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -63,6 +66,7 @@ public class TopologyFactoryImpl extends EFactoryImpl implements TopologyFactory
 			case TopologyPackage.NODE: return createNode();
 			case TopologyPackage.LINK: return createLink();
 			case TopologyPackage.TOPOLOGY: return createTopology();
+			case TopologyPackage.GPS: return createGps();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -96,6 +100,16 @@ public class TopologyFactoryImpl extends EFactoryImpl implements TopologyFactory
 	public Topology createTopology() {
 		TopologyImpl topology = new TopologyImpl();
 		return topology;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Gps createGps() {
+		GpsImpl gps = new GpsImpl();
+		return gps;
 	}
 
 	/**

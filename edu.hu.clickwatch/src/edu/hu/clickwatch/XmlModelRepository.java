@@ -66,6 +66,13 @@ public class XmlModelRepository {
 		return result;
 	}
 	
+	public static Map<Object, Object> defaultLoadSaveOptions() {
+		Map<Object, Object> options = new HashMap<Object, Object>();
+		options.put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);
+		options.put(XMLResource.OPTION_ENCODING, "UTF-8");
+		return options;
+	}
+	
 	private ResourceSet resourceSet = null;
 	private Map<URI, EPackage> metaModels = new HashMap<URI, EPackage>();
 	private Map<Object, Object> options = null;

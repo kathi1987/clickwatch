@@ -7,7 +7,6 @@
 package edu.hu.clickwatch.examples.lifd.topology;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -22,6 +21,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link edu.hu.clickwatch.examples.lifd.topology.Node#getMac <em>Mac</em>}</li>
  *   <li>{@link edu.hu.clickwatch.examples.lifd.topology.Node#getOutgoing <em>Outgoing</em>}</li>
  *   <li>{@link edu.hu.clickwatch.examples.lifd.topology.Node#getIncomming <em>Incomming</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.examples.lifd.topology.Node#getGps <em>Gps</em>}</li>
  * </ul>
  * </p>
  *
@@ -117,5 +117,31 @@ public interface Node extends EObject {
 	 * @generated
 	 */
 	EList<Link> getIncomming();
+
+	/**
+	 * Returns the value of the '<em><b>Gps</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Gps</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Gps</em>' containment reference.
+	 * @see #setGps(Gps)
+	 * @see edu.hu.clickwatch.examples.lifd.topology.TopologyPackage#getNode_Gps()
+	 * @model containment="true"
+	 * @generated
+	 */
+	Gps getGps();
+
+	/**
+	 * Sets the value of the '{@link edu.hu.clickwatch.examples.lifd.topology.Node#getGps <em>Gps</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Gps</em>' containment reference.
+	 * @see #getGps()
+	 * @generated
+	 */
+	void setGps(Gps value);
 
 } // Node

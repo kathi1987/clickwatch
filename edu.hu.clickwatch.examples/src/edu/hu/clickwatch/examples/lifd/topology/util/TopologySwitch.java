@@ -6,12 +6,16 @@
  */
 package edu.hu.clickwatch.examples.lifd.topology.util;
 
-import edu.hu.clickwatch.examples.lifd.topology.*;
-
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+
+import edu.hu.clickwatch.examples.lifd.topology.Gps;
+import edu.hu.clickwatch.examples.lifd.topology.Link;
+import edu.hu.clickwatch.examples.lifd.topology.Node;
+import edu.hu.clickwatch.examples.lifd.topology.Topology;
+import edu.hu.clickwatch.examples.lifd.topology.TopologyPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -105,6 +109,12 @@ public class TopologySwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case TopologyPackage.GPS: {
+				Gps gps = (Gps)theEObject;
+				T result = caseGps(gps);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -151,6 +161,21 @@ public class TopologySwitch<T> {
 	 * @generated
 	 */
 	public T caseTopology(Topology object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Gps</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Gps</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseGps(Gps object) {
 		return null;
 	}
 

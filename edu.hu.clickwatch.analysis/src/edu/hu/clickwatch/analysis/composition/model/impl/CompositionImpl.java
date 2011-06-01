@@ -6,23 +6,19 @@
  */
 package edu.hu.clickwatch.analysis.composition.model.impl;
 
-import edu.hu.clickwatch.analysis.composition.model.Composition;
-import edu.hu.clickwatch.analysis.composition.model.CompositionPackage;
-import edu.hu.clickwatch.analysis.composition.model.Element;
-
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
+import edu.hu.clickwatch.analysis.composition.model.Composition;
+import edu.hu.clickwatch.analysis.composition.model.CompositionPackage;
+import edu.hu.clickwatch.analysis.composition.model.Element;
 
 /**
  * <!-- begin-user-doc -->
