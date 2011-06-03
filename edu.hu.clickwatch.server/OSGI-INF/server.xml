@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="ClickWatch Server">
+   <implementation class="edu.hu.clickwatch.server.ClickWatchServer"/>
+   <service>
+      <provide interface="edu.hu.clickwatch.server.IClickWatchServer"/>
+   </service>
+</scr:component>
