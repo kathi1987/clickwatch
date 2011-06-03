@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+   <!--<extension
+         point="org.eclipse.ui.startup">
+      <startup
+            class="org.eclipse.xtend.typesystem.emf.ui.internal.EarlyStarter"></startup>
+   </extension>-->
+
+   <extension
+         point="org.eclipse.xtend.shared.ui.metamodelContributor">
+      <metamodelContributor
+            class="org.eclipse.xtend.typesystem.emf.ui.EmfMetamodelContributor"
+            name="EMF Metamodels"/>
+   </extension>
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            objectClass="org.eclipse.core.resources.IFile"
+            nameFilter="*.ecore"
+            id="org.eclipse.xtend.ecoreContribution">
+         <menu
+               label="%menu.label"
+               path="additions"
+               id="org.eclipse.xtend.ui.menu">
+            <separator
+                  name="group1">
+            </separator>
+         </menu>
+         <action
+               label="%action.add.EOperation..delegation.label"
+               class="org.eclipse.xtend.typesystem.emf.ui.actions.AddAnnotationsAction"
+               menubarPath="org.eclipse.xtend.ui.menu/group1"
+               enablesFor="1"
+               id="org.eclipse.xtend.typesystem.emf.ui.addOperationLogic">
+         </action>
+      </objectContribution>
+   </extension>
+
+</plugin>
