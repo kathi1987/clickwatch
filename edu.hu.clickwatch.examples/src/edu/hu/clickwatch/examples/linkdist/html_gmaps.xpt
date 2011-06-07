@@ -65,7 +65,7 @@
 «LET node(link.srcAddr).gps.gps_coord.gps AS srcGps-»
 «LET node(link.destAddr).gps.gps_coord.gps AS destGps-»
 			polyline = new GPolyline(new Array(new GLatLng(«srcGps.lat», «srcGps.long»), new GLatLng(«destGps.lat», «destGps.long»)),
-				"#FF0000", «log10(""+link.rssi)», «link.rssi/64.0», {});
+				"#FF0000", «(0.5 + link.rssi/10.0)», «(0.36 + link.rssi/64.0)», {});
 			GEvent.addListener(polyline, "click", function() {
 	  			map.openInfoWindowTabsHtml(new GLatLng(«srcGps.lat», «srcGps.long»), new Array(new GInfoWindowTab("Link info",
 	  					"Length: «link.distance» m<br/>RSSI: «link.rssi»")), {});
