@@ -1,5 +1,6 @@
 package edu.hu.clickwatch.cdo;
 
+import java.math.BigInteger;
 import java.util.Collection;
 
 import org.eclipse.emf.ecore.EObject;
@@ -19,14 +20,13 @@ public interface ICDOHandler {
 	
 	public void rollbackTransaction();
 
-	public EObject getModel();
-
-	public void setModel(EObject pModel);
-
 	void closeSession();
 	
 	public String getRepository();
 	
 	public void setRepository(final String pRepository);
 
+	public BigInteger getPort();
+	
+	public void setPort(final BigInteger pPort);
 }

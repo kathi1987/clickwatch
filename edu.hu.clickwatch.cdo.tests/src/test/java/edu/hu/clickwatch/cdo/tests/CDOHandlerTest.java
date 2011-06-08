@@ -20,35 +20,57 @@ import edu.hu.clickwatch.model.Node;
 public class CDOHandlerTest {
 	/** The CDOHandler object which will be tested */
 	private CDOHandler mCDOHandler;
-	/** The corresponding CDO repository */
-	private final String mResource = "click";
 	
 	/**
 	 * The method initializes the CDOHandler object 
 	 */
 	@Before
 	public void initialize(){
-		this.mCDOHandler = new CDOHandler("127.0.0.1",  BigInteger.valueOf(2036) , "click");
-	}
-	
-	@Test
-	public void setModelTest(){
-		
+		this.mCDOHandler = new CDOHandler("127.0.0.1",  BigInteger.valueOf(2036) , "clicktest");
 	}
 	
 	@Test
 	public void commitTransactionTest(){
-		
+		// Open a CDO session
+		this.mCDOHandler.openSession();
+		// Create a node
+		final Node node = ClickWatchModelFactory.eINSTANCE.createNode();
+		// Set port
+		node.setPort("22");
+		// Set ip address
+		node.setINetAdress("192.168.178.42");
+		// Set connection status to false
+		node.setConnected(false);
+		// Open a transaction and prepare resource for commit
+		this.mCDOHandler.openTransaction(node);
+		// Commit the transaction
+		this.mCDOHandler.commitTransaction();
+		// Rollback the transaction
+		//this.mCDOHandler.rollbackTransaction();
+		// Close the session
+		this.mCDOHandler.closeSession();
 	}
 	
 	@Test
 	public void rollbackTransactionTest(){
-		
-	}
-	
-	@Test
-	public void getModelTest(){
-		
+		// Open a CDO session
+		this.mCDOHandler.openSession();
+		// Create a node
+		final Node node = ClickWatchModelFactory.eINSTANCE.createNode();
+		// Set port
+		node.setPort("22");
+		// Set ip address
+		node.setINetAdress("192.168.178.42");
+		// Set connection status to false
+		node.setConnected(false);
+		// Open a transaction and prepare resource for commit
+		this.mCDOHandler.openTransaction(node);
+		// Commit the transaction
+		this.mCDOHandler.commitTransaction();
+		// Rollback the transaction
+		this.mCDOHandler.rollbackTransaction();
+		// Close the session
+		this.mCDOHandler.closeSession();
 	}
 		
 	/**
@@ -92,20 +114,38 @@ public class CDOHandlerTest {
 		// assertTrue(!this.mCDOHandler.containerIsActive());
 	}
 	
+	/**
+	 * The method tests if a transaction can be prepared. 
+	 */
 	@Test
 	public void openTransactionTest(){
 		// Open a CDO session
 		this.mCDOHandler.openSession();
 		// Create a node
 		final Node node = ClickWatchModelFactory.eINSTANCE.createNode();
+		// Set port
 		node.setPort("22");
+		// Set ip address
 		node.setINetAdress("192.168.178.42");
+		// Set connection status to false
 		node.setConnected(false);
 		// Open a transaction and prepare resource for commit
 		this.mCDOHandler.openTransaction(node);
-		//
-		//this.mCDOHandler.openTransaction(mResource);
-		//	
+		// Close the session
 		this.mCDOHandler.closeSession();
+	}
+	
+	/**
+	 * 
+	 */
+	private boolean verify(final Node pNode, Node pRetrievedNode){
+		// Was sind denn eindeutige Merkmale? Reichen vielleicht einfach die Attribute die hier auch wirklich gesetzt werden
+		if(pNode.getPort().compareTo(pRetrievedNode.getPort()) == 0){
+			if(pNode.getINetAdress().compareTo(pRetrievedNode.getINetAdress()) == 0){
+				return true;
+			}
+		}
+		
+		return false;
 	}
 }

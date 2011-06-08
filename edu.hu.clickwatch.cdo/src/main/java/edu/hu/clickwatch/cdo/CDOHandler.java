@@ -20,18 +20,25 @@ import org.eclipse.net4j.util.container.ContainerUtil;
 import org.eclipse.net4j.util.container.IManagedContainer;
 
 import edu.hu.clickwatch.model.ClickWatchModelPackage;
-import edu.hu.clickwatch.model.Node;
 
 public class CDOHandler implements ICDOHandler {
 	/** The handler which holds the cdo connection */
 	private Connection mHandler = null;
-	/** The current model which will be stored in a database */
-	private EObject mModel;
 	/** The address of the cdo server */
 	private String mAddress;
 	/** The name of */
 	private String mRepository;
+	/** TODO: Nachpruefen ob der port auf was anderes gesetzt werden kann */
+	private BigInteger mPort;
 	
+	public BigInteger getPort() {
+		return mPort;
+	}
+
+	public void setPort(final BigInteger pPort) {
+		this.mPort = pPort;
+	}
+
 	@Override
 	public String getRepository() {
 		return mRepository;
@@ -41,9 +48,6 @@ public class CDOHandler implements ICDOHandler {
 	public void setRepository(final String pRepository) {
 		this.mRepository = pRepository;
 	}
-
-	/** TODO: Nachpruefen ob der port auf was anderes gesetzt werden kann */
-	private BigInteger mPort;
 
 	/**
 	 * @param pRepository
@@ -83,6 +87,10 @@ public class CDOHandler implements ICDOHandler {
 
 		public CDOTransaction getTransaction() {
 			return mTransaction;
+		}
+		
+		public void setTransaction(final CDOTransaction pTransaction) {
+			this.mTransaction = pTransaction;
 		}
 
 		public IConnector getConnector() {
@@ -150,6 +158,8 @@ public class CDOHandler implements ICDOHandler {
 		CDOResource resource = transaction.getOrCreateResource(this.mRepository);
 		// Add new content to the repository
 		resource.getContents().add(pResource);
+		// Set the transaction
+		this.mHandler.setTransaction(transaction);
 	}
 	
 	@Override
@@ -161,6 +171,8 @@ public class CDOHandler implements ICDOHandler {
 		CDOResource resource = transaction.getOrCreateResource(this.mRepository);
 		// Add new content to the repository
 		resource.getContents().addAll(pResourceCollection);
+		// Set the transaction
+		this.mHandler.setTransaction(transaction);
 	}
 
 	public void setHandler(Connection pHandler) {
@@ -179,6 +191,8 @@ public class CDOHandler implements ICDOHandler {
 	@Override
 	public void rollbackTransaction() {
 		this.mHandler.getTransaction().rollback();
+		// Set the transaction back to null
+		this.mHandler.setTransaction(null);
 	}
 
 	@Override
@@ -195,16 +209,6 @@ public class CDOHandler implements ICDOHandler {
 		if (!this.mHandler.getContainer().isActive()) {
 			this.mHandler.getContainer().deactivate();
 		}
-	}
-
-	@Override
-	public EObject getModel() {
-		return mModel;
-	}
-
-	@Override
-	public void setModel(EObject pModel) {
-		this.mModel = pModel;
 	}
 
 	/**
