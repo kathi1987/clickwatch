@@ -1,5 +1,7 @@
 package edu.hu.clickwatch.cdo;
 
+import java.util.Collection;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -9,7 +11,9 @@ import org.eclipse.emf.ecore.EObject;
 public interface ICDOHandler {
 	public void openSession();
 	
-	public void openTransaction(final String pResource);
+	public void openTransaction(final EObject pResource);
+	
+	void openTransaction(Collection<? extends EObject> pResourceCollection);
 
 	public void commitTransaction();
 	
@@ -20,4 +24,9 @@ public interface ICDOHandler {
 	public void setModel(EObject pModel);
 
 	void closeSession();
+	
+	public String getRepository();
+	
+	public void setRepository(final String pRepository);
+
 }

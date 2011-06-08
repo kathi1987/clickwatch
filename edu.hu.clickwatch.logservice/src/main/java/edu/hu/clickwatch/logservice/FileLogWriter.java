@@ -13,9 +13,12 @@ public final class FileLogWriter implements LogListener {
 	
 	private HashMap<Integer, BufferedWriter> logFileList;
 	
+	public FileLogWriter(){
+		logFileList = new HashMap<Integer, BufferedWriter>();
+	}
+	
 	
 	public void open(final String pDirectory) {
-		logFileList = new HashMap<Integer, BufferedWriter>();
 		// TODO: Fixme. This should be cancelled after the first failed creation of a buffered writer
 		createBufferedWriter(LogService.LOG_DEBUG, pDirectory);
 		createBufferedWriter(LogService.LOG_ERROR, pDirectory);
