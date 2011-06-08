@@ -6,20 +6,17 @@
  */
 package edu.hu.clickwatch.model.impl;
 
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
-import org.eclipse.emf.ecore.util.BasicFeatureMap;
-import org.eclipse.emf.ecore.util.FeatureMap;
-import org.eclipse.emf.ecore.util.InternalEList;
-import org.eclipse.emf.ecore.xml.type.AnyType;
 
 import edu.hu.clickwatch.model.ClickWatchModelPackage;
 import edu.hu.clickwatch.model.Handler;
+
+import org.eclipse.emf.ecore.EDataType;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.util.FeatureMap;
+
+import org.eclipse.emf.internal.cdo.CDOObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -28,139 +25,19 @@ import edu.hu.clickwatch.model.Handler;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link edu.hu.clickwatch.model.impl.HandlerImpl#getName <em>Name</em>}</li>
- *   <li>{@link edu.hu.clickwatch.model.impl.HandlerImpl#isCanRead <em>Can Read</em>}</li>
- *   <li>{@link edu.hu.clickwatch.model.impl.HandlerImpl#isCanWrite <em>Can Write</em>}</li>
- *   <li>{@link edu.hu.clickwatch.model.impl.HandlerImpl#isChanged <em>Changed</em>}</li>
- *   <li>{@link edu.hu.clickwatch.model.impl.HandlerImpl#isWatch <em>Watch</em>}</li>
- *   <li>{@link edu.hu.clickwatch.model.impl.HandlerImpl#getMixed <em>Mixed</em>}</li>
- *   <li>{@link edu.hu.clickwatch.model.impl.HandlerImpl#getAny <em>Any</em>}</li>
+ *   <li>{@link model.impl.HandlerImpl#getName <em>Name</em>}</li>
+ *   <li>{@link model.impl.HandlerImpl#isCanRead <em>Can Read</em>}</li>
+ *   <li>{@link model.impl.HandlerImpl#isCanWrite <em>Can Write</em>}</li>
+ *   <li>{@link model.impl.HandlerImpl#isChanged <em>Changed</em>}</li>
+ *   <li>{@link model.impl.HandlerImpl#isWatch <em>Watch</em>}</li>
+ *   <li>{@link model.impl.HandlerImpl#getMixed <em>Mixed</em>}</li>
+ *   <li>{@link model.impl.HandlerImpl#getAny <em>Any</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class HandlerImpl extends EObjectImpl implements Handler {
-	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String NAME_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
-	protected String name = NAME_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #isCanRead() <em>Can Read</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isCanRead()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean CAN_READ_EDEFAULT = false;
-
-	/**
-	 * The cached value of the '{@link #isCanRead() <em>Can Read</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isCanRead()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean canRead = CAN_READ_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #isCanWrite() <em>Can Write</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isCanWrite()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean CAN_WRITE_EDEFAULT = false;
-
-	/**
-	 * The cached value of the '{@link #isCanWrite() <em>Can Write</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isCanWrite()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean canWrite = CAN_WRITE_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #isChanged() <em>Changed</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isChanged()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean CHANGED_EDEFAULT = false;
-
-	/**
-	 * The cached value of the '{@link #isChanged() <em>Changed</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isChanged()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean changed = CHANGED_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #isWatch() <em>Watch</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isWatch()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean WATCH_EDEFAULT = false;
-
-	/**
-	 * The cached value of the '{@link #isWatch() <em>Watch</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isWatch()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean watch = WATCH_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getMixed() <em>Mixed</em>}' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMixed()
-	 * @generated
-	 * @ordered
-	 */
-	protected FeatureMap mixed;
-
-	/**
-	 * The cached value of the '{@link #getAny() <em>Any</em>}' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getAny()
-	 * @generated
-	 * @ordered
-	 */
-	protected FeatureMap any;
-
+public class HandlerImpl extends CDOObjectImpl implements Handler {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -185,8 +62,18 @@ public class HandlerImpl extends EObjectImpl implements Handler {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	protected int eStaticFeatureCount() {
+		return 0;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public String getName() {
-		return name;
+		return (String)eGet(ClickWatchModelPackage.Literals.HANDLER__NAME, true);
 	}
 
 	/**
@@ -195,10 +82,7 @@ public class HandlerImpl extends EObjectImpl implements Handler {
 	 * @generated
 	 */
 	public void setName(String newName) {
-		String oldName = name;
-		name = newName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ClickWatchModelPackage.HANDLER__NAME, oldName, name));
+		eSet(ClickWatchModelPackage.Literals.HANDLER__NAME, newName);
 	}
 
 	/**
@@ -207,7 +91,7 @@ public class HandlerImpl extends EObjectImpl implements Handler {
 	 * @generated
 	 */
 	public boolean isCanRead() {
-		return canRead;
+		return (Boolean)eGet(ClickWatchModelPackage.Literals.HANDLER__CAN_READ, true);
 	}
 
 	/**
@@ -216,10 +100,7 @@ public class HandlerImpl extends EObjectImpl implements Handler {
 	 * @generated
 	 */
 	public void setCanRead(boolean newCanRead) {
-		boolean oldCanRead = canRead;
-		canRead = newCanRead;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ClickWatchModelPackage.HANDLER__CAN_READ, oldCanRead, canRead));
+		eSet(ClickWatchModelPackage.Literals.HANDLER__CAN_READ, newCanRead);
 	}
 
 	/**
@@ -228,7 +109,7 @@ public class HandlerImpl extends EObjectImpl implements Handler {
 	 * @generated
 	 */
 	public boolean isCanWrite() {
-		return canWrite;
+		return (Boolean)eGet(ClickWatchModelPackage.Literals.HANDLER__CAN_WRITE, true);
 	}
 
 	/**
@@ -237,71 +118,7 @@ public class HandlerImpl extends EObjectImpl implements Handler {
 	 * @generated
 	 */
 	public void setCanWrite(boolean newCanWrite) {
-		boolean oldCanWrite = canWrite;
-		canWrite = newCanWrite;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ClickWatchModelPackage.HANDLER__CAN_WRITE, oldCanWrite, canWrite));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isWatch() {
-		return watch;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setWatch(boolean newWatch) {
-		boolean oldWatch = watch;
-		watch = newWatch;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ClickWatchModelPackage.HANDLER__WATCH, oldWatch, watch));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public FeatureMap getMixed() {
-		if (mixed == null) {
-			mixed = new BasicFeatureMap(this, ClickWatchModelPackage.HANDLER__MIXED);
-		}
-		return mixed;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public FeatureMap getAny() {
-		if (any == null) {
-			any = new BasicFeatureMap(this, ClickWatchModelPackage.HANDLER__ANY);
-		}
-		return any;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case ClickWatchModelPackage.HANDLER__MIXED:
-				return ((InternalEList<?>)getMixed()).basicRemove(otherEnd, msgs);
-			case ClickWatchModelPackage.HANDLER__ANY:
-				return ((InternalEList<?>)getAny()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
+		eSet(ClickWatchModelPackage.Literals.HANDLER__CAN_WRITE, newCanWrite);
 	}
 
 	/**
@@ -310,7 +127,7 @@ public class HandlerImpl extends EObjectImpl implements Handler {
 	 * @generated
 	 */
 	public boolean isChanged() {
-		return changed;
+		return (Boolean)eGet(ClickWatchModelPackage.Literals.HANDLER__CHANGED, true);
 	}
 
 	/**
@@ -319,10 +136,7 @@ public class HandlerImpl extends EObjectImpl implements Handler {
 	 * @generated
 	 */
 	public void setChanged(boolean newChanged) {
-		boolean oldChanged = changed;
-		changed = newChanged;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ClickWatchModelPackage.HANDLER__CHANGED, oldChanged, changed));
+		eSet(ClickWatchModelPackage.Literals.HANDLER__CHANGED, newChanged);
 	}
 
 	/**
@@ -330,27 +144,8 @@ public class HandlerImpl extends EObjectImpl implements Handler {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case ClickWatchModelPackage.HANDLER__NAME:
-				return getName();
-			case ClickWatchModelPackage.HANDLER__CAN_READ:
-				return isCanRead();
-			case ClickWatchModelPackage.HANDLER__CAN_WRITE:
-				return isCanWrite();
-			case ClickWatchModelPackage.HANDLER__CHANGED:
-				return isChanged();
-			case ClickWatchModelPackage.HANDLER__WATCH:
-				return isWatch();
-			case ClickWatchModelPackage.HANDLER__MIXED:
-				if (coreType) return getMixed();
-				return ((FeatureMap.Internal)getMixed()).getWrapper();
-			case ClickWatchModelPackage.HANDLER__ANY:
-				if (coreType) return getAny();
-				return ((FeatureMap.Internal)getAny()).getWrapper();
-		}
-		return super.eGet(featureID, resolve, coreType);
+	public boolean isWatch() {
+		return (Boolean)eGet(ClickWatchModelPackage.Literals.HANDLER__WATCH, true);
 	}
 
 	/**
@@ -358,32 +153,8 @@ public class HandlerImpl extends EObjectImpl implements Handler {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case ClickWatchModelPackage.HANDLER__NAME:
-				setName((String)newValue);
-				return;
-			case ClickWatchModelPackage.HANDLER__CAN_READ:
-				setCanRead((Boolean)newValue);
-				return;
-			case ClickWatchModelPackage.HANDLER__CAN_WRITE:
-				setCanWrite((Boolean)newValue);
-				return;
-			case ClickWatchModelPackage.HANDLER__CHANGED:
-				setChanged((Boolean)newValue);
-				return;
-			case ClickWatchModelPackage.HANDLER__WATCH:
-				setWatch((Boolean)newValue);
-				return;
-			case ClickWatchModelPackage.HANDLER__MIXED:
-				((FeatureMap.Internal)getMixed()).set(newValue);
-				return;
-			case ClickWatchModelPackage.HANDLER__ANY:
-				((FeatureMap.Internal)getAny()).set(newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
+	public void setWatch(boolean newWatch) {
+		eSet(ClickWatchModelPackage.Literals.HANDLER__WATCH, newWatch);
 	}
 
 	/**
@@ -391,32 +162,8 @@ public class HandlerImpl extends EObjectImpl implements Handler {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public void eUnset(int featureID) {
-		switch (featureID) {
-			case ClickWatchModelPackage.HANDLER__NAME:
-				setName(NAME_EDEFAULT);
-				return;
-			case ClickWatchModelPackage.HANDLER__CAN_READ:
-				setCanRead(CAN_READ_EDEFAULT);
-				return;
-			case ClickWatchModelPackage.HANDLER__CAN_WRITE:
-				setCanWrite(CAN_WRITE_EDEFAULT);
-				return;
-			case ClickWatchModelPackage.HANDLER__CHANGED:
-				setChanged(CHANGED_EDEFAULT);
-				return;
-			case ClickWatchModelPackage.HANDLER__WATCH:
-				setWatch(WATCH_EDEFAULT);
-				return;
-			case ClickWatchModelPackage.HANDLER__MIXED:
-				getMixed().clear();
-				return;
-			case ClickWatchModelPackage.HANDLER__ANY:
-				getAny().clear();
-				return;
-		}
-		super.eUnset(featureID);
+	public FeatureMap getMixed() {
+		return (FeatureMap)eGet(ClickWatchModelPackage.Literals.HANDLER__MIXED, true);
 	}
 
 	/**
@@ -424,86 +171,8 @@ public class HandlerImpl extends EObjectImpl implements Handler {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case ClickWatchModelPackage.HANDLER__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case ClickWatchModelPackage.HANDLER__CAN_READ:
-				return canRead != CAN_READ_EDEFAULT;
-			case ClickWatchModelPackage.HANDLER__CAN_WRITE:
-				return canWrite != CAN_WRITE_EDEFAULT;
-			case ClickWatchModelPackage.HANDLER__CHANGED:
-				return changed != CHANGED_EDEFAULT;
-			case ClickWatchModelPackage.HANDLER__WATCH:
-				return watch != WATCH_EDEFAULT;
-			case ClickWatchModelPackage.HANDLER__MIXED:
-				return mixed != null && !mixed.isEmpty();
-			case ClickWatchModelPackage.HANDLER__ANY:
-				return any != null && !any.isEmpty();
-		}
-		return super.eIsSet(featureID);
+	public FeatureMap getAny() {
+		return (FeatureMap)eGet(ClickWatchModelPackage.Literals.HANDLER__ANY, true);
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (name: ");
-		result.append(name);
-		result.append(", canRead: ");
-		result.append(canRead);
-		result.append(", canWrite: ");
-		result.append(canWrite);
-		result.append(", changed: ");
-		result.append(changed);
-		result.append(", watch: ");
-		result.append(watch);
-		result.append(", mixed: ");
-		result.append(mixed);
-		result.append(", any: ");
-		result.append(any);
-		result.append(')');
-		return result.toString();
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result
-				+ ((eContainer() == null) ? 0 : eContainer().hashCode());
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		HandlerImpl other = (HandlerImpl) obj;
-		if (eContainer() == null) {
-			if (other.eContainer() != null)
-				return false;
-		} else if (!eContainer().equals(other.eContainer()))
-			return false;
-		if (name == null) {
-			if (other.name != null)
-				return false;
-		} else if (!name.equals(other.name))
-			return false;
-		return true;
-	}
-	
-	
 } //HandlerImpl

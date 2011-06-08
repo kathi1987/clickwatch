@@ -23,7 +23,7 @@ import org.eclipse.emf.ecore.EReference;
  *   <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * @see edu.hu.clickwatch.model.ClickWatchModelFactory
+ * @see model.ClickWatchModelFactory
  * @model kind="package"
  * @generated
  */
@@ -61,11 +61,11 @@ public interface ClickWatchModelPackage extends EPackage {
 	ClickWatchModelPackage eINSTANCE = edu.hu.clickwatch.model.impl.ClickWatchModelPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link edu.hu.clickwatch.model.impl.NodeImpl <em>Node</em>}' class.
+	 * The meta object id for the '{@link model.impl.NodeImpl <em>Node</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see edu.hu.clickwatch.model.impl.NodeImpl
-	 * @see edu.hu.clickwatch.model.impl.ClickWatchModelPackageImpl#getNode()
+	 * @see model.impl.NodeImpl
+	 * @see model.ClickWatchModelPackageImpl.ModelPackageImpl#getNode()
 	 * @generated
 	 */
 	int NODE = 0;
@@ -161,11 +161,11 @@ public interface ClickWatchModelPackage extends EPackage {
 	int NODE_FEATURE_COUNT = 9;
 
 	/**
-	 * The meta object id for the '{@link edu.hu.clickwatch.model.impl.ElementImpl <em>Element</em>}' class.
+	 * The meta object id for the '{@link model.impl.ElementImpl <em>Element</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see edu.hu.clickwatch.model.impl.ElementImpl
-	 * @see edu.hu.clickwatch.model.impl.ClickWatchModelPackageImpl#getElement()
+	 * @see model.impl.ElementImpl
+	 * @see model.ClickWatchModelPackageImpl.ModelPackageImpl#getElement()
 	 * @generated
 	 */
 	int ELEMENT = 1;
@@ -216,11 +216,11 @@ public interface ClickWatchModelPackage extends EPackage {
 	int ELEMENT_FEATURE_COUNT = 4;
 
 	/**
-	 * The meta object id for the '{@link edu.hu.clickwatch.model.impl.HandlerImpl <em>Handler</em>}' class.
+	 * The meta object id for the '{@link model.impl.HandlerImpl <em>Handler</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see edu.hu.clickwatch.model.impl.HandlerImpl
-	 * @see edu.hu.clickwatch.model.impl.ClickWatchModelPackageImpl#getHandler()
+	 * @see model.impl.HandlerImpl
+	 * @see model.ClickWatchModelPackageImpl.ModelPackageImpl#getHandler()
 	 * @generated
 	 */
 	int HANDLER = 2;
@@ -297,13 +297,12 @@ public interface ClickWatchModelPackage extends EPackage {
 	 */
 	int HANDLER_FEATURE_COUNT = 7;
 
-
 	/**
-	 * The meta object id for the '{@link edu.hu.clickwatch.model.impl.NetworkImpl <em>Network</em>}' class.
+	 * The meta object id for the '{@link model.impl.NetworkImpl <em>Network</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see edu.hu.clickwatch.model.impl.NetworkImpl
-	 * @see edu.hu.clickwatch.model.impl.ClickWatchModelPackageImpl#getNetwork()
+	 * @see model.impl.NetworkImpl
+	 * @see model.ClickWatchModelPackageImpl.ModelPackageImpl#getNetwork()
 	 * @generated
 	 */
 	int NETWORK = 3;
@@ -380,13 +379,12 @@ public interface ClickWatchModelPackage extends EPackage {
 	 */
 	int NETWORK_FEATURE_COUNT = 7;
 
-
 	/**
-	 * The meta object id for the '{@link edu.hu.clickwatch.model.impl.MultiNodeImpl <em>Multi Node</em>}' class.
+	 * The meta object id for the '{@link model.impl.MultiNodeImpl <em>Multi Node</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see edu.hu.clickwatch.model.impl.MultiNodeImpl
-	 * @see edu.hu.clickwatch.model.impl.ClickWatchModelPackageImpl#getMultiNode()
+	 * @see model.impl.MultiNodeImpl
+	 * @see model.ClickWatchModelPackageImpl.ModelPackageImpl#getMultiNode()
 	 * @generated
 	 */
 	int MULTI_NODE = 4;
@@ -490,382 +488,381 @@ public interface ClickWatchModelPackage extends EPackage {
 	 */
 	int MULTI_NODE_FEATURE_COUNT = NODE_FEATURE_COUNT + 1;
 
-
 	/**
-	 * The meta object id for the '{@link edu.hu.clickwatch.model.BackboneType <em>Backbone Type</em>}' enum.
+	 * The meta object id for the '{@link model.BackboneType <em>Backbone Type</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see edu.hu.clickwatch.model.BackboneType
-	 * @see edu.hu.clickwatch.model.impl.ClickWatchModelPackageImpl#getBackboneType()
+	 * @see model.BackboneType
+	 * @see model.ClickWatchModelPackageImpl.ModelPackageImpl#getBackboneType()
 	 * @generated
 	 */
 	int BACKBONE_TYPE = 5;
 
 
 	/**
-	 * Returns the meta object for class '{@link edu.hu.clickwatch.model.Node <em>Node</em>}'.
+	 * Returns the meta object for class '{@link model.Node <em>Node</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Node</em>'.
-	 * @see edu.hu.clickwatch.model.Node
+	 * @see model.Node
 	 * @generated
 	 */
 	EClass getNode();
 
 	/**
-	 * Returns the meta object for the attribute '{@link edu.hu.clickwatch.model.Node#getINetAdress <em>INet Adress</em>}'.
+	 * Returns the meta object for the attribute '{@link model.Node#getINetAdress <em>INet Adress</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>INet Adress</em>'.
-	 * @see edu.hu.clickwatch.model.Node#getINetAdress()
+	 * @see model.Node#getINetAdress()
 	 * @see #getNode()
 	 * @generated
 	 */
 	EAttribute getNode_INetAdress();
 
 	/**
-	 * Returns the meta object for the attribute '{@link edu.hu.clickwatch.model.Node#getPort <em>Port</em>}'.
+	 * Returns the meta object for the attribute '{@link model.Node#getPort <em>Port</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Port</em>'.
-	 * @see edu.hu.clickwatch.model.Node#getPort()
+	 * @see model.Node#getPort()
 	 * @see #getNode()
 	 * @generated
 	 */
 	EAttribute getNode_Port();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link edu.hu.clickwatch.model.Node#getElements <em>Elements</em>}'.
+	 * Returns the meta object for the containment reference list '{@link model.Node#getElements <em>Elements</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Elements</em>'.
-	 * @see edu.hu.clickwatch.model.Node#getElements()
+	 * @see model.Node#getElements()
 	 * @see #getNode()
 	 * @generated
 	 */
 	EReference getNode_Elements();
 
 	/**
-	 * Returns the meta object for the attribute '{@link edu.hu.clickwatch.model.Node#isConnected <em>Connected</em>}'.
+	 * Returns the meta object for the attribute '{@link model.Node#isConnected <em>Connected</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Connected</em>'.
-	 * @see edu.hu.clickwatch.model.Node#isConnected()
+	 * @see model.Node#isConnected()
 	 * @see #getNode()
 	 * @generated
 	 */
 	EAttribute getNode_Connected();
 
 	/**
-	 * Returns the meta object for the attribute '{@link edu.hu.clickwatch.model.Node#getConnection <em>Connection</em>}'.
+	 * Returns the meta object for the attribute '{@link model.Node#getConnection <em>Connection</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Connection</em>'.
-	 * @see edu.hu.clickwatch.model.Node#getConnection()
+	 * @see model.Node#getConnection()
 	 * @see #getNode()
 	 * @generated
 	 */
 	EAttribute getNode_Connection();
 
 	/**
-	 * Returns the meta object for the attribute '{@link edu.hu.clickwatch.model.Node#getBackbone <em>Backbone</em>}'.
+	 * Returns the meta object for the attribute '{@link model.Node#getBackbone <em>Backbone</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Backbone</em>'.
-	 * @see edu.hu.clickwatch.model.Node#getBackbone()
+	 * @see model.Node#getBackbone()
 	 * @see #getNode()
 	 * @generated
 	 */
 	EAttribute getNode_Backbone();
 
 	/**
-	 * Returns the meta object for the attribute '{@link edu.hu.clickwatch.model.Node#isRetrieving <em>Retrieving</em>}'.
+	 * Returns the meta object for the attribute '{@link model.Node#isRetrieving <em>Retrieving</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Retrieving</em>'.
-	 * @see edu.hu.clickwatch.model.Node#isRetrieving()
+	 * @see model.Node#isRetrieving()
 	 * @see #getNode()
 	 * @generated
 	 */
 	EAttribute getNode_Retrieving();
 
 	/**
-	 * Returns the meta object for the attribute '{@link edu.hu.clickwatch.model.Node#isHasRecord <em>Has Record</em>}'.
+	 * Returns the meta object for the attribute '{@link model.Node#isHasRecord <em>Has Record</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Has Record</em>'.
-	 * @see edu.hu.clickwatch.model.Node#isHasRecord()
+	 * @see model.Node#isHasRecord()
 	 * @see #getNode()
 	 * @generated
 	 */
 	EAttribute getNode_HasRecord();
 
 	/**
-	 * Returns the meta object for the attribute '{@link edu.hu.clickwatch.model.Node#isRecording <em>Recording</em>}'.
+	 * Returns the meta object for the attribute '{@link model.Node#isRecording <em>Recording</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Recording</em>'.
-	 * @see edu.hu.clickwatch.model.Node#isRecording()
+	 * @see model.Node#isRecording()
 	 * @see #getNode()
 	 * @generated
 	 */
 	EAttribute getNode_Recording();
 
 	/**
-	 * Returns the meta object for class '{@link edu.hu.clickwatch.model.Element <em>Element</em>}'.
+	 * Returns the meta object for class '{@link model.Element <em>Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Element</em>'.
-	 * @see edu.hu.clickwatch.model.Element
+	 * @see model.Element
 	 * @generated
 	 */
 	EClass getElement();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link edu.hu.clickwatch.model.Element#getHandlers <em>Handlers</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Handlers</em>'.
-	 * @see edu.hu.clickwatch.model.Element#getHandlers()
-	 * @see #getElement()
-	 * @generated
-	 */
-	EReference getElement_Handlers();
-
-	/**
-	 * Returns the meta object for the attribute '{@link edu.hu.clickwatch.model.Element#isWatch <em>Watch</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Watch</em>'.
-	 * @see edu.hu.clickwatch.model.Element#isWatch()
-	 * @see #getElement()
-	 * @generated
-	 */
-	EAttribute getElement_Watch();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link edu.hu.clickwatch.model.Element#getChildren <em>Children</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Children</em>'.
-	 * @see edu.hu.clickwatch.model.Element#getChildren()
-	 * @see #getElement()
-	 * @generated
-	 */
-	EReference getElement_Children();
-
-	/**
-	 * Returns the meta object for the attribute '{@link edu.hu.clickwatch.model.Element#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link model.Element#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see edu.hu.clickwatch.model.Element#getName()
+	 * @see model.Element#getName()
 	 * @see #getElement()
 	 * @generated
 	 */
 	EAttribute getElement_Name();
 
 	/**
-	 * Returns the meta object for class '{@link edu.hu.clickwatch.model.Handler <em>Handler</em>}'.
+	 * Returns the meta object for the containment reference list '{@link model.Element#getHandlers <em>Handlers</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Handlers</em>'.
+	 * @see model.Element#getHandlers()
+	 * @see #getElement()
+	 * @generated
+	 */
+	EReference getElement_Handlers();
+
+	/**
+	 * Returns the meta object for the attribute '{@link model.Element#isWatch <em>Watch</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Watch</em>'.
+	 * @see model.Element#isWatch()
+	 * @see #getElement()
+	 * @generated
+	 */
+	EAttribute getElement_Watch();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link model.Element#getChildren <em>Children</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Children</em>'.
+	 * @see model.Element#getChildren()
+	 * @see #getElement()
+	 * @generated
+	 */
+	EReference getElement_Children();
+
+	/**
+	 * Returns the meta object for class '{@link model.Handler <em>Handler</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Handler</em>'.
-	 * @see edu.hu.clickwatch.model.Handler
+	 * @see model.Handler
 	 * @generated
 	 */
 	EClass getHandler();
 
 	/**
-	 * Returns the meta object for the attribute '{@link edu.hu.clickwatch.model.Handler#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link model.Handler#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see edu.hu.clickwatch.model.Handler#getName()
+	 * @see model.Handler#getName()
 	 * @see #getHandler()
 	 * @generated
 	 */
 	EAttribute getHandler_Name();
 
 	/**
-	 * Returns the meta object for the attribute '{@link edu.hu.clickwatch.model.Handler#isCanRead <em>Can Read</em>}'.
+	 * Returns the meta object for the attribute '{@link model.Handler#isCanRead <em>Can Read</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Can Read</em>'.
-	 * @see edu.hu.clickwatch.model.Handler#isCanRead()
+	 * @see model.Handler#isCanRead()
 	 * @see #getHandler()
 	 * @generated
 	 */
 	EAttribute getHandler_CanRead();
 
 	/**
-	 * Returns the meta object for the attribute '{@link edu.hu.clickwatch.model.Handler#isCanWrite <em>Can Write</em>}'.
+	 * Returns the meta object for the attribute '{@link model.Handler#isCanWrite <em>Can Write</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Can Write</em>'.
-	 * @see edu.hu.clickwatch.model.Handler#isCanWrite()
+	 * @see model.Handler#isCanWrite()
 	 * @see #getHandler()
 	 * @generated
 	 */
 	EAttribute getHandler_CanWrite();
 
 	/**
-	 * Returns the meta object for the attribute '{@link edu.hu.clickwatch.model.Handler#isWatch <em>Watch</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Watch</em>'.
-	 * @see edu.hu.clickwatch.model.Handler#isWatch()
-	 * @see #getHandler()
-	 * @generated
-	 */
-	EAttribute getHandler_Watch();
-
-	/**
-	 * Returns the meta object for the attribute list '{@link edu.hu.clickwatch.model.Handler#getMixed <em>Mixed</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute list '<em>Mixed</em>'.
-	 * @see edu.hu.clickwatch.model.Handler#getMixed()
-	 * @see #getHandler()
-	 * @generated
-	 */
-	EAttribute getHandler_Mixed();
-
-	/**
-	 * Returns the meta object for the attribute list '{@link edu.hu.clickwatch.model.Handler#getAny <em>Any</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute list '<em>Any</em>'.
-	 * @see edu.hu.clickwatch.model.Handler#getAny()
-	 * @see #getHandler()
-	 * @generated
-	 */
-	EAttribute getHandler_Any();
-
-	/**
-	 * Returns the meta object for the attribute '{@link edu.hu.clickwatch.model.Handler#isChanged <em>Changed</em>}'.
+	 * Returns the meta object for the attribute '{@link model.Handler#isChanged <em>Changed</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Changed</em>'.
-	 * @see edu.hu.clickwatch.model.Handler#isChanged()
+	 * @see model.Handler#isChanged()
 	 * @see #getHandler()
 	 * @generated
 	 */
 	EAttribute getHandler_Changed();
 
 	/**
-	 * Returns the meta object for class '{@link edu.hu.clickwatch.model.Network <em>Network</em>}'.
+	 * Returns the meta object for the attribute '{@link model.Handler#isWatch <em>Watch</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Watch</em>'.
+	 * @see model.Handler#isWatch()
+	 * @see #getHandler()
+	 * @generated
+	 */
+	EAttribute getHandler_Watch();
+
+	/**
+	 * Returns the meta object for the attribute list '{@link model.Handler#getMixed <em>Mixed</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Mixed</em>'.
+	 * @see model.Handler#getMixed()
+	 * @see #getHandler()
+	 * @generated
+	 */
+	EAttribute getHandler_Mixed();
+
+	/**
+	 * Returns the meta object for the attribute list '{@link model.Handler#getAny <em>Any</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Any</em>'.
+	 * @see model.Handler#getAny()
+	 * @see #getHandler()
+	 * @generated
+	 */
+	EAttribute getHandler_Any();
+
+	/**
+	 * Returns the meta object for class '{@link model.Network <em>Network</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Network</em>'.
-	 * @see edu.hu.clickwatch.model.Network
+	 * @see model.Network
 	 * @generated
 	 */
 	EClass getNetwork();
 
 	/**
-	 * Returns the meta object for the attribute '{@link edu.hu.clickwatch.model.Network#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link model.Network#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see edu.hu.clickwatch.model.Network#getName()
+	 * @see model.Network#getName()
 	 * @see #getNetwork()
 	 * @generated
 	 */
 	EAttribute getNetwork_Name();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link edu.hu.clickwatch.model.Network#getNodes <em>Nodes</em>}'.
+	 * Returns the meta object for the containment reference list '{@link model.Network#getNodes <em>Nodes</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Nodes</em>'.
-	 * @see edu.hu.clickwatch.model.Network#getNodes()
+	 * @see model.Network#getNodes()
 	 * @see #getNetwork()
 	 * @generated
 	 */
 	EReference getNetwork_Nodes();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link edu.hu.clickwatch.model.Network#getAll <em>All</em>}'.
+	 * Returns the meta object for the containment reference '{@link model.Network#getAll <em>All</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>All</em>'.
-	 * @see edu.hu.clickwatch.model.Network#getAll()
+	 * @see model.Network#getAll()
 	 * @see #getNetwork()
 	 * @generated
 	 */
 	EReference getNetwork_All();
 
 	/**
-	 * Returns the meta object for the attribute '{@link edu.hu.clickwatch.model.Network#getElementFilter <em>Element Filter</em>}'.
+	 * Returns the meta object for the attribute '{@link model.Network#getElementFilter <em>Element Filter</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Element Filter</em>'.
-	 * @see edu.hu.clickwatch.model.Network#getElementFilter()
+	 * @see model.Network#getElementFilter()
 	 * @see #getNetwork()
 	 * @generated
 	 */
 	EAttribute getNetwork_ElementFilter();
 
 	/**
-	 * Returns the meta object for the attribute '{@link edu.hu.clickwatch.model.Network#getHandlerFilter <em>Handler Filter</em>}'.
+	 * Returns the meta object for the attribute '{@link model.Network#getHandlerFilter <em>Handler Filter</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Handler Filter</em>'.
-	 * @see edu.hu.clickwatch.model.Network#getHandlerFilter()
+	 * @see model.Network#getHandlerFilter()
 	 * @see #getNetwork()
 	 * @generated
 	 */
 	EAttribute getNetwork_HandlerFilter();
 
 	/**
-	 * Returns the meta object for the attribute '{@link edu.hu.clickwatch.model.Network#getUpdateIntervall <em>Update Intervall</em>}'.
+	 * Returns the meta object for the attribute '{@link model.Network#getUpdateIntervall <em>Update Intervall</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Update Intervall</em>'.
-	 * @see edu.hu.clickwatch.model.Network#getUpdateIntervall()
+	 * @see model.Network#getUpdateIntervall()
 	 * @see #getNetwork()
 	 * @generated
 	 */
 	EAttribute getNetwork_UpdateIntervall();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link edu.hu.clickwatch.model.Network#getSubnetworks <em>Subnetworks</em>}'.
+	 * Returns the meta object for the containment reference list '{@link model.Network#getSubnetworks <em>Subnetworks</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Subnetworks</em>'.
-	 * @see edu.hu.clickwatch.model.Network#getSubnetworks()
+	 * @see model.Network#getSubnetworks()
 	 * @see #getNetwork()
 	 * @generated
 	 */
 	EReference getNetwork_Subnetworks();
 
 	/**
-	 * Returns the meta object for class '{@link edu.hu.clickwatch.model.MultiNode <em>Multi Node</em>}'.
+	 * Returns the meta object for class '{@link model.MultiNode <em>Multi Node</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Multi Node</em>'.
-	 * @see edu.hu.clickwatch.model.MultiNode
+	 * @see model.MultiNode
 	 * @generated
 	 */
 	EClass getMultiNode();
 
 	/**
-	 * Returns the meta object for the reference list '{@link edu.hu.clickwatch.model.MultiNode#getNodes <em>Nodes</em>}'.
+	 * Returns the meta object for the reference list '{@link model.MultiNode#getNodes <em>Nodes</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference list '<em>Nodes</em>'.
-	 * @see edu.hu.clickwatch.model.MultiNode#getNodes()
+	 * @see model.MultiNode#getNodes()
 	 * @see #getMultiNode()
 	 * @generated
 	 */
 	EReference getMultiNode_Nodes();
 
 	/**
-	 * Returns the meta object for enum '{@link edu.hu.clickwatch.model.BackboneType <em>Backbone Type</em>}'.
+	 * Returns the meta object for enum '{@link model.BackboneType <em>Backbone Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for enum '<em>Backbone Type</em>'.
-	 * @see edu.hu.clickwatch.model.BackboneType
+	 * @see model.BackboneType
 	 * @generated
 	 */
 	EEnum getBackboneType();
@@ -893,11 +890,11 @@ public interface ClickWatchModelPackage extends EPackage {
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '{@link edu.hu.clickwatch.model.impl.NodeImpl <em>Node</em>}' class.
+		 * The meta object literal for the '{@link model.impl.NodeImpl <em>Node</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see edu.hu.clickwatch.model.impl.NodeImpl
-		 * @see edu.hu.clickwatch.model.impl.ClickWatchModelPackageImpl#getNode()
+		 * @see model.impl.NodeImpl
+		 * @see model.ClickWatchModelPackageImpl.ModelPackageImpl#getNode()
 		 * @generated
 		 */
 		EClass NODE = eINSTANCE.getNode();
@@ -975,14 +972,22 @@ public interface ClickWatchModelPackage extends EPackage {
 		EAttribute NODE__RECORDING = eINSTANCE.getNode_Recording();
 
 		/**
-		 * The meta object literal for the '{@link edu.hu.clickwatch.model.impl.ElementImpl <em>Element</em>}' class.
+		 * The meta object literal for the '{@link model.impl.ElementImpl <em>Element</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see edu.hu.clickwatch.model.impl.ElementImpl
-		 * @see edu.hu.clickwatch.model.impl.ClickWatchModelPackageImpl#getElement()
+		 * @see model.impl.ElementImpl
+		 * @see model.ClickWatchModelPackageImpl.ModelPackageImpl#getElement()
 		 * @generated
 		 */
 		EClass ELEMENT = eINSTANCE.getElement();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ELEMENT__NAME = eINSTANCE.getElement_Name();
 
 		/**
 		 * The meta object literal for the '<em><b>Handlers</b></em>' containment reference list feature.
@@ -1009,19 +1014,11 @@ public interface ClickWatchModelPackage extends EPackage {
 		EReference ELEMENT__CHILDREN = eINSTANCE.getElement_Children();
 
 		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * The meta object literal for the '{@link model.impl.HandlerImpl <em>Handler</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ELEMENT__NAME = eINSTANCE.getElement_Name();
-
-		/**
-		 * The meta object literal for the '{@link edu.hu.clickwatch.model.impl.HandlerImpl <em>Handler</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see edu.hu.clickwatch.model.impl.HandlerImpl
-		 * @see edu.hu.clickwatch.model.impl.ClickWatchModelPackageImpl#getHandler()
+		 * @see model.impl.HandlerImpl
+		 * @see model.ClickWatchModelPackageImpl.ModelPackageImpl#getHandler()
 		 * @generated
 		 */
 		EClass HANDLER = eINSTANCE.getHandler();
@@ -1051,6 +1048,14 @@ public interface ClickWatchModelPackage extends EPackage {
 		EAttribute HANDLER__CAN_WRITE = eINSTANCE.getHandler_CanWrite();
 
 		/**
+		 * The meta object literal for the '<em><b>Changed</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute HANDLER__CHANGED = eINSTANCE.getHandler_Changed();
+
+		/**
 		 * The meta object literal for the '<em><b>Watch</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1075,19 +1080,11 @@ public interface ClickWatchModelPackage extends EPackage {
 		EAttribute HANDLER__ANY = eINSTANCE.getHandler_Any();
 
 		/**
-		 * The meta object literal for the '<em><b>Changed</b></em>' attribute feature.
+		 * The meta object literal for the '{@link model.impl.NetworkImpl <em>Network</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute HANDLER__CHANGED = eINSTANCE.getHandler_Changed();
-
-		/**
-		 * The meta object literal for the '{@link edu.hu.clickwatch.model.impl.NetworkImpl <em>Network</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see edu.hu.clickwatch.model.impl.NetworkImpl
-		 * @see edu.hu.clickwatch.model.impl.ClickWatchModelPackageImpl#getNetwork()
+		 * @see model.impl.NetworkImpl
+		 * @see model.ClickWatchModelPackageImpl.ModelPackageImpl#getNetwork()
 		 * @generated
 		 */
 		EClass NETWORK = eINSTANCE.getNetwork();
@@ -1149,11 +1146,11 @@ public interface ClickWatchModelPackage extends EPackage {
 		EReference NETWORK__SUBNETWORKS = eINSTANCE.getNetwork_Subnetworks();
 
 		/**
-		 * The meta object literal for the '{@link edu.hu.clickwatch.model.impl.MultiNodeImpl <em>Multi Node</em>}' class.
+		 * The meta object literal for the '{@link model.impl.MultiNodeImpl <em>Multi Node</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see edu.hu.clickwatch.model.impl.MultiNodeImpl
-		 * @see edu.hu.clickwatch.model.impl.ClickWatchModelPackageImpl#getMultiNode()
+		 * @see model.impl.MultiNodeImpl
+		 * @see model.ClickWatchModelPackageImpl.ModelPackageImpl#getMultiNode()
 		 * @generated
 		 */
 		EClass MULTI_NODE = eINSTANCE.getMultiNode();
@@ -1167,15 +1164,15 @@ public interface ClickWatchModelPackage extends EPackage {
 		EReference MULTI_NODE__NODES = eINSTANCE.getMultiNode_Nodes();
 
 		/**
-		 * The meta object literal for the '{@link edu.hu.clickwatch.model.BackboneType <em>Backbone Type</em>}' enum.
+		 * The meta object literal for the '{@link model.BackboneType <em>Backbone Type</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see edu.hu.clickwatch.model.BackboneType
-		 * @see edu.hu.clickwatch.model.impl.ClickWatchModelPackageImpl#getBackboneType()
+		 * @see model.BackboneType
+		 * @see model.ClickWatchModelPackageImpl.ModelPackageImpl#getBackboneType()
 		 * @generated
 		 */
 		EEnum BACKBONE_TYPE = eINSTANCE.getBackboneType();
 
 	}
 
-} //ClickWatchModelPackage
+} //ModelPackage

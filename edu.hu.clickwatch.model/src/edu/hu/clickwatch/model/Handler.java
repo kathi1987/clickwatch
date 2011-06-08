@@ -6,8 +6,8 @@
  */
 package edu.hu.clickwatch.model;
 
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.xml.type.AnyType;
+import org.eclipse.emf.cdo.CDOObject;
+
 import org.eclipse.emf.ecore.util.FeatureMap;
 
 /**
@@ -18,21 +18,22 @@ import org.eclipse.emf.ecore.util.FeatureMap;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link edu.hu.clickwatch.model.Handler#getName <em>Name</em>}</li>
- *   <li>{@link edu.hu.clickwatch.model.Handler#isCanRead <em>Can Read</em>}</li>
- *   <li>{@link edu.hu.clickwatch.model.Handler#isCanWrite <em>Can Write</em>}</li>
- *   <li>{@link edu.hu.clickwatch.model.Handler#isChanged <em>Changed</em>}</li>
- *   <li>{@link edu.hu.clickwatch.model.Handler#isWatch <em>Watch</em>}</li>
- *   <li>{@link edu.hu.clickwatch.model.Handler#getMixed <em>Mixed</em>}</li>
- *   <li>{@link edu.hu.clickwatch.model.Handler#getAny <em>Any</em>}</li>
+ *   <li>{@link model.Handler#getName <em>Name</em>}</li>
+ *   <li>{@link model.Handler#isCanRead <em>Can Read</em>}</li>
+ *   <li>{@link model.Handler#isCanWrite <em>Can Write</em>}</li>
+ *   <li>{@link model.Handler#isChanged <em>Changed</em>}</li>
+ *   <li>{@link model.Handler#isWatch <em>Watch</em>}</li>
+ *   <li>{@link model.Handler#getMixed <em>Mixed</em>}</li>
+ *   <li>{@link model.Handler#getAny <em>Any</em>}</li>
  * </ul>
  * </p>
  *
- * @see edu.hu.clickwatch.model.ClickWatchModelPackage#getHandler()
+ * @see model.ClickWatchModelPackage#getHandler()
  * @model extendedMetaData="kind='mixed'"
+ * @extends CDOObject
  * @generated
  */
-public interface Handler extends EObject {
+public interface Handler extends CDOObject {
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -43,14 +44,14 @@ public interface Handler extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
-	 * @see edu.hu.clickwatch.model.ClickWatchModelPackage#getHandler_Name()
+	 * @see model.ClickWatchModelPackage#getHandler_Name()
 	 * @model
 	 * @generated
 	 */
 	String getName();
 
 	/**
-	 * Sets the value of the '{@link edu.hu.clickwatch.model.Handler#getName <em>Name</em>}' attribute.
+	 * Sets the value of the '{@link model.Handler#getName <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Name</em>' attribute.
@@ -69,14 +70,14 @@ public interface Handler extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Can Read</em>' attribute.
 	 * @see #setCanRead(boolean)
-	 * @see edu.hu.clickwatch.model.ClickWatchModelPackage#getHandler_CanRead()
+	 * @see model.ClickWatchModelPackage#getHandler_CanRead()
 	 * @model
 	 * @generated
 	 */
 	boolean isCanRead();
 
 	/**
-	 * Sets the value of the '{@link edu.hu.clickwatch.model.Handler#isCanRead <em>Can Read</em>}' attribute.
+	 * Sets the value of the '{@link model.Handler#isCanRead <em>Can Read</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Can Read</em>' attribute.
@@ -95,14 +96,14 @@ public interface Handler extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Can Write</em>' attribute.
 	 * @see #setCanWrite(boolean)
-	 * @see edu.hu.clickwatch.model.ClickWatchModelPackage#getHandler_CanWrite()
+	 * @see model.ClickWatchModelPackage#getHandler_CanWrite()
 	 * @model
 	 * @generated
 	 */
 	boolean isCanWrite();
 
 	/**
-	 * Sets the value of the '{@link edu.hu.clickwatch.model.Handler#isCanWrite <em>Can Write</em>}' attribute.
+	 * Sets the value of the '{@link model.Handler#isCanWrite <em>Can Write</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Can Write</em>' attribute.
@@ -110,6 +111,33 @@ public interface Handler extends EObject {
 	 * @generated
 	 */
 	void setCanWrite(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Changed</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Changed</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Changed</em>' attribute.
+	 * @see #setChanged(boolean)
+	 * @see model.ClickWatchModelPackage#getHandler_Changed()
+	 * @model default="false"
+	 * @generated
+	 */
+	boolean isChanged();
+
+	/**
+	 * Sets the value of the '{@link model.Handler#isChanged <em>Changed</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Changed</em>' attribute.
+	 * @see #isChanged()
+	 * @generated
+	 */
+	void setChanged(boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Watch</b></em>' attribute.
@@ -122,14 +150,14 @@ public interface Handler extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Watch</em>' attribute.
 	 * @see #setWatch(boolean)
-	 * @see edu.hu.clickwatch.model.ClickWatchModelPackage#getHandler_Watch()
+	 * @see model.ClickWatchModelPackage#getHandler_Watch()
 	 * @model default="false"
 	 * @generated
 	 */
 	boolean isWatch();
 
 	/**
-	 * Sets the value of the '{@link edu.hu.clickwatch.model.Handler#isWatch <em>Watch</em>}' attribute.
+	 * Sets the value of the '{@link model.Handler#isWatch <em>Watch</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Watch</em>' attribute.
@@ -148,7 +176,7 @@ public interface Handler extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Mixed</em>' attribute list.
-	 * @see edu.hu.clickwatch.model.ClickWatchModelPackage#getHandler_Mixed()
+	 * @see model.ClickWatchModelPackage#getHandler_Mixed()
 	 * @model dataType="org.eclipse.emf.ecore.EFeatureMapEntry" many="true"
 	 *        extendedMetaData="kind='elementWildcard' name=':mixed'"
 	 * @generated
@@ -165,38 +193,11 @@ public interface Handler extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Any</em>' attribute list.
-	 * @see edu.hu.clickwatch.model.ClickWatchModelPackage#getHandler_Any()
+	 * @see model.ClickWatchModelPackage#getHandler_Any()
 	 * @model dataType="org.eclipse.emf.ecore.EFeatureMapEntry" many="true"
 	 *        extendedMetaData="kind='elementWildcard' name=':1' processing='lax' wildcards='##any'"
 	 * @generated
 	 */
 	FeatureMap getAny();
-
-	/**
-	 * Returns the value of the '<em><b>Changed</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Changed</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Changed</em>' attribute.
-	 * @see #setChanged(boolean)
-	 * @see edu.hu.clickwatch.model.ClickWatchModelPackage#getHandler_Changed()
-	 * @model default="false"
-	 * @generated
-	 */
-	boolean isChanged();
-
-	/**
-	 * Sets the value of the '{@link edu.hu.clickwatch.model.Handler#isChanged <em>Changed</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Changed</em>' attribute.
-	 * @see #isChanged()
-	 * @generated
-	 */
-	void setChanged(boolean value);
 
 } // Handler

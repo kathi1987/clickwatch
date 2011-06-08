@@ -7,21 +7,24 @@
 package edu.hu.clickwatch.model.impl;
 
 import edu.hu.clickwatch.model.BackboneType;
+import edu.hu.clickwatch.model.Element;
+import edu.hu.clickwatch.model.Handler;
+import edu.hu.clickwatch.model.ClickWatchModelFactory;
+import edu.hu.clickwatch.model.ClickWatchModelPackage;
+import edu.hu.clickwatch.model.MultiNode;
+import edu.hu.clickwatch.model.Network;
+import edu.hu.clickwatch.model.Node;
+
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
+
 import org.eclipse.emf.ecore.impl.EPackageImpl;
+
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 
-import edu.hu.clickwatch.model.ClickWatchModelFactory;
-import edu.hu.clickwatch.model.ClickWatchModelPackage;
-import edu.hu.clickwatch.model.Element;
-import edu.hu.clickwatch.model.Handler;
-import edu.hu.clickwatch.model.MultiNode;
-import edu.hu.clickwatch.model.Network;
-import edu.hu.clickwatch.model.Node;
 
 /**
  * <!-- begin-user-doc -->
@@ -83,7 +86,7 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
-	 * @see edu.hu.clickwatch.model.ClickWatchModelPackage#eNS_URI
+	 * @see model.ClickWatchModelPackage#eNS_URI
 	 * @see #init()
 	 * @generated
 	 */
@@ -114,7 +117,7 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
 		if (isInited) return (ClickWatchModelPackage)EPackage.Registry.INSTANCE.getEPackage(ClickWatchModelPackage.eNS_URI);
 
 		// Obtain or create and register package
-		ClickWatchModelPackageImpl theClickWatchModelPackage = (ClickWatchModelPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof ClickWatchModelPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new ClickWatchModelPackageImpl());
+		ClickWatchModelPackageImpl theModelPackage = (ClickWatchModelPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof ClickWatchModelPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new ClickWatchModelPackageImpl());
 
 		isInited = true;
 
@@ -122,18 +125,18 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
 		XMLTypePackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
-		theClickWatchModelPackage.createPackageContents();
+		theModelPackage.createPackageContents();
 
 		// Initialize created meta-data
-		theClickWatchModelPackage.initializePackageContents();
+		theModelPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
-		theClickWatchModelPackage.freeze();
+		theModelPackage.freeze();
 
   
 		// Update the registry and return the package
-		EPackage.Registry.INSTANCE.put(ClickWatchModelPackage.eNS_URI, theClickWatchModelPackage);
-		return theClickWatchModelPackage;
+		EPackage.Registry.INSTANCE.put(ClickWatchModelPackage.eNS_URI, theModelPackage);
+		return theModelPackage;
 	}
 
 	/**
@@ -240,6 +243,15 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getElement_Name() {
+		return (EAttribute)elementEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EReference getElement_Handlers() {
 		return (EReference)elementEClass.getEStructuralFeatures().get(1);
 	}
@@ -260,15 +272,6 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
 	 */
 	public EReference getElement_Children() {
 		return (EReference)elementEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getElement_Name() {
-		return (EAttribute)elementEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -312,6 +315,15 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getHandler_Changed() {
+		return (EAttribute)handlerEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EAttribute getHandler_Watch() {
 		return (EAttribute)handlerEClass.getEStructuralFeatures().get(4);
 	}
@@ -332,15 +344,6 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
 	 */
 	public EAttribute getHandler_Any() {
 		return (EAttribute)handlerEClass.getEStructuralFeatures().get(6);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getHandler_Changed() {
-		return (EAttribute)handlerEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -447,7 +450,7 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ClickWatchModelFactory getClickWatchModelFactory() {
+	public ClickWatchModelFactory getModelFactory() {
 		return (ClickWatchModelFactory)getEFactoryInstance();
 	}
 
@@ -657,4 +660,10 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
 		   });
 	}
 
-} //ClickWatchModelPackageImpl
+	@Override
+	public ClickWatchModelFactory getClickWatchModelFactory() {
+		// TODO: Na, ob das so stimmt
+		return ClickWatchModelFactory.eINSTANCE;
+	}
+
+} //ModelPackageImpl

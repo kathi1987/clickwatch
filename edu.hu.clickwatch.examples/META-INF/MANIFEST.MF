@@ -20,7 +20,8 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.xpand,
  org.eclipse.emf.ecore;visibility:=reexport,
  edu.hu.clickwatch.analysis,
- org.eclipse.ui;bundle-version="3.6.1"
+ org.eclipse.ui;bundle-version="3.6.1",
+ org.eclipse.emf.cdo;bundle-version="3.0.1"
 Bundle-ActivationPolicy: lazy
 Import-Package: org.antlr.runtime;version="3.0.0",
  org.apache.commons.logging

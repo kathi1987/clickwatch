@@ -7,15 +7,18 @@
 package edu.hu.clickwatch.model.util;
 
 import org.eclipse.emf.common.util.URI;
+
 import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.emf.ecore.resource.impl.ResourceFactoryImpl;
+
 import org.eclipse.emf.ecore.xmi.XMLResource;
 
 /**
  * <!-- begin-user-doc -->
  * The <b>Resource Factory</b> associated with the package.
  * <!-- end-user-doc -->
- * @see edu.hu.clickwatch.model.util.ClickWatchModelResourceImpl
+ * @see model.ClickWatchModelResourceImpl.ModelResourceImpl
  * @generated
  */
 public class ClickWatchModelResourceFactoryImpl extends ResourceFactoryImpl {
@@ -50,4 +53,4 @@ public class ClickWatchModelResourceFactoryImpl extends ResourceFactoryImpl {
 		return result;
 	}
 
-} //ClickWatchModelResourceFactoryImpl
+} //ModelResourceFactoryImpl

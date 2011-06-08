@@ -13,7 +13,7 @@ import org.eclipse.emf.ecore.EFactory;
  * The <b>Factory</b> for the model.
  * It provides a create method for each non-abstract class of the model.
  * <!-- end-user-doc -->
- * @see edu.hu.clickwatch.model.ClickWatchModelPackage
+ * @see model.ClickWatchModelPackage
  * @generated
  */
 public interface ClickWatchModelFactory extends EFactory {
@@ -77,6 +77,6 @@ public interface ClickWatchModelFactory extends EFactory {
 	 * @return the package supported by this factory.
 	 * @generated
 	 */
-	ClickWatchModelPackage getClickWatchModelPackage();
+	ClickWatchModelPackage getModelPackage();
 
-} //ClickWatchModelFactory
+} //ModelFactory

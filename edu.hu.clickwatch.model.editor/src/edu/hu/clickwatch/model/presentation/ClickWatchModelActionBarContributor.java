@@ -64,7 +64,7 @@ public class ClickWatchModelActionBarContributor
 		 * @generated
 		 */
 		public void run(IAction action) {
-			ClickWatchModelModelWizard wizard = new ClickWatchModelModelWizard();
+			ClickWatchModelWizard wizard = new ClickWatchModelWizard();
 			wizard.init(getWindow().getWorkbench(), StructuredSelection.EMPTY);
 			WizardDialog wizardDialog = new WizardDialog(getWindow().getShell(), wizard);
 			wizardDialog.open();

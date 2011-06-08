@@ -134,7 +134,7 @@ public class ClickWatchModelEditor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<String> FILE_EXTENSION_FILTERS = prefixExtensions(ClickWatchModelModelWizard.FILE_EXTENSIONS, "*.");
+	public static final List<String> FILE_EXTENSION_FILTERS = prefixExtensions(ClickWatchModelWizard.FILE_EXTENSIONS, "*.");
 	
 	/**
 	 * Returns a new unmodifiable list containing prefixed versions of the extensions in the given list.

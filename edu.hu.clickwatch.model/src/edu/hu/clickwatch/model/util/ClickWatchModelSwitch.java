@@ -6,11 +6,7 @@
  */
 package edu.hu.clickwatch.model.util;
 
-import edu.hu.clickwatch.model.*;
 import java.util.List;
-
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 
 import edu.hu.clickwatch.model.ClickWatchModelPackage;
 import edu.hu.clickwatch.model.Element;
@@ -18,6 +14,9 @@ import edu.hu.clickwatch.model.Handler;
 import edu.hu.clickwatch.model.MultiNode;
 import edu.hu.clickwatch.model.Network;
 import edu.hu.clickwatch.model.Node;
+
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -29,7 +28,7 @@ import edu.hu.clickwatch.model.Node;
  * until a non-null result is returned,
  * which is the result of the switch.
  * <!-- end-user-doc -->
- * @see edu.hu.clickwatch.model.ClickWatchModelPackage
+ * @see model.ClickWatchModelPackage
  * @generated
  */
 public class ClickWatchModelSwitch<T> {
@@ -218,4 +217,4 @@ public class ClickWatchModelSwitch<T> {
 		return null;
 	}
 
-} //ClickWatchModelSwitch
+} //ModelSwitch

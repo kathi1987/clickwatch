@@ -17,7 +17,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>Backbone Type</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * @see edu.hu.clickwatch.model.ClickWatchModelPackage#getBackboneType()
+ * @see model.ClickWatchModelPackage#getBackboneType()
  * @model
  * @generated
  */
@@ -40,7 +40,9 @@ public enum BackboneType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	WIRELESS(1, "wireless", "wireless"), /**
+	WIRELESS(1, "wireless", "wireless"),
+
+	/**
 	 * The '<em><b>Unknown</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
