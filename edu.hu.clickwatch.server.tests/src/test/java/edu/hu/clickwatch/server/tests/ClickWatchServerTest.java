@@ -39,8 +39,7 @@ public class ClickWatchServerTest {
 	public void activateConfigurationTest(){
 
 	}
-	
-	
+		
 	@Test
 	public void getConnectionListTest(){
 		assertNotNull(mServer.getConnectionList());

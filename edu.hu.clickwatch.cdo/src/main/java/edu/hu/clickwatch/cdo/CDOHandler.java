@@ -196,6 +196,11 @@ public class CDOHandler implements ICDOHandler {
 	}
 
 	@Override
+	public void closeTransaction(){
+		this.mHandler.getTransaction().close();
+	}
+	
+	@Override
 	public void closeSession() {
 		if (!this.mHandler.getSession().isClosed()) {
 			this.mHandler.getSession().close();

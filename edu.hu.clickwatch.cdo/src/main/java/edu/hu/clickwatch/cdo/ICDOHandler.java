@@ -29,4 +29,6 @@ public interface ICDOHandler {
 	public BigInteger getPort();
 	
 	public void setPort(final BigInteger pPort);
+
+	void closeTransaction();
 }

@@ -124,9 +124,9 @@ public class ElementImpl extends CDOObjectImpl implements Element {
 	 * @generated
 	 */
 	public String getElementPath() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return (eContainer() instanceof Element) ? ((Element)eContainer()).getElementPath() + "/" + getName() : getName();
 	}
 
-} //ElementImpl
+
+	
+}

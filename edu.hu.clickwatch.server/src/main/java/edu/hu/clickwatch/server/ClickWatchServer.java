@@ -34,8 +34,6 @@ public class ClickWatchServer implements IClickWatchServer {
 	private CDOHandler mDatabaseHandler;
 	
 	public ClickWatchServer(final String pConfiguration){	
-		//
-		//mLogService = ServerPluginActivator.getInstance().getLogService();
 		// Set the location of the configuration file
 		this.mConfigurationFile = pConfiguration;	
 		// Initialize the configuration file reader 

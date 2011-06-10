@@ -46,7 +46,9 @@ public class CDOHandlerTest {
 		// Commit the transaction
 		this.mCDOHandler.commitTransaction();
 		// Rollback the transaction
-		//this.mCDOHandler.rollbackTransaction();
+		this.mCDOHandler.rollbackTransaction();
+		// Close the transaction
+		this.mCDOHandler.closeTransaction();
 		// Close the session
 		this.mCDOHandler.closeSession();
 	}
@@ -69,6 +71,8 @@ public class CDOHandlerTest {
 		this.mCDOHandler.commitTransaction();
 		// Rollback the transaction
 		this.mCDOHandler.rollbackTransaction();
+		// Close the transaction
+		this.mCDOHandler.closeTransaction();
 		// Close the session
 		this.mCDOHandler.closeSession();
 	}
@@ -130,22 +134,10 @@ public class CDOHandlerTest {
 		// Set connection status to false
 		node.setConnected(false);
 		// Open a transaction and prepare resource for commit
-		this.mCDOHandler.openTransaction(node);
+		this.mCDOHandler.openTransaction(node);	
+		// Close the transaction
+		this.mCDOHandler.closeTransaction();
 		// Close the session
 		this.mCDOHandler.closeSession();
-	}
-	
-	/**
-	 * 
-	 */
-	private boolean verify(final Node pNode, Node pRetrievedNode){
-		// Was sind denn eindeutige Merkmale? Reichen vielleicht einfach die Attribute die hier auch wirklich gesetzt werden
-		if(pNode.getPort().compareTo(pRetrievedNode.getPort()) == 0){
-			if(pNode.getINetAdress().compareTo(pRetrievedNode.getINetAdress()) == 0){
-				return true;
-			}
-		}
-		
-		return false;
 	}
 }
