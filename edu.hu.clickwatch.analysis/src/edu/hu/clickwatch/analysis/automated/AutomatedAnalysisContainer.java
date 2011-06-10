@@ -1,7 +1,5 @@
 package edu.hu.clickwatch.analysis.automated;
 
-import org.eclipse.emf.ecore.util.EcoreUtil;
-
 import com.google.common.base.Preconditions;
 
 import edu.hu.clickwatch.model.Network;

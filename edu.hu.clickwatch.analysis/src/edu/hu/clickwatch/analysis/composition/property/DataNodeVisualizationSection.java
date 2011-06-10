@@ -71,7 +71,7 @@ public class DataNodeVisualizationSection  extends GFPropertySection implements 
 	}
 
 	private void setVisualization(final String kind) {
-		final Visualization visualization = getSelectedVisualization();
+		final Visualization visualization = getSelectedVisualization(true);
 		TransactionUtil.runSafely(new Runnable() {
 			@Override
 			public void run() {
@@ -80,21 +80,23 @@ public class DataNodeVisualizationSection  extends GFPropertySection implements 
 		}, visualization);
 	}
 
-	public Visualization getSelectedVisualization() {
+	public Visualization getSelectedVisualization(boolean create) {
 		PictogramElement pe = getSelectedPictogramElement();
 		if (pe != null) {
 			Object bo = Graphiti.getLinkService().getBusinessObjectForLinkedPictogramElement(pe);
 			if (bo instanceof DataNode) {
 				final DataNode dataNode = (DataNode)bo;
 				if (dataNode.getVisualization() == null) {
-					TransactionUtil.runSafely(new Runnable() {
-						@Override
-						public void run() {
-							Visualization visualization = CompositionFactory.eINSTANCE.createVisualization();
-							dataNode.setVisualization(visualization);
-						}
-					}, dataNode);
-				}
+					if (create) {
+						TransactionUtil.runSafely(new Runnable() {
+							@Override
+							public void run() {
+								Visualization visualization = CompositionFactory.eINSTANCE.createVisualization();
+								dataNode.setVisualization(visualization);
+							}
+						}, dataNode);
+					}	
+				}	
 				return dataNode.getVisualization();
 			}
 		}
@@ -105,8 +107,11 @@ public class DataNodeVisualizationSection  extends GFPropertySection implements 
 	public void refresh() {
 		PictogramElement pe = getSelectedPictogramElement();
 		if (pe != null) {
-			Visualization visualization = getSelectedVisualization();			
-			String kind = visualization.getKind();
+			Visualization visualization = getSelectedVisualization(false);
+			String kind = null;
+			if (visualization != null) {
+				kind = visualization.getKind();
+			}
 			kind = kind == null ? "" : kind;
 			visualizationCombo.setText(kind);
 		}
