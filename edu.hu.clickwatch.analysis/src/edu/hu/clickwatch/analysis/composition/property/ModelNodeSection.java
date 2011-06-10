@@ -226,7 +226,7 @@ public class ModelNodeSection extends GFPropertySection implements ITabbedProper
 				registeredPackageDialog.open();
 				Object[] result = registeredPackageDialog.getResult();
 				Object thePackage = null;
-				if (result.length != 0) {
+				if (result != null && result.length != 0) {
 					thePackage = result[0];
 				}
 

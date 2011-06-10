@@ -108,7 +108,7 @@
                id="edu.hu.clickwatch.analysis.composition.diagram.CompositionDiagramType">
          </diagramType>
          <imageProvider
-               id="edu.hu.clickwatch.analysis.composition.CompositionImageProvider">
+               id="de.hub.xveg.ImageProvider">
          </imageProvider>
          <imageProvider
                id="org.eclipse.graphiti.examples.common.ExampleImageProvider">
@@ -116,13 +116,6 @@
       </diagramTypeProvider>
    </extension>
    
-   <extension
-         point="org.eclipse.graphiti.ui.imageProviders">
-      <imageProvider
-            class="edu.hu.clickwatch.analysis.composition.CompositionImageProvider"
-            id="edu.hu.clickwatch.analysis.composition.CompositionImageProvider">
-      </imageProvider>
-   </extension>
  
 	<extension
 	    point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
@@ -196,31 +189,8 @@
 	    </propertySections>
 	</extension>
  
-	<extension point="org.eclipse.ui.commands">
-		<command id="edu.hu.clickwatch.analysis.composition.commands.createDiagramWithAllClasses" name="Create Diagram with all Classes" /> 
-	</extension>
 
-	<extension point="org.eclipse.ui.menus">
-		<menuContribution locationURI="popup:org.eclipse.ui.navigator.ProjectExplorer#PopupMenu?after=additions">
-			<command commandId="edu.hu.clickwatch.analysis.composition.commands.createDiagramWithAllClasses"
-					id="edu.hu.clickwatch.analysis.composition.menus.createDiagramWithAllClasses"> 
-				<visibleWhen>
-					<reference definitionId="edu.hu.clickwatch.analysis.composition.definitions.OneEClassesNodeSelected" /> 
-				</visibleWhen>
-			</command>
-		</menuContribution>
-	</extension>
 
-	<extension point="org.eclipse.core.expressions.definitions">
-		<definition id="edu.hu.clickwatch.analysis.composition.definitions.OneEClassesNodeSelected">
-			<and>
-				<count value="1" /> 
-				<iterate ifEmpty="false" operator="and">
-					<instanceof value="org.eclipse.graphiti.examples.common.navigator.nodes.EClassesNode" /> 
-				</iterate>
-			</and>
-		</definition>
-	</extension>
 	<!-- end of extensions for the Composition editor -->
  <extension
        point="org.eclipse.ui.views">

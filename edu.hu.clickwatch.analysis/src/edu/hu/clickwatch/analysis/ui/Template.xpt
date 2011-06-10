@@ -1,4 +1,6 @@
+«REM» not necessary?
 «IMPORT edu::hu::clickwatch::analysis»
+«ENDREM»
 
 «DEFINE main FOR AnalysisProjectInfo»
 «FILE "Main.java"»
