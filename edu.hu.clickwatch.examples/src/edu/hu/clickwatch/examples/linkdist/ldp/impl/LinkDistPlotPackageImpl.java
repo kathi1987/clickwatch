@@ -6,17 +6,16 @@
  */
 package edu.hu.clickwatch.examples.linkdist.ldp.impl;
 
-import edu.hu.clickwatch.examples.linkdist.ldp.Link;
-import edu.hu.clickwatch.examples.linkdist.ldp.LinkDistPlotFactory;
-import edu.hu.clickwatch.examples.linkdist.ldp.LinkDistPlotPackage;
-import edu.hu.clickwatch.examples.linkdist.ldp.Plot;
-
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
+
+import edu.hu.clickwatch.examples.linkdist.ldp.Link;
+import edu.hu.clickwatch.examples.linkdist.ldp.LinkDistPlotFactory;
+import edu.hu.clickwatch.examples.linkdist.ldp.LinkDistPlotPackage;
+import edu.hu.clickwatch.examples.linkdist.ldp.Plot;
 
 /**
  * <!-- begin-user-doc -->

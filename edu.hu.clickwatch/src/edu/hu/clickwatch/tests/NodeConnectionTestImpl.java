@@ -7,12 +7,12 @@ import edu.hu.clickwatch.model.ClickControlNodeConnection;
 public class NodeConnectionTestImpl extends ClickControlNodeConnection {
 
 	@Override
-	protected void runInGUI(Runnable runnable) {
+	public void runInGUI(Runnable runnable) {
 		runnable.run();
 	}
 
 	@Override
-	protected void runInExtraThread(Runnable runnable) {
+	public void runInExtraThread(Runnable runnable) {
 		runnable.run();
 	}
 

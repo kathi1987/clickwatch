@@ -7,7 +7,6 @@
 package edu.hu.clickwatch.examples.linkdist.ldp;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**

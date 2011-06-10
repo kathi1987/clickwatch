@@ -22,6 +22,7 @@ import edu.hu.clickwatch.actions.Disconnect;
 import edu.hu.clickwatch.merge.Merger;
 import edu.hu.clickwatch.model.presentation.ClickWatchModelEditor;
 import edu.hu.clickwatch.nodeadapter.INodeAdapter;
+import edu.hu.clickwatch.util.UiThreadder;
 
 /**
  * Instances of the class represent a connection the a remote node. These
@@ -31,9 +32,9 @@ import edu.hu.clickwatch.nodeadapter.INodeAdapter;
  * network node.
  * 
  * This is crucial! All interaction with the the editor model must be done
- * within the GUI-Thread using {@link #runInGUI(Runnable)} and all interaction
+ * within the GUI-Thread using {@link UiThreadder#runInGUI(Runnable)} and all interaction
  * with the real node should be run in an extra thread using
- * {@link #runInExtraThread(Runnable)} to avoid GUI-freeze.
+ * {@link UiThreadder#runInExtraThread(Runnable)} to avoid GUI-freeze.
  * 
  * Node connections are designed to be a transient property of the model class
  * {@link Node}. This allows actions bind to model elements to access instances
@@ -55,7 +56,7 @@ import edu.hu.clickwatch.nodeadapter.INodeAdapter;
  * @author Markus Scheidgen
  * 
  */
-public abstract class AbstractNodeConnection {
+public abstract class AbstractNodeConnection extends UiThreadder {
 
 	private Node node;
 	private final static int UPDATE_INTERVALL_DEFAULT = 5000;
@@ -187,39 +188,9 @@ public abstract class AbstractNodeConnection {
 		}
 	}
 
-	protected void runInGUI(final Runnable runnable) {
-		Display display = editor.getSite().getShell().getDisplay();
-		display.asyncExec(new Runnable() {
-			@Override
-			public void run() {
-				try {
-					runnable.run();
-				} catch (RuntimeException e) {
-					hasError = true;
-					showMessage("Exception", "Exception " + e.getClass().getName()
-									+ " occured: " + e.getMessage()
-									+ ". Node is forced to disconnect.");
-				}
-			}
-		});
-	}
-
-	protected void runInExtraThread(final Runnable runnable) {
-		new Thread() {
-			@Override
-			public void run() {
-				try {
-					runnable.run();
-				} catch (final RuntimeException e) {
-					runInGUI(new Runnable() {
-						@Override
-						public void run() {
-							showMessage("Exception", "Exception " + e.getClass().getName() + " occured: " + e.getMessage());
-						}
-					});
-				}
-			}
-		}.start();
+	@Override
+	protected Display getDisplay() {
+		return editor.getSite().getShell().getDisplay();
 	}
 
 	/**
@@ -387,10 +358,6 @@ public abstract class AbstractNodeConnection {
 
 	protected Node getNode() {
 		return node;
-	}
-	
-	protected void showMessage(String title, String message) {
-		MessageDialog.openError(editor.getSite().getShell(), title, message);
 	}
 	
 	protected void installPartListener(IPartListener listener) {

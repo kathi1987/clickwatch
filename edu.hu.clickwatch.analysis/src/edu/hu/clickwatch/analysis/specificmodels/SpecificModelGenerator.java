@@ -50,11 +50,13 @@ public class SpecificModelGenerator {
 			EStructuralFeature targetFeature = target.eClass().getEStructuralFeature(feature.getName());
 			Object sourceValue = source.eGet(feature);
 			if (i == -1) {			
-				if (sourceValue != null) {
+				if (sourceValue != null && targetFeature != null) { // TODO
 					target.eSet(targetFeature, copyValue(sourceValue, targetFeature));
 				}
 			} else {
-				((EList)target.eGet(targetFeature)).add(copyValue(((EList)sourceValue).get(i), targetFeature));
+				if (targetFeature != null) { // TODO
+					((EList)target.eGet(targetFeature)).add(copyValue(((EList)sourceValue).get(i), targetFeature));
+				}
 			}
 		}
 		
