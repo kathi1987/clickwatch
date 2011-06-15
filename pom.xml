@@ -9,39 +9,15 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>edu.hu.clickwatch</groupId>
-	<artifactId>clickwatch</artifactId>
+	<artifactId>root</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<modules>
-<!--
-		<module>com.google.guava</module>
-		<module>com.google.guice</module>
-		<module>edu.hu.clickwatch</module>
-		<module>edu.hu.clickwatch.analysis</module>
-		<module>edu.hu.clickwatch.examples</module>
-		<module>edu.hu.clickwatch.feature</module>
-	        <module>edu.uci.ics.jung</module>
-	        <module>org.jfree.jcommon</module>
-                <module>org.jfree.jfreechart</module>
--->
 		<module>external</module>
 		<module>analysis</module>
 		<module>control</module>
 		<module>model</module>
-<!--
-		<module>edu.hu.clickwatch.model.edit</module>
-		<module>edu.hu.clickwatch.model.editor</module>
-		<module>edu.hu.clickwatch.logservice</module>
-		<module>edu.hu.clickwatch.logservice.tests</module>
-		<module>edu.mit.clickcontrol</module>
-		<module>org.eclipse.wst.sse.core</module>
-		<module>org.eclipse.wst.sse.ui</module>
-		<module>org.eclipse.wst.xml.core</module>
-		<module>org.eclipse.wst.xml.ui</module>
-		<module>org.eclipse.wst.xsl.ui</module>
-
 		<module>server</module>
--->
 	</modules>
 
 	<properties>
