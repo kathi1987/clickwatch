@@ -53,8 +53,7 @@ public class ClickWatchServerPluginActivator implements BundleActivator {
 		// Initialize server
 		//mServer.readConfiguration();
 		// Print status information
-		//mLogService.log(LogService.LOG_DEBUG, "Plugin: Server Plugin initialized");
-		
+		//mLogService.log(LogService.LOG_DEBUG, "Plugin: Server Plugin initialized");		
 	}
 
 	/*

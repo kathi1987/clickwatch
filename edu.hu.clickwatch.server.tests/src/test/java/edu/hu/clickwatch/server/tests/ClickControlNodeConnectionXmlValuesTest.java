@@ -12,21 +12,27 @@ import edu.hu.clickcontrol.IClickSocket;
 import edu.hu.clickwatch.model.ClickWatchModelFactory;
 import edu.hu.clickwatch.model.Network;
 import edu.hu.clickwatch.model.Node;
+import edu.hu.clickwatch.server.ClickWatchServer;
 import edu.hu.clickwatch.server.node.ClickControlNodeConnection;
 import edu.hu.clickwatch.server.node.ClickControlNodeXmlValuesAdapter;
 import edu.hu.clickwatch.server.node.INodeAdapter;
 import edu.hu.clickwatch.server.socket.ClickWatchServerSocketPlayerSocket;
 import edu.hu.clickwatch.server.tests.TestUtil.ClickSocketWrapper;
 
+/**
+ * 
+ */
 public class ClickControlNodeConnectionXmlValuesTest extends AbstractTest {
-
+    /** */
 	private int exit = 0;
-	
+	/** */
 	private Network network = null;
-	
+	/** */
 	private Throwable exception = null;
-	
+	/** A instance of the ClickWatch model factory in order to create new nodes, networks, etc. */	
 	private static final ClickWatchModelFactory factory = ClickWatchModelFactory.eINSTANCE;
+	/** The path to the standard configuration file which is used in this junit test */
+	private String mConfigurationFile = "src/test/resources/" + ClickWatchServerTest.class.getPackage().getName().replace(".", "/") + "/configuration.xml";
 	
 	@Override
 	protected void additionalSetUp() {
@@ -34,6 +40,12 @@ public class ClickControlNodeConnectionXmlValuesTest extends AbstractTest {
 		exit = 0;
 		network = factory.createNetwork();
 		((ClickSocketWrapper)getInjector().getInstance(IClickSocket.class)).setSource(TestUtil.createClickSocket(10, 1, false));
+		// Get the server instance
+		ClickWatchServer server = getInjector().getInstance(ClickWatchServer.class);
+		// Reset the configuration file and set a new configuration file
+		server.setConfigurationFile(this.mConfigurationFile);
+		// Read the configuration file
+		server.readConfiguration();
 	}
 	
 	@Override
@@ -146,11 +158,12 @@ public class ClickControlNodeConnectionXmlValuesTest extends AbstractTest {
 		final ClickControlNodeConnection connection = getInjector().getInstance(ClickControlNodeConnection.class);
 		connection.setUp(node);
 		connection.connect();
+		//
 		connection.getNodeAdapter().connect();
 		
 		network.setElementFilter("device_wifi/link_stat");
 		connection.runUpdate();
-		
+	
 		assertEquals(1, node.getElements().size());
 		assertEquals(1, node.getElements().get(0).getChildren().size());
 		
@@ -177,5 +190,4 @@ public class ClickControlNodeConnectionXmlValuesTest extends AbstractTest {
 			}
 		}.start();
 	}
-
 }

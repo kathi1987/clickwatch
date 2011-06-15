@@ -108,7 +108,7 @@ public class ClickWatchServerNodeAdapter implements INodeAdapter {
 				+ " needs to be connected first");
 	}
 	
-	public Node retrieve(String pElememtFilter, String pHandlerFilter) {
+	public synchronized Node retrieve(String pElememtFilter, String pHandlerFilter) {
 		ensureConnected();
 		mInternalNodeCopy = modelFactory.createNode();
 		mInternalNodeCopy.setINetAdress(mHost);

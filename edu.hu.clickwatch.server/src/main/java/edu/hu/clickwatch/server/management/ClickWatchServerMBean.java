@@ -61,7 +61,7 @@ public class ClickWatchServerMBean implements IClickWatchServerMBean {
 		// TODO Auto-generated method stub
 	}
 	
-	public void bindMBeanServer(MBeanServer pMBeanServer){
+	public void bindMBeanServer(final MBeanServer pMBeanServer){
 		// Set the MBean server
 		this.mMBeanServer = pMBeanServer;
 		// Register the ClickWatchServer class as MBean
@@ -85,7 +85,7 @@ public class ClickWatchServerMBean implements IClickWatchServerMBean {
 		}
 	}
 	
-	public void unbindMBeanServer(){
+	public void unbindMBeanServer(final MBeanServer pMBeanServer){
 		// Unregister the MBean server
 		try {
 			this.mMBeanServer.unregisterMBean(new ObjectName("edu.hu.clickwatch.server.management:Server"));

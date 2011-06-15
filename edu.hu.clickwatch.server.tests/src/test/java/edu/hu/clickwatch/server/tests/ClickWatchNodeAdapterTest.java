@@ -32,7 +32,6 @@ public class ClickWatchNodeAdapterTest extends AbstractTest {
 	protected ClickSocketWrapper clickSocketWrapper = null;
 		
 	private class ClickSocketDefaultTestImpl extends ClickWatchServerSocketPlayerSocket {
-
 		@Override
 		public void handleWrite(String element, String handler, String value) {
 			assertTrue("newValue".equals(value));
@@ -88,7 +87,7 @@ public class ClickWatchNodeAdapterTest extends AbstractTest {
 	}
 	
 	@Test
-	public void testConnect() {
+	public void connectTest() {
 		try {
 			((ClickWatchServerNodeAdapter)modelAdapter).setUp(iPAddress, port);
 			modelAdapter.connect();
@@ -101,15 +100,15 @@ public class ClickWatchNodeAdapterTest extends AbstractTest {
 	}
 	
 	@Test
-	public void testRetrieveAll() {
-		testConnect();
+	public void retrieveAllTest() {
+		connectTest();
 		Node node = modelAdapter.retrieve(null, null);
 		
 		checkDefaultNode(node);
 	}
 	
 	@Test
-	public void testRetrieveAllWithMultipleElements() {
+	public void retrieveAllWithMultipleElementsTest() {
 		clickSocketWrapper.setSource(new ClickSocketDefaultTestImpl() {
 			@Override
 			public String[] getElements() {
@@ -117,7 +116,7 @@ public class ClickWatchNodeAdapterTest extends AbstractTest {
 			}
 		});
 		
-		testConnect();
+		connectTest();
 		Node node = modelAdapter.retrieve(null, null);
 		
 		assertEquals(3, node.getElements().size());
@@ -130,8 +129,8 @@ public class ClickWatchNodeAdapterTest extends AbstractTest {
 	}
 	
 	@Test
-	public void testRetrieveHandlerValue() {
-		testConnect();
+	public void retrieveHandlerValueTest() {
+		connectTest();
 		Node node = modelAdapter.retrieve(null, null);
 		checkDefaultNode(node);
 		
@@ -141,7 +140,7 @@ public class ClickWatchNodeAdapterTest extends AbstractTest {
 	}
 	
 	@Test
-	public void testUpdateHandlerValue() {
+	public void updateHandlerValueTest() {
 		clickSocketWrapper.setSource(new ClickSocketDefaultTestImpl() {
 			@Override
 			public void handleWrite(String element, String handler, String value) {
@@ -150,7 +149,7 @@ public class ClickWatchNodeAdapterTest extends AbstractTest {
 				assertEquals("handler", handler);
 			}
 		});
-		testConnect();
+		connectTest();
 		Node node = modelAdapter.retrieve(null, null);
 		checkDefaultNode(node);
 		
@@ -164,8 +163,8 @@ public class ClickWatchNodeAdapterTest extends AbstractTest {
 	}
 	
 	@Test
-	public void testDisconnect() {
-		testConnect();
+	public void disconnectTest() {
+		connectTest();
 		
 		modelAdapter.disconnect();
 		assertFalse(modelAdapter.isConnected());

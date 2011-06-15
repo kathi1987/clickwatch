@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 
+import com.google.inject.Inject;
+
 import Configuration.CdoType;
 import Configuration.NetworkType;
 import Configuration.NodeType;
@@ -32,6 +34,11 @@ public class ClickWatchServer implements IClickWatchServer {
 	private String mConfigurationFile;
 	/** A handler for the CDO connection */
 	private CDOHandler mDatabaseHandler;
+	
+	@Inject
+	public ClickWatchServer(){
+		
+	}
 	
 	public ClickWatchServer(final String pConfiguration){	
 		// Set the location of the configuration file
@@ -136,14 +143,15 @@ public class ClickWatchServer implements IClickWatchServer {
 	public String getConfigurationFile() {
 		return mConfigurationFile;
 	}
-
+	
 	@Override
 	public synchronized void setConfigurationFile(String pConfigurationFile) {
 		// Set configuration file
 		this.mConfigurationFile = pConfigurationFile;
-		// Reset configuration or add it to configuration
-		
-		// Set up connections
+		// Shutdown existing connections
+		this.shutdown();
+		// Set up new configuration file reader
+		this.mConfigurationFileReader = new ConfigurationFileReader(this.mConfigurationFile);
 	}
 
 	public ConfigurationFileReader getConfigurationFileReader() {

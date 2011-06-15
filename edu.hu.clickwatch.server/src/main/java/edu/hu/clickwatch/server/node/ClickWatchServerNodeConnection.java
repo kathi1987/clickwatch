@@ -68,7 +68,7 @@ public class ClickWatchServerNodeConnection {
 		this.mUpdateInterval = pUpdateInterval;
 	}
 	
-	private boolean validateFilter(final String pNewFilter, final String pType) {
+	private synchronized boolean validateFilter(final String pNewFilter, final String pType) {
 		if(pNewFilter == null || pNewFilter.trim().equals("")) {
 			return true;	
 		}
@@ -184,6 +184,7 @@ public class ClickWatchServerNodeConnection {
 				mNode.setConnected(true);
 			}
 		});
+		/*
 		if(this.mDatabaseHandler != null){
 		// Add content to the database
 		this.mDatabaseHandler.openSession();
@@ -192,6 +193,7 @@ public class ClickWatchServerNodeConnection {
 		this.mDatabaseHandler.closeTransaction();
 		this.mDatabaseHandler.closeSession();
 		}
+		*/
 		EcoreUtil.delete(updatedNodeCopy, true);
 		mNode.setRetrieving(false);
 		sleepUntilNextUpdate();
@@ -252,7 +254,7 @@ public class ClickWatchServerNodeConnection {
 	 *            , the editor part to open message windows and to listen for
 	 *            close to realise automatic disconnect on editor close.
 	 */
-	public void connect() {
+	public synchronized void connect() {
 		if (mNode.isConnected()) {
 			return;
 		}
