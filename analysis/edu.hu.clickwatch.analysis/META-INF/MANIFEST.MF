@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Localization: plugin
 Bundle-Name: Clickwatch Analysis
 Bundle-SymbolicName: edu.hu.clickwatch.analysis;singleton:=true
-Bundle-Version: 1.0.0
+Bundle-Version: 0.0.1.qualifier
 Bundle-Activator: edu.hu.clickwatch.analysis.ui.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
@@ -25,9 +25,9 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.ui.views.properties.tabbed;bundle-version="3.5.100",
  org.eclipse.emf.transaction;bundle-version="1.4.0",
  org.eclipse.xtend.typesystem.emf;bundle-version="1.0.1",
- edu.uci.ics.jung;bundle-version="1.0.0",
+ edu.uci.ics.jung,
  org.eclipse.emf.ecore.editor;bundle-version="2.6.0",
- org.jfree.jfreechart;bundle-version="1.0.0",
+ org.jfree.jfreechart,
  org.eclipse.emf.cdo;bundle-version="3.0.1",
  de.hub.xveg
 Bundle-ActivationPolicy: lazy

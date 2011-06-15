@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: edu.hu.clickwatch.clientlocation;singleton:=true
-Bundle-Version: 1.0.0
+Bundle-Version: 0.0.1.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
@@ -12,9 +12,9 @@ Export-Package: edu.hu.clickwatch.clientlocation.clientstats,
  edu.hu.clickwatch.clientlocation.clientstats.util
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
- edu.hu.clickwatch;bundle-version="0.1.0",
- edu.hu.clickwatch.analysis;bundle-version="1.0.0",
- edu.hu.clickwatch.examples;bundle-version="1.0.0",
+ edu.hu.clickwatch,
+ edu.hu.clickwatch.analysis,
+ edu.hu.clickwatch.examples,
  com.google.guice;bundle-version="3.0.0",
  org.eclipse.ui;bundle-version="3.6.1",
  org.eclipse.emf.ecore.xmi;bundle-version="2.5.0",

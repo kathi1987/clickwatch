@@ -2,32 +2,35 @@
 <project
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
 	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <prerequisites>
+    <maven>3.0</maven>
+  </prerequisites>
+
+
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>edu.hu.clickwatch</groupId>
 	<artifactId>clickwatch</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<modules>
+<!--
 		<module>com.google.guava</module>
 		<module>com.google.guice</module>
 		<module>edu.hu.clickwatch</module>
 		<module>edu.hu.clickwatch.analysis</module>
 		<module>edu.hu.clickwatch.examples</module>
 		<module>edu.hu.clickwatch.feature</module>
-<!--
 	        <module>edu.uci.ics.jung</module>
 	        <module>org.jfree.jcommon</module>
                 <module>org.jfree.jfreechart</module>
 -->
-		<module>edu.hu.clickwatch.model</module>
+		<module>external</module>
+		<module>analysis</module>
+		<module>control</module>
+		<module>model</module>
+<!--
 		<module>edu.hu.clickwatch.model.edit</module>
 		<module>edu.hu.clickwatch.model.editor</module>
-		<module>edu.hu.clickwatch.cdo</module>
-		<module>edu.hu.clickwatch.cdo.tests</module>
-		<module>edu.hu.clickwatch.server</module>
-		<module>edu.hu.clickwatch.server.tests</module>
-		<module>edu.hu.clickwatch.xml</module>
-		<!-- <module>edu.hu.clickwatch.xml.tests</module> -->
 		<module>edu.hu.clickwatch.logservice</module>
 		<module>edu.hu.clickwatch.logservice.tests</module>
 		<module>edu.mit.clickcontrol</module>
@@ -36,6 +39,9 @@
 		<module>org.eclipse.wst.xml.core</module>
 		<module>org.eclipse.wst.xml.ui</module>
 		<module>org.eclipse.wst.xsl.ui</module>
+
+		<module>server</module>
+-->
 	</modules>
 
 	<properties>

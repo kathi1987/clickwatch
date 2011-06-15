@@ -9,13 +9,11 @@
     <relativePath>../pom.xml</relativePath>
   </parent>
   <groupId>edu.hu.clickwatch</groupId>
-  <artifactId>model</artifactId>
+  <artifactId>clickcontrol</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
   
   <modules>
-   <module>edu.hu.clickwatch.model</module>
-   <module>edu.hu.clickwatch.model.edit</module>
-   <module>edu.hu.clickwatch.model.editor</module>
+   <module>edu.mit.clickcontrol</module>
   </modules>
 </project>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="xvegfeaturemodel"
+    nsURI="http://xvegfeaturemodel/1.0" nsPrefix="xvegfeaturemodel">
+  <eClassifiers xsi:type="ecore:EClass" name="XvegFeature">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="elementClass" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="diagramType" eType="#//XvegDiagramType"
+        eOpposite="#//XvegDiagramType/features"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="configuration" eType="#//IFeatureConfigurationProvider"
+        transient="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="style" eType="#//StyleInfo"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VertexFeature" eSuperTypes="#//XvegFeature"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EdgeFeature" eSuperTypes="#//XvegFeature">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="possibleSourceFeatures"
+        upperBound="-1" eType="#//VertexFeature"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="possibleTargetFeatures"
+        upperBound="-1" eType="#//VertexFeature"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sourceReference" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EReference"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targetReference" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EReference"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="XvegDiagramType">
+    <eOperations name="getFeatureForObject" eType="#//XvegFeature">
+      <eParameters name="object" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="features" upperBound="-1"
+        eType="#//XvegFeature" containment="true" eOpposite="#//XvegFeature/diagramType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dslFactory" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EFactory"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="IFeatureConfigurationProvider" instanceTypeName="de.hub.xveg.configuration.IFeatureConfigurationProvider&lt;EObject>"
+      serializable="false"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Color">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="r" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="g" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="b" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StyleInfo">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="lineColor" eType="#//Color"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="backgroundColor" eType="#//Color"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="textColor" eType="#//Color"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fontSize" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="12"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="boldFont" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="false"/>
+  </eClassifiers>
+</ecore:EPackage>
