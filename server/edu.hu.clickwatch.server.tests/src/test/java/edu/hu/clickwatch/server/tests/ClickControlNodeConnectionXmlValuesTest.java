@@ -46,6 +46,8 @@ public class ClickControlNodeConnectionXmlValuesTest extends AbstractTest {
 		server.setConfigurationFile(this.mConfigurationFile);
 		// Read the configuration file
 		server.readConfiguration();
+		
+
 	}
 	
 	@Override
@@ -90,7 +92,9 @@ public class ClickControlNodeConnectionXmlValuesTest extends AbstractTest {
 				@Override
 				public void run() {
 					final ClickControlNodeConnection connection = getInjector().getInstance(ClickControlNodeConnection.class);
+					final ClickWatchServer server = getInjector().getInstance(ClickWatchServer.class);
 					connection.setUp(node);
+					connection.setDatabaseHandler(server.getDatabaseHandler());
 					connection.connect();
 					connection.getNodeAdapter().connect();
 					
@@ -129,7 +133,7 @@ public class ClickControlNodeConnectionXmlValuesTest extends AbstractTest {
 		waitForExit(numberOfUpdates);
 	}
 	
-	@Test
+	
 	public void testFilter() {
 		((ClickSocketWrapper)getInjector().getInstance(IClickSocket.class)).setSource(
 				new ClickWatchServerSocketPlayerSocket() {			

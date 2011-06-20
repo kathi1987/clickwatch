@@ -14,4 +14,5 @@ Require-Bundle: org.junit;bundle-version="4.8.1",
  edu.hu.clickwatch.model;bundle-version="1.0.0",
  edu.mit.clickcontrol,
  com.google.guava;bundle-version="0.0.7",
- org.eclipse.emf.cdo;bundle-version="3.0.1"
+ org.eclipse.emf.cdo;bundle-version="3.0.1",
+ edu.hu.clickwatch.cdo;bundle-version="0.0.1"
