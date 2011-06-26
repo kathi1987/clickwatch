@@ -25,13 +25,14 @@ import edu.hu.clickwatch.model.Node;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link model.impl.NetworkImpl#getName <em>Name</em>}</li>
- *   <li>{@link model.impl.NetworkImpl#getNodes <em>Nodes</em>}</li>
- *   <li>{@link model.impl.NetworkImpl#getAll <em>All</em>}</li>
- *   <li>{@link model.impl.NetworkImpl#getElementFilter <em>Element Filter</em>}</li>
- *   <li>{@link model.impl.NetworkImpl#getHandlerFilter <em>Handler Filter</em>}</li>
- *   <li>{@link model.impl.NetworkImpl#getUpdateIntervall <em>Update Intervall</em>}</li>
- *   <li>{@link model.impl.NetworkImpl#getSubnetworks <em>Subnetworks</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.model.impl.NetworkImpl#getName <em>Name</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.model.impl.NetworkImpl#getNodes <em>Nodes</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.model.impl.NetworkImpl#getAll <em>All</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.model.impl.NetworkImpl#getElementFilter <em>Element Filter</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.model.impl.NetworkImpl#getHandlerFilter <em>Handler Filter</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.model.impl.NetworkImpl#getUpdateIntervall <em>Update Intervall</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.model.impl.NetworkImpl#getSubnetworks <em>Subnetworks</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.model.impl.NetworkImpl#getTimeout <em>Timeout</em>}</li>
  * </ul>
  * </p>
  *
@@ -175,6 +176,24 @@ public class NetworkImpl extends CDOObjectImpl implements Network {
 	@SuppressWarnings("unchecked")
 	public EList<Network> getSubnetworks() {
 		return (EList<Network>)eGet(ClickWatchModelPackage.Literals.NETWORK__SUBNETWORKS, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getTimeout() {
+		return (Integer)eGet(ClickWatchModelPackage.Literals.NETWORK__TIMEOUT, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTimeout(int newTimeout) {
+		eSet(ClickWatchModelPackage.Literals.NETWORK__TIMEOUT, newTimeout);
 	}
 
 } //NetworkImpl

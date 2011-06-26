@@ -18,17 +18,18 @@ import org.eclipse.emf.common.util.EList;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link model.Network#getName <em>Name</em>}</li>
- *   <li>{@link model.Network#getNodes <em>Nodes</em>}</li>
- *   <li>{@link model.Network#getAll <em>All</em>}</li>
- *   <li>{@link model.Network#getElementFilter <em>Element Filter</em>}</li>
- *   <li>{@link model.Network#getHandlerFilter <em>Handler Filter</em>}</li>
- *   <li>{@link model.Network#getUpdateIntervall <em>Update Intervall</em>}</li>
- *   <li>{@link model.Network#getSubnetworks <em>Subnetworks</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.model.Network#getName <em>Name</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.model.Network#getNodes <em>Nodes</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.model.Network#getAll <em>All</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.model.Network#getElementFilter <em>Element Filter</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.model.Network#getHandlerFilter <em>Handler Filter</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.model.Network#getUpdateIntervall <em>Update Intervall</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.model.Network#getSubnetworks <em>Subnetworks</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.model.Network#getTimeout <em>Timeout</em>}</li>
  * </ul>
  * </p>
  *
- * @see model.ClickWatchModelPackage#getNetwork()
+ * @see edu.hu.clickwatch.model.ClickWatchModelPackage#getNetwork()
  * @model
  * @extends CDOObject
  * @generated
@@ -45,14 +46,14 @@ public interface Network extends CDOObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
-	 * @see model.ClickWatchModelPackage#getNetwork_Name()
+	 * @see edu.hu.clickwatch.model.ClickWatchModelPackage#getNetwork_Name()
 	 * @model default="My Network"
 	 * @generated
 	 */
 	String getName();
 
 	/**
-	 * Sets the value of the '{@link model.Network#getName <em>Name</em>}' attribute.
+	 * Sets the value of the '{@link edu.hu.clickwatch.model.Network#getName <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Name</em>' attribute.
@@ -63,7 +64,7 @@ public interface Network extends CDOObject {
 
 	/**
 	 * Returns the value of the '<em><b>Nodes</b></em>' containment reference list.
-	 * The list contents are of type {@link model.Node}.
+	 * The list contents are of type {@link edu.hu.clickwatch.model.Node}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Nodes</em>' containment reference list isn't clear,
@@ -71,7 +72,7 @@ public interface Network extends CDOObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Nodes</em>' containment reference list.
-	 * @see model.ClickWatchModelPackage#getNetwork_Nodes()
+	 * @see edu.hu.clickwatch.model.ClickWatchModelPackage#getNetwork_Nodes()
 	 * @model containment="true"
 	 *        extendedMetaData="name='node' kind='element'"
 	 * @generated
@@ -88,14 +89,14 @@ public interface Network extends CDOObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>All</em>' containment reference.
 	 * @see #setAll(MultiNode)
-	 * @see model.ClickWatchModelPackage#getNetwork_All()
+	 * @see edu.hu.clickwatch.model.ClickWatchModelPackage#getNetwork_All()
 	 * @model containment="true"
 	 * @generated
 	 */
 	MultiNode getAll();
 
 	/**
-	 * Sets the value of the '{@link model.Network#getAll <em>All</em>}' containment reference.
+	 * Sets the value of the '{@link edu.hu.clickwatch.model.Network#getAll <em>All</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>All</em>' containment reference.
@@ -114,14 +115,14 @@ public interface Network extends CDOObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Element Filter</em>' attribute.
 	 * @see #setElementFilter(String)
-	 * @see model.ClickWatchModelPackage#getNetwork_ElementFilter()
+	 * @see edu.hu.clickwatch.model.ClickWatchModelPackage#getNetwork_ElementFilter()
 	 * @model
 	 * @generated
 	 */
 	String getElementFilter();
 
 	/**
-	 * Sets the value of the '{@link model.Network#getElementFilter <em>Element Filter</em>}' attribute.
+	 * Sets the value of the '{@link edu.hu.clickwatch.model.Network#getElementFilter <em>Element Filter</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Element Filter</em>' attribute.
@@ -140,14 +141,14 @@ public interface Network extends CDOObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Handler Filter</em>' attribute.
 	 * @see #setHandlerFilter(String)
-	 * @see model.ClickWatchModelPackage#getNetwork_HandlerFilter()
+	 * @see edu.hu.clickwatch.model.ClickWatchModelPackage#getNetwork_HandlerFilter()
 	 * @model
 	 * @generated
 	 */
 	String getHandlerFilter();
 
 	/**
-	 * Sets the value of the '{@link model.Network#getHandlerFilter <em>Handler Filter</em>}' attribute.
+	 * Sets the value of the '{@link edu.hu.clickwatch.model.Network#getHandlerFilter <em>Handler Filter</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Handler Filter</em>' attribute.
@@ -166,14 +167,14 @@ public interface Network extends CDOObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Update Intervall</em>' attribute.
 	 * @see #setUpdateIntervall(int)
-	 * @see model.ClickWatchModelPackage#getNetwork_UpdateIntervall()
+	 * @see edu.hu.clickwatch.model.ClickWatchModelPackage#getNetwork_UpdateIntervall()
 	 * @model
 	 * @generated
 	 */
 	int getUpdateIntervall();
 
 	/**
-	 * Sets the value of the '{@link model.Network#getUpdateIntervall <em>Update Intervall</em>}' attribute.
+	 * Sets the value of the '{@link edu.hu.clickwatch.model.Network#getUpdateIntervall <em>Update Intervall</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Update Intervall</em>' attribute.
@@ -184,7 +185,7 @@ public interface Network extends CDOObject {
 
 	/**
 	 * Returns the value of the '<em><b>Subnetworks</b></em>' containment reference list.
-	 * The list contents are of type {@link model.Network}.
+	 * The list contents are of type {@link edu.hu.clickwatch.model.Network}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Subnetworks</em>' containment reference list isn't clear,
@@ -192,11 +193,38 @@ public interface Network extends CDOObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Subnetworks</em>' containment reference list.
-	 * @see model.ClickWatchModelPackage#getNetwork_Subnetworks()
+	 * @see edu.hu.clickwatch.model.ClickWatchModelPackage#getNetwork_Subnetworks()
 	 * @model containment="true"
 	 *        extendedMetaData="name='subnetwork' kind='element'"
 	 * @generated
 	 */
 	EList<Network> getSubnetworks();
+
+	/**
+	 * Returns the value of the '<em><b>Timeout</b></em>' attribute.
+	 * The default value is <code>"6000"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Timeout</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Timeout</em>' attribute.
+	 * @see #setTimeout(int)
+	 * @see edu.hu.clickwatch.model.ClickWatchModelPackage#getNetwork_Timeout()
+	 * @model default="6000"
+	 * @generated
+	 */
+	int getTimeout();
+
+	/**
+	 * Sets the value of the '{@link edu.hu.clickwatch.model.Network#getTimeout <em>Timeout</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Timeout</em>' attribute.
+	 * @see #getTimeout()
+	 * @generated
+	 */
+	void setTimeout(int value);
 
 } // Network

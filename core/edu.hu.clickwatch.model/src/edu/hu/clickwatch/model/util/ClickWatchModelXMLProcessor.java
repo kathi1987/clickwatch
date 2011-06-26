@@ -36,7 +36,7 @@ public class ClickWatchModelXMLProcessor extends XMLProcessor {
 	}
 	
 	/**
-	 * Register for "*" and "xml" file extensions the ModelResourceFactoryImpl factory.
+	 * Register for "*" and "xml" file extensions the ClickWatchModelResourceFactoryImpl factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated

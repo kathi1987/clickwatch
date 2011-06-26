@@ -21,7 +21,7 @@ import org.eclipse.emf.ecore.EClass;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link model.impl.MultiNodeImpl#getNodes <em>Nodes</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.model.impl.MultiNodeImpl#getNodes <em>Nodes</em>}</li>
  * </ul>
  * </p>
  *

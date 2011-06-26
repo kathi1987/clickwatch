@@ -8,6 +8,7 @@ package edu.hu.clickwatch.model.util;
 
 
 
+import edu.hu.clickwatch.model.*;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 
@@ -27,7 +28,7 @@ import edu.hu.clickwatch.model.Node;
  * The <b>Adapter Factory</b> for the model.
  * It provides an adapter <code>createXXX</code> method for each class of the model.
  * <!-- end-user-doc -->
- * @see model.ClickWatchModelPackage
+ * @see edu.hu.clickwatch.model.ClickWatchModelPackage
  * @generated
  */
 public class ClickWatchModelAdapterFactory extends AdapterFactoryImpl {
@@ -119,13 +120,13 @@ public class ClickWatchModelAdapterFactory extends AdapterFactoryImpl {
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link model.Node <em>Node</em>}'.
+	 * Creates a new adapter for an object of class '{@link edu.hu.clickwatch.model.Node <em>Node</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see model.Node
+	 * @see edu.hu.clickwatch.model.Node
 	 * @generated
 	 */
 	public Adapter createNodeAdapter() {
@@ -133,13 +134,13 @@ public class ClickWatchModelAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link model.Element <em>Element</em>}'.
+	 * Creates a new adapter for an object of class '{@link edu.hu.clickwatch.model.Element <em>Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see model.Element
+	 * @see edu.hu.clickwatch.model.Element
 	 * @generated
 	 */
 	public Adapter createElementAdapter() {
@@ -147,13 +148,13 @@ public class ClickWatchModelAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link model.Handler <em>Handler</em>}'.
+	 * Creates a new adapter for an object of class '{@link edu.hu.clickwatch.model.Handler <em>Handler</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see model.Handler
+	 * @see edu.hu.clickwatch.model.Handler
 	 * @generated
 	 */
 	public Adapter createHandlerAdapter() {
@@ -161,13 +162,13 @@ public class ClickWatchModelAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link model.Network <em>Network</em>}'.
+	 * Creates a new adapter for an object of class '{@link edu.hu.clickwatch.model.Network <em>Network</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see model.Network
+	 * @see edu.hu.clickwatch.model.Network
 	 * @generated
 	 */
 	public Adapter createNetworkAdapter() {
@@ -175,13 +176,13 @@ public class ClickWatchModelAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link model.MultiNode <em>Multi Node</em>}'.
+	 * Creates a new adapter for an object of class '{@link edu.hu.clickwatch.model.MultiNode <em>Multi Node</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see model.MultiNode
+	 * @see edu.hu.clickwatch.model.MultiNode
 	 * @generated
 	 */
 	public Adapter createMultiNodeAdapter() {

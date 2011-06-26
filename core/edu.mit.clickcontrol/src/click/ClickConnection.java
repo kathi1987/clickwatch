@@ -30,7 +30,7 @@ public class ClickConnection {
 		}
 
 		try {
-			cliccs = new ControlSocket(clickipaddr, clickport);
+			cliccs = new ControlSocket(clickipaddr, clickport, 6000);
 		} catch (IOException e) {
 			cliccs = null;
 			System.out.println("Unable to connect to AP");

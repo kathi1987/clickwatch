@@ -17,7 +17,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>Backbone Type</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * @see model.ClickWatchModelPackage#getBackboneType()
+ * @see edu.hu.clickwatch.model.ClickWatchModelPackage#getBackboneType()
  * @model
  * @generated
  */

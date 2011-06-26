@@ -10,12 +10,13 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import com.google.common.base.Preconditions;
 import com.google.inject.Inject;
 
+import de.hub.clickwatch.ui.util.UiThreadder;
+
 import edu.hu.clickwatch.actions.Connect;
 import edu.hu.clickwatch.actions.Disconnect;
 import edu.hu.clickwatch.merge.Merger;
 import edu.hu.clickwatch.nodeadapter.INodeAdapter;
 import edu.hu.clickwatch.util.Throwables;
-import edu.hu.clickwatch.util.UiThreadder;
 
 /**
  * Instances of the class represent a connection the a remote node. These

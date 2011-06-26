@@ -7,6 +7,7 @@
 package edu.hu.clickwatch.model.impl;
 
 
+import edu.hu.clickwatch.model.*;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
@@ -41,9 +42,9 @@ public class ClickWatchModelFactoryImpl extends EFactoryImpl implements ClickWat
 	 */
 	public static ClickWatchModelFactory init() {
 		try {
-			ClickWatchModelFactory theModelFactory = (ClickWatchModelFactory)EPackage.Registry.INSTANCE.getEFactory("edu.hu.clickwatch.model"); 
-			if (theModelFactory != null) {
-				return theModelFactory;
+			ClickWatchModelFactory theClickWatchModelFactory = (ClickWatchModelFactory)EPackage.Registry.INSTANCE.getEFactory("edu.hu.clickwatch.model"); 
+			if (theClickWatchModelFactory != null) {
+				return theClickWatchModelFactory;
 			}
 		}
 		catch (Exception exception) {
@@ -185,7 +186,7 @@ public class ClickWatchModelFactoryImpl extends EFactoryImpl implements ClickWat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ClickWatchModelPackage getModelPackage() {
+	public ClickWatchModelPackage getClickWatchModelPackage() {
 		return (ClickWatchModelPackage)getEPackage();
 	}
 

@@ -18,50 +18,50 @@ import org.eclipse.emf.common.util.EList;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link model.Node#getINetAdress <em>INet Adress</em>}</li>
- *   <li>{@link model.Node#getPort <em>Port</em>}</li>
- *   <li>{@link model.Node#getElements <em>Elements</em>}</li>
- *   <li>{@link model.Node#isConnected <em>Connected</em>}</li>
- *   <li>{@link model.Node#getConnection <em>Connection</em>}</li>
- *   <li>{@link model.Node#getBackbone <em>Backbone</em>}</li>
- *   <li>{@link model.Node#isRetrieving <em>Retrieving</em>}</li>
- *   <li>{@link model.Node#isHasRecord <em>Has Record</em>}</li>
- *   <li>{@link model.Node#isRecording <em>Recording</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.model.Node#getINetAddress <em>INet Address</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.model.Node#getPort <em>Port</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.model.Node#getElements <em>Elements</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.model.Node#isConnected <em>Connected</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.model.Node#getConnection <em>Connection</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.model.Node#getBackbone <em>Backbone</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.model.Node#isRetrieving <em>Retrieving</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.model.Node#isHasRecord <em>Has Record</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.model.Node#isRecording <em>Recording</em>}</li>
  * </ul>
  * </p>
  *
- * @see model.ClickWatchModelPackage#getNode()
+ * @see edu.hu.clickwatch.model.ClickWatchModelPackage#getNode()
  * @model
  * @extends CDOObject
  * @generated
  */
 public interface Node extends CDOObject {
 	/**
-	 * Returns the value of the '<em><b>INet Adress</b></em>' attribute.
+	 * Returns the value of the '<em><b>INet Address</b></em>' attribute.
 	 * The default value is <code>"localhost"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>INet Adress</em>' attribute isn't clear,
+	 * If the meaning of the '<em>INet Address</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>INet Adress</em>' attribute.
-	 * @see #setINetAdress(String)
-	 * @see model.ClickWatchModelPackage#getNode_INetAdress()
+	 * @return the value of the '<em>INet Address</em>' attribute.
+	 * @see #setINetAddress(String)
+	 * @see edu.hu.clickwatch.model.ClickWatchModelPackage#getNode_INetAddress()
 	 * @model default="localhost"
 	 * @generated
 	 */
-	String getINetAdress();
+	String getINetAddress();
 
 	/**
-	 * Sets the value of the '{@link model.Node#getINetAdress <em>INet Adress</em>}' attribute.
+	 * Sets the value of the '{@link edu.hu.clickwatch.model.Node#getINetAddress <em>INet Address</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>INet Adress</em>' attribute.
-	 * @see #getINetAdress()
+	 * @param value the new value of the '<em>INet Address</em>' attribute.
+	 * @see #getINetAddress()
 	 * @generated
 	 */
-	void setINetAdress(String value);
+	void setINetAddress(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Port</b></em>' attribute.
@@ -74,14 +74,14 @@ public interface Node extends CDOObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Port</em>' attribute.
 	 * @see #setPort(String)
-	 * @see model.ClickWatchModelPackage#getNode_Port()
+	 * @see edu.hu.clickwatch.model.ClickWatchModelPackage#getNode_Port()
 	 * @model default="7777"
 	 * @generated
 	 */
 	String getPort();
 
 	/**
-	 * Sets the value of the '{@link model.Node#getPort <em>Port</em>}' attribute.
+	 * Sets the value of the '{@link edu.hu.clickwatch.model.Node#getPort <em>Port</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Port</em>' attribute.
@@ -92,7 +92,7 @@ public interface Node extends CDOObject {
 
 	/**
 	 * Returns the value of the '<em><b>Elements</b></em>' containment reference list.
-	 * The list contents are of type {@link model.Element}.
+	 * The list contents are of type {@link edu.hu.clickwatch.model.Element}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Elements</em>' containment reference list isn't clear,
@@ -100,7 +100,7 @@ public interface Node extends CDOObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Elements</em>' containment reference list.
-	 * @see model.ClickWatchModelPackage#getNode_Elements()
+	 * @see edu.hu.clickwatch.model.ClickWatchModelPackage#getNode_Elements()
 	 * @model containment="true"
 	 *        extendedMetaData="name='element' kind='element'"
 	 * @generated
@@ -118,14 +118,14 @@ public interface Node extends CDOObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Connected</em>' attribute.
 	 * @see #setConnected(boolean)
-	 * @see model.ClickWatchModelPackage#getNode_Connected()
+	 * @see edu.hu.clickwatch.model.ClickWatchModelPackage#getNode_Connected()
 	 * @model default="false" transient="true"
 	 * @generated
 	 */
 	boolean isConnected();
 
 	/**
-	 * Sets the value of the '{@link model.Node#isConnected <em>Connected</em>}' attribute.
+	 * Sets the value of the '{@link edu.hu.clickwatch.model.Node#isConnected <em>Connected</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Connected</em>' attribute.
@@ -144,14 +144,14 @@ public interface Node extends CDOObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Connection</em>' attribute.
 	 * @see #setConnection(Object)
-	 * @see model.ClickWatchModelPackage#getNode_Connection()
+	 * @see edu.hu.clickwatch.model.ClickWatchModelPackage#getNode_Connection()
 	 * @model transient="true"
 	 * @generated
 	 */
 	Object getConnection();
 
 	/**
-	 * Sets the value of the '{@link model.Node#getConnection <em>Connection</em>}' attribute.
+	 * Sets the value of the '{@link edu.hu.clickwatch.model.Node#getConnection <em>Connection</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Connection</em>' attribute.
@@ -163,7 +163,7 @@ public interface Node extends CDOObject {
 	/**
 	 * Returns the value of the '<em><b>Backbone</b></em>' attribute.
 	 * The default value is <code>"unknown"</code>.
-	 * The literals are from the enumeration {@link model.BackboneType}.
+	 * The literals are from the enumeration {@link edu.hu.clickwatch.model.BackboneType}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Backbone</em>' attribute isn't clear,
@@ -171,20 +171,20 @@ public interface Node extends CDOObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Backbone</em>' attribute.
-	 * @see model.BackboneType
+	 * @see edu.hu.clickwatch.model.BackboneType
 	 * @see #setBackbone(BackboneType)
-	 * @see model.ClickWatchModelPackage#getNode_Backbone()
+	 * @see edu.hu.clickwatch.model.ClickWatchModelPackage#getNode_Backbone()
 	 * @model default="unknown"
 	 * @generated
 	 */
 	BackboneType getBackbone();
 
 	/**
-	 * Sets the value of the '{@link model.Node#getBackbone <em>Backbone</em>}' attribute.
+	 * Sets the value of the '{@link edu.hu.clickwatch.model.Node#getBackbone <em>Backbone</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Backbone</em>' attribute.
-	 * @see model.BackboneType
+	 * @see edu.hu.clickwatch.model.BackboneType
 	 * @see #getBackbone()
 	 * @generated
 	 */
@@ -201,14 +201,14 @@ public interface Node extends CDOObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Retrieving</em>' attribute.
 	 * @see #setRetrieving(boolean)
-	 * @see model.ClickWatchModelPackage#getNode_Retrieving()
+	 * @see edu.hu.clickwatch.model.ClickWatchModelPackage#getNode_Retrieving()
 	 * @model default="false" transient="true"
 	 * @generated
 	 */
 	boolean isRetrieving();
 
 	/**
-	 * Sets the value of the '{@link model.Node#isRetrieving <em>Retrieving</em>}' attribute.
+	 * Sets the value of the '{@link edu.hu.clickwatch.model.Node#isRetrieving <em>Retrieving</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Retrieving</em>' attribute.
@@ -228,14 +228,14 @@ public interface Node extends CDOObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Has Record</em>' attribute.
 	 * @see #setHasRecord(boolean)
-	 * @see model.ClickWatchModelPackage#getNode_HasRecord()
+	 * @see edu.hu.clickwatch.model.ClickWatchModelPackage#getNode_HasRecord()
 	 * @model default="false"
 	 * @generated
 	 */
 	boolean isHasRecord();
 
 	/**
-	 * Sets the value of the '{@link model.Node#isHasRecord <em>Has Record</em>}' attribute.
+	 * Sets the value of the '{@link edu.hu.clickwatch.model.Node#isHasRecord <em>Has Record</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Has Record</em>' attribute.
@@ -255,14 +255,14 @@ public interface Node extends CDOObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Recording</em>' attribute.
 	 * @see #setRecording(boolean)
-	 * @see model.ClickWatchModelPackage#getNode_Recording()
+	 * @see edu.hu.clickwatch.model.ClickWatchModelPackage#getNode_Recording()
 	 * @model default="false" transient="true"
 	 * @generated
 	 */
 	boolean isRecording();
 
 	/**
-	 * Sets the value of the '{@link model.Node#isRecording <em>Recording</em>}' attribute.
+	 * Sets the value of the '{@link edu.hu.clickwatch.model.Node#isRecording <em>Recording</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Recording</em>' attribute.

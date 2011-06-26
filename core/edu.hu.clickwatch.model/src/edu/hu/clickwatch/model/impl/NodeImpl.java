@@ -24,15 +24,15 @@ import org.eclipse.emf.internal.cdo.CDOObjectImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link model.impl.NodeImpl#getINetAdress <em>INet Adress</em>}</li>
- *   <li>{@link model.impl.NodeImpl#getPort <em>Port</em>}</li>
- *   <li>{@link model.impl.NodeImpl#getElements <em>Elements</em>}</li>
- *   <li>{@link model.impl.NodeImpl#isConnected <em>Connected</em>}</li>
- *   <li>{@link model.impl.NodeImpl#getConnection <em>Connection</em>}</li>
- *   <li>{@link model.impl.NodeImpl#getBackbone <em>Backbone</em>}</li>
- *   <li>{@link model.impl.NodeImpl#isRetrieving <em>Retrieving</em>}</li>
- *   <li>{@link model.impl.NodeImpl#isHasRecord <em>Has Record</em>}</li>
- *   <li>{@link model.impl.NodeImpl#isRecording <em>Recording</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.model.impl.NodeImpl#getINetAddress <em>INet Address</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.model.impl.NodeImpl#getPort <em>Port</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.model.impl.NodeImpl#getElements <em>Elements</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.model.impl.NodeImpl#isConnected <em>Connected</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.model.impl.NodeImpl#getConnection <em>Connection</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.model.impl.NodeImpl#getBackbone <em>Backbone</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.model.impl.NodeImpl#isRetrieving <em>Retrieving</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.model.impl.NodeImpl#isHasRecord <em>Has Record</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.model.impl.NodeImpl#isRecording <em>Recording</em>}</li>
  * </ul>
  * </p>
  *
@@ -73,8 +73,8 @@ public class NodeImpl extends CDOObjectImpl implements Node {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getINetAdress() {
-		return (String)eGet(ClickWatchModelPackage.Literals.NODE__INET_ADRESS, true);
+	public String getINetAddress() {
+		return (String)eGet(ClickWatchModelPackage.Literals.NODE__INET_ADDRESS, true);
 	}
 
 	/**
@@ -82,8 +82,8 @@ public class NodeImpl extends CDOObjectImpl implements Node {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setINetAdress(String newINetAdress) {
-		eSet(ClickWatchModelPackage.Literals.NODE__INET_ADRESS, newINetAdress);
+	public void setINetAddress(String newINetAddress) {
+		eSet(ClickWatchModelPackage.Literals.NODE__INET_ADDRESS, newINetAddress);
 	}
 
 	/**

@@ -18,14 +18,14 @@ import org.eclipse.emf.common.util.EList;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link model.Element#getName <em>Name</em>}</li>
- *   <li>{@link model.Element#getHandlers <em>Handlers</em>}</li>
- *   <li>{@link model.Element#isWatch <em>Watch</em>}</li>
- *   <li>{@link model.Element#getChildren <em>Children</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.model.Element#getName <em>Name</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.model.Element#getHandlers <em>Handlers</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.model.Element#isWatch <em>Watch</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.model.Element#getChildren <em>Children</em>}</li>
  * </ul>
  * </p>
  *
- * @see model.ClickWatchModelPackage#getElement()
+ * @see edu.hu.clickwatch.model.ClickWatchModelPackage#getElement()
  * @model
  * @extends CDOObject
  * @generated
@@ -41,14 +41,14 @@ public interface Element extends CDOObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
-	 * @see model.ClickWatchModelPackage#getElement_Name()
+	 * @see edu.hu.clickwatch.model.ClickWatchModelPackage#getElement_Name()
 	 * @model
 	 * @generated
 	 */
 	String getName();
 
 	/**
-	 * Sets the value of the '{@link model.Element#getName <em>Name</em>}' attribute.
+	 * Sets the value of the '{@link edu.hu.clickwatch.model.Element#getName <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Name</em>' attribute.
@@ -59,7 +59,7 @@ public interface Element extends CDOObject {
 
 	/**
 	 * Returns the value of the '<em><b>Handlers</b></em>' containment reference list.
-	 * The list contents are of type {@link model.Handler}.
+	 * The list contents are of type {@link edu.hu.clickwatch.model.Handler}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Handlers</em>' containment reference list isn't clear,
@@ -67,7 +67,7 @@ public interface Element extends CDOObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Handlers</em>' containment reference list.
-	 * @see model.ClickWatchModelPackage#getElement_Handlers()
+	 * @see edu.hu.clickwatch.model.ClickWatchModelPackage#getElement_Handlers()
 	 * @model containment="true"
 	 *        extendedMetaData="name='handler' kind='element'"
 	 * @generated
@@ -85,14 +85,14 @@ public interface Element extends CDOObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Watch</em>' attribute.
 	 * @see #setWatch(boolean)
-	 * @see model.ClickWatchModelPackage#getElement_Watch()
+	 * @see edu.hu.clickwatch.model.ClickWatchModelPackage#getElement_Watch()
 	 * @model default="false"
 	 * @generated
 	 */
 	boolean isWatch();
 
 	/**
-	 * Sets the value of the '{@link model.Element#isWatch <em>Watch</em>}' attribute.
+	 * Sets the value of the '{@link edu.hu.clickwatch.model.Element#isWatch <em>Watch</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Watch</em>' attribute.
@@ -103,7 +103,7 @@ public interface Element extends CDOObject {
 
 	/**
 	 * Returns the value of the '<em><b>Children</b></em>' containment reference list.
-	 * The list contents are of type {@link model.Element}.
+	 * The list contents are of type {@link edu.hu.clickwatch.model.Element}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Children</em>' containment reference list isn't clear,
@@ -111,7 +111,7 @@ public interface Element extends CDOObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Children</em>' containment reference list.
-	 * @see model.ClickWatchModelPackage#getElement_Children()
+	 * @see edu.hu.clickwatch.model.ClickWatchModelPackage#getElement_Children()
 	 * @model containment="true"
 	 * @generated
 	 */

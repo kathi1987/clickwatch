@@ -35,11 +35,18 @@ public abstract class AbstractNodeAdapter implements INodeAdapter {
 
 	private String host = null;
 	private String port = null;
+	private int timeout = 6000;
 
 	public interface ErrorListener {
 		public void handlerError(Throwable e);
 	}
 
+	public synchronized void setUp(String host, String port, int timeout) {
+		this.host = host;
+		this.port = port;
+		this.timeout = timeout;
+	}
+	
 	public synchronized void setUp(String host, String port) {
 		this.host = host;
 		this.port = port;
@@ -51,7 +58,7 @@ public abstract class AbstractNodeAdapter implements INodeAdapter {
 		Preconditions.checkNotNull(host);
 
 		try {
-			cs.connect(InetAddress.getByName(host.trim()), new Integer(port.trim()));
+			cs.connect(InetAddress.getByName(host.trim()), new Integer(port.trim()), timeout);
 			isConnected = true;
 		} catch (IOException e) {
 			Throwables.propagate(e);
@@ -110,7 +117,7 @@ public abstract class AbstractNodeAdapter implements INodeAdapter {
 	public Node retrieve(String elemFilters, String handFilter) {
 		ensureConnected();
 		internalNodeCopy = modelFactory.createNode();
-		internalNodeCopy.setINetAdress(host);
+		internalNodeCopy.setINetAddress(host);
 		internalNodeCopy.setPort(port);
 		
 		Map<String, Element> elementMap = new HashMap<String, Element>();

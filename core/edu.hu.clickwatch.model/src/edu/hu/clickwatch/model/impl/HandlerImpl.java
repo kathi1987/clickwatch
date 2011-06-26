@@ -25,13 +25,13 @@ import org.eclipse.emf.internal.cdo.CDOObjectImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link model.impl.HandlerImpl#getName <em>Name</em>}</li>
- *   <li>{@link model.impl.HandlerImpl#isCanRead <em>Can Read</em>}</li>
- *   <li>{@link model.impl.HandlerImpl#isCanWrite <em>Can Write</em>}</li>
- *   <li>{@link model.impl.HandlerImpl#isChanged <em>Changed</em>}</li>
- *   <li>{@link model.impl.HandlerImpl#isWatch <em>Watch</em>}</li>
- *   <li>{@link model.impl.HandlerImpl#getMixed <em>Mixed</em>}</li>
- *   <li>{@link model.impl.HandlerImpl#getAny <em>Any</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.model.impl.HandlerImpl#getName <em>Name</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.model.impl.HandlerImpl#isCanRead <em>Can Read</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.model.impl.HandlerImpl#isCanWrite <em>Can Write</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.model.impl.HandlerImpl#isChanged <em>Changed</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.model.impl.HandlerImpl#isWatch <em>Watch</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.model.impl.HandlerImpl#getMixed <em>Mixed</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.model.impl.HandlerImpl#getAny <em>Any</em>}</li>
  * </ul>
  * </p>
  *

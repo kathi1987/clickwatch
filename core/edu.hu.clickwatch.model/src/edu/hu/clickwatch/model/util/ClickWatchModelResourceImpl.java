@@ -14,7 +14,7 @@ import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
  * <!-- begin-user-doc -->
  * The <b>Resource </b> associated with the package.
  * <!-- end-user-doc -->
- * @see model.ClickWatchModelResourceFactoryImpl.ModelResourceFactoryImpl
+ * @see edu.hu.clickwatch.model.util.ClickWatchModelResourceFactoryImpl
  * @generated
  */
 public class ClickWatchModelResourceImpl extends XMLResourceImpl {

@@ -23,10 +23,10 @@ import org.eclipse.emf.internal.cdo.CDOObjectImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link model.impl.ElementImpl#getName <em>Name</em>}</li>
- *   <li>{@link model.impl.ElementImpl#getHandlers <em>Handlers</em>}</li>
- *   <li>{@link model.impl.ElementImpl#isWatch <em>Watch</em>}</li>
- *   <li>{@link model.impl.ElementImpl#getChildren <em>Children</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.model.impl.ElementImpl#getName <em>Name</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.model.impl.ElementImpl#getHandlers <em>Handlers</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.model.impl.ElementImpl#isWatch <em>Watch</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.model.impl.ElementImpl#getChildren <em>Children</em>}</li>
  * </ul>
  * </p>
  *
@@ -124,7 +124,9 @@ public class ElementImpl extends CDOObjectImpl implements Element {
 	 * @generated
 	 */
 	public String getElementPath() {
-		return (eContainer() instanceof Element) ? ((Element)eContainer()).getElementPath() + "/" + getName() : getName();
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 

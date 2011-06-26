@@ -30,7 +30,7 @@ public interface IClickSocket {
 	 *            , port of the click runtim on the remote node (usually 7777).
 	 * @throws IOException
 	 */
-	void connect(InetAddress host, int port) throws IOException;
+	void connect(InetAddress host, int port, int socketTimeOut) throws IOException;
 
 	/**
 	 * Closes the connection to the remote node. It works under the assumption

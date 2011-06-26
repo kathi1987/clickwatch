@@ -64,12 +64,6 @@ public class ControlSocket {
 	public static final int PROTOCOL_MAJOR_VERSION = 1;
 	public static final int PROTOCOL_MINOR_VERSION = 0;
 
-	/*
-	 * XXX not sure timeout is a good idea; if we do timeout, we should reset
-	 * the connection (close and re-open) to get rid of all old data...
-	 */
-	public static final int _sock_timeout = /* 0; */6000; // msecs
-
 	/**
 	 * Constructs a new ControlSocket.
 	 * 
@@ -83,7 +77,7 @@ public class ControlSocket {
 	 *             ControlSocket returned a bad response.
 	 * @see java.net.InetAddress
 	 */
-	public ControlSocket(InetAddress host, int port) throws IOException {
+	public ControlSocket(InetAddress host, int port, int timeout) throws IOException {
 		_host = host;
 		_port = port;
 
@@ -91,7 +85,7 @@ public class ControlSocket {
 		 * setup connection to the node's click ControlSocket
 		 */
 		_sock = new Socket(_host, _port);
-		_sock.setSoTimeout(_sock_timeout);
+		_sock.setSoTimeout(timeout);
 
 		InputStream is = _sock.getInputStream();
 		OutputStream os = _sock.getOutputStream();
@@ -801,7 +795,7 @@ public class ControlSocket {
 		}
 
 		try {
-			ControlSocket cs = new ControlSocket(localhost, 7777);
+			ControlSocket cs = new ControlSocket(localhost, 7777, 6000);
 			if (args.length == 2) {
 				char data[] = cs.read(args[0], args[1]);
 				System.out.println(data);

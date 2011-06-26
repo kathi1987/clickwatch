@@ -86,7 +86,7 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
-	 * @see model.ClickWatchModelPackage#eNS_URI
+	 * @see edu.hu.clickwatch.model.ClickWatchModelPackage#eNS_URI
 	 * @see #init()
 	 * @generated
 	 */
@@ -117,7 +117,7 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
 		if (isInited) return (ClickWatchModelPackage)EPackage.Registry.INSTANCE.getEPackage(ClickWatchModelPackage.eNS_URI);
 
 		// Obtain or create and register package
-		ClickWatchModelPackageImpl theModelPackage = (ClickWatchModelPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof ClickWatchModelPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new ClickWatchModelPackageImpl());
+		ClickWatchModelPackageImpl theClickWatchModelPackage = (ClickWatchModelPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof ClickWatchModelPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new ClickWatchModelPackageImpl());
 
 		isInited = true;
 
@@ -125,18 +125,18 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
 		XMLTypePackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
-		theModelPackage.createPackageContents();
+		theClickWatchModelPackage.createPackageContents();
 
 		// Initialize created meta-data
-		theModelPackage.initializePackageContents();
+		theClickWatchModelPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
-		theModelPackage.freeze();
+		theClickWatchModelPackage.freeze();
 
   
 		// Update the registry and return the package
-		EPackage.Registry.INSTANCE.put(ClickWatchModelPackage.eNS_URI, theModelPackage);
-		return theModelPackage;
+		EPackage.Registry.INSTANCE.put(ClickWatchModelPackage.eNS_URI, theClickWatchModelPackage);
+		return theClickWatchModelPackage;
 	}
 
 	/**
@@ -153,7 +153,7 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getNode_INetAdress() {
+	public EAttribute getNode_INetAddress() {
 		return (EAttribute)nodeEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -423,6 +423,15 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getNetwork_Timeout() {
+		return (EAttribute)networkEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getMultiNode() {
 		return multiNodeEClass;
 	}
@@ -450,15 +459,6 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ClickWatchModelFactory getModelFactory() {
-		return (ClickWatchModelFactory)getEFactoryInstance();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private boolean isCreated = false;
 
 	/**
@@ -474,7 +474,7 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
 
 		// Create classes and their features
 		nodeEClass = createEClass(NODE);
-		createEAttribute(nodeEClass, NODE__INET_ADRESS);
+		createEAttribute(nodeEClass, NODE__INET_ADDRESS);
 		createEAttribute(nodeEClass, NODE__PORT);
 		createEReference(nodeEClass, NODE__ELEMENTS);
 		createEAttribute(nodeEClass, NODE__CONNECTED);
@@ -507,6 +507,7 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
 		createEAttribute(networkEClass, NETWORK__HANDLER_FILTER);
 		createEAttribute(networkEClass, NETWORK__UPDATE_INTERVALL);
 		createEReference(networkEClass, NETWORK__SUBNETWORKS);
+		createEAttribute(networkEClass, NETWORK__TIMEOUT);
 
 		multiNodeEClass = createEClass(MULTI_NODE);
 		createEReference(multiNodeEClass, MULTI_NODE__NODES);
@@ -547,7 +548,7 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(nodeEClass, Node.class, "Node", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getNode_INetAdress(), ecorePackage.getEString(), "iNetAdress", "localhost", 0, 1, Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getNode_INetAddress(), ecorePackage.getEString(), "iNetAddress", "localhost", 0, 1, Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getNode_Port(), ecorePackage.getEString(), "port", "7777", 0, 1, Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getNode_Elements(), this.getElement(), null, "elements", null, 0, -1, Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getNode_Connected(), ecorePackage.getEBoolean(), "connected", "false", 0, 1, Node.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -582,6 +583,7 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
 		initEAttribute(getNetwork_HandlerFilter(), ecorePackage.getEString(), "HandlerFilter", null, 0, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getNetwork_UpdateIntervall(), ecorePackage.getEInt(), "updateIntervall", null, 0, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getNetwork_Subnetworks(), this.getNetwork(), null, "subnetworks", null, 0, -1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getNetwork_Timeout(), ecorePackage.getEInt(), "timeout", "6000", 0, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(multiNodeEClass, MultiNode.class, "MultiNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getMultiNode_Nodes(), this.getNode(), null, "nodes", null, 0, -1, MultiNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

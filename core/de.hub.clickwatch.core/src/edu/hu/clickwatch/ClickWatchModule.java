@@ -11,10 +11,10 @@ import edu.hu.clickcontrol.IClickSocket;
 import edu.hu.clickwatch.merge.IMergeConfiguration;
 import edu.hu.clickwatch.merge.MergeModule;
 import edu.hu.clickwatch.model.ClickWatchNodeMergeConfiguration;
-import edu.hu.clickwatch.nodeadapter.ClickControlXSDNodeAdapter;
+import edu.hu.clickwatch.nodeadapter.ClickControlNodeXmlValuesAdapter;
 import edu.hu.clickwatch.nodeadapter.INodeAdapter;
-import edu.hu.clickwatch.tests.clicksockets.ClickSocketPlayer;
-import edu.hu.clickwatch.tests.clicksockets.ClickSocketPlayerSocketImpl;
+import edu.hu.clickwatch.recorder.ClickSocketPlayer;
+import edu.hu.clickwatch.recorder.ClickSocketPlayerSocketImpl;
 import edu.hu.clickwatch.util.ILogger;
 
 public class ClickWatchModule extends AbstractModule {
@@ -44,11 +44,11 @@ public class ClickWatchModule extends AbstractModule {
 		bindToPlayer();
 		
 		// binds a special ClickControlNodeAdapter that reads the xml-handler of each element instead its native HandlerInfos
-		bind(INodeAdapter.class).to(ClickControlXSDNodeAdapter.class);
-		//bind(INodeAdapter.class).to(ClickControlNodeXmlValuesAdapter.class);
+		// bind(INodeAdapter.class).to(ClickControlXSDNodeAdapter.class);
+		bind(INodeAdapter.class).to(ClickControlNodeXmlValuesAdapter.class);
 	}
 
-	private void bindToPlayer() {
+	protected void bindToPlayer() {
 		java.net.URI uri = null;
 		try {
 			uri = ClickWatchPluginActivator.getInstance().getBundle().getEntry(

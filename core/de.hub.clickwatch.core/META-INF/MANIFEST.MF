@@ -3,26 +3,23 @@ Bundle-ManifestVersion: 2
 Bundle-Name: edu.hu.clickwatch
 Bundle-SymbolicName: de.hub.clickwatch.core;singleton:=true
 Bundle-Version: 0.1.0
-Require-Bundle: org.eclipse.emf.ecore;bundle-version="2.7.0",
- org.eclipse.emf.cdo;bundle-version="4.0.0",
- org.eclipse.emf.ecore.xmi;bundle-version="2.5.0",
- org.eclipse.core.runtime;bundle-version="3.6.0",
- org.eclipse.core.resources;bundle-version="3.6.0",
- org.eclipse.xsd;bundle-version="2.6.0",
+Require-Bundle: org.eclipse.emf.ecore;bundle-version="2.7.0";visibility:=reexport,
+ org.eclipse.emf.cdo;bundle-version="4.0.0";visibility:=reexport,
+ org.eclipse.emf.ecore.xmi;bundle-version="2.5.0";visibility:=reexport,
+ org.eclipse.core.runtime;bundle-version="3.6.0";visibility:=reexport,
+ org.eclipse.core.resources;bundle-version="3.6.0";visibility:=reexport,
+ org.eclipse.xsd;bundle-version="2.6.0";visibility:=reexport,
  org.eclipse.xtend;bundle-version="1.0.1",
  org.eclipse.xtend.typesystem.emf;bundle-version="1.0.1",
  com.google.collect;bundle-version="1.0.0",
  com.google.inject;bundle-version="2.0.0",
- org.junit;bundle-version="4.8.2",
- edu.hu.clickwatch.model;bundle-version="1.0.0",
- edu.mit.clickcontrol;bundle-version="1.0.0"
+ edu.hu.clickwatch.model;bundle-version="1.0.0";visibility:=reexport,
+ edu.mit.clickcontrol;bundle-version="1.0.0";visibility:=reexport
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: edu.hu.clickwatch,
  edu.hu.clickwatch.merge,
  edu.hu.clickwatch.model,
  edu.hu.clickwatch.nodeadapter,
- edu.hu.clickwatch.tests,
- edu.hu.clickwatch.tests.clicksockets,
  edu.hu.clickwatch.util
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: jsch-20110217.jar,
