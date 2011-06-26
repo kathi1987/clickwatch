@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>edu.hu.clickwatch</name>
+	<name>de.hub.clickwatch.core</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -32,7 +32,7 @@
 		</buildCommand>
 	</buildSpec>
 	<natures>
-                <nature>org.maven.ide.eclipse.maven2Nature</nature>
+		<nature>org.maven.ide.eclipse.maven2Nature</nature>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>org.eclipse.pde.PluginNature</nature>
 		<nature>org.eclipse.xtend.shared.ui.xtendXPandNature</nature>

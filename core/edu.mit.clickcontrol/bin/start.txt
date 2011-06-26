@@ -1,2 +1,0 @@
-java statscollector/StatsCollector /testbedhome/testbed/simulation/click-brn-scripts/032-link_and_channel_stat/wgt /testbedhome/testbe
-d/helper/src/jClickClient/src/handler2

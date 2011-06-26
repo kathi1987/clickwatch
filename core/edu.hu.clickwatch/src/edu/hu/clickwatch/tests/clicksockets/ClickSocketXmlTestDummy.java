@@ -1,6 +1,6 @@
 package edu.hu.clickwatch.tests.clicksockets;
 
-import com.google.common.base.Throwables;
+import edu.hu.clickwatch.util.Throwables;
 
 public class ClickSocketXmlTestDummy extends ClickSocketTestDummy {
 

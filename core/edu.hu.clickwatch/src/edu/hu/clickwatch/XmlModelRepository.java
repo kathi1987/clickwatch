@@ -32,8 +32,9 @@ import org.eclipse.xsd.util.XSDResourceFactoryImpl;
 import org.eclipse.xsd.util.XSDResourceImpl;
 
 import com.google.common.base.Preconditions;
-import com.google.common.base.Throwables;
 import com.google.inject.Singleton;
+
+import edu.hu.clickwatch.util.Throwables;
 
 @Singleton
 public class XmlModelRepository {

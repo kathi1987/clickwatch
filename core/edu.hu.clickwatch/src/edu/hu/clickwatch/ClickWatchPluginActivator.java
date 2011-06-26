@@ -1,7 +1,7 @@
 package edu.hu.clickwatch;
 
+import org.eclipse.core.runtime.Plugin;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
 import com.google.inject.Guice;
@@ -9,7 +9,7 @@ import com.google.inject.Injector;
 
 import edu.hu.clickwatch.util.ILogger;
 
-public class ClickWatchPluginActivator extends AbstractUIPlugin {
+public class ClickWatchPluginActivator extends Plugin {
 	
 	private Injector injector = null;
 	private static ClickWatchPluginActivator INSTANCE;
@@ -21,7 +21,7 @@ public class ClickWatchPluginActivator extends AbstractUIPlugin {
 	@Override
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
-		INSTANCE = this;
+		INSTANCE = this;	
 		ClickWatchModule clickWatchModule = new ClickWatchModule();
 		clickWatchModule.setLogger(new ILogger() {
 

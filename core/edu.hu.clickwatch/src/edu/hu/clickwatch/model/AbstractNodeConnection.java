@@ -6,22 +6,15 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.ui.IEditorPart;
-import org.eclipse.ui.IPartListener;
-import org.eclipse.ui.IWorkbenchPart;
-import org.eclipse.ui.PlatformUI;
 
 import com.google.common.base.Preconditions;
-import com.google.common.base.Throwables;
 import com.google.inject.Inject;
 
 import edu.hu.clickwatch.actions.Connect;
 import edu.hu.clickwatch.actions.Disconnect;
 import edu.hu.clickwatch.merge.Merger;
-import edu.hu.clickwatch.model.presentation.ClickWatchModelEditor;
 import edu.hu.clickwatch.nodeadapter.INodeAdapter;
+import edu.hu.clickwatch.util.Throwables;
 import edu.hu.clickwatch.util.UiThreadder;
 
 /**

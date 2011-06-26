@@ -11,18 +11,18 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 
-import com.google.common.base.Throwables;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 
-import edu.hu.clickwatch.ClickWatchStandaloneSetup;
 import edu.hu.clickwatch.ClickWatchModule;
+import edu.hu.clickwatch.ClickWatchStandaloneSetup;
 import edu.hu.clickwatch.model.ClickWatchModelFactory;
 import edu.hu.clickwatch.model.Network;
 import edu.hu.clickwatch.model.Node;
 import edu.hu.clickwatch.nodeadapter.ClickControlNodeAdapter;
 import edu.hu.clickwatch.nodeadapter.INodeAdapter;
 import edu.hu.clickwatch.util.ILogger;
+import edu.hu.clickwatch.util.Throwables;
 
 public class ClickSocketRecorder {
 

@@ -23,13 +23,11 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import click.ControlSocket.HandlerInfo;
-
-import com.google.common.base.Throwables;
-
 import edu.hu.clickwatch.ClickWatchPluginActivator;
 import edu.hu.clickwatch.XmlModelRepository;
 import edu.hu.clickwatch.nodeadapter.ClickControlXSDNodeAdapter;
 import edu.hu.clickwatch.tests.XmlModelRepositoryTest;
+import edu.hu.clickwatch.util.Throwables;
 
 public class ClickSocketXSDDummy extends ClickSocketTestImpl {
 
