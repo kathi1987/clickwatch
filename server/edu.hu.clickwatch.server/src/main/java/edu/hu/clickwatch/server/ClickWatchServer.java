@@ -35,6 +35,14 @@ public class ClickWatchServer implements IClickWatchServer {
 	/** A handler for the CDO connection */
 	private CDOHandler mDatabaseHandler;
 	
+	public CDOHandler getDatabaseHandler() {
+		return mDatabaseHandler;
+	}
+
+	public void setDatabaseHandler(CDOHandler pDatabaseHandler) {
+		this.mDatabaseHandler = pDatabaseHandler;
+	}
+
 	@Inject
 	public ClickWatchServer(){
 		

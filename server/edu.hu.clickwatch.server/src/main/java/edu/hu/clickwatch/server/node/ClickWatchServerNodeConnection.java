@@ -184,16 +184,16 @@ public class ClickWatchServerNodeConnection {
 				mNode.setConnected(true);
 			}
 		});
-		/*
+		
 		if(this.mDatabaseHandler != null){
-		// Add content to the database
-		this.mDatabaseHandler.openSession();
-		this.mDatabaseHandler.openTransaction(updatedNodeCopy);
-		this.mDatabaseHandler.commitTransaction();
-		this.mDatabaseHandler.closeTransaction();
-		this.mDatabaseHandler.closeSession();
+			// Add content to the database
+			this.mDatabaseHandler.openSession();
+			this.mDatabaseHandler.openTransaction(updatedNodeCopy);
+			this.mDatabaseHandler.commitTransaction();
+			this.mDatabaseHandler.closeTransaction();
+			this.mDatabaseHandler.closeSession();
 		}
-		*/
+		
 		EcoreUtil.delete(updatedNodeCopy, true);
 		mNode.setRetrieving(false);
 		sleepUntilNextUpdate();

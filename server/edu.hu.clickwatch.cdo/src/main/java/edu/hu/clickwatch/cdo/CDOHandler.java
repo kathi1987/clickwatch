@@ -191,13 +191,13 @@ public class CDOHandler implements ICDOHandler {
 	@Override
 	public void rollbackTransaction() {
 		this.mHandler.getTransaction().rollback();
-		// Set the transaction back to null
-		this.mHandler.setTransaction(null);
 	}
 
 	@Override
 	public void closeTransaction(){
 		this.mHandler.getTransaction().close();
+		// Set the transaction back to null
+		this.mHandler.setTransaction(null);
 	}
 	
 	@Override
