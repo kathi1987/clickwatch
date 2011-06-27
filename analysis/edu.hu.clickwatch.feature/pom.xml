@@ -4,10 +4,11 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <artifactId>clickwatch</artifactId>
-    <groupId>edu.hu.clickwatch</groupId>
+    <groupId>de.hu.clickwatch</groupId>
     <version>0.0.1-SNAPSHOT</version>
+    <relativePath>../pom.xml</relativePath>
   </parent>
-  <groupId>edu.hu.clickwatch</groupId>
+  <groupId>de.hu.clickwatch</groupId>
   <artifactId>edu.hu.clickwatch.feature</artifactId>
   <version>0.1.0</version>
   <packaging>eclipse-feature</packaging>

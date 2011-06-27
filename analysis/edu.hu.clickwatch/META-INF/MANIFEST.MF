@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: edu.hu.clickwatch
 Bundle-SymbolicName: edu.hu.clickwatch;singleton:=true
-Bundle-Version: 0.1.0
+Bundle-Version: 0.0.1.qualifier
 Require-Bundle: org.eclipse.emf.ecore,
  edu.mit.clickcontrol,
  org.eclipse.ui,
@@ -22,7 +22,7 @@ Require-Bundle: org.eclipse.emf.ecore,
  org.eclipse.wst.sse.core;bundle-version="1.1.502",
  org.eclipse.wst.xml.core;bundle-version="1.1.502",
  org.eclipse.xsd;bundle-version="2.6.0",
- edu.hu.clickwatch.model.editor;bundle-version="1.0.0";visibility:=reexport,
+ edu.hu.clickwatch.model.editor;visibility:=reexport,
  org.eclipse.xtend;bundle-version="1.0.1",
  org.eclipse.xtend.typesystem.emf;bundle-version="1.0.1",
  org.eclipse.emf.cdo;bundle-version="3.0.1"
