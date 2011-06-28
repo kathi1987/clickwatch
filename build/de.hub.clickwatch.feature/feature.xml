@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="de.hub.clickwatch.feature"
+      label="ClickWatch Feature"
+      version="1.0.0.qualifier">
+
+   <description url="http://www.example.com/description">
+      [Enter Feature Description here.]
+   </description>
+
+   <copyright url="http://www.example.com/copyright">
+      [Enter Copyright Description here.]
+   </copyright>
+
+   <license url="http://www.example.com/license">
+      [Enter License Description here.]
+   </license>
+
+   <requires>
+      <import plugin="org.eclipse.emf.ecore" version="2.7.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.cdo" version="4.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.ecore.xmi" version="2.5.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.core.runtime" version="3.6.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.core.resources" version="3.6.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.xsd" version="2.6.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.xtend" version="1.0.1" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.xtend.typesystem.emf" version="1.0.1" match="greaterOrEqual"/>
+      <import plugin="com.google.collect" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="edu.hu.clickwatch.model" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="edu.mit.clickcontrol" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="com.google.guice" version="3.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.jface" version="3.7.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.jface.text" version="3.6.1" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.core.filesystem" version="1.3.1" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui.ide" version="3.6.2" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui.editors" version="3.6.1" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.core.commands" version="3.6.0" match="greaterOrEqual"/>
+      <import plugin="edu.hu.clickwatch.model.editor" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.edit"/>
+      <import plugin="org.eclipse.swt" version="3.6.1" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui" version="3.6.1" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.edit.ui"/>
+      <import plugin="org.eclipse.emf.cdo" version="3.0.1" match="greaterOrEqual"/>
+      <import plugin="com.google.inject" version="2.0.0" match="greaterOrEqual"/>
+   </requires>
+
+   <plugin
+         id="de.hub.clickwatch.core"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="de.hub.clickwatch.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="edu.hu.clickwatch.model"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="edu.hu.clickwatch.model.edit"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="edu.hu.clickwatch.model.editor"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="edu.mit.clickcontrol"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.google.guice"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

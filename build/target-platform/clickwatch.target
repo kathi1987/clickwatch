@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?pde version="3.6"?>
+
+<target name="clickwatch" sequenceNumber="6">
+<locations>
+<location includeAllPlatforms="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.emf.cdo.sdk.feature.group" version="4.0.0.v20110608-1747"/>
+<unit id="org.eclipse.platform.feature.group" version="3.7.0.v20110530-9gF7UHNFFt4cwE-pkZDJ7oz-mj4OSEIlu9SEv0f"/>
+<unit id="org.eclipse.wst.xml_ui.feature.feature.group" version="3.3.0.v201103310011-7H7EFZ-DxumTla66ahfUnHfpsz0u5Z92pU4TxSL"/>
+<unit id="org.eclipse.wst.xsl.feature.feature.group" version="1.2.0.v201102200555-7T7YFRSFIqUoIrvYEvBiPGJXGZNg"/>
+<unit id="org.eclipse.emf.ecoretools.sdk.feature.group" version="1.0.0.v20110608-1633"/>
+<unit id="org.eclipse.emf.sdk.feature.group" version="2.7.0.v20110606-0949"/>
+<unit id="org.eclipse.graphiti.feature.feature.group" version="0.8.0.v20110607-1252"/>
+<unit id="org.eclipse.graphiti.feature.examples.feature.group" version="0.8.0.v20110607-1252"/>
+<unit id="org.eclipse.xsd.sdk.feature.group" version="2.7.0.v20110606-0949"/>
+<unit id="org.eclipse.xtext.sdk.feature.group" version="2.0.0.v201106070531"/>
+<repository location="http://download.eclipse.org/releases/indigo"/>
+</location>
+</locations>
+</target>
