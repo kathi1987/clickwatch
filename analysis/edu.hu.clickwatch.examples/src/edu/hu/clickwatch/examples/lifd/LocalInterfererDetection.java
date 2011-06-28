@@ -4,6 +4,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
+import de.hub.clickwatch.ui.util.UiThreadder;
 import edu.hu.clickwatch.analysis.automated.IAutomatedAnalysis;
 import edu.hu.clickwatch.analysis.specificmodels.SpecificMetaModelGenerator;
 import edu.hu.clickwatch.analysis.specificmodels.SpecificModelGenerator;
@@ -12,7 +13,6 @@ import edu.hu.clickwatch.examples.ClickWatchExamplesPluginActivator;
 import edu.hu.clickwatch.examples.lifd.topology.Topology;
 import edu.hu.clickwatch.examples.lifd.topology.TopologyPackage;
 import edu.hu.clickwatch.model.Network;
-import edu.hu.clickwatch.util.UiThreadder;
 
 public class LocalInterfererDetection extends AbstractAnalysis implements
 		IAutomatedAnalysis {

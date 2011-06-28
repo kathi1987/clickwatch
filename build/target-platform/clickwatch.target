@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde version="3.6"?>
 
-<target name="clickwatch" sequenceNumber="6">
+<target name="clickwatch" sequenceNumber="9">
 <locations>
 <location includeAllPlatforms="false" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.emf.cdo.sdk.feature.group" version="4.0.0.v20110608-1747"/>
@@ -15,6 +15,10 @@
 <unit id="org.eclipse.xsd.sdk.feature.group" version="2.7.0.v20110606-0949"/>
 <unit id="org.eclipse.xtext.sdk.feature.group" version="2.0.0.v201106070531"/>
 <repository location="http://download.eclipse.org/releases/indigo"/>
+</location>
+<location includeAllPlatforms="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="de.hub.xveg.feature.feature.group" version="1.0.0.v201106281818"/>
+<repository location="http://www2.informatik.hu-berlin.de/~scheidge/p2/xveg"/>
 </location>
 </locations>
 </target>

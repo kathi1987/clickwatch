@@ -89,6 +89,8 @@
 					<target>site</target>
 				</configuration>
 			</plugin>
+			-->
+			<!-- 
 			<plugin>
 				<groupId>org.sonatype.tycho</groupId>
 				<artifactId>maven-osgi-compiler-plugin</artifactId>
@@ -99,9 +101,12 @@
 					<encoding>UTF-8</encoding>
 				</configuration>
 			</plugin>
-			<plugin>
-				<!-- TODO remove workaround when https://issues.sonatype.org/browse/TYCHO-473 
-					is fixed --!>
+			-->
+			
+			<!-- TODO remove workaround when https://issues.sonatype.org/browse/TYCHO-473 
+					is fixed -->
+			<!--
+			<plugin>				
 				<groupId>org.sonatype.tycho</groupId>
 				<artifactId>maven-osgi-source-plugin</artifactId>
 				<version>${tycho-version}</version>
@@ -115,6 +120,8 @@
 					</execution>
 				</executions>
 			</plugin>
+			-->
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
@@ -126,7 +133,7 @@
 						<version>1.0.3</version>
 					</docletArtifact>
 					<doclet>com.google.doclava.Doclava</doclet>
-					<!-- | bootclasspath required by Sun's JVM --!>
+					<!-- bootclasspath required by Sun's JVM -->
 					<bootclasspath>${sun.boot.class.path}</bootclasspath>
 					<additionalparam>
 						-quiet
@@ -137,11 +144,10 @@
 						-d ${project.build.directory}/apidocs
            			</additionalparam>
 					<useStandardDocletOptions>false</useStandardDocletOptions>
-					<!-- | Apple's JVM sometimes requires more memory --!>
+					<!-- Apple's JVM sometimes requires more memory  -->
 					<additionalJOption>-J-Xmx1024m</additionalJOption>
 				</configuration>
 			</plugin>
-			-->
 		</plugins>
 	</build>
 </project>

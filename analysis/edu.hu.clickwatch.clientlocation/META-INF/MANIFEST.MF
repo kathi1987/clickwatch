@@ -12,7 +12,6 @@ Export-Package: edu.hu.clickwatch.clientlocation.clientstats,
  edu.hu.clickwatch.clientlocation.clientstats.util
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
- edu.hu.clickwatch,
  edu.hu.clickwatch.analysis,
  edu.hu.clickwatch.examples,
  com.google.guice;bundle-version="3.0.0",

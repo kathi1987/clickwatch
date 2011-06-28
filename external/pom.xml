@@ -3,10 +3,9 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
 	<parent>
-    <artifactId>clickwatch</artifactId>
+    <artifactId>root</artifactId>
     <groupId>edu.hu.clickwatch</groupId>
     <version>0.0.1-SNAPSHOT</version>
-    <relativePath>../pom.xml</relativePath>
   </parent>
   <groupId>edu.hu.clickwatch</groupId>
   <artifactId>external</artifactId>
@@ -14,8 +13,8 @@
   <packaging>pom</packaging>
   
   <modules>
-   <module>com.google.guava</module>
-   <!-- <module>com.google.guice</module>
+   <module>com.google.guice</module>
+   <!--
    <module>edu.uci.ics.jung</module>
    <module>org.eclipse.xtend.typesystem.emf.ui</module>
    <module>org.jfree.jcommon</module>

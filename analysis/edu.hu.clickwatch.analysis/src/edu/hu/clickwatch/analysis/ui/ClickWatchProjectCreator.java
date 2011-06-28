@@ -20,7 +20,7 @@ public class ClickWatchProjectCreator extends AnalysisProjectCreator {
 		Network network = ClickWatchModelFactory.eINSTANCE.createNetwork();
 		network.setName("a network");
 		Node node = ClickWatchModelFactory.eINSTANCE.createNode();
-		node.setINetAdress("192.168.3.157");
+		node.setINetAddress("192.168.3.157");
 		network.getNodes().add(node);
 		resource.getContents().add(network);
 		resource.save(options);

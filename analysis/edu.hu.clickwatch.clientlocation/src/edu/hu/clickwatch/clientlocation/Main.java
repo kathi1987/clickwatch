@@ -10,6 +10,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
+import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 
@@ -42,19 +43,20 @@ public class Main extends AbstractAnalysis {
 		}
 		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("clientstats", new XMIResourceFactoryImpl());
 		
-		ClickWatchModule clickWatchModule = new ClickWatchModule() {
-			@Override
-			protected void overrideConfigure() {
-				bind(INodeAdapter.class).to(ClickControlXSDNodeAdapter.class);
-			}
-		};
+		ClickWatchModule clickWatchModule = new ClickWatchModule();
 		clickWatchModule.setLogger(new ILogger() {			
 			@Override
 			public void log(int status, String message, Throwable exception) {
 				System.out.println(message + ": " + exception.getMessage());
 			}
 		});
-		injector = Guice.createInjector(clickWatchModule);
+		injector = Guice.createInjector(clickWatchModule, new AbstractModule() {
+			
+			@Override
+			protected void configure() {
+				bind(INodeAdapter.class).to(ClickControlXSDNodeAdapter.class);
+			}
+		});
 		
 		rs = new ResourceSetImpl();
 		cwResource = rs.createResource(URI.createURI("fake.clickwatchmodel"));
