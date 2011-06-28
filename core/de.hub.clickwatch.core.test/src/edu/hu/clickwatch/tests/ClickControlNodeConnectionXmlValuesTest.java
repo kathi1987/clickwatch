@@ -73,7 +73,7 @@ public class ClickControlNodeConnectionXmlValuesTest extends AbstractTest {
 				public void run() {
 					final NodeConnectionTestImpl connection = injector.getInstance(NodeConnectionTestImpl.class);
 					connection.setUp(node);
-					connection.connect(null);
+					connection.connect();
 					connection.getNodeAdapter().connect();
 					
 					for (int j = 0; j < numberOfUpdates; j++) {
@@ -99,7 +99,7 @@ public class ClickControlNodeConnectionXmlValuesTest extends AbstractTest {
 					final Node node = createNode();
 					final NodeConnectionTestImpl connection = injector.getInstance(NodeConnectionTestImpl.class);
 					connection.setUp(node);
-					connection.connect(null);
+					connection.connect();
 					connection.getNodeAdapter().connect();
 					
 					for (int j = 0; j < numberOfUpdates; j++) {
@@ -120,7 +120,7 @@ public class ClickControlNodeConnectionXmlValuesTest extends AbstractTest {
 		final Node node = createNode();
 		final NodeConnectionTestImpl connection = injector.getInstance(NodeConnectionTestImpl.class);
 		connection.setUp(node);
-		connection.connect(null);
+		connection.connect();
 		connection.getNodeAdapter().connect();
 		
 		for (int i = 0; i < numberOfUpdates; i++) {
@@ -163,7 +163,7 @@ public class ClickControlNodeConnectionXmlValuesTest extends AbstractTest {
 		final Node node = createNode();
 		final NodeConnectionTestImpl connection = injector.getInstance(NodeConnectionTestImpl.class);
 		connection.setUp(node);
-		connection.connect(null);
+		connection.connect();
 		connection.getNodeAdapter().connect();
 		
 		network.setElementFilter("device_wifi/link_stat");

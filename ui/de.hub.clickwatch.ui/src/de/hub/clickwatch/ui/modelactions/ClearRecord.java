@@ -2,7 +2,6 @@ package de.hub.clickwatch.ui.modelactions;
 
 import org.eclipse.jface.action.IAction;
 
-import edu.hu.clickwatch.actions.AbstractNodeAction;
 import edu.hu.clickwatch.model.Node;
 
 public class ClearRecord extends AbstractNodeAction {

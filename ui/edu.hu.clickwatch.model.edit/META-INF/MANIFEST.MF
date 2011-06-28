@@ -8,11 +8,11 @@ Bundle-Activator: edu.hu.clickwatch.model.provider.ClickWatchModelEditPlugin$Imp
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Export-Package: edu.hu.clickwatch.model,
- edu.hu.clickwatch.model.provider
+Export-Package: edu.hu.clickwatch.model.provider
 Require-Bundle: org.eclipse.core.runtime,
  edu.hu.clickwatch.model;visibility:=reexport,
  org.eclipse.emf.edit;visibility:=reexport,
  org.eclipse.swt;bundle-version="3.6.1",
- org.eclipse.ui;bundle-version="3.6.1"
+ org.eclipse.ui;bundle-version="3.6.1",
+ de.hub.clickwatch.core
 Bundle-ActivationPolicy: lazy

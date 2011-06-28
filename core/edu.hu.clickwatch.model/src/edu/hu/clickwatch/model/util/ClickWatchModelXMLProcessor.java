@@ -8,13 +8,11 @@ package edu.hu.clickwatch.model.util;
 
 import java.util.Map;
 
-import edu.hu.clickwatch.model.ClickWatchModelPackage;
-
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.resource.Resource;
-
 import org.eclipse.emf.ecore.xmi.util.XMLProcessor;
+
+import edu.hu.clickwatch.model.ClickWatchModelPackage;
 
 /**
  * This class contains helper methods to serialize and deserialize XML documents

@@ -48,7 +48,7 @@ public class PerformanceTest extends TestCase {
 		
 		NodeConnectionTestImpl connection = injector.getInstance(NodeConnectionTestImpl.class);
 		connection.setUp(node);
-		connection.connect(null);
+		connection.connect();
 		connection.getNodeAdapter().connect();
 		for (int i = 0; i < numberOfUpdates; i++) {
 			connection.runUpdate();

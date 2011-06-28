@@ -6,24 +6,22 @@
  */
 package edu.hu.clickwatch.model.impl;
 
-import edu.hu.clickwatch.model.BackboneType;
-import edu.hu.clickwatch.model.Element;
-import edu.hu.clickwatch.model.Handler;
-import edu.hu.clickwatch.model.ClickWatchModelFactory;
-import edu.hu.clickwatch.model.ClickWatchModelPackage;
-import edu.hu.clickwatch.model.MultiNode;
-import edu.hu.clickwatch.model.Network;
-import edu.hu.clickwatch.model.Node;
-
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
+
+import edu.hu.clickwatch.model.BackboneType;
+import edu.hu.clickwatch.model.ClickWatchModelFactory;
+import edu.hu.clickwatch.model.ClickWatchModelPackage;
+import edu.hu.clickwatch.model.Element;
+import edu.hu.clickwatch.model.Handler;
+import edu.hu.clickwatch.model.MultiNode;
+import edu.hu.clickwatch.model.Network;
+import edu.hu.clickwatch.model.Node;
 
 
 /**

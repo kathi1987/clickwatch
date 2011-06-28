@@ -11,7 +11,6 @@ public class PluginActivator extends AbstractUIPlugin {
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		INSTANCE = this;
-
 	}
 	
 	public static PluginActivator getInstance() {

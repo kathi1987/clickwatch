@@ -6,16 +6,14 @@
  */
 package edu.hu.clickwatch.model.impl;
 
-import edu.hu.clickwatch.model.BackboneType;
-import edu.hu.clickwatch.model.Element;
-import edu.hu.clickwatch.model.ClickWatchModelPackage;
-import edu.hu.clickwatch.model.Node;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.internal.cdo.CDOObjectImpl;
+
+import edu.hu.clickwatch.model.BackboneType;
+import edu.hu.clickwatch.model.ClickWatchModelPackage;
+import edu.hu.clickwatch.model.Element;
+import edu.hu.clickwatch.model.Node;
 
 /**
  * <!-- begin-user-doc -->

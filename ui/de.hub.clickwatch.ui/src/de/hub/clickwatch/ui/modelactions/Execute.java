@@ -29,12 +29,10 @@ import com.google.inject.Inject;
 import com.jcraft.jsch.Session;
 
 import de.hub.clickwatch.ui.util.SshConnectionFactory;
-
+import de.hub.clickwatch.ui.views.ResultView;
 import edu.hu.clickwatch.XmlModelRepository;
-import edu.hu.clickwatch.actions.AbstractNodeAction;
 import edu.hu.clickwatch.model.AbstractNodeConnection;
 import edu.hu.clickwatch.model.Node;
-import edu.hu.clickwatch.views.ResultView;
 
 /**
  * Executes shell commands in parallel on each node using SSH.
@@ -253,7 +251,7 @@ public class Execute extends AbstractNodeAction {
 		}
 		
 		// show exec result directly via popup only if a single node was selected otherwise go into batch mode
-		final boolean show_log = (node_lst.size() == 1) ? true : false;
+		// final boolean show_log = (node_lst.size() == 1) ? true : false;
 
 		//  create n parallel execution threads
 		ExecWorkerThread[] workerThreads = new ExecWorkerThread[node_lst.size()];
@@ -267,7 +265,7 @@ public class Execute extends AbstractNodeAction {
 				oldConnection.disconnect();
 			}
 
-			workerThreads[idx] = new ExecWorkerThread(node.getINetAdress(), cmd);
+			workerThreads[idx] = new ExecWorkerThread(node.getINetAddress(), cmd);
 			workerThreads[idx].start();
 		}
 		

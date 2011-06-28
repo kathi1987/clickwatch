@@ -8,9 +8,7 @@ package edu.hu.clickwatch.model.impl;
 
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.internal.cdo.CDOObjectImpl;
 
 import edu.hu.clickwatch.model.ClickWatchModelPackage;

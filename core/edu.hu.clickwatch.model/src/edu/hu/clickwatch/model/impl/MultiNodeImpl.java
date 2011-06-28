@@ -6,13 +6,12 @@
  */
 package edu.hu.clickwatch.model.impl;
 
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EClass;
+
+import edu.hu.clickwatch.model.ClickWatchModelPackage;
 import edu.hu.clickwatch.model.MultiNode;
 import edu.hu.clickwatch.model.Node;
-import edu.hu.clickwatch.model.ClickWatchModelPackage;
-
-import org.eclipse.emf.common.util.EList;
-
-import org.eclipse.emf.ecore.EClass;
 
 /**
  * <!-- begin-user-doc -->

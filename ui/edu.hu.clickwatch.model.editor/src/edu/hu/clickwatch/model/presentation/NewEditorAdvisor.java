@@ -143,7 +143,7 @@ public final class NewEditorAdvisor extends WorkbenchAdvisor {
 	 * RCP's perspective
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static class Perspective implements IPerspectiveFactory {
 		/**
@@ -164,14 +164,11 @@ public final class NewEditorAdvisor extends WorkbenchAdvisor {
 			layout.setEditorAreaVisible(true);
 			layout.addPerspectiveShortcut(ID_PERSPECTIVE);
 
+			IFolderLayout result = layout.createFolder("Result", IPageLayout.RIGHT, (float)0.66, layout.getEditorArea());
+			result.addView("edu.hu.clickwatch.ResultView");
+			
 			IFolderLayout bottom = layout.createFolder("bottom", IPageLayout.BOTTOM, (float)0.66, layout.getEditorArea());
 			bottom.addView(IPageLayout.ID_PROP_SHEET);
-
-			IFolderLayout xsl = layout.createFolder("XSLView", IPageLayout.RIGHT, (float)0.5, layout.getEditorArea());
-			xsl.addView("edu.hu.clickwatch.XSLView");
-			
-			IFolderLayout result = layout.createFolder("Result", IPageLayout.RIGHT, (float)0.5, "XSLView");
-			result.addView("edu.hu.clickwatch.ResultView");
 		}
 	}
 	
@@ -226,6 +223,8 @@ public final class NewEditorAdvisor extends WorkbenchAdvisor {
 	 * @generated
 	 */
 	public static class WindowActionBarAdvisor extends ActionBarAdvisor {
+		
+		private IAction preferencesAction = null;
 		/**
 		 * @see ActionBarAdvisor#ActionBarAdvisor(org.eclipse.ui.application.IActionBarConfigurer)
 		 * <!-- begin-user-doc -->
@@ -236,6 +235,17 @@ public final class NewEditorAdvisor extends WorkbenchAdvisor {
 			super(configurer);
 		}
 		
+		
+		/**
+		 * @generated NOT
+		 */
+		@Override
+		protected void makeActions(IWorkbenchWindow window) {
+			super.makeActions(window);
+			 preferencesAction = ActionFactory.PREFERENCES.create(window);
+		     register(preferencesAction);
+		}
+
 		/**
 		 * @see org.eclipse.ui.application.ActionBarAdvisor#fillMenuBar(org.eclipse.jface.action.IMenuManager)
 		 * <!-- begin-user-doc -->
@@ -319,7 +329,7 @@ public final class NewEditorAdvisor extends WorkbenchAdvisor {
 		 * Creates the 'Window' menu.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @generated
+		 * @generated NOT
 		 */
 		protected IMenuManager createWindowMenu(IWorkbenchWindow window) {
 			IMenuManager menu = new MenuManager(getString("_UI_Menu_Window_label"),
@@ -328,6 +338,7 @@ public final class NewEditorAdvisor extends WorkbenchAdvisor {
 			addToMenuAndRegister(menu, ActionFactory.OPEN_NEW_WINDOW.create(window));
 			menu.add(new GroupMarker(IWorkbenchActionConstants.MB_ADDITIONS));
 			menu.add(ContributionItemFactory.OPEN_WINDOWS.create(window));
+			menu.add(preferencesAction);
 	
 			return menu;
 		}

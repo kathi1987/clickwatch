@@ -1,11 +1,13 @@
 package de.hub.clickwatch.ui.views;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
+import javax.xml.parsers.DocumentBuilderFactory;
+
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.ui.celleditor.AdapterFactoryTreeEditor;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
@@ -22,8 +24,10 @@ import org.eclipse.swt.custom.StackLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.ui.IActionBars;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.ViewPart;
 
+import com.google.common.base.Preconditions;
 import com.google.inject.Inject;
 
 import edu.hu.clickwatch.XmlModelRepository;
@@ -31,30 +35,63 @@ import edu.hu.clickwatch.model.provider.ClickWatchReflectiveItemProviderAdapterF
 
 public class ResultView extends ViewPart {
 	
+	private static final String processingInstruction = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
+	
 	private Action save = null;
 	private StackLayout layout = null;
 	private TreeViewer treeViewer = null;
 	private TextViewer textViewer = null;
 	private ComposedAdapterFactory adapterFactory;
 	
+	private String input = null;
+	
 	@Inject
 	private XmlModelRepository xmlModelRepository; 
 	
 	public void setInput(Object input) {
-		EObject currentInput = (EObject)treeViewer.getInput();
-		if (currentInput != null) {
-			treeViewer.setInput(null);
-			EcoreUtil.delete(currentInput);
+		Preconditions.checkArgument(input != null && input instanceof String);
+		String evalResult = (String)input;
+		this.input = evalResult;
+		EObject result = null;
+		try {
+			boolean xml = true;
+			try {
+				ByteArrayInputStream bais = new ByteArrayInputStream(evalResult.getBytes());
+				DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(bais);
+			} catch (Exception e) {
+				xml = false;
+			}
+			if (xml) {
+				result = xmlModelRepository.deserializeXml(evalResult);
+			}
+		} catch (Throwable e) {
+			// we will display the text result instead.
 		}
-		if (input instanceof EObject) {
-			treeViewer.setInput(input);
-			layout.topControl = treeViewer.getControl();
-			treeViewer.getControl().getParent().layout();
+		
+		// show result
+		if (result == null && evalResult == null) {
+			MessageDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
+					"Exception", "Exception: result xml is null");
+			this.input = null;
+			this.treeViewer.setInput(null);
+			this.textViewer.setInput(null);
+			return; 
 		} else {
-			textViewer.setInput(new Document(input.toString()));
-			layout.topControl = textViewer.getControl();
-			textViewer.getControl().getParent().layout();
-		}	
+			if (result == null) {
+				if (evalResult.startsWith(processingInstruction) || evalResult.startsWith(processingInstruction.replace("\"", "'"))) {
+					evalResult = evalResult.substring(processingInstruction.length());
+				}
+				this.input = evalResult;
+				textViewer.setInput(new Document(evalResult));
+				layout.topControl = textViewer.getControl();
+				textViewer.getControl().getParent().layout();
+			} else {
+				treeViewer.setInput(result);
+				layout.topControl = treeViewer.getControl();
+				treeViewer.getControl().getParent().layout();
+			}							
+
+		}
 	}
 	
 	public ResultView() {
@@ -123,12 +160,7 @@ public class ResultView extends ViewPart {
         
         try {
 			PrintWriter out = new PrintWriter(new File(selFile));
-			String content = null;
-			if (layout.topControl == treeViewer.getControl()) {
-				content = xmlModelRepository.serializeXml((EObject)(treeViewer.getInput()));
-			} else {
-				content = textViewer.getDocument().get();
-			}
+			String content = this.input;
 	        out.write(content);
 	        out.close();
 		} catch (FileNotFoundException e) {

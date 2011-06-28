@@ -14,6 +14,7 @@ import edu.hu.clickwatch.ClickWatchStandaloneSetup;
 import edu.hu.clickwatch.merge.IMergeConfiguration;
 import edu.hu.clickwatch.merge.MergeModule;
 import edu.hu.clickwatch.model.ClickWatchNodeMergeConfiguration;
+import edu.hu.clickwatch.model.IConnectionConfiguration;
 import edu.hu.clickwatch.nodeadapter.ClickControlXSDNodeAdapter;
 import edu.hu.clickwatch.nodeadapter.INodeAdapter;
 import edu.hu.clickwatch.util.ILogger;
@@ -54,6 +55,7 @@ public class AbstractTest extends TestCase {
 			bind(INodeAdapter.class).to(getNodeAdapterClass());
 			bind(IMergeConfiguration.class).to(getMergeConfigurationClass());
 			bind(IClickSocket.class).to(getClickSocketClass());
+			bind(IConnectionConfiguration.class).to(TestConnectionConfiguration.class);
 		}
 		
 	}

@@ -5,8 +5,7 @@ import org.eclipse.jface.preference.FieldEditorPreferencePage;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 
-import edu.hu.clickwatch.ClickWatchPluginActivator;
-import edu.hu.clickwatch.preferences.PreferenceConstants;
+import de.hub.clickwatch.ui.PluginActivator;
 
 /**
  * This class represents a preference page that
@@ -28,7 +27,7 @@ public class ClickWatchPreferences
 
 	public ClickWatchPreferences() {
 		super(GRID);
-		setPreferenceStore(ClickWatchPluginActivator.getInstance().getPreferenceStore());
+		setPreferenceStore(PluginActivator.getInstance().getPreferenceStore());
 		setDescription("Preferences for everything regarding ClickWatch itself.");
 	}
 	

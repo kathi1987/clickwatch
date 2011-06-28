@@ -1,10 +1,8 @@
 package de.hub.clickwatch.ui.actions;
 
-import java.io.ByteArrayInputStream;
 import java.io.StringReader;
 import java.io.StringWriter;
 
-import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.ErrorListener;
 import javax.xml.transform.Result;
 import javax.xml.transform.Source;
@@ -48,7 +46,6 @@ import edu.hu.clickwatch.model.presentation.ClickWatchModelEditor;
 
 public class PerformXslTransformation extends org.eclipse.core.commands.AbstractHandler {
 
-	private static final String processingInstruction = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
 	@Inject
 	private XmlModelRepository xmlModelRepository;
 	
@@ -141,26 +138,8 @@ public class PerformXslTransformation extends org.eclipse.core.commands.Abstract
 					}
 					monitor.worked(40);
 					
-					// de-serialize result
-					EObject result = null;
-					try {
-						boolean xml = true;
-						try {
-							ByteArrayInputStream bais = new ByteArrayInputStream(evalResult.getBytes());
-							DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(bais);
-						} catch (Exception e) {
-							xml = false;
-						}
-						if (xml) {
-							result = xmlModelRepository.deserializeXml(evalResult);
-						}
-					} catch (Throwable e) {
-						// we will display the text result instead.
-					}
-					monitor.worked(5);
-					
 					// show result
-					if (result == null && evalResult == null) {
+					if (evalResult == null) {
 						MessageDialog.openError(shell,
 								"Exception", "Exception: result xml is null");
 						monitor.done();
@@ -170,18 +149,11 @@ public class PerformXslTransformation extends org.eclipse.core.commands.Abstract
 						for(IViewReference viewRef: window.getActivePage().getViewReferences()) {
 							final IViewPart view = viewRef.getView(false);
 							if (view instanceof ResultView) {		
-								if (result == null) {
-									if (evalResult.startsWith(processingInstruction) || evalResult.startsWith(processingInstruction.replace("\"", "'"))) {
-										evalResult = evalResult.substring(processingInstruction.length());
-									}
-									((ResultView)view).setInput(evalResult);
-								} else {
-									((ResultView)view).setInput(result);
-								}							
+								((ResultView)view).setInput(evalResult);							
 							}
 						}	
 					}
-					monitor.worked(5);
+					monitor.worked(10);
 			        monitor.done(); 
 			    } 
 			});
@@ -195,7 +167,7 @@ public class PerformXslTransformation extends org.eclipse.core.commands.Abstract
 	private static TransformerFactory transFact = TransformerFactory.newInstance();
 	
 	private String performEvaluation(String inputXml, String xsl) {
-		System.setProperty("javax.xml.transform.TransformerFactory", "net.sf.saxon.TransformerFactoryImpl");	
+		//System.setProperty("javax.xml.transform.TransformerFactory", "net.sf.saxon.TransformerFactoryImpl");	
 		
 		Source xmlSource = new StreamSource(new StringReader(inputXml));
 	    Source xsltSource = new StreamSource(new StringReader(xsl));

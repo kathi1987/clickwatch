@@ -6,8 +6,9 @@
  */
 package edu.hu.clickwatch.model.util;
 
-import edu.hu.clickwatch.model.*;
-import java.util.List;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.util.Switch;
 
 import edu.hu.clickwatch.model.ClickWatchModelPackage;
 import edu.hu.clickwatch.model.Element;
@@ -15,11 +16,6 @@ import edu.hu.clickwatch.model.Handler;
 import edu.hu.clickwatch.model.MultiNode;
 import edu.hu.clickwatch.model.Network;
 import edu.hu.clickwatch.model.Node;
-
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.util.Switch;
 
 /**
  * <!-- begin-user-doc -->

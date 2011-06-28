@@ -10,10 +10,6 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import com.google.common.base.Preconditions;
 import com.google.inject.Inject;
 
-import de.hub.clickwatch.ui.util.UiThreadder;
-
-import edu.hu.clickwatch.actions.Connect;
-import edu.hu.clickwatch.actions.Disconnect;
 import edu.hu.clickwatch.merge.Merger;
 import edu.hu.clickwatch.nodeadapter.INodeAdapter;
 import edu.hu.clickwatch.util.Throwables;
@@ -50,18 +46,17 @@ import edu.hu.clickwatch.util.Throwables;
  * @author Markus Scheidgen
  * 
  */
-public abstract class AbstractNodeConnection extends UiThreadder {
+public abstract class AbstractNodeConnection {
 
 	private Node node;
 	private final static int UPDATE_INTERVALL_DEFAULT = 5000;
-	
-	private ClickWatchModelEditor editor = null;
 	
 	private boolean isScheduledForDisconnect = false;
 	private boolean hasError = false;
 	
 	private final HandlerModelAdapter modelChangeListener = new HandlerModelAdapter(); 
 	
+	@Inject IConnectionConfiguration configuration;
 	@Inject Merger merger;
 
 	private boolean validateFilter(String newFilter, String type) {
@@ -72,8 +67,8 @@ public abstract class AbstractNodeConnection extends UiThreadder {
 		try {
 			java.util.regex.Pattern.compile(newFilter);
 		} catch (PatternSyntaxException pe) {
-			MessageDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
-			 "Malformed Filter", "The " + type + " filter is malformed. Ignoring filter.");
+			configuration.handleIncident(IConnectionConfiguration.ERROR, 
+					"The " + type + " filter is malformed. Ignoring filter.");
 			return false;
 		}
 		return true;
@@ -103,10 +98,11 @@ public abstract class AbstractNodeConnection extends UiThreadder {
 					runUpdate();
 				}
 			} catch (final Exception ex) {
-				runInGUI(new Runnable() {
+				configuration.runInModelThread(new Runnable() {
 					@Override
 					public void run() {
-						showMessage("Exception", "Exception " + ex.getClass().getName()
+						configuration.handleIncident(IConnectionConfiguration.ERROR, 
+								"Exception " + ex.getClass().getName()
 								+ " occured: " + ex.getMessage());
 					}
 				});
@@ -114,7 +110,7 @@ public abstract class AbstractNodeConnection extends UiThreadder {
 						+ " occured:\n" + ex.getMessage());
 			} finally {
 				getNodeAdapter().disconnect();
-				runInGUI(new Runnable() {
+				configuration.runInModelThread(new Runnable() {
 					@Override
 					public void run() {
 						node.setConnected(false);
@@ -131,7 +127,7 @@ public abstract class AbstractNodeConnection extends UiThreadder {
 		validateFilter(elemFilter, "element");
 		validateFilter(elemFilter, "handler");
 		final Node updatedNodeCopy = getNodeAdapter().retrieve(elemFilter, handFilter);
-		runInGUI(new Runnable() {
+		configuration.runInModelThread(new Runnable() {
 			@Override
 			public void run() {
 				((ClickWatchNodeMergeConfiguration)merger.getConfiguration()).reset();
@@ -139,10 +135,9 @@ public abstract class AbstractNodeConnection extends UiThreadder {
 				merger.merge(node, updatedNodeCopy);
 				modelChangeListener.setMode(HandlerModelAdapter.LISTEN_FOR_USER);
 				node.setConnected(true);
-				if (editor != null) { // editor can be null in tests
-					editor.markChanges(node, ((ClickWatchNodeMergeConfiguration)
-							merger.getConfiguration()).getChanges());
-				}
+				configuration.registerModelChanges(
+						node, ((ClickWatchNodeMergeConfiguration)
+						merger.getConfiguration()).getChanges());
 			}
 		});
 		EcoreUtil.delete(updatedNodeCopy, true);
@@ -182,11 +177,6 @@ public abstract class AbstractNodeConnection extends UiThreadder {
 		}
 	}
 
-	@Override
-	protected Display getDisplay() {
-		return editor.getSite().getShell().getDisplay();
-	}
-
 	/**
 	 * Instances of this class do not disconnect directly on user request, but
 	 * schedule a disconnect. The next time the updating thread is awake it will
@@ -201,7 +191,7 @@ public abstract class AbstractNodeConnection extends UiThreadder {
 
 	public final void propagateHandlerValueChangeToReality(Handler handler) {
 		if (node.isConnected()) {
-			runInExtraThread(new SetValueInRealityRunnable(handler));
+			configuration.runInExtraThread(new SetValueInRealityRunnable(handler));
 		}
 	}
 
@@ -280,14 +270,9 @@ public abstract class AbstractNodeConnection extends UiThreadder {
 	/**
 	 * Connects to the remote node and starts continuous updates of the model
 	 * with new data from the remote node.
-	 * 
-	 * @param editorPart
-	 *            , the editor part to open message windows and to listen for
-	 *            close to realise automatic disconnect on editor close.
 	 */
-	public void connect(IEditorPart editorPart) {
-		installPartListener(closeListener);
-		this.editor = (ClickWatchModelEditor)editorPart;
+	public void connect() {
+		configuration.handleConnect(this);
 
 		if (node.isConnected()) {
 			return;
@@ -307,58 +292,19 @@ public abstract class AbstractNodeConnection extends UiThreadder {
 	}
 
 	protected void runContinuousUpdate() {
-		runInExtraThread(new ContinuousUpdateRunnable());
+		configuration.runInExtraThread(new ContinuousUpdateRunnable());
 	}
 
 	/**
 	 * Disconnects from the remote note in the next possible moment.
 	 */
 	public synchronized void disconnect() {
-		unInstallPartListener(closeListener);
+		configuration.handleDisconnect(this);
 		node.eAdapters().remove(modelChangeListener);
 		isScheduledForDisconnect = true;
 	}
 
-	private final IPartListener closeListener = new IPartListener() {
-
-		@Override
-		public void partActivated(IWorkbenchPart part) {
-
-		}
-
-		@Override
-		public void partBroughtToTop(IWorkbenchPart part) {
-
-		}
-
-		@Override
-		public void partClosed(IWorkbenchPart part) {
-			if (editor == part) {
-				disconnect();
-			}
-		}
-
-		@Override
-		public void partDeactivated(IWorkbenchPart part) {
-
-		}
-
-		@Override
-		public void partOpened(IWorkbenchPart part) {
-
-		}
-
-	};
-
 	protected Node getNode() {
 		return node;
-	}
-	
-	protected void installPartListener(IPartListener listener) {
-		PlatformUI.getWorkbench().getActiveWorkbenchWindow().getPartService().addPartListener(closeListener);
-	}
-	
-	protected void unInstallPartListener(IPartListener listener) {
-		PlatformUI.getWorkbench().getActiveWorkbenchWindow().getPartService().removePartListener(closeListener);
 	}
 }

@@ -14,7 +14,6 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
-import edu.hu.clickwatch.actions.AbstractNodeAction;
 import edu.hu.clickwatch.model.AbstractNodeConnection;
 import edu.hu.clickwatch.model.Node;
 
@@ -326,7 +325,7 @@ public class Configure extends AbstractNodeAction{
 				oldConnection.disconnect();
 			}
 
-			workerThreads[idx] = new ExecWorkerThread(node.getINetAdress(), cmd);
+			workerThreads[idx] = new ExecWorkerThread(node.getINetAddress(), cmd);
 			workerThreads[idx].start();
 		}
 		

@@ -12,7 +12,10 @@ import edu.hu.clickwatch.recorder.ClickSocketPlayerSocketImpl;
 public class ClickControlXSDNodeAdapterPlayerTest extends AbstractTest {
 	@Override
 	protected AbstractModule[] getAdditionalModules() {
-		return new AbstractModule[] { new ClickSocketPlayer.PlayerModule() };
+		String record = "src/" + ClickControlXSDNodeAdapterPlayerTest.class.getPackage().getName().replace(".", "/") + "/" 
+				+ ClickControlXSDNodeAdapterPlayerTest.class.getSimpleName() + ".clickwatchmodel";
+		
+		return new AbstractModule[] { new ClickSocketPlayer.PlayerModule(record) };
 	}
 	
 	@Override

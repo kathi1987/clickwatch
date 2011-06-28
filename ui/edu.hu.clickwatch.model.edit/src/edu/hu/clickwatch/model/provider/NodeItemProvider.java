@@ -19,8 +19,6 @@ import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.ComposedImage;
-import org.eclipse.emf.edit.provider.ComposedImage.Point;
-import org.eclipse.emf.edit.provider.ComposedImage.Size;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
@@ -96,7 +94,7 @@ public class NodeItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Node_iNetAdress_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_Node_iNetAdress_feature", "_UI_Node_type"),
-				 ClickWatchModelPackage.Literals.NODE__INET_ADRESS,
+				 ClickWatchModelPackage.Literals.NODE__INET_ADDRESS,
 				 true,
 				 false,
 				 false,
@@ -109,12 +107,11 @@ public class NodeItemProvider
 	 * This adds a property descriptor for the Port feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void addPortPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+		itemPropertyDescriptors.add(new ItemPropertyDescriptor(
+				((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Node_port_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_Node_port_feature", "_UI_Node_type"),
@@ -124,7 +121,21 @@ public class NodeItemProvider
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
-				 null));
+				 null) {
+			@Override
+			public void setPropertyValue(Object object, Object value) {
+				if (value instanceof String) {
+					try {
+						Integer integer = new Integer((String)value);						
+						if (integer > 0 && integer <= 65556) {
+							super.setPropertyValue(object, value);		
+						}
+					} catch (NumberFormatException e) {
+						
+					}
+				}
+			}			
+		});
 	}
 
 	/**
@@ -371,8 +382,8 @@ public class NodeItemProvider
 	public String getText(Object object) {
 		Node node = (Node)object;
 		String address = "[no address]";
-		if (node.getINetAdress() != null) {
-			address = node.getINetAdress();
+		if (node.getINetAddress() != null) {
+			address = node.getINetAddress();
 		}
 		if (node.getPort() != null) {
 			address += ":" + node.getPort();
@@ -407,7 +418,7 @@ public class NodeItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Node.class)) {
-			case ClickWatchModelPackage.NODE__INET_ADRESS:
+			case ClickWatchModelPackage.NODE__INET_ADDRESS:
 			case ClickWatchModelPackage.NODE__PORT:
 			case ClickWatchModelPackage.NODE__CONNECTED:
 			case ClickWatchModelPackage.NODE__CONNECTION:

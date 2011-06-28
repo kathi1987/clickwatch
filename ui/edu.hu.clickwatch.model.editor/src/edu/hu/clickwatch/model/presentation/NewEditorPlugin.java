@@ -37,12 +37,10 @@ public final class NewEditorPlugin extends EMFPlugin {
 	 * Create the instance.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated 
 	 */
 	public NewEditorPlugin() {
-		super
-			(new ResourceLocator [] {
-			});
+		super(new ResourceLocator [] {	});
 	}
 
 	/**

@@ -11,13 +11,11 @@ import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.impl.DynamicEObjectImpl;
 import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.util.FeatureMap.Entry;
 import org.eclipse.emf.ecore.util.FeatureMapUtil;
 import org.eclipse.emf.ecore.xml.type.AnyType;
 import org.eclipse.emf.edit.EMFEditPlugin;
-import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.provider.ComposedImage;
 import org.eclipse.emf.edit.provider.DelegatingWrapperItemProvider;
 import org.eclipse.emf.edit.provider.FeatureMapEntryWrapperItemProvider;
@@ -178,26 +176,29 @@ public class ClickWatchReflectiveItemProviderAdapterFactory extends ReflectiveIt
 				}
 			}
 			
-			if (object instanceof EObject) {
-				EObject eObject = (EObject)object;
-				for (EStructuralFeature feature: eObject.eClass().getEAllAttributes()) {
-					if (feature.isMany()) {
-						List<?> children = (List<?>) eObject.eGet(feature);
-						int index = 0;
-						for (Object unwrappedChild : children) {
-							Object child = wrap(eObject, feature, unwrappedChild, index);
-							result.add(child);
-							index++;
-						}
-					} else {
-						Object child = eObject.eGet(feature);
-						if (child != null) {
-							child = wrap(eObject, feature, child, CommandParameter.NO_INDEX);
-							result.add(child);
-						}
-					}
-				}
-			}
+			// don't know what this code does, but it causes the double
+			// appearance of all elements in the tree (at least when the tree
+			// displays specific models
+//			if (object instanceof EObject) {
+//				EObject eObject = (EObject)object;
+//				for (EStructuralFeature feature: eObject.eClass().getEAllAttributes()) {
+//					if (feature.isMany()) {
+//						List<?> children = (List<?>) eObject.eGet(feature);
+//						int index = 0;
+//						for (Object unwrappedChild : children) {
+//							Object child = wrap(eObject, feature, unwrappedChild, index);
+//							result.add(child);
+//							index++;
+//						}
+//					} else {
+//						Object child = eObject.eGet(feature);
+//						if (child != null) {
+//							child = wrap(eObject, feature, child, CommandParameter.NO_INDEX);
+//							result.add(child);
+//						}
+//					}
+//				}
+//			}
 			
 			
 			return result;

@@ -6,15 +6,13 @@
  */
 package edu.hu.clickwatch.model.impl;
 
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.internal.cdo.CDOObjectImpl;
+
+import edu.hu.clickwatch.model.ClickWatchModelPackage;
 import edu.hu.clickwatch.model.Element;
 import edu.hu.clickwatch.model.Handler;
-import edu.hu.clickwatch.model.ClickWatchModelPackage;
-
-import org.eclipse.emf.common.util.EList;
-
-import org.eclipse.emf.ecore.EClass;
-
-import org.eclipse.emf.internal.cdo.CDOObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -121,14 +119,9 @@ public class ElementImpl extends CDOObjectImpl implements Element {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public String getElementPath() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
-
-	
+		return (eContainer() instanceof Element) ? ((Element)eContainer()).getElementPath() + "/" + getName() : getName();
+	}	
 }

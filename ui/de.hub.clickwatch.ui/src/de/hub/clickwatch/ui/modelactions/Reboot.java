@@ -2,7 +2,6 @@ package de.hub.clickwatch.ui.modelactions;
 
 import org.eclipse.jface.action.IAction;
 
-import edu.hu.clickwatch.actions.AbstractNodeAction;
 import edu.hu.clickwatch.model.AbstractNodeConnection;
 import edu.hu.clickwatch.model.Node;
 
@@ -33,7 +32,7 @@ public class Reboot extends AbstractNodeAction {
 				oldConnection.disconnect();
 			}
 
-			workerThreads[idx] = new ExecWorkerThread(node.getINetAdress(), cmd);
+			workerThreads[idx] = new ExecWorkerThread(node.getINetAddress(), cmd);
 			workerThreads[idx].start();
 		}
 		

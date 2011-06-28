@@ -19,11 +19,15 @@ public class ClickSocketPlayer {
 	private long start = -1;
 	
 	public static class PlayerModule extends AbstractModule {
+		
+		private String record;
+		
+		public PlayerModule(String record) {
+			this.record = record;
+		}
+		
 		@Override
-		protected void configure() {
-			String record = 
-						"src/" + ClickSocketPlayer.class.getPackage().getName().replace(".", "/") + "/record.clickwatchmodel";
-			
+		protected void configure() {	
 			ClickSocketPlayer player = new ClickSocketPlayer();
 			player.initialize(URI.createFileURI(record));
 			bind(ClickSocketPlayer.class).toInstance(player);

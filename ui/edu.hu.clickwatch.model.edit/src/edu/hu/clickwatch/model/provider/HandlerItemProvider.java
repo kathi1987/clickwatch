@@ -17,9 +17,6 @@ import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.util.FeatureMapUtil;
-import org.eclipse.emf.ecore.xml.type.XMLTypeFactory;
-import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.FeatureMapEntryWrapperItemProvider;
@@ -30,7 +27,6 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ItemProvider;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
@@ -349,9 +345,9 @@ public class HandlerItemProvider
 				}
 			}
 				
-			//if (!isRecorded) {
+			if (!isRecorded) {
 				children.add(child);
-			//}
+			}
 		}
 		return children;
 	}

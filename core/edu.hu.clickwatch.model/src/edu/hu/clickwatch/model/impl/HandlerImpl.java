@@ -7,16 +7,11 @@
 package edu.hu.clickwatch.model.impl;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.util.FeatureMap;
+import org.eclipse.emf.internal.cdo.CDOObjectImpl;
 
 import edu.hu.clickwatch.model.ClickWatchModelPackage;
 import edu.hu.clickwatch.model.Handler;
-
-import org.eclipse.emf.ecore.EDataType;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.util.FeatureMap;
-
-import org.eclipse.emf.internal.cdo.CDOObjectImpl;
 
 /**
  * <!-- begin-user-doc -->

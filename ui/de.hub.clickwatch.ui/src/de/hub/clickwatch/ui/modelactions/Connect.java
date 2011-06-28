@@ -27,7 +27,7 @@ public class Connect extends AbstractNodeAction {
 				nodeConnection = ClickWatchPluginActivator.getInstance().getInjector().getInstance(ClickControlNodeConnection.class);
 				node.setConnection(nodeConnection);
 				nodeConnection.setUp(node);
-				nodeConnection.connect(editor);
+				nodeConnection.connect();
 			} else {
 				System.out.println("Already connected");
 			}

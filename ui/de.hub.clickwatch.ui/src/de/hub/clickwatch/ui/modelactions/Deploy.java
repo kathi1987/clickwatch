@@ -23,12 +23,10 @@ import com.google.inject.Inject;
 import com.jcraft.jsch.Session;
 
 import de.hub.clickwatch.ui.util.SshConnectionFactory;
-
+import de.hub.clickwatch.ui.views.ResultView;
 import edu.hu.clickwatch.XmlModelRepository;
-import edu.hu.clickwatch.actions.AbstractNodeAction;
 import edu.hu.clickwatch.model.AbstractNodeConnection;
 import edu.hu.clickwatch.model.Node;
-import edu.hu.clickwatch.views.ResultView;
 
 /**
  * Hot deployment: do not reconfigure wireless device; restart click
@@ -191,7 +189,7 @@ public abstract class Deploy extends AbstractNodeAction implements SSHParams {
 		public Exception exception;
 		private Counter counter;
 		private boolean finished;
-		private boolean canceled;
+		//private boolean canceled;
 		
 		public PrepareWorkerThread(String iNodeAddr, String lfile, String md5cs, Counter counter) {
 			this.iNodeAddr = iNodeAddr;
@@ -199,7 +197,7 @@ public abstract class Deploy extends AbstractNodeAction implements SSHParams {
 			this.md5cs = md5cs;
 			this.counter = counter;
 			finished = false;
-			canceled = false;
+			//canceled = false;
 		}
 		
 		public void run() {
@@ -229,7 +227,7 @@ public abstract class Deploy extends AbstractNodeAction implements SSHParams {
 			return iNodeAddr;
 		}
 		public void cancel() {
-			canceled = true;
+			//canceled = true;
 		}
 	}	
 	
@@ -406,7 +404,7 @@ public abstract class Deploy extends AbstractNodeAction implements SSHParams {
 							}
 							
 							// do it in parallel
-							prepareWorkerThreads[idx] = new PrepareWorkerThread(node.getINetAdress(), lfile, md5cs, counter);
+							prepareWorkerThreads[idx] = new PrepareWorkerThread(node.getINetAddress(), lfile, md5cs, counter);
 							prepareWorkerThreads[idx].start();
 						}
 						observer.start();
@@ -433,7 +431,7 @@ public abstract class Deploy extends AbstractNodeAction implements SSHParams {
 							final Node node = node_lst.get(idx);
 				
 							// do it in parallel
-							runWorkerThreads[idx] = new RunWorkerThread(node.getINetAdress(), prepareWorkerThreads[idx], counter);
+							runWorkerThreads[idx] = new RunWorkerThread(node.getINetAddress(), prepareWorkerThreads[idx], counter);
 							runWorkerThreads[idx].start();
 						}
 						observer2.start();
