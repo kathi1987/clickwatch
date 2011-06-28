@@ -33,7 +33,7 @@ public class ClickSocketPlayerSocketImpl extends ClickSocketTestImpl {
 	
 	private void initialize() {
 		if (node == null || lastUpdate != player.getCurrentUpdate()) {
-			String host = this.host.toString().substring(1);
+			String host = this.host.getHostName();
 			String port = "" + this.port;
 			
 			node = player.getNode(host, port, player.getCurrentUpdate());

@@ -1,6 +1,5 @@
 package edu.hu.clickwatch.model;
 
-import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.HashSet;
 
@@ -10,7 +9,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.FeatureMap;
-import org.eclipse.emf.ecore.xml.type.AnyType;
 
 import edu.hu.clickwatch.merge.DefaultMergeConfiguration;
 
@@ -80,45 +78,45 @@ public class ClickWatchNodeMergeConfiguration extends DefaultMergeConfiguration 
 		return changes;
 	}
 	
-	private Long getTime(Object value) {
-		if (value instanceof FeatureMap.Entry) {
-			return getTime(((FeatureMap.Entry)value).getValue());
-		} else if (value instanceof AnyType) {
-			AnyType anyValue = (AnyType)value;
-			for (FeatureMap.Entry entry: anyValue.getAnyAttribute()) {
-				if (entry.getEStructuralFeature().getName().toLowerCase().equals("time")) {
-					Object timeValue = entry.getValue();
-					if (timeValue instanceof String) {
-						try {
-							return new Long(((String)timeValue).replace(".", ""));
-						} catch (NumberFormatException e) {
-							
-						}
-					}
-				}
-			}
-			return null;
-		} else if (value instanceof EObject) {
-			EObject eValue = (EObject)value;
-			for (EAttribute attr: eValue.eClass().getEAllAttributes()) {
-				if (attr.getName().toLowerCase().equals("time")) {
-					Object timeValue = eValue.eGet(attr);
-					if (timeValue instanceof String) {
-						try {
-							return new Long(((String)timeValue).replace(".", ""));
-						} catch (NumberFormatException e) {
-							
-						}
-					} else if (timeValue instanceof BigDecimal) {
-						return ((BigDecimal)timeValue).multiply(new BigDecimal(1000000000)).longValue();
-					}
-				}
-			}
-			return null;
-		} else {
-			return null;
-		}
-	}
+//	private Long getTime(Object value) {
+//		if (value instanceof FeatureMap.Entry) {
+//			return getTime(((FeatureMap.Entry)value).getValue());
+//		} else if (value instanceof AnyType) {
+//			AnyType anyValue = (AnyType)value;
+//			for (FeatureMap.Entry entry: anyValue.getAnyAttribute()) {
+//				if (entry.getEStructuralFeature().getName().toLowerCase().equals("time")) {
+//					Object timeValue = entry.getValue();
+//					if (timeValue instanceof String) {
+//						try {
+//							return new Long(((String)timeValue).replace(".", ""));
+//						} catch (NumberFormatException e) {
+//							
+//						}
+//					}
+//				}
+//			}
+//			return null;
+//		} else if (value instanceof EObject) {
+//			EObject eValue = (EObject)value;
+//			for (EAttribute attr: eValue.eClass().getEAllAttributes()) {
+//				if (attr.getName().toLowerCase().equals("time")) {
+//					Object timeValue = eValue.eGet(attr);
+//					if (timeValue instanceof String) {
+//						try {
+//							return new Long(((String)timeValue).replace(".", ""));
+//						} catch (NumberFormatException e) {
+//							
+//						}
+//					} else if (timeValue instanceof BigDecimal) {
+//						return ((BigDecimal)timeValue).multiply(new BigDecimal(1000000000)).longValue();
+//					}
+//				}
+//			}
+//			return null;
+//		} else {
+//			return null;
+//		}
+//	}
 	
 	private final static IsRecordedAdapter isRecordedAdapter = new IsRecordedAdapter();
 

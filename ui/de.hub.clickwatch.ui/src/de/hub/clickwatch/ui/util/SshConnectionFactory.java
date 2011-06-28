@@ -21,7 +21,7 @@ import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.JSchException;
 import com.jcraft.jsch.Session;
 
-import edu.hu.clickwatch.ClickWatchPluginActivator;
+import de.hub.clickwatch.ui.PluginActivator;
 
 /**
  * Handling of SSH related communication
@@ -56,7 +56,7 @@ public class SshConnectionFactory {
 		JSch jsch = new JSch();
 		byte[] prvkey = new byte[0];
 		
-		URL url = ClickWatchPluginActivator.getInstance().getBundle().getEntry("res/ssh/id_dsa");
+		URL url = PluginActivator.getInstance().getBundle().getEntry("resources/ssh/id_dsa");
 		prvkey = readPrivateKeyFromFile(url);
         
 		final byte[] emptyPassPhrase = new byte[0]; // Empty passphrase for now, get real passphrase from MyUserInfo
@@ -73,7 +73,7 @@ public class SshConnectionFactory {
 		// username and password will be given via UserInfo interface.
 		// dirty hack
 		// session.setPassword("testbed");
-        url = ClickWatchPluginActivator.getInstance().getBundle().getEntry("res/ssh/known_hosts");
+        url = PluginActivator.getInstance().getBundle().getEntry("resources/ssh/known_hosts");
         InputStream is = url.openStream();
 		jsch.setKnownHosts(is);
 		is.close();

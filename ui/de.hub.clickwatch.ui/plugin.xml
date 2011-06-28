@@ -7,6 +7,62 @@
             id="de.hub.clickwatch.NodeContribution"
             objectClass="edu.hu.clickwatch.model.Node">
          <action
+               class="de.hub.clickwatch.ui.GuiceAwareExecutableExtensionFactory:de.hub.clickwatch.ui.modelactions.Reboot"
+               enablesFor="+"
+               id="edu.hu.clickwatch.rebootAction"
+               label="Reboot"
+               menubarPath="additions">
+         </action>
+         <action
+               class="de.hub.clickwatch.ui.GuiceAwareExecutableExtensionFactory:de.hub.clickwatch.ui.modelactions.HotDeploy"
+               enablesFor="+"
+               id="edu.hu.clickwatch.hotDeployAction"
+               label="HotDeploy"
+               menubarPath="additions">
+         </action>
+         <action
+               class="de.hub.clickwatch.ui.GuiceAwareExecutableExtensionFactory:de.hub.clickwatch.ui.modelactions.Execute"
+               enablesFor="+"
+               id="edu.hu.clickwatch.execAction"
+               label="Execute"
+               menubarPath="additions">
+         </action>
+         <action
+               class="de.hub.clickwatch.ui.GuiceAwareExecutableExtensionFactory:de.hub.clickwatch.ui.modelactions.FullDeploy"
+               enablesFor="+"
+               id="edu.hu.clickwatch.deployAction"
+               label="Deploy"
+               menubarPath="additions">
+         </action>
+         <action
+               class="de.hub.clickwatch.ui.GuiceAwareExecutableExtensionFactory:de.hub.clickwatch.ui.modelactions.Configure"
+               enablesFor="+"
+               id="edu.hu.clickwatch.configAction"
+               label="Configure"
+               menubarPath="additions">
+         </action>
+         <action
+               class="de.hub.clickwatch.ui.GuiceAwareExecutableExtensionFactory:de.hub.clickwatch.ui.modelactions.StartRecord"
+               enablesFor="+"
+               id="edu.hu.clickwatch.startRecordAction"
+               label="Start record"
+               menubarPath="additions">
+         </action>
+         <action
+               class="de.hub.clickwatch.ui.GuiceAwareExecutableExtensionFactory:de.hub.clickwatch.ui.modelactions.StopRecord"
+               enablesFor="+"
+               id="edu.hu.clickwatch.stopRecordAction"
+               label="Stop record"
+               menubarPath="additions">
+         </action>
+         <action
+               class="de.hub.clickwatch.ui.GuiceAwareExecutableExtensionFactory:de.hub.clickwatch.ui.modelactions.ClearRecord"
+               enablesFor="+"
+               id="edu.hu.clickwatch.clearRecordAction"
+               label="Clear record"
+               menubarPath="additions">
+         </action>
+         <action
                class="de.hub.clickwatch.ui.GuiceAwareExecutableExtensionFactory:de.hub.clickwatch.ui.modelactions.Connect"
                enablesFor="+"
                id="de.hub.clickwatch.connectAction"
@@ -24,6 +80,13 @@
       <objectContribution
             id="edu.hu.clickwatch.NetworkContribution"
             objectClass="edu.hu.clickwatch.model.Network">
+         <action
+               class="de.hub.clickwatch.ui.GuiceAwareExecutableExtensionFactory:de.hub.clickwatch.ui.modelactions.Reset"
+               enablesFor="1"
+               id="edu.hu.clickwatch.resetAction"
+               label="Reset"
+               menubarPath="additions">
+         </action>
          <action
                class="de.hub.clickwatch.ui.GuiceAwareExecutableExtensionFactory:de.hub.clickwatch.ui.modelactions.Import"
                enablesFor="1"

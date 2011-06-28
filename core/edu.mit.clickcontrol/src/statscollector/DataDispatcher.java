@@ -131,12 +131,12 @@ public class DataDispatcher extends Thread {
 
 	public synchronized void setNewData(byte[] newmssg) {
 		System.arraycopy(newmssg, 0, mssg, 0, newmssg.length);
-		long storeLast = lastUpdate;
-		lastUpdate = System.currentTimeMillis();
+		// long storeLast = lastUpdate;
+		// lastUpdate = System.currentTimeMillis();
 
-		long diff = lastUpdate - storeLast;
-		double fps = 1000.0;
-		fps /= (double) diff;
+		// long diff = lastUpdate - storeLast;
+		// double fps = 1000.0;
+		// fps /= (double) diff;
 		if (true) {
 			// System.out.print("new data: " + lastUpdate + " " + fps + " ");
 			for (int j = 0; j < mssg.length; j++) {

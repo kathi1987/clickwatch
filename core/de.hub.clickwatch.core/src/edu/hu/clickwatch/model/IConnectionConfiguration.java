@@ -8,9 +8,9 @@ public interface IConnectionConfiguration {
 	
 	public void runInModelThread(Runnable runnable);
 	
-	public void registerModelChanges(Node node, Collection<ChangeMark> changes);
+	public void registerModelChanges(AbstractNodeConnection connection, Node node, Collection<ChangeMark> changes);
 	
-	public void handleConnect(AbstractNodeConnection connection);
+	public void handleConnect(AbstractNodeConnection connection, Object context);
 	
 	public void handleDisconnect(AbstractNodeConnection connection);
 	

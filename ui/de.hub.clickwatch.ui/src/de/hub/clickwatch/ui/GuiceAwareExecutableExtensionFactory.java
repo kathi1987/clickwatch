@@ -12,8 +12,6 @@ import org.osgi.framework.Bundle;
 
 import com.google.inject.Injector;
 
-import edu.hu.clickwatch.ClickWatchPluginActivator;
-
 
 public class GuiceAwareExecutableExtensionFactory implements IExecutableExtensionFactory, IExecutableExtension {
 	
@@ -54,6 +52,6 @@ public class GuiceAwareExecutableExtensionFactory implements IExecutableExtensio
 	}
 	
 	private Injector getInjector() {
-		return ClickWatchPluginActivator.getInstance().getInjector();
+		return PluginActivator.getInstance().getInjector();
 	}
 }

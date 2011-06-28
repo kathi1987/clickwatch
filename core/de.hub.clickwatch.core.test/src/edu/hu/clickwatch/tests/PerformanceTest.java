@@ -7,6 +7,7 @@ import junit.framework.TestCase;
 
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
+import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 
@@ -34,9 +35,9 @@ public class PerformanceTest extends TestCase {
 
 	private void performTest(final Class<? extends INodeAdapter> adapterClass, int numberOfElements, int numberOfHandler, int numberOfUpdates, int reportOnEach) {	
 		final IClickSocket clickSocket = TestUtil.createClickSocket(numberOfElements, numberOfHandler, true);
-		Injector injector = Guice.createInjector(new ClickWatchModule() {
+		Injector injector = Guice.createInjector(new ClickWatchModule(), new AbstractModule() {
 			@Override
-			protected void overrideConfigure() {
+			public void configure() {
 				bind(IClickSocket.class).toInstance(clickSocket);
 				bind(INodeAdapter.class).to(adapterClass);
 			}			
@@ -48,7 +49,7 @@ public class PerformanceTest extends TestCase {
 		
 		NodeConnectionTestImpl connection = injector.getInstance(NodeConnectionTestImpl.class);
 		connection.setUp(node);
-		connection.connect();
+		connection.connect(null);
 		connection.getNodeAdapter().connect();
 		for (int i = 0; i < numberOfUpdates; i++) {
 			connection.runUpdate();
@@ -112,9 +113,8 @@ public class PerformanceTest extends TestCase {
 		long reportOnEach = 10;
 		
 		final IClickSocket clickSocket = TestUtil.createClickSocket(30, 10, false);
-		Injector injector = Guice.createInjector(new ClickWatchModule() {
-			@Override
-			protected void overrideConfigure() {
+		Injector injector = Guice.createInjector(new ClickWatchModule(), new AbstractModule() {
+			protected void configure() {
 				bind(IClickSocket.class).toInstance(clickSocket);
 			}			
 		});

@@ -1,6 +1,8 @@
 package edu.hu.clickwatch.tests.clicksockets;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -23,7 +25,6 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import click.ControlSocket.HandlerInfo;
-import edu.hu.clickwatch.ClickWatchPluginActivator;
 import edu.hu.clickwatch.XmlModelRepository;
 import edu.hu.clickwatch.nodeadapter.ClickControlXSDNodeAdapter;
 import edu.hu.clickwatch.tests.XmlModelRepositoryTest;
@@ -93,7 +94,8 @@ public class ClickSocketXSDDummy extends ClickSocketTestImpl {
 	
 	protected String readEntry(String entry) {
 		try {
-			return convertStreamToString(ClickWatchPluginActivator.getInstance().getBundle().getEntry(entry).openStream());
+			File entryFile = new File(entry);
+			return convertStreamToString(new FileInputStream(entryFile));
 		} catch (IOException e) {
 			Throwables.propagate(e);
 			return null;

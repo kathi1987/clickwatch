@@ -22,12 +22,12 @@ public class TestConnectionConfiguration implements IConnectionConfiguration {
 	}
 
 	@Override
-	public void registerModelChanges(Node node, Collection<ChangeMark> changes) {
+	public void registerModelChanges(AbstractNodeConnection connection, Node node, Collection<ChangeMark> changes) {
 		// empty
 	}
 
 	@Override
-	public void handleConnect(AbstractNodeConnection connection) {
+	public void handleConnect(AbstractNodeConnection connection, Object context) {
 		// empty
 	}
 

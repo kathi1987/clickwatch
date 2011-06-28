@@ -8,7 +8,7 @@ public class ChangeMark extends AdapterImpl {
 	
 	private final EObject object;
 	private final int feature;
-	private final Object value;
+	// private final Object value;
 
 	public ChangeMark(EObject object, EStructuralFeature feature, Object value) {
 		super();
@@ -18,7 +18,7 @@ public class ChangeMark extends AdapterImpl {
 		} else {
 			this.feature = -1;
 		}
-		this.value = value;
+		// this.value = value;
 	}
 
 	@Override

@@ -85,6 +85,9 @@ public class XmlModelRepository {
 			options.put(XSDResourceImpl.XSD_TRACK_LOCATION, Boolean.TRUE);
 			options.put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);
 			options.put(XMLResource.OPTION_ENCODING, "UTF-8");
+			HashMap<String, Boolean> parserFeatures = new HashMap<String, Boolean>();
+			parserFeatures.put("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
+			options.put(XMLResource.OPTION_PARSER_FEATURES, parserFeatures);
 			
 			resourceSet.getLoadOptions().putAll(options);
 			

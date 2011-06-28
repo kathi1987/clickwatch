@@ -22,8 +22,8 @@ import edu.hu.clickwatch.util.Throwables;
  * network node.
  * 
  * This is crucial! All interaction with the the editor model must be done
- * within the GUI-Thread using {@link UiThreadder#runInGUI(Runnable)} and all interaction
- * with the real node should be run in an extra thread using
+ * within the GUI-Thread using {@link UiThreadder#runInGUI(Runnable)} and all
+ * interaction with the real node should be run in an extra thread using
  * {@link UiThreadder#runInExtraThread(Runnable)} to avoid GUI-freeze.
  * 
  * Node connections are designed to be a transient property of the model class
@@ -50,25 +50,27 @@ public abstract class AbstractNodeConnection {
 
 	private Node node;
 	private final static int UPDATE_INTERVALL_DEFAULT = 5000;
-	
+
 	private boolean isScheduledForDisconnect = false;
 	private boolean hasError = false;
-	
-	private final HandlerModelAdapter modelChangeListener = new HandlerModelAdapter(); 
-	
-	@Inject IConnectionConfiguration configuration;
-	@Inject Merger merger;
+
+	private final HandlerModelAdapter modelChangeListener = new HandlerModelAdapter();
+
+	@Inject
+	IConnectionConfiguration configuration;
+	@Inject
+	Merger merger;
 
 	private boolean validateFilter(String newFilter, String type) {
-		if ( newFilter == null || newFilter.trim().equals("") ) {
-			return true;	
+		if (newFilter == null || newFilter.trim().equals("")) {
+			return true;
 		}
-		
+
 		try {
 			java.util.regex.Pattern.compile(newFilter);
 		} catch (PatternSyntaxException pe) {
-			configuration.handleIncident(IConnectionConfiguration.ERROR, 
-					"The " + type + " filter is malformed. Ignoring filter.");
+			configuration.handleIncident(IConnectionConfiguration.ERROR, "The "
+					+ type + " filter is malformed. Ignoring filter.");
 			return false;
 		}
 		return true;
@@ -77,7 +79,8 @@ public abstract class AbstractNodeConnection {
 	public void setUp(Node node) {
 		Preconditions.checkNotNull(node);
 		this.node = node;
-		((ClickWatchNodeMergeConfiguration)merger.getConfiguration()).setNode(node);
+		((ClickWatchNodeMergeConfiguration) merger.getConfiguration())
+				.setNode(node);
 	}
 
 	public abstract INodeAdapter getNodeAdapter();
@@ -101,9 +104,10 @@ public abstract class AbstractNodeConnection {
 				configuration.runInModelThread(new Runnable() {
 					@Override
 					public void run() {
-						configuration.handleIncident(IConnectionConfiguration.ERROR, 
-								"Exception " + ex.getClass().getName()
-								+ " occured: " + ex.getMessage());
+						configuration.handleIncident(
+								IConnectionConfiguration.ERROR, "Exception "
+										+ ex.getClass().getName()
+										+ " occured: " + ex.getMessage());
 					}
 				});
 				System.out.println("Exception " + ex.getClass().getName()
@@ -126,25 +130,29 @@ public abstract class AbstractNodeConnection {
 		String handFilter = getNetwork().getHandlerFilter();
 		validateFilter(elemFilter, "element");
 		validateFilter(elemFilter, "handler");
-		final Node updatedNodeCopy = getNodeAdapter().retrieve(elemFilter, handFilter);
+		final Node updatedNodeCopy = getNodeAdapter().retrieve(elemFilter,
+				handFilter);
 		configuration.runInModelThread(new Runnable() {
 			@Override
 			public void run() {
-				((ClickWatchNodeMergeConfiguration)merger.getConfiguration()).reset();
-				modelChangeListener.setMode(HandlerModelAdapter.LISTEN_FOR_ADAPTER);
+				((ClickWatchNodeMergeConfiguration) merger.getConfiguration())
+						.reset();
+				modelChangeListener
+						.setMode(HandlerModelAdapter.LISTEN_FOR_ADAPTER);
 				merger.merge(node, updatedNodeCopy);
-				modelChangeListener.setMode(HandlerModelAdapter.LISTEN_FOR_USER);
+				modelChangeListener
+						.setMode(HandlerModelAdapter.LISTEN_FOR_USER);
 				node.setConnected(true);
-				configuration.registerModelChanges(
-						node, ((ClickWatchNodeMergeConfiguration)
-						merger.getConfiguration()).getChanges());
+				configuration.registerModelChanges(AbstractNodeConnection.this,
+						node, ((ClickWatchNodeMergeConfiguration) merger
+								.getConfiguration()).getChanges());
 			}
 		});
 		EcoreUtil.delete(updatedNodeCopy, true);
 		node.setRetrieving(false);
 		sleepUntilNextUpdate();
 	}
-	
+
 	protected void sleepUntilNextUpdate() {
 		try {
 			int updateIntervall = getNetwork().getUpdateIntervall();
@@ -191,7 +199,8 @@ public abstract class AbstractNodeConnection {
 
 	public final void propagateHandlerValueChangeToReality(Handler handler) {
 		if (node.isConnected()) {
-			configuration.runInExtraThread(new SetValueInRealityRunnable(handler));
+			configuration.runInExtraThread(new SetValueInRealityRunnable(
+					handler));
 		}
 	}
 
@@ -212,13 +221,13 @@ public abstract class AbstractNodeConnection {
 				if (notifier instanceof Node || notifier instanceof Element) {
 					return;
 				}
-				while (notifier != null && 
-						notifier instanceof EObject && !(notifier instanceof Handler)) {
-					notifier = ((EObject)notifier).eContainer();
+				while (notifier != null && notifier instanceof EObject
+						&& !(notifier instanceof Handler)) {
+					notifier = ((EObject) notifier).eContainer();
 				}
 				if (notifier != null && notifier instanceof Handler) {
-					Handler handler = (Handler)notifier;
-					
+					Handler handler = (Handler) notifier;
+
 					if (isNotificationChangingValue(notification)) {
 						if (mode == LISTEN_FOR_USER) {
 							handlerUserNotification(notification, handler);
@@ -228,40 +237,44 @@ public abstract class AbstractNodeConnection {
 							Preconditions.checkState(false);
 						}
 					}
-					if (ClickWatchModelPackage.eINSTANCE.getHandler_Watch().equals(
-							notification.getFeature())) {
+					if (ClickWatchModelPackage.eINSTANCE.getHandler_Watch()
+							.equals(notification.getFeature())) {
 						if (notification.getNewBooleanValue()) {
 							((Element) handler.eContainer()).setWatch(true);
 						}
-					}	
+					}
 				}
 			}
-			
+
 		}
-		
+
 		private boolean isNotificationChangingValue(Notification notification) {
 			if (notification.getNotifier() instanceof Handler) {
-				return notification.getFeature() == ClickWatchModelPackage.eINSTANCE.getHandler_Any() ||
-						notification.getFeature() == ClickWatchModelPackage.eINSTANCE.getHandler_Mixed();
+				return notification.getFeature() == ClickWatchModelPackage.eINSTANCE
+						.getHandler_Any()
+						|| notification.getFeature() == ClickWatchModelPackage.eINSTANCE
+								.getHandler_Mixed();
 			} else {
 				return true;
 			}
 		}
 
-		private void handlerAdapterNotification(Notification notification, Handler handler) {
+		private void handlerAdapterNotification(Notification notification,
+				Handler handler) {
 			if (handler.isWatch() || ((Element) handler.eContainer()).isWatch()) {
 				handler.setChanged(true);
 			}
 		}
 
-		private void handlerUserNotification(Notification notification, Handler handler) {
+		private void handlerUserNotification(Notification notification,
+				Handler handler) {
 			propagateHandlerValueChangeToReality(handler);
 		}
-		
+
 		public static final int LISTEN_FOR_USER = 0;
-		
+
 		public static final int LISTEN_FOR_ADAPTER = 1;
-		
+
 		public void setMode(int mode) {
 			this.mode = mode;
 		}
@@ -270,9 +283,13 @@ public abstract class AbstractNodeConnection {
 	/**
 	 * Connects to the remote node and starts continuous updates of the model
 	 * with new data from the remote node.
+	 * 
+	 * @param context
+	 *            is forwarded to {@link IConnectionConfiguration} and allows
+	 *            context specific configuration behavior.
 	 */
-	public void connect() {
-		configuration.handleConnect(this);
+	public void connect(Object context) {
+		configuration.handleConnect(this, context);
 
 		if (node.isConnected()) {
 			return;
@@ -280,13 +297,14 @@ public abstract class AbstractNodeConnection {
 		node.eAdapters().add(modelChangeListener);
 		runContinuousUpdate();
 	}
-	
+
 	private Network getNetwork() {
 		EObject container = node.eContainer();
 		if (container instanceof Network) {
-			return (Network)container;
+			return (Network) container;
 		} else {
-			Preconditions.checkArgument(false, "Node must be contained in a network");
+			Preconditions.checkArgument(false,
+					"Node must be contained in a network");
 			return null;
 		}
 	}

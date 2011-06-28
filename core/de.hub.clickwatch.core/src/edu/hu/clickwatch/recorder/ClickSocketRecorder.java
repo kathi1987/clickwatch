@@ -11,8 +11,10 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 
+import com.google.inject.Binder;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
+import com.google.inject.Module;
 
 import edu.hu.clickwatch.ClickWatchModule;
 import edu.hu.clickwatch.ClickWatchStandaloneSetup;
@@ -33,21 +35,20 @@ public class ClickSocketRecorder {
 
 	public ClickSocketRecorder() {
 		ClickWatchStandaloneSetup.doSetup();
-		ClickWatchModule clickWatchModule = new ClickWatchModule() {
-			@Override
-			protected void overrideConfigure() {
-				bind(INodeAdapter.class).to(ClickControlNodeAdapter.class);
-			}
-		};
-		clickWatchModule.setLogger(new ILogger() {
-			
+		ClickWatchModule clickWatchModule = new ClickWatchModule();
+		clickWatchModule.setLogger(new ILogger() {			
 			@Override
 			public void log(int status, String message, Throwable exception) {
 				System.out.println(message + ":\n");
 				exception.printStackTrace();
 			}
 		});
-		injector = Guice.createInjector(clickWatchModule);
+		injector = Guice.createInjector(clickWatchModule, new Module() {			
+			@Override
+			public void configure(Binder binder) {
+				binder.bind(INodeAdapter.class).to(ClickControlNodeAdapter.class);
+			}
+		});
 	}
 
 	public void record(String[] args) {
