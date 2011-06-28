@@ -15,16 +15,11 @@
   
   <modules>
    <module>com.google.guava</module>
-   <module>com.google.guice</module>
+   <!-- <module>com.google.guice</module>
    <module>edu.uci.ics.jung</module>
-   <module>org.eclipse.wst.sse.core</module>
-   <module>org.eclipse.wst.sse.ui</module>
-   <module>org.eclipse.wst.xml.core</module>
-   <module>org.eclipse.wst.xml.ui</module>
-   <module>org.eclipse.wst.xsl.ui</module>
    <module>org.eclipse.xtend.typesystem.emf.ui</module>
    <module>org.jfree.jcommon</module>
    <module>org.jfree.jfreechart</module>
-   <module>de.hub.xveg</module>
+   <module>de.hub.xveg</module>-->
   </modules>
 </project>

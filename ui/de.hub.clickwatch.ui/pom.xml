@@ -3,11 +3,11 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <artifactId>clickwatch</artifactId>
-    <groupId>de.hub</groupId>
+    <artifactId>ui</artifactId>
+    <groupId>edu.hu.clickwatch</groupId>
     <version>1.0.0-SNAPSHOT</version>
   </parent>
-  <groupId>de.hub</groupId>
+  <groupId>edu.hu.clickwatch</groupId>
   <artifactId>de.hub.clickwatch.ui</artifactId>
   <version>1.0.0-SNAPSHOT</version>
   <packaging>eclipse-plugin</packaging>
