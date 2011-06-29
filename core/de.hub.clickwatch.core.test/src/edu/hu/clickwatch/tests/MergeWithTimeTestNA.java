@@ -10,7 +10,7 @@ import edu.hu.clickwatch.model.ClickWatchNodeMergeConfiguration;
 import edu.hu.clickwatch.model.Element;
 import edu.hu.clickwatch.model.Node;
 
-public class MergeWithTimeTest extends AbstractTest {
+public class MergeWithTimeTestNA extends AbstractTest {
 	
 	private XmlModelRepository xmlModelRepository;
 	private Merger merger;

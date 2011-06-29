@@ -36,6 +36,13 @@
         name="%ClickWatch_Project"
         project="true">
   </wizard>
+  <wizard
+        category="edu.hu.clickwatch.analysis.WizardCategory"
+        class="edu.hu.clickwatch.analysis.composition.diagram.NewDiagramWizard"
+        icon="icons/Analysis.gif"
+        id="edu.hu.clickwatch.analysis.CompositionDiagramWizard"
+        name="Composition Diagram">
+  </wizard>
 	</extension>
 	
 	<extension
@@ -197,14 +204,14 @@
     <view
           category="edu.hu.clickwatch.viewCategory"
           class="edu.hu.clickwatch.analysis.composition.ModelView"
-          icon="icons/sample.gif"
+          icon="icons/Analysis.gif"
           id="edu.hu.clickwatch.analysis.composition.ModelView.ModelView"
           name="Model View">
     </view>
     <view
           category="edu.hu.clickwatch.viewCategory"
           class="edu.hu.clickwatch.analysis.composition.VisualizationView"
-          icon="icons/sample.gif"
+          icon="icons/Analysis.gif"
           id="edu.hu.clickwatch.analysis.composition.VisualizationView"
           name="Visualization View">
     </view>

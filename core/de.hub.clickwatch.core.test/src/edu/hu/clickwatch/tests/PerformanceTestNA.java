@@ -21,7 +21,7 @@ import edu.hu.clickwatch.nodeadapter.ClickControlNodeAdapter;
 import edu.hu.clickwatch.nodeadapter.ClickControlNodeXmlValuesAdapter;
 import edu.hu.clickwatch.nodeadapter.INodeAdapter;
 
-public class PerformanceTest extends TestCase {
+public class PerformanceTestNA extends TestCase {
 	
 	private Runtime runtime = null;
 	private NumberFormat memFormat = new DecimalFormat("#00,000,000,000,000");

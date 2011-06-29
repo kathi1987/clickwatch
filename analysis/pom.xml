@@ -6,21 +6,16 @@
     <artifactId>root</artifactId>
     <groupId>edu.hu.clickwatch</groupId>
     <version>0.0.1-SNAPSHOT</version>
-    <relativePath>../pom.xml</relativePath>
   </parent>
+  
   <groupId>edu.hu.clickwatch</groupId>
-  <artifactId>clickwatch</artifactId>
+  <artifactId>analysis</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
   
   <modules>
-   <module>edu.hu.clickwatch</module>
    <module>edu.hu.clickwatch.analysis</module>
-   <module>edu.hu.clickwatch.edit</module>
-   <module>edu.hu.clickwatch.editor</module>
    <module>edu.hu.clickwatch.examples</module>
    <module>edu.hu.clickwatch.clientlocation</module>
-   <module>edu.hu.clickwatch.feature</module>
-   <module>edu.hu.clickwatch.tests</module>
   </modules>
 </project>

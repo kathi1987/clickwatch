@@ -14,11 +14,8 @@
   
   <modules>
    <module>com.google.guice</module>
-   <!--
    <module>edu.uci.ics.jung</module>
-   <module>org.eclipse.xtend.typesystem.emf.ui</module>
    <module>org.jfree.jcommon</module>
    <module>org.jfree.jfreechart</module>
-   <module>de.hub.xveg</module>-->
   </modules>
 </project>
