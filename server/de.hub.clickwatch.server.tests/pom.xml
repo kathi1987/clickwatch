@@ -5,13 +5,11 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<artifactId>server</artifactId>
-		<groupId>de.hu.clickwatch</groupId>
+		<groupId>de.hub.clickwatch</groupId>
 		<version>0.0.1-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
-	<groupId>de.hu.clickwatch.sever</groupId>
 	<artifactId>edu.hu.clickwatch.server.tests</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<packaging>eclipse-test-plugin</packaging>
 
 	<build>

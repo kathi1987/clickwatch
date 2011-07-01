@@ -9,8 +9,8 @@ Import-Package: org.osgi.framework;version="1.3.0",
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Service-Component: OSGI-INF/*.xml
 Require-Bundle: edu.hu.clickwatch.model,
- com.google.guava;bundle-version="0.0.7",
- com.google.inject;bundle-version="2.0.0",
+ com.google.guava,
+ com.google.inject,
  edu.mit.clickcontrol,
  org.eclipse.osgi,
  org.junit;bundle-version="4.8.1",
