@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<artifactId>central</artifactId>
-		<groupId>de.hu.clickwatch</groupId>
+		<groupId>de.hub.clickwatch</groupId>
 		<version>0.0.1-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
@@ -46,11 +46,11 @@
 	</build>
 
 	<modules>
-		<module>edu.hu.clickwatch.server</module>
-		<module>edu.hu.clickwatch.server.tests</module>
-		<module>edu.hu.clickwatch.cdo</module>
-		<module>edu.hu.clickwatch.cdo.tests</module>
-		<module>edu.hu.clickwatch.xml</module>
-		<module>edu.hu.clickwatch.xml.tests</module>
+		<module>de.hub.clickwatch.server</module>
+		<module>de.hub.clickwatch.server.tests</module>
+		<module>de.hub.clickwatch.cdo</module>
+		<module>de.hub.clickwatch.cdo.tests</module>
+		<module>de.hub.clickwatch.xml</module>
+		<module>de.hub.clickwatch.xml.tests</module>
 	</modules>
 </project>
