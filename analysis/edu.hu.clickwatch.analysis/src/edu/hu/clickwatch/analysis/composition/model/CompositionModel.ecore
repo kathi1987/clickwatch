@@ -23,6 +23,7 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetSpec" eType="#//TargetSpec"
         defaultValueLiteral="add"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="requiredBundle" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Element">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="label" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -64,6 +65,7 @@
     <eLiterals name="xtend" value="1"/>
     <eLiterals name="xpand" value="2"/>
     <eLiterals name="java" value="3"/>
+    <eLiterals name="xtend2" value="4" literal="xtend2"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ParameterSpec">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="kind" eType="#//ParameterSpecKind"

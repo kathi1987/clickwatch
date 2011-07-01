@@ -22,6 +22,7 @@ package edu.hu.clickwatch.analysis.composition.model;
  *   <li>{@link edu.hu.clickwatch.analysis.composition.model.Transformation#getInput <em>Input</em>}</li>
  *   <li>{@link edu.hu.clickwatch.analysis.composition.model.Transformation#getOutput <em>Output</em>}</li>
  *   <li>{@link edu.hu.clickwatch.analysis.composition.model.Transformation#getTargetSpec <em>Target Spec</em>}</li>
+ *   <li>{@link edu.hu.clickwatch.analysis.composition.model.Transformation#getRequiredBundle <em>Required Bundle</em>}</li>
  * </ul>
  * </p>
  *
@@ -220,4 +221,30 @@ public interface Transformation extends Edge {
 	 * @generated
 	 */
 	void setTargetSpec(TargetSpec value);
+
+	/**
+	 * Returns the value of the '<em><b>Required Bundle</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Required Bundle</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Required Bundle</em>' attribute.
+	 * @see #setRequiredBundle(String)
+	 * @see edu.hu.clickwatch.analysis.composition.model.CompositionPackage#getTransformation_RequiredBundle()
+	 * @model
+	 * @generated
+	 */
+	String getRequiredBundle();
+
+	/**
+	 * Sets the value of the '{@link edu.hu.clickwatch.analysis.composition.model.Transformation#getRequiredBundle <em>Required Bundle</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Required Bundle</em>' attribute.
+	 * @see #getRequiredBundle()
+	 * @generated
+	 */
+	void setRequiredBundle(String value);
 } // Transformation

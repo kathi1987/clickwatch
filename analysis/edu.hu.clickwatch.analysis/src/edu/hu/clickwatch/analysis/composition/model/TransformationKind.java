@@ -60,7 +60,15 @@ public enum TransformationKind implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	JAVA(3, "java", "java");
+	JAVA(3, "java", "java"), /**
+	 * The '<em><b>Xtend2</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #XTEND2_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	XTEND2(4, "xtend2", "xtend2");
 
 	/**
 	 * The '<em><b>Predefined</b></em>' literal value.
@@ -123,6 +131,21 @@ public enum TransformationKind implements Enumerator {
 	public static final int JAVA_VALUE = 3;
 
 	/**
+	 * The '<em><b>Xtend2</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>Xtend2</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #XTEND2
+	 * @model name="xtend2"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int XTEND2_VALUE = 4;
+
+	/**
 	 * An array of all the '<em><b>Transformation Kind</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -134,6 +157,7 @@ public enum TransformationKind implements Enumerator {
 			XTEND,
 			XPAND,
 			JAVA,
+			XTEND2,
 		};
 
 	/**
@@ -188,6 +212,7 @@ public enum TransformationKind implements Enumerator {
 			case XTEND_VALUE: return XTEND;
 			case XPAND_VALUE: return XPAND;
 			case JAVA_VALUE: return JAVA;
+			case XTEND2_VALUE: return XTEND2;
 		}
 		return null;
 	}

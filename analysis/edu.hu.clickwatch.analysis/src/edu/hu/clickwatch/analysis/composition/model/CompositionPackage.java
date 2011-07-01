@@ -290,13 +290,22 @@ public interface CompositionPackage extends EPackage {
 	int TRANSFORMATION__TARGET_SPEC = EDGE_FEATURE_COUNT + 6;
 
 	/**
+	 * The feature id for the '<em><b>Required Bundle</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSFORMATION__REQUIRED_BUNDLE = EDGE_FEATURE_COUNT + 7;
+
+	/**
 	 * The number of structural features of the '<em>Transformation</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSFORMATION_FEATURE_COUNT = EDGE_FEATURE_COUNT + 7;
+	int TRANSFORMATION_FEATURE_COUNT = EDGE_FEATURE_COUNT + 8;
 
 	/**
 	 * The meta object id for the '{@link edu.hu.clickwatch.analysis.composition.model.impl.ModelNodeImpl <em>Model Node</em>}' class.
@@ -690,13 +699,22 @@ public interface CompositionPackage extends EPackage {
 	int TIMED_TRANSFORMATION__TARGET_SPEC = EDGE_FEATURE_COUNT + 6;
 
 	/**
+	 * The feature id for the '<em><b>Required Bundle</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIMED_TRANSFORMATION__REQUIRED_BUNDLE = EDGE_FEATURE_COUNT + 7;
+
+	/**
 	 * The number of structural features of the '<em>Timed Transformation</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TIMED_TRANSFORMATION_FEATURE_COUNT = EDGE_FEATURE_COUNT + 7;
+	int TIMED_TRANSFORMATION_FEATURE_COUNT = EDGE_FEATURE_COUNT + 8;
 
 	/**
 	 * The meta object id for the '{@link edu.hu.clickwatch.analysis.composition.model.impl.VisualizationImpl <em>Visualization</em>}' class.
@@ -1107,6 +1125,17 @@ public interface CompositionPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getTransformation_TargetSpec();
+
+	/**
+	 * Returns the meta object for the attribute '{@link edu.hu.clickwatch.analysis.composition.model.Transformation#getRequiredBundle <em>Required Bundle</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Required Bundle</em>'.
+	 * @see edu.hu.clickwatch.analysis.composition.model.Transformation#getRequiredBundle()
+	 * @see #getTransformation()
+	 * @generated
+	 */
+	EAttribute getTransformation_RequiredBundle();
 
 	/**
 	 * Returns the meta object for class '{@link edu.hu.clickwatch.analysis.composition.model.Element <em>Element</em>}'.
@@ -1621,6 +1650,14 @@ public interface CompositionPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute TRANSFORMATION__TARGET_SPEC = eINSTANCE.getTransformation_TargetSpec();
+
+		/**
+		 * The meta object literal for the '<em><b>Required Bundle</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TRANSFORMATION__REQUIRED_BUNDLE = eINSTANCE.getTransformation_RequiredBundle();
 
 		/**
 		 * The meta object literal for the '{@link edu.hu.clickwatch.analysis.composition.model.impl.ElementImpl <em>Element</em>}' class.

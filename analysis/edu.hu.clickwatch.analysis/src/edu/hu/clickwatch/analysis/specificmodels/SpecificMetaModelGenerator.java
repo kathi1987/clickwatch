@@ -32,7 +32,7 @@ import edu.hu.clickwatch.model.Node;
 
 public class SpecificMetaModelGenerator {
 	
-	public static final String[] ommitedHandlerNames = new String[] { "name", "handlers" };
+	public static final String[] ommitedHandlerNames = new String[] { "name", "handlers", "watch" };
 	
 	private interface ITypeDescription {
 		public boolean isOfType(String sample);
@@ -259,6 +259,7 @@ public class SpecificMetaModelGenerator {
 		containerFeature.setEType(clazz);
 		containedClass.getEStructuralFeatures().add(containerFeature);
 		containerFeature.setEOpposite(containmentFeature);
+		containmentFeature.setEOpposite(containerFeature);
 	}
 	
 	private void addNetwork(Network network) {

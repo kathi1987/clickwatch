@@ -333,6 +333,15 @@ public class CompositionPackageImpl extends EPackageImpl implements CompositionP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getTransformation_RequiredBundle() {
+		return (EAttribute)transformationEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getElement() {
 		return elementEClass;
 	}
@@ -702,6 +711,7 @@ public class CompositionPackageImpl extends EPackageImpl implements CompositionP
 		createEReference(transformationEClass, TRANSFORMATION__INPUT);
 		createEReference(transformationEClass, TRANSFORMATION__OUTPUT);
 		createEAttribute(transformationEClass, TRANSFORMATION__TARGET_SPEC);
+		createEAttribute(transformationEClass, TRANSFORMATION__REQUIRED_BUNDLE);
 
 		elementEClass = createEClass(ELEMENT);
 		createEAttribute(elementEClass, ELEMENT__LABEL);
@@ -810,6 +820,7 @@ public class CompositionPackageImpl extends EPackageImpl implements CompositionP
 		initEReference(getTransformation_Input(), this.getParameterSpec(), null, "input", null, 0, 1, Transformation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTransformation_Output(), this.getParameterSpec(), null, "output", null, 0, 1, Transformation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTransformation_TargetSpec(), this.getTargetSpec(), "targetSpec", "add", 0, 1, Transformation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTransformation_RequiredBundle(), ecorePackage.getEString(), "requiredBundle", null, 0, 1, Transformation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(elementEClass, Element.class, "Element", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getElement_Label(), ecorePackage.getEString(), "label", null, 0, 1, Element.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -863,6 +874,7 @@ public class CompositionPackageImpl extends EPackageImpl implements CompositionP
 		addEEnumLiteral(transformationKindEEnum, TransformationKind.XTEND);
 		addEEnumLiteral(transformationKindEEnum, TransformationKind.XPAND);
 		addEEnumLiteral(transformationKindEEnum, TransformationKind.JAVA);
+		addEEnumLiteral(transformationKindEEnum, TransformationKind.XTEND2);
 
 		initEEnum(targetSpecEEnum, TargetSpec.class, "TargetSpec");
 		addEEnumLiteral(targetSpecEEnum, TargetSpec.EXISTING);

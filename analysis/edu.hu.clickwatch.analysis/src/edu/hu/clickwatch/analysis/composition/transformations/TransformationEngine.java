@@ -1,23 +1,44 @@
 package edu.hu.clickwatch.analysis.composition.transformations;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Dictionary;
 import java.util.Iterator;
 import java.util.List;
 
+import org.eclipse.core.internal.preferences.OSGiPreferencesServiceManager;
+import org.eclipse.core.internal.registry.osgi.EclipseBundleListener;
+import org.eclipse.core.internal.registry.osgi.OSGIUtils;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.adaptor.EclipseStarter;
+import org.eclipse.core.runtime.internal.adaptor.EclipseLazyStarter;
+import org.eclipse.emf.common.EMFPlugin.EclipsePlugin;
+import org.eclipse.emf.common.ui.EclipseUIPlugin;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.URIConverter;
+import org.eclipse.emf.edit.ui.action.ValidateAction.EclipseResourcesUtil;
+import org.eclipse.emf.mwe.core.resources.OsgiResourceLoader;
 import org.eclipse.ui.statushandlers.StatusManager;
 import org.eclipse.xtend.XtendFacade;
 import org.eclipse.xtend.typesystem.emf.EmfMetaModel;
+import org.osgi.framework.Bundle;
+import org.osgi.framework.ServiceReference;
+import org.osgi.service.packageadmin.PackageAdmin;
 
+import edu.hu.clickwatch.ClickWatchPluginActivator;
 import edu.hu.clickwatch.XmlModelRepository;
 import edu.hu.clickwatch.analysis.composition.model.CompositionFactory;
 import edu.hu.clickwatch.analysis.composition.model.DataSet;
@@ -51,7 +72,9 @@ public class TransformationEngine {
 		} else if (kind == TransformationKind.XPAND) {
 			raiseError("not supported yet");
 		} else if (kind == TransformationKind.JAVA) {
-			raiseError("not supported yet");
+			raiseError("not supported yet");			
+		} else if (kind == TransformationKind.XTEND2)  {
+			models = getModels(true, true);
 		}
 		
 		List<EObject> sources = getArgument(models.sourceModel);
@@ -127,6 +150,8 @@ public class TransformationEngine {
 			return executeXtendTransformation(source, target);
 		} else if (kind == TransformationKind.PREDEFINED) {
 			return executePredefinedTransformation(source, target);
+		} else if (kind == TransformationKind.XTEND2) {
+			return executeXtend2Transformation(source, target);
 		} else {
 			raiseError("not supported yet");
 			return null;
@@ -262,6 +287,132 @@ public class TransformationEngine {
 			raiseError("input kind is not supported yet");
 		}
 		return result;
+	}
+	
+	/**
+	 * the execution method of an xtend2 script
+	 * @param source the source model
+	 * @param target the target model
+	 * @return currently null
+	 */
+	private Object executeXtend2Transformation(EObject source, EObject target) {
+		
+		// get the URI to the xtend2 script that should be executed
+		String xtend2Uri = transformation.getTransformationUri();
+		if (xtend2Uri == null) {
+			Status myStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, "No transformation specified", null);
+			StatusManager.getManager().handle(myStatus, StatusManager.SHOW);
+			return null;
+		}
+		
+		// read the classname
+		String xtend2ClassName = "";
+		try {
+			URI u = URI.createURI(xtend2Uri);
+			InputStream is = URIConverter.INSTANCE.createInputStream(u);
+			InputStreamReader isr = new InputStreamReader(is);				
+			BufferedReader br = new BufferedReader(isr);			
+			String line = br.readLine();
+			if (line.startsWith("package")) {
+				xtend2ClassName = line.substring(7).trim();
+			}
+			xtend2ClassName += "." + u.lastSegment().replaceAll(".xtend", "");
+		}
+		catch(Exception e) {
+			Status myStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, "Could not find the xtend2 class", null);
+			StatusManager.getManager().handle(myStatus, StatusManager.SHOW);
+			return null;
+		}		
+		
+		// get the required bundle (if needed)
+		String xtend2ReqBundleUri = transformation.getRequiredBundle();
+		
+		// get the method name to be called in the xtend2 script
+		String xtend2Function = transformation.getTransformationFunction();
+		if (xtend2Function == null) {
+			xtend2Function = "doTransformation";
+		}
+		
+		try {
+			if (models != null) {
+				
+				Class<?> xtend2Class = null;
+				
+				// is there a bundle to load?
+				if(xtend2ReqBundleUri != null && xtend2ReqBundleUri != "")
+				{
+					// remove the first part if its an platform path
+					String shortBundleURI = xtend2ReqBundleUri;
+					if(shortBundleURI.startsWith("platform:/resource/")) shortBundleURI = shortBundleURI.substring(18);
+																													
+															
+					
+					// install bundle (if its already installed we just receive that reference)
+					Bundle newB = installBundleFromWorkspace(shortBundleURI);
+					
+					//installBundleFromWorkspace("/de.hu_berlin.clickwatch.examples").start();
+					
+					//Dictionary<?, ?> dict = newB.getHeaders();
+					//System.out.println(dict.get("Require-Bundle"));
+					
+					newB.start(org.osgi.framework.Bundle.START_ACTIVATION_POLICY);
+					
+					// get the class for the xtend2 execution
+					xtend2Class = newB.loadClass(xtend2ClassName);	
+				}				
+				
+				// if the class is not already loaded, try it with the default class loader
+				if(xtend2Class == null)
+					xtend2Class  = ClickWatchPluginActivator.getInstance().getClass().getClassLoader().loadClass(xtend2ClassName);								
+				
+				// create an objekt of that class and call the given method to execute the xtend2 script
+				Object o = xtend2Class.newInstance();
+				Method[] methods = o.getClass().getMethods();
+				for (Method m : methods) {						
+					if (m.getName().equals(xtend2Function)) {
+						// we found the correct method, maybe a check on the parameters would be nice in the future					
+						m.invoke(o, source, target);
+						break;
+					}
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			Status myStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, "Could not run transformation", e);
+			StatusManager.getManager().handle(myStatus, StatusManager.SHOW);
+			return null;
+		}
+		
+		//raiseError("could not run transformation");
+		
+		return null;
+	}
+	
+	/**
+	 * Tries to install a bundle in the workspace with the given name. If the bundle is already installed, the reference to this one is returned.
+	 * 
+	 * @param bundleIdentifier the name of the bundle that should be installed
+	 * @return the installed bundle or null if the installation process failed
+	 */
+	private Bundle installBundleFromWorkspace(String bundleIdentifier) 
+	{		
+		Bundle retBundle = null;
+		
+		try
+		{
+			// add a slash to the beginning of the identifier if needed
+			if( !(bundleIdentifier.startsWith("/") || bundleIdentifier.startsWith("\\")) )
+			{
+				bundleIdentifier = "/" + bundleIdentifier;				
+			}		
+			// try to install the bundle
+			retBundle = ClickWatchPluginActivator.getInstance().getBundle().getBundleContext().installBundle("reference:" + ResourcesPlugin.getWorkspace().getRoot().getLocationURI().toURL().toString() + bundleIdentifier);						
+		}
+		catch(Exception e)
+		{
+			System.out.println(e);
+		}
+		return retBundle;
 	}
 	
 	private Object executeXtendTransformation(EObject source, EObject target) {
