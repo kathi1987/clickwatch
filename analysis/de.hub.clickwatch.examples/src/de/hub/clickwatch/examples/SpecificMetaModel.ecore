@@ -1,0 +1,1895 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="SpecificMetaModel"
+    nsURI="src/SpecificMetaModel" nsPrefix="scwm">
+  <eClassifiers xsi:type="ecore:EClass" name="Network">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="My Network"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="nodes" upperBound="-1"
+        eType="#//Node" containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="name" value="node"/>
+        <details key="kind" value="element"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="all" eType="#//MultiNode"
+        containment="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ElementFilter" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="HandlerFilter" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="updateIntervall" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="subnetworks" upperBound="-1"
+        eType="#//Network" containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="name" value="subnetwork"/>
+        <details key="kind" value="element"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Node">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="iNetAdress" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="localhost"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="port" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="7777"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
+        eType="#//Element" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="name" value="element"/>
+        <details key="kind" value="element"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="connected" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        transient="true" defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="connection" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"
+        transient="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="backbone" eType="#//BackboneType"
+        defaultValueLiteral="unknown"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="retrieving" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        transient="true" defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hasRecord" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="recording" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        transient="true" defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="device_wifi" eType="#//device_wifi"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="routing" eType="#//routing"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sf" eType="#//sf" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="lt" eType="#//lt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sys_info" eType="#//sys_info"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rc" eType="#//rc" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="id" eType="#//id" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="wireless" eType="#//wireless"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="seismo" eType="#//seismo"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="Label_brnether" eType="#//Label_brnether"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="brn_clf" eType="#//brn_clf"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="toMeAfterRouting" eType="#//toMeAfterRouting"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="gps" eType="#//gps" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Element">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="handlers" upperBound="-1"
+        eType="#//Handler" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="name" value="handler"/>
+        <details key="kind" value="element"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="watch" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
+        eType="#//Element" resolveProxies="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Handler">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="canRead" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="canWrite" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="changed" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="watch" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="BackboneType">
+    <eLiterals name="wired"/>
+    <eLiterals name="wireless" value="1"/>
+    <eLiterals name="unknown" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MultiNode">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="nodes" upperBound="-1"
+        eType="#//Node"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="device_wifi" eSuperTypes="#//Element">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_Node" eType="#//Node"
+        eOpposite="#//Node/device_wifi"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rates" eType="#//rates"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="proberates" eType="#//proberates"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="etx_metric" eType="#//etx_metric"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="link_stat" eType="#//link_stat"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="brnToMe" eType="#//brnToMe"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="wifidevice" eType="#//wifidevice"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="data_power" eType="#//data_power"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="data_rate" eType="#//data_rate"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="brnwifi" eType="#//brnwifi"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="data_queue" eType="#//data_queue"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="data_suppressor" eType="#//data_suppressor"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="lp_data_scheduler" eType="#//lp_data_scheduler"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="filter_tx" eType="#//filter_tx"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="error_clf" eType="#//error_clf"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="wififrame_clf" eType="#//wififrame_clf"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="brn_ether_clf" eType="#//brn_ether_clf"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="lp_clf" eType="#//lp_clf"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="lp_etherencap" eType="#//lp_etherencap"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="lp_power" eType="#//lp_power"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="lp_wifiencap" eType="#//lp_wifiencap"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="lp_queue" eType="#//lp_queue"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="lp_suppressor" eType="#//lp_suppressor"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="rates" eSuperTypes="#//Element #//Handler">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_device_wifi"
+        eType="#//device_wifi" eOpposite="#//device_wifi/rates"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rates" eType="#//rates"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_rates" eType="#//rates"
+        eOpposite="#//rates/rates"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="debug" eType="#//debug"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ports" eType="#//ports"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="config" eType="#//config"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="#//class"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_proberates"
+        eType="#//proberates" eOpposite="#//proberates/rates"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="debug" eSuperTypes="#//Handler">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_rates" eType="#//rates"
+        eOpposite="#//rates/debug"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_proberates"
+        eType="#//proberates" eOpposite="#//proberates/debug"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_etx_metric"
+        eType="#//etx_metric" eOpposite="#//etx_metric/debug"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_link_stat" eType="#//link_stat"
+        eOpposite="#//link_stat/debug"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_brnToMe" eType="#//brnToMe"
+        eOpposite="#//brnToMe/debug"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_cst" eType="#//cst"
+        eOpposite="#//cst/debug"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_ath_op" eType="#//ath_op"
+        eOpposite="#//ath_op/debug"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_dev_decap" eType="#//dev_decap"
+        eOpposite="#//dev_decap/debug"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_brnwifi" eType="#//brnwifi"
+        eOpposite="#//brnwifi/debug"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_lp_wifiencap"
+        eType="#//lp_wifiencap" eOpposite="#//lp_wifiencap/debug"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_dsr_decap" eType="#//dsr_decap"
+        eOpposite="#//dsr_decap/debug"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_dsr_encap" eType="#//dsr_encap"
+        eOpposite="#//dsr_encap/debug"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_querier" eType="#//querier"
+        eOpposite="#//querier/debug"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_req_forwarder"
+        eType="#//req_forwarder" eOpposite="#//req_forwarder/debug"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_rep_forwarder"
+        eType="#//rep_forwarder" eOpposite="#//rep_forwarder/debug"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_src_forwarder"
+        eType="#//src_forwarder" eOpposite="#//src_forwarder/debug"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_err_forwarder"
+        eType="#//err_forwarder" eOpposite="#//err_forwarder/debug"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_routing_peek"
+        eType="#//routing_peek" eOpposite="#//routing_peek/debug"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_sf" eType="#//sf"
+        eOpposite="#//sf/debug"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_lt" eType="#//lt"
+        eOpposite="#//lt/debug"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_sys_info" eType="#//sys_info"
+        eOpposite="#//sys_info/debug"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_rc" eType="#//rc"
+        eOpposite="#//rc/debug"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_id" eType="#//id"
+        eOpposite="#//id/debug"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_wireless" eType="#//wireless"
+        eOpposite="#//wireless/debug"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_seismo" eType="#//seismo"
+        eOpposite="#//seismo/debug"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_toMeAfterRouting"
+        eType="#//toMeAfterRouting" eOpposite="#//toMeAfterRouting/debug"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_gps" eType="#//gps"
+        eOpposite="#//gps/debug"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ports" eSuperTypes="#//Handler">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_rates" eType="#//rates"
+        eOpposite="#//rates/ports"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_proberates"
+        eType="#//proberates" eOpposite="#//proberates/ports"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_etx_metric"
+        eType="#//etx_metric" eOpposite="#//etx_metric/ports"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_link_stat" eType="#//link_stat"
+        eOpposite="#//link_stat/ports"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_brnToMe" eType="#//brnToMe"
+        eOpposite="#//brnToMe/ports"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_cst" eType="#//cst"
+        eOpposite="#//cst/ports"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_op_prio_s" eType="#//op_prio_s"
+        eOpposite="#//op_prio_s/ports"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_ath_op" eType="#//ath_op"
+        eOpposite="#//ath_op/ports"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_ath_op_q" eType="#//ath_op_q"
+        eOpposite="#//ath_op_q/ports"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_dev_decap" eType="#//dev_decap"
+        eOpposite="#//dev_decap/ports"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_rawwifidev_too_small_cnt"
+        eType="#//rawwifidev_too_small_cnt" eOpposite="#//rawwifidev_too_small_cnt/ports"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_data_power"
+        eType="#//data_power" eOpposite="#//data_power/ports"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_data_rate" eType="#//data_rate"
+        eOpposite="#//data_rate/ports"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_brnwifi" eType="#//brnwifi"
+        eOpposite="#//brnwifi/ports"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_data_queue"
+        eType="#//data_queue" eOpposite="#//data_queue/ports"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_data_suppressor"
+        eType="#//data_suppressor" eOpposite="#//data_suppressor/ports"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_lp_data_scheduler"
+        eType="#//lp_data_scheduler" eOpposite="#//lp_data_scheduler/ports"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_filter_tx" eType="#//filter_tx"
+        eOpposite="#//filter_tx/ports"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_error_clf" eType="#//error_clf"
+        eOpposite="#//error_clf/ports"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_wififrame_clf"
+        eType="#//wififrame_clf" eOpposite="#//wififrame_clf/ports"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_brn_ether_clf"
+        eType="#//brn_ether_clf" eOpposite="#//brn_ether_clf/ports"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_lp_clf" eType="#//lp_clf"
+        eOpposite="#//lp_clf/ports"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_lp_etherencap"
+        eType="#//lp_etherencap" eOpposite="#//lp_etherencap/ports"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_lp_power" eType="#//lp_power"
+        eOpposite="#//lp_power/ports"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_lp_wifiencap"
+        eType="#//lp_wifiencap" eOpposite="#//lp_wifiencap/ports"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_lp_queue" eType="#//lp_queue"
+        eOpposite="#//lp_queue/ports"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_lp_suppressor"
+        eType="#//lp_suppressor" eOpposite="#//lp_suppressor/ports"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_dsr_decap" eType="#//dsr_decap"
+        eOpposite="#//dsr_decap/ports"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_dsr_encap" eType="#//dsr_encap"
+        eOpposite="#//dsr_encap/ports"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_querier" eType="#//querier"
+        eOpposite="#//querier/ports"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_req_forwarder"
+        eType="#//req_forwarder" eOpposite="#//req_forwarder/ports"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_rep_forwarder"
+        eType="#//rep_forwarder" eOpposite="#//rep_forwarder/ports"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_src_forwarder"
+        eType="#//src_forwarder" eOpposite="#//src_forwarder/ports"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_err_forwarder"
+        eType="#//err_forwarder" eOpposite="#//err_forwarder/ports"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_routing_peek"
+        eType="#//routing_peek" eOpposite="#//routing_peek/ports"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_tee_to_err_fwd"
+        eType="#//tee_to_err_fwd" eOpposite="#//tee_to_err_fwd/ports"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_dsrclf" eType="#//dsrclf"
+        eOpposite="#//dsrclf/ports"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_sf" eType="#//sf"
+        eOpposite="#//sf/ports"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_lt" eType="#//lt"
+        eOpposite="#//lt/ports"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_sys_info" eType="#//sys_info"
+        eOpposite="#//sys_info/ports"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_rc" eType="#//rc"
+        eOpposite="#//rc/ports"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_id" eType="#//id"
+        eOpposite="#//id/ports"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_wireless" eType="#//wireless"
+        eOpposite="#//wireless/ports"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_seismo" eType="#//seismo"
+        eOpposite="#//seismo/ports"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_Label_brnether"
+        eType="#//Label_brnether" eOpposite="#//Label_brnether/ports"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_brn_clf" eType="#//brn_clf"
+        eOpposite="#//brn_clf/ports"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_toMeAfterRouting"
+        eType="#//toMeAfterRouting" eOpposite="#//toMeAfterRouting/ports"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_gps" eType="#//gps"
+        eOpposite="#//gps/ports"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="config" eSuperTypes="#//Handler">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_rates" eType="#//rates"
+        eOpposite="#//rates/config"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_proberates"
+        eType="#//proberates" eOpposite="#//proberates/config"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_etx_metric"
+        eType="#//etx_metric" eOpposite="#//etx_metric/config"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_link_stat" eType="#//link_stat"
+        eOpposite="#//link_stat/config"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_brnToMe" eType="#//brnToMe"
+        eOpposite="#//brnToMe/config"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_cst" eType="#//cst"
+        eOpposite="#//cst/config"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_op_prio_s" eType="#//op_prio_s"
+        eOpposite="#//op_prio_s/config"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_ath_op" eType="#//ath_op"
+        eOpposite="#//ath_op/config"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_ath_op_q" eType="#//ath_op_q"
+        eOpposite="#//ath_op_q/config"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_dev_decap" eType="#//dev_decap"
+        eOpposite="#//dev_decap/config"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_rawwifidev_too_small_cnt"
+        eType="#//rawwifidev_too_small_cnt" eOpposite="#//rawwifidev_too_small_cnt/config"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_data_power"
+        eType="#//data_power" eOpposite="#//data_power/config"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_data_rate" eType="#//data_rate"
+        eOpposite="#//data_rate/config"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_brnwifi" eType="#//brnwifi"
+        eOpposite="#//brnwifi/config"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_data_queue"
+        eType="#//data_queue" eOpposite="#//data_queue/config"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_data_suppressor"
+        eType="#//data_suppressor" eOpposite="#//data_suppressor/config"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_lp_data_scheduler"
+        eType="#//lp_data_scheduler" eOpposite="#//lp_data_scheduler/config"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_filter_tx" eType="#//filter_tx"
+        eOpposite="#//filter_tx/config"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_error_clf" eType="#//error_clf"
+        eOpposite="#//error_clf/config"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_wififrame_clf"
+        eType="#//wififrame_clf" eOpposite="#//wififrame_clf/config"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_brn_ether_clf"
+        eType="#//brn_ether_clf" eOpposite="#//brn_ether_clf/config"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_lp_clf" eType="#//lp_clf"
+        eOpposite="#//lp_clf/config"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_lp_etherencap"
+        eType="#//lp_etherencap" eOpposite="#//lp_etherencap/config"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_lp_power" eType="#//lp_power"
+        eOpposite="#//lp_power/config"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_lp_wifiencap"
+        eType="#//lp_wifiencap" eOpposite="#//lp_wifiencap/config"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_lp_queue" eType="#//lp_queue"
+        eOpposite="#//lp_queue/config"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_lp_suppressor"
+        eType="#//lp_suppressor" eOpposite="#//lp_suppressor/config"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_dsr_decap" eType="#//dsr_decap"
+        eOpposite="#//dsr_decap/config"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_dsr_encap" eType="#//dsr_encap"
+        eOpposite="#//dsr_encap/config"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_querier" eType="#//querier"
+        eOpposite="#//querier/config"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_req_forwarder"
+        eType="#//req_forwarder" eOpposite="#//req_forwarder/config"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_rep_forwarder"
+        eType="#//rep_forwarder" eOpposite="#//rep_forwarder/config"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_src_forwarder"
+        eType="#//src_forwarder" eOpposite="#//src_forwarder/config"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_err_forwarder"
+        eType="#//err_forwarder" eOpposite="#//err_forwarder/config"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_routing_peek"
+        eType="#//routing_peek" eOpposite="#//routing_peek/config"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_tee_to_err_fwd"
+        eType="#//tee_to_err_fwd" eOpposite="#//tee_to_err_fwd/config"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_dsrclf" eType="#//dsrclf"
+        eOpposite="#//dsrclf/config"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_sf" eType="#//sf"
+        eOpposite="#//sf/config"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_lt" eType="#//lt"
+        eOpposite="#//lt/config"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_sys_info" eType="#//sys_info"
+        eOpposite="#//sys_info/config"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_rc" eType="#//rc"
+        eOpposite="#//rc/config"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_id" eType="#//id"
+        eOpposite="#//id/config"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_wireless" eType="#//wireless"
+        eOpposite="#//wireless/config"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_seismo" eType="#//seismo"
+        eOpposite="#//seismo/config"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_Label_brnether"
+        eType="#//Label_brnether" eOpposite="#//Label_brnether/config"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_brn_clf" eType="#//brn_clf"
+        eOpposite="#//brn_clf/config"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_toMeAfterRouting"
+        eType="#//toMeAfterRouting" eOpposite="#//toMeAfterRouting/config"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_gps" eType="#//gps"
+        eOpposite="#//gps/config"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="class" eSuperTypes="#//Handler">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_rates" eType="#//rates"
+        eOpposite="#//rates/class"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_proberates"
+        eType="#//proberates" eOpposite="#//proberates/class"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_etx_metric"
+        eType="#//etx_metric" eOpposite="#//etx_metric/class"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_link_stat" eType="#//link_stat"
+        eOpposite="#//link_stat/class"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_brnToMe" eType="#//brnToMe"
+        eOpposite="#//brnToMe/class"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_cst" eType="#//cst"
+        eOpposite="#//cst/class"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_op_prio_s" eType="#//op_prio_s"
+        eOpposite="#//op_prio_s/class"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_ath_op" eType="#//ath_op"
+        eOpposite="#//ath_op/class"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_ath_op_q" eType="#//ath_op_q"
+        eOpposite="#//ath_op_q/class"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_dev_decap" eType="#//dev_decap"
+        eOpposite="#//dev_decap/class"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_rawwifidev_too_small_cnt"
+        eType="#//rawwifidev_too_small_cnt" eOpposite="#//rawwifidev_too_small_cnt/class"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_data_power"
+        eType="#//data_power" eOpposite="#//data_power/class"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_data_rate" eType="#//data_rate"
+        eOpposite="#//data_rate/class"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_brnwifi" eType="#//brnwifi"
+        eOpposite="#//brnwifi/class"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_data_queue"
+        eType="#//data_queue" eOpposite="#//data_queue/class"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_data_suppressor"
+        eType="#//data_suppressor" eOpposite="#//data_suppressor/class"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_lp_data_scheduler"
+        eType="#//lp_data_scheduler" eOpposite="#//lp_data_scheduler/class"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_filter_tx" eType="#//filter_tx"
+        eOpposite="#//filter_tx/class"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_error_clf" eType="#//error_clf"
+        eOpposite="#//error_clf/class"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_wififrame_clf"
+        eType="#//wififrame_clf" eOpposite="#//wififrame_clf/class"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_brn_ether_clf"
+        eType="#//brn_ether_clf" eOpposite="#//brn_ether_clf/class"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_lp_clf" eType="#//lp_clf"
+        eOpposite="#//lp_clf/class"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_lp_etherencap"
+        eType="#//lp_etherencap" eOpposite="#//lp_etherencap/class"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_lp_power" eType="#//lp_power"
+        eOpposite="#//lp_power/class"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_lp_wifiencap"
+        eType="#//lp_wifiencap" eOpposite="#//lp_wifiencap/class"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_lp_queue" eType="#//lp_queue"
+        eOpposite="#//lp_queue/class"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_lp_suppressor"
+        eType="#//lp_suppressor" eOpposite="#//lp_suppressor/class"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_dsr_decap" eType="#//dsr_decap"
+        eOpposite="#//dsr_decap/class"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_dsr_encap" eType="#//dsr_encap"
+        eOpposite="#//dsr_encap/class"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_querier" eType="#//querier"
+        eOpposite="#//querier/class"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_req_forwarder"
+        eType="#//req_forwarder" eOpposite="#//req_forwarder/class"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_rep_forwarder"
+        eType="#//rep_forwarder" eOpposite="#//rep_forwarder/class"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_src_forwarder"
+        eType="#//src_forwarder" eOpposite="#//src_forwarder/class"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_err_forwarder"
+        eType="#//err_forwarder" eOpposite="#//err_forwarder/class"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_routing_peek"
+        eType="#//routing_peek" eOpposite="#//routing_peek/class"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_tee_to_err_fwd"
+        eType="#//tee_to_err_fwd" eOpposite="#//tee_to_err_fwd/class"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_dsrclf" eType="#//dsrclf"
+        eOpposite="#//dsrclf/class"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_sf" eType="#//sf"
+        eOpposite="#//sf/class"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_lt" eType="#//lt"
+        eOpposite="#//lt/class"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_sys_info" eType="#//sys_info"
+        eOpposite="#//sys_info/class"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_rc" eType="#//rc"
+        eOpposite="#//rc/class"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_id" eType="#//id"
+        eOpposite="#//id/class"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_wireless" eType="#//wireless"
+        eOpposite="#//wireless/class"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_seismo" eType="#//seismo"
+        eOpposite="#//seismo/class"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_Label_brnether"
+        eType="#//Label_brnether" eOpposite="#//Label_brnether/class"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_brn_clf" eType="#//brn_clf"
+        eOpposite="#//brn_clf/class"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_toMeAfterRouting"
+        eType="#//toMeAfterRouting" eOpposite="#//toMeAfterRouting/class"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_gps" eType="#//gps"
+        eOpposite="#//gps/class"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="proberates" eSuperTypes="#//Element">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_device_wifi"
+        eType="#//device_wifi" eOpposite="#//device_wifi/proberates"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rates" eType="#//rates"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="debug" eType="#//debug"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ports" eType="#//ports"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="config" eType="#//config"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="#//class"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="etx_metric" eSuperTypes="#//Element">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_device_wifi"
+        eType="#//device_wifi" eOpposite="#//device_wifi/etx_metric"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="debug" eType="#//debug"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ports" eType="#//ports"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="config" eType="#//config"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="#//class"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="link_stat" eSuperTypes="#//Element">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_device_wifi"
+        eType="#//device_wifi" eOpposite="#//device_wifi/link_stat"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="schema" eType="#//schema"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="probes" eType="#//probes"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="period" eType="#//period"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tau" eType="#//tau" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="bad_version" eType="#//bad_version"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="bcast_stats" eType="#//bcast_stats"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="debug" eType="#//debug"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ports" eType="#//ports"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="config" eType="#//config"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="#//class"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="schema" eSuperTypes="#//Handler">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_link_stat" eType="#//link_stat"
+        eOpposite="#//link_stat/schema"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="element" upperBound="-1"
+        eType="#//element" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="schema" eType="#//schema"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_schema" eType="#//schema"
+        eOpposite="#//schema/schema"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_sys_info" eType="#//sys_info"
+        eOpposite="#//sys_info/schema"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="element">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="complexType" eType="#//complexType"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_schema" eType="#//schema"
+        eOpposite="#//schema/element"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ref" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxOccurs" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_sequence" eType="#//sequence"
+        eOpposite="#//sequence/element"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_choice" eType="#//choice"
+        eOpposite="#//choice/element"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="complexType">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="attribute" upperBound="-1"
+        eType="#//attribute" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_element" eType="#//element"
+        eOpposite="#//element/complexType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sequence" eType="#//sequence"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="choice" eType="#//choice"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="attribute">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="use" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_complexType"
+        eType="#//complexType" eOpposite="#//complexType/attribute"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="simpleType" eType="#//simpleType"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="sequence">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="element" eType="#//element"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_complexType"
+        eType="#//complexType" eOpposite="#//complexType/sequence"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="simpleType">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="restriction" eType="#//restriction"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_attribute" eType="#//attribute"
+        eOpposite="#//attribute/simpleType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="restriction">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="enumeration" upperBound="-1"
+        eType="#//enumeration" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="base" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_simpleType"
+        eType="#//simpleType" eOpposite="#//simpleType/restriction"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="enumeration">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_restriction"
+        eType="#//restriction" eOpposite="#//restriction/enumeration"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="choice">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="element" upperBound="-1"
+        eType="#//element" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_complexType"
+        eType="#//complexType" eOpposite="#//complexType/choice"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="probes" eSuperTypes="#//Handler">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_link_stat" eType="#//link_stat"
+        eOpposite="#//link_stat/probes"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="probe" eType="#//probe"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="time" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="probes" eType="#//probes"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_probes" eType="#//probes"
+        eOpposite="#//probes/probes"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="probe">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="size" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_probes" eType="#//probes"
+        eOpposite="#//probes/probe"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="period" eSuperTypes="#//Handler">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_link_stat" eType="#//link_stat"
+        eOpposite="#//link_stat/period"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="period" eType="#//period"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_period" eType="#//period"
+        eOpposite="#//period/period"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="tau" eSuperTypes="#//Handler">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_link_stat" eType="#//link_stat"
+        eOpposite="#//link_stat/tau"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tau" eType="#//tau" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_tau" eType="#//tau"
+        eOpposite="#//tau/tau"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="bad_version" eSuperTypes="#//Handler">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_link_stat" eType="#//link_stat"
+        eOpposite="#//link_stat/bad_version"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="badnodes" eType="#//badnodes"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="badnodes">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="time" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_bad_version"
+        eType="#//bad_version" eOpposite="#//bad_version/badnodes"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="bcast_stats" eSuperTypes="#//Handler">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_link_stat" eType="#//link_stat"
+        eOpposite="#//link_stat/bcast_stats"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="entry" eType="#//entry"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="entry">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="link" upperBound="-1" eType="#//link"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="from" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="period" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="seq" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tau" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="time" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_bcast_stats"
+        eType="#//bcast_stats" eOpposite="#//bcast_stats/entry"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="link">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="link_info" eType="#//link_info"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="last_rx" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="period" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="seq" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tau" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="to" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_entry" eType="#//entry"
+        eOpposite="#//entry/link"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="link_info">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fwd" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rev" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="size" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_link" eType="#//link"
+        eOpposite="#//link/link_info"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="brnToMe" eSuperTypes="#//Element">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_device_wifi"
+        eType="#//device_wifi" eOpposite="#//device_wifi/brnToMe"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="debug" eType="#//debug"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ports" eType="#//ports"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="config" eType="#//config"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="#//class"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="wifidevice" eSuperTypes="#//Element">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_device_wifi"
+        eType="#//device_wifi" eOpposite="#//device_wifi/wifidevice"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cst" eType="#//cst" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="op_prio_s" eType="#//op_prio_s"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ath_op" eType="#//ath_op"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ath_op_q" eType="#//ath_op_q"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dev_decap" eType="#//dev_decap"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rawwifidev_too_small_cnt"
+        eType="#//rawwifidev_too_small_cnt" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="cst" eSuperTypes="#//Element">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_wifidevice"
+        eType="#//wifidevice" eOpposite="#//wifidevice/cst"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="stats_xml" eType="#//stats_xml"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="stats" eType="#//stats"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="max_time" eType="#//max_time"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="debug" eType="#//debug"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ports" eType="#//ports"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="config" eType="#//config"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="#//class"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="stats_xml" eSuperTypes="#//Handler">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_cst" eType="#//cst"
+        eOpposite="#//cst/stats_xml"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="channelstats" eType="#//channelstats"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="channelstats">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mac" eType="#//mac" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mac_percentage" eType="#//mac_percentage"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mac_duration" eType="#//mac_duration"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="phy" eType="#//phy" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rssi" eType="#//rssi" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="node" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="time" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="length" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hw_duration" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_stats_xml" eType="#//stats_xml"
+        eOpposite="#//stats_xml/channelstats"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_stats" eType="#//stats"
+        eOpposite="#//stats/channelstats"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="mac">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="packets" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rx_pkt" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="no_err_pkt" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="crc_err_pkt" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="phy_err_pkt" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tx_pkt" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rx_unicast_pkt" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rx_retry_pkt" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rx_bcast_pkt" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tx_unicast_pkt" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tx_retry_pkt" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tx_bcast_pkt" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="zero_err_pkt" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="last_packet_time" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="no_src" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_channelstats"
+        eType="#//channelstats" eOpposite="#//channelstats/mac"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="mac_percentage">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="busy" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rx" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tx" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="noerr_rx" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="crc_rx" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="phy_rx" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_channelstats"
+        eType="#//channelstats" eOpposite="#//channelstats/mac_percentage"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="mac_duration">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="busy" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rx" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tx" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="noerr_rx" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="crc_rx" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="phy_rx" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_channelstats"
+        eType="#//channelstats" eOpposite="#//channelstats/mac_duration"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="phy" eSuperTypes="#//Handler">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hwbusy" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hwrx" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hwtx" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="last_hw_stat_time" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hw_stats_count" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="avg_noise" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="std_noise" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="avg_rssi" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="std_rssi" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="channel" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_channelstats"
+        eType="#//channelstats" eOpposite="#//channelstats/phy"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_error_clf" eType="#//error_clf"
+        eOpposite="#//error_clf/phy"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="rssi">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="nb" upperBound="-1" eType="#//nb"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_channelstats"
+        eType="#//channelstats" eOpposite="#//channelstats/rssi"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="nb">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="addr" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rssi" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="std_rssi" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="min_rssi" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="max_rssi" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="pkt_cnt" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_rssi" eType="#//rssi"
+        eOpposite="#//rssi/nb"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="stats" eSuperTypes="#//Handler">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_cst" eType="#//cst"
+        eOpposite="#//cst/stats"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="channelstats" eType="#//channelstats"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_req_forwarder"
+        eType="#//req_forwarder" eOpposite="#//req_forwarder/stats"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="better_route" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="stats" eType="#//stats"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_stats" eType="#//stats"
+        eOpposite="#//stats/stats"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_sf" eType="#//sf"
+        eOpposite="#//sf/stats"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="flowstats" eType="#//flowstats"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="max_time" eSuperTypes="#//Handler">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_cst" eType="#//cst"
+        eOpposite="#//cst/max_time"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="op_prio_s" eSuperTypes="#//Element">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_wifidevice"
+        eType="#//wifidevice" eOpposite="#//wifidevice/op_prio_s"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ports" eType="#//ports"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="config" eType="#//config"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="#//class"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ath_op" eSuperTypes="#//Element">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_wifidevice"
+        eType="#//wifidevice" eOpposite="#//wifidevice/ath_op"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pkt_count" eType="#//pkt_count"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="debug" eType="#//debug"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ports" eType="#//ports"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="config" eType="#//config"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="#//class"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="pkt_count" eSuperTypes="#//Handler">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_ath_op" eType="#//ath_op"
+        eOpposite="#//ath_op/pkt_count"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ath_op_q" eSuperTypes="#//Element">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_wifidevice"
+        eType="#//wifidevice" eOpposite="#//wifidevice/ath_op_q"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="drops" eType="#//drops"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="capacity" eType="#//capacity"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="highwater_length" eType="#//highwater_length"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="length" eType="#//length"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ports" eType="#//ports"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="config" eType="#//config"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="#//class"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="drops" eSuperTypes="#//Handler">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_ath_op_q" eType="#//ath_op_q"
+        eOpposite="#//ath_op_q/drops"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_data_queue"
+        eType="#//data_queue" eOpposite="#//data_queue/drops"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_filter_tx" eType="#//filter_tx"
+        eOpposite="#//filter_tx/drops"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_lp_queue" eType="#//lp_queue"
+        eOpposite="#//lp_queue/drops"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="capacity" eSuperTypes="#//Handler">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_ath_op_q" eType="#//ath_op_q"
+        eOpposite="#//ath_op_q/capacity"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_data_queue"
+        eType="#//data_queue" eOpposite="#//data_queue/capacity"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_lp_queue" eType="#//lp_queue"
+        eOpposite="#//lp_queue/capacity"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="highwater_length" eSuperTypes="#//Handler">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_ath_op_q" eType="#//ath_op_q"
+        eOpposite="#//ath_op_q/highwater_length"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_data_queue"
+        eType="#//data_queue" eOpposite="#//data_queue/highwater_length"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_lp_queue" eType="#//lp_queue"
+        eOpposite="#//lp_queue/highwater_length"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="length" eSuperTypes="#//Handler">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_ath_op_q" eType="#//ath_op_q"
+        eOpposite="#//ath_op_q/length"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_data_queue"
+        eType="#//data_queue" eOpposite="#//data_queue/length"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_lp_queue" eType="#//lp_queue"
+        eOpposite="#//lp_queue/length"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="dev_decap" eSuperTypes="#//Element">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_wifidevice"
+        eType="#//wifidevice" eOpposite="#//wifidevice/dev_decap"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="debug" eType="#//debug"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ports" eType="#//ports"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="config" eType="#//config"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="#//class"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="rawwifidev_too_small_cnt" eSuperTypes="#//Element">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_wifidevice"
+        eType="#//wifidevice" eOpposite="#//wifidevice/rawwifidev_too_small_cnt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="count_call" eType="#//count_call"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="byte_rate" eType="#//byte_rate"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="bit_rate" eType="#//bit_rate"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rate" eType="#//rate" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="byte_count" eType="#//byte_count"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="count" eType="#//count"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ports" eType="#//ports"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="config" eType="#//config"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="#//class"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="count_call" eSuperTypes="#//Handler">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_rawwifidev_too_small_cnt"
+        eType="#//rawwifidev_too_small_cnt" eOpposite="#//rawwifidev_too_small_cnt/count_call"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="byte_rate" eSuperTypes="#//Handler">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_rawwifidev_too_small_cnt"
+        eType="#//rawwifidev_too_small_cnt" eOpposite="#//rawwifidev_too_small_cnt/byte_rate"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="bit_rate" eSuperTypes="#//Handler">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_rawwifidev_too_small_cnt"
+        eType="#//rawwifidev_too_small_cnt" eOpposite="#//rawwifidev_too_small_cnt/bit_rate"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="rate" eSuperTypes="#//Handler">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_rawwifidev_too_small_cnt"
+        eType="#//rawwifidev_too_small_cnt" eOpposite="#//rawwifidev_too_small_cnt/rate"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_data_rate" eType="#//data_rate"
+        eOpposite="#//data_rate/rate"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="byte_count" eSuperTypes="#//Handler">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_rawwifidev_too_small_cnt"
+        eType="#//rawwifidev_too_small_cnt" eOpposite="#//rawwifidev_too_small_cnt/byte_count"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="count" eSuperTypes="#//Handler">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_rawwifidev_too_small_cnt"
+        eType="#//rawwifidev_too_small_cnt" eOpposite="#//rawwifidev_too_small_cnt/count"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="data_power" eSuperTypes="#//Element">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_device_wifi"
+        eType="#//device_wifi" eOpposite="#//device_wifi/data_power"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="power" eType="#//power"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ports" eType="#//ports"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="config" eType="#//config"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="#//class"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="power" eSuperTypes="#//Handler">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_data_power"
+        eType="#//data_power" eOpposite="#//data_power/power"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_lp_power" eType="#//lp_power"
+        eOpposite="#//lp_power/power"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="data_rate" eSuperTypes="#//Element">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_device_wifi"
+        eType="#//device_wifi" eOpposite="#//device_wifi/data_rate"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tries" eType="#//tries"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rate" eType="#//rate" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ports" eType="#//ports"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="config" eType="#//config"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="#//class"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="tries" eSuperTypes="#//Handler">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_data_rate" eType="#//data_rate"
+        eOpposite="#//data_rate/tries"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="brnwifi" eSuperTypes="#//Element">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_device_wifi"
+        eType="#//device_wifi" eOpposite="#//device_wifi/brnwifi"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="bssid" eType="#//bssid"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mode" eType="#//mode" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="debug" eType="#//debug"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ports" eType="#//ports"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="config" eType="#//config"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="#//class"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="bssid" eSuperTypes="#//Handler">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_brnwifi" eType="#//brnwifi"
+        eOpposite="#//brnwifi/bssid"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_lp_wifiencap"
+        eType="#//lp_wifiencap" eOpposite="#//lp_wifiencap/bssid"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="mode" eSuperTypes="#//Handler">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_brnwifi" eType="#//brnwifi"
+        eOpposite="#//brnwifi/mode"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_lp_wifiencap"
+        eType="#//lp_wifiencap" eOpposite="#//lp_wifiencap/mode"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="data_queue" eSuperTypes="#//Element">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_device_wifi"
+        eType="#//device_wifi" eOpposite="#//device_wifi/data_queue"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="drops" eType="#//drops"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="capacity" eType="#//capacity"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="highwater_length" eType="#//highwater_length"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="length" eType="#//length"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ports" eType="#//ports"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="config" eType="#//config"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="#//class"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="data_suppressor" eSuperTypes="#//Element">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_device_wifi"
+        eType="#//device_wifi" eOpposite="#//device_wifi/data_suppressor"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="active1" eType="#//active1"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="active0" eType="#//active0"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ports" eType="#//ports"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="config" eType="#//config"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="#//class"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="active1" eSuperTypes="#//Handler">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_data_suppressor"
+        eType="#//data_suppressor" eOpposite="#//data_suppressor/active1"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="active0" eSuperTypes="#//Handler">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_data_suppressor"
+        eType="#//data_suppressor" eOpposite="#//data_suppressor/active0"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_lp_suppressor"
+        eType="#//lp_suppressor" eOpposite="#//lp_suppressor/active0"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="lp_data_scheduler" eSuperTypes="#//Element">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_device_wifi"
+        eType="#//device_wifi" eOpposite="#//device_wifi/lp_data_scheduler"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ports" eType="#//ports"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="config" eType="#//config"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="#//class"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="filter_tx" eSuperTypes="#//Element">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_device_wifi"
+        eType="#//device_wifi" eOpposite="#//device_wifi/filter_tx"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="drops" eType="#//drops"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ports" eType="#//ports"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="config" eType="#//config"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="#//class"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="error_clf" eSuperTypes="#//Element">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_device_wifi"
+        eType="#//device_wifi" eOpposite="#//device_wifi/error_clf"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="phy" eType="#//phy" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="crc" eType="#//crc" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ok" eType="#//ok" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ports" eType="#//ports"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="config" eType="#//config"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="#//class"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="crc" eSuperTypes="#//Handler">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_error_clf" eType="#//error_clf"
+        eOpposite="#//error_clf/crc"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ok" eSuperTypes="#//Handler">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_error_clf" eType="#//error_clf"
+        eOpposite="#//error_clf/ok"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="wififrame_clf" eSuperTypes="#//Element">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_device_wifi"
+        eType="#//device_wifi" eOpposite="#//device_wifi/wififrame_clf"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="program" eType="#//program"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ports" eType="#//ports"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="config" eType="#//config"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="#//class"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="program" eSuperTypes="#//Handler">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_wififrame_clf"
+        eType="#//wififrame_clf" eOpposite="#//wififrame_clf/program"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_brn_ether_clf"
+        eType="#//brn_ether_clf" eOpposite="#//brn_ether_clf/program"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_lp_clf" eType="#//lp_clf"
+        eOpposite="#//lp_clf/program"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_dsrclf" eType="#//dsrclf"
+        eOpposite="#//dsrclf/program"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_brn_clf" eType="#//brn_clf"
+        eOpposite="#//brn_clf/program"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="brn_ether_clf" eSuperTypes="#//Element">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_device_wifi"
+        eType="#//device_wifi" eOpposite="#//device_wifi/brn_ether_clf"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="program" eType="#//program"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ports" eType="#//ports"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="config" eType="#//config"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="#//class"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="lp_clf" eSuperTypes="#//Element">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_device_wifi"
+        eType="#//device_wifi" eOpposite="#//device_wifi/lp_clf"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="program" eType="#//program"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ports" eType="#//ports"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="config" eType="#//config"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="#//class"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="lp_etherencap" eSuperTypes="#//Element">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_device_wifi"
+        eType="#//device_wifi" eOpposite="#//device_wifi/lp_etherencap"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="etht" eType="#//etht" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ethertype" eType="#//ethertype"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dst" eType="#//dst" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="src" eType="#//src" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ports" eType="#//ports"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="config" eType="#//config"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="#//class"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="etht" eSuperTypes="#//Handler">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_lp_etherencap"
+        eType="#//lp_etherencap" eOpposite="#//lp_etherencap/etht"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ethertype" eSuperTypes="#//Handler">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_lp_etherencap"
+        eType="#//lp_etherencap" eOpposite="#//lp_etherencap/ethertype"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="dst" eSuperTypes="#//Handler">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_lp_etherencap"
+        eType="#//lp_etherencap" eOpposite="#//lp_etherencap/dst"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="src" eSuperTypes="#//Handler">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_lp_etherencap"
+        eType="#//lp_etherencap" eOpposite="#//lp_etherencap/src"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="lp_power" eSuperTypes="#//Element">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_device_wifi"
+        eType="#//device_wifi" eOpposite="#//device_wifi/lp_power"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="power" eType="#//power"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ports" eType="#//ports"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="config" eType="#//config"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="#//class"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="lp_wifiencap" eSuperTypes="#//Element">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_device_wifi"
+        eType="#//device_wifi" eOpposite="#//device_wifi/lp_wifiencap"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="bssid" eType="#//bssid"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mode" eType="#//mode" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="debug" eType="#//debug"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ports" eType="#//ports"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="config" eType="#//config"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="#//class"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="lp_queue" eSuperTypes="#//Element">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_device_wifi"
+        eType="#//device_wifi" eOpposite="#//device_wifi/lp_queue"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="drops" eType="#//drops"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="capacity" eType="#//capacity"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="highwater_length" eType="#//highwater_length"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="length" eType="#//length"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ports" eType="#//ports"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="config" eType="#//config"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="#//class"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="lp_suppressor" eSuperTypes="#//Element">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_device_wifi"
+        eType="#//device_wifi" eOpposite="#//device_wifi/lp_suppressor"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="active0" eType="#//active0"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ports" eType="#//ports"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="config" eType="#//config"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="#//class"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="routing" eSuperTypes="#//Element">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_Node" eType="#//Node"
+        eOpposite="#//Node/routing"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dsr_decap" eType="#//dsr_decap"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dsr_encap" eType="#//dsr_encap"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="querier" eType="#//querier"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="req_forwarder" eType="#//req_forwarder"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rep_forwarder" eType="#//rep_forwarder"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="src_forwarder" eType="#//src_forwarder"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="err_forwarder" eType="#//err_forwarder"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="routing_peek" eType="#//routing_peek"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tee_to_err_fwd" eType="#//tee_to_err_fwd"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dsrclf" eType="#//dsrclf"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="dsr_decap" eSuperTypes="#//Element">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_routing" eType="#//routing"
+        eOpposite="#//routing/dsr_decap"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="debug" eType="#//debug"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ports" eType="#//ports"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="config" eType="#//config"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="#//class"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="dsr_encap" eSuperTypes="#//Element">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_routing" eType="#//routing"
+        eOpposite="#//routing/dsr_encap"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="debug" eType="#//debug"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ports" eType="#//ports"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="config" eType="#//config"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="#//class"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="querier" eSuperTypes="#//Element">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_routing" eType="#//routing"
+        eOpposite="#//routing/querier"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="fixed_route" eType="#//fixed_route"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="debug" eType="#//debug"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ports" eType="#//ports"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="config" eType="#//config"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="#//class"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="fixed_route" eSuperTypes="#//Handler">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_querier" eType="#//querier"
+        eOpposite="#//querier/fixed_route"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="req_forwarder" eSuperTypes="#//Element">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_routing" eType="#//routing"
+        eOpposite="#//routing/req_forwarder"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="stats" eType="#//stats"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="debug" eType="#//debug"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ports" eType="#//ports"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="config" eType="#//config"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="#//class"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="rep_forwarder" eSuperTypes="#//Element">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_routing" eType="#//routing"
+        eOpposite="#//routing/rep_forwarder"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="debug" eType="#//debug"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ports" eType="#//ports"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="config" eType="#//config"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="#//class"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="src_forwarder" eSuperTypes="#//Element">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_routing" eType="#//routing"
+        eOpposite="#//routing/src_forwarder"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="debug" eType="#//debug"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ports" eType="#//ports"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="config" eType="#//config"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="#//class"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="err_forwarder" eSuperTypes="#//Element">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_routing" eType="#//routing"
+        eOpposite="#//routing/err_forwarder"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="debug" eType="#//debug"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ports" eType="#//ports"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="config" eType="#//config"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="#//class"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="routing_peek" eSuperTypes="#//Element">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_routing" eType="#//routing"
+        eOpposite="#//routing/routing_peek"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="peek_info" eType="#//peek_info"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="debug" eType="#//debug"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ports" eType="#//ports"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="config" eType="#//config"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="#//class"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="peek_info" eSuperTypes="#//Handler">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_routing_peek"
+        eType="#//routing_peek" eOpposite="#//routing_peek/peek_info"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="tee_to_err_fwd" eSuperTypes="#//Element">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_routing" eType="#//routing"
+        eOpposite="#//routing/tee_to_err_fwd"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ports" eType="#//ports"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="config" eType="#//config"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="#//class"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="dsrclf" eSuperTypes="#//Element">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_routing" eType="#//routing"
+        eOpposite="#//routing/dsrclf"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="program" eType="#//program"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ports" eType="#//ports"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="config" eType="#//config"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="#//class"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="sf" eSuperTypes="#//Element">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_Node" eType="#//Node"
+        eOpposite="#//Node/sf"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="stats" eType="#//stats"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rxflows" eType="#//rxflows"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="txflows" eType="#//txflows"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="debug" eType="#//debug"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ports" eType="#//ports"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="config" eType="#//config"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="#//class"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="flowstats">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="node" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_stats" eType="#//stats"
+        eOpposite="#//stats/flowstats"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="rxflows" eSuperTypes="#//Handler">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_sf" eType="#//sf"
+        eOpposite="#//sf/rxflows"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="txflows" eSuperTypes="#//Handler">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_sf" eType="#//sf"
+        eOpposite="#//sf/txflows"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="lt" eSuperTypes="#//Element">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_Node" eType="#//Node"
+        eOpposite="#//Node/lt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="debug" eType="#//debug"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dijkstra_time" eType="#//dijkstra_time"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="blacklist" eType="#//blacklist"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hosts" eType="#//hosts"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="links" eType="#//links"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="routes_to" eType="#//routes_to"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="routes_from" eType="#//routes_from"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="routes" eType="#//routes"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ports" eType="#//ports"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="config" eType="#//config"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="#//class"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="dijkstra_time" eSuperTypes="#//Handler">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_lt" eType="#//lt"
+        eOpposite="#//lt/dijkstra_time"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="blacklist" eSuperTypes="#//Handler">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_lt" eType="#//lt"
+        eOpposite="#//lt/blacklist"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="hosts" eSuperTypes="#//Handler">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_lt" eType="#//lt"
+        eOpposite="#//lt/hosts"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="links" eSuperTypes="#//Handler">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_lt" eType="#//lt"
+        eOpposite="#//lt/links"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="routes_to" eSuperTypes="#//Handler">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_lt" eType="#//lt"
+        eOpposite="#//lt/routes_to"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="routes_from" eSuperTypes="#//Handler">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_lt" eType="#//lt"
+        eOpposite="#//lt/routes_from"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="routes" eSuperTypes="#//Handler">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_lt" eType="#//lt"
+        eOpposite="#//lt/routes"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="sys_info" eSuperTypes="#//Element">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_Node" eType="#//Node"
+        eOpposite="#//Node/sys_info"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="schema" eType="#//schema"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="systeminfo" eType="#//systeminfo"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="debug" eType="#//debug"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ports" eType="#//ports"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="config" eType="#//config"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="#//class"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="systeminfo" eSuperTypes="#//Handler">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_sys_info" eType="#//sys_info"
+        eOpposite="#//sys_info/systeminfo"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="system" eType="#//system"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="system">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mem" eType="#//mem" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="loadavg" eType="#//loadavg"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="uptime" eType="#//uptime"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="linux" eType="#//linux"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="time" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_systeminfo"
+        eType="#//systeminfo" eOpposite="#//systeminfo/system"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="mem">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="total" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="used" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cached" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="buffers" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="NFS_Unstable" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_system" eType="#//system"
+        eOpposite="#//system/mem"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="loadavg">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="onemin" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fivemin" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fifteen" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_system" eType="#//system"
+        eOpposite="#//system/loadavg"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="uptime">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="total" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="idle" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_system" eType="#//system"
+        eOpposite="#//system/uptime"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="linux">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_system" eType="#//system"
+        eOpposite="#//system/linux"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="rc" eSuperTypes="#//Element">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_Node" eType="#//Node"
+        eOpposite="#//Node/rc"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="active" eType="#//active"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="debug" eType="#//debug"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ports" eType="#//ports"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="config" eType="#//config"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="#//class"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="active" eSuperTypes="#//Handler">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_rc" eType="#//rc"
+        eOpposite="#//rc/active"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="id" eSuperTypes="#//Element">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_Node" eType="#//Node"
+        eOpposite="#//Node/id"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="version" eType="#//version"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="devinfo" eType="#//devinfo"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="debug" eType="#//debug"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ports" eType="#//ports"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="config" eType="#//config"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="#//class"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="version" eSuperTypes="#//Handler">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_id" eType="#//id"
+        eOpposite="#//id/version"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="click_binary" eType="#//click_binary"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="click_script" eType="#//click_script"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="version" eType="#//version"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_version" eType="#//version"
+        eOpposite="#//version/version"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="click_binary">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="brn_version" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mode" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="md5_id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBigInteger"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_version" eType="#//version"
+        eOpposite="#//version/click_binary"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="click_script">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="md5_id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_version" eType="#//version"
+        eOpposite="#//version/click_script"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="devinfo" eSuperTypes="#//Handler">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_id" eType="#//id"
+        eOpposite="#//id/devinfo"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="nodeidentity" eType="#//nodeidentity"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="nodeidentity">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="device" eType="#//device"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_devinfo" eType="#//devinfo"
+        eOpposite="#//devinfo/nodeidentity"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="device">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="index" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="address" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_nodeidentity"
+        eType="#//nodeidentity" eOpposite="#//nodeidentity/device"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="node" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fix_address" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_deviceinfo"
+        eType="#//deviceinfo" eOpposite="#//deviceinfo/device"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="wireless" eSuperTypes="#//Element">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_Node" eType="#//Node"
+        eOpposite="#//Node/wireless"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="address" eType="#//address"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="deviceinfo" eType="#//deviceinfo"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="debug" eType="#//debug"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ports" eType="#//ports"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="config" eType="#//config"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="#//class"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="address" eSuperTypes="#//Handler">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_wireless" eType="#//wireless"
+        eOpposite="#//wireless/address"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="deviceinfo" eSuperTypes="#//Handler">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_wireless" eType="#//wireless"
+        eOpposite="#//wireless/deviceinfo"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="device" eType="#//device"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="seismo" eSuperTypes="#//Element">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_Node" eType="#//Node"
+        eOpposite="#//Node/seismo"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="channelstatinfo" eType="#//channelstatinfo"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="chaninfo" upperBound="-1"
+        eType="#//chaninfo" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="samplingrate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sample_count" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="channels" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="last_update" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBigInteger"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_node" eType="#//node"
+        eOpposite="#//node/seismo"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="debug" eType="#//debug"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ports" eType="#//ports"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="config" eType="#//config"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="#//class"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="channelstatinfo" eSuperTypes="#//Handler">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_seismo" eType="#//seismo"
+        eOpposite="#//seismo/channelstatinfo"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="node" eType="#//node" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="node">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="gps" eType="#//gps" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="seismo" eType="#//seismo"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="time" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_channelstatinfo"
+        eType="#//channelstatinfo" eOpposite="#//channelstatinfo/node"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="gps" eSuperTypes="#//Element">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="lat" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="long" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="alt" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="HDOP" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_node" eType="#//node"
+        eOpposite="#//node/gps"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_Node" eType="#//Node"
+        eOpposite="#//Node/gps"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="gps_coord" eType="#//gps_coord"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="time" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="speed" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_gps_coord" eType="#//gps_coord"
+        eOpposite="#//gps_coord/gps"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cart_coord" eType="#//cart_coord"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="debug" eType="#//debug"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ports" eType="#//ports"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="config" eType="#//config"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="#//class"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="chaninfo">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="avg_value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="std_value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="min_value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="max_value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_seismo" eType="#//seismo"
+        eOpposite="#//seismo/chaninfo"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Label_brnether" eSuperTypes="#//Element">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_Node" eType="#//Node"
+        eOpposite="#//Node/Label_brnether"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ports" eType="#//ports"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="config" eType="#//config"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="#//class"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="brn_clf" eSuperTypes="#//Element">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_Node" eType="#//Node"
+        eOpposite="#//Node/brn_clf"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="program" eType="#//program"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ports" eType="#//ports"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="config" eType="#//config"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="#//class"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="toMeAfterRouting" eSuperTypes="#//Element">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_Node" eType="#//Node"
+        eOpposite="#//Node/toMeAfterRouting"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="debug" eType="#//debug"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ports" eType="#//ports"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="config" eType="#//config"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="#//class"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="gps_coord" eSuperTypes="#//Handler">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_gps" eType="#//gps"
+        eOpposite="#//gps/gps_coord"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="gps" eType="#//gps" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="cart_coord" eSuperTypes="#//Handler">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_gps" eType="#//gps"
+        eOpposite="#//gps/cart_coord"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+</ecore:EPackage>

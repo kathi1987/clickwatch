@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id$
+-->
+
+<plugin>
+
+   <extension
+         point="org.eclipse.core.runtime.applications"
+         id="NewEditorAdvisorApplication">
+      <application>
+         <run class="de.hub.clickwatch.model.presentation.NewEditorAdvisor$Application"/>
+      </application>
+   </extension>
+
+   <extension point="org.eclipse.ui.perspectives">
+      <perspective
+            name="%_UI_Perspective_label"
+            class="de.hub.clickwatch.model.presentation.NewEditorAdvisor$Perspective"
+            id="edu.hu.clickwatch.model.presentation.NewEditorAdvisorPerspective">
+      </perspective>
+   </extension>
+
+   <extension point="org.eclipse.ui.commands">
+      <command
+            name="%_UI_Menu_OpenURI_label"
+            description="%_UI_Menu_OpenURI_description"
+            categoryId="org.eclipse.ui.category.file"
+            id="edu.hu.clickwatch.model.presentation.NewEditorAdvisorOpenURICommand"/>
+      <command
+            name="%_UI_Menu_Open_label"
+            description="%_UI_Menu_Open_description"
+            categoryId="org.eclipse.ui.category.file"
+            id="edu.hu.clickwatch.model.presentation.NewEditorAdvisorOpenCommand"/>
+   </extension>
+
+   <extension point="org.eclipse.ui.bindings">
+      <key
+            commandId="edu.hu.clickwatch.model.presentation.NewEditorAdvisorOpenURICommand"
+            sequence="M1+U"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"/>
+      <key
+            commandId="edu.hu.clickwatch.model.presentation.NewEditorAdvisorOpenCommand"
+            sequence="M1+O"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"/>
+   </extension>
+
+   <extension point="org.eclipse.ui.actionSets">
+      <actionSet
+            label="%_UI_NewEditorAdvisor_ActionSet_label"
+            visible="true"
+            id="NewEditorAdvisorActionSet">
+         <action
+               label="%_UI_Menu_About_label"
+               class="de.hub.clickwatch.model.presentation.NewEditorAdvisor$AboutAction"
+               menubarPath="help/additions"
+               id="edu.hu.clickwatch.model.presentation.NewEditorAdvisorAboutAction"/>
+         <action
+               label="%_UI_Menu_OpenURI_label"
+               definitionId="edu.hu.clickwatch.model.presentation.NewEditorAdvisorOpenURICommand"
+               class="de.hub.clickwatch.model.presentation.NewEditorAdvisor$OpenURIAction"
+               menubarPath="file/additions"
+               id="edu.hu.clickwatch.model.presentation.NewEditorAdvisorOpenURIAction"/>
+         <action
+               label="%_UI_Menu_Open_label"
+               definitionId="edu.hu.clickwatch.model.presentation.NewEditorAdvisorOpenCommand"
+               class="de.hub.clickwatch.model.presentation.NewEditorAdvisor$OpenAction"
+               menubarPath="file/additions"
+               id="edu.hu.clickwatch.model.presentation.NewEditorAdvisorOpenAction"/>
+      </actionSet>
+   </extension>
+
+   <extension point="org.eclipse.ui.actionSets">
+      <actionSet
+            label="%_UI_ClickWatchModelModelWizard_ActionSet_label"
+            visible="true"
+            id="edu.hu.clickwatch.model.presentation.ClickWatchModelActionBarContributorActionSet">
+         <action
+               label="%_UI_ClickWatchModelModelWizard_label"
+               class="de.hub.clickwatch.model.presentation.ClickWatchModelActionBarContributor$NewAction"
+               menubarPath="file/new/additions"
+               id="edu.hu.clickwatch.model.presentation.ClickWatchModelActionBarContributorNewAction"/>
+      </actionSet>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <editor
+            id="edu.hu.clickwatch.model.presentation.ClickWatchModelEditorID"
+            name="%_UI_ClickWatchModelEditor_label"
+            icon="icons/full/obj16/ClickWatchModelModelFile.gif"
+            extensions="clickwatchmodel"
+            class="de.hub.clickwatch.model.presentation.ClickWatchModelEditor"
+            contributorClass="de.hub.clickwatch.model.presentation.ClickWatchModelActionBarContributor">
+      </editor>
+   </extension>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <wizard
+            category="edu.hu.clickwatch.analysis.WizardCategory"
+            class="de.hub.clickwatch.model.presentation.ClickWatchModelModelWizard"
+            icon="icons/full/obj16/ClickWatchModelModelFile.gif"
+            id="edu.hu.clickwatch.model.editor.ClickWatchModelModelWizard"
+            name="ClickWatch model"
+            project="false">
+      </wizard>
+   </extension>
+
+</plugin>
