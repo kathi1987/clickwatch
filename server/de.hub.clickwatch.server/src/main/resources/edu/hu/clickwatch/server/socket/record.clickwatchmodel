@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ASCII"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:edu.hu.clickwatch.model="edu.hu.clickwatch.model">
-  <edu.hu.clickwatch.model:Network>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:cwm="http://de.hub.clickwatch.model">
+  <cwm:Network>
     <node iNetAdress="192.168.3.167">
       <element name="wireless">
         <handler name="address" canRead="true" canWrite="true">
@@ -3303,8 +3303,8 @@ routing/dsrclf          </handler>
         </children>
       </element>
     </node>
-  </edu.hu.clickwatch.model:Network>
-  <edu.hu.clickwatch.model:Network>
+  </cwm:Network>
+  <cwm:Network>
     <node iNetAdress="192.168.3.167">
       <element name="wireless">
         <handler name="address" canRead="true" canWrite="true">
@@ -6607,8 +6607,8 @@ routing/dsrclf          </handler>
         </children>
       </element>
     </node>
-  </edu.hu.clickwatch.model:Network>
-  <edu.hu.clickwatch.model:Network>
+  </cwm:Network>
+  <cwm:Network>
     <node iNetAdress="192.168.3.167">
       <element name="wireless">
         <handler name="address" canRead="true" canWrite="true">
@@ -9911,8 +9911,8 @@ routing/dsrclf          </handler>
         </children>
       </element>
     </node>
-  </edu.hu.clickwatch.model:Network>
-  <edu.hu.clickwatch.model:Network>
+  </cwm:Network>
+  <cwm:Network>
     <node iNetAdress="192.168.3.167">
       <element name="wireless">
         <handler name="address" canRead="true" canWrite="true">
@@ -13215,8 +13215,8 @@ routing/dsrclf          </handler>
         </children>
       </element>
     </node>
-  </edu.hu.clickwatch.model:Network>
-  <edu.hu.clickwatch.model:Network>
+  </cwm:Network>
+  <cwm:Network>
     <node iNetAdress="192.168.3.167">
       <element name="wireless">
         <handler name="address" canRead="true" canWrite="true">
@@ -16519,8 +16519,8 @@ routing/dsrclf          </handler>
         </children>
       </element>
     </node>
-  </edu.hu.clickwatch.model:Network>
-  <edu.hu.clickwatch.model:Network>
+  </cwm:Network>
+  <cwm:Network>
     <node iNetAdress="192.168.3.167">
       <element name="wireless">
         <handler name="address" canRead="true" canWrite="true">
@@ -19823,8 +19823,8 @@ routing/dsrclf          </handler>
         </children>
       </element>
     </node>
-  </edu.hu.clickwatch.model:Network>
-  <edu.hu.clickwatch.model:Network>
+  </cwm:Network>
+  <cwm:Network>
     <node iNetAdress="192.168.3.167">
       <element name="wireless">
         <handler name="address" canRead="true" canWrite="true">
@@ -23127,8 +23127,8 @@ routing/dsrclf          </handler>
         </children>
       </element>
     </node>
-  </edu.hu.clickwatch.model:Network>
-  <edu.hu.clickwatch.model:Network>
+  </cwm:Network>
+  <cwm:Network>
     <node iNetAdress="192.168.3.167">
       <element name="wireless">
         <handler name="address" canRead="true" canWrite="true">
@@ -26431,8 +26431,8 @@ routing/dsrclf          </handler>
         </children>
       </element>
     </node>
-  </edu.hu.clickwatch.model:Network>
-  <edu.hu.clickwatch.model:Network>
+  </cwm:Network>
+  <cwm:Network>
     <node iNetAdress="192.168.3.167">
       <element name="wireless">
         <handler name="address" canRead="true" canWrite="true">
@@ -29735,8 +29735,8 @@ routing/dsrclf          </handler>
         </children>
       </element>
     </node>
-  </edu.hu.clickwatch.model:Network>
-  <edu.hu.clickwatch.model:Network>
+  </cwm:Network>
+  <cwm:Network>
     <node iNetAdress="192.168.3.167">
       <element name="wireless">
         <handler name="address" canRead="true" canWrite="true">
@@ -33039,5 +33039,5 @@ routing/dsrclf          </handler>
         </children>
       </element>
     </node>
-  </edu.hu.clickwatch.model:Network>
+  </cwm:Network>
 </xmi:XMI>

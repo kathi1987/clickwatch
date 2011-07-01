@@ -1,35 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <genmodel:GenModel xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
-    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/edu.hu.clickwatch.analysis/src"
-    modelPluginID="edu.hu.clickwatch.analysis" modelName="CompositionModel" importerID="org.eclipse.emf.importer.ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/de.hub.clickwatch.analysis/src"
+    modelPluginID="de.hub.clickwatch.analysis" modelName="CompositionModel" importerID="org.eclipse.emf.importer.ecore"
     complianceLevel="6.0" copyrightFields="false">
   <foreignModel>CompositionModel.ecore</foreignModel>
-  <genPackages prefix="Composition" basePackage="edu.hu.clickwatch.analysis.composition"
+  <genPackages prefix="Composition" basePackage="de.hub.clickwatch.analysis.composition"
       disposableProviderFactory="true" ecorePackage="CompositionModel.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="CompositionModel.ecore#//TransformationKind">
+      <genEnumLiterals ecoreEnumLiteral="CompositionModel.ecore#//TransformationKind/predefined"/>
+      <genEnumLiterals ecoreEnumLiteral="CompositionModel.ecore#//TransformationKind/xtend"/>
+      <genEnumLiterals ecoreEnumLiteral="CompositionModel.ecore#//TransformationKind/xpand"/>
+      <genEnumLiterals ecoreEnumLiteral="CompositionModel.ecore#//TransformationKind/java"/>
+      <genEnumLiterals ecoreEnumLiteral="CompositionModel.ecore#//TransformationKind/xtend2"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="CompositionModel.ecore#//TargetSpec">
+      <genEnumLiterals ecoreEnumLiteral="CompositionModel.ecore#//TargetSpec/existing"/>
+      <genEnumLiterals ecoreEnumLiteral="CompositionModel.ecore#//TargetSpec/add"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="CompositionModel.ecore#//ParameterSpecKind">
+      <genEnumLiterals ecoreEnumLiteral="CompositionModel.ecore#//ParameterSpecKind/root"/>
+      <genEnumLiterals ecoreEnumLiteral="CompositionModel.ecore#//ParameterSpecKind/map"/>
+      <genEnumLiterals ecoreEnumLiteral="CompositionModel.ecore#//ParameterSpecKind/list"/>
+    </genEnums>
     <genClasses ecoreClass="CompositionModel.ecore#//Node">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CompositionModel.ecore#//Node/EReference0"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CompositionModel.ecore#//Node/EReference1"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CompositionModel.ecore#//Node/outgoing"/>
     </genClasses>
-    <genClasses ecoreClass="CompositionModel.ecore#//Transformation"/>
+    <genClasses ecoreClass="CompositionModel.ecore#//Transformation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CompositionModel.ecore#//Transformation/transformationUri"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CompositionModel.ecore#//Transformation/transformationFunction"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CompositionModel.ecore#//Transformation/kind"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CompositionModel.ecore#//Transformation/predefinedTransformation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CompositionModel.ecore#//Transformation/input"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CompositionModel.ecore#//Transformation/output"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CompositionModel.ecore#//Transformation/targetSpec"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CompositionModel.ecore#//Transformation/requiredBundle"/>
+    </genClasses>
     <genClasses ecoreClass="CompositionModel.ecore#//Element">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CompositionModel.ecore#//Element/label"/>
     </genClasses>
-    <genClasses ecoreClass="CompositionModel.ecore#//ModelNode"/>
-    <genClasses ecoreClass="CompositionModel.ecore#//DataSetNode"/>
-    <genClasses ecoreClass="CompositionModel.ecore#//MeasureNode"/>
+    <genClasses ecoreClass="CompositionModel.ecore#//ModelNode">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CompositionModel.ecore#//ModelNode/metaModelResource"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CompositionModel.ecore#//ModelNode/inferedType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CompositionModel.ecore#//ModelNode/metaModelClass"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CompositionModel.ecore#//ModelNode/modelResource"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CompositionModel.ecore#//ModelNode/persistent"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CompositionModel.ecore#//ModelNode/registeredPackage"/>
+    </genClasses>
+    <genClasses ecoreClass="CompositionModel.ecore#//DataSetNode">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CompositionModel.ecore#//DataSetNode/data"/>
+    </genClasses>
+    <genClasses ecoreClass="CompositionModel.ecore#//MeasureNode">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CompositionModel.ecore#//MeasureNode/data"/>
+    </genClasses>
     <genClasses ecoreClass="CompositionModel.ecore#//Edge">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CompositionModel.ecore#//Edge/source"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CompositionModel.ecore#//Edge/target"/>
     </genClasses>
     <genClasses ecoreClass="CompositionModel.ecore#//TimedTransformation"/>
-    <genClasses ecoreClass="CompositionModel.ecore#//MappedTransformation"/>
-    <genClasses ecoreClass="CompositionModel.ecore#//Visualization"/>
-    <genClasses ecoreClass="CompositionModel.ecore#//Visualizer"/>
-    <genClasses ecoreClass="CompositionModel.ecore#//DataNode"/>
+    <genClasses ecoreClass="CompositionModel.ecore#//DataNode">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CompositionModel.ecore#//DataNode/hasData"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CompositionModel.ecore#//DataNode/visualization"/>
+    </genClasses>
     <genClasses ecoreClass="CompositionModel.ecore#//Composition">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CompositionModel.ecore#//Composition/contents"/>
+    </genClasses>
+    <genClasses ecoreClass="CompositionModel.ecore#//ParameterSpec">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CompositionModel.ecore#//ParameterSpec/kind"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CompositionModel.ecore#//ParameterSpec/mapClassKey"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CompositionModel.ecore#//ParameterSpec/listQuery"/>
+    </genClasses>
+    <genClasses ecoreClass="CompositionModel.ecore#//DataSet">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CompositionModel.ecore#//DataSet/intValues"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CompositionModel.ecore#//DataSet/doubleValues"/>
+    </genClasses>
+    <genClasses ecoreClass="CompositionModel.ecore#//Measure">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CompositionModel.ecore#//Measure/intValue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CompositionModel.ecore#//Measure/doubleValue"/>
+    </genClasses>
+    <genClasses ecoreClass="CompositionModel.ecore#//Visualization">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CompositionModel.ecore#//Visualization/kind"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

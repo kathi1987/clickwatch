@@ -6,14 +6,26 @@
  */
 package de.hub.clickwatch.analysis.composition.model.util;
 
-import de.hub.clickwatch.analysis.composition.model.*;
-
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
-
 import org.eclipse.emf.ecore.EObject;
+
+import de.hub.clickwatch.analysis.composition.model.Composition;
+import de.hub.clickwatch.analysis.composition.model.CompositionPackage;
+import de.hub.clickwatch.analysis.composition.model.DataNode;
+import de.hub.clickwatch.analysis.composition.model.DataSet;
+import de.hub.clickwatch.analysis.composition.model.DataSetNode;
+import de.hub.clickwatch.analysis.composition.model.Edge;
+import de.hub.clickwatch.analysis.composition.model.Element;
+import de.hub.clickwatch.analysis.composition.model.Measure;
+import de.hub.clickwatch.analysis.composition.model.MeasureNode;
+import de.hub.clickwatch.analysis.composition.model.ModelNode;
+import de.hub.clickwatch.analysis.composition.model.Node;
+import de.hub.clickwatch.analysis.composition.model.ParameterSpec;
+import de.hub.clickwatch.analysis.composition.model.TimedTransformation;
+import de.hub.clickwatch.analysis.composition.model.Transformation;
+import de.hub.clickwatch.analysis.composition.model.Visualization;
 
 /**
  * <!-- begin-user-doc -->

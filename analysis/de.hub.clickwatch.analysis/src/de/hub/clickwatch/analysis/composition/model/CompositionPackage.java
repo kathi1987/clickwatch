@@ -42,7 +42,7 @@ public interface CompositionPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://compositionmodel/1.0";
+	String eNS_URI = "http://de.hub.clickwatch.compositionmodel/1.0";
 
 	/**
 	 * The package namespace name.

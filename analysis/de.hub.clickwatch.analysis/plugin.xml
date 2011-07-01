@@ -3,11 +3,11 @@
 <plugin>
    <extension point="org.eclipse.emf.ecore.generated_package">
       <package
-            uri="http://compositionmodel/1.0"
+            uri="http://de.hub.clickwatch.compositionmodel/1.0"
             class="de.hub.clickwatch.analysis.composition.model.CompositionPackage"/>
       <package
             class="de.hub.clickwatch.analysis.models.topology.TopologyPackage"
-            uri="http://de.hu.clickwatch.topology/1.0">
+            uri="http://de.hub.clickwatch.topology/1.0">
       </package>
    </extension>
 

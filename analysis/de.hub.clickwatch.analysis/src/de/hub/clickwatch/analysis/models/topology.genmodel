@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <genmodel:GenModel xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
-    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/edu.hu.clickwatch.analysis/src"
-    modelPluginID="edu.hu.clickwatch.analysis" modelName="Topology" importerID="org.eclipse.emf.importer.ecore"
-    complianceLevel="6.0" copyrightFields="false">
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/de.hub.clickwatch.analysis/src"
+    modelPluginID="de.hub.clickwatch.analysis" modelName="Topology" modelPluginClass=""
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0" copyrightFields="false">
   <foreignModel>topology.ecore</foreignModel>
-  <genPackages prefix="Topology" basePackage="edu.hu.clickwatch.analysis.models" disposableProviderFactory="true"
+  <genPackages prefix="Topology" basePackage="de.hub.clickwatch.analysis.models" disposableProviderFactory="true"
       ecorePackage="topology.ecore#/">
     <genClasses ecoreClass="topology.ecore#//Node">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute topology.ecore#//Node/ip"/>

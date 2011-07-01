@@ -39,7 +39,7 @@ public class ClickWatchModelFactoryImpl extends EFactoryImpl implements ClickWat
 	 */
 	public static ClickWatchModelFactory init() {
 		try {
-			ClickWatchModelFactory theClickWatchModelFactory = (ClickWatchModelFactory)EPackage.Registry.INSTANCE.getEFactory("edu.hu.clickwatch.model"); 
+			ClickWatchModelFactory theClickWatchModelFactory = (ClickWatchModelFactory)EPackage.Registry.INSTANCE.getEFactory("http://de.hub.clickwatch.model"); 
 			if (theClickWatchModelFactory != null) {
 				return theClickWatchModelFactory;
 			}

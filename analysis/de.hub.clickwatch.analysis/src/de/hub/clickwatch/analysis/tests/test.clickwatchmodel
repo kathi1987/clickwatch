@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<edu.hu.clickwatch.model:Network xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:edu.hu.clickwatch.model="edu.hu.clickwatch.model" ElementFilter="" HandlerFilter="" updateIntervall="1000">
+<cwm:Network xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:cwm="http://de.hub.clickwatch.model" ElementFilter="" HandlerFilter="" updateIntervall="1000">
   <subnetwork name="Filter for XML values" ElementFilter="device_wifi/link_stat" HandlerFilter="bcast_stats" updateIntervall="1000">
     <node iNetAdress="192.168.3.152" backbone="wireless">
       <element name="device_wifi">
@@ -48,4 +48,4 @@ push~	-	FromSocket@10 [0]
   <subnetwork name="Real Tests">
     <node iNetAdress="192.168.3.152"/>
   </subnetwork>
-</edu.hu.clickwatch.model:Network>
+</cwm:Network>

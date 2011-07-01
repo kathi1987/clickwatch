@@ -42,7 +42,7 @@ public interface ClickWatchModelPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "edu.hu.clickwatch.model";
+	String eNS_URI = "http://de.hub.clickwatch.model";
 
 	/**
 	 * The package namespace name.
@@ -50,7 +50,7 @@ public interface ClickWatchModelPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_PREFIX = "edu.hu.clickwatch.model";
+	String eNS_PREFIX = "cwm";
 
 	/**
 	 * The singleton instance of the package.

@@ -1,0 +1,10 @@
+import topology;
+import SpecificMetaModel;
+
+cached createGPS(SpecificMetaModel::Node cw_node):
+	let gps = new topology::Gps:
+		gps.setLong(cw_node.gps.gps_coord.gps.long) ->
+		gps.setLat(cw_node.gps.gps_coord.gps.lat) -> gps;
+
+addGPS(SpecificMetaModel::Node cw_node, topology::Node t_node):
+	if (cw_node.iNetAddress == t_node.ip) then t_node.setGps(createGPS(cw_node)) -> true;

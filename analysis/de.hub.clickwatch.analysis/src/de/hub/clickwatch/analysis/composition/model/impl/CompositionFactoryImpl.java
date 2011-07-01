@@ -31,7 +31,7 @@ public class CompositionFactoryImpl extends EFactoryImpl implements CompositionF
 	 */
 	public static CompositionFactory init() {
 		try {
-			CompositionFactory theCompositionFactory = (CompositionFactory)EPackage.Registry.INSTANCE.getEFactory("http://compositionmodel/1.0"); 
+			CompositionFactory theCompositionFactory = (CompositionFactory)EPackage.Registry.INSTANCE.getEFactory("http://de.hub.clickwatch.compositionmodel/1.0"); 
 			if (theCompositionFactory != null) {
 				return theCompositionFactory;
 			}

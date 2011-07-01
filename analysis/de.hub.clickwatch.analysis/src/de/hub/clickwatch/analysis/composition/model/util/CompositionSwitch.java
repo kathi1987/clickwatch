@@ -6,12 +6,25 @@
  */
 package de.hub.clickwatch.analysis.composition.model.util;
 
-import de.hub.clickwatch.analysis.composition.model.*;
-
-import java.util.List;
-
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.util.Switch;
+
+import de.hub.clickwatch.analysis.composition.model.Composition;
+import de.hub.clickwatch.analysis.composition.model.CompositionPackage;
+import de.hub.clickwatch.analysis.composition.model.DataNode;
+import de.hub.clickwatch.analysis.composition.model.DataSet;
+import de.hub.clickwatch.analysis.composition.model.DataSetNode;
+import de.hub.clickwatch.analysis.composition.model.Edge;
+import de.hub.clickwatch.analysis.composition.model.Element;
+import de.hub.clickwatch.analysis.composition.model.Measure;
+import de.hub.clickwatch.analysis.composition.model.MeasureNode;
+import de.hub.clickwatch.analysis.composition.model.ModelNode;
+import de.hub.clickwatch.analysis.composition.model.Node;
+import de.hub.clickwatch.analysis.composition.model.ParameterSpec;
+import de.hub.clickwatch.analysis.composition.model.TimedTransformation;
+import de.hub.clickwatch.analysis.composition.model.Transformation;
+import de.hub.clickwatch.analysis.composition.model.Visualization;
 
 /**
  * <!-- begin-user-doc -->
@@ -26,7 +39,7 @@ import org.eclipse.emf.ecore.EObject;
  * @see de.hub.clickwatch.analysis.composition.model.CompositionPackage
  * @generated
  */
-public class CompositionSwitch<T> {
+public class CompositionSwitch<T> extends Switch<T> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
@@ -48,14 +61,16 @@ public class CompositionSwitch<T> {
 	}
 
 	/**
-	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
+	 * Checks whether this is a switch for the given package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the first non-null result returned by a <code>caseXXX</code> call.
+	 * @parameter ePackage the package in question.
+	 * @return whether this is a switch for the given package.
 	 * @generated
 	 */
-	public T doSwitch(EObject theEObject) {
-		return doSwitch(theEObject.eClass(), theEObject);
+	@Override
+	protected boolean isSwitchFor(EPackage ePackage) {
+		return ePackage == modelPackage;
 	}
 
 	/**
@@ -65,26 +80,7 @@ public class CompositionSwitch<T> {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected T doSwitch(EClass theEClass, EObject theEObject) {
-		if (theEClass.eContainer() == modelPackage) {
-			return doSwitch(theEClass.getClassifierID(), theEObject);
-		}
-		else {
-			List<EClass> eSuperTypes = theEClass.getESuperTypes();
-			return
-				eSuperTypes.isEmpty() ?
-					defaultCase(theEObject) :
-					doSwitch(eSuperTypes.get(0), theEObject);
-		}
-	}
-
-	/**
-	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the first non-null result returned by a <code>caseXXX</code> call.
-	 * @generated
-	 */
+	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
 			case CompositionPackage.NODE: {
@@ -414,6 +410,7 @@ public class CompositionSwitch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */
+	@Override
 	public T defaultCase(EObject object) {
 		return null;
 	}

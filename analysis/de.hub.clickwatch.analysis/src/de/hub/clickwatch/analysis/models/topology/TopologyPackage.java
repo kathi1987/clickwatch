@@ -41,7 +41,7 @@ public interface TopologyPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://de.hu.clickwatch.topology/1.0";
+	String eNS_URI = "http://de.hub.clickwatch.topology/1.0";
 
 	/**
 	 * The package namespace name.

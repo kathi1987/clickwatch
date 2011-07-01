@@ -6,14 +6,16 @@
  */
 package de.hub.clickwatch.analysis.models.topology.util;
 
-import de.hub.clickwatch.analysis.models.topology.*;
-
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
-
 import org.eclipse.emf.ecore.EObject;
+
+import de.hub.clickwatch.analysis.models.topology.Gps;
+import de.hub.clickwatch.analysis.models.topology.Link;
+import de.hub.clickwatch.analysis.models.topology.Node;
+import de.hub.clickwatch.analysis.models.topology.Topology;
+import de.hub.clickwatch.analysis.models.topology.TopologyPackage;
 
 /**
  * <!-- begin-user-doc -->

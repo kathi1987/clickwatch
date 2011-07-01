@@ -31,7 +31,7 @@ public class TopologyFactoryImpl extends EFactoryImpl implements TopologyFactory
 	 */
 	public static TopologyFactory init() {
 		try {
-			TopologyFactory theTopologyFactory = (TopologyFactory)EPackage.Registry.INSTANCE.getEFactory("http://de.hu.clickwatch.topology/1.0"); 
+			TopologyFactory theTopologyFactory = (TopologyFactory)EPackage.Registry.INSTANCE.getEFactory("http://de.hub.clickwatch.topology/1.0"); 
 			if (theTopologyFactory != null) {
 				return theTopologyFactory;
 			}
