@@ -1,0 +1,89 @@
+Manifest-Version: 1.0
+Bundle-Vendor: %providerName
+Bundle-ActivationPolicy: lazy
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.eclipse.xtend.typesystem.emf.ui; singleton:=t
+ rue
+Require-Bundle: org.eclipse.ui,org.eclipse.core.runtime,org.eclipse.co
+ re.resources,org.eclipse.jdt.core,org.eclipse.xtend.typesystem.emf,or
+ g.eclipse.xtend,org.eclipse.xtend.shared.ui,org.eclipse.emf.converter
+Bundle-Activator: org.eclipse.xtend.typesystem.emf.ui.EmfToolsPlugin
+Export-Package: org.eclipse.xtend.typesystem.emf.ui
+Bundle-Version: 1.0.1.v201008251147
+Bundle-ManifestVersion: 2
+
+Name: org/eclipse/xtend/typesystem/emf/ui/BuildJob.class
+SHA1-Digest: x2UlIlvtXtwkh8rTucAvduLK0PM=
+
+Name: org/eclipse/xtend/typesystem/emf/ui/internal/EarlyStarter.class
+SHA1-Digest: 5m2gl93Hljaal5Ud4RLPvYJLtSU=
+
+Name: eclipse32.png
+SHA1-Digest: B3pOl23OEMrdJ2zvV0JBt0kNNEY=
+
+Name: org/eclipse/xtend/typesystem/emf/ui/EmfToolsPlugin.class
+SHA1-Digest: NtlkV/BISjdCEYnTKQOIryk5VqQ=
+
+Name: org/eclipse/xtend/typesystem/emf/ui/ProjectAnalyzer.class
+SHA1-Digest: dRD4DEzUCbZAvvEGttgv76lHNMY=
+
+Name: META-INF/eclipse.inf
+SHA1-Digest: KyT9FF7C7t86NoBoa2kZT3ZJBfw=
+
+Name: org/eclipse/xtend/typesystem/emf/ui/EmfMetamodelContributor$1.cl
+ ass
+SHA1-Digest: HaDsF8Q+R4x3rvCcMm+xYrsF2CM=
+
+Name: org/eclipse/xtend/typesystem/emf/ui/internal/EmfToolsLog.class
+SHA1-Digest: MjAiLoK6GD0tAL1ZNoqhxiYyFwM=
+
+Name: org/eclipse/xtend/typesystem/emf/ui/actions/AbstractCoreModelTra
+ nsformerAction.class
+SHA1-Digest: lQVRLSmiL01EQVwnaOyaaPxh7BE=
+
+Name: about.html
+SHA1-Digest: t15ZOHlrGDCeslNIq+PwNJ1tf+4=
+
+Name: plugin.properties
+SHA1-Digest: VzSN3luMiqWjAHZMq46NB+NmRtI=
+
+Name: org/eclipse/xtend/typesystem/emf/ui/messages.properties
+SHA1-Digest: o9Iht6zVwT/B0TNahRQv+pXmOFo=
+
+Name: org/eclipse/xtend/typesystem/emf/ui/EmfToolsPlugin$1.class
+SHA1-Digest: 4v38zv+L81UT2SBzPrK7VOZ+6N0=
+
+Name: org/eclipse/xtend/typesystem/emf/ui/actions/Messages.class
+SHA1-Digest: 8T1xS/AXUIl7iheQePLAD9Ypvgc=
+
+Name: org/eclipse/xtend/typesystem/emf/ui/EmfToolsPlugin$2.class
+SHA1-Digest: pOznIbIYXeif2NbDm7mx1BqNI68=
+
+Name: org/eclipse/xtend/typesystem/emf/ui/ProjectAnalyzer$1.class
+SHA1-Digest: 2esb82LU1/x4GeESkjDpKnGlTio=
+
+Name: .options
+SHA1-Digest: 9oyAFzVSk7tcR9CRoMn1dwGj3Os=
+
+Name: org/eclipse/xtend/typesystem/emf/ui/EmfMetamodelContributor.clas
+ s
+SHA1-Digest: m2RhNj/Ou2hRfy8pzy3uhKLS7Xc=
+
+Name: org/eclipse/xtend/typesystem/emf/ui/EmfToolsPlugin$1$1.class
+SHA1-Digest: qBTxOOWHNwdJtcXHRaRX2rlM/uQ=
+
+Name: plugin.xml
+SHA1-Digest: AFtPeHKHCK6yA4Ukt9voJUFS1Pc=
+
+Name: org/eclipse/xtend/typesystem/emf/ui/actions/messages.properties
+SHA1-Digest: jHUMHomrKDwSyjuygDSKIIZr+mQ=
+
+Name: org/eclipse/xtend/typesystem/emf/ui/actions/AddAnnotationsAction
+ .class
+SHA1-Digest: xLKmq+VZmltA1U/dQ5LRqvmnO20=
+
+Name: org/eclipse/xtend/typesystem/emf/ui/Messages.class
+SHA1-Digest: 7+qXlwUP/BYC2bvjOuHn2DiF0ow=
+
