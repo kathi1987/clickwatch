@@ -13,14 +13,14 @@
    <extension point="org.eclipse.emf.ecore.generated_package">
       <package
             uri="platform:/resource/edu.hu.clickwatch.xml2/src/main/resources/configuration.xsd"
-            class="Configuration.ConfigurationPackage"
+            class="edu.hu.clickwatch.xml.ConfigurationPackage"
             genModel="src/main/resources/configuration.genmodel"/>
    </extension>
 
    <extension point="org.eclipse.emf.ecore.extension_parser">
       <parser
             type="configuration"
-            class="Configuration.util.ConfigurationResourceFactoryImpl"/>
+            class="edu.hu.clickwatch.xml.util.ConfigurationResourceFactoryImpl"/>
    </extension>
 
 </plugin>

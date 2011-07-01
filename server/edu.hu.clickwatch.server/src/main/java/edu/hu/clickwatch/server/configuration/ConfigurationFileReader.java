@@ -9,10 +9,11 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.Diagnostician;
+
+import edu.hu.clickwatch.xml.ConfigurationPackage;
+import edu.hu.clickwatch.xml.util.ConfigurationResourceFactoryImpl;
 //import org.osgi.service.log.LogService;
 
-import Configuration.ConfigurationPackage;
-import Configuration.util.ConfigurationResourceFactoryImpl;
 
 /**
  * 

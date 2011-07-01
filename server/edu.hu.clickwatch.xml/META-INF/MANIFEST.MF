@@ -7,9 +7,9 @@ Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Export-Package: Configuration,
- Configuration.impl,
- Configuration.util
+Export-Package: edu.hu.clickwatch.xml,
+ edu.hu.clickwatch.xml.impl,
+ edu.hu.clickwatch.xml.util
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
  org.eclipse.emf.ecore.xmi;visibility:=reexport

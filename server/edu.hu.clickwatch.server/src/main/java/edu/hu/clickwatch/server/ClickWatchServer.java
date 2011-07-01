@@ -7,15 +7,15 @@ import org.eclipse.emf.ecore.resource.Resource;
 
 import com.google.inject.Inject;
 
-import Configuration.CdoType;
-import Configuration.NetworkType;
-import Configuration.NodeType;
 import edu.hu.clickwatch.cdo.CDOHandler;
 import edu.hu.clickwatch.model.ClickWatchModelFactory;
 import edu.hu.clickwatch.model.Network;
 import edu.hu.clickwatch.model.Node;
 import edu.hu.clickwatch.server.configuration.ConfigurationFileReader;
 import edu.hu.clickwatch.server.node.ClickWatchServerNodeConnection;
+import edu.hu.clickwatch.xml.CdoType;
+import edu.hu.clickwatch.xml.NetworkType;
+import edu.hu.clickwatch.xml.NodeType;
 
 /**
  * The server component stores the database and network connection configuration as well as

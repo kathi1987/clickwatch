@@ -8,8 +8,6 @@
     <version>0.0.1-SNAPSHOT</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
-  <groupId>de.hu.clickwatch</groupId>
   <artifactId>edu.hu.clickwatch.model</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
   <packaging>eclipse-plugin</packaging>
 </project>
