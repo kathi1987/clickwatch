@@ -27,6 +27,10 @@
         <element xmi:type="ecore:EAttribute" href="CompositionModel.ecore#//Transformation/predefinedTransformation"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_flNtYYFIEeCx_M-SJwq5hw"/>
       </children>
+      <children xmi:type="notation:Node" xmi:id="_4ZDu4aIgEeCIjOW0clQdAw" type="2001">
+        <element xmi:type="ecore:EAttribute" href="CompositionModel.ecore#//Transformation/requiredBundle"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_4ZDu4qIgEeCIjOW0clQdAw"/>
+      </children>
       <children xmi:type="notation:Node" xmi:id="_JyPJIIBfEeC-oa5J_OocOw" type="2001">
         <element xmi:type="ecore:EAttribute" href="CompositionModel.ecore#//Transformation/transformationUri"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_JyPJIYBfEeC-oa5J_OocOw"/>

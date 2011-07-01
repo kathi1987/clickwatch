@@ -6,6 +6,7 @@
  */
 package edu.hu.clickwatch.analysis.composition.model.impl;
 
+import edu.hu.clickwatch.analysis.composition.model.*;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
