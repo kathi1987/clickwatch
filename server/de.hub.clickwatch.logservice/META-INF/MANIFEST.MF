@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: logservice
 Bundle-SymbolicName: edu.hu.clickwatch.logservice
-Bundle-Version: 0.0.1.qualifier
+Bundle-Version: 2.0.0.qualifier
 Bundle-Activator: edu.hu.clickwatch.logservice.LogServiceActivator
 Service-Component: OSGI-INF/*.xml
 Bundle-ActivationPolicy: lazy

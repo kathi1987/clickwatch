@@ -11,7 +11,7 @@ Require-Bundle: org.eclipse.ui,org.eclipse.core.runtime,org.eclipse.co
  g.eclipse.xtend,org.eclipse.xtend.shared.ui,org.eclipse.emf.converter
 Bundle-Activator: org.eclipse.xtend.typesystem.emf.ui.EmfToolsPlugin
 Export-Package: org.eclipse.xtend.typesystem.emf.ui
-Bundle-Version: 0.0.1.qualifier
+Bundle-Version: 2.0.0.qualifier
 Bundle-ManifestVersion: 2
 
 Name: org/eclipse/xtend/typesystem/emf/ui/BuildJob.class

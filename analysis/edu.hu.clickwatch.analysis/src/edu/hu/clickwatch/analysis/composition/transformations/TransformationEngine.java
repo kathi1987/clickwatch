@@ -1,44 +1,29 @@
 package edu.hu.clickwatch.analysis.composition.transformations;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.Reader;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.Dictionary;
 import java.util.Iterator;
 import java.util.List;
 
-import org.eclipse.core.internal.preferences.OSGiPreferencesServiceManager;
-import org.eclipse.core.internal.registry.osgi.EclipseBundleListener;
-import org.eclipse.core.internal.registry.osgi.OSGIUtils;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.core.runtime.adaptor.EclipseStarter;
-import org.eclipse.core.runtime.internal.adaptor.EclipseLazyStarter;
-import org.eclipse.emf.common.EMFPlugin.EclipsePlugin;
-import org.eclipse.emf.common.ui.EclipseUIPlugin;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.URIConverter;
-import org.eclipse.emf.edit.ui.action.ValidateAction.EclipseResourcesUtil;
-import org.eclipse.emf.mwe.core.resources.OsgiResourceLoader;
 import org.eclipse.ui.statushandlers.StatusManager;
 import org.eclipse.xtend.XtendFacade;
 import org.eclipse.xtend.typesystem.emf.EmfMetaModel;
 import org.osgi.framework.Bundle;
-import org.osgi.framework.ServiceReference;
-import org.osgi.service.packageadmin.PackageAdmin;
 
-import edu.hu.clickwatch.ClickWatchPluginActivator;
+import de.hub.clickwatch.ui.PluginActivator;
 import edu.hu.clickwatch.XmlModelRepository;
 import edu.hu.clickwatch.analysis.composition.model.CompositionFactory;
 import edu.hu.clickwatch.analysis.composition.model.DataSet;
@@ -363,7 +348,7 @@ public class TransformationEngine {
 				
 				// if the class is not already loaded, try it with the default class loader
 				if(xtend2Class == null)
-					xtend2Class  = ClickWatchPluginActivator.getInstance().getClass().getClassLoader().loadClass(xtend2ClassName);								
+					xtend2Class  = PluginActivator.getInstance().getClass().getClassLoader().loadClass(xtend2ClassName);								
 				
 				// create an objekt of that class and call the given method to execute the xtend2 script
 				Object o = xtend2Class.newInstance();
@@ -406,7 +391,7 @@ public class TransformationEngine {
 				bundleIdentifier = "/" + bundleIdentifier;				
 			}		
 			// try to install the bundle
-			retBundle = ClickWatchPluginActivator.getInstance().getBundle().getBundleContext().installBundle("reference:" + ResourcesPlugin.getWorkspace().getRoot().getLocationURI().toURL().toString() + bundleIdentifier);						
+			retBundle = PluginActivator.getInstance().getBundle().getBundleContext().installBundle("reference:" + ResourcesPlugin.getWorkspace().getRoot().getLocationURI().toURL().toString() + bundleIdentifier);						
 		}
 		catch(Exception e)
 		{

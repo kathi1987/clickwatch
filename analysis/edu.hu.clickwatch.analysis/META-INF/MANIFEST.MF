@@ -3,12 +3,12 @@ Bundle-ManifestVersion: 2
 Bundle-Localization: plugin
 Bundle-Name: Clickwatch Analysis
 Bundle-SymbolicName: edu.hu.clickwatch.analysis;singleton:=true
-Bundle-Version: 0.0.1.qualifier
+Bundle-Version: 2.0.0.qualifier
 Bundle-Activator: edu.hu.clickwatch.analysis.ui.Activator
 Require-Bundle: de.hub.xveg;bundle-version="1.0.0",
- de.hub.clickwatch.ui;bundle-version="1.0.0";visibility:=reexport,
- edu.hu.clickwatch.model.edit;bundle-version="1.0.0",
- de.hub.clickwatch.core.test;bundle-version="1.0.0",
+ de.hub.clickwatch.ui;visibility:=reexport,
+ edu.hu.clickwatch.model.edit,
+ de.hub.clickwatch.core.test,
  org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.core.resources;bundle-version="3.6.0",

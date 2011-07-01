@@ -1,10 +1,5 @@
 *.class
-<<<<<<< HEAD
 *.swp
 target/
-bin/
 build/
-=======
-bin
-target
->>>>>>> d7f04447c3b4c69021842aad9b735a9c92b6716f
+bin/
