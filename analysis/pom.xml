@@ -15,8 +15,8 @@
   <packaging>pom</packaging>
   
   <modules>
-   <module>edu.hu.clickwatch.analysis</module>
-   <module>edu.hu.clickwatch.examples</module>
-   <module>edu.hu.clickwatch.clientlocation</module>
+   <module>de.hub.clickwatch.analysis</module>
+   <module>de.hub.clickwatch.examples</module>
+   <module>de.hub.clickwatch.clientlocation</module>
   </modules>
 </project>

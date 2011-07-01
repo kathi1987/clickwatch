@@ -11,7 +11,7 @@
 	</parent>
   	<version>2.0.0-SNAPSHOT</version>
   	<groupId>de.hub.clickwatch</groupId>
-	<artifactId>edu.hu.clickwatch.cdo.tests</artifactId>
+	<artifactId>de.hub.clickwatch.cdo.tests</artifactId>
 	<packaging>eclipse-test-plugin</packaging>
 	
 	<build>

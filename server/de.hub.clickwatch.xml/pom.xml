@@ -10,6 +10,6 @@
   </parent>
   <version>2.0.0-SNAPSHOT</version>
   <groupId>de.hub.clickwatch</groupId>
-  <artifactId>edu.hu.clickwatch.xml</artifactId>
+  <artifactId>de.hub.clickwatch.xml</artifactId>
   <packaging>eclipse-plugin</packaging>
 </project>

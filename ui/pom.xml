@@ -16,7 +16,7 @@
   
   <modules>
    <module>de.hub.clickwatch.ui</module>
-   <module>edu.hu.clickwatch.model.edit</module>
-   <module>edu.hu.clickwatch.model.editor</module>
+   <module>de.hub.clickwatch.model.edit</module>
+   <module>de.hub.clickwatch.model.editor</module>
   </modules>
 </project>
