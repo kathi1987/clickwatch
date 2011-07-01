@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: ClickWatch core test
+Bundle-SymbolicName: de.hub.clickwatch.core.test
+Bundle-Version: 1.0.0.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Require-Bundle: de.hub.clickwatch.core;bundle-version="1.0.0",
+ org.junit;bundle-version="4.8.2";visibility:=reexport,
+ com.google.collect;bundle-version="1.0.0",
+ com.google.guice;bundle-version="3.0.0"
+Export-Package: edu.hu.clickwatch.tests,
+ edu.hu.clickwatch.tests.clicksockets

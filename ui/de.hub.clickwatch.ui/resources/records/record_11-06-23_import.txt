@@ -1,0 +1,8 @@
+seismo171.testbed
+seismo161.testbed
+seismo146.testbed
+seismo191.testbed
+seismo160.testbed
+seismo185.testbed
+seismo196.testbed
+seismo172.testbed

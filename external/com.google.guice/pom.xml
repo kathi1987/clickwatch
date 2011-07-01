@@ -4,12 +4,14 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <artifactId>external</artifactId>
-    <groupId>de.hu.clickwatch</groupId>
+    <groupId>de.hub.clickwatch</groupId>
     <version>0.0.1-SNAPSHOT</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
+
   <groupId>com.google</groupId>
   <artifactId>com.google.guice</artifactId>
   <version>3.0.0</version>
   <packaging>eclipse-plugin</packaging>
+
 </project>

@@ -9,9 +9,16 @@ Bundle-Localization: plugin
 Bundle-Activator: edu.hu.clickwatch.examples.ClickWatchExamplesPluginActivator
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: edu.hu.clickwatch.examples,
+ edu.hu.clickwatch.examples.lifd,
+ edu.hu.clickwatch.examples.lifd.topology,
+ edu.hu.clickwatch.examples.lifd.topology.impl,
+ edu.hu.clickwatch.examples.lifd.topology.util,
+ edu.hu.clickwatch.examples.linkasym,
+ edu.hu.clickwatch.examples.linkdist,
  edu.hu.clickwatch.examples.linkdist.ldp,
  edu.hu.clickwatch.examples.linkdist.ldp.impl,
- edu.hu.clickwatch.examples.linkdist.ldp.util
+ edu.hu.clickwatch.examples.linkdist.ldp.util,
+ edu.hu.clickwatch.examples.seismo
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.xtend,
  org.eclipse.xtend.typesystem.emf,

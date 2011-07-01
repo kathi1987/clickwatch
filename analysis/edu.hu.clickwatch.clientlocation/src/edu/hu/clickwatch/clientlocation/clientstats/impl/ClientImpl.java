@@ -6,26 +6,21 @@
  */
 package edu.hu.clickwatch.clientlocation.clientstats.impl;
 
-import edu.hu.clickwatch.clientlocation.clientstats.APLink;
-import edu.hu.clickwatch.clientlocation.clientstats.Client;
-import edu.hu.clickwatch.clientlocation.clientstats.ClientStatsPackage;
-
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+
+import edu.hu.clickwatch.clientlocation.clientstats.APLink;
+import edu.hu.clickwatch.clientlocation.clientstats.Client;
+import edu.hu.clickwatch.clientlocation.clientstats.ClientStatsPackage;
 
 /**
  * <!-- begin-user-doc -->

@@ -2,6 +2,8 @@ package edu.hu.clickwatch.analysis.composition.transformations;
 
 public class TransformationException extends Exception {
 
+	private static final long serialVersionUID = 1L;
+
 	public TransformationException() {
 		super();
 	}

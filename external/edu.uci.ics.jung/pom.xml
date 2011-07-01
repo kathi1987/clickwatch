@@ -4,12 +4,10 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <artifactId>external</artifactId>
-    <groupId>de.hu.clickwatch</groupId>
+    <groupId>de.hub.clickwatch</groupId>
     <version>0.0.1-SNAPSHOT</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
-  <groupId>de.hu.clickwatch</groupId>
   <artifactId>edu.uci.ics.jung</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
   <packaging>eclipse-plugin</packaging>
 </project>

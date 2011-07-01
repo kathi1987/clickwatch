@@ -2,8 +2,8 @@ package edu.hu.clickwatch.analysis.automated;
 
 import com.google.common.base.Preconditions;
 
+import de.hub.clickwatch.ui.util.UiThreadder;
 import edu.hu.clickwatch.model.Network;
-import edu.hu.clickwatch.util.UiThreadder;
 
 public class AutomatedAnalysisContainer extends UiThreadder {
 	
