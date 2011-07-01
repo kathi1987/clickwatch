@@ -53,7 +53,7 @@
 					<resolver>p2</resolver>
 					<target>
 						<artifact>
-							<groupId>edu.hu.clickwatch</groupId>
+							<groupId>de.hub.clickwatch</groupId>
 							<artifactId>target-platform</artifactId>
 							<version>0.0.1-SNAPSHOT</version>
 							<classifier>clickwatch</classifier>
