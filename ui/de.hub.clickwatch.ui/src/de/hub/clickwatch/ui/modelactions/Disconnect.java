@@ -2,8 +2,9 @@ package de.hub.clickwatch.ui.modelactions;
 
 import org.eclipse.jface.action.IAction;
 
-import edu.hu.clickwatch.model.AbstractNodeConnection;
-import edu.hu.clickwatch.model.Node;
+import de.hub.clickwatch.model.AbstractNodeConnection;
+import de.hub.clickwatch.model.Node;
+
 
 /**
  * Closes a connection to a remote node (click control element) 

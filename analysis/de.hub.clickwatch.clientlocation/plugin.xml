@@ -13,7 +13,7 @@
    <extension point="org.eclipse.emf.ecore.generated_package">
       <package
             uri="http://clientstats/1.0"
-            class="edu.hu.clickwatch.clientlocation.clientstats.ClientStatsPackage"
+            class="de.hub.clickwatch.clientlocation.clientstats.ClientStatsPackage"
             genModel="src/edu/hu/clickwatch/clientlocation/ClientStats.genmodel"/>
    </extension>
 

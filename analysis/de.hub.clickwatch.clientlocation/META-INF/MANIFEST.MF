@@ -7,9 +7,9 @@ Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Export-Package: edu.hu.clickwatch.clientlocation.clientstats,
- edu.hu.clickwatch.clientlocation.clientstats.impl,
- edu.hu.clickwatch.clientlocation.clientstats.util
+Export-Package: de.hub.clickwatch.clientlocation.clientstats,
+ de.hub.clickwatch.clientlocation.clientstats.impl,
+ de.hub.clickwatch.clientlocation.clientstats.util
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
  de.hub.clickwatch.analysis,

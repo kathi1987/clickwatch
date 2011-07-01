@@ -8,5 +8,5 @@ Require-Bundle: de.hub.clickwatch.core,
  org.junit;bundle-version="4.8.2";visibility:=reexport,
  com.google.collect;bundle-version="1.0.0",
  com.google.guice;bundle-version="3.0.0"
-Export-Package: edu.hu.clickwatch.tests,
- edu.hu.clickwatch.tests.clicksockets
+Export-Package: de.hub.clickwatch.tests,
+ de.hub.clickwatch.tests.clicksockets

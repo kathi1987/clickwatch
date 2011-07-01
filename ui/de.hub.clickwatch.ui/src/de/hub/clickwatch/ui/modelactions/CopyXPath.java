@@ -15,10 +15,11 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
 
-import edu.hu.clickwatch.model.Element;
-import edu.hu.clickwatch.model.Handler;
-import edu.hu.clickwatch.model.Network;
-import edu.hu.clickwatch.model.Node;
+import de.hub.clickwatch.model.Element;
+import de.hub.clickwatch.model.Handler;
+import de.hub.clickwatch.model.Network;
+import de.hub.clickwatch.model.Node;
+
 
 public class CopyXPath implements IObjectActionDelegate {
 

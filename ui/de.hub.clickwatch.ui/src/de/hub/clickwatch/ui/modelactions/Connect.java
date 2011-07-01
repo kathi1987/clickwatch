@@ -3,10 +3,10 @@ package de.hub.clickwatch.ui.modelactions;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.ui.PlatformUI;
 
+import de.hub.clickwatch.model.AbstractNodeConnection;
+import de.hub.clickwatch.model.ClickControlNodeConnection;
+import de.hub.clickwatch.model.Node;
 import de.hub.clickwatch.ui.PluginActivator;
-import edu.hu.clickwatch.model.AbstractNodeConnection;
-import edu.hu.clickwatch.model.ClickControlNodeConnection;
-import edu.hu.clickwatch.model.Node;
 
 /**
  * Establish a connection to the remote node via the click control element.

@@ -14,8 +14,9 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
-import edu.hu.clickwatch.model.AbstractNodeConnection;
-import edu.hu.clickwatch.model.Node;
+import de.hub.clickwatch.model.AbstractNodeConnection;
+import de.hub.clickwatch.model.Node;
+
 
 /**
  * Configures a node: setting WiFi driver specific stuff like channel and

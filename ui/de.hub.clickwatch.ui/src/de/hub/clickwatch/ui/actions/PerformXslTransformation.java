@@ -37,11 +37,11 @@ import org.eclipse.ui.texteditor.ITextEditor;
 
 import com.google.inject.Inject;
 
+import de.hub.clickwatch.XmlModelRepository;
+import de.hub.clickwatch.model.SpecificMetaModelGenerator;
+import de.hub.clickwatch.model.SpecificModelGenerator;
+import de.hub.clickwatch.model.presentation.ClickWatchModelEditor;
 import de.hub.clickwatch.ui.views.ResultView;
-import edu.hu.clickwatch.XmlModelRepository;
-import edu.hu.clickwatch.model.SpecificMetaModelGenerator;
-import edu.hu.clickwatch.model.SpecificModelGenerator;
-import edu.hu.clickwatch.model.presentation.ClickWatchModelEditor;
 
 
 public class PerformXslTransformation extends org.eclipse.core.commands.AbstractHandler {

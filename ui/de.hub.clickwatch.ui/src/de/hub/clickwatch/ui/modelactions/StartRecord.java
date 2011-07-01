@@ -3,7 +3,8 @@ package de.hub.clickwatch.ui.modelactions;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.MessageDialog;
 
-import edu.hu.clickwatch.model.Node;
+import de.hub.clickwatch.model.Node;
+
 
 public class StartRecord extends AbstractNodeAction {
 

@@ -12,13 +12,13 @@ import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 
+import de.hub.clickcontrol.IClickSocket;
+import de.hub.clickwatch.ClickWatchModule;
+import de.hub.clickwatch.model.IConnectionConfiguration;
 import de.hub.clickwatch.preferences.PreferenceConstants;
-import edu.hu.clickcontrol.IClickSocket;
-import edu.hu.clickwatch.ClickWatchModule;
-import edu.hu.clickwatch.model.IConnectionConfiguration;
-import edu.hu.clickwatch.recorder.ClickSocketPlayer;
-import edu.hu.clickwatch.recorder.ClickSocketPlayerSocketImpl;
-import edu.hu.clickwatch.util.ILogger;
+import de.hub.clickwatch.recorder.ClickSocketPlayer;
+import de.hub.clickwatch.recorder.ClickSocketPlayerSocketImpl;
+import de.hub.clickwatch.util.ILogger;
 
 public class PluginActivator extends AbstractUIPlugin {
 	

@@ -4,7 +4,7 @@ Bundle-Localization: plugin
 Bundle-Name: Clickwatch Analysis
 Bundle-SymbolicName: de.hub.clickwatch.analysis;singleton:=true
 Bundle-Version: 2.0.0.qualifier
-Bundle-Activator: edu.hu.clickwatch.analysis.ui.Activator
+Bundle-Activator: de.hub.clickwatch.analysis.ui.Activator
 Require-Bundle: de.hub.xveg;bundle-version="1.0.0",
  de.hub.clickwatch.ui;visibility:=reexport,
  de.hub.clickwatch.model.edit,
@@ -36,8 +36,8 @@ Require-Bundle: de.hub.xveg;bundle-version="1.0.0",
  org.eclipse.xtext.xtend2.lib;bundle-version="2.0.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Export-Package: edu.hu.clickwatch.analysis.automated,
- edu.hu.clickwatch.analysis.models,
- edu.hu.clickwatch.analysis.models.topology,
- edu.hu.clickwatch.analysis.specificmodels,
- edu.hu.clickwatch.analysis.ui
+Export-Package: de.hub.clickwatch.analysis.automated,
+ de.hub.clickwatch.analysis.models,
+ de.hub.clickwatch.analysis.models.topology,
+ de.hub.clickwatch.analysis.specificmodels,
+ de.hub.clickwatch.analysis.ui

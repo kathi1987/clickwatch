@@ -12,8 +12,9 @@ import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
 
-import edu.hu.clickwatch.model.Handler;
-import edu.hu.clickwatch.model.Network;
+import de.hub.clickwatch.model.Handler;
+import de.hub.clickwatch.model.Network;
+
 
 public class Reset implements IObjectActionDelegate {
 

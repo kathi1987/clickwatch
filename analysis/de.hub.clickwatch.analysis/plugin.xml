@@ -4,9 +4,9 @@
    <extension point="org.eclipse.emf.ecore.generated_package">
       <package
             uri="http://compositionmodel/1.0"
-            class="edu.hu.clickwatch.analysis.composition.model.CompositionPackage"/>
+            class="de.hub.clickwatch.analysis.composition.model.CompositionPackage"/>
       <package
-            class="edu.hu.clickwatch.analysis.models.topology.TopologyPackage"
+            class="de.hub.clickwatch.analysis.models.topology.TopologyPackage"
             uri="http://de.hu.clickwatch.topology/1.0">
       </package>
    </extension>
@@ -22,7 +22,7 @@
 		</category>
 		<wizard
 			category="edu.hu.clickwatch.analysis.WizardCategory"
-			class="edu.hu.clickwatch.analysis.ui.NewAnalysisProjectWizard"
+			class="de.hub.clickwatch.analysis.ui.NewAnalysisProjectWizard"
 			icon="icons/Analysis.gif"
 			id="edu.hu.clickwatch.analysis.NewAnalysisProjectWizard"
 			name="%Analysis_Project"
@@ -30,7 +30,7 @@
 		</wizard>
   <wizard
         category="edu.hu.clickwatch.analysis.WizardCategory"
-        class="edu.hu.clickwatch.analysis.ui.NewClickWatchProjectWizard"
+        class="de.hub.clickwatch.analysis.ui.NewClickWatchProjectWizard"
         icon="icons/Analysis.gif"
         id="edu.hu.clickwatch.analysis.NewClickWatchProjectWizard"
         name="%ClickWatch_Project"
@@ -38,7 +38,7 @@
   </wizard>
   <wizard
         category="edu.hu.clickwatch.analysis.WizardCategory"
-        class="edu.hu.clickwatch.analysis.composition.diagram.NewDiagramWizard"
+        class="de.hub.clickwatch.analysis.composition.diagram.NewDiagramWizard"
         icon="icons/Analysis.gif"
         id="edu.hu.clickwatch.analysis.CompositionDiagramWizard"
         name="Composition Diagram">
@@ -66,7 +66,7 @@
    <extension
          point="org.eclipse.ui.commands">
       <command
-            defaultHandler="edu.hu.clickwatch.analysis.ui.CreateConcreteModelsHandler"
+            defaultHandler="de.hub.clickwatch.analysis.ui.CreateConcreteModelsHandler"
             id="edu.hu.clickwatch.analysis.CreateConcreteModels"
             name="Create specific ClickWatch models">
       </command>
@@ -77,14 +77,14 @@
             id="edu.hu.clickwatch.NetworkContribution"
             objectClass="edu.hu.clickwatch.model.Network">
          <action
-               class="edu.hu.clickwatch.analysis.automated.StartAutomatedAnalysis"
+               class="de.hub.clickwatch.analysis.automated.StartAutomatedAnalysis"
                enablesFor="1"
                id="edu.hu.clickwatch.analysis.StartAutomatedAnalysis"
                label="Start an automated analyis"
                menubarPath="additions">
          </action>
          <action
-               class="edu.hu.clickwatch.analysis.automated.StopAutomatedAnalysis"
+               class="de.hub.clickwatch.analysis.automated.StopAutomatedAnalysis"
                enablesFor="1"
                id="edu.hu.clickwatch.analysis.StopAutomatedAnalysis"
                label="Stop an automated analyis"
@@ -107,7 +107,7 @@
    <extension
          point="org.eclipse.graphiti.ui.diagramTypeProviders">
       <diagramTypeProvider
-            class="edu.hu.clickwatch.analysis.composition.diagram.CompositionDiagramTypeProvider"
+            class="de.hub.clickwatch.analysis.composition.diagram.CompositionDiagramTypeProvider"
             description="This is the editor for ClickWatch analyis compositions"
             id="edu.hu.clickwatch.analysis.composition.diagram.CompositionsDiagramTypeProvider"
             name="ClickWatch Composition Editor">
@@ -165,31 +165,31 @@
 	    point="org.eclipse.ui.views.properties.tabbed.propertySections">
 	    <propertySections contributorId="cwc.PropertyContributor">
 	        <propertySection tab="edu.hu.clickwatch.analysis.composition.MainTab"            
-	         class="edu.hu.clickwatch.analysis.composition.property.ModelNodeSection"
-	         filter="edu.hu.clickwatch.analysis.composition.property.ModelNodeFilter"
+	         class="de.hub.clickwatch.analysis.composition.property.ModelNodeSection"
+	         filter="de.hub.clickwatch.analysis.composition.property.ModelNodeFilter"
 	         id="edu.hu.clickwatch.analysis.composition.ModelNode">
 	        </propertySection>
          <propertySection
-               class="edu.hu.clickwatch.analysis.composition.property.TransformationSection"
-               filter="edu.hu.clickwatch.analysis.composition.property.TransformationFilter"
+               class="de.hub.clickwatch.analysis.composition.property.TransformationSection"
+               filter="de.hub.clickwatch.analysis.composition.property.TransformationFilter"
                id="edu.hu.clickwatch.analysis.composition.Transformation"
                tab="edu.hu.clickwatch.analysis.composition.MainTab">
          </propertySection>
          <propertySection
-               class="edu.hu.clickwatch.analysis.composition.property.TransformationOutputSection"
-               filter="edu.hu.clickwatch.analysis.composition.property.TransformationFilter"
+               class="de.hub.clickwatch.analysis.composition.property.TransformationOutputSection"
+               filter="de.hub.clickwatch.analysis.composition.property.TransformationFilter"
                id="edu.hu.clickwatch.analysis.composition.TransformationOutput"
                tab="edu.hu.clickwatch.analysis.composition.OutputTab">
          </propertySection>
          <propertySection
-               class="edu.hu.clickwatch.analysis.composition.property.TransformationInputSection"
-               filter="edu.hu.clickwatch.analysis.composition.property.TransformationFilter"
+               class="de.hub.clickwatch.analysis.composition.property.TransformationInputSection"
+               filter="de.hub.clickwatch.analysis.composition.property.TransformationFilter"
                id="edu.hu.clickwatch.analysis.composition.TransformationInput"
                tab="edu.hu.clickwatch.analysis.composition.InputTab">
          </propertySection>
          <propertySection
-               class="edu.hu.clickwatch.analysis.composition.property.DataNodeVisualizationSection"
-               filter="edu.hu.clickwatch.analysis.composition.property.DataNodeFilter"
+               class="de.hub.clickwatch.analysis.composition.property.DataNodeVisualizationSection"
+               filter="de.hub.clickwatch.analysis.composition.property.DataNodeFilter"
                id="edu.hu.clickwatch.analysis.composition.Visualization"
                tab="edu.hu.clickwatch.analysis.composition.VisualizationTab">
          </propertySection>
@@ -203,14 +203,14 @@
        point="org.eclipse.ui.views">
     <view
           category="edu.hu.clickwatch.viewCategory"
-          class="edu.hu.clickwatch.analysis.composition.ModelView"
+          class="de.hub.clickwatch.analysis.composition.ModelView"
           icon="icons/Analysis.gif"
           id="edu.hu.clickwatch.analysis.composition.ModelView.ModelView"
           name="Model View">
     </view>
     <view
           category="edu.hu.clickwatch.viewCategory"
-          class="edu.hu.clickwatch.analysis.composition.VisualizationView"
+          class="de.hub.clickwatch.analysis.composition.VisualizationView"
           icon="icons/Analysis.gif"
           id="edu.hu.clickwatch.analysis.composition.VisualizationView"
           name="Visualization View">
@@ -225,18 +225,18 @@
  <extension
        point="edu.hu.clickwatch.analysis.composition.PredefinedTransformation">
     <transformation
-          class="edu.hu.clickwatch.analysis.composition.transformations.CreateSpecificModel"
+          class="de.hub.clickwatch.analysis.composition.transformations.CreateSpecificModel"
           name="Create specific model">
     </transformation>
  </extension>
  <extension
        point="edu.hu.clickwatch.analysis.composition.Visualization">
     <visualization
-          class="edu.hu.clickwatch.analysis.composition.visualization.HistogramVisualization"
+          class="de.hub.clickwatch.analysis.composition.visualization.HistogramVisualization"
           name="Histogram">
     </visualization>
     <visualization
-          class="edu.hu.clickwatch.analysis.composition.visualization.TopologyVisualization"
+          class="de.hub.clickwatch.analysis.composition.visualization.TopologyVisualization"
           name="Topology">
     </visualization>
  </extension>

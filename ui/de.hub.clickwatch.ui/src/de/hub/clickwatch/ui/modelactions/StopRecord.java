@@ -2,7 +2,8 @@ package de.hub.clickwatch.ui.modelactions;
 
 import org.eclipse.jface.action.IAction;
 
-import edu.hu.clickwatch.model.Node;
+import de.hub.clickwatch.model.Node;
+
 
 public class StopRecord extends AbstractNodeAction {
 

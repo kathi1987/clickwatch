@@ -12,7 +12,8 @@ import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
 
-import edu.hu.clickwatch.model.Node;
+import de.hub.clickwatch.model.Node;
+
 
 public abstract class AbstractNodeAction implements IObjectActionDelegate {
 

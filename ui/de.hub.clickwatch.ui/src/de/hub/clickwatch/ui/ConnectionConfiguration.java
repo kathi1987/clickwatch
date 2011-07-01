@@ -9,12 +9,12 @@ import org.eclipse.ui.IPartListener;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
 
+import de.hub.clickwatch.model.AbstractNodeConnection;
+import de.hub.clickwatch.model.ChangeMark;
+import de.hub.clickwatch.model.IConnectionConfiguration;
+import de.hub.clickwatch.model.Node;
+import de.hub.clickwatch.model.presentation.ClickWatchModelEditor;
 import de.hub.clickwatch.ui.util.UiThreadder;
-import edu.hu.clickwatch.model.AbstractNodeConnection;
-import edu.hu.clickwatch.model.ChangeMark;
-import edu.hu.clickwatch.model.IConnectionConfiguration;
-import edu.hu.clickwatch.model.Node;
-import edu.hu.clickwatch.model.presentation.ClickWatchModelEditor;
 
 public class ConnectionConfiguration extends UiThreadder implements IConnectionConfiguration {
 	

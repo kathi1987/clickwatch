@@ -18,9 +18,10 @@ import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
 
-import edu.hu.clickwatch.model.ClickWatchModelFactory;
-import edu.hu.clickwatch.model.Network;
-import edu.hu.clickwatch.model.Node;
+import de.hub.clickwatch.model.ClickWatchModelFactory;
+import de.hub.clickwatch.model.Network;
+import de.hub.clickwatch.model.Node;
+
 
 /**
  * Import a list of nodes from external file

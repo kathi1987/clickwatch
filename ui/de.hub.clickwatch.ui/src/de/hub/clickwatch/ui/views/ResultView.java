@@ -30,8 +30,9 @@ import org.eclipse.ui.part.ViewPart;
 import com.google.common.base.Preconditions;
 import com.google.inject.Inject;
 
-import edu.hu.clickwatch.XmlModelRepository;
-import edu.hu.clickwatch.model.provider.ClickWatchReflectiveItemProviderAdapterFactory;
+import de.hub.clickwatch.XmlModelRepository;
+import de.hub.clickwatch.model.provider.ClickWatchReflectiveItemProviderAdapterFactory;
+
 
 public class ResultView extends ViewPart {
 	
