@@ -13,7 +13,7 @@
    <extension point="org.eclipse.emf.ecore.generated_package">
       <package
             uri="edu.hu.clickwatch.examples.linkdis.ldp"
-            class="edu.hu.clickwatch.examples.linkdist.ldp.LinkDistPlot.LinkDistPlotPackage"
+            class="de.hub.clickwatch.examples.linkdist.ldp.LinkDistPlotPackage"
             genModel="src/de/hub/clickwatch/examples/linkdist/LinkDistPlot.genmodel"/>
    </extension>
    <extension

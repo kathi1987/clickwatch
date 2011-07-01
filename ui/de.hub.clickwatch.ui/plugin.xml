@@ -5,7 +5,7 @@
          point="org.eclipse.ui.popupMenus">
       <objectContribution
             id="de.hub.clickwatch.NodeContribution"
-            objectClass="edu.hu.clickwatch.model.Node">
+            objectClass="de.hub.clickwatch.model.Node">
          <action
                class="de.hub.clickwatch.ui.GuiceAwareExecutableExtensionFactory:de.hub.clickwatch.ui.modelactions.Reboot"
                enablesFor="+"
@@ -79,7 +79,7 @@
       </objectContribution>
       <objectContribution
             id="edu.hu.clickwatch.NetworkContribution"
-            objectClass="edu.hu.clickwatch.model.Network">
+            objectClass="de.hub.clickwatch.model.Network">
          <action
                class="de.hub.clickwatch.ui.GuiceAwareExecutableExtensionFactory:de.hub.clickwatch.ui.modelactions.Reset"
                enablesFor="1"

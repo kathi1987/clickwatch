@@ -75,7 +75,7 @@
          point="org.eclipse.ui.popupMenus">
       <objectContribution
             id="edu.hu.clickwatch.NetworkContribution"
-            objectClass="edu.hu.clickwatch.model.Network">
+            objectClass="de.hub.clickwatch.model.Network">
          <action
                class="de.hub.clickwatch.analysis.automated.StartAutomatedAnalysis"
                enablesFor="1"
