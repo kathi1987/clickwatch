@@ -6,8 +6,8 @@
  */
 package edu.hu.clickwatch.xml.tests;
 
-import edu.hu.clickwatch.xml.ConfigurationFactory;
-import edu.hu.clickwatch.xml.DocumentRoot;
+import de.hub.clickwatch.xml.ConfigurationFactory;
+import de.hub.clickwatch.xml.DocumentRoot;
 
 import junit.framework.TestCase;
 
@@ -20,7 +20,7 @@ import junit.textui.TestRunner;
  * <p>
  * The following features are tested:
  * <ul>
- *   <li>{@link edu.hu.clickwatch.xml.DocumentRoot#getConfiguration() <em>Configuration</em>}</li>
+ *   <li>{@link de.hub.clickwatch.xml.DocumentRoot#getConfiguration() <em>Configuration</em>}</li>
  * </ul>
  * </p>
  * @generated
@@ -97,10 +97,10 @@ public class DocumentRootTest extends TestCase {
 	}
 
 	/**
-	 * Tests the '{@link edu.hu.clickwatch.xml.DocumentRoot#getConfiguration() <em>Configuration</em>}' feature getter.
+	 * Tests the '{@link de.hub.clickwatch.xml.DocumentRoot#getConfiguration() <em>Configuration</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see edu.hu.clickwatch.xml.DocumentRoot#getConfiguration()
+	 * @see de.hub.clickwatch.xml.DocumentRoot#getConfiguration()
 	 * @generated
 	 */
 	public void testGetConfiguration() {
@@ -110,10 +110,10 @@ public class DocumentRootTest extends TestCase {
 	}
 
 	/**
-	 * Tests the '{@link edu.hu.clickwatch.xml.DocumentRoot#setConfiguration(edu.hu.clickwatch.xml.ConfigurationType) <em>Configuration</em>}' feature setter.
+	 * Tests the '{@link de.hub.clickwatch.xml.DocumentRoot#setConfiguration(de.hub.clickwatch.xml.ConfigurationType) <em>Configuration</em>}' feature setter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see edu.hu.clickwatch.xml.DocumentRoot#setConfiguration(edu.hu.clickwatch.xml.ConfigurationType)
+	 * @see de.hub.clickwatch.xml.DocumentRoot#setConfiguration(de.hub.clickwatch.xml.ConfigurationType)
 	 * @generated
 	 */
 	public void testSetConfiguration() {

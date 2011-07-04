@@ -8,7 +8,7 @@ Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: edu.hu.clickwatch.xml.tests
 Require-Bundle: org.eclipse.core.runtime,
- edu.hu.clickwatch.xml;visibility:=reexport,
  org.eclipse.emf.ecore.xmi;visibility:=reexport,
- org.junit;visibility:=reexport
+ org.junit;visibility:=reexport,
+ de.hub.clickwatch.xml;bundle-version="2.0.0"
 Bundle-ClassPath: junit-4.9b2.jar

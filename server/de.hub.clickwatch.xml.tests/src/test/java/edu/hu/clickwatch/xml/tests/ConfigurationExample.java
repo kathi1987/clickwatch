@@ -23,11 +23,12 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 
 import org.eclipse.emf.ecore.util.Diagnostician;
 
-import edu.hu.clickwatch.xml.ConfigurationFactory;
-import edu.hu.clickwatch.xml.ConfigurationPackage;
-import edu.hu.clickwatch.xml.ConfigurationType;
-import edu.hu.clickwatch.xml.DocumentRoot;
-import edu.hu.clickwatch.xml.util.ConfigurationResourceFactoryImpl;
+import de.hub.clickwatch.xml.ConfigurationFactory;
+import de.hub.clickwatch.xml.ConfigurationPackage;
+import de.hub.clickwatch.xml.ConfigurationType;
+import de.hub.clickwatch.xml.DocumentRoot;
+import de.hub.clickwatch.xml.util.ConfigurationResourceFactoryImpl;
+
 
 /**
  * <!-- begin-user-doc -->

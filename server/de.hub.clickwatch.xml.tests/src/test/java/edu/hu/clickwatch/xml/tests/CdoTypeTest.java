@@ -6,8 +6,8 @@
  */
 package edu.hu.clickwatch.xml.tests;
 
-import edu.hu.clickwatch.xml.CdoType;
-import edu.hu.clickwatch.xml.ConfigurationFactory;
+import de.hub.clickwatch.xml.CdoType;
+import de.hub.clickwatch.xml.ConfigurationFactory;
 
 import junit.framework.TestCase;
 
