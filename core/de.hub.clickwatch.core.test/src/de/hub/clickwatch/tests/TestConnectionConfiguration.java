@@ -39,7 +39,7 @@ public class TestConnectionConfiguration implements IConnectionConfiguration {
 
 	@Override
 	public void handleIncident(int type, String message) {
-		Assert.assertTrue("unexpected behavious", false);
+		Assert.assertTrue("unexpected behavior", false);
 	}
 
 }

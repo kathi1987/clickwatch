@@ -100,7 +100,6 @@ public class ClickWatchServer implements IClickWatchServer {
 					// This should not happen
 				}
 			}
-			// TODO: Aehm, soll das so sein
 			return true;
 		}
 		return false;
@@ -110,9 +109,9 @@ public class ClickWatchServer implements IClickWatchServer {
 	public void activateConfiguration(){
 		for(int i = 0; i < this.mConnectionList.size(); i++){
 			// TODO: Set database handler
-			// this.mConnectionList.get(i).setDatabaseHandler(mDatabaseHandler);
+			this.mConnectionList.get(i).setDatabaseHandler(mDatabaseHandler);
 			// TODO: Connect!
-			// this.mConnectionList.get(i).connect();
+			this.mConnectionList.get(i).connect(null);
 		}
 	}
 	
@@ -159,5 +158,10 @@ public class ClickWatchServer implements IClickWatchServer {
 	public void setConfigurationFileReader(
 			ConfigurationFileReader pConfigurationFileReader) {
 		this.mConfigurationFileReader = pConfigurationFileReader;
+	}
+	
+	/// TODO
+	public synchronized Node getNode(){
+		return null;
 	}
 }

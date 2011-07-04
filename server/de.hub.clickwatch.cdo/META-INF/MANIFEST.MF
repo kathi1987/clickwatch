@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: CDO Handler
-Bundle-SymbolicName: edu.hu.clickwatch.cdo
+Bundle-SymbolicName: de.hub.clickwatch.cdo
 Bundle-Version: 2.0.0.qualifier
 Bundle-Activator: de.hub.clickwatch.cdo.CDOPluginActivator
 Import-Package: org.osgi.framework;version="1.3.0"

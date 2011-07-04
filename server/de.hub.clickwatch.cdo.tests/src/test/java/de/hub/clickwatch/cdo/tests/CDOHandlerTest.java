@@ -4,12 +4,22 @@ import static org.junit.Assert.assertTrue;
 
 import java.math.BigInteger;
 
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.EcoreFactory;
+import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecore.util.FeatureMap;
+import org.eclipse.emf.ecore.util.FeatureMapUtil;
+import org.eclipse.emf.ecore.xml.type.XMLTypeDocumentRoot;
+import org.eclipse.emf.ecore.xml.type.XMLTypeFactory;
 import org.junit.Before;
 import org.junit.Test;
 
+import de.hub.clickwatch.XmlModelRepository;
 import de.hub.clickwatch.cdo.CDOHandler;
 
 import de.hub.clickwatch.model.ClickWatchModelFactory;
+import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.model.Node;
 
 /**
@@ -34,6 +44,7 @@ public class CDOHandlerTest {
 	public void commitTransactionTest(){
 		// Open a CDO session
 		this.mCDOHandler.openSession();
+		/*
 		// Create a node
 		final Node node = ClickWatchModelFactory.eINSTANCE.createNode();
 		// Set port
@@ -41,9 +52,23 @@ public class CDOHandlerTest {
 		// Set ip address
 		node.setINetAddress("192.168.178.42");
 		// Set connection status to false
-		node.setConnected(false);
+		node.setConnected(false);*/
+		
+		final Handler handler = ClickWatchModelFactory.eINSTANCE.createHandler();
+		handler.setName("Foobar");
+		handler.setCanRead(true);
+		handler.setCanWrite(true);
+		
+		FeatureMap.Entry entry = FeatureMapUtil.createTextEntry("this is an xml value");
+		if (!handler.getMixed().isEmpty()) {
+			handler.getMixed().set(0, entry);
+		} else {
+			handler.getMixed().add(entry);
+		}
+		
 		// Open a transaction and prepare resource for commit
-		this.mCDOHandler.openTransaction(node);
+		//this.mCDOHandler.openTransaction(node);
+		this.mCDOHandler.openTransaction(handler);
 		// Commit the transaction
 		this.mCDOHandler.commitTransaction();
 		// Rollback the transaction

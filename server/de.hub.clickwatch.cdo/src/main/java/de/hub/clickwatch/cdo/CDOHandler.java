@@ -183,9 +183,10 @@ public class CDOHandler implements ICDOHandler {
 	public void commitTransaction() {
 		try {
 			this.mHandler.getTransaction().commit();
-		} catch (CommitException commitException) {
+		} catch (CommitException commitException) {	
+			this.mHandler.getTransaction().rollback();
 			commitException.printStackTrace();
-		}
+		} 
 	}
 
 	@Override

@@ -1,9 +1,0 @@
-  <configuration logDirectory="/tmp">
-    <!-- --> 
-    <network name="Humboldt Wireless Lab" updateInterval="1000">
-      <node address="192.168.3.165" protocol="tcp" port="22"/>
-    </network>
-
-    <!-- --> 
-    <cdo address="141.20.37.89" port="1025" repository="clicktest"/>
-  </configuration>

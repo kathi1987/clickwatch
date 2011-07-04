@@ -17,9 +17,13 @@
 
 	<modules>
 		<module>de.hub.clickwatch.cdo</module>
+<!--
 		<module>de.hub.clickwatch.cdo.tests</module>
+-->
 		<module>de.hub.clickwatch.server</module>
+<!--
 		<module>de.hub.clickwatch.server.tests</module>
+-->
 		<module>de.hub.clickwatch.xml</module>
 		<module>de.hub.clickwatch.xml.tests</module>
 	</modules>
