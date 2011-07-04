@@ -10,6 +10,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import com.google.common.base.Preconditions;
 import com.google.inject.Inject;
 
+import de.hub.clickwatch.cdo.CDOHandler;
 import de.hub.clickwatch.merge.Merger;
 import de.hub.clickwatch.model.ClickWatchModelPackage;
 import de.hub.clickwatch.model.Element;
@@ -53,13 +54,19 @@ import de.hub.clickwatch.util.Throwables;
  * 
  */
 public abstract class AbstractNodeConnection {
+	
+	@Inject
+	private INodeAdapter nodeAdapter;
 
 	private Node node;
 	private final static int UPDATE_INTERVALL_DEFAULT = 5000;
 
 	private boolean isScheduledForDisconnect = false;
 	private boolean hasError = false;
-
+	
+	/** CDO database handler for storing models in a database*/
+	private CDOHandler mDatabaseHandler = null;
+	
 	private final HandlerModelAdapter modelChangeListener = new HandlerModelAdapter();
 
 	@Inject
@@ -89,7 +96,6 @@ public abstract class AbstractNodeConnection {
 				.setNode(node);
 	}
 
-	public abstract INodeAdapter getNodeAdapter();
 
 	/**
 	 * Runnable for retrieving the current configuration of a node and updating
@@ -154,6 +160,16 @@ public abstract class AbstractNodeConnection {
 								.getConfiguration()).getChanges());
 			}
 		});
+		
+		// Write the model data to the database
+		if(this.mDatabaseHandler != null){
+			this.mDatabaseHandler.openSession();
+			this.mDatabaseHandler.openTransaction(updatedNodeCopy);
+			this.mDatabaseHandler.commitTransaction();
+			this.mDatabaseHandler.closeTransaction();
+			this.mDatabaseHandler.closeSession();
+		}
+		
 		EcoreUtil.delete(updatedNodeCopy, true);
 		node.setRetrieving(false);
 		sleepUntilNextUpdate();
@@ -330,5 +346,17 @@ public abstract class AbstractNodeConnection {
 
 	protected Node getNode() {
 		return node;
+	}
+
+	public CDOHandler getDatabaseHandler() {
+		return mDatabaseHandler;
+	}
+
+	public void setDatabaseHandler(final CDOHandler pDatabaseHandler) {
+		this.mDatabaseHandler = pDatabaseHandler;
+	}
+
+	public INodeAdapter getNodeAdapter() {
+		return nodeAdapter;
 	}
 }

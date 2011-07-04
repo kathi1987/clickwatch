@@ -84,6 +84,7 @@ public class ClickSocketXSDDummy extends ClickSocketTestImpl {
 		return result;
 	}
 	
+	// TODO: This should be fixed to the correct plugin name
 	protected URI getSchemaURI() {
 		return URI.createURI("platform:/plugin/edu.hu.clickwatch/" + XmlModelRepositoryTest.LINK_STAT_XSD);
 	}
