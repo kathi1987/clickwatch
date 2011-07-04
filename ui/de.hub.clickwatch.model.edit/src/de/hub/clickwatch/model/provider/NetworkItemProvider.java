@@ -254,6 +254,7 @@ public class NetworkItemProvider
 			case ClickWatchModelPackage.NETWORK__ELEMENT_FILTER:
 			case ClickWatchModelPackage.NETWORK__HANDLER_FILTER:
 			case ClickWatchModelPackage.NETWORK__UPDATE_INTERVALL:
+			case ClickWatchModelPackage.NETWORK__TIMEOUT:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case ClickWatchModelPackage.NETWORK__NODES:
@@ -328,7 +329,7 @@ public class NetworkItemProvider
 	 */
 	@Override
 	public ResourceLocator getResourceLocator() {
-		return NewEditPlugin.INSTANCE;
+		return ClickWatchModelEditPlugin.INSTANCE;
 	}
 
 }

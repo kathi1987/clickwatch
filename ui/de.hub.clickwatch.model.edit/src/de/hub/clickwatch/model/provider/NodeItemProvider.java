@@ -70,7 +70,7 @@ public class NodeItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addINetAdressPropertyDescriptor(object);
+			addINetAddressPropertyDescriptor(object);
 			addPortPropertyDescriptor(object);
 			addConnectedPropertyDescriptor(object);
 			addConnectionPropertyDescriptor(object);
@@ -83,18 +83,18 @@ public class NodeItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the INet Adress feature.
+	 * This adds a property descriptor for the INet Address feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addINetAdressPropertyDescriptor(Object object) {
+	protected void addINetAddressPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Node_iNetAdress_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Node_iNetAdress_feature", "_UI_Node_type"),
+				 getString("_UI_Node_iNetAddress_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Node_iNetAddress_feature", "_UI_Node_type"),
 				 ClickWatchModelPackage.Literals.NODE__INET_ADDRESS,
 				 true,
 				 false,
@@ -461,7 +461,7 @@ public class NodeItemProvider
 	 */
 	@Override
 	public ResourceLocator getResourceLocator() {
-		return NewEditPlugin.INSTANCE;
+		return ClickWatchModelEditPlugin.INSTANCE;
 	}
 
 }

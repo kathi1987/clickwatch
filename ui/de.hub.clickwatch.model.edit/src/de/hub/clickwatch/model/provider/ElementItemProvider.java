@@ -248,7 +248,7 @@ public class ElementItemProvider
 	 */
 	@Override
 	public ResourceLocator getResourceLocator() {
-		return NewEditPlugin.INSTANCE;
+		return ClickWatchModelEditPlugin.INSTANCE;
 	}
 
 }

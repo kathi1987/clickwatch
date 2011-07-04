@@ -84,7 +84,7 @@ public class XmlModelRepositoryTest extends AbstractTest {
 			node.getElements().add(element);
 			Handler handler = ClickWatchModelFactory.eINSTANCE.createHandler();
 			element.getHandlers().add(handler);
-			EObject xml = xmlModelRepository.deserializeXml("<value><foo><bar>TEXT</bar></foo></value>");
+			EObject xml = xmlModelRepository.deserializeXml("<value_><foo><bar>TEXT</bar></foo></value_>");
 			handler.getAny().addAll(((XMLTypeDocumentRoot)xml).getMixed());
 		}
 		
@@ -126,7 +126,6 @@ public class XmlModelRepositoryTest extends AbstractTest {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 	}
 	
 	public void testBasicXDS() {

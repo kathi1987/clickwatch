@@ -28,6 +28,7 @@ import de.hub.clickwatch.model.Handler;
  *   <li>{@link de.hub.clickwatch.model.impl.HandlerImpl#isWatch <em>Watch</em>}</li>
  *   <li>{@link de.hub.clickwatch.model.impl.HandlerImpl#getMixed <em>Mixed</em>}</li>
  *   <li>{@link de.hub.clickwatch.model.impl.HandlerImpl#getAny <em>Any</em>}</li>
+ *   <li>{@link de.hub.clickwatch.model.impl.HandlerImpl#getValue <em>Value</em>}</li>
  * </ul>
  * </p>
  *
@@ -169,6 +170,24 @@ public class HandlerImpl extends CDOObjectImpl implements Handler {
 	 */
 	public FeatureMap getAny() {
 		return (FeatureMap)eGet(ClickWatchModelPackage.Literals.HANDLER__ANY, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getValue() {
+		return (String)eGet(ClickWatchModelPackage.Literals.HANDLER__VALUE, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setValue(String newValue) {
+		eSet(ClickWatchModelPackage.Literals.HANDLER__VALUE, newValue);
 	}
 
 } //HandlerImpl

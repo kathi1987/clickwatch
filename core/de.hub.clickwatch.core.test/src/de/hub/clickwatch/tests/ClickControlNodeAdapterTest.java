@@ -1,7 +1,5 @@
 package de.hub.clickwatch.tests;
 
-import org.eclipse.emf.ecore.util.FeatureMapUtil;
-
 import click.ControlSocket.HandlerInfo;
 import de.hub.clickcontrol.IClickSocket;
 import de.hub.clickwatch.XmlModelRepository;
@@ -22,7 +20,7 @@ public class ClickControlNodeAdapterTest extends AbstractTest {
 	protected XmlModelRepository xmlModelRepository = null;
 	protected ClickSocketWrapper clickSocketWrapper = null;
 		
-	private class ClickSocketDefaultTestImpl extends ClickSocketTestImpl {
+	protected class ClickSocketDefaultTestImpl extends ClickSocketTestImpl {
 
 		@Override
 		public void handleWrite(String element, String handler, String value) {
@@ -68,7 +66,7 @@ public class ClickControlNodeAdapterTest extends AbstractTest {
 		clickSocketWrapper.setSource(new ClickSocketDefaultTestImpl());
 	}
 		
-	private void checkDefaultNode(Node node) {		
+	protected void checkDefaultNode(Node node) {		
 		assertEquals(1, node.getElements().size());
 		assertEquals("elem", node.getElements().get(0).getName());
 		assertEquals(1, node.getElements().get(0).getHandlers().size());
@@ -123,7 +121,7 @@ public class ClickControlNodeAdapterTest extends AbstractTest {
 		checkDefaultNode(node);
 		
 		Handler handler = node.getElements().get(0).getHandlers().get(0);
-		Object value = handler.getMixed().getValue(0);
+		Object value = handler.getValue();
 		assertEquals("value", value);
 	}
 	
@@ -141,7 +139,7 @@ public class ClickControlNodeAdapterTest extends AbstractTest {
 		checkDefaultNode(node);
 		
 		Handler handler = node.getElements().get(0).getHandlers().get(0);
-		handler.getMixed().set(0, FeatureMapUtil.createTextEntry("newValue"));
+		handler.setValue("newValue");
 		modelAdapter.updateHandlerValue(handler);
 	}
 	
