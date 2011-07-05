@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="ASCII"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore">
+  <eClassifiers xsi:type="ecore:EClass" name="Feature3_1">
+    <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+      <details key="meta source reference" value="http://testsourcemodel/1.0/ListFeatureElementClass3"/>
+      <details key="source reference" value="RootClass/normalReference:ClassWithListFeatures/listFeature1:feature1_1/listFeature3:feature3_1"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="anAttributeOfFeatureClass3">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Feature1_1">
+    <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+      <details key="meta source reference" value="http://testsourcemodel/1.0/ListFeatureElementClass1"/>
+      <details key="source reference" value="RootClass/normalReference:ClassWithListFeatures/listFeature1:feature1_1"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="feature3_1" eType="//Feature3_1" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="anAttributeOfFeatureClass1">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RootClass">
+    <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+      <details key="meta source reference" value="http://testsourcemodel/1.0/RootClass"/>
+      <details key="source reference" value="RootClass"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="anAttribute1">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="normalReference" upperBound="-1" eType="//ClassWithListFeatures" containment="true" resolveProxies="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ClassWithListFeatures">
+    <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+      <details key="meta source reference" value="http://testsourcemodel/1.0/ClassWithListFeatures"/>
+      <details key="source reference" value="RootClass/normalReference:ClassWithListFeatures"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="feature1_1" eType="//Feature1_1" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="feature2_1" eType="//Feature2_1" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="anAttribute1">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Feature2_1">
+    <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+      <details key="meta source reference" value="http://testsourcemodel/1.0/ListFeatureElementClass2"/>
+      <details key="source reference" value="RootClass/normalReference:ClassWithListFeatures/listFeature2:feature2_1"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="anAttributeOfFeatureClass2">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+</ecore:EPackage>
