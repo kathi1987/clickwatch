@@ -149,6 +149,7 @@ public class CDOHandler implements ICDOHandler {
 		map.put("clickwatchmodel", new XMIResourceFactoryImpl());
 	}
 
+	
 	@Override
 	public void openTransaction(final EObject pResource) {
 		// Open a transaction session
@@ -184,9 +185,16 @@ public class CDOHandler implements ICDOHandler {
 		try {
 			this.mHandler.getTransaction().commit();
 		} catch (CommitException commitException) {	
+			// Rollback the transaction if an error occurs
 			this.mHandler.getTransaction().rollback();
 			commitException.printStackTrace();
-		} 
+		} finally {
+			// Determines if the transaction is not closed and contains uncommited changes
+			if(this.mHandler.getTransaction().isDirty()){
+				// TODO: Don't know if this is really the appropiate strategy
+				this.mHandler.getTransaction().rollback();
+			}
+		}
 	}
 
 	@Override

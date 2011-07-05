@@ -3,6 +3,7 @@ package de.hub.clickwatch.model;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EContentAdapter;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import com.google.common.base.Preconditions;
 import com.google.inject.Inject;
@@ -31,6 +32,7 @@ public class UiNodeConnection extends AbstractNodeConnection {
 			}
 		});
 
+		EcoreUtil.delete(updatedNodeCopy, true);
 	}
 	
 	@Override

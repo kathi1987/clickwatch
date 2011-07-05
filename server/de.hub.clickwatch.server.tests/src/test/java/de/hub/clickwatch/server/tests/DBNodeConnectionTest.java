@@ -10,6 +10,7 @@ import com.google.inject.AbstractModule;
 import de.hub.clickcontrol.IClickSocket;
 import de.hub.clickwatch.cdo.CDOHandler;
 import de.hub.clickwatch.model.ClickWatchModelFactory;
+import de.hub.clickwatch.model.IConnectionConfiguration;
 import de.hub.clickwatch.model.Network;
 import de.hub.clickwatch.model.Node;
 import de.hub.clickwatch.nodeadapter.ClickControlNodeAdapter;
@@ -18,6 +19,7 @@ import de.hub.clickwatch.recorder.ClickSocketPlayer;
 import de.hub.clickwatch.recorder.ClickSocketPlayerSocketImpl;
 import de.hub.clickwatch.server.DBNodeConnection;
 import de.hub.clickwatch.tests.AbstractTest;
+import de.hub.clickwatch.tests.TestConnectionConfiguration;
 
 public class DBNodeConnectionTest extends AbstractTest {
 	private Network network = null;
@@ -33,6 +35,18 @@ public class DBNodeConnectionTest extends AbstractTest {
 		return new AbstractModule[] { new ClickSocketPlayer.PlayerModule(record) };
 	}
 	
+	
+	
+	@Override
+	protected IConnectionConfiguration getConnectionConfiguration() {
+		return new TestConnectionConfiguration() {
+			@Override
+			public void runInExtraThread(final Runnable runnable) {
+				new Thread(runnable, "ConnectionConfiguration Thread").start();
+			}
+		};
+	}
+
 	private Node createNode() {
 		Node node = factory.createNode();
 		network.getNodes().add(node);
@@ -42,7 +56,7 @@ public class DBNodeConnectionTest extends AbstractTest {
 	@Override
 	protected void additionalSetUp() {
 		network = factory.createNetwork();
-		network.setUpdateIntervall(0);
+		network.setUpdateIntervall(1);
 	}
 	
 	@Override
@@ -74,7 +88,7 @@ public class DBNodeConnectionTest extends AbstractTest {
 	
 	private static void sleep(){
 		try {
-			Thread.sleep(5000);
+			Thread.sleep(30000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

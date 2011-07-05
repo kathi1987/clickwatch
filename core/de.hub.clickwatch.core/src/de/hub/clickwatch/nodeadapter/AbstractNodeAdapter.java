@@ -9,7 +9,6 @@ import java.util.Map;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import click.ControlSocket;
 
@@ -79,7 +78,7 @@ public abstract class AbstractNodeAdapter implements INodeAdapter {
 		cs.close();
 		isConnected = false;
 		if (internalNodeCopy != null) {
-			EcoreUtil.delete(internalNodeCopy, true);
+//			EcoreUtil.delete(internalNodeCopy, true); TODO
 		}
 		internalNodeCopy = null;
 	}

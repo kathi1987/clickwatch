@@ -3,7 +3,6 @@ package de.hub.clickwatch.model;
 import java.util.regex.PatternSyntaxException;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import com.google.common.base.Preconditions;
 import com.google.inject.Inject;
@@ -96,6 +95,7 @@ public abstract class AbstractNodeConnection {
 						node.setConnected(false);
 					}
 				});
+				cleanUp();
 			}
 		}
 	}
@@ -116,7 +116,6 @@ public abstract class AbstractNodeConnection {
 
 		updateNode(updatedNodeCopy);
 
-		EcoreUtil.delete(updatedNodeCopy, true);
 		node.setRetrieving(false);
 		sleepUntilNextUpdate();
 	}
@@ -193,6 +192,13 @@ public abstract class AbstractNodeConnection {
 	public synchronized void disconnect() {
 		configuration.handleDisconnect(this);
 		isScheduledForDisconnect = true;
+	}
+	
+	/**
+	 * Runs after disconnect is called and the update runnable is finished.
+	 */
+	protected void cleanUp() {
+		// emtpy
 	}
 
 	protected Node getNode() {

@@ -1,5 +1,7 @@
 package de.hub.clickwatch.server;
 
+import java.util.ArrayList;
+
 import org.eclipse.emf.ecore.EObject;
 
 import de.hub.clickwatch.cdo.CDOHandler;
@@ -12,6 +14,12 @@ public class DBNodeConnection extends AbstractNodeConnection {
 	
 	/** CDO database handler for storing models in a database*/
 	private CDOHandler mDatabaseHandler = null;
+	
+	private int counter = 0;
+	
+	private int steps = 50;
+	
+	private ArrayList<Node> mNodeList = new ArrayList<Node>();
 	
 	@Override
 	public void setUp(Node node) {
@@ -27,14 +35,29 @@ public class DBNodeConnection extends AbstractNodeConnection {
 
 	@Override
 	protected void updateNode(Node updatedNodeCopy) {
-		// Write the model data to the database
-		if(this.mDatabaseHandler != null){
-			this.mDatabaseHandler.openSession();
-			this.mDatabaseHandler.openTransaction(updatedNodeCopy);
+		this.mNodeList.add(updatedNodeCopy);
+		
+		System.out.println(counter++);
+		
+		if(mNodeList.size() == steps){
+			long start = System.currentTimeMillis();
+			this.mDatabaseHandler.openTransaction(this.mNodeList);
 			this.mDatabaseHandler.commitTransaction();
 			this.mDatabaseHandler.closeTransaction();
-			this.mDatabaseHandler.closeSession();
-		}	
+			System.out.println(System.currentTimeMillis() - start);
+			mNodeList.clear();
+		}
+	}
+	
+	@Override
+	public void connect(Object context) {
+		this.mDatabaseHandler.openSession();
+		super.connect(context);
+	}
+
+	@Override
+	public void cleanUp() {
+		this.mDatabaseHandler.closeSession();
 	}
 
 	public CDOHandler getDatabaseHandler() {
