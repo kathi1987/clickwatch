@@ -9,7 +9,6 @@ import com.google.inject.AbstractModule;
 
 import de.hub.clickcontrol.IClickSocket;
 import de.hub.clickwatch.cdo.CDOHandler;
-import de.hub.clickwatch.model.AbstractNodeConnection;
 import de.hub.clickwatch.model.ClickWatchModelFactory;
 import de.hub.clickwatch.model.Network;
 import de.hub.clickwatch.model.Node;
@@ -58,7 +57,7 @@ public class DBNodeConnectionTest extends AbstractTest {
 
 	@Test
 	public void testWithRecord() {
-		AbstractNodeConnection nodeConnection = injector.getInstance(DBNodeConnection.class);
+		DBNodeConnection nodeConnection = injector.getInstance(DBNodeConnection.class);
 		Node node = createNode();
 		node.setPort("7777");
 		node.setINetAddress("192.168.3.152");

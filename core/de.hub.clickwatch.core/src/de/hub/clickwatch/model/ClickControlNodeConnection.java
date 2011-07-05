@@ -5,7 +5,7 @@ import org.eclipse.emf.ecore.EObject;
 import de.hub.clickwatch.nodeadapter.AbstractNodeAdapter;
 
 
-public class ClickControlNodeConnection extends AbstractNodeConnection {
+public class ClickControlNodeConnection extends UiNodeConnection {
 
 	@Override
 	public void setUp(Node node) {

@@ -8,15 +8,13 @@ import org.eclipse.emf.ecore.resource.Resource;
 import com.google.inject.Inject;
 
 import de.hub.clickwatch.cdo.CDOHandler;
+import de.hub.clickwatch.model.ClickWatchModelFactory;
+import de.hub.clickwatch.model.Network;
+import de.hub.clickwatch.model.Node;
 import de.hub.clickwatch.server.configuration.ConfigurationFileReader;
 import de.hub.clickwatch.xml.CdoType;
 import de.hub.clickwatch.xml.NetworkType;
 import de.hub.clickwatch.xml.NodeType;
-
-import de.hub.clickwatch.model.ClickControlNodeConnection;
-import de.hub.clickwatch.model.ClickWatchModelFactory;
-import de.hub.clickwatch.model.Network;
-import de.hub.clickwatch.model.Node;
 
 /**
  * The server component stores the database and network connection configuration as well as
@@ -28,7 +26,7 @@ public class ClickWatchServer implements IClickWatchServer {
 	/** Access to the OSGi log service */
 //	private LogService mLogService = null;
 	/**	The array list holds a list of node connections */
-	private ArrayList<ClickControlNodeConnection> mConnectionList = new ArrayList<ClickControlNodeConnection>();
+	private ArrayList<DBNodeConnection> mConnectionList = new ArrayList<DBNodeConnection>();
 	/** The configuration file reader */
 	private ConfigurationFileReader mConfigurationFileReader;
 	/** Location of the configuration file */
@@ -74,7 +72,7 @@ public class ClickWatchServer implements IClickWatchServer {
 					// Set port
 					nodeModel.setPort(node.getPort().toString());			
 					// Set up node connection
-					ClickControlNodeConnection nodeConnection = new ClickControlNodeConnection();
+					DBNodeConnection nodeConnection = new DBNodeConnection();
 					// Add node to node connection
 					nodeConnection.setUp(nodeModel);
 					// Fixme: Set up update interval
@@ -116,12 +114,12 @@ public class ClickWatchServer implements IClickWatchServer {
 	}
 	
 	@Override
-	public ArrayList<ClickControlNodeConnection> getConnectionList() {
+	public ArrayList<DBNodeConnection> getConnectionList() {
 		return mConnectionList;
 	}
 
 	@Override
-	public synchronized void setConnectionList(ArrayList<ClickControlNodeConnection> pConnectionList) {
+	public synchronized void setConnectionList(ArrayList<DBNodeConnection> pConnectionList) {
 		this.mConnectionList = pConnectionList;
 	}	
 	
@@ -129,7 +127,7 @@ public class ClickWatchServer implements IClickWatchServer {
 	public synchronized void shutdown(){
 		//mLogService.log(LogService.LOG_DEBUG, "Server: Prepare to shutdown");
 		if(mConnectionList != null){
-			for(ClickControlNodeConnection connection : mConnectionList){
+			for(DBNodeConnection connection : mConnectionList){
 			//	mLogService.log(LogService.LOG_DEBUG, "Server: Disconnect host " + connection.getNode().getINetAdress());
 				connection.disconnect();
 			}
