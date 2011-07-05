@@ -21,6 +21,10 @@ public class ChangeMark extends AdapterImpl {
 		// this.value = value;
 	}
 
+	public EObject getObject() {
+		return object;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

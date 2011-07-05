@@ -16,7 +16,7 @@ public class ClickControlXSDNodeAdapterPlayerTest extends AbstractTest {
 		String record = "src/" + ClickControlXSDNodeAdapterPlayerTest.class.getPackage().getName().replace(".", "/") + "/" 
 				+ ClickControlXSDNodeAdapterPlayerTest.class.getSimpleName() + ".clickwatchmodel";
 		
-		return new AbstractModule[] { new ClickSocketPlayer.PlayerModule(record) };
+		return new AbstractModule[] { new ClickSocketPlayer.PlayerModule(record, true) };
 	}
 	
 	@Override
@@ -35,4 +35,5 @@ public class ClickControlXSDNodeAdapterPlayerTest extends AbstractTest {
 		nodeAdapter.connect();
 		nodeAdapter.retrieve("", "");
 	}
+
 }

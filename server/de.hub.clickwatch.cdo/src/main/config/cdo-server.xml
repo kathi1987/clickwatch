@@ -33,7 +33,7 @@
 		</store>
 	</repository>
 	-->
-	
+	<!--
 	<repository name="click">
 		<property name="overrideUUID" value="1ff5d226-b1f0-40fb-aba2-0c31b38c764a"/>
 		<property name="supportingAudits" value="true"/>
@@ -55,11 +55,11 @@
 				user="cdo"
 				password="123890"/>
 		</store>
-	</repository>
+	</repository>-->
 
 	<repository name="clicktest">
 		<property name="overrideUUID" value="1ff5d226-b1f0-40fb-aba2-0c31b38c764d"/>
-		<property name="supportingAudits" value="true"/>
+		<property name="supportingAudits" value="false"/>
 		<property name="verifyingRevisions" value="false"/>
 		<property name="currentLRUCapacity" value="10000"/>
 		<property name="revisedLRUCapacity" value="100"/>
@@ -71,12 +71,26 @@
 				<property name="toOneReferences" value="LIKE_ATTRIBUTES"/>
 			</mappingStrategy>
 			
+			
+			<dbAdapter name="derby-embedded"/>
+			<dataSource class="org.apache.derby.jdbc.EmbeddedDataSource"
+				databaseName="/tmp/cdodb1"
+				createDatabase="create"/>
+			
+			<!-- 
+			<dbAdapter name="mysql"/>
+			<dataSource class="com.mysql.jdbc.jdbc2.optional.MysqlDataSource" 
+				url="jdbc:mysql://localhost/clicktestdb"
+				user="cdo"/>
+			-->
+			 
+			<!-- 
 			<dbAdapter name="postgresql"/>
 			<dataSource class="org.postgresql.ds.PGSimpleDataSource"
 				url="jdbc:postgresql://jupiter.informatik.hu-berlin.de:5432"
 				databaseName="clicktestdb"
 				user="cdo"
-				password="123890"/>
+				password="123890"/>-->
 		</store>
 	</repository>
 <!-- 

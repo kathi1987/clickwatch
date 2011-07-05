@@ -8,6 +8,7 @@ import org.eclipse.emf.ecore.xmi.XMLResource;
 
 import com.google.common.base.Preconditions;
 import com.google.inject.AbstractModule;
+import com.google.inject.Provides;
 
 import de.hub.clickwatch.model.Network;
 import de.hub.clickwatch.model.Node;
@@ -15,24 +16,42 @@ import de.hub.clickwatch.model.Node;
 
 public class ClickSocketPlayer {
 	
-	public final static long UPDATE_INTERVAL = 1000;
+	private static final long updateInterval = 1000;
+	private final boolean emulateTime;
+	private int time = 0;
 	
-	private long start = -1;
+	public ClickSocketPlayer(boolean emulateTime) {
+		this.emulateTime = emulateTime;
+	}
+	
+	public ClickSocketPlayer() {
+		this(false);
+	}
 	
 	public static class PlayerModule extends AbstractModule {
 		
 		private String record;
+		private boolean emulateTime;
+		private ClickSocketPlayer player = null;
 		
-		public PlayerModule(String record) {
+		public PlayerModule(String record, boolean emulateTime) {
 			this.record = record;
+			this.emulateTime = emulateTime;
 		}
 		
 		@Override
 		protected void configure() {	
-			ClickSocketPlayer player = new ClickSocketPlayer();
-			player.initialize(URI.createFileURI(record));
-			bind(ClickSocketPlayer.class).toInstance(player);
+			
 		}		
+		
+		@Provides
+		ClickSocketPlayer provideClickSocketPlayer() {
+			if (player == null) {
+				player = new ClickSocketPlayer(emulateTime);
+				player.initialize(URI.createFileURI(record));
+			} 
+			return player;
+		}
 	};
 
 	private Resource resource = null;
@@ -45,9 +64,16 @@ public class ClickSocketPlayer {
 		Preconditions.checkState(resource.getContents().get(0) instanceof Network);
 	}
 
-	public Node getNode(String host, String port, long update) {
+	public Node getNode(String host, String port) {
 		Preconditions.checkState(resource != null);
-		Network currentNetwork = (Network)resource.getContents().get((int)(update % resource.getContents().size()));
+		int index = 0;
+		if (emulateTime) {
+			index = (int)(System.currentTimeMillis() / updateInterval) % resource.getContents().size();
+		} else {
+			index = time++ % resource.getContents().size();
+		}
+		
+		Network currentNetwork = (Network)resource.getContents().get(index);
 		
 		Preconditions.checkState(currentNetwork != null);
 		
@@ -59,10 +85,4 @@ public class ClickSocketPlayer {
 		return null;
 	}
 
-	public long getCurrentUpdate() {
-		if (start == -1) {
-			start = System.currentTimeMillis();
-		}
-		return (System.currentTimeMillis() - start) / UPDATE_INTERVAL;
-	}
 }
