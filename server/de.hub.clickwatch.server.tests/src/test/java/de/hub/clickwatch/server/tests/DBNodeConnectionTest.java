@@ -66,18 +66,16 @@ public class DBNodeConnectionTest extends AbstractTest {
 	@Test
 	public void testWithRecord() {
 		DBNodeConnection nodeConnection = injector.getInstance(DBNodeConnection.class);
-		nodeConnection.initialize();
+		nodeConnection.setUpDatabaseConnection("cdo", ".,Br1t4#-?4ss3rf1lt3r|", "clickplain");
+		
 		Node node = createNode();
 		node.setPort("7777");
 		node.setINetAddress("192.168.3.152");
 		nodeConnection.setUp(node);
-	//	nodeConnection.setDatabaseHandler(new CDOHandler("127.0.0.1",  BigInteger.valueOf(2036) , "clicktest"));
 		nodeConnection.connect(null);
 		
 		sleep();
-		
 		nodeConnection.disconnect();
-	
 		sleep();
 		
 		nodeConnection.cleanUp();

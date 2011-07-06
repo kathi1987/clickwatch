@@ -27,25 +27,13 @@ public class DBNodeConnection extends AbstractNodeConnection {
 	private Connection connection;
 	/** A temporary counter for the number of inserted nodes*/	
 	private int counter = 0;
-	
-	
-	public DBNodeConnection(){
-
-	}
 
 	// TODO: Port should be handled
 	public void setUpDatabaseConnection(final Properties pProperties){
 		setUpDatabaseConnection(pProperties.getProperty("user"), pProperties.getProperty("pass"), pProperties.getProperty("database"));
 	}
 
-
 	public void setUpDatabaseConnection(final String pUser, final String pPass, final String pDatabase){
-		try {
-			Class.forName("org.postgresql.Driver");
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-				
 		properties.setProperty("user", pUser);
 		properties.setProperty("password", pPass);
 		
@@ -53,7 +41,6 @@ public class DBNodeConnection extends AbstractNodeConnection {
 			connection = DriverManager.getConnection(url + pDatabase, properties);
 			connection.setAutoCommit(false);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}		
 	}
@@ -68,27 +55,14 @@ public class DBNodeConnection extends AbstractNodeConnection {
 			timeout = ((Network)eContainer).getTimeout();
 		}
 		((AbstractNodeAdapter)getNodeAdapter()).setUp(node.getINetAddress(), node.getPort(), timeout);
-	}
-
-	public void initialize(){
-		// Temporary
+		
 		try {
 			Class.forName("org.postgresql.Driver");
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-				
-		properties.setProperty("user", "cdo");
-		properties.setProperty("password", ".,Br1t4#-?4ss3rf1lt3r|");
-		try {
-			connection = DriverManager.getConnection(url + "clickplain", properties);
-			connection.setAutoCommit(false);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}		
 	}
-	
+
 	@Override
 	protected void updateNode(Node pNode) {
 		// Temporary counter
@@ -145,7 +119,6 @@ public class DBNodeConnection extends AbstractNodeConnection {
 	
 	@Override
 	public void connect(Object context) {
-		// TODO CDO: this.mDatabaseHandler.openSession();
 		super.connect(context);
 	}
 

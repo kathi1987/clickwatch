@@ -18,6 +18,7 @@ import de.hub.clickwatch.recorder.ClickSocketPlayerSocketImpl;
 import de.hub.clickwatch.tests.AbstractTest;
 
 public class DBNodeAdapterTest extends AbstractTest {
+	
 	@Override
 	protected AbstractModule[] getAdditionalModules() {
 		String record = "src/test/resources/" + DBNodeConnectionTest.class.getPackage().getName().replace(".", "/") + "/" 

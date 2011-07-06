@@ -65,13 +65,13 @@ public class ClickWatchServer implements IClickWatchServer {
 					// Set port
 					nodeModel.setPort(node.getPort().toString());			
 					// Set up node connection
-					// DBNodeConnection nodeConnection = new DBNodeConnection();
+					DBNodeConnection nodeConnection = new DBNodeConnection();
 					// Add node to node connection
-					// nodeConnection.setUp(nodeModel);
+					nodeConnection.setUp(nodeModel);
 					// Fixme: Set up update interval
 					//nodeConnection.setUpdateInterval(network.getUpdateInterval());					
 					// Add node connection to array list
-					//mConnectionList.add(nodeConnection);
+					mConnectionList.add(nodeConnection);
 				}else if(eObject instanceof NetworkType){
 					NetworkType network = (NetworkType)eObject;
 					// Debug
@@ -102,7 +102,7 @@ public class ClickWatchServer implements IClickWatchServer {
 	public void activateConfiguration(){
 		for(int i = 0; i < this.mConnectionList.size(); i++){
 			// TODO: Set database handler
-			//this.mConnectionList.get(i).setDatabaseHandler(null);
+			this.mConnectionList.get(i).setUpDatabaseConnection(mProperties);
 			// TODO: Connect!
 			this.mConnectionList.get(i).connect(null);
 		}
