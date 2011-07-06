@@ -18,7 +18,7 @@ Require-Bundle: com.google.inject,
  de.hub.clickwatch.xml;bundle-version="2.0.0",
  com.google.collect;bundle-version="1.0.0",
  de.hub.clickwatch.core;bundle-version="2.0.0",
- de.hub.clickwatch.cdo;bundle-version="2.0.0"
+ org.postgresql.jdbc3;bundle-version="8.4.701"
 Export-Package: de.hub.clickwatch.server,
  de.hub.clickwatch.server.configuration,
  de.hub.clickwatch.server.management

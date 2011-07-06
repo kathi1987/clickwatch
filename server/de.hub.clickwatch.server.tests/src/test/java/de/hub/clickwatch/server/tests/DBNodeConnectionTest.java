@@ -1,14 +1,10 @@
 package de.hub.clickwatch.server.tests;
 
-
-import java.math.BigInteger;
-
 import org.junit.Test;
 
 import com.google.inject.AbstractModule;
 
 import de.hub.clickcontrol.IClickSocket;
-import de.hub.clickwatch.cdo.CDOHandler;
 import de.hub.clickwatch.model.ClickWatchModelFactory;
 import de.hub.clickwatch.model.IConnectionConfiguration;
 import de.hub.clickwatch.model.Network;
@@ -34,8 +30,6 @@ public class DBNodeConnectionTest extends AbstractTest {
 		
 		return new AbstractModule[] { new ClickSocketPlayer.PlayerModule(record) };
 	}
-	
-	
 	
 	@Override
 	protected IConnectionConfiguration getConnectionConfiguration() {
@@ -72,11 +66,12 @@ public class DBNodeConnectionTest extends AbstractTest {
 	@Test
 	public void testWithRecord() {
 		DBNodeConnection nodeConnection = injector.getInstance(DBNodeConnection.class);
+		nodeConnection.initialize();
 		Node node = createNode();
 		node.setPort("7777");
 		node.setINetAddress("192.168.3.152");
 		nodeConnection.setUp(node);
-		nodeConnection.setDatabaseHandler(new CDOHandler("127.0.0.1",  BigInteger.valueOf(2036) , "clicktest"));
+	//	nodeConnection.setDatabaseHandler(new CDOHandler("127.0.0.1",  BigInteger.valueOf(2036) , "clicktest"));
 		nodeConnection.connect(null);
 		
 		sleep();
@@ -84,6 +79,8 @@ public class DBNodeConnectionTest extends AbstractTest {
 		nodeConnection.disconnect();
 	
 		sleep();
+		
+		nodeConnection.cleanUp();
 	}
 	
 	private static void sleep(){

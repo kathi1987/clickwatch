@@ -32,7 +32,7 @@
 
 		</store>
 	</repository>
-	-->
+	
 	
 	<repository name="click">
 		<property name="overrideUUID" value="1ff5d226-b1f0-40fb-aba2-0c31b38c764a"/>
@@ -79,7 +79,8 @@
 				password="123890"/>
 		</store>
 	</repository>
-<!-- 
+	-->
+ 
 	<repository name="click">
 		<property name="overrideUUID" value="1ff5d226-b1f0-40fb-aba2-0c31b38c764a"/>
 		<property name="supportingAudits" value="true"/>
@@ -125,5 +126,5 @@
 				password=".,Br1t4#-?4ss3rf1lt3r|"/>
 		</store>
 	</repository>
-	-->
+	
 </cdoServer>

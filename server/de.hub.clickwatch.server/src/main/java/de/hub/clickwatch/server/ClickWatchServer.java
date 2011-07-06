@@ -7,7 +7,6 @@ import org.eclipse.emf.ecore.resource.Resource;
 
 import com.google.inject.Inject;
 
-import de.hub.clickwatch.cdo.CDOHandler;
 import de.hub.clickwatch.model.ClickWatchModelFactory;
 import de.hub.clickwatch.model.Network;
 import de.hub.clickwatch.model.Node;
@@ -31,16 +30,6 @@ public class ClickWatchServer implements IClickWatchServer {
 	private ConfigurationFileReader mConfigurationFileReader;
 	/** Location of the configuration file */
 	private String mConfigurationFile;
-	/** A handler for the CDO connection */
-	private CDOHandler mDatabaseHandler;
-	
-	public CDOHandler getDatabaseHandler() {
-		return mDatabaseHandler;
-	}
-
-	public void setDatabaseHandler(CDOHandler pDatabaseHandler) {
-		this.mDatabaseHandler = pDatabaseHandler;
-	}
 
 	@Inject
 	public ClickWatchServer(){
@@ -90,9 +79,7 @@ public class ClickWatchServer implements IClickWatchServer {
 					/// Set update interval
 					networkModel.setUpdateIntervall(network.getUpdateInterval());	
 				} else if(eObject instanceof CdoType) {
-					CdoType cdo = (CdoType) eObject;
-					//
-					this.mDatabaseHandler = new CDOHandler(cdo.getAddress(), cdo.getPort(), cdo.getRepository());
+					// TODO: Database configuration
 					
 				} else {
 					// This should not happen
@@ -107,7 +94,7 @@ public class ClickWatchServer implements IClickWatchServer {
 	public void activateConfiguration(){
 		for(int i = 0; i < this.mConnectionList.size(); i++){
 			// TODO: Set database handler
-			this.mConnectionList.get(i).setDatabaseHandler(mDatabaseHandler);
+			//this.mConnectionList.get(i).setDatabaseHandler(null);
 			// TODO: Connect!
 			this.mConnectionList.get(i).connect(null);
 		}
