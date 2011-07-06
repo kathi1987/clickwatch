@@ -13,11 +13,11 @@ import junit.textui.TestRunner;
 
 /**
  * <!-- begin-user-doc -->
- * A test suite for the '<em><b>De.hub.clickwatch</b></em>' model.
+ * A test suite for the '<em><b>de.hub.clickwatch.xml</b></em>' model.
  * <!-- end-user-doc -->
  * @generated
  */
-public class DehubclickwatchAllTests extends TestSuite {
+public class dehubclickwatchxmlAllTests extends TestSuite {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -34,7 +34,7 @@ public class DehubclickwatchAllTests extends TestSuite {
 	 * @generated
 	 */
 	public static Test suite() {
-		TestSuite suite = new DehubclickwatchAllTests("De.hub.clickwatch Tests");
+		TestSuite suite = new dehubclickwatchxmlAllTests("de.hub.clickwatch.xml Tests");
 		suite.addTest(configurationTests.suite());
 		return suite;
 	}
@@ -44,8 +44,8 @@ public class DehubclickwatchAllTests extends TestSuite {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DehubclickwatchAllTests(String name) {
+	public dehubclickwatchxmlAllTests(String name) {
 		super(name);
 	}
 
-} //DehubclickwatchAllTests
+} //dehubclickwatchxmlAllTests

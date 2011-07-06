@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  * </p>
  *
- * @see de.hub.clickwatch.xml.configuration.configurationPackage#getNetworkType()
+ * @see de.hub.clickwatch.xml.configuration.ConfigurationPackage#getNetworkType()
  * @model extendedMetaData="name='networkType' kind='elementOnly'"
  * @generated
  */
@@ -40,7 +40,7 @@ public interface NetworkType extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Node</em>' containment reference list.
-	 * @see de.hub.clickwatch.xml.configuration.configurationPackage#getNetworkType_Node()
+	 * @see de.hub.clickwatch.xml.configuration.ConfigurationPackage#getNetworkType_Node()
 	 * @model containment="true" required="true"
 	 *        extendedMetaData="kind='element' name='node' namespace='##targetNamespace'"
 	 * @generated
@@ -57,7 +57,7 @@ public interface NetworkType extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Network</em>' containment reference list.
-	 * @see de.hub.clickwatch.xml.configuration.configurationPackage#getNetworkType_Network()
+	 * @see de.hub.clickwatch.xml.configuration.ConfigurationPackage#getNetworkType_Network()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='network' namespace='##targetNamespace'"
 	 * @generated
@@ -74,7 +74,7 @@ public interface NetworkType extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
-	 * @see de.hub.clickwatch.xml.configuration.configurationPackage#getNetworkType_Name()
+	 * @see de.hub.clickwatch.xml.configuration.ConfigurationPackage#getNetworkType_Name()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
 	 *        extendedMetaData="kind='attribute' name='name' namespace='##targetNamespace'"
 	 * @generated
@@ -103,7 +103,7 @@ public interface NetworkType extends EObject {
 	 * @see #isSetUpdateInterval()
 	 * @see #unsetUpdateInterval()
 	 * @see #setUpdateInterval(int)
-	 * @see de.hub.clickwatch.xml.configuration.configurationPackage#getNetworkType_UpdateInterval()
+	 * @see de.hub.clickwatch.xml.configuration.ConfigurationPackage#getNetworkType_UpdateInterval()
 	 * @model unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.Int" required="true"
 	 *        extendedMetaData="kind='attribute' name='updateInterval' namespace='##targetNamespace'"
 	 * @generated

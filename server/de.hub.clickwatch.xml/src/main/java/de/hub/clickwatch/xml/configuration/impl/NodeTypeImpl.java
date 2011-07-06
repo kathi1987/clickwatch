@@ -8,7 +8,7 @@ package de.hub.clickwatch.xml.configuration.impl;
 
 import de.hub.clickwatch.xml.configuration.NodeType;
 import de.hub.clickwatch.xml.configuration.ProtocolType;
-import de.hub.clickwatch.xml.configuration.configurationPackage;
+import de.hub.clickwatch.xml.configuration.ConfigurationPackage;
 
 import java.math.BigInteger;
 
@@ -162,7 +162,7 @@ public class NodeTypeImpl extends EObjectImpl implements NodeType {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return configurationPackage.Literals.NODE_TYPE;
+		return ConfigurationPackage.Literals.NODE_TYPE;
 	}
 
 	/**
@@ -183,7 +183,7 @@ public class NodeTypeImpl extends EObjectImpl implements NodeType {
 		String oldAddress = address;
 		address = newAddress;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, configurationPackage.NODE_TYPE__ADDRESS, oldAddress, address));
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfigurationPackage.NODE_TYPE__ADDRESS, oldAddress, address));
 	}
 
 	/**
@@ -204,7 +204,7 @@ public class NodeTypeImpl extends EObjectImpl implements NodeType {
 		String oldElementFilter = elementFilter;
 		elementFilter = newElementFilter;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, configurationPackage.NODE_TYPE__ELEMENT_FILTER, oldElementFilter, elementFilter));
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfigurationPackage.NODE_TYPE__ELEMENT_FILTER, oldElementFilter, elementFilter));
 	}
 
 	/**
@@ -225,7 +225,7 @@ public class NodeTypeImpl extends EObjectImpl implements NodeType {
 		String oldHandlerFilter = handlerFilter;
 		handlerFilter = newHandlerFilter;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, configurationPackage.NODE_TYPE__HANDLER_FILTER, oldHandlerFilter, handlerFilter));
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfigurationPackage.NODE_TYPE__HANDLER_FILTER, oldHandlerFilter, handlerFilter));
 	}
 
 	/**
@@ -246,7 +246,7 @@ public class NodeTypeImpl extends EObjectImpl implements NodeType {
 		BigInteger oldPort = port;
 		port = newPort;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, configurationPackage.NODE_TYPE__PORT, oldPort, port));
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfigurationPackage.NODE_TYPE__PORT, oldPort, port));
 	}
 
 	/**
@@ -269,7 +269,7 @@ public class NodeTypeImpl extends EObjectImpl implements NodeType {
 		boolean oldProtocolESet = protocolESet;
 		protocolESet = true;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, configurationPackage.NODE_TYPE__PROTOCOL, oldProtocol, protocol, !oldProtocolESet));
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfigurationPackage.NODE_TYPE__PROTOCOL, oldProtocol, protocol, !oldProtocolESet));
 	}
 
 	/**
@@ -283,7 +283,7 @@ public class NodeTypeImpl extends EObjectImpl implements NodeType {
 		protocol = PROTOCOL_EDEFAULT;
 		protocolESet = false;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET, configurationPackage.NODE_TYPE__PROTOCOL, oldProtocol, PROTOCOL_EDEFAULT, oldProtocolESet));
+			eNotify(new ENotificationImpl(this, Notification.UNSET, ConfigurationPackage.NODE_TYPE__PROTOCOL, oldProtocol, PROTOCOL_EDEFAULT, oldProtocolESet));
 	}
 
 	/**
@@ -303,15 +303,15 @@ public class NodeTypeImpl extends EObjectImpl implements NodeType {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case configurationPackage.NODE_TYPE__ADDRESS:
+			case ConfigurationPackage.NODE_TYPE__ADDRESS:
 				return getAddress();
-			case configurationPackage.NODE_TYPE__ELEMENT_FILTER:
+			case ConfigurationPackage.NODE_TYPE__ELEMENT_FILTER:
 				return getElementFilter();
-			case configurationPackage.NODE_TYPE__HANDLER_FILTER:
+			case ConfigurationPackage.NODE_TYPE__HANDLER_FILTER:
 				return getHandlerFilter();
-			case configurationPackage.NODE_TYPE__PORT:
+			case ConfigurationPackage.NODE_TYPE__PORT:
 				return getPort();
-			case configurationPackage.NODE_TYPE__PROTOCOL:
+			case ConfigurationPackage.NODE_TYPE__PROTOCOL:
 				return getProtocol();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -325,19 +325,19 @@ public class NodeTypeImpl extends EObjectImpl implements NodeType {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case configurationPackage.NODE_TYPE__ADDRESS:
+			case ConfigurationPackage.NODE_TYPE__ADDRESS:
 				setAddress((String)newValue);
 				return;
-			case configurationPackage.NODE_TYPE__ELEMENT_FILTER:
+			case ConfigurationPackage.NODE_TYPE__ELEMENT_FILTER:
 				setElementFilter((String)newValue);
 				return;
-			case configurationPackage.NODE_TYPE__HANDLER_FILTER:
+			case ConfigurationPackage.NODE_TYPE__HANDLER_FILTER:
 				setHandlerFilter((String)newValue);
 				return;
-			case configurationPackage.NODE_TYPE__PORT:
+			case ConfigurationPackage.NODE_TYPE__PORT:
 				setPort((BigInteger)newValue);
 				return;
-			case configurationPackage.NODE_TYPE__PROTOCOL:
+			case ConfigurationPackage.NODE_TYPE__PROTOCOL:
 				setProtocol((ProtocolType)newValue);
 				return;
 		}
@@ -352,19 +352,19 @@ public class NodeTypeImpl extends EObjectImpl implements NodeType {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case configurationPackage.NODE_TYPE__ADDRESS:
+			case ConfigurationPackage.NODE_TYPE__ADDRESS:
 				setAddress(ADDRESS_EDEFAULT);
 				return;
-			case configurationPackage.NODE_TYPE__ELEMENT_FILTER:
+			case ConfigurationPackage.NODE_TYPE__ELEMENT_FILTER:
 				setElementFilter(ELEMENT_FILTER_EDEFAULT);
 				return;
-			case configurationPackage.NODE_TYPE__HANDLER_FILTER:
+			case ConfigurationPackage.NODE_TYPE__HANDLER_FILTER:
 				setHandlerFilter(HANDLER_FILTER_EDEFAULT);
 				return;
-			case configurationPackage.NODE_TYPE__PORT:
+			case ConfigurationPackage.NODE_TYPE__PORT:
 				setPort(PORT_EDEFAULT);
 				return;
-			case configurationPackage.NODE_TYPE__PROTOCOL:
+			case ConfigurationPackage.NODE_TYPE__PROTOCOL:
 				unsetProtocol();
 				return;
 		}
@@ -379,15 +379,15 @@ public class NodeTypeImpl extends EObjectImpl implements NodeType {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case configurationPackage.NODE_TYPE__ADDRESS:
+			case ConfigurationPackage.NODE_TYPE__ADDRESS:
 				return ADDRESS_EDEFAULT == null ? address != null : !ADDRESS_EDEFAULT.equals(address);
-			case configurationPackage.NODE_TYPE__ELEMENT_FILTER:
+			case ConfigurationPackage.NODE_TYPE__ELEMENT_FILTER:
 				return ELEMENT_FILTER_EDEFAULT == null ? elementFilter != null : !ELEMENT_FILTER_EDEFAULT.equals(elementFilter);
-			case configurationPackage.NODE_TYPE__HANDLER_FILTER:
+			case ConfigurationPackage.NODE_TYPE__HANDLER_FILTER:
 				return HANDLER_FILTER_EDEFAULT == null ? handlerFilter != null : !HANDLER_FILTER_EDEFAULT.equals(handlerFilter);
-			case configurationPackage.NODE_TYPE__PORT:
+			case ConfigurationPackage.NODE_TYPE__PORT:
 				return PORT_EDEFAULT == null ? port != null : !PORT_EDEFAULT.equals(port);
-			case configurationPackage.NODE_TYPE__PROTOCOL:
+			case ConfigurationPackage.NODE_TYPE__PROTOCOL:
 				return isSetProtocol();
 		}
 		return super.eIsSet(featureID);

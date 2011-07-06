@@ -8,10 +8,10 @@ package de.hub.clickwatch.xml.configuration.tests;
 
 import de.hub.clickwatch.xml.configuration.ConfigurationType;
 import de.hub.clickwatch.xml.configuration.DocumentRoot;
-import de.hub.clickwatch.xml.configuration.configurationFactory;
-import de.hub.clickwatch.xml.configuration.configurationPackage;
+import de.hub.clickwatch.xml.configuration.ConfigurationFactory;
+import de.hub.clickwatch.xml.configuration.ConfigurationPackage;
 
-import de.hub.clickwatch.xml.configuration.util.configurationResourceFactoryImpl;
+import de.hub.clickwatch.xml.configuration.util.ConfigurationResourceFactoryImpl;
 
 import java.io.File;
 import java.io.IOException;
@@ -51,13 +51,13 @@ public class configurationExample {
 		//
 		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put
 			(Resource.Factory.Registry.DEFAULT_EXTENSION, 
-			 new configurationResourceFactoryImpl());
+			 new ConfigurationResourceFactoryImpl());
 
 		// Register the package to ensure it is available during loading.
 		//
 		resourceSet.getPackageRegistry().put
-			(configurationPackage.eNS_URI, 
-			 configurationPackage.eINSTANCE);
+			(ConfigurationPackage.eNS_URI, 
+			 ConfigurationPackage.eINSTANCE);
         
 		// If there are no arguments, emit an appropriate usage message.
 		//
@@ -65,8 +65,8 @@ public class configurationExample {
 			System.out.println("Enter a list of file paths or URIs that have content like this:");
 			try {
 				Resource resource = resourceSet.createResource(URI.createURI("http:///My.configuration"));
-				DocumentRoot documentRoot = configurationFactory.eINSTANCE.createDocumentRoot();
-				ConfigurationType root = configurationFactory.eINSTANCE.createConfigurationType();
+				DocumentRoot documentRoot = ConfigurationFactory.eINSTANCE.createDocumentRoot();
+				ConfigurationType root = ConfigurationFactory.eINSTANCE.createConfigurationType();
 				documentRoot.setConfiguration(root);
 				resource.getContents().add(documentRoot);
 				resource.save(System.out, null);

@@ -23,17 +23,17 @@ import org.eclipse.emf.ecore.util.Switch;
  * until a non-null result is returned,
  * which is the result of the switch.
  * <!-- end-user-doc -->
- * @see de.hub.clickwatch.xml.configuration.configurationPackage
+ * @see de.hub.clickwatch.xml.configuration.ConfigurationPackage
  * @generated
  */
-public class configurationSwitch<T> extends Switch<T> {
+public class ConfigurationSwitch<T> extends Switch<T> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static configurationPackage modelPackage;
+	protected static ConfigurationPackage modelPackage;
 
 	/**
 	 * Creates an instance of the switch.
@@ -41,9 +41,9 @@ public class configurationSwitch<T> extends Switch<T> {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public configurationSwitch() {
+	public ConfigurationSwitch() {
 		if (modelPackage == null) {
-			modelPackage = configurationPackage.eINSTANCE;
+			modelPackage = ConfigurationPackage.eINSTANCE;
 		}
 	}
 
@@ -70,31 +70,31 @@ public class configurationSwitch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-			case configurationPackage.CONFIGURATION_TYPE: {
+			case ConfigurationPackage.CONFIGURATION_TYPE: {
 				ConfigurationType configurationType = (ConfigurationType)theEObject;
 				T result = caseConfigurationType(configurationType);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case configurationPackage.DATABASE_TYPE: {
+			case ConfigurationPackage.DATABASE_TYPE: {
 				DatabaseType databaseType = (DatabaseType)theEObject;
 				T result = caseDatabaseType(databaseType);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case configurationPackage.DOCUMENT_ROOT: {
+			case ConfigurationPackage.DOCUMENT_ROOT: {
 				DocumentRoot documentRoot = (DocumentRoot)theEObject;
 				T result = caseDocumentRoot(documentRoot);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case configurationPackage.NETWORK_TYPE: {
+			case ConfigurationPackage.NETWORK_TYPE: {
 				NetworkType networkType = (NetworkType)theEObject;
 				T result = caseNetworkType(networkType);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case configurationPackage.NODE_TYPE: {
+			case ConfigurationPackage.NODE_TYPE: {
 				NodeType nodeType = (NodeType)theEObject;
 				T result = caseNodeType(nodeType);
 				if (result == null) result = defaultCase(theEObject);

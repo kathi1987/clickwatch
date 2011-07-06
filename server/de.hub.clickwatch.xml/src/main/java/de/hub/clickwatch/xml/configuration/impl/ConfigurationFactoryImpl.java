@@ -28,16 +28,16 @@ import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class configurationFactoryImpl extends EFactoryImpl implements configurationFactory {
+public class ConfigurationFactoryImpl extends EFactoryImpl implements ConfigurationFactory {
 	/**
 	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static configurationFactory init() {
+	public static ConfigurationFactory init() {
 		try {
-			configurationFactory theconfigurationFactory = (configurationFactory)EPackage.Registry.INSTANCE.getEFactory("file:/vol/home-vol1/simulant/frey/Desktop/configuration.xsd"); 
+			ConfigurationFactory theconfigurationFactory = (ConfigurationFactory)EPackage.Registry.INSTANCE.getEFactory("platform:/resource/de.hub.clickwatch.xml/src/main/resources/configuration.xsd"); 
 			if (theconfigurationFactory != null) {
 				return theconfigurationFactory;
 			}
@@ -45,7 +45,7 @@ public class configurationFactoryImpl extends EFactoryImpl implements configurat
 		catch (Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
 		}
-		return new configurationFactoryImpl();
+		return new ConfigurationFactoryImpl();
 	}
 
 	/**
@@ -54,7 +54,7 @@ public class configurationFactoryImpl extends EFactoryImpl implements configurat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public configurationFactoryImpl() {
+	public ConfigurationFactoryImpl() {
 		super();
 	}
 
@@ -66,11 +66,11 @@ public class configurationFactoryImpl extends EFactoryImpl implements configurat
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case configurationPackage.CONFIGURATION_TYPE: return createConfigurationType();
-			case configurationPackage.DATABASE_TYPE: return createDatabaseType();
-			case configurationPackage.DOCUMENT_ROOT: return createDocumentRoot();
-			case configurationPackage.NETWORK_TYPE: return createNetworkType();
-			case configurationPackage.NODE_TYPE: return createNodeType();
+			case ConfigurationPackage.CONFIGURATION_TYPE: return createConfigurationType();
+			case ConfigurationPackage.DATABASE_TYPE: return createDatabaseType();
+			case ConfigurationPackage.DOCUMENT_ROOT: return createDocumentRoot();
+			case ConfigurationPackage.NETWORK_TYPE: return createNetworkType();
+			case ConfigurationPackage.NODE_TYPE: return createNodeType();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -84,13 +84,13 @@ public class configurationFactoryImpl extends EFactoryImpl implements configurat
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
-			case configurationPackage.PROTOCOL_TYPE:
+			case ConfigurationPackage.PROTOCOL_TYPE:
 				return createProtocolTypeFromString(eDataType, initialValue);
-			case configurationPackage.ADDRESS_TYPE:
+			case ConfigurationPackage.ADDRESS_TYPE:
 				return createAddressTypeFromString(eDataType, initialValue);
-			case configurationPackage.PORT_TYPE:
+			case ConfigurationPackage.PORT_TYPE:
 				return createPortTypeFromString(eDataType, initialValue);
-			case configurationPackage.PROTOCOL_TYPE_OBJECT:
+			case ConfigurationPackage.PROTOCOL_TYPE_OBJECT:
 				return createProtocolTypeObjectFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
@@ -105,13 +105,13 @@ public class configurationFactoryImpl extends EFactoryImpl implements configurat
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
-			case configurationPackage.PROTOCOL_TYPE:
+			case ConfigurationPackage.PROTOCOL_TYPE:
 				return convertProtocolTypeToString(eDataType, instanceValue);
-			case configurationPackage.ADDRESS_TYPE:
+			case ConfigurationPackage.ADDRESS_TYPE:
 				return convertAddressTypeToString(eDataType, instanceValue);
-			case configurationPackage.PORT_TYPE:
+			case ConfigurationPackage.PORT_TYPE:
 				return convertPortTypeToString(eDataType, instanceValue);
-			case configurationPackage.PROTOCOL_TYPE_OBJECT:
+			case ConfigurationPackage.PROTOCOL_TYPE_OBJECT:
 				return convertProtocolTypeObjectToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
@@ -230,7 +230,7 @@ public class configurationFactoryImpl extends EFactoryImpl implements configurat
 	 * @generated
 	 */
 	public ProtocolType createProtocolTypeObjectFromString(EDataType eDataType, String initialValue) {
-		return createProtocolTypeFromString(configurationPackage.Literals.PROTOCOL_TYPE, initialValue);
+		return createProtocolTypeFromString(ConfigurationPackage.Literals.PROTOCOL_TYPE, initialValue);
 	}
 
 	/**
@@ -239,7 +239,7 @@ public class configurationFactoryImpl extends EFactoryImpl implements configurat
 	 * @generated
 	 */
 	public String convertProtocolTypeObjectToString(EDataType eDataType, Object instanceValue) {
-		return convertProtocolTypeToString(configurationPackage.Literals.PROTOCOL_TYPE, instanceValue);
+		return convertProtocolTypeToString(ConfigurationPackage.Literals.PROTOCOL_TYPE, instanceValue);
 	}
 
 	/**
@@ -247,8 +247,8 @@ public class configurationFactoryImpl extends EFactoryImpl implements configurat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public configurationPackage getconfigurationPackage() {
-		return (configurationPackage)getEPackage();
+	public ConfigurationPackage getconfigurationPackage() {
+		return (ConfigurationPackage)getEPackage();
 	}
 
 	/**
@@ -258,8 +258,8 @@ public class configurationFactoryImpl extends EFactoryImpl implements configurat
 	 * @generated
 	 */
 	@Deprecated
-	public static configurationPackage getPackage() {
-		return configurationPackage.eINSTANCE;
+	public static ConfigurationPackage getPackage() {
+		return ConfigurationPackage.eINSTANCE;
 	}
 
 } //configurationFactoryImpl

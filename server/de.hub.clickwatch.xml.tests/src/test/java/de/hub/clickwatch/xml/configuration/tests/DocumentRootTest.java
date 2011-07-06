@@ -6,12 +6,10 @@
  */
 package de.hub.clickwatch.xml.configuration.tests;
 
-import de.hub.clickwatch.xml.configuration.DocumentRoot;
-import de.hub.clickwatch.xml.configuration.configurationFactory;
-
 import junit.framework.TestCase;
-
 import junit.textui.TestRunner;
+import de.hub.clickwatch.xml.configuration.DocumentRoot;
+import de.hub.clickwatch.xml.configuration.ConfigurationFactory;
 
 /**
  * <!-- begin-user-doc -->
@@ -82,7 +80,7 @@ public class DocumentRootTest extends TestCase {
 	 */
 	@Override
 	protected void setUp() throws Exception {
-		setFixture(configurationFactory.eINSTANCE.createDocumentRoot());
+		setFixture(ConfigurationFactory.eINSTANCE.createDocumentRoot());
 	}
 
 	/**

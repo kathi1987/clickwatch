@@ -26,7 +26,7 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  * </p>
  *
- * @see de.hub.clickwatch.xml.configuration.configurationPackage#getNodeType()
+ * @see de.hub.clickwatch.xml.configuration.ConfigurationPackage#getNodeType()
  * @model extendedMetaData="name='nodeType' kind='empty'"
  * @generated
  */
@@ -41,7 +41,7 @@ public interface NodeType extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Address</em>' attribute.
 	 * @see #setAddress(String)
-	 * @see de.hub.clickwatch.xml.configuration.configurationPackage#getNodeType_Address()
+	 * @see de.hub.clickwatch.xml.configuration.ConfigurationPackage#getNodeType_Address()
 	 * @model dataType="de.hub.clickwatch.xml.Configuration.AddressType" required="true"
 	 *        extendedMetaData="kind='attribute' name='address' namespace='##targetNamespace'"
 	 * @generated
@@ -68,7 +68,7 @@ public interface NodeType extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Element Filter</em>' attribute.
 	 * @see #setElementFilter(String)
-	 * @see de.hub.clickwatch.xml.configuration.configurationPackage#getNodeType_ElementFilter()
+	 * @see de.hub.clickwatch.xml.configuration.ConfigurationPackage#getNodeType_ElementFilter()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.String"
 	 *        extendedMetaData="kind='attribute' name='elementFilter' namespace='##targetNamespace'"
 	 * @generated
@@ -95,7 +95,7 @@ public interface NodeType extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Handler Filter</em>' attribute.
 	 * @see #setHandlerFilter(String)
-	 * @see de.hub.clickwatch.xml.configuration.configurationPackage#getNodeType_HandlerFilter()
+	 * @see de.hub.clickwatch.xml.configuration.ConfigurationPackage#getNodeType_HandlerFilter()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.String"
 	 *        extendedMetaData="kind='attribute' name='handlerFilter' namespace='##targetNamespace'"
 	 * @generated
@@ -122,7 +122,7 @@ public interface NodeType extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Port</em>' attribute.
 	 * @see #setPort(BigInteger)
-	 * @see de.hub.clickwatch.xml.configuration.configurationPackage#getNodeType_Port()
+	 * @see de.hub.clickwatch.xml.configuration.ConfigurationPackage#getNodeType_Port()
 	 * @model dataType="de.hub.clickwatch.xml.Configuration.PortType" required="true"
 	 *        extendedMetaData="kind='attribute' name='port' namespace='##targetNamespace'"
 	 * @generated
@@ -153,7 +153,7 @@ public interface NodeType extends EObject {
 	 * @see #isSetProtocol()
 	 * @see #unsetProtocol()
 	 * @see #setProtocol(ProtocolType)
-	 * @see de.hub.clickwatch.xml.configuration.configurationPackage#getNodeType_Protocol()
+	 * @see de.hub.clickwatch.xml.configuration.ConfigurationPackage#getNodeType_Protocol()
 	 * @model unsettable="true" required="true"
 	 *        extendedMetaData="kind='attribute' name='protocol' namespace='##targetNamespace'"
 	 * @generated

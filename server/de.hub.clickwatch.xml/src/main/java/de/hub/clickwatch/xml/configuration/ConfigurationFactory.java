@@ -13,17 +13,17 @@ import org.eclipse.emf.ecore.EFactory;
  * The <b>Factory</b> for the model.
  * It provides a create method for each non-abstract class of the model.
  * <!-- end-user-doc -->
- * @see de.hub.clickwatch.xml.configuration.configurationPackage
+ * @see de.hub.clickwatch.xml.configuration.ConfigurationPackage
  * @generated
  */
-public interface configurationFactory extends EFactory {
+public interface ConfigurationFactory extends EFactory {
 	/**
 	 * The singleton instance of the factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	configurationFactory eINSTANCE = de.hub.clickwatch.xml.configuration.impl.configurationFactoryImpl.init();
+	ConfigurationFactory eINSTANCE = de.hub.clickwatch.xml.configuration.impl.ConfigurationFactoryImpl.init();
 
 	/**
 	 * Returns a new object of class '<em>Configuration Type</em>'.
@@ -77,6 +77,6 @@ public interface configurationFactory extends EFactory {
 	 * @return the package supported by this factory.
 	 * @generated
 	 */
-	configurationPackage getconfigurationPackage();
+	ConfigurationPackage getconfigurationPackage();
 
 } //configurationFactory

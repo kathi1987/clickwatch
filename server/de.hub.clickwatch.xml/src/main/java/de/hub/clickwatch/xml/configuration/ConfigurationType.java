@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  * </p>
  *
- * @see de.hub.clickwatch.xml.configuration.configurationPackage#getConfigurationType()
+ * @see de.hub.clickwatch.xml.configuration.ConfigurationPackage#getConfigurationType()
  * @model extendedMetaData="name='configurationType' kind='elementOnly'"
  * @generated
  */
@@ -39,7 +39,7 @@ public interface ConfigurationType extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Network</em>' containment reference list.
-	 * @see de.hub.clickwatch.xml.configuration.configurationPackage#getConfigurationType_Network()
+	 * @see de.hub.clickwatch.xml.configuration.ConfigurationPackage#getConfigurationType_Network()
 	 * @model containment="true" required="true"
 	 *        extendedMetaData="kind='element' name='network' namespace='##targetNamespace'"
 	 * @generated
@@ -56,7 +56,7 @@ public interface ConfigurationType extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Database</em>' containment reference list.
-	 * @see de.hub.clickwatch.xml.configuration.configurationPackage#getConfigurationType_Database()
+	 * @see de.hub.clickwatch.xml.configuration.ConfigurationPackage#getConfigurationType_Database()
 	 * @model containment="true" required="true"
 	 *        extendedMetaData="kind='element' name='database' namespace='##targetNamespace'"
 	 * @generated
@@ -73,7 +73,7 @@ public interface ConfigurationType extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Log Directory</em>' attribute.
 	 * @see #setLogDirectory(String)
-	 * @see de.hub.clickwatch.xml.configuration.configurationPackage#getConfigurationType_LogDirectory()
+	 * @see de.hub.clickwatch.xml.configuration.ConfigurationPackage#getConfigurationType_LogDirectory()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.String"
 	 *        extendedMetaData="kind='attribute' name='logDirectory' namespace='##targetNamespace'"
 	 * @generated

@@ -24,12 +24,12 @@ import org.eclipse.emf.ecore.EReference;
  *   <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * @see de.hub.clickwatch.xml.configuration.configurationFactory
+ * @see de.hub.clickwatch.xml.configuration.ConfigurationFactory
  * @model kind="package"
  *        extendedMetaData="qualified='false'"
  * @generated
  */
-public interface configurationPackage extends EPackage {
+public interface ConfigurationPackage extends EPackage {
 	/**
 	 * The package name.
 	 * <!-- begin-user-doc -->
@@ -44,7 +44,7 @@ public interface configurationPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "file:/vol/home-vol1/simulant/frey/Desktop/configuration.xsd";
+	String eNS_URI = "platform:/resource/de.hub.clickwatch.xml/src/main/resources/configuration.xsd";
 
 	/**
 	 * The package namespace name.
@@ -60,14 +60,14 @@ public interface configurationPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	configurationPackage eINSTANCE = de.hub.clickwatch.xml.configuration.impl.configurationPackageImpl.init();
+	ConfigurationPackage eINSTANCE = de.hub.clickwatch.xml.configuration.impl.ConfigurationPackageImpl.init();
 
 	/**
 	 * The meta object id for the '{@link de.hub.clickwatch.xml.configuration.impl.ConfigurationTypeImpl <em>Configuration Type</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see de.hub.clickwatch.xml.configuration.impl.ConfigurationTypeImpl
-	 * @see de.hub.clickwatch.xml.configuration.impl.configurationPackageImpl#getConfigurationType()
+	 * @see de.hub.clickwatch.xml.configuration.impl.ConfigurationPackageImpl#getConfigurationType()
 	 * @generated
 	 */
 	int CONFIGURATION_TYPE = 0;
@@ -113,7 +113,7 @@ public interface configurationPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see de.hub.clickwatch.xml.configuration.impl.DatabaseTypeImpl
-	 * @see de.hub.clickwatch.xml.configuration.impl.configurationPackageImpl#getDatabaseType()
+	 * @see de.hub.clickwatch.xml.configuration.impl.ConfigurationPackageImpl#getDatabaseType()
 	 * @generated
 	 */
 	int DATABASE_TYPE = 1;
@@ -128,13 +128,31 @@ public interface configurationPackage extends EPackage {
 	int DATABASE_TYPE__ADDRESS = 0;
 
 	/**
+	 * The feature id for the '<em><b>Password</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATABASE_TYPE__PASSWORD = 1;
+
+	/**
 	 * The feature id for the '<em><b>Port</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATABASE_TYPE__PORT = 1;
+	int DATABASE_TYPE__PORT = 2;
+
+	/**
+	 * The feature id for the '<em><b>User</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATABASE_TYPE__USER = 3;
 
 	/**
 	 * The number of structural features of the '<em>Database Type</em>' class.
@@ -143,14 +161,14 @@ public interface configurationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATABASE_TYPE_FEATURE_COUNT = 2;
+	int DATABASE_TYPE_FEATURE_COUNT = 4;
 
 	/**
 	 * The meta object id for the '{@link de.hub.clickwatch.xml.configuration.impl.DocumentRootImpl <em>Document Root</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see de.hub.clickwatch.xml.configuration.impl.DocumentRootImpl
-	 * @see de.hub.clickwatch.xml.configuration.impl.configurationPackageImpl#getDocumentRoot()
+	 * @see de.hub.clickwatch.xml.configuration.impl.ConfigurationPackageImpl#getDocumentRoot()
 	 * @generated
 	 */
 	int DOCUMENT_ROOT = 2;
@@ -205,7 +223,7 @@ public interface configurationPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see de.hub.clickwatch.xml.configuration.impl.NetworkTypeImpl
-	 * @see de.hub.clickwatch.xml.configuration.impl.configurationPackageImpl#getNetworkType()
+	 * @see de.hub.clickwatch.xml.configuration.impl.ConfigurationPackageImpl#getNetworkType()
 	 * @generated
 	 */
 	int NETWORK_TYPE = 3;
@@ -260,7 +278,7 @@ public interface configurationPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see de.hub.clickwatch.xml.configuration.impl.NodeTypeImpl
-	 * @see de.hub.clickwatch.xml.configuration.impl.configurationPackageImpl#getNodeType()
+	 * @see de.hub.clickwatch.xml.configuration.impl.ConfigurationPackageImpl#getNodeType()
 	 * @generated
 	 */
 	int NODE_TYPE = 4;
@@ -324,7 +342,7 @@ public interface configurationPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see de.hub.clickwatch.xml.configuration.ProtocolType
-	 * @see de.hub.clickwatch.xml.configuration.impl.configurationPackageImpl#getProtocolType()
+	 * @see de.hub.clickwatch.xml.configuration.impl.ConfigurationPackageImpl#getProtocolType()
 	 * @generated
 	 */
 	int PROTOCOL_TYPE = 5;
@@ -334,7 +352,7 @@ public interface configurationPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see java.lang.String
-	 * @see de.hub.clickwatch.xml.configuration.impl.configurationPackageImpl#getAddressType()
+	 * @see de.hub.clickwatch.xml.configuration.impl.ConfigurationPackageImpl#getAddressType()
 	 * @generated
 	 */
 	int ADDRESS_TYPE = 6;
@@ -344,7 +362,7 @@ public interface configurationPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see java.math.BigInteger
-	 * @see de.hub.clickwatch.xml.configuration.impl.configurationPackageImpl#getPortType()
+	 * @see de.hub.clickwatch.xml.configuration.impl.ConfigurationPackageImpl#getPortType()
 	 * @generated
 	 */
 	int PORT_TYPE = 7;
@@ -354,7 +372,7 @@ public interface configurationPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see de.hub.clickwatch.xml.configuration.ProtocolType
-	 * @see de.hub.clickwatch.xml.configuration.impl.configurationPackageImpl#getProtocolTypeObject()
+	 * @see de.hub.clickwatch.xml.configuration.impl.ConfigurationPackageImpl#getProtocolTypeObject()
 	 * @generated
 	 */
 	int PROTOCOL_TYPE_OBJECT = 8;
@@ -425,6 +443,17 @@ public interface configurationPackage extends EPackage {
 	EAttribute getDatabaseType_Address();
 
 	/**
+	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.xml.configuration.DatabaseType#getPassword <em>Password</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Password</em>'.
+	 * @see de.hub.clickwatch.xml.configuration.DatabaseType#getPassword()
+	 * @see #getDatabaseType()
+	 * @generated
+	 */
+	EAttribute getDatabaseType_Password();
+
+	/**
 	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.xml.configuration.DatabaseType#getPort <em>Port</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -434,6 +463,17 @@ public interface configurationPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getDatabaseType_Port();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.xml.configuration.DatabaseType#getUser <em>User</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>User</em>'.
+	 * @see de.hub.clickwatch.xml.configuration.DatabaseType#getUser()
+	 * @see #getDatabaseType()
+	 * @generated
+	 */
+	EAttribute getDatabaseType_User();
 
 	/**
 	 * Returns the meta object for class '{@link de.hub.clickwatch.xml.configuration.DocumentRoot <em>Document Root</em>}'.
@@ -661,7 +701,7 @@ public interface configurationPackage extends EPackage {
 	 * @return the factory that creates the instances of the model.
 	 * @generated
 	 */
-	configurationFactory getconfigurationFactory();
+	ConfigurationFactory getconfigurationFactory();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -681,7 +721,7 @@ public interface configurationPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see de.hub.clickwatch.xml.configuration.impl.ConfigurationTypeImpl
-		 * @see de.hub.clickwatch.xml.configuration.impl.configurationPackageImpl#getConfigurationType()
+		 * @see de.hub.clickwatch.xml.configuration.impl.ConfigurationPackageImpl#getConfigurationType()
 		 * @generated
 		 */
 		EClass CONFIGURATION_TYPE = eINSTANCE.getConfigurationType();
@@ -715,7 +755,7 @@ public interface configurationPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see de.hub.clickwatch.xml.configuration.impl.DatabaseTypeImpl
-		 * @see de.hub.clickwatch.xml.configuration.impl.configurationPackageImpl#getDatabaseType()
+		 * @see de.hub.clickwatch.xml.configuration.impl.ConfigurationPackageImpl#getDatabaseType()
 		 * @generated
 		 */
 		EClass DATABASE_TYPE = eINSTANCE.getDatabaseType();
@@ -729,6 +769,14 @@ public interface configurationPackage extends EPackage {
 		EAttribute DATABASE_TYPE__ADDRESS = eINSTANCE.getDatabaseType_Address();
 
 		/**
+		 * The meta object literal for the '<em><b>Password</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DATABASE_TYPE__PASSWORD = eINSTANCE.getDatabaseType_Password();
+
+		/**
 		 * The meta object literal for the '<em><b>Port</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -737,11 +785,19 @@ public interface configurationPackage extends EPackage {
 		EAttribute DATABASE_TYPE__PORT = eINSTANCE.getDatabaseType_Port();
 
 		/**
+		 * The meta object literal for the '<em><b>User</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DATABASE_TYPE__USER = eINSTANCE.getDatabaseType_User();
+
+		/**
 		 * The meta object literal for the '{@link de.hub.clickwatch.xml.configuration.impl.DocumentRootImpl <em>Document Root</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see de.hub.clickwatch.xml.configuration.impl.DocumentRootImpl
-		 * @see de.hub.clickwatch.xml.configuration.impl.configurationPackageImpl#getDocumentRoot()
+		 * @see de.hub.clickwatch.xml.configuration.impl.ConfigurationPackageImpl#getDocumentRoot()
 		 * @generated
 		 */
 		EClass DOCUMENT_ROOT = eINSTANCE.getDocumentRoot();
@@ -783,7 +839,7 @@ public interface configurationPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see de.hub.clickwatch.xml.configuration.impl.NetworkTypeImpl
-		 * @see de.hub.clickwatch.xml.configuration.impl.configurationPackageImpl#getNetworkType()
+		 * @see de.hub.clickwatch.xml.configuration.impl.ConfigurationPackageImpl#getNetworkType()
 		 * @generated
 		 */
 		EClass NETWORK_TYPE = eINSTANCE.getNetworkType();
@@ -825,7 +881,7 @@ public interface configurationPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see de.hub.clickwatch.xml.configuration.impl.NodeTypeImpl
-		 * @see de.hub.clickwatch.xml.configuration.impl.configurationPackageImpl#getNodeType()
+		 * @see de.hub.clickwatch.xml.configuration.impl.ConfigurationPackageImpl#getNodeType()
 		 * @generated
 		 */
 		EClass NODE_TYPE = eINSTANCE.getNodeType();
@@ -875,7 +931,7 @@ public interface configurationPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see de.hub.clickwatch.xml.configuration.ProtocolType
-		 * @see de.hub.clickwatch.xml.configuration.impl.configurationPackageImpl#getProtocolType()
+		 * @see de.hub.clickwatch.xml.configuration.impl.ConfigurationPackageImpl#getProtocolType()
 		 * @generated
 		 */
 		EEnum PROTOCOL_TYPE = eINSTANCE.getProtocolType();
@@ -885,7 +941,7 @@ public interface configurationPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see java.lang.String
-		 * @see de.hub.clickwatch.xml.configuration.impl.configurationPackageImpl#getAddressType()
+		 * @see de.hub.clickwatch.xml.configuration.impl.ConfigurationPackageImpl#getAddressType()
 		 * @generated
 		 */
 		EDataType ADDRESS_TYPE = eINSTANCE.getAddressType();
@@ -895,7 +951,7 @@ public interface configurationPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see java.math.BigInteger
-		 * @see de.hub.clickwatch.xml.configuration.impl.configurationPackageImpl#getPortType()
+		 * @see de.hub.clickwatch.xml.configuration.impl.ConfigurationPackageImpl#getPortType()
 		 * @generated
 		 */
 		EDataType PORT_TYPE = eINSTANCE.getPortType();
@@ -905,7 +961,7 @@ public interface configurationPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see de.hub.clickwatch.xml.configuration.ProtocolType
-		 * @see de.hub.clickwatch.xml.configuration.impl.configurationPackageImpl#getProtocolTypeObject()
+		 * @see de.hub.clickwatch.xml.configuration.impl.ConfigurationPackageImpl#getProtocolTypeObject()
 		 * @generated
 		 */
 		EDataType PROTOCOL_TYPE_OBJECT = eINSTANCE.getProtocolTypeObject();

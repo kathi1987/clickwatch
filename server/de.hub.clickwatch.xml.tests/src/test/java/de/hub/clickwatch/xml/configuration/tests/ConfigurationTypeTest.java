@@ -7,7 +7,7 @@
 package de.hub.clickwatch.xml.configuration.tests;
 
 import de.hub.clickwatch.xml.configuration.ConfigurationType;
-import de.hub.clickwatch.xml.configuration.configurationFactory;
+import de.hub.clickwatch.xml.configuration.ConfigurationFactory;
 
 import junit.framework.TestCase;
 
@@ -76,7 +76,7 @@ public class ConfigurationTypeTest extends TestCase {
 	 */
 	@Override
 	protected void setUp() throws Exception {
-		setFixture(configurationFactory.eINSTANCE.createConfigurationType());
+		setFixture(ConfigurationFactory.eINSTANCE.createConfigurationType());
 	}
 
 	/**

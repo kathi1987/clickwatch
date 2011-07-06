@@ -7,7 +7,7 @@
 package de.hub.clickwatch.xml.configuration.impl;
 
 import de.hub.clickwatch.xml.configuration.DatabaseType;
-import de.hub.clickwatch.xml.configuration.configurationPackage;
+import de.hub.clickwatch.xml.configuration.ConfigurationPackage;
 
 import java.math.BigInteger;
 
@@ -26,7 +26,9 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  * The following features are implemented:
  * <ul>
  *   <li>{@link de.hub.clickwatch.xml.configuration.impl.DatabaseTypeImpl#getAddress <em>Address</em>}</li>
+ *   <li>{@link de.hub.clickwatch.xml.configuration.impl.DatabaseTypeImpl#getPassword <em>Password</em>}</li>
  *   <li>{@link de.hub.clickwatch.xml.configuration.impl.DatabaseTypeImpl#getPort <em>Port</em>}</li>
+ *   <li>{@link de.hub.clickwatch.xml.configuration.impl.DatabaseTypeImpl#getUser <em>User</em>}</li>
  * </ul>
  * </p>
  *
@@ -54,6 +56,26 @@ public class DatabaseTypeImpl extends EObjectImpl implements DatabaseType {
 	protected String address = ADDRESS_EDEFAULT;
 
 	/**
+	 * The default value of the '{@link #getPassword() <em>Password</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPassword()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String PASSWORD_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getPassword() <em>Password</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPassword()
+	 * @generated
+	 * @ordered
+	 */
+	protected String password = PASSWORD_EDEFAULT;
+
+	/**
 	 * The default value of the '{@link #getPort() <em>Port</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -74,6 +96,26 @@ public class DatabaseTypeImpl extends EObjectImpl implements DatabaseType {
 	protected BigInteger port = PORT_EDEFAULT;
 
 	/**
+	 * The default value of the '{@link #getUser() <em>User</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUser()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String USER_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getUser() <em>User</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUser()
+	 * @generated
+	 * @ordered
+	 */
+	protected String user = USER_EDEFAULT;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -89,7 +131,7 @@ public class DatabaseTypeImpl extends EObjectImpl implements DatabaseType {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return configurationPackage.Literals.DATABASE_TYPE;
+		return ConfigurationPackage.Literals.DATABASE_TYPE;
 	}
 
 	/**
@@ -110,7 +152,28 @@ public class DatabaseTypeImpl extends EObjectImpl implements DatabaseType {
 		String oldAddress = address;
 		address = newAddress;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, configurationPackage.DATABASE_TYPE__ADDRESS, oldAddress, address));
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfigurationPackage.DATABASE_TYPE__ADDRESS, oldAddress, address));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getPassword() {
+		return password;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPassword(String newPassword) {
+		String oldPassword = password;
+		password = newPassword;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfigurationPackage.DATABASE_TYPE__PASSWORD, oldPassword, password));
 	}
 
 	/**
@@ -131,7 +194,28 @@ public class DatabaseTypeImpl extends EObjectImpl implements DatabaseType {
 		BigInteger oldPort = port;
 		port = newPort;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, configurationPackage.DATABASE_TYPE__PORT, oldPort, port));
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfigurationPackage.DATABASE_TYPE__PORT, oldPort, port));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getUser() {
+		return user;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setUser(String newUser) {
+		String oldUser = user;
+		user = newUser;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfigurationPackage.DATABASE_TYPE__USER, oldUser, user));
 	}
 
 	/**
@@ -142,10 +226,14 @@ public class DatabaseTypeImpl extends EObjectImpl implements DatabaseType {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case configurationPackage.DATABASE_TYPE__ADDRESS:
+			case ConfigurationPackage.DATABASE_TYPE__ADDRESS:
 				return getAddress();
-			case configurationPackage.DATABASE_TYPE__PORT:
+			case ConfigurationPackage.DATABASE_TYPE__PASSWORD:
+				return getPassword();
+			case ConfigurationPackage.DATABASE_TYPE__PORT:
 				return getPort();
+			case ConfigurationPackage.DATABASE_TYPE__USER:
+				return getUser();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -158,11 +246,17 @@ public class DatabaseTypeImpl extends EObjectImpl implements DatabaseType {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case configurationPackage.DATABASE_TYPE__ADDRESS:
+			case ConfigurationPackage.DATABASE_TYPE__ADDRESS:
 				setAddress((String)newValue);
 				return;
-			case configurationPackage.DATABASE_TYPE__PORT:
+			case ConfigurationPackage.DATABASE_TYPE__PASSWORD:
+				setPassword((String)newValue);
+				return;
+			case ConfigurationPackage.DATABASE_TYPE__PORT:
 				setPort((BigInteger)newValue);
+				return;
+			case ConfigurationPackage.DATABASE_TYPE__USER:
+				setUser((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -176,11 +270,17 @@ public class DatabaseTypeImpl extends EObjectImpl implements DatabaseType {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case configurationPackage.DATABASE_TYPE__ADDRESS:
+			case ConfigurationPackage.DATABASE_TYPE__ADDRESS:
 				setAddress(ADDRESS_EDEFAULT);
 				return;
-			case configurationPackage.DATABASE_TYPE__PORT:
+			case ConfigurationPackage.DATABASE_TYPE__PASSWORD:
+				setPassword(PASSWORD_EDEFAULT);
+				return;
+			case ConfigurationPackage.DATABASE_TYPE__PORT:
 				setPort(PORT_EDEFAULT);
+				return;
+			case ConfigurationPackage.DATABASE_TYPE__USER:
+				setUser(USER_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -194,10 +294,14 @@ public class DatabaseTypeImpl extends EObjectImpl implements DatabaseType {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case configurationPackage.DATABASE_TYPE__ADDRESS:
+			case ConfigurationPackage.DATABASE_TYPE__ADDRESS:
 				return ADDRESS_EDEFAULT == null ? address != null : !ADDRESS_EDEFAULT.equals(address);
-			case configurationPackage.DATABASE_TYPE__PORT:
+			case ConfigurationPackage.DATABASE_TYPE__PASSWORD:
+				return PASSWORD_EDEFAULT == null ? password != null : !PASSWORD_EDEFAULT.equals(password);
+			case ConfigurationPackage.DATABASE_TYPE__PORT:
 				return PORT_EDEFAULT == null ? port != null : !PORT_EDEFAULT.equals(port);
+			case ConfigurationPackage.DATABASE_TYPE__USER:
+				return USER_EDEFAULT == null ? user != null : !USER_EDEFAULT.equals(user);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -214,8 +318,12 @@ public class DatabaseTypeImpl extends EObjectImpl implements DatabaseType {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (address: ");
 		result.append(address);
+		result.append(", password: ");
+		result.append(password);
 		result.append(", port: ");
 		result.append(port);
+		result.append(", user: ");
+		result.append(user);
 		result.append(')');
 		return result.toString();
 	}

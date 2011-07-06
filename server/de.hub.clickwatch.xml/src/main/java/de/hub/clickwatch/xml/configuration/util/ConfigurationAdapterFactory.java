@@ -20,17 +20,17 @@ import org.eclipse.emf.ecore.EObject;
  * The <b>Adapter Factory</b> for the model.
  * It provides an adapter <code>createXXX</code> method for each class of the model.
  * <!-- end-user-doc -->
- * @see de.hub.clickwatch.xml.configuration.configurationPackage
+ * @see de.hub.clickwatch.xml.configuration.ConfigurationPackage
  * @generated
  */
-public class configurationAdapterFactory extends AdapterFactoryImpl {
+public class ConfigurationAdapterFactory extends AdapterFactoryImpl {
 	/**
 	 * The cached model package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static configurationPackage modelPackage;
+	protected static ConfigurationPackage modelPackage;
 
 	/**
 	 * Creates an instance of the adapter factory.
@@ -38,9 +38,9 @@ public class configurationAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public configurationAdapterFactory() {
+	public ConfigurationAdapterFactory() {
 		if (modelPackage == null) {
-			modelPackage = configurationPackage.eINSTANCE;
+			modelPackage = ConfigurationPackage.eINSTANCE;
 		}
 	}
 
@@ -69,8 +69,8 @@ public class configurationAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected configurationSwitch<Adapter> modelSwitch =
-		new configurationSwitch<Adapter>() {
+	protected ConfigurationSwitch<Adapter> modelSwitch =
+		new ConfigurationSwitch<Adapter>() {
 			@Override
 			public Adapter caseConfigurationType(ConfigurationType object) {
 				return createConfigurationTypeAdapter();

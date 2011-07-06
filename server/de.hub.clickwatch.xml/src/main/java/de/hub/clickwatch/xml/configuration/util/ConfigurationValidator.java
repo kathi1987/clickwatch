@@ -26,17 +26,17 @@ import org.eclipse.emf.ecore.xml.type.util.XMLTypeValidator;
  * <!-- begin-user-doc -->
  * The <b>Validator</b> for the model.
  * <!-- end-user-doc -->
- * @see de.hub.clickwatch.xml.configuration.configurationPackage
+ * @see de.hub.clickwatch.xml.configuration.ConfigurationPackage
  * @generated
  */
-public class configurationValidator extends EObjectValidator {
+public class ConfigurationValidator extends EObjectValidator {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final configurationValidator INSTANCE = new configurationValidator();
+	public static final ConfigurationValidator INSTANCE = new ConfigurationValidator();
 
 	/**
 	 * A constant for the {@link org.eclipse.emf.common.util.Diagnostic#getSource() source} of diagnostic {@link org.eclipse.emf.common.util.Diagnostic#getCode() codes} from this package.
@@ -78,7 +78,7 @@ public class configurationValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public configurationValidator() {
+	public ConfigurationValidator() {
 		super();
 		xmlTypeValidator = XMLTypeValidator.INSTANCE;
 	}
@@ -91,7 +91,7 @@ public class configurationValidator extends EObjectValidator {
 	 */
 	@Override
 	protected EPackage getEPackage() {
-	  return configurationPackage.eINSTANCE;
+	  return ConfigurationPackage.eINSTANCE;
 	}
 
 	/**
@@ -103,23 +103,23 @@ public class configurationValidator extends EObjectValidator {
 	@Override
 	protected boolean validate(int classifierID, Object value, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		switch (classifierID) {
-			case configurationPackage.CONFIGURATION_TYPE:
+			case ConfigurationPackage.CONFIGURATION_TYPE:
 				return validateConfigurationType((ConfigurationType)value, diagnostics, context);
-			case configurationPackage.DATABASE_TYPE:
+			case ConfigurationPackage.DATABASE_TYPE:
 				return validateDatabaseType((DatabaseType)value, diagnostics, context);
-			case configurationPackage.DOCUMENT_ROOT:
+			case ConfigurationPackage.DOCUMENT_ROOT:
 				return validateDocumentRoot((DocumentRoot)value, diagnostics, context);
-			case configurationPackage.NETWORK_TYPE:
+			case ConfigurationPackage.NETWORK_TYPE:
 				return validateNetworkType((NetworkType)value, diagnostics, context);
-			case configurationPackage.NODE_TYPE:
+			case ConfigurationPackage.NODE_TYPE:
 				return validateNodeType((NodeType)value, diagnostics, context);
-			case configurationPackage.PROTOCOL_TYPE:
+			case ConfigurationPackage.PROTOCOL_TYPE:
 				return validateProtocolType((ProtocolType)value, diagnostics, context);
-			case configurationPackage.ADDRESS_TYPE:
+			case ConfigurationPackage.ADDRESS_TYPE:
 				return validateAddressType((String)value, diagnostics, context);
-			case configurationPackage.PORT_TYPE:
+			case ConfigurationPackage.PORT_TYPE:
 				return validatePortType((BigInteger)value, diagnostics, context);
-			case configurationPackage.PROTOCOL_TYPE_OBJECT:
+			case ConfigurationPackage.PROTOCOL_TYPE_OBJECT:
 				return validateProtocolTypeObject((ProtocolType)value, diagnostics, context);
 			default:
 				return true;
@@ -210,7 +210,7 @@ public class configurationValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateAddressType_Pattern(String addressType, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validatePattern(configurationPackage.Literals.ADDRESS_TYPE, addressType, ADDRESS_TYPE__PATTERN__VALUES, diagnostics, context);
+		return validatePattern(ConfigurationPackage.Literals.ADDRESS_TYPE, addressType, ADDRESS_TYPE__PATTERN__VALUES, diagnostics, context);
 	}
 
 	/**
@@ -241,7 +241,7 @@ public class configurationValidator extends EObjectValidator {
 	public boolean validatePortType_Min(BigInteger portType, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = portType.compareTo(PORT_TYPE__MIN__VALUE) >= 0;
 		if (!result && diagnostics != null)
-			reportMinViolation(configurationPackage.Literals.PORT_TYPE, portType, PORT_TYPE__MIN__VALUE, true, diagnostics, context);
+			reportMinViolation(ConfigurationPackage.Literals.PORT_TYPE, portType, PORT_TYPE__MIN__VALUE, true, diagnostics, context);
 		return result;
 	}
 
@@ -262,7 +262,7 @@ public class configurationValidator extends EObjectValidator {
 	public boolean validatePortType_Max(BigInteger portType, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = portType.compareTo(PORT_TYPE__MAX__VALUE) <= 0;
 		if (!result && diagnostics != null)
-			reportMaxViolation(configurationPackage.Literals.PORT_TYPE, portType, PORT_TYPE__MAX__VALUE, true, diagnostics, context);
+			reportMaxViolation(ConfigurationPackage.Literals.PORT_TYPE, portType, PORT_TYPE__MAX__VALUE, true, diagnostics, context);
 		return result;
 	}
 

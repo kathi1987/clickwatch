@@ -6,7 +6,7 @@
  */
 package de.hub.clickwatch.xml.configuration.util;
 
-import de.hub.clickwatch.xml.configuration.configurationPackage;
+import de.hub.clickwatch.xml.configuration.ConfigurationPackage;
 
 import org.eclipse.emf.common.util.URI;
 
@@ -27,10 +27,10 @@ import org.eclipse.emf.ecore.xmi.XMLResource;
  * <!-- begin-user-doc -->
  * The <b>Resource Factory</b> associated with the package.
  * <!-- end-user-doc -->
- * @see de.hub.clickwatch.xml.configuration.util.configurationResourceImpl
+ * @see de.hub.clickwatch.xml.configuration.util.ConfigurationResourceImpl
  * @generated
  */
-public class configurationResourceFactoryImpl extends ResourceFactoryImpl {
+public class ConfigurationResourceFactoryImpl extends ResourceFactoryImpl {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -44,10 +44,10 @@ public class configurationResourceFactoryImpl extends ResourceFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public configurationResourceFactoryImpl() {
+	public ConfigurationResourceFactoryImpl() {
 		super();
 		extendedMetaData = new BasicExtendedMetaData(new EPackageRegistryImpl(EPackage.Registry.INSTANCE));
-		extendedMetaData.putPackage(null, configurationPackage.eINSTANCE);
+		extendedMetaData.putPackage(null, ConfigurationPackage.eINSTANCE);
 	}
 
 	/**
@@ -58,7 +58,7 @@ public class configurationResourceFactoryImpl extends ResourceFactoryImpl {
 	 */
 	@Override
 	public Resource createResource(URI uri) {
-		XMLResource result = new configurationResourceImpl(uri);
+		XMLResource result = new ConfigurationResourceImpl(uri);
 		result.getDefaultSaveOptions().put(XMLResource.OPTION_EXTENDED_META_DATA, extendedMetaData);
 		result.getDefaultLoadOptions().put(XMLResource.OPTION_EXTENDED_META_DATA, extendedMetaData);
 

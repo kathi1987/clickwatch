@@ -27,7 +27,7 @@ import org.eclipse.emf.ecore.util.FeatureMap;
  * </ul>
  * </p>
  *
- * @see de.hub.clickwatch.xml.configuration.configurationPackage#getDocumentRoot()
+ * @see de.hub.clickwatch.xml.configuration.ConfigurationPackage#getDocumentRoot()
  * @model extendedMetaData="name='' kind='mixed'"
  * @generated
  */
@@ -42,7 +42,7 @@ public interface DocumentRoot extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Mixed</em>' attribute list.
-	 * @see de.hub.clickwatch.xml.configuration.configurationPackage#getDocumentRoot_Mixed()
+	 * @see de.hub.clickwatch.xml.configuration.ConfigurationPackage#getDocumentRoot_Mixed()
 	 * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry" many="true"
 	 *        extendedMetaData="kind='elementWildcard' name=':mixed'"
 	 * @generated
@@ -60,7 +60,7 @@ public interface DocumentRoot extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>XMLNS Prefix Map</em>' map.
-	 * @see de.hub.clickwatch.xml.configuration.configurationPackage#getDocumentRoot_XMLNSPrefixMap()
+	 * @see de.hub.clickwatch.xml.configuration.ConfigurationPackage#getDocumentRoot_XMLNSPrefixMap()
 	 * @model mapType="org.eclipse.emf.ecore.EStringToStringMapEntry<org.eclipse.emf.ecore.EString, org.eclipse.emf.ecore.EString>" transient="true"
 	 *        extendedMetaData="kind='attribute' name='xmlns:prefix'"
 	 * @generated
@@ -78,7 +78,7 @@ public interface DocumentRoot extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>XSI Schema Location</em>' map.
-	 * @see de.hub.clickwatch.xml.configuration.configurationPackage#getDocumentRoot_XSISchemaLocation()
+	 * @see de.hub.clickwatch.xml.configuration.ConfigurationPackage#getDocumentRoot_XSISchemaLocation()
 	 * @model mapType="org.eclipse.emf.ecore.EStringToStringMapEntry<org.eclipse.emf.ecore.EString, org.eclipse.emf.ecore.EString>" transient="true"
 	 *        extendedMetaData="kind='attribute' name='xsi:schemaLocation'"
 	 * @generated
@@ -95,7 +95,7 @@ public interface DocumentRoot extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Configuration</em>' containment reference.
 	 * @see #setConfiguration(ConfigurationType)
-	 * @see de.hub.clickwatch.xml.configuration.configurationPackage#getDocumentRoot_Configuration()
+	 * @see de.hub.clickwatch.xml.configuration.ConfigurationPackage#getDocumentRoot_Configuration()
 	 * @model containment="true" upper="-2" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='configuration' namespace='##targetNamespace'"
 	 * @generated

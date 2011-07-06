@@ -6,7 +6,7 @@
  */
 package de.hub.clickwatch.xml.configuration.util;
 
-import de.hub.clickwatch.xml.configuration.configurationPackage;
+import de.hub.clickwatch.xml.configuration.ConfigurationPackage;
 
 import java.util.Map;
 
@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.xmi.util.XMLProcessor;
  * <!-- end-user-doc -->
  * @generated
  */
-public class configurationXMLProcessor extends XMLProcessor {
+public class ConfigurationXMLProcessor extends XMLProcessor {
 
 	/**
 	 * Public constructor to instantiate the helper.
@@ -32,9 +32,9 @@ public class configurationXMLProcessor extends XMLProcessor {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public configurationXMLProcessor() {
+	public ConfigurationXMLProcessor() {
 		super(new EPackageRegistryImpl(EPackage.Registry.INSTANCE));
-		extendedMetaData.putPackage(null, configurationPackage.eINSTANCE);
+		extendedMetaData.putPackage(null, ConfigurationPackage.eINSTANCE);
 	}
 	
 	/**
@@ -47,8 +47,8 @@ public class configurationXMLProcessor extends XMLProcessor {
 	protected Map<String, Resource.Factory> getRegistrations() {
 		if (registrations == null) {
 			super.getRegistrations();
-			registrations.put(XML_EXTENSION, new configurationResourceFactoryImpl());
-			registrations.put(STAR_EXTENSION, new configurationResourceFactoryImpl());
+			registrations.put(XML_EXTENSION, new ConfigurationResourceFactoryImpl());
+			registrations.put(STAR_EXTENSION, new ConfigurationResourceFactoryImpl());
 		}
 		return registrations;
 	}

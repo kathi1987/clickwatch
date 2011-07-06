@@ -7,7 +7,8 @@ Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Export-Package: de.hub.clickwatch.xml.configuration,
+Export-Package: 
+ de.hub.clickwatch.xml.configuration,
  de.hub.clickwatch.xml.configuration.impl,
  de.hub.clickwatch.xml.configuration.util
 Require-Bundle: org.eclipse.core.runtime,

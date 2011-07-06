@@ -9,7 +9,7 @@ package de.hub.clickwatch.xml.configuration.impl;
 import de.hub.clickwatch.xml.configuration.ConfigurationType;
 import de.hub.clickwatch.xml.configuration.DatabaseType;
 import de.hub.clickwatch.xml.configuration.NetworkType;
-import de.hub.clickwatch.xml.configuration.configurationPackage;
+import de.hub.clickwatch.xml.configuration.ConfigurationPackage;
 
 import java.util.Collection;
 
@@ -99,7 +99,7 @@ public class ConfigurationTypeImpl extends EObjectImpl implements ConfigurationT
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return configurationPackage.Literals.CONFIGURATION_TYPE;
+		return ConfigurationPackage.Literals.CONFIGURATION_TYPE;
 	}
 
 	/**
@@ -109,7 +109,7 @@ public class ConfigurationTypeImpl extends EObjectImpl implements ConfigurationT
 	 */
 	public EList<NetworkType> getNetwork() {
 		if (network == null) {
-			network = new EObjectContainmentEList<NetworkType>(NetworkType.class, this, configurationPackage.CONFIGURATION_TYPE__NETWORK);
+			network = new EObjectContainmentEList<NetworkType>(NetworkType.class, this, ConfigurationPackage.CONFIGURATION_TYPE__NETWORK);
 		}
 		return network;
 	}
@@ -121,7 +121,7 @@ public class ConfigurationTypeImpl extends EObjectImpl implements ConfigurationT
 	 */
 	public EList<DatabaseType> getDatabase() {
 		if (database == null) {
-			database = new EObjectContainmentEList<DatabaseType>(DatabaseType.class, this, configurationPackage.CONFIGURATION_TYPE__DATABASE);
+			database = new EObjectContainmentEList<DatabaseType>(DatabaseType.class, this, ConfigurationPackage.CONFIGURATION_TYPE__DATABASE);
 		}
 		return database;
 	}
@@ -144,7 +144,7 @@ public class ConfigurationTypeImpl extends EObjectImpl implements ConfigurationT
 		String oldLogDirectory = logDirectory;
 		logDirectory = newLogDirectory;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, configurationPackage.CONFIGURATION_TYPE__LOG_DIRECTORY, oldLogDirectory, logDirectory));
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfigurationPackage.CONFIGURATION_TYPE__LOG_DIRECTORY, oldLogDirectory, logDirectory));
 	}
 
 	/**
@@ -155,9 +155,9 @@ public class ConfigurationTypeImpl extends EObjectImpl implements ConfigurationT
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case configurationPackage.CONFIGURATION_TYPE__NETWORK:
+			case ConfigurationPackage.CONFIGURATION_TYPE__NETWORK:
 				return ((InternalEList<?>)getNetwork()).basicRemove(otherEnd, msgs);
-			case configurationPackage.CONFIGURATION_TYPE__DATABASE:
+			case ConfigurationPackage.CONFIGURATION_TYPE__DATABASE:
 				return ((InternalEList<?>)getDatabase()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -171,11 +171,11 @@ public class ConfigurationTypeImpl extends EObjectImpl implements ConfigurationT
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case configurationPackage.CONFIGURATION_TYPE__NETWORK:
+			case ConfigurationPackage.CONFIGURATION_TYPE__NETWORK:
 				return getNetwork();
-			case configurationPackage.CONFIGURATION_TYPE__DATABASE:
+			case ConfigurationPackage.CONFIGURATION_TYPE__DATABASE:
 				return getDatabase();
-			case configurationPackage.CONFIGURATION_TYPE__LOG_DIRECTORY:
+			case ConfigurationPackage.CONFIGURATION_TYPE__LOG_DIRECTORY:
 				return getLogDirectory();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -190,15 +190,15 @@ public class ConfigurationTypeImpl extends EObjectImpl implements ConfigurationT
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case configurationPackage.CONFIGURATION_TYPE__NETWORK:
+			case ConfigurationPackage.CONFIGURATION_TYPE__NETWORK:
 				getNetwork().clear();
 				getNetwork().addAll((Collection<? extends NetworkType>)newValue);
 				return;
-			case configurationPackage.CONFIGURATION_TYPE__DATABASE:
+			case ConfigurationPackage.CONFIGURATION_TYPE__DATABASE:
 				getDatabase().clear();
 				getDatabase().addAll((Collection<? extends DatabaseType>)newValue);
 				return;
-			case configurationPackage.CONFIGURATION_TYPE__LOG_DIRECTORY:
+			case ConfigurationPackage.CONFIGURATION_TYPE__LOG_DIRECTORY:
 				setLogDirectory((String)newValue);
 				return;
 		}
@@ -213,13 +213,13 @@ public class ConfigurationTypeImpl extends EObjectImpl implements ConfigurationT
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case configurationPackage.CONFIGURATION_TYPE__NETWORK:
+			case ConfigurationPackage.CONFIGURATION_TYPE__NETWORK:
 				getNetwork().clear();
 				return;
-			case configurationPackage.CONFIGURATION_TYPE__DATABASE:
+			case ConfigurationPackage.CONFIGURATION_TYPE__DATABASE:
 				getDatabase().clear();
 				return;
-			case configurationPackage.CONFIGURATION_TYPE__LOG_DIRECTORY:
+			case ConfigurationPackage.CONFIGURATION_TYPE__LOG_DIRECTORY:
 				setLogDirectory(LOG_DIRECTORY_EDEFAULT);
 				return;
 		}
@@ -234,11 +234,11 @@ public class ConfigurationTypeImpl extends EObjectImpl implements ConfigurationT
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case configurationPackage.CONFIGURATION_TYPE__NETWORK:
+			case ConfigurationPackage.CONFIGURATION_TYPE__NETWORK:
 				return network != null && !network.isEmpty();
-			case configurationPackage.CONFIGURATION_TYPE__DATABASE:
+			case ConfigurationPackage.CONFIGURATION_TYPE__DATABASE:
 				return database != null && !database.isEmpty();
-			case configurationPackage.CONFIGURATION_TYPE__LOG_DIRECTORY:
+			case ConfigurationPackage.CONFIGURATION_TYPE__LOG_DIRECTORY:
 				return LOG_DIRECTORY_EDEFAULT == null ? logDirectory != null : !LOG_DIRECTORY_EDEFAULT.equals(logDirectory);
 		}
 		return super.eIsSet(featureID);

@@ -8,7 +8,7 @@ package de.hub.clickwatch.xml.configuration.impl;
 
 import de.hub.clickwatch.xml.configuration.ConfigurationType;
 import de.hub.clickwatch.xml.configuration.DocumentRoot;
-import de.hub.clickwatch.xml.configuration.configurationPackage;
+import de.hub.clickwatch.xml.configuration.ConfigurationPackage;
 
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -90,7 +90,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return configurationPackage.Literals.DOCUMENT_ROOT;
+		return ConfigurationPackage.Literals.DOCUMENT_ROOT;
 	}
 
 	/**
@@ -100,7 +100,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 */
 	public FeatureMap getMixed() {
 		if (mixed == null) {
-			mixed = new BasicFeatureMap(this, configurationPackage.DOCUMENT_ROOT__MIXED);
+			mixed = new BasicFeatureMap(this, ConfigurationPackage.DOCUMENT_ROOT__MIXED);
 		}
 		return mixed;
 	}
@@ -112,7 +112,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 */
 	public EMap<String, String> getXMLNSPrefixMap() {
 		if (xMLNSPrefixMap == null) {
-			xMLNSPrefixMap = new EcoreEMap<String,String>(EcorePackage.Literals.ESTRING_TO_STRING_MAP_ENTRY, EStringToStringMapEntryImpl.class, this, configurationPackage.DOCUMENT_ROOT__XMLNS_PREFIX_MAP);
+			xMLNSPrefixMap = new EcoreEMap<String,String>(EcorePackage.Literals.ESTRING_TO_STRING_MAP_ENTRY, EStringToStringMapEntryImpl.class, this, ConfigurationPackage.DOCUMENT_ROOT__XMLNS_PREFIX_MAP);
 		}
 		return xMLNSPrefixMap;
 	}
@@ -124,7 +124,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 */
 	public EMap<String, String> getXSISchemaLocation() {
 		if (xSISchemaLocation == null) {
-			xSISchemaLocation = new EcoreEMap<String,String>(EcorePackage.Literals.ESTRING_TO_STRING_MAP_ENTRY, EStringToStringMapEntryImpl.class, this, configurationPackage.DOCUMENT_ROOT__XSI_SCHEMA_LOCATION);
+			xSISchemaLocation = new EcoreEMap<String,String>(EcorePackage.Literals.ESTRING_TO_STRING_MAP_ENTRY, EStringToStringMapEntryImpl.class, this, ConfigurationPackage.DOCUMENT_ROOT__XSI_SCHEMA_LOCATION);
 		}
 		return xSISchemaLocation;
 	}
@@ -135,7 +135,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * @generated
 	 */
 	public ConfigurationType getConfiguration() {
-		return (ConfigurationType)getMixed().get(configurationPackage.Literals.DOCUMENT_ROOT__CONFIGURATION, true);
+		return (ConfigurationType)getMixed().get(ConfigurationPackage.Literals.DOCUMENT_ROOT__CONFIGURATION, true);
 	}
 
 	/**
@@ -144,7 +144,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * @generated
 	 */
 	public NotificationChain basicSetConfiguration(ConfigurationType newConfiguration, NotificationChain msgs) {
-		return ((FeatureMap.Internal)getMixed()).basicAdd(configurationPackage.Literals.DOCUMENT_ROOT__CONFIGURATION, newConfiguration, msgs);
+		return ((FeatureMap.Internal)getMixed()).basicAdd(ConfigurationPackage.Literals.DOCUMENT_ROOT__CONFIGURATION, newConfiguration, msgs);
 	}
 
 	/**
@@ -153,7 +153,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * @generated
 	 */
 	public void setConfiguration(ConfigurationType newConfiguration) {
-		((FeatureMap.Internal)getMixed()).set(configurationPackage.Literals.DOCUMENT_ROOT__CONFIGURATION, newConfiguration);
+		((FeatureMap.Internal)getMixed()).set(ConfigurationPackage.Literals.DOCUMENT_ROOT__CONFIGURATION, newConfiguration);
 	}
 
 	/**
@@ -164,13 +164,13 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case configurationPackage.DOCUMENT_ROOT__MIXED:
+			case ConfigurationPackage.DOCUMENT_ROOT__MIXED:
 				return ((InternalEList<?>)getMixed()).basicRemove(otherEnd, msgs);
-			case configurationPackage.DOCUMENT_ROOT__XMLNS_PREFIX_MAP:
+			case ConfigurationPackage.DOCUMENT_ROOT__XMLNS_PREFIX_MAP:
 				return ((InternalEList<?>)getXMLNSPrefixMap()).basicRemove(otherEnd, msgs);
-			case configurationPackage.DOCUMENT_ROOT__XSI_SCHEMA_LOCATION:
+			case ConfigurationPackage.DOCUMENT_ROOT__XSI_SCHEMA_LOCATION:
 				return ((InternalEList<?>)getXSISchemaLocation()).basicRemove(otherEnd, msgs);
-			case configurationPackage.DOCUMENT_ROOT__CONFIGURATION:
+			case ConfigurationPackage.DOCUMENT_ROOT__CONFIGURATION:
 				return basicSetConfiguration(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -184,16 +184,16 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case configurationPackage.DOCUMENT_ROOT__MIXED:
+			case ConfigurationPackage.DOCUMENT_ROOT__MIXED:
 				if (coreType) return getMixed();
 				return ((FeatureMap.Internal)getMixed()).getWrapper();
-			case configurationPackage.DOCUMENT_ROOT__XMLNS_PREFIX_MAP:
+			case ConfigurationPackage.DOCUMENT_ROOT__XMLNS_PREFIX_MAP:
 				if (coreType) return getXMLNSPrefixMap();
 				else return getXMLNSPrefixMap().map();
-			case configurationPackage.DOCUMENT_ROOT__XSI_SCHEMA_LOCATION:
+			case ConfigurationPackage.DOCUMENT_ROOT__XSI_SCHEMA_LOCATION:
 				if (coreType) return getXSISchemaLocation();
 				else return getXSISchemaLocation().map();
-			case configurationPackage.DOCUMENT_ROOT__CONFIGURATION:
+			case ConfigurationPackage.DOCUMENT_ROOT__CONFIGURATION:
 				return getConfiguration();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -207,16 +207,16 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case configurationPackage.DOCUMENT_ROOT__MIXED:
+			case ConfigurationPackage.DOCUMENT_ROOT__MIXED:
 				((FeatureMap.Internal)getMixed()).set(newValue);
 				return;
-			case configurationPackage.DOCUMENT_ROOT__XMLNS_PREFIX_MAP:
+			case ConfigurationPackage.DOCUMENT_ROOT__XMLNS_PREFIX_MAP:
 				((EStructuralFeature.Setting)getXMLNSPrefixMap()).set(newValue);
 				return;
-			case configurationPackage.DOCUMENT_ROOT__XSI_SCHEMA_LOCATION:
+			case ConfigurationPackage.DOCUMENT_ROOT__XSI_SCHEMA_LOCATION:
 				((EStructuralFeature.Setting)getXSISchemaLocation()).set(newValue);
 				return;
-			case configurationPackage.DOCUMENT_ROOT__CONFIGURATION:
+			case ConfigurationPackage.DOCUMENT_ROOT__CONFIGURATION:
 				setConfiguration((ConfigurationType)newValue);
 				return;
 		}
@@ -231,16 +231,16 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case configurationPackage.DOCUMENT_ROOT__MIXED:
+			case ConfigurationPackage.DOCUMENT_ROOT__MIXED:
 				getMixed().clear();
 				return;
-			case configurationPackage.DOCUMENT_ROOT__XMLNS_PREFIX_MAP:
+			case ConfigurationPackage.DOCUMENT_ROOT__XMLNS_PREFIX_MAP:
 				getXMLNSPrefixMap().clear();
 				return;
-			case configurationPackage.DOCUMENT_ROOT__XSI_SCHEMA_LOCATION:
+			case ConfigurationPackage.DOCUMENT_ROOT__XSI_SCHEMA_LOCATION:
 				getXSISchemaLocation().clear();
 				return;
-			case configurationPackage.DOCUMENT_ROOT__CONFIGURATION:
+			case ConfigurationPackage.DOCUMENT_ROOT__CONFIGURATION:
 				setConfiguration((ConfigurationType)null);
 				return;
 		}
@@ -255,13 +255,13 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case configurationPackage.DOCUMENT_ROOT__MIXED:
+			case ConfigurationPackage.DOCUMENT_ROOT__MIXED:
 				return mixed != null && !mixed.isEmpty();
-			case configurationPackage.DOCUMENT_ROOT__XMLNS_PREFIX_MAP:
+			case ConfigurationPackage.DOCUMENT_ROOT__XMLNS_PREFIX_MAP:
 				return xMLNSPrefixMap != null && !xMLNSPrefixMap.isEmpty();
-			case configurationPackage.DOCUMENT_ROOT__XSI_SCHEMA_LOCATION:
+			case ConfigurationPackage.DOCUMENT_ROOT__XSI_SCHEMA_LOCATION:
 				return xSISchemaLocation != null && !xSISchemaLocation.isEmpty();
-			case configurationPackage.DOCUMENT_ROOT__CONFIGURATION:
+			case ConfigurationPackage.DOCUMENT_ROOT__CONFIGURATION:
 				return getConfiguration() != null;
 		}
 		return super.eIsSet(featureID);

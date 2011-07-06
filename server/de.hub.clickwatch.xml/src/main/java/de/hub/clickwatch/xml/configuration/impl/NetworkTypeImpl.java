@@ -8,7 +8,7 @@ package de.hub.clickwatch.xml.configuration.impl;
 
 import de.hub.clickwatch.xml.configuration.NetworkType;
 import de.hub.clickwatch.xml.configuration.NodeType;
-import de.hub.clickwatch.xml.configuration.configurationPackage;
+import de.hub.clickwatch.xml.configuration.ConfigurationPackage;
 
 import java.util.Collection;
 
@@ -128,7 +128,7 @@ public class NetworkTypeImpl extends EObjectImpl implements NetworkType {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return configurationPackage.Literals.NETWORK_TYPE;
+		return ConfigurationPackage.Literals.NETWORK_TYPE;
 	}
 
 	/**
@@ -138,7 +138,7 @@ public class NetworkTypeImpl extends EObjectImpl implements NetworkType {
 	 */
 	public EList<NodeType> getNode() {
 		if (node == null) {
-			node = new EObjectContainmentEList<NodeType>(NodeType.class, this, configurationPackage.NETWORK_TYPE__NODE);
+			node = new EObjectContainmentEList<NodeType>(NodeType.class, this, ConfigurationPackage.NETWORK_TYPE__NODE);
 		}
 		return node;
 	}
@@ -150,7 +150,7 @@ public class NetworkTypeImpl extends EObjectImpl implements NetworkType {
 	 */
 	public EList<NetworkType> getNetwork() {
 		if (network == null) {
-			network = new EObjectContainmentEList<NetworkType>(NetworkType.class, this, configurationPackage.NETWORK_TYPE__NETWORK);
+			network = new EObjectContainmentEList<NetworkType>(NetworkType.class, this, ConfigurationPackage.NETWORK_TYPE__NETWORK);
 		}
 		return network;
 	}
@@ -173,7 +173,7 @@ public class NetworkTypeImpl extends EObjectImpl implements NetworkType {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, configurationPackage.NETWORK_TYPE__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfigurationPackage.NETWORK_TYPE__NAME, oldName, name));
 	}
 
 	/**
@@ -196,7 +196,7 @@ public class NetworkTypeImpl extends EObjectImpl implements NetworkType {
 		boolean oldUpdateIntervalESet = updateIntervalESet;
 		updateIntervalESet = true;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, configurationPackage.NETWORK_TYPE__UPDATE_INTERVAL, oldUpdateInterval, updateInterval, !oldUpdateIntervalESet));
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfigurationPackage.NETWORK_TYPE__UPDATE_INTERVAL, oldUpdateInterval, updateInterval, !oldUpdateIntervalESet));
 	}
 
 	/**
@@ -210,7 +210,7 @@ public class NetworkTypeImpl extends EObjectImpl implements NetworkType {
 		updateInterval = UPDATE_INTERVAL_EDEFAULT;
 		updateIntervalESet = false;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET, configurationPackage.NETWORK_TYPE__UPDATE_INTERVAL, oldUpdateInterval, UPDATE_INTERVAL_EDEFAULT, oldUpdateIntervalESet));
+			eNotify(new ENotificationImpl(this, Notification.UNSET, ConfigurationPackage.NETWORK_TYPE__UPDATE_INTERVAL, oldUpdateInterval, UPDATE_INTERVAL_EDEFAULT, oldUpdateIntervalESet));
 	}
 
 	/**
@@ -230,9 +230,9 @@ public class NetworkTypeImpl extends EObjectImpl implements NetworkType {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case configurationPackage.NETWORK_TYPE__NODE:
+			case ConfigurationPackage.NETWORK_TYPE__NODE:
 				return ((InternalEList<?>)getNode()).basicRemove(otherEnd, msgs);
-			case configurationPackage.NETWORK_TYPE__NETWORK:
+			case ConfigurationPackage.NETWORK_TYPE__NETWORK:
 				return ((InternalEList<?>)getNetwork()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -246,13 +246,13 @@ public class NetworkTypeImpl extends EObjectImpl implements NetworkType {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case configurationPackage.NETWORK_TYPE__NODE:
+			case ConfigurationPackage.NETWORK_TYPE__NODE:
 				return getNode();
-			case configurationPackage.NETWORK_TYPE__NETWORK:
+			case ConfigurationPackage.NETWORK_TYPE__NETWORK:
 				return getNetwork();
-			case configurationPackage.NETWORK_TYPE__NAME:
+			case ConfigurationPackage.NETWORK_TYPE__NAME:
 				return getName();
-			case configurationPackage.NETWORK_TYPE__UPDATE_INTERVAL:
+			case ConfigurationPackage.NETWORK_TYPE__UPDATE_INTERVAL:
 				return getUpdateInterval();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -267,18 +267,18 @@ public class NetworkTypeImpl extends EObjectImpl implements NetworkType {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case configurationPackage.NETWORK_TYPE__NODE:
+			case ConfigurationPackage.NETWORK_TYPE__NODE:
 				getNode().clear();
 				getNode().addAll((Collection<? extends NodeType>)newValue);
 				return;
-			case configurationPackage.NETWORK_TYPE__NETWORK:
+			case ConfigurationPackage.NETWORK_TYPE__NETWORK:
 				getNetwork().clear();
 				getNetwork().addAll((Collection<? extends NetworkType>)newValue);
 				return;
-			case configurationPackage.NETWORK_TYPE__NAME:
+			case ConfigurationPackage.NETWORK_TYPE__NAME:
 				setName((String)newValue);
 				return;
-			case configurationPackage.NETWORK_TYPE__UPDATE_INTERVAL:
+			case ConfigurationPackage.NETWORK_TYPE__UPDATE_INTERVAL:
 				setUpdateInterval((Integer)newValue);
 				return;
 		}
@@ -293,16 +293,16 @@ public class NetworkTypeImpl extends EObjectImpl implements NetworkType {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case configurationPackage.NETWORK_TYPE__NODE:
+			case ConfigurationPackage.NETWORK_TYPE__NODE:
 				getNode().clear();
 				return;
-			case configurationPackage.NETWORK_TYPE__NETWORK:
+			case ConfigurationPackage.NETWORK_TYPE__NETWORK:
 				getNetwork().clear();
 				return;
-			case configurationPackage.NETWORK_TYPE__NAME:
+			case ConfigurationPackage.NETWORK_TYPE__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case configurationPackage.NETWORK_TYPE__UPDATE_INTERVAL:
+			case ConfigurationPackage.NETWORK_TYPE__UPDATE_INTERVAL:
 				unsetUpdateInterval();
 				return;
 		}
@@ -317,13 +317,13 @@ public class NetworkTypeImpl extends EObjectImpl implements NetworkType {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case configurationPackage.NETWORK_TYPE__NODE:
+			case ConfigurationPackage.NETWORK_TYPE__NODE:
 				return node != null && !node.isEmpty();
-			case configurationPackage.NETWORK_TYPE__NETWORK:
+			case ConfigurationPackage.NETWORK_TYPE__NETWORK:
 				return network != null && !network.isEmpty();
-			case configurationPackage.NETWORK_TYPE__NAME:
+			case ConfigurationPackage.NETWORK_TYPE__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case configurationPackage.NETWORK_TYPE__UPDATE_INTERVAL:
+			case ConfigurationPackage.NETWORK_TYPE__UPDATE_INTERVAL:
 				return isSetUpdateInterval();
 		}
 		return super.eIsSet(featureID);

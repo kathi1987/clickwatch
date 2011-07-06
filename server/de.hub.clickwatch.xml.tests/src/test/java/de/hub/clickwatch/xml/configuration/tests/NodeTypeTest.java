@@ -7,7 +7,7 @@
 package de.hub.clickwatch.xml.configuration.tests;
 
 import de.hub.clickwatch.xml.configuration.NodeType;
-import de.hub.clickwatch.xml.configuration.configurationFactory;
+import de.hub.clickwatch.xml.configuration.ConfigurationFactory;
 
 import junit.framework.TestCase;
 
@@ -76,7 +76,7 @@ public class NodeTypeTest extends TestCase {
 	 */
 	@Override
 	protected void setUp() throws Exception {
-		setFixture(configurationFactory.eINSTANCE.createNodeType());
+		setFixture(ConfigurationFactory.eINSTANCE.createNodeType());
 	}
 
 	/**

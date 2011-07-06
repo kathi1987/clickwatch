@@ -14,10 +14,10 @@ import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
  * <!-- begin-user-doc -->
  * The <b>Resource </b> associated with the package.
  * <!-- end-user-doc -->
- * @see de.hub.clickwatch.xml.configuration.util.configurationResourceFactoryImpl
+ * @see de.hub.clickwatch.xml.configuration.util.ConfigurationResourceFactoryImpl
  * @generated
  */
-public class configurationResourceImpl extends XMLResourceImpl {
+public class ConfigurationResourceImpl extends XMLResourceImpl {
 	/**
 	 * Creates an instance of the resource.
 	 * <!-- begin-user-doc -->
@@ -25,7 +25,7 @@ public class configurationResourceImpl extends XMLResourceImpl {
 	 * @param uri the URI of the new resource.
 	 * @generated
 	 */
-	public configurationResourceImpl(URI uri) {
+	public ConfigurationResourceImpl(URI uri) {
 		super(uri);
 	}
 
