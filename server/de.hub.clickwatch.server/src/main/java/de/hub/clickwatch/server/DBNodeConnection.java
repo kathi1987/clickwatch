@@ -20,7 +20,7 @@ import de.hub.clickwatch.nodeadapter.AbstractNodeAdapter;
 
 public class DBNodeConnection extends AbstractNodeConnection {
 	/** The default connection "path" to the postgresql database */
-	private String url = "jdbc:postgresql://localhost/clickplain";
+	private String url = "jdbc:postgresql://localhost/";
 	/** A list with properties for the database connection */
 	private Properties properties = new Properties();
 	/** The database connection */
@@ -29,12 +29,17 @@ public class DBNodeConnection extends AbstractNodeConnection {
 	private int counter = 0;
 	
 	
-	@Deprecated
 	public DBNodeConnection(){
 
 	}
-	
-	public DBNodeConnection(final String pUser, final String pPass){
+
+	// TODO: Port should be handled
+	public void setUpDatabaseConnection(final Properties pProperties){
+		setUpDatabaseConnection(pProperties.getProperty("user"), pProperties.getProperty("pass"), pProperties.getProperty("database"));
+	}
+
+
+	public void setUpDatabaseConnection(final String pUser, final String pPass, final String pDatabase){
 		try {
 			Class.forName("org.postgresql.Driver");
 		} catch (ClassNotFoundException e) {
@@ -43,6 +48,14 @@ public class DBNodeConnection extends AbstractNodeConnection {
 				
 		properties.setProperty("user", pUser);
 		properties.setProperty("password", pPass);
+		
+		try {
+			connection = DriverManager.getConnection(url + pDatabase, properties);
+			connection.setAutoCommit(false);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
 	}
 	
 	@Override
@@ -68,7 +81,7 @@ public class DBNodeConnection extends AbstractNodeConnection {
 		properties.setProperty("user", "cdo");
 		properties.setProperty("password", ".,Br1t4#-?4ss3rf1lt3r|");
 		try {
-			connection = DriverManager.getConnection(url, properties);
+			connection = DriverManager.getConnection(url + "clickplain", properties);
 			connection.setAutoCommit(false);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
