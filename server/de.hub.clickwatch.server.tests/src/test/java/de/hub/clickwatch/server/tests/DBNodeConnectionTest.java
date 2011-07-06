@@ -28,7 +28,7 @@ public class DBNodeConnectionTest extends AbstractTest {
 		String record = "src/test/resources/" + DBNodeConnectionTest.class.getPackage().getName().replace(".", "/") + "/" 
 				+ DBNodeConnectionTest.class.getSimpleName() + ".clickwatchmodel";
 		
-		return new AbstractModule[] { new ClickSocketPlayer.PlayerModule(record) };
+		return new AbstractModule[] { new ClickSocketPlayer.PlayerModule(record, false) };
 	}
 	
 	@Override

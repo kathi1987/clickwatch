@@ -35,7 +35,7 @@ public abstract class AbstractNodeConnection {
 	protected IConnectionConfiguration configuration;
 
 	private Node node;
-	private final static int UPDATE_INTERVALL_DEFAULT = 5000;
+	public final static int UPDATE_INTERVALL_DEFAULT = 5000;
 
 	private boolean isScheduledForDisconnect = false;
 	private boolean hasError = false;
