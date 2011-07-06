@@ -9,7 +9,6 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import com.google.inject.AbstractModule;
 
 import de.hub.clickcontrol.IClickSocket;
-import de.hub.clickwatch.cdo.CDOHandler;
 import de.hub.clickwatch.model.Node;
 import de.hub.clickwatch.nodeadapter.AbstractNodeAdapter;
 import de.hub.clickwatch.nodeadapter.ClickControlNodeAdapter;
