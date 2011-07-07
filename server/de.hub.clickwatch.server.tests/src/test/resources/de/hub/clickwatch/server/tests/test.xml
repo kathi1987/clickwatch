@@ -6,5 +6,5 @@
     </network>
 
     <!-- --> 
-    <cdo address="141.20.37.90" port="1025" repository="clickwatch"/>
+    <database address="141.20.37.90" port="1025" repository="clickwatch"/>
   </configuration>
