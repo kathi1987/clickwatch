@@ -4,9 +4,28 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="testsourcemodel"
     nsURI="http://testsourcemodel/1.0" nsPrefix="testsourcemodel">
   <eClassifiers xsi:type="ecore:EClass" name="RootClass">
+  	<eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="name" value="handler"/>
+        <details key="kind" value="element"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="anAttribute1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="normalReference" upperBound="-1"
         eType="#//ClassWithListFeatures" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mixed" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFeatureMapEntry">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="elementWildcard"/>
+        <details key="name" value=":mixed"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="any" upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFeatureMapEntry">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="elementWildcard"/>
+        <details key="name" value=":1"/>
+        <details key="processing" value="lax"/>
+        <details key="wildcards" value="##any"/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ClassWithListFeatures">
     <eStructuralFeatures xsi:type="ecore:EReference" name="listFeature1" upperBound="-1"

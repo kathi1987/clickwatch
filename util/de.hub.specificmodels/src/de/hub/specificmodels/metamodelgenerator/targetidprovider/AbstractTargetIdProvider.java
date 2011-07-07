@@ -29,7 +29,7 @@ public abstract class AbstractTargetIdProvider implements ITargetIdProvider {
 		if (sok.isRoot()) {
 			result.add(createTargetId(null, sok));
 		} else 	if (sok.getObject() != null) {
-			TargetId[] parentIds = ctx.getExistingTargetIds(getParentKey(sok));
+			TargetId[] parentIds = ctx.getExistingTargetIds(sok.getParent());
 			for (TargetId parent: parentIds) {
 				if (addToCopyParents && parent instanceof CopyTargetId) {
 					result.add(createTargetId(parent, sok));
@@ -46,9 +46,9 @@ public abstract class AbstractTargetIdProvider implements ITargetIdProvider {
 
 	protected abstract TargetId createTargetId(TargetId parentId, SourceObjectKey sok);
 	
-	protected SourceObjectKey getParentKey(SourceObjectKey sok) {
-		return new SourceObjectKey(sok.getObject().eContainer(), sok.getObject().eContainingFeature(), sok.getObject());	
-	}
+//	protected SourceObjectKey getParentKey(SourceObjectKey sok) {
+//		return new SourceObjectKey(sok.getObject().eContainer(), sok.getObject().eContainingFeature(), sok.getObject());	
+//	}
 	
 	protected String firstToUpper(String name) {
 		return name.substring(0, 1).toUpperCase() + name.substring(1);

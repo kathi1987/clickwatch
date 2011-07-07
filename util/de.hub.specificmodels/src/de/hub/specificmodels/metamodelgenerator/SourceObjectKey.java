@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
  */
 public class SourceObjectKey {
 
+	private final SourceObjectKey parent;
 	private final EObject object;
 	private final EStructuralFeature feature;
 	private final Object value;
@@ -21,6 +22,16 @@ public class SourceObjectKey {
 	public SourceObjectKey(EObject object, EStructuralFeature feature,
 			Object value) {
 		super();
+		this.parent = null;
+		this.object = object;
+		this.feature = feature;
+		this.value = value;
+	}
+	
+	public SourceObjectKey(SourceObjectKey parent, EObject object, EStructuralFeature feature,
+			Object value) {
+		super();
+		this.parent = parent;
 		this.object = object;
 		this.feature = feature;
 		this.value = value;
@@ -46,6 +57,16 @@ public class SourceObjectKey {
 	
 	public boolean isRoot() {
 		return object == null;
+	}
+
+	public SourceObjectKey getParent() {
+		if (isRoot()) {
+			return null;
+		} else if (parent == null) {
+			return new SourceObjectKey(object.eContainer(), object.eContainingFeature(), object);
+		} else {
+			return parent;
+		}
 	}
 
 	@Override

@@ -12,6 +12,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcoreFactory;
+import org.eclipse.emf.ecore.util.FeatureMap;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.HashMultimap;
@@ -98,7 +99,9 @@ public class MetaModelGenerator {
 		}
 	}
 
-	private void traverseSourceModel(EObject sourceObject) {
+	private void traverseSourceModel(SourceObjectKey sourceObjectKey) {
+		Preconditions.checkArgument(sourceObjectKey.getValue() instanceof EObject);
+		EObject sourceObject = (EObject)sourceObjectKey.getValue();
 		for (EStructuralFeature feature : sourceObject.eClass()
 				.getEStructuralFeatures()) {
 			if (!ommitFeature(feature)) {
@@ -110,31 +113,40 @@ public class MetaModelGenerator {
 					values = Arrays.asList(new Object[] { rawValue });
 				}
 				for (Object value : values) {
-					SourceObjectKey key = new SourceObjectKey(sourceObject,
-							feature, value);
-					collectTargetIdsForSourceObjectKey(key);
+					SourceObjectKey childKey = createChildKey(sourceObjectKey, sourceObject, feature, value);
+					collectTargetIdsForSourceObjectKey(childKey);
 				}
-				if (feature instanceof EReference) {
-					Preconditions.checkArgument(
-							((EReference) feature).isContainment(),
-							"non containment references are not supported");
-					for (Object value : values) {
-						EObject valueObject = (EObject) value;
-						traverseSourceModel(valueObject);
-					}
-				}
+				for (Object value : values) {
+					SourceObjectKey childKey = createChildKey(sourceObjectKey, sourceObject, feature, value);
+					if (feature instanceof EReference || (value instanceof FeatureMap.Entry && ((FeatureMap.Entry)value).getValue() instanceof EObject)) {
+						if (feature instanceof EReference) {
+							Preconditions.checkArgument(((EReference)feature).isContainment(), "non containment references are not supported");
+						}
+						traverseSourceModel(childKey);
+					} 
+				}				
 			}
 		}
+	}
+
+	private SourceObjectKey createChildKey(SourceObjectKey sourceObjectKey,
+			EObject sourceObject, EStructuralFeature feature, Object value) {
+		SourceObjectKey key;
+		if (value instanceof FeatureMap.Entry) {
+			FeatureMap.Entry fme = (FeatureMap.Entry)value;
+			key = new SourceObjectKey(sourceObjectKey, sourceObject, fme.getEStructuralFeature(), fme.getValue());
+		} else {
+			key = new SourceObjectKey(sourceObject, feature, value);
+		}
+		return key;
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private void resolveCollisions(
 			Map<? extends ITargetMetaId, TargetId> metaIds) {
-		Multimap<Object, ITargetMetaId> hashableMetaIdRepToMetaIdMap = HashMultimap
-				.create();
+		Multimap<Object, ITargetMetaId> hashableMetaIdRepToMetaIdMap = HashMultimap.create();
 		for (ITargetMetaId metaId : metaIds.keySet()) {
-			Collection<ITargetMetaId> existingMetaIds = hashableMetaIdRepToMetaIdMap
-					.get(metaId.hashableRep());
+			Collection<ITargetMetaId> existingMetaIds = hashableMetaIdRepToMetaIdMap.get(metaId.hashableRep());
 			if (existingMetaIds != null && !existingMetaIds.isEmpty()) {
 				for (ITargetMetaId collidee : existingMetaIds) {
 					collidee.addCollision(metaId);
@@ -150,8 +162,9 @@ public class MetaModelGenerator {
 
 	public EPackage generateMetaModel(EObject root) {
 		// collecting targetIds for all objects
-		collectTargetIdsForSourceObjectKey(new SourceObjectKey(null, null, root));
-		traverseSourceModel(root);
+		SourceObjectKey rootKey = new SourceObjectKey(null, null, root);
+		collectTargetIdsForSourceObjectKey(rootKey);
+		traverseSourceModel(rootKey);
 
 		// computing targetMetaIds
 		Map<TargetClassId, TargetId> targetClassIds = new HashMap<TargetClassId, TargetId>();
@@ -167,10 +180,8 @@ public class MetaModelGenerator {
 		for (TargetId targetId : targetIdsToObjectMap.keySet()) {
 			if (targetId.hasFeature()) {
 				Preconditions.checkState(targetId.getParent() != null);
-				TargetClassId parentClassId = targetIdToTargetClassIdMap
-						.get(targetId.getParent());
-				TargetFeatureId featureId = TargetFeatureId.create(
-						parentClassId, targetId);
+				TargetClassId parentClassId = targetIdToTargetClassIdMap.get(targetId.getParent());
+				TargetFeatureId featureId = TargetFeatureId.create(parentClassId, targetId);
 				targetFeatureIds.put(featureId, targetId);
 			}
 		}
