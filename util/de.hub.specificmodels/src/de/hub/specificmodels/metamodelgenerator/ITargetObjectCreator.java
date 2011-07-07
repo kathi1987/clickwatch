@@ -1,4 +1,4 @@
-package de.hub.specificmodels.metamodelgenerator2;
+package de.hub.specificmodels.metamodelgenerator;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;

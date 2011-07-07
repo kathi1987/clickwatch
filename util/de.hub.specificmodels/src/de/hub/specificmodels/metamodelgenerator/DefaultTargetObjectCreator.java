@@ -1,11 +1,10 @@
-package de.hub.specificmodels.metamodelgenerator2;
+package de.hub.specificmodels.metamodelgenerator;
 
 import java.util.List;
 
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
@@ -14,8 +13,6 @@ import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.EcorePackage;
 
 import com.google.common.base.Preconditions;
-
-import de.hub.specificmodels.metamodelgenerator.IFeatureKey;
 
 public class DefaultTargetObjectCreator implements ITargetObjectCreator {
 	
@@ -90,18 +87,6 @@ public class DefaultTargetObjectCreator implements ITargetObjectCreator {
 			
 		annotation.getDetails().put(key, value);
 
-	}
-	
-	protected void updateFeature(EStructuralFeature target, IFeatureKey featureKey, Object value) {
-		if (target instanceof EAttribute) {
-			EAttribute targetAttribute = (EAttribute)target;
-			EDataType dataType = targetAttribute.getEAttributeType();
-			if (dataType != EcorePackage.eINSTANCE.getEString()) {
-				if (!dataType.isInstance(value)) {
-					targetAttribute.setEType(EcorePackage.eINSTANCE.getEString());
-				}
-			}
-		}
 	}
 
 	@SuppressWarnings("unchecked")

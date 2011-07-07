@@ -1,4 +1,4 @@
-package de.hub.specificmodels.metamodelgenerator2;
+package de.hub.specificmodels.metamodelgenerator;
 
 import java.util.ArrayList;
 import java.util.Collection;

@@ -1,4 +1,4 @@
-package de.hub.specificmodels.metamodelgenerator2;
+package de.hub.specificmodels.metamodelgenerator;
 
 /**
  * An {@link ITargetMetaId} represents a element in the target meta model.

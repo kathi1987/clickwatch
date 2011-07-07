@@ -1,4 +1,4 @@
-package de.hub.specificmodels.metamodelgenerator2;
+package de.hub.specificmodels.metamodelgenerator;
 
 /**
  * This interface allows API users to provide a mapping from

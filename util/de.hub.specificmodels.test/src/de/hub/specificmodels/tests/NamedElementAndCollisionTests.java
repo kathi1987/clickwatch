@@ -1,8 +1,7 @@
 package de.hub.specificmodels.tests;
 
-import static de.hub.specificmodels.metamodelgenerator.AbstractClassCreator.ANNOTATION_SOURCE;
-import static de.hub.specificmodels.metamodelgenerator.AbstractClassCreator.META_SOURCE_REFERENCE_KEY;
-import static de.hub.specificmodels.metamodelgenerator.AbstractClassCreator.SOURCE_REFERENCE_KEY;
+import static de.hub.specificmodels.metamodelgenerator.DefaultTargetObjectCreator.ANNOTATION_SOURCE;
+import static de.hub.specificmodels.metamodelgenerator.DefaultTargetObjectCreator.TARGET_ID;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
@@ -22,15 +21,16 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import de.hub.specificmodels.metamodelgenerator.MetaModelGenerator;
-import de.hub.specificmodels.tests.testsourcemodel.TestSourceModelClassCreatorFactory;
+import de.hub.specificmodels.metamodelgenerator.targetidprovider.TargetIdProviderFactoryProvider;
+import de.hub.specificmodels.tests.testsourcemodel.TestTargetIdProviderFactory;
 import de.hub.specificmodels.tests.testsourcemodel.util.builder.ClassWithListFeaturesBuilder;
 import de.hub.specificmodels.tests.testsourcemodel.util.builder.ListFeatureElementClass1Builder;
 import de.hub.specificmodels.tests.testsourcemodel.util.builder.ListFeatureElementClass2Builder;
 import de.hub.specificmodels.tests.testsourcemodel.util.builder.ListFeatureElementClass3Builder;
 import de.hub.specificmodels.tests.testsourcemodel.util.builder.RootClassBuilder;
 
-public class MetaModelGeneratorTest {
-	
+public class NamedElementAndCollisionTests {
+
 	@BeforeClass
 	public static void initialize() {
 		if (!EPackage.Registry.INSTANCE.containsKey(EcorePackage.eINSTANCE.getNsURI())) {
@@ -44,13 +44,16 @@ public class MetaModelGeneratorTest {
 		EObject source = RootClassBuilder.newRootClassBuilder()
 				.withAnAttribute1("anValue").build();
 		
-		TestSourceModelClassCreatorFactory factory = new TestSourceModelClassCreatorFactory();
-		EPackage result = MetaModelGenerator.generate(source, factory, factory);
+		EPackage result = generate(source);
 		
 		save(result);
 		
 		assertEquals(1, result.getEClassifiers().size());
 		assertClass(result, "RootClass", "RootClass", "anAttribute1", null);
+	}
+
+	private EPackage generate(EObject source) {
+		return MetaModelGenerator.generate(new TargetIdProviderFactoryProvider(new TestTargetIdProviderFactory()), source);
 	}
 	
 	@Test
@@ -60,16 +63,15 @@ public class MetaModelGeneratorTest {
 				.withNormalReference(ClassWithListFeaturesBuilder.newClassWithListFeaturesBuilder()
 						.withAnAttribute1(1)
 						.withListFeature1(ListFeatureElementClass1Builder.newListFeatureElementClass1Builder()
-								.withName("listFeature1")					
+								.withName("listFeature1_1")					
 						)
 		).build();
 		
-		TestSourceModelClassCreatorFactory factory = new TestSourceModelClassCreatorFactory();
-		EPackage result = MetaModelGenerator.generate(source, factory, factory);
+		EPackage result = generate(source);
 		
 		save(result);
 
-		assertClass(result, "ListFeature1", "RootClass/normalReference:ClassWithListFeatures/listFeature1:listFeature1", "name", null);
+		assertClass(result, "ListFeature1_1", "RootClass/normalReference:ClassWithListFeatures/listFeature1_1|listFeature1:ListFeature1_1|ListFeatureElementClass1", "name", null);
 	}
 	
 	@Test
@@ -85,14 +87,13 @@ public class MetaModelGeneratorTest {
 								.withName("collision")
 						)
 		).build();
-		
-		TestSourceModelClassCreatorFactory factory = new TestSourceModelClassCreatorFactory();
-		EPackage result = MetaModelGenerator.generate(source, factory, factory);	
+
+		EPackage result = generate(source);
 		
 		save(result);
 		
-		assertClass(result, "ListFeature2_collision", "RootClass/normalReference:ClassWithListFeatures/listFeature2:collision", "name", null);
-		assertClass(result, "ListFeature1_collision", "RootClass/normalReference:ClassWithListFeatures/listFeature1:collision", "name", null);
+		assertClass(result, "RootClassClassWithListFeaturesListFeatureElementClass1", "RootClass/normalReference:ClassWithListFeatures/collision|listFeature1:Collision|ListFeatureElementClass1", "name", null);
+		assertClass(result, "RootClassClassWithListFeaturesListFeatureElementClass2", "RootClass/normalReference:ClassWithListFeatures/collision|listFeature2:Collision|ListFeatureElementClass2", "name", null);
 	}
 	
 	@Test
@@ -104,11 +105,14 @@ public class MetaModelGeneratorTest {
 								.withName("anAttribute1")					
 						)
 		).build();
-		
-		TestSourceModelClassCreatorFactory factory = new TestSourceModelClassCreatorFactory();
-		EPackage result = MetaModelGenerator.generate(source, factory, factory);	
+
+		EPackage result = generate(source);	
 		
 		save(result);
+		
+		assertClass(result, "ClassWithListFeatures", "RootClass/normalReference:ClassWithListFeatures", "anAttribute1", null);
+		assertClass(result, "ClassWithListFeatures", "RootClass/normalReference:ClassWithListFeatures", "listFeature1AnAttribute1", null);
+		assertClass(result, "AnAttribute1", "RootClass/normalReference:ClassWithListFeatures/anAttribute1|listFeature1:AnAttribute1|ListFeatureElementClass1", null, null);
 	}
 	
 	@Test
@@ -124,40 +128,12 @@ public class MetaModelGeneratorTest {
 						)
 		).build();
 		
-		TestSourceModelClassCreatorFactory factory = new TestSourceModelClassCreatorFactory();
-		EPackage result = MetaModelGenerator.generate(source, factory, factory);
+		EPackage result = generate(source);
 		
 		save(result);
 		
-		assertClass(result, "Collision", "RootClass/normalReference:ClassWithListFeatures/listFeature1:collision", null, null);
-		assertClass(result, "Collision_listFeature3_collision", "RootClass/normalReference:ClassWithListFeatures/listFeature1:collision/listFeature3:collision", null, null);
-	}
-
-	@Test
-	public void simpleSingleValuesTest() throws IOException {
-		EObject source = RootClassBuilder.newRootClassBuilder()
-				.withAnAttribute1("anValue")
-				.withNormalReference(ClassWithListFeaturesBuilder.newClassWithListFeaturesBuilder()
-						.withAnAttribute1(1)
-						.withListFeature1(ListFeatureElementClass1Builder.newListFeatureElementClass1Builder()
-								.withName("feature1_1")
-								.withListFeature3(ListFeatureElementClass3Builder.newListFeatureElementClass3Builder()
-										.withName("feature3_1")
-								)
-						)
-						.withListFeature2(ListFeatureElementClass2Builder.newListFeatureElementClass2Builder()
-								.withName("feature2_1")
-						)
-		).build();
-		
-		TestSourceModelClassCreatorFactory factory = new TestSourceModelClassCreatorFactory();
-		EPackage result = MetaModelGenerator.generate(source, factory, factory);	
-	
-		save(result);
-		
-		assertEquals(5, result.getEClassifiers().size());
-		assertClass(result, "Feature3_1", "RootClass/normalReference:ClassWithListFeatures/listFeature1:feature1_1/listFeature3:feature3_1", "name", EcorePackage.eINSTANCE.getEString());
-		assertClass(result, "Feature2_1", "RootClass/normalReference:ClassWithListFeatures/listFeature2:feature2_1", "name", EcorePackage.eINSTANCE.getEString());
+		assertClass(result, "RootClassClassWithListFeaturesCollision", "RootClass/normalReference:ClassWithListFeatures/collision|listFeature1:Collision|ListFeatureElementClass1", "collision", null);
+		assertClass(result, "RootClassClassWithListFeaturesCollisionCollision", "RootClass/normalReference:ClassWithListFeatures/collision|listFeature1:Collision|ListFeatureElementClass1/collision|listFeature3:Collision|ListFeatureElementClass3", null, null);
 	}
 	
 	private void save(EPackage result) throws IOException {
@@ -168,7 +144,7 @@ public class MetaModelGeneratorTest {
 	}
 	
 
-	private static void assertClass(EPackage result, String className, String sourceReference, String attributeName, EDataType attributeType) {
+	private static void assertClass(EPackage result, String className, String targetId, String attributeName, EDataType attributeType) {
 		assertNotNull(result.getEClassifier(className));
 		if (attributeName != null) {
 			assertNotNull(((EClass)result.getEClassifier(className)).getEStructuralFeature(attributeName));
@@ -177,11 +153,10 @@ public class MetaModelGeneratorTest {
 			}
 		}
 		assertNotNull(result.getEClassifier(className).getEAnnotation(ANNOTATION_SOURCE));
-		assertNotNull(result.getEClassifier(className).getEAnnotation(ANNOTATION_SOURCE).getDetails().get(META_SOURCE_REFERENCE_KEY));
-		if (sourceReference != null) {
-			assertEquals(sourceReference, result.getEClassifier(className).getEAnnotation(ANNOTATION_SOURCE).getDetails().get(SOURCE_REFERENCE_KEY));
+		if (targetId != null) {
+			assertEquals(targetId, result.getEClassifier(className).getEAnnotation(ANNOTATION_SOURCE).getDetails().get(TARGET_ID));
 		} else {
-			assertNotNull(result.getEClassifier(className).getEAnnotation(ANNOTATION_SOURCE).getDetails().get(SOURCE_REFERENCE_KEY));
+			assertNotNull(result.getEClassifier(className).getEAnnotation(ANNOTATION_SOURCE).getDetails().get(TARGET_ID));
 		}
 	}
 }

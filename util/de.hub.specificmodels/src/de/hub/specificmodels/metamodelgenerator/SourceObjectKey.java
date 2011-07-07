@@ -1,4 +1,4 @@
-package de.hub.specificmodels.metamodelgenerator2;
+package de.hub.specificmodels.metamodelgenerator;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -42,6 +42,10 @@ public class SourceObjectKey {
 	public String toString() {
 		return "SourceObjectKey [object=" + object + ", feature=" + feature
 				+ ", value=" + value + "]";
+	}
+	
+	public boolean isRoot() {
+		return object == null;
 	}
 
 	@Override
