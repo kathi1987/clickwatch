@@ -270,4 +270,12 @@ public interface Node extends CDOObject {
 	 */
 	void setRecording(boolean value);
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	Handler getHandlers(String elementFilter, String handlerFilter);
+
 } // Node

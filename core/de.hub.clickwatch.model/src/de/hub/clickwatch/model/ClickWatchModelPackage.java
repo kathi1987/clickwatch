@@ -298,13 +298,22 @@ public interface ClickWatchModelPackage extends EPackage {
 	int HANDLER__VALUE = 7;
 
 	/**
+	 * The feature id for the '<em><b>Timestamp</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HANDLER__TIMESTAMP = 8;
+
+	/**
 	 * The number of structural features of the '<em>Handler</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HANDLER_FEATURE_COUNT = 8;
+	int HANDLER_FEATURE_COUNT = 9;
 
 	/**
 	 * The meta object id for the '{@link de.hub.clickwatch.model.impl.NetworkImpl <em>Network</em>}' class.
@@ -779,6 +788,17 @@ public interface ClickWatchModelPackage extends EPackage {
 	EAttribute getHandler_Value();
 
 	/**
+	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.model.Handler#getTimestamp <em>Timestamp</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Timestamp</em>'.
+	 * @see de.hub.clickwatch.model.Handler#getTimestamp()
+	 * @see #getHandler()
+	 * @generated
+	 */
+	EAttribute getHandler_Timestamp();
+
+	/**
 	 * Returns the meta object for class '{@link de.hub.clickwatch.model.Network <em>Network</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1126,6 +1146,14 @@ public interface ClickWatchModelPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute HANDLER__VALUE = eINSTANCE.getHandler_Value();
+
+		/**
+		 * The meta object literal for the '<em><b>Timestamp</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute HANDLER__TIMESTAMP = eINSTANCE.getHandler_Timestamp();
 
 		/**
 		 * The meta object literal for the '{@link de.hub.clickwatch.model.impl.NetworkImpl <em>Network</em>}' class.

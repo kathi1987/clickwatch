@@ -29,6 +29,7 @@ import de.hub.clickwatch.model.Handler;
  *   <li>{@link de.hub.clickwatch.model.impl.HandlerImpl#getMixed <em>Mixed</em>}</li>
  *   <li>{@link de.hub.clickwatch.model.impl.HandlerImpl#getAny <em>Any</em>}</li>
  *   <li>{@link de.hub.clickwatch.model.impl.HandlerImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link de.hub.clickwatch.model.impl.HandlerImpl#getTimestamp <em>Timestamp</em>}</li>
  * </ul>
  * </p>
  *
@@ -188,6 +189,35 @@ public class HandlerImpl extends CDOObjectImpl implements Handler {
 	 */
 	public void setValue(String newValue) {
 		eSet(ClickWatchModelPackage.Literals.HANDLER__VALUE, newValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public long getTimestamp() {
+		return (Long)eGet(ClickWatchModelPackage.Literals.HANDLER__TIMESTAMP, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTimestamp(long newTimestamp) {
+		eSet(ClickWatchModelPackage.Literals.HANDLER__TIMESTAMP, newTimestamp);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getQualifiedName() {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 } //HandlerImpl

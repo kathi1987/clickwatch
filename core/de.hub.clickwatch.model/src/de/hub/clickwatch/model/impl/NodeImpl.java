@@ -13,6 +13,7 @@ import org.eclipse.emf.internal.cdo.CDOObjectImpl;
 import de.hub.clickwatch.model.BackboneType;
 import de.hub.clickwatch.model.ClickWatchModelPackage;
 import de.hub.clickwatch.model.Element;
+import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.model.Node;
 
 
@@ -219,6 +220,17 @@ public class NodeImpl extends CDOObjectImpl implements Node {
 	 */
 	public void setRecording(boolean newRecording) {
 		eSet(ClickWatchModelPackage.Literals.NODE__RECORDING, newRecording);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Handler getHandlers(String elementFilter, String handlerFilter) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 } //NodeImpl
