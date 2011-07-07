@@ -57,6 +57,12 @@ public abstract class AbstractClassCreator<T extends EObject> implements IClassC
 		}
 	}
 	
+	@Override
+	public EStructuralFeature create(EClass targetClass, T object, IFeatureKey featureKey) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	private void findUniqueNewNames(EClass class1, EClass class2) {		
 		String name1 = getSourceReferenceOfTargetClass(class1).replaceAll("[^a-zA-Z0-9_]", "_");
 		String name2 = getSourceReferenceOfTargetClass(class2).replaceAll("[^a-zA-Z0-9_]", "_");
