@@ -1,20 +1,21 @@
 package de.hub.clickwatch.server;
 
 import java.util.ArrayList;
+import java.util.Properties;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 
 import com.google.inject.Inject;
 
-import de.hub.clickwatch.cdo.CDOHandler;
 import de.hub.clickwatch.model.ClickWatchModelFactory;
 import de.hub.clickwatch.model.Network;
 import de.hub.clickwatch.model.Node;
 import de.hub.clickwatch.server.configuration.ConfigurationFileReader;
-import de.hub.clickwatch.xml.CdoType;
-import de.hub.clickwatch.xml.NetworkType;
-import de.hub.clickwatch.xml.NodeType;
+import de.hub.clickwatch.xml.configuration.DatabaseType;
+import de.hub.clickwatch.xml.configuration.NetworkType;
+import de.hub.clickwatch.xml.configuration.NodeType;
+
 
 /**
  * The server component stores the database and network connection configuration as well as
@@ -31,17 +32,9 @@ public class ClickWatchServer implements IClickWatchServer {
 	private ConfigurationFileReader mConfigurationFileReader;
 	/** Location of the configuration file */
 	private String mConfigurationFile;
-	/** A handler for the CDO connection */
-	private CDOHandler mDatabaseHandler;
+	/** Database settings */
+	private Properties mProperties = new Properties();
 	
-	public CDOHandler getDatabaseHandler() {
-		return mDatabaseHandler;
-	}
-
-	public void setDatabaseHandler(CDOHandler pDatabaseHandler) {
-		this.mDatabaseHandler = pDatabaseHandler;
-	}
-
 	@Inject
 	public ClickWatchServer(){
 		
@@ -72,13 +65,13 @@ public class ClickWatchServer implements IClickWatchServer {
 					// Set port
 					nodeModel.setPort(node.getPort().toString());			
 					// Set up node connection
-					DBNodeConnection nodeConnection = new DBNodeConnection();
+					// DBNodeConnection nodeConnection = new DBNodeConnection();
 					// Add node to node connection
-					nodeConnection.setUp(nodeModel);
+					// nodeConnection.setUp(nodeModel);
 					// Fixme: Set up update interval
 					//nodeConnection.setUpdateInterval(network.getUpdateInterval());					
 					// Add node connection to array list
-					mConnectionList.add(nodeConnection);
+					//mConnectionList.add(nodeConnection);
 				}else if(eObject instanceof NetworkType){
 					NetworkType network = (NetworkType)eObject;
 					// Debug
@@ -89,11 +82,13 @@ public class ClickWatchServer implements IClickWatchServer {
 					networkModel.setName(network.getName());
 					/// Set update interval
 					networkModel.setUpdateIntervall(network.getUpdateInterval());	
-				} else if(eObject instanceof CdoType) {
-					CdoType cdo = (CdoType) eObject;
-					//
-					this.mDatabaseHandler = new CDOHandler(cdo.getAddress(), cdo.getPort(), cdo.getRepository());
-					
+				} else if(eObject instanceof DatabaseType) {
+					// TODO: Database configuration
+					DatabaseType databaseSettings = (DatabaseType)eObject;
+					mProperties.put("user", databaseSettings.getUser());
+					mProperties.put("pass", databaseSettings.getPassword());
+					mProperties.put("address", databaseSettings.getAddress());
+					mProperties.put("port", databaseSettings.getPort());
 				} else {
 					// This should not happen
 				}
@@ -107,7 +102,7 @@ public class ClickWatchServer implements IClickWatchServer {
 	public void activateConfiguration(){
 		for(int i = 0; i < this.mConnectionList.size(); i++){
 			// TODO: Set database handler
-			this.mConnectionList.get(i).setDatabaseHandler(mDatabaseHandler);
+			//this.mConnectionList.get(i).setDatabaseHandler(null);
 			// TODO: Connect!
 			this.mConnectionList.get(i).connect(null);
 		}

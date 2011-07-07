@@ -9,7 +9,6 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import com.google.inject.AbstractModule;
 
 import de.hub.clickcontrol.IClickSocket;
-import de.hub.clickwatch.cdo.CDOHandler;
 import de.hub.clickwatch.model.Node;
 import de.hub.clickwatch.nodeadapter.AbstractNodeAdapter;
 import de.hub.clickwatch.nodeadapter.ClickControlNodeAdapter;
@@ -49,18 +48,18 @@ public class DBNodeAdapterTest extends AbstractTest {
 			System.out.print(".");
 		}
 		
-		CDOHandler databaseHandler = new CDOHandler("127.0.0.1",  BigInteger.valueOf(2036) , "clicktest");
+		//CDOHandler databaseHandler = new CDOHandler("127.0.0.1",  BigInteger.valueOf(2036) , "clicktest");
 		
-		databaseHandler.openSession();
+		//databaseHandler.openSession();
 		long start = System.currentTimeMillis();
 		
-		databaseHandler.openTransaction(nodes);
-		databaseHandler.commitTransaction();
-		databaseHandler.closeTransaction();
+		//databaseHandler.openTransaction(nodes);
+		//databaseHandler.commitTransaction();
+		//databaseHandler.closeTransaction();
 		
 		
 		System.out.println("Nodes per second: " + nodeCount * 1000 / (System.currentTimeMillis() - start));
-		databaseHandler.closeSession();
+		//databaseHandler.closeSession();
 	}
 	
 }

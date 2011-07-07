@@ -9,9 +9,8 @@
 		<version>2.0.0-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
-
-  	<version>2.0.0-SNAPSHOT</version>
   	<groupId>de.hub.clickwatch</groupId>
+  	<version>2.0.0-SNAPSHOT</version>
 	<artifactId>de.hub.clickwatch.xml.tests</artifactId>
 	<packaging>eclipse-test-plugin</packaging>
 
@@ -34,38 +33,26 @@
 					</execution>
 				</executions>
 			</plugin>
-		</plugins>
 
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<groupId>org.eclipse.m2e</groupId>
-					<artifactId>lifecycle-mapping</artifactId>
-					<!-- <version>1.0.0</version> -->
-					<configuration>
-						<lifecycleMappingMetadata>
-							<pluginExecutions>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>org.codehaus.mojo</groupId>
-										<artifactId>aspectj-maven-plugin</artifactId>
-										<versionRange>[1.0,)</versionRange>
-										<goals>
-											<goal>test-compile</goal>
-											<goal>compile</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<ignore />
-									</action>
-								</pluginExecution>
-							</pluginExecutions>
-						</lifecycleMappingMetadata>
-					</configuration>
-				</plugin>
-			</plugins>
-		</pluginManagement>
+			<plugin>
+				<groupId>org.sonatype.tycho</groupId>
+				<artifactId>maven-osgi-test-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<!-- 
+				<configuration>
+					<excludes>
+						<exclude>**/BasicTest.java</exclude>
+					</excludes>
+					<includes>
+						<include>**/CalcRunnerCase.java</include>
+					</includes>
+				</configuration>
+				 -->
+			</plugin>
+		</plugins>
 	</build>
+
+
 
 	<dependencies>
 		<dependency>
@@ -75,4 +62,5 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+
 </project>

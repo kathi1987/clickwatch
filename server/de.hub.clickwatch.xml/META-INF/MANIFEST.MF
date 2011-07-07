@@ -2,14 +2,15 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: de.hub.clickwatch.xml;singleton:=true
-Bundle-Version: 2.0.0.qualifier
+Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Export-Package: de.hub.clickwatch.xml,
- de.hub.clickwatch.xml.impl,
- de.hub.clickwatch.xml.util
+Export-Package: 
+ de.hub.clickwatch.xml.configuration,
+ de.hub.clickwatch.xml.configuration.impl,
+ de.hub.clickwatch.xml.configuration.util
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
  org.eclipse.emf.ecore.xmi;visibility:=reexport
