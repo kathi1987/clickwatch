@@ -10,8 +10,8 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 
-import de.hub.clickwatch.model.ClickControlNodeConnection;
 import de.hub.clickwatch.server.ClickWatchServer;
+import de.hub.clickwatch.server.DBNodeConnection;
 import de.hub.clickwatch.server.configuration.ConfigurationFileReader;
 
 
@@ -51,9 +51,9 @@ public class ClickWatchServerTest {
 	@Test
 	public void setConnectionListTest(){
 		//
-		ArrayList<ClickControlNodeConnection> alternativeConnectionList = new ArrayList<ClickControlNodeConnection>();
+		ArrayList<DBNodeConnection> alternativeConnectionList = new ArrayList<DBNodeConnection>();
 		//
-		ArrayList<ClickControlNodeConnection> originalConnectionList = mServer.getConnectionList();
+		ArrayList<DBNodeConnection> originalConnectionList = mServer.getConnectionList();
 		//
 		mServer.setConnectionList(alternativeConnectionList);
 		//

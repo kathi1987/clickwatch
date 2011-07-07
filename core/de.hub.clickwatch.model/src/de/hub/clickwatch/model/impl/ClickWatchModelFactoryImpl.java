@@ -7,7 +7,6 @@
 package de.hub.clickwatch.model.impl;
 
 
-import de.hub.clickwatch.model.*;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;

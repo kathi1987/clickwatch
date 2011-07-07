@@ -9,6 +9,7 @@ import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.model.MultiNode;
 import de.hub.clickwatch.model.Network;
 import de.hub.clickwatch.model.Node;
+import de.hub.clickwatch.model.UiNodeConnection;
 
 
 /**
@@ -117,7 +118,7 @@ public class MultiNodeAdapter implements INodeAdapter {
 						for (Handler nodeHander: element.getHandlers()) {
 							if (nodeHander.getName().equals(handler.getName())) {
 								if (node.isConnected()) {
-									((AbstractNodeConnection)node.getConnection()).propagateHandlerValueChangeToReality(handler);
+									((UiNodeConnection)node.getConnection()).propagateHandlerValueChangeToReality(handler);
 								}
 							}	
 						}

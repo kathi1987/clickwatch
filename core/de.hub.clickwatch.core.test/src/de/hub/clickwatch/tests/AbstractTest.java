@@ -39,9 +39,6 @@ public class AbstractTest extends TestCase {
 		@Override
 		protected void configure() {
 			install(new MergeModule());
-			for (AbstractModule additionalModule: getAdditionalModules()) {
-				install(additionalModule);
-			}
 			bind(ILogger.class).toInstance(new ILogger() {				
 				@Override
 				public void log(int status, String message, Throwable exception) {
@@ -56,9 +53,16 @@ public class AbstractTest extends TestCase {
 			bind(INodeAdapter.class).to(getNodeAdapterClass());
 			bind(IMergeConfiguration.class).to(getMergeConfigurationClass());
 			bind(IClickSocket.class).to(getClickSocketClass());
-			bind(IConnectionConfiguration.class).to(TestConnectionConfiguration.class);
+			bind(IConnectionConfiguration.class).toInstance(getConnectionConfiguration());
+			for (AbstractModule additionalModule: getAdditionalModules()) {
+				install(additionalModule);
+			}
 		}
 		
+	}
+	
+	protected IConnectionConfiguration getConnectionConfiguration() {
+		return new TestConnectionConfiguration();
 	}
 	
 	protected AbstractModule[] getAdditionalModules() {

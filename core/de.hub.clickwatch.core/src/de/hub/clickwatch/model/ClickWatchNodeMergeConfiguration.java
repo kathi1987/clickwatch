@@ -21,6 +21,7 @@ public class ClickWatchNodeMergeConfiguration extends DefaultMergeConfiguration 
 
 	private static final EAttribute anyFeature = ClickWatchModelPackage.eINSTANCE.getHandler_Any();
 	private static final EAttribute mixedFeature = ClickWatchModelPackage.eINSTANCE.getHandler_Mixed();
+	private static final EAttribute valueFeature = ClickWatchModelPackage.eINSTANCE.getHandler_Value();
 	private static final EClass handlerClass = ClickWatchModelPackage.eINSTANCE.getHandler();
 	private static final EReference handlersFeature = ClickWatchModelPackage.eINSTANCE.getElement_Handlers();
 	private static final EClass elementClass = ClickWatchModelPackage.eINSTANCE.getElement();
@@ -45,7 +46,8 @@ public class ClickWatchNodeMergeConfiguration extends DefaultMergeConfiguration 
 			return feature == handlersFeature || feature == childrenFeature;
 		} else if (containerClass == handlerClass) {
 			return feature == mixedFeature ||
-					feature == anyFeature;
+					feature == anyFeature ||
+					feature == valueFeature;
 		} else {
 			return super.consider(context);
 		}

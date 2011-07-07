@@ -10,8 +10,8 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.Diagnostician;
 
-import de.hub.clickwatch.xml.ConfigurationPackage;
-import de.hub.clickwatch.xml.util.ConfigurationResourceFactoryImpl;
+import de.hub.clickwatch.xml.configuration.ConfigurationPackage;
+import de.hub.clickwatch.xml.configuration.util.ConfigurationResourceFactoryImpl;
 
 
 

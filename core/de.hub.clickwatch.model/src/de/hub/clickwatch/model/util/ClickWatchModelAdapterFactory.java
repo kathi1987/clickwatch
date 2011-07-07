@@ -8,7 +8,6 @@ package de.hub.clickwatch.model.util;
 
 
 
-import de.hub.clickwatch.model.*;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;

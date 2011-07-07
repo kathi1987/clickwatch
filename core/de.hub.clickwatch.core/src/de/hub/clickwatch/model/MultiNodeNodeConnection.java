@@ -9,7 +9,7 @@ import de.hub.clickwatch.nodeadapter.INodeAdapter;
 import de.hub.clickwatch.nodeadapter.MultiNodeAdapter;
 
 
-public class MultiNodeNodeConnection extends AbstractNodeConnection {
+public class MultiNodeNodeConnection extends UiNodeConnection {
 
 	@Inject
 	private MultiNodeAdapter nodeAdapter;

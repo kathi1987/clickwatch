@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/de.hub.specificmodels.test/src-gen"
+    modelPluginID="de.hub.specificmodels.test" modelName="TestSourceModel" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="6.0" copyrightFields="false">
+  <foreignModel>TestSourceModel.ecore</foreignModel>
+  <genPackages prefix="TestSourceModel" basePackage="de.hub.specificmodels.tests"
+      disposableProviderFactory="true" ecorePackage="TestSourceModel.ecore#/">
+    <genClasses ecoreClass="TestSourceModel.ecore#//RootClass">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TestSourceModel.ecore#//RootClass/anAttribute1"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TestSourceModel.ecore#//RootClass/normalReference"/>
+    </genClasses>
+    <genClasses ecoreClass="TestSourceModel.ecore#//ClassWithListFeatures">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TestSourceModel.ecore#//ClassWithListFeatures/listFeature1"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TestSourceModel.ecore#//ClassWithListFeatures/listFeature2"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TestSourceModel.ecore#//ClassWithListFeatures/anAttribute1"/>
+    </genClasses>
+    <genClasses ecoreClass="TestSourceModel.ecore#//ListFeatureElementClass1">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TestSourceModel.ecore#//ListFeatureElementClass1/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TestSourceModel.ecore#//ListFeatureElementClass1/listFeature3"/>
+    </genClasses>
+    <genClasses ecoreClass="TestSourceModel.ecore#//ListFeatureElementClass2">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TestSourceModel.ecore#//ListFeatureElementClass2/name"/>
+    </genClasses>
+    <genClasses ecoreClass="TestSourceModel.ecore#//ListFeatureElementClass3">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TestSourceModel.ecore#//ListFeatureElementClass3/name"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
