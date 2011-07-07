@@ -96,6 +96,22 @@ public class MetaModelGeneratorTest {
 	}
 	
 	@Test
+	public void listFeatureWithRegularFeatureCollisionTest() throws IOException {
+		EObject source = RootClassBuilder.newRootClassBuilder()
+				.withNormalReference(ClassWithListFeaturesBuilder.newClassWithListFeaturesBuilder()
+						.withAnAttribute1(1)
+						.withListFeature1(ListFeatureElementClass1Builder.newListFeatureElementClass1Builder()
+								.withName("anAttribute1")					
+						)
+		).build();
+		
+		TestSourceModelClassCreatorFactory factory = new TestSourceModelClassCreatorFactory();
+		EPackage result = MetaModelGenerator.generate(source, factory, factory);	
+		
+		save(result);
+	}
+	
+	@Test
 	public void listFeatureInnerNameCollisionTest()  throws IOException {
 		EObject source = RootClassBuilder.newRootClassBuilder()
 				.withAnAttribute1("anValue")

@@ -12,6 +12,7 @@ import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 
+import de.hub.clickcontrol.ClickSocketImpl;
 import de.hub.clickcontrol.IClickSocket;
 import de.hub.clickwatch.ClickWatchModule;
 import de.hub.clickwatch.model.IConnectionConfiguration;
@@ -63,6 +64,8 @@ public class PluginActivator extends AbstractUIPlugin {
 					
 					if (bindToPlayer) {
 						bindToPlayer();
+					} else {
+						bind(IClickSocket.class).to(ClickSocketImpl.class);
 					}
 				}
 				
