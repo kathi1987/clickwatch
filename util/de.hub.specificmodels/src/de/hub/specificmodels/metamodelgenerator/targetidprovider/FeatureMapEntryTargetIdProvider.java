@@ -5,6 +5,7 @@ import org.eclipse.emf.ecore.EReference;
 
 import de.hub.specificmodels.metamodelgenerator.SourceObjectKey;
 import de.hub.specificmodels.metamodelgenerator.TargetId;
+import de.hub.specificmodels.metamodelgenerator.targetproperties.FeatureMapMultiplicity;
 import de.hub.specificmodels.metamodelgenerator.targetproperties.GuessTypes;
 
 public class FeatureMapEntryTargetIdProvider extends AbstractTargetIdProvider {
@@ -19,16 +20,17 @@ public class FeatureMapEntryTargetIdProvider extends AbstractTargetIdProvider {
 
 	@Override
 	protected TargetId createTargetId(TargetId parentId, SourceObjectKey sok) {
+		TargetId result = null;
 		if (sok.getFeature() instanceof EReference) {
-			return new TargetId(parentId, sok.getFeature(), (EClass)sok.getFeature().getEType(), 
+			result = new TargetId(parentId, sok.getFeature(), (EClass)sok.getFeature().getEType(), 
 					firstToLower(sok.getFeature().getName()), firstToUpper(sok.getFeature().getName()));	
 		} else {
-			TargetId result = new TargetId(parentId, sok.getFeature(), null, 
+			result = new TargetId(parentId, sok.getFeature(), null, 
 					firstToLower(sok.getFeature().getName()), null);
 			result.getProperty(GuessTypes.class).set(true);
-			return result;
 		}
-		
+		result.getProperty(FeatureMapMultiplicity.class).set(true);
+		return result;
 	}
 
 }

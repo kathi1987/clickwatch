@@ -81,12 +81,15 @@ public class AbstractTests {
 		EcoreUtil.delete(xml, true);
 	}
 
-	protected static void assertClass(EPackage result, String className, String targetId, String attributeName, EDataType attributeType) {
+	protected static void assertClass(EPackage result, String className, String targetId, String attributeName, EDataType attributeType, int upperBound) {
 		assertNotNull(result.getEClassifier(className));
 		if (attributeName != null) {
 			assertNotNull(((EClass)result.getEClassifier(className)).getEStructuralFeature(attributeName));
 			if (attributeType != null) {
 				assertEquals(attributeType, ((EClass)result.getEClassifier(className)).getEStructuralFeature(attributeName).getEType());
+			}
+			if (upperBound != -10) {
+				assertEquals(upperBound, ((EClass)result.getEClassifier(className)).getEStructuralFeature(attributeName).getUpperBound());
 			}
 		}
 		assertNotNull(result.getEClassifier(className).getEAnnotation(ANNOTATION_SOURCE));
@@ -95,6 +98,11 @@ public class AbstractTests {
 		} else {
 			assertNotNull(result.getEClassifier(className).getEAnnotation(ANNOTATION_SOURCE).getDetails().get(TARGET_ID));
 		}
+
+	}
+	
+	protected static void assertClass(EPackage result, String className, String targetId, String attributeName, EDataType attributeType) {
+		assertClass(result, className, targetId, attributeName, attributeType, -10);
 	}
 	
 	protected EObject createRootWithXml(String xmlStr) throws IOException {	
