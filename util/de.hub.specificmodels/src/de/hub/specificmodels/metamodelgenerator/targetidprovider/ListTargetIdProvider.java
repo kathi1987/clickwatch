@@ -11,6 +11,8 @@ import com.google.common.base.Preconditions;
 
 import de.hub.specificmodels.metamodelgenerator.SourceObjectKey;
 import de.hub.specificmodels.metamodelgenerator.TargetId;
+import de.hub.specificmodels.metamodelgenerator.targetproperties.Containment;
+import de.hub.specificmodels.metamodelgenerator.targetproperties.SuperClasses;
 
 /**
  * Works only for {@link SourceObjectKey}s that represent {@link EReference}s.
@@ -52,13 +54,13 @@ public class ListTargetIdProvider extends AbstractTargetIdProvider {
 	protected TargetId createTargetId(TargetId parentId, SourceObjectKey sok) {
 		EObject sokValue = (EObject)sok.getValue();
 		if (withCopy) {
-			copyId.setContainment(false);
+			copyId.getProperty(Containment.class).set(false);
 		}
 		String name = (String)sokValue.eGet(sokValue.eClass().getEStructuralFeature("name"));
 		TargetId listTargetId = new TargetId(parentId, sok.getFeature(), sokValue.eClass(), firstToLower(name), firstToUpper(name));
-		listTargetId.setContainment(true);
+		listTargetId.getProperty(Containment.class).set(true);
 		if (withCopy) {
-			listTargetId.addSuperClassTargetId(copyId);
+			listTargetId.getProperty(SuperClasses.class).add(copyId);
 		}
 		return listTargetId;
 	}

@@ -7,16 +7,14 @@ import java.io.IOException;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.util.FeatureMap;
 import org.junit.Test;
 
 import de.hub.specificmodels.tests.testsourcemodel.RootClass;
-import de.hub.specificmodels.tests.testsourcemodel.TestSourceModelFactory;
 import de.hub.specificmodels.tests.testsourcemodel.util.builder.ClassWithListFeaturesBuilder;
 import de.hub.specificmodels.tests.testsourcemodel.util.builder.ListFeatureElementClass1Builder;
 import de.hub.specificmodels.tests.testsourcemodel.util.builder.RootClassBuilder;
 
-public class XmlTests extends AbstractTests {
+public class XmlNamesAndCollisionTests extends AbstractTests {
 	
 	@Test
 	public void testXmlCreation() throws IOException {
@@ -101,10 +99,4 @@ public class XmlTests extends AbstractTests {
 		assertClass(result, "RootClassClassWithListFeaturesListFeature1_2Foo", "RootClass/normalReference:ClassWithListFeatures/listFeature1_2|listFeature1:ListFeature1_2|ListFeatureElementClass1/foo|foo:Foo|EObject", "name", null);
 	}
 	
-	private EObject createRootWithXml(String xmlStr) throws IOException {	
-		RootClass root = TestSourceModelFactory.eINSTANCE.createRootClass();
-		FeatureMap map = root.getAny();
-		deserialize(xmlStr, map);		
-		return root;
-	}
 }

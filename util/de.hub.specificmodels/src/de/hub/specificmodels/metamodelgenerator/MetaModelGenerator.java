@@ -19,6 +19,7 @@ import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 
 import de.hub.specificmodels.metamodelgenerator.ITargetIdProvider.ITargetIdProviderContext;
+import de.hub.specificmodels.metamodelgenerator.targetproperties.SuperClasses;
 
 /**
  * This class realizes the following algorithm: First source elements (source
@@ -209,11 +210,10 @@ public class MetaModelGenerator {
 			}
 		}
 
-		// added super classes
+		// added super classes (this is not perfect, it introduces an unwanted coupling with TargetId properties (e.g. super classes))
 		for (TargetClassId targetClassId : targetClassIds.keySet()) {
 			TargetId targetId = targetClassIds.get(targetClassId);
-			for (TargetId superClassTargetId : targetId
-					.getSuperClassTargetIds()) {
+			for (TargetId superClassTargetId : targetId.getProperty(SuperClasses.class).get()) {
 				TargetClassId superClassTargetClassId = targetIdToTargetClassIdMap
 						.get(superClassTargetId);
 				EClass superClass = (EClass) result

@@ -5,6 +5,7 @@ import org.eclipse.emf.ecore.EReference;
 
 import de.hub.specificmodels.metamodelgenerator.SourceObjectKey;
 import de.hub.specificmodels.metamodelgenerator.TargetId;
+import de.hub.specificmodels.metamodelgenerator.targetproperties.IsCopy;
 
 public class CopyTargetIdProvider extends AbstractTargetIdProvider {
 	
@@ -18,11 +19,14 @@ public class CopyTargetIdProvider extends AbstractTargetIdProvider {
 
 
 	protected TargetId createTargetId(TargetId parentId, SourceObjectKey sok) {
+		TargetId result = null;
 		if (sok.getFeature() == null || sok.getFeature() instanceof EReference) {
-			return new CopyTargetId(parentId, sok.getFeature(), ((EObject)sok.getValue()).eClass());
+			result = new TargetId(parentId, sok.getFeature(), ((EObject)sok.getValue()).eClass());
 		} else {
-			return new CopyTargetId(parentId, sok.getFeature(), null);
+			result = new TargetId(parentId, sok.getFeature(), null);
 		}
+		result.getProperty(IsCopy.class).set(true);
+		return result;
 	}
 
 }

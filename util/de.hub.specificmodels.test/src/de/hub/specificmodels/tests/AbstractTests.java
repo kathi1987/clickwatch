@@ -29,6 +29,8 @@ import org.junit.BeforeClass;
 import de.hub.clickwatch.XmlModelRepository;
 import de.hub.specificmodels.metamodelgenerator.MetaModelGenerator;
 import de.hub.specificmodels.metamodelgenerator.targetidprovider.TargetIdProviderFactoryProvider;
+import de.hub.specificmodels.tests.testsourcemodel.RootClass;
+import de.hub.specificmodels.tests.testsourcemodel.TestSourceModelFactory;
 import de.hub.specificmodels.tests.testsourcemodel.TestTargetIdProviderFactory;
 
 public class AbstractTests {
@@ -93,5 +95,12 @@ public class AbstractTests {
 		} else {
 			assertNotNull(result.getEClassifier(className).getEAnnotation(ANNOTATION_SOURCE).getDetails().get(TARGET_ID));
 		}
+	}
+	
+	protected EObject createRootWithXml(String xmlStr) throws IOException {	
+		RootClass root = TestSourceModelFactory.eINSTANCE.createRootClass();
+		FeatureMap map = root.getAny();
+		deserialize(xmlStr, map);		
+		return root;
 	}
 }
