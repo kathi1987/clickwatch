@@ -36,7 +36,11 @@ public class TestTargetIdProviderFactory implements ITargetIdProviderFactory {
 				return new CopyTargetIdProvider(true);
 			} else {
 				if (sok.getObject() instanceof ListFeatureElementClass1) {
-					return new ListTargetIdProvider(false, true);	
+					if (sok.getValue() instanceof AnyType) {
+						return new FeatureMapEntryTargetIdProvider(false);
+					} else {
+						return new ListTargetIdProvider(false, true);
+					}
 				} else {
 					return new ListTargetIdProvider(true, true);
 				}

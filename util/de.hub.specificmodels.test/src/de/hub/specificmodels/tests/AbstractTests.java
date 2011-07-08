@@ -29,8 +29,6 @@ import org.junit.BeforeClass;
 import de.hub.clickwatch.XmlModelRepository;
 import de.hub.specificmodels.metamodelgenerator.MetaModelGenerator;
 import de.hub.specificmodels.metamodelgenerator.targetidprovider.TargetIdProviderFactoryProvider;
-import de.hub.specificmodels.tests.testsourcemodel.RootClass;
-import de.hub.specificmodels.tests.testsourcemodel.TestSourceModelFactory;
 import de.hub.specificmodels.tests.testsourcemodel.TestTargetIdProviderFactory;
 
 public class AbstractTests {
@@ -60,34 +58,26 @@ public class AbstractTests {
 		resource.save(null);
 	}
 	
-	protected EObject deserialize(String xmlStr) throws IOException {	
-		RootClass root = TestSourceModelFactory.eINSTANCE.createRootClass();
-		
+	protected void deserialize(String xmlStr, FeatureMap map) {
 		XmlModelRepository xmlModelRepository = new XmlModelRepository();
 		xmlStr = XmlModelRepository.stripProcessingInstructions(xmlStr);
 		XMLTypeDocumentRoot xml = (XMLTypeDocumentRoot)xmlModelRepository.deserializeXml("<xml>" + xmlStr + "</xml>");
 		
 		FeatureMap xmlRootMixed = ((AnyType)xml.getMixed().getValue(0)).getMixed();
 		if (xmlRootMixed.size() > 0) {
-			loop: for(FeatureMap.Entry entry: xmlRootMixed) {
+			for(FeatureMap.Entry entry: xmlRootMixed) {
 				Object anyValue = entry.getValue();
 				if (!(anyValue == null || (anyValue instanceof String && "".equals(((String)anyValue).trim())))) {
 					EStructuralFeature anyFeature = entry.getEStructuralFeature();
-					FeatureMap map = anyValue instanceof String ? root.getMixed() : root.getAny();
-					if (map.isEmpty()) {
-						map.add(FeatureMapUtil.createRawEntry(anyFeature, anyValue));
-					} else {
-						map.set(0, FeatureMapUtil.createRawEntry(anyFeature, anyValue));
+					if (anyValue instanceof EObject) {
+						anyValue = EcoreUtil.copy((EObject)anyValue);
 					}
-					EcoreUtil.delete(xml, true);
-					break loop;
+					map.add(FeatureMapUtil.createRawEntry(anyFeature, anyValue));						
 				}
 			}					
 		}
-		
-		return root;
+		EcoreUtil.delete(xml, true);
 	}
-	
 
 	protected static void assertClass(EPackage result, String className, String targetId, String attributeName, EDataType attributeType) {
 		assertNotNull(result.getEClassifier(className));

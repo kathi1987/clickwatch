@@ -32,7 +32,7 @@ public class TargetClassId implements ITargetMetaId<TargetClassId> {
 
 	@Override
 	public String toString() {
-		return className;
+		return collisionResolvedClassName;
 	}
 	
 	public Object getHashableObject() {
