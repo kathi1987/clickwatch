@@ -248,4 +248,21 @@ public class DBNodeConnection extends AbstractNodeConnection {
 		return null;
 	}
 
+	public void createTables(final String pQuery){
+		try {
+			// Check if reading the SQL file failed
+			if(pQuery != null){
+				// Prepare the query to get the node
+				Statement statement = connection.createStatement();
+				// Execute the query
+				statement.execute(pQuery);
+				// Commit
+				connection.commit();
+				// Close the statement
+				statement.close();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+	}
 }

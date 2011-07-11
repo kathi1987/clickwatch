@@ -6,7 +6,9 @@ CREATE TABLE "HandlerRecorder"
   "timestamp" bigint NOT NULL,
   "value" text NOT NULL
 )
+
 WITH (
   OIDS=FALSE
 );
-ALTER TABLE "HandlerRecorder" OWNER TO clickwatch;
+
+ALTER TABLE "HandlerRecorder" OWNER TO cdo;

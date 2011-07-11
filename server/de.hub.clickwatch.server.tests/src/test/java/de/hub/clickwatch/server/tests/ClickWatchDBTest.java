@@ -36,7 +36,6 @@ public class ClickWatchDBTest extends AbstractTest {
 	}
 		*/
 
-
 	private Node createNode() {
 		Node node = factory.createNode();
 		network.getNodes().add(node);
@@ -71,16 +70,27 @@ public class ClickWatchDBTest extends AbstractTest {
 	public void createTableTest(){
 		// Get an instance of ClickWatchDb
 		ClickWatchDB database = injector.getInstance(ClickWatchDB.class);
-		// Build up the file string which specifies where the sql file resides
-		final String file = "src/test/resources/" + ClickWatchDBTest.class.getPackage().getName().replace(".", "/") + "/" 
-				+ "test" + ".sql";
+		// Build up path
+		final String path = "src/test/resources/" + ClickWatchDBTest.class.getPackage().getName().replace(".", "/") + "/";
+		// Build up the file string which specifies where the sql file resides (for the creation of a table)
+		final String createTableFile = path + "create" + ".sql";
+		// Build up the file string which specifies where the sql file resides (for the deletion of a table)
+		final String dropTableFile = path + "drop" + ".sql";
 		// Set up the database connection
 		database.setUpDatabaseConnection("clickwatch", "cw", "clickwatch");
 		// Checks if the table already exists
-		
+		assertEquals(false, tableExists("HandlerRecorder"));
 		// Create tables
-		database.createTables(file);
-		
+		database.executeQueryFromFile(createTableFile);
 		// Check if the table exists
+		assertEquals(true, tableExists("HandlerRecorder"));
+		// Drop the table
+		database.executeQueryFromFile(dropTableFile);
+		// Check if the table was dropped
+		assertEquals(false, tableExists("HandlerRecorder"));
+	}
+	
+	private boolean tableExists(final String pTableName){
+		return false;
 	}
 }

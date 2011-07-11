@@ -1,11 +1,17 @@
 package de.hub.clickwatch.server.database;
 
+import java.util.Collection;
+
 public interface IClickWatchDB {
-	public void addHandlerRecord();
+	public void addHandlerRecord(HandlerRecord pHandlerRecord);
 	
-	public void addExperimentRecord();
+	public void addExperimentRecord(MetaDataRecord pExperimentRecord);
 	
-	public void getHandlerRecords(String pExperiment, String pNode, String pHandler, long pBegin, long pEnd);
+	public Collection<HandlerRecord> getHandlerRecords(String pExperiment, String pNode, String pHandler, long pBegin, long pEnd);
 	
-	public void getMetaDataRecord(String pExperiment, String pNode);
+	public Collection<MetaDataRecord> getMetaDataRecord(String pExperiment, String pNode);
+
+	public void addHandlerRecords(Collection<HandlerRecord> pHandlerRecords);
+
+	public void addExperimentRecords(Collection<MetaDataRecord> pExperimentRecords);
 }
