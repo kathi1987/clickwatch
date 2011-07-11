@@ -165,6 +165,15 @@ public class TestSourceModelPackageImpl extends EPackageImpl implements TestSour
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getRootClass_NonManyReference() {
+		return (EReference)rootClassEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getClassWithListFeatures() {
 		return classWithListFeaturesEClass;
 	}
@@ -327,6 +336,7 @@ public class TestSourceModelPackageImpl extends EPackageImpl implements TestSour
 		createEAttribute(rootClassEClass, ROOT_CLASS__AN_ATTRIBUTE1);
 		createEReference(rootClassEClass, ROOT_CLASS__NORMAL_REFERENCE);
 		createEAttribute(rootClassEClass, ROOT_CLASS__ANY);
+		createEReference(rootClassEClass, ROOT_CLASS__NON_MANY_REFERENCE);
 
 		classWithListFeaturesEClass = createEClass(CLASS_WITH_LIST_FEATURES);
 		createEReference(classWithListFeaturesEClass, CLASS_WITH_LIST_FEATURES__LIST_FEATURE1);
@@ -382,6 +392,7 @@ public class TestSourceModelPackageImpl extends EPackageImpl implements TestSour
 		initEAttribute(getRootClass_AnAttribute1(), ecorePackage.getEString(), "anAttribute1", null, 0, 1, RootClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRootClass_NormalReference(), this.getClassWithListFeatures(), null, "normalReference", null, 0, -1, RootClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getRootClass_Any(), ecorePackage.getEFeatureMapEntry(), "any", null, 0, -1, RootClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRootClass_NonManyReference(), this.getClassWithListFeatures(), null, "nonManyReference", null, 0, 1, RootClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(classWithListFeaturesEClass, ClassWithListFeatures.class, "ClassWithListFeatures", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getClassWithListFeatures_ListFeature1(), this.getListFeatureElementClass1(), null, "listFeature1", null, 0, -1, ClassWithListFeatures.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

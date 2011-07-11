@@ -97,13 +97,22 @@ public interface TestSourceModelPackage extends EPackage {
 	int ROOT_CLASS__ANY = 2;
 
 	/**
+	 * The feature id for the '<em><b>Non Many Reference</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROOT_CLASS__NON_MANY_REFERENCE = 3;
+
+	/**
 	 * The number of structural features of the '<em>Root Class</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ROOT_CLASS_FEATURE_COUNT = 3;
+	int ROOT_CLASS_FEATURE_COUNT = 4;
 
 	/**
 	 * The meta object id for the '{@link de.hub.specificmodels.tests.testsourcemodel.impl.ClassWithListFeaturesImpl <em>Class With List Features</em>}' class.
@@ -325,6 +334,17 @@ public interface TestSourceModelPackage extends EPackage {
 	EAttribute getRootClass_Any();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link de.hub.specificmodels.tests.testsourcemodel.RootClass#getNonManyReference <em>Non Many Reference</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Non Many Reference</em>'.
+	 * @see de.hub.specificmodels.tests.testsourcemodel.RootClass#getNonManyReference()
+	 * @see #getRootClass()
+	 * @generated
+	 */
+	EReference getRootClass_NonManyReference();
+
+	/**
 	 * Returns the meta object for class '{@link de.hub.specificmodels.tests.testsourcemodel.ClassWithListFeatures <em>Class With List Features</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -540,6 +560,14 @@ public interface TestSourceModelPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ROOT_CLASS__ANY = eINSTANCE.getRootClass_Any();
+
+		/**
+		 * The meta object literal for the '<em><b>Non Many Reference</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ROOT_CLASS__NON_MANY_REFERENCE = eINSTANCE.getRootClass_NonManyReference();
 
 		/**
 		 * The meta object literal for the '{@link de.hub.specificmodels.tests.testsourcemodel.impl.ClassWithListFeaturesImpl <em>Class With List Features</em>}' class.

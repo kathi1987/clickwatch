@@ -1,6 +1,6 @@
 package de.hub.specificmodels.metamodelgenerator;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,6 +19,7 @@ public class ModelTraverser {
 		public boolean ommitFeature(EStructuralFeature feature);
 	}
 	
+	@SuppressWarnings("unchecked")
 	public void traverseSourceModel(Configuration config, SourceObjectKey sok) {
 		if (sok.isRoot()) {
 			config.work(sok);
@@ -33,7 +34,10 @@ public class ModelTraverser {
 				if (feature.isMany()) {
 					values = (List<?>) rawValue;
 				} else {
-					values = Arrays.asList(new Object[] { rawValue });
+					values = new ArrayList<Object>();
+					if (rawValue != null) {
+						((List<Object>)values).add(rawValue);
+					}
 				}
 				loop: for (Object value : values) {
 					if (value instanceof FeatureMap.Entry) {

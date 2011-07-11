@@ -36,6 +36,19 @@ public class XmlNamesAndCollisionTests extends AbstractTests {
 	}
 	
 	@Test
+	public void testText() throws IOException {
+		String xmlStr = "<xml><foo>TEXT</foo></xml>";
+		
+		EPackage result = generate(createRootWithXml(xmlStr));
+		
+		save(result);
+		
+		assertEquals(4, result.getEClassifiers().size());
+		assertClass(result, "Foo", "RootClass/xml|xml:Xml|EObject/foo|foo:Foo|EObject", "name", null);
+		assertClass(result, "Bar", null, "name", null);
+	}
+	
+	@Test
 	public void testParallel() throws IOException {
 		String xmlStr = "<xml><foo><bar/></foo><foo><bar/></foo></xml>";
 		
@@ -65,7 +78,9 @@ public class XmlNamesAndCollisionTests extends AbstractTests {
 	public void testCopyAttributeCollision() throws IOException {
 		String xmlStr = "<anAttribute1 name='1'><foo/></anAttribute1>";
 		
-		EPackage result = generate(createRootWithXml(xmlStr));
+		RootClass root = (RootClass)createRootWithXml(xmlStr);
+		root.setAnAttribute1("something");
+		EPackage result = generate(root);
 		
 		save(result);
 		
