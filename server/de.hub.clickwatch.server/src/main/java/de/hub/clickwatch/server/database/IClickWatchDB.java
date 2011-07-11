@@ -1,4 +1,4 @@
-package de.hub.clickwatch.server;
+package de.hub.clickwatch.server.database;
 
 public interface IClickWatchDB {
 	public void addHandlerRecord();
