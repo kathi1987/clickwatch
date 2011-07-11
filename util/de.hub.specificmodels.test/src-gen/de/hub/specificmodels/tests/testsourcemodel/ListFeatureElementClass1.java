@@ -9,6 +9,7 @@ package de.hub.specificmodels.tests.testsourcemodel;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.FeatureMap;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,6 +22,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link de.hub.specificmodels.tests.testsourcemodel.ListFeatureElementClass1#getName <em>Name</em>}</li>
  *   <li>{@link de.hub.specificmodels.tests.testsourcemodel.ListFeatureElementClass1#getListFeature3 <em>List Feature3</em>}</li>
  *   <li>{@link de.hub.specificmodels.tests.testsourcemodel.ListFeatureElementClass1#getAnAttributeOfFeatureClass1 <em>An Attribute Of Feature Class1</em>}</li>
+ *   <li>{@link de.hub.specificmodels.tests.testsourcemodel.ListFeatureElementClass1#getAny <em>Any</em>}</li>
  * </ul>
  * </p>
  *
@@ -96,5 +98,22 @@ public interface ListFeatureElementClass1 extends EObject {
 	 * @generated
 	 */
 	void setAnAttributeOfFeatureClass1(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Any</b></em>' attribute list.
+	 * The list contents are of type {@link org.eclipse.emf.ecore.util.FeatureMap.Entry}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Any</em>' attribute list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Any</em>' attribute list.
+	 * @see de.hub.specificmodels.tests.testsourcemodel.TestSourceModelPackage#getListFeatureElementClass1_Any()
+	 * @model dataType="org.eclipse.emf.ecore.EFeatureMapEntry" many="true"
+	 *        extendedMetaData="kind='elementWildcard' name=':1' processing='lax' wildcards='##any'"
+	 * @generated
+	 */
+	FeatureMap getAny();
 
 } // ListFeatureElementClass1

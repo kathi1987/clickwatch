@@ -23,7 +23,9 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
+import org.eclipse.emf.ecore.util.BasicFeatureMap;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -35,6 +37,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link de.hub.specificmodels.tests.testsourcemodel.impl.RootClassImpl#getAnAttribute1 <em>An Attribute1</em>}</li>
  *   <li>{@link de.hub.specificmodels.tests.testsourcemodel.impl.RootClassImpl#getNormalReference <em>Normal Reference</em>}</li>
+ *   <li>{@link de.hub.specificmodels.tests.testsourcemodel.impl.RootClassImpl#getAny <em>Any</em>}</li>
  * </ul>
  * </p>
  *
@@ -70,6 +73,16 @@ public class RootClassImpl extends EObjectImpl implements RootClass {
 	 * @ordered
 	 */
 	protected EList<ClassWithListFeatures> normalReference;
+
+	/**
+	 * The cached value of the '{@link #getAny() <em>Any</em>}' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAny()
+	 * @generated
+	 * @ordered
+	 */
+	protected FeatureMap any;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -128,11 +141,25 @@ public class RootClassImpl extends EObjectImpl implements RootClass {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public FeatureMap getAny() {
+		if (any == null) {
+			any = new BasicFeatureMap(this, TestSourceModelPackage.ROOT_CLASS__ANY);
+		}
+		return any;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case TestSourceModelPackage.ROOT_CLASS__NORMAL_REFERENCE:
 				return ((InternalEList<?>)getNormalReference()).basicRemove(otherEnd, msgs);
+			case TestSourceModelPackage.ROOT_CLASS__ANY:
+				return ((InternalEList<?>)getAny()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -149,6 +176,9 @@ public class RootClassImpl extends EObjectImpl implements RootClass {
 				return getAnAttribute1();
 			case TestSourceModelPackage.ROOT_CLASS__NORMAL_REFERENCE:
 				return getNormalReference();
+			case TestSourceModelPackage.ROOT_CLASS__ANY:
+				if (coreType) return getAny();
+				return ((FeatureMap.Internal)getAny()).getWrapper();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -169,6 +199,9 @@ public class RootClassImpl extends EObjectImpl implements RootClass {
 				getNormalReference().clear();
 				getNormalReference().addAll((Collection<? extends ClassWithListFeatures>)newValue);
 				return;
+			case TestSourceModelPackage.ROOT_CLASS__ANY:
+				((FeatureMap.Internal)getAny()).set(newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -187,6 +220,9 @@ public class RootClassImpl extends EObjectImpl implements RootClass {
 			case TestSourceModelPackage.ROOT_CLASS__NORMAL_REFERENCE:
 				getNormalReference().clear();
 				return;
+			case TestSourceModelPackage.ROOT_CLASS__ANY:
+				getAny().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -203,6 +239,8 @@ public class RootClassImpl extends EObjectImpl implements RootClass {
 				return AN_ATTRIBUTE1_EDEFAULT == null ? anAttribute1 != null : !AN_ATTRIBUTE1_EDEFAULT.equals(anAttribute1);
 			case TestSourceModelPackage.ROOT_CLASS__NORMAL_REFERENCE:
 				return normalReference != null && !normalReference.isEmpty();
+			case TestSourceModelPackage.ROOT_CLASS__ANY:
+				return any != null && !any.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -219,6 +257,8 @@ public class RootClassImpl extends EObjectImpl implements RootClass {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (anAttribute1: ");
 		result.append(anAttribute1);
+		result.append(", any: ");
+		result.append(any);
 		result.append(')');
 		return result.toString();
 	}

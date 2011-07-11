@@ -88,13 +88,22 @@ public interface TestSourceModelPackage extends EPackage {
 	int ROOT_CLASS__NORMAL_REFERENCE = 1;
 
 	/**
+	 * The feature id for the '<em><b>Any</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROOT_CLASS__ANY = 2;
+
+	/**
 	 * The number of structural features of the '<em>Root Class</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ROOT_CLASS_FEATURE_COUNT = 2;
+	int ROOT_CLASS_FEATURE_COUNT = 3;
 
 	/**
 	 * The meta object id for the '{@link de.hub.specificmodels.tests.testsourcemodel.impl.ClassWithListFeaturesImpl <em>Class With List Features</em>}' class.
@@ -180,13 +189,22 @@ public interface TestSourceModelPackage extends EPackage {
 	int LIST_FEATURE_ELEMENT_CLASS1__AN_ATTRIBUTE_OF_FEATURE_CLASS1 = 2;
 
 	/**
+	 * The feature id for the '<em><b>Any</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIST_FEATURE_ELEMENT_CLASS1__ANY = 3;
+
+	/**
 	 * The number of structural features of the '<em>List Feature Element Class1</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LIST_FEATURE_ELEMENT_CLASS1_FEATURE_COUNT = 3;
+	int LIST_FEATURE_ELEMENT_CLASS1_FEATURE_COUNT = 4;
 
 	/**
 	 * The meta object id for the '{@link de.hub.specificmodels.tests.testsourcemodel.impl.ListFeatureElementClass2Impl <em>List Feature Element Class2</em>}' class.
@@ -296,6 +314,17 @@ public interface TestSourceModelPackage extends EPackage {
 	EReference getRootClass_NormalReference();
 
 	/**
+	 * Returns the meta object for the attribute list '{@link de.hub.specificmodels.tests.testsourcemodel.RootClass#getAny <em>Any</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Any</em>'.
+	 * @see de.hub.specificmodels.tests.testsourcemodel.RootClass#getAny()
+	 * @see #getRootClass()
+	 * @generated
+	 */
+	EAttribute getRootClass_Any();
+
+	/**
 	 * Returns the meta object for class '{@link de.hub.specificmodels.tests.testsourcemodel.ClassWithListFeatures <em>Class With List Features</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -380,6 +409,17 @@ public interface TestSourceModelPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getListFeatureElementClass1_AnAttributeOfFeatureClass1();
+
+	/**
+	 * Returns the meta object for the attribute list '{@link de.hub.specificmodels.tests.testsourcemodel.ListFeatureElementClass1#getAny <em>Any</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Any</em>'.
+	 * @see de.hub.specificmodels.tests.testsourcemodel.ListFeatureElementClass1#getAny()
+	 * @see #getListFeatureElementClass1()
+	 * @generated
+	 */
+	EAttribute getListFeatureElementClass1_Any();
 
 	/**
 	 * Returns the meta object for class '{@link de.hub.specificmodels.tests.testsourcemodel.ListFeatureElementClass2 <em>List Feature Element Class2</em>}'.
@@ -494,6 +534,14 @@ public interface TestSourceModelPackage extends EPackage {
 		EReference ROOT_CLASS__NORMAL_REFERENCE = eINSTANCE.getRootClass_NormalReference();
 
 		/**
+		 * The meta object literal for the '<em><b>Any</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ROOT_CLASS__ANY = eINSTANCE.getRootClass_Any();
+
+		/**
 		 * The meta object literal for the '{@link de.hub.specificmodels.tests.testsourcemodel.impl.ClassWithListFeaturesImpl <em>Class With List Features</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -560,6 +608,14 @@ public interface TestSourceModelPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute LIST_FEATURE_ELEMENT_CLASS1__AN_ATTRIBUTE_OF_FEATURE_CLASS1 = eINSTANCE.getListFeatureElementClass1_AnAttributeOfFeatureClass1();
+
+		/**
+		 * The meta object literal for the '<em><b>Any</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LIST_FEATURE_ELEMENT_CLASS1__ANY = eINSTANCE.getListFeatureElementClass1_Any();
 
 		/**
 		 * The meta object literal for the '{@link de.hub.specificmodels.tests.testsourcemodel.impl.ListFeatureElementClass2Impl <em>List Feature Element Class2</em>}' class.
