@@ -100,6 +100,9 @@ public class DefaultTargetObjectCreator implements ITargetObjectCreator {
 			targetFeature.setEType(targetId.getSourceFeature().getEType());
 		}
 		copyAttributeValues(targetId.getSourceFeature(), targetFeature);
+		if (targetId.getProperty(FeatureMapMultiplicity.class).get()) {
+			targetFeature.setUpperBound(1);
+		}
 		return targetFeature;
 	}
 

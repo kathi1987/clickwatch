@@ -106,4 +106,29 @@ public class XmlMultiplicitiesTests extends AbstractTests {
 		assertClass(result, "Bar", null, "foo", null, -1);
 		assertClass(result, "Foo", null, null, null);
 	}
+	
+	@Test
+	public void testText() throws IOException {
+		String xmlStr = "<xml><foo>TEXT</foo></xml>";
+		
+		EPackage result = generate(createRootWithXml(xmlStr));
+		
+		save(result);
+		
+		assertEquals(3, result.getEClassifiers().size());
+		assertClass(result, "Foo", "RootClass/xml|xml:Xml|EObject/foo|foo:Foo|EObject", "text", null, 1);
+	}
+	
+	@Test
+	public void testAttributeMultiplicities() throws IOException {
+		String xmlStr = "<xml><foo name='a'/></xml>";
+		
+		EPackage result = generate(createRootWithXml(xmlStr));
+		
+		save(result);
+		
+		assertEquals(3, result.getEClassifiers().size());
+		assertClass(result, "Foo", "RootClass/xml|xml:Xml|EObject/foo|foo:Foo|EObject", "name", null, 1);
+	}
+	
 }

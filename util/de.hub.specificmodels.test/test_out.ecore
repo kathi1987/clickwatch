@@ -16,7 +16,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="RootClass/xml|xml:Xml|EObject/foo|foo:Foo|EObject"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" upperBound="-2" volatile="true" transient="true" derived="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" volatile="true" transient="true" derived="true">
       <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eStructuralFeatures>
   </eClassifiers>
