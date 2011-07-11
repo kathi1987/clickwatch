@@ -50,7 +50,7 @@ public class AbstractTests {
 	
 
 	protected EPackage generate(EObject source) {
-		return MetaModelGenerator.generate(new TargetIdProviderFactoryProvider(new TestTargetIdProviderFactory()), source);
+		return new MetaModelGenerator(new TargetIdProviderFactoryProvider(new TestTargetIdProviderFactory())).generateMetaModel(source);
 	}
 	
 	protected void save(EPackage result) throws IOException {

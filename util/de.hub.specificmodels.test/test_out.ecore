@@ -4,53 +4,20 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="RootClass"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="anAttribute1">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="xml" eType="//Xml" volatile="true" transient="true" derived="true" containment="true" resolveProxies="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Xml">
+    <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+      <details key="target_id" value="RootClass/xml|xml:Xml|EObject"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="foo" eType="//Foo" volatile="true" transient="true" derived="true" containment="true" resolveProxies="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Foo">
+    <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+      <details key="target_id" value="RootClass/xml|xml:Xml|EObject/foo|foo:Foo|EObject"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" volatile="true" transient="true" derived="true">
       <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="normalReference" upperBound="-1" eType="//ClassWithListFeatures" containment="true" resolveProxies="false"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ClassWithListFeatures">
-    <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-      <details key="target_id" value="RootClass/normalReference:ClassWithListFeatures"/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="listFeature1" upperBound="-1" eType="//ListFeatureElementClass1" resolveProxies="false"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="collision" eType="//RootClassClassWithListFeaturesCollision" containment="true" resolveProxies="false"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="anAttribute1">
-      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    </eStructuralFeatures>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ListFeatureElementClass1">
-    <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-      <details key="target_id" value="RootClass/normalReference:ClassWithListFeatures/listFeature1:ListFeatureElementClass1"/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name">
-      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="listFeature3" upperBound="-1" eType="//ListFeatureElementClass3" resolveProxies="false"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="anAttributeOfFeatureClass1">
-      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eStructuralFeatures>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="RootClassClassWithListFeaturesCollision" eSuperTypes="//ListFeatureElementClass1">
-    <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-      <details key="target_id" value="RootClass/normalReference:ClassWithListFeatures/collision|listFeature1:Collision|ListFeatureElementClass1"/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="collision" eType="//RootClassClassWithListFeaturesCollisionCollision" containment="true" resolveProxies="false"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ListFeatureElementClass3">
-    <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-      <details key="target_id" value="RootClass/normalReference:ClassWithListFeatures/listFeature1:ListFeatureElementClass1/listFeature3:ListFeatureElementClass3"/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name">
-      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="anAttributeOfFeatureClass3">
-      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eStructuralFeatures>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="RootClassClassWithListFeaturesCollisionCollision" eSuperTypes="//ListFeatureElementClass3">
-    <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-      <details key="target_id" value="RootClass/normalReference:ClassWithListFeatures/collision|listFeature1:Collision|ListFeatureElementClass1/collision|listFeature3:Collision|ListFeatureElementClass3"/>
-    </eAnnotations>
   </eClassifiers>
 </ecore:EPackage>

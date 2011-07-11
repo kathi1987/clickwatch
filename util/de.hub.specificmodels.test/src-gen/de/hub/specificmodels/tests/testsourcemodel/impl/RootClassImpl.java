@@ -38,6 +38,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link de.hub.specificmodels.tests.testsourcemodel.impl.RootClassImpl#getAnAttribute1 <em>An Attribute1</em>}</li>
  *   <li>{@link de.hub.specificmodels.tests.testsourcemodel.impl.RootClassImpl#getNormalReference <em>Normal Reference</em>}</li>
  *   <li>{@link de.hub.specificmodels.tests.testsourcemodel.impl.RootClassImpl#getAny <em>Any</em>}</li>
+ *   <li>{@link de.hub.specificmodels.tests.testsourcemodel.impl.RootClassImpl#getNonManyReference <em>Non Many Reference</em>}</li>
  * </ul>
  * </p>
  *
@@ -83,6 +84,16 @@ public class RootClassImpl extends EObjectImpl implements RootClass {
 	 * @ordered
 	 */
 	protected FeatureMap any;
+
+	/**
+	 * The cached value of the '{@link #getNonManyReference() <em>Non Many Reference</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNonManyReference()
+	 * @generated
+	 * @ordered
+	 */
+	protected ClassWithListFeatures nonManyReference;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -153,6 +164,49 @@ public class RootClassImpl extends EObjectImpl implements RootClass {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public ClassWithListFeatures getNonManyReference() {
+		return nonManyReference;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetNonManyReference(ClassWithListFeatures newNonManyReference, NotificationChain msgs) {
+		ClassWithListFeatures oldNonManyReference = nonManyReference;
+		nonManyReference = newNonManyReference;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, TestSourceModelPackage.ROOT_CLASS__NON_MANY_REFERENCE, oldNonManyReference, newNonManyReference);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setNonManyReference(ClassWithListFeatures newNonManyReference) {
+		if (newNonManyReference != nonManyReference) {
+			NotificationChain msgs = null;
+			if (nonManyReference != null)
+				msgs = ((InternalEObject)nonManyReference).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - TestSourceModelPackage.ROOT_CLASS__NON_MANY_REFERENCE, null, msgs);
+			if (newNonManyReference != null)
+				msgs = ((InternalEObject)newNonManyReference).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - TestSourceModelPackage.ROOT_CLASS__NON_MANY_REFERENCE, null, msgs);
+			msgs = basicSetNonManyReference(newNonManyReference, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TestSourceModelPackage.ROOT_CLASS__NON_MANY_REFERENCE, newNonManyReference, newNonManyReference));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -160,6 +214,8 @@ public class RootClassImpl extends EObjectImpl implements RootClass {
 				return ((InternalEList<?>)getNormalReference()).basicRemove(otherEnd, msgs);
 			case TestSourceModelPackage.ROOT_CLASS__ANY:
 				return ((InternalEList<?>)getAny()).basicRemove(otherEnd, msgs);
+			case TestSourceModelPackage.ROOT_CLASS__NON_MANY_REFERENCE:
+				return basicSetNonManyReference(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -179,6 +235,8 @@ public class RootClassImpl extends EObjectImpl implements RootClass {
 			case TestSourceModelPackage.ROOT_CLASS__ANY:
 				if (coreType) return getAny();
 				return ((FeatureMap.Internal)getAny()).getWrapper();
+			case TestSourceModelPackage.ROOT_CLASS__NON_MANY_REFERENCE:
+				return getNonManyReference();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -202,6 +260,9 @@ public class RootClassImpl extends EObjectImpl implements RootClass {
 			case TestSourceModelPackage.ROOT_CLASS__ANY:
 				((FeatureMap.Internal)getAny()).set(newValue);
 				return;
+			case TestSourceModelPackage.ROOT_CLASS__NON_MANY_REFERENCE:
+				setNonManyReference((ClassWithListFeatures)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -223,6 +284,9 @@ public class RootClassImpl extends EObjectImpl implements RootClass {
 			case TestSourceModelPackage.ROOT_CLASS__ANY:
 				getAny().clear();
 				return;
+			case TestSourceModelPackage.ROOT_CLASS__NON_MANY_REFERENCE:
+				setNonManyReference((ClassWithListFeatures)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -241,6 +305,8 @@ public class RootClassImpl extends EObjectImpl implements RootClass {
 				return normalReference != null && !normalReference.isEmpty();
 			case TestSourceModelPackage.ROOT_CLASS__ANY:
 				return any != null && !any.isEmpty();
+			case TestSourceModelPackage.ROOT_CLASS__NON_MANY_REFERENCE:
+				return nonManyReference != null;
 		}
 		return super.eIsSet(featureID);
 	}

@@ -61,12 +61,7 @@ public class MetaModelGenerator {
 	// TODO injection
 	private final ITargetObjectCreator targetObjectCreator = new DefaultTargetObjectCreator();
 
-	public static EPackage generate(ITargetIdProvider targetIdProvider,
-			EObject root) {
-		return new MetaModelGenerator(targetIdProvider).generateMetaModel(root);
-	}
-
-	private MetaModelGenerator(ITargetIdProvider targetIdProvider) {
+	public MetaModelGenerator(ITargetIdProvider targetIdProvider) {
 		super();
 		this.targetIdProvider = targetIdProvider;
 	}
@@ -112,11 +107,18 @@ public class MetaModelGenerator {
 		}
 	}
 	
+	protected boolean ommitFeature(EStructuralFeature feature) {
+		if (feature.isDerived() == true) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
 	private abstract class ModelTraverserConfiguration implements ModelTraverser.Configuration {
 		@Override
 		public boolean ommitFeature(EStructuralFeature feature) {
-			// TODO
-			return false;
+			return MetaModelGenerator.this.ommitFeature(feature);
 		}
 	}
 

@@ -65,7 +65,9 @@ public class XmlNamesAndCollisionTests extends AbstractTests {
 	public void testCopyAttributeCollision() throws IOException {
 		String xmlStr = "<anAttribute1 name='1'><foo/></anAttribute1>";
 		
-		EPackage result = generate(createRootWithXml(xmlStr));
+		RootClass root = (RootClass)createRootWithXml(xmlStr);
+		root.setAnAttribute1("something");
+		EPackage result = generate(root);
 		
 		save(result);
 		
