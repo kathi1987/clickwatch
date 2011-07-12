@@ -15,11 +15,8 @@ public class HandlerRecord implements IRecord {
 	private long mTimeStamp;
 	/** The content of the handler */
 	private String mValue;
-	
-	
-	public HandlerRecord(){
 		
-	}
+	public HandlerRecord(){	}
 	
 	public HandlerRecord(final String pExperimentId, final String pNodeId, final String pQualifiedName, final long pTimestamp, final String pValue){
 		this.mExperimentId = pExperimentId;
@@ -76,7 +73,6 @@ public class HandlerRecord implements IRecord {
 				+ "?"
 				+ ");";
 	}
-	
 
 	@Override
 	public String toString(){

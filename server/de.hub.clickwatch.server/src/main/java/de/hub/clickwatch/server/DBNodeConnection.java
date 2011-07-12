@@ -2,12 +2,10 @@ package de.hub.clickwatch.server;
 
 import java.io.BufferedReader;
 import java.io.DataInputStream;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.lang.reflect.Array;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -15,8 +13,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
-
-import java.util.ArrayList;
 import java.util.Properties;
 
 import org.eclipse.emf.ecore.EObject;
@@ -29,6 +25,7 @@ import de.hub.clickwatch.model.Network;
 import de.hub.clickwatch.model.Node;
 import de.hub.clickwatch.nodeadapter.AbstractNodeAdapter;
 
+@Deprecated
 public class DBNodeConnection extends AbstractNodeConnection {
 	/** The default connection "path" to the postgresql database */
 	private String url = "jdbc:postgresql://localhost/";

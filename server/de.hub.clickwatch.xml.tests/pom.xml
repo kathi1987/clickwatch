@@ -13,7 +13,7 @@
   	<version>2.0.0-SNAPSHOT</version>
 	<artifactId>de.hub.clickwatch.xml.tests</artifactId>
 	<packaging>eclipse-test-plugin</packaging>
-
+	
 	<build>
 		<plugins>
 			<plugin>
@@ -63,4 +63,5 @@
 		</dependency>
 	</dependencies>
 
+</project>
 </project>

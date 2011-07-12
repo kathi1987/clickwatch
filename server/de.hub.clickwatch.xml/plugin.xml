@@ -13,14 +13,14 @@
    <extension point="org.eclipse.emf.ecore.generated_package">
       <package
             uri="file:/vol/home-vol1/simulant/frey/Desktop/configuration.xsd"
-            class="de.hub.clickwatch.xml.configuration.ConfigurationPackage"
-            genModel="model/de.hub.clickwatch.xml.genmodel"/>
+            class="de.hub.clickwatch.xml.ConfigurationPackage"
+            genModel="model/configuration.genmodel"/>
    </extension>
 
    <extension point="org.eclipse.emf.ecore.extension_parser">
       <parser
             type="configuration"
-            class="de.hub.clickwatch.xml.configuration.util.ConfigurationResourceFactoryImpl"/>
+            class="de.hub.clickwatch.xml.util.ConfigurationResourceFactoryImpl"/>
    </extension>
 
 </plugin>

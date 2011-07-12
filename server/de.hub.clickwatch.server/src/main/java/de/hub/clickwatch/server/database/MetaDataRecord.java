@@ -1,5 +1,7 @@
 package de.hub.clickwatch.server.database;
 
+import de.hub.clickwatch.xml.ExperimentType;
+
 public class MetaDataRecord implements IRecord {
 	/** The ID of the experiment */
 	private String mExperimentId;
@@ -12,13 +14,20 @@ public class MetaDataRecord implements IRecord {
 	
 	public MetaDataRecord(){}
 	
+	
+	public MetaDataRecord(ExperimentType pExperiment){
+		
+		
+	}
+
+	
 	public MetaDataRecord(String pExperimentId, String pNodeId, long pTimestamp, String pMetaData){
 		this.mExperimentId = pExperimentId;
 		this.mNodeId = pNodeId;
 		this.mTimeStamp = pTimestamp;
 		this.mMetaData = pMetaData;
 	}
-	
+
 	@Override
 	public String createInsertStatement() {
 		return "INSERT INTO MetaDataRecord (experimentId, nodeId, timestamp, metaData) VALUES ("
@@ -68,7 +77,6 @@ public class MetaDataRecord implements IRecord {
 	public void setNodeId(final String pNodeId) {
 		this.mNodeId = pNodeId;
 	}
-
 
 	public long getTimeStamp() {
 		return mTimeStamp;

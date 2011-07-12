@@ -18,7 +18,7 @@ import java.util.Properties;
 
 public class ClickWatchDB implements IClickWatchDB {
 	/** The default connection "path" to the postgresql database */
-	private String url = "jdbc:postgresql://localhost/";
+	private String url = "jdbc:postgresql://localhost:";
 	/** A list with properties for the database connection */
 	private Properties properties = new Properties();
 	/** The database connection */
@@ -36,7 +36,8 @@ public class ClickWatchDB implements IClickWatchDB {
 	public void setUpDatabaseConnection(final Properties pProperties) {
 		setUpDatabaseConnection(pProperties.getProperty("user"),
 				pProperties.getProperty("pass"),
-				pProperties.getProperty("database"));
+				pProperties.getProperty("database"),
+				pProperties.getProperty("port"));
 	}
 
 	/**
@@ -50,12 +51,12 @@ public class ClickWatchDB implements IClickWatchDB {
 	 *            The database which will be used
 	 */
 	public void setUpDatabaseConnection(final String pUser, final String pPass,
-			final String pDatabase) {
+			final String pDatabase, final String pPort) {
 		properties.setProperty("user", pUser);
 		properties.setProperty("password", pPass);
 
 		try {
-			connection = DriverManager.getConnection(url + pDatabase,
+			connection = DriverManager.getConnection(url + ":" + pPort + "/"+ pDatabase,
 					properties);
 			connection.setAutoCommit(false);
 		} catch (SQLException e) {
