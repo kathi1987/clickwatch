@@ -37,7 +37,7 @@ public class ClickWatchServer implements IClickWatchServer {
 	/** Access to the OSGi log service */
 	// private LogService mLogService = null;
 	/** The array list holds a list of node connections */
-	private ArrayList<INodeConnectionProvider> mConnectionList = new ArrayList<INodeConnectionProvider>();
+	private ArrayList<INodeConnection> mConnectionList = new ArrayList<INodeConnection>();
 	/** The configuration file reader */
 	private ConfigurationFileReader mConfigurationFileReader;
 	/** Location of the configuration file */
@@ -73,7 +73,7 @@ public class ClickWatchServer implements IClickWatchServer {
 
 		if (resource != null) {
 
-			
+			// TODO: Debuggen und uriFragment rausfinden um direkt drauf zugreifen zu koennen
 			
 			// Im Prinzip muessen wir uns ab durch die Wurzeln hangeln
 			for (EObject eObject : resource.getContents()) {
@@ -132,21 +132,19 @@ public class ClickWatchServer implements IClickWatchServer {
 	@Override
 	public void activateConfiguration() {
 		for (int i = 0; i < this.mConnectionList.size(); i++) {
-			// TODO: Set database handler
-			this.mConnectionList.get(i).setUpDatabaseConnection(mProperties);
 			// TODO: Connect!
-			this.mConnectionList.get(i).connect(null);
+			//this.mConnectionList.get(i).
 		}
 	}
 
 	@Override
-	public ArrayList<INodeConnectionProvider> getConnectionList() {
+	public ArrayList<INodeConnection> getConnectionList() {
 		return mConnectionList;
 	}
 
 	@Override
 	public synchronized void setConnectionList(
-			ArrayList<INodeConnectionProvider> pConnectionList) {
+			ArrayList<INodeConnection> pConnectionList) {
 		this.mConnectionList = pConnectionList;
 	}
 
@@ -154,7 +152,7 @@ public class ClickWatchServer implements IClickWatchServer {
 	public synchronized void shutdown() {
 		// mLogService.log(LogService.LOG_DEBUG, "Server: Prepare to shutdown");
 		if (mConnectionList != null) {
-			for (INodeConnectionProvider connection : mConnectionList) {
+			for (INodeConnection connection : mConnectionList) {
 				// Disconnect
 			}
 		}
