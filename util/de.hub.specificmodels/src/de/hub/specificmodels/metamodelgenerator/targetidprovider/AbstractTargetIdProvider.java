@@ -36,6 +36,8 @@ public abstract class AbstractTargetIdProvider implements ITargetIdProvider {
 					result.add(createTargetId(parent, sok));
 				} else if (!addToCopyParents && !(parent.getProperty(IsCopy.class).get())) {
 					result.add(createTargetId(parent, sok));
+				} else {
+					Preconditions.checkState(false, "provider can only add to copied parents when parents actually are copies.");
 				}
 			}
 		}

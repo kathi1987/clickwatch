@@ -19,6 +19,7 @@
 		<module>core</module>
 		<module>ui</module>
 		<module>analysis</module>
+        <module>util</module>
 <!--		<module>server</module> -->
 	</modules>
 

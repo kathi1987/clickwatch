@@ -25,8 +25,7 @@ public class FeatureMapEntryTargetIdProvider extends AbstractTargetIdProvider {
 			result = new TargetId(parentId, sok.getFeature(), (EClass)sok.getFeature().getEType(), 
 					firstToLower(sok.getFeature().getName()), firstToUpper(sok.getFeature().getName()));	
 		} else {
-			result = new TargetId(parentId, sok.getFeature(), null, 
-					firstToLower(sok.getFeature().getName()), null);
+			result = new TargetId(parentId, sok.getFeature(), null, firstToLower(sok.getFeature().getName()), null);
 			result.getProperty(GuessTypes.class).set(true);
 		}
 		result.getProperty(FeatureMapMultiplicity.class).set(true);

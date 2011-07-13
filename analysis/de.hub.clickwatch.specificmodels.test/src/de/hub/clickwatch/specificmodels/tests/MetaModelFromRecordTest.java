@@ -12,12 +12,14 @@ import org.junit.Test;
 import com.google.inject.AbstractModule;
 
 import de.hub.clickcontrol.IClickSocket;
+import de.hub.clickwatch.connection.INodeConnection;
+import de.hub.clickwatch.connection.INodeConnectionProvider;
+import de.hub.clickwatch.connection.adapter.INodeAdapter;
+import de.hub.clickwatch.connection.adapter.IValueAdapter;
+import de.hub.clickwatch.connection.adapter.XmlValueAdapter;
 import de.hub.clickwatch.model.ClickWatchModelFactory;
 import de.hub.clickwatch.model.Network;
 import de.hub.clickwatch.model.Node;
-import de.hub.clickwatch.nodeadapter.AbstractNodeAdapter;
-import de.hub.clickwatch.nodeadapter.ClickControlNodeAdapter;
-import de.hub.clickwatch.nodeadapter.INodeAdapter;
 import de.hub.clickwatch.recorder.ClickSocketPlayer;
 import de.hub.clickwatch.recorder.ClickSocketPlayerSocketImpl;
 import de.hub.clickwatch.specificmodels.SpecificMetaModelGenerator;
@@ -27,15 +29,14 @@ public class MetaModelFromRecordTest extends AbstractTest {
 	
 	@Override
 	protected AbstractModule[] getAdditionalModules() {
-		String record = "src/" + MetaModelFromRecordTest.class.getPackage().getName().replace(".", "/") + "/" 
-				+ MetaModelFromRecordTest.class.getSimpleName() + ".clickwatchmodel";
+		String record = "resources/TestRecord.clickwatchmodel";
 		
 		return new AbstractModule[] { new ClickSocketPlayer.PlayerModule(record, false) };
 	}
 	
 	@Override
-	protected Class<? extends INodeAdapter> getNodeAdapterClass() {
-		return ClickControlNodeAdapter.class;
+	protected Class<? extends IValueAdapter> getValueAdapterClass() {
+		return XmlValueAdapter.class;
 	}
 
 	@Override
@@ -45,11 +46,10 @@ public class MetaModelFromRecordTest extends AbstractTest {
 
 	@Test
 	public void testWithOneNodeFromRecord() throws IOException {
-		INodeAdapter nodeAdapter = injector.getInstance(INodeAdapter.class);
-		((AbstractNodeAdapter)nodeAdapter).setUp("192.168.3.152", "7777");
-		nodeAdapter.connect();
-		
-		Node node = nodeAdapter.retrieve("", "");
+		INodeConnectionProvider ncp = injector.getInstance(INodeConnectionProvider.class);
+		INodeConnection connection = ncp.createConnection("192.168.3.152", "7777");
+		connection.connect();
+		Node node = connection.getAdapter(INodeAdapter.class).pullNode();
 		Network network = ClickWatchModelFactory.eINSTANCE.createNetwork();
 		network.getNodes().add(node);
 		
