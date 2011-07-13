@@ -9,6 +9,7 @@ package de.hub.specificmodels.tests.testsourcemodel;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.FeatureMap;
 
 /**
  * <!-- begin-user-doc -->
@@ -20,6 +21,8 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link de.hub.specificmodels.tests.testsourcemodel.RootClass#getAnAttribute1 <em>An Attribute1</em>}</li>
  *   <li>{@link de.hub.specificmodels.tests.testsourcemodel.RootClass#getNormalReference <em>Normal Reference</em>}</li>
+ *   <li>{@link de.hub.specificmodels.tests.testsourcemodel.RootClass#getAny <em>Any</em>}</li>
+ *   <li>{@link de.hub.specificmodels.tests.testsourcemodel.RootClass#getNonManyReference <em>Non Many Reference</em>}</li>
  * </ul>
  * </p>
  *
@@ -69,5 +72,48 @@ public interface RootClass extends EObject {
 	 * @generated
 	 */
 	EList<ClassWithListFeatures> getNormalReference();
+
+	/**
+	 * Returns the value of the '<em><b>Any</b></em>' attribute list.
+	 * The list contents are of type {@link org.eclipse.emf.ecore.util.FeatureMap.Entry}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Any</em>' attribute list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Any</em>' attribute list.
+	 * @see de.hub.specificmodels.tests.testsourcemodel.TestSourceModelPackage#getRootClass_Any()
+	 * @model dataType="org.eclipse.emf.ecore.EFeatureMapEntry" many="true"
+	 *        extendedMetaData="kind='elementWildcard' name=':1' processing='lax' wildcards='##any'"
+	 * @generated
+	 */
+	FeatureMap getAny();
+
+	/**
+	 * Returns the value of the '<em><b>Non Many Reference</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Non Many Reference</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Non Many Reference</em>' containment reference.
+	 * @see #setNonManyReference(ClassWithListFeatures)
+	 * @see de.hub.specificmodels.tests.testsourcemodel.TestSourceModelPackage#getRootClass_NonManyReference()
+	 * @model containment="true"
+	 * @generated
+	 */
+	ClassWithListFeatures getNonManyReference();
+
+	/**
+	 * Sets the value of the '{@link de.hub.specificmodels.tests.testsourcemodel.RootClass#getNonManyReference <em>Non Many Reference</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Non Many Reference</em>' containment reference.
+	 * @see #getNonManyReference()
+	 * @generated
+	 */
+	void setNonManyReference(ClassWithListFeatures value);
 
 } // RootClass
