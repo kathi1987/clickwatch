@@ -4,58 +4,19 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="RootClass"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="normalReference" upperBound="-1" eType="//ClassWithListFeatures" containment="true" resolveProxies="false"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="anAttribute1">
-      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="xml" eType="//Xml" volatile="true" transient="true" derived="true" containment="true" resolveProxies="false"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="RootClassClassWithListFeaturesListFeature1_1Foo">
+  <eClassifiers xsi:type="ecore:EClass" name="Xml">
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-      <details key="target_id" value="RootClass/normalReference:ClassWithListFeatures/listFeature1_1|listFeature1:ListFeature1_1|ListFeatureElementClass1/foo|foo:Foo|EObject"/>
+      <details key="target_id" value="RootClass/xml|xml:Xml|EObject"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="foo" eType="//Foo" volatile="true" transient="true" derived="true" containment="true" resolveProxies="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Foo">
+    <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+      <details key="target_id" value="RootClass/xml|xml:Xml|EObject/foo|foo:Foo|EObject"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" volatile="true" transient="true" derived="true">
-      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2003/XMLType#//AnySimpleType"/>
-    </eStructuralFeatures>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="RootClassClassWithListFeaturesListFeature1_2Foo">
-    <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-      <details key="target_id" value="RootClass/normalReference:ClassWithListFeatures/listFeature1_2|listFeature1:ListFeature1_2|ListFeatureElementClass1/foo|foo:Foo|EObject"/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" volatile="true" transient="true" derived="true">
-      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2003/XMLType#//AnySimpleType"/>
-    </eStructuralFeatures>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ClassWithListFeatures">
-    <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-      <details key="target_id" value="RootClass/normalReference:ClassWithListFeatures"/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="listFeature1_2" eType="//ListFeature1_2" containment="true" resolveProxies="false"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="listFeature1" upperBound="-1" eType="//ListFeatureElementClass1" resolveProxies="false"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="listFeature1_1" eType="//ListFeature1_1" containment="true" resolveProxies="false"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="anAttribute1">
-      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    </eStructuralFeatures>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ListFeature1_1" eSuperTypes="//ListFeatureElementClass1">
-    <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-      <details key="target_id" value="RootClass/normalReference:ClassWithListFeatures/listFeature1_1|listFeature1:ListFeature1_1|ListFeatureElementClass1"/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="foo" eType="//RootClassClassWithListFeaturesListFeature1_1Foo" volatile="true" transient="true" derived="true" containment="true" resolveProxies="false"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ListFeature1_2" eSuperTypes="//ListFeatureElementClass1">
-    <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-      <details key="target_id" value="RootClass/normalReference:ClassWithListFeatures/listFeature1_2|listFeature1:ListFeature1_2|ListFeatureElementClass1"/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="foo" eType="//RootClassClassWithListFeaturesListFeature1_2Foo" volatile="true" transient="true" derived="true" containment="true" resolveProxies="false"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ListFeatureElementClass1">
-    <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-      <details key="target_id" value="RootClass/normalReference:ClassWithListFeatures/listFeature1:ListFeatureElementClass1"/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="anAttributeOfFeatureClass1">
-      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name">
       <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eStructuralFeatures>
   </eClassifiers>

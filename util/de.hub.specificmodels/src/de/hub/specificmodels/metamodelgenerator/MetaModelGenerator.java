@@ -1,9 +1,8 @@
 package de.hub.specificmodels.metamodelgenerator;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EClass;
@@ -12,13 +11,13 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcoreFactory;
-import org.eclipse.emf.ecore.util.FeatureMap;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 
 import de.hub.specificmodels.metamodelgenerator.ITargetIdProvider.ITargetIdProviderContext;
+import de.hub.specificmodels.metamodelgenerator.targetproperties.SuperClasses;
 
 /**
  * This class realizes the following algorithm: First source elements (source
@@ -55,19 +54,14 @@ public class MetaModelGenerator {
 
 	private final ITargetIdProvider targetIdProvider;
 	private final ITargetIdProviderContext ctx = new TargetIdProviderContext();
-	private final Map<SourceObjectKey, TargetId[]> objectToTargetIdMap = new HashMap<SourceObjectKey, TargetId[]>();
-	private final Multimap<TargetId, SourceObjectKey> targetIdsToObjectMap = HashMultimap
-			.create();
+	
+	private final Map<SourceObjectKey, TargetId[]> sokToTargetId = new HashMap<SourceObjectKey, TargetId[]>();	
+	private final Collection<TargetId> targetIds = new HashSet<TargetId>();
 
 	// TODO injection
 	private final ITargetObjectCreator targetObjectCreator = new DefaultTargetObjectCreator();
 
-	public static EPackage generate(ITargetIdProvider targetIdProvider,
-			EObject root) {
-		return new MetaModelGenerator(targetIdProvider).generateMetaModel(root);
-	}
-
-	private MetaModelGenerator(ITargetIdProvider targetIdProvider) {
+	public MetaModelGenerator(ITargetIdProvider targetIdProvider) {
 		super();
 		this.targetIdProvider = targetIdProvider;
 	}
@@ -80,72 +74,25 @@ public class MetaModelGenerator {
 	}
 
 	private TargetId[] getProvidedTargetIds(SourceObjectKey object) {
-		TargetId[] result = objectToTargetIdMap.get(object);
+		TargetId[] result = sokToTargetId.get(object);
 		if (result == null) {
 			result = targetIdProvider.provideTargetIds(ctx, object);
-			objectToTargetIdMap.put(object, result);
+			sokToTargetId.put(object, result);
 		}
 		return result;
-	}
-
-	private boolean ommitFeature(EStructuralFeature feature) {
-		return false;
 	}
 
 	private void collectTargetIdsForSourceObjectKey(SourceObjectKey key) {
 		TargetId[] targetIds = getProvidedTargetIds(key);
 		for (TargetId targetId : targetIds) {
-			this.targetIdsToObjectMap.put(targetId, key);
+			this.targetIds.add(targetId);
 		}
-	}
-
-	private void traverseSourceModel(SourceObjectKey sourceObjectKey) {
-		Preconditions.checkArgument(sourceObjectKey.getValue() instanceof EObject);
-		EObject sourceObject = (EObject)sourceObjectKey.getValue();
-		for (EStructuralFeature feature : sourceObject.eClass()
-				.getEStructuralFeatures()) {
-			if (!ommitFeature(feature)) {
-				Object rawValue = sourceObject.eGet(feature);
-				List<?> values = null;
-				if (feature.isMany()) {
-					values = (List<?>) rawValue;
-				} else {
-					values = Arrays.asList(new Object[] { rawValue });
-				}
-				for (Object value : values) {
-					SourceObjectKey childKey = createChildKey(sourceObjectKey, sourceObject, feature, value);
-					collectTargetIdsForSourceObjectKey(childKey);
-				}
-				for (Object value : values) {
-					SourceObjectKey childKey = createChildKey(sourceObjectKey, sourceObject, feature, value);
-					if (feature instanceof EReference || (value instanceof FeatureMap.Entry && ((FeatureMap.Entry)value).getValue() instanceof EObject)) {
-						if (feature instanceof EReference) {
-							Preconditions.checkArgument(((EReference)feature).isContainment(), "non containment references are not supported");
-						}
-						traverseSourceModel(childKey);
-					} 
-				}				
-			}
-		}
-	}
-
-	private SourceObjectKey createChildKey(SourceObjectKey sourceObjectKey,
-			EObject sourceObject, EStructuralFeature feature, Object value) {
-		SourceObjectKey key;
-		if (value instanceof FeatureMap.Entry) {
-			FeatureMap.Entry fme = (FeatureMap.Entry)value;
-			key = new SourceObjectKey(sourceObjectKey, sourceObject, fme.getEStructuralFeature(), fme.getValue());
-		} else {
-			key = new SourceObjectKey(sourceObject, feature, value);
-		}
-		return key;
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	private void resolveCollisions(
-			Map<? extends ITargetMetaId, TargetId> metaIds) {
+	private void resolveCollisions(Collection<? extends ITargetMetaId> metaIds) {
 		Multimap<Object, ITargetMetaId> hashableMetaIdRepToMetaIdMap = HashMultimap.create();
-		for (ITargetMetaId metaId : metaIds.keySet()) {
+		for (ITargetMetaId metaId : metaIds) {
 			Collection<ITargetMetaId> existingMetaIds = hashableMetaIdRepToMetaIdMap.get(metaId.hashableRep());
 			if (existingMetaIds != null && !existingMetaIds.isEmpty()) {
 				for (ITargetMetaId collidee : existingMetaIds) {
@@ -155,8 +102,23 @@ public class MetaModelGenerator {
 			}
 			hashableMetaIdRepToMetaIdMap.put(metaId.hashableRep(), metaId);
 		}
-		for (ITargetMetaId metaId : metaIds.keySet()) {
+		for (ITargetMetaId metaId : metaIds) {
 			metaId.resolveCollisions();
+		}
+	}
+	
+	protected boolean ommitFeature(EStructuralFeature feature) {
+		if (feature.isDerived() == true) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	private abstract class ModelTraverserConfiguration implements ModelTraverser.Configuration {
+		@Override
+		public boolean ommitFeature(EStructuralFeature feature) {
+			return MetaModelGenerator.this.ommitFeature(feature);
 		}
 	}
 
@@ -164,56 +126,62 @@ public class MetaModelGenerator {
 		// collecting targetIds for all objects
 		SourceObjectKey rootKey = new SourceObjectKey(null, null, root);
 		collectTargetIdsForSourceObjectKey(rootKey);
-		traverseSourceModel(rootKey);
+		new ModelTraverser().traverseSourceModel(new ModelTraverserConfiguration() {
+			@Override
+			public void work(SourceObjectKey sok) {
+				collectTargetIdsForSourceObjectKey(sok);
+			}
+		}, rootKey);
 
 		// computing targetMetaIds
-		Map<TargetClassId, TargetId> targetClassIds = new HashMap<TargetClassId, TargetId>();
-		Map<TargetId, TargetClassId> targetIdToTargetClassIdMap = new HashMap<TargetId, TargetClassId>();
-		Map<TargetFeatureId, TargetId> targetFeatureIds = new HashMap<TargetFeatureId, TargetId>();
-		for (TargetId targetId : targetIdsToObjectMap.keySet()) {
+		final Map<TargetClassId, TargetId> targetClassIds = new HashMap<TargetClassId, TargetId>();
+		final Map<TargetId, TargetClassId> targetIdToTargetClassIdMap = new HashMap<TargetId, TargetClassId>();
+		final Map<TargetId, TargetFeatureId> targetIdToTargetFeatureIdMap = new HashMap<TargetId, TargetFeatureId>();
+		for (TargetId targetId : targetIds) {
 			if (targetId.hasClass()) {
 				TargetClassId classId = TargetClassId.create(targetId);
 				targetClassIds.put(classId, targetId);
 				targetIdToTargetClassIdMap.put(targetId, classId);
 			}
 		}
-		for (TargetId targetId : targetIdsToObjectMap.keySet()) {
+		for (TargetId targetId : targetIds) {
 			if (targetId.hasFeature()) {
 				Preconditions.checkState(targetId.getParent() != null);
 				TargetClassId parentClassId = targetIdToTargetClassIdMap.get(targetId.getParent());
 				TargetFeatureId featureId = TargetFeatureId.create(parentClassId, targetId);
-				targetFeatureIds.put(featureId, targetId);
+				targetIdToTargetFeatureIdMap.put(targetId, featureId);
 			}
 		}
 
 		// resolve collisions
-		resolveCollisions(targetClassIds);
-		resolveCollisions(targetFeatureIds);
+		resolveCollisions(targetIdToTargetClassIdMap.values());
+		resolveCollisions(targetIdToTargetFeatureIdMap.values());
 
 		// creating and updating targetClasses
-		EPackage result = EcoreFactory.eINSTANCE.createEPackage();
-		for (TargetClassId targetClassId : targetClassIds.keySet()) {
-			TargetId targetId = targetClassIds.get(targetClassId);
-			for (SourceObjectKey sok : targetIdsToObjectMap.get(targetId)) {
-				String className = targetClassId.getClassName();
-				EClass existingTargetClass = (EClass) result
-						.getEClassifier(className);
-				if (existingTargetClass == null) {
-					EClass targetClass = targetObjectCreator.createTargetClass(
-							className, targetId, sok);
-					result.getEClassifiers().add(targetClass);
-				} else {
-					targetObjectCreator.updateTargetClass(existingTargetClass,
-							targetId, sok);
+		final EPackage result = EcoreFactory.eINSTANCE.createEPackage();
+		new ModelTraverser().traverseSourceModel(new ModelTraverserConfiguration() {
+			@Override
+			public void work(SourceObjectKey sok) {
+				for(TargetId targetId: sokToTargetId.get(sok)) {
+					TargetClassId targetClassId = targetIdToTargetClassIdMap.get(targetId);
+					if (targetClassId != null) {
+						String className = targetClassId.getClassName();
+						EClass existingTargetClass = (EClass)result.getEClassifier(className);
+						if (existingTargetClass == null) {
+							EClass targetClass = targetObjectCreator.createTargetClass(className, targetId, sok);
+							result.getEClassifiers().add(targetClass);
+						} else {
+							targetObjectCreator.updateTargetClass(existingTargetClass, targetId, sok);
+						}
+					}
 				}
 			}
-		}
+		}, rootKey);	
 
-		// added super classes
-		for (TargetClassId targetClassId : targetClassIds.keySet()) {
+		// added super classes (this is not perfect, it introduces an unwanted coupling with TargetId properties (e.g. super classes))
+		for (TargetClassId targetClassId : targetIdToTargetClassIdMap.values()) {
 			TargetId targetId = targetClassIds.get(targetClassId);
-			for (TargetId superClassTargetId : targetId
-					.getSuperClassTargetIds()) {
+			for (TargetId superClassTargetId : targetId.getProperty(SuperClasses.class).get()) {
 				TargetClassId superClassTargetClassId = targetIdToTargetClassIdMap
 						.get(superClassTargetId);
 				EClass superClass = (EClass) result
@@ -225,39 +193,38 @@ public class MetaModelGenerator {
 		}
 
 		// creating and updating targetFeatures
-		for (TargetFeatureId targetFeatureId : targetFeatureIds.keySet()) {
-			TargetId targetId = targetFeatureIds.get(targetFeatureId);
-			for (SourceObjectKey sok : targetIdsToObjectMap.get(targetId)) {
-				Preconditions.checkState(sok.getFeature() != null);
-				String featureName = targetFeatureId.getFeatureName();
-				String className = targetFeatureId.getClassId().getClassName();
-				EStructuralFeature exisitingFeature = ((EClass) result
-						.getEClassifier(className))
-						.getEStructuralFeature(featureName);
-				if (exisitingFeature == null) {
-					EStructuralFeature targetFeature = null;
-					if (targetId.getSourceFeature() instanceof EReference) {
-						TargetClassId typeClassId = targetIdToTargetClassIdMap
-								.get(targetId);
-						EClass type = (EClass) result
-								.getEClassifier(typeClassId.getClassName());
-						targetFeature = targetObjectCreator
-								.createTargetReference(featureName, type,
+		new ModelTraverser().traverseSourceModel(new ModelTraverserConfiguration() {
+			@Override
+			public void work(SourceObjectKey sok) {
+				for(TargetId targetId: sokToTargetId.get(sok)) {
+					TargetFeatureId targetFeatureId = targetIdToTargetFeatureIdMap.get(targetId);
+					if (targetFeatureId != null) {
+						Preconditions.checkState(sok.getFeature() != null);
+						String featureName = targetFeatureId.getFeatureName();
+						String className = targetFeatureId.getClassId().getClassName();
+						EStructuralFeature exisitingFeature = ((EClass) result
+								.getEClassifier(className))
+								.getEStructuralFeature(featureName);
+						if (exisitingFeature == null) {
+							EStructuralFeature targetFeature = null;
+							if (targetId.getSourceFeature() instanceof EReference) {
+								TargetClassId typeClassId = targetIdToTargetClassIdMap.get(targetId);
+								EClass type = (EClass) result.getEClassifier(typeClassId.getClassName());
+								targetFeature = targetObjectCreator.createTargetReference(featureName, type,
 										targetId, sok);
-					} else {
-						targetFeature = targetObjectCreator
-								.createTargetAttribute(featureName, targetId,
-										sok);
+							} else {
+								targetFeature = targetObjectCreator.createTargetAttribute(featureName, targetId, sok);
+							}
+	
+							((EClass) result.getEClassifier(className)).getEStructuralFeatures().add(targetFeature);
+						} else {
+							targetObjectCreator.updateTargetFeature(exisitingFeature,
+									targetId, sok);
+						}
 					}
-
-					((EClass) result.getEClassifier(className))
-							.getEStructuralFeatures().add(targetFeature);
-				} else {
-					targetObjectCreator.updateTargetFeature(exisitingFeature,
-							targetId, sok);
 				}
 			}
-		}
+		}, rootKey);	
 
 		return result;
 	}

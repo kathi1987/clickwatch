@@ -1,10 +1,14 @@
 package de.hub.specificmodels.metamodelgenerator;
 
-import java.util.ArrayList;
-import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
+
+import com.google.common.base.Preconditions;
+
+import de.hub.specificmodels.metamodelgenerator.targetproperties.ITargetProperty;
 
 /**
  * Represents a unique identifier in the target meta-model. The idea is that
@@ -28,9 +32,8 @@ public class TargetId {
 
 	private final String targetFeatureName;
 	private final String targetClassName;
-
-	private final Collection<TargetId> superClassTargetIds = new ArrayList<TargetId>();
-	private boolean isContainment = true;
+	
+	private final Map<Class<? extends ITargetProperty>, ITargetProperty> properties = new HashMap<Class<? extends ITargetProperty>, ITargetProperty>();
 
 	private Object hashId = null;
 
@@ -75,22 +78,6 @@ public class TargetId {
 
 	public String getTargetClassName() {
 		return targetClassName;
-	}
-
-	public void addSuperClassTargetId(TargetId superClassTargetId) {
-		this.superClassTargetIds.add(superClassTargetId);
-	}
-
-	public Collection<TargetId> getSuperClassTargetIds() {
-		return superClassTargetIds;
-	}
-
-	public boolean isContainment() {
-		return isContainment;
-	}
-
-	public void setContainment(boolean isContainment) {
-		this.isContainment = isContainment;
 	}
 
 	@Override
@@ -139,6 +126,20 @@ public class TargetId {
 	@Override
 	public String toString() {
 		return getHashableId().toString();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public <T extends ITargetProperty> T getProperty(Class<T> propertyClass) {
+		ITargetProperty result = properties.get(propertyClass);
+		if (result == null) {
+			try {
+				result = propertyClass.getConstructor(new Class[]{}).newInstance(new Object[]{});
+			} catch (Exception e) {
+				Preconditions.checkState(false);
+			}
+			properties.put(propertyClass, result);
+		}
+		return (T)result;
 	}
 
 }

@@ -8,6 +8,7 @@ import com.google.common.base.Preconditions;
 import de.hub.specificmodels.metamodelgenerator.ITargetIdProvider;
 import de.hub.specificmodels.metamodelgenerator.SourceObjectKey;
 import de.hub.specificmodels.metamodelgenerator.TargetId;
+import de.hub.specificmodels.metamodelgenerator.targetproperties.IsCopy;
 
 public abstract class AbstractTargetIdProvider implements ITargetIdProvider {
 	
@@ -31,9 +32,9 @@ public abstract class AbstractTargetIdProvider implements ITargetIdProvider {
 		} else 	if (sok.getObject() != null) {
 			TargetId[] parentIds = ctx.getExistingTargetIds(sok.getParent());
 			for (TargetId parent: parentIds) {
-				if (addToCopyParents && parent instanceof CopyTargetId) {
+				if (addToCopyParents && parent.getProperty(IsCopy.class).get()) {
 					result.add(createTargetId(parent, sok));
-				} else if (!addToCopyParents && !(parent instanceof CopyTargetId)) {
+				} else if (!addToCopyParents && !(parent.getProperty(IsCopy.class).get())) {
 					result.add(createTargetId(parent, sok));
 				}
 			}

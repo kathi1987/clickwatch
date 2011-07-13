@@ -29,6 +29,8 @@ import org.junit.BeforeClass;
 import de.hub.clickwatch.XmlModelRepository;
 import de.hub.specificmodels.metamodelgenerator.MetaModelGenerator;
 import de.hub.specificmodels.metamodelgenerator.targetidprovider.TargetIdProviderFactoryProvider;
+import de.hub.specificmodels.tests.testsourcemodel.RootClass;
+import de.hub.specificmodels.tests.testsourcemodel.TestSourceModelFactory;
 import de.hub.specificmodels.tests.testsourcemodel.TestTargetIdProviderFactory;
 
 public class AbstractTests {
@@ -48,7 +50,7 @@ public class AbstractTests {
 	
 
 	protected EPackage generate(EObject source) {
-		return MetaModelGenerator.generate(new TargetIdProviderFactoryProvider(new TestTargetIdProviderFactory()), source);
+		return new MetaModelGenerator(new TargetIdProviderFactoryProvider(new TestTargetIdProviderFactory())).generateMetaModel(source);
 	}
 	
 	protected void save(EPackage result) throws IOException {
@@ -79,12 +81,15 @@ public class AbstractTests {
 		EcoreUtil.delete(xml, true);
 	}
 
-	protected static void assertClass(EPackage result, String className, String targetId, String attributeName, EDataType attributeType) {
+	protected static void assertClass(EPackage result, String className, String targetId, String attributeName, EDataType attributeType, int upperBound) {
 		assertNotNull(result.getEClassifier(className));
 		if (attributeName != null) {
 			assertNotNull(((EClass)result.getEClassifier(className)).getEStructuralFeature(attributeName));
 			if (attributeType != null) {
 				assertEquals(attributeType, ((EClass)result.getEClassifier(className)).getEStructuralFeature(attributeName).getEType());
+			}
+			if (upperBound != -10) {
+				assertEquals(upperBound, ((EClass)result.getEClassifier(className)).getEStructuralFeature(attributeName).getUpperBound());
 			}
 		}
 		assertNotNull(result.getEClassifier(className).getEAnnotation(ANNOTATION_SOURCE));
@@ -93,5 +98,17 @@ public class AbstractTests {
 		} else {
 			assertNotNull(result.getEClassifier(className).getEAnnotation(ANNOTATION_SOURCE).getDetails().get(TARGET_ID));
 		}
+
+	}
+	
+	protected static void assertClass(EPackage result, String className, String targetId, String attributeName, EDataType attributeType) {
+		assertClass(result, className, targetId, attributeName, attributeType, -10);
+	}
+	
+	protected EObject createRootWithXml(String xmlStr) throws IOException {	
+		RootClass root = TestSourceModelFactory.eINSTANCE.createRootClass();
+		FeatureMap map = root.getAny();
+		deserialize(xmlStr, map);		
+		return root;
 	}
 }
