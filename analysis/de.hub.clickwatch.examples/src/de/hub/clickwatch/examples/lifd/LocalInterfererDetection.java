@@ -12,7 +12,7 @@ import de.hub.clickwatch.examples.ClickWatchExamplesPluginActivator;
 import de.hub.clickwatch.examples.lifd.topology.Topology;
 import de.hub.clickwatch.examples.lifd.topology.TopologyPackage;
 import de.hub.clickwatch.model.Network;
-import de.hub.clickwatch.ui.util.UiThreadder;
+import de.hub.clickwatch.ui.util.UIContext;
 
 public class LocalInterfererDetection extends AbstractAnalysis implements
 		IAutomatedAnalysis {
@@ -31,7 +31,7 @@ public class LocalInterfererDetection extends AbstractAnalysis implements
 	}
 
 	@Override
-	public void analyseNextSample(final Network nw, final UiThreadder uiThreadder) {
+	public void analyseNextSample(final Network nw, final UIContext uiThreadder) {
 //		initialize();
 		uiThreadder.runInGUI(new Runnable() {
 			@Override

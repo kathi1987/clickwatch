@@ -7,7 +7,6 @@
 package de.hub.clickwatch.model.provider;
 
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -17,9 +16,6 @@ import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.util.FeatureMapUtil;
-import org.eclipse.emf.ecore.xml.type.XMLTypeFactory;
-import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.FeatureMapEntryWrapperItemProvider;
@@ -35,7 +31,6 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import de.hub.clickwatch.model.ClickWatchModelPackage;
 import de.hub.clickwatch.model.Handler;
-import de.hub.clickwatch.model.IsRecordedAdapter;
 
 
 /**
@@ -376,29 +371,29 @@ public class HandlerItemProvider
 		}
 	}
 
-	@Override
-	public Collection<?> getChildren(Object object) {
-		IsRecordedAdapter isRecordedAdapter = new IsRecordedAdapter();
-		Collection<Object> children = new ArrayList<Object>();
-		for(Object child: super.getChildren(object)) {
-			boolean isRecorded = false;
-			Object value = ((FeatureMapEntryWrapperItemProvider)child).getValue();
-			if (value instanceof FeatureMap.Entry) {
-				Object fmeValue = ((FeatureMap.Entry)value).getValue();
-				if (fmeValue instanceof EObject) {
-					AdapterLoop: for(Object adapter: ((EObject)fmeValue).eAdapters()) {
-						if (adapter.equals(isRecordedAdapter)) {
-							isRecorded = true;
-							break AdapterLoop;
-						}
-					}
-				}
-			}
-				
-			if (!isRecorded) {
-				children.add(child);
-			}
-		}
-		return children;
-	}
+//	@Override
+//	public Collection<?> getChildren(Object object) {
+//		IsRecordedAdapter isRecordedAdapter = new IsRecordedAdapter();
+//		Collection<Object> children = new ArrayList<Object>();
+//		for(Object child: super.getChildren(object)) {
+//			boolean isRecorded = false;
+//			Object value = ((FeatureMapEntryWrapperItemProvider)child).getValue();
+//			if (value instanceof FeatureMap.Entry) {
+//				Object fmeValue = ((FeatureMap.Entry)value).getValue();
+//				if (fmeValue instanceof EObject) {
+//					AdapterLoop: for(Object adapter: ((EObject)fmeValue).eAdapters()) {
+//						if (adapter.equals(isRecordedAdapter)) {
+//							isRecorded = true;
+//							break AdapterLoop;
+//						}
+//					}
+//				}
+//			}
+//				
+//			if (!isRecorded) {
+//				children.add(child);
+//			}
+//		}
+//		return children;
+//	}
 }

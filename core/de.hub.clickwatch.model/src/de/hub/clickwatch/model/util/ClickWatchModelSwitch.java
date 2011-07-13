@@ -6,7 +6,6 @@
  */
 package de.hub.clickwatch.model.util;
 
-import de.hub.clickwatch.model.*;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;

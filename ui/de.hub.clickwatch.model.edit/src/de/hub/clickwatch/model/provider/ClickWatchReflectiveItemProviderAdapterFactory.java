@@ -2,7 +2,6 @@ package de.hub.clickwatch.model.provider;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.AdapterFactory;
@@ -16,14 +15,11 @@ import org.eclipse.emf.ecore.util.FeatureMap.Entry;
 import org.eclipse.emf.ecore.util.FeatureMapUtil;
 import org.eclipse.emf.ecore.xml.type.AnyType;
 import org.eclipse.emf.edit.EMFEditPlugin;
-import org.eclipse.emf.edit.provider.ComposedImage;
 import org.eclipse.emf.edit.provider.DelegatingWrapperItemProvider;
 import org.eclipse.emf.edit.provider.FeatureMapEntryWrapperItemProvider;
 import org.eclipse.emf.edit.provider.IItemColorProvider;
 import org.eclipse.emf.edit.provider.ReflectiveItemProvider;
 import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
-
-import de.hub.clickwatch.model.IsRecordedAdapter;
 
 
 /**
@@ -146,20 +142,20 @@ public class ClickWatchReflectiveItemProviderAdapterFactory extends ReflectiveIt
 			}
 		}
 		
-		@Override
-		public Object getImage(Object object) {
-			if (object instanceof EObject) {
-				for (Adapter adapter: ((EObject)object).eAdapters()) {
-					if (adapter.equals(new IsRecordedAdapter())) {
-						List<Object> images = new ArrayList<Object>();
-						images.add(super.getImage(object));
-						images.add(NewEditPlugin.INSTANCE.getImage("full/ovr16/recording"));
-						return new ComposedImage(images);
-					}
-				}
-			}
-			return super.getImage(object);
-		}
+//		@Override
+//		public Object getImage(Object object) {
+//			if (object instanceof EObject) {
+//				for (Adapter adapter: ((EObject)object).eAdapters()) {
+//					if (adapter.equals(new IsRecordedAdapter())) {
+//						List<Object> images = new ArrayList<Object>();
+//						images.add(super.getImage(object));
+//						images.add(NewEditPlugin.INSTANCE.getImage("full/ovr16/recording"));
+//						return new ComposedImage(images);
+//					}
+//				}
+//			}
+//			return super.getImage(object);
+//		}
 
 		@Override
 		public Collection<?> getChildren(Object object) {

@@ -6,8 +6,8 @@
  */
 package de.hub.clickwatch.model;
 
-import org.eclipse.emf.cdo.CDOObject;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -31,10 +31,9 @@ import org.eclipse.emf.common.util.EList;
  *
  * @see de.hub.clickwatch.model.ClickWatchModelPackage#getNode()
  * @model
- * @extends CDOObject
  * @generated
  */
-public interface Node extends CDOObject {
+public interface Node extends EObject {
 	/**
 	 * Returns the value of the '<em><b>INet Address</b></em>' attribute.
 	 * The default value is <code>"localhost"</code>.
@@ -276,6 +275,38 @@ public interface Node extends CDOObject {
 	 * @model
 	 * @generated
 	 */
-	Handler getHandlers(String elementFilter, String handlerFilter);
+	void filter(String elementFilter, String handlerFilter);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	Handler getHandler(String qualifiedName);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	Element getElement(String name);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation"
+	 * @generated
+	 */
+	EList<Handler> getAllHandlers();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void filter();
 
 } // Node

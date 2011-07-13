@@ -16,6 +16,7 @@
   
   <modules>
    <module>de.hub.clickwatch.ui</module>
+   <module>de.hub.clickwatch.ui.test</module>
    <module>de.hub.clickwatch.model.edit</module>
    <module>de.hub.clickwatch.model.editor</module>
   </modules>

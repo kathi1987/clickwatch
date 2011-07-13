@@ -13,5 +13,6 @@ Export-Package: de.hub.clickwatch.model,
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
  org.eclipse.emf.ecore.xmi,
- org.eclipse.emf.cdo
+ org.eclipse.emf.cdo,
+ com.google.collect;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy

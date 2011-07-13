@@ -1,32 +1,37 @@
 package de.hub.clickwatch.tests;
 
-import junit.framework.TestCase;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import org.eclipse.core.runtime.IStatus;
+import org.junit.Before;
 
 import com.google.inject.AbstractModule;
+import com.google.inject.Binder;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
+import com.google.inject.Module;
 
 import de.hub.clickcontrol.ClickSocketImpl;
 import de.hub.clickcontrol.IClickSocket;
+import de.hub.clickwatch.ClickWatchModule;
 import de.hub.clickwatch.ClickWatchStandaloneSetup;
-import de.hub.clickwatch.merge.IMergeConfiguration;
-import de.hub.clickwatch.merge.MergeModule;
-import de.hub.clickwatch.model.ClickWatchNodeMergeConfiguration;
-import de.hub.clickwatch.model.IConnectionConfiguration;
-import de.hub.clickwatch.nodeadapter.ClickControlXSDNodeAdapter;
-import de.hub.clickwatch.nodeadapter.INodeAdapter;
+import de.hub.clickwatch.connection.adapter.IValueAdapter;
+import de.hub.clickwatch.connection.adapter.StringValueAdapter;
 import de.hub.clickwatch.util.ILogger;
 
-
-public class AbstractTest extends TestCase {
+public class AbstractTest {
 	
 	protected Injector injector;
 	
+	@Before
 	public final void setUp() {
 		ClickWatchStandaloneSetup.doSetup();
-		injector = Guice.createInjector(createModule());
+		List<Module> modules = new ArrayList<Module>();
+		modules.addAll(Arrays.asList(getAdditionalModules()));
+		modules.add(createModule());
+		injector = Guice.createInjector(modules);
 		additionalSetUp();
 	}
 	
@@ -34,47 +39,52 @@ public class AbstractTest extends TestCase {
 		return new TestModule();
 	}
 	
-	protected class TestModule extends AbstractModule {
-		
+	protected class TestModule extends ClickWatchModule {
 		@Override
-		protected void configure() {
-			install(new MergeModule());
-			bind(ILogger.class).toInstance(new ILogger() {				
-				@Override
-				public void log(int status, String message, Throwable exception) {
-					if (status == IStatus.ERROR) {
-						System.err.println("ERROR: " + message);
-						exception.printStackTrace(System.err);
-					} else {
-						System.out.println(message);
-					}
-				}
-			});
-			bind(INodeAdapter.class).to(getNodeAdapterClass());
-			bind(IMergeConfiguration.class).to(getMergeConfigurationClass());
-			bind(IClickSocket.class).to(getClickSocketClass());
-			bind(IConnectionConfiguration.class).toInstance(getConnectionConfiguration());
-			for (AbstractModule additionalModule: getAdditionalModules()) {
-				install(additionalModule);
-			}
+		protected ILogger getLogger() {
+			return AbstractTest.this.getLogger();
 		}
+
+		@Override
+		protected void bindValueAdapter() {
+			bind(IValueAdapter.class).to(getValueAdapterClass());
+		}
+
+		@Override
+		protected void bindClickSocket() {
+			bind(IClickSocket.class).to(getClickSocketClass());
+		}
+	}
+	
+	protected ILogger getLogger() {
+		return new ILogger() {				
+			@Override
+			public void log(int status, String message, Throwable exception) {
+				if (status == IStatus.ERROR) {
+					System.err.println("ERROR: " + message);
+					exception.printStackTrace(System.err);
+				} else {
+					System.out.println(message);
+				}
+			}
+		};
+	}
+	
+	protected Module[] getAdditionalModules() {
+		return new Module[] { new Module() {		
+			@Override
+			public void configure(Binder binder) {
+				AbstractTest.this.configureAnAdditionalModule(binder);
+			}
+		}};
+	}
+
+	protected void configureAnAdditionalModule(Binder binder) {
 		
 	}
 	
-	protected IConnectionConfiguration getConnectionConfiguration() {
-		return new TestConnectionConfiguration();
-	}
-	
-	protected AbstractModule[] getAdditionalModules() {
-		return new AbstractModule[] {};
-	}
-
-	protected Class<? extends IMergeConfiguration> getMergeConfigurationClass() {
-		return ClickWatchNodeMergeConfiguration.class;
-	}
-
-	protected Class<? extends INodeAdapter> getNodeAdapterClass() {
-		return ClickControlXSDNodeAdapter.class;
+	protected Class<? extends IValueAdapter> getValueAdapterClass() {
+		return StringValueAdapter.class;
 	}
 
 	protected Class<? extends IClickSocket> getClickSocketClass() {

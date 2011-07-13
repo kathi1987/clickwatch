@@ -3,9 +3,9 @@ package de.hub.clickwatch.analysis.automated;
 import com.google.common.base.Preconditions;
 
 import de.hub.clickwatch.model.Network;
-import de.hub.clickwatch.ui.util.UiThreadder;
+import de.hub.clickwatch.ui.util.UIContext;
 
-public class AutomatedAnalysisContainer extends UiThreadder {
+public class AutomatedAnalysisContainer extends UIContext {
 	
 	private static AutomatedAnalysisContainer instance = new AutomatedAnalysisContainer();
 

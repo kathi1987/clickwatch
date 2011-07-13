@@ -12,6 +12,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.XMLResource;
+import org.junit.Test;
 
 import de.hub.clickwatch.XmlModelRepository;
 import de.hub.clickwatch.analysis.specificmodels.SpecificMetaModelGenerator;
@@ -20,9 +21,11 @@ import de.hub.clickwatch.model.Network;
 import de.hub.clickwatch.model.Node;
 import de.hub.clickwatch.tests.AbstractTest;
 
+import static org.junit.Assert.*;
 
 public class SpecificMetaModelGeneratorTest extends AbstractTest {
 
+	@Test
 	public void testSimpleValues() {
 		SpecificMetaModelGenerator metaModelGenerator = new SpecificMetaModelGenerator();
 		String modelStr =
@@ -52,6 +55,7 @@ public class SpecificMetaModelGeneratorTest extends AbstractTest {
 		System.out.println(xmlModelRepository.serializeModel(specificMetaModel, specificModel));
 	}
 	
+	@Test
 	public void testComplexValues1() {
 		SpecificMetaModelGenerator instance = new SpecificMetaModelGenerator();
 		String modelStr =
@@ -81,6 +85,7 @@ public class SpecificMetaModelGeneratorTest extends AbstractTest {
 		System.out.println(xmlModelRepository.serializeModel(specificMetaModel, specificModel));
 	}
 	
+	@Test
 	public void testComplexValues2() {
 		SpecificMetaModelGenerator instance = new SpecificMetaModelGenerator();
 		String modelStr =
@@ -110,6 +115,7 @@ public class SpecificMetaModelGeneratorTest extends AbstractTest {
 		System.out.println(xmlModelRepository.serializeModel(specificMetaModel, specificModel));
 	}
 	
+	@Test
 	public void testMultipleNodes() {
 		SpecificMetaModelGenerator instance = new SpecificMetaModelGenerator();
 		String modelStr =
@@ -145,6 +151,7 @@ public class SpecificMetaModelGeneratorTest extends AbstractTest {
 		System.out.println(xmlModelRepository.serializeModel(specificMetaModel, specificModel));
 	}
 	
+	@Test
 	public void testWithRecordedModel() throws Exception {
 		String record = 
 			"src/" + this.getClass().getPackage().getName().replace(".", "/") + "/test.clickwatchmodel";

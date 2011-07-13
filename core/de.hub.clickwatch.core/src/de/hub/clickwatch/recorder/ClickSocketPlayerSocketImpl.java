@@ -1,5 +1,7 @@
 package de.hub.clickwatch.recorder;
 
+import java.io.IOException;
+import java.net.InetAddress;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -29,6 +31,16 @@ public class ClickSocketPlayerSocketImpl extends ClickSocketTestImpl {
 	private String[] elements = null;
 	private ListMultimap<String, HandlerInfo> handlers = null;
 	private Map<String, String> values = null;
+
+	private InetAddress host;
+	private int port;
+	
+	@Override
+	public void connect(InetAddress host, int port, int timeout) throws IOException {
+		super.connect(host, port, timeout);
+		this.host = host;
+		this.port = port;
+	}
 	
 	private void initialize() {
 		String host = this.host.getHostName();
@@ -41,8 +53,7 @@ public class ClickSocketPlayerSocketImpl extends ClickSocketTestImpl {
 			return;
 		}
 		node = newNode;
-		
-		
+	
 		List<String> elements = new ArrayList<String>();
 		handlers = ArrayListMultimap.create();
 		values = new HashMap<String, String>();
@@ -51,10 +62,10 @@ public class ClickSocketPlayerSocketImpl extends ClickSocketTestImpl {
 		while (it.hasNext()) {
 			EObject eObject = it.next();
 			if (eObject instanceof Element) {
-				elements.add(((Element)eObject).getElementPath());
+				elements.add(((Element)eObject).getQualifiedName());
 			} else if (eObject instanceof Handler) {
 				Handler handler = (Handler)eObject;
-				String elementPath = ((Element)handler.eContainer()).getElementPath();
+				String elementPath = ((Element)handler.eContainer()).getQualifiedName();
 				String handlerName = handler.getName();
 				HandlerInfo handlerInfo = new HandlerInfo(
 						elementPath, handlerName, handler.isCanRead(), handler.isCanWrite());

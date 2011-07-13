@@ -7,7 +7,6 @@
 package de.hub.clickwatch.model.impl;
 
 
-import de.hub.clickwatch.model.*;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
@@ -69,11 +68,11 @@ public class ClickWatchModelFactoryImpl extends EFactoryImpl implements ClickWat
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case ClickWatchModelPackage.NODE: return (EObject)createNode();
-			case ClickWatchModelPackage.ELEMENT: return (EObject)createElement();
-			case ClickWatchModelPackage.HANDLER: return (EObject)createHandler();
-			case ClickWatchModelPackage.NETWORK: return (EObject)createNetwork();
-			case ClickWatchModelPackage.MULTI_NODE: return (EObject)createMultiNode();
+			case ClickWatchModelPackage.NODE: return createNode();
+			case ClickWatchModelPackage.ELEMENT: return createElement();
+			case ClickWatchModelPackage.HANDLER: return createHandler();
+			case ClickWatchModelPackage.NETWORK: return createNetwork();
+			case ClickWatchModelPackage.MULTI_NODE: return createMultiNode();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}

@@ -38,13 +38,8 @@ public class TestUtil {
 		}
 
 		@Override
-		public String[] getElements() {
-			return source.getElements();
-		}
-
-		@Override
-		public HandlerInfo[] getHandler(String element) {
-			return source.getHandler(element);
+		public HandlerInfo[] getHandlers() {
+			return source.getHandlers();
 		}
 
 		@Override
@@ -115,12 +110,12 @@ public class TestUtil {
 	 * @param pathStr Path syntax is: <elem_name>:e/<elem_name>:e/<handler_name>:h/<xml_elem>:x/<text>:t
 	 * 
 	 */
-	public static EObject query(EObject value, String pathStr) {
-		Pattern xmlPattern = Pattern.compile("([a-zA-Z0-9]+)(\\[([a-zA-Z0-9]*)=([a-z-A-Z0-9]+)\\])?");
+	public static Object query(EObject value, String pathStr) {
+		Pattern xmlPattern = Pattern.compile("([a-zA-Z0-9/]+)(\\[([a-zA-Z0-9]*)=([a-z-A-Z0-9]+)\\])?");
 		TestCase.assertNotNull(value);
-		String[] path = pathStr.split("/");
+		String[] path = pathStr.split("#");
 		String head = path[0];
-		String tail = path.length > 1 ? pathStr.substring(pathStr.indexOf("/") + 1) : null;
+		String tail = path.length > 1 ? pathStr.substring(pathStr.indexOf("#") + 1) : null;
 					
 		String[] pathItemElements = head.split(":");
 		Preconditions.checkArgument(pathItemElements.length == 2, "illegal path");
@@ -147,7 +142,7 @@ public class TestUtil {
 				return null;
 			}
 			String name = matcher.group(1);			
-			if (value.eContainmentFeature().getName().equals(name)) {
+			if (value.eContainingFeature() == null || value.eContainmentFeature().getName().equals(name)) {
 				if (matcher.group(4) != null) {
 					String attrName = matcher.group(3);
 					String attrValue = matcher.group(4);
@@ -172,7 +167,16 @@ public class TestUtil {
 				}
 			}
 		} else if (pathItemKind.equals("t")) {
-			
+//			if (value instanceof AnyType) {
+//				for (FeatureMap.Entry fme: ((AnyType) value).getMixed()) {
+//					if (fme.getEStructuralFeature().getName().equals("text") && fme.getEStructuralFeature().getEType() == EcorePackage.eINSTANCE.getEString()) {
+//						if (fme.getValue().equals(pathItemName)) {
+//							return fme.getValue();
+//						}
+//					}
+//				}
+//			}
+
 		} else {
 			Preconditions.checkArgument(false, "illegal path");
 		}
@@ -182,7 +186,7 @@ public class TestUtil {
 				return value;
 			} else {
 				for (EObject valueContents: value.eContents()) {
-					EObject tailMatches = query(valueContents, tail);
+					Object tailMatches = query(valueContents, tail);
 					if (tailMatches != null) {
 						return tailMatches;
 					}

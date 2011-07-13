@@ -8,14 +8,12 @@ import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
-import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 
 import de.hub.clickcontrol.ClickSocketImpl;
 import de.hub.clickcontrol.IClickSocket;
 import de.hub.clickwatch.ClickWatchModule;
-import de.hub.clickwatch.model.IConnectionConfiguration;
 import de.hub.clickwatch.preferences.PreferenceConstants;
 import de.hub.clickwatch.recorder.ClickSocketPlayer;
 import de.hub.clickwatch.recorder.ClickSocketPlayerSocketImpl;
@@ -44,24 +42,9 @@ public class PluginActivator extends AbstractUIPlugin {
 		
 		if (bindToPlayerCache != bindToPlayer || injectorCache == null) {
 			bindToPlayerCache = bindToPlayer;
-			ClickWatchModule clickWatchModule = new ClickWatchModule();
-			clickWatchModule.setLogger(new ILogger() {				
+			ClickWatchModule clickWatchModule = new ClickWatchUIModule() {
 				@Override
-				public void log(int status, String message, Throwable exception) {
-					getLog().log(new Status(status, "de.hub.clickwatch.ui", message, exception));
-					if (exception == null) {
-						System.out.println(message);
-					} else {
-						System.out.println(message + ": " + exception.getLocalizedMessage());
-						exception.printStackTrace();
-					}
-				}
-			});
-			injectorCache = Guice.createInjector(clickWatchModule, new AbstractModule() {				
-				@Override
-				protected void configure() {
-					bind(IConnectionConfiguration.class).to(ConnectionConfiguration.class);
-					
+				protected void bindClickSocket() {
 					if (bindToPlayer) {
 						bindToPlayer();
 					} else {
@@ -69,7 +52,7 @@ public class PluginActivator extends AbstractUIPlugin {
 					}
 				}
 				
-				protected void bindToPlayer() {
+				private void bindToPlayer() {
 					if (player == null) {
 						java.net.URI uri = null;
 						try {
@@ -85,7 +68,21 @@ public class PluginActivator extends AbstractUIPlugin {
 					bind(ClickSocketPlayer.class).toInstance(player);
 					bind(IClickSocket.class).to(ClickSocketPlayerSocketImpl.class);
 				}
+				
+			};
+			clickWatchModule.setLogger(new ILogger() {				
+				@Override
+				public void log(int status, String message, Throwable exception) {
+					getLog().log(new Status(status, "de.hub.clickwatch.ui", message, exception));
+					if (exception == null) {
+						System.out.println(message);
+					} else {
+						System.out.println(message + ": " + exception.getLocalizedMessage());
+						exception.printStackTrace();
+					}
+				}
 			});
+			injectorCache = Guice.createInjector(clickWatchModule);
 		}
 		return injectorCache;
 	}

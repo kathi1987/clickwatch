@@ -18,9 +18,10 @@ Require-Bundle: org.eclipse.emf.ecore;bundle-version="2.7.0";visibility:=reexpor
  org.eclipse.jface;bundle-version="3.7.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: de.hub.clickwatch,
+ de.hub.clickwatch.connection,
+ de.hub.clickwatch.connection.adapter,
  de.hub.clickwatch.merge,
  de.hub.clickwatch.model,
- de.hub.clickwatch.nodeadapter,
  de.hub.clickwatch.recorder,
  de.hub.clickwatch.util
 Bundle-ActivationPolicy: lazy

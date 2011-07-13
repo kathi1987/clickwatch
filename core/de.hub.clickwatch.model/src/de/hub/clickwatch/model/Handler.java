@@ -6,7 +6,7 @@
  */
 package de.hub.clickwatch.model;
 
-import org.eclipse.emf.cdo.CDOObject;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.FeatureMap;
 
 /**
@@ -31,10 +31,9 @@ import org.eclipse.emf.ecore.util.FeatureMap;
  *
  * @see de.hub.clickwatch.model.ClickWatchModelPackage#getHandler()
  * @model extendedMetaData="kind='mixed'"
- * @extends CDOObject
  * @generated
  */
-public interface Handler extends CDOObject {
+public interface Handler extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
