@@ -391,7 +391,9 @@ public class TransformationEngine {
 				bundleIdentifier = "/" + bundleIdentifier;				
 			}		
 			// try to install the bundle
-			retBundle = PluginActivator.getInstance().getBundle().getBundleContext().installBundle("reference:" + ResourcesPlugin.getWorkspace().getRoot().getLocationURI().toURL().toString() + bundleIdentifier);						
+			retBundle = PluginActivator.getInstance().getBundle().getBundleContext().installBundle("reference:" + ResourcesPlugin.getWorkspace().getRoot().getLocationURI().toURL().toString() + bundleIdentifier);
+			
+			retBundle.update();			
 		}
 		catch(Exception e)
 		{
