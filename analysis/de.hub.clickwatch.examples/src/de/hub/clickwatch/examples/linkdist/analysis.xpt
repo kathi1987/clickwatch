@@ -38,7 +38,7 @@ digraph {
         style="stroke:rgb(«255-(link.rssi*4)»,0,255);stroke-width:2"/>
 «ENDFOREACH»
 «FOREACH all_nodes().collect(e|e.gps.gps_coord.gps) AS gps-»
-«IF gps.lat != "0.0" && gps.long != "0.0"-»
+«IF gps.lat != null && gps.long != null-»
   <circle cx="«lat(gps.lat.toString())*3»" cy="«lon(gps.long.toString())*3»" r="10" stroke="black" stroke-width="2" fill="black"/>
 «ENDIF-»
 «ENDFOREACH-»

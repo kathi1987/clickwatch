@@ -91,7 +91,6 @@ public class ResultView extends ViewPart {
 				layout.topControl = treeViewer.getControl();
 				treeViewer.getControl().getParent().layout();
 			}							
-
 		}
 	}
 	
