@@ -4,6 +4,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/rc|elements:Rc|Element/active|handlers:Active|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Rc" eOpposite="//Rc/active"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/rc|elements:Rc|Element/active|handlers:Active|Handler/text|text:"/>
@@ -15,6 +16,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/data_suppressor|children:Data_suppressor|Element/active1|handlers:Active1|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Data_suppressor" eOpposite="//Data_suppressor/active1"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/data_suppressor|children:Data_suppressor|Element/active1|handlers:Active1|Handler/text|text:"/>
@@ -26,6 +28,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/wireless|elements:Wireless|Element/address|handlers:Address|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Wireless" eOpposite="//Wireless/address"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/wireless|elements:Wireless|Element/address|handlers:Address|Handler/text|text:"/>
@@ -37,6 +40,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/ath_op|children:Ath_op|Element"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Wifidevice" eOpposite="//Wifidevice/ath_op"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="pkt_count" eType="//Pkt_count" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/ath_op|children:Ath_op|Element/pkt_count|handlers:Pkt_count|Handler"/>
@@ -54,6 +58,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/ath_op_q|children:Ath_op_q|Element"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Wifidevice" eOpposite="//Wifidevice/ath_op_q"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="drops" eType="//Device_wifiWifideviceAth_op_qDrops" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/ath_op_q|children:Ath_op_q|Element/drops|handlers:Drops|Handler"/>
@@ -89,6 +94,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/link_stat|children:Link_stat|Element/schema|handlers:Schema|Handler/schema|schema:Schema|EObject/element|element:Element|EObject/complexType|complexType:ComplexType|EObject/attribute|attribute:Attribute|EObject"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//ComplexType" eOpposite="//ComplexType/attribute"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/link_stat|children:Link_stat|Element/schema|handlers:Schema|Handler/schema|schema:Schema|EObject/element|element:Element|EObject/complexType|complexType:ComplexType|EObject/attribute|attribute:Attribute|EObject/name|name:"/>
@@ -118,6 +124,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/link_stat|children:Link_stat|Element/bad_version|handlers:Bad_version|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Link_stat" eOpposite="//Link_stat/bad_version"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="badnodes" eType="//Badnodes" volatile="true" transient="true" derived="true" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/link_stat|children:Link_stat|Element/bad_version|handlers:Bad_version|Handler/badnodes|badnodes:Badnodes|EObject"/>
@@ -129,6 +136,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/link_stat|children:Link_stat|Element/bad_version|handlers:Bad_version|Handler/badnodes|badnodes:Badnodes|EObject"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Bad_version" eOpposite="//Bad_version/badnodes"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/link_stat|children:Link_stat|Element/bad_version|handlers:Bad_version|Handler/badnodes|badnodes:Badnodes|EObject/text|text:"/>
@@ -152,6 +160,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/link_stat|children:Link_stat|Element/bcast_stats|handlers:Bcast_stats|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Link_stat" eOpposite="//Link_stat/bcast_stats"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="entry" eType="//Entry" volatile="true" transient="true" derived="true" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/link_stat|children:Link_stat|Element/bcast_stats|handlers:Bcast_stats|Handler/entry|entry:Entry|EObject"/>
@@ -163,6 +172,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/rawwifidev_too_small_cnt|children:Rawwifidev_too_small_cnt|Element/bit_rate|handlers:Bit_rate|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Rawwifidev_too_small_cnt" eOpposite="//Rawwifidev_too_small_cnt/bit_rate"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/rawwifidev_too_small_cnt|children:Rawwifidev_too_small_cnt|Element/bit_rate|handlers:Bit_rate|Handler/text|text:"/>
@@ -174,11 +184,13 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/lt|elements:Lt|Element/blacklist|handlers:Blacklist|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Lt" eOpposite="//Lt/blacklist"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="BrnToMe" eSuperTypes="//Element">
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/brnToMe|children:BrnToMe|Element"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Device_wifi" eOpposite="//Device_wifi/brnToMe"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="//Device_wifiBrnToMeClass" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/brnToMe|children:BrnToMe|Element/class|handlers:Class|Handler"/>
@@ -190,6 +202,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/brn_clf|elements:Brn_clf|Element"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Node" eOpposite="//Node/brn_clf"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="program" eType="//Brn_clfProgram" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/brn_clf|elements:Brn_clf|Element/program|handlers:Program|Handler"/>
@@ -207,6 +220,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/brn_clf|elements:Brn_clf|Element/class|handlers:Class|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Brn_clf" eOpposite="//Brn_clf/class"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/brn_clf|elements:Brn_clf|Element/class|handlers:Class|Handler/text|text:"/>
@@ -218,6 +232,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/brn_clf|elements:Brn_clf|Element/program|handlers:Program|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Brn_clf" eOpposite="//Brn_clf/program"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/brn_clf|elements:Brn_clf|Element/program|handlers:Program|Handler/text|text:"/>
@@ -229,6 +244,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/brn_ether_clf|children:Brn_ether_clf|Element"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Device_wifi" eOpposite="//Device_wifi/brn_ether_clf"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="program" eType="//Device_wifiBrn_ether_clfProgram" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/brn_ether_clf|children:Brn_ether_clf|Element/program|handlers:Program|Handler"/>
@@ -246,6 +262,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/brnwifi|children:Brnwifi|Element"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Device_wifi" eOpposite="//Device_wifi/brnwifi"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="bssid" eType="//Device_wifiBrnwifiBssid" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/brnwifi|children:Brnwifi|Element/bssid|handlers:Bssid|Handler"/>
@@ -269,6 +286,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/rawwifidev_too_small_cnt|children:Rawwifidev_too_small_cnt|Element/byte_count|handlers:Byte_count|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Rawwifidev_too_small_cnt" eOpposite="//Rawwifidev_too_small_cnt/byte_count"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/rawwifidev_too_small_cnt|children:Rawwifidev_too_small_cnt|Element/byte_count|handlers:Byte_count|Handler/text|text:"/>
@@ -280,6 +298,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/rawwifidev_too_small_cnt|children:Rawwifidev_too_small_cnt|Element/byte_rate|handlers:Byte_rate|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Rawwifidev_too_small_cnt" eOpposite="//Rawwifidev_too_small_cnt/byte_rate"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/rawwifidev_too_small_cnt|children:Rawwifidev_too_small_cnt|Element/byte_rate|handlers:Byte_rate|Handler/text|text:"/>
@@ -291,6 +310,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/gps|elements:Gps|Element/cart_coord|handlers:Cart_coord|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Gps" eOpposite="//Gps/cart_coord"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/gps|elements:Gps|Element/cart_coord|handlers:Cart_coord|Handler/text|text:"/>
@@ -302,6 +322,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/seismo|elements:Seismo|Element/channelstatinfo|handlers:Channelstatinfo|Handler/node|node:Node|EObject/seismo|seismo:Seismo|EObject/chaninfo|chaninfo:Chaninfo|EObject"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//SeismoChannelstatinfoNodeSeismo" eOpposite="//SeismoChannelstatinfoNodeSeismo/chaninfo"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/seismo|elements:Seismo|Element/channelstatinfo|handlers:Channelstatinfo|Handler/node|node:Node|EObject/seismo|seismo:Seismo|EObject/chaninfo|chaninfo:Chaninfo|EObject/id|id:"/>
@@ -337,6 +358,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/seismo|elements:Seismo|Element/channelstatinfo|handlers:Channelstatinfo|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Seismo" eOpposite="//Seismo/channelstatinfo"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="node" eType="//SeismoChannelstatinfoNode" volatile="true" transient="true" derived="true" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/seismo|elements:Seismo|Element/channelstatinfo|handlers:Channelstatinfo|Handler/node|node:Node|EObject"/>
@@ -348,6 +370,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/link_stat|children:Link_stat|Element/schema|handlers:Schema|Handler/schema|schema:Schema|EObject/element|element:Element|EObject/complexType|complexType:ComplexType|EObject/choice|choice:Choice|EObject"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//ComplexType" eOpposite="//ComplexType/choice"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="element" upperBound="-1" eType="//Device_wifiLink_statSchemaSchemaElementComplexTypeChoiceElement" volatile="true" transient="true" derived="true" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/link_stat|children:Link_stat|Element/schema|handlers:Schema|Handler/schema|schema:Schema|EObject/element|element:Element|EObject/complexType|complexType:ComplexType|EObject/choice|choice:Choice|EObject/element|element:Element|EObject"/>
@@ -359,6 +382,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/elements:Element/version|handlers:Version|Handler/version|version:Version|EObject/click_binary|click_binary:Click_binary|EObject"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//ElementVersionVersion" eOpposite="//ElementVersionVersion/click_binary"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/elements:Element/version|handlers:Version|Handler/version|version:Version|EObject/click_binary|click_binary:Click_binary|EObject/version|version:"/>
@@ -388,6 +412,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/elements:Element/version|handlers:Version|Handler/version|version:Version|EObject/click_script|click_script:Click_script|EObject"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//ElementVersionVersion" eOpposite="//ElementVersionVersion/click_script"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="md5_id" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/elements:Element/version|handlers:Version|Handler/version|version:Version|EObject/click_script|click_script:Click_script|EObject/md5_id|md5_id:"/>
@@ -399,6 +424,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/link_stat|children:Link_stat|Element/schema|handlers:Schema|Handler/schema|schema:Schema|EObject/element|element:Element|EObject/complexType|complexType:ComplexType|EObject"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Device_wifiLink_statSchemaSchemaElement" eOpposite="//Device_wifiLink_statSchemaSchemaElement/complexType"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="attribute" upperBound="-1" eType="//Attribute" volatile="true" transient="true" derived="true" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/link_stat|children:Link_stat|Element/schema|handlers:Schema|Handler/schema|schema:Schema|EObject/element|element:Element|EObject/complexType|complexType:ComplexType|EObject/attribute|attribute:Attribute|EObject"/>
@@ -422,6 +448,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/elements:Element/config|handlers:Config|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Element" eOpposite="//Element/config"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/elements:Element/config|handlers:Config|Handler/text|text:"/>
@@ -433,6 +460,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/rawwifidev_too_small_cnt|children:Rawwifidev_too_small_cnt|Element/count|handlers:Count|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Rawwifidev_too_small_cnt" eOpposite="//Rawwifidev_too_small_cnt/count"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/rawwifidev_too_small_cnt|children:Rawwifidev_too_small_cnt|Element/count|handlers:Count|Handler/text|text:"/>
@@ -444,11 +472,13 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/rawwifidev_too_small_cnt|children:Rawwifidev_too_small_cnt|Element/count_call|handlers:Count_call|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Rawwifidev_too_small_cnt" eOpposite="//Rawwifidev_too_small_cnt/count_call"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Crc" eSuperTypes="//Handler">
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/error_clf|children:Error_clf|Element/crc|handlers:Crc|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Error_clf" eOpposite="//Error_clf/crc"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/error_clf|children:Error_clf|Element/crc|handlers:Crc|Handler/text|text:"/>
@@ -460,6 +490,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/cst|children:Cst|Element"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Wifidevice" eOpposite="//Wifidevice/cst"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="stats_xml" eType="//Stats_xml" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/cst|children:Cst|Element/stats_xml|handlers:Stats_xml|Handler"/>
@@ -489,6 +520,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/data_power|children:Data_power|Element"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Device_wifi" eOpposite="//Device_wifi/data_power"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="power" eType="//Device_wifiData_powerPower" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/data_power|children:Data_power|Element/power|handlers:Power|Handler"/>
@@ -506,6 +538,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/data_queue|children:Data_queue|Element"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Device_wifi" eOpposite="//Device_wifi/data_queue"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="drops" eType="//Device_wifiData_queueDrops" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/data_queue|children:Data_queue|Element/drops|handlers:Drops|Handler"/>
@@ -541,6 +574,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/data_rate|children:Data_rate|Element"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Device_wifi" eOpposite="//Device_wifi/data_rate"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="tries" eType="//Tries" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/data_rate|children:Data_rate|Element/tries|handlers:Tries|Handler"/>
@@ -564,6 +598,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/data_suppressor|children:Data_suppressor|Element"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Device_wifi" eOpposite="//Device_wifi/data_suppressor"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="active1" eType="//Active1" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/data_suppressor|children:Data_suppressor|Element/active1|handlers:Active1|Handler"/>
@@ -587,6 +622,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/elements:Element/debug|handlers:Debug|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Element" eOpposite="//Element/debug"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/elements:Element/debug|handlers:Debug|Handler/text|text:"/>
@@ -598,6 +634,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/dev_decap|children:Dev_decap|Element"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Wifidevice" eOpposite="//Wifidevice/dev_decap"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="//Device_wifiWifideviceDev_decapClass" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/dev_decap|children:Dev_decap|Element/class|handlers:Class|Handler"/>
@@ -609,6 +646,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Node" eOpposite="//Node/device_wifi"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="rates" eType="//Device_wifiRates" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/rates|children:Rates|Element"/>
@@ -746,6 +784,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/brnToMe|children:BrnToMe|Element/class|handlers:Class|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//BrnToMe" eOpposite="//BrnToMe/class"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/brnToMe|children:BrnToMe|Element/class|handlers:Class|Handler/text|text:"/>
@@ -757,6 +796,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/brn_ether_clf|children:Brn_ether_clf|Element/class|handlers:Class|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Brn_ether_clf" eOpposite="//Brn_ether_clf/class"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/brn_ether_clf|children:Brn_ether_clf|Element/class|handlers:Class|Handler/text|text:"/>
@@ -768,6 +808,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/brn_ether_clf|children:Brn_ether_clf|Element/program|handlers:Program|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Brn_ether_clf" eOpposite="//Brn_ether_clf/program"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/brn_ether_clf|children:Brn_ether_clf|Element/program|handlers:Program|Handler/text|text:"/>
@@ -779,6 +820,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/brnwifi|children:Brnwifi|Element/bssid|handlers:Bssid|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Brnwifi" eOpposite="//Brnwifi/bssid"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/brnwifi|children:Brnwifi|Element/bssid|handlers:Bssid|Handler/text|text:"/>
@@ -790,6 +832,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/brnwifi|children:Brnwifi|Element/class|handlers:Class|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Brnwifi" eOpposite="//Brnwifi/class"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/brnwifi|children:Brnwifi|Element/class|handlers:Class|Handler/text|text:"/>
@@ -801,6 +844,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/brnwifi|children:Brnwifi|Element/mode|handlers:Mode|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Brnwifi" eOpposite="//Brnwifi/mode"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/brnwifi|children:Brnwifi|Element/mode|handlers:Mode|Handler/text|text:"/>
@@ -812,6 +856,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/data_power|children:Data_power|Element/class|handlers:Class|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Data_power" eOpposite="//Data_power/class"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/data_power|children:Data_power|Element/class|handlers:Class|Handler/text|text:"/>
@@ -823,6 +868,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/data_power|children:Data_power|Element/power|handlers:Power|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Data_power" eOpposite="//Data_power/power"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/data_power|children:Data_power|Element/power|handlers:Power|Handler/text|text:"/>
@@ -834,6 +880,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/data_queue|children:Data_queue|Element/capacity|handlers:Capacity|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Data_queue" eOpposite="//Data_queue/capacity"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/data_queue|children:Data_queue|Element/capacity|handlers:Capacity|Handler/text|text:"/>
@@ -845,6 +892,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/data_queue|children:Data_queue|Element/class|handlers:Class|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Data_queue" eOpposite="//Data_queue/class"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/data_queue|children:Data_queue|Element/class|handlers:Class|Handler/text|text:"/>
@@ -856,6 +904,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/data_queue|children:Data_queue|Element/drops|handlers:Drops|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Data_queue" eOpposite="//Data_queue/drops"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/data_queue|children:Data_queue|Element/drops|handlers:Drops|Handler/text|text:"/>
@@ -867,6 +916,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/data_queue|children:Data_queue|Element/highwater_length|handlers:Highwater_length|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Data_queue" eOpposite="//Data_queue/highwater_length"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/data_queue|children:Data_queue|Element/highwater_length|handlers:Highwater_length|Handler/text|text:"/>
@@ -878,6 +928,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/data_queue|children:Data_queue|Element/length|handlers:Length|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Data_queue" eOpposite="//Data_queue/length"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/data_queue|children:Data_queue|Element/length|handlers:Length|Handler/text|text:"/>
@@ -889,6 +940,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/data_rate|children:Data_rate|Element/class|handlers:Class|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Data_rate" eOpposite="//Data_rate/class"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/data_rate|children:Data_rate|Element/class|handlers:Class|Handler/text|text:"/>
@@ -900,6 +952,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/data_rate|children:Data_rate|Element/rate|handlers:Rate|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Data_rate" eOpposite="//Data_rate/rate"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/data_rate|children:Data_rate|Element/rate|handlers:Rate|Handler/text|text:"/>
@@ -911,6 +964,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/data_suppressor|children:Data_suppressor|Element/active0|handlers:Active0|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Data_suppressor" eOpposite="//Data_suppressor/active0"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/data_suppressor|children:Data_suppressor|Element/active0|handlers:Active0|Handler/text|text:"/>
@@ -922,6 +976,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/data_suppressor|children:Data_suppressor|Element/class|handlers:Class|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Data_suppressor" eOpposite="//Data_suppressor/class"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/data_suppressor|children:Data_suppressor|Element/class|handlers:Class|Handler/text|text:"/>
@@ -933,6 +988,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/error_clf|children:Error_clf|Element/class|handlers:Class|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Error_clf" eOpposite="//Error_clf/class"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/error_clf|children:Error_clf|Element/class|handlers:Class|Handler/text|text:"/>
@@ -944,6 +1000,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/error_clf|children:Error_clf|Element/phy|handlers:Phy|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Error_clf" eOpposite="//Error_clf/phy"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/error_clf|children:Error_clf|Element/phy|handlers:Phy|Handler/text|text:"/>
@@ -955,6 +1012,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/etx_metric|children:Etx_metric|Element/class|handlers:Class|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Etx_metric" eOpposite="//Etx_metric/class"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/etx_metric|children:Etx_metric|Element/class|handlers:Class|Handler/text|text:"/>
@@ -966,6 +1024,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/filter_tx|children:Filter_tx|Element/class|handlers:Class|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Filter_tx" eOpposite="//Filter_tx/class"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/filter_tx|children:Filter_tx|Element/class|handlers:Class|Handler/text|text:"/>
@@ -977,6 +1036,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/filter_tx|children:Filter_tx|Element/drops|handlers:Drops|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Filter_tx" eOpposite="//Filter_tx/drops"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/filter_tx|children:Filter_tx|Element/drops|handlers:Drops|Handler/text|text:"/>
@@ -988,6 +1048,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/link_stat|children:Link_stat|Element/class|handlers:Class|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Link_stat" eOpposite="//Link_stat/class"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/link_stat|children:Link_stat|Element/class|handlers:Class|Handler/text|text:"/>
@@ -999,6 +1060,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/link_stat|children:Link_stat|Element/period|handlers:Period|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Link_stat" eOpposite="//Link_stat/period"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="period" eType="//Device_wifiLink_statPeriodPeriod" volatile="true" transient="true" derived="true" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/link_stat|children:Link_stat|Element/period|handlers:Period|Handler/period|period:Period|EObject"/>
@@ -1010,6 +1072,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/link_stat|children:Link_stat|Element/period|handlers:Period|Handler/period|period:Period|EObject"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Device_wifiLink_statPeriod" eOpposite="//Device_wifiLink_statPeriod/period"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/link_stat|children:Link_stat|Element/period|handlers:Period|Handler/period|period:Period|EObject/value|value:"/>
@@ -1021,6 +1084,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/link_stat|children:Link_stat|Element/probes|handlers:Probes|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Link_stat" eOpposite="//Link_stat/probes"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="probes" eType="//Device_wifiLink_statProbesProbes" volatile="true" transient="true" derived="true" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/link_stat|children:Link_stat|Element/probes|handlers:Probes|Handler/probes|probes:Probes|EObject"/>
@@ -1032,6 +1096,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/link_stat|children:Link_stat|Element/probes|handlers:Probes|Handler/probes|probes:Probes|EObject"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Device_wifiLink_statProbes" eOpposite="//Device_wifiLink_statProbes/probes"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/link_stat|children:Link_stat|Element/probes|handlers:Probes|Handler/probes|probes:Probes|EObject/text|text:"/>
@@ -1061,6 +1126,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/link_stat|children:Link_stat|Element/schema|handlers:Schema|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Link_stat" eOpposite="//Link_stat/schema"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="schema" eType="//Device_wifiLink_statSchemaSchema" volatile="true" transient="true" derived="true" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/link_stat|children:Link_stat|Element/schema|handlers:Schema|Handler/schema|schema:Schema|EObject"/>
@@ -1072,6 +1138,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/link_stat|children:Link_stat|Element/schema|handlers:Schema|Handler/schema|schema:Schema|EObject"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Device_wifiLink_statSchema" eOpposite="//Device_wifiLink_statSchema/schema"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="element" upperBound="-1" eType="//Device_wifiLink_statSchemaSchemaElement" volatile="true" transient="true" derived="true" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/link_stat|children:Link_stat|Element/schema|handlers:Schema|Handler/schema|schema:Schema|EObject/element|element:Element|EObject"/>
@@ -1083,6 +1150,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/link_stat|children:Link_stat|Element/schema|handlers:Schema|Handler/schema|schema:Schema|EObject/element|element:Element|EObject"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Device_wifiLink_statSchemaSchema" eOpposite="//Device_wifiLink_statSchemaSchema/element"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="complexType" eType="//ComplexType" volatile="true" transient="true" derived="true" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/link_stat|children:Link_stat|Element/schema|handlers:Schema|Handler/schema|schema:Schema|EObject/element|element:Element|EObject/complexType|complexType:ComplexType|EObject"/>
@@ -1100,6 +1168,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/link_stat|children:Link_stat|Element/schema|handlers:Schema|Handler/schema|schema:Schema|EObject/element|element:Element|EObject/complexType|complexType:ComplexType|EObject/choice|choice:Choice|EObject/element|element:Element|EObject"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Choice" eOpposite="//Choice/element"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="ref" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/link_stat|children:Link_stat|Element/schema|handlers:Schema|Handler/schema|schema:Schema|EObject/element|element:Element|EObject/complexType|complexType:ComplexType|EObject/choice|choice:Choice|EObject/element|element:Element|EObject/ref|ref:"/>
@@ -1111,6 +1180,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/link_stat|children:Link_stat|Element/schema|handlers:Schema|Handler/schema|schema:Schema|EObject/element|element:Element|EObject/complexType|complexType:ComplexType|EObject/sequence|sequence:Sequence|EObject/element|element:Element|EObject"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Sequence" eOpposite="//Sequence/element"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="ref" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/link_stat|children:Link_stat|Element/schema|handlers:Schema|Handler/schema|schema:Schema|EObject/element|element:Element|EObject/complexType|complexType:ComplexType|EObject/sequence|sequence:Sequence|EObject/element|element:Element|EObject/ref|ref:"/>
@@ -1128,6 +1198,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/link_stat|children:Link_stat|Element/tau|handlers:Tau|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Link_stat" eOpposite="//Link_stat/tau"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="tau" eType="//Device_wifiLink_statTauTau" volatile="true" transient="true" derived="true" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/link_stat|children:Link_stat|Element/tau|handlers:Tau|Handler/tau|tau:Tau|EObject"/>
@@ -1139,6 +1210,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/link_stat|children:Link_stat|Element/tau|handlers:Tau|Handler/tau|tau:Tau|EObject"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Device_wifiLink_statTau" eOpposite="//Device_wifiLink_statTau/tau"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/link_stat|children:Link_stat|Element/tau|handlers:Tau|Handler/tau|tau:Tau|EObject/value|value:"/>
@@ -1150,6 +1222,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_clf|children:Lp_clf|Element/class|handlers:Class|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Lp_clf" eOpposite="//Lp_clf/class"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_clf|children:Lp_clf|Element/class|handlers:Class|Handler/text|text:"/>
@@ -1161,6 +1234,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_clf|children:Lp_clf|Element/program|handlers:Program|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Lp_clf" eOpposite="//Lp_clf/program"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_clf|children:Lp_clf|Element/program|handlers:Program|Handler/text|text:"/>
@@ -1172,6 +1246,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_data_scheduler|children:Lp_data_scheduler|Element/class|handlers:Class|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Lp_data_scheduler" eOpposite="//Lp_data_scheduler/class"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_data_scheduler|children:Lp_data_scheduler|Element/class|handlers:Class|Handler/text|text:"/>
@@ -1183,6 +1258,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_etherencap|children:Lp_etherencap|Element/class|handlers:Class|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Lp_etherencap" eOpposite="//Lp_etherencap/class"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_etherencap|children:Lp_etherencap|Element/class|handlers:Class|Handler/text|text:"/>
@@ -1194,6 +1270,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_power|children:Lp_power|Element/class|handlers:Class|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Lp_power" eOpposite="//Lp_power/class"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_power|children:Lp_power|Element/class|handlers:Class|Handler/text|text:"/>
@@ -1205,6 +1282,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_power|children:Lp_power|Element/power|handlers:Power|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Lp_power" eOpposite="//Lp_power/power"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_power|children:Lp_power|Element/power|handlers:Power|Handler/text|text:"/>
@@ -1216,6 +1294,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_queue|children:Lp_queue|Element/capacity|handlers:Capacity|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Lp_queue" eOpposite="//Lp_queue/capacity"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_queue|children:Lp_queue|Element/capacity|handlers:Capacity|Handler/text|text:"/>
@@ -1227,6 +1306,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_queue|children:Lp_queue|Element/class|handlers:Class|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Lp_queue" eOpposite="//Lp_queue/class"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_queue|children:Lp_queue|Element/class|handlers:Class|Handler/text|text:"/>
@@ -1238,6 +1318,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_queue|children:Lp_queue|Element/drops|handlers:Drops|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Lp_queue" eOpposite="//Lp_queue/drops"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_queue|children:Lp_queue|Element/drops|handlers:Drops|Handler/text|text:"/>
@@ -1249,6 +1330,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_queue|children:Lp_queue|Element/highwater_length|handlers:Highwater_length|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Lp_queue" eOpposite="//Lp_queue/highwater_length"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_queue|children:Lp_queue|Element/highwater_length|handlers:Highwater_length|Handler/text|text:"/>
@@ -1260,6 +1342,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_queue|children:Lp_queue|Element/length|handlers:Length|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Lp_queue" eOpposite="//Lp_queue/length"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_queue|children:Lp_queue|Element/length|handlers:Length|Handler/text|text:"/>
@@ -1271,6 +1354,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_suppressor|children:Lp_suppressor|Element/active0|handlers:Active0|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Lp_suppressor" eOpposite="//Lp_suppressor/active0"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_suppressor|children:Lp_suppressor|Element/active0|handlers:Active0|Handler/text|text:"/>
@@ -1282,6 +1366,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_suppressor|children:Lp_suppressor|Element/class|handlers:Class|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Lp_suppressor" eOpposite="//Lp_suppressor/class"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_suppressor|children:Lp_suppressor|Element/class|handlers:Class|Handler/text|text:"/>
@@ -1293,6 +1378,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_wifiencap|children:Lp_wifiencap|Element/bssid|handlers:Bssid|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Lp_wifiencap" eOpposite="//Lp_wifiencap/bssid"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_wifiencap|children:Lp_wifiencap|Element/bssid|handlers:Bssid|Handler/text|text:"/>
@@ -1304,6 +1390,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_wifiencap|children:Lp_wifiencap|Element/class|handlers:Class|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Lp_wifiencap" eOpposite="//Lp_wifiencap/class"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_wifiencap|children:Lp_wifiencap|Element/class|handlers:Class|Handler/text|text:"/>
@@ -1315,6 +1402,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_wifiencap|children:Lp_wifiencap|Element/mode|handlers:Mode|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Lp_wifiencap" eOpposite="//Lp_wifiencap/mode"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_wifiencap|children:Lp_wifiencap|Element/mode|handlers:Mode|Handler/text|text:"/>
@@ -1326,6 +1414,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/proberates|children:Proberates|Element/class|handlers:Class|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Proberates" eOpposite="//Proberates/class"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/proberates|children:Proberates|Element/class|handlers:Class|Handler/text|text:"/>
@@ -1337,6 +1426,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/proberates|children:Proberates|Element/rates|handlers:Rates|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Proberates" eOpposite="//Proberates/rates"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/proberates|children:Proberates|Element/rates|handlers:Rates|Handler/text|text:"/>
@@ -1348,6 +1438,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/rates|children:Rates|Element"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Device_wifi" eOpposite="//Device_wifi/rates"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="rates" eType="//Device_wifiRatesRates" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/rates|children:Rates|Element/rates|handlers:Rates|Handler"/>
@@ -1365,6 +1456,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/rates|children:Rates|Element/class|handlers:Class|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Device_wifiRates" eOpposite="//Device_wifiRates/class"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/rates|children:Rates|Element/class|handlers:Class|Handler/text|text:"/>
@@ -1376,6 +1468,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/rates|children:Rates|Element/rates|handlers:Rates|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Device_wifiRates" eOpposite="//Device_wifiRates/rates"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/rates|children:Rates|Element/rates|handlers:Rates|Handler/text|text:"/>
@@ -1387,6 +1480,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/ath_op|children:Ath_op|Element/class|handlers:Class|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Ath_op" eOpposite="//Ath_op/class"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/ath_op|children:Ath_op|Element/class|handlers:Class|Handler/text|text:"/>
@@ -1398,6 +1492,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/ath_op_q|children:Ath_op_q|Element/capacity|handlers:Capacity|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Ath_op_q" eOpposite="//Ath_op_q/capacity"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/ath_op_q|children:Ath_op_q|Element/capacity|handlers:Capacity|Handler/text|text:"/>
@@ -1409,6 +1504,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/ath_op_q|children:Ath_op_q|Element/class|handlers:Class|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Ath_op_q" eOpposite="//Ath_op_q/class"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/ath_op_q|children:Ath_op_q|Element/class|handlers:Class|Handler/text|text:"/>
@@ -1420,6 +1516,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/ath_op_q|children:Ath_op_q|Element/drops|handlers:Drops|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Ath_op_q" eOpposite="//Ath_op_q/drops"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/ath_op_q|children:Ath_op_q|Element/drops|handlers:Drops|Handler/text|text:"/>
@@ -1431,6 +1528,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/ath_op_q|children:Ath_op_q|Element/highwater_length|handlers:Highwater_length|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Ath_op_q" eOpposite="//Ath_op_q/highwater_length"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/ath_op_q|children:Ath_op_q|Element/highwater_length|handlers:Highwater_length|Handler/text|text:"/>
@@ -1442,6 +1540,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/ath_op_q|children:Ath_op_q|Element/length|handlers:Length|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Ath_op_q" eOpposite="//Ath_op_q/length"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/ath_op_q|children:Ath_op_q|Element/length|handlers:Length|Handler/text|text:"/>
@@ -1453,6 +1552,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/cst|children:Cst|Element/class|handlers:Class|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Cst" eOpposite="//Cst/class"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/cst|children:Cst|Element/class|handlers:Class|Handler/text|text:"/>
@@ -1464,6 +1564,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/cst|children:Cst|Element/stats|handlers:Stats|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Cst" eOpposite="//Cst/stats"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="channelstats" eType="//Device_wifiWifideviceCstStatsChannelstats" volatile="true" transient="true" derived="true" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/cst|children:Cst|Element/stats|handlers:Stats|Handler/channelstats|channelstats:Channelstats|EObject"/>
@@ -1475,6 +1576,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/cst|children:Cst|Element/stats|handlers:Stats|Handler/channelstats|channelstats:Channelstats|EObject"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Device_wifiWifideviceCstStats" eOpposite="//Device_wifiWifideviceCstStats/channelstats"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" upperBound="-1" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/cst|children:Cst|Element/stats|handlers:Stats|Handler/channelstats|channelstats:Channelstats|EObject/text|text:"/>
@@ -1552,6 +1654,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/cst|children:Cst|Element/stats|handlers:Stats|Handler/channelstats|channelstats:Channelstats|EObject/mac|mac:Mac|EObject"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Device_wifiWifideviceCstStatsChannelstats" eOpposite="//Device_wifiWifideviceCstStatsChannelstats/mac"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="packets" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/cst|children:Cst|Element/stats|handlers:Stats|Handler/channelstats|channelstats:Channelstats|EObject/mac|mac:Mac|EObject/packets|packets:"/>
@@ -1647,6 +1750,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/cst|children:Cst|Element/stats|handlers:Stats|Handler/channelstats|channelstats:Channelstats|EObject/mac_duration|mac_duration:Mac_duration|EObject"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Device_wifiWifideviceCstStatsChannelstats" eOpposite="//Device_wifiWifideviceCstStatsChannelstats/mac_duration"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="busy" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/cst|children:Cst|Element/stats|handlers:Stats|Handler/channelstats|channelstats:Channelstats|EObject/mac_duration|mac_duration:Mac_duration|EObject/busy|busy:"/>
@@ -1694,6 +1798,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/cst|children:Cst|Element/stats|handlers:Stats|Handler/channelstats|channelstats:Channelstats|EObject/mac_percentage|mac_percentage:Mac_percentage|EObject"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Device_wifiWifideviceCstStatsChannelstats" eOpposite="//Device_wifiWifideviceCstStatsChannelstats/mac_percentage"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="busy" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/cst|children:Cst|Element/stats|handlers:Stats|Handler/channelstats|channelstats:Channelstats|EObject/mac_percentage|mac_percentage:Mac_percentage|EObject/busy|busy:"/>
@@ -1741,6 +1846,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/cst|children:Cst|Element/stats|handlers:Stats|Handler/channelstats|channelstats:Channelstats|EObject/phy|phy:Phy|EObject"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Device_wifiWifideviceCstStatsChannelstats" eOpposite="//Device_wifiWifideviceCstStatsChannelstats/phy"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="hwbusy" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/cst|children:Cst|Element/stats|handlers:Stats|Handler/channelstats|channelstats:Channelstats|EObject/phy|phy:Phy|EObject/hwbusy|hwbusy:"/>
@@ -1806,6 +1912,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/cst|children:Cst|Element/stats|handlers:Stats|Handler/channelstats|channelstats:Channelstats|EObject/rssi|rssi:Rssi|EObject"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Device_wifiWifideviceCstStatsChannelstats" eOpposite="//Device_wifiWifideviceCstStatsChannelstats/rssi"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" upperBound="-1" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/cst|children:Cst|Element/stats|handlers:Stats|Handler/channelstats|channelstats:Channelstats|EObject/rssi|rssi:Rssi|EObject/text|text:"/>
@@ -1823,6 +1930,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/cst|children:Cst|Element/stats|handlers:Stats|Handler/channelstats|channelstats:Channelstats|EObject/rssi|rssi:Rssi|EObject/nb|nb:Nb|EObject"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Device_wifiWifideviceCstStatsChannelstatsRssi" eOpposite="//Device_wifiWifideviceCstStatsChannelstatsRssi/nb"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="addr" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/cst|children:Cst|Element/stats|handlers:Stats|Handler/channelstats|channelstats:Channelstats|EObject/rssi|rssi:Rssi|EObject/nb|nb:Nb|EObject/addr|addr:"/>
@@ -1864,6 +1972,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/cst|children:Cst|Element/stats_xml|handlers:Stats_xml|Handler/channelstats|channelstats:Channelstats|EObject"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Stats_xml" eOpposite="//Stats_xml/channelstats"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" upperBound="-1" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/cst|children:Cst|Element/stats_xml|handlers:Stats_xml|Handler/channelstats|channelstats:Channelstats|EObject/text|text:"/>
@@ -1941,6 +2050,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/cst|children:Cst|Element/stats_xml|handlers:Stats_xml|Handler/channelstats|channelstats:Channelstats|EObject/mac|mac:Mac|EObject"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Device_wifiWifideviceCstStats_xmlChannelstats" eOpposite="//Device_wifiWifideviceCstStats_xmlChannelstats/mac"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="packets" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/cst|children:Cst|Element/stats_xml|handlers:Stats_xml|Handler/channelstats|channelstats:Channelstats|EObject/mac|mac:Mac|EObject/packets|packets:"/>
@@ -2036,6 +2146,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/cst|children:Cst|Element/stats_xml|handlers:Stats_xml|Handler/channelstats|channelstats:Channelstats|EObject/mac_duration|mac_duration:Mac_duration|EObject"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Device_wifiWifideviceCstStats_xmlChannelstats" eOpposite="//Device_wifiWifideviceCstStats_xmlChannelstats/mac_duration"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="busy" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/cst|children:Cst|Element/stats_xml|handlers:Stats_xml|Handler/channelstats|channelstats:Channelstats|EObject/mac_duration|mac_duration:Mac_duration|EObject/busy|busy:"/>
@@ -2083,6 +2194,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/cst|children:Cst|Element/stats_xml|handlers:Stats_xml|Handler/channelstats|channelstats:Channelstats|EObject/mac_percentage|mac_percentage:Mac_percentage|EObject"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Device_wifiWifideviceCstStats_xmlChannelstats" eOpposite="//Device_wifiWifideviceCstStats_xmlChannelstats/mac_percentage"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="busy" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/cst|children:Cst|Element/stats_xml|handlers:Stats_xml|Handler/channelstats|channelstats:Channelstats|EObject/mac_percentage|mac_percentage:Mac_percentage|EObject/busy|busy:"/>
@@ -2130,6 +2242,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/cst|children:Cst|Element/stats_xml|handlers:Stats_xml|Handler/channelstats|channelstats:Channelstats|EObject/phy|phy:Phy|EObject"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Device_wifiWifideviceCstStats_xmlChannelstats" eOpposite="//Device_wifiWifideviceCstStats_xmlChannelstats/phy"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="hwbusy" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/cst|children:Cst|Element/stats_xml|handlers:Stats_xml|Handler/channelstats|channelstats:Channelstats|EObject/phy|phy:Phy|EObject/hwbusy|hwbusy:"/>
@@ -2195,6 +2308,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/cst|children:Cst|Element/stats_xml|handlers:Stats_xml|Handler/channelstats|channelstats:Channelstats|EObject/rssi|rssi:Rssi|EObject"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Device_wifiWifideviceCstStats_xmlChannelstats" eOpposite="//Device_wifiWifideviceCstStats_xmlChannelstats/rssi"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" upperBound="-1" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/cst|children:Cst|Element/stats_xml|handlers:Stats_xml|Handler/channelstats|channelstats:Channelstats|EObject/rssi|rssi:Rssi|EObject/text|text:"/>
@@ -2212,6 +2326,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/cst|children:Cst|Element/stats_xml|handlers:Stats_xml|Handler/channelstats|channelstats:Channelstats|EObject/rssi|rssi:Rssi|EObject/nb|nb:Nb|EObject"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Device_wifiWifideviceCstStats_xmlChannelstatsRssi" eOpposite="//Device_wifiWifideviceCstStats_xmlChannelstatsRssi/nb"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="addr" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/cst|children:Cst|Element/stats_xml|handlers:Stats_xml|Handler/channelstats|channelstats:Channelstats|EObject/rssi|rssi:Rssi|EObject/nb|nb:Nb|EObject/addr|addr:"/>
@@ -2253,6 +2368,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/dev_decap|children:Dev_decap|Element/class|handlers:Class|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Dev_decap" eOpposite="//Dev_decap/class"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/dev_decap|children:Dev_decap|Element/class|handlers:Class|Handler/text|text:"/>
@@ -2264,6 +2380,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/op_prio_s|children:Op_prio_s|Element/class|handlers:Class|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Op_prio_s" eOpposite="//Op_prio_s/class"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/op_prio_s|children:Op_prio_s|Element/class|handlers:Class|Handler/text|text:"/>
@@ -2275,6 +2392,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/rawwifidev_too_small_cnt|children:Rawwifidev_too_small_cnt|Element/class|handlers:Class|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Rawwifidev_too_small_cnt" eOpposite="//Rawwifidev_too_small_cnt/class"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/rawwifidev_too_small_cnt|children:Rawwifidev_too_small_cnt|Element/class|handlers:Class|Handler/text|text:"/>
@@ -2286,6 +2404,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/rawwifidev_too_small_cnt|children:Rawwifidev_too_small_cnt|Element/rate|handlers:Rate|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Rawwifidev_too_small_cnt" eOpposite="//Rawwifidev_too_small_cnt/rate"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/rawwifidev_too_small_cnt|children:Rawwifidev_too_small_cnt|Element/rate|handlers:Rate|Handler/text|text:"/>
@@ -2297,6 +2416,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wififrame_clf|children:Wififrame_clf|Element/class|handlers:Class|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Wififrame_clf" eOpposite="//Wififrame_clf/class"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wififrame_clf|children:Wififrame_clf|Element/class|handlers:Class|Handler/text|text:"/>
@@ -2308,6 +2428,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wififrame_clf|children:Wififrame_clf|Element/program|handlers:Program|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Wififrame_clf" eOpposite="//Wififrame_clf/program"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wififrame_clf|children:Wififrame_clf|Element/program|handlers:Program|Handler/text|text:"/>
@@ -2319,6 +2440,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/wireless|elements:Wireless|Element/deviceinfo|handlers:Deviceinfo|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Wireless" eOpposite="//Wireless/deviceinfo"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="device" eType="//WirelessDeviceinfoDevice" volatile="true" transient="true" derived="true" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/wireless|elements:Wireless|Element/deviceinfo|handlers:Deviceinfo|Handler/device|device:Device|EObject"/>
@@ -2330,6 +2452,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/id|elements:Id|Element/devinfo|handlers:Devinfo|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Id" eOpposite="//Id/devinfo"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="nodeidentity" eType="//Nodeidentity" volatile="true" transient="true" derived="true" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/id|elements:Id|Element/devinfo|handlers:Devinfo|Handler/nodeidentity|nodeidentity:Nodeidentity|EObject"/>
@@ -2341,6 +2464,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/lt|elements:Lt|Element/dijkstra_time|handlers:Dijkstra_time|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Lt" eOpposite="//Lt/dijkstra_time"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/lt|elements:Lt|Element/dijkstra_time|handlers:Dijkstra_time|Handler/text|text:"/>
@@ -2352,6 +2476,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/dsr_decap|children:Dsr_decap|Element"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Routing" eOpposite="//Routing/dsr_decap"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="//RoutingDsr_decapClass" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/dsr_decap|children:Dsr_decap|Element/class|handlers:Class|Handler"/>
@@ -2363,6 +2488,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/dsr_encap|children:Dsr_encap|Element"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Routing" eOpposite="//Routing/dsr_encap"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="//RoutingDsr_encapClass" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/dsr_encap|children:Dsr_encap|Element/class|handlers:Class|Handler"/>
@@ -2374,6 +2500,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/dsrclf|children:Dsrclf|Element"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Routing" eOpposite="//Routing/dsrclf"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="program" eType="//RoutingDsrclfProgram" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/dsrclf|children:Dsrclf|Element/program|handlers:Program|Handler"/>
@@ -2391,6 +2518,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_etherencap|children:Lp_etherencap|Element/dst|handlers:Dst|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Lp_etherencap" eOpposite="//Lp_etherencap/dst"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_etherencap|children:Lp_etherencap|Element/dst|handlers:Dst|Handler/text|text:"/>
@@ -2402,6 +2530,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/elements:Element"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Node" eOpposite="//Node/elements"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/elements:Element/name:"/>
@@ -2456,6 +2585,7 @@
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Element" eOpposite="//Element/children"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1" eType="//Element" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/elements:Element/children:Element"/>
@@ -2467,6 +2597,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/elements:Element/version|handlers:Version|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Element" eOpposite="//Element/version"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="version" eType="//ElementVersionVersion" volatile="true" transient="true" derived="true" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/elements:Element/version|handlers:Version|Handler/version|version:Version|EObject"/>
@@ -2478,6 +2609,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/elements:Element/version|handlers:Version|Handler/version|version:Version|EObject"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//ElementVersion" eOpposite="//ElementVersion/version"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" upperBound="-1" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/elements:Element/version|handlers:Version|Handler/version|version:Version|EObject/text|text:"/>
@@ -2507,6 +2639,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/link_stat|children:Link_stat|Element/bcast_stats|handlers:Bcast_stats|Handler/entry|entry:Entry|EObject"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Bcast_stats" eOpposite="//Bcast_stats/entry"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" upperBound="-1" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/link_stat|children:Link_stat|Element/bcast_stats|handlers:Bcast_stats|Handler/entry|entry:Entry|EObject/text|text:"/>
@@ -2554,6 +2687,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/link_stat|children:Link_stat|Element/schema|handlers:Schema|Handler/schema|schema:Schema|EObject/element|element:Element|EObject/complexType|complexType:ComplexType|EObject/attribute|attribute:Attribute|EObject/simpleType|simpleType:SimpleType|EObject/restriction|restriction:Restriction|EObject/enumeration|enumeration:Enumeration|EObject"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Restriction" eOpposite="//Restriction/enumeration"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/link_stat|children:Link_stat|Element/schema|handlers:Schema|Handler/schema|schema:Schema|EObject/element|element:Element|EObject/complexType|complexType:ComplexType|EObject/attribute|attribute:Attribute|EObject/simpleType|simpleType:SimpleType|EObject/restriction|restriction:Restriction|EObject/enumeration|enumeration:Enumeration|EObject/value|value:"/>
@@ -2565,6 +2699,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/err_forwarder|children:Err_forwarder|Element"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Routing" eOpposite="//Routing/err_forwarder"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="//RoutingErr_forwarderClass" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/err_forwarder|children:Err_forwarder|Element/class|handlers:Class|Handler"/>
@@ -2576,6 +2711,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/error_clf|children:Error_clf|Element"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Device_wifi" eOpposite="//Device_wifi/error_clf"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="phy" eType="//Device_wifiError_clfPhy" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/error_clf|children:Error_clf|Element/phy|handlers:Phy|Handler"/>
@@ -2605,6 +2741,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_etherencap|children:Lp_etherencap|Element/ethertype|handlers:Ethertype|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Lp_etherencap" eOpposite="//Lp_etherencap/ethertype"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_etherencap|children:Lp_etherencap|Element/ethertype|handlers:Ethertype|Handler/text|text:"/>
@@ -2616,6 +2753,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_etherencap|children:Lp_etherencap|Element/etht|handlers:Etht|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Lp_etherencap" eOpposite="//Lp_etherencap/etht"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_etherencap|children:Lp_etherencap|Element/etht|handlers:Etht|Handler/text|text:"/>
@@ -2627,6 +2765,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/etx_metric|children:Etx_metric|Element"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Device_wifi" eOpposite="//Device_wifi/etx_metric"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="//Device_wifiEtx_metricClass" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/etx_metric|children:Etx_metric|Element/class|handlers:Class|Handler"/>
@@ -2638,6 +2777,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/filter_tx|children:Filter_tx|Element"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Device_wifi" eOpposite="//Device_wifi/filter_tx"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="drops" eType="//Device_wifiFilter_txDrops" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/filter_tx|children:Filter_tx|Element/drops|handlers:Drops|Handler"/>
@@ -2655,11 +2795,13 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/querier|children:Querier|Element/fixed_route|handlers:Fixed_route|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Querier" eOpposite="//Querier/fixed_route"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Flowstats">
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/sf|elements:Sf|Element/stats|handlers:Stats|Handler/flowstats|flowstats:Flowstats|EObject"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//SfStats" eOpposite="//SfStats/flowstats"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/sf|elements:Sf|Element/stats|handlers:Stats|Handler/flowstats|flowstats:Flowstats|EObject/text|text:"/>
@@ -2677,6 +2819,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/gps|elements:Gps|Element"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Node" eOpposite="//Node/gps"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="gps_coord" eType="//Gps_coord" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/gps|elements:Gps|Element/gps_coord|handlers:Gps_coord|Handler"/>
@@ -2700,6 +2843,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/gps|elements:Gps|Element/class|handlers:Class|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Gps" eOpposite="//Gps/class"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/gps|elements:Gps|Element/class|handlers:Class|Handler/text|text:"/>
@@ -2711,6 +2855,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/gps|elements:Gps|Element/gps_coord|handlers:Gps_coord|Handler/gps|gps:Gps|EObject"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Gps_coord" eOpposite="//Gps_coord/gps"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/gps|elements:Gps|Element/gps_coord|handlers:Gps_coord|Handler/gps|gps:Gps|EObject/id|id:"/>
@@ -2752,6 +2897,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/gps|elements:Gps|Element/gps_coord|handlers:Gps_coord|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Gps" eOpposite="//Gps/gps_coord"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="gps" eType="//GpsGps_coordGps" volatile="true" transient="true" derived="true" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/gps|elements:Gps|Element/gps_coord|handlers:Gps_coord|Handler/gps|gps:Gps|EObject"/>
@@ -2763,6 +2909,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/elements:Element/handlers:Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Element" eOpposite="//Element/handlers"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/elements:Element/handlers:Handler/name:"/>
@@ -2810,6 +2957,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/elements:Element/handlers|handlers:Handlers|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Element" eOpposite="//Element/handlersHandlers"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/elements:Element/handlers|handlers:Handlers|Handler/text|text:"/>
@@ -2821,6 +2969,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/lt|elements:Lt|Element/hosts|handlers:Hosts|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Lt" eOpposite="//Lt/hosts"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/lt|elements:Lt|Element/hosts|handlers:Hosts|Handler/text|text:"/>
@@ -2832,6 +2981,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/id|elements:Id|Element"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Node" eOpposite="//Node/id"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="devinfo" eType="//Devinfo" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/id|elements:Id|Element/devinfo|handlers:Devinfo|Handler"/>
@@ -2849,6 +2999,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/id|elements:Id|Element/class|handlers:Class|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Id" eOpposite="//Id/class"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/id|elements:Id|Element/class|handlers:Class|Handler/text|text:"/>
@@ -2860,6 +3011,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/id|elements:Id|Element/devinfo|handlers:Devinfo|Handler/nodeidentity|nodeidentity:Nodeidentity|EObject/device|device:Device|EObject"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Nodeidentity" eOpposite="//Nodeidentity/device"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="index" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/id|elements:Id|Element/devinfo|handlers:Devinfo|Handler/nodeidentity|nodeidentity:Nodeidentity|EObject/device|device:Device|EObject/index|index:"/>
@@ -2889,6 +3041,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/label_brnether|elements:Label_brnether|Element"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Node" eOpposite="//Node/label_brnether"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="//Label_brnetherClass" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/label_brnether|elements:Label_brnether|Element/class|handlers:Class|Handler"/>
@@ -2900,6 +3053,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/label_brnether|elements:Label_brnether|Element/class|handlers:Class|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Label_brnether" eOpposite="//Label_brnether/class"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/label_brnether|elements:Label_brnether|Element/class|handlers:Class|Handler/text|text:"/>
@@ -2911,6 +3065,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/link_stat|children:Link_stat|Element/bcast_stats|handlers:Bcast_stats|Handler/entry|entry:Entry|EObject/link|link:Link|EObject"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Entry" eOpposite="//Entry/link"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" upperBound="-1" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/link_stat|children:Link_stat|Element/bcast_stats|handlers:Bcast_stats|Handler/entry|entry:Entry|EObject/link|link:Link|EObject/text|text:"/>
@@ -2958,6 +3113,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/link_stat|children:Link_stat|Element/bcast_stats|handlers:Bcast_stats|Handler/entry|entry:Entry|EObject/link|link:Link|EObject/link_info|link_info:Link_info|EObject"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Link" eOpposite="//Link/link_info"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="size" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/link_stat|children:Link_stat|Element/bcast_stats|handlers:Bcast_stats|Handler/entry|entry:Entry|EObject/link|link:Link|EObject/link_info|link_info:Link_info|EObject/size|size:"/>
@@ -2987,6 +3143,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/link_stat|children:Link_stat|Element"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Device_wifi" eOpposite="//Device_wifi/link_stat"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="schema" eType="//Device_wifiLink_statSchema" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/link_stat|children:Link_stat|Element/schema|handlers:Schema|Handler"/>
@@ -3034,6 +3191,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/lt|elements:Lt|Element/links|handlers:Links|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Lt" eOpposite="//Lt/links"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/lt|elements:Lt|Element/links|handlers:Links|Handler/text|text:"/>
@@ -3045,6 +3203,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/sys_info|elements:Sys_info|Element/systeminfo|handlers:Systeminfo|Handler/system|system:System|EObject/linux|linux:Linux|EObject"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//System" eOpposite="//System/linux"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/sys_info|elements:Sys_info|Element/systeminfo|handlers:Systeminfo|Handler/system|system:System|EObject/linux|linux:Linux|EObject/version|version:"/>
@@ -3056,6 +3215,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/sys_info|elements:Sys_info|Element/systeminfo|handlers:Systeminfo|Handler/system|system:System|EObject/loadavg|loadavg:Loadavg|EObject"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//System" eOpposite="//System/loadavg"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="onemin" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/sys_info|elements:Sys_info|Element/systeminfo|handlers:Systeminfo|Handler/system|system:System|EObject/loadavg|loadavg:Loadavg|EObject/onemin|onemin:"/>
@@ -3079,6 +3239,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_clf|children:Lp_clf|Element"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Device_wifi" eOpposite="//Device_wifi/lp_clf"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="program" eType="//Device_wifiLp_clfProgram" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_clf|children:Lp_clf|Element/program|handlers:Program|Handler"/>
@@ -3096,6 +3257,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_data_scheduler|children:Lp_data_scheduler|Element"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Device_wifi" eOpposite="//Device_wifi/lp_data_scheduler"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="//Device_wifiLp_data_schedulerClass" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_data_scheduler|children:Lp_data_scheduler|Element/class|handlers:Class|Handler"/>
@@ -3107,6 +3269,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_etherencap|children:Lp_etherencap|Element"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Device_wifi" eOpposite="//Device_wifi/lp_etherencap"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="etht" eType="//Etht" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_etherencap|children:Lp_etherencap|Element/etht|handlers:Etht|Handler"/>
@@ -3142,6 +3305,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_power|children:Lp_power|Element"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Device_wifi" eOpposite="//Device_wifi/lp_power"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="power" eType="//Device_wifiLp_powerPower" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_power|children:Lp_power|Element/power|handlers:Power|Handler"/>
@@ -3159,6 +3323,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_queue|children:Lp_queue|Element"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Device_wifi" eOpposite="//Device_wifi/lp_queue"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="drops" eType="//Device_wifiLp_queueDrops" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_queue|children:Lp_queue|Element/drops|handlers:Drops|Handler"/>
@@ -3194,6 +3359,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_suppressor|children:Lp_suppressor|Element"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Device_wifi" eOpposite="//Device_wifi/lp_suppressor"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="active0" eType="//Device_wifiLp_suppressorActive0" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_suppressor|children:Lp_suppressor|Element/active0|handlers:Active0|Handler"/>
@@ -3211,6 +3377,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_wifiencap|children:Lp_wifiencap|Element"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Device_wifi" eOpposite="//Device_wifi/lp_wifiencap"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="bssid" eType="//Device_wifiLp_wifiencapBssid" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_wifiencap|children:Lp_wifiencap|Element/bssid|handlers:Bssid|Handler"/>
@@ -3234,6 +3401,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/lt|elements:Lt|Element"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Node" eOpposite="//Node/lt"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="dijkstra_time" eType="//Dijkstra_time" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/lt|elements:Lt|Element/dijkstra_time|handlers:Dijkstra_time|Handler"/>
@@ -3287,6 +3455,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/lt|elements:Lt|Element/class|handlers:Class|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Lt" eOpposite="//Lt/class"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/lt|elements:Lt|Element/class|handlers:Class|Handler/text|text:"/>
@@ -3298,6 +3467,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/cst|children:Cst|Element/max_time|handlers:Max_time|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Cst" eOpposite="//Cst/max_time"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/cst|children:Cst|Element/max_time|handlers:Max_time|Handler/text|text:"/>
@@ -3309,6 +3479,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/sys_info|elements:Sys_info|Element/systeminfo|handlers:Systeminfo|Handler/system|system:System|EObject/mem|mem:Mem|EObject"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//System" eOpposite="//System/mem"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="total" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/sys_info|elements:Sys_info|Element/systeminfo|handlers:Systeminfo|Handler/system|system:System|EObject/mem|mem:Mem|EObject/total|total:"/>
@@ -3344,6 +3515,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/elements:Element/name|handlers:Name|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Element" eOpposite="//Element/handlersName"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/elements:Element/name|handlers:Name|Handler/text|text:"/>
@@ -3384,6 +3556,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Network" eOpposite="//Network/nodes"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="iNetAddress" defaultValueLiteral="localhost">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/iNetAddress:"/>
@@ -3515,6 +3688,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/id|elements:Id|Element/devinfo|handlers:Devinfo|Handler/nodeidentity|nodeidentity:Nodeidentity|EObject"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Devinfo" eOpposite="//Devinfo/nodeidentity"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" upperBound="-1" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/id|elements:Id|Element/devinfo|handlers:Devinfo|Handler/nodeidentity|nodeidentity:Nodeidentity|EObject/text|text:"/>
@@ -3538,6 +3712,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/error_clf|children:Error_clf|Element/ok|handlers:Ok|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Error_clf" eOpposite="//Error_clf/ok"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/error_clf|children:Error_clf|Element/ok|handlers:Ok|Handler/text|text:"/>
@@ -3549,6 +3724,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/op_prio_s|children:Op_prio_s|Element"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Wifidevice" eOpposite="//Wifidevice/op_prio_s"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="//Device_wifiWifideviceOp_prio_sClass" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/op_prio_s|children:Op_prio_s|Element/class|handlers:Class|Handler"/>
@@ -3560,6 +3736,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/routing_peek|children:Routing_peek|Element/peek_info|handlers:Peek_info|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Routing_peek" eOpposite="//Routing_peek/peek_info"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/routing_peek|children:Routing_peek|Element/peek_info|handlers:Peek_info|Handler/text|text:"/>
@@ -3571,6 +3748,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/ath_op|children:Ath_op|Element/pkt_count|handlers:Pkt_count|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Ath_op" eOpposite="//Ath_op/pkt_count"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/ath_op|children:Ath_op|Element/pkt_count|handlers:Pkt_count|Handler/text|text:"/>
@@ -3582,6 +3760,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/elements:Element/ports|handlers:Ports|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Element" eOpposite="//Element/ports"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/elements:Element/ports|handlers:Ports|Handler/text|text:"/>
@@ -3593,6 +3772,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/link_stat|children:Link_stat|Element/probes|handlers:Probes|Handler/probes|probes:Probes|EObject/probe|probe:Probe|EObject"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Device_wifiLink_statProbesProbes" eOpposite="//Device_wifiLink_statProbesProbes/probe"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="rate" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/link_stat|children:Link_stat|Element/probes|handlers:Probes|Handler/probes|probes:Probes|EObject/probe|probe:Probe|EObject/rate|rate:"/>
@@ -3610,6 +3790,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/proberates|children:Proberates|Element"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Device_wifi" eOpposite="//Device_wifi/proberates"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="rates" eType="//Device_wifiProberatesRates" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/proberates|children:Proberates|Element/rates|handlers:Rates|Handler"/>
@@ -3627,6 +3808,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/querier|children:Querier|Element"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Routing" eOpposite="//Routing/querier"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="fixed_route" eType="//Fixed_route" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/querier|children:Querier|Element/fixed_route|handlers:Fixed_route|Handler"/>
@@ -3644,6 +3826,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/rawwifidev_too_small_cnt|children:Rawwifidev_too_small_cnt|Element"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Wifidevice" eOpposite="//Wifidevice/rawwifidev_too_small_cnt"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="count_call" eType="//Count_call" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/rawwifidev_too_small_cnt|children:Rawwifidev_too_small_cnt|Element/count_call|handlers:Count_call|Handler"/>
@@ -3691,6 +3874,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/rc|elements:Rc|Element"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Node" eOpposite="//Node/rc"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="active" eType="//Active" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/rc|elements:Rc|Element/active|handlers:Active|Handler"/>
@@ -3708,6 +3892,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/rc|elements:Rc|Element/class|handlers:Class|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Rc" eOpposite="//Rc/class"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/rc|elements:Rc|Element/class|handlers:Class|Handler/text|text:"/>
@@ -3719,6 +3904,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/rep_forwarder|children:Rep_forwarder|Element"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Routing" eOpposite="//Routing/rep_forwarder"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="//RoutingRep_forwarderClass" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/rep_forwarder|children:Rep_forwarder|Element/class|handlers:Class|Handler"/>
@@ -3730,6 +3916,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/req_forwarder|children:Req_forwarder|Element"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Routing" eOpposite="//Routing/req_forwarder"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="stats" eType="//RoutingReq_forwarderStats" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/req_forwarder|children:Req_forwarder|Element/stats|handlers:Stats|Handler"/>
@@ -3747,6 +3934,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/link_stat|children:Link_stat|Element/schema|handlers:Schema|Handler/schema|schema:Schema|EObject/element|element:Element|EObject/complexType|complexType:ComplexType|EObject/attribute|attribute:Attribute|EObject/simpleType|simpleType:SimpleType|EObject/restriction|restriction:Restriction|EObject"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//SimpleType" eOpposite="//SimpleType/restriction"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="enumeration" upperBound="-1" eType="//Enumeration" volatile="true" transient="true" derived="true" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/link_stat|children:Link_stat|Element/schema|handlers:Schema|Handler/schema|schema:Schema|EObject/element|element:Element|EObject/complexType|complexType:ComplexType|EObject/attribute|attribute:Attribute|EObject/simpleType|simpleType:SimpleType|EObject/restriction|restriction:Restriction|EObject/enumeration|enumeration:Enumeration|EObject"/>
@@ -3764,21 +3952,25 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/lt|elements:Lt|Element/routes|handlers:Routes|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Lt" eOpposite="//Lt/routes"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Routes_from" eSuperTypes="//Handler">
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/lt|elements:Lt|Element/routes_from|handlers:Routes_from|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Lt" eOpposite="//Lt/routes_from"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Routes_to" eSuperTypes="//Handler">
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/lt|elements:Lt|Element/routes_to|handlers:Routes_to|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Lt" eOpposite="//Lt/routes_to"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Routing" eSuperTypes="//Element">
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Node" eOpposite="//Node/routing"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="dsr_decap" eType="//Dsr_decap" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/dsr_decap|children:Dsr_decap|Element"/>
@@ -3844,6 +4036,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/dsr_decap|children:Dsr_decap|Element/class|handlers:Class|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Dsr_decap" eOpposite="//Dsr_decap/class"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/dsr_decap|children:Dsr_decap|Element/class|handlers:Class|Handler/text|text:"/>
@@ -3855,6 +4048,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/dsr_encap|children:Dsr_encap|Element/class|handlers:Class|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Dsr_encap" eOpposite="//Dsr_encap/class"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/dsr_encap|children:Dsr_encap|Element/class|handlers:Class|Handler/text|text:"/>
@@ -3866,6 +4060,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/dsrclf|children:Dsrclf|Element/class|handlers:Class|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Dsrclf" eOpposite="//Dsrclf/class"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/dsrclf|children:Dsrclf|Element/class|handlers:Class|Handler/text|text:"/>
@@ -3877,6 +4072,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/dsrclf|children:Dsrclf|Element/program|handlers:Program|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Dsrclf" eOpposite="//Dsrclf/program"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/dsrclf|children:Dsrclf|Element/program|handlers:Program|Handler/text|text:"/>
@@ -3888,6 +4084,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/err_forwarder|children:Err_forwarder|Element/class|handlers:Class|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Err_forwarder" eOpposite="//Err_forwarder/class"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/err_forwarder|children:Err_forwarder|Element/class|handlers:Class|Handler/text|text:"/>
@@ -3899,6 +4096,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/querier|children:Querier|Element/class|handlers:Class|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Querier" eOpposite="//Querier/class"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/querier|children:Querier|Element/class|handlers:Class|Handler/text|text:"/>
@@ -3910,6 +4108,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/rep_forwarder|children:Rep_forwarder|Element/class|handlers:Class|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Rep_forwarder" eOpposite="//Rep_forwarder/class"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/rep_forwarder|children:Rep_forwarder|Element/class|handlers:Class|Handler/text|text:"/>
@@ -3921,6 +4120,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/req_forwarder|children:Req_forwarder|Element/class|handlers:Class|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Req_forwarder" eOpposite="//Req_forwarder/class"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/req_forwarder|children:Req_forwarder|Element/class|handlers:Class|Handler/text|text:"/>
@@ -3932,6 +4132,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/req_forwarder|children:Req_forwarder|Element/stats|handlers:Stats|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Req_forwarder" eOpposite="//Req_forwarder/stats"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="stats" eType="//RoutingReq_forwarderStatsStats" volatile="true" transient="true" derived="true" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/req_forwarder|children:Req_forwarder|Element/stats|handlers:Stats|Handler/stats|stats:Stats|EObject"/>
@@ -3943,6 +4144,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/req_forwarder|children:Req_forwarder|Element/stats|handlers:Stats|Handler/stats|stats:Stats|EObject"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//RoutingReq_forwarderStats" eOpposite="//RoutingReq_forwarderStats/stats"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="better_route" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/req_forwarder|children:Req_forwarder|Element/stats|handlers:Stats|Handler/stats|stats:Stats|EObject/better_route|better_route:"/>
@@ -3954,6 +4156,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/routing_peek|children:Routing_peek|Element/class|handlers:Class|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Routing_peek" eOpposite="//Routing_peek/class"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/routing_peek|children:Routing_peek|Element/class|handlers:Class|Handler/text|text:"/>
@@ -3965,6 +4168,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/src_forwarder|children:Src_forwarder|Element/class|handlers:Class|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Src_forwarder" eOpposite="//Src_forwarder/class"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/src_forwarder|children:Src_forwarder|Element/class|handlers:Class|Handler/text|text:"/>
@@ -3976,6 +4180,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/tee_to_err_fwd|children:Tee_to_err_fwd|Element/class|handlers:Class|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Tee_to_err_fwd" eOpposite="//Tee_to_err_fwd/class"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/tee_to_err_fwd|children:Tee_to_err_fwd|Element/class|handlers:Class|Handler/text|text:"/>
@@ -3987,6 +4192,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/routing_peek|children:Routing_peek|Element"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Routing" eOpposite="//Routing/routing_peek"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="peek_info" eType="//Peek_info" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/routing_peek|children:Routing_peek|Element/peek_info|handlers:Peek_info|Handler"/>
@@ -4004,6 +4210,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/sf|elements:Sf|Element/rxflows|handlers:Rxflows|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Sf" eOpposite="//Sf/rxflows"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/sf|elements:Sf|Element/rxflows|handlers:Rxflows|Handler/text|text:"/>
@@ -4015,6 +4222,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/seismo|elements:Seismo|Element"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Node" eOpposite="//Node/seismo"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="channelstatinfo" eType="//Channelstatinfo" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/seismo|elements:Seismo|Element/channelstatinfo|handlers:Channelstatinfo|Handler"/>
@@ -4032,6 +4240,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/seismo|elements:Seismo|Element/channelstatinfo|handlers:Channelstatinfo|Handler/node|node:Node|EObject"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Channelstatinfo" eOpposite="//Channelstatinfo/node"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/seismo|elements:Seismo|Element/channelstatinfo|handlers:Channelstatinfo|Handler/node|node:Node|EObject/text|text:"/>
@@ -4067,6 +4276,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/seismo|elements:Seismo|Element/channelstatinfo|handlers:Channelstatinfo|Handler/node|node:Node|EObject/gps|gps:Gps|EObject"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//SeismoChannelstatinfoNode" eOpposite="//SeismoChannelstatinfoNode/gps"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="lat" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/seismo|elements:Seismo|Element/channelstatinfo|handlers:Channelstatinfo|Handler/node|node:Node|EObject/gps|gps:Gps|EObject/lat|lat:"/>
@@ -4096,6 +4306,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/seismo|elements:Seismo|Element/channelstatinfo|handlers:Channelstatinfo|Handler/node|node:Node|EObject/seismo|seismo:Seismo|EObject"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//SeismoChannelstatinfoNode" eOpposite="//SeismoChannelstatinfoNode/seismo"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/seismo|elements:Seismo|Element/channelstatinfo|handlers:Channelstatinfo|Handler/node|node:Node|EObject/seismo|seismo:Seismo|EObject/text|text:"/>
@@ -4137,6 +4348,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/seismo|elements:Seismo|Element/class|handlers:Class|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Seismo" eOpposite="//Seismo/class"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/seismo|elements:Seismo|Element/class|handlers:Class|Handler/text|text:"/>
@@ -4148,6 +4360,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/link_stat|children:Link_stat|Element/schema|handlers:Schema|Handler/schema|schema:Schema|EObject/element|element:Element|EObject/complexType|complexType:ComplexType|EObject/sequence|sequence:Sequence|EObject"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//ComplexType" eOpposite="//ComplexType/sequence"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="element" eType="//Device_wifiLink_statSchemaSchemaElementComplexTypeSequenceElement" volatile="true" transient="true" derived="true" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/link_stat|children:Link_stat|Element/schema|handlers:Schema|Handler/schema|schema:Schema|EObject/element|element:Element|EObject/complexType|complexType:ComplexType|EObject/sequence|sequence:Sequence|EObject/element|element:Element|EObject"/>
@@ -4159,6 +4372,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/sf|elements:Sf|Element"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Node" eOpposite="//Node/sf"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="stats" eType="//SfStats" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/sf|elements:Sf|Element/stats|handlers:Stats|Handler"/>
@@ -4188,6 +4402,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/sf|elements:Sf|Element/class|handlers:Class|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Sf" eOpposite="//Sf/class"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/sf|elements:Sf|Element/class|handlers:Class|Handler/text|text:"/>
@@ -4199,6 +4414,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/sf|elements:Sf|Element/stats|handlers:Stats|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Sf" eOpposite="//Sf/stats"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="flowstats" eType="//Flowstats" volatile="true" transient="true" derived="true" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/sf|elements:Sf|Element/stats|handlers:Stats|Handler/flowstats|flowstats:Flowstats|EObject"/>
@@ -4210,6 +4426,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/link_stat|children:Link_stat|Element/schema|handlers:Schema|Handler/schema|schema:Schema|EObject/element|element:Element|EObject/complexType|complexType:ComplexType|EObject/attribute|attribute:Attribute|EObject/simpleType|simpleType:SimpleType|EObject"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Attribute" eOpposite="//Attribute/simpleType"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="restriction" eType="//Restriction" volatile="true" transient="true" derived="true" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/link_stat|children:Link_stat|Element/schema|handlers:Schema|Handler/schema|schema:Schema|EObject/element|element:Element|EObject/complexType|complexType:ComplexType|EObject/attribute|attribute:Attribute|EObject/simpleType|simpleType:SimpleType|EObject/restriction|restriction:Restriction|EObject"/>
@@ -4221,6 +4438,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_etherencap|children:Lp_etherencap|Element/src|handlers:Src|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Lp_etherencap" eOpposite="//Lp_etherencap/src"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_etherencap|children:Lp_etherencap|Element/src|handlers:Src|Handler/text|text:"/>
@@ -4232,6 +4450,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/src_forwarder|children:Src_forwarder|Element"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Routing" eOpposite="//Routing/src_forwarder"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="//RoutingSrc_forwarderClass" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/src_forwarder|children:Src_forwarder|Element/class|handlers:Class|Handler"/>
@@ -4243,6 +4462,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/cst|children:Cst|Element/stats_xml|handlers:Stats_xml|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Cst" eOpposite="//Cst/stats_xml"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="channelstats" eType="//Device_wifiWifideviceCstStats_xmlChannelstats" volatile="true" transient="true" derived="true" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/cst|children:Cst|Element/stats_xml|handlers:Stats_xml|Handler/channelstats|channelstats:Channelstats|EObject"/>
@@ -4254,6 +4474,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/sys_info|elements:Sys_info|Element"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Node" eOpposite="//Node/sys_info"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="schema" eType="//Sys_infoSchema" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/sys_info|elements:Sys_info|Element/schema|handlers:Schema|Handler"/>
@@ -4277,6 +4498,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/sys_info|elements:Sys_info|Element/class|handlers:Class|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Sys_info" eOpposite="//Sys_info/class"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/sys_info|elements:Sys_info|Element/class|handlers:Class|Handler/text|text:"/>
@@ -4288,6 +4510,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/sys_info|elements:Sys_info|Element/schema|handlers:Schema|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Sys_info" eOpposite="//Sys_info/schema"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/sys_info|elements:Sys_info|Element/schema|handlers:Schema|Handler/text|text:"/>
@@ -4299,6 +4522,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/sys_info|elements:Sys_info|Element/systeminfo|handlers:Systeminfo|Handler/system|system:System|EObject"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Systeminfo" eOpposite="//Systeminfo/system"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" upperBound="-1" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/sys_info|elements:Sys_info|Element/systeminfo|handlers:Systeminfo|Handler/system|system:System|EObject/text|text:"/>
@@ -4352,6 +4576,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/sys_info|elements:Sys_info|Element/systeminfo|handlers:Systeminfo|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Sys_info" eOpposite="//Sys_info/systeminfo"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="system" eType="//System" volatile="true" transient="true" derived="true" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/sys_info|elements:Sys_info|Element/systeminfo|handlers:Systeminfo|Handler/system|system:System|EObject"/>
@@ -4363,6 +4588,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/tee_to_err_fwd|children:Tee_to_err_fwd|Element"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Routing" eOpposite="//Routing/tee_to_err_fwd"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="//RoutingTee_to_err_fwdClass" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/tee_to_err_fwd|children:Tee_to_err_fwd|Element/class|handlers:Class|Handler"/>
@@ -4374,6 +4600,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/toMeAfterRouting|elements:ToMeAfterRouting|Element"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Node" eOpposite="//Node/toMeAfterRouting"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="//ToMeAfterRoutingClass" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/toMeAfterRouting|elements:ToMeAfterRouting|Element/class|handlers:Class|Handler"/>
@@ -4385,6 +4612,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/toMeAfterRouting|elements:ToMeAfterRouting|Element/class|handlers:Class|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//ToMeAfterRouting" eOpposite="//ToMeAfterRouting/class"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/toMeAfterRouting|elements:ToMeAfterRouting|Element/class|handlers:Class|Handler/text|text:"/>
@@ -4396,6 +4624,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/data_rate|children:Data_rate|Element/tries|handlers:Tries|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Data_rate" eOpposite="//Data_rate/tries"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/data_rate|children:Data_rate|Element/tries|handlers:Tries|Handler/text|text:"/>
@@ -4407,6 +4636,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/sf|elements:Sf|Element/txflows|handlers:Txflows|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Sf" eOpposite="//Sf/txflows"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/sf|elements:Sf|Element/txflows|handlers:Txflows|Handler/text|text:"/>
@@ -4418,6 +4648,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/sys_info|elements:Sys_info|Element/systeminfo|handlers:Systeminfo|Handler/system|system:System|EObject/uptime|uptime:Uptime|EObject"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//System" eOpposite="//System/uptime"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="total" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/sys_info|elements:Sys_info|Element/systeminfo|handlers:Systeminfo|Handler/system|system:System|EObject/uptime|uptime:Uptime|EObject/total|total:"/>
@@ -4435,6 +4666,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Device_wifi" eOpposite="//Device_wifi/wifidevice"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="cst" eType="//Cst" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/cst|children:Cst|Element"/>
@@ -4476,6 +4708,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wififrame_clf|children:Wififrame_clf|Element"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Device_wifi" eOpposite="//Device_wifi/wififrame_clf"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="program" eType="//Device_wifiWififrame_clfProgram" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wififrame_clf|children:Wififrame_clf|Element/program|handlers:Program|Handler"/>
@@ -4493,6 +4726,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/wireless|elements:Wireless|Element"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Node" eOpposite="//Node/wireless"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="address" eType="//Address" containment="true" resolveProxies="false">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/wireless|elements:Wireless|Element/address|handlers:Address|Handler"/>
@@ -4516,6 +4750,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/wireless|elements:Wireless|Element/class|handlers:Class|Handler"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Wireless" eOpposite="//Wireless/class"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/wireless|elements:Wireless|Element/class|handlers:Class|Handler/text|text:"/>
@@ -4527,6 +4762,7 @@
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/wireless|elements:Wireless|Element/deviceinfo|handlers:Deviceinfo|Handler/device|device:Device|EObject"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="_parent" eType="//Deviceinfo" eOpposite="//Deviceinfo/device"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="node" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/wireless|elements:Wireless|Element/deviceinfo|handlers:Deviceinfo|Handler/device|device:Device|EObject/node|node:"/>

@@ -69,7 +69,7 @@ public class AbstractTests {
 	}
 	
 	protected EPackage generateMetaModel(EObject source) {
-		return injector.getInstance(MetaModelGenerator.class).generateMetaModel(source);
+		return injector.getInstance(MetaModelGenerator.class).generate(source);
 	}
 	
 	protected void save(EPackage result) throws IOException {

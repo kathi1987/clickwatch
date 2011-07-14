@@ -44,7 +44,7 @@ public class MetaModelFromRecordTest extends AbstractTest {
 	
 	private EPackage generate(EObject root) {
 		Injector injector = Guice.createInjector(new ClickWatchSpecificModelsModule());
-		return injector.getInstance(MetaModelGenerator.class).generateMetaModel(root);
+		return injector.getInstance(MetaModelGenerator.class).generate(root);
 	}
 	
 	@Override

@@ -2,6 +2,7 @@ package de.hub.clickwatch.clientlocation;
 
 import java.util.HashMap;
 
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -15,8 +16,6 @@ import com.google.inject.Injector;
 
 import de.hub.clickwatch.ClickWatchModule;
 import de.hub.clickwatch.ClickWatchStandaloneSetup;
-import de.hub.clickwatch.analysis.specificmodels.SpecificMetaModelGenerator;
-import de.hub.clickwatch.analysis.specificmodels.SpecificModelGenerator;
 import de.hub.clickwatch.clientlocation.clientstats.ClientStats;
 import de.hub.clickwatch.clientlocation.clientstats.ClientStatsPackage;
 import de.hub.clickwatch.connection.INodeConnection;
@@ -27,7 +26,10 @@ import de.hub.clickwatch.examples.AbstractAnalysis;
 import de.hub.clickwatch.model.ClickWatchModelFactory;
 import de.hub.clickwatch.model.Network;
 import de.hub.clickwatch.model.Node;
+import de.hub.clickwatch.specificmodels.ClickWatchSpecificModelsModule;
 import de.hub.clickwatch.util.ILogger;
+import de.hub.specificmodels.metamodelgenerator.MetaModelGenerator;
+import de.hub.specificmodels.modelgenerator.ModelGenerator;
 
 public class Main extends AbstractAnalysis {
 	
@@ -80,15 +82,16 @@ public class Main extends AbstractAnalysis {
 		
 		// create specific models
 		// network.getNode().getEle .. getHandler().getDecv
-		SpecificMetaModelGenerator metaModelGenerator = new SpecificMetaModelGenerator();
-		EPackage specificMetaModel = metaModelGenerator.generateMetaModel(network);
+		Injector injector = Guice.createInjector(new ClickWatchSpecificModelsModule());
+		MetaModelGenerator metaModelGenerator = injector.getInstance(MetaModelGenerator.class);
+		EPackage specificMetaModel = metaModelGenerator.generate(new NullProgressMonitor(), network);
 		Resource specificMetaModelResource = rs.createResource(URI.createFileURI("src/edu/hu/clickwatch/clientlocation/SpecificCSMetaModel.ecore")); // TODO
 		specificMetaModel.setName("SpecificCSMetaModel");
 		specificMetaModelResource.getContents().add(specificMetaModel);
 		specificMetaModelResource.save(new HashMap<Object, Object>());
 		
-		SpecificModelGenerator modelGenerator = new SpecificModelGenerator();
-		EObject specificModel = modelGenerator.generateModel(specificMetaModel, network);
+		ModelGenerator modelGenerator = injector.getInstance(ModelGenerator.class);
+		EObject specificModel = modelGenerator.generate(specificMetaModel, network);
 		
 		// run transformation
 		//initialize();	

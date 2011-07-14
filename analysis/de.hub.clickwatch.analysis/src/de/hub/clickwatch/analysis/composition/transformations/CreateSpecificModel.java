@@ -3,20 +3,23 @@ package de.hub.clickwatch.analysis.composition.transformations;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
-import de.hub.clickwatch.analysis.specificmodels.SpecificMetaModelGenerator;
-import de.hub.clickwatch.analysis.specificmodels.SpecificModelGenerator;
+import com.google.inject.Inject;
 
+import de.hub.specificmodels.metamodelgenerator.MetaModelGenerator;
+import de.hub.specificmodels.modelgenerator.ModelGenerator;
 
 public class CreateSpecificModel implements IPredefinedTransformation {
 
+	@Inject
+	MetaModelGenerator smmg;
+	@Inject
+	ModelGenerator smg;
+	
 	@Override
 	public EObject execute(EObject source, EObject target) {
+		EPackage targetMetaModel = smmg.generate(source);
 		
-		SpecificMetaModelGenerator smmg = new SpecificMetaModelGenerator();
-		EPackage targetMetaModel = smmg.generateMetaModel(source);
-		
-		SpecificModelGenerator smg = new SpecificModelGenerator();
-		target = smg.generateModel(targetMetaModel, source);
+		target = smg.generate(targetMetaModel, source);
 		return target;
 	}
 

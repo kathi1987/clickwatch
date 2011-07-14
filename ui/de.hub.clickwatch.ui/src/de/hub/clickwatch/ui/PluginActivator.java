@@ -17,6 +17,7 @@ import de.hub.clickwatch.ClickWatchModule;
 import de.hub.clickwatch.preferences.PreferenceConstants;
 import de.hub.clickwatch.recorder.ClickSocketPlayer;
 import de.hub.clickwatch.recorder.ClickSocketPlayerSocketImpl;
+import de.hub.clickwatch.specificmodels.ClickWatchSpecificModelsModule;
 import de.hub.clickwatch.util.ILogger;
 
 public class PluginActivator extends AbstractUIPlugin {
@@ -82,7 +83,7 @@ public class PluginActivator extends AbstractUIPlugin {
 					}
 				}
 			});
-			injectorCache = Guice.createInjector(clickWatchModule);
+			injectorCache = Guice.createInjector(clickWatchModule, new ClickWatchSpecificModelsModule());
 		}
 		return injectorCache;
 	}

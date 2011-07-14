@@ -46,7 +46,7 @@ public class ModelFromRecordTest extends AbstractTest {
 	}
 
 	private EPackage generateMetaModel(EObject root) {
-		return specificModelsInjector.getInstance(MetaModelGenerator.class).generateMetaModel(root);
+		return specificModelsInjector.getInstance(MetaModelGenerator.class).generate(root);
 	}
 	
 	private EObject generateModel(EPackage metaModel, EObject source) {

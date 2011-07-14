@@ -10,8 +10,6 @@ import de.hub.clickwatch.model.ClickWatchModelFactory;
 import de.hub.clickwatch.model.Network;
 import de.hub.clickwatch.model.Node;
 
-
-
 public class ClickWatchProjectCreator extends AnalysisProjectCreator {
 
 	@Override

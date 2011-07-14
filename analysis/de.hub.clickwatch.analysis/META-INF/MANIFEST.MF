@@ -33,11 +33,12 @@ Require-Bundle: de.hub.xveg;bundle-version="1.0.0",
  org.eclipse.emf.cdo;bundle-version="3.0.1",
  org.eclipse.emf;bundle-version="2.6.0",
  org.eclipse.xtext.xtend2;bundle-version="2.0.0",
- org.eclipse.xtext.xtend2.lib;bundle-version="2.0.0"
+ org.eclipse.xtext.xtend2.lib;bundle-version="2.0.0",
+ de.hub.clickwatch.specificmodels;bundle-version="2.1.0";visibility:=reexport
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: de.hub.clickwatch.analysis.automated,
  de.hub.clickwatch.analysis.models,
  de.hub.clickwatch.analysis.models.topology,
- de.hub.clickwatch.analysis.specificmodels,
  de.hub.clickwatch.analysis.ui
+Eclipse-RegisterBuddy: de.hub.clickwatch.ui

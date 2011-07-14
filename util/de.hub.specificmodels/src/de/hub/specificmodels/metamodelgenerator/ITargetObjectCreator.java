@@ -32,7 +32,7 @@ public interface ITargetObjectCreator {
 	public void updateTargetClass(EClass targetClass, TargetId targetId,
 			SourceObjectKey object);
 
-	public EReference createTargetReference(String featureName, EClass type,
+	public EReference createTargetReference(EClass containingClass, String featureName, EClass type,
 			TargetId targetId, SourceObjectKey object);
 
 	public EAttribute createTargetAttribute(String featureName,

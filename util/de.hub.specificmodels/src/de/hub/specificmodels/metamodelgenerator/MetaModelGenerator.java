@@ -9,6 +9,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
@@ -68,9 +70,13 @@ public class MetaModelGenerator extends AbstractGenerator {
 	@Inject
 	private ITargetObjectCreator targetObjectCreator;
 	
+	public EPackage generate(EObject root) {
+		return generate(new NullProgressMonitor(), root);
+	}
 
-	public EPackage generateMetaModel(EObject root) {
+	public EPackage generate(IProgressMonitor monitor, EObject root) {
 		final Collection<TargetId> targetIds = new HashSet<TargetId>();
+		monitor.beginTask("Creating specific meta-model", 8);
 		
 		// collecting targetIds for all objects
 		ModelTraverserConfiguration collectTargetIdsConfig = new ModelTraverserConfiguration() {
@@ -85,6 +91,7 @@ public class MetaModelGenerator extends AbstractGenerator {
 		SourceObjectKey rootKey = new SourceObjectKey(null, null, root);
 		collectTargetIdsConfig.work(rootKey);
 		new ModelTraverser().traverseSourceModel(collectTargetIdsConfig, rootKey);
+		monitor.worked(1);
 
 		// computing targetMetaIds
 		Namespace<TargetClassId> packageNS = new Namespace<TargetClassId>();
@@ -105,12 +112,14 @@ public class MetaModelGenerator extends AbstractGenerator {
 				targetIdToTargetFeatureIdMap.put(targetId, featureId);
 			}
 		}
+		monitor.worked(1);
 
 		// resolve class collisions
 		packageNS.handleCollisions();
-
+		monitor.worked(1);
+		
 		// creating and updating targetClasses
-		final EPackage result = EcoreFactory.eINSTANCE.createEPackage();
+		final EPackage unsortedPackage = EcoreFactory.eINSTANCE.createEPackage();
 		new ModelTraverser().traverseSourceModel(new ModelTraverserConfiguration() {
 			@Override
 			public void work(SourceObjectKey sok) {
@@ -118,10 +127,10 @@ public class MetaModelGenerator extends AbstractGenerator {
 					TargetClassId targetClassId = targetIdToTargetClassIdMap.get(targetId);
 					if (targetClassId != null) {
 						String className = targetClassId.getName();
-						EClass existingTargetClass = (EClass)result.getEClassifier(className);
+						EClass existingTargetClass = (EClass)unsortedPackage.getEClassifier(className);
 						if (existingTargetClass == null) {
 							EClass targetClass = targetObjectCreator.createTargetClass(className, targetId, sok);
-							result.getEClassifiers().add(targetClass);
+							unsortedPackage.getEClassifiers().add(targetClass);
 						} else {
 							targetObjectCreator.updateTargetClass(existingTargetClass, targetId, sok);
 						}
@@ -129,24 +138,27 @@ public class MetaModelGenerator extends AbstractGenerator {
 				}
 			}
 		}, rootKey);	
-
+		monitor.worked(1);
+		
 		// adding super classes (this is not perfect, it introduces an unwanted 
 		// coupling with TargetId properties (e.g. super classes))
 		for (TargetClassId targetClassId : targetIdToTargetClassIdMap.values()) {
 			TargetId targetId = targetClassId.getTargetId(); 
 			for (TargetId superClassTargetId : targetId.getProperty(SuperClasses.class).get()) {
 				TargetClassId superClassTargetClassId = targetIdToTargetClassIdMap.get(superClassTargetId);
-				EClass superClass = (EClass) result.getEClassifier(superClassTargetClassId.getName());
-				EClass targetClass = (EClass) result.getEClassifier(targetClassId.getName());
+				EClass superClass = (EClass) unsortedPackage.getEClassifier(superClassTargetClassId.getName());
+				EClass targetClass = (EClass) unsortedPackage.getEClassifier(targetClassId.getName());
 				targetObjectCreator.addSuperClass(targetClass, superClass);
 				targetClassId.inherit(superClassTargetClassId);
 			}
 		}
+		monitor.worked(1);
 		
 		// resolving feature collisions
 		for (TargetClassId targetClassId: targetIdToTargetClassIdMap.values()) {
 			targetClassId.handleCollisions();
 		}
+		monitor.worked(1);
 
 		// creating and updating targetFeatures
 		new ModelTraverser().traverseSourceModel(new ModelTraverserConfiguration() {
@@ -158,31 +170,28 @@ public class MetaModelGenerator extends AbstractGenerator {
 						Preconditions.checkState(sok.getFeature() != null);
 						String featureName = targetFeatureId.getName();
 						String className = targetFeatureId.getClassId().getName();
-						EStructuralFeature exisitingFeature = ((EClass) result
-								.getEClassifier(className))
-								.getEStructuralFeature(featureName);
+						EClass targetClass = (EClass)unsortedPackage.getEClassifier(className);
+						EStructuralFeature exisitingFeature = targetClass.getEStructuralFeature(featureName);
 						if (exisitingFeature == null) {
 							EStructuralFeature targetFeature = null;
 							if (targetId.getSourceFeature() instanceof EReference) {
 								TargetClassId typeClassId = targetIdToTargetClassIdMap.get(targetId);
-								EClass type = (EClass) result.getEClassifier(typeClassId.getName());
-								targetFeature = targetObjectCreator.createTargetReference(featureName, type,
-										targetId, sok);
+								EClass type = (EClass) unsortedPackage.getEClassifier(typeClassId.getName());
+								targetFeature = targetObjectCreator.createTargetReference(targetClass, featureName, type, targetId, sok);
 							} else {
 								targetFeature = targetObjectCreator.createTargetAttribute(featureName, targetId, sok);
 							}
-	
-							((EClass) result.getEClassifier(className)).getEStructuralFeatures().add(targetFeature);
+							targetClass.getEStructuralFeatures().add(targetFeature);
 						} else {
-							targetObjectCreator.updateTargetFeature(exisitingFeature,
-									targetId, sok);
+							targetObjectCreator.updateTargetFeature(exisitingFeature, targetId, sok);
 						}
 					}
 				}
 			}
-		}, rootKey);	
+		}, rootKey);
+		monitor.worked(1);
 		
-		List<EClassifier> classifiers = result.getEClassifiers();
+		List<EClassifier> classifiers = unsortedPackage.getEClassifiers();
 		List<EClassifier> copy = new ArrayList<EClassifier>();
 		copy.addAll(classifiers);
 		Collections.sort(copy, new Comparator<EClassifier>() {
@@ -192,9 +201,12 @@ public class MetaModelGenerator extends AbstractGenerator {
 			}			
 		});
 		
-		EPackage result2 = EcoreFactory.eINSTANCE.createEPackage();
-		result2.getEClassifiers().addAll(copy);
+		EPackage sortedPackage = EcoreFactory.eINSTANCE.createEPackage();
+		sortedPackage.getEClassifiers().addAll(copy);
+		sortedPackage.setName("SpecificMetaModel");
+		monitor.worked(1);
 
-		return result2;
+		monitor.done();
+		return sortedPackage;
 	}
 }

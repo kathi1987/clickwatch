@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EAttribute;
@@ -25,8 +27,14 @@ import de.hub.specificmodels.common.TargetId;
 import de.hub.specificmodels.metamodelgenerator.DefaultTargetObjectCreator;
 
 public class ModelGenerator extends AbstractGenerator {
-
+	
 	public EObject generate(EPackage specificMetaModel, EObject root) {
+		return generate(new NullProgressMonitor(), specificMetaModel, root);
+	}
+
+	public EObject generate(IProgressMonitor monitor, EPackage specificMetaModel, EObject root) {
+		monitor.beginTask("Create specific model", 2);
+		
 		// build target_id map
 		final Map<String, EClass> targetIdToClass = new HashMap<String, EClass>();
 		final Map<String, EStructuralFeature> targetIdToFeature = new HashMap<String, EStructuralFeature>();
@@ -50,6 +58,7 @@ public class ModelGenerator extends AbstractGenerator {
 				}
 			}
 		}
+		monitor.worked(1);
 		
 		final EFactory factory = specificMetaModel.getEFactoryInstance();
 		
@@ -121,7 +130,9 @@ public class ModelGenerator extends AbstractGenerator {
 				}
 			}
 		}, rootKey);
+		monitor.worked(1);
 		
+		monitor.done();
 		return sourceToTarget.get(root);
 	}
 }

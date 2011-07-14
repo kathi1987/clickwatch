@@ -67,8 +67,7 @@ public class DefaultTargetObjectCreator implements ITargetObjectCreator {
 	@Override
 	public void updateTargetClass(EClass targetClass, TargetId targetId,
 			SourceObjectKey object) {
-		// TODO Auto-generated method stub
-		
+		// empty (what to update for? -> drop update completely)		
 	}
 	
 	private void setLatestObject(SourceObjectKey currentSok, EStructuralFeature forFeature) {
@@ -80,7 +79,7 @@ public class DefaultTargetObjectCreator implements ITargetObjectCreator {
 	}
 	
 	@Override
-	public EReference createTargetReference(String featureName, EClass type,
+	public EReference createTargetReference(EClass containingClass, String featureName, EClass type,
 			TargetId targetId, SourceObjectKey sok) {
 		EReference targetFeature = EcoreFactory.eINSTANCE.createEReference();
 		targetFeature.setName(featureName);
@@ -91,10 +90,16 @@ public class DefaultTargetObjectCreator implements ITargetObjectCreator {
 		}
 		targetFeature.setContainment(targetId.getProperty(Containment.class).get());
 		
-		// TODO backwards
 		setLatestObject(sok, targetFeature);
 		addAnnotation(targetFeature, TARGET_ID, targetId.getTargetReferenceString());
 		addAnnotation(targetFeature, IsCopy.class.getSimpleName(), targetId.getProperty(IsCopy.class).get().toString());
+		
+		EReference parentFeature = EcoreFactory.eINSTANCE.createEReference();
+		parentFeature.setName("_parent");
+		parentFeature.setEType(containingClass);
+		type.getEStructuralFeatures().add(parentFeature);
+		parentFeature.setEOpposite(targetFeature);
+		
 		return targetFeature;
 	}
 
