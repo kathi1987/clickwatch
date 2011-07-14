@@ -206,6 +206,12 @@ public class MetaModelGenerator extends AbstractGenerator {
 		sortedPackage.setName("SpecificMetaModel");
 		monitor.worked(1);
 
+		targetIds.clear();
+		sokToTargetId.clear();
+		classifiers.clear();
+		targetIdToTargetClassIdMap.clear();
+		targetIdToTargetFeatureIdMap.clear();
+		
 		monitor.done();
 		return sortedPackage;
 	}

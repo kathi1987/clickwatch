@@ -132,7 +132,12 @@ public class ModelGenerator extends AbstractGenerator {
 		}, rootKey);
 		monitor.worked(1);
 		
+		EObject result = sourceToTarget.get(root);
+		sourceToTarget.clear();
+		targetIdToClass.clear();
+		targetIdToFeature.clear();
+		sokToTargetId.clear();
 		monitor.done();
-		return sourceToTarget.get(root);
+		return result;
 	}
 }

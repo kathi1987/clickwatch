@@ -1,6 +1,6 @@
 package de.hub.clickwatch.examples.seismo;
 
-import de.hub.clickwatch.examples.AbstractAnalysis;
+import de.hub.clickwatch.analysis.AbstractAnalysis;
 
 public class Seismo extends AbstractAnalysis {
 	

@@ -95,10 +95,12 @@ public class DefaultTargetObjectCreator implements ITargetObjectCreator {
 		addAnnotation(targetFeature, IsCopy.class.getSimpleName(), targetId.getProperty(IsCopy.class).get().toString());
 		
 		EReference parentFeature = EcoreFactory.eINSTANCE.createEReference();
-		parentFeature.setName("_parent");
+		parentFeature.setName("eContainer_" + featureName);
 		parentFeature.setEType(containingClass);
 		type.getEStructuralFeatures().add(parentFeature);
 		parentFeature.setEOpposite(targetFeature);
+		targetFeature.setEOpposite(parentFeature);
+		parentFeature.setTransient(targetFeature.isTransient());
 		
 		return targetFeature;
 	}

@@ -16,13 +16,4 @@
             class="de.hub.clickwatch.examples.linkdist.ldp.LinkDistPlotPackage"
             genModel="src/de/hub/clickwatch/examples/linkdist/LinkDistPlot.genmodel"/>
    </extension>
-   <extension
-         point="edu.hu.clickwatch.analysis.AutoAnalysis">
-      <analysis
-            class="de.hub.clickwatch.examples.lifd.LocalInterfererDetection"
-            interval="10000"
-            name="Local Interferer Detection">
-      </analysis>
-   </extension>
-
 </plugin>

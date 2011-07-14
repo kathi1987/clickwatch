@@ -35,11 +35,11 @@ public class Main {
 		EPackage.Registry.INSTANCE.put(metaModel.getNsURI(), metaModel);
 		
 		Resource modelResource = resourceSet.getResource(URI.createFileURI("src/SpecificModel.scwm"), true);
-		model = modelResource.getContents().get(0);
+		model = (EObject)modelResource.getContents().get(0);
 	}
 	
 	public void evalXtend() {	
-		XtendFacade f = XtendFacade.create("analysis");
+		XtendFacade f = XtendFacade.create(new String[] {"analysis"});
 		f.registerMetaModel(new EmfMetaModel(metaModel));
 		
 		System.out.println(f.call("performAnalysis", new Object[]{model}));
@@ -55,7 +55,7 @@ public class Main {
 		execCtx.registerMetaModel(new EmfMetaModel(metaModel));
 
 		XpandFacade facade = XpandFacade.create(execCtx);
-		facade.evaluate("analysis::Main", model);
+		facade.evaluate("analysis::Main", model, new Object[] {});
 	}
 	
 	public static void main(String[] args) {
@@ -72,7 +72,7 @@ public class Main {
 import SpecificMetaModel;
 
 nodeinfo(Node node):
-	node.iNetAdress;
+	node.iNetAddress;
 
 performAnalysis(Network network):
 	"Hello Nodes: " + network.nodes.collect(e|e.nodeinfo());

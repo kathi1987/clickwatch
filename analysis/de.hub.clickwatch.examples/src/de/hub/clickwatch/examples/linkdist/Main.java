@@ -1,6 +1,6 @@
 package de.hub.clickwatch.examples.linkdist;
 
-import de.hub.clickwatch.examples.AbstractAnalysis;
+import de.hub.clickwatch.analysis.AbstractAnalysis;
 import de.hub.clickwatch.examples.linkdist.ldp.LinkDistPlotPackage;
 
 public class Main extends AbstractAnalysis {

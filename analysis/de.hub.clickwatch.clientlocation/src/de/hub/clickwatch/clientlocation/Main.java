@@ -16,13 +16,13 @@ import com.google.inject.Injector;
 
 import de.hub.clickwatch.ClickWatchModule;
 import de.hub.clickwatch.ClickWatchStandaloneSetup;
+import de.hub.clickwatch.analysis.AbstractAnalysis;
 import de.hub.clickwatch.clientlocation.clientstats.ClientStats;
 import de.hub.clickwatch.clientlocation.clientstats.ClientStatsPackage;
 import de.hub.clickwatch.connection.INodeConnection;
 import de.hub.clickwatch.connection.INodeConnectionProvider;
 import de.hub.clickwatch.connection.adapter.IValueAdapter;
 import de.hub.clickwatch.connection.adapter.XmlValueAdapter;
-import de.hub.clickwatch.examples.AbstractAnalysis;
 import de.hub.clickwatch.model.ClickWatchModelFactory;
 import de.hub.clickwatch.model.Network;
 import de.hub.clickwatch.model.Node;

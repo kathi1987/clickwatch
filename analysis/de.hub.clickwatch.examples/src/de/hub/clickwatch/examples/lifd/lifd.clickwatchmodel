@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<cwm:Network xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:cwm="de.hub.clickwatch.model">
-  <node iNetAdress="192.168.3.152"/>
-  <node iNetAdress="192.168.3.184"/>
-</cwm:Network>
