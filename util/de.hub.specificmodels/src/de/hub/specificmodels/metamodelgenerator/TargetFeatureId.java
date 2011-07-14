@@ -2,13 +2,13 @@ package de.hub.specificmodels.metamodelgenerator;
 
 import com.google.common.base.Preconditions;
 
-public class TargetFeatureId implements ITargetMetaId<TargetFeatureId> {
+import de.hub.specificmodels.common.TargetId;
+
+public class TargetFeatureId extends NamedElement {
 
 	private final TargetClassId classId;	
 	private final TargetId targetId;
 	private String featureName;
-	
-	private boolean hasCollision = false;
 	
 	public static TargetFeatureId create(TargetClassId parentClassId, TargetId targetId) {
 		Preconditions.checkArgument(parentClassId != null);
@@ -24,13 +24,14 @@ public class TargetFeatureId implements ITargetMetaId<TargetFeatureId> {
 			featureName = targetId.getTargetFeatureName();			
 		}
 		this.targetId = targetId;
+		classId.addName(this);
 	}
 
 	public TargetClassId getClassId() {
 		return classId;
 	}
 
-	public String getFeatureName() {
+	public String getName() {
 		return featureName;
 	}
 
@@ -40,22 +41,12 @@ public class TargetFeatureId implements ITargetMetaId<TargetFeatureId> {
 	}
 
 	@Override
-	public void addCollision(TargetFeatureId collidee) {
-		hasCollision = true;
-	}
-
-	@Override
 	public void resolveCollisions() {
-		if (hasCollision) {
+		if (!collidingElements.isEmpty()) {
 			if (!targetId.getTargetFeatureName().equals("")) {
 				featureName = targetId.getSourceFeature().getName() + featureName.substring(0, 1).toUpperCase() + featureName.substring(1);
 			}
 		}
-	}
-
-	@Override
-	public Object hashableRep() {
-		return toString();
 	}
 
 }

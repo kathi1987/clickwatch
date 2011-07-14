@@ -1,15 +1,11 @@
 package de.hub.clickwatch.specificmodels.tests;
 
-import static de.hub.specificmodels.tests.common.AbstractTests.assertClass;
-
 import java.io.IOException;
+import java.util.List;
 
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.junit.Assert;
 import org.junit.Test;
 
 import com.google.inject.AbstractModule;
@@ -30,10 +26,12 @@ import de.hub.clickwatch.recorder.ClickSocketPlayerSocketImpl;
 import de.hub.clickwatch.specificmodels.ClickWatchSpecificModelsModule;
 import de.hub.clickwatch.tests.AbstractTest;
 import de.hub.specificmodels.metamodelgenerator.MetaModelGenerator;
+import de.hub.specificmodels.modelgenerator.ModelGenerator;
 
-public class MetaModelFromRecordTest extends AbstractTest {
+public class ModelFromRecordTest extends AbstractTest {
 	
 	private static final String[] ipAddresses = new String[] {"192.168.3.152", "10.5.70.54", "192.168.3.167", "192.168.3.184"};
+	private Injector specificModelsInjector = null;
 	
 	@Override
 	protected AbstractModule[] getAdditionalModules() {
@@ -42,9 +40,18 @@ public class MetaModelFromRecordTest extends AbstractTest {
 		return new AbstractModule[] { new ClickSocketPlayer.PlayerModule(record, false) };
 	}
 	
-	private EPackage generate(EObject root) {
-		Injector injector = Guice.createInjector(new ClickWatchSpecificModelsModule());
-		return injector.getInstance(MetaModelGenerator.class).generateMetaModel(root);
+	@Override
+	protected void additionalSetUp() {
+		specificModelsInjector = Guice.createInjector(new ClickWatchSpecificModelsModule());
+	}
+
+	private EPackage generateMetaModel(EObject root) {
+		return specificModelsInjector.getInstance(MetaModelGenerator.class).generateMetaModel(root);
+	}
+	
+	private EObject generateModel(EPackage metaModel, EObject source) {
+		ModelGenerator modelGenerator = specificModelsInjector.getInstance(ModelGenerator.class);
+		return modelGenerator.generate(metaModel, source);
 	}
 	
 	@Override
@@ -66,10 +73,11 @@ public class MetaModelFromRecordTest extends AbstractTest {
 		Network network = ClickWatchModelFactory.eINSTANCE.createNetwork();
 		network.getNodes().add(node);
 		
-		EPackage result = generate(network);
-		save(result);
+		EPackage metaModel = generateMetaModel(network);
+		EObject model = generateModel(metaModel, network);
 		
-		assertBcast_stat(result);
+		Assert.assertNotNull(model);
+		assertBcast_stat(model);
 	}
 	
 	@Test
@@ -83,10 +91,11 @@ public class MetaModelFromRecordTest extends AbstractTest {
 			network.getNodes().add(node);
 		}
 		
-		EPackage result = generate(network);
-		save(result);
+		EPackage metaModel = generateMetaModel(network);
+		EObject model = generateModel(metaModel, network);
 		
-		assertBcast_stat(result);
+		Assert.assertNotNull(model);
+		assertBcast_stat(model);
 	}
 	
 	@Test
@@ -100,10 +109,11 @@ public class MetaModelFromRecordTest extends AbstractTest {
 			network.getNodes().add(node);
 		}
 		
-		EPackage result = generate(network);
-		save(result);
+		EPackage metaModel = generateMetaModel(network);
+		EObject model = generateModel(metaModel, network);
 		
-		assertBcast_stat(result);
+		Assert.assertNotNull(model);
+		assertBcast_stat(model);
 	}
 	
 	@Test
@@ -117,27 +127,40 @@ public class MetaModelFromRecordTest extends AbstractTest {
 			network.getNodes().add(node);
 		}
 		
-		EPackage result = generate(network);
-		save(result);
+		EPackage metaModel = generateMetaModel(network);
+		EObject model = generateModel(metaModel, network);
 		
-		assertBcast_stat(result);
+		Assert.assertNotNull(model);
+		assertBcast_stat(model);
 	}
 	
-	private void assertBcast_stat(EPackage result) {
-		assertClass(result, "Entry", null, "from", null, 1);
-		assertClass(result, "Entry", null, "seq", null, 1);
-		assertClass(result, "Entry", null, "link", null, -1);
-		assertClass(result, "Link", null, "tau", null, 1);
-		assertClass(result, "Link", null, "last_rx", null, 1);
-		assertClass(result, "Link", null, "link_info", null, 1);
-		assertClass(result, "Link_info", null, "size", null, 1);
-		assertClass(result, "Link_info", null, "rate", null, 1);
+	private Object get(EObject object, String featureName) {
+		Object value = object.eGet(object.eClass().getEStructuralFeature(featureName));
+		if (value == null) {
+			return null;
+		} else if (value instanceof List<?>) {
+			return ((List<?>)value).get(0);
+		} else {
+			return value;
+		}
 	}
 	
-	private void save(EPackage result) throws IOException {
-		ResourceSet rs = new ResourceSetImpl();
-		Resource resource = rs.createResource(URI.createFileURI("test_out.ecore"));
-		resource.getContents().add(result);
-		resource.save(null);
+	private void assertBcast_stat(EObject result) {
+		EObject node = (EObject)get(result, "nodes");
+		Assert.assertNotNull(node);
+		EObject device_wifi = (EObject)get(node, "device_wifi");
+		Assert.assertNotNull(device_wifi);
+		EObject link_stat = (EObject)get(device_wifi, "link_stat");
+		Assert.assertNotNull(link_stat);
+		EObject bcast_stats = (EObject)get(link_stat, "bcast_stats");
+		Assert.assertNotNull(bcast_stats);
+		EObject entry = (EObject)get(bcast_stats, "entry");
+		Assert.assertNotNull(entry);
+		EObject link = (EObject)get(entry, "link");
+		Assert.assertNotNull(link);
+		EObject link_info = (EObject)get(link, "link_info");
+		Assert.assertNotNull(link_info);
+		Assert.assertEquals(100, get(link_info, "size"));
 	}
+
 }

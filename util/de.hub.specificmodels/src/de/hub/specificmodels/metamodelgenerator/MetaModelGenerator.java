@@ -1,11 +1,16 @@
 package de.hub.specificmodels.metamodelgenerator;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -13,11 +18,14 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcoreFactory;
 
 import com.google.common.base.Preconditions;
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.Multimap;
+import com.google.inject.Inject;
 
-import de.hub.specificmodels.metamodelgenerator.ITargetIdProvider.ITargetIdProviderContext;
-import de.hub.specificmodels.metamodelgenerator.targetproperties.SuperClasses;
+import de.hub.specificmodels.common.AbstractGenerator;
+import de.hub.specificmodels.common.ITargetIdProvider;
+import de.hub.specificmodels.common.ModelTraverser;
+import de.hub.specificmodels.common.SourceObjectKey;
+import de.hub.specificmodels.common.TargetId;
+import de.hub.specificmodels.common.targetproperties.SuperClasses;
 
 /**
  * This class realizes the following algorithm: First source elements (source
@@ -50,98 +58,43 @@ import de.hub.specificmodels.metamodelgenerator.targetproperties.SuperClasses;
  * {@link SourceObjectKey}s. The is a {@link DefaultTargetObjectCreator} but it
  * can also be configured by API users.
  */
-public class MetaModelGenerator {
+public class MetaModelGenerator extends AbstractGenerator {
 
-	private final ITargetIdProvider targetIdProvider;
-	private final ITargetIdProviderContext ctx = new TargetIdProviderContext();
+	public static final String COMMON_CLASS_PREFIX_NAME = "commonClassPrefixName";
 	
-	private final Map<SourceObjectKey, TargetId[]> sokToTargetId = new HashMap<SourceObjectKey, TargetId[]>();	
-	private final Collection<TargetId> targetIds = new HashSet<TargetId>();
+	@Inject
+	private TargetClassId.TargetClassIdProvider targetClassIdProvider;
 
-	// TODO injection
-	private final ITargetObjectCreator targetObjectCreator = new DefaultTargetObjectCreator();
-
-	public MetaModelGenerator(ITargetIdProvider targetIdProvider) {
-		super();
-		this.targetIdProvider = targetIdProvider;
-	}
-
-	private class TargetIdProviderContext implements ITargetIdProviderContext {
-		@Override
-		public TargetId[] getExistingTargetIds(SourceObjectKey sourceObject) {
-			return getProvidedTargetIds(sourceObject);
-		}
-	}
-
-	private TargetId[] getProvidedTargetIds(SourceObjectKey object) {
-		TargetId[] result = sokToTargetId.get(object);
-		if (result == null) {
-			result = targetIdProvider.provideTargetIds(ctx, object);
-			sokToTargetId.put(object, result);
-		}
-		return result;
-	}
-
-	private void collectTargetIdsForSourceObjectKey(SourceObjectKey key) {
-		TargetId[] targetIds = getProvidedTargetIds(key);
-		for (TargetId targetId : targetIds) {
-			this.targetIds.add(targetId);
-		}
-	}
-
-	@SuppressWarnings({ "rawtypes", "unchecked" })
-	private void resolveCollisions(Collection<? extends ITargetMetaId> metaIds) {
-		Multimap<Object, ITargetMetaId> hashableMetaIdRepToMetaIdMap = HashMultimap.create();
-		for (ITargetMetaId metaId : metaIds) {
-			Collection<ITargetMetaId> existingMetaIds = hashableMetaIdRepToMetaIdMap.get(metaId.hashableRep());
-			if (existingMetaIds != null && !existingMetaIds.isEmpty()) {
-				for (ITargetMetaId collidee : existingMetaIds) {
-					collidee.addCollision(metaId);
-					metaId.addCollision(collidee);
-				}
-			}
-			hashableMetaIdRepToMetaIdMap.put(metaId.hashableRep(), metaId);
-		}
-		for (ITargetMetaId metaId : metaIds) {
-			metaId.resolveCollisions();
-		}
-	}
+	@Inject
+	private ITargetObjectCreator targetObjectCreator;
 	
-	protected boolean ommitFeature(EStructuralFeature feature) {
-		if (feature.isDerived() == true) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-	
-	private abstract class ModelTraverserConfiguration implements ModelTraverser.Configuration {
-		@Override
-		public boolean ommitFeature(EStructuralFeature feature) {
-			return MetaModelGenerator.this.ommitFeature(feature);
-		}
-	}
 
 	public EPackage generateMetaModel(EObject root) {
+		final Collection<TargetId> targetIds = new HashSet<TargetId>();
+		
 		// collecting targetIds for all objects
-		SourceObjectKey rootKey = new SourceObjectKey(null, null, root);
-		collectTargetIdsForSourceObjectKey(rootKey);
-		new ModelTraverser().traverseSourceModel(new ModelTraverserConfiguration() {
+		ModelTraverserConfiguration collectTargetIdsConfig = new ModelTraverserConfiguration() {
 			@Override
 			public void work(SourceObjectKey sok) {
-				collectTargetIdsForSourceObjectKey(sok);
+				TargetId[] providedTargetIds = getTargetIds(sok);
+				for (TargetId targetId : providedTargetIds) {
+					targetIds.add(targetId);
+				}
 			}
-		}, rootKey);
+		};
+		SourceObjectKey rootKey = new SourceObjectKey(null, null, root);
+		collectTargetIdsConfig.work(rootKey);
+		new ModelTraverser().traverseSourceModel(collectTargetIdsConfig, rootKey);
 
 		// computing targetMetaIds
-		final Map<TargetClassId, TargetId> targetClassIds = new HashMap<TargetClassId, TargetId>();
+		Namespace<TargetClassId> packageNS = new Namespace<TargetClassId>();
 		final Map<TargetId, TargetClassId> targetIdToTargetClassIdMap = new HashMap<TargetId, TargetClassId>();
 		final Map<TargetId, TargetFeatureId> targetIdToTargetFeatureIdMap = new HashMap<TargetId, TargetFeatureId>();
 		for (TargetId targetId : targetIds) {
 			if (targetId.hasClass()) {
-				TargetClassId classId = TargetClassId.create(targetId);
-				targetClassIds.put(classId, targetId);
+				TargetClassId classId = targetClassIdProvider.create(targetId);
 				targetIdToTargetClassIdMap.put(targetId, classId);
+				packageNS.addName(classId);
 			}
 		}
 		for (TargetId targetId : targetIds) {
@@ -153,9 +106,8 @@ public class MetaModelGenerator {
 			}
 		}
 
-		// resolve collisions
-		resolveCollisions(targetIdToTargetClassIdMap.values());
-		resolveCollisions(targetIdToTargetFeatureIdMap.values());
+		// resolve class collisions
+		packageNS.handleCollisions();
 
 		// creating and updating targetClasses
 		final EPackage result = EcoreFactory.eINSTANCE.createEPackage();
@@ -165,7 +117,7 @@ public class MetaModelGenerator {
 				for(TargetId targetId: sokToTargetId.get(sok)) {
 					TargetClassId targetClassId = targetIdToTargetClassIdMap.get(targetId);
 					if (targetClassId != null) {
-						String className = targetClassId.getClassName();
+						String className = targetClassId.getName();
 						EClass existingTargetClass = (EClass)result.getEClassifier(className);
 						if (existingTargetClass == null) {
 							EClass targetClass = targetObjectCreator.createTargetClass(className, targetId, sok);
@@ -178,18 +130,22 @@ public class MetaModelGenerator {
 			}
 		}, rootKey);	
 
-		// added super classes (this is not perfect, it introduces an unwanted coupling with TargetId properties (e.g. super classes))
+		// adding super classes (this is not perfect, it introduces an unwanted 
+		// coupling with TargetId properties (e.g. super classes))
 		for (TargetClassId targetClassId : targetIdToTargetClassIdMap.values()) {
-			TargetId targetId = targetClassIds.get(targetClassId);
+			TargetId targetId = targetClassId.getTargetId(); 
 			for (TargetId superClassTargetId : targetId.getProperty(SuperClasses.class).get()) {
-				TargetClassId superClassTargetClassId = targetIdToTargetClassIdMap
-						.get(superClassTargetId);
-				EClass superClass = (EClass) result
-						.getEClassifier(superClassTargetClassId.getClassName());
-				EClass targetClass = (EClass) result
-						.getEClassifier(targetClassId.getClassName());
+				TargetClassId superClassTargetClassId = targetIdToTargetClassIdMap.get(superClassTargetId);
+				EClass superClass = (EClass) result.getEClassifier(superClassTargetClassId.getName());
+				EClass targetClass = (EClass) result.getEClassifier(targetClassId.getName());
 				targetObjectCreator.addSuperClass(targetClass, superClass);
+				targetClassId.inherit(superClassTargetClassId);
 			}
+		}
+		
+		// resolving feature collisions
+		for (TargetClassId targetClassId: targetIdToTargetClassIdMap.values()) {
+			targetClassId.handleCollisions();
 		}
 
 		// creating and updating targetFeatures
@@ -200,8 +156,8 @@ public class MetaModelGenerator {
 					TargetFeatureId targetFeatureId = targetIdToTargetFeatureIdMap.get(targetId);
 					if (targetFeatureId != null) {
 						Preconditions.checkState(sok.getFeature() != null);
-						String featureName = targetFeatureId.getFeatureName();
-						String className = targetFeatureId.getClassId().getClassName();
+						String featureName = targetFeatureId.getName();
+						String className = targetFeatureId.getClassId().getName();
 						EStructuralFeature exisitingFeature = ((EClass) result
 								.getEClassifier(className))
 								.getEStructuralFeature(featureName);
@@ -209,7 +165,7 @@ public class MetaModelGenerator {
 							EStructuralFeature targetFeature = null;
 							if (targetId.getSourceFeature() instanceof EReference) {
 								TargetClassId typeClassId = targetIdToTargetClassIdMap.get(targetId);
-								EClass type = (EClass) result.getEClassifier(typeClassId.getClassName());
+								EClass type = (EClass) result.getEClassifier(typeClassId.getName());
 								targetFeature = targetObjectCreator.createTargetReference(featureName, type,
 										targetId, sok);
 							} else {
@@ -225,7 +181,20 @@ public class MetaModelGenerator {
 				}
 			}
 		}, rootKey);	
+		
+		List<EClassifier> classifiers = result.getEClassifiers();
+		List<EClassifier> copy = new ArrayList<EClassifier>();
+		copy.addAll(classifiers);
+		Collections.sort(copy, new Comparator<EClassifier>() {
+			@Override
+			public int compare(EClassifier arg0, EClassifier arg1) {
+				return arg0.getName().compareTo(arg1.getName());
+			}			
+		});
+		
+		EPackage result2 = EcoreFactory.eINSTANCE.createEPackage();
+		result2.getEClassifiers().addAll(copy);
 
-		return result;
+		return result2;
 	}
 }
