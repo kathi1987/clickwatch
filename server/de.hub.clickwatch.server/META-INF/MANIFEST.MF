@@ -21,4 +21,5 @@ Require-Bundle: com.google.inject,
  de.hub.clickwatch.xml;bundle-version="1.0.0"
 Export-Package: de.hub.clickwatch.server,
  de.hub.clickwatch.server.configuration,
+ de.hub.clickwatch.server.database,
  de.hub.clickwatch.server.management

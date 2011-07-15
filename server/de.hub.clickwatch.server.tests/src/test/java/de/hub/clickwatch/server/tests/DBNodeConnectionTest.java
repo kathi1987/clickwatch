@@ -79,16 +79,26 @@ public class DBNodeConnectionTest extends AbstractTest {
 		sleep();
 		
 		nodeConnection.cleanUp();
+		
+		final String file = "src/test/resources/" + DBNodeConnectionTest.class.getPackage().getName().replace(".", "/") + "/" 
+				+ "test" + ".sql";
+		
+		String queryString = nodeConnection.readSQLFile(file);
+
+		System.out.println(queryString);
+		
+		nodeConnection.createTables(queryString);
 	}
 	
 	private static void sleep(){
 		try {
-			Thread.sleep(30000);
+			Thread.sleep(3000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 	}
 	
+	@Test
 	public void readSQLFileTest(){
 		final String file = "src/test/resources/" + DBNodeConnectionTest.class.getPackage().getName().replace(".", "/") + "/" 
 				+ "test" + ".sql";
@@ -97,11 +107,11 @@ public class DBNodeConnectionTest extends AbstractTest {
 		
 		String queryString = nodeConnection.readSQLFile(file);
 		
-		assertNotNull(queryString);
 		
 		nodeConnection.setUpDatabaseConnection("cdo", ".,Br1t4#-?4ss3rf1lt3r|", "clickplain");
 		
 		// Not finished
+		assertNotNull(queryString);
 
 	}
 }

@@ -10,9 +10,6 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.Diagnostician;
 
-import de.hub.clickwatch.xml.configuration.ConfigurationPackage;
-import de.hub.clickwatch.xml.configuration.util.ConfigurationResourceFactoryImpl;
-
 
 
 /**
@@ -34,12 +31,12 @@ public class ConfigurationFileReader {
 		// Register the appropriate resource factory to handle all file extensions.
 		mResourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put
 			(Resource.Factory.Registry.DEFAULT_EXTENSION, 
-			 new ConfigurationResourceFactoryImpl());
+			 new de.hub.clickwatch.xml.util.ConfigurationResourceFactoryImpl());
 		
 		// Register the package to ensure it is available during loading.
 		mResourceSet.getPackageRegistry().put
-			(ConfigurationPackage.eNS_URI, 
-			 ConfigurationPackage.eINSTANCE);	
+			(de.hub.clickwatch.xml.ConfigurationPackage.eNS_URI, 
+			 de.hub.clickwatch.xml.ConfigurationPackage.eINSTANCE);	
 		
 		// mLogService = ServerPluginActivator.getInstance().getLogService();
 		

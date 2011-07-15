@@ -2,6 +2,7 @@ package de.hub.clickwatch.server;
 
 import java.util.ArrayList;
 
+import de.hub.clickwatch.connection.INodeConnection;
 import de.hub.clickwatch.server.configuration.ConfigurationFileReader;
 
 
@@ -15,9 +16,9 @@ public interface IClickWatchServer {
 	
 	public void activateConfiguration();
 	
-	public ArrayList<DBNodeConnection> getConnectionList();
+	public ArrayList<INodeConnection> getConnectionList();
 	
-	public void setConnectionList(ArrayList<DBNodeConnection> pConnectionList);
+	public void setConnectionList(ArrayList<INodeConnection> pConnectionList);
 	
 	public void shutdown();
 	
