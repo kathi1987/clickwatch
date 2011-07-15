@@ -7,7 +7,6 @@
 package de.hub.clickwatch.model.provider;
 
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -32,7 +31,6 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import de.hub.clickwatch.model.ClickWatchModelPackage;
 import de.hub.clickwatch.model.Handler;
-import de.hub.clickwatch.model.IsRecordedAdapter;
 
 
 /**
@@ -83,6 +81,7 @@ public class HandlerItemProvider
 			addChangedPropertyDescriptor(object);
 			addWatchPropertyDescriptor(object);
 			addValuePropertyDescriptor(object);
+			addTimestampPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -193,6 +192,28 @@ public class HandlerItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Timestamp feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addTimestampPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Handler_timestamp_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Handler_timestamp_feature", "_UI_Handler_type"),
+				 ClickWatchModelPackage.Literals.HANDLER__TIMESTAMP,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -350,29 +371,29 @@ public class HandlerItemProvider
 		}
 	}
 
-	@Override
-	public Collection<?> getChildren(Object object) {
-		IsRecordedAdapter isRecordedAdapter = new IsRecordedAdapter();
-		Collection<Object> children = new ArrayList<Object>();
-		for(Object child: super.getChildren(object)) {
-			boolean isRecorded = false;
-			Object value = ((FeatureMapEntryWrapperItemProvider)child).getValue();
-			if (value instanceof FeatureMap.Entry) {
-				Object fmeValue = ((FeatureMap.Entry)value).getValue();
-				if (fmeValue instanceof EObject) {
-					AdapterLoop: for(Object adapter: ((EObject)fmeValue).eAdapters()) {
-						if (adapter.equals(isRecordedAdapter)) {
-							isRecorded = true;
-							break AdapterLoop;
-						}
-					}
-				}
-			}
-				
-			if (!isRecorded) {
-				children.add(child);
-			}
-		}
-		return children;
-	}
+//	@Override
+//	public Collection<?> getChildren(Object object) {
+//		IsRecordedAdapter isRecordedAdapter = new IsRecordedAdapter();
+//		Collection<Object> children = new ArrayList<Object>();
+//		for(Object child: super.getChildren(object)) {
+//			boolean isRecorded = false;
+//			Object value = ((FeatureMapEntryWrapperItemProvider)child).getValue();
+//			if (value instanceof FeatureMap.Entry) {
+//				Object fmeValue = ((FeatureMap.Entry)value).getValue();
+//				if (fmeValue instanceof EObject) {
+//					AdapterLoop: for(Object adapter: ((EObject)fmeValue).eAdapters()) {
+//						if (adapter.equals(isRecordedAdapter)) {
+//							isRecorded = true;
+//							break AdapterLoop;
+//						}
+//					}
+//				}
+//			}
+//				
+//			if (!isRecorded) {
+//				children.add(child);
+//			}
+//		}
+//		return children;
+//	}
 }

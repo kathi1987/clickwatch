@@ -14,7 +14,7 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
-import de.hub.clickwatch.model.AbstractNodeConnection;
+import de.hub.clickwatch.connection.INodeConnection;
 import de.hub.clickwatch.model.Node;
 
 
@@ -321,7 +321,7 @@ public class Configure extends AbstractNodeAction{
 
 			// disconnect if connected
 			if (node.getConnection() != null) {
-				AbstractNodeConnection oldConnection = (AbstractNodeConnection)node.getConnection();
+				INodeConnection oldConnection = (INodeConnection)node.getConnection();
 				node.setConnection(null);
 				oldConnection.disconnect();
 			}

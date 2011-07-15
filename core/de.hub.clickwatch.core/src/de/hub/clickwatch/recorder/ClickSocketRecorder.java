@@ -11,21 +11,21 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 
-import com.google.inject.Binder;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
-import com.google.inject.Module;
 
 import de.hub.clickwatch.ClickWatchModule;
 import de.hub.clickwatch.ClickWatchStandaloneSetup;
+import de.hub.clickwatch.connection.INodeConnection;
+import de.hub.clickwatch.connection.INodeConnectionProvider;
+import de.hub.clickwatch.connection.adapter.INodeAdapter;
+import de.hub.clickwatch.connection.adapter.IValueAdapter;
+import de.hub.clickwatch.connection.adapter.StringValueAdapter;
 import de.hub.clickwatch.model.ClickWatchModelFactory;
 import de.hub.clickwatch.model.Network;
 import de.hub.clickwatch.model.Node;
-import de.hub.clickwatch.nodeadapter.ClickControlNodeAdapter;
-import de.hub.clickwatch.nodeadapter.INodeAdapter;
 import de.hub.clickwatch.util.ILogger;
 import de.hub.clickwatch.util.Throwables;
-
 
 public class ClickSocketRecorder {
 
@@ -36,7 +36,13 @@ public class ClickSocketRecorder {
 
 	public ClickSocketRecorder() {
 		ClickWatchStandaloneSetup.doSetup();
-		ClickWatchModule clickWatchModule = new ClickWatchModule();
+		ClickWatchModule clickWatchModule = new ClickWatchModule() {
+
+			@Override
+			protected void bindValueAdapter() {
+				bind(IValueAdapter.class).to(StringValueAdapter.class);
+			}
+		};
 		clickWatchModule.setLogger(new ILogger() {			
 			@Override
 			public void log(int status, String message, Throwable exception) {
@@ -44,12 +50,7 @@ public class ClickSocketRecorder {
 				exception.printStackTrace();
 			}
 		});
-		injector = Guice.createInjector(clickWatchModule, new Module() {			
-			@Override
-			public void configure(Binder binder) {
-				binder.bind(INodeAdapter.class).to(ClickControlNodeAdapter.class);
-			}
-		});
+		injector = Guice.createInjector(clickWatchModule);
 	}
 
 	public void record(String[] args) {
@@ -99,11 +100,12 @@ public class ClickSocketRecorder {
 	}
 
 	public Node retrieve(String host, String port) {
-		INodeAdapter nodeAdapter = injector.getInstance(INodeAdapter.class);
-		((ClickControlNodeAdapter) nodeAdapter).setUp(host, port);
-		nodeAdapter.connect();
-		Node result = nodeAdapter.retrieve("", "");
-		nodeAdapter.disconnect();
+		INodeConnectionProvider ncp = injector.getInstance(INodeConnectionProvider.class);
+		INodeConnection connection = ncp.createConnection(host, port);
+		connection.connect();
+		INodeAdapter nodeAdapter =connection.getAdapter(INodeAdapter.class);
+		Node result = nodeAdapter.pullNode();
+		connection.disconnect();
 		return EcoreUtil.copy(result);
 	}
 

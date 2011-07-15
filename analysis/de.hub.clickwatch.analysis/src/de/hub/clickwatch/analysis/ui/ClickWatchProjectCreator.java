@@ -10,8 +10,6 @@ import de.hub.clickwatch.model.ClickWatchModelFactory;
 import de.hub.clickwatch.model.Network;
 import de.hub.clickwatch.model.Node;
 
-
-
 public class ClickWatchProjectCreator extends AnalysisProjectCreator {
 
 	@Override
@@ -21,7 +19,7 @@ public class ClickWatchProjectCreator extends AnalysisProjectCreator {
 		Network network = ClickWatchModelFactory.eINSTANCE.createNetwork();
 		network.setName("a network");
 		Node node = ClickWatchModelFactory.eINSTANCE.createNode();
-		node.setINetAddress("192.168.3.157");
+		node.setINetAddress("localhost");
 		network.getNodes().add(node);
 		resource.getContents().add(network);
 		resource.save(options);

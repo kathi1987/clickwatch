@@ -1,12 +1,18 @@
 package de.hub.clickwatch.examples.linkasym;
 
-import de.hub.clickwatch.examples.AbstractAnalysis;
+import org.junit.Test;
+
+import de.hub.clickwatch.analysis.AbstractAnalysis;
 
 public class LinkAsym extends AbstractAnalysis {
 	
+	@Test
+	public void run() {
+		String path = getClass().getPackage().getName().replace(".", "::");
+		executeXpand(path + "::analysis::Main", "src/" + getClass().getPackage().getName().replace(".", "/"));
+	}
+	
 	public static void main(String[] args) {
-		LinkAsym instance = new LinkAsym();
-		String path = instance.getClass().getPackage().getName().replace(".", "::");
-		instance.executeXpand(path + "::analysis::Main", "src/" + instance.getClass().getPackage().getName().replace(".", "/"));
+		new LinkAsym().run();
 	}
 }

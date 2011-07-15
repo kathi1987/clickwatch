@@ -26,6 +26,7 @@ import org.eclipse.emf.ecore.xml.type.XMLTypeDocumentRoot;
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 import org.eclipse.xsd.XSDSchema;
 import org.eclipse.xsd.ecore.XSDEcoreBuilder;
+import org.junit.Test;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Collections2;
@@ -39,11 +40,12 @@ import de.hub.clickwatch.model.Network;
 import de.hub.clickwatch.model.Node;
 import de.hub.clickwatch.util.Throwables;
 
+import static junit.framework.Assert.*;
 
 public class XmlModelRepositoryTest extends AbstractTest {
 	
-	public final static String LINK_STAT_XSD = "src/" + XmlModelRepositoryTest.class.getPackage().getName().replace(".", "/") + "/link_stat.xsd";
-	public final static String LINK_STAT_XML = "src/" + XmlModelRepositoryTest.class.getPackage().getName().replace(".", "/") + "/link_stat_test.xml";
+	public final static String LINK_STAT_XSD = "resources/link_stat.xsd";
+	public final static String LINK_STAT_XML = "resources/link_stat_test.xml";
 	
 	private XmlModelRepository xmlModelRepository = null;
 
@@ -52,6 +54,7 @@ public class XmlModelRepositoryTest extends AbstractTest {
 		xmlModelRepository = injector.getInstance(XmlModelRepository.class);
 	}
 	
+	@Test
 	public void testDeserialize() {		
 		for (int i = 0; i < 2; i++) {
 			EObject deserializedXml = xmlModelRepository.deserializeXml("<foo>TEXT</foo>");
@@ -67,6 +70,7 @@ public class XmlModelRepositoryTest extends AbstractTest {
 		}
 	}
 
+	@Test
 	public void testSaveAndLoadClickWatchModel() {
 		Map<Object, Object> options = new HashMap<Object, Object>();
 		options.put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);
@@ -128,6 +132,7 @@ public class XmlModelRepositoryTest extends AbstractTest {
 		}
 	}
 	
+	@Test
 	public void testBasicXDS() {
 		Collection<EObject> xsd = new XSDEcoreBuilder().generate(URI.createFileURI(LINK_STAT_XSD));
 		Collection<EPackage> xsdPackages = Collections2.transform(xsd, new Function<EObject, EPackage>() {
@@ -161,6 +166,7 @@ public class XmlModelRepositoryTest extends AbstractTest {
 		}	
 	}
 	
+	@Test
 	public void testDeserializeXSD() {
 		URI uri = URI.createFileURI(LINK_STAT_XSD);
 		String xsdStr = null;
@@ -180,6 +186,7 @@ public class XmlModelRepositoryTest extends AbstractTest {
 		assertEquals(1, metaModel.size());
 	}
 	
+	@Test
 	public void testXSD() throws IOException {
 		EPackage metaModel = xmlModelRepository.loadMetaModelFromXSD(URI.createFileURI(LINK_STAT_XSD), 
 				TestUtil.readFileAsString(LINK_STAT_XSD));

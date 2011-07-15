@@ -11,7 +11,6 @@
       </package>
    </extension>
 
-   <extension-point id="edu.hu.clickwatch.analysis.AutoAnalysis" name="Automated analysis" schema="schema/edu.hu.clickwatch.analysis.AutoAnalysis.exsd"/>
    <extension-point id="edu.hu.clickwatch.analysis.composition.PredefinedTransformation" name="Predefined transformation" schema="schema/edu.hu.clickwatch.analysis.composition.PredefinedTransformation.exsd"/>
    <extension-point id="edu.hu.clickwatch.analysis.composition.Visualization" name="Visualization" schema="schema/edu.hu.clickwatch.analysis.composition.Visualization.exsd"/>
 	<extension
@@ -22,7 +21,7 @@
 		</category>
 		<wizard
 			category="edu.hu.clickwatch.analysis.WizardCategory"
-			class="de.hub.clickwatch.analysis.ui.NewAnalysisProjectWizard"
+			class="de.hub.clickwatch.ui.GuiceAwareExecutableExtensionFactory:de.hub.clickwatch.analysis.ui.NewAnalysisProjectWizard"
 			icon="icons/Analysis.gif"
 			id="edu.hu.clickwatch.analysis.NewAnalysisProjectWizard"
 			name="%Analysis_Project"
@@ -30,7 +29,7 @@
 		</wizard>
   <wizard
         category="edu.hu.clickwatch.analysis.WizardCategory"
-        class="de.hub.clickwatch.analysis.ui.NewClickWatchProjectWizard"
+        class="de.hub.clickwatch.ui.GuiceAwareExecutableExtensionFactory:de.hub.clickwatch.analysis.ui.NewClickWatchProjectWizard"
         icon="icons/Analysis.gif"
         id="edu.hu.clickwatch.analysis.NewClickWatchProjectWizard"
         name="%ClickWatch_Project"
@@ -66,31 +65,10 @@
    <extension
          point="org.eclipse.ui.commands">
       <command
-            defaultHandler="de.hub.clickwatch.analysis.ui.CreateConcreteModelsHandler"
+            defaultHandler="de.hub.clickwatch.ui.GuiceAwareExecutableExtensionFactory:de.hub.clickwatch.analysis.ui.CreateConcreteModelsHandler"
             id="edu.hu.clickwatch.analysis.CreateConcreteModels"
             name="Create specific ClickWatch models">
       </command>
-   </extension>
-   <extension
-         point="org.eclipse.ui.popupMenus">
-      <objectContribution
-            id="edu.hu.clickwatch.NetworkContribution"
-            objectClass="de.hub.clickwatch.model.Network">
-         <action
-               class="de.hub.clickwatch.analysis.automated.StartAutomatedAnalysis"
-               enablesFor="1"
-               id="edu.hu.clickwatch.analysis.StartAutomatedAnalysis"
-               label="Start an automated analyis"
-               menubarPath="additions">
-         </action>
-         <action
-               class="de.hub.clickwatch.analysis.automated.StopAutomatedAnalysis"
-               enablesFor="1"
-               id="edu.hu.clickwatch.analysis.StopAutomatedAnalysis"
-               label="Stop an automated analyis"
-               menubarPath="additions">
-         </action>
-      </objectContribution>
    </extension>
 	
 	<!-- extension for the Composition editor -->
@@ -225,7 +203,7 @@
  <extension
        point="edu.hu.clickwatch.analysis.composition.PredefinedTransformation">
     <transformation
-          class="de.hub.clickwatch.analysis.composition.transformations.CreateSpecificModel"
+          class="de.hub.clickwatch.ui.GuiceAwareExecutableExtensionFactory:de.hub.clickwatch.analysis.composition.transformations.CreateSpecificModel"
           name="Create specific model">
     </transformation>
  </extension>

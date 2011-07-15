@@ -7,7 +7,7 @@
 <link_stats>
 «FOREACH links() AS link-»
   <link_stat src="«link.to()»" dst="«link.from()»" 
-  		srcIP="«node(link.to()).iNetAdress»" dstIP="«node(link.from()).iNetAdress»" 
+  		srcIP="«node(link.to()).iNetAddress»" dstIP="«node(link.from()).iNetAddress»" 
   		bitRate="«link.link_info.rate»" packetSize="«link.link_info.size»" 
   		pdr="«link.link_info.rev»" revpdr="«reverse_link_info(link.link_info).rev»"
   		rssi="«rssi(link.to(), link.from())»" revrssi="«rssi(link.from(), link.to())»"

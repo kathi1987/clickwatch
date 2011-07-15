@@ -30,7 +30,7 @@ link(Network network, String addr1, String addr2):
 	let n2 = network.node(addr2):
 	let gps1 = n1.gps.gps_coord.gps:
 	let gps2 = n2.gps.gps_coord.gps:
-	let distance = distance(gps1.lat, gps1.long, gps2.lat, gps2.long):
+	let distance = distance(gps1.lat.toString(), gps1.long.toString(), gps2.lat.toString(), gps2.long.toString()):
 	let rssi = n1.device_wifi.wifidevice.cst.stats_xml.channelstats.rssi.nb.select(e|e.addr == addr2).first().rssi:
 	result.setSrcAddr(addr1) -> result.setDestAddr(addr2) -> 
 	result.setDistance(distance) -> 

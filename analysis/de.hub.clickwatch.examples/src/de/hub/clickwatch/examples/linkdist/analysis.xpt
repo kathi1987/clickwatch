@@ -31,15 +31,15 @@ digraph {
 <svg width="100%" height="100%" version="1.1" xmlns="http://www.w3.org/2000/svg">
 
 «FOREACH plot.links AS link-»
-  <line x1="«lat(node(link.srcAddr).gps.gps_coord.gps.lat)*3»" 
-        y1="«lon(node(link.srcAddr).gps.gps_coord.gps.long)*3»" 
-        x2="«lat(node(link.destAddr).gps.gps_coord.gps.lat)*3»" 
-        y2="«lon(node(link.destAddr).gps.gps_coord.gps.long)*3»" 
+  <line x1="«lat(node(link.srcAddr).gps.gps_coord.gps.lat.toString())*3»" 
+        y1="«lon(node(link.srcAddr).gps.gps_coord.gps.long.toString())*3»" 
+        x2="«lat(node(link.destAddr).gps.gps_coord.gps.lat.toString())*3»" 
+        y2="«lon(node(link.destAddr).gps.gps_coord.gps.long.toString())*3»" 
         style="stroke:rgb(«255-(link.rssi*4)»,0,255);stroke-width:2"/>
 «ENDFOREACH»
 «FOREACH all_nodes().collect(e|e.gps.gps_coord.gps) AS gps-»
-«IF gps.lat != "0.0" && gps.long != "0.0"-»
-  <circle cx="«lat(gps.lat)*3»" cy="«lon(gps.long)*3»" r="10" stroke="black" stroke-width="2" fill="black"/>
+«IF gps.lat != null && gps.long != null-»
+  <circle cx="«lat(gps.lat.toString())*3»" cy="«lon(gps.long.toString())*3»" r="10" stroke="black" stroke-width="2" fill="black"/>
 «ENDIF-»
 «ENDFOREACH-»
 </svg> 

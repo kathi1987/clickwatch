@@ -10,13 +10,16 @@ import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
 
+import com.google.inject.Inject;
+
 public class NewAnalysisProjectWizard extends Wizard implements INewWizard {
 
 	private WizardNewAnalysisCreationPage mainPage;
 	private IWorkbench workbench;
 	private IStructuredSelection selection;
 	
-	AnalysisProjectCreator creator = new AnalysisProjectCreator();
+	@Inject
+	AnalysisProjectCreator creator;
 
 	public NewAnalysisProjectWizard() {
 		setWindowTitle("New Analysis project");

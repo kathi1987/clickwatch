@@ -5,6 +5,11 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
+import com.google.inject.ImplementedBy;
+
+import de.hub.specificmodels.common.SourceObjectKey;
+import de.hub.specificmodels.common.TargetId;
+
 /**
  * Implementations of this interface are used to create and update actual target
  * meta-model elements form {@link ITargetMetaId}s, corresponding
@@ -16,7 +21,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
  * meta-class might already exist. In this case the update methods are used to
  * potentially specialize the target meta-elements.
  */
-// TODO injection
+@ImplementedBy(DefaultTargetObjectCreator.class)
 public interface ITargetObjectCreator {
 
 	public EClass createTargetClass(String className, TargetId targetId,
@@ -27,7 +32,7 @@ public interface ITargetObjectCreator {
 	public void updateTargetClass(EClass targetClass, TargetId targetId,
 			SourceObjectKey object);
 
-	public EReference createTargetReference(String featureName, EClass type,
+	public EReference createTargetReference(EClass containingClass, String featureName, EClass type,
 			TargetId targetId, SourceObjectKey object);
 
 	public EAttribute createTargetAttribute(String featureName,

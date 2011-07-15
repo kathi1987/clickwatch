@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <cwm:Network xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:XMLSchema="http://www.w3.org/2001/XMLSchema" xmlns:cwm="http://de.hub.clickwatch.model" updateIntervall="5000">
-  <node iNetAdress="10.5.59.161">
+  <node iNetAddress="10.5.59.161">
     <element name="device_wifi">
       <children name="rates">
         <handler name="rates" canRead="true">DEFAULT  2 4 11 12 18 22 24 36 48 72 96 108</handler>
@@ -1173,7 +1173,7 @@ name	r.</handler>
       <handler name="name" canRead="true">gps</handler>
     </element>
   </node>
-  <node iNetAdress="10.5.70.9">
+  <node iNetAddress="10.5.70.9">
     <element name="device_wifi">
       <children name="rates">
         <handler name="rates" canRead="true">DEFAULT  2 4 11 12 18 22 24 36 48 72 96 108</handler>
@@ -2371,7 +2371,7 @@ name	r.</handler>
       <handler name="name" canRead="true">gps</handler>
     </element>
   </node>
-  <node iNetAdress="10.5.70.8">
+  <node iNetAddress="10.5.70.8">
     <element name="device_wifi">
       <children name="rates">
         <handler name="rates" canRead="true">DEFAULT  2 4 11 12 18 22 24 36 48 72 96 108</handler>
@@ -3549,7 +3549,7 @@ name	r.</handler>
       <handler name="name" canRead="true">gps</handler>
     </element>
   </node>
-  <node iNetAdress="10.5.70.16">
+  <node iNetAddress="10.5.70.16">
     <element name="device_wifi">
       <children name="rates">
         <handler name="rates" canRead="true">DEFAULT  2 4 11 12 18 22 24 36 48 72 96 108</handler>
@@ -4731,7 +4731,7 @@ name	r.</handler>
       <handler name="name" canRead="true">gps</handler>
     </element>
   </node>
-  <node iNetAdress="10.5.59.159">
+  <node iNetAddress="10.5.59.159">
     <element name="device_wifi">
       <children name="rates">
         <handler name="rates" canRead="true">DEFAULT  2 4 11 12 18 22 24 36 48 72 96 108</handler>
@@ -5903,7 +5903,7 @@ name	r.</handler>
       <handler name="name" canRead="true">gps</handler>
     </element>
   </node>
-  <node iNetAdress="10.5.59.162">
+  <node iNetAddress="10.5.59.162">
     <element name="device_wifi">
       <children name="rates">
         <handler name="rates" canRead="true">DEFAULT  2 4 11 12 18 22 24 36 48 72 96 108</handler>
@@ -7051,7 +7051,7 @@ name	r.</handler>
       <handler name="name" canRead="true">gps</handler>
     </element>
   </node>
-  <node iNetAdress="10.5.59.150">
+  <node iNetAddress="10.5.59.150">
     <element name="device_wifi">
       <children name="rates">
         <handler name="rates" canRead="true">DEFAULT  2 4 11 12 18 22 24 36 48 72 96 108</handler>
@@ -8255,7 +8255,7 @@ name	r.</handler>
       <handler name="name" canRead="true">gps</handler>
     </element>
   </node>
-  <node iNetAdress="10.7.205.151">
+  <node iNetAddress="10.7.205.151">
     <element name="device_wifi">
       <children name="rates">
         <handler name="rates" canRead="true">DEFAULT  2 4 11 12 18 22 24 36 48 72 96 108</handler>
@@ -9429,7 +9429,7 @@ name	r.</handler>
       <handler name="name" canRead="true">gps</handler>
     </element>
   </node>
-  <node iNetAdress="10.5.59.163">
+  <node iNetAddress="10.5.59.163">
     <element name="device_wifi">
       <children name="rates">
         <handler name="rates" canRead="true">DEFAULT  2 4 11 12 18 22 24 36 48 72 96 108</handler>
@@ -10535,7 +10535,7 @@ name	r.</handler>
       <handler name="name" canRead="true">gps</handler>
     </element>
   </node>
-  <node iNetAdress="10.7.205.153">
+  <node iNetAddress="10.7.205.153">
     <element name="device_wifi">
       <children name="rates">
         <handler name="rates" canRead="true">DEFAULT  2 4 11 12 18 22 24 36 48 72 96 108</handler>
@@ -11704,7 +11704,7 @@ name	r.</handler>
       <handler name="name" canRead="true">gps</handler>
     </element>
   </node>
-  <node iNetAdress="10.5.222.111">
+  <node iNetAddress="10.5.222.111">
     <element name="device_wifi">
       <children name="rates">
         <handler name="rates" canRead="true">DEFAULT  2 4 11 12 18 22 24 36 48 72 96 108</handler>

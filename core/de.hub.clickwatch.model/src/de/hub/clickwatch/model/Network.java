@@ -6,8 +6,8 @@
  */
 package de.hub.clickwatch.model;
 
-import org.eclipse.emf.cdo.CDOObject;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -30,10 +30,9 @@ import org.eclipse.emf.common.util.EList;
  *
  * @see de.hub.clickwatch.model.ClickWatchModelPackage#getNetwork()
  * @model
- * @extends CDOObject
  * @generated
  */
-public interface Network extends CDOObject {
+public interface Network extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * The default value is <code>"My Network"</code>.

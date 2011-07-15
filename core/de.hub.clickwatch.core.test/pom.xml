@@ -26,14 +26,6 @@
 						<phase>test</phase>
 						<configuration>
 							<testClassesDirectory>${project.build.outputDirectory}</testClassesDirectory>
-							<excludes>
-								<exclude>%regex[.*NA\.java]</exclude>
-								<exclude>**/TestSuite.java</exclude>
-								<exclude>**/AbstractTest.java</exclude>
-								<!-- 
-            					<exclude>**/PerformanceTestNA.java</exclude>
-            					<exclude>**/MergeWithTimeTestNA.java</exclude>-->
-          					</excludes>
 						</configuration>
 						<goals>
 							<goal>test</goal>

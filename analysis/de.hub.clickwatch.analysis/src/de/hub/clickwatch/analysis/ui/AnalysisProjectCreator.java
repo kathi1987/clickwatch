@@ -34,13 +34,18 @@ import org.eclipse.xtext.ui.XtextProjectHelper;
 import org.eclipse.xtext.ui.util.PluginProjectFactory;
 
 import com.google.common.base.Preconditions;
+import com.google.inject.Inject;
 
-import de.hub.clickwatch.analysis.specificmodels.SpecificMetaModelGenerator;
-import de.hub.clickwatch.analysis.specificmodels.SpecificModelGenerator;
 import de.hub.clickwatch.model.Network;
-
+import de.hub.specificmodels.metamodelgenerator.MetaModelGenerator;
+import de.hub.specificmodels.modelgenerator.ModelGenerator;
 
 public class AnalysisProjectCreator extends WorkspaceModifyOperation {
+	
+	@Inject
+	MetaModelGenerator metaModelGenerator;
+	@Inject
+	ModelGenerator modelGenerator;
 	
 	protected AnalysisProjectInfo info;
 	protected final String srcFolderName = "src";
@@ -98,9 +103,6 @@ public class AnalysisProjectCreator extends WorkspaceModifyOperation {
 	}
 	
 	private void generateModels(IProject project) throws IOException {
-		SpecificMetaModelGenerator metaModelGenerator = new SpecificMetaModelGenerator();
-		SpecificModelGenerator modelGenerator = new SpecificModelGenerator();
-		
 		ResourceSet rs = new ResourceSetImpl();
 		Map<Object, Object> options = new HashMap<Object, Object>();
 		options.put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);
@@ -108,8 +110,8 @@ public class AnalysisProjectCreator extends WorkspaceModifyOperation {
 	
 		Network genericModel = createLoadGenericModel(rs, options);
 		
-		EPackage specificMetaModel = metaModelGenerator.generateMetaModel(genericModel);
-		EObject specificModel = modelGenerator.generateModel(specificMetaModel, genericModel);
+		EPackage specificMetaModel = metaModelGenerator.generate(genericModel);
+		EObject specificModel = modelGenerator.generate(specificMetaModel, genericModel);
 		
 		Preconditions.checkState(specificModel != null);
 		

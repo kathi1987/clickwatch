@@ -1,5 +1,7 @@
 package de.hub.specificmodels.metamodelgenerator;
 
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EAnnotation;
@@ -15,10 +17,12 @@ import org.eclipse.emf.ecore.EcorePackage;
 
 import com.google.common.base.Preconditions;
 
-import de.hub.specificmodels.metamodelgenerator.targetproperties.Containment;
-import de.hub.specificmodels.metamodelgenerator.targetproperties.FeatureMapMultiplicity;
-import de.hub.specificmodels.metamodelgenerator.targetproperties.GuessTypes;
-import de.hub.specificmodels.metamodelgenerator.targetproperties.IsCopy;
+import de.hub.specificmodels.common.SourceObjectKey;
+import de.hub.specificmodels.common.TargetId;
+import de.hub.specificmodels.common.targetproperties.Containment;
+import de.hub.specificmodels.common.targetproperties.GuessMultiplicities;
+import de.hub.specificmodels.common.targetproperties.GuessTypes;
+import de.hub.specificmodels.common.targetproperties.IsCopy;
 import de.hub.specificmodels.metamodelgenerator.types.ITypeDescription;
 import de.hub.specificmodels.metamodelgenerator.types.TypeDescriptions;
 
@@ -30,6 +34,7 @@ public class DefaultTargetObjectCreator implements ITargetObjectCreator {
 	private final ITypeDescription rootType; 
 	
 	private EObject latestObject = null;
+	private Collection<EStructuralFeature> featuresInLatestObject = new HashSet<EStructuralFeature>();
 	
 	public DefaultTargetObjectCreator() {
 		TypeDescriptions types = new TypeDescriptions();
@@ -62,35 +67,47 @@ public class DefaultTargetObjectCreator implements ITargetObjectCreator {
 	@Override
 	public void updateTargetClass(EClass targetClass, TargetId targetId,
 			SourceObjectKey object) {
-		// TODO Auto-generated method stub
-		
+		// empty (what to update for? -> drop update completely)		
 	}
 	
-	private void setLatestObject(SourceObjectKey currentSok) {
+	private void setLatestObject(SourceObjectKey currentSok, EStructuralFeature forFeature) {
+		if (latestObject != currentSok.getObject()) {
+			featuresInLatestObject.clear();
+		}
+		featuresInLatestObject.add(forFeature);
 		latestObject = currentSok.getObject();
 	}
 	
 	@Override
-	public EReference createTargetReference(String featureName, EClass type,
+	public EReference createTargetReference(EClass containingClass, String featureName, EClass type,
 			TargetId targetId, SourceObjectKey sok) {
-		setLatestObject(sok);
 		EReference targetFeature = EcoreFactory.eINSTANCE.createEReference();
 		targetFeature.setName(featureName);
 		targetFeature.setEType(type);
 		copyAttributeValues(targetId.getSourceFeature(), targetFeature);
-		if (!targetId.getProperty(IsCopy.class).get()) {
+		if (targetId.getProperty(GuessMultiplicities.class).get()) {
 			targetFeature.setUpperBound(1);
 		}
 		targetFeature.setContainment(targetId.getProperty(Containment.class).get());
 		
-		// TODO backwards
+		setLatestObject(sok, targetFeature);
+		addAnnotation(targetFeature, TARGET_ID, targetId.getTargetReferenceString());
+		addAnnotation(targetFeature, IsCopy.class.getSimpleName(), targetId.getProperty(IsCopy.class).get().toString());
+		
+		EReference parentFeature = EcoreFactory.eINSTANCE.createEReference();
+		parentFeature.setName("eContainer_" + featureName);
+		parentFeature.setEType(containingClass);
+		type.getEStructuralFeatures().add(parentFeature);
+		parentFeature.setEOpposite(targetFeature);
+		targetFeature.setEOpposite(parentFeature);
+		parentFeature.setTransient(targetFeature.isTransient());
+		
 		return targetFeature;
 	}
 
 	@Override
 	public EAttribute createTargetAttribute(String featureName,
 			TargetId targetId, SourceObjectKey sok) {
-		setLatestObject(sok);
 		EAttribute targetFeature = EcoreFactory.eINSTANCE.createEAttribute();
 		targetFeature.setName(featureName);
 		if (targetId.getProperty(GuessTypes.class).get()) {
@@ -100,9 +117,11 @@ public class DefaultTargetObjectCreator implements ITargetObjectCreator {
 			targetFeature.setEType(targetId.getSourceFeature().getEType());
 		}
 		copyAttributeValues(targetId.getSourceFeature(), targetFeature);
-		if (targetId.getProperty(FeatureMapMultiplicity.class).get()) {
+		if (targetId.getProperty(GuessMultiplicities.class).get()) {
 			targetFeature.setUpperBound(1);
 		}
+		setLatestObject(sok, targetFeature);
+		addAnnotation(targetFeature, TARGET_ID, targetId.getTargetReferenceString());
 		return targetFeature;
 	}
 
@@ -117,13 +136,13 @@ public class DefaultTargetObjectCreator implements ITargetObjectCreator {
 			}
 		}
 		
-		if (targetId.getProperty(FeatureMapMultiplicity.class).get()) {
-			if (latestObject == sok.getObject()) {
+		if (targetId.getProperty(GuessMultiplicities.class).get()) {
+			if (latestObject == sok.getObject() && featuresInLatestObject.contains(targetFeature)) {
 				targetFeature.setUpperBound(-1);
-			}
+			}	
 		}
 		
-		setLatestObject(sok);
+		setLatestObject(sok, targetFeature);
 	}
 
 	protected void addAnnotation(EModelElement targetObject, String key, String value) {

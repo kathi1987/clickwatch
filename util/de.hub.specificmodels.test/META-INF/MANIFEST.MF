@@ -7,9 +7,9 @@ Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Export-Package: de.hub.specificmodels.tests.testsourcemodel,
- de.hub.specificmodels.tests.testsourcemodel.impl,
- de.hub.specificmodels.tests.testsourcemodel.util
+Export-Package: de.hub.specificmodels.tests.common,
+ de.hub.specificmodels.tests.metamodelgenerator,
+ de.hub.specificmodels.tests.testsourcemodel
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
  org.junit;bundle-version="4.8.2",

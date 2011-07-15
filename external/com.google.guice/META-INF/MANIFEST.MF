@@ -19,4 +19,5 @@ Bundle-ClassPath: aopalliance.jar,
  javax.inject.jar,
  .
 Export-Package: com.google.inject,
- com.google.inject.binder
+ com.google.inject.binder,
+ com.google.inject.name

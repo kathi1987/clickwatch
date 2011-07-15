@@ -23,7 +23,7 @@ import com.google.inject.Inject;
 import com.jcraft.jsch.Session;
 
 import de.hub.clickwatch.XmlModelRepository;
-import de.hub.clickwatch.model.AbstractNodeConnection;
+import de.hub.clickwatch.connection.INodeConnection;
 import de.hub.clickwatch.model.Node;
 import de.hub.clickwatch.ui.util.SshConnectionFactory;
 import de.hub.clickwatch.ui.views.ResultView;
@@ -398,7 +398,7 @@ public abstract class Deploy extends AbstractNodeAction implements SSHParams {
 				
 							// disconnect if connected
 							if (node.getConnection() != null) {
-								AbstractNodeConnection oldConnection = (AbstractNodeConnection)node.getConnection();
+								INodeConnection oldConnection = (INodeConnection)node.getConnection();
 								node.setConnection(null);
 								oldConnection.disconnect();
 							}
