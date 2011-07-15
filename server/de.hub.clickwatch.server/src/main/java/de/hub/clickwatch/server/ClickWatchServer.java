@@ -1,7 +1,6 @@
 package de.hub.clickwatch.server;
 
 import java.util.ArrayList;
-import java.util.Properties;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -13,18 +12,16 @@ import com.google.inject.Singleton;
 import de.hub.clickwatch.XmlModelRepository;
 import de.hub.clickwatch.connection.INodeConnection;
 import de.hub.clickwatch.connection.INodeConnectionProvider;
-import de.hub.clickwatch.model.ClickWatchModelFactory;
-import de.hub.clickwatch.model.Network;
 import de.hub.clickwatch.model.Node;
 import de.hub.clickwatch.server.configuration.ConfigurationFileReader;
 import de.hub.clickwatch.server.database.ClickWatchDB;
 import de.hub.clickwatch.server.database.MetaDataRecord;
 import de.hub.clickwatch.xml.DatabaseType;
+import de.hub.clickwatch.xml.DocumentRoot;
 import de.hub.clickwatch.xml.ExperimentListType;
 import de.hub.clickwatch.xml.ExperimentType;
 import de.hub.clickwatch.xml.NodeListType;
 import de.hub.clickwatch.xml.NodeType;
-import de.hub.clickwatch.xml.impl.ExperimentListTypeImpl;
 
 /**
  * The server component stores the database and network connection configuration
@@ -42,16 +39,22 @@ public class ClickWatchServer implements IClickWatchServer {
 	private ConfigurationFileReader mConfigurationFileReader;
 	/** Location of the configuration file */
 	private String mConfigurationFile;
-	/** Experiment settings */
-	private Properties mExperimentProperties = new Properties();
-	/** */
+	/** A inject node connection provider which allows to create node connections */
 	@Inject
 	private INodeConnectionProvider mNodeConnectionProvider;
-	/** */
+	/** A xml model repository which allows to serialze/deserialze metadate of a record */
 	@Inject
 	private XmlModelRepository mXmlModelRepository;
+	/** The connection to the database */
+	private ClickWatchDB mDatabase = null;
 
-	private ClickWatchDB mDatabase;
+	public ClickWatchDB getDatabase() {
+		return mDatabase;
+	}
+
+	public void setDatabase(ClickWatchDB pDatabase) {
+		this.mDatabase = pDatabase;
+	}
 
 	@Inject
 	public ClickWatchServer() {
@@ -67,7 +70,7 @@ public class ClickWatchServer implements IClickWatchServer {
 	}
 
 	@Override
-	public synchronized boolean readConfiguration() {
+	public synchronized void readConfiguration() {
 		Resource resource = this.mConfigurationFileReader
 				.readConfigurationFile();
 
@@ -77,35 +80,40 @@ public class ClickWatchServer implements IClickWatchServer {
 			
 			// Im Prinzip muessen wir uns ab durch die Wurzeln hangeln
 			for (EObject eObject : resource.getContents()) {
-				if (eObject instanceof ExperimentListType) {
-					ExperimentListType experimentList = (ExperimentListType) eObject;
-
+				if(eObject instanceof DocumentRoot){
+					DocumentRoot configurationFile = (DocumentRoot) eObject;
+					
 					// Iterate through the set of experiments
-					for (ExperimentType experiment : experimentList
-							.getExperiment()) {
-						//
-						setUpDatabase(experiment.getDatabase());
+					for (ExperimentType experiment : configurationFile.getExperiments().getExperiment()) {
+						// Set up the database
+						this.setUpDatabase(experiment.getDatabase());
 						// Create experiment
-						createExperiment(experiment);
-
+						this.createExperiment(experiment);
+						// Set up the handler (?)
+						
+						// Activate connection 
+						this.activateConfiguration();
 					}
+					
 				}
 			}
 		}
-		return false;
 	}
 
+	/**
+	 *  
+	 */
 	private void createExperiment(ExperimentType pExperiment) {
 		if(this.mDatabase != null){
-			// Create a meta data record and add it to the database
-			this.mDatabase.addExperimentRecord(new MetaDataRecord(pExperiment));
-			// Iterate through the node list
+			// Iterate through the list of participating nodes
 			for(NodeListType nodeList : pExperiment.getNodes()){
-				// Iterate through the nodes
 				for(NodeType node : nodeList.getNode()){
-					
-				}
+					// TODO: Start und Stop Zeit, Todo Metadata
+					this.mDatabase.addExperimentRecord(new MetaDataRecord(pExperiment.getName(), node.getAddress(), 12345, "TODO"));
+					// Connect to the node and add the connection to the list
+					this.mConnectionList.add(mNodeConnectionProvider.createNodeConnect(node.getAddress(), node.getPort().toString()));
 
+				}
 			}
 		}
 	}
@@ -125,7 +133,6 @@ public class ClickWatchServer implements IClickWatchServer {
 							.getDatabase(), pDatabase.get(0).getPort()
 							.toString());
 		}
-
 	}
 
 
@@ -174,10 +181,16 @@ public class ClickWatchServer implements IClickWatchServer {
 				this.mConfigurationFile);
 	}
 
+	/**
+	 * 
+	 */
 	public ConfigurationFileReader getConfigurationFileReader() {
 		return mConfigurationFileReader;
 	}
 
+	/**
+	 * 
+	 */
 	public void setConfigurationFileReader(
 			ConfigurationFileReader pConfigurationFileReader) {
 		this.mConfigurationFileReader = pConfigurationFileReader;

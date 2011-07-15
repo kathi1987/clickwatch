@@ -66,7 +66,7 @@ public class ClickWatchDBTest extends AbstractTest {
 		}
 	}
 	
-	@Test
+	
 	public void createTableTest(){
 		// Get an instance of ClickWatchDb
 		ClickWatchDB database = injector.getInstance(ClickWatchDB.class);
@@ -77,7 +77,7 @@ public class ClickWatchDBTest extends AbstractTest {
 		// Build up the file string which specifies where the sql file resides (for the deletion of a table)
 		final String dropTableFile = path + "drop" + ".sql";
 		// Set up the database connection
-		database.setUpDatabaseConnection("clickwatch", "cw", "clickwatch");
+		//wdatabase.setUpDatabaseConnection("clickwatch", "cw", "clickwatch");
 		// Checks if the table already exists
 		assertEquals(false, tableExists("HandlerRecorder"));
 		// Create tables

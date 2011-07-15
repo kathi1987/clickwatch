@@ -1,0 +1,15 @@
+  <experiments>
+	<experiment name="another example" start="1" stop="2">
+		<nodes>
+			<node address="192.168.178.3" protocol="udp" port="1024"/>
+		</nodes>
+		
+		<handlers>
+			<handler element="dev.deviceinfo" rate="30000"/>
+		</handlers>
+		
+		<logDirectory>/tmp/</logDirectory>
+		
+		<database user="cdo" address="127.0.0.1" password=".,Br1t4#-?4ss3rf1lt3r|" port="5432" database="clickwatchplain"/>
+	</experiment>
+  </experiments>

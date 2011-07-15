@@ -18,11 +18,13 @@ import java.util.Properties;
 
 public class ClickWatchDB implements IClickWatchDB {
 	/** The default connection "path" to the postgresql database */
-	private String url = "jdbc:postgresql://localhost:";
+	private String url = "jdbc:postgresql://localhost";
 	/** A list with properties for the database connection */
 	private Properties properties = new Properties();
 	/** The database connection */
 	private Connection connection;
+	/***/
+	private boolean mStatus = false;
 
 	/**
 	 * The method sets up a database connection based on the given properties.
@@ -38,6 +40,10 @@ public class ClickWatchDB implements IClickWatchDB {
 				pProperties.getProperty("pass"),
 				pProperties.getProperty("database"),
 				pProperties.getProperty("port"));
+	}
+	
+	public boolean isConnected(){
+		return mStatus;
 	}
 
 	/**
@@ -56,10 +62,11 @@ public class ClickWatchDB implements IClickWatchDB {
 		properties.setProperty("password", pPass);
 
 		try {
-			connection = DriverManager.getConnection(url + ":" + pPort + "/"+ pDatabase,
-					properties);
+			connection = DriverManager.getConnection(url + ":" + pPort + "/"+ pDatabase, properties);
 			connection.setAutoCommit(false);
+			this.mStatus = true;
 		} catch (SQLException e) {
+			this.mStatus = false;
 			e.printStackTrace();
 		}
 	}
@@ -104,7 +111,7 @@ public class ClickWatchDB implements IClickWatchDB {
 	public void addExperimentRecord(final MetaDataRecord pExperimentRecord) {
 		executeQuery(pExperimentRecord.createInsertStatement());
 	}
-
+	
 	@Override
 	public void addExperimentRecords(
 			final Collection<MetaDataRecord> pExperimentRecords) {
@@ -116,15 +123,19 @@ public class ClickWatchDB implements IClickWatchDB {
 								.createPreparedInsertStament());
 
 				for (MetaDataRecord record : pExperimentRecords) {
-					preparedHandlerStatement.setString(1,
-							record.getExperimentId());
-					preparedHandlerStatement.setString(2, record.getNodeId());
-					preparedHandlerStatement.setLong(3, record.getTimeStamp());
-					preparedHandlerStatement.setString(5, record.getMetaData());
+						// Set the experiment id
+						preparedHandlerStatement.setString(1,
+								record.getExperimentId());
+						// Set the node
+						preparedHandlerStatement.setString(2, record.getNode());
+						// Set the time stamp
+						preparedHandlerStatement.setLong(3, record.getTimeStamp());
+						// Set the meta data of the node
+						preparedHandlerStatement.setString(5, record.getMetaData());
+						// Commit the handler record values
+						connection.commit();
 				}
 
-				// Commit the handler record values
-				connection.commit();
 				// Close the prepared handler
 				preparedHandlerStatement.close();
 			} catch (SQLException e) {
@@ -185,9 +196,12 @@ public class ClickWatchDB implements IClickWatchDB {
 			ResultSet resultSet = statement.getResultSet();
 			// Iterate through the results
 			while (resultSet.next()) {
+				// FIXME]
+				/*
 				result.add(new MetaDataRecord(resultSet.getString(1), resultSet
 						.getString(2), resultSet.getLong(3), resultSet
 						.getString(4)));
+						*/
 			}
 			// Close the statement
 			statement.close();

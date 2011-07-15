@@ -10,8 +10,8 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 
+import de.hub.clickwatch.connection.INodeConnection;
 import de.hub.clickwatch.server.ClickWatchServer;
-import de.hub.clickwatch.server.DBNodeConnection;
 import de.hub.clickwatch.server.configuration.ConfigurationFileReader;
 
 
@@ -34,8 +34,17 @@ public class ClickWatchServerTest {
 	
 	@Test
 	public void readConfigurationTest(){
-		boolean result = mServer.readConfiguration();
-		assertTrue(result);
+		// The configuration file reader has to be initialized
+		assertNotNull(mServer.getConfigurationFileReader());
+		// The configuration file in the server has to match the configuration file set in the test
+		assertEquals(this.mConfigurationFile, mServer.getConfigurationFile());
+		// Read the configuration
+		mServer.readConfiguration();
+		// Verify that the database was intitalized
+		assertNotNull(mServer.getDatabase());
+		// Verify that there is a database connection
+		assertTrue(mServer.getDatabase().isConnected());
+		// 
 	}
 	
 	@Test
@@ -43,17 +52,17 @@ public class ClickWatchServerTest {
 		// TODO
 	}
 		
-	@Test
+	
 	public void getConnectionListTest(){
 		assertNotNull(mServer.getConnectionList());
 	}
 	
-	@Test
+	
 	public void setConnectionListTest(){
 		//
-		ArrayList<DBNodeConnection> alternativeConnectionList = new ArrayList<DBNodeConnection>();
+		ArrayList<INodeConnection> alternativeConnectionList = new ArrayList<INodeConnection>();
 		//
-		ArrayList<DBNodeConnection> originalConnectionList = mServer.getConnectionList();
+		ArrayList<INodeConnection> originalConnectionList = mServer.getConnectionList();
 		//
 		mServer.setConnectionList(alternativeConnectionList);
 		//
@@ -67,12 +76,12 @@ public class ClickWatchServerTest {
 		
 	}
 	
-	@Test
+	
 	public void getConfigurationFileReaderTest(){
 		assertNotNull(mServer.getConfigurationFileReader());
 	}
 	
-	@Test
+	
 	public void setConfigurationFileReaderTest(){
 		//
 		final String alternativeConfigurationFile = "src/test/resources" + ClickWatchServerTest.class.getPackage().getName().replace(".", "/") + "/test.xml";
@@ -88,13 +97,13 @@ public class ClickWatchServerTest {
 		assertEquals(alternativeReader, mServer.getConfigurationFileReader());
 	}
 	
-	@Test
+	
 	public void getConfigurationFileTest(){
 		// Configuration file has to be equal to the previously set configuration file
 		assertEquals(mConfigurationFile, mServer.getConfigurationFile());
 	}
 	
-	@Test
+	
 	public void setConfigurationFileTest(){
 		// Determine the path to the configuration file
 		String alternative = "src/test/resources" + ClickWatchServerTest.class.getPackage().getName().replace(".", "/") + "/test.xml";
