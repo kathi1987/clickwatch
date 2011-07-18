@@ -1,10 +1,5 @@
 package de.hub.clickwatch.server.database;
 
-import java.util.ArrayList;
-
-import de.hub.clickwatch.xml.ExperimentType;
-import de.hub.clickwatch.xml.NodeListType;
-import de.hub.clickwatch.xml.NodeType;
 
 public class MetaDataRecord implements IRecord {
 	/** The ID of the experiment */

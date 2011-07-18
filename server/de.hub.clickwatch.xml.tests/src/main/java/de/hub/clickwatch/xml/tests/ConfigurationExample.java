@@ -6,7 +6,8 @@
  */
 package de.hub.clickwatch.xml.tests;
 
-
+import de.hub.clickwatch.xml.*;
+import de.hub.clickwatch.xml.util.ConfigurationResourceFactoryImpl;
 
 import java.io.File;
 import java.io.IOException;
@@ -22,12 +23,6 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 
 import org.eclipse.emf.ecore.util.Diagnostician;
-
-import de.hub.clickwatch.xml.ConfigurationFactory;
-import de.hub.clickwatch.xml.ConfigurationPackage;
-import de.hub.clickwatch.xml.DocumentRoot;
-import de.hub.clickwatch.xml.ExperimentListType;
-import de.hub.clickwatch.xml.util.ConfigurationResourceFactoryImpl;
 
 /**
  * <!-- begin-user-doc -->

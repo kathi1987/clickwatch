@@ -32,7 +32,7 @@ import de.hub.clickwatch.xml.ExperimentType;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link de.hub.clickwatch.xml.impl.ExperimentListTypeImpl#getExperiment <em>Experiment</em>}</li>
+ *   <li>{@link Configuration.impl.ExperimentListTypeImpl#getExperiment <em>Experiment</em>}</li>
  * </ul>
  * </p>
  *
@@ -65,7 +65,7 @@ public class ExperimentListTypeImpl extends EObjectImpl implements ExperimentLis
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return de.hub.clickwatch.xml.ConfigurationPackage.Literals.EXPERIMENT_LIST_TYPE;
+		return ConfigurationPackage.Literals.EXPERIMENT_LIST_TYPE;
 	}
 
 	/**

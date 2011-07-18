@@ -20,14 +20,14 @@ import org.eclipse.emf.ecore.util.FeatureMap;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link de.hub.clickwatch.xml.DocumentRoot#getMixed <em>Mixed</em>}</li>
- *   <li>{@link de.hub.clickwatch.xml.DocumentRoot#getXMLNSPrefixMap <em>XMLNS Prefix Map</em>}</li>
- *   <li>{@link de.hub.clickwatch.xml.DocumentRoot#getXSISchemaLocation <em>XSI Schema Location</em>}</li>
- *   <li>{@link de.hub.clickwatch.xml.DocumentRoot#getExperiments <em>Experiments</em>}</li>
+ *   <li>{@link Configuration.DocumentRoot#getMixed <em>Mixed</em>}</li>
+ *   <li>{@link Configuration.DocumentRoot#getXMLNSPrefixMap <em>XMLNS Prefix Map</em>}</li>
+ *   <li>{@link Configuration.DocumentRoot#getXSISchemaLocation <em>XSI Schema Location</em>}</li>
+ *   <li>{@link Configuration.DocumentRoot#getExperiments <em>Experiments</em>}</li>
  * </ul>
  * </p>
  *
- * @see de.hub.clickwatch.xml.ConfigurationPackage#getDocumentRoot()
+ * @see Configuration.ConfigurationPackage#getDocumentRoot()
  * @model extendedMetaData="name='' kind='mixed'"
  * @generated
  */
@@ -42,7 +42,7 @@ public interface DocumentRoot extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Mixed</em>' attribute list.
-	 * @see de.hub.clickwatch.xml.ConfigurationPackage#getDocumentRoot_Mixed()
+	 * @see Configuration.ConfigurationPackage#getDocumentRoot_Mixed()
 	 * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry" many="true"
 	 *        extendedMetaData="kind='elementWildcard' name=':mixed'"
 	 * @generated
@@ -60,7 +60,7 @@ public interface DocumentRoot extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>XMLNS Prefix Map</em>' map.
-	 * @see de.hub.clickwatch.xml.ConfigurationPackage#getDocumentRoot_XMLNSPrefixMap()
+	 * @see Configuration.ConfigurationPackage#getDocumentRoot_XMLNSPrefixMap()
 	 * @model mapType="org.eclipse.emf.ecore.EStringToStringMapEntry<org.eclipse.emf.ecore.EString, org.eclipse.emf.ecore.EString>" transient="true"
 	 *        extendedMetaData="kind='attribute' name='xmlns:prefix'"
 	 * @generated
@@ -78,7 +78,7 @@ public interface DocumentRoot extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>XSI Schema Location</em>' map.
-	 * @see de.hub.clickwatch.xml.ConfigurationPackage#getDocumentRoot_XSISchemaLocation()
+	 * @see Configuration.ConfigurationPackage#getDocumentRoot_XSISchemaLocation()
 	 * @model mapType="org.eclipse.emf.ecore.EStringToStringMapEntry<org.eclipse.emf.ecore.EString, org.eclipse.emf.ecore.EString>" transient="true"
 	 *        extendedMetaData="kind='attribute' name='xsi:schemaLocation'"
 	 * @generated
@@ -95,7 +95,7 @@ public interface DocumentRoot extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Experiments</em>' containment reference.
 	 * @see #setExperiments(ExperimentListType)
-	 * @see de.hub.clickwatch.xml.ConfigurationPackage#getDocumentRoot_Experiments()
+	 * @see Configuration.ConfigurationPackage#getDocumentRoot_Experiments()
 	 * @model containment="true" upper="-2" transient="true" volatile="true" derived="true"
 	 *        extendedMetaData="kind='element' name='experiments' namespace='##targetNamespace'"
 	 * @generated
@@ -103,7 +103,7 @@ public interface DocumentRoot extends EObject {
 	ExperimentListType getExperiments();
 
 	/**
-	 * Sets the value of the '{@link de.hub.clickwatch.xml.DocumentRoot#getExperiments <em>Experiments</em>}' containment reference.
+	 * Sets the value of the '{@link Configuration.DocumentRoot#getExperiments <em>Experiments</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Experiments</em>' containment reference.

@@ -7,6 +7,7 @@
 package de.hub.clickwatch.xml.impl;
 
 
+
 import java.math.BigInteger;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -26,11 +27,11 @@ import de.hub.clickwatch.xml.DatabaseType;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link de.hub.clickwatch.xml.impl.DatabaseTypeImpl#getAddress <em>Address</em>}</li>
- *   <li>{@link de.hub.clickwatch.xml.impl.DatabaseTypeImpl#getDatabase <em>Database</em>}</li>
- *   <li>{@link de.hub.clickwatch.xml.impl.DatabaseTypeImpl#getPassword <em>Password</em>}</li>
- *   <li>{@link de.hub.clickwatch.xml.impl.DatabaseTypeImpl#getPort <em>Port</em>}</li>
- *   <li>{@link de.hub.clickwatch.xml.impl.DatabaseTypeImpl#getUser <em>User</em>}</li>
+ *   <li>{@link Configuration.impl.DatabaseTypeImpl#getAddress <em>Address</em>}</li>
+ *   <li>{@link Configuration.impl.DatabaseTypeImpl#getDatabase <em>Database</em>}</li>
+ *   <li>{@link Configuration.impl.DatabaseTypeImpl#getPassword <em>Password</em>}</li>
+ *   <li>{@link Configuration.impl.DatabaseTypeImpl#getPort <em>Port</em>}</li>
+ *   <li>{@link Configuration.impl.DatabaseTypeImpl#getUser <em>User</em>}</li>
  * </ul>
  * </p>
  *
@@ -153,7 +154,7 @@ public class DatabaseTypeImpl extends EObjectImpl implements DatabaseType {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return de.hub.clickwatch.xml.ConfigurationPackage.Literals.DATABASE_TYPE;
+		return ConfigurationPackage.Literals.DATABASE_TYPE;
 	}
 
 	/**

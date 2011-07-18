@@ -6,8 +6,6 @@
  */
 package de.hub.clickwatch.xml;
 
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -18,71 +16,101 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link de.hub.clickwatch.xml.ExperimentType#getNodes <em>Nodes</em>}</li>
- *   <li>{@link de.hub.clickwatch.xml.ExperimentType#getHandlers <em>Handlers</em>}</li>
- *   <li>{@link de.hub.clickwatch.xml.ExperimentType#getDatabase <em>Database</em>}</li>
- *   <li>{@link de.hub.clickwatch.xml.ExperimentType#getLogDirectory <em>Log Directory</em>}</li>
- *   <li>{@link de.hub.clickwatch.xml.ExperimentType#getName <em>Name</em>}</li>
- *   <li>{@link de.hub.clickwatch.xml.ExperimentType#getStart <em>Start</em>}</li>
- *   <li>{@link de.hub.clickwatch.xml.ExperimentType#getStop <em>Stop</em>}</li>
+ *   <li>{@link Configuration.ExperimentType#getNodes <em>Nodes</em>}</li>
+ *   <li>{@link Configuration.ExperimentType#getHandlers <em>Handlers</em>}</li>
+ *   <li>{@link Configuration.ExperimentType#getDatabase <em>Database</em>}</li>
+ *   <li>{@link Configuration.ExperimentType#getLogDirectory <em>Log Directory</em>}</li>
+ *   <li>{@link Configuration.ExperimentType#getName <em>Name</em>}</li>
+ *   <li>{@link Configuration.ExperimentType#getStart <em>Start</em>}</li>
+ *   <li>{@link Configuration.ExperimentType#getStop <em>Stop</em>}</li>
  * </ul>
  * </p>
  *
- * @see de.hub.clickwatch.xml.ConfigurationPackage#getExperimentType()
+ * @see Configuration.ConfigurationPackage#getExperimentType()
  * @model extendedMetaData="name='experimentType' kind='elementOnly'"
  * @generated
  */
 public interface ExperimentType extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Nodes</b></em>' containment reference list.
-	 * The list contents are of type {@link de.hub.clickwatch.xml.NodeListType}.
+	 * Returns the value of the '<em><b>Nodes</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Nodes</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Nodes</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Nodes</em>' containment reference list.
-	 * @see de.hub.clickwatch.xml.ConfigurationPackage#getExperimentType_Nodes()
+	 * @return the value of the '<em>Nodes</em>' containment reference.
+	 * @see #setNodes(NodeListType)
+	 * @see Configuration.ConfigurationPackage#getExperimentType_Nodes()
 	 * @model containment="true" required="true"
 	 *        extendedMetaData="kind='element' name='nodes' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	EList<NodeListType> getNodes();
+	NodeListType getNodes();
 
 	/**
-	 * Returns the value of the '<em><b>Handlers</b></em>' containment reference list.
-	 * The list contents are of type {@link de.hub.clickwatch.xml.HandlerListType}.
+	 * Sets the value of the '{@link Configuration.ExperimentType#getNodes <em>Nodes</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Nodes</em>' containment reference.
+	 * @see #getNodes()
+	 * @generated
+	 */
+	void setNodes(NodeListType value);
+
+	/**
+	 * Returns the value of the '<em><b>Handlers</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Handlers</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Handlers</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Handlers</em>' containment reference list.
-	 * @see de.hub.clickwatch.xml.ConfigurationPackage#getExperimentType_Handlers()
+	 * @return the value of the '<em>Handlers</em>' containment reference.
+	 * @see #setHandlers(HandlerListType)
+	 * @see Configuration.ConfigurationPackage#getExperimentType_Handlers()
 	 * @model containment="true" required="true"
 	 *        extendedMetaData="kind='element' name='handlers' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	EList<HandlerListType> getHandlers();
+	HandlerListType getHandlers();
 
 	/**
-	 * Returns the value of the '<em><b>Database</b></em>' containment reference list.
-	 * The list contents are of type {@link de.hub.clickwatch.xml.DatabaseType}.
+	 * Sets the value of the '{@link Configuration.ExperimentType#getHandlers <em>Handlers</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Handlers</em>' containment reference.
+	 * @see #getHandlers()
+	 * @generated
+	 */
+	void setHandlers(HandlerListType value);
+
+	/**
+	 * Returns the value of the '<em><b>Database</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Database</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Database</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Database</em>' containment reference list.
-	 * @see de.hub.clickwatch.xml.ConfigurationPackage#getExperimentType_Database()
+	 * @return the value of the '<em>Database</em>' containment reference.
+	 * @see #setDatabase(DatabaseType)
+	 * @see Configuration.ConfigurationPackage#getExperimentType_Database()
 	 * @model containment="true" required="true"
 	 *        extendedMetaData="kind='element' name='database' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	EList<DatabaseType> getDatabase();
+	DatabaseType getDatabase();
+
+	/**
+	 * Sets the value of the '{@link Configuration.ExperimentType#getDatabase <em>Database</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Database</em>' containment reference.
+	 * @see #getDatabase()
+	 * @generated
+	 */
+	void setDatabase(DatabaseType value);
 
 	/**
 	 * Returns the value of the '<em><b>Log Directory</b></em>' attribute.
@@ -94,7 +122,7 @@ public interface ExperimentType extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Log Directory</em>' attribute.
 	 * @see #setLogDirectory(String)
-	 * @see de.hub.clickwatch.xml.ConfigurationPackage#getExperimentType_LogDirectory()
+	 * @see Configuration.ConfigurationPackage#getExperimentType_LogDirectory()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
 	 *        extendedMetaData="kind='element' name='logDirectory' namespace='##targetNamespace'"
 	 * @generated
@@ -102,7 +130,7 @@ public interface ExperimentType extends EObject {
 	String getLogDirectory();
 
 	/**
-	 * Sets the value of the '{@link de.hub.clickwatch.xml.ExperimentType#getLogDirectory <em>Log Directory</em>}' attribute.
+	 * Sets the value of the '{@link Configuration.ExperimentType#getLogDirectory <em>Log Directory</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Log Directory</em>' attribute.
@@ -121,7 +149,7 @@ public interface ExperimentType extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
-	 * @see de.hub.clickwatch.xml.ConfigurationPackage#getExperimentType_Name()
+	 * @see Configuration.ConfigurationPackage#getExperimentType_Name()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
 	 *        extendedMetaData="kind='attribute' name='name' namespace='##targetNamespace'"
 	 * @generated
@@ -129,7 +157,7 @@ public interface ExperimentType extends EObject {
 	String getName();
 
 	/**
-	 * Sets the value of the '{@link de.hub.clickwatch.xml.ExperimentType#getName <em>Name</em>}' attribute.
+	 * Sets the value of the '{@link Configuration.ExperimentType#getName <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Name</em>' attribute.
@@ -148,7 +176,7 @@ public interface ExperimentType extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Start</em>' attribute.
 	 * @see #setStart(String)
-	 * @see de.hub.clickwatch.xml.ConfigurationPackage#getExperimentType_Start()
+	 * @see Configuration.ConfigurationPackage#getExperimentType_Start()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
 	 *        extendedMetaData="kind='attribute' name='start' namespace='##targetNamespace'"
 	 * @generated
@@ -156,7 +184,7 @@ public interface ExperimentType extends EObject {
 	String getStart();
 
 	/**
-	 * Sets the value of the '{@link de.hub.clickwatch.xml.ExperimentType#getStart <em>Start</em>}' attribute.
+	 * Sets the value of the '{@link Configuration.ExperimentType#getStart <em>Start</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Start</em>' attribute.
@@ -175,7 +203,7 @@ public interface ExperimentType extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Stop</em>' attribute.
 	 * @see #setStop(String)
-	 * @see de.hub.clickwatch.xml.ConfigurationPackage#getExperimentType_Stop()
+	 * @see Configuration.ConfigurationPackage#getExperimentType_Stop()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
 	 *        extendedMetaData="kind='attribute' name='stop' namespace='##targetNamespace'"
 	 * @generated
@@ -183,7 +211,7 @@ public interface ExperimentType extends EObject {
 	String getStop();
 
 	/**
-	 * Sets the value of the '{@link de.hub.clickwatch.xml.ExperimentType#getStop <em>Stop</em>}' attribute.
+	 * Sets the value of the '{@link Configuration.ExperimentType#getStop <em>Stop</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Stop</em>' attribute.

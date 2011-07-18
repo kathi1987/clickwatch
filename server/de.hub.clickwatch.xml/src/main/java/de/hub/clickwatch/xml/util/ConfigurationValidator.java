@@ -6,6 +6,7 @@
  */
 package de.hub.clickwatch.xml.util;
 
+import de.hub.clickwatch.xml.*;
 
 import java.math.BigInteger;
 
@@ -21,13 +22,11 @@ import org.eclipse.emf.ecore.util.EObjectValidator;
 import org.eclipse.emf.ecore.xml.type.util.XMLTypeUtil;
 import org.eclipse.emf.ecore.xml.type.util.XMLTypeValidator;
 
-import de.hub.clickwatch.xml.*;
-
 /**
  * <!-- begin-user-doc -->
  * The <b>Validator</b> for the model.
  * <!-- end-user-doc -->
- * @see de.hub.clickwatch.xml.ConfigurationPackage
+ * @see Configuration.ConfigurationPackage
  * @generated
  */
 public class ConfigurationValidator extends EObjectValidator {
@@ -255,7 +254,7 @@ public class ConfigurationValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateAddressType_Pattern(String addressType, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validatePattern(de.hub.clickwatch.xml.ConfigurationPackage.Literals.ADDRESS_TYPE, addressType, ADDRESS_TYPE__PATTERN__VALUES, diagnostics, context);
+		return validatePattern(ConfigurationPackage.Literals.ADDRESS_TYPE, addressType, ADDRESS_TYPE__PATTERN__VALUES, diagnostics, context);
 	}
 
 	/**
@@ -286,7 +285,7 @@ public class ConfigurationValidator extends EObjectValidator {
 	public boolean validatePortType_Min(BigInteger portType, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = portType.compareTo(PORT_TYPE__MIN__VALUE) >= 0;
 		if (!result && diagnostics != null)
-			reportMinViolation(de.hub.clickwatch.xml.ConfigurationPackage.Literals.PORT_TYPE, portType, PORT_TYPE__MIN__VALUE, true, diagnostics, context);
+			reportMinViolation(ConfigurationPackage.Literals.PORT_TYPE, portType, PORT_TYPE__MIN__VALUE, true, diagnostics, context);
 		return result;
 	}
 
@@ -307,7 +306,7 @@ public class ConfigurationValidator extends EObjectValidator {
 	public boolean validatePortType_Max(BigInteger portType, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = portType.compareTo(PORT_TYPE__MAX__VALUE) <= 0;
 		if (!result && diagnostics != null)
-			reportMaxViolation(de.hub.clickwatch.xml.ConfigurationPackage.Literals.PORT_TYPE, portType, PORT_TYPE__MAX__VALUE, true, diagnostics, context);
+			reportMaxViolation(ConfigurationPackage.Literals.PORT_TYPE, portType, PORT_TYPE__MAX__VALUE, true, diagnostics, context);
 		return result;
 	}
 

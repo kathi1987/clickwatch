@@ -7,11 +7,11 @@ public interface IClickWatchDB {
 	
 	public void addExperimentRecord(MetaDataRecord pExperimentRecord);
 	
-	public Collection<HandlerRecord> getHandlerRecords(String pExperiment, String pNode, String pHandler, long pBegin, long pEnd);
-	
-	public Collection<MetaDataRecord> getMetaDataRecord(String pExperiment, String pNode);
-
 	public void addHandlerRecords(Collection<HandlerRecord> pHandlerRecords);
 
 	public void addExperimentRecords(Collection<MetaDataRecord> pExperimentRecords);
+	
+	public void executeQueryFromFile(String pFile);
+	
+	public void executeQuery(final String pQuery);
 }

@@ -9,12 +9,12 @@ import java.io.InputStreamReader;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Properties;
+
+import com.google.inject.Inject;
 
 public class ClickWatchDB implements IClickWatchDB {
 	/** The default connection "path" to the postgresql database */
@@ -26,6 +26,15 @@ public class ClickWatchDB implements IClickWatchDB {
 	/***/
 	private boolean mStatus = false;
 
+	@Inject
+	public ClickWatchDB(){
+		
+	}
+	
+	public Connection getConnection(){
+		return connection;
+	}
+	
 	/**
 	 * The method sets up a database connection based on the given properties.
 	 * Basically it calls the setUpDatabaseConnection(String, String, String)
@@ -76,6 +85,7 @@ public class ClickWatchDB implements IClickWatchDB {
 		executeQuery(pHandlerRecord.createInsertStatement());
 	}
 
+
 	@Override
 	public void addHandlerRecords(
 			final Collection<HandlerRecord> pHandlerRecords) {
@@ -94,8 +104,11 @@ public class ClickWatchDB implements IClickWatchDB {
 							record.getQualifiedName());
 					preparedHandlerStatement.setLong(4, record.getTimeStamp());
 					preparedHandlerStatement.setString(5, record.getValue());
-				}
+					
+					preparedHandlerStatement.addBatch();
 
+				}
+				preparedHandlerStatement.executeBatch();
 				// Commit the handler record values
 				connection.commit();
 				// Close the prepared handler
@@ -124,18 +137,19 @@ public class ClickWatchDB implements IClickWatchDB {
 
 				for (MetaDataRecord record : pExperimentRecords) {
 						// Set the experiment id
-						preparedHandlerStatement.setString(1,
-								record.getExperimentId());
+						preparedHandlerStatement.setString(1, record.getExperimentId());
 						// Set the node
 						preparedHandlerStatement.setString(2, record.getNode());
 						// Set the time stamp
 						preparedHandlerStatement.setLong(3, record.getTimeStamp());
 						// Set the meta data of the node
-						preparedHandlerStatement.setString(5, record.getMetaData());
-						// Commit the handler record values
-						connection.commit();
+						preparedHandlerStatement.setString(4, record.getMetaData());
+						// Add prepared handler statement to batch
+						preparedHandlerStatement.addBatch();
 				}
-
+				preparedHandlerStatement.executeBatch();
+				// Commit the handler record values
+				connection.commit();
 				// Close the prepared handler
 				preparedHandlerStatement.close();
 			} catch (SQLException e) {
@@ -144,81 +158,14 @@ public class ClickWatchDB implements IClickWatchDB {
 		}
 	}
 
-	@Override
-	public Collection<HandlerRecord> getHandlerRecords(String pExperiment,
-			String pNode, String pHandler, long pBegin, long pEnd) {
-		try {
-			ArrayList<HandlerRecord> result = new ArrayList<HandlerRecord>();
-			// Build the query from the parameters
-			String query = "SELECT * FROM MetaDataRecord WHERE experimentId = "
-					+ "\'" + pExperiment + "\'" + "AND nodeId = " + "\'"
-					+ pNode + "\'" + " AND handler = \'" + pHandler
-					+ "\' AND timestamp >= " + pBegin
-					+ "\' AND timestamp <= \'" + pEnd + "\';";
-			// Prepare the query to get the node
-			Statement statement = connection.createStatement();
-			// Execute the query
-			statement.execute(query);
-			// Get the results
-			ResultSet resultSet = statement.getResultSet();
-			// Iterate through the results
-			while (resultSet.next()) {
-				result.add(new HandlerRecord(resultSet.getString(1), resultSet
-						.getString(2), resultSet.getString(3), resultSet
-						.getLong(4), resultSet.getString(5)));
-			}
-			// Close the statement
-			statement.close();
-			// Return the result
-			return result;
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-		return null;
-	}
 
 	@Override
-	public Collection<MetaDataRecord> getMetaDataRecord(String pExperiment,
-			String pNode) {
-		try {
-			ArrayList<MetaDataRecord> result = new ArrayList<MetaDataRecord>();
-			// Build the query from the parameters
-			String query = "SELECT * FROM MetaDataRecord WHERE experimentId = "
-					+ "\'" + pExperiment + "\'" + "AND nodeId = " + "\'"
-					+ pNode + "\'" + ";";
-
-			// Prepare the query to get the node
-			Statement statement = connection.createStatement();
-			// Execute the query
-			statement.execute(query);
-			// Get the results
-			ResultSet resultSet = statement.getResultSet();
-			// Iterate through the results
-			while (resultSet.next()) {
-				// FIXME]
-				/*
-				result.add(new MetaDataRecord(resultSet.getString(1), resultSet
-						.getString(2), resultSet.getLong(3), resultSet
-						.getString(4)));
-						*/
-			}
-			// Close the statement
-			statement.close();
-			// Return the result
-			return result;
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-		return null;
-	}
-
 	public void executeQueryFromFile(final String pFile) {
 		// Create a query from the file and excecute it
 		executeQuery(readSQLFile(pFile));
 	}
 
+	@Override
 	public void executeQuery(final String pQuery) {
 		try {
 			// Check if reading the SQL file failed
@@ -229,6 +176,8 @@ public class ClickWatchDB implements IClickWatchDB {
 				statement.execute(pQuery);
 				// Close the statement
 				statement.close();
+				//
+				connection.commit();
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -281,6 +230,7 @@ public class ClickWatchDB implements IClickWatchDB {
 	public void close() {
 		try {
 			connection.close();
+			mStatus = false;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

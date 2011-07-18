@@ -24,8 +24,8 @@ import de.hub.clickwatch.xml.HandlerType;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link de.hub.clickwatch.xml.impl.HandlerTypeImpl#getElement <em>Element</em>}</li>
- *   <li>{@link de.hub.clickwatch.xml.impl.HandlerTypeImpl#getRate <em>Rate</em>}</li>
+ *   <li>{@link Configuration.impl.HandlerTypeImpl#getElement <em>Element</em>}</li>
+ *   <li>{@link Configuration.impl.HandlerTypeImpl#getRate <em>Rate</em>}</li>
  * </ul>
  * </p>
  *
@@ -88,7 +88,7 @@ public class HandlerTypeImpl extends EObjectImpl implements HandlerType {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return de.hub.clickwatch.xml.ConfigurationPackage.Literals.HANDLER_TYPE;
+		return ConfigurationPackage.Literals.HANDLER_TYPE;
 	}
 
 	/**

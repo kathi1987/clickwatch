@@ -28,7 +28,7 @@ import de.hub.clickwatch.xml.ConfigurationPackage;
  * <!-- begin-user-doc -->
  * The <b>Resource Factory</b> associated with the package.
  * <!-- end-user-doc -->
- * @see de.hub.clickwatch.xml.util.ConfigurationResourceImpl
+ * @see Configuration.util.ConfigurationResourceImpl
  * @generated
  */
 public class ConfigurationResourceFactoryImpl extends ResourceFactoryImpl {

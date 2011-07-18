@@ -32,7 +32,7 @@ import de.hub.clickwatch.xml.HandlerType;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link de.hub.clickwatch.xml.impl.HandlerListTypeImpl#getHandler <em>Handler</em>}</li>
+ *   <li>{@link Configuration.impl.HandlerListTypeImpl#getHandler <em>Handler</em>}</li>
  * </ul>
  * </p>
  *
@@ -65,7 +65,7 @@ public class HandlerListTypeImpl extends EObjectImpl implements HandlerListType 
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return de.hub.clickwatch.xml.ConfigurationPackage.Literals.HANDLER_LIST_TYPE;
+		return ConfigurationPackage.Literals.HANDLER_LIST_TYPE;
 	}
 
 	/**

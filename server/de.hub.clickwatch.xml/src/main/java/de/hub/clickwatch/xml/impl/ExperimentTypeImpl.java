@@ -7,21 +7,15 @@
 package de.hub.clickwatch.xml.impl;
 
 
-import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 import de.hub.clickwatch.xml.ConfigurationPackage;
 import de.hub.clickwatch.xml.DatabaseType;
@@ -36,13 +30,13 @@ import de.hub.clickwatch.xml.NodeListType;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link de.hub.clickwatch.xml.impl.ExperimentTypeImpl#getNodes <em>Nodes</em>}</li>
- *   <li>{@link de.hub.clickwatch.xml.impl.ExperimentTypeImpl#getHandlers <em>Handlers</em>}</li>
- *   <li>{@link de.hub.clickwatch.xml.impl.ExperimentTypeImpl#getDatabase <em>Database</em>}</li>
- *   <li>{@link de.hub.clickwatch.xml.impl.ExperimentTypeImpl#getLogDirectory <em>Log Directory</em>}</li>
- *   <li>{@link de.hub.clickwatch.xml.impl.ExperimentTypeImpl#getName <em>Name</em>}</li>
- *   <li>{@link de.hub.clickwatch.xml.impl.ExperimentTypeImpl#getStart <em>Start</em>}</li>
- *   <li>{@link de.hub.clickwatch.xml.impl.ExperimentTypeImpl#getStop <em>Stop</em>}</li>
+ *   <li>{@link Configuration.impl.ExperimentTypeImpl#getNodes <em>Nodes</em>}</li>
+ *   <li>{@link Configuration.impl.ExperimentTypeImpl#getHandlers <em>Handlers</em>}</li>
+ *   <li>{@link Configuration.impl.ExperimentTypeImpl#getDatabase <em>Database</em>}</li>
+ *   <li>{@link Configuration.impl.ExperimentTypeImpl#getLogDirectory <em>Log Directory</em>}</li>
+ *   <li>{@link Configuration.impl.ExperimentTypeImpl#getName <em>Name</em>}</li>
+ *   <li>{@link Configuration.impl.ExperimentTypeImpl#getStart <em>Start</em>}</li>
+ *   <li>{@link Configuration.impl.ExperimentTypeImpl#getStop <em>Stop</em>}</li>
  * </ul>
  * </p>
  *
@@ -50,34 +44,34 @@ import de.hub.clickwatch.xml.NodeListType;
  */
 public class ExperimentTypeImpl extends EObjectImpl implements ExperimentType {
 	/**
-	 * The cached value of the '{@link #getNodes() <em>Nodes</em>}' containment reference list.
+	 * The cached value of the '{@link #getNodes() <em>Nodes</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getNodes()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<NodeListType> nodes;
+	protected NodeListType nodes;
 
 	/**
-	 * The cached value of the '{@link #getHandlers() <em>Handlers</em>}' containment reference list.
+	 * The cached value of the '{@link #getHandlers() <em>Handlers</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getHandlers()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<HandlerListType> handlers;
+	protected HandlerListType handlers;
 
 	/**
-	 * The cached value of the '{@link #getDatabase() <em>Database</em>}' containment reference list.
+	 * The cached value of the '{@link #getDatabase() <em>Database</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getDatabase()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<DatabaseType> database;
+	protected DatabaseType database;
 
 	/**
 	 * The default value of the '{@link #getLogDirectory() <em>Log Directory</em>}' attribute.
@@ -175,7 +169,7 @@ public class ExperimentTypeImpl extends EObjectImpl implements ExperimentType {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return de.hub.clickwatch.xml.ConfigurationPackage.Literals.EXPERIMENT_TYPE;
+		return ConfigurationPackage.Literals.EXPERIMENT_TYPE;
 	}
 
 	/**
@@ -183,10 +177,7 @@ public class ExperimentTypeImpl extends EObjectImpl implements ExperimentType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<NodeListType> getNodes() {
-		if (nodes == null) {
-			nodes = new EObjectContainmentEList<NodeListType>(NodeListType.class, this, ConfigurationPackage.EXPERIMENT_TYPE__NODES);
-		}
+	public NodeListType getNodes() {
 		return nodes;
 	}
 
@@ -195,10 +186,41 @@ public class ExperimentTypeImpl extends EObjectImpl implements ExperimentType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<HandlerListType> getHandlers() {
-		if (handlers == null) {
-			handlers = new EObjectContainmentEList<HandlerListType>(HandlerListType.class, this, ConfigurationPackage.EXPERIMENT_TYPE__HANDLERS);
+	public NotificationChain basicSetNodes(NodeListType newNodes, NotificationChain msgs) {
+		NodeListType oldNodes = nodes;
+		nodes = newNodes;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ConfigurationPackage.EXPERIMENT_TYPE__NODES, oldNodes, newNodes);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setNodes(NodeListType newNodes) {
+		if (newNodes != nodes) {
+			NotificationChain msgs = null;
+			if (nodes != null)
+				msgs = ((InternalEObject)nodes).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ConfigurationPackage.EXPERIMENT_TYPE__NODES, null, msgs);
+			if (newNodes != null)
+				msgs = ((InternalEObject)newNodes).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ConfigurationPackage.EXPERIMENT_TYPE__NODES, null, msgs);
+			msgs = basicSetNodes(newNodes, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfigurationPackage.EXPERIMENT_TYPE__NODES, newNodes, newNodes));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public HandlerListType getHandlers() {
 		return handlers;
 	}
 
@@ -207,11 +229,76 @@ public class ExperimentTypeImpl extends EObjectImpl implements ExperimentType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<DatabaseType> getDatabase() {
-		if (database == null) {
-			database = new EObjectContainmentEList<DatabaseType>(DatabaseType.class, this, ConfigurationPackage.EXPERIMENT_TYPE__DATABASE);
+	public NotificationChain basicSetHandlers(HandlerListType newHandlers, NotificationChain msgs) {
+		HandlerListType oldHandlers = handlers;
+		handlers = newHandlers;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ConfigurationPackage.EXPERIMENT_TYPE__HANDLERS, oldHandlers, newHandlers);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setHandlers(HandlerListType newHandlers) {
+		if (newHandlers != handlers) {
+			NotificationChain msgs = null;
+			if (handlers != null)
+				msgs = ((InternalEObject)handlers).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ConfigurationPackage.EXPERIMENT_TYPE__HANDLERS, null, msgs);
+			if (newHandlers != null)
+				msgs = ((InternalEObject)newHandlers).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ConfigurationPackage.EXPERIMENT_TYPE__HANDLERS, null, msgs);
+			msgs = basicSetHandlers(newHandlers, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfigurationPackage.EXPERIMENT_TYPE__HANDLERS, newHandlers, newHandlers));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DatabaseType getDatabase() {
 		return database;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetDatabase(DatabaseType newDatabase, NotificationChain msgs) {
+		DatabaseType oldDatabase = database;
+		database = newDatabase;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ConfigurationPackage.EXPERIMENT_TYPE__DATABASE, oldDatabase, newDatabase);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDatabase(DatabaseType newDatabase) {
+		if (newDatabase != database) {
+			NotificationChain msgs = null;
+			if (database != null)
+				msgs = ((InternalEObject)database).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ConfigurationPackage.EXPERIMENT_TYPE__DATABASE, null, msgs);
+			if (newDatabase != null)
+				msgs = ((InternalEObject)newDatabase).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ConfigurationPackage.EXPERIMENT_TYPE__DATABASE, null, msgs);
+			msgs = basicSetDatabase(newDatabase, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfigurationPackage.EXPERIMENT_TYPE__DATABASE, newDatabase, newDatabase));
 	}
 
 	/**
@@ -307,11 +394,11 @@ public class ExperimentTypeImpl extends EObjectImpl implements ExperimentType {
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case ConfigurationPackage.EXPERIMENT_TYPE__NODES:
-				return ((InternalEList<?>)getNodes()).basicRemove(otherEnd, msgs);
+				return basicSetNodes(null, msgs);
 			case ConfigurationPackage.EXPERIMENT_TYPE__HANDLERS:
-				return ((InternalEList<?>)getHandlers()).basicRemove(otherEnd, msgs);
+				return basicSetHandlers(null, msgs);
 			case ConfigurationPackage.EXPERIMENT_TYPE__DATABASE:
-				return ((InternalEList<?>)getDatabase()).basicRemove(otherEnd, msgs);
+				return basicSetDatabase(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -347,21 +434,17 @@ public class ExperimentTypeImpl extends EObjectImpl implements ExperimentType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case ConfigurationPackage.EXPERIMENT_TYPE__NODES:
-				getNodes().clear();
-				getNodes().addAll((Collection<? extends NodeListType>)newValue);
+				setNodes((NodeListType)newValue);
 				return;
 			case ConfigurationPackage.EXPERIMENT_TYPE__HANDLERS:
-				getHandlers().clear();
-				getHandlers().addAll((Collection<? extends HandlerListType>)newValue);
+				setHandlers((HandlerListType)newValue);
 				return;
 			case ConfigurationPackage.EXPERIMENT_TYPE__DATABASE:
-				getDatabase().clear();
-				getDatabase().addAll((Collection<? extends DatabaseType>)newValue);
+				setDatabase((DatabaseType)newValue);
 				return;
 			case ConfigurationPackage.EXPERIMENT_TYPE__LOG_DIRECTORY:
 				setLogDirectory((String)newValue);
@@ -388,13 +471,13 @@ public class ExperimentTypeImpl extends EObjectImpl implements ExperimentType {
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case ConfigurationPackage.EXPERIMENT_TYPE__NODES:
-				getNodes().clear();
+				setNodes((NodeListType)null);
 				return;
 			case ConfigurationPackage.EXPERIMENT_TYPE__HANDLERS:
-				getHandlers().clear();
+				setHandlers((HandlerListType)null);
 				return;
 			case ConfigurationPackage.EXPERIMENT_TYPE__DATABASE:
-				getDatabase().clear();
+				setDatabase((DatabaseType)null);
 				return;
 			case ConfigurationPackage.EXPERIMENT_TYPE__LOG_DIRECTORY:
 				setLogDirectory(LOG_DIRECTORY_EDEFAULT);
@@ -421,11 +504,11 @@ public class ExperimentTypeImpl extends EObjectImpl implements ExperimentType {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case ConfigurationPackage.EXPERIMENT_TYPE__NODES:
-				return nodes != null && !nodes.isEmpty();
+				return nodes != null;
 			case ConfigurationPackage.EXPERIMENT_TYPE__HANDLERS:
-				return handlers != null && !handlers.isEmpty();
+				return handlers != null;
 			case ConfigurationPackage.EXPERIMENT_TYPE__DATABASE:
-				return database != null && !database.isEmpty();
+				return database != null;
 			case ConfigurationPackage.EXPERIMENT_TYPE__LOG_DIRECTORY:
 				return LOG_DIRECTORY_EDEFAULT == null ? logDirectory != null : !LOG_DIRECTORY_EDEFAULT.equals(logDirectory);
 			case ConfigurationPackage.EXPERIMENT_TYPE__NAME:

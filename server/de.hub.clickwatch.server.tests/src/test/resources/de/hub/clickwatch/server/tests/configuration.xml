@@ -1,7 +1,9 @@
   <experiments>
 	<experiment name="example" start="1" stop="2">
 		<nodes>
-			<node address="192.168.178.2" protocol="tcp" port="1024"/>
+			<node address="10.7.205.149" protocol="tcp" port="7777"/>
+			<node address="10.5.70.54" protocol="tcp" port="7777"/>
+			<node address="192.168.3.167" protocol="tcp" port="7777"/>
 		</nodes>
 		
 		<handlers>

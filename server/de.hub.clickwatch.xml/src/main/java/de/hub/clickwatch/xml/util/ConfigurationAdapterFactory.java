@@ -9,19 +9,26 @@ package de.hub.clickwatch.xml.util;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
-
 import org.eclipse.emf.ecore.EObject;
 
-import de.hub.clickwatch.xml.*;
+import de.hub.clickwatch.xml.ConfigurationPackage;
+import de.hub.clickwatch.xml.DatabaseType;
+import de.hub.clickwatch.xml.DocumentRoot;
+import de.hub.clickwatch.xml.ExperimentListType;
+import de.hub.clickwatch.xml.ExperimentType;
+import de.hub.clickwatch.xml.HandlerListType;
+import de.hub.clickwatch.xml.HandlerType;
+import de.hub.clickwatch.xml.NetworkType;
+import de.hub.clickwatch.xml.NodeListType;
+import de.hub.clickwatch.xml.NodeType;
 
 /**
  * <!-- begin-user-doc -->
  * The <b>Adapter Factory</b> for the model.
  * It provides an adapter <code>createXXX</code> method for each class of the model.
  * <!-- end-user-doc -->
- * @see de.hub.clickwatch.xml.ConfigurationPackage
+ * @see Configuration.ConfigurationPackage
  * @generated
  */
 public class ConfigurationAdapterFactory extends AdapterFactoryImpl {
@@ -129,13 +136,13 @@ public class ConfigurationAdapterFactory extends AdapterFactoryImpl {
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.hub.clickwatch.xml.DatabaseType <em>Database Type</em>}'.
+	 * Creates a new adapter for an object of class '{@link Configuration.DatabaseType <em>Database Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.hub.clickwatch.xml.DatabaseType
+	 * @see Configuration.DatabaseType
 	 * @generated
 	 */
 	public Adapter createDatabaseTypeAdapter() {
@@ -143,13 +150,13 @@ public class ConfigurationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.hub.clickwatch.xml.DocumentRoot <em>Document Root</em>}'.
+	 * Creates a new adapter for an object of class '{@link Configuration.DocumentRoot <em>Document Root</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.hub.clickwatch.xml.DocumentRoot
+	 * @see Configuration.DocumentRoot
 	 * @generated
 	 */
 	public Adapter createDocumentRootAdapter() {
@@ -157,13 +164,13 @@ public class ConfigurationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.hub.clickwatch.xml.ExperimentListType <em>Experiment List Type</em>}'.
+	 * Creates a new adapter for an object of class '{@link Configuration.ExperimentListType <em>Experiment List Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.hub.clickwatch.xml.ExperimentListType
+	 * @see Configuration.ExperimentListType
 	 * @generated
 	 */
 	public Adapter createExperimentListTypeAdapter() {
@@ -171,13 +178,13 @@ public class ConfigurationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.hub.clickwatch.xml.ExperimentType <em>Experiment Type</em>}'.
+	 * Creates a new adapter for an object of class '{@link Configuration.ExperimentType <em>Experiment Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.hub.clickwatch.xml.ExperimentType
+	 * @see Configuration.ExperimentType
 	 * @generated
 	 */
 	public Adapter createExperimentTypeAdapter() {
@@ -185,13 +192,13 @@ public class ConfigurationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.hub.clickwatch.xml.HandlerListType <em>Handler List Type</em>}'.
+	 * Creates a new adapter for an object of class '{@link Configuration.HandlerListType <em>Handler List Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.hub.clickwatch.xml.HandlerListType
+	 * @see Configuration.HandlerListType
 	 * @generated
 	 */
 	public Adapter createHandlerListTypeAdapter() {
@@ -199,13 +206,13 @@ public class ConfigurationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.hub.clickwatch.xml.HandlerType <em>Handler Type</em>}'.
+	 * Creates a new adapter for an object of class '{@link Configuration.HandlerType <em>Handler Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.hub.clickwatch.xml.HandlerType
+	 * @see Configuration.HandlerType
 	 * @generated
 	 */
 	public Adapter createHandlerTypeAdapter() {
@@ -213,13 +220,13 @@ public class ConfigurationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.hub.clickwatch.xml.NetworkType <em>Network Type</em>}'.
+	 * Creates a new adapter for an object of class '{@link Configuration.NetworkType <em>Network Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.hub.clickwatch.xml.NetworkType
+	 * @see Configuration.NetworkType
 	 * @generated
 	 */
 	public Adapter createNetworkTypeAdapter() {
@@ -227,13 +234,13 @@ public class ConfigurationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.hub.clickwatch.xml.NodeListType <em>Node List Type</em>}'.
+	 * Creates a new adapter for an object of class '{@link Configuration.NodeListType <em>Node List Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.hub.clickwatch.xml.NodeListType
+	 * @see Configuration.NodeListType
 	 * @generated
 	 */
 	public Adapter createNodeListTypeAdapter() {
@@ -241,13 +248,13 @@ public class ConfigurationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.hub.clickwatch.xml.NodeType <em>Node Type</em>}'.
+	 * Creates a new adapter for an object of class '{@link Configuration.NodeType <em>Node Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.hub.clickwatch.xml.NodeType
+	 * @see Configuration.NodeType
 	 * @generated
 	 */
 	public Adapter createNodeTypeAdapter() {

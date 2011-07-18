@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.EReference;
  *   <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * @see de.hub.clickwatch.xml.ConfigurationFactory
+ * @see Configuration.ConfigurationFactory
  * @model kind="package"
  *        extendedMetaData="qualified='false'"
  * @generated
@@ -63,11 +63,11 @@ public interface ConfigurationPackage extends EPackage {
 	ConfigurationPackage eINSTANCE = de.hub.clickwatch.xml.impl.ConfigurationPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link de.hub.clickwatch.xml.impl.DatabaseTypeImpl <em>Database Type</em>}' class.
+	 * The meta object id for the '{@link Configuration.impl.DatabaseTypeImpl <em>Database Type</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.hub.clickwatch.xml.impl.DatabaseTypeImpl
-	 * @see de.hub.clickwatch.xml.impl.ConfigurationPackageImpl#getDatabaseType()
+	 * @see Configuration.impl.DatabaseTypeImpl
+	 * @see Configuration.impl.ConfigurationPackageImpl#getDatabaseType()
 	 * @generated
 	 */
 	int DATABASE_TYPE = 0;
@@ -127,11 +127,11 @@ public interface ConfigurationPackage extends EPackage {
 	int DATABASE_TYPE_FEATURE_COUNT = 5;
 
 	/**
-	 * The meta object id for the '{@link de.hub.clickwatch.xml.impl.DocumentRootImpl <em>Document Root</em>}' class.
+	 * The meta object id for the '{@link Configuration.impl.DocumentRootImpl <em>Document Root</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.hub.clickwatch.xml.impl.DocumentRootImpl
-	 * @see de.hub.clickwatch.xml.impl.ConfigurationPackageImpl#getDocumentRoot()
+	 * @see Configuration.impl.DocumentRootImpl
+	 * @see Configuration.impl.ConfigurationPackageImpl#getDocumentRoot()
 	 * @generated
 	 */
 	int DOCUMENT_ROOT = 1;
@@ -182,11 +182,11 @@ public interface ConfigurationPackage extends EPackage {
 	int DOCUMENT_ROOT_FEATURE_COUNT = 4;
 
 	/**
-	 * The meta object id for the '{@link de.hub.clickwatch.xml.impl.ExperimentListTypeImpl <em>Experiment List Type</em>}' class.
+	 * The meta object id for the '{@link Configuration.impl.ExperimentListTypeImpl <em>Experiment List Type</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.hub.clickwatch.xml.impl.ExperimentListTypeImpl
-	 * @see de.hub.clickwatch.xml.impl.ConfigurationPackageImpl#getExperimentListType()
+	 * @see Configuration.impl.ExperimentListTypeImpl
+	 * @see Configuration.impl.ConfigurationPackageImpl#getExperimentListType()
 	 * @generated
 	 */
 	int EXPERIMENT_LIST_TYPE = 2;
@@ -210,17 +210,17 @@ public interface ConfigurationPackage extends EPackage {
 	int EXPERIMENT_LIST_TYPE_FEATURE_COUNT = 1;
 
 	/**
-	 * The meta object id for the '{@link de.hub.clickwatch.xml.impl.ExperimentTypeImpl <em>Experiment Type</em>}' class.
+	 * The meta object id for the '{@link Configuration.impl.ExperimentTypeImpl <em>Experiment Type</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.hub.clickwatch.xml.impl.ExperimentTypeImpl
-	 * @see de.hub.clickwatch.xml.impl.ConfigurationPackageImpl#getExperimentType()
+	 * @see Configuration.impl.ExperimentTypeImpl
+	 * @see Configuration.impl.ConfigurationPackageImpl#getExperimentType()
 	 * @generated
 	 */
 	int EXPERIMENT_TYPE = 3;
 
 	/**
-	 * The feature id for the '<em><b>Nodes</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Nodes</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -229,7 +229,7 @@ public interface ConfigurationPackage extends EPackage {
 	int EXPERIMENT_TYPE__NODES = 0;
 
 	/**
-	 * The feature id for the '<em><b>Handlers</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Handlers</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -238,7 +238,7 @@ public interface ConfigurationPackage extends EPackage {
 	int EXPERIMENT_TYPE__HANDLERS = 1;
 
 	/**
-	 * The feature id for the '<em><b>Database</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Database</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -292,11 +292,11 @@ public interface ConfigurationPackage extends EPackage {
 	int EXPERIMENT_TYPE_FEATURE_COUNT = 7;
 
 	/**
-	 * The meta object id for the '{@link de.hub.clickwatch.xml.impl.HandlerListTypeImpl <em>Handler List Type</em>}' class.
+	 * The meta object id for the '{@link Configuration.impl.HandlerListTypeImpl <em>Handler List Type</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.hub.clickwatch.xml.impl.HandlerListTypeImpl
-	 * @see de.hub.clickwatch.xml.impl.ConfigurationPackageImpl#getHandlerListType()
+	 * @see Configuration.impl.HandlerListTypeImpl
+	 * @see Configuration.impl.ConfigurationPackageImpl#getHandlerListType()
 	 * @generated
 	 */
 	int HANDLER_LIST_TYPE = 4;
@@ -320,11 +320,11 @@ public interface ConfigurationPackage extends EPackage {
 	int HANDLER_LIST_TYPE_FEATURE_COUNT = 1;
 
 	/**
-	 * The meta object id for the '{@link de.hub.clickwatch.xml.impl.HandlerTypeImpl <em>Handler Type</em>}' class.
+	 * The meta object id for the '{@link Configuration.impl.HandlerTypeImpl <em>Handler Type</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.hub.clickwatch.xml.impl.HandlerTypeImpl
-	 * @see de.hub.clickwatch.xml.impl.ConfigurationPackageImpl#getHandlerType()
+	 * @see Configuration.impl.HandlerTypeImpl
+	 * @see Configuration.impl.ConfigurationPackageImpl#getHandlerType()
 	 * @generated
 	 */
 	int HANDLER_TYPE = 5;
@@ -357,11 +357,11 @@ public interface ConfigurationPackage extends EPackage {
 	int HANDLER_TYPE_FEATURE_COUNT = 2;
 
 	/**
-	 * The meta object id for the '{@link de.hub.clickwatch.xml.impl.NetworkTypeImpl <em>Network Type</em>}' class.
+	 * The meta object id for the '{@link Configuration.impl.NetworkTypeImpl <em>Network Type</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.hub.clickwatch.xml.impl.NetworkTypeImpl
-	 * @see de.hub.clickwatch.xml.impl.ConfigurationPackageImpl#getNetworkType()
+	 * @see Configuration.impl.NetworkTypeImpl
+	 * @see Configuration.impl.ConfigurationPackageImpl#getNetworkType()
 	 * @generated
 	 */
 	int NETWORK_TYPE = 6;
@@ -412,11 +412,11 @@ public interface ConfigurationPackage extends EPackage {
 	int NETWORK_TYPE_FEATURE_COUNT = 4;
 
 	/**
-	 * The meta object id for the '{@link de.hub.clickwatch.xml.impl.NodeListTypeImpl <em>Node List Type</em>}' class.
+	 * The meta object id for the '{@link Configuration.impl.NodeListTypeImpl <em>Node List Type</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.hub.clickwatch.xml.impl.NodeListTypeImpl
-	 * @see de.hub.clickwatch.xml.impl.ConfigurationPackageImpl#getNodeListType()
+	 * @see Configuration.impl.NodeListTypeImpl
+	 * @see Configuration.impl.ConfigurationPackageImpl#getNodeListType()
 	 * @generated
 	 */
 	int NODE_LIST_TYPE = 7;
@@ -440,11 +440,11 @@ public interface ConfigurationPackage extends EPackage {
 	int NODE_LIST_TYPE_FEATURE_COUNT = 1;
 
 	/**
-	 * The meta object id for the '{@link de.hub.clickwatch.xml.impl.NodeTypeImpl <em>Node Type</em>}' class.
+	 * The meta object id for the '{@link Configuration.impl.NodeTypeImpl <em>Node Type</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.hub.clickwatch.xml.impl.NodeTypeImpl
-	 * @see de.hub.clickwatch.xml.impl.ConfigurationPackageImpl#getNodeType()
+	 * @see Configuration.impl.NodeTypeImpl
+	 * @see Configuration.impl.ConfigurationPackageImpl#getNodeType()
 	 * @generated
 	 */
 	int NODE_TYPE = 8;
@@ -486,11 +486,11 @@ public interface ConfigurationPackage extends EPackage {
 	int NODE_TYPE_FEATURE_COUNT = 3;
 
 	/**
-	 * The meta object id for the '{@link de.hub.clickwatch.xml.ProtocolType <em>Protocol Type</em>}' enum.
+	 * The meta object id for the '{@link Configuration.ProtocolType <em>Protocol Type</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.hub.clickwatch.xml.ProtocolType
-	 * @see de.hub.clickwatch.xml.impl.ConfigurationPackageImpl#getProtocolType()
+	 * @see Configuration.ProtocolType
+	 * @see Configuration.impl.ConfigurationPackageImpl#getProtocolType()
 	 * @generated
 	 */
 	int PROTOCOL_TYPE = 9;
@@ -500,7 +500,7 @@ public interface ConfigurationPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see java.lang.String
-	 * @see de.hub.clickwatch.xml.impl.ConfigurationPackageImpl#getAddressType()
+	 * @see Configuration.impl.ConfigurationPackageImpl#getAddressType()
 	 * @generated
 	 */
 	int ADDRESS_TYPE = 10;
@@ -510,7 +510,7 @@ public interface ConfigurationPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see java.math.BigInteger
-	 * @see de.hub.clickwatch.xml.impl.ConfigurationPackageImpl#getPortType()
+	 * @see Configuration.impl.ConfigurationPackageImpl#getPortType()
 	 * @generated
 	 */
 	int PORT_TYPE = 11;
@@ -519,417 +519,417 @@ public interface ConfigurationPackage extends EPackage {
 	 * The meta object id for the '<em>Protocol Type Object</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.hub.clickwatch.xml.ProtocolType
-	 * @see de.hub.clickwatch.xml.impl.ConfigurationPackageImpl#getProtocolTypeObject()
+	 * @see Configuration.ProtocolType
+	 * @see Configuration.impl.ConfigurationPackageImpl#getProtocolTypeObject()
 	 * @generated
 	 */
 	int PROTOCOL_TYPE_OBJECT = 12;
 
 
 	/**
-	 * Returns the meta object for class '{@link de.hub.clickwatch.xml.DatabaseType <em>Database Type</em>}'.
+	 * Returns the meta object for class '{@link Configuration.DatabaseType <em>Database Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Database Type</em>'.
-	 * @see de.hub.clickwatch.xml.DatabaseType
+	 * @see Configuration.DatabaseType
 	 * @generated
 	 */
 	EClass getDatabaseType();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.xml.DatabaseType#getAddress <em>Address</em>}'.
+	 * Returns the meta object for the attribute '{@link Configuration.DatabaseType#getAddress <em>Address</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Address</em>'.
-	 * @see de.hub.clickwatch.xml.DatabaseType#getAddress()
+	 * @see Configuration.DatabaseType#getAddress()
 	 * @see #getDatabaseType()
 	 * @generated
 	 */
 	EAttribute getDatabaseType_Address();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.xml.DatabaseType#getDatabase <em>Database</em>}'.
+	 * Returns the meta object for the attribute '{@link Configuration.DatabaseType#getDatabase <em>Database</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Database</em>'.
-	 * @see de.hub.clickwatch.xml.DatabaseType#getDatabase()
+	 * @see Configuration.DatabaseType#getDatabase()
 	 * @see #getDatabaseType()
 	 * @generated
 	 */
 	EAttribute getDatabaseType_Database();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.xml.DatabaseType#getPassword <em>Password</em>}'.
+	 * Returns the meta object for the attribute '{@link Configuration.DatabaseType#getPassword <em>Password</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Password</em>'.
-	 * @see de.hub.clickwatch.xml.DatabaseType#getPassword()
+	 * @see Configuration.DatabaseType#getPassword()
 	 * @see #getDatabaseType()
 	 * @generated
 	 */
 	EAttribute getDatabaseType_Password();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.xml.DatabaseType#getPort <em>Port</em>}'.
+	 * Returns the meta object for the attribute '{@link Configuration.DatabaseType#getPort <em>Port</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Port</em>'.
-	 * @see de.hub.clickwatch.xml.DatabaseType#getPort()
+	 * @see Configuration.DatabaseType#getPort()
 	 * @see #getDatabaseType()
 	 * @generated
 	 */
 	EAttribute getDatabaseType_Port();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.xml.DatabaseType#getUser <em>User</em>}'.
+	 * Returns the meta object for the attribute '{@link Configuration.DatabaseType#getUser <em>User</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>User</em>'.
-	 * @see de.hub.clickwatch.xml.DatabaseType#getUser()
+	 * @see Configuration.DatabaseType#getUser()
 	 * @see #getDatabaseType()
 	 * @generated
 	 */
 	EAttribute getDatabaseType_User();
 
 	/**
-	 * Returns the meta object for class '{@link de.hub.clickwatch.xml.DocumentRoot <em>Document Root</em>}'.
+	 * Returns the meta object for class '{@link Configuration.DocumentRoot <em>Document Root</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Document Root</em>'.
-	 * @see de.hub.clickwatch.xml.DocumentRoot
+	 * @see Configuration.DocumentRoot
 	 * @generated
 	 */
 	EClass getDocumentRoot();
 
 	/**
-	 * Returns the meta object for the attribute list '{@link de.hub.clickwatch.xml.DocumentRoot#getMixed <em>Mixed</em>}'.
+	 * Returns the meta object for the attribute list '{@link Configuration.DocumentRoot#getMixed <em>Mixed</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute list '<em>Mixed</em>'.
-	 * @see de.hub.clickwatch.xml.DocumentRoot#getMixed()
+	 * @see Configuration.DocumentRoot#getMixed()
 	 * @see #getDocumentRoot()
 	 * @generated
 	 */
 	EAttribute getDocumentRoot_Mixed();
 
 	/**
-	 * Returns the meta object for the map '{@link de.hub.clickwatch.xml.DocumentRoot#getXMLNSPrefixMap <em>XMLNS Prefix Map</em>}'.
+	 * Returns the meta object for the map '{@link Configuration.DocumentRoot#getXMLNSPrefixMap <em>XMLNS Prefix Map</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the map '<em>XMLNS Prefix Map</em>'.
-	 * @see de.hub.clickwatch.xml.DocumentRoot#getXMLNSPrefixMap()
+	 * @see Configuration.DocumentRoot#getXMLNSPrefixMap()
 	 * @see #getDocumentRoot()
 	 * @generated
 	 */
 	EReference getDocumentRoot_XMLNSPrefixMap();
 
 	/**
-	 * Returns the meta object for the map '{@link de.hub.clickwatch.xml.DocumentRoot#getXSISchemaLocation <em>XSI Schema Location</em>}'.
+	 * Returns the meta object for the map '{@link Configuration.DocumentRoot#getXSISchemaLocation <em>XSI Schema Location</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the map '<em>XSI Schema Location</em>'.
-	 * @see de.hub.clickwatch.xml.DocumentRoot#getXSISchemaLocation()
+	 * @see Configuration.DocumentRoot#getXSISchemaLocation()
 	 * @see #getDocumentRoot()
 	 * @generated
 	 */
 	EReference getDocumentRoot_XSISchemaLocation();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link de.hub.clickwatch.xml.DocumentRoot#getExperiments <em>Experiments</em>}'.
+	 * Returns the meta object for the containment reference '{@link Configuration.DocumentRoot#getExperiments <em>Experiments</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Experiments</em>'.
-	 * @see de.hub.clickwatch.xml.DocumentRoot#getExperiments()
+	 * @see Configuration.DocumentRoot#getExperiments()
 	 * @see #getDocumentRoot()
 	 * @generated
 	 */
 	EReference getDocumentRoot_Experiments();
 
 	/**
-	 * Returns the meta object for class '{@link de.hub.clickwatch.xml.ExperimentListType <em>Experiment List Type</em>}'.
+	 * Returns the meta object for class '{@link Configuration.ExperimentListType <em>Experiment List Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Experiment List Type</em>'.
-	 * @see de.hub.clickwatch.xml.ExperimentListType
+	 * @see Configuration.ExperimentListType
 	 * @generated
 	 */
 	EClass getExperimentListType();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link de.hub.clickwatch.xml.ExperimentListType#getExperiment <em>Experiment</em>}'.
+	 * Returns the meta object for the containment reference list '{@link Configuration.ExperimentListType#getExperiment <em>Experiment</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Experiment</em>'.
-	 * @see de.hub.clickwatch.xml.ExperimentListType#getExperiment()
+	 * @see Configuration.ExperimentListType#getExperiment()
 	 * @see #getExperimentListType()
 	 * @generated
 	 */
 	EReference getExperimentListType_Experiment();
 
 	/**
-	 * Returns the meta object for class '{@link de.hub.clickwatch.xml.ExperimentType <em>Experiment Type</em>}'.
+	 * Returns the meta object for class '{@link Configuration.ExperimentType <em>Experiment Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Experiment Type</em>'.
-	 * @see de.hub.clickwatch.xml.ExperimentType
+	 * @see Configuration.ExperimentType
 	 * @generated
 	 */
 	EClass getExperimentType();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link de.hub.clickwatch.xml.ExperimentType#getNodes <em>Nodes</em>}'.
+	 * Returns the meta object for the containment reference '{@link Configuration.ExperimentType#getNodes <em>Nodes</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Nodes</em>'.
-	 * @see de.hub.clickwatch.xml.ExperimentType#getNodes()
+	 * @return the meta object for the containment reference '<em>Nodes</em>'.
+	 * @see Configuration.ExperimentType#getNodes()
 	 * @see #getExperimentType()
 	 * @generated
 	 */
 	EReference getExperimentType_Nodes();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link de.hub.clickwatch.xml.ExperimentType#getHandlers <em>Handlers</em>}'.
+	 * Returns the meta object for the containment reference '{@link Configuration.ExperimentType#getHandlers <em>Handlers</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Handlers</em>'.
-	 * @see de.hub.clickwatch.xml.ExperimentType#getHandlers()
+	 * @return the meta object for the containment reference '<em>Handlers</em>'.
+	 * @see Configuration.ExperimentType#getHandlers()
 	 * @see #getExperimentType()
 	 * @generated
 	 */
 	EReference getExperimentType_Handlers();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link de.hub.clickwatch.xml.ExperimentType#getDatabase <em>Database</em>}'.
+	 * Returns the meta object for the containment reference '{@link Configuration.ExperimentType#getDatabase <em>Database</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Database</em>'.
-	 * @see de.hub.clickwatch.xml.ExperimentType#getDatabase()
+	 * @return the meta object for the containment reference '<em>Database</em>'.
+	 * @see Configuration.ExperimentType#getDatabase()
 	 * @see #getExperimentType()
 	 * @generated
 	 */
 	EReference getExperimentType_Database();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.xml.ExperimentType#getLogDirectory <em>Log Directory</em>}'.
+	 * Returns the meta object for the attribute '{@link Configuration.ExperimentType#getLogDirectory <em>Log Directory</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Log Directory</em>'.
-	 * @see de.hub.clickwatch.xml.ExperimentType#getLogDirectory()
+	 * @see Configuration.ExperimentType#getLogDirectory()
 	 * @see #getExperimentType()
 	 * @generated
 	 */
 	EAttribute getExperimentType_LogDirectory();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.xml.ExperimentType#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link Configuration.ExperimentType#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see de.hub.clickwatch.xml.ExperimentType#getName()
+	 * @see Configuration.ExperimentType#getName()
 	 * @see #getExperimentType()
 	 * @generated
 	 */
 	EAttribute getExperimentType_Name();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.xml.ExperimentType#getStart <em>Start</em>}'.
+	 * Returns the meta object for the attribute '{@link Configuration.ExperimentType#getStart <em>Start</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Start</em>'.
-	 * @see de.hub.clickwatch.xml.ExperimentType#getStart()
+	 * @see Configuration.ExperimentType#getStart()
 	 * @see #getExperimentType()
 	 * @generated
 	 */
 	EAttribute getExperimentType_Start();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.xml.ExperimentType#getStop <em>Stop</em>}'.
+	 * Returns the meta object for the attribute '{@link Configuration.ExperimentType#getStop <em>Stop</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Stop</em>'.
-	 * @see de.hub.clickwatch.xml.ExperimentType#getStop()
+	 * @see Configuration.ExperimentType#getStop()
 	 * @see #getExperimentType()
 	 * @generated
 	 */
 	EAttribute getExperimentType_Stop();
 
 	/**
-	 * Returns the meta object for class '{@link de.hub.clickwatch.xml.HandlerListType <em>Handler List Type</em>}'.
+	 * Returns the meta object for class '{@link Configuration.HandlerListType <em>Handler List Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Handler List Type</em>'.
-	 * @see de.hub.clickwatch.xml.HandlerListType
+	 * @see Configuration.HandlerListType
 	 * @generated
 	 */
 	EClass getHandlerListType();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link de.hub.clickwatch.xml.HandlerListType#getHandler <em>Handler</em>}'.
+	 * Returns the meta object for the containment reference list '{@link Configuration.HandlerListType#getHandler <em>Handler</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Handler</em>'.
-	 * @see de.hub.clickwatch.xml.HandlerListType#getHandler()
+	 * @see Configuration.HandlerListType#getHandler()
 	 * @see #getHandlerListType()
 	 * @generated
 	 */
 	EReference getHandlerListType_Handler();
 
 	/**
-	 * Returns the meta object for class '{@link de.hub.clickwatch.xml.HandlerType <em>Handler Type</em>}'.
+	 * Returns the meta object for class '{@link Configuration.HandlerType <em>Handler Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Handler Type</em>'.
-	 * @see de.hub.clickwatch.xml.HandlerType
+	 * @see Configuration.HandlerType
 	 * @generated
 	 */
 	EClass getHandlerType();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.xml.HandlerType#getElement <em>Element</em>}'.
+	 * Returns the meta object for the attribute '{@link Configuration.HandlerType#getElement <em>Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Element</em>'.
-	 * @see de.hub.clickwatch.xml.HandlerType#getElement()
+	 * @see Configuration.HandlerType#getElement()
 	 * @see #getHandlerType()
 	 * @generated
 	 */
 	EAttribute getHandlerType_Element();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.xml.HandlerType#getRate <em>Rate</em>}'.
+	 * Returns the meta object for the attribute '{@link Configuration.HandlerType#getRate <em>Rate</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Rate</em>'.
-	 * @see de.hub.clickwatch.xml.HandlerType#getRate()
+	 * @see Configuration.HandlerType#getRate()
 	 * @see #getHandlerType()
 	 * @generated
 	 */
 	EAttribute getHandlerType_Rate();
 
 	/**
-	 * Returns the meta object for class '{@link de.hub.clickwatch.xml.NetworkType <em>Network Type</em>}'.
+	 * Returns the meta object for class '{@link Configuration.NetworkType <em>Network Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Network Type</em>'.
-	 * @see de.hub.clickwatch.xml.NetworkType
+	 * @see Configuration.NetworkType
 	 * @generated
 	 */
 	EClass getNetworkType();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link de.hub.clickwatch.xml.NetworkType#getNode <em>Node</em>}'.
+	 * Returns the meta object for the containment reference list '{@link Configuration.NetworkType#getNode <em>Node</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Node</em>'.
-	 * @see de.hub.clickwatch.xml.NetworkType#getNode()
+	 * @see Configuration.NetworkType#getNode()
 	 * @see #getNetworkType()
 	 * @generated
 	 */
 	EReference getNetworkType_Node();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link de.hub.clickwatch.xml.NetworkType#getNetwork <em>Network</em>}'.
+	 * Returns the meta object for the containment reference list '{@link Configuration.NetworkType#getNetwork <em>Network</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Network</em>'.
-	 * @see de.hub.clickwatch.xml.NetworkType#getNetwork()
+	 * @see Configuration.NetworkType#getNetwork()
 	 * @see #getNetworkType()
 	 * @generated
 	 */
 	EReference getNetworkType_Network();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.xml.NetworkType#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link Configuration.NetworkType#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see de.hub.clickwatch.xml.NetworkType#getName()
+	 * @see Configuration.NetworkType#getName()
 	 * @see #getNetworkType()
 	 * @generated
 	 */
 	EAttribute getNetworkType_Name();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.xml.NetworkType#getUpdateInterval <em>Update Interval</em>}'.
+	 * Returns the meta object for the attribute '{@link Configuration.NetworkType#getUpdateInterval <em>Update Interval</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Update Interval</em>'.
-	 * @see de.hub.clickwatch.xml.NetworkType#getUpdateInterval()
+	 * @see Configuration.NetworkType#getUpdateInterval()
 	 * @see #getNetworkType()
 	 * @generated
 	 */
 	EAttribute getNetworkType_UpdateInterval();
 
 	/**
-	 * Returns the meta object for class '{@link de.hub.clickwatch.xml.NodeListType <em>Node List Type</em>}'.
+	 * Returns the meta object for class '{@link Configuration.NodeListType <em>Node List Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Node List Type</em>'.
-	 * @see de.hub.clickwatch.xml.NodeListType
+	 * @see Configuration.NodeListType
 	 * @generated
 	 */
 	EClass getNodeListType();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link de.hub.clickwatch.xml.NodeListType#getNode <em>Node</em>}'.
+	 * Returns the meta object for the containment reference list '{@link Configuration.NodeListType#getNode <em>Node</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Node</em>'.
-	 * @see de.hub.clickwatch.xml.NodeListType#getNode()
+	 * @see Configuration.NodeListType#getNode()
 	 * @see #getNodeListType()
 	 * @generated
 	 */
 	EReference getNodeListType_Node();
 
 	/**
-	 * Returns the meta object for class '{@link de.hub.clickwatch.xml.NodeType <em>Node Type</em>}'.
+	 * Returns the meta object for class '{@link Configuration.NodeType <em>Node Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Node Type</em>'.
-	 * @see de.hub.clickwatch.xml.NodeType
+	 * @see Configuration.NodeType
 	 * @generated
 	 */
 	EClass getNodeType();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.xml.NodeType#getAddress <em>Address</em>}'.
+	 * Returns the meta object for the attribute '{@link Configuration.NodeType#getAddress <em>Address</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Address</em>'.
-	 * @see de.hub.clickwatch.xml.NodeType#getAddress()
+	 * @see Configuration.NodeType#getAddress()
 	 * @see #getNodeType()
 	 * @generated
 	 */
 	EAttribute getNodeType_Address();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.xml.NodeType#getPort <em>Port</em>}'.
+	 * Returns the meta object for the attribute '{@link Configuration.NodeType#getPort <em>Port</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Port</em>'.
-	 * @see de.hub.clickwatch.xml.NodeType#getPort()
+	 * @see Configuration.NodeType#getPort()
 	 * @see #getNodeType()
 	 * @generated
 	 */
 	EAttribute getNodeType_Port();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.xml.NodeType#getProtocol <em>Protocol</em>}'.
+	 * Returns the meta object for the attribute '{@link Configuration.NodeType#getProtocol <em>Protocol</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Protocol</em>'.
-	 * @see de.hub.clickwatch.xml.NodeType#getProtocol()
+	 * @see Configuration.NodeType#getProtocol()
 	 * @see #getNodeType()
 	 * @generated
 	 */
 	EAttribute getNodeType_Protocol();
 
 	/**
-	 * Returns the meta object for enum '{@link de.hub.clickwatch.xml.ProtocolType <em>Protocol Type</em>}'.
+	 * Returns the meta object for enum '{@link Configuration.ProtocolType <em>Protocol Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for enum '<em>Protocol Type</em>'.
-	 * @see de.hub.clickwatch.xml.ProtocolType
+	 * @see Configuration.ProtocolType
 	 * @generated
 	 */
 	EEnum getProtocolType();
@@ -959,11 +959,11 @@ public interface ConfigurationPackage extends EPackage {
 	EDataType getPortType();
 
 	/**
-	 * Returns the meta object for data type '{@link de.hub.clickwatch.xml.ProtocolType <em>Protocol Type Object</em>}'.
+	 * Returns the meta object for data type '{@link Configuration.ProtocolType <em>Protocol Type Object</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for data type '<em>Protocol Type Object</em>'.
-	 * @see de.hub.clickwatch.xml.ProtocolType
+	 * @see Configuration.ProtocolType
 	 * @model instanceClass="Configuration.ProtocolType"
 	 *        extendedMetaData="name='protocolType:Object' baseType='protocolType'"
 	 * @generated
@@ -993,11 +993,11 @@ public interface ConfigurationPackage extends EPackage {
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '{@link de.hub.clickwatch.xml.impl.DatabaseTypeImpl <em>Database Type</em>}' class.
+		 * The meta object literal for the '{@link Configuration.impl.DatabaseTypeImpl <em>Database Type</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.hub.clickwatch.xml.impl.DatabaseTypeImpl
-		 * @see de.hub.clickwatch.xml.impl.ConfigurationPackageImpl#getDatabaseType()
+		 * @see Configuration.impl.DatabaseTypeImpl
+		 * @see Configuration.impl.ConfigurationPackageImpl#getDatabaseType()
 		 * @generated
 		 */
 		EClass DATABASE_TYPE = eINSTANCE.getDatabaseType();
@@ -1043,11 +1043,11 @@ public interface ConfigurationPackage extends EPackage {
 		EAttribute DATABASE_TYPE__USER = eINSTANCE.getDatabaseType_User();
 
 		/**
-		 * The meta object literal for the '{@link de.hub.clickwatch.xml.impl.DocumentRootImpl <em>Document Root</em>}' class.
+		 * The meta object literal for the '{@link Configuration.impl.DocumentRootImpl <em>Document Root</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.hub.clickwatch.xml.impl.DocumentRootImpl
-		 * @see de.hub.clickwatch.xml.impl.ConfigurationPackageImpl#getDocumentRoot()
+		 * @see Configuration.impl.DocumentRootImpl
+		 * @see Configuration.impl.ConfigurationPackageImpl#getDocumentRoot()
 		 * @generated
 		 */
 		EClass DOCUMENT_ROOT = eINSTANCE.getDocumentRoot();
@@ -1085,11 +1085,11 @@ public interface ConfigurationPackage extends EPackage {
 		EReference DOCUMENT_ROOT__EXPERIMENTS = eINSTANCE.getDocumentRoot_Experiments();
 
 		/**
-		 * The meta object literal for the '{@link de.hub.clickwatch.xml.impl.ExperimentListTypeImpl <em>Experiment List Type</em>}' class.
+		 * The meta object literal for the '{@link Configuration.impl.ExperimentListTypeImpl <em>Experiment List Type</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.hub.clickwatch.xml.impl.ExperimentListTypeImpl
-		 * @see de.hub.clickwatch.xml.impl.ConfigurationPackageImpl#getExperimentListType()
+		 * @see Configuration.impl.ExperimentListTypeImpl
+		 * @see Configuration.impl.ConfigurationPackageImpl#getExperimentListType()
 		 * @generated
 		 */
 		EClass EXPERIMENT_LIST_TYPE = eINSTANCE.getExperimentListType();
@@ -1103,17 +1103,17 @@ public interface ConfigurationPackage extends EPackage {
 		EReference EXPERIMENT_LIST_TYPE__EXPERIMENT = eINSTANCE.getExperimentListType_Experiment();
 
 		/**
-		 * The meta object literal for the '{@link de.hub.clickwatch.xml.impl.ExperimentTypeImpl <em>Experiment Type</em>}' class.
+		 * The meta object literal for the '{@link Configuration.impl.ExperimentTypeImpl <em>Experiment Type</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.hub.clickwatch.xml.impl.ExperimentTypeImpl
-		 * @see de.hub.clickwatch.xml.impl.ConfigurationPackageImpl#getExperimentType()
+		 * @see Configuration.impl.ExperimentTypeImpl
+		 * @see Configuration.impl.ConfigurationPackageImpl#getExperimentType()
 		 * @generated
 		 */
 		EClass EXPERIMENT_TYPE = eINSTANCE.getExperimentType();
 
 		/**
-		 * The meta object literal for the '<em><b>Nodes</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Nodes</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -1121,7 +1121,7 @@ public interface ConfigurationPackage extends EPackage {
 		EReference EXPERIMENT_TYPE__NODES = eINSTANCE.getExperimentType_Nodes();
 
 		/**
-		 * The meta object literal for the '<em><b>Handlers</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Handlers</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -1129,7 +1129,7 @@ public interface ConfigurationPackage extends EPackage {
 		EReference EXPERIMENT_TYPE__HANDLERS = eINSTANCE.getExperimentType_Handlers();
 
 		/**
-		 * The meta object literal for the '<em><b>Database</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Database</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -1169,11 +1169,11 @@ public interface ConfigurationPackage extends EPackage {
 		EAttribute EXPERIMENT_TYPE__STOP = eINSTANCE.getExperimentType_Stop();
 
 		/**
-		 * The meta object literal for the '{@link de.hub.clickwatch.xml.impl.HandlerListTypeImpl <em>Handler List Type</em>}' class.
+		 * The meta object literal for the '{@link Configuration.impl.HandlerListTypeImpl <em>Handler List Type</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.hub.clickwatch.xml.impl.HandlerListTypeImpl
-		 * @see de.hub.clickwatch.xml.impl.ConfigurationPackageImpl#getHandlerListType()
+		 * @see Configuration.impl.HandlerListTypeImpl
+		 * @see Configuration.impl.ConfigurationPackageImpl#getHandlerListType()
 		 * @generated
 		 */
 		EClass HANDLER_LIST_TYPE = eINSTANCE.getHandlerListType();
@@ -1187,11 +1187,11 @@ public interface ConfigurationPackage extends EPackage {
 		EReference HANDLER_LIST_TYPE__HANDLER = eINSTANCE.getHandlerListType_Handler();
 
 		/**
-		 * The meta object literal for the '{@link de.hub.clickwatch.xml.impl.HandlerTypeImpl <em>Handler Type</em>}' class.
+		 * The meta object literal for the '{@link Configuration.impl.HandlerTypeImpl <em>Handler Type</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.hub.clickwatch.xml.impl.HandlerTypeImpl
-		 * @see de.hub.clickwatch.xml.impl.ConfigurationPackageImpl#getHandlerType()
+		 * @see Configuration.impl.HandlerTypeImpl
+		 * @see Configuration.impl.ConfigurationPackageImpl#getHandlerType()
 		 * @generated
 		 */
 		EClass HANDLER_TYPE = eINSTANCE.getHandlerType();
@@ -1213,11 +1213,11 @@ public interface ConfigurationPackage extends EPackage {
 		EAttribute HANDLER_TYPE__RATE = eINSTANCE.getHandlerType_Rate();
 
 		/**
-		 * The meta object literal for the '{@link de.hub.clickwatch.xml.impl.NetworkTypeImpl <em>Network Type</em>}' class.
+		 * The meta object literal for the '{@link Configuration.impl.NetworkTypeImpl <em>Network Type</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.hub.clickwatch.xml.impl.NetworkTypeImpl
-		 * @see de.hub.clickwatch.xml.impl.ConfigurationPackageImpl#getNetworkType()
+		 * @see Configuration.impl.NetworkTypeImpl
+		 * @see Configuration.impl.ConfigurationPackageImpl#getNetworkType()
 		 * @generated
 		 */
 		EClass NETWORK_TYPE = eINSTANCE.getNetworkType();
@@ -1255,11 +1255,11 @@ public interface ConfigurationPackage extends EPackage {
 		EAttribute NETWORK_TYPE__UPDATE_INTERVAL = eINSTANCE.getNetworkType_UpdateInterval();
 
 		/**
-		 * The meta object literal for the '{@link de.hub.clickwatch.xml.impl.NodeListTypeImpl <em>Node List Type</em>}' class.
+		 * The meta object literal for the '{@link Configuration.impl.NodeListTypeImpl <em>Node List Type</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.hub.clickwatch.xml.impl.NodeListTypeImpl
-		 * @see de.hub.clickwatch.xml.impl.ConfigurationPackageImpl#getNodeListType()
+		 * @see Configuration.impl.NodeListTypeImpl
+		 * @see Configuration.impl.ConfigurationPackageImpl#getNodeListType()
 		 * @generated
 		 */
 		EClass NODE_LIST_TYPE = eINSTANCE.getNodeListType();
@@ -1273,11 +1273,11 @@ public interface ConfigurationPackage extends EPackage {
 		EReference NODE_LIST_TYPE__NODE = eINSTANCE.getNodeListType_Node();
 
 		/**
-		 * The meta object literal for the '{@link de.hub.clickwatch.xml.impl.NodeTypeImpl <em>Node Type</em>}' class.
+		 * The meta object literal for the '{@link Configuration.impl.NodeTypeImpl <em>Node Type</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.hub.clickwatch.xml.impl.NodeTypeImpl
-		 * @see de.hub.clickwatch.xml.impl.ConfigurationPackageImpl#getNodeType()
+		 * @see Configuration.impl.NodeTypeImpl
+		 * @see Configuration.impl.ConfigurationPackageImpl#getNodeType()
 		 * @generated
 		 */
 		EClass NODE_TYPE = eINSTANCE.getNodeType();
@@ -1307,11 +1307,11 @@ public interface ConfigurationPackage extends EPackage {
 		EAttribute NODE_TYPE__PROTOCOL = eINSTANCE.getNodeType_Protocol();
 
 		/**
-		 * The meta object literal for the '{@link de.hub.clickwatch.xml.ProtocolType <em>Protocol Type</em>}' enum.
+		 * The meta object literal for the '{@link Configuration.ProtocolType <em>Protocol Type</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.hub.clickwatch.xml.ProtocolType
-		 * @see de.hub.clickwatch.xml.impl.ConfigurationPackageImpl#getProtocolType()
+		 * @see Configuration.ProtocolType
+		 * @see Configuration.impl.ConfigurationPackageImpl#getProtocolType()
 		 * @generated
 		 */
 		EEnum PROTOCOL_TYPE = eINSTANCE.getProtocolType();
@@ -1321,7 +1321,7 @@ public interface ConfigurationPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see java.lang.String
-		 * @see de.hub.clickwatch.xml.impl.ConfigurationPackageImpl#getAddressType()
+		 * @see Configuration.impl.ConfigurationPackageImpl#getAddressType()
 		 * @generated
 		 */
 		EDataType ADDRESS_TYPE = eINSTANCE.getAddressType();
@@ -1331,7 +1331,7 @@ public interface ConfigurationPackage extends EPackage {
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see java.math.BigInteger
-		 * @see de.hub.clickwatch.xml.impl.ConfigurationPackageImpl#getPortType()
+		 * @see Configuration.impl.ConfigurationPackageImpl#getPortType()
 		 * @generated
 		 */
 		EDataType PORT_TYPE = eINSTANCE.getPortType();
@@ -1340,8 +1340,8 @@ public interface ConfigurationPackage extends EPackage {
 		 * The meta object literal for the '<em>Protocol Type Object</em>' data type.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.hub.clickwatch.xml.ProtocolType
-		 * @see de.hub.clickwatch.xml.impl.ConfigurationPackageImpl#getProtocolTypeObject()
+		 * @see Configuration.ProtocolType
+		 * @see Configuration.impl.ConfigurationPackageImpl#getProtocolTypeObject()
 		 * @generated
 		 */
 		EDataType PROTOCOL_TYPE_OBJECT = eINSTANCE.getProtocolTypeObject();

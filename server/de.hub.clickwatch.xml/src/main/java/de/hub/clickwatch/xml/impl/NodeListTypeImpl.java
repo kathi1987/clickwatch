@@ -32,7 +32,7 @@ import de.hub.clickwatch.xml.NodeType;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link de.hub.clickwatch.xml.impl.NodeListTypeImpl#getNode <em>Node</em>}</li>
+ *   <li>{@link Configuration.impl.NodeListTypeImpl#getNode <em>Node</em>}</li>
  * </ul>
  * </p>
  *
@@ -65,7 +65,7 @@ public class NodeListTypeImpl extends EObjectImpl implements NodeListType {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return de.hub.clickwatch.xml.ConfigurationPackage.Literals.NODE_LIST_TYPE;
+		return ConfigurationPackage.Literals.NODE_LIST_TYPE;
 	}
 
 	/**

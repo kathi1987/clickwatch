@@ -6,22 +6,29 @@
  */
 package de.hub.clickwatch.xml.impl;
 
-
 import java.math.BigInteger;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-
 import org.eclipse.emf.ecore.xml.type.XMLTypeFactory;
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 
-import de.hub.clickwatch.xml.*;
+import de.hub.clickwatch.xml.ConfigurationFactory;
+import de.hub.clickwatch.xml.ConfigurationPackage;
+import de.hub.clickwatch.xml.DatabaseType;
+import de.hub.clickwatch.xml.DocumentRoot;
+import de.hub.clickwatch.xml.ExperimentListType;
+import de.hub.clickwatch.xml.ExperimentType;
+import de.hub.clickwatch.xml.HandlerListType;
+import de.hub.clickwatch.xml.HandlerType;
+import de.hub.clickwatch.xml.NetworkType;
+import de.hub.clickwatch.xml.NodeListType;
+import de.hub.clickwatch.xml.NodeType;
+import de.hub.clickwatch.xml.ProtocolType;
 
 /**
  * <!-- begin-user-doc -->
@@ -275,7 +282,7 @@ public class ConfigurationFactoryImpl extends EFactoryImpl implements Configurat
 	 * @generated
 	 */
 	public ProtocolType createProtocolTypeObjectFromString(EDataType eDataType, String initialValue) {
-		return createProtocolTypeFromString(de.hub.clickwatch.xml.ConfigurationPackage.Literals.PROTOCOL_TYPE, initialValue);
+		return createProtocolTypeFromString(ConfigurationPackage.Literals.PROTOCOL_TYPE, initialValue);
 	}
 
 	/**
@@ -284,7 +291,7 @@ public class ConfigurationFactoryImpl extends EFactoryImpl implements Configurat
 	 * @generated
 	 */
 	public String convertProtocolTypeObjectToString(EDataType eDataType, Object instanceValue) {
-		return convertProtocolTypeToString(de.hub.clickwatch.xml.ConfigurationPackage.Literals.PROTOCOL_TYPE, instanceValue);
+		return convertProtocolTypeToString(ConfigurationPackage.Literals.PROTOCOL_TYPE, instanceValue);
 	}
 
 	/**

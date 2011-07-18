@@ -35,6 +35,8 @@ public class ClickSocketPlayerSocketImpl extends ClickSocketTestImpl {
 	private InetAddress host;
 	private int port;
 	
+	private boolean initialized = false;
+	
 	@Override
 	public void connect(InetAddress host, int port, int timeout) throws IOException {
 		super.connect(host, port, timeout);
@@ -43,6 +45,12 @@ public class ClickSocketPlayerSocketImpl extends ClickSocketTestImpl {
 	}
 	
 	private void initialize() {
+		if (initialized) {
+			return;
+		} else {
+			initialized = true;
+		}
+		
 		String host = this.host.getHostName();
 		String port = "" + this.port;
 		
