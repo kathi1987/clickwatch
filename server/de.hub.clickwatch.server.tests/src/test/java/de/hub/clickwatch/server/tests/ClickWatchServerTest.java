@@ -66,6 +66,15 @@ public class ClickWatchServerTest extends AbstractTest {
 		// Read the configuration
 		server.readConfiguration();
 		
+		long start = System.currentTimeMillis() + 10000;
+		long stop = System.currentTimeMillis() + 30000;
+		server.getExperiments().get(0).setStart(Long.toString(start));
+		
+		server.getExperiments().get(0).setStop(Long.toString(stop));
+		
+		// Initialize
+		server.initialize();
+		
 		try {
 			Thread.sleep(1000);
 		} catch (InterruptedException e) {
@@ -80,6 +89,7 @@ public class ClickWatchServerTest extends AbstractTest {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+		
 	}
 
 	/*
