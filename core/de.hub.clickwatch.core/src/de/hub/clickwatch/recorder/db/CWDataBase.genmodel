@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/de.hub.clickwatch.model/src"
+    editDirectory="/de.hub.clickwatch.cwdatabase.edit/src" editorDirectory="/de.hub.clickwatch.cwdatabase.editor/src"
+    modelPluginID="de.hub.clickwatch.model" modelName="CWDataBase" modelPluginClass=""
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0" copyrightFields="false"
+    editPluginID="de.hub.clickwatch.cwdatabase.edit" editorPluginID="de.hub.clickwatch.cwdatabase.editor"
+    usedGenPackages="../../model/ClickWatchModel.genmodel#//model">
+  <foreignModel>CWDataBase.ecore</foreignModel>
+  <genPackages prefix="CWDataBase" basePackage="de.hub.clickwatch" resource="XML"
+      disposableProviderFactory="true" ecorePackage="CWDataBase.ecore#/">
+    <genClasses ecoreClass="CWDataBase.ecore#//Experimiment">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CWDataBase.ecore#//Experimiment/metaData"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CWDataBase.ecore#//Experimiment/records"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CWDataBase.ecore#//Experimiment/configuration"/>
+    </genClasses>
+    <genClasses ecoreClass="CWDataBase.ecore#//NodeRecord">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CWDataBase.ecore#//NodeRecord/records"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

@@ -44,7 +44,10 @@ public class NodeAdapter extends AbstractAdapter implements INodeAdapter {
 		
 		Collection<Handler> handlers = handlerAdapter.pullHandler();
 		for (Handler handler: handlers) {
-			valueAdapter.moveValue(handler, handlerNameCache.get(handler.getName()));
+			Handler cachedValue = handlerNameCache.get(handler.getName());
+			if (cachedValue != null) {
+				valueAdapter.moveValue(handler, cachedValue);	
+			}			
 		}
 		
 		return nodeCache;

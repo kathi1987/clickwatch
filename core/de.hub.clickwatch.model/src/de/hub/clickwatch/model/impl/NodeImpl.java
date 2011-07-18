@@ -7,7 +7,9 @@
 package de.hub.clickwatch.model.impl;
 
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -18,6 +20,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -205,6 +208,8 @@ public class NodeImpl extends EObjectImpl implements Node {
 	 * @ordered
 	 */
 	protected boolean recording = RECORDING_EDEFAULT;
+	
+	private Map<String, Handler> handlerCache = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -473,21 +478,39 @@ public class NodeImpl extends EObjectImpl implements Node {
 	 * @generated NOT
 	 */
 	public Handler getHandler(String qualifiedName) {
-		String[] qualifiedNameItems = qualifiedName.split("/");
-		EObject current = this;
-		for (int i = 0; i < qualifiedName.length() && current != null; i++) {
-			if (qualifiedNameItems.length - i == 1) {
-				Preconditions.checkState(current instanceof Element);
-				return ((Element)current).getHandler(qualifiedNameItems[i]);
-			} else if (i == 0) {
-				Preconditions.checkState(current instanceof Node);
-				current = ((Node)current).getElement(qualifiedNameItems[i]);
-			} else {
-				Preconditions.checkState(current instanceof Element);
-				current = ((Element)current).getChild(qualifiedNameItems[i]);
-			}
+		if (handlerCache == null) {
+			handlerCache = new HashMap<String, Handler>();
+			this.eAdapters().add(new EContentAdapter() {
+				@Override
+				public void notifyChanged(Notification notification) {
+					if (notification.getFeature() == ClickWatchModelPackage.eINSTANCE.getElement_Handlers()) {
+						handlerCache.clear();
+					}
+				}
+			});
 		}
-		return null;
+		
+		Handler result = handlerCache.get(qualifiedName);
+		if (result == null) {
+			String[] qualifiedNameItems = qualifiedName.split("/");
+			EObject current = this;
+			loop: for (int i = 0; i < qualifiedName.length() && current != null; i++) {
+				if (qualifiedNameItems.length - i == 1) {
+					Preconditions.checkState(current instanceof Element);
+					result = ((Element)current).getHandler(qualifiedNameItems[i]);
+					break loop;
+				} else if (i == 0) {
+					Preconditions.checkState(current instanceof Node);
+					current = ((Node)current).getElement(qualifiedNameItems[i]);
+				} else {
+					Preconditions.checkState(current instanceof Element);
+					current = ((Element)current).getChild(qualifiedNameItems[i]);
+				}
+			}
+			
+			handlerCache.put(qualifiedName, result);
+		}
+		return result;
 	}
 
 	/**

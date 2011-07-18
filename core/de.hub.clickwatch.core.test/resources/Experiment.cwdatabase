@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cwdb:Experimiment xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:cwdb="http://de.hub.clickwatch/cwdatabase"
+    id="testExp1" storageBaseFileStr="target/testRecord">
+  <configuration name="configuration" updateIntervall="1" >
+    <node iNetAddress="seismo171.testbed"/>
+    <node iNetAddress="seismo161.testbed"/>
+    <node iNetAddress="localhost"/>
+    <node iNetAddress="seismo191.testbed"/>
+    <node iNetAddress="seismo160.testbed"/>
+    <node iNetAddress="seismo185.testbed"/>
+    <node iNetAddress="seismo196.testbed"/>
+    <node iNetAddress="seismo172.testbed"/>
+  </configuration>
+</cwdb:Experimiment>

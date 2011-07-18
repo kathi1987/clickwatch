@@ -24,6 +24,9 @@ import de.hub.clickwatch.util.ILogger;
 public class ClickWatchModule extends AbstractModule {
 	
 	public static final String DEFAULT_TIMEOUT = "timeout";
+	public static final String L_EXPERIMENT_DEFAULT_RECORDER_UPDATE_INTERVAL = "experiment_recorder_update_interval";
+	public static final String I_HANDLER_PER_RECORD = "handler_per_record";
+	public static final String B_RECORD_CHANGES_ONLY = "record_changes_only";
 	
 	private ILogger logger = null;
 	
@@ -38,6 +41,10 @@ public class ClickWatchModule extends AbstractModule {
 
 	@Override
 	protected void configure() {
+		bind(long.class).annotatedWith(Names.named(L_EXPERIMENT_DEFAULT_RECORDER_UPDATE_INTERVAL)).toInstance(new Long(2000));
+		bind(int.class).annotatedWith(Names.named(I_HANDLER_PER_RECORD)).toInstance(2000);
+		bind(boolean.class).annotatedWith(Names.named(B_RECORD_CHANGES_ONLY)).toInstance(true);
+		
 		bind(INodeConnectionProvider.class).to(NodeConnectionProvider.class);
 		bind(int.class).annotatedWith(Names.named(DEFAULT_TIMEOUT)).toInstance(5000);
 		
@@ -45,7 +52,7 @@ public class ClickWatchModule extends AbstractModule {
 		bindValueAdapter();
 		
 		bind(IMetaDataAdapter.class).to(MetaDataAdapter.class);
-		bind(IHandlerAdapter.class).to(HandlerAdapter.class);
+		bindHandlerAdapter();
 		bindNodeAdapter();
 		
 		bindClickSocket();
@@ -65,6 +72,10 @@ public class ClickWatchModule extends AbstractModule {
 	
 	protected void bindClickSocket() {
 		bind(IClickSocket.class).to(ClickSocketImpl.class);
+	}
+	
+	protected void bindHandlerAdapter() {
+		bind(IHandlerAdapter.class).to(HandlerAdapter.class);
 	}
 
 }

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="cwdatabase"
+    nsURI="http://de.hub.clickwatch/cwdatabase" nsPrefix="cwdb">
+  <eClassifiers xsi:type="ecore:EClass" name="Experimiment">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="metaData" upperBound="-1"
+        eType="ecore:EClass ../../model/ClickWatchModel.ecore#//Node" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="records" upperBound="-1"
+        eType="#//NodeRecord" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="configuration" eType="ecore:EClass ../../model/ClickWatchModel.ecore#//Network"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="recordURIs" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="storageBaseFileStr" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NodeRecord">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="records" upperBound="-1"
+        eType="ecore:EClass ../../model/ClickWatchModel.ecore#//Handler" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="key" upperBound="-1" eType="ecore:EClass ../../model/ClickWatchModel.ecore#//Handler"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="start" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="stop" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+</ecore:EPackage>

@@ -3,18 +3,15 @@ package de.hub.clickwatch.recorder;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 import click.ControlSocket.HandlerInfo;
 
 import com.google.common.base.Preconditions;
-import com.google.common.collect.ArrayListMultimap;
-import com.google.common.collect.ListMultimap;
 import com.google.inject.Inject;
 
 import de.hub.clickwatch.model.Element;
@@ -28,10 +25,6 @@ public class ClickSocketPlayerSocketImpl extends ClickSocketTestImpl {
 	@Inject private ClickSocketPlayer player;
 	
 	private Node node = null;
-	private String[] elements = null;
-	private ListMultimap<String, HandlerInfo> handlers = null;
-	private Map<String, String> values = null;
-
 	private InetAddress host;
 	private int port;
 	
@@ -42,61 +35,62 @@ public class ClickSocketPlayerSocketImpl extends ClickSocketTestImpl {
 		this.port = port;
 	}
 	
-	private void initialize() {
+	private synchronized void initialize() {
 		String host = this.host.getHostName();
 		String port = "" + this.port;
 		
-		Node newNode = player.getNode(host, port);
-		Preconditions.checkState(newNode != null);
-		
-		if (newNode == node) {
-			return;
-		}
-		node = newNode;
+		node = player.getNode(host, port);
+		Preconditions.checkState(node != null, "Node with iNetAddress " + host + " does not exist in record.");
 	
-		List<String> elements = new ArrayList<String>();
-		handlers = ArrayListMultimap.create();
-		values = new HashMap<String, String>();
-		
-		Iterator<EObject> it = node.eAllContents();
-		while (it.hasNext()) {
-			EObject eObject = it.next();
-			if (eObject instanceof Element) {
-				elements.add(((Element)eObject).getQualifiedName());
-			} else if (eObject instanceof Handler) {
-				Handler handler = (Handler)eObject;
-				String elementPath = ((Element)handler.eContainer()).getQualifiedName();
-				String handlerName = handler.getName();
-				HandlerInfo handlerInfo = new HandlerInfo(
-						elementPath, handlerName, handler.isCanRead(), handler.isCanWrite());
-				handlers.put(elementPath, handlerInfo);
-				String value = "";
-				if (!handler.getMixed().isEmpty()) {
-					value = ((String)handler.getMixed().getValue(0)).trim();	
-				}
-				values.put(elementPath + "/" + handlerName, value);
-			}
-		}
-		
-		this.elements = elements.toArray(new String[] {});
 	}
 	
 	@Override
 	public String[] getElements() {
 		initialize();
-		return elements;
+		List<String> elements = new ArrayList<String>();
+		Iterator<EObject> it = node.eAllContents();
+		while (it.hasNext()) {
+			EObject eObject = it.next();
+			if (eObject instanceof Element) {
+				elements.add(((Element)eObject).getQualifiedName());
+			}
+		}
+		return elements.toArray(new String[] {});
 	}
 
 	@Override
-	public HandlerInfo[] getHandler(String element) {
+	public HandlerInfo[] getHandler(String elementPath) {
 		initialize();
-		return handlers.get(element).toArray(new HandlerInfo[] {});
+		String[] elementPathItems = elementPath.split("/");
+		Element element = null;
+		for (int i = 0; i < elementPathItems.length; i++) {
+			if (element == null) {
+				element = node.getElement(elementPathItems[i]);
+			} else {
+				element = node.getElement(elementPathItems[i]);
+			}
+			if (element == null) {
+				return new HandlerInfo[]{};
+			}
+		}
+		EList<Handler> handlers = element.getHandlers();
+		HandlerInfo[] result = new HandlerInfo[handlers.size()];
+		int i = 0;
+		for (Handler handler: handlers) {
+ 			result[i++] = new HandlerInfo(elementPath, handler.getName(), handler.isCanRead(), handler.isCanRead());
+		}
+		return result;
 	}
 
 	@Override
-	public String getValue(String element, String handler) {
+	public String getValue(String element, String handlerName) {
 		initialize();
-		return values.get(element + "/" + handler);
+		Handler handler = node.getHandler(element + "/" + handlerName);
+		if (!handler.getMixed().isEmpty()) {
+			return ((String)handler.getMixed().getValue(0)).trim();	
+		} else {
+			return "";
+		}
 	}
 
 	@Override

@@ -6,6 +6,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 
+import de.hub.clickwatch.cwdatabase.CWDataBasePackage;
 import de.hub.clickwatch.model.ClickWatchModelPackage;
 
 
@@ -15,6 +16,9 @@ public class ClickWatchStandaloneSetup {
 		if (!EPackage.Registry.INSTANCE.containsKey(ClickWatchModelPackage.eINSTANCE.getNsURI())) {
 			EPackage.Registry.INSTANCE.put(ClickWatchModelPackage.eINSTANCE.getNsURI(), ClickWatchModelPackage.eINSTANCE);
 		}
+		if (!EPackage.Registry.INSTANCE.containsKey(CWDataBasePackage.eINSTANCE.getNsURI())) {
+			EPackage.Registry.INSTANCE.put(CWDataBasePackage.eINSTANCE.getNsURI(), CWDataBasePackage.eINSTANCE);
+		}
 		if (!EPackage.Registry.INSTANCE.containsKey(EcorePackage.eINSTANCE.getNsURI())) {
 			EPackage.Registry.INSTANCE.put(EcorePackage.eINSTANCE.getNsURI(), EcorePackage.eINSTANCE);
 		}
@@ -22,6 +26,7 @@ public class ClickWatchStandaloneSetup {
 			EPackage.Registry.INSTANCE.put(XMLTypePackage.eINSTANCE.getNsURI(), XMLTypePackage.eINSTANCE);
 		}
 		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("clickwatchmodel", new XMIResourceFactoryImpl());
+		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("cwdatabase", new XMIResourceFactoryImpl());
 		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("ecore", new XMIResourceFactoryImpl());
 	}
 

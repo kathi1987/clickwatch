@@ -23,6 +23,7 @@ Export-Package: de.hub.clickwatch,
  de.hub.clickwatch.merge,
  de.hub.clickwatch.model,
  de.hub.clickwatch.recorder,
+ de.hub.clickwatch.recorder.db,
  de.hub.clickwatch.util
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: .
