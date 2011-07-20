@@ -1,6 +1,5 @@
 package de.hub.clickwatch.server.database;
 
-import de.hub.clickwatch.xml.ExperimentType;
 
 public class MetaDataRecord implements IRecord {
 	/** The ID of the experiment */
@@ -13,24 +12,18 @@ public class MetaDataRecord implements IRecord {
 	private String mMetaData;
 	
 	public MetaDataRecord(){}
-	
-	
-	public MetaDataRecord(ExperimentType pExperiment){
-		
-		
-	}
 
 	
-	public MetaDataRecord(String pExperimentId, String pNodeId, long pTimestamp, String pMetaData){
+	public MetaDataRecord(String pExperimentId, String pNode, long pTimestamp, String pMetaData){
 		this.mExperimentId = pExperimentId;
-		this.mNodeId = pNodeId;
+		this.mNodeId = pNode;
 		this.mTimeStamp = pTimestamp;
 		this.mMetaData = pMetaData;
 	}
 
 	@Override
 	public String createInsertStatement() {
-		return "INSERT INTO MetaDataRecord (experimentId, nodeId, timestamp, metaData) VALUES ("
+		return "INSERT INTO metadatarecord (experimentid, nodeid, timestamp, metadata) VALUES ("
 				+ "\'"
 				+ mExperimentId
 				+ "\'"
@@ -51,7 +44,7 @@ public class MetaDataRecord implements IRecord {
 
 	@Override
 	public String createPreparedInsertStament() {
-		return "INSERT INTO MetaDataRecord (experimentId, nodeId, timestamp, metaData) VALUES ("
+		return "INSERT INTO metadatarecord (experimentid, nodeid, timestamp, metadata) VALUES ("
 				+ "?"
 				+ ","
 				+ "?"
@@ -70,14 +63,6 @@ public class MetaDataRecord implements IRecord {
 		this.mExperimentId = pExperimentId;
 	}
 
-	public String getNodeId() {
-		return mNodeId;
-	}
-
-	public void setNodeId(final String pNodeId) {
-		this.mNodeId = pNodeId;
-	}
-
 	public long getTimeStamp() {
 		return mTimeStamp;
 	}
@@ -92,5 +77,15 @@ public class MetaDataRecord implements IRecord {
 
 	public void setMetaData(final String pMetaData) {
 		this.mMetaData = pMetaData;
+	}
+
+
+	public String getNode() {
+		return mNodeId;
+	}
+
+
+	public void setNode(String pNode) {
+		this.mNodeId = pNode;
 	}
 }

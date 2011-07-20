@@ -29,15 +29,16 @@ public class ClickSocketPlayerSocketImpl extends ClickSocketTestImpl {
 	private int port;
 	
 	private static int count = 0;
-	
+
 	@Override
 	public void connect(InetAddress host, int port, int timeout) throws IOException {
 		super.connect(host, port, timeout);
 		this.host = host;
 		this.port = port;
 	}
-	
+
 	private synchronized void initialize() {
+
 		String host = this.host.getHostName();
 		String port = "" + this.port;
 		

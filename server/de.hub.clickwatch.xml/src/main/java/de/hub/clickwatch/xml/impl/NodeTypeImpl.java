@@ -27,9 +27,9 @@ import de.hub.clickwatch.xml.ProtocolType;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link de.hub.clickwatch.xml.impl.NodeTypeImpl#getAddress <em>Address</em>}</li>
- *   <li>{@link de.hub.clickwatch.xml.impl.NodeTypeImpl#getPort <em>Port</em>}</li>
- *   <li>{@link de.hub.clickwatch.xml.impl.NodeTypeImpl#getProtocol <em>Protocol</em>}</li>
+ *   <li>{@link Configuration.impl.NodeTypeImpl#getAddress <em>Address</em>}</li>
+ *   <li>{@link Configuration.impl.NodeTypeImpl#getPort <em>Port</em>}</li>
+ *   <li>{@link Configuration.impl.NodeTypeImpl#getProtocol <em>Protocol</em>}</li>
  * </ul>
  * </p>
  *
@@ -121,7 +121,7 @@ public class NodeTypeImpl extends EObjectImpl implements NodeType {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return de.hub.clickwatch.xml.ConfigurationPackage.Literals.NODE_TYPE;
+		return ConfigurationPackage.Literals.NODE_TYPE;
 	}
 
 	/**

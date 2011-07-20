@@ -1,9 +1,17 @@
-  <configuration logDirectory="/tmp">
-    <!-- --> 
-    <network name="Humboldt Wireless Lab" updateInterval="1000">
-      <node address="192.168.3.165" protocol="tcp" port="22"/>
-    </network>
-
-    <!-- --> 
-    <cdo address="141.20.37.89" port="1025" repository="clicktest"/>
-  </configuration>
+  <experiments>
+	<experiment name="example" start="1" stop="2">
+		<nodes>
+			<node address="10.7.205.149" protocol="tcp" port="7777"/>
+			<node address="10.5.70.54" protocol="tcp" port="7777"/>
+			<node address="192.168.3.167" protocol="tcp" port="7777"/>
+		</nodes>
+		
+		<handlers>
+			<handler element="dev.deviceinfo" rate="1000"/>
+		</handlers>
+		
+		<logDirectory>/tmp/</logDirectory>
+		
+		<database user="cdo" address="127.0.0.1" password=".,Br1t4#-?4ss3rf1lt3r|" port="5432" database="clickplain"/>
+	</experiment>
+  </experiments>

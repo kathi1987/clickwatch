@@ -34,10 +34,10 @@ import de.hub.clickwatch.xml.NodeType;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link de.hub.clickwatch.xml.impl.NetworkTypeImpl#getNode <em>Node</em>}</li>
- *   <li>{@link de.hub.clickwatch.xml.impl.NetworkTypeImpl#getNetwork <em>Network</em>}</li>
- *   <li>{@link de.hub.clickwatch.xml.impl.NetworkTypeImpl#getName <em>Name</em>}</li>
- *   <li>{@link de.hub.clickwatch.xml.impl.NetworkTypeImpl#getUpdateInterval <em>Update Interval</em>}</li>
+ *   <li>{@link Configuration.impl.NetworkTypeImpl#getNode <em>Node</em>}</li>
+ *   <li>{@link Configuration.impl.NetworkTypeImpl#getNetwork <em>Network</em>}</li>
+ *   <li>{@link Configuration.impl.NetworkTypeImpl#getName <em>Name</em>}</li>
+ *   <li>{@link Configuration.impl.NetworkTypeImpl#getUpdateInterval <em>Update Interval</em>}</li>
  * </ul>
  * </p>
  *
@@ -129,7 +129,7 @@ public class NetworkTypeImpl extends EObjectImpl implements NetworkType {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return de.hub.clickwatch.xml.ConfigurationPackage.Literals.NETWORK_TYPE;
+		return ConfigurationPackage.Literals.NETWORK_TYPE;
 	}
 
 	/**

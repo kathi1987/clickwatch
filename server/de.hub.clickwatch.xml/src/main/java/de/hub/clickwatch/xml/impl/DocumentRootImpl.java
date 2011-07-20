@@ -7,6 +7,7 @@
 package de.hub.clickwatch.xml.impl;
 
 
+
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EMap;
@@ -35,10 +36,10 @@ import de.hub.clickwatch.xml.ExperimentListType;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link de.hub.clickwatch.xml.impl.DocumentRootImpl#getMixed <em>Mixed</em>}</li>
- *   <li>{@link de.hub.clickwatch.xml.impl.DocumentRootImpl#getXMLNSPrefixMap <em>XMLNS Prefix Map</em>}</li>
- *   <li>{@link de.hub.clickwatch.xml.impl.DocumentRootImpl#getXSISchemaLocation <em>XSI Schema Location</em>}</li>
- *   <li>{@link de.hub.clickwatch.xml.impl.DocumentRootImpl#getExperiments <em>Experiments</em>}</li>
+ *   <li>{@link Configuration.impl.DocumentRootImpl#getMixed <em>Mixed</em>}</li>
+ *   <li>{@link Configuration.impl.DocumentRootImpl#getXMLNSPrefixMap <em>XMLNS Prefix Map</em>}</li>
+ *   <li>{@link Configuration.impl.DocumentRootImpl#getXSISchemaLocation <em>XSI Schema Location</em>}</li>
+ *   <li>{@link Configuration.impl.DocumentRootImpl#getExperiments <em>Experiments</em>}</li>
  * </ul>
  * </p>
  *
@@ -91,7 +92,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return de.hub.clickwatch.xml.ConfigurationPackage.Literals.DOCUMENT_ROOT;
+		return ConfigurationPackage.Literals.DOCUMENT_ROOT;
 	}
 
 	/**
@@ -136,7 +137,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * @generated
 	 */
 	public ExperimentListType getExperiments() {
-		return (ExperimentListType)getMixed().get(de.hub.clickwatch.xml.ConfigurationPackage.Literals.DOCUMENT_ROOT__EXPERIMENTS, true);
+		return (ExperimentListType)getMixed().get(ConfigurationPackage.Literals.DOCUMENT_ROOT__EXPERIMENTS, true);
 	}
 
 	/**
@@ -145,7 +146,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * @generated
 	 */
 	public NotificationChain basicSetExperiments(ExperimentListType newExperiments, NotificationChain msgs) {
-		return ((FeatureMap.Internal)getMixed()).basicAdd(de.hub.clickwatch.xml.ConfigurationPackage.Literals.DOCUMENT_ROOT__EXPERIMENTS, newExperiments, msgs);
+		return ((FeatureMap.Internal)getMixed()).basicAdd(ConfigurationPackage.Literals.DOCUMENT_ROOT__EXPERIMENTS, newExperiments, msgs);
 	}
 
 	/**
@@ -154,7 +155,7 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot {
 	 * @generated
 	 */
 	public void setExperiments(ExperimentListType newExperiments) {
-		((FeatureMap.Internal)getMixed()).set(de.hub.clickwatch.xml.ConfigurationPackage.Literals.DOCUMENT_ROOT__EXPERIMENTS, newExperiments);
+		((FeatureMap.Internal)getMixed()).set(ConfigurationPackage.Literals.DOCUMENT_ROOT__EXPERIMENTS, newExperiments);
 	}
 
 	/**

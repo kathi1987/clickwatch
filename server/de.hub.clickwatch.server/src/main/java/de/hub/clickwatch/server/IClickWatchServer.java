@@ -12,7 +12,7 @@ import de.hub.clickwatch.server.configuration.ConfigurationFileReader;
  */
 public interface IClickWatchServer {
 
-	public boolean readConfiguration();
+	public void readConfiguration();
 	
 	public void activateConfiguration();
 	

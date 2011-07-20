@@ -18,15 +18,15 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link de.hub.clickwatch.xml.DatabaseType#getAddress <em>Address</em>}</li>
- *   <li>{@link de.hub.clickwatch.xml.DatabaseType#getDatabase <em>Database</em>}</li>
- *   <li>{@link de.hub.clickwatch.xml.DatabaseType#getPassword <em>Password</em>}</li>
- *   <li>{@link de.hub.clickwatch.xml.DatabaseType#getPort <em>Port</em>}</li>
- *   <li>{@link de.hub.clickwatch.xml.DatabaseType#getUser <em>User</em>}</li>
+ *   <li>{@link Configuration.DatabaseType#getAddress <em>Address</em>}</li>
+ *   <li>{@link Configuration.DatabaseType#getDatabase <em>Database</em>}</li>
+ *   <li>{@link Configuration.DatabaseType#getPassword <em>Password</em>}</li>
+ *   <li>{@link Configuration.DatabaseType#getPort <em>Port</em>}</li>
+ *   <li>{@link Configuration.DatabaseType#getUser <em>User</em>}</li>
  * </ul>
  * </p>
  *
- * @see de.hub.clickwatch.xml.ConfigurationPackage#getDatabaseType()
+ * @see Configuration.ConfigurationPackage#getDatabaseType()
  * @model extendedMetaData="name='databaseType' kind='empty'"
  * @generated
  */
@@ -41,7 +41,7 @@ public interface DatabaseType extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Address</em>' attribute.
 	 * @see #setAddress(String)
-	 * @see de.hub.clickwatch.xml.ConfigurationPackage#getDatabaseType_Address()
+	 * @see Configuration.ConfigurationPackage#getDatabaseType_Address()
 	 * @model dataType="Configuration.AddressType" required="true"
 	 *        extendedMetaData="kind='attribute' name='address' namespace='##targetNamespace'"
 	 * @generated
@@ -49,7 +49,7 @@ public interface DatabaseType extends EObject {
 	String getAddress();
 
 	/**
-	 * Sets the value of the '{@link de.hub.clickwatch.xml.DatabaseType#getAddress <em>Address</em>}' attribute.
+	 * Sets the value of the '{@link Configuration.DatabaseType#getAddress <em>Address</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Address</em>' attribute.
@@ -68,7 +68,7 @@ public interface DatabaseType extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Database</em>' attribute.
 	 * @see #setDatabase(String)
-	 * @see de.hub.clickwatch.xml.ConfigurationPackage#getDatabaseType_Database()
+	 * @see Configuration.ConfigurationPackage#getDatabaseType_Database()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
 	 *        extendedMetaData="kind='attribute' name='database' namespace='##targetNamespace'"
 	 * @generated
@@ -76,7 +76,7 @@ public interface DatabaseType extends EObject {
 	String getDatabase();
 
 	/**
-	 * Sets the value of the '{@link de.hub.clickwatch.xml.DatabaseType#getDatabase <em>Database</em>}' attribute.
+	 * Sets the value of the '{@link Configuration.DatabaseType#getDatabase <em>Database</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Database</em>' attribute.
@@ -95,7 +95,7 @@ public interface DatabaseType extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Password</em>' attribute.
 	 * @see #setPassword(String)
-	 * @see de.hub.clickwatch.xml.ConfigurationPackage#getDatabaseType_Password()
+	 * @see Configuration.ConfigurationPackage#getDatabaseType_Password()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
 	 *        extendedMetaData="kind='attribute' name='password' namespace='##targetNamespace'"
 	 * @generated
@@ -103,7 +103,7 @@ public interface DatabaseType extends EObject {
 	String getPassword();
 
 	/**
-	 * Sets the value of the '{@link de.hub.clickwatch.xml.DatabaseType#getPassword <em>Password</em>}' attribute.
+	 * Sets the value of the '{@link Configuration.DatabaseType#getPassword <em>Password</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Password</em>' attribute.
@@ -122,7 +122,7 @@ public interface DatabaseType extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Port</em>' attribute.
 	 * @see #setPort(BigInteger)
-	 * @see de.hub.clickwatch.xml.ConfigurationPackage#getDatabaseType_Port()
+	 * @see Configuration.ConfigurationPackage#getDatabaseType_Port()
 	 * @model dataType="Configuration.PortType" required="true"
 	 *        extendedMetaData="kind='attribute' name='port' namespace='##targetNamespace'"
 	 * @generated
@@ -130,7 +130,7 @@ public interface DatabaseType extends EObject {
 	BigInteger getPort();
 
 	/**
-	 * Sets the value of the '{@link de.hub.clickwatch.xml.DatabaseType#getPort <em>Port</em>}' attribute.
+	 * Sets the value of the '{@link Configuration.DatabaseType#getPort <em>Port</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Port</em>' attribute.
@@ -149,7 +149,7 @@ public interface DatabaseType extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>User</em>' attribute.
 	 * @see #setUser(String)
-	 * @see de.hub.clickwatch.xml.ConfigurationPackage#getDatabaseType_User()
+	 * @see Configuration.ConfigurationPackage#getDatabaseType_User()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
 	 *        extendedMetaData="kind='attribute' name='user' namespace='##targetNamespace'"
 	 * @generated
@@ -157,7 +157,7 @@ public interface DatabaseType extends EObject {
 	String getUser();
 
 	/**
-	 * Sets the value of the '{@link de.hub.clickwatch.xml.DatabaseType#getUser <em>User</em>}' attribute.
+	 * Sets the value of the '{@link Configuration.DatabaseType#getUser <em>User</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>User</em>' attribute.

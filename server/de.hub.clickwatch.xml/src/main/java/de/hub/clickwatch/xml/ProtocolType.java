@@ -17,7 +17,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>Protocol Type</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * @see de.hub.clickwatch.xml.ConfigurationPackage#getProtocolType()
+ * @see Configuration.ConfigurationPackage#getProtocolType()
  * @model extendedMetaData="name='protocolType'"
  * @generated
  */

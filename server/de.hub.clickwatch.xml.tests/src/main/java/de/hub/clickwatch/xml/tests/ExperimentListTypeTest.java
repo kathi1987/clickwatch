@@ -6,8 +6,8 @@
  */
 package de.hub.clickwatch.xml.tests;
 
-import de.hub.clickwatch.xml.ConfigurationFactory;
-import de.hub.clickwatch.xml.ExperimentListType;
+import de.hub.clickwatch.xml.*;
+
 
 import junit.framework.TestCase;
 

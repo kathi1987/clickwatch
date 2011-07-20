@@ -18,7 +18,7 @@ public class HandlerRecord implements IRecord {
 		
 	public HandlerRecord(){	}
 	
-	public HandlerRecord(final String pExperimentId, final String pNodeId, final String pQualifiedName, final long pTimestamp, final String pValue){
+	public HandlerRecord(final String pExperimentId, final String pNodeId, final String pQualifiedName, long pTimestamp, final String pValue){
 		this.mExperimentId = pExperimentId;
 		this.mNodeId = pNodeId;
 		this.mQualifiedName = pQualifiedName;
@@ -35,9 +35,10 @@ public class HandlerRecord implements IRecord {
 		return handler;
 	}
 
+	
 	@Override
 	public String createInsertStatement(){
-		return "INSERT INTO HandlerRecord (experimentId, nodeId, qualifiedName, timestamp, value) VALUES ("
+		return "INSERT INTO handlerrecords (experimentid, nodeid, qualifiedname, timestamp, value) VALUES ("
 				+ "\'"
 				+ mExperimentId
 				+ "\'"
@@ -61,7 +62,7 @@ public class HandlerRecord implements IRecord {
 	}
 	
 	public String createPreparedInsertStament(){
-		return "INSERT INTO HandlerRecord (experimentId, nodeId, qualifiedName, timestamp, value) VALUES ("
+		return "INSERT INTO handlerrecords (experimentid, nodeid, qualifiedname, timestamp, value) VALUES ("
 				+ "?"
 				+ ","
 				+ "?"

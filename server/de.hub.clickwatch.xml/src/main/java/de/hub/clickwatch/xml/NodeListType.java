@@ -18,18 +18,18 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link de.hub.clickwatch.xml.NodeListType#getNode <em>Node</em>}</li>
+ *   <li>{@link Configuration.NodeListType#getNode <em>Node</em>}</li>
  * </ul>
  * </p>
  *
- * @see de.hub.clickwatch.xml.ConfigurationPackage#getNodeListType()
+ * @see Configuration.ConfigurationPackage#getNodeListType()
  * @model extendedMetaData="name='nodeListType' kind='elementOnly'"
  * @generated
  */
 public interface NodeListType extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Node</b></em>' containment reference list.
-	 * The list contents are of type {@link de.hub.clickwatch.xml.NodeType}.
+	 * The list contents are of type {@link Configuration.NodeType}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Node</em>' containment reference list isn't clear,
@@ -37,7 +37,7 @@ public interface NodeListType extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Node</em>' containment reference list.
-	 * @see de.hub.clickwatch.xml.ConfigurationPackage#getNodeListType_Node()
+	 * @see Configuration.ConfigurationPackage#getNodeListType_Node()
 	 * @model containment="true" required="true"
 	 *        extendedMetaData="kind='element' name='node' namespace='##targetNamespace'"
 	 * @generated

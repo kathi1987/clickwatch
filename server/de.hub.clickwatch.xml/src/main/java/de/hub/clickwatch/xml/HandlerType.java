@@ -16,12 +16,12 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link de.hub.clickwatch.xml.HandlerType#getElement <em>Element</em>}</li>
- *   <li>{@link de.hub.clickwatch.xml.HandlerType#getRate <em>Rate</em>}</li>
+ *   <li>{@link Configuration.HandlerType#getElement <em>Element</em>}</li>
+ *   <li>{@link Configuration.HandlerType#getRate <em>Rate</em>}</li>
  * </ul>
  * </p>
  *
- * @see de.hub.clickwatch.xml.ConfigurationPackage#getHandlerType()
+ * @see Configuration.ConfigurationPackage#getHandlerType()
  * @model extendedMetaData="name='handlerType' kind='empty'"
  * @generated
  */
@@ -36,7 +36,7 @@ public interface HandlerType extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Element</em>' attribute.
 	 * @see #setElement(String)
-	 * @see de.hub.clickwatch.xml.ConfigurationPackage#getHandlerType_Element()
+	 * @see Configuration.ConfigurationPackage#getHandlerType_Element()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
 	 *        extendedMetaData="kind='attribute' name='element' namespace='##targetNamespace'"
 	 * @generated
@@ -44,7 +44,7 @@ public interface HandlerType extends EObject {
 	String getElement();
 
 	/**
-	 * Sets the value of the '{@link de.hub.clickwatch.xml.HandlerType#getElement <em>Element</em>}' attribute.
+	 * Sets the value of the '{@link Configuration.HandlerType#getElement <em>Element</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Element</em>' attribute.
@@ -63,7 +63,7 @@ public interface HandlerType extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Rate</em>' attribute.
 	 * @see #setRate(String)
-	 * @see de.hub.clickwatch.xml.ConfigurationPackage#getHandlerType_Rate()
+	 * @see Configuration.ConfigurationPackage#getHandlerType_Rate()
 	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
 	 *        extendedMetaData="kind='attribute' name='rate' namespace='##targetNamespace'"
 	 * @generated
@@ -71,7 +71,7 @@ public interface HandlerType extends EObject {
 	String getRate();
 
 	/**
-	 * Sets the value of the '{@link de.hub.clickwatch.xml.HandlerType#getRate <em>Rate</em>}' attribute.
+	 * Sets the value of the '{@link Configuration.HandlerType#getRate <em>Rate</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Rate</em>' attribute.

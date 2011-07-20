@@ -6,13 +6,12 @@
  */
 package de.hub.clickwatch.xml.util;
 
+import de.hub.clickwatch.xml.*;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.util.Switch;
-
-import de.hub.clickwatch.xml.*;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,7 +23,7 @@ import de.hub.clickwatch.xml.*;
  * until a non-null result is returned,
  * which is the result of the switch.
  * <!-- end-user-doc -->
- * @see de.hub.clickwatch.xml.ConfigurationPackage
+ * @see Configuration.ConfigurationPackage
  * @generated
  */
 public class ConfigurationSwitch<T> extends Switch<T> {

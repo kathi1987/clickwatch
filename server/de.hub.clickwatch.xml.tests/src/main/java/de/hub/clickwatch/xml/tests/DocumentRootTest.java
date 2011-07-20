@@ -6,8 +6,8 @@
  */
 package de.hub.clickwatch.xml.tests;
 
-import de.hub.clickwatch.xml.ConfigurationFactory;
-import de.hub.clickwatch.xml.DocumentRoot;
+import de.hub.clickwatch.xml.*;
+
 
 import junit.framework.TestCase;
 
@@ -20,7 +20,7 @@ import junit.textui.TestRunner;
  * <p>
  * The following features are tested:
  * <ul>
- *   <li>{@link de.hub.clickwatch.xml.DocumentRoot#getExperiments() <em>Experiments</em>}</li>
+ *   <li>{@link Configuration.DocumentRoot#getExperiments() <em>Experiments</em>}</li>
  * </ul>
  * </p>
  * @generated
@@ -97,10 +97,10 @@ public class DocumentRootTest extends TestCase {
 	}
 
 	/**
-	 * Tests the '{@link de.hub.clickwatch.xml.DocumentRoot#getExperiments() <em>Experiments</em>}' feature getter.
+	 * Tests the '{@link Configuration.DocumentRoot#getExperiments() <em>Experiments</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.hub.clickwatch.xml.DocumentRoot#getExperiments()
+	 * @see Configuration.DocumentRoot#getExperiments()
 	 * @generated
 	 */
 	public void testGetExperiments() {
@@ -110,10 +110,10 @@ public class DocumentRootTest extends TestCase {
 	}
 
 	/**
-	 * Tests the '{@link de.hub.clickwatch.xml.DocumentRoot#setExperiments(de.hub.clickwatch.xml.ExperimentListType) <em>Experiments</em>}' feature setter.
+	 * Tests the '{@link Configuration.DocumentRoot#setExperiments(Configuration.ExperimentListType) <em>Experiments</em>}' feature setter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.hub.clickwatch.xml.DocumentRoot#setExperiments(de.hub.clickwatch.xml.ExperimentListType)
+	 * @see Configuration.DocumentRoot#setExperiments(Configuration.ExperimentListType)
 	 * @generated
 	 */
 	public void testSetExperiments() {

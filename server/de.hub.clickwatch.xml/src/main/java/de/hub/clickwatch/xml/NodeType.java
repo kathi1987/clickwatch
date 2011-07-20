@@ -18,13 +18,13 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link de.hub.clickwatch.xml.NodeType#getAddress <em>Address</em>}</li>
- *   <li>{@link de.hub.clickwatch.xml.NodeType#getPort <em>Port</em>}</li>
- *   <li>{@link de.hub.clickwatch.xml.NodeType#getProtocol <em>Protocol</em>}</li>
+ *   <li>{@link Configuration.NodeType#getAddress <em>Address</em>}</li>
+ *   <li>{@link Configuration.NodeType#getPort <em>Port</em>}</li>
+ *   <li>{@link Configuration.NodeType#getProtocol <em>Protocol</em>}</li>
  * </ul>
  * </p>
  *
- * @see de.hub.clickwatch.xml.ConfigurationPackage#getNodeType()
+ * @see Configuration.ConfigurationPackage#getNodeType()
  * @model extendedMetaData="name='nodeType' kind='empty'"
  * @generated
  */
@@ -39,7 +39,7 @@ public interface NodeType extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Address</em>' attribute.
 	 * @see #setAddress(String)
-	 * @see de.hub.clickwatch.xml.ConfigurationPackage#getNodeType_Address()
+	 * @see Configuration.ConfigurationPackage#getNodeType_Address()
 	 * @model dataType="Configuration.AddressType" required="true"
 	 *        extendedMetaData="kind='attribute' name='address' namespace='##targetNamespace'"
 	 * @generated
@@ -47,7 +47,7 @@ public interface NodeType extends EObject {
 	String getAddress();
 
 	/**
-	 * Sets the value of the '{@link de.hub.clickwatch.xml.NodeType#getAddress <em>Address</em>}' attribute.
+	 * Sets the value of the '{@link Configuration.NodeType#getAddress <em>Address</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Address</em>' attribute.
@@ -66,7 +66,7 @@ public interface NodeType extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Port</em>' attribute.
 	 * @see #setPort(BigInteger)
-	 * @see de.hub.clickwatch.xml.ConfigurationPackage#getNodeType_Port()
+	 * @see Configuration.ConfigurationPackage#getNodeType_Port()
 	 * @model dataType="Configuration.PortType" required="true"
 	 *        extendedMetaData="kind='attribute' name='port' namespace='##targetNamespace'"
 	 * @generated
@@ -74,7 +74,7 @@ public interface NodeType extends EObject {
 	BigInteger getPort();
 
 	/**
-	 * Sets the value of the '{@link de.hub.clickwatch.xml.NodeType#getPort <em>Port</em>}' attribute.
+	 * Sets the value of the '{@link Configuration.NodeType#getPort <em>Port</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Port</em>' attribute.
@@ -85,7 +85,7 @@ public interface NodeType extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Protocol</b></em>' attribute.
-	 * The literals are from the enumeration {@link de.hub.clickwatch.xml.ProtocolType}.
+	 * The literals are from the enumeration {@link Configuration.ProtocolType}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Protocol</em>' attribute isn't clear,
@@ -93,11 +93,11 @@ public interface NodeType extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Protocol</em>' attribute.
-	 * @see de.hub.clickwatch.xml.ProtocolType
+	 * @see Configuration.ProtocolType
 	 * @see #isSetProtocol()
 	 * @see #unsetProtocol()
 	 * @see #setProtocol(ProtocolType)
-	 * @see de.hub.clickwatch.xml.ConfigurationPackage#getNodeType_Protocol()
+	 * @see Configuration.ConfigurationPackage#getNodeType_Protocol()
 	 * @model unsettable="true" required="true"
 	 *        extendedMetaData="kind='attribute' name='protocol' namespace='##targetNamespace'"
 	 * @generated
@@ -105,11 +105,11 @@ public interface NodeType extends EObject {
 	ProtocolType getProtocol();
 
 	/**
-	 * Sets the value of the '{@link de.hub.clickwatch.xml.NodeType#getProtocol <em>Protocol</em>}' attribute.
+	 * Sets the value of the '{@link Configuration.NodeType#getProtocol <em>Protocol</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Protocol</em>' attribute.
-	 * @see de.hub.clickwatch.xml.ProtocolType
+	 * @see Configuration.ProtocolType
 	 * @see #isSetProtocol()
 	 * @see #unsetProtocol()
 	 * @see #getProtocol()
@@ -118,7 +118,7 @@ public interface NodeType extends EObject {
 	void setProtocol(ProtocolType value);
 
 	/**
-	 * Unsets the value of the '{@link de.hub.clickwatch.xml.NodeType#getProtocol <em>Protocol</em>}' attribute.
+	 * Unsets the value of the '{@link Configuration.NodeType#getProtocol <em>Protocol</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #isSetProtocol()
@@ -129,7 +129,7 @@ public interface NodeType extends EObject {
 	void unsetProtocol();
 
 	/**
-	 * Returns whether the value of the '{@link de.hub.clickwatch.xml.NodeType#getProtocol <em>Protocol</em>}' attribute is set.
+	 * Returns whether the value of the '{@link Configuration.NodeType#getProtocol <em>Protocol</em>}' attribute is set.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return whether the value of the '<em>Protocol</em>' attribute is set.
