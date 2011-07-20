@@ -4,7 +4,7 @@ import com.google.inject.name.Names;
 
 import de.hub.clickwatch.ClickWatchModule;
 import de.hub.clickwatch.connection.INodeConnection;
-import de.hub.clickwatch.connection.adapter.CompoundHandlerAdapter;
+import de.hub.clickwatch.connection.adapter.HandlerAdapter;
 import de.hub.clickwatch.connection.adapter.IHandlerAdapter;
 import de.hub.clickwatch.connection.adapter.IValueAdapter;
 import de.hub.clickwatch.connection.adapter.XmlValueAdapter;
@@ -13,10 +13,37 @@ import de.hub.clickwatch.ui.connection.ClickWatchUIContext;
 import de.hub.clickwatch.ui.connection.MergingNodeAdapterMergeConfiguration;
 import de.hub.clickwatch.ui.connection.UiNodeConnection;
 import de.hub.clickwatch.ui.util.IUIContext;
+import de.hub.clickwatch.util.ILogger;
 
 public class ClickWatchUIModule extends ClickWatchModule {
 
 	public static final String DEFAULT_UPDATE_INTERVAL = "defaultUpdateInterval";
+	
+	@Override
+	protected ILogger getLogger() {
+		return new ILogger() {				
+			@Override
+			public synchronized void log(int status, String message, Throwable exception) {
+				if (getLogLevel() >= status) {				
+					if (status == ILogger.DEBUG) {
+						System.out.print("[DEBUG] ");
+					} else if (status == ILogger.INFO) {
+						System.out.print("[INFO] ");
+					} else if (status == ILogger.WARNING) {
+						System.out.print("[WARNING] ");
+					} else if (status == ILogger.ERROR) {
+						System.out.print("[ERROR] ");
+					}
+					System.out.print(message);
+					if (exception != null) {
+						System.out.println(": " + exception.getMessage());
+						exception.printStackTrace();
+					}
+					System.out.println("");
+				}
+			}
+		};
+	}
 
 	@Override
 	protected void configure() {
@@ -24,6 +51,10 @@ public class ClickWatchUIModule extends ClickWatchModule {
 		bindUiContext();
 		bindMergeConfiguration();
 		bindUpdateInterval();
+	}
+	
+	protected int getLogLevel() {
+		return 2;
 	}
 	
 	protected void bindUpdateInterval() {
@@ -50,7 +81,7 @@ public class ClickWatchUIModule extends ClickWatchModule {
 
 	@Override
 	protected void bindHandlerAdapter() {
-		bind(IHandlerAdapter.class).to(CompoundHandlerAdapter.class);
+		bind(IHandlerAdapter.class).to(HandlerAdapter.class);
 	}
 
 }

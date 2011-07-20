@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.eclipse.core.runtime.IStatus;
 import org.junit.Before;
 
 import com.google.inject.AbstractModule;
@@ -68,23 +67,29 @@ public class AbstractTest {
 		return new ILogger() {				
 			@Override
 			public synchronized void log(int status, String message, Throwable exception) {
-				if (status == ILogger.DEBUG) {
-					System.out.print("[DEBUG] ");
-				} else if (status == ILogger.INFO) {
-					System.out.print("[INFO] ");
-				} else if (status == ILogger.WARNING) {
-					System.out.print("[WARNING] ");
-				} else if (status == ILogger.ERROR) {
-					System.out.print("[ERROR] ");
+				if (getLogLevel() >= status) {				
+					if (status == ILogger.DEBUG) {
+						System.out.print("[DEBUG] ");
+					} else if (status == ILogger.INFO) {
+						System.out.print("[INFO] ");
+					} else if (status == ILogger.WARNING) {
+						System.out.print("[WARNING] ");
+					} else if (status == ILogger.ERROR) {
+						System.out.print("[ERROR] ");
+					}
+					System.out.print(message);
+					if (exception != null) {
+						System.out.println(": " + exception.getMessage());
+						exception.printStackTrace();
+					}
+					System.out.println("");
 				}
-				System.out.print(message);
-				if (exception != null) {
-					System.out.println(": " + exception.getMessage());
-					exception.printStackTrace();
-				}
-				System.out.println("");	
 			}
 		};
+	}
+	
+	protected int getLogLevel() {
+		return 2;
 	}
 	
 	protected Module[] getAdditionalModules() {

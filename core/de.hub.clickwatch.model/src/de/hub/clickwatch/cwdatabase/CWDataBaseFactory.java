@@ -26,13 +26,13 @@ public interface CWDataBaseFactory extends EFactory {
 	CWDataBaseFactory eINSTANCE = de.hub.clickwatch.cwdatabase.impl.CWDataBaseFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>Experimiment</em>'.
+	 * Returns a new object of class '<em>Experiment Descr</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Experimiment</em>'.
+	 * @return a new object of class '<em>Experiment Descr</em>'.
 	 * @generated
 	 */
-	Experimiment createExperimiment();
+	ExperimentDescr createExperimentDescr();
 
 	/**
 	 * Returns a new object of class '<em>Node Record</em>'.
@@ -42,6 +42,51 @@ public interface CWDataBaseFactory extends EFactory {
 	 * @generated
 	 */
 	NodeRecord createNodeRecord();
+
+	/**
+	 * Returns a new object of class '<em>Data Base</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Data Base</em>'.
+	 * @generated
+	 */
+	DataBase createDataBase();
+
+	/**
+	 * Returns a new object of class '<em>Experiment Record</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Experiment Record</em>'.
+	 * @generated
+	 */
+	ExperimentRecord createExperimentRecord();
+
+	/**
+	 * Returns a new object of class '<em>Experiment Node Record Time Table</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Experiment Node Record Time Table</em>'.
+	 * @generated
+	 */
+	ExperimentNodeRecordTimeTable createExperimentNodeRecordTimeTable();
+
+	/**
+	 * Returns a new object of class '<em>Data Base Statistics</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Data Base Statistics</em>'.
+	 * @generated
+	 */
+	DataBaseStatistics createDataBaseStatistics();
+
+	/**
+	 * Returns a new object of class '<em>Node Record Descr</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Node Record Descr</em>'.
+	 * @generated
+	 */
+	NodeRecordDescr createNodeRecordDescr();
 
 	/**
 	 * Returns the package supported by this factory.

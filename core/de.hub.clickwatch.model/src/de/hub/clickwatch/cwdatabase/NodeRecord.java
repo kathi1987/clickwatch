@@ -6,11 +6,10 @@
  */
 package de.hub.clickwatch.cwdatabase;
 
-import de.hub.clickwatch.model.Handler;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
+
+import de.hub.clickwatch.model.Handler;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,8 +22,8 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link de.hub.clickwatch.cwdatabase.NodeRecord#getRecords <em>Records</em>}</li>
  *   <li>{@link de.hub.clickwatch.cwdatabase.NodeRecord#getKey <em>Key</em>}</li>
  *   <li>{@link de.hub.clickwatch.cwdatabase.NodeRecord#getStart <em>Start</em>}</li>
- *   <li>{@link de.hub.clickwatch.cwdatabase.NodeRecord#getStop <em>Stop</em>}</li>
- *   <li>{@link de.hub.clickwatch.cwdatabase.NodeRecord#getId <em>Id</em>}</li>
+ *   <li>{@link de.hub.clickwatch.cwdatabase.NodeRecord#getEnd <em>End</em>}</li>
+ *   <li>{@link de.hub.clickwatch.cwdatabase.NodeRecord#getNode <em>Node</em>}</li>
  * </ul>
  * </p>
  *
@@ -92,55 +91,55 @@ public interface NodeRecord extends EObject {
 	void setStart(long value);
 
 	/**
-	 * Returns the value of the '<em><b>Stop</b></em>' attribute.
+	 * Returns the value of the '<em><b>End</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Stop</em>' attribute isn't clear,
+	 * If the meaning of the '<em>End</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Stop</em>' attribute.
-	 * @see #setStop(long)
-	 * @see de.hub.clickwatch.cwdatabase.CWDataBasePackage#getNodeRecord_Stop()
+	 * @return the value of the '<em>End</em>' attribute.
+	 * @see #setEnd(long)
+	 * @see de.hub.clickwatch.cwdatabase.CWDataBasePackage#getNodeRecord_End()
 	 * @model
 	 * @generated
 	 */
-	long getStop();
+	long getEnd();
 
 	/**
-	 * Sets the value of the '{@link de.hub.clickwatch.cwdatabase.NodeRecord#getStop <em>Stop</em>}' attribute.
+	 * Sets the value of the '{@link de.hub.clickwatch.cwdatabase.NodeRecord#getEnd <em>End</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Stop</em>' attribute.
-	 * @see #getStop()
+	 * @param value the new value of the '<em>End</em>' attribute.
+	 * @see #getEnd()
 	 * @generated
 	 */
-	void setStop(long value);
+	void setEnd(long value);
 
 	/**
-	 * Returns the value of the '<em><b>Id</b></em>' attribute.
+	 * Returns the value of the '<em><b>Node</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Id</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Node</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Id</em>' attribute.
-	 * @see #setId(String)
-	 * @see de.hub.clickwatch.cwdatabase.CWDataBasePackage#getNodeRecord_Id()
+	 * @return the value of the '<em>Node</em>' attribute.
+	 * @see #setNode(String)
+	 * @see de.hub.clickwatch.cwdatabase.CWDataBasePackage#getNodeRecord_Node()
 	 * @model
 	 * @generated
 	 */
-	String getId();
+	String getNode();
 
 	/**
-	 * Sets the value of the '{@link de.hub.clickwatch.cwdatabase.NodeRecord#getId <em>Id</em>}' attribute.
+	 * Sets the value of the '{@link de.hub.clickwatch.cwdatabase.NodeRecord#getNode <em>Node</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Id</em>' attribute.
-	 * @see #getId()
+	 * @param value the new value of the '<em>Node</em>' attribute.
+	 * @see #getNode()
 	 * @generated
 	 */
-	void setId(String value);
+	void setNode(String value);
 
 } // NodeRecord

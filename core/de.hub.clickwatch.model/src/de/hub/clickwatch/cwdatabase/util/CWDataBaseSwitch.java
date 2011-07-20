@@ -6,12 +6,20 @@
  */
 package de.hub.clickwatch.cwdatabase.util;
 
-import de.hub.clickwatch.cwdatabase.*;
+import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.util.Switch;
+
+import de.hub.clickwatch.cwdatabase.CWDataBasePackage;
+import de.hub.clickwatch.cwdatabase.DataBase;
+import de.hub.clickwatch.cwdatabase.DataBaseStatistics;
+import de.hub.clickwatch.cwdatabase.ExperimentDescr;
+import de.hub.clickwatch.cwdatabase.ExperimentNodeRecordTimeTable;
+import de.hub.clickwatch.cwdatabase.ExperimentRecord;
+import de.hub.clickwatch.cwdatabase.NodeRecord;
+import de.hub.clickwatch.cwdatabase.NodeRecordDescr;
 
 /**
  * <!-- begin-user-doc -->
@@ -70,9 +78,9 @@ public class CWDataBaseSwitch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-			case CWDataBasePackage.EXPERIMIMENT: {
-				Experimiment experimiment = (Experimiment)theEObject;
-				T result = caseExperimiment(experimiment);
+			case CWDataBasePackage.EXPERIMENT_DESCR: {
+				ExperimentDescr experimentDescr = (ExperimentDescr)theEObject;
+				T result = caseExperimentDescr(experimentDescr);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -82,22 +90,64 @@ public class CWDataBaseSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case CWDataBasePackage.DATA_BASE: {
+				DataBase dataBase = (DataBase)theEObject;
+				T result = caseDataBase(dataBase);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CWDataBasePackage.EXPERIMENT_RECORD: {
+				ExperimentRecord experimentRecord = (ExperimentRecord)theEObject;
+				T result = caseExperimentRecord(experimentRecord);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CWDataBasePackage.EXPERIMENT_NODE_RECORD_TIME_TABLE: {
+				ExperimentNodeRecordTimeTable experimentNodeRecordTimeTable = (ExperimentNodeRecordTimeTable)theEObject;
+				T result = caseExperimentNodeRecordTimeTable(experimentNodeRecordTimeTable);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CWDataBasePackage.ESTRING_TO_EXPERIMENT_NODE_RECORD_TIME_TABLE_MAP: {
+				@SuppressWarnings("unchecked") Map.Entry<String, ExperimentNodeRecordTimeTable> eStringToExperimentNodeRecordTimeTableMap = (Map.Entry<String, ExperimentNodeRecordTimeTable>)theEObject;
+				T result = caseEStringToExperimentNodeRecordTimeTableMap(eStringToExperimentNodeRecordTimeTableMap);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CWDataBasePackage.ELONG_OBJECT_TO_NODE_RECORD_DESCR_MAP: {
+				@SuppressWarnings("unchecked") Map.Entry<Long, NodeRecordDescr> eLongObjectToNodeRecordDescrMap = (Map.Entry<Long, NodeRecordDescr>)theEObject;
+				T result = caseELongObjectToNodeRecordDescrMap(eLongObjectToNodeRecordDescrMap);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CWDataBasePackage.DATA_BASE_STATISTICS: {
+				DataBaseStatistics dataBaseStatistics = (DataBaseStatistics)theEObject;
+				T result = caseDataBaseStatistics(dataBaseStatistics);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CWDataBasePackage.NODE_RECORD_DESCR: {
+				NodeRecordDescr nodeRecordDescr = (NodeRecordDescr)theEObject;
+				T result = caseNodeRecordDescr(nodeRecordDescr);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Experimiment</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Experiment Descr</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Experimiment</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Experiment Descr</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseExperimiment(Experimiment object) {
+	public T caseExperimentDescr(ExperimentDescr object) {
 		return null;
 	}
 
@@ -113,6 +163,111 @@ public class CWDataBaseSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseNodeRecord(NodeRecord object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Data Base</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Data Base</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDataBase(DataBase object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Experiment Record</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Experiment Record</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseExperimentRecord(ExperimentRecord object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Experiment Node Record Time Table</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Experiment Node Record Time Table</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseExperimentNodeRecordTimeTable(ExperimentNodeRecordTimeTable object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>EString To Experiment Node Record Time Table Map</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>EString To Experiment Node Record Time Table Map</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseEStringToExperimentNodeRecordTimeTableMap(Map.Entry<String, ExperimentNodeRecordTimeTable> object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>ELong Object To Node Record Descr Map</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>ELong Object To Node Record Descr Map</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseELongObjectToNodeRecordDescrMap(Map.Entry<Long, NodeRecordDescr> object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Data Base Statistics</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Data Base Statistics</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDataBaseStatistics(DataBaseStatistics object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Node Record Descr</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Node Record Descr</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseNodeRecordDescr(NodeRecordDescr object) {
 		return null;
 	}
 

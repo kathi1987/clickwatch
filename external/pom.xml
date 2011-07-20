@@ -18,5 +18,6 @@
    <module>com.google.guice</module>
    <module>edu.uci.ics.jung</module>
    <module>org.jfree.jfreechart</module>
+   <module>org.apache.commons.math</module>
   </modules>
 </project>

@@ -11,6 +11,8 @@ public interface IHandlerAdapter {
 
 	public Collection<Handler> pullHandler();
 	
+	public long latestNodeTime();
+	
 	public void configure(Collection<Handler> handlerConfig);
 	
 }

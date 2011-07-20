@@ -4,7 +4,6 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -27,17 +26,9 @@ import de.hub.clickwatch.model.Node;
 
 
 public class PerformanceTestNA {
-	
-	private Runtime runtime = null;
-	private NumberFormat memFormat = new DecimalFormat("#00,000,000,000,000");
-	private NumberFormat updatesFormat = new DecimalFormat("#00,000,000");
-	private NumberFormat milliesFormat = new DecimalFormat("#00:000");
-	
-	@Before
-	public void setUp() {
-		runtime = Runtime.getRuntime();
-	}
 
+	private static NumberFormat milliesFormat = new DecimalFormat("#00:000");
+	
 	private void performTest(final Class<? extends IValueAdapter> adapterClass, int numberOfElements, int numberOfHandler, int numberOfUpdates, int reportOnEach) {	
 		final IClickSocket clickSocket = TestUtil.createClickSocket(numberOfElements, numberOfHandler, true);
 		Injector injector = Guice.createInjector(new ClickWatchModule() {
@@ -64,7 +55,7 @@ public class PerformanceTestNA {
 		
 		for (int i = 0; i < numberOfUpdates; i++) {
 			nodeAdapter.pullNode();
-			report("perfrom a test ", i, reportOnEach);
+			TestUtil.report("perfrom a test ", i, reportOnEach);
 		}
 	}
 	
@@ -127,7 +118,7 @@ public class PerformanceTestNA {
 		
 		for (int i = 0; i < runs; i++) {
 			EcoreUtil.delete(xmlModelRepository.deserializeXml("<foo><bar>TEXT</bar></foo>"), true);
-			report("deserialize memory leak? ", i, reportOnEach);
+			TestUtil.report("deserialize memory leak? ", i, reportOnEach);
 		}
 	}
 	
@@ -141,7 +132,7 @@ public class PerformanceTestNA {
 		Injector injector = Guice.createInjector(new ClickWatchModule() {
 			@Override
 			protected void bindValueAdapter() {
-				bind(IValueAdapter.class).to(XmlValueAdapter.class);
+				bind(IValueAdapter.class).to(StringValueAdapter.class);
 			}
 
 			@Override
@@ -159,16 +150,7 @@ public class PerformanceTestNA {
 			Node node = nodeAdapter.pullNode();
 			((AbstractAdapter)nodeAdapter).clearCaches();
 			EcoreUtil.delete(node, true);
-			report("retrieve memory leaks?", i, reportOnEach);
-		}
-	}
-	
-	private void report(String msg, long run, long reportOnEach) {
-		if (run % reportOnEach == 0) {
-			runtime.gc();
-			System.out.println(msg + " updates run: " + updatesFormat.format(run) + "; memory-usage: " + 
-					memFormat.format(runtime.totalMemory() - runtime.freeMemory()) +
-					"; heap-size: " + memFormat.format(runtime.totalMemory()));
+			TestUtil.report("retrieve memory leaks?", i, reportOnEach);
 		}
 	}
 }

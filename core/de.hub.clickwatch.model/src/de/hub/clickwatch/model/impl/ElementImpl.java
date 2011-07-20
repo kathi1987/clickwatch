@@ -333,19 +333,20 @@ public class ElementImpl extends EObjectImpl implements Element {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (name: ");
-		result.append(name);
-		result.append(", watch: ");
-		result.append(watch);
-		result.append(')');
-		return result.toString();
+		return getQualifiedName();
+//		if (eIsProxy()) return super.toString();
+//
+//		StringBuffer result = new StringBuffer(super.toString());
+//		result.append(" (name: ");
+//		result.append(name);
+//		result.append(", watch: ");
+//		result.append(watch);
+//		result.append(')');
+//		return result.toString();
 	}
 
 	/**

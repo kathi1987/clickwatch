@@ -15,16 +15,16 @@ public class Reboot extends AbstractNodeAction {
 
 	@Override
 	public void run(IAction action) {
-		if (node_lst == null || node_lst.isEmpty()) {
+		if (selectedObjects == null || selectedObjects.isEmpty()) {
 			return;
 		}
 	
 		String cmd = "reboot";
 		
 		//  create n parallel execution threads
-		ExecWorkerThread[] workerThreads = new ExecWorkerThread[node_lst.size()];
-		for (int idx=0; idx<node_lst.size(); idx++) {
-			final Node node = node_lst.get(idx);
+		ExecWorkerThread[] workerThreads = new ExecWorkerThread[selectedObjects.size()];
+		for (int idx=0; idx<selectedObjects.size(); idx++) {
+			final Node node = selectedObjects.get(idx);
 
 			// disconnect if connected
 			if (node.getConnection() != null) {

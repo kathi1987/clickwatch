@@ -2,6 +2,8 @@ package de.hub.clickwatch.tests;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -195,6 +197,20 @@ public class TestUtil {
 			}
 		} else {
 			return null;
+		}
+	}
+	
+	
+	private static Runtime runtime = Runtime.getRuntime();
+	private static NumberFormat memFormat = new DecimalFormat("#00,000,000,000,000");
+	private static NumberFormat updatesFormat = new DecimalFormat("#00,000,000");
+	
+	public static void report(String msg, long run, long reportOnEach) {
+		if (run % reportOnEach == 0) {
+			runtime.gc();
+			System.out.println(msg + " updates run: " + updatesFormat.format(run) + "; memory-usage: " + 
+					memFormat.format(runtime.totalMemory() - runtime.freeMemory()) +
+					"; heap-size: " + memFormat.format(runtime.totalMemory()));
 		}
 	}
 }

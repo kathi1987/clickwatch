@@ -1,6 +1,7 @@
 package de.hub.clickwatch.tests;
 
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import com.google.inject.AbstractModule;
@@ -43,6 +44,20 @@ public class NodeAdapterWithRecordTest extends AbstractTest {
 		
 		Node node = nodeAdapter.pullNode();
 		Assert.assertNotNull(TestUtil.query(node, "192.168.3.152:n#device_wifi:e"));
+	}
+
+	@Ignore("memoryleak test, only perform when indicated")
+	@Test
+	public void testWithRecordForMemoryLeak() {
+		INodeConnectionProvider ncp = injector.getInstance(INodeConnectionProvider.class);
+		INodeConnection connection = ncp.createConnection("192.168.3.152", "7777");
+		connection.connect();
+		INodeAdapter nodeAdapter = connection.getAdapter(INodeAdapter.class);
+
+		for (int i = 0; i < 200000; i++) {
+			nodeAdapter.pullNode();
+			TestUtil.report("MEM-LEAK?", i, 100);			
+		}
 	}
 	
 //	public void testMerge() {

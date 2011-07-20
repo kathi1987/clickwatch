@@ -7,9 +7,7 @@
 package de.hub.clickwatch.model.impl;
 
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -20,7 +18,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -208,8 +205,6 @@ public class NodeImpl extends EObjectImpl implements Node {
 	 * @ordered
 	 */
 	protected boolean recording = RECORDING_EDEFAULT;
-	
-	private Map<String, Handler> handlerCache = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -477,20 +472,8 @@ public class NodeImpl extends EObjectImpl implements Node {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public Handler getHandler(String qualifiedName) {
-		if (handlerCache == null) {
-			handlerCache = new HashMap<String, Handler>();
-			this.eAdapters().add(new EContentAdapter() {
-				@Override
-				public void notifyChanged(Notification notification) {
-					if (notification.getFeature() == ClickWatchModelPackage.eINSTANCE.getElement_Handlers()) {
-						handlerCache.clear();
-					}
-				}
-			});
-		}
-		
-		Handler result = handlerCache.get(qualifiedName);
+	public Handler getHandler(String qualifiedName) {		
+		Handler result = null;
 		if (result == null) {
 			String[] qualifiedNameItems = qualifiedName.split("/");
 			EObject current = this;
@@ -507,8 +490,6 @@ public class NodeImpl extends EObjectImpl implements Node {
 					current = ((Element)current).getChild(qualifiedNameItems[i]);
 				}
 			}
-			
-			handlerCache.put(qualifiedName, result);
 		}
 		return result;
 	}

@@ -28,6 +28,8 @@ public class ClickSocketPlayerSocketImpl extends ClickSocketTestImpl {
 	private InetAddress host;
 	private int port;
 	
+	private static int count = 0;
+	
 	@Override
 	public void connect(InetAddress host, int port, int timeout) throws IOException {
 		super.connect(host, port, timeout);
@@ -39,7 +41,11 @@ public class ClickSocketPlayerSocketImpl extends ClickSocketTestImpl {
 		String host = this.host.getHostName();
 		String port = "" + this.port;
 		
-		node = player.getNode(host, port);
+		if (node == null) {
+			node = player.getNode(host, port);
+		} else if (count++ % 700 == 0) {
+			node = player.getNode(host, port);
+		}
 		Preconditions.checkState(node != null, "Node with iNetAddress " + host + " does not exist in record.");
 	
 	}
@@ -67,7 +73,7 @@ public class ClickSocketPlayerSocketImpl extends ClickSocketTestImpl {
 			if (element == null) {
 				element = node.getElement(elementPathItems[i]);
 			} else {
-				element = node.getElement(elementPathItems[i]);
+				element = element.getChild(elementPathItems[i]);
 			}
 			if (element == null) {
 				return new HandlerInfo[]{};

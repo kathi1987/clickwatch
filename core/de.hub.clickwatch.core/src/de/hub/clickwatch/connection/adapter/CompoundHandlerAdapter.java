@@ -31,6 +31,8 @@ public class CompoundHandlerAdapter extends HandlerAdapter {
 	
 	private List<Handler> handlers = null;
 	private String currentHandlerName = null;
+	
+	private long latestNodeTime = 0;
 
 	@Override
 	public Collection<Handler> pullHandler() {
@@ -94,6 +96,8 @@ public class CompoundHandlerAdapter extends HandlerAdapter {
 				// TODO handler overflow
 				// throw new RuntimeException("too slow there is an overflow in a compoundhandler");
 			}
+
+			latestNodeTime = time(attributes.get("time"));
 		} else if (elementName.equals("record")) {
 			if (attributes.get("update").equals("false")) {
 				return;
@@ -104,10 +108,7 @@ public class CompoundHandlerAdapter extends HandlerAdapter {
 			newHandler.setName(currentHandlerName);
 			
 			// set the timestamp
-			String timestampStr = attributes.get("time");
-			String[] timestampItems = timestampStr.split("\\.");
-			long timestamp = new Long(timestampItems[0])*1000000 + new Integer(timestampItems[1]);
-			newHandler.setTimestamp(timestamp);
+			newHandler.setTimestamp(time(attributes.get("time")));
 			
 			// set the value
 			String recordStr = null;
@@ -123,6 +124,12 @@ public class CompoundHandlerAdapter extends HandlerAdapter {
 		} else {
 			
 		}
+	}
+
+	private long time(String timestampStr) {
+		String[] timestampItems = timestampStr.split("\\.");
+		long timestamp = new Long(timestampItems[0])*1000000 + new Integer(timestampItems[1]);
+		return timestamp;
 	}
 	
 	private static Collection<String> commonHandler = new HashSet<String>(Arrays.asList(new String[] { 
@@ -149,4 +156,15 @@ public class CompoundHandlerAdapter extends HandlerAdapter {
 			}
 		}
 	}
+
+	@Override
+	public long latestNodeTime() {
+		if (latestNodeTime > 0) {
+			return latestNodeTime;
+		} else {
+			return super.latestNodeTime();
+		}
+	}
+	
+	
 }

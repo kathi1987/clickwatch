@@ -19,5 +19,7 @@
    <module>de.hub.clickwatch.ui.test</module>
    <module>de.hub.clickwatch.model.edit</module>
    <module>de.hub.clickwatch.model.editor</module>
+   <module>de.hub.clickwatch.cwdatabase.edit</module>
+   <module>de.hub.clickwatch.cwdatabase.editor</module>
   </modules>
 </project>

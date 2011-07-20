@@ -6,27 +6,22 @@
  */
 package de.hub.clickwatch.cwdatabase.impl;
 
-import de.hub.clickwatch.cwdatabase.CWDataBasePackage;
-import de.hub.clickwatch.cwdatabase.NodeRecord;
-
-import de.hub.clickwatch.model.Handler;
-
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
+import de.hub.clickwatch.cwdatabase.CWDataBasePackage;
+import de.hub.clickwatch.cwdatabase.NodeRecord;
+import de.hub.clickwatch.model.Handler;
 
 /**
  * <!-- begin-user-doc -->
@@ -38,8 +33,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link de.hub.clickwatch.cwdatabase.impl.NodeRecordImpl#getRecords <em>Records</em>}</li>
  *   <li>{@link de.hub.clickwatch.cwdatabase.impl.NodeRecordImpl#getKey <em>Key</em>}</li>
  *   <li>{@link de.hub.clickwatch.cwdatabase.impl.NodeRecordImpl#getStart <em>Start</em>}</li>
- *   <li>{@link de.hub.clickwatch.cwdatabase.impl.NodeRecordImpl#getStop <em>Stop</em>}</li>
- *   <li>{@link de.hub.clickwatch.cwdatabase.impl.NodeRecordImpl#getId <em>Id</em>}</li>
+ *   <li>{@link de.hub.clickwatch.cwdatabase.impl.NodeRecordImpl#getEnd <em>End</em>}</li>
+ *   <li>{@link de.hub.clickwatch.cwdatabase.impl.NodeRecordImpl#getNode <em>Node</em>}</li>
  * </ul>
  * </p>
  *
@@ -84,41 +79,44 @@ public class NodeRecordImpl extends EObjectImpl implements NodeRecord {
 	 */
 	protected long start = START_EDEFAULT;
 	/**
-	 * The default value of the '{@link #getStop() <em>Stop</em>}' attribute.
+	 * The default value of the '{@link #getEnd() <em>End</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getStop()
+	 * @see #getEnd()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final long STOP_EDEFAULT = 0L;
+	protected static final long END_EDEFAULT = 0L;
+
 	/**
-	 * The cached value of the '{@link #getStop() <em>Stop</em>}' attribute.
+	 * The cached value of the '{@link #getEnd() <em>End</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getStop()
+	 * @see #getEnd()
 	 * @generated
 	 * @ordered
 	 */
-	protected long stop = STOP_EDEFAULT;
+	protected long end = END_EDEFAULT;
+
 	/**
-	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
+	 * The default value of the '{@link #getNode() <em>Node</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getId()
+	 * @see #getNode()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String ID_EDEFAULT = null;
+	protected static final String NODE_EDEFAULT = null;
+
 	/**
-	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
+	 * The cached value of the '{@link #getNode() <em>Node</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getId()
+	 * @see #getNode()
 	 * @generated
 	 * @ordered
 	 */
-	protected String id = ID_EDEFAULT;
+	protected String node = NODE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -189,8 +187,8 @@ public class NodeRecordImpl extends EObjectImpl implements NodeRecord {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public long getStop() {
-		return stop;
+	public long getEnd() {
+		return end;
 	}
 
 	/**
@@ -198,11 +196,11 @@ public class NodeRecordImpl extends EObjectImpl implements NodeRecord {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setStop(long newStop) {
-		long oldStop = stop;
-		stop = newStop;
+	public void setEnd(long newEnd) {
+		long oldEnd = end;
+		end = newEnd;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CWDataBasePackage.NODE_RECORD__STOP, oldStop, stop));
+			eNotify(new ENotificationImpl(this, Notification.SET, CWDataBasePackage.NODE_RECORD__END, oldEnd, end));
 	}
 
 	/**
@@ -210,8 +208,8 @@ public class NodeRecordImpl extends EObjectImpl implements NodeRecord {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getId() {
-		return id;
+	public String getNode() {
+		return node;
 	}
 
 	/**
@@ -219,11 +217,11 @@ public class NodeRecordImpl extends EObjectImpl implements NodeRecord {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setId(String newId) {
-		String oldId = id;
-		id = newId;
+	public void setNode(String newNode) {
+		String oldNode = node;
+		node = newNode;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CWDataBasePackage.NODE_RECORD__ID, oldId, id));
+			eNotify(new ENotificationImpl(this, Notification.SET, CWDataBasePackage.NODE_RECORD__NODE, oldNode, node));
 	}
 
 	/**
@@ -254,10 +252,10 @@ public class NodeRecordImpl extends EObjectImpl implements NodeRecord {
 				return getKey();
 			case CWDataBasePackage.NODE_RECORD__START:
 				return getStart();
-			case CWDataBasePackage.NODE_RECORD__STOP:
-				return getStop();
-			case CWDataBasePackage.NODE_RECORD__ID:
-				return getId();
+			case CWDataBasePackage.NODE_RECORD__END:
+				return getEnd();
+			case CWDataBasePackage.NODE_RECORD__NODE:
+				return getNode();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -282,11 +280,11 @@ public class NodeRecordImpl extends EObjectImpl implements NodeRecord {
 			case CWDataBasePackage.NODE_RECORD__START:
 				setStart((Long)newValue);
 				return;
-			case CWDataBasePackage.NODE_RECORD__STOP:
-				setStop((Long)newValue);
+			case CWDataBasePackage.NODE_RECORD__END:
+				setEnd((Long)newValue);
 				return;
-			case CWDataBasePackage.NODE_RECORD__ID:
-				setId((String)newValue);
+			case CWDataBasePackage.NODE_RECORD__NODE:
+				setNode((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -309,11 +307,11 @@ public class NodeRecordImpl extends EObjectImpl implements NodeRecord {
 			case CWDataBasePackage.NODE_RECORD__START:
 				setStart(START_EDEFAULT);
 				return;
-			case CWDataBasePackage.NODE_RECORD__STOP:
-				setStop(STOP_EDEFAULT);
+			case CWDataBasePackage.NODE_RECORD__END:
+				setEnd(END_EDEFAULT);
 				return;
-			case CWDataBasePackage.NODE_RECORD__ID:
-				setId(ID_EDEFAULT);
+			case CWDataBasePackage.NODE_RECORD__NODE:
+				setNode(NODE_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -333,10 +331,10 @@ public class NodeRecordImpl extends EObjectImpl implements NodeRecord {
 				return key != null && !key.isEmpty();
 			case CWDataBasePackage.NODE_RECORD__START:
 				return start != START_EDEFAULT;
-			case CWDataBasePackage.NODE_RECORD__STOP:
-				return stop != STOP_EDEFAULT;
-			case CWDataBasePackage.NODE_RECORD__ID:
-				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
+			case CWDataBasePackage.NODE_RECORD__END:
+				return end != END_EDEFAULT;
+			case CWDataBasePackage.NODE_RECORD__NODE:
+				return NODE_EDEFAULT == null ? node != null : !NODE_EDEFAULT.equals(node);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -353,10 +351,10 @@ public class NodeRecordImpl extends EObjectImpl implements NodeRecord {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (start: ");
 		result.append(start);
-		result.append(", stop: ");
-		result.append(stop);
-		result.append(", id: ");
-		result.append(id);
+		result.append(", end: ");
+		result.append(end);
+		result.append(", node: ");
+		result.append(node);
 		result.append(')');
 		return result.toString();
 	}
