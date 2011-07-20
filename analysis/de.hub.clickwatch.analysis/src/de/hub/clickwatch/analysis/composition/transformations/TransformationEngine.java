@@ -424,14 +424,14 @@ public class TransformationEngine {
 			
 			retBundle = PluginActivator.getInstance().getBundle().getBundleContext().getBundle(bundleLocation + bundleIdentifier);
 
-			// if its already installed, reinstall it
+			// if its already installed, refresh it (maybe the code changed)
 			if(retBundle != null)	
 			{
-				retBundle.uninstall();
+				retBundle.stop();
+				retBundle.update();
 			}
-			
-			
-			retBundle = PluginActivator.getInstance().getBundle().getBundleContext().installBundle(bundleLocation + bundleIdentifier);
+			else
+				retBundle = PluginActivator.getInstance().getBundle().getBundleContext().installBundle(bundleLocation + bundleIdentifier);
 						
 
 			// install all bundles in the workspace (maybe needed depency)
