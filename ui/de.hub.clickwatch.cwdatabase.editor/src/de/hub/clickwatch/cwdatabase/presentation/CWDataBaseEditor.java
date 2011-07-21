@@ -130,10 +130,10 @@ import org.eclipse.ui.views.properties.PropertySheetPage;
 import de.hub.clickwatch.cwdatabase.provider.CWDataBaseItemProviderAdapterFactory;
 import de.hub.clickwatch.model.ChangeMark;
 import de.hub.clickwatch.model.ClickWatchModelPackage;
-import de.hub.clickwatch.model.Node;
+import de.hub.clickwatch.model.Network;
 import de.hub.clickwatch.model.provider.ClickWatchModelItemProviderAdapterFactory;
 import de.hub.clickwatch.model.provider.ClickWatchReflectiveItemProviderAdapterFactory;
-import de.hub.clickwatch.model.provider.NodeItemProvider;
+import de.hub.clickwatch.model.provider.NetworkItemProvider;
 
 
 /**
@@ -734,7 +734,7 @@ public class CWDataBaseEditor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-			@Override
+	@Override
 	protected void firePropertyChange(int action) {
 		super.firePropertyChange(action);
 	}
@@ -1031,9 +1031,10 @@ public class CWDataBaseEditor
 
 				selectionViewer = (TreeViewer)viewerPane.getViewer();
 				selectionViewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));
-
-				selectionViewer.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-				selectionViewer.setInput(editingDomain.getResourceSet());
+				
+				// to use AdapterFactoryLabelProvider.ColorProvider is key to get colors
+				selectionViewer.setLabelProvider(new AdapterFactoryLabelProvider.ColorProvider(adapterFactory, selectionViewer));
+				selectionViewer.setInput(editingDomain.getResourceSet().getResources().get(0));
 				selectionViewer.setSelection(new StructuredSelection(editingDomain.getResourceSet().getResources().get(0)), true);
 				viewerPane.setTitle(editingDomain.getResourceSet());
 
@@ -1516,6 +1517,7 @@ public class CWDataBaseEditor
 			// Refresh the necessary state.
 			//
 			((BasicCommandStack)editingDomain.getCommandStack()).saveIsDone();
+			hasBeenChanged = false;
 			firePropertyChange(IEditorPart.PROP_DIRTY);
 		}
 		catch (Exception exception) {
@@ -1847,13 +1849,13 @@ public class CWDataBaseEditor
 	/**
 	 * @generated NOT
 	 */
-	public void markChanges(Node node, Collection<ChangeMark> changes) {
+	public void markChanges(Network network, Collection<ChangeMark> changes) {
 		if (!changes.isEmpty()) {
 			changed();
 		}
 		recentChanges = changes;
 		NotificationImpl notification = 
-			new ENotificationImpl((InternalEObject)node, 0, ClickWatchModelPackage.eINSTANCE.getNode_Elements(), null, null);
-		((NodeItemProvider)adapterFactory.adapt(node, node)).notifyChanged(notification);
+			new ENotificationImpl((InternalEObject)network, 0, ClickWatchModelPackage.eINSTANCE.getNode_Elements(), null, null);
+		((NetworkItemProvider)adapterFactory.adapt(network, network)).notifyChanged(notification);
 	}
 }

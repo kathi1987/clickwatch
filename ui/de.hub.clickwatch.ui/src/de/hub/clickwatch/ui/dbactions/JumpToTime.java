@@ -1,5 +1,7 @@
 package de.hub.clickwatch.ui.dbactions;
 
+import java.util.Collection;
+
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.jface.action.IAction;
@@ -22,13 +24,13 @@ import org.eclipse.swt.widgets.Scale;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
-import com.google.common.base.Preconditions;
 import com.google.inject.Inject;
 
 import de.hub.clickwatch.cwdatabase.DataBaseUtil;
 import de.hub.clickwatch.cwdatabase.ExperimentDescr;
 import de.hub.clickwatch.cwdatabase.presentation.CWDataBaseEditor;
 import de.hub.clickwatch.merge.Merger;
+import de.hub.clickwatch.model.ChangeMark;
 import de.hub.clickwatch.model.Network;
 import de.hub.clickwatch.model.Node;
 import de.hub.clickwatch.model.provider.TimeStampLabelProvider;
@@ -77,9 +79,6 @@ public class JumpToTime extends AbstractAction<ExperimentDescr> {
 			}
 		}
 
-		/**
-		 * Creates the dialog's contents
-		 */
 		private void createContents(final Shell shell) {
 			shell.setLayout(new GridLayout(2, true));
 
@@ -105,8 +104,7 @@ public class JumpToTime extends AbstractAction<ExperimentDescr> {
 				
 				@Override
 				public void widgetDefaultSelected(SelectionEvent e) {
-					// TODO Auto-generated method stub
-					
+					// empty
 				}
 			});
 			
@@ -181,34 +179,37 @@ public class JumpToTime extends AbstractAction<ExperimentDescr> {
 			progressMonitorDialog.run(false, false, new IRunnableWithProgress() {
 				
 				@Override
-				public void run(IProgressMonitor monitor) {
+				public void run(IProgressMonitor monitor) {					
 					Network networkTimeCopy = experimimentDescr.getNetworkTimeCopy();
 					if (networkTimeCopy == null) {
 						networkTimeCopy = EcoreUtil.copy(experimimentDescr.getNetwork());
 						experimimentDescr.setNetworkTimeCopy(networkTimeCopy);
 					}
 					
-					networkTimeCopy.setName("NTC at " + new TimeStampLabelProvider().getText(time));
+					monitor.beginTask("resetting nodes to new time", networkTimeCopy.getNodes().size() + 1);
+					monitor.worked(1);
 					
-					monitor.beginTask("resetting nodes to new time", networkTimeCopy.getNodes().size());
+					networkTimeCopy.setName("NTC at " + new TimeStampLabelProvider().getText(time));
+										
+					Collection<ChangeMark> changes = getMergeConfiguration().getChanges();
+					changes.clear();
+					getMergeConfiguration().getNewHandlerMap().clear();
 					for (Node currentNode: networkTimeCopy.getNodes()) {
 						Node nodeTimeCopy = dataBaseUtil.getNode(experimimentDescr, currentNode.getINetAddress(), time);
-						// merge
-						getMergeConfiguration().getChanges().clear();
 						
 						merger.merge(currentNode, nodeTimeCopy);
-						EcoreUtil.delete(nodeTimeCopy);
-			
-						if (editor != null) {
-							((CWDataBaseEditor)editor).markChanges(currentNode, getMergeConfiguration().getChanges());
-						}
+						EcoreUtil.delete(nodeTimeCopy);						
+						
 						monitor.worked(1);
+					}
+					if (editor != null) {
+						((CWDataBaseEditor)editor).markChanges(networkTimeCopy, changes);
 					}
 					monitor.done();
 				}
 			});
 		} catch (Exception e) {
-			MessageDialog.openError(shell, "Exception", e.getLocalizedMessage());
+			MessageDialog.openError(shell, "Exception", "Exception during jumping in time: " + e.getMessage());
 		} 
 	}
 	

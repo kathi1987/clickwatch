@@ -103,7 +103,7 @@ public class ExperimentStatisticsItemProvider
 				 null));
 	}
 	
-	private static final String pattern = "###,###,###,###.00";
+	private static final String pattern = "000,000,000,000.00";
 	private static final NumberFormat format = new DecimalFormat(pattern);
 	private static String format(double number) {
 		String result = format.format(number);
