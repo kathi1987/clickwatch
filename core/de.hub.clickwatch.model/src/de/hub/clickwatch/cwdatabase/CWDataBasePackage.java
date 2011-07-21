@@ -8,6 +8,7 @@ package de.hub.clickwatch.cwdatabase;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -151,13 +152,22 @@ public interface CWDataBasePackage extends EPackage {
 	int EXPERIMENT_DESCR__END = 8;
 
 	/**
+	 * The feature id for the '<em><b>Statistics</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPERIMENT_DESCR__STATISTICS = 9;
+
+	/**
 	 * The number of structural features of the '<em>Experiment Descr</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXPERIMENT_DESCR_FEATURE_COUNT = 9;
+	int EXPERIMENT_DESCR_FEATURE_COUNT = 10;
 
 	/**
 	 * The meta object id for the '{@link de.hub.clickwatch.cwdatabase.impl.NodeRecordImpl <em>Node Record</em>}' class.
@@ -179,22 +189,13 @@ public interface CWDataBasePackage extends EPackage {
 	int NODE_RECORD__RECORDS = 0;
 
 	/**
-	 * The feature id for the '<em><b>Key</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE_RECORD__KEY = 1;
-
-	/**
 	 * The feature id for the '<em><b>Start</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NODE_RECORD__START = 2;
+	int NODE_RECORD__START = 1;
 
 	/**
 	 * The feature id for the '<em><b>End</b></em>' attribute.
@@ -203,7 +204,7 @@ public interface CWDataBasePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NODE_RECORD__END = 3;
+	int NODE_RECORD__END = 2;
 
 	/**
 	 * The feature id for the '<em><b>Node</b></em>' attribute.
@@ -212,7 +213,7 @@ public interface CWDataBasePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NODE_RECORD__NODE = 4;
+	int NODE_RECORD__NODE = 3;
 
 	/**
 	 * The number of structural features of the '<em>Node Record</em>' class.
@@ -221,7 +222,7 @@ public interface CWDataBasePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NODE_RECORD_FEATURE_COUNT = 5;
+	int NODE_RECORD_FEATURE_COUNT = 4;
 
 
 	/**
@@ -253,13 +254,13 @@ public interface CWDataBasePackage extends EPackage {
 	int DATA_BASE__STORAGE_BASE_FILE_STRING = 1;
 
 	/**
-	 * The feature id for the '<em><b>Statistics</b></em>' containment reference.
+	 * The feature id for the '<em><b>In Memory</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_BASE__STATISTICS = 2;
+	int DATA_BASE__IN_MEMORY = 2;
 
 	/**
 	 * The number of structural features of the '<em>Data Base</em>' class.
@@ -419,51 +420,122 @@ public interface CWDataBasePackage extends EPackage {
 	int ELONG_OBJECT_TO_NODE_RECORD_DESCR_MAP_FEATURE_COUNT = 2;
 
 	/**
-	 * The meta object id for the '{@link de.hub.clickwatch.cwdatabase.impl.DataBaseStatisticsImpl <em>Data Base Statistics</em>}' class.
+	 * The meta object id for the '{@link de.hub.clickwatch.cwdatabase.impl.ExperimentStatisticsImpl <em>Experiment Statistics</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.hub.clickwatch.cwdatabase.impl.DataBaseStatisticsImpl
-	 * @see de.hub.clickwatch.cwdatabase.impl.CWDataBasePackageImpl#getDataBaseStatistics()
+	 * @see de.hub.clickwatch.cwdatabase.impl.ExperimentStatisticsImpl
+	 * @see de.hub.clickwatch.cwdatabase.impl.CWDataBasePackageImpl#getExperimentStatistics()
 	 * @generated
 	 */
-	int DATA_BASE_STATISTICS = 7;
+	int EXPERIMENT_STATISTICS = 7;
 
 	/**
-	 * The feature id for the '<em><b>Handler Count</b></em>' attribute.
+	 * The feature id for the '<em><b>Nodes A</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_BASE_STATISTICS__HANDLER_COUNT = 0;
+	int EXPERIMENT_STATISTICS__NODES_A = 0;
 
 	/**
-	 * The feature id for the '<em><b>Sample Count</b></em>' attribute.
+	 * The feature id for the '<em><b>Samples N</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_BASE_STATISTICS__SAMPLE_COUNT = 1;
+	int EXPERIMENT_STATISTICS__SAMPLES_N = 1;
 
 	/**
-	 * The feature id for the '<em><b>Experiment Count</b></em>' attribute.
+	 * The feature id for the '<em><b>Handlers N</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_BASE_STATISTICS__EXPERIMENT_COUNT = 2;
+	int EXPERIMENT_STATISTICS__HANDLERS_N = 2;
 
 	/**
-	 * The number of structural features of the '<em>Data Base Statistics</em>' class.
+	 * The feature id for the '<em><b>Handlers Pulled S</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_BASE_STATISTICS_FEATURE_COUNT = 3;
+	int EXPERIMENT_STATISTICS__HANDLERS_PULLED_S = 3;
 
+	/**
+	 * The feature id for the '<em><b>Handlers R</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPERIMENT_STATISTICS__HANDLERS_R = 4;
+
+	/**
+	 * The feature id for the '<em><b>Time A</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPERIMENT_STATISTICS__TIME_A = 5;
+
+	/**
+	 * The feature id for the '<em><b>Time N</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPERIMENT_STATISTICS__TIME_N = 6;
+
+	/**
+	 * The feature id for the '<em><b>Time S</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPERIMENT_STATISTICS__TIME_S = 7;
+
+	/**
+	 * The feature id for the '<em><b>Samples Per Second</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPERIMENT_STATISTICS__SAMPLES_PER_SECOND = 8;
+
+	/**
+	 * The feature id for the '<em><b>Record Size</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPERIMENT_STATISTICS__RECORD_SIZE = 9;
+
+	/**
+	 * The feature id for the '<em><b>Samples R</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPERIMENT_STATISTICS__SAMPLES_R = 10;
+
+	/**
+	 * The number of structural features of the '<em>Experiment Statistics</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPERIMENT_STATISTICS_FEATURE_COUNT = 11;
 
 	/**
 	 * The meta object id for the '{@link de.hub.clickwatch.cwdatabase.impl.NodeRecordDescrImpl <em>Node Record Descr</em>}' class.
@@ -492,6 +564,17 @@ public interface CWDataBasePackage extends EPackage {
 	 * @ordered
 	 */
 	int NODE_RECORD_DESCR_FEATURE_COUNT = 1;
+
+
+	/**
+	 * The meta object id for the '<em>ESummary Statistics</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.apache.commons.math.stat.descriptive.SummaryStatistics
+	 * @see de.hub.clickwatch.cwdatabase.impl.CWDataBasePackageImpl#getESummaryStatistics()
+	 * @generated
+	 */
+	int ESUMMARY_STATISTICS = 9;
 
 
 	/**
@@ -604,6 +687,17 @@ public interface CWDataBasePackage extends EPackage {
 	EAttribute getExperimentDescr_End();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link de.hub.clickwatch.cwdatabase.ExperimentDescr#getStatistics <em>Statistics</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Statistics</em>'.
+	 * @see de.hub.clickwatch.cwdatabase.ExperimentDescr#getStatistics()
+	 * @see #getExperimentDescr()
+	 * @generated
+	 */
+	EReference getExperimentDescr_Statistics();
+
+	/**
 	 * Returns the meta object for class '{@link de.hub.clickwatch.cwdatabase.NodeRecord <em>Node Record</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -623,17 +717,6 @@ public interface CWDataBasePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getNodeRecord_Records();
-
-	/**
-	 * Returns the meta object for the reference list '{@link de.hub.clickwatch.cwdatabase.NodeRecord#getKey <em>Key</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Key</em>'.
-	 * @see de.hub.clickwatch.cwdatabase.NodeRecord#getKey()
-	 * @see #getNodeRecord()
-	 * @generated
-	 */
-	EReference getNodeRecord_Key();
 
 	/**
 	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.cwdatabase.NodeRecord#getStart <em>Start</em>}'.
@@ -701,15 +784,15 @@ public interface CWDataBasePackage extends EPackage {
 	EAttribute getDataBase_StorageBaseFileString();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link de.hub.clickwatch.cwdatabase.DataBase#getStatistics <em>Statistics</em>}'.
+	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.cwdatabase.DataBase#getInMemory <em>In Memory</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Statistics</em>'.
-	 * @see de.hub.clickwatch.cwdatabase.DataBase#getStatistics()
+	 * @return the meta object for the attribute '<em>In Memory</em>'.
+	 * @see de.hub.clickwatch.cwdatabase.DataBase#getInMemory()
 	 * @see #getDataBase()
 	 * @generated
 	 */
-	EReference getDataBase_Statistics();
+	EAttribute getDataBase_InMemory();
 
 	/**
 	 * Returns the meta object for class '{@link de.hub.clickwatch.cwdatabase.ExperimentRecord <em>Experiment Record</em>}'.
@@ -844,47 +927,135 @@ public interface CWDataBasePackage extends EPackage {
 	EReference getELongObjectToNodeRecordDescrMap_Value();
 
 	/**
-	 * Returns the meta object for class '{@link de.hub.clickwatch.cwdatabase.DataBaseStatistics <em>Data Base Statistics</em>}'.
+	 * Returns the meta object for class '{@link de.hub.clickwatch.cwdatabase.ExperimentStatistics <em>Experiment Statistics</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Data Base Statistics</em>'.
-	 * @see de.hub.clickwatch.cwdatabase.DataBaseStatistics
+	 * @return the meta object for class '<em>Experiment Statistics</em>'.
+	 * @see de.hub.clickwatch.cwdatabase.ExperimentStatistics
 	 * @generated
 	 */
-	EClass getDataBaseStatistics();
+	EClass getExperimentStatistics();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.cwdatabase.DataBaseStatistics#getHandlerCount <em>Handler Count</em>}'.
+	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.cwdatabase.ExperimentStatistics#getNodesA <em>Nodes A</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Handler Count</em>'.
-	 * @see de.hub.clickwatch.cwdatabase.DataBaseStatistics#getHandlerCount()
-	 * @see #getDataBaseStatistics()
+	 * @return the meta object for the attribute '<em>Nodes A</em>'.
+	 * @see de.hub.clickwatch.cwdatabase.ExperimentStatistics#getNodesA()
+	 * @see #getExperimentStatistics()
 	 * @generated
 	 */
-	EAttribute getDataBaseStatistics_HandlerCount();
+	EAttribute getExperimentStatistics_NodesA();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.cwdatabase.DataBaseStatistics#getSampleCount <em>Sample Count</em>}'.
+	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.cwdatabase.ExperimentStatistics#getSamplesN <em>Samples N</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Sample Count</em>'.
-	 * @see de.hub.clickwatch.cwdatabase.DataBaseStatistics#getSampleCount()
-	 * @see #getDataBaseStatistics()
+	 * @return the meta object for the attribute '<em>Samples N</em>'.
+	 * @see de.hub.clickwatch.cwdatabase.ExperimentStatistics#getSamplesN()
+	 * @see #getExperimentStatistics()
 	 * @generated
 	 */
-	EAttribute getDataBaseStatistics_SampleCount();
+	EAttribute getExperimentStatistics_SamplesN();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.cwdatabase.DataBaseStatistics#getExperimentCount <em>Experiment Count</em>}'.
+	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.cwdatabase.ExperimentStatistics#getHandlersN <em>Handlers N</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Experiment Count</em>'.
-	 * @see de.hub.clickwatch.cwdatabase.DataBaseStatistics#getExperimentCount()
-	 * @see #getDataBaseStatistics()
+	 * @return the meta object for the attribute '<em>Handlers N</em>'.
+	 * @see de.hub.clickwatch.cwdatabase.ExperimentStatistics#getHandlersN()
+	 * @see #getExperimentStatistics()
 	 * @generated
 	 */
-	EAttribute getDataBaseStatistics_ExperimentCount();
+	EAttribute getExperimentStatistics_HandlersN();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.cwdatabase.ExperimentStatistics#getHandlersPulledS <em>Handlers Pulled S</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Handlers Pulled S</em>'.
+	 * @see de.hub.clickwatch.cwdatabase.ExperimentStatistics#getHandlersPulledS()
+	 * @see #getExperimentStatistics()
+	 * @generated
+	 */
+	EAttribute getExperimentStatistics_HandlersPulledS();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.cwdatabase.ExperimentStatistics#getHandlersR <em>Handlers R</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Handlers R</em>'.
+	 * @see de.hub.clickwatch.cwdatabase.ExperimentStatistics#getHandlersR()
+	 * @see #getExperimentStatistics()
+	 * @generated
+	 */
+	EAttribute getExperimentStatistics_HandlersR();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.cwdatabase.ExperimentStatistics#getTimeA <em>Time A</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Time A</em>'.
+	 * @see de.hub.clickwatch.cwdatabase.ExperimentStatistics#getTimeA()
+	 * @see #getExperimentStatistics()
+	 * @generated
+	 */
+	EAttribute getExperimentStatistics_TimeA();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.cwdatabase.ExperimentStatistics#getTimeN <em>Time N</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Time N</em>'.
+	 * @see de.hub.clickwatch.cwdatabase.ExperimentStatistics#getTimeN()
+	 * @see #getExperimentStatistics()
+	 * @generated
+	 */
+	EAttribute getExperimentStatistics_TimeN();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.cwdatabase.ExperimentStatistics#getTimeS <em>Time S</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Time S</em>'.
+	 * @see de.hub.clickwatch.cwdatabase.ExperimentStatistics#getTimeS()
+	 * @see #getExperimentStatistics()
+	 * @generated
+	 */
+	EAttribute getExperimentStatistics_TimeS();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.cwdatabase.ExperimentStatistics#getSamplesPerSecond <em>Samples Per Second</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Samples Per Second</em>'.
+	 * @see de.hub.clickwatch.cwdatabase.ExperimentStatistics#getSamplesPerSecond()
+	 * @see #getExperimentStatistics()
+	 * @generated
+	 */
+	EAttribute getExperimentStatistics_SamplesPerSecond();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.cwdatabase.ExperimentStatistics#getRecordSize <em>Record Size</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Record Size</em>'.
+	 * @see de.hub.clickwatch.cwdatabase.ExperimentStatistics#getRecordSize()
+	 * @see #getExperimentStatistics()
+	 * @generated
+	 */
+	EAttribute getExperimentStatistics_RecordSize();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.cwdatabase.ExperimentStatistics#getSamplesR <em>Samples R</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Samples R</em>'.
+	 * @see de.hub.clickwatch.cwdatabase.ExperimentStatistics#getSamplesR()
+	 * @see #getExperimentStatistics()
+	 * @generated
+	 */
+	EAttribute getExperimentStatistics_SamplesR();
 
 	/**
 	 * Returns the meta object for class '{@link de.hub.clickwatch.cwdatabase.NodeRecordDescr <em>Node Record Descr</em>}'.
@@ -906,6 +1077,17 @@ public interface CWDataBasePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getNodeRecordDescr_Record();
+
+	/**
+	 * Returns the meta object for data type '{@link org.apache.commons.math.stat.descriptive.SummaryStatistics <em>ESummary Statistics</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>ESummary Statistics</em>'.
+	 * @see org.apache.commons.math.stat.descriptive.SummaryStatistics
+	 * @model instanceClass="org.apache.commons.math.stat.descriptive.SummaryStatistics"
+	 * @generated
+	 */
+	EDataType getESummaryStatistics();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -1012,6 +1194,14 @@ public interface CWDataBasePackage extends EPackage {
 		EAttribute EXPERIMENT_DESCR__END = eINSTANCE.getExperimentDescr_End();
 
 		/**
+		 * The meta object literal for the '<em><b>Statistics</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EXPERIMENT_DESCR__STATISTICS = eINSTANCE.getExperimentDescr_Statistics();
+
+		/**
 		 * The meta object literal for the '{@link de.hub.clickwatch.cwdatabase.impl.NodeRecordImpl <em>Node Record</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1028,14 +1218,6 @@ public interface CWDataBasePackage extends EPackage {
 		 * @generated
 		 */
 		EReference NODE_RECORD__RECORDS = eINSTANCE.getNodeRecord_Records();
-
-		/**
-		 * The meta object literal for the '<em><b>Key</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference NODE_RECORD__KEY = eINSTANCE.getNodeRecord_Key();
 
 		/**
 		 * The meta object literal for the '<em><b>Start</b></em>' attribute feature.
@@ -1088,12 +1270,12 @@ public interface CWDataBasePackage extends EPackage {
 		EAttribute DATA_BASE__STORAGE_BASE_FILE_STRING = eINSTANCE.getDataBase_StorageBaseFileString();
 
 		/**
-		 * The meta object literal for the '<em><b>Statistics</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>In Memory</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference DATA_BASE__STATISTICS = eINSTANCE.getDataBase_Statistics();
+		EAttribute DATA_BASE__IN_MEMORY = eINSTANCE.getDataBase_InMemory();
 
 		/**
 		 * The meta object literal for the '{@link de.hub.clickwatch.cwdatabase.impl.ExperimentRecordImpl <em>Experiment Record</em>}' class.
@@ -1200,38 +1382,102 @@ public interface CWDataBasePackage extends EPackage {
 		EReference ELONG_OBJECT_TO_NODE_RECORD_DESCR_MAP__VALUE = eINSTANCE.getELongObjectToNodeRecordDescrMap_Value();
 
 		/**
-		 * The meta object literal for the '{@link de.hub.clickwatch.cwdatabase.impl.DataBaseStatisticsImpl <em>Data Base Statistics</em>}' class.
+		 * The meta object literal for the '{@link de.hub.clickwatch.cwdatabase.impl.ExperimentStatisticsImpl <em>Experiment Statistics</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.hub.clickwatch.cwdatabase.impl.DataBaseStatisticsImpl
-		 * @see de.hub.clickwatch.cwdatabase.impl.CWDataBasePackageImpl#getDataBaseStatistics()
+		 * @see de.hub.clickwatch.cwdatabase.impl.ExperimentStatisticsImpl
+		 * @see de.hub.clickwatch.cwdatabase.impl.CWDataBasePackageImpl#getExperimentStatistics()
 		 * @generated
 		 */
-		EClass DATA_BASE_STATISTICS = eINSTANCE.getDataBaseStatistics();
+		EClass EXPERIMENT_STATISTICS = eINSTANCE.getExperimentStatistics();
 
 		/**
-		 * The meta object literal for the '<em><b>Handler Count</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Nodes A</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute DATA_BASE_STATISTICS__HANDLER_COUNT = eINSTANCE.getDataBaseStatistics_HandlerCount();
+		EAttribute EXPERIMENT_STATISTICS__NODES_A = eINSTANCE.getExperimentStatistics_NodesA();
 
 		/**
-		 * The meta object literal for the '<em><b>Sample Count</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Samples N</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute DATA_BASE_STATISTICS__SAMPLE_COUNT = eINSTANCE.getDataBaseStatistics_SampleCount();
+		EAttribute EXPERIMENT_STATISTICS__SAMPLES_N = eINSTANCE.getExperimentStatistics_SamplesN();
 
 		/**
-		 * The meta object literal for the '<em><b>Experiment Count</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Handlers N</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute DATA_BASE_STATISTICS__EXPERIMENT_COUNT = eINSTANCE.getDataBaseStatistics_ExperimentCount();
+		EAttribute EXPERIMENT_STATISTICS__HANDLERS_N = eINSTANCE.getExperimentStatistics_HandlersN();
+
+		/**
+		 * The meta object literal for the '<em><b>Handlers Pulled S</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute EXPERIMENT_STATISTICS__HANDLERS_PULLED_S = eINSTANCE.getExperimentStatistics_HandlersPulledS();
+
+		/**
+		 * The meta object literal for the '<em><b>Handlers R</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute EXPERIMENT_STATISTICS__HANDLERS_R = eINSTANCE.getExperimentStatistics_HandlersR();
+
+		/**
+		 * The meta object literal for the '<em><b>Time A</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute EXPERIMENT_STATISTICS__TIME_A = eINSTANCE.getExperimentStatistics_TimeA();
+
+		/**
+		 * The meta object literal for the '<em><b>Time N</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute EXPERIMENT_STATISTICS__TIME_N = eINSTANCE.getExperimentStatistics_TimeN();
+
+		/**
+		 * The meta object literal for the '<em><b>Time S</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute EXPERIMENT_STATISTICS__TIME_S = eINSTANCE.getExperimentStatistics_TimeS();
+
+		/**
+		 * The meta object literal for the '<em><b>Samples Per Second</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute EXPERIMENT_STATISTICS__SAMPLES_PER_SECOND = eINSTANCE.getExperimentStatistics_SamplesPerSecond();
+
+		/**
+		 * The meta object literal for the '<em><b>Record Size</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute EXPERIMENT_STATISTICS__RECORD_SIZE = eINSTANCE.getExperimentStatistics_RecordSize();
+
+		/**
+		 * The meta object literal for the '<em><b>Samples R</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute EXPERIMENT_STATISTICS__SAMPLES_R = eINSTANCE.getExperimentStatistics_SamplesR();
 
 		/**
 		 * The meta object literal for the '{@link de.hub.clickwatch.cwdatabase.impl.NodeRecordDescrImpl <em>Node Record Descr</em>}' class.
@@ -1250,6 +1496,16 @@ public interface CWDataBasePackage extends EPackage {
 		 * @generated
 		 */
 		EReference NODE_RECORD_DESCR__RECORD = eINSTANCE.getNodeRecordDescr_Record();
+
+		/**
+		 * The meta object literal for the '<em>ESummary Statistics</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.apache.commons.math.stat.descriptive.SummaryStatistics
+		 * @see de.hub.clickwatch.cwdatabase.impl.CWDataBasePackageImpl#getESummaryStatistics()
+		 * @generated
+		 */
+		EDataType ESUMMARY_STATISTICS = eINSTANCE.getESummaryStatistics();
 
 	}
 

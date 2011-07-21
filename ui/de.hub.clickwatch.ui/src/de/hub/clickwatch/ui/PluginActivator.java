@@ -14,6 +14,7 @@ import com.google.inject.Injector;
 import de.hub.clickcontrol.ClickSocketImpl;
 import de.hub.clickcontrol.IClickSocket;
 import de.hub.clickwatch.ClickWatchModule;
+import de.hub.clickwatch.cwdatabase.CWDataBaseModule;
 import de.hub.clickwatch.preferences.PreferenceConstants;
 import de.hub.clickwatch.recorder.ClickSocketPlayer;
 import de.hub.clickwatch.recorder.ClickSocketPlayerSocketImpl;
@@ -83,7 +84,7 @@ public class PluginActivator extends AbstractUIPlugin {
 					}
 				}
 			});
-			injectorCache = Guice.createInjector(clickWatchModule, new ClickWatchSpecificModelsModule());
+			injectorCache = Guice.createInjector(clickWatchModule, new ClickWatchSpecificModelsModule(), new CWDataBaseModule());
 		}
 		return injectorCache;
 	}

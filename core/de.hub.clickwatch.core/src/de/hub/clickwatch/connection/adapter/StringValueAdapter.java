@@ -18,5 +18,10 @@ public class StringValueAdapter extends AbstractAdapter implements IValueAdapter
 	public void moveValue(Handler source, Handler target) {
 		target.setValue(source.getValue());
 	}
+
+	@Override
+	public boolean valuesEqual(Handler h1, Handler h2) {
+		return h1.getValue().equals(h2.getValue());
+	}
 	
 }

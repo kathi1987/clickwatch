@@ -155,16 +155,5 @@ public class CompoundHandlerAdapter extends HandlerAdapter {
 				Throwables.propagate(e);
 			}
 		}
-	}
-
-	@Override
-	public long latestNodeTime() {
-		if (latestNodeTime > 0) {
-			return latestNodeTime;
-		} else {
-			return super.latestNodeTime();
-		}
-	}
-	
-	
+	}	
 }

@@ -20,7 +20,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import de.hub.clickwatch.cwdatabase.CWDataBasePackage;
 import de.hub.clickwatch.cwdatabase.DataBase;
-import de.hub.clickwatch.cwdatabase.DataBaseStatistics;
 import de.hub.clickwatch.cwdatabase.ExperimentDescr;
 
 /**
@@ -32,7 +31,7 @@ import de.hub.clickwatch.cwdatabase.ExperimentDescr;
  * <ul>
  *   <li>{@link de.hub.clickwatch.cwdatabase.impl.DataBaseImpl#getExperiments <em>Experiments</em>}</li>
  *   <li>{@link de.hub.clickwatch.cwdatabase.impl.DataBaseImpl#getStorageBaseFileString <em>Storage Base File String</em>}</li>
- *   <li>{@link de.hub.clickwatch.cwdatabase.impl.DataBaseImpl#getStatistics <em>Statistics</em>}</li>
+ *   <li>{@link de.hub.clickwatch.cwdatabase.impl.DataBaseImpl#getInMemory <em>In Memory</em>}</li>
  * </ul>
  * </p>
  *
@@ -57,7 +56,7 @@ public class DataBaseImpl extends EObjectImpl implements DataBase {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String STORAGE_BASE_FILE_STRING_EDEFAULT = null;
+	protected static final String STORAGE_BASE_FILE_STRING_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getStorageBaseFileString() <em>Storage Base File String</em>}' attribute.
@@ -70,14 +69,24 @@ public class DataBaseImpl extends EObjectImpl implements DataBase {
 	protected String storageBaseFileString = STORAGE_BASE_FILE_STRING_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getStatistics() <em>Statistics</em>}' containment reference.
+	 * The default value of the '{@link #getInMemory() <em>In Memory</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getStatistics()
+	 * @see #getInMemory()
 	 * @generated
 	 * @ordered
 	 */
-	protected DataBaseStatistics statistics;
+	protected static final Boolean IN_MEMORY_EDEFAULT = Boolean.FALSE;
+
+	/**
+	 * The cached value of the '{@link #getInMemory() <em>In Memory</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInMemory()
+	 * @generated
+	 * @ordered
+	 */
+	protected Boolean inMemory = IN_MEMORY_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -150,8 +159,8 @@ public class DataBaseImpl extends EObjectImpl implements DataBase {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DataBaseStatistics getStatistics() {
-		return statistics;
+	public Boolean getInMemory() {
+		return inMemory;
 	}
 
 	/**
@@ -159,33 +168,11 @@ public class DataBaseImpl extends EObjectImpl implements DataBase {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetStatistics(DataBaseStatistics newStatistics, NotificationChain msgs) {
-		DataBaseStatistics oldStatistics = statistics;
-		statistics = newStatistics;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CWDataBasePackage.DATA_BASE__STATISTICS, oldStatistics, newStatistics);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setStatistics(DataBaseStatistics newStatistics) {
-		if (newStatistics != statistics) {
-			NotificationChain msgs = null;
-			if (statistics != null)
-				msgs = ((InternalEObject)statistics).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CWDataBasePackage.DATA_BASE__STATISTICS, null, msgs);
-			if (newStatistics != null)
-				msgs = ((InternalEObject)newStatistics).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CWDataBasePackage.DATA_BASE__STATISTICS, null, msgs);
-			msgs = basicSetStatistics(newStatistics, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CWDataBasePackage.DATA_BASE__STATISTICS, newStatistics, newStatistics));
+	public void setInMemory(Boolean newInMemory) {
+		Boolean oldInMemory = inMemory;
+		inMemory = newInMemory;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CWDataBasePackage.DATA_BASE__IN_MEMORY, oldInMemory, inMemory));
 	}
 
 	/**
@@ -213,8 +200,6 @@ public class DataBaseImpl extends EObjectImpl implements DataBase {
 		switch (featureID) {
 			case CWDataBasePackage.DATA_BASE__EXPERIMENTS:
 				return ((InternalEList<?>)getExperiments()).basicRemove(otherEnd, msgs);
-			case CWDataBasePackage.DATA_BASE__STATISTICS:
-				return basicSetStatistics(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -231,8 +216,8 @@ public class DataBaseImpl extends EObjectImpl implements DataBase {
 				return getExperiments();
 			case CWDataBasePackage.DATA_BASE__STORAGE_BASE_FILE_STRING:
 				return getStorageBaseFileString();
-			case CWDataBasePackage.DATA_BASE__STATISTICS:
-				return getStatistics();
+			case CWDataBasePackage.DATA_BASE__IN_MEMORY:
+				return getInMemory();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -253,8 +238,8 @@ public class DataBaseImpl extends EObjectImpl implements DataBase {
 			case CWDataBasePackage.DATA_BASE__STORAGE_BASE_FILE_STRING:
 				setStorageBaseFileString((String)newValue);
 				return;
-			case CWDataBasePackage.DATA_BASE__STATISTICS:
-				setStatistics((DataBaseStatistics)newValue);
+			case CWDataBasePackage.DATA_BASE__IN_MEMORY:
+				setInMemory((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -274,8 +259,8 @@ public class DataBaseImpl extends EObjectImpl implements DataBase {
 			case CWDataBasePackage.DATA_BASE__STORAGE_BASE_FILE_STRING:
 				setStorageBaseFileString(STORAGE_BASE_FILE_STRING_EDEFAULT);
 				return;
-			case CWDataBasePackage.DATA_BASE__STATISTICS:
-				setStatistics((DataBaseStatistics)null);
+			case CWDataBasePackage.DATA_BASE__IN_MEMORY:
+				setInMemory(IN_MEMORY_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -293,8 +278,8 @@ public class DataBaseImpl extends EObjectImpl implements DataBase {
 				return experiments != null && !experiments.isEmpty();
 			case CWDataBasePackage.DATA_BASE__STORAGE_BASE_FILE_STRING:
 				return STORAGE_BASE_FILE_STRING_EDEFAULT == null ? storageBaseFileString != null : !STORAGE_BASE_FILE_STRING_EDEFAULT.equals(storageBaseFileString);
-			case CWDataBasePackage.DATA_BASE__STATISTICS:
-				return statistics != null;
+			case CWDataBasePackage.DATA_BASE__IN_MEMORY:
+				return IN_MEMORY_EDEFAULT == null ? inMemory != null : !IN_MEMORY_EDEFAULT.equals(inMemory);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -311,6 +296,8 @@ public class DataBaseImpl extends EObjectImpl implements DataBase {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (storageBaseFileString: ");
 		result.append(storageBaseFileString);
+		result.append(", inMemory: ");
+		result.append(inMemory);
 		result.append(')');
 		return result.toString();
 	}

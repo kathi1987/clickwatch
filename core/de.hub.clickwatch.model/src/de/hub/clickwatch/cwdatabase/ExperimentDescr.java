@@ -27,6 +27,7 @@ import de.hub.clickwatch.model.Network;
  *   <li>{@link de.hub.clickwatch.cwdatabase.ExperimentDescr#getDataBase <em>Data Base</em>}</li>
  *   <li>{@link de.hub.clickwatch.cwdatabase.ExperimentDescr#getDuration <em>Duration</em>}</li>
  *   <li>{@link de.hub.clickwatch.cwdatabase.ExperimentDescr#getEnd <em>End</em>}</li>
+ *   <li>{@link de.hub.clickwatch.cwdatabase.ExperimentDescr#getStatistics <em>Statistics</em>}</li>
  * </ul>
  * </p>
  *
@@ -270,5 +271,31 @@ public interface ExperimentDescr extends EObject {
 	 * @generated
 	 */
 	void setEnd(long value);
+
+	/**
+	 * Returns the value of the '<em><b>Statistics</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Statistics</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Statistics</em>' containment reference.
+	 * @see #setStatistics(ExperimentStatistics)
+	 * @see de.hub.clickwatch.cwdatabase.CWDataBasePackage#getExperimentDescr_Statistics()
+	 * @model containment="true"
+	 * @generated
+	 */
+	ExperimentStatistics getStatistics();
+
+	/**
+	 * Sets the value of the '{@link de.hub.clickwatch.cwdatabase.ExperimentDescr#getStatistics <em>Statistics</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Statistics</em>' containment reference.
+	 * @see #getStatistics()
+	 * @generated
+	 */
+	void setStatistics(ExperimentStatistics value);
 
 } // ExperimimentDescr

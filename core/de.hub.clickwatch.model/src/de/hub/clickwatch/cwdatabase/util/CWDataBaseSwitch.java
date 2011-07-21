@@ -6,6 +6,7 @@
  */
 package de.hub.clickwatch.cwdatabase.util;
 
+import de.hub.clickwatch.cwdatabase.*;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
@@ -14,10 +15,10 @@ import org.eclipse.emf.ecore.util.Switch;
 
 import de.hub.clickwatch.cwdatabase.CWDataBasePackage;
 import de.hub.clickwatch.cwdatabase.DataBase;
-import de.hub.clickwatch.cwdatabase.DataBaseStatistics;
 import de.hub.clickwatch.cwdatabase.ExperimentDescr;
 import de.hub.clickwatch.cwdatabase.ExperimentNodeRecordTimeTable;
 import de.hub.clickwatch.cwdatabase.ExperimentRecord;
+import de.hub.clickwatch.cwdatabase.ExperimentStatistics;
 import de.hub.clickwatch.cwdatabase.NodeRecord;
 import de.hub.clickwatch.cwdatabase.NodeRecordDescr;
 
@@ -120,9 +121,9 @@ public class CWDataBaseSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case CWDataBasePackage.DATA_BASE_STATISTICS: {
-				DataBaseStatistics dataBaseStatistics = (DataBaseStatistics)theEObject;
-				T result = caseDataBaseStatistics(dataBaseStatistics);
+			case CWDataBasePackage.EXPERIMENT_STATISTICS: {
+				ExperimentStatistics experimentStatistics = (ExperimentStatistics)theEObject;
+				T result = caseExperimentStatistics(experimentStatistics);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -242,17 +243,17 @@ public class CWDataBaseSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Data Base Statistics</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Experiment Statistics</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Data Base Statistics</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Experiment Statistics</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseDataBaseStatistics(DataBaseStatistics object) {
+	public T caseExperimentStatistics(ExperimentStatistics object) {
 		return null;
 	}
 

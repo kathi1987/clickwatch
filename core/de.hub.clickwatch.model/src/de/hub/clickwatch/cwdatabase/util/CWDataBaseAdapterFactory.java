@@ -6,6 +6,7 @@
  */
 package de.hub.clickwatch.cwdatabase.util;
 
+import de.hub.clickwatch.cwdatabase.*;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Adapter;
@@ -15,10 +16,10 @@ import org.eclipse.emf.ecore.EObject;
 
 import de.hub.clickwatch.cwdatabase.CWDataBasePackage;
 import de.hub.clickwatch.cwdatabase.DataBase;
-import de.hub.clickwatch.cwdatabase.DataBaseStatistics;
 import de.hub.clickwatch.cwdatabase.ExperimentDescr;
 import de.hub.clickwatch.cwdatabase.ExperimentNodeRecordTimeTable;
 import de.hub.clickwatch.cwdatabase.ExperimentRecord;
+import de.hub.clickwatch.cwdatabase.ExperimentStatistics;
 import de.hub.clickwatch.cwdatabase.NodeRecord;
 import de.hub.clickwatch.cwdatabase.NodeRecordDescr;
 
@@ -107,8 +108,8 @@ public class CWDataBaseAdapterFactory extends AdapterFactoryImpl {
 				return createELongObjectToNodeRecordDescrMapAdapter();
 			}
 			@Override
-			public Adapter caseDataBaseStatistics(DataBaseStatistics object) {
-				return createDataBaseStatisticsAdapter();
+			public Adapter caseExperimentStatistics(ExperimentStatistics object) {
+				return createExperimentStatisticsAdapter();
 			}
 			@Override
 			public Adapter caseNodeRecordDescr(NodeRecordDescr object) {
@@ -233,16 +234,16 @@ public class CWDataBaseAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.hub.clickwatch.cwdatabase.DataBaseStatistics <em>Data Base Statistics</em>}'.
+	 * Creates a new adapter for an object of class '{@link de.hub.clickwatch.cwdatabase.ExperimentStatistics <em>Experiment Statistics</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.hub.clickwatch.cwdatabase.DataBaseStatistics
+	 * @see de.hub.clickwatch.cwdatabase.ExperimentStatistics
 	 * @generated
 	 */
-	public Adapter createDataBaseStatisticsAdapter() {
+	public Adapter createExperimentStatisticsAdapter() {
 		return null;
 	}
 

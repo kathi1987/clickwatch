@@ -237,26 +237,26 @@ public class CWDataBaseItemProviderAdapterFactory extends CWDataBaseAdapterFacto
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link de.hub.clickwatch.cwdatabase.DataBaseStatistics} instances.
+	 * This keeps track of the one adapter used for all {@link de.hub.clickwatch.cwdatabase.ExperimentStatistics} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected DataBaseStatisticsItemProvider dataBaseStatisticsItemProvider;
+	protected ExperimentStatisticsItemProvider experimentStatisticsItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link de.hub.clickwatch.cwdatabase.DataBaseStatistics}.
+	 * This creates an adapter for a {@link de.hub.clickwatch.cwdatabase.ExperimentStatistics}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createDataBaseStatisticsAdapter() {
-		if (dataBaseStatisticsItemProvider == null) {
-			dataBaseStatisticsItemProvider = new DataBaseStatisticsItemProvider(this);
+	public Adapter createExperimentStatisticsAdapter() {
+		if (experimentStatisticsItemProvider == null) {
+			experimentStatisticsItemProvider = new ExperimentStatisticsItemProvider(this);
 		}
 
-		return dataBaseStatisticsItemProvider;
+		return experimentStatisticsItemProvider;
 	}
 
 	/**
@@ -388,7 +388,7 @@ public class CWDataBaseItemProviderAdapterFactory extends CWDataBaseAdapterFacto
 		if (experimentNodeRecordTimeTableItemProvider != null) experimentNodeRecordTimeTableItemProvider.dispose();
 		if (eStringToExperimentNodeRecordTimeTableMapItemProvider != null) eStringToExperimentNodeRecordTimeTableMapItemProvider.dispose();
 		if (eLongObjectToNodeRecordDescrMapItemProvider != null) eLongObjectToNodeRecordDescrMapItemProvider.dispose();
-		if (dataBaseStatisticsItemProvider != null) dataBaseStatisticsItemProvider.dispose();
+		if (experimentStatisticsItemProvider != null) experimentStatisticsItemProvider.dispose();
 		if (nodeRecordDescrItemProvider != null) nodeRecordDescrItemProvider.dispose();
 	}
 

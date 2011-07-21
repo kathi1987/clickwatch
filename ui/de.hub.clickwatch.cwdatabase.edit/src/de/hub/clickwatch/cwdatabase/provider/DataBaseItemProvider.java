@@ -68,6 +68,7 @@ public class DataBaseItemProvider
 			super.getPropertyDescriptors(object);
 
 			addStorageBaseFileStringPropertyDescriptor(object);
+			addInMemoryPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -95,6 +96,28 @@ public class DataBaseItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the In Memory feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addInMemoryPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_DataBase_inMemory_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_DataBase_inMemory_feature", "_UI_DataBase_type"),
+				 CWDataBasePackage.Literals.DATA_BASE__IN_MEMORY,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -107,7 +130,6 @@ public class DataBaseItemProvider
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(CWDataBasePackage.Literals.DATA_BASE__EXPERIMENTS);
-			childrenFeatures.add(CWDataBasePackage.Literals.DATA_BASE__STATISTICS);
 		}
 		return childrenFeatures;
 	}
@@ -163,10 +185,10 @@ public class DataBaseItemProvider
 
 		switch (notification.getFeatureID(DataBase.class)) {
 			case CWDataBasePackage.DATA_BASE__STORAGE_BASE_FILE_STRING:
+			case CWDataBasePackage.DATA_BASE__IN_MEMORY:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case CWDataBasePackage.DATA_BASE__EXPERIMENTS:
-			case CWDataBasePackage.DATA_BASE__STATISTICS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -188,11 +210,6 @@ public class DataBaseItemProvider
 			(createChildParameter
 				(CWDataBasePackage.Literals.DATA_BASE__EXPERIMENTS,
 				 CWDataBaseFactory.eINSTANCE.createExperimentDescr()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(CWDataBasePackage.Literals.DATA_BASE__STATISTICS,
-				 CWDataBaseFactory.eINSTANCE.createDataBaseStatistics()));
 	}
 
 	/**

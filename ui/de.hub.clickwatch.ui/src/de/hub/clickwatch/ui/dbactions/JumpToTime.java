@@ -22,6 +22,7 @@ import org.eclipse.swt.widgets.Scale;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
+import com.google.common.base.Preconditions;
 import com.google.inject.Inject;
 
 import de.hub.clickwatch.cwdatabase.DataBaseUtil;
@@ -90,7 +91,7 @@ public class JumpToTime extends AbstractAction<ExperimentDescr> {
 			
 			// scale
 			scale = new Scale(shell, SWT.HORIZONTAL);
-			scale.setMaximum((int)(to - from)/1000000);
+			scale.setMaximum(100);
 			scale.setMaximum(0);
 			data = new GridData(GridData.FILL_HORIZONTAL);
 			data.horizontalSpan = 2;
@@ -99,7 +100,7 @@ public class JumpToTime extends AbstractAction<ExperimentDescr> {
 				
 				@Override
 				public void widgetSelected(SelectionEvent e) {
-					text.setText("" + (scale.getSelection() * 1000000 + from));
+					text.setText("" + ((((to-from)*scale.getSelection())/100) + from));
 				}
 				
 				@Override

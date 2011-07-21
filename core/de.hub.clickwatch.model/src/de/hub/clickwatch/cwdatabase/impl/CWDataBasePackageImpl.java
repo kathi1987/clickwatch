@@ -8,8 +8,10 @@ package de.hub.clickwatch.cwdatabase.impl;
 
 import java.util.Map;
 
+import org.apache.commons.math.stat.descriptive.SummaryStatistics;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
@@ -17,10 +19,10 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 import de.hub.clickwatch.cwdatabase.CWDataBaseFactory;
 import de.hub.clickwatch.cwdatabase.CWDataBasePackage;
 import de.hub.clickwatch.cwdatabase.DataBase;
-import de.hub.clickwatch.cwdatabase.DataBaseStatistics;
 import de.hub.clickwatch.cwdatabase.ExperimentDescr;
 import de.hub.clickwatch.cwdatabase.ExperimentNodeRecordTimeTable;
 import de.hub.clickwatch.cwdatabase.ExperimentRecord;
+import de.hub.clickwatch.cwdatabase.ExperimentStatistics;
 import de.hub.clickwatch.cwdatabase.NodeRecord;
 import de.hub.clickwatch.cwdatabase.NodeRecordDescr;
 import de.hub.clickwatch.model.ClickWatchModelPackage;
@@ -86,7 +88,7 @@ public class CWDataBasePackageImpl extends EPackageImpl implements CWDataBasePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass dataBaseStatisticsEClass = null;
+	private EClass experimentStatisticsEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -94,6 +96,13 @@ public class CWDataBasePackageImpl extends EPackageImpl implements CWDataBasePac
 	 * @generated
 	 */
 	private EClass nodeRecordDescrEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType eSummaryStatisticsEDataType = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -254,6 +263,15 @@ public class CWDataBasePackageImpl extends EPackageImpl implements CWDataBasePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getExperimentDescr_Statistics() {
+		return (EReference)experimentDescrEClass.getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getNodeRecord() {
 		return nodeRecordEClass;
 	}
@@ -272,17 +290,8 @@ public class CWDataBasePackageImpl extends EPackageImpl implements CWDataBasePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getNodeRecord_Key() {
-		return (EReference)nodeRecordEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EAttribute getNodeRecord_Start() {
-		return (EAttribute)nodeRecordEClass.getEStructuralFeatures().get(2);
+		return (EAttribute)nodeRecordEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -291,7 +300,7 @@ public class CWDataBasePackageImpl extends EPackageImpl implements CWDataBasePac
 	 * @generated
 	 */
 	public EAttribute getNodeRecord_End() {
-		return (EAttribute)nodeRecordEClass.getEStructuralFeatures().get(3);
+		return (EAttribute)nodeRecordEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -300,7 +309,7 @@ public class CWDataBasePackageImpl extends EPackageImpl implements CWDataBasePac
 	 * @generated
 	 */
 	public EAttribute getNodeRecord_Node() {
-		return (EAttribute)nodeRecordEClass.getEStructuralFeatures().get(4);
+		return (EAttribute)nodeRecordEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -335,8 +344,8 @@ public class CWDataBasePackageImpl extends EPackageImpl implements CWDataBasePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getDataBase_Statistics() {
-		return (EReference)dataBaseEClass.getEStructuralFeatures().get(2);
+	public EAttribute getDataBase_InMemory() {
+		return (EAttribute)dataBaseEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -452,8 +461,8 @@ public class CWDataBasePackageImpl extends EPackageImpl implements CWDataBasePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getDataBaseStatistics() {
-		return dataBaseStatisticsEClass;
+	public EClass getExperimentStatistics() {
+		return experimentStatisticsEClass;
 	}
 
 	/**
@@ -461,8 +470,8 @@ public class CWDataBasePackageImpl extends EPackageImpl implements CWDataBasePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getDataBaseStatistics_HandlerCount() {
-		return (EAttribute)dataBaseStatisticsEClass.getEStructuralFeatures().get(0);
+	public EAttribute getExperimentStatistics_NodesA() {
+		return (EAttribute)experimentStatisticsEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -470,8 +479,8 @@ public class CWDataBasePackageImpl extends EPackageImpl implements CWDataBasePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getDataBaseStatistics_SampleCount() {
-		return (EAttribute)dataBaseStatisticsEClass.getEStructuralFeatures().get(1);
+	public EAttribute getExperimentStatistics_SamplesN() {
+		return (EAttribute)experimentStatisticsEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -479,8 +488,80 @@ public class CWDataBasePackageImpl extends EPackageImpl implements CWDataBasePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getDataBaseStatistics_ExperimentCount() {
-		return (EAttribute)dataBaseStatisticsEClass.getEStructuralFeatures().get(2);
+	public EAttribute getExperimentStatistics_HandlersN() {
+		return (EAttribute)experimentStatisticsEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getExperimentStatistics_HandlersPulledS() {
+		return (EAttribute)experimentStatisticsEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getExperimentStatistics_HandlersR() {
+		return (EAttribute)experimentStatisticsEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getExperimentStatistics_TimeA() {
+		return (EAttribute)experimentStatisticsEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getExperimentStatistics_TimeN() {
+		return (EAttribute)experimentStatisticsEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getExperimentStatistics_TimeS() {
+		return (EAttribute)experimentStatisticsEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getExperimentStatistics_SamplesPerSecond() {
+		return (EAttribute)experimentStatisticsEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getExperimentStatistics_RecordSize() {
+		return (EAttribute)experimentStatisticsEClass.getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getExperimentStatistics_SamplesR() {
+		return (EAttribute)experimentStatisticsEClass.getEStructuralFeatures().get(10);
 	}
 
 	/**
@@ -499,6 +580,15 @@ public class CWDataBasePackageImpl extends EPackageImpl implements CWDataBasePac
 	 */
 	public EReference getNodeRecordDescr_Record() {
 		return (EReference)nodeRecordDescrEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EDataType getESummaryStatistics() {
+		return eSummaryStatisticsEDataType;
 	}
 
 	/**
@@ -539,10 +629,10 @@ public class CWDataBasePackageImpl extends EPackageImpl implements CWDataBasePac
 		createEReference(experimentDescrEClass, EXPERIMENT_DESCR__DATA_BASE);
 		createEAttribute(experimentDescrEClass, EXPERIMENT_DESCR__DURATION);
 		createEAttribute(experimentDescrEClass, EXPERIMENT_DESCR__END);
+		createEReference(experimentDescrEClass, EXPERIMENT_DESCR__STATISTICS);
 
 		nodeRecordEClass = createEClass(NODE_RECORD);
 		createEReference(nodeRecordEClass, NODE_RECORD__RECORDS);
-		createEReference(nodeRecordEClass, NODE_RECORD__KEY);
 		createEAttribute(nodeRecordEClass, NODE_RECORD__START);
 		createEAttribute(nodeRecordEClass, NODE_RECORD__END);
 		createEAttribute(nodeRecordEClass, NODE_RECORD__NODE);
@@ -550,7 +640,7 @@ public class CWDataBasePackageImpl extends EPackageImpl implements CWDataBasePac
 		dataBaseEClass = createEClass(DATA_BASE);
 		createEReference(dataBaseEClass, DATA_BASE__EXPERIMENTS);
 		createEAttribute(dataBaseEClass, DATA_BASE__STORAGE_BASE_FILE_STRING);
-		createEReference(dataBaseEClass, DATA_BASE__STATISTICS);
+		createEAttribute(dataBaseEClass, DATA_BASE__IN_MEMORY);
 
 		experimentRecordEClass = createEClass(EXPERIMENT_RECORD);
 		createEReference(experimentRecordEClass, EXPERIMENT_RECORD__META_DATA);
@@ -568,13 +658,24 @@ public class CWDataBasePackageImpl extends EPackageImpl implements CWDataBasePac
 		createEAttribute(eLongObjectToNodeRecordDescrMapEClass, ELONG_OBJECT_TO_NODE_RECORD_DESCR_MAP__KEY);
 		createEReference(eLongObjectToNodeRecordDescrMapEClass, ELONG_OBJECT_TO_NODE_RECORD_DESCR_MAP__VALUE);
 
-		dataBaseStatisticsEClass = createEClass(DATA_BASE_STATISTICS);
-		createEAttribute(dataBaseStatisticsEClass, DATA_BASE_STATISTICS__HANDLER_COUNT);
-		createEAttribute(dataBaseStatisticsEClass, DATA_BASE_STATISTICS__SAMPLE_COUNT);
-		createEAttribute(dataBaseStatisticsEClass, DATA_BASE_STATISTICS__EXPERIMENT_COUNT);
+		experimentStatisticsEClass = createEClass(EXPERIMENT_STATISTICS);
+		createEAttribute(experimentStatisticsEClass, EXPERIMENT_STATISTICS__NODES_A);
+		createEAttribute(experimentStatisticsEClass, EXPERIMENT_STATISTICS__SAMPLES_N);
+		createEAttribute(experimentStatisticsEClass, EXPERIMENT_STATISTICS__HANDLERS_N);
+		createEAttribute(experimentStatisticsEClass, EXPERIMENT_STATISTICS__HANDLERS_PULLED_S);
+		createEAttribute(experimentStatisticsEClass, EXPERIMENT_STATISTICS__HANDLERS_R);
+		createEAttribute(experimentStatisticsEClass, EXPERIMENT_STATISTICS__TIME_A);
+		createEAttribute(experimentStatisticsEClass, EXPERIMENT_STATISTICS__TIME_N);
+		createEAttribute(experimentStatisticsEClass, EXPERIMENT_STATISTICS__TIME_S);
+		createEAttribute(experimentStatisticsEClass, EXPERIMENT_STATISTICS__SAMPLES_PER_SECOND);
+		createEAttribute(experimentStatisticsEClass, EXPERIMENT_STATISTICS__RECORD_SIZE);
+		createEAttribute(experimentStatisticsEClass, EXPERIMENT_STATISTICS__SAMPLES_R);
 
 		nodeRecordDescrEClass = createEClass(NODE_RECORD_DESCR);
 		createEReference(nodeRecordDescrEClass, NODE_RECORD_DESCR__RECORD);
+
+		// Create data types
+		eSummaryStatisticsEDataType = createEDataType(ESUMMARY_STATISTICS);
 	}
 
 	/**
@@ -620,18 +721,18 @@ public class CWDataBasePackageImpl extends EPackageImpl implements CWDataBasePac
 		initEReference(getExperimentDescr_DataBase(), this.getDataBase(), this.getDataBase_Experiments(), "dataBase", null, 0, 1, ExperimentDescr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getExperimentDescr_Duration(), ecorePackage.getELong(), "duration", null, 0, 1, ExperimentDescr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getExperimentDescr_End(), ecorePackage.getELong(), "end", null, 0, 1, ExperimentDescr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getExperimentDescr_Statistics(), this.getExperimentStatistics(), null, "statistics", null, 0, 1, ExperimentDescr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(nodeRecordEClass, NodeRecord.class, "NodeRecord", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getNodeRecord_Records(), theClickWatchModelPackage.getHandler(), null, "records", null, 0, -1, NodeRecord.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getNodeRecord_Key(), theClickWatchModelPackage.getHandler(), null, "key", null, 0, -1, NodeRecord.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getNodeRecord_Start(), ecorePackage.getELong(), "start", null, 0, 1, NodeRecord.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getNodeRecord_End(), ecorePackage.getELong(), "end", null, 0, 1, NodeRecord.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getNodeRecord_Node(), ecorePackage.getEString(), "node", null, 0, 1, NodeRecord.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(dataBaseEClass, DataBase.class, "DataBase", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDataBase_Experiments(), this.getExperimentDescr(), this.getExperimentDescr_DataBase(), "experiments", null, 0, -1, DataBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getDataBase_StorageBaseFileString(), ecorePackage.getEString(), "storageBaseFileString", null, 0, 1, DataBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getDataBase_Statistics(), this.getDataBaseStatistics(), null, "statistics", null, 0, 1, DataBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDataBase_StorageBaseFileString(), ecorePackage.getEString(), "storageBaseFileString", "", 0, 1, DataBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDataBase_InMemory(), ecorePackage.getEBooleanObject(), "inMemory", "false", 0, 1, DataBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(experimentRecordEClass, ExperimentRecord.class, "ExperimentRecord", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getExperimentRecord_MetaData(), theClickWatchModelPackage.getNode(), null, "metaData", null, 0, -1, ExperimentRecord.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -649,13 +750,24 @@ public class CWDataBasePackageImpl extends EPackageImpl implements CWDataBasePac
 		initEAttribute(getELongObjectToNodeRecordDescrMap_Key(), ecorePackage.getELongObject(), "key", null, 0, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getELongObjectToNodeRecordDescrMap_Value(), this.getNodeRecordDescr(), null, "value", null, 0, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(dataBaseStatisticsEClass, DataBaseStatistics.class, "DataBaseStatistics", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getDataBaseStatistics_HandlerCount(), ecorePackage.getELong(), "handlerCount", null, 0, 1, DataBaseStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getDataBaseStatistics_SampleCount(), ecorePackage.getELong(), "sampleCount", null, 0, 1, DataBaseStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getDataBaseStatistics_ExperimentCount(), ecorePackage.getELong(), "experimentCount", null, 0, 1, DataBaseStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(experimentStatisticsEClass, ExperimentStatistics.class, "ExperimentStatistics", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getExperimentStatistics_NodesA(), this.getESummaryStatistics(), "nodesA", null, 0, 1, ExperimentStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getExperimentStatistics_SamplesN(), this.getESummaryStatistics(), "samplesN", null, 0, 1, ExperimentStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getExperimentStatistics_HandlersN(), this.getESummaryStatistics(), "handlersN", null, 0, 1, ExperimentStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getExperimentStatistics_HandlersPulledS(), this.getESummaryStatistics(), "handlersPulledS", null, 0, 1, ExperimentStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getExperimentStatistics_HandlersR(), this.getESummaryStatistics(), "handlersR", null, 0, 1, ExperimentStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getExperimentStatistics_TimeA(), this.getESummaryStatistics(), "timeA", null, 0, 1, ExperimentStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getExperimentStatistics_TimeN(), this.getESummaryStatistics(), "timeN", null, 0, 1, ExperimentStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getExperimentStatistics_TimeS(), this.getESummaryStatistics(), "timeS", null, 0, 1, ExperimentStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getExperimentStatistics_SamplesPerSecond(), ecorePackage.getEDouble(), "samplesPerSecond", null, 0, 1, ExperimentStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEAttribute(getExperimentStatistics_RecordSize(), this.getESummaryStatistics(), "recordSize", null, 0, 1, ExperimentStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getExperimentStatistics_SamplesR(), this.getESummaryStatistics(), "samplesR", null, 0, 1, ExperimentStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(nodeRecordDescrEClass, NodeRecordDescr.class, "NodeRecordDescr", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getNodeRecordDescr_Record(), this.getNodeRecord(), null, "record", null, 0, 1, NodeRecordDescr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		// Initialize data types
+		initEDataType(eSummaryStatisticsEDataType, SummaryStatistics.class, "ESummaryStatistics", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

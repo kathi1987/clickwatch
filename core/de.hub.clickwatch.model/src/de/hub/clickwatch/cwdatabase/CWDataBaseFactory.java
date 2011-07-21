@@ -71,13 +71,13 @@ public interface CWDataBaseFactory extends EFactory {
 	ExperimentNodeRecordTimeTable createExperimentNodeRecordTimeTable();
 
 	/**
-	 * Returns a new object of class '<em>Data Base Statistics</em>'.
+	 * Returns a new object of class '<em>Experiment Statistics</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Data Base Statistics</em>'.
+	 * @return a new object of class '<em>Experiment Statistics</em>'.
 	 * @generated
 	 */
-	DataBaseStatistics createDataBaseStatistics();
+	ExperimentStatistics createExperimentStatistics();
 
 	/**
 	 * Returns a new object of class '<em>Node Record Descr</em>'.

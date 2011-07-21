@@ -31,7 +31,6 @@ import de.hub.clickwatch.model.Handler;
  * The following features are implemented:
  * <ul>
  *   <li>{@link de.hub.clickwatch.cwdatabase.impl.NodeRecordImpl#getRecords <em>Records</em>}</li>
- *   <li>{@link de.hub.clickwatch.cwdatabase.impl.NodeRecordImpl#getKey <em>Key</em>}</li>
  *   <li>{@link de.hub.clickwatch.cwdatabase.impl.NodeRecordImpl#getStart <em>Start</em>}</li>
  *   <li>{@link de.hub.clickwatch.cwdatabase.impl.NodeRecordImpl#getEnd <em>End</em>}</li>
  *   <li>{@link de.hub.clickwatch.cwdatabase.impl.NodeRecordImpl#getNode <em>Node</em>}</li>
@@ -51,15 +50,6 @@ public class NodeRecordImpl extends EObjectImpl implements NodeRecord {
 	 */
 	protected EList<Handler> records;
 
-	/**
-	 * The cached value of the '{@link #getKey() <em>Key</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getKey()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Handler> key;
 	/**
 	 * The default value of the '{@link #getStart() <em>Start</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -154,18 +144,6 @@ public class NodeRecordImpl extends EObjectImpl implements NodeRecord {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Handler> getKey() {
-		if (key == null) {
-			key = new EObjectResolvingEList<Handler>(Handler.class, this, CWDataBasePackage.NODE_RECORD__KEY);
-		}
-		return key;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public long getStart() {
 		return start;
 	}
@@ -248,8 +226,6 @@ public class NodeRecordImpl extends EObjectImpl implements NodeRecord {
 		switch (featureID) {
 			case CWDataBasePackage.NODE_RECORD__RECORDS:
 				return getRecords();
-			case CWDataBasePackage.NODE_RECORD__KEY:
-				return getKey();
 			case CWDataBasePackage.NODE_RECORD__START:
 				return getStart();
 			case CWDataBasePackage.NODE_RECORD__END:
@@ -272,10 +248,6 @@ public class NodeRecordImpl extends EObjectImpl implements NodeRecord {
 			case CWDataBasePackage.NODE_RECORD__RECORDS:
 				getRecords().clear();
 				getRecords().addAll((Collection<? extends Handler>)newValue);
-				return;
-			case CWDataBasePackage.NODE_RECORD__KEY:
-				getKey().clear();
-				getKey().addAll((Collection<? extends Handler>)newValue);
 				return;
 			case CWDataBasePackage.NODE_RECORD__START:
 				setStart((Long)newValue);
@@ -301,9 +273,6 @@ public class NodeRecordImpl extends EObjectImpl implements NodeRecord {
 			case CWDataBasePackage.NODE_RECORD__RECORDS:
 				getRecords().clear();
 				return;
-			case CWDataBasePackage.NODE_RECORD__KEY:
-				getKey().clear();
-				return;
 			case CWDataBasePackage.NODE_RECORD__START:
 				setStart(START_EDEFAULT);
 				return;
@@ -327,8 +296,6 @@ public class NodeRecordImpl extends EObjectImpl implements NodeRecord {
 		switch (featureID) {
 			case CWDataBasePackage.NODE_RECORD__RECORDS:
 				return records != null && !records.isEmpty();
-			case CWDataBasePackage.NODE_RECORD__KEY:
-				return key != null && !key.isEmpty();
 			case CWDataBasePackage.NODE_RECORD__START:
 				return start != START_EDEFAULT;
 			case CWDataBasePackage.NODE_RECORD__END:

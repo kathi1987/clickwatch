@@ -16,11 +16,12 @@
         eOpposite="#//DataBase/experiments"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="duration" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="end" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="statistics" eType="#//ExperimentStatistics"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NodeRecord">
     <eStructuralFeatures xsi:type="ecore:EReference" name="records" upperBound="-1"
         eType="ecore:EClass ../model/ClickWatchModel.ecore#//Handler" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="key" upperBound="-1" eType="ecore:EClass ../model/ClickWatchModel.ecore#//Handler"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="start" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="end" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="node" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -29,9 +30,9 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="experiments" upperBound="-1"
         eType="#//ExperimentDescr" containment="true" eOpposite="#//ExperimentDescr/dataBase"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="storageBaseFileString"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="statistics" eType="#//DataBaseStatistics"
-        containment="true"/>
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="inMemory" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"
+        defaultValueLiteral="false"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ExperimentRecord">
     <eStructuralFeatures xsi:type="ecore:EReference" name="metaData" upperBound="-1"
@@ -55,12 +56,22 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//NodeRecordDescr"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DataBaseStatistics">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="handlerCount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sampleCount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="experimentCount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ExperimentStatistics">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nodesA" eType="#//ESummaryStatistics"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="samplesN" eType="#//ESummaryStatistics"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="handlersN" eType="#//ESummaryStatistics"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="handlersPulledS" eType="#//ESummaryStatistics"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="handlersR" eType="#//ESummaryStatistics"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="timeA" eType="#//ESummaryStatistics"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="timeN" eType="#//ESummaryStatistics"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="timeS" eType="#//ESummaryStatistics"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="samplesPerSecond" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
+        unsettable="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="recordSize" eType="#//ESummaryStatistics"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="samplesR" eType="#//ESummaryStatistics"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NodeRecordDescr">
     <eStructuralFeatures xsi:type="ecore:EReference" name="record" eType="#//NodeRecord"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="ESummaryStatistics" instanceClassName="org.apache.commons.math.stat.descriptive.SummaryStatistics"/>
 </ecore:EPackage>

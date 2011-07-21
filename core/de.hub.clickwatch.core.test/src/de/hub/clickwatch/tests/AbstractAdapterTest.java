@@ -48,6 +48,10 @@ public class AbstractAdapterTest extends AbstractTest {
 
 	@Override
 	protected void additionalSetUp() {
+		adapterTestSetUp();
+	}
+	
+	protected void adapterTestSetUp() {
 		clickSocketWrapper = (ClickSocketWrapper)injector.getInstance(IClickSocket.class);
 		clickSocketWrapper.setSource(new ClickSocketDefaultTestImpl());
 	}

@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link de.hub.clickwatch.cwdatabase.DataBase#getExperiments <em>Experiments</em>}</li>
  *   <li>{@link de.hub.clickwatch.cwdatabase.DataBase#getStorageBaseFileString <em>Storage Base File String</em>}</li>
- *   <li>{@link de.hub.clickwatch.cwdatabase.DataBase#getStatistics <em>Statistics</em>}</li>
+ *   <li>{@link de.hub.clickwatch.cwdatabase.DataBase#getInMemory <em>In Memory</em>}</li>
  * </ul>
  * </p>
  *
@@ -48,6 +48,7 @@ public interface DataBase extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Storage Base File String</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Storage Base File String</em>' attribute isn't clear,
@@ -57,7 +58,7 @@ public interface DataBase extends EObject {
 	 * @return the value of the '<em>Storage Base File String</em>' attribute.
 	 * @see #setStorageBaseFileString(String)
 	 * @see de.hub.clickwatch.cwdatabase.CWDataBasePackage#getDataBase_StorageBaseFileString()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getStorageBaseFileString();
@@ -73,29 +74,30 @@ public interface DataBase extends EObject {
 	void setStorageBaseFileString(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Statistics</b></em>' containment reference.
+	 * Returns the value of the '<em><b>In Memory</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Statistics</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>In Memory</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Statistics</em>' containment reference.
-	 * @see #setStatistics(DataBaseStatistics)
-	 * @see de.hub.clickwatch.cwdatabase.CWDataBasePackage#getDataBase_Statistics()
-	 * @model containment="true"
+	 * @return the value of the '<em>In Memory</em>' attribute.
+	 * @see #setInMemory(Boolean)
+	 * @see de.hub.clickwatch.cwdatabase.CWDataBasePackage#getDataBase_InMemory()
+	 * @model default="false"
 	 * @generated
 	 */
-	DataBaseStatistics getStatistics();
+	Boolean getInMemory();
 
 	/**
-	 * Sets the value of the '{@link de.hub.clickwatch.cwdatabase.DataBase#getStatistics <em>Statistics</em>}' containment reference.
+	 * Sets the value of the '{@link de.hub.clickwatch.cwdatabase.DataBase#getInMemory <em>In Memory</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Statistics</em>' containment reference.
-	 * @see #getStatistics()
+	 * @param value the new value of the '<em>In Memory</em>' attribute.
+	 * @see #getInMemory()
 	 * @generated
 	 */
-	void setStatistics(DataBaseStatistics value);
+	void setInMemory(Boolean value);
 
 } // DataBase

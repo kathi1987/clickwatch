@@ -18,6 +18,7 @@ import de.hub.clickwatch.cwdatabase.CWDataBasePackage;
 import de.hub.clickwatch.cwdatabase.DataBase;
 import de.hub.clickwatch.cwdatabase.ExperimentDescr;
 import de.hub.clickwatch.cwdatabase.ExperimentRecord;
+import de.hub.clickwatch.cwdatabase.ExperimentStatistics;
 import de.hub.clickwatch.model.Network;
 
 /**
@@ -36,6 +37,7 @@ import de.hub.clickwatch.model.Network;
  *   <li>{@link de.hub.clickwatch.cwdatabase.impl.ExperimentDescrImpl#getDataBase <em>Data Base</em>}</li>
  *   <li>{@link de.hub.clickwatch.cwdatabase.impl.ExperimentDescrImpl#getDuration <em>Duration</em>}</li>
  *   <li>{@link de.hub.clickwatch.cwdatabase.impl.ExperimentDescrImpl#getEnd <em>End</em>}</li>
+ *   <li>{@link de.hub.clickwatch.cwdatabase.impl.ExperimentDescrImpl#getStatistics <em>Statistics</em>}</li>
  * </ul>
  * </p>
  *
@@ -171,6 +173,16 @@ public class ExperimentDescrImpl extends EObjectImpl implements ExperimentDescr 
 	 * @ordered
 	 */
 	protected long end = END_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getStatistics() <em>Statistics</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStatistics()
+	 * @generated
+	 * @ordered
+	 */
+	protected ExperimentStatistics statistics;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -466,6 +478,49 @@ public class ExperimentDescrImpl extends EObjectImpl implements ExperimentDescr 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public ExperimentStatistics getStatistics() {
+		return statistics;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetStatistics(ExperimentStatistics newStatistics, NotificationChain msgs) {
+		ExperimentStatistics oldStatistics = statistics;
+		statistics = newStatistics;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CWDataBasePackage.EXPERIMENT_DESCR__STATISTICS, oldStatistics, newStatistics);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setStatistics(ExperimentStatistics newStatistics) {
+		if (newStatistics != statistics) {
+			NotificationChain msgs = null;
+			if (statistics != null)
+				msgs = ((InternalEObject)statistics).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CWDataBasePackage.EXPERIMENT_DESCR__STATISTICS, null, msgs);
+			if (newStatistics != null)
+				msgs = ((InternalEObject)newStatistics).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CWDataBasePackage.EXPERIMENT_DESCR__STATISTICS, null, msgs);
+			msgs = basicSetStatistics(newStatistics, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CWDataBasePackage.EXPERIMENT_DESCR__STATISTICS, newStatistics, newStatistics));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -491,6 +546,8 @@ public class ExperimentDescrImpl extends EObjectImpl implements ExperimentDescr 
 				return basicSetNetworkTimeCopy(null, msgs);
 			case CWDataBasePackage.EXPERIMENT_DESCR__DATA_BASE:
 				return basicSetDataBase(null, msgs);
+			case CWDataBasePackage.EXPERIMENT_DESCR__STATISTICS:
+				return basicSetStatistics(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -536,6 +593,8 @@ public class ExperimentDescrImpl extends EObjectImpl implements ExperimentDescr 
 				return getDuration();
 			case CWDataBasePackage.EXPERIMENT_DESCR__END:
 				return getEnd();
+			case CWDataBasePackage.EXPERIMENT_DESCR__STATISTICS:
+				return getStatistics();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -574,6 +633,9 @@ public class ExperimentDescrImpl extends EObjectImpl implements ExperimentDescr 
 				return;
 			case CWDataBasePackage.EXPERIMENT_DESCR__END:
 				setEnd((Long)newValue);
+				return;
+			case CWDataBasePackage.EXPERIMENT_DESCR__STATISTICS:
+				setStatistics((ExperimentStatistics)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -614,6 +676,9 @@ public class ExperimentDescrImpl extends EObjectImpl implements ExperimentDescr 
 			case CWDataBasePackage.EXPERIMENT_DESCR__END:
 				setEnd(END_EDEFAULT);
 				return;
+			case CWDataBasePackage.EXPERIMENT_DESCR__STATISTICS:
+				setStatistics((ExperimentStatistics)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -644,6 +709,8 @@ public class ExperimentDescrImpl extends EObjectImpl implements ExperimentDescr 
 				return duration != DURATION_EDEFAULT;
 			case CWDataBasePackage.EXPERIMENT_DESCR__END:
 				return end != END_EDEFAULT;
+			case CWDataBasePackage.EXPERIMENT_DESCR__STATISTICS:
+				return statistics != null;
 		}
 		return super.eIsSet(featureID);
 	}

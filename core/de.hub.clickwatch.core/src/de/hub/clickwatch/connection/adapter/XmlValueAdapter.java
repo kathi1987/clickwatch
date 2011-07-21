@@ -84,6 +84,9 @@ public class XmlValueAdapter extends AbstractAdapter implements IValueAdapter {
 		mixed.clear();
 		mixed.addAll(source.getMixed());
 	}
-	
-	
+
+	@Override
+	public boolean valuesEqual(Handler h1, Handler h2) {
+		return h1.equals(h2);
+	}
 }

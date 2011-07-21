@@ -20,7 +20,6 @@ import de.hub.clickwatch.model.Handler;
  * The following features are supported:
  * <ul>
  *   <li>{@link de.hub.clickwatch.cwdatabase.NodeRecord#getRecords <em>Records</em>}</li>
- *   <li>{@link de.hub.clickwatch.cwdatabase.NodeRecord#getKey <em>Key</em>}</li>
  *   <li>{@link de.hub.clickwatch.cwdatabase.NodeRecord#getStart <em>Start</em>}</li>
  *   <li>{@link de.hub.clickwatch.cwdatabase.NodeRecord#getEnd <em>End</em>}</li>
  *   <li>{@link de.hub.clickwatch.cwdatabase.NodeRecord#getNode <em>Node</em>}</li>
@@ -47,22 +46,6 @@ public interface NodeRecord extends EObject {
 	 * @generated
 	 */
 	EList<Handler> getRecords();
-
-	/**
-	 * Returns the value of the '<em><b>Key</b></em>' reference list.
-	 * The list contents are of type {@link de.hub.clickwatch.model.Handler}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Key</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Key</em>' reference list.
-	 * @see de.hub.clickwatch.cwdatabase.CWDataBasePackage#getNodeRecord_Key()
-	 * @model
-	 * @generated
-	 */
-	EList<Handler> getKey();
 
 	/**
 	 * Returns the value of the '<em><b>Start</b></em>' attribute.

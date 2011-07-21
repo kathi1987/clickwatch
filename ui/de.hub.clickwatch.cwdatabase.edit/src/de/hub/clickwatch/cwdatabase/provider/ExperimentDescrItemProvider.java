@@ -7,6 +7,7 @@
 package de.hub.clickwatch.cwdatabase.provider;
 
 
+import de.hub.clickwatch.cwdatabase.CWDataBaseFactory;
 import de.hub.clickwatch.cwdatabase.CWDataBasePackage;
 import de.hub.clickwatch.cwdatabase.ExperimentDescr;
 
@@ -230,6 +231,7 @@ public class ExperimentDescrItemProvider
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(CWDataBasePackage.Literals.EXPERIMENT_DESCR__NETWORK);
 			childrenFeatures.add(CWDataBasePackage.Literals.EXPERIMENT_DESCR__NETWORK_TIME_COPY);
+			childrenFeatures.add(CWDataBasePackage.Literals.EXPERIMENT_DESCR__STATISTICS);
 		}
 		return childrenFeatures;
 	}
@@ -293,6 +295,7 @@ public class ExperimentDescrItemProvider
 				return;
 			case CWDataBasePackage.EXPERIMENT_DESCR__NETWORK:
 			case CWDataBasePackage.EXPERIMENT_DESCR__NETWORK_TIME_COPY:
+			case CWDataBasePackage.EXPERIMENT_DESCR__STATISTICS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -319,6 +322,11 @@ public class ExperimentDescrItemProvider
 			(createChildParameter
 				(CWDataBasePackage.Literals.EXPERIMENT_DESCR__NETWORK_TIME_COPY,
 				 ClickWatchModelFactory.eINSTANCE.createNetwork()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(CWDataBasePackage.Literals.EXPERIMENT_DESCR__STATISTICS,
+				 CWDataBaseFactory.eINSTANCE.createExperimentStatistics()));
 	}
 
 	/**

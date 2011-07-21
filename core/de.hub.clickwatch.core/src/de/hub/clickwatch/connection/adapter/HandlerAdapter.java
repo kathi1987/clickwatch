@@ -40,11 +40,6 @@ public class HandlerAdapter extends AbstractAdapter implements IHandlerAdapter {
 	}
 
 	@Override
-	public long latestNodeTime() {
-		return System.nanoTime();
-	}
-
-	@Override
 	public void configure(Collection<Handler> handlerConfig) {
 		this.config = handlerConfig;
 	}

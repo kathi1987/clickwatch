@@ -10,12 +10,15 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: de.hub.clickwatch.cwdatabase,
  de.hub.clickwatch.cwdatabase.impl,
  de.hub.clickwatch.cwdatabase.util,
+ de.hub.clickwatch.cwdatabase.util.builder,
  de.hub.clickwatch.model,
  de.hub.clickwatch.model.impl,
- de.hub.clickwatch.model.util
+ de.hub.clickwatch.model.util,
+ de.hub.clickwatch.model.util.builder
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
  org.eclipse.emf.ecore.xmi,
  org.eclipse.emf.cdo,
- com.google.collect;bundle-version="1.0.0"
+ com.google.collect;bundle-version="1.0.0",
+ org.apache.commons.math;bundle-version="2.2.0";visibility:=reexport
 Bundle-ActivationPolicy: lazy

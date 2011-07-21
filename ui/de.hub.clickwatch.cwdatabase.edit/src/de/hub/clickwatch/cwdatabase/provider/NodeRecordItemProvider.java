@@ -69,34 +69,11 @@ public class NodeRecordItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addKeyPropertyDescriptor(object);
 			addStartPropertyDescriptor(object);
 			addEndPropertyDescriptor(object);
 			addNodePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Key feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addKeyPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_NodeRecord_key_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_NodeRecord_key_feature", "_UI_NodeRecord_type"),
-				 CWDataBasePackage.Literals.NODE_RECORD__KEY,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
 	}
 
 	/**
