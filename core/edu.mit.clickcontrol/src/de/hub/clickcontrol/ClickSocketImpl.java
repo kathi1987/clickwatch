@@ -15,9 +15,9 @@ public class ClickSocketImpl implements IClickSocket {
 	private ControlSocket cs = null;
 
 	@Override
-	public void connect(InetAddress host, int port, int socketTimeOut) throws IOException {
+	public void connect(String host, int port, int socketTimeOut) throws IOException {
 		Preconditions.checkState(cs == null, "can only connect once");
-		cs = new ControlSocket(host, port, socketTimeOut);
+		cs = new ControlSocket(InetAddress.getByName(host), port, socketTimeOut);
 	}
 
 	@Override

@@ -13,5 +13,5 @@ public interface IValueAdapter {
 	
 	public void moveValue(Handler source, Handler target);
 	
-	public boolean valuesEqual(Handler h1, Handler h2);
+	public boolean valuesEquals(Handler h1, Handler h2);
 }

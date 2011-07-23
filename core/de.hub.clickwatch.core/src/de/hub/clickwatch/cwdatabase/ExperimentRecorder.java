@@ -29,26 +29,40 @@ public class ExperimentRecorder {
 	private ExperimentStatistics stats = null;
 	
 	public static final String zipExtension = ".zip";
-	@Inject ILogger logger;
-	@Inject Provider<NodeRecorder> recorderProvider;	
+	@Inject private ILogger logger;
+	@Inject private Provider<NodeRecorder> recorderProvider;	
 	
-	public synchronized void saveRecord(Node node, long time, NodeRecordDescr nodeRecord) {		
-		Preconditions.checkArgument(time > 0);
+	public synchronized void saveRecord(Node node, long start, long end, NodeRecordDescr nodeRecord) {		
+		Preconditions.checkArgument(start > 0);
+		
 		ExperimentNodeRecordTimeTable timeTable = experimentRecord.getNodeMap().get(node.getINetAddress());
 		if (timeTable == null) {				
 			timeTable = CWDataBaseFactory.eINSTANCE.createExperimentNodeRecordTimeTable();
 			experimentRecord.getNodeMap().put(node.getINetAddress(), timeTable);
 		}
 
-		if (time == 0) {
+		if (start == 0) {
 			return; // does not needed to be saved, this can happen when the record is aborted right when a new record started
 		}
-		timeTable.getNodeMap().put(time, nodeRecord);			
+		timeTable.getNodeMap().put(start, nodeRecord);
+		
+		if (!experimentDescr.getDataBase().getInMemory()) {
+			try {
+				logger.log(ILogger.DEBUG, "saving experiment record and main database file", null);
+				if (end > this.end) {
+					this.end = end;
+				}
+				experimentRecord.eResource().save(XmlModelRepository.defaultLoadSaveOptions());
+				experimentDescr.eResource().save(XmlModelRepository.defaultLoadSaveOptions());
+			} catch (IOException e) {
+				Throwables.propagate(e);
+			}
+		}
 	}
 	
 	private String getURIPrefix() {
 		return experimentDescr.getDataBase().getStorageBaseFileString() 
-				+ "/" + experimentDescr.getName(); 
+				+ "/.data/" + experimentDescr.getName().replace(" ", "_"); 
 		
 	}
 	
@@ -56,6 +70,12 @@ public class ExperimentRecorder {
 		long start = System.nanoTime();
 		this.experimentDescr = experiment;
 		this.stats = experimentDescr.getStatistics();
+		if (stats != null) {
+			stats.reset();
+		} else {
+			this.stats = CWDataBaseFactory.eINSTANCE.createExperimentStatistics();
+			experimentDescr.setStatistics(stats);
+		}
 		
 		ResourceSet resourceSet = experimentDescr.eResource().getResourceSet();
 		Resource experimentRecordResource = resourceSet.createResource(
@@ -80,13 +100,13 @@ public class ExperimentRecorder {
 		}
 		
 		try {
-			wait(); // for all reported initialized, TODO timeout
+			wait(20000); // timeout after 20 second of initialization
 			logger.log(ILogger.DEBUG, "All node recorder are initialized and recording.", null);
 			wait(experimentDescr.getDuration());
 			for (NodeRecorder recorder: nodeRecorders) {
 				recorder.stop();
 			}
-			wait(); // for all reported stopped, // TODO timeout
+			wait(60000); // for all reported stopped, timeout after 60 seconds
 			logger.log(ILogger.DEBUG, "All node recorder have stopped recording.", null);
 		} catch(InterruptedException e) {
 			Throwables.propagate(e);

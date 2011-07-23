@@ -6,7 +6,6 @@
  */
 package de.hub.clickwatch.cwdatabase.util;
 
-import de.hub.clickwatch.cwdatabase.*;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;

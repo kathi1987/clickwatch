@@ -17,22 +17,23 @@ import com.google.inject.Inject;
 import de.hub.clickwatch.XmlModelRepository;
 import de.hub.clickwatch.model.ClickWatchModelFactory;
 import de.hub.clickwatch.model.Handler;
+import de.hub.clickwatch.util.ILogger;
 import de.hub.clickwatch.util.Throwables;
 
 public class CompoundHandlerAdapter extends HandlerAdapter {
 	
-	@Inject
-	XmlModelRepository xmlModelRepository;
+	@Inject private XmlModelRepository xmlModelRepository;
+	@Inject private ILogger logger;
 	
 	private IValueAdapter valueAdapter = null;
 	
 	private static final String COMPOUND_HANDLER_ELEMENT = "com";
-	private static final String COMPOUND_HANDLER_HANDLER = "read";
+	private static final String COMPOUND_HANDLER_READ_HANDLER = "read";
+	private static final String COMPOUND_HANDLER_RESET_HANDLER = "reset";
+	private static final String COMPOUND_HANDLER_INSERT_HANDLER = "insert";
 	
 	private List<Handler> handlers = null;
 	private String currentHandlerName = null;
-	
-	private long latestNodeTime = 0;
 
 	@Override
 	public Collection<Handler> pullHandler() {
@@ -45,7 +46,7 @@ public class CompoundHandlerAdapter extends HandlerAdapter {
 		
 		char[] compundHandlerRawValue = null;
 		try {
-			compundHandlerRawValue = clickSocket.read(COMPOUND_HANDLER_ELEMENT, COMPOUND_HANDLER_HANDLER);
+			compundHandlerRawValue = clickSocket.read(COMPOUND_HANDLER_ELEMENT, COMPOUND_HANDLER_READ_HANDLER);
 		} catch (Exception e) {
 			Throwables.propagate(e);
 		}
@@ -94,10 +95,11 @@ public class CompoundHandlerAdapter extends HandlerAdapter {
 			currentHandlerName = attributes.get("name").replace(".", "/");
 			if (attributes.get("overflow").equals("true")) {
 				// TODO handler overflow
-				// throw new RuntimeException("too slow there is an overflow in a compoundhandler");
-			}
+				logger.log(ILogger.WARNING, "Overflow in compound handler detected"
+						+ ", handler: "	+ currentHandlerName 
+						+ ", node: " + connection, null);
 
-			latestNodeTime = time(attributes.get("time"));
+			}
 		} else if (elementName.equals("record")) {
 			if (attributes.get("update").equals("false")) {
 				return;
@@ -137,23 +139,44 @@ public class CompoundHandlerAdapter extends HandlerAdapter {
 	}));
 
 	@Override
-	public void configure(Collection<Handler> handlerConfig) {
+	public void configure(Collection<Handler> handlerConfig) {		
+		StringBuffer configurationString = new StringBuffer();
 		loop: for(Handler handler: handlerConfig) {
 			String handlerName = handler.getQualifiedName();
 			int slash = handlerName.lastIndexOf("/");
 			String plainHandlerName = handlerName.substring(slash + 1);
+			handlerName = handlerName.substring(0, slash) + "." + plainHandlerName;
 			if (commonHandler.contains(plainHandlerName)) {
 				continue loop;
 			}
-			if (plainHandlerName.startsWith("com.")) {
+			if (handlerName.equals("com.read")) {
 				continue loop;
 			}
-			handlerName = handlerName.substring(0, slash) + "." + plainHandlerName;
-			try {
-				clickSocket.write("com", "insert", handlerName.toCharArray());
-			} catch (Exception e) {
-				Throwables.propagate(e);
-			}
+			configurationString.append(handlerName);
+			configurationString.append(" ");
 		}
+		
+		resetCompoundHandler(configurationString.toString());
 	}	
+	
+	private void resetCompoundHandler(String configurationString) {
+		try {
+			clickSocket.write(COMPOUND_HANDLER_ELEMENT, COMPOUND_HANDLER_RESET_HANDLER, "".toCharArray());
+			clickSocket.write(COMPOUND_HANDLER_ELEMENT, COMPOUND_HANDLER_INSERT_HANDLER, configurationString.trim().toCharArray());
+			logger.log(ILogger.DEBUG, "Setting compound handler of " + connection + " with " + configurationString, null);
+		} catch (Exception e) {
+			Throwables.propagate(e);
+		}
+	}
+
+	@Override
+	public void deconfigure() {
+		try {
+			clickSocket.write(COMPOUND_HANDLER_ELEMENT, COMPOUND_HANDLER_RESET_HANDLER, "".toCharArray());
+			logger.log(ILogger.DEBUG, "Reseting compound handler of " + connection, null);
+		} catch (Exception e) {
+			Throwables.propagate(e);
+		}
+	}
+
 }

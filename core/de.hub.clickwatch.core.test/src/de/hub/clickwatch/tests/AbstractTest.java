@@ -1,7 +1,9 @@
 package de.hub.clickwatch.tests;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import org.junit.Before;
@@ -68,6 +70,8 @@ public class AbstractTest {
 			@Override
 			public synchronized void log(int status, String message, Throwable exception) {
 				if (getLogLevel() >= status) {				
+					System.out.print(DateFormat.getDateTimeInstance().format(new Date()) + " ");
+					
 					if (status == ILogger.DEBUG) {
 						System.out.print("[DEBUG] ");
 					} else if (status == ILogger.INFO) {
@@ -77,6 +81,7 @@ public class AbstractTest {
 					} else if (status == ILogger.ERROR) {
 						System.out.print("[ERROR] ");
 					}
+					
 					System.out.print(message);
 					if (exception != null) {
 						System.out.println(": " + exception.getMessage());

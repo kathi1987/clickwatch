@@ -44,4 +44,9 @@ public class HandlerAdapter extends AbstractAdapter implements IHandlerAdapter {
 		this.config = handlerConfig;
 	}
 
+	@Override
+	public void deconfigure() {
+		// empty
+	}
+
 }

@@ -143,6 +143,7 @@ public class CWDataBasePackageImpl extends EPackageImpl implements CWDataBasePac
 	 * @generated
 	 */
 	public static CWDataBasePackage init() {
+		try {
 		if (isInited) return (CWDataBasePackage)EPackage.Registry.INSTANCE.getEPackage(CWDataBasePackage.eNS_URI);
 
 		// Obtain or create and register package
@@ -166,6 +167,10 @@ public class CWDataBasePackageImpl extends EPackageImpl implements CWDataBasePac
 		// Update the registry and return the package
 		EPackage.Registry.INSTANCE.put(CWDataBasePackage.eNS_URI, theCWDataBasePackage);
 		return theCWDataBasePackage;
+		} catch (Throwable e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
 	}
 
 	/**
@@ -762,6 +767,8 @@ public class CWDataBasePackageImpl extends EPackageImpl implements CWDataBasePac
 		initEAttribute(getExperimentStatistics_SamplesPerSecond(), ecorePackage.getEDouble(), "samplesPerSecond", null, 0, 1, ExperimentStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEAttribute(getExperimentStatistics_RecordSize(), this.getESummaryStatistics(), "recordSize", null, 0, 1, ExperimentStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getExperimentStatistics_SamplesR(), this.getESummaryStatistics(), "samplesR", null, 0, 1, ExperimentStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		addEOperation(experimentStatisticsEClass, null, "reset", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(nodeRecordDescrEClass, NodeRecordDescr.class, "NodeRecordDescr", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getNodeRecordDescr_Record(), this.getNodeRecord(), null, "record", null, 0, 1, NodeRecordDescr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -48,7 +48,7 @@ public class ExperimentRecorderTestNA extends AbstractTest {
 		return 4;
 	}
 
-//	@Ignore("work in progress")
+	@Ignore("work in progress")
 	@Test
 	public void testWithRecord() throws Exception {		
 		ResourceSet rs = new ResourceSetImpl();

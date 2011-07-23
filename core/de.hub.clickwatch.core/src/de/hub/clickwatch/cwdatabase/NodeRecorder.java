@@ -4,10 +4,13 @@ import java.io.File;
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.math.stat.descriptive.SummaryStatistics;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -46,6 +49,7 @@ public class NodeRecorder implements Runnable {
 	private Node metaData;
 	private NodeRecord record;
 	private Map<String, Handler> keyMap = new HashMap<String, Handler>();
+	private INodeConnection connection = null;
 	private IHandlerAdapter handlerAdapter = null;
 	private long updateInterval = -1;
 	private boolean isRecording = true;
@@ -57,11 +61,16 @@ public class NodeRecorder implements Runnable {
 	@Inject @Named(CWDataBaseModule.I_HANDLER_PER_RECORD_PROPERTY) private int handlerPerRecord;
 	@Inject @Named(CWDataBaseModule.B_RECORD_CHANGES_ONLY_PROPERTY) private boolean recordChangesOnly;
 	@Inject @Named(CWDataBaseModule.DB_VALUE_ADAPTER_PROPERTY) private IValueAdapter valueAdapter;
+	
+	private List<Double> handlerPulledSValues = new ArrayList<Double>();
+	private List<Double> timeSValues = new ArrayList<Double>();
 
 	private void initializeRecorder() {
 		logger.log(ILogger.DEBUG, "started recording of " + configuration.getINetAddress(), null);
 		
-		INodeConnection connection = ncp.createConnection(configuration);
+		if (connection == null) {
+			connection = ncp.createConnection(configuration);
+		}
 		connection.connect();
 		
 		metaData = connection.getAdapter(IMetaDataAdapter.class).pullAllMetaData();
@@ -81,6 +90,17 @@ public class NodeRecorder implements Runnable {
 		handlerAdapter = connection.getAdapter(IHandlerAdapter.class);
 		EList<Handler> allHandlers = metaData.getAllHandlers();
 		handlerAdapter.configure(allHandlers);
+	}
+	
+	private void recover() {
+		try {
+			EcoreUtil.delete(metaData);
+			connection.disconnect();
+		} catch (Exception e) {
+			logger.log(ILogger.ERROR, "could not disconnect during recovery", e);
+		} finally {
+			initializeRecorder();
+		}
 	}
 	
 	private void reportHandlerPulled(long time) {
@@ -106,18 +126,18 @@ public class NodeRecorder implements Runnable {
 			
 			String qualifiedName = handler.getQualifiedName();
 			Handler key = keyMap.get(qualifiedName);
-			boolean hasChanged = key == null || (valueAdapter.valuesEqual(key, handler)); 
+			boolean hasChanged = key == null || !(valueAdapter.valuesEquals(key, handler)); 
 			keyMap.put(qualifiedName, handler);
 			
 			if (!recordChangesOnly || hasChanged) {
 				Preconditions.checkState(handler.getTimestamp() > 0);
 				record.getRecords().add(handler);
 				recordedHandler++;
-			} 
+			}
 		}
 		if (stats != null) {
-			stats.getHandlersPulledS().addValue(handlersPulled.size());
-			stats.getTimeS().addValue(System.nanoTime() - start);
+			handlerPulledSValues.add((double)handlersPulled.size());
+			timeSValues.add((double)System.nanoTime() - start);
 		}
 		
 		return recordedHandler;
@@ -125,7 +145,7 @@ public class NodeRecorder implements Runnable {
 	
 	private void initializeRecord() {
 		record = CWDataBaseFactory.eINSTANCE.createNodeRecord();
-		parent.addResource(configuration.getINetAddress() + "_" + System.nanoTime(), record);
+		parent.addResource(configuration.getINetAddress() + "_" + System.currentTimeMillis(), record);
 		
 		for (Handler metaDataHandler: metaData.getAllHandlers()) {
 			Handler keyHander = keyMap.get(metaDataHandler.getQualifiedName());
@@ -136,11 +156,11 @@ public class NodeRecorder implements Runnable {
 	}
 	
 	private void saveRecord() {
-		if (record.eResource() != null) {
+		if (record != null && record.eResource() != null) {
 			NodeRecordDescr recordDescr = CWDataBaseFactory.eINSTANCE.createNodeRecordDescr();
 			recordDescr.setRecord(record);
 			
-			parent.saveRecord(configuration, record.getStart(), recordDescr);
+			parent.saveRecord(configuration, record.getStart(), record.getEnd(), recordDescr);
 			
 			if (!inMemory) {
 				try {
@@ -175,15 +195,50 @@ public class NodeRecorder implements Runnable {
 		int samples = 0;
 		int samplesR = 0;
 		long start = System.nanoTime();
-		while(isRecording) {
+		
+		List<Double> handlersRValues = new ArrayList<Double>();
+		List<Double> samplesRValues = new ArrayList<Double>();
+		
+		boolean isRecovering = false;
+		int recoveringTries = 0;
+		loop: while(isRecording) {
 			if (needRecordInitialization) {
 				initializeRecord();
 				needRecordInitialization = false;
 			}
-			int recordedHandlerS = pullAndRecordHandler();
+			if (isRecovering && recoveringTries < 5) {
+				try {
+					recover();
+				} catch(Exception e) {
+					logger.log(ILogger.ERROR, "could not recover for the " + ++recoveringTries + "th time for node " 
+							+ configuration.getINetAddress(), e);
+				}
+				if (recoveringTries == 5) {
+					logger.log(ILogger.ERROR, "could not recover, tried 5 times, give up on node " 
+							+ configuration.getINetAddress(), null);
+					break loop;
+				}
+			}
+			int recordedHandlerS = 0;
+			try {
+				recordedHandlerS = pullAndRecordHandler();
+			} catch (Exception e) {
+				logger.log(ILogger.ERROR, "exception during pulling handlers in node " 
+						+ configuration.getINetAddress() 
+						+ ", I try to revover.", e);
+				try {
+					recover();
+				} catch (Exception ee) {
+					logger.log(ILogger.ERROR, "could not recover immediatly for node " 
+							+ configuration.getINetAddress()
+							+ ", I will retry for 5 times with update interval in between", ee);	
+					isRecovering = true;
+				}
+			}
 			
 			if (samples % 100 == 0) {
-				logger.log(ILogger.DEBUG, "Recording " + samples + "th sample for " + configuration.getINetAddress(), null);
+				logger.log(ILogger.DEBUG, "Recording " + samples + "th sample for " 
+						+ configuration.getINetAddress(), null);
 			}
 			
 			recordedHandlerR += recordedHandlerS;
@@ -193,41 +248,49 @@ public class NodeRecorder implements Runnable {
 			
 			if (recordedHandlerR > handlerPerRecord) {
 				saveRecord();		
-				needRecordInitialization = true;
-				if (stats != null) {
-					stats.getHandlersR().addValue(recordedHandlerR);
-					stats.getSamplesR().addValue(samplesR);
-				}
+				needRecordInitialization = true;	
+				handlersRValues.add((double)recordedHandlerR);
+				samplesRValues.add((double)samplesR);
 				recordedHandlerR = 0;
 				samplesR = 0;
 			}	
 			
 			waitForUpdateInterval();
 		}
+		saveRecord();
+		handlersRValues.add((double)recordedHandlerR);
+		samplesRValues.add((double)samplesR);
 		
 		if (stats != null) {
 			stats.getHandlersN().addValue(recordedHandlerN);
 			stats.getSamplesN().addValue(samples);
 			stats.getTimeN().addValue(System.nanoTime() - start);
+			addAll(stats.getHandlersR(), handlersRValues);
+			addAll(stats.getSamplesR(), samplesRValues);
+			addAll(stats.getHandlersPulledS(), handlerPulledSValues);
+			addAll(stats.getTimeS(), timeSValues);
 		}
-		saveRecord();
-		if (stats != null) {
-			stats.getHandlersR().addValue(recordedHandlerR);
-			stats.getSamplesR().addValue(samplesR);
-		}
+		
+		handlerAdapter.deconfigure();
 		parent.reportStopped(record.getEnd());
+	}
+	
+	private void addAll(SummaryStatistics stat, Collection<Double> values) {
+		for(Double d: values) {
+			stat.addValue(d);
+		}
 	}
 	
 	private static Runtime runtime = Runtime.getRuntime();
 	private static NumberFormat memFormat = new DecimalFormat("#00,000,000,000,000");
 	private static NumberFormat updatesFormat = new DecimalFormat("#00,000,000");
 	
-	public static void report(String msg, long run, long reportOnEach) {
+	private void report(String msg, long run, long reportOnEach) {
 		if (run % reportOnEach == 0) {
 			runtime.gc();
-			System.out.println(msg + " updates run: " + updatesFormat.format(run) + "; memory-usage: " + 
+			logger.log(ILogger.DEBUG, msg + " updates run: " + updatesFormat.format(run) + "; memory-usage: " + 
 					memFormat.format(runtime.totalMemory() - runtime.freeMemory()) +
-					"; heap-size: " + memFormat.format(runtime.totalMemory()));
+					"; heap-size: " + memFormat.format(runtime.totalMemory()), null);
 		}
 	}
 	

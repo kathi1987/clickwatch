@@ -349,4 +349,12 @@ public interface ExperimentStatistics extends EObject {
 	 */
 	void setSamplesR(SummaryStatistics value);
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void reset();
+
 } // ExperimentStatistics

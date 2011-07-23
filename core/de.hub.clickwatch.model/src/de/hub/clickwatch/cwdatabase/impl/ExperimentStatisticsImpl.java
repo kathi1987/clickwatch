@@ -11,6 +11,7 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 
 import org.apache.commons.math.stat.descriptive.SummaryStatistics;
+import org.apache.commons.math.stat.descriptive.SynchronizedSummaryStatistics;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -279,16 +280,20 @@ public class ExperimentStatisticsImpl extends EObjectImpl implements ExperimentS
 	 */
 	protected ExperimentStatisticsImpl() {
 		super();
-		nodesA = new SummaryStatistics();
-		samplesN = new SummaryStatistics();
-		handlersN = new SummaryStatistics();
-		handlersPulledS = new SummaryStatistics();
-		handlersR = new SummaryStatistics();
-		samplesR = new SummaryStatistics();
-		timeA = new SummaryStatistics();
-		timeN = new SummaryStatistics();
-		timeS = new SummaryStatistics();
-		recordSize = new SummaryStatistics();
+		initializeStatistics();
+	}
+	
+	private void initializeStatistics() {
+		nodesA = new SynchronizedSummaryStatistics();
+		samplesN = new SynchronizedSummaryStatistics();
+		handlersN = new SynchronizedSummaryStatistics();
+		handlersPulledS = new SynchronizedSummaryStatistics();
+		handlersR = new SynchronizedSummaryStatistics();
+		samplesR = new SynchronizedSummaryStatistics();
+		timeA = new SynchronizedSummaryStatistics();
+		timeN = new SynchronizedSummaryStatistics();
+		timeS = new SynchronizedSummaryStatistics();
+		recordSize = new SynchronizedSummaryStatistics();
 	}
 
 	/**
@@ -550,6 +555,15 @@ public class ExperimentStatisticsImpl extends EObjectImpl implements ExperimentS
 		samplesR = newSamplesR;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CWDataBasePackage.EXPERIMENT_STATISTICS__SAMPLES_R, oldSamplesR, samplesR));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public void reset() {
+		initializeStatistics();
 	}
 
 	/**

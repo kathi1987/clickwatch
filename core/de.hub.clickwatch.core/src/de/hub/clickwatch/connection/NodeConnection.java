@@ -1,7 +1,6 @@
 package de.hub.clickwatch.connection;
 
 import java.io.IOException;
-import java.net.InetAddress;
 
 import com.google.common.base.Preconditions;
 import com.google.inject.Inject;
@@ -54,7 +53,7 @@ public class NodeConnection implements INodeConnection {
 	@Override
 	public void connect() {
 		try {
-			clickSocket.connect(InetAddress.getByName(host), new Integer(port), timeout);
+			clickSocket.connect(host, new Integer(port), timeout);
 			isConnected = true;
 		} catch (IOException e) {
 			Throwables.propagate(e);
@@ -106,6 +105,10 @@ public class NodeConnection implements INodeConnection {
 			return null;
 		}
 	}
-	
+
+	@Override
+	public String toString() {
+		return host;
+	}
 	
 }

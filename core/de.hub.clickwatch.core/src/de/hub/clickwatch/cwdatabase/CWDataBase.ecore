@@ -57,6 +57,7 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ExperimentStatistics">
+    <eOperations name="reset"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="nodesA" eType="#//ESummaryStatistics"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="samplesN" eType="#//ESummaryStatistics"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="handlersN" eType="#//ESummaryStatistics"/>

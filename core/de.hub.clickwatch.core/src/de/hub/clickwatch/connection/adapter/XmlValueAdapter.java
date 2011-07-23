@@ -86,7 +86,7 @@ public class XmlValueAdapter extends AbstractAdapter implements IValueAdapter {
 	}
 
 	@Override
-	public boolean valuesEqual(Handler h1, Handler h2) {
+	public boolean valuesEquals(Handler h1, Handler h2) {
 		return h1.equals(h2);
 	}
 }

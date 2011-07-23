@@ -101,9 +101,12 @@ import org.eclipse.swt.events.ControlAdapter;
 import org.eclipse.swt.events.ControlEvent;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.layout.FillLayout;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Menu;
+import org.eclipse.swt.widgets.Scale;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.Tree;
@@ -999,7 +1002,7 @@ public class CWDataBaseEditor
 	 * This is the method used by the framework to install your own controls.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public void createPages() {
@@ -1013,35 +1016,55 @@ public class CWDataBaseEditor
 			// Create a page for the selection tree view.
 			//
 			{
-				ViewerPane viewerPane =
-					new ViewerPane(getSite().getPage(), CWDataBaseEditor.this) {
-						@Override
-						public Viewer createViewer(Composite composite) {
-							Tree tree = new Tree(composite, SWT.MULTI);
-							TreeViewer newTreeViewer = new TreeViewer(tree);
-							return newTreeViewer;
-						}
-						@Override
-						public void requestActivation() {
-							super.requestActivation();
-							setCurrentViewerPane(this);
-						}
-					};
-				viewerPane.createControl(getContainer());
-
-				selectionViewer = (TreeViewer)viewerPane.getViewer();
-				selectionViewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));
+				// composite for a scale beneath selection viewer
+				final Composite composite = new Composite(getContainer(), SWT.NONE);
+				GridLayout layout = new GridLayout(1, false);
+				layout.marginWidth = 0;
+				layout.marginHeight = 0;
+				composite.setLayout(layout);
+				{
+					ViewerPane viewerPane =
+						new ViewerPane(getSite().getPage(), CWDataBaseEditor.this) {
+							@Override
+							public Viewer createViewer(Composite composite) {
+								Tree tree = new Tree(composite, SWT.MULTI);
+								TreeViewer newTreeViewer = new TreeViewer(tree);
+								return newTreeViewer;
+							}
+							@Override
+							public void requestActivation() {
+								super.requestActivation();
+								setCurrentViewerPane(this);
+							}
+						};
+					viewerPane.createControl(composite);
+	
+					selectionViewer = (TreeViewer)viewerPane.getViewer();
+					selectionViewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));
+					
+					// to use AdapterFactoryLabelProvider.ColorProvider is key to get colors
+					selectionViewer.setLabelProvider(new AdapterFactoryLabelProvider.ColorProvider(adapterFactory, selectionViewer));
+					selectionViewer.setInput(editingDomain.getResourceSet().getResources().get(0));
+					selectionViewer.setSelection(new StructuredSelection(editingDomain.getResourceSet().getResources().get(0)), true);
+					viewerPane.setTitle(editingDomain.getResourceSet());
+	
+					new AdapterFactoryTreeEditor(selectionViewer.getTree(), adapterFactory);				
+					createContextMenuFor(selectionViewer);
+					GridData gridData = new GridData();
+					gridData.horizontalAlignment = GridData.FILL;
+					gridData.grabExcessHorizontalSpace = true;
+					gridData.verticalAlignment = GridData.FILL;
+					gridData.grabExcessVerticalSpace = true;
+					viewerPane.getControl().setLayoutData(gridData);
+				}
+				{
+					Scale scale = new Scale(composite, SWT.HORIZONTAL);
+					GridData gridData = new GridData();
+					gridData.horizontalAlignment = GridData.FILL;
+					scale.setLayoutData(gridData);
+				}
 				
-				// to use AdapterFactoryLabelProvider.ColorProvider is key to get colors
-				selectionViewer.setLabelProvider(new AdapterFactoryLabelProvider.ColorProvider(adapterFactory, selectionViewer));
-				selectionViewer.setInput(editingDomain.getResourceSet().getResources().get(0));
-				selectionViewer.setSelection(new StructuredSelection(editingDomain.getResourceSet().getResources().get(0)), true);
-				viewerPane.setTitle(editingDomain.getResourceSet());
-
-				new AdapterFactoryTreeEditor(selectionViewer.getTree(), adapterFactory);
-
-				createContextMenuFor(selectionViewer);
-				int pageIndex = addPage(viewerPane.getControl());
+				int pageIndex = addPage(composite);
 				setPageText(pageIndex, getString("_UI_SelectionPage_label"));
 			}
 

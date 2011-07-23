@@ -3,7 +3,8 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: de.hub.clickwatch.model;singleton:=true
 Bundle-Version: 2.0.0.qualifier
-Bundle-ClassPath: .
+Bundle-ClassPath: .,
+ lib/commons-math-2.2.jar
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
@@ -14,11 +15,11 @@ Export-Package: de.hub.clickwatch.cwdatabase,
  de.hub.clickwatch.model,
  de.hub.clickwatch.model.impl,
  de.hub.clickwatch.model.util,
- de.hub.clickwatch.model.util.builder
+ de.hub.clickwatch.model.util.builder,
+ org.apache.commons.math.stat.descriptive
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
  org.eclipse.emf.ecore.xmi,
  org.eclipse.emf.cdo,
- com.google.collect;bundle-version="1.0.0",
- org.apache.commons.math;bundle-version="2.2.0";visibility:=reexport
+ com.google.collect;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy

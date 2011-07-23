@@ -1,7 +1,6 @@
 package de.hub.clickwatch.recorder;
 
 import java.io.IOException;
-import java.net.InetAddress;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -25,21 +24,19 @@ public class ClickSocketPlayerSocketImpl extends ClickSocketTestImpl {
 	@Inject private ClickSocketPlayer player;
 	
 	private Node node = null;
-	private InetAddress host;
+	private String host;
 	private int port;
 	
 	private static int count = 0;
 
 	@Override
-	public void connect(InetAddress host, int port, int timeout) throws IOException {
+	public void connect(String host, int port, int timeout) throws IOException {
 		super.connect(host, port, timeout);
 		this.host = host;
 		this.port = port;
 	}
 
 	private synchronized void initialize() {
-
-		String host = this.host.getHostName();
 		String port = "" + this.port;
 		
 		if (node == null) {

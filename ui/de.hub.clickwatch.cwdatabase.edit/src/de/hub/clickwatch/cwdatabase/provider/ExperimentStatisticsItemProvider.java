@@ -103,15 +103,10 @@ public class ExperimentStatisticsItemProvider
 				 null));
 	}
 	
-	private static final String pattern = "000,000,000,000.00";
+	private static final String pattern = "###,###,###,###.##";
 	private static final NumberFormat format = new DecimalFormat(pattern);
 	private static String format(double number) {
-		String result = format.format(number);
-		String space = "";
-		for (int i = result.length(); i < pattern.length(); i++) {
-			space += " ";
-		}
-		return space + result;
+		return format.format(number);
 	}
 	
 	private static IItemLabelProvider summaryStatisticsLabelProvider = new IItemLabelProvider() {
@@ -119,10 +114,10 @@ public class ExperimentStatisticsItemProvider
 		@Override
 		public String getText(Object object) {
 			SummaryStatistics ss = (SummaryStatistics)object;
-			return format(ss.getSum()) + " (sum)," 
-					+ format(ss.getMean()) + " (avr),"  
-					+ format(ss.getMax()) + " (max)," 
-					+ format(ss.getStandardDeviation()) + " (dev)," 
+			return format(ss.getSum()) + "(sum), " 
+					+ format(ss.getMean()) + "(avr), "  
+					+ format(ss.getMax()) + "(max), " 
+					+ format(ss.getStandardDeviation()) + "(dev), " 
 					+ format(ss.getN()) + "(N)";
 		}
 		
