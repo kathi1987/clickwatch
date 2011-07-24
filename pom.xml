@@ -14,11 +14,13 @@
 	<packaging>pom</packaging>
 	
 	<modules>
-		<module>build</module>
+        <module>external</module>
+        <module>util</module>
 		<module>core</module>
 		<module>ui</module>
+        <module>recorder</module>
 		<module>analysis</module>
-        <module>util</module>
+		<module>build</module>
 	</modules>
 
 	<properties>

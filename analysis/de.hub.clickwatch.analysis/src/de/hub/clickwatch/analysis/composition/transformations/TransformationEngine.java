@@ -23,7 +23,6 @@ import org.eclipse.xtend.XtendFacade;
 import org.eclipse.xtend.typesystem.emf.EmfMetaModel;
 import org.osgi.framework.Bundle;
 
-import de.hub.clickwatch.XmlModelRepository;
 import de.hub.clickwatch.analysis.composition.model.CompositionFactory;
 import de.hub.clickwatch.analysis.composition.model.DataSet;
 import de.hub.clickwatch.analysis.composition.model.DataSetNode;
@@ -36,6 +35,7 @@ import de.hub.clickwatch.analysis.composition.model.Transformation;
 import de.hub.clickwatch.analysis.composition.model.TransformationKind;
 import de.hub.clickwatch.analysis.composition.property.TransactionUtil;
 import de.hub.clickwatch.analysis.ui.PluginActivator;
+import de.hub.emfxml.XmlModelRepository;
 
 public class TransformationEngine {
 	

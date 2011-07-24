@@ -13,8 +13,8 @@ import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 import com.google.common.base.Preconditions;
 import com.google.inject.Inject;
 
-import de.hub.clickwatch.XmlModelRepository;
 import de.hub.clickwatch.model.Handler;
+import de.hub.emfxml.XmlModelRepository;
 
 public class XmlValueAdapter extends AbstractAdapter implements IValueAdapter {
 	

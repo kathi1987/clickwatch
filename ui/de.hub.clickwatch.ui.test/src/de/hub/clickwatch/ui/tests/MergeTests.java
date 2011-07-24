@@ -12,12 +12,12 @@ import org.junit.Test;
 
 import com.google.inject.Binder;
 
-import de.hub.clickwatch.XmlModelRepository;
 import de.hub.clickwatch.merge.IMergeConfiguration;
 import de.hub.clickwatch.merge.Merger;
 import de.hub.clickwatch.tests.AbstractTest;
 import de.hub.clickwatch.tests.TestUtil;
 import de.hub.clickwatch.ui.connection.MergingNodeAdapterMergeConfiguration;
+import de.hub.emfxml.XmlModelRepository;
 
 public class MergeTests extends AbstractTest {
 

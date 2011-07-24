@@ -68,6 +68,11 @@
       <import plugin="de.hub.clickwatch.recorder.model" version="2.0.0" match="greaterOrEqual"/>
       <import plugin="de.hub.clickwatch.core.test" version="2.0.0" match="greaterOrEqual"/>
       <import plugin="de.hub.clickwatch.ui" version="2.0.0" match="greaterOrEqual"/>
+      <import plugin="com.google.guice" version="3.0.0" match="greaterOrEqual"/>
+      <import plugin="de.hub.emfxml" version="2.0.0" match="greaterOrEqual"/>
+      <import plugin="de.hub.clickwatch.recorder.ui" version="2.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.ecore.xmi" version="2.7.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.mapping.xsd2ecore" version="2.5.0" match="greaterOrEqual"/>
    </requires>
 
    <plugin
@@ -163,6 +168,13 @@
 
    <plugin
          id="de.hub.clickwatch.recorder.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="de.hub.emfxml"
          download-size="0"
          install-size="0"
          version="0.0.0"

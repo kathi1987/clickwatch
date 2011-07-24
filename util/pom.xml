@@ -15,6 +15,7 @@
   <packaging>pom</packaging>
   
   <modules>
+   <module>de.hub.emfxml</module>
    <module>de.hub.specificmodels</module>
    <module>de.hub.specificmodels.test</module>
   </modules>

@@ -19,7 +19,6 @@ import com.google.common.base.Preconditions;
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
 
-import de.hub.clickwatch.XmlModelRepository;
 import de.hub.clickwatch.connection.INodeConnection;
 import de.hub.clickwatch.connection.INodeConnectionProvider;
 import de.hub.clickwatch.connection.adapter.IHandlerAdapter;
@@ -34,6 +33,7 @@ import de.hub.clickwatch.recoder.cwdatabase.NodeRecord;
 import de.hub.clickwatch.recoder.cwdatabase.NodeRecordDescr;
 import de.hub.clickwatch.util.ILogger;
 import de.hub.clickwatch.util.Throwables;
+import de.hub.emfxml.XmlModelRepository;
 
 public class NodeRecorder implements Runnable {
 	

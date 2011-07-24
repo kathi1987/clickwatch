@@ -54,11 +54,11 @@ import org.eclipse.ui.views.properties.tabbed.ITabbedPropertyConstants;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetWidgetFactory;
 
-import de.hub.clickwatch.XmlModelRepository;
 import de.hub.clickwatch.analysis.composition.model.ModelNode;
 import de.hub.clickwatch.analysis.composition.model.ModelUtil;
 import de.hub.clickwatch.analysis.composition.model.Node;
 import de.hub.clickwatch.analysis.ui.PluginActivator;
+import de.hub.emfxml.XmlModelRepository;
 
 
 public class ModelNodeSection extends GFPropertySection implements ITabbedPropertyConstants {

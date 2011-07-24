@@ -21,9 +21,9 @@ import click.ControlSocket.HandlerInfo;
 import com.google.common.base.Preconditions;
 import com.google.inject.Inject;
 
-import de.hub.clickwatch.XmlModelRepository;
 import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.util.Throwables;
+import de.hub.emfxml.XmlModelRepository;
 
 public class XSDValueAdapter extends XmlValueAdapter {
 

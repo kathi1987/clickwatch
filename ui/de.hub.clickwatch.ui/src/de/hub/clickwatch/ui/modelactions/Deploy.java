@@ -22,11 +22,11 @@ import org.eclipse.ui.IViewReference;
 import com.google.inject.Inject;
 import com.jcraft.jsch.Session;
 
-import de.hub.clickwatch.XmlModelRepository;
 import de.hub.clickwatch.connection.INodeConnection;
 import de.hub.clickwatch.model.Node;
 import de.hub.clickwatch.ui.util.SshConnectionFactory;
 import de.hub.clickwatch.ui.views.ResultView;
+import de.hub.emfxml.XmlModelRepository;
 
 /**
  * Hot deployment: do not reconfigure wireless device; restart click

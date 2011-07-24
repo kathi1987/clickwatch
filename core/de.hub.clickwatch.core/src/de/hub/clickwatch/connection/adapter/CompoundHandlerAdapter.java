@@ -14,11 +14,11 @@ import org.eclipse.emf.ecore.xml.type.XMLTypeDocumentRoot;
 
 import com.google.inject.Inject;
 
-import de.hub.clickwatch.XmlModelRepository;
 import de.hub.clickwatch.model.ClickWatchModelFactory;
 import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.util.ILogger;
 import de.hub.clickwatch.util.Throwables;
+import de.hub.emfxml.XmlModelRepository;
 
 public class CompoundHandlerAdapter extends HandlerAdapter {
 	

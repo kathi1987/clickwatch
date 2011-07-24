@@ -14,13 +14,13 @@ import org.eclipse.equinox.app.IApplicationContext;
 import com.google.inject.Module;
 import com.google.inject.name.Names;
 
-import de.hub.clickwatch.XmlModelRepository;
 import de.hub.clickwatch.connection.adapter.CompoundHandlerAdapter;
 import de.hub.clickwatch.connection.adapter.HandlerAdapter;
 import de.hub.clickwatch.connection.adapter.IHandlerAdapter;
 import de.hub.clickwatch.recoder.cwdatabase.DataBase;
 import de.hub.clickwatch.tests.AbstractTest;
 import de.hub.clickwatch.util.ILogger;
+import de.hub.emfxml.XmlModelRepository;
 
 public class ClickRecorderOne extends AbstractTest implements IApplication {
 

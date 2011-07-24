@@ -4,12 +4,12 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import com.google.inject.Module;
 
 import de.hub.clickcontrol.IClickSocket;
-import de.hub.clickwatch.XmlModelRepository;
 import de.hub.clickwatch.connection.adapter.IValueAdapter;
 import de.hub.clickwatch.connection.adapter.StringValueAdapter;
 import de.hub.clickwatch.recoder.cwdatabase.DataBase;
@@ -18,8 +18,8 @@ import de.hub.clickwatch.recorder.ClickSocketPlayer;
 import de.hub.clickwatch.recorder.ClickSocketPlayerSocketImpl;
 import de.hub.clickwatch.recorder.ExperimentRecorder;
 import de.hub.clickwatch.recorder.database.CWRecorderStandaloneSetup;
-import de.hub.clickwatch.recorder.database.DataBaseUtil;
 import de.hub.clickwatch.tests.AbstractTest;
+import de.hub.emfxml.XmlModelRepository;
 
 public class ExperimentRecorderTestNA extends AbstractTest {
 
@@ -55,7 +55,7 @@ public class ExperimentRecorderTestNA extends AbstractTest {
 		CWRecorderStandaloneSetup.doSetup();
 	}
 
-//	@Ignore("work in progress")
+	@Ignore("work in progress")
 	@Test
 	public void testWithRecord() throws Exception {		
 		ResourceSet rs = new ResourceSetImpl();
