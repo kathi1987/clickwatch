@@ -14,10 +14,6 @@
       <package
             uri="http://de.hub.clickwatch.model"
             class="de.hub.clickwatch.model.ClickWatchModelPackage"/>
-      <package
-            class="de.hub.clickwatch.cwdatabase.CWDataBasePackage"
-            uri="http://de.hub.clickwatch/cwdatabase">
-      </package>
    </extension>
 
 </plugin>

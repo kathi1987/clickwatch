@@ -1,6 +1,9 @@
 package de.hub.clickwatch.ui;
 
 import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.URI;
@@ -10,11 +13,11 @@ import org.osgi.framework.BundleContext;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
+import com.google.inject.Module;
 
 import de.hub.clickcontrol.ClickSocketImpl;
 import de.hub.clickcontrol.IClickSocket;
 import de.hub.clickwatch.ClickWatchModule;
-import de.hub.clickwatch.cwdatabase.CWDataBaseModule;
 import de.hub.clickwatch.preferences.PreferenceConstants;
 import de.hub.clickwatch.recorder.ClickSocketPlayer;
 import de.hub.clickwatch.recorder.ClickSocketPlayerSocketImpl;
@@ -84,8 +87,17 @@ public class PluginActivator extends AbstractUIPlugin {
 					}
 				}
 			});
-			injectorCache = Guice.createInjector(clickWatchModule, new ClickWatchSpecificModelsModule(), new CWDataBaseModule());
+			
+			List<Module> modules = new ArrayList<Module>();
+			modules.add(clickWatchModule);
+			modules.add(new ClickWatchSpecificModelsModule());
+			modules.addAll(Arrays.asList(getAdditionalModules()));			
+			injectorCache = Guice.createInjector(modules.toArray(new Module[]{}));
 		}
 		return injectorCache;
+	}
+	
+	protected Module[] getAdditionalModules() {
+		return new Module[] {};
 	}
 }

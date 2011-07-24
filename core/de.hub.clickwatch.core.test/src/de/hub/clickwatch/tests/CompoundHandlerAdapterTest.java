@@ -3,6 +3,7 @@ package de.hub.clickwatch.tests;
 import java.util.Collection;
 
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import de.hub.clickcontrol.ClickSocketImpl;
@@ -31,7 +32,7 @@ public class CompoundHandlerAdapterTest extends AbstractTest {
 		return 4;
 	}
 
-	//	@Ignore("requires a click setup on localhost")
+	@Ignore("requires a click setup on localhost")
 	@Test
 	public void test() throws Exception {
 		INodeConnectionProvider ncp = injector.getInstance(INodeConnectionProvider.class);

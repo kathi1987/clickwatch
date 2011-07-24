@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Test
+Bundle-SymbolicName: de.hub.clickwatch.recorder.test
+Bundle-Version: 2.0.0.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Require-Bundle: de.hub.clickwatch.recorder;bundle-version="2.0.0",
+ de.hub.clickwatch.core.test;bundle-version="2.0.0"

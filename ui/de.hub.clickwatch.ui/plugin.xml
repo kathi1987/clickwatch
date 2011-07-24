@@ -119,16 +119,6 @@
                menubarPath="additions">
          </action>
       </objectContribution>
-      <objectContribution
-            id="de.hub.clickwatch.ExperimentContribution"
-            objectClass="de.hub.clickwatch.cwdatabase.ExperimentDescr">
-         <action
-               class="de.hub.clickwatch.ui.GuiceAwareExecutableExtensionFactory:de.hub.clickwatch.ui.dbactions.JumpToTime"
-               id="edu.hu.clickwatch.jumpToTimeAction"
-               label="Jump"
-               menubarPath="additions">
-         </action>
-      </objectContribution>
    </extension>
    
       <extension point="org.eclipse.ui.actionSets">

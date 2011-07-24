@@ -21,7 +21,7 @@
 		</category>
 		<wizard
 			category="edu.hu.clickwatch.analysis.WizardCategory"
-			class="de.hub.clickwatch.ui.GuiceAwareExecutableExtensionFactory:de.hub.clickwatch.analysis.ui.NewAnalysisProjectWizard"
+			class="de.hub.clickwatch.analysis.ui.GuiceAwareExecutableExtensionFactory:de.hub.clickwatch.analysis.ui.NewAnalysisProjectWizard"
 			icon="icons/Analysis.gif"
 			id="edu.hu.clickwatch.analysis.NewAnalysisProjectWizard"
 			name="%Analysis_Project"
@@ -29,7 +29,7 @@
 		</wizard>
   <wizard
         category="edu.hu.clickwatch.analysis.WizardCategory"
-        class="de.hub.clickwatch.ui.GuiceAwareExecutableExtensionFactory:de.hub.clickwatch.analysis.ui.NewClickWatchProjectWizard"
+        class="de.hub.clickwatch.analysis.ui.GuiceAwareExecutableExtensionFactory:de.hub.clickwatch.analysis.ui.NewClickWatchProjectWizard"
         icon="icons/Analysis.gif"
         id="edu.hu.clickwatch.analysis.NewClickWatchProjectWizard"
         name="%ClickWatch_Project"
@@ -65,7 +65,7 @@
    <extension
          point="org.eclipse.ui.commands">
       <command
-            defaultHandler="de.hub.clickwatch.ui.GuiceAwareExecutableExtensionFactory:de.hub.clickwatch.analysis.ui.CreateConcreteModelsHandler"
+            defaultHandler="de.hub.clickwatch.analysis.ui.GuiceAwareExecutableExtensionFactory:de.hub.clickwatch.analysis.ui.CreateConcreteModelsHandler"
             id="edu.hu.clickwatch.analysis.CreateConcreteModels"
             name="Create specific ClickWatch models">
       </command>
@@ -203,7 +203,7 @@
  <extension
        point="edu.hu.clickwatch.analysis.composition.PredefinedTransformation">
     <transformation
-          class="de.hub.clickwatch.ui.GuiceAwareExecutableExtensionFactory:de.hub.clickwatch.analysis.composition.transformations.CreateSpecificModel"
+          class="de.hub.clickwatch.analysis.ui.GuiceAwareExecutableExtensionFactory:de.hub.clickwatch.analysis.composition.transformations.CreateSpecificModel"
           name="Create specific model">
     </transformation>
  </extension>

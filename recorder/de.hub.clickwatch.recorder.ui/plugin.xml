@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            id="de.hub.clickwatch.ExperimentContribution"
+            objectClass="de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr">
+         <action
+               class="de.hub.clickwatch.recorder.ui.GuiceAwareExecutableExtensionFactory:de.hub.clickwatch.recorder.ui.actions.JumpToTime"
+               id="de.hub.clickwatch.recorder.ui.JumpToTimeAction"
+               label="Jump"
+               menubarPath="additions">
+         </action>
+      </objectContribution>
+   </extension>
+</plugin>

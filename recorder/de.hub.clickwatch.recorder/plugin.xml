@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         id="RecorderOne"
+         point="org.eclipse.core.runtime.applications">
+      <application
+            cardinality="singleton-global"
+            thread="main"
+            visible="true">
+         <run
+               class="de.hub.clickwatch.recorder.ClickRecorderOne">
+         </run>
+      </application>
+   </extension>
+   <extension
+         id="RecorderOne"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="de.hub.clickwatch.core.examples.recorder.id1"
+            name="RecorderOne">
+         <property
+               name="appName"
+               value="RecorderOne">
+         </property>
+      </product>
+   </extension>
+
+</plugin>

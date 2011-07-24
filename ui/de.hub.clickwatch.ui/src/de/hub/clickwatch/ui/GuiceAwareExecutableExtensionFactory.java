@@ -47,11 +47,11 @@ public class GuiceAwareExecutableExtensionFactory implements IExecutableExtensio
 		}
 	}
 	
-	private Bundle getBundle() {
+	protected Bundle getBundle() {
 		return PluginActivator.getInstance().getBundle();
 	}
 	
-	private Injector getInjector() {
+	protected Injector getInjector() {
 		return PluginActivator.getInstance().getInjector();
 	}
 }

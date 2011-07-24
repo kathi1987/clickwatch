@@ -10,8 +10,7 @@ import com.google.inject.Inject;
 import de.hub.specificmodels.common.ITargetIdProvider.ITargetIdProviderContext;
 
 public class AbstractGenerator {
-	@Inject
-	private ITargetIdProvider targetIdProvider;
+	@Inject private ITargetIdProvider targetIdProvider;
 	
 	private final ITargetIdProviderContext ctx = new TargetIdProviderContext();
 	
