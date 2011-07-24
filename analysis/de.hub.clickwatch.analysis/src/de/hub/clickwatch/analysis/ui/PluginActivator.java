@@ -1,8 +1,9 @@
 package de.hub.clickwatch.analysis.ui;
 
+import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
-public class PluginActivator extends de.hub.clickwatch.recorder.ui.PluginActivator {
+public class PluginActivator extends AbstractUIPlugin {
 	
 	// The plug-in ID
 	public static final String PLUGIN_ID = "edu.hu.clickwatch.analysis"; //$NON-NLS-1$

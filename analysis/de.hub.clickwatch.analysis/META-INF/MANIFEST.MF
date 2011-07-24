@@ -7,9 +7,6 @@ Bundle-Version: 2.0.0.qualifier
 Bundle-Activator: de.hub.clickwatch.analysis.ui.PluginActivator
 Require-Bundle: de.hub.xveg;bundle-version="1.0.0",
  de.hub.clickwatch.ui;visibility:=reexport,
- de.hub.clickwatch.recorder.ui;bundle-version="2.0.0",
- de.hub.clickwatch.model.edit,
- de.hub.clickwatch.core.test,
  org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.core.resources;bundle-version="3.6.0",

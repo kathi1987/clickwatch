@@ -3,7 +3,6 @@ Bundle-ManifestVersion: 2
 Bundle-Name: ClickWatch Recorder UI
 Bundle-SymbolicName: de.hub.clickwatch.recorder.ui;singleton:=true
 Bundle-Version: 2.0.0.qualifier
-Bundle-Activator: de.hub.clickwatch.recorder.ui.PluginActivator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  de.hub.clickwatch.recorder;bundle-version="2.0.0",
@@ -12,3 +11,4 @@ Require-Bundle: org.eclipse.ui,
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: de.hub.clickwatch.recorder.ui
+Eclipse-RegisterBuddy: de.hub.clickwatch.ui
