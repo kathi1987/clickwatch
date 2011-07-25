@@ -13,7 +13,10 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 
 import com.google.inject.Module;
+import com.google.inject.name.Names;
 
+import de.hub.clickwatch.connection.adapter.IValueAdapter;
+import de.hub.clickwatch.connection.adapter.StringValueAdapter;
 import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.model.Node;
 import de.hub.clickwatch.model.util.builder.NetworkBuilder;
@@ -38,7 +41,18 @@ public class AbstractDBTest  extends AbstractAdapterTest {
 
 	@Override
 	protected Module[] getAdditionalModules() {
-		return new Module[] { new CWRecorderModule() };
+		return new Module[] { new CWRecorderModule() {
+
+			@Override
+			protected void configureDBValueAdapter() {
+				bind(IValueAdapter.class).annotatedWith(Names.named(DB_VALUE_ADAPTER_PROPERTY)).to(getDBValueAdapterClass());
+			}
+			
+		}};
+	}
+
+	protected Class<? extends IValueAdapter> getDBValueAdapterClass() {
+		return StringValueAdapter.class;
 	}
 
 	@Override
@@ -48,11 +62,12 @@ public class AbstractDBTest  extends AbstractAdapterTest {
 		dbUtil = injector.getInstance(DataBaseUtil.class);
 	}
 	
-	protected void performTest(String[] nodeIds) {
+	protected ExperimentDescr performTest(String[] nodeIds) {
 		ExperimentRecorder recorder = injector.getInstance(ExperimentRecorder.class);
 		ExperimentDescr experiment = buildDataBase(nodeIds);
 		recorder.record(experiment);	
 		assertExperiment(experiment, nodeIds);
+		return experiment;
 	}
 	
 	protected ExperimentDescr buildDataBase(String[] nodeIds) {

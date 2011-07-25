@@ -125,7 +125,7 @@ public class ExperimentRecorder {
 			logger.log(ILogger.DEBUG, stats.toString(), null);
 		}
 		
-		experimentDescr.setStart(start);
+		experimentDescr.setStart(this.start);
 		experimentDescr.setEnd(end);
 		
 		if (!experimentDescr.getDataBase().getInMemory()) {

@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link de.hub.clickwatch.model.Network#getUpdateIntervall <em>Update Intervall</em>}</li>
  *   <li>{@link de.hub.clickwatch.model.Network#getSubnetworks <em>Subnetworks</em>}</li>
  *   <li>{@link de.hub.clickwatch.model.Network#getTimeout <em>Timeout</em>}</li>
+ *   <li>{@link de.hub.clickwatch.model.Network#getTime <em>Time</em>}</li>
  * </ul>
  * </p>
  *
@@ -224,5 +225,32 @@ public interface Network extends EObject {
 	 * @generated
 	 */
 	void setTimeout(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Time</b></em>' attribute.
+	 * The default value is <code>"-1"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Time</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Time</em>' attribute.
+	 * @see #setTime(long)
+	 * @see de.hub.clickwatch.model.ClickWatchModelPackage#getNetwork_Time()
+	 * @model default="-1"
+	 * @generated
+	 */
+	long getTime();
+
+	/**
+	 * Sets the value of the '{@link de.hub.clickwatch.model.Network#getTime <em>Time</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Time</em>' attribute.
+	 * @see #getTime()
+	 * @generated
+	 */
+	void setTime(long value);
 
 } // Network

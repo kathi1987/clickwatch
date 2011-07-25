@@ -18,9 +18,13 @@ public class CWRecorderModule extends AbstractModule {
 		bind(long.class).annotatedWith(Names.named(L_DEFAULT_UPDATE_INTERVAL_PROPERTY)).toInstance(new Long(2000));
 		configureHandlerPerRecord();
 		bind(boolean.class).annotatedWith(Names.named(B_RECORD_CHANGES_ONLY_PROPERTY)).toInstance(true);
-		bind(IValueAdapter.class).annotatedWith(Names.named(DB_VALUE_ADAPTER_PROPERTY)).to(StringValueAdapter.class);
+		configureDBValueAdapter();
 	}
 	
+	protected void configureDBValueAdapter() {
+		bind(IValueAdapter.class).annotatedWith(Names.named(DB_VALUE_ADAPTER_PROPERTY)).to(StringValueAdapter.class);
+	}
+
 	protected void configureHandlerPerRecord() {
 		bind(int.class).annotatedWith(Names.named(I_HANDLER_PER_RECORD_PROPERTY)).toInstance(2000);
 	}

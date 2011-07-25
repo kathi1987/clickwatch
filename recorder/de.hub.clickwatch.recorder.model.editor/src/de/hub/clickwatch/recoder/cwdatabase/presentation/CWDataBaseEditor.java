@@ -136,7 +136,9 @@ import de.hub.clickwatch.model.Network;
 import de.hub.clickwatch.model.provider.ClickWatchModelItemProviderAdapterFactory;
 import de.hub.clickwatch.model.provider.ClickWatchReflectiveItemProviderAdapterFactory;
 import de.hub.clickwatch.model.provider.NetworkItemProvider;
+import de.hub.clickwatch.recoder.cwdatabase.CWDataBaseTimeScaleController;
 import de.hub.clickwatch.recoder.cwdatabase.provider.CWDataBaseItemProviderAdapterFactory;
+import de.hub.clickwatch.ui.PluginActivator;
 
 
 /**
@@ -1062,6 +1064,8 @@ public class CWDataBaseEditor
 					GridData gridData = new GridData();
 					gridData.horizontalAlignment = GridData.FILL;
 					scale.setLayoutData(gridData);
+					CWDataBaseTimeScaleController timeScaleController = PluginActivator.getInstance().getInjector().getInstance(CWDataBaseTimeScaleController.class);
+					timeScaleController.init(scale, this, selectionViewer);
 				}
 				
 				int pageIndex = addPage(composite);
