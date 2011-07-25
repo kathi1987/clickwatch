@@ -68,7 +68,7 @@ public class AbstractDBTest  extends AbstractAdapterTest {
 				.withExperiments(ExperimentDescrBuilder.newExperimentDescrBuilder()
 						.withName("test_experiment")
 						.withDescription("this is onyl for testing")
-						.withDuration(getUpdateIntertval())
+						.withDuration(getExperimentDuration())
 						.withStatistics(CWDataBaseFactory.eINSTANCE.createExperimentStatistics())
 						.withNetwork(NetworkBuilder.newNetworkBuilder()
 								.withName("test_network")
@@ -86,7 +86,7 @@ public class AbstractDBTest  extends AbstractAdapterTest {
 		return db.getExperiments().get(0);
 	}
 
-	protected int getUpdateIntertval() {
+	protected int getExperimentDuration() {
 		return 2000;
 	}
 	

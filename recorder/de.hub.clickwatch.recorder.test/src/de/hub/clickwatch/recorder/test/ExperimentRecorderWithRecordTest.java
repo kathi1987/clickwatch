@@ -81,7 +81,7 @@ public class ExperimentRecorderWithRecordTest extends AbstractDBTest {
 	}
 
 	@Override
-	protected int getUpdateIntertval() {
+	protected int getExperimentDuration() {
 		return 10000;
 	}
 }
