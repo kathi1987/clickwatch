@@ -7,6 +7,7 @@ import java.util.List;
 
 import junit.framework.Assert;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import com.google.common.base.Function;
@@ -34,6 +35,11 @@ public class ExperimentRecorderWithRecordTest extends AbstractDBTest {
 		result.add(module);
 		return result.toArray(new Module[] {});
 	}
+	
+	@Override
+	protected int getLogLevel() {
+		return 4;
+	}
 
 	@Override
 	protected Class<? extends IValueAdapter> getValueAdapterClass() {
@@ -53,6 +59,7 @@ public class ExperimentRecorderWithRecordTest extends AbstractDBTest {
 		// supported, we use this trick.
 	}
 
+	@Ignore("work in progress")
 	@Test
 	public void testWithRecord() throws Exception {
 		performTest(new String[] { "localhost", "seismo171.testbed",

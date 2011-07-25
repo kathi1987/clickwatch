@@ -1,4 +1,5 @@
 Manifest-Version: 1.0
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-Vendor: %providerName
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
@@ -85,5 +86,4 @@ SHA1-Digest: xLKmq+VZmltA1U/dQ5LRqvmnO20=
 
 Name: org/eclipse/xtend/typesystem/emf/ui/Messages.class
 SHA1-Digest: 7+qXlwUP/BYC2bvjOuHn2DiF0ow=
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 

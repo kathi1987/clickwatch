@@ -14,15 +14,15 @@ import org.eclipse.equinox.app.IApplicationContext;
 import com.google.inject.Module;
 import com.google.inject.name.Names;
 
+import de.hub.clickwatch.AbstractMain;
 import de.hub.clickwatch.connection.adapter.CompoundHandlerAdapter;
 import de.hub.clickwatch.connection.adapter.HandlerAdapter;
 import de.hub.clickwatch.connection.adapter.IHandlerAdapter;
 import de.hub.clickwatch.recoder.cwdatabase.DataBase;
-import de.hub.clickwatch.tests.AbstractTest;
 import de.hub.clickwatch.util.ILogger;
 import de.hub.emfxml.XmlModelRepository;
 
-public class ClickRecorderOne extends AbstractTest implements IApplication {
+public class ClickWatchRecorder extends AbstractMain implements IApplication {
 
 	@Override
 	protected int getLogLevel() {
@@ -57,7 +57,7 @@ public class ClickRecorderOne extends AbstractTest implements IApplication {
 	private final boolean useCompoundHandler;
 	private final boolean debug;
 	
-	public ClickRecorderOne(String experimentFile, int handlerPerRecord, boolean useCompoundHandler, boolean debug) {
+	public ClickWatchRecorder(String experimentFile, int handlerPerRecord, boolean useCompoundHandler, boolean debug) {
 		super();
 		this.experimentFile = experimentFile;
 		this.handlerPerRecord = handlerPerRecord;
@@ -65,7 +65,7 @@ public class ClickRecorderOne extends AbstractTest implements IApplication {
 		this.debug = debug;
 	}
 	
-	public ClickRecorderOne() {
+	public ClickWatchRecorder() {
 		experimentFile = null;
 		handlerPerRecord = -1;
 		useCompoundHandler = false;
@@ -116,14 +116,14 @@ public class ClickRecorderOne extends AbstractTest implements IApplication {
 			System.exit(1);
 		}
 		
-		ClickRecorderOne instance = new ClickRecorderOne(experimentFile, handlerPerRecord, useCompoundHandler, debug);
+		ClickWatchRecorder instance = new ClickWatchRecorder(experimentFile, handlerPerRecord, useCompoundHandler, debug);
 		instance.run();
 	}
 
 	@Override
 	public Object start(IApplicationContext context) throws Exception {
 		String[] args = (String[]) context.getArguments().get("application.args");
-	    ClickRecorderOne.main(args);	    
+	    ClickWatchRecorder.main(args);	    
 	    return EXIT_OK;
 	}
 

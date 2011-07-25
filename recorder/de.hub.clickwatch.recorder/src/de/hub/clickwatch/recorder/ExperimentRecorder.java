@@ -113,7 +113,7 @@ public class ExperimentRecorder {
 			for (NodeRecorder recorder: nodeRecorders) {
 				recorder.stop();
 			}
-			wait(60000); // for all reported stopped, timeout after 60 seconds
+			wait(10000); // for all reported stopped, timeout after 60 seconds
 			logger.log(ILogger.DEBUG, "All node recorder have stopped recording.", null);
 		} catch(InterruptedException e) {
 			Throwables.propagate(e);

@@ -3,20 +3,15 @@ Bundle-ManifestVersion: 2
 Bundle-Name: edu.hu.clickwatch
 Bundle-SymbolicName: de.hub.clickwatch.core;singleton:=true
 Bundle-Version: 2.0.0.qualifier
-Require-Bundle: org.eclipse.emf.ecore;bundle-version="2.7.0";visibility:=reexport,
- org.eclipse.emf.cdo;bundle-version="4.0.0";visibility:=reexport,
+Require-Bundle: de.hub.emfxml;bundle-version="2.0.0";visibility:=reexport,
+ de.hub.clickwatch.model;visibility:=reexport,
+ edu.mit.clickcontrol;visibility:=reexport,
+ org.eclipse.emf.ecore;bundle-version="2.7.0";visibility:=reexport,
  org.eclipse.emf.ecore.xmi;bundle-version="2.5.0";visibility:=reexport,
  org.eclipse.core.runtime;bundle-version="3.6.0";visibility:=reexport,
  org.eclipse.core.resources;bundle-version="3.6.0";visibility:=reexport,
- org.eclipse.xsd;bundle-version="2.6.0";visibility:=reexport,
- org.eclipse.xtend;bundle-version="1.0.1",
- org.eclipse.xtend.typesystem.emf;bundle-version="1.0.1",
- com.google.collect;bundle-version="1.0.0",
- de.hub.clickwatch.model;visibility:=reexport,
- edu.mit.clickcontrol;visibility:=reexport,
- org.eclipse.jface;bundle-version="3.7.0",
  com.google.guice;bundle-version="3.0.0";visibility:=reexport,
- de.hub.emfxml;bundle-version="2.0.0";visibility:=reexport
+ com.google.collect;bundle-version="1.0.0";visibility:=reexport
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: de.hub.clickwatch,
  de.hub.clickwatch.connection,

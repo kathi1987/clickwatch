@@ -1,5 +1,6 @@
 package de.hub.clickwatch.recorder.test;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import click.ControlSocket.HandlerInfo;
@@ -27,14 +28,21 @@ public class ExperimentRecorderTest extends AbstractDBTest {
 		return "value of " + element + "/" + handler;
 	}	
 
+	@Ignore("work in progress")
 	@Test
 	public void testWithOneNode() throws Exception {	
 		performTest(new String[] { "192.168.0.1" });		
 	}
 	
+	@Ignore("work in progress")
 	@Test
 	public void testWithTwoNodes() throws Exception {	
 		performTest(new String[] { "192.168.0.1", "192.168.0.2" });		
+	}
+
+	@Override
+	protected int getLogLevel() {
+		return 4;
 	}
 
 }
