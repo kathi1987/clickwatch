@@ -69,10 +69,10 @@ public class DataBaseUtilTest extends AbstractDBTest {
 	@Ignore("work in progress")
 	@Test
 	public void testWithRecord() throws Exception {
-		ExperimentDescr exprDescr = performTest(new String[] { "localhost"
-		// "seismo171.testbed",
-		// "seismo161.testbed", "seismo191.testbed", "seismo160.testbed",
-		// "seismo185.testbed", "seismo196.testbed", "seismo172.testbed"
+		ExperimentDescr exprDescr = performTest(new String[] { "localhost",
+			 "seismo171.testbed",
+			 "seismo161.testbed", "seismo191.testbed", "seismo160.testbed",
+			 "seismo185.testbed", "seismo196.testbed", "seismo172.testbed"
 		});
 
 		 DataBaseUtil util = injector.getInstance(DataBaseUtil.class);
@@ -80,10 +80,10 @@ public class DataBaseUtilTest extends AbstractDBTest {
 		 long duration = exprDescr.getEnd() - exprDescr.getStart();
 		 int runs = 20;
 		 for (int i = 0; i < runs; i++) {
-		 long time = exprDescr.getStart() + (i* (duration/runs));
-		 System.out.println("run: " + i);
-		 util.getNode(exprDescr,
-		 exprDescr.getNetwork().getNodes().get(0).getINetAddress(), time);
+			 long time = exprDescr.getStart() + (i* (duration/runs));
+			 System.out.println("run: " + i);
+			 util.getNode(exprDescr,
+			 exprDescr.getNetwork().getNodes().get(0).getINetAddress(), time);
 		 }
 
 	}

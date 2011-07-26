@@ -5,6 +5,9 @@ import com.google.inject.name.Names;
 
 import de.hub.clickwatch.connection.adapter.IValueAdapter;
 import de.hub.clickwatch.connection.adapter.StringValueAdapter;
+import de.hub.clickwatch.recorder.database.DataBaseAdapter;
+import de.hub.clickwatch.recorder.database.IDataBaseRecordAdapter;
+import de.hub.clickwatch.recorder.database.IDataBaseRetrieveAdapter;
 
 public class CWRecorderModule extends AbstractModule {
 
@@ -15,11 +18,26 @@ public class CWRecorderModule extends AbstractModule {
 	
 	@Override
 	protected void configure() {
+		configureDataBaseRecordAdapter();
+		configureDataBaseRetrieveAdapter();
 		bind(long.class).annotatedWith(Names.named(L_DEFAULT_UPDATE_INTERVAL_PROPERTY)).toInstance(new Long(2000));
 		configureHandlerPerRecord();
-		bind(boolean.class).annotatedWith(Names.named(B_RECORD_CHANGES_ONLY_PROPERTY)).toInstance(true);
+		configureRecordChangesOnly();
 		configureDBValueAdapter();
 	}
+	
+	protected void configureRecordChangesOnly() {
+		bind(boolean.class).annotatedWith(Names.named(B_RECORD_CHANGES_ONLY_PROPERTY)).toInstance(true);
+	}
+
+	protected void configureDataBaseRecordAdapter() {
+		bind(IDataBaseRecordAdapter.class).to(DataBaseAdapter.class);
+	}
+
+	protected void configureDataBaseRetrieveAdapter() {
+		bind(IDataBaseRetrieveAdapter.class).to(DataBaseAdapter.class);
+	}
+
 	
 	protected void configureDBValueAdapter() {
 		bind(IValueAdapter.class).annotatedWith(Names.named(DB_VALUE_ADAPTER_PROPERTY)).to(StringValueAdapter.class);

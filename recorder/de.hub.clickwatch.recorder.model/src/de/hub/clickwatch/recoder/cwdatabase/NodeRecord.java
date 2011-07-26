@@ -6,11 +6,10 @@
  */
 package de.hub.clickwatch.recoder.cwdatabase;
 
-import de.hub.clickwatch.model.Handler;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
+
+import de.hub.clickwatch.model.Handler;
 
 /**
  * <!-- begin-user-doc -->

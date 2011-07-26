@@ -1,19 +1,23 @@
 package de.hub.clickwatch.recorder.test;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 import click.ControlSocket.HandlerInfo;
 import de.hub.clickwatch.connection.adapter.IValueAdapter;
 import de.hub.clickwatch.connection.adapter.StringValueAdapter;
 
-public class ExperimentRecorderTest extends AbstractDBTest {
+public class ExperimentRecorderTest extends AbstractDataBaseAdapterTest {
 
 	@Override
 	protected Class<? extends IValueAdapter> getValueAdapterClass() {
 		return StringValueAdapter.class;
 	}
 	
+	@Override
+	protected boolean getRecordChangesOnly() {
+		return false;
+	}
+
 	@Override
 	protected HandlerInfo[] getHandler() {
 		return new HandlerInfo[] { 
@@ -28,18 +32,34 @@ public class ExperimentRecorderTest extends AbstractDBTest {
 		return "value of " + element + "/" + handler;
 	}	
 
-	@Ignore("work in progress")
 	@Test
 	public void testWithOneNode() throws Exception {	
 		performTest(new String[] { "192.168.0.1" });		
 	}
 	
-	@Ignore("work in progress")
 	@Test
 	public void testWithTwoNodes() throws Exception {	
 		performTest(new String[] { "192.168.0.1", "192.168.0.2" });		
 	}
 
+	@Test
+	public void testWithTwelveNodes() throws Exception {	
+		performTest(new String[] { 
+				"192.168.0.1", 
+				"192.168.0.2",
+				"192.168.0.3",
+				"192.168.0.4",
+				"192.168.0.5",
+				"192.168.0.6",
+				"192.168.0.7",
+				"192.168.0.8",
+				"192.168.0.9",
+				"192.168.0.10",
+				"192.168.0.11",
+				"192.168.0.12" });		
+	}
+
+	
 	@Override
 	protected int getLogLevel() {
 		return 4;

@@ -6,8 +6,17 @@
  */
 package de.hub.clickwatch.recoder.cwdatabase.impl;
 
-import de.hub.clickwatch.model.ClickWatchModelPackage;
+import java.util.Map;
 
+import org.apache.commons.math.stat.descriptive.SummaryStatistics;
+import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.impl.EPackageImpl;
+
+import de.hub.clickwatch.model.ClickWatchModelPackage;
 import de.hub.clickwatch.recoder.cwdatabase.CWDataBaseFactory;
 import de.hub.clickwatch.recoder.cwdatabase.CWDataBasePackage;
 import de.hub.clickwatch.recoder.cwdatabase.DataBase;
@@ -15,20 +24,9 @@ import de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr;
 import de.hub.clickwatch.recoder.cwdatabase.ExperimentNodeRecordTimeTable;
 import de.hub.clickwatch.recoder.cwdatabase.ExperimentRecord;
 import de.hub.clickwatch.recoder.cwdatabase.ExperimentStatistics;
+import de.hub.clickwatch.recoder.cwdatabase.HBaseRowMap;
 import de.hub.clickwatch.recoder.cwdatabase.NodeRecord;
 import de.hub.clickwatch.recoder.cwdatabase.NodeRecordDescr;
-
-import java.util.Map;
-
-import org.apache.commons.math.stat.descriptive.SummaryStatistics;
-
-import org.eclipse.emf.ecore.EAttribute;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EDataType;
-import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EReference;
-
-import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -106,6 +104,13 @@ public class CWDataBasePackageImpl extends EPackageImpl implements CWDataBasePac
 	 * @generated
 	 */
 	private EDataType eSummaryStatisticsEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType hBaseRowMapEDataType = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -275,6 +280,24 @@ public class CWDataBasePackageImpl extends EPackageImpl implements CWDataBasePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getExperimentDescr_HBaseRowMap() {
+		return (EAttribute)experimentDescrEClass.getEStructuralFeatures().get(10);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getExperimentDescr_MetaData() {
+		return (EReference)experimentDescrEClass.getEStructuralFeatures().get(11);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getNodeRecord() {
 		return nodeRecordEClass;
 	}
@@ -365,17 +388,8 @@ public class CWDataBasePackageImpl extends EPackageImpl implements CWDataBasePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getExperimentRecord_MetaData() {
-		return (EReference)experimentRecordEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EAttribute getExperimentRecord_Name() {
-		return (EAttribute)experimentRecordEClass.getEStructuralFeatures().get(1);
+		return (EAttribute)experimentRecordEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -384,7 +398,7 @@ public class CWDataBasePackageImpl extends EPackageImpl implements CWDataBasePac
 	 * @generated
 	 */
 	public EReference getExperimentRecord_NodeMap() {
-		return (EReference)experimentRecordEClass.getEStructuralFeatures().get(2);
+		return (EReference)experimentRecordEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -599,6 +613,15 @@ public class CWDataBasePackageImpl extends EPackageImpl implements CWDataBasePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EDataType getHBaseRowMap() {
+		return hBaseRowMapEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public CWDataBaseFactory getCWDataBaseFactory() {
 		return (CWDataBaseFactory)getEFactoryInstance();
 	}
@@ -633,6 +656,8 @@ public class CWDataBasePackageImpl extends EPackageImpl implements CWDataBasePac
 		createEAttribute(experimentDescrEClass, EXPERIMENT_DESCR__DURATION);
 		createEAttribute(experimentDescrEClass, EXPERIMENT_DESCR__END);
 		createEReference(experimentDescrEClass, EXPERIMENT_DESCR__STATISTICS);
+		createEAttribute(experimentDescrEClass, EXPERIMENT_DESCR__HBASE_ROW_MAP);
+		createEReference(experimentDescrEClass, EXPERIMENT_DESCR__META_DATA);
 
 		nodeRecordEClass = createEClass(NODE_RECORD);
 		createEReference(nodeRecordEClass, NODE_RECORD__RECORDS);
@@ -646,7 +671,6 @@ public class CWDataBasePackageImpl extends EPackageImpl implements CWDataBasePac
 		createEAttribute(dataBaseEClass, DATA_BASE__IN_MEMORY);
 
 		experimentRecordEClass = createEClass(EXPERIMENT_RECORD);
-		createEReference(experimentRecordEClass, EXPERIMENT_RECORD__META_DATA);
 		createEAttribute(experimentRecordEClass, EXPERIMENT_RECORD__NAME);
 		createEReference(experimentRecordEClass, EXPERIMENT_RECORD__NODE_MAP);
 
@@ -679,6 +703,7 @@ public class CWDataBasePackageImpl extends EPackageImpl implements CWDataBasePac
 
 		// Create data types
 		eSummaryStatisticsEDataType = createEDataType(ESUMMARY_STATISTICS);
+		hBaseRowMapEDataType = createEDataType(HBASE_ROW_MAP);
 	}
 
 	/**
@@ -725,6 +750,8 @@ public class CWDataBasePackageImpl extends EPackageImpl implements CWDataBasePac
 		initEAttribute(getExperimentDescr_Duration(), ecorePackage.getELong(), "duration", null, 0, 1, ExperimentDescr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getExperimentDescr_End(), ecorePackage.getELong(), "end", null, 0, 1, ExperimentDescr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getExperimentDescr_Statistics(), this.getExperimentStatistics(), null, "statistics", null, 0, 1, ExperimentDescr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getExperimentDescr_HBaseRowMap(), this.getHBaseRowMap(), "hBaseRowMap", null, 0, 1, ExperimentDescr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getExperimentDescr_MetaData(), theClickWatchModelPackage.getNode(), null, "metaData", null, 0, -1, ExperimentDescr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(nodeRecordEClass, NodeRecord.class, "NodeRecord", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getNodeRecord_Records(), theClickWatchModelPackage.getHandler(), null, "records", null, 0, -1, NodeRecord.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -738,7 +765,6 @@ public class CWDataBasePackageImpl extends EPackageImpl implements CWDataBasePac
 		initEAttribute(getDataBase_InMemory(), ecorePackage.getEBooleanObject(), "inMemory", "false", 0, 1, DataBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(experimentRecordEClass, ExperimentRecord.class, "ExperimentRecord", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getExperimentRecord_MetaData(), theClickWatchModelPackage.getNode(), null, "metaData", null, 0, -1, ExperimentRecord.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getExperimentRecord_Name(), ecorePackage.getEString(), "name", null, 0, 1, ExperimentRecord.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getExperimentRecord_NodeMap(), this.getEStringToExperimentNodeRecordTimeTableMap(), null, "nodeMap", null, 0, -1, ExperimentRecord.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -773,6 +799,7 @@ public class CWDataBasePackageImpl extends EPackageImpl implements CWDataBasePac
 
 		// Initialize data types
 		initEDataType(eSummaryStatisticsEDataType, SummaryStatistics.class, "ESummaryStatistics", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(hBaseRowMapEDataType, HBaseRowMap.class, "HBaseRowMap", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

@@ -14,6 +14,7 @@ public class ExperimentDescrBuilder implements de.hub.clickwatch.recoder.cwdatab
   private java.lang.String m_description;
   private long m_duration;
   private long m_end;
+  private de.hub.clickwatch.recoder.cwdatabase.HBaseRowMap m_hBaseRowMap;
   private java.lang.String m_name;
   private de.hub.clickwatch.model.Network m_network;
   private de.hub.clickwatch.model.util.builder.IModelBuilder<? extends de.hub.clickwatch.model.Network> m_featureNetworkBuilder;
@@ -24,11 +25,15 @@ public class ExperimentDescrBuilder implements de.hub.clickwatch.recoder.cwdatab
   private long m_start;
   private de.hub.clickwatch.recoder.cwdatabase.ExperimentStatistics m_statistics;
   private de.hub.clickwatch.recoder.cwdatabase.util.builder.ICwdatabaseBuilder<? extends de.hub.clickwatch.recoder.cwdatabase.ExperimentStatistics> m_featureStatisticsBuilder;
+  private java.util.Collection<de.hub.clickwatch.model.Node> m_metaData = new java.util.LinkedList<de.hub.clickwatch.model.Node>();
+  private java.util.Collection<de.hub.clickwatch.model.util.builder.IModelBuilder<? extends de.hub.clickwatch.model.Node>> m_featureMetaDataBuilder = new java.util.LinkedList<de.hub.clickwatch.model.util.builder.IModelBuilder<? extends de.hub.clickwatch.model.Node>>();
   // helper attributes
   private boolean m_featureDataBaseSet = false;
   private boolean m_featureDescriptionSet = false;
   private boolean m_featureDurationSet = false;
   private boolean m_featureEndSet = false;
+  private boolean m_featureHBaseRowMapSet = false;
+  private boolean m_featureMetaDataSet = false;
   private boolean m_featureNameSet = false;
   private boolean m_featureNetworkSet = false;
   private boolean m_featureNetworkTimeCopySet = false;
@@ -65,6 +70,11 @@ public class ExperimentDescrBuilder implements de.hub.clickwatch.recoder.cwdatab
     _builder.m_duration = m_duration;
     _builder.m_featureEndSet = m_featureEndSet;
     _builder.m_end = m_end;
+    _builder.m_featureHBaseRowMapSet = m_featureHBaseRowMapSet;
+    _builder.m_hBaseRowMap = m_hBaseRowMap;
+    _builder.m_featureMetaDataSet = m_featureMetaDataSet;
+    _builder.m_metaData = m_metaData;
+    _builder.m_featureMetaDataBuilder = m_featureMetaDataBuilder;
     _builder.m_featureNameSet = m_featureNameSet;
     _builder.m_name = m_name;
     _builder.m_featureNetworkSet = m_featureNetworkSet;
@@ -106,6 +116,9 @@ public class ExperimentDescrBuilder implements de.hub.clickwatch.recoder.cwdatab
     if (m_featureEndSet) {
       _newInstance.setEnd(m_end);
     }
+    if (m_featureHBaseRowMapSet) {
+      _newInstance.setHBaseRowMap(m_hBaseRowMap);
+    }
     if (m_featureNameSet) {
       _newInstance.setName(m_name);
     }
@@ -140,6 +153,15 @@ public class ExperimentDescrBuilder implements de.hub.clickwatch.recoder.cwdatab
         _newInstance.setStatistics(m_featureStatisticsBuilder.build());
       }
     }
+    if (m_featureMetaDataSet) {
+      _newInstance.getMetaData().addAll(m_metaData);
+    } else {
+      if (!m_featureMetaDataBuilder.isEmpty()) {
+        for (de.hub.clickwatch.model.util.builder.IModelBuilder<? extends de.hub.clickwatch.model.Node> builder : m_featureMetaDataBuilder) {
+          _newInstance.getMetaData().add(builder.build());
+        }
+      }
+    }
     return _newInstance;
   }
 
@@ -169,6 +191,12 @@ public class ExperimentDescrBuilder implements de.hub.clickwatch.recoder.cwdatab
   public ExperimentDescrBuilder withEnd(long p_end) {
     m_end = p_end;
     m_featureEndSet = true;
+    return this;
+  }
+
+  public ExperimentDescrBuilder withHBaseRowMap(de.hub.clickwatch.recoder.cwdatabase.HBaseRowMap p_hBaseRowMap) {
+    m_hBaseRowMap = p_hBaseRowMap;
+    m_featureHBaseRowMapSet = true;
     return this;
   }
 
@@ -227,6 +255,23 @@ public class ExperimentDescrBuilder implements de.hub.clickwatch.recoder.cwdatab
   public ExperimentDescrBuilder withStatistics(
       de.hub.clickwatch.recoder.cwdatabase.util.builder.ICwdatabaseBuilder<? extends de.hub.clickwatch.recoder.cwdatabase.ExperimentStatistics> p_experimentStatisticsBuilder) {
     m_featureStatisticsBuilder = p_experimentStatisticsBuilder;
+    return this;
+  }
+
+  public ExperimentDescrBuilder withMetaData(de.hub.clickwatch.model.Node p_metaData) {
+    m_metaData.add(p_metaData);
+    m_featureMetaDataSet = true;
+    return this;
+  }
+
+  public ExperimentDescrBuilder withMetaData(java.util.Collection<? extends de.hub.clickwatch.model.Node> p_metaData) {
+    m_metaData.addAll(p_metaData);
+    m_featureMetaDataSet = true;
+    return this;
+  }
+
+  public ExperimentDescrBuilder withMetaData(de.hub.clickwatch.model.util.builder.IModelBuilder<? extends de.hub.clickwatch.model.Node> p_nodeBuilder) {
+    m_featureMetaDataBuilder.add(p_nodeBuilder);
     return this;
   }
 }

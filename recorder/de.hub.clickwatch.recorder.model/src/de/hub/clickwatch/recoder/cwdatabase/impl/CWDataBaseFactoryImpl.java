@@ -29,6 +29,7 @@ import de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr;
 import de.hub.clickwatch.recoder.cwdatabase.ExperimentNodeRecordTimeTable;
 import de.hub.clickwatch.recoder.cwdatabase.ExperimentRecord;
 import de.hub.clickwatch.recoder.cwdatabase.ExperimentStatistics;
+import de.hub.clickwatch.recoder.cwdatabase.HBaseRowMap;
 import de.hub.clickwatch.recoder.cwdatabase.NodeRecord;
 import de.hub.clickwatch.recoder.cwdatabase.NodeRecordDescr;
 
@@ -100,6 +101,8 @@ public class CWDataBaseFactoryImpl extends EFactoryImpl implements CWDataBaseFac
 		switch (eDataType.getClassifierID()) {
 			case CWDataBasePackage.ESUMMARY_STATISTICS:
 				return createESummaryStatisticsFromString(eDataType, initialValue);
+			case CWDataBasePackage.HBASE_ROW_MAP:
+				return createHBaseRowMapFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -115,6 +118,8 @@ public class CWDataBaseFactoryImpl extends EFactoryImpl implements CWDataBaseFac
 		switch (eDataType.getClassifierID()) {
 			case CWDataBasePackage.ESUMMARY_STATISTICS:
 				return convertESummaryStatisticsToString(eDataType, instanceValue);
+			case CWDataBasePackage.HBASE_ROW_MAP:
+				return convertHBaseRowMapToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -213,7 +218,7 @@ public class CWDataBaseFactoryImpl extends EFactoryImpl implements CWDataBaseFac
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public SummaryStatistics createESummaryStatisticsFromString(EDataType eDataType, String initialValue) {
 		try {
@@ -233,6 +238,42 @@ public class CWDataBaseFactoryImpl extends EFactoryImpl implements CWDataBaseFac
 	 * @generated NOT
 	 */
 	public String convertESummaryStatisticsToString(EDataType eDataType, Object instanceValue) {
+		try {
+			Serializable value = (Serializable)instanceValue;
+			ByteArrayOutputStream bos = new ByteArrayOutputStream();
+		    ObjectOutputStream out = new ObjectOutputStream(bos) ;
+		    out.writeObject(value);
+		    out.close();
+	
+		    return Base64.encode(bos.toByteArray());
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public HBaseRowMap createHBaseRowMapFromString(EDataType eDataType, String initialValue) {
+		try {
+		    byte[] bytes = Base64.decode(initialValue);
+		    ObjectInputStream in = new ObjectInputStream(new ByteArrayInputStream(bytes));
+		    HBaseRowMap value = (HBaseRowMap)in.readObject();
+		    in.close();
+		    return value;
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public String convertHBaseRowMapToString(EDataType eDataType, Object instanceValue) {
 		try {
 			Serializable value = (Serializable)instanceValue;
 			ByteArrayOutputStream bos = new ByteArrayOutputStream();

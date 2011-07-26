@@ -7,22 +7,13 @@
 package de.hub.clickwatch.recoder.cwdatabase.provider;
 
 
-import de.hub.clickwatch.model.ClickWatchModelFactory;
-
-import de.hub.clickwatch.recoder.cwdatabase.CWDataBaseFactory;
-import de.hub.clickwatch.recoder.cwdatabase.CWDataBasePackage;
-import de.hub.clickwatch.recoder.cwdatabase.ExperimentRecord;
-
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -33,6 +24,10 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+
+import de.hub.clickwatch.recoder.cwdatabase.CWDataBaseFactory;
+import de.hub.clickwatch.recoder.cwdatabase.CWDataBasePackage;
+import de.hub.clickwatch.recoder.cwdatabase.ExperimentRecord;
 
 /**
  * This is the item provider adapter for a {@link de.hub.clickwatch.recoder.cwdatabase.ExperimentRecord} object.
@@ -108,7 +103,6 @@ public class ExperimentRecordItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(CWDataBasePackage.Literals.EXPERIMENT_RECORD__META_DATA);
 			childrenFeatures.add(CWDataBasePackage.Literals.EXPERIMENT_RECORD__NODE_MAP);
 		}
 		return childrenFeatures;
@@ -167,7 +161,6 @@ public class ExperimentRecordItemProvider
 			case CWDataBasePackage.EXPERIMENT_RECORD__NAME:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
-			case CWDataBasePackage.EXPERIMENT_RECORD__META_DATA:
 			case CWDataBasePackage.EXPERIMENT_RECORD__NODE_MAP:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
@@ -185,16 +178,6 @@ public class ExperimentRecordItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add
-			(createChildParameter
-				(CWDataBasePackage.Literals.EXPERIMENT_RECORD__META_DATA,
-				 ClickWatchModelFactory.eINSTANCE.createNode()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(CWDataBasePackage.Literals.EXPERIMENT_RECORD__META_DATA,
-				 ClickWatchModelFactory.eINSTANCE.createMultiNode()));
 
 		newChildDescriptors.add
 			(createChildParameter

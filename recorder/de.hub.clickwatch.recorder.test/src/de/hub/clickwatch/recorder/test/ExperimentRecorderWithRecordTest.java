@@ -7,7 +7,6 @@ import java.util.List;
 
 import junit.framework.Assert;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 import com.google.common.base.Function;
@@ -23,7 +22,7 @@ import de.hub.clickwatch.model.Node;
 import de.hub.clickwatch.recorder.ClickSocketPlayer;
 import de.hub.clickwatch.recorder.ClickSocketPlayerSocketImpl;
 
-public class ExperimentRecorderWithRecordTest extends AbstractDBTest {
+public class ExperimentRecorderWithRecordTest extends AbstractDataBaseAdapterTest {
 
 	@Override
 	protected Module[] getAdditionalModules() {
@@ -45,6 +44,11 @@ public class ExperimentRecorderWithRecordTest extends AbstractDBTest {
 	protected Class<? extends IValueAdapter> getValueAdapterClass() {
 		return StringValueAdapter.class;
 	}
+	
+	@Override
+	protected boolean getRecordChangesOnly() {
+		return true;
+	}
 
 	@Override
 	protected Class<? extends IClickSocket> getClickSocketClass() {
@@ -59,7 +63,6 @@ public class ExperimentRecorderWithRecordTest extends AbstractDBTest {
 		// supported, we use this trick.
 	}
 
-	@Ignore("work in progress")
 	@Test
 	public void testWithRecord() throws Exception {
 		performTest(new String[] { "localhost", "seismo171.testbed",

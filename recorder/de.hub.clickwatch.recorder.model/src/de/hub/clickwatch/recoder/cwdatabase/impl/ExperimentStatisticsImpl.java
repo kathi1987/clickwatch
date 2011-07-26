@@ -276,7 +276,7 @@ public class ExperimentStatisticsImpl extends EObjectImpl implements ExperimentS
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected ExperimentStatisticsImpl() {
 		super();
@@ -489,7 +489,12 @@ public class ExperimentStatisticsImpl extends EObjectImpl implements ExperimentS
 	 * @generated
 	 */
 	public void setSamplesPerSecond(double newSamplesPerSecond) {
-		throw new UnsupportedOperationException();
+		double oldSamplesPerSecond = samplesPerSecond;
+		samplesPerSecond = newSamplesPerSecond;
+		boolean oldSamplesPerSecondESet = samplesPerSecondESet;
+		samplesPerSecondESet = true;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CWDataBasePackage.EXPERIMENT_STATISTICS__SAMPLES_PER_SECOND, oldSamplesPerSecond, samplesPerSecond, !oldSamplesPerSecondESet));
 	}
 
 	/**
@@ -560,7 +565,7 @@ public class ExperimentStatisticsImpl extends EObjectImpl implements ExperimentS
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public void reset() {
 		initializeStatistics();

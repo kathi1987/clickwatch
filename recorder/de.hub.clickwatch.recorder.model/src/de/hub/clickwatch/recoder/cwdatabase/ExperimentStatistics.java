@@ -7,7 +7,6 @@
 package de.hub.clickwatch.recoder.cwdatabase;
 
 import org.apache.commons.math.stat.descriptive.SummaryStatistics;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**

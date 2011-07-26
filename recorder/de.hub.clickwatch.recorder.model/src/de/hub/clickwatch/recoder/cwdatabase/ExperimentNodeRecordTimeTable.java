@@ -7,7 +7,6 @@
 package de.hub.clickwatch.recoder.cwdatabase;
 
 import org.eclipse.emf.common.util.EMap;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**

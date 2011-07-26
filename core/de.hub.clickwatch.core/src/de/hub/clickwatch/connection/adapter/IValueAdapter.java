@@ -11,6 +11,8 @@ public interface IValueAdapter {
 	
 	public void setModelValue(Handler handler, String realValue);
 	
+	public void clearValue(Handler handler);
+	
 	public void moveValue(Handler source, Handler target);
 	
 	public boolean valuesEquals(Handler h1, Handler h2);

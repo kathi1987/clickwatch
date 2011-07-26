@@ -7,22 +7,13 @@
 package de.hub.clickwatch.recoder.cwdatabase.provider;
 
 
-import de.hub.clickwatch.model.ClickWatchModelFactory;
-
-import de.hub.clickwatch.recoder.cwdatabase.CWDataBaseFactory;
-import de.hub.clickwatch.recoder.cwdatabase.CWDataBasePackage;
-import de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr;
-
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -33,6 +24,12 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+
+import de.hub.clickwatch.model.ClickWatchModelFactory;
+import de.hub.clickwatch.model.provider.TimeStampLabelProvider;
+import de.hub.clickwatch.recoder.cwdatabase.CWDataBaseFactory;
+import de.hub.clickwatch.recoder.cwdatabase.CWDataBasePackage;
+import de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr;
 
 /**
  * This is the item provider adapter for a {@link de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr} object.
@@ -75,6 +72,7 @@ public class ExperimentDescrItemProvider
 			addRecordPropertyDescriptor(object);
 			addDurationPropertyDescriptor(object);
 			addEndPropertyDescriptor(object);
+			addHBaseRowMapPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -131,7 +129,7 @@ public class ExperimentDescrItemProvider
 	 */
 	protected void addStartPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
+			(new ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_ExperimentDescr_start_feature"),
@@ -142,7 +140,12 @@ public class ExperimentDescrItemProvider
 				 false,
 				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
 				 null,
-				 null));
+				 null) {
+					@Override
+					public IItemLabelProvider getLabelProvider(Object object) {
+						return new TimeStampLabelProvider();
+					}
+			});
 	}
 
 	/**
@@ -197,7 +200,7 @@ public class ExperimentDescrItemProvider
 	 */
 	protected void addEndPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
+			(new ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_ExperimentDescr_end_feature"),
@@ -207,6 +210,33 @@ public class ExperimentDescrItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null) {
+					@Override
+					public IItemLabelProvider getLabelProvider(Object object) {
+						return new TimeStampLabelProvider();
+					}
+		});
+	}
+
+	/**
+	 * This adds a property descriptor for the HBase Row Map feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addHBaseRowMapPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ExperimentDescr_hBaseRowMap_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ExperimentDescr_hBaseRowMap_feature", "_UI_ExperimentDescr_type"),
+				 CWDataBasePackage.Literals.EXPERIMENT_DESCR__HBASE_ROW_MAP,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -226,6 +256,7 @@ public class ExperimentDescrItemProvider
 			childrenFeatures.add(CWDataBasePackage.Literals.EXPERIMENT_DESCR__NETWORK);
 			childrenFeatures.add(CWDataBasePackage.Literals.EXPERIMENT_DESCR__NETWORK_TIME_COPY);
 			childrenFeatures.add(CWDataBasePackage.Literals.EXPERIMENT_DESCR__STATISTICS);
+			childrenFeatures.add(CWDataBasePackage.Literals.EXPERIMENT_DESCR__META_DATA);
 		}
 		return childrenFeatures;
 	}
@@ -285,11 +316,13 @@ public class ExperimentDescrItemProvider
 			case CWDataBasePackage.EXPERIMENT_DESCR__START:
 			case CWDataBasePackage.EXPERIMENT_DESCR__DURATION:
 			case CWDataBasePackage.EXPERIMENT_DESCR__END:
+			case CWDataBasePackage.EXPERIMENT_DESCR__HBASE_ROW_MAP:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case CWDataBasePackage.EXPERIMENT_DESCR__NETWORK:
 			case CWDataBasePackage.EXPERIMENT_DESCR__NETWORK_TIME_COPY:
 			case CWDataBasePackage.EXPERIMENT_DESCR__STATISTICS:
+			case CWDataBasePackage.EXPERIMENT_DESCR__META_DATA:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -321,6 +354,16 @@ public class ExperimentDescrItemProvider
 			(createChildParameter
 				(CWDataBasePackage.Literals.EXPERIMENT_DESCR__STATISTICS,
 				 CWDataBaseFactory.eINSTANCE.createExperimentStatistics()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(CWDataBasePackage.Literals.EXPERIMENT_DESCR__META_DATA,
+				 ClickWatchModelFactory.eINSTANCE.createNode()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(CWDataBasePackage.Literals.EXPERIMENT_DESCR__META_DATA,
+				 ClickWatchModelFactory.eINSTANCE.createMultiNode()));
 	}
 
 	/**

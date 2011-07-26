@@ -36,8 +36,8 @@ public class PdrPlotAnalysis {
 		long durationInSeconds = duration / 1000000;
 		for (Node nodeConfig: experiment.getNetwork().getNodes()) {
 			for (long i = 0; i < durationInSeconds; i++) {
-//				logger.log(ILogger.INFO, "perform at time " + new TimeStampLabelProvider().getText(i*1000000 + experiment.getStart()) 
-//						+ " on node " + nodeConfig.getINetAddress(), null);
+				logger.log(ILogger.INFO, "perform at time " + new TimeStampLabelProvider().getText(i*1000000 + experiment.getStart()) 
+						+ " on node " + nodeConfig.getINetAddress(), null);
 				
 				Node node = dbUtil.getNode(experiment, nodeConfig.getINetAddress(), "device_wifi/link_stat", "bcast_stats", i*1000000 + experiment.getStart());
 				Handler bcastStats = node.getHandler("device_wifi/link_stat/bcast_stats");

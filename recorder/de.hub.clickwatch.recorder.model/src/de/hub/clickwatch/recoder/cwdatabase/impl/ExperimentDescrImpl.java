@@ -6,24 +6,27 @@
  */
 package de.hub.clickwatch.recoder.cwdatabase.impl;
 
-import de.hub.clickwatch.model.Network;
+import java.util.Collection;
 
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecore.util.InternalEList;
+
+import de.hub.clickwatch.model.Network;
+import de.hub.clickwatch.model.Node;
 import de.hub.clickwatch.recoder.cwdatabase.CWDataBasePackage;
 import de.hub.clickwatch.recoder.cwdatabase.DataBase;
 import de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr;
 import de.hub.clickwatch.recoder.cwdatabase.ExperimentRecord;
 import de.hub.clickwatch.recoder.cwdatabase.ExperimentStatistics;
-
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
-
-import org.eclipse.emf.ecore.util.EcoreUtil;
+import de.hub.clickwatch.recoder.cwdatabase.HBaseRowMap;
 
 /**
  * <!-- begin-user-doc -->
@@ -42,6 +45,8 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  *   <li>{@link de.hub.clickwatch.recoder.cwdatabase.impl.ExperimentDescrImpl#getDuration <em>Duration</em>}</li>
  *   <li>{@link de.hub.clickwatch.recoder.cwdatabase.impl.ExperimentDescrImpl#getEnd <em>End</em>}</li>
  *   <li>{@link de.hub.clickwatch.recoder.cwdatabase.impl.ExperimentDescrImpl#getStatistics <em>Statistics</em>}</li>
+ *   <li>{@link de.hub.clickwatch.recoder.cwdatabase.impl.ExperimentDescrImpl#getHBaseRowMap <em>HBase Row Map</em>}</li>
+ *   <li>{@link de.hub.clickwatch.recoder.cwdatabase.impl.ExperimentDescrImpl#getMetaData <em>Meta Data</em>}</li>
  * </ul>
  * </p>
  *
@@ -187,6 +192,36 @@ public class ExperimentDescrImpl extends EObjectImpl implements ExperimentDescr 
 	 * @ordered
 	 */
 	protected ExperimentStatistics statistics;
+
+	/**
+	 * The default value of the '{@link #getHBaseRowMap() <em>HBase Row Map</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getHBaseRowMap()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final HBaseRowMap HBASE_ROW_MAP_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getHBaseRowMap() <em>HBase Row Map</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getHBaseRowMap()
+	 * @generated
+	 * @ordered
+	 */
+	protected HBaseRowMap hBaseRowMap = HBASE_ROW_MAP_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getMetaData() <em>Meta Data</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMetaData()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Node> metaData;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -525,6 +560,39 @@ public class ExperimentDescrImpl extends EObjectImpl implements ExperimentDescr 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public HBaseRowMap getHBaseRowMap() {
+		return hBaseRowMap;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setHBaseRowMap(HBaseRowMap newHBaseRowMap) {
+		HBaseRowMap oldHBaseRowMap = hBaseRowMap;
+		hBaseRowMap = newHBaseRowMap;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CWDataBasePackage.EXPERIMENT_DESCR__HBASE_ROW_MAP, oldHBaseRowMap, hBaseRowMap));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<Node> getMetaData() {
+		if (metaData == null) {
+			metaData = new EObjectContainmentEList<Node>(Node.class, this, CWDataBasePackage.EXPERIMENT_DESCR__META_DATA);
+		}
+		return metaData;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -552,6 +620,8 @@ public class ExperimentDescrImpl extends EObjectImpl implements ExperimentDescr 
 				return basicSetDataBase(null, msgs);
 			case CWDataBasePackage.EXPERIMENT_DESCR__STATISTICS:
 				return basicSetStatistics(null, msgs);
+			case CWDataBasePackage.EXPERIMENT_DESCR__META_DATA:
+				return ((InternalEList<?>)getMetaData()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -599,6 +669,10 @@ public class ExperimentDescrImpl extends EObjectImpl implements ExperimentDescr 
 				return getEnd();
 			case CWDataBasePackage.EXPERIMENT_DESCR__STATISTICS:
 				return getStatistics();
+			case CWDataBasePackage.EXPERIMENT_DESCR__HBASE_ROW_MAP:
+				return getHBaseRowMap();
+			case CWDataBasePackage.EXPERIMENT_DESCR__META_DATA:
+				return getMetaData();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -608,6 +682,7 @@ public class ExperimentDescrImpl extends EObjectImpl implements ExperimentDescr 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -640,6 +715,13 @@ public class ExperimentDescrImpl extends EObjectImpl implements ExperimentDescr 
 				return;
 			case CWDataBasePackage.EXPERIMENT_DESCR__STATISTICS:
 				setStatistics((ExperimentStatistics)newValue);
+				return;
+			case CWDataBasePackage.EXPERIMENT_DESCR__HBASE_ROW_MAP:
+				setHBaseRowMap((HBaseRowMap)newValue);
+				return;
+			case CWDataBasePackage.EXPERIMENT_DESCR__META_DATA:
+				getMetaData().clear();
+				getMetaData().addAll((Collection<? extends Node>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -683,6 +765,12 @@ public class ExperimentDescrImpl extends EObjectImpl implements ExperimentDescr 
 			case CWDataBasePackage.EXPERIMENT_DESCR__STATISTICS:
 				setStatistics((ExperimentStatistics)null);
 				return;
+			case CWDataBasePackage.EXPERIMENT_DESCR__HBASE_ROW_MAP:
+				setHBaseRowMap(HBASE_ROW_MAP_EDEFAULT);
+				return;
+			case CWDataBasePackage.EXPERIMENT_DESCR__META_DATA:
+				getMetaData().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -715,6 +803,10 @@ public class ExperimentDescrImpl extends EObjectImpl implements ExperimentDescr 
 				return end != END_EDEFAULT;
 			case CWDataBasePackage.EXPERIMENT_DESCR__STATISTICS:
 				return statistics != null;
+			case CWDataBasePackage.EXPERIMENT_DESCR__HBASE_ROW_MAP:
+				return HBASE_ROW_MAP_EDEFAULT == null ? hBaseRowMap != null : !HBASE_ROW_MAP_EDEFAULT.equals(hBaseRowMap);
+			case CWDataBasePackage.EXPERIMENT_DESCR__META_DATA:
+				return metaData != null && !metaData.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -739,6 +831,8 @@ public class ExperimentDescrImpl extends EObjectImpl implements ExperimentDescr 
 		result.append(duration);
 		result.append(", end: ");
 		result.append(end);
+		result.append(", hBaseRowMap: ");
+		result.append(hBaseRowMap);
 		result.append(')');
 		return result.toString();
 	}

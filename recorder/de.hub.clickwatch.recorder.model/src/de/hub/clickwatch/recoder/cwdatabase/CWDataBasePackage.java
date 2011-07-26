@@ -161,13 +161,31 @@ public interface CWDataBasePackage extends EPackage {
 	int EXPERIMENT_DESCR__STATISTICS = 9;
 
 	/**
+	 * The feature id for the '<em><b>HBase Row Map</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPERIMENT_DESCR__HBASE_ROW_MAP = 10;
+
+	/**
+	 * The feature id for the '<em><b>Meta Data</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPERIMENT_DESCR__META_DATA = 11;
+
+	/**
 	 * The number of structural features of the '<em>Experiment Descr</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXPERIMENT_DESCR_FEATURE_COUNT = 10;
+	int EXPERIMENT_DESCR_FEATURE_COUNT = 12;
 
 	/**
 	 * The meta object id for the '{@link de.hub.clickwatch.recoder.cwdatabase.impl.NodeRecordImpl <em>Node Record</em>}' class.
@@ -281,22 +299,13 @@ public interface CWDataBasePackage extends EPackage {
 	int EXPERIMENT_RECORD = 3;
 
 	/**
-	 * The feature id for the '<em><b>Meta Data</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPERIMENT_RECORD__META_DATA = 0;
-
-	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXPERIMENT_RECORD__NAME = 1;
+	int EXPERIMENT_RECORD__NAME = 0;
 
 	/**
 	 * The feature id for the '<em><b>Node Map</b></em>' map.
@@ -305,7 +314,7 @@ public interface CWDataBasePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXPERIMENT_RECORD__NODE_MAP = 2;
+	int EXPERIMENT_RECORD__NODE_MAP = 1;
 
 	/**
 	 * The number of structural features of the '<em>Experiment Record</em>' class.
@@ -314,7 +323,7 @@ public interface CWDataBasePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXPERIMENT_RECORD_FEATURE_COUNT = 3;
+	int EXPERIMENT_RECORD_FEATURE_COUNT = 2;
 
 	/**
 	 * The meta object id for the '{@link de.hub.clickwatch.recoder.cwdatabase.impl.ExperimentNodeRecordTimeTableImpl <em>Experiment Node Record Time Table</em>}' class.
@@ -576,6 +585,17 @@ public interface CWDataBasePackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '<em>HBase Row Map</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.hub.clickwatch.recoder.cwdatabase.HBaseRowMap
+	 * @see de.hub.clickwatch.recoder.cwdatabase.impl.CWDataBasePackageImpl#getHBaseRowMap()
+	 * @generated
+	 */
+	int HBASE_ROW_MAP = 10;
+
+
+	/**
 	 * Returns the meta object for class '{@link de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr <em>Experiment Descr</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -696,6 +716,28 @@ public interface CWDataBasePackage extends EPackage {
 	EReference getExperimentDescr_Statistics();
 
 	/**
+	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr#getHBaseRowMap <em>HBase Row Map</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>HBase Row Map</em>'.
+	 * @see de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr#getHBaseRowMap()
+	 * @see #getExperimentDescr()
+	 * @generated
+	 */
+	EAttribute getExperimentDescr_HBaseRowMap();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr#getMetaData <em>Meta Data</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Meta Data</em>'.
+	 * @see de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr#getMetaData()
+	 * @see #getExperimentDescr()
+	 * @generated
+	 */
+	EReference getExperimentDescr_MetaData();
+
+	/**
 	 * Returns the meta object for class '{@link de.hub.clickwatch.recoder.cwdatabase.NodeRecord <em>Node Record</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -801,17 +843,6 @@ public interface CWDataBasePackage extends EPackage {
 	 * @generated
 	 */
 	EClass getExperimentRecord();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link de.hub.clickwatch.recoder.cwdatabase.ExperimentRecord#getMetaData <em>Meta Data</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Meta Data</em>'.
-	 * @see de.hub.clickwatch.recoder.cwdatabase.ExperimentRecord#getMetaData()
-	 * @see #getExperimentRecord()
-	 * @generated
-	 */
-	EReference getExperimentRecord_MetaData();
 
 	/**
 	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.recoder.cwdatabase.ExperimentRecord#getName <em>Name</em>}'.
@@ -1088,6 +1119,17 @@ public interface CWDataBasePackage extends EPackage {
 	EDataType getESummaryStatistics();
 
 	/**
+	 * Returns the meta object for data type '{@link de.hub.clickwatch.recoder.cwdatabase.HBaseRowMap <em>HBase Row Map</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>HBase Row Map</em>'.
+	 * @see de.hub.clickwatch.recoder.cwdatabase.HBaseRowMap
+	 * @model instanceClass="de.hub.clickwatch.recoder.cwdatabase.HBaseRowMap"
+	 * @generated
+	 */
+	EDataType getHBaseRowMap();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1200,6 +1242,22 @@ public interface CWDataBasePackage extends EPackage {
 		EReference EXPERIMENT_DESCR__STATISTICS = eINSTANCE.getExperimentDescr_Statistics();
 
 		/**
+		 * The meta object literal for the '<em><b>HBase Row Map</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute EXPERIMENT_DESCR__HBASE_ROW_MAP = eINSTANCE.getExperimentDescr_HBaseRowMap();
+
+		/**
+		 * The meta object literal for the '<em><b>Meta Data</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EXPERIMENT_DESCR__META_DATA = eINSTANCE.getExperimentDescr_MetaData();
+
+		/**
 		 * The meta object literal for the '{@link de.hub.clickwatch.recoder.cwdatabase.impl.NodeRecordImpl <em>Node Record</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1284,14 +1342,6 @@ public interface CWDataBasePackage extends EPackage {
 		 * @generated
 		 */
 		EClass EXPERIMENT_RECORD = eINSTANCE.getExperimentRecord();
-
-		/**
-		 * The meta object literal for the '<em><b>Meta Data</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference EXPERIMENT_RECORD__META_DATA = eINSTANCE.getExperimentRecord_MetaData();
 
 		/**
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -1504,6 +1554,16 @@ public interface CWDataBasePackage extends EPackage {
 		 * @generated
 		 */
 		EDataType ESUMMARY_STATISTICS = eINSTANCE.getESummaryStatistics();
+
+		/**
+		 * The meta object literal for the '<em>HBase Row Map</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.hub.clickwatch.recoder.cwdatabase.HBaseRowMap
+		 * @see de.hub.clickwatch.recoder.cwdatabase.impl.CWDataBasePackageImpl#getHBaseRowMap()
+		 * @generated
+		 */
+		EDataType HBASE_ROW_MAP = eINSTANCE.getHBaseRowMap();
 
 	}
 

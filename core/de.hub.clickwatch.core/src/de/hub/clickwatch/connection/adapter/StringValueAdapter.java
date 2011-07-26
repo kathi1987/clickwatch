@@ -23,5 +23,10 @@ public class StringValueAdapter extends AbstractAdapter implements IValueAdapter
 	public boolean valuesEquals(Handler h1, Handler h2) {
 		return h1.getValue().equals(h2.getValue());
 	}
+
+	@Override
+	public void clearValue(Handler handler) {
+		handler.setValue(null);
+	}
 	
 }

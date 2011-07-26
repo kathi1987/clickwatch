@@ -6,11 +6,7 @@
  */
 package de.hub.clickwatch.recoder.cwdatabase;
 
-import de.hub.clickwatch.model.Node;
-
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.EMap;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -21,7 +17,6 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link de.hub.clickwatch.recoder.cwdatabase.ExperimentRecord#getMetaData <em>Meta Data</em>}</li>
  *   <li>{@link de.hub.clickwatch.recoder.cwdatabase.ExperimentRecord#getName <em>Name</em>}</li>
  *   <li>{@link de.hub.clickwatch.recoder.cwdatabase.ExperimentRecord#getNodeMap <em>Node Map</em>}</li>
  * </ul>
@@ -32,22 +27,6 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface ExperimentRecord extends EObject {
-	/**
-	 * Returns the value of the '<em><b>Meta Data</b></em>' containment reference list.
-	 * The list contents are of type {@link de.hub.clickwatch.model.Node}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Meta Data</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Meta Data</em>' containment reference list.
-	 * @see de.hub.clickwatch.recoder.cwdatabase.CWDataBasePackage#getExperimentRecord_MetaData()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<Node> getMetaData();
-
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->

@@ -6,30 +6,20 @@
  */
 package de.hub.clickwatch.recoder.cwdatabase.impl;
 
-import de.hub.clickwatch.model.Node;
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EMap;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.util.EcoreEMap;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 import de.hub.clickwatch.recoder.cwdatabase.CWDataBasePackage;
 import de.hub.clickwatch.recoder.cwdatabase.ExperimentNodeRecordTimeTable;
 import de.hub.clickwatch.recoder.cwdatabase.ExperimentRecord;
-
-import java.util.Collection;
-
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.EMap;
-
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EcoreEMap;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -38,7 +28,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link de.hub.clickwatch.recoder.cwdatabase.impl.ExperimentRecordImpl#getMetaData <em>Meta Data</em>}</li>
  *   <li>{@link de.hub.clickwatch.recoder.cwdatabase.impl.ExperimentRecordImpl#getName <em>Name</em>}</li>
  *   <li>{@link de.hub.clickwatch.recoder.cwdatabase.impl.ExperimentRecordImpl#getNodeMap <em>Node Map</em>}</li>
  * </ul>
@@ -47,16 +36,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * @generated
  */
 public class ExperimentRecordImpl extends EObjectImpl implements ExperimentRecord {
-	/**
-	 * The cached value of the '{@link #getMetaData() <em>Meta Data</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMetaData()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Node> metaData;
-
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -111,18 +90,6 @@ public class ExperimentRecordImpl extends EObjectImpl implements ExperimentRecor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Node> getMetaData() {
-		if (metaData == null) {
-			metaData = new EObjectContainmentEList<Node>(Node.class, this, CWDataBasePackage.EXPERIMENT_RECORD__META_DATA);
-		}
-		return metaData;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public String getName() {
 		return name;
 	}
@@ -159,8 +126,6 @@ public class ExperimentRecordImpl extends EObjectImpl implements ExperimentRecor
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case CWDataBasePackage.EXPERIMENT_RECORD__META_DATA:
-				return ((InternalEList<?>)getMetaData()).basicRemove(otherEnd, msgs);
 			case CWDataBasePackage.EXPERIMENT_RECORD__NODE_MAP:
 				return ((InternalEList<?>)getNodeMap()).basicRemove(otherEnd, msgs);
 		}
@@ -175,8 +140,6 @@ public class ExperimentRecordImpl extends EObjectImpl implements ExperimentRecor
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case CWDataBasePackage.EXPERIMENT_RECORD__META_DATA:
-				return getMetaData();
 			case CWDataBasePackage.EXPERIMENT_RECORD__NAME:
 				return getName();
 			case CWDataBasePackage.EXPERIMENT_RECORD__NODE_MAP:
@@ -191,14 +154,9 @@ public class ExperimentRecordImpl extends EObjectImpl implements ExperimentRecor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case CWDataBasePackage.EXPERIMENT_RECORD__META_DATA:
-				getMetaData().clear();
-				getMetaData().addAll((Collection<? extends Node>)newValue);
-				return;
 			case CWDataBasePackage.EXPERIMENT_RECORD__NAME:
 				setName((String)newValue);
 				return;
@@ -217,9 +175,6 @@ public class ExperimentRecordImpl extends EObjectImpl implements ExperimentRecor
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case CWDataBasePackage.EXPERIMENT_RECORD__META_DATA:
-				getMetaData().clear();
-				return;
 			case CWDataBasePackage.EXPERIMENT_RECORD__NAME:
 				setName(NAME_EDEFAULT);
 				return;
@@ -238,8 +193,6 @@ public class ExperimentRecordImpl extends EObjectImpl implements ExperimentRecor
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case CWDataBasePackage.EXPERIMENT_RECORD__META_DATA:
-				return metaData != null && !metaData.isEmpty();
 			case CWDataBasePackage.EXPERIMENT_RECORD__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case CWDataBasePackage.EXPERIMENT_RECORD__NODE_MAP:

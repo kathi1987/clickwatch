@@ -6,14 +6,20 @@
  */
 package de.hub.clickwatch.recoder.cwdatabase.util;
 
-import de.hub.clickwatch.recoder.cwdatabase.*;
-
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.util.Switch;
+
+import de.hub.clickwatch.recoder.cwdatabase.CWDataBasePackage;
+import de.hub.clickwatch.recoder.cwdatabase.DataBase;
+import de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr;
+import de.hub.clickwatch.recoder.cwdatabase.ExperimentNodeRecordTimeTable;
+import de.hub.clickwatch.recoder.cwdatabase.ExperimentRecord;
+import de.hub.clickwatch.recoder.cwdatabase.ExperimentStatistics;
+import de.hub.clickwatch.recoder.cwdatabase.NodeRecord;
+import de.hub.clickwatch.recoder.cwdatabase.NodeRecordDescr;
 
 /**
  * <!-- begin-user-doc -->

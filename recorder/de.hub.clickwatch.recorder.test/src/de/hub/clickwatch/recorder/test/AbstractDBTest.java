@@ -3,7 +3,6 @@ package de.hub.clickwatch.recorder.test;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Map.Entry;
 
 import junit.framework.Assert;
 
@@ -24,15 +23,15 @@ import de.hub.clickwatch.model.util.builder.NodeBuilder;
 import de.hub.clickwatch.recoder.cwdatabase.CWDataBaseFactory;
 import de.hub.clickwatch.recoder.cwdatabase.DataBase;
 import de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr;
-import de.hub.clickwatch.recoder.cwdatabase.ExperimentRecord;
-import de.hub.clickwatch.recoder.cwdatabase.NodeRecord;
-import de.hub.clickwatch.recoder.cwdatabase.NodeRecordDescr;
 import de.hub.clickwatch.recoder.cwdatabase.util.builder.DataBaseBuilder;
 import de.hub.clickwatch.recoder.cwdatabase.util.builder.ExperimentDescrBuilder;
 import de.hub.clickwatch.recorder.CWRecorderModule;
 import de.hub.clickwatch.recorder.ExperimentRecorder;
 import de.hub.clickwatch.recorder.database.CWRecorderStandaloneSetup;
+import de.hub.clickwatch.recorder.database.DataBaseAdapter;
 import de.hub.clickwatch.recorder.database.DataBaseUtil;
+import de.hub.clickwatch.recorder.database.IDataBaseRecordAdapter;
+import de.hub.clickwatch.recorder.database.IDataBaseRetrieveAdapter;
 import de.hub.clickwatch.tests.AbstractAdapterTest;
 
 public class AbstractDBTest  extends AbstractAdapterTest {
@@ -44,11 +43,38 @@ public class AbstractDBTest  extends AbstractAdapterTest {
 		return new Module[] { new CWRecorderModule() {
 
 			@Override
+			protected void configureRecordChangesOnly() {
+				bind(boolean.class).annotatedWith(Names.named(B_RECORD_CHANGES_ONLY_PROPERTY)).toInstance(getRecordChangesOnly());
+			}
+
+			@Override
 			protected void configureDBValueAdapter() {
 				bind(IValueAdapter.class).annotatedWith(Names.named(DB_VALUE_ADAPTER_PROPERTY)).to(getDBValueAdapterClass());
 			}
-			
+
+			@Override
+			protected void configureDataBaseRecordAdapter() {
+				bind(IDataBaseRecordAdapter.class).to(getDataBaseRecordAdapterClass());
+			}
+
+			@Override
+			protected void configureDataBaseRetrieveAdapter() {
+				bind(IDataBaseRetrieveAdapter.class).to(getDataBaseRetrieveAdapterClass());
+			}			
 		}};
+	}
+	
+	protected Class<? extends IDataBaseRecordAdapter> getDataBaseRecordAdapterClass() {
+		return DataBaseAdapter.class;
+	}
+	
+	protected Class<? extends IDataBaseRetrieveAdapter> getDataBaseRetrieveAdapterClass() {
+		return DataBaseAdapter.class;
+	}
+
+
+	protected boolean getRecordChangesOnly() {
+		return false;
 	}
 
 	protected Class<? extends IValueAdapter> getDBValueAdapterClass() {
@@ -79,9 +105,9 @@ public class AbstractDBTest  extends AbstractAdapterTest {
 		}
 		
 		DataBase db = DataBaseBuilder.newDataBaseBuilder()
-				.withInMemory(true)
+				.withInMemory(getInMemory())
 				.withExperiments(ExperimentDescrBuilder.newExperimentDescrBuilder()
-						.withName("test_experiment")
+						.withName(getExperimentName())
 						.withDescription("this is onyl for testing")
 						.withDuration(getExperimentDuration())
 						.withStatistics(CWDataBaseFactory.eINSTANCE.createExperimentStatistics())
@@ -100,6 +126,14 @@ public class AbstractDBTest  extends AbstractAdapterTest {
 		
 		return db.getExperiments().get(0);
 	}
+	
+	protected boolean getInMemory() {
+		return true;
+	}
+	
+	protected String getExperimentName() {
+		return "test_experiment";
+	}
 
 	protected int getExperimentDuration() {
 		return 2000;
@@ -114,35 +148,25 @@ public class AbstractDBTest  extends AbstractAdapterTest {
 	}
 	
 	private void assertNode(ExperimentDescr experiment, String nodeId) {
-		ExperimentRecord experimentRecord = experiment.getRecord();
-		long latestEnd = 0;
-		for (Entry<Long, NodeRecordDescr> record: experimentRecord.getNodeMap().get(nodeId).getNodeMap()) {
-			NodeRecord nodeRecord = record.getValue().getRecord();
-			Assert.assertTrue(nodeRecord.getStart() >= 0);
-			Assert.assertTrue(nodeRecord.getStart() >= latestEnd);
-			Assert.assertTrue(nodeRecord.getStart() < nodeRecord.getEnd());
-			Assert.assertTrue(experiment.getStart() <= nodeRecord.getStart());
-			Assert.assertTrue(experiment.getEnd() >= nodeRecord.getEnd());
-			for (Handler handler: nodeRecord.getRecords()) {
-				Assert.assertTrue(handler.getTimestamp() > 0);
-				Assert.assertTrue(handler.getTimestamp() <= nodeRecord.getEnd());
-			}
-			latestEnd = nodeRecord.getEnd();
-		}
+		assertRecord(experiment, nodeId);
 		
 		long endTime = experiment.getEnd();
 		long startTime = experiment.getStart();
 		
-		assertNodeAtTime(experiment, nodeId, startTime);
-		assertNodeAtTime(experiment, nodeId, endTime);
-		assertNodeAtTime(experiment, nodeId, startTime + endTime / 2);
+		assertNodeAtTime(experiment, nodeId, startTime, true);
+		assertNodeAtTime(experiment, nodeId, endTime, false);
+		assertNodeAtTime(experiment, nodeId, startTime + endTime / 2, false);
 	}
 	
-	private void assertNodeAtTime(ExperimentDescr experiment, String nodeId, long time) {
+	protected void assertRecord(ExperimentDescr experiment, String nodeId) {
+		
+	}
+	
+	private void assertNodeAtTime(ExperimentDescr experiment, String nodeId, long time, boolean emptyHandlerAllowed) {
 		Node node = dbUtil.getNode(experiment, nodeId, time);
 		Assert.assertNotNull(node);
 		for (String handlerName: handlerNamesOfNode(node)) {
-			assertHandler(node, handlerName, time);
+			assertHandler(node, handlerName, time, emptyHandlerAllowed);
 		}
 	}
 	
@@ -154,9 +178,10 @@ public class AbstractDBTest  extends AbstractAdapterTest {
 		Assert.assertEquals("value of " + handler.getQualifiedName(), handler.getValue());
 	}
 
-	private void assertHandler(Node node, String handler, long time) {
+	private void assertHandler(Node node, String handler, long time, boolean emptyHandlerAllowed) {
 		Handler nodeHandler = node.getHandler(handler);
 		if (nodeHandler.getTimestamp() == 0) {
+			Assert.assertTrue(emptyHandlerAllowed);
 			Assert.assertTrue(nodeHandler.getValue() == null || nodeHandler.getValue().equals(""));
 		} else {
 			Assert.assertTrue(nodeHandler.getTimestamp() <= time);

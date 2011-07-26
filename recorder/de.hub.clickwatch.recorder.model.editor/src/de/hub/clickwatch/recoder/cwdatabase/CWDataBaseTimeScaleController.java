@@ -217,7 +217,7 @@ public class CWDataBaseTimeScaleController {
 				}
 			});
 		} catch (Exception e) {
-			MessageDialog.openError(scale.getShell(), "Exception", "Exception during jumping in time: " + e.getMessage());
+			MessageDialog.openError(scale.getShell(), "Exception", "Exception (" + e.getClass().getSimpleName() + ") during jumping in time: " + e.getMessage());
 		} 
 	}
 	

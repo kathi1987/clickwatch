@@ -6,21 +6,18 @@
  */
 package de.hub.clickwatch.recoder.cwdatabase.impl;
 
-import de.hub.clickwatch.recoder.cwdatabase.CWDataBasePackage;
-import de.hub.clickwatch.recoder.cwdatabase.ExperimentNodeRecordTimeTable;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.BasicEMap;
 import org.eclipse.emf.common.util.EMap;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+
+import de.hub.clickwatch.recoder.cwdatabase.CWDataBasePackage;
+import de.hub.clickwatch.recoder.cwdatabase.ExperimentNodeRecordTimeTable;
 
 /**
  * <!-- begin-user-doc -->

@@ -130,7 +130,7 @@ public class CompoundHandlerAdapter extends HandlerAdapter {
 
 	private long time(String timestampStr) {
 		String[] timestampItems = timestampStr.split("\\.");
-		long timestamp = new Long(timestampItems[0])*1000000 + new Integer(timestampItems[1]);
+		long timestamp = new Long(timestampItems[0])*1000000000 + new Integer(timestampItems[1]);
 		return timestamp;
 	}
 	

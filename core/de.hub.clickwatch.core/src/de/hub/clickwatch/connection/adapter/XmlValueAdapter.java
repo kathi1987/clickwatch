@@ -89,4 +89,11 @@ public class XmlValueAdapter extends AbstractAdapter implements IValueAdapter {
 	public boolean valuesEquals(Handler h1, Handler h2) {
 		return h1.equals(h2);
 	}
+
+	@Override
+	public void clearValue(Handler handler) {
+		handler.getAny().clear();
+		handler.getMixed().clear();
+	}
+
 }

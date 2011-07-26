@@ -6,9 +6,12 @@
  */
 package de.hub.clickwatch.recoder.cwdatabase;
 
-import de.hub.clickwatch.model.Network;
-
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+
+import de.hub.clickwatch.model.Network;
+import de.hub.clickwatch.model.Node;
+
 
 /**
  * <!-- begin-user-doc -->
@@ -28,6 +31,8 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr#getDuration <em>Duration</em>}</li>
  *   <li>{@link de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr#getEnd <em>End</em>}</li>
  *   <li>{@link de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr#getStatistics <em>Statistics</em>}</li>
+ *   <li>{@link de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr#getHBaseRowMap <em>HBase Row Map</em>}</li>
+ *   <li>{@link de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr#getMetaData <em>Meta Data</em>}</li>
  * </ul>
  * </p>
  *
@@ -297,5 +302,47 @@ public interface ExperimentDescr extends EObject {
 	 * @generated
 	 */
 	void setStatistics(ExperimentStatistics value);
+
+	/**
+	 * Returns the value of the '<em><b>HBase Row Map</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>HBase Row Map</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>HBase Row Map</em>' attribute.
+	 * @see #setHBaseRowMap(HBaseRowMap)
+	 * @see de.hub.clickwatch.recoder.cwdatabase.CWDataBasePackage#getExperimentDescr_HBaseRowMap()
+	 * @model dataType="de.hub.clickwatch.recoder.cwdatabase.HBaseRowMap"
+	 * @generated
+	 */
+	HBaseRowMap getHBaseRowMap();
+
+	/**
+	 * Sets the value of the '{@link de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr#getHBaseRowMap <em>HBase Row Map</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>HBase Row Map</em>' attribute.
+	 * @see #getHBaseRowMap()
+	 * @generated
+	 */
+	void setHBaseRowMap(HBaseRowMap value);
+
+	/**
+	 * Returns the value of the '<em><b>Meta Data</b></em>' containment reference list.
+	 * The list contents are of type {@link de.hub.clickwatch.model.Node}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Meta Data</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Meta Data</em>' containment reference list.
+	 * @see de.hub.clickwatch.recoder.cwdatabase.CWDataBasePackage#getExperimentDescr_MetaData()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<Node> getMetaData();
 
 } // ExperimentDescr

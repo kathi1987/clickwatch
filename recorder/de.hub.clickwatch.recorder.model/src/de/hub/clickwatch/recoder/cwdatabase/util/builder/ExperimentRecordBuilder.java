@@ -10,11 +10,8 @@ package de.hub.clickwatch.recoder.cwdatabase.util.builder;
 public class ExperimentRecordBuilder implements de.hub.clickwatch.recoder.cwdatabase.util.builder.ICwdatabaseBuilder<de.hub.clickwatch.recoder.cwdatabase.ExperimentRecord> {
   // features and builders
   private java.lang.String m_name;
-  private java.util.Collection<de.hub.clickwatch.model.Node> m_metaData = new java.util.LinkedList<de.hub.clickwatch.model.Node>();
-  private java.util.Collection<de.hub.clickwatch.model.util.builder.IModelBuilder<? extends de.hub.clickwatch.model.Node>> m_featureMetaDataBuilder = new java.util.LinkedList<de.hub.clickwatch.model.util.builder.IModelBuilder<? extends de.hub.clickwatch.model.Node>>();
   private java.util.Collection<java.util.Map.Entry<java.lang.String, de.hub.clickwatch.recoder.cwdatabase.ExperimentNodeRecordTimeTable>> m_nodeMap = new java.util.LinkedList<java.util.Map.Entry<java.lang.String, de.hub.clickwatch.recoder.cwdatabase.ExperimentNodeRecordTimeTable>>();
   // helper attributes
-  private boolean m_featureMetaDataSet = false;
   private boolean m_featureNameSet = false;
   private boolean m_featureNodeMapSet = false;
 
@@ -38,9 +35,6 @@ public class ExperimentRecordBuilder implements de.hub.clickwatch.recoder.cwdata
    */
   public ExperimentRecordBuilder but() {
     ExperimentRecordBuilder _builder = newExperimentRecordBuilder();
-    _builder.m_featureMetaDataSet = m_featureMetaDataSet;
-    _builder.m_metaData = m_metaData;
-    _builder.m_featureMetaDataBuilder = m_featureMetaDataBuilder;
     _builder.m_featureNameSet = m_featureNameSet;
     _builder.m_name = m_name;
     _builder.m_featureNodeMapSet = m_featureNodeMapSet;
@@ -57,15 +51,6 @@ public class ExperimentRecordBuilder implements de.hub.clickwatch.recoder.cwdata
     if (m_featureNameSet) {
       _newInstance.setName(m_name);
     }
-    if (m_featureMetaDataSet) {
-      _newInstance.getMetaData().addAll(m_metaData);
-    } else {
-      if (!m_featureMetaDataBuilder.isEmpty()) {
-        for (de.hub.clickwatch.model.util.builder.IModelBuilder<? extends de.hub.clickwatch.model.Node> builder : m_featureMetaDataBuilder) {
-          _newInstance.getMetaData().add(builder.build());
-        }
-      }
-    }
     if (m_featureNodeMapSet) {
       _newInstance.getNodeMap().addAll(m_nodeMap);
     }
@@ -75,23 +60,6 @@ public class ExperimentRecordBuilder implements de.hub.clickwatch.recoder.cwdata
   public ExperimentRecordBuilder withName(java.lang.String p_name) {
     m_name = p_name;
     m_featureNameSet = true;
-    return this;
-  }
-
-  public ExperimentRecordBuilder withMetaData(de.hub.clickwatch.model.Node p_metaData) {
-    m_metaData.add(p_metaData);
-    m_featureMetaDataSet = true;
-    return this;
-  }
-
-  public ExperimentRecordBuilder withMetaData(java.util.Collection<? extends de.hub.clickwatch.model.Node> p_metaData) {
-    m_metaData.addAll(p_metaData);
-    m_featureMetaDataSet = true;
-    return this;
-  }
-
-  public ExperimentRecordBuilder withMetaData(de.hub.clickwatch.model.util.builder.IModelBuilder<? extends de.hub.clickwatch.model.Node> p_nodeBuilder) {
-    m_featureMetaDataBuilder.add(p_nodeBuilder);
     return this;
   }
 
