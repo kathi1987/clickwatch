@@ -21,8 +21,9 @@ public abstract class AbstractDataBaseRecordAdapter implements IDataBaseRecordAd
 	protected abstract class AbstractNodeDataBaseAdapter {
 		protected String nodeId = null;
 		
-		int recordedHandler = 0;
+		protected int recordedHandler = 0;
 		int startSample = 0;
+		int sample = 0;
 		
 		protected void initialize(Node metaData) {
 			nodeId = metaData.getINetAddress();
@@ -34,16 +35,17 @@ public abstract class AbstractDataBaseRecordAdapter implements IDataBaseRecordAd
 		}
 		
 		protected void record(Handler handler, int sample) {
+			this.sample = sample;
 			recordedHandler++;
 			if (recordedHandler > handlerPerRecord) {
 				save();
 				reinitialize();
-				experiment.getStatistics().getSamplesR().addValue(sample - startSample);
-				startSample = sample;
 			}
 		}
 		
-		protected void save() {		
+		protected void save() {
+			experiment.getStatistics().getSamplesR().addValue(sample - startSample);
+			startSample = sample;
 			experiment.getStatistics().getHandlersR().addValue(recordedHandler);
 		}
 	}

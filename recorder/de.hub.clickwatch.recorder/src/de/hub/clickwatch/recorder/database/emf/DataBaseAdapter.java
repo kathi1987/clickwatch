@@ -1,4 +1,4 @@
-package de.hub.clickwatch.recorder.database;
+package de.hub.clickwatch.recorder.database.emf;
 
 import java.io.File;
 import java.io.IOException;
@@ -22,6 +22,8 @@ import de.hub.clickwatch.recoder.cwdatabase.ExperimentNodeRecordTimeTable;
 import de.hub.clickwatch.recoder.cwdatabase.ExperimentRecord;
 import de.hub.clickwatch.recoder.cwdatabase.NodeRecord;
 import de.hub.clickwatch.recoder.cwdatabase.NodeRecordDescr;
+import de.hub.clickwatch.recorder.database.AbstractDataBaseRecordAdapter;
+import de.hub.clickwatch.recorder.database.IDataBaseRetrieveAdapter;
 import de.hub.clickwatch.util.ILogger;
 import de.hub.clickwatch.util.Throwables;
 import de.hub.emfxml.XmlModelRepository;

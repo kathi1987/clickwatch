@@ -35,6 +35,8 @@ public class HBaseDataBaseAdapter extends AbstractDataBaseRecordAdapter implemen
 	private static final byte[] col = "value".getBytes();
 	
 	@Inject @Named(CWRecorderModule.DB_VALUE_ADAPTER_PROPERTY) private IValueAdapter dbValueAdapter;
+	@Inject private ILogger logger;
+	
 	private HBaseRowMap rowMap = null;
 	private HTable table = null;
 	private Configuration config = null;
@@ -140,6 +142,8 @@ public class HBaseDataBaseAdapter extends AbstractDataBaseRecordAdapter implemen
 			if (end > experiment.getEnd()) {
 				experiment.setEnd(end);
 			}
+			logger.log(ILogger.DEBUG, "Writing puts to hbase, number of puts: " + puts.size(), null);
+			logger.log(ILogger.DEBUG, "also saving the experiment file", null);
 			experiment.eResource().save(XmlModelRepository.defaultLoadSaveOptions());
 			table.put(puts); // TODO run in extra thread for more performance
 		} catch (IOException e) {

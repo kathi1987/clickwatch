@@ -28,10 +28,10 @@ import de.hub.clickwatch.recoder.cwdatabase.util.builder.ExperimentDescrBuilder;
 import de.hub.clickwatch.recorder.CWRecorderModule;
 import de.hub.clickwatch.recorder.ExperimentRecorder;
 import de.hub.clickwatch.recorder.database.CWRecorderStandaloneSetup;
-import de.hub.clickwatch.recorder.database.DataBaseAdapter;
 import de.hub.clickwatch.recorder.database.DataBaseUtil;
 import de.hub.clickwatch.recorder.database.IDataBaseRecordAdapter;
 import de.hub.clickwatch.recorder.database.IDataBaseRetrieveAdapter;
+import de.hub.clickwatch.recorder.database.emf.DataBaseAdapter;
 import de.hub.clickwatch.tests.AbstractAdapterTest;
 
 public class AbstractDBTest  extends AbstractAdapterTest {
