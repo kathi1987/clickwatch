@@ -10,5 +10,10 @@ public class AbstractTest extends AbstractMain {
 	public void setUp() {
 		super.setUp();
 	}
+
+	@Override
+	protected int getLogLevel() {
+		return 2;
+	}
 	
 }

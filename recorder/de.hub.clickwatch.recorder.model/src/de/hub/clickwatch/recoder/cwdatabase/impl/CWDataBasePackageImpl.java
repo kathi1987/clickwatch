@@ -298,6 +298,15 @@ public class CWDataBasePackageImpl extends EPackageImpl implements CWDataBasePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getExperimentDescr_HbaseRootDir() {
+		return (EAttribute)experimentDescrEClass.getEStructuralFeatures().get(12);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getNodeRecord() {
 		return nodeRecordEClass;
 	}
@@ -658,6 +667,7 @@ public class CWDataBasePackageImpl extends EPackageImpl implements CWDataBasePac
 		createEReference(experimentDescrEClass, EXPERIMENT_DESCR__STATISTICS);
 		createEAttribute(experimentDescrEClass, EXPERIMENT_DESCR__HBASE_ROW_MAP);
 		createEReference(experimentDescrEClass, EXPERIMENT_DESCR__META_DATA);
+		createEAttribute(experimentDescrEClass, EXPERIMENT_DESCR__HBASE_ROOT_DIR);
 
 		nodeRecordEClass = createEClass(NODE_RECORD);
 		createEReference(nodeRecordEClass, NODE_RECORD__RECORDS);
@@ -752,6 +762,7 @@ public class CWDataBasePackageImpl extends EPackageImpl implements CWDataBasePac
 		initEReference(getExperimentDescr_Statistics(), this.getExperimentStatistics(), null, "statistics", null, 0, 1, ExperimentDescr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getExperimentDescr_HBaseRowMap(), this.getHBaseRowMap(), "hBaseRowMap", null, 0, 1, ExperimentDescr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getExperimentDescr_MetaData(), theClickWatchModelPackage.getNode(), null, "metaData", null, 0, -1, ExperimentDescr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getExperimentDescr_HbaseRootDir(), ecorePackage.getEString(), "hbaseRootDir", null, 0, 1, ExperimentDescr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(nodeRecordEClass, NodeRecord.class, "NodeRecord", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getNodeRecord_Records(), theClickWatchModelPackage.getHandler(), null, "records", null, 0, -1, NodeRecord.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -22,6 +22,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="metaData" upperBound="-1"
         eType="ecore:EClass ../../../../../../../de.hub.clickwatch.core/src/de/hub/clickwatch/model/ClickWatchModel.ecore#//Node"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hbaseRootDir" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NodeRecord">
     <eStructuralFeatures xsi:type="ecore:EReference" name="records" upperBound="-1"

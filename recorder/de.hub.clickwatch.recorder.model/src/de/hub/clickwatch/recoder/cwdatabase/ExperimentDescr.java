@@ -33,6 +33,7 @@ import de.hub.clickwatch.model.Node;
  *   <li>{@link de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr#getStatistics <em>Statistics</em>}</li>
  *   <li>{@link de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr#getHBaseRowMap <em>HBase Row Map</em>}</li>
  *   <li>{@link de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr#getMetaData <em>Meta Data</em>}</li>
+ *   <li>{@link de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr#getHbaseRootDir <em>Hbase Root Dir</em>}</li>
  * </ul>
  * </p>
  *
@@ -344,5 +345,31 @@ public interface ExperimentDescr extends EObject {
 	 * @generated
 	 */
 	EList<Node> getMetaData();
+
+	/**
+	 * Returns the value of the '<em><b>Hbase Root Dir</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Hbase Root Dir</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Hbase Root Dir</em>' attribute.
+	 * @see #setHbaseRootDir(String)
+	 * @see de.hub.clickwatch.recoder.cwdatabase.CWDataBasePackage#getExperimentDescr_HbaseRootDir()
+	 * @model
+	 * @generated
+	 */
+	String getHbaseRootDir();
+
+	/**
+	 * Sets the value of the '{@link de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr#getHbaseRootDir <em>Hbase Root Dir</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Hbase Root Dir</em>' attribute.
+	 * @see #getHbaseRootDir()
+	 * @generated
+	 */
+	void setHbaseRootDir(String value);
 
 } // ExperimentDescr

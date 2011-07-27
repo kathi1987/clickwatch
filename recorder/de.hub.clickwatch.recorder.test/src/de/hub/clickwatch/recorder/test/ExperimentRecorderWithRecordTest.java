@@ -34,11 +34,6 @@ public class ExperimentRecorderWithRecordTest extends AbstractDataBaseAdapterTes
 		result.add(module);
 		return result.toArray(new Module[] {});
 	}
-	
-	@Override
-	protected int getLogLevel() {
-		return 4;
-	}
 
 	@Override
 	protected Class<? extends IValueAdapter> getValueAdapterClass() {

@@ -53,3 +53,4 @@ Export-Package: de.hub.clickwatch.recorder,
  de.hub.clickwatch.recorder.database,
  de.hub.clickwatch.recorder.database.emf,
  de.hub.clickwatch.recorder.database.hbase
+Bundle-ActivationPolicy: lazy

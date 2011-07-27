@@ -73,6 +73,7 @@ public class ExperimentDescrItemProvider
 			addDurationPropertyDescriptor(object);
 			addEndPropertyDescriptor(object);
 			addHBaseRowMapPropertyDescriptor(object);
+			addHbaseRootDirPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -125,7 +126,7 @@ public class ExperimentDescrItemProvider
 	 * This adds a property descriptor for the Start feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void addStartPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -196,7 +197,7 @@ public class ExperimentDescrItemProvider
 	 * This adds a property descriptor for the End feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void addEndPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
@@ -233,6 +234,28 @@ public class ExperimentDescrItemProvider
 				 getString("_UI_ExperimentDescr_hBaseRowMap_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_ExperimentDescr_hBaseRowMap_feature", "_UI_ExperimentDescr_type"),
 				 CWDataBasePackage.Literals.EXPERIMENT_DESCR__HBASE_ROW_MAP,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Hbase Root Dir feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addHbaseRootDirPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ExperimentDescr_hbaseRootDir_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ExperimentDescr_hbaseRootDir_feature", "_UI_ExperimentDescr_type"),
+				 CWDataBasePackage.Literals.EXPERIMENT_DESCR__HBASE_ROOT_DIR,
 				 true,
 				 false,
 				 false,
@@ -317,6 +340,7 @@ public class ExperimentDescrItemProvider
 			case CWDataBasePackage.EXPERIMENT_DESCR__DURATION:
 			case CWDataBasePackage.EXPERIMENT_DESCR__END:
 			case CWDataBasePackage.EXPERIMENT_DESCR__HBASE_ROW_MAP:
+			case CWDataBasePackage.EXPERIMENT_DESCR__HBASE_ROOT_DIR:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case CWDataBasePackage.EXPERIMENT_DESCR__NETWORK:

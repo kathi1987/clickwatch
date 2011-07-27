@@ -1,5 +1,6 @@
 package de.hub.clickwatch.recorder.database.hbase;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -102,6 +103,26 @@ public class HBaseDataBaseAdapter extends AbstractDataBaseRecordAdapter implemen
 		
 		if (config == null) {
 			config = HBaseConfiguration.create();
+			String hbaseRootDir = experiment.getHbaseRootDir();
+			if (!(hbaseRootDir == null || hbaseRootDir.equals(""))) {
+				String hbaseSite = ""
+						 + "<?xml version='1.0'?>"
+						 + "<?xml-stylesheet type='text/xsl' href='configuration.xsl'?>"
+						 + "<configuration>"
+						 + "  <property>"
+						 + "    <name>hbase.zookeeper.quorum</name>"
+						 + "    <value>" + hbaseRootDir + "</value>"
+						 + "  </property>"
+						 + "</configuration>                                                ";
+						
+				ByteArrayInputStream baos = new ByteArrayInputStream(hbaseSite.getBytes());
+				config.addResource(baos);
+				try {
+					baos.close();
+				} catch (IOException e) {
+					Throwables.propagate(e);
+				}
+			}
 		}
 	
 		try {

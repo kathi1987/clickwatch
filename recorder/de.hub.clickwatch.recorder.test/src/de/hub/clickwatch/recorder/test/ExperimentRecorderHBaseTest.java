@@ -84,10 +84,4 @@ public class ExperimentRecorderHBaseTest extends AbstractDBTest {
 				"192.168.0.12" });		
 	}
 
-	
-	@Override
-	protected int getLogLevel() {
-		return 4;
-	}
-
 }

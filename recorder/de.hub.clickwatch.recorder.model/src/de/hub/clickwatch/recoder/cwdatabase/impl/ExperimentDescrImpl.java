@@ -47,6 +47,7 @@ import de.hub.clickwatch.recoder.cwdatabase.HBaseRowMap;
  *   <li>{@link de.hub.clickwatch.recoder.cwdatabase.impl.ExperimentDescrImpl#getStatistics <em>Statistics</em>}</li>
  *   <li>{@link de.hub.clickwatch.recoder.cwdatabase.impl.ExperimentDescrImpl#getHBaseRowMap <em>HBase Row Map</em>}</li>
  *   <li>{@link de.hub.clickwatch.recoder.cwdatabase.impl.ExperimentDescrImpl#getMetaData <em>Meta Data</em>}</li>
+ *   <li>{@link de.hub.clickwatch.recoder.cwdatabase.impl.ExperimentDescrImpl#getHbaseRootDir <em>Hbase Root Dir</em>}</li>
  * </ul>
  * </p>
  *
@@ -222,6 +223,26 @@ public class ExperimentDescrImpl extends EObjectImpl implements ExperimentDescr 
 	 * @ordered
 	 */
 	protected EList<Node> metaData;
+
+	/**
+	 * The default value of the '{@link #getHbaseRootDir() <em>Hbase Root Dir</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getHbaseRootDir()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String HBASE_ROOT_DIR_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getHbaseRootDir() <em>Hbase Root Dir</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getHbaseRootDir()
+	 * @generated
+	 * @ordered
+	 */
+	protected String hbaseRootDir = HBASE_ROOT_DIR_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -593,6 +614,27 @@ public class ExperimentDescrImpl extends EObjectImpl implements ExperimentDescr 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getHbaseRootDir() {
+		return hbaseRootDir;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setHbaseRootDir(String newHbaseRootDir) {
+		String oldHbaseRootDir = hbaseRootDir;
+		hbaseRootDir = newHbaseRootDir;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CWDataBasePackage.EXPERIMENT_DESCR__HBASE_ROOT_DIR, oldHbaseRootDir, hbaseRootDir));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -673,6 +715,8 @@ public class ExperimentDescrImpl extends EObjectImpl implements ExperimentDescr 
 				return getHBaseRowMap();
 			case CWDataBasePackage.EXPERIMENT_DESCR__META_DATA:
 				return getMetaData();
+			case CWDataBasePackage.EXPERIMENT_DESCR__HBASE_ROOT_DIR:
+				return getHbaseRootDir();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -723,6 +767,9 @@ public class ExperimentDescrImpl extends EObjectImpl implements ExperimentDescr 
 				getMetaData().clear();
 				getMetaData().addAll((Collection<? extends Node>)newValue);
 				return;
+			case CWDataBasePackage.EXPERIMENT_DESCR__HBASE_ROOT_DIR:
+				setHbaseRootDir((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -771,6 +818,9 @@ public class ExperimentDescrImpl extends EObjectImpl implements ExperimentDescr 
 			case CWDataBasePackage.EXPERIMENT_DESCR__META_DATA:
 				getMetaData().clear();
 				return;
+			case CWDataBasePackage.EXPERIMENT_DESCR__HBASE_ROOT_DIR:
+				setHbaseRootDir(HBASE_ROOT_DIR_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -807,6 +857,8 @@ public class ExperimentDescrImpl extends EObjectImpl implements ExperimentDescr 
 				return HBASE_ROW_MAP_EDEFAULT == null ? hBaseRowMap != null : !HBASE_ROW_MAP_EDEFAULT.equals(hBaseRowMap);
 			case CWDataBasePackage.EXPERIMENT_DESCR__META_DATA:
 				return metaData != null && !metaData.isEmpty();
+			case CWDataBasePackage.EXPERIMENT_DESCR__HBASE_ROOT_DIR:
+				return HBASE_ROOT_DIR_EDEFAULT == null ? hbaseRootDir != null : !HBASE_ROOT_DIR_EDEFAULT.equals(hbaseRootDir);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -833,6 +885,8 @@ public class ExperimentDescrImpl extends EObjectImpl implements ExperimentDescr 
 		result.append(end);
 		result.append(", hBaseRowMap: ");
 		result.append(hBaseRowMap);
+		result.append(", hbaseRootDir: ");
+		result.append(hbaseRootDir);
 		result.append(')');
 		return result.toString();
 	}

@@ -57,12 +57,5 @@ public class ExperimentRecorderTest extends AbstractDataBaseAdapterTest {
 				"192.168.0.10",
 				"192.168.0.11",
 				"192.168.0.12" });		
-	}
-
-	
-	@Override
-	protected int getLogLevel() {
-		return 4;
-	}
-
+	}	
 }

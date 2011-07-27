@@ -87,10 +87,6 @@ public class AbstractMain {
 		};
 	}
 	
-	protected int getLogLevel() {
-		return 2;
-	}
-	
 	protected Module[] getAdditionalModules() {
 		return new Module[] { new Module() {		
 			@Override
@@ -119,4 +115,9 @@ public class AbstractMain {
 	protected void additionalSetUp() {
 		
 	}
+	
+	protected int getLogLevel() {
+		return 2;
+	}
+	
 }

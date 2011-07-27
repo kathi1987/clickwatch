@@ -44,11 +44,6 @@ public class DataBaseUtilTest extends AbstractDBTest {
 	}
 
 	@Override
-	protected int getLogLevel() {
-		return 4;
-	}
-
-	@Override
 	protected Class<? extends IValueAdapter> getValueAdapterClass() {
 		return XmlValueAdapter.class;
 	}

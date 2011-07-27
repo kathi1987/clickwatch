@@ -39,12 +39,11 @@ public class PdrPlotAnalysis {
 				logger.log(ILogger.INFO, "perform at time " + new TimeStampLabelProvider().getText(i*1000000 + experiment.getStart()) 
 						+ " on node " + nodeConfig.getINetAddress(), null);
 				
-				Node node = dbUtil.getNode(experiment, nodeConfig.getINetAddress(), "device_wifi/link_stat", "bcast_stats", i*1000000 + experiment.getStart());
-				Handler bcastStats = node.getHandler("device_wifi/link_stat/bcast_stats");
+				Handler bcastStats = dbUtil.getHandler(experiment, nodeConfig.getINetAddress(), "device_wifi/link_stat/bcast_stats", i*1000000 + experiment.getStart());
 				fmpc.time = bcastStats.getTimestamp() / 1000000;
 				parser.parse(bcastStats.getAny());
 				
-				EcoreUtil.delete(node, true);
+				EcoreUtil.delete(bcastStats, true);
 				TestUtil.report("mem-leak?", i, 10);
 			}
 		}

@@ -26,11 +26,6 @@ public class CompoundHandlerAdapterTest extends AbstractTest {
 	protected Class<? extends IHandlerAdapter> getHandlerAdapterClass() {
 		return CompoundHandlerAdapter.class;
 	}
-	
-	@Override
-	protected int getLogLevel() {
-		return 4;
-	}
 
 	@Ignore("requires a click setup on localhost")
 	@Test

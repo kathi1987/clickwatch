@@ -179,13 +179,22 @@ public interface CWDataBasePackage extends EPackage {
 	int EXPERIMENT_DESCR__META_DATA = 11;
 
 	/**
+	 * The feature id for the '<em><b>Hbase Root Dir</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPERIMENT_DESCR__HBASE_ROOT_DIR = 12;
+
+	/**
 	 * The number of structural features of the '<em>Experiment Descr</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXPERIMENT_DESCR_FEATURE_COUNT = 12;
+	int EXPERIMENT_DESCR_FEATURE_COUNT = 13;
 
 	/**
 	 * The meta object id for the '{@link de.hub.clickwatch.recoder.cwdatabase.impl.NodeRecordImpl <em>Node Record</em>}' class.
@@ -738,6 +747,17 @@ public interface CWDataBasePackage extends EPackage {
 	EReference getExperimentDescr_MetaData();
 
 	/**
+	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr#getHbaseRootDir <em>Hbase Root Dir</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Hbase Root Dir</em>'.
+	 * @see de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr#getHbaseRootDir()
+	 * @see #getExperimentDescr()
+	 * @generated
+	 */
+	EAttribute getExperimentDescr_HbaseRootDir();
+
+	/**
 	 * Returns the meta object for class '{@link de.hub.clickwatch.recoder.cwdatabase.NodeRecord <em>Node Record</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1256,6 +1276,14 @@ public interface CWDataBasePackage extends EPackage {
 		 * @generated
 		 */
 		EReference EXPERIMENT_DESCR__META_DATA = eINSTANCE.getExperimentDescr_MetaData();
+
+		/**
+		 * The meta object literal for the '<em><b>Hbase Root Dir</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute EXPERIMENT_DESCR__HBASE_ROOT_DIR = eINSTANCE.getExperimentDescr_HbaseRootDir();
 
 		/**
 		 * The meta object literal for the '{@link de.hub.clickwatch.recoder.cwdatabase.impl.NodeRecordImpl <em>Node Record</em>}' class.
