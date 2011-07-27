@@ -31,7 +31,6 @@ import org.junit.Test;
 import com.google.common.base.Function;
 import com.google.common.collect.Collections2;
 
-import de.hub.clickwatch.XmlModelRepository;
 import de.hub.clickwatch.model.ClickWatchModelFactory;
 import de.hub.clickwatch.model.ClickWatchModelPackage;
 import de.hub.clickwatch.model.Element;
@@ -39,6 +38,7 @@ import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.model.Network;
 import de.hub.clickwatch.model.Node;
 import de.hub.clickwatch.util.Throwables;
+import de.hub.emfxml.XmlModelRepository;
 
 import static junit.framework.Assert.*;
 

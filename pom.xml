@@ -14,13 +14,13 @@
 	<packaging>pom</packaging>
 	
 	<modules>
-		<module>build</module>
-		<module>external</module>
+        <module>external</module>
+        <module>util</module>
 		<module>core</module>
 		<module>ui</module>
+        <module>recorder</module>
 		<module>analysis</module>
-        <module>util</module>
-<!--		<module>server</module> -->
+		<module>build</module>
 	</modules>
 
 	<properties>
@@ -61,6 +61,23 @@
 						</artifact>
 					</target>
 					<ignoreTychoRepositories>false</ignoreTychoRepositories>
+                    <environments>
+                      <environment>
+                        <os>linux</os>
+                        <ws>gtk</ws>
+                        <arch>x86</arch>
+                      </environment>
+                      <environment>
+                        <os>macosx</os>
+                        <ws>cocoa</ws>
+                        <arch>x86</arch>
+                      </environment>
+                      <environment>
+                        <os>win32</os>
+                        <ws>win32</ws>
+                        <arch>x86</arch>
+                      </environment>
+                    </environments>
 				</configuration>
 			</plugin>
 			<plugin>

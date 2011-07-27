@@ -28,11 +28,11 @@ import org.eclipse.ui.IWorkbenchPart;
 import com.google.inject.Inject;
 import com.jcraft.jsch.Session;
 
-import de.hub.clickwatch.XmlModelRepository;
 import de.hub.clickwatch.connection.INodeConnection;
 import de.hub.clickwatch.model.Node;
 import de.hub.clickwatch.ui.util.SshConnectionFactory;
 import de.hub.clickwatch.ui.views.ResultView;
+import de.hub.emfxml.XmlModelRepository;
 
 /**
  * Executes shell commands in parallel on each node using SSH.
@@ -236,7 +236,7 @@ public class Execute extends AbstractNodeAction {
 	 */
 	@Override
 	public void run(IAction action) {
-		if (node_lst == null || node_lst.isEmpty()) {
+		if (selectedObjects == null || selectedObjects.isEmpty()) {
 			return;
 		}
 		
@@ -254,9 +254,9 @@ public class Execute extends AbstractNodeAction {
 		// final boolean show_log = (node_lst.size() == 1) ? true : false;
 
 		//  create n parallel execution threads
-		ExecWorkerThread[] workerThreads = new ExecWorkerThread[node_lst.size()];
-		for (int idx=0; idx<node_lst.size(); idx++) {
-			final Node node = node_lst.get(idx);
+		ExecWorkerThread[] workerThreads = new ExecWorkerThread[selectedObjects.size()];
+		for (int idx=0; idx<selectedObjects.size(); idx++) {
+			final Node node = selectedObjects.get(idx);
 
 			// disconnect if connected
 			if (node.getConnection() != null) {

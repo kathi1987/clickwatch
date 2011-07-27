@@ -1,7 +1,6 @@
 package de.hub.clickcontrol;
 
 import java.io.IOException;
-import java.net.InetAddress;
 import java.util.List;
 
 import click.ClickException;
@@ -30,7 +29,7 @@ public interface IClickSocket {
 	 *            , port of the click runtim on the remote node (usually 7777).
 	 * @throws IOException
 	 */
-	void connect(InetAddress host, int port, int socketTimeOut) throws IOException;
+	void connect(String host, int port, int socketTimeOut) throws IOException;
 
 	/**
 	 * Closes the connection to the remote node. It works under the assumption

@@ -4,10 +4,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import org.eclipse.emf.ecore.util.EcoreUtil;
-
 import com.google.common.base.Preconditions;
 
+import de.hub.clickwatch.model.ClickWatchModelFactory;
 import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.util.Throwables;
 
@@ -28,8 +27,11 @@ public class HandlerAdapter extends AbstractAdapter implements IHandlerAdapter {
 			} catch (Exception e) {
 				Throwables.propagate(e);
 			}
-			Handler resultHandler = EcoreUtil.copy(handler);
+			Handler resultHandler = ClickWatchModelFactory.eINSTANCE.createHandler();
 			resultHandler.setName(handler.getQualifiedName());
+			resultHandler.setCanRead(handler.isCanRead());
+			resultHandler.setCanWrite(handler.isCanWrite());
+			resultHandler.setTimestamp(System.nanoTime());
 			connection.getAdapter(IValueAdapter.class).setModelValue(resultHandler, new String(realValue));
 			result.add(resultHandler);
 		}
@@ -40,6 +42,11 @@ public class HandlerAdapter extends AbstractAdapter implements IHandlerAdapter {
 	@Override
 	public void configure(Collection<Handler> handlerConfig) {
 		this.config = handlerConfig;
+	}
+
+	@Override
+	public void deconfigure() {
+		// empty
 	}
 
 }

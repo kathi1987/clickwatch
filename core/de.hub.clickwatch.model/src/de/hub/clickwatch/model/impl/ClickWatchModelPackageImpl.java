@@ -450,6 +450,15 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getNetwork_Time() {
+		return (EAttribute)networkEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getMultiNode() {
 		return multiNodeEClass;
 	}
@@ -528,6 +537,7 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
 		createEAttribute(networkEClass, NETWORK__UPDATE_INTERVALL);
 		createEReference(networkEClass, NETWORK__SUBNETWORKS);
 		createEAttribute(networkEClass, NETWORK__TIMEOUT);
+		createEAttribute(networkEClass, NETWORK__TIME);
 
 		multiNodeEClass = createEClass(MULTI_NODE);
 		createEReference(multiNodeEClass, MULTI_NODE__NODES);
@@ -630,6 +640,7 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
 		initEAttribute(getNetwork_UpdateIntervall(), ecorePackage.getEInt(), "updateIntervall", null, 0, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getNetwork_Subnetworks(), this.getNetwork(), null, "subnetworks", null, 0, -1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getNetwork_Timeout(), ecorePackage.getEInt(), "timeout", "6000", 0, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getNetwork_Time(), ecorePackage.getELong(), "time", "-1", 0, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(multiNodeEClass, MultiNode.class, "MultiNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getMultiNode_Nodes(), this.getNode(), null, "nodes", null, 0, -1, MultiNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

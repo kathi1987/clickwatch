@@ -1,7 +1,6 @@
 package de.hub.clickwatch.tests.clicksockets;
 
 import java.io.IOException;
-import java.net.InetAddress;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -75,9 +74,8 @@ public class ClickSocketTestDummy implements IClickSocket {
 	private Map<Tuple<String, String>, String> values = new HashMap<ClickSocketTestDummy.Tuple<String, String>, String>();
 
 	@Override
-	public void connect(InetAddress host, int port, int timeout) throws IOException {
-		// TODO Auto-generated method stub
-		System.out.println("connect to " + host.toString() + ":" + port);
+	public void connect(String host, int port, int timeout) throws IOException {
+		System.out.println("connect to " + host + ":" + port);
 	}
 
 	@Override

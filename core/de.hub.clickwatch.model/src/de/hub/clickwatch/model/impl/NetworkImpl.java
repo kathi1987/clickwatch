@@ -40,6 +40,7 @@ import de.hub.clickwatch.model.Node;
  *   <li>{@link de.hub.clickwatch.model.impl.NetworkImpl#getUpdateIntervall <em>Update Intervall</em>}</li>
  *   <li>{@link de.hub.clickwatch.model.impl.NetworkImpl#getSubnetworks <em>Subnetworks</em>}</li>
  *   <li>{@link de.hub.clickwatch.model.impl.NetworkImpl#getTimeout <em>Timeout</em>}</li>
+ *   <li>{@link de.hub.clickwatch.model.impl.NetworkImpl#getTime <em>Time</em>}</li>
  * </ul>
  * </p>
  *
@@ -163,6 +164,25 @@ public class NetworkImpl extends EObjectImpl implements Network {
 	 * @ordered
 	 */
 	protected int timeout = TIMEOUT_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTime() <em>Time</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTime()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final long TIME_EDEFAULT = -1L;
+	/**
+	 * The cached value of the '{@link #getTime() <em>Time</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTime()
+	 * @generated
+	 * @ordered
+	 */
+	protected long time = TIME_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -360,6 +380,27 @@ public class NetworkImpl extends EObjectImpl implements Network {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public long getTime() {
+		return time;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTime(long newTime) {
+		long oldTime = time;
+		time = newTime;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ClickWatchModelPackage.NETWORK__TIME, oldTime, time));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -397,6 +438,8 @@ public class NetworkImpl extends EObjectImpl implements Network {
 				return getSubnetworks();
 			case ClickWatchModelPackage.NETWORK__TIMEOUT:
 				return getTimeout();
+			case ClickWatchModelPackage.NETWORK__TIME:
+				return getTime();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -436,6 +479,9 @@ public class NetworkImpl extends EObjectImpl implements Network {
 			case ClickWatchModelPackage.NETWORK__TIMEOUT:
 				setTimeout((Integer)newValue);
 				return;
+			case ClickWatchModelPackage.NETWORK__TIME:
+				setTime((Long)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -472,6 +518,9 @@ public class NetworkImpl extends EObjectImpl implements Network {
 			case ClickWatchModelPackage.NETWORK__TIMEOUT:
 				setTimeout(TIMEOUT_EDEFAULT);
 				return;
+			case ClickWatchModelPackage.NETWORK__TIME:
+				setTime(TIME_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -500,6 +549,8 @@ public class NetworkImpl extends EObjectImpl implements Network {
 				return subnetworks != null && !subnetworks.isEmpty();
 			case ClickWatchModelPackage.NETWORK__TIMEOUT:
 				return timeout != TIMEOUT_EDEFAULT;
+			case ClickWatchModelPackage.NETWORK__TIME:
+				return time != TIME_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -524,6 +575,8 @@ public class NetworkImpl extends EObjectImpl implements Network {
 		result.append(updateIntervall);
 		result.append(", timeout: ");
 		result.append(timeout);
+		result.append(", time: ");
+		result.append(time);
 		result.append(')');
 		return result.toString();
 	}

@@ -3,16 +3,15 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: de.hub.clickwatch.model;singleton:=true
 Bundle-Version: 2.0.0.qualifier
-Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: de.hub.clickwatch.model,
  de.hub.clickwatch.model.impl,
- de.hub.clickwatch.model.util
+ de.hub.clickwatch.model.util,
+ de.hub.clickwatch.model.util.builder
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
  org.eclipse.emf.ecore.xmi,
- org.eclipse.emf.cdo,
  com.google.collect;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy

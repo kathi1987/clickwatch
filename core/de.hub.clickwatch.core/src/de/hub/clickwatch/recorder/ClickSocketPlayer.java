@@ -13,8 +13,7 @@ import com.google.inject.Provides;
 import de.hub.clickwatch.model.Network;
 import de.hub.clickwatch.model.Node;
 
-
-public class ClickSocketPlayer {
+public class ClickSocketPlayer implements IClickSocketPlayer {
 	
 	private static final long updateInterval = 1000;
 	private final boolean emulateTime;
@@ -45,7 +44,7 @@ public class ClickSocketPlayer {
 		}		
 		
 		@Provides
-		ClickSocketPlayer provideClickSocketPlayer() {
+		synchronized ClickSocketPlayer provideClickSocketPlayer() {
 			if (player == null) {
 				player = new ClickSocketPlayer(emulateTime);
 				player.initialize(URI.createFileURI(record));
@@ -56,7 +55,7 @@ public class ClickSocketPlayer {
 
 	private Resource resource = null;
 
-	public void initialize(URI recordUri) {
+	public synchronized void initialize(URI recordUri) {
 		ResourceSet rs = new ResourceSetImpl();
 		rs.getLoadOptions().put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);
 		resource = rs.getResource(recordUri, true);
@@ -64,7 +63,7 @@ public class ClickSocketPlayer {
 		Preconditions.checkState(resource.getContents().get(0) instanceof Network);
 	}
 
-	public Node getNode(String host, String port) {
+	public synchronized Node getNode(String host, String port) {
 		Preconditions.checkState(resource != null);
 		int index = 0;
 		if (emulateTime) {

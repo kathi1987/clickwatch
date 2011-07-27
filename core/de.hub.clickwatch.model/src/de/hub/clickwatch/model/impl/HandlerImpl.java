@@ -546,33 +546,34 @@ public class HandlerImpl extends EObjectImpl implements Handler {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (name: ");
-		result.append(name);
-		result.append(", canRead: ");
-		result.append(canRead);
-		result.append(", canWrite: ");
-		result.append(canWrite);
-		result.append(", changed: ");
-		result.append(changed);
-		result.append(", watch: ");
-		result.append(watch);
-		result.append(", mixed: ");
-		result.append(mixed);
-		result.append(", any: ");
-		result.append(any);
-		result.append(", value: ");
-		result.append(value);
-		result.append(", timestamp: ");
-		result.append(timestamp);
-		result.append(')');
-		return result.toString();
+		return getQualifiedName();
+//		if (eIsProxy()) return super.toString();
+//
+//		StringBuffer result = new StringBuffer(super.toString());
+//		result.append(" (name: ");
+//		result.append(name);
+//		result.append(", canRead: ");
+//		result.append(canRead);
+//		result.append(", canWrite: ");
+//		result.append(canWrite);
+//		result.append(", changed: ");
+//		result.append(changed);
+//		result.append(", watch: ");
+//		result.append(watch);
+//		result.append(", mixed: ");
+//		result.append(mixed);
+//		result.append(", any: ");
+//		result.append(any);
+//		result.append(", value: ");
+//		result.append(value);
+//		result.append(", timestamp: ");
+//		result.append(timestamp);
+//		result.append(')');
+//		return result.toString();
 	}	
 
 } //HandlerImpl

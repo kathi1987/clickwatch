@@ -13,4 +13,6 @@ public interface IHandlerAdapter {
 	
 	public void configure(Collection<Handler> handlerConfig);
 	
+	public void deconfigure();
+	
 }

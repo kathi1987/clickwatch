@@ -45,7 +45,7 @@ public class ClickWatchModule extends AbstractModule {
 		bindValueAdapter();
 		
 		bind(IMetaDataAdapter.class).to(MetaDataAdapter.class);
-		bind(IHandlerAdapter.class).to(HandlerAdapter.class);
+		bindHandlerAdapter();
 		bindNodeAdapter();
 		
 		bindClickSocket();
@@ -65,6 +65,10 @@ public class ClickWatchModule extends AbstractModule {
 	
 	protected void bindClickSocket() {
 		bind(IClickSocket.class).to(ClickSocketImpl.class);
+	}
+	
+	protected void bindHandlerAdapter() {
+		bind(IHandlerAdapter.class).to(HandlerAdapter.class);
 	}
 
 }

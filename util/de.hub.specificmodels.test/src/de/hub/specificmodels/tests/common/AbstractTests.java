@@ -33,7 +33,7 @@ import com.google.inject.Injector;
 import com.google.inject.Module;
 import com.google.inject.name.Names;
 
-import de.hub.clickwatch.XmlModelRepository;
+import de.hub.emfxml.XmlModelRepository;
 import de.hub.specificmodels.common.ITargetIdProvider;
 import de.hub.specificmodels.common.targetidprovider.TargetIdProviderFactoryProvider;
 import de.hub.specificmodels.metamodelgenerator.MetaModelGenerator;

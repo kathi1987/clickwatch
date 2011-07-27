@@ -200,11 +200,11 @@ public class HandlerItemProvider
 	 * This adds a property descriptor for the Timestamp feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void addTimestampPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
+			(new ItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Handler_timestamp_feature"),
@@ -215,9 +215,14 @@ public class HandlerItemProvider
 				 false,
 				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
 				 null,
-				 null));
+				 null) {
+					@Override
+					public IItemLabelProvider getLabelProvider(Object object) {
+						return new TimeStampLabelProvider();
+					}
+		});
 	}
-
+	
 	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or

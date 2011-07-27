@@ -8,7 +8,6 @@ import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 
 import de.hub.clickwatch.model.ClickWatchModelPackage;
 
-
 public class ClickWatchStandaloneSetup {
 	
 	public static void doSetup() {

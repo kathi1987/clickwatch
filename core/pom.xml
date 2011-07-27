@@ -16,8 +16,8 @@
   
   <modules>
    <module>de.hub.clickwatch.core</module>
-   <module>de.hub.clickwatch.core.test</module>
    <module>de.hub.clickwatch.model</module>
+   <module>de.hub.clickwatch.core.test</module>
    <module>edu.mit.clickcontrol</module>
   </modules>
 </project>

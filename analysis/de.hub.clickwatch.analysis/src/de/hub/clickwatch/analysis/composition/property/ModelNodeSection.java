@@ -54,11 +54,11 @@ import org.eclipse.ui.views.properties.tabbed.ITabbedPropertyConstants;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetWidgetFactory;
 
-import de.hub.clickwatch.XmlModelRepository;
 import de.hub.clickwatch.analysis.composition.model.ModelNode;
 import de.hub.clickwatch.analysis.composition.model.ModelUtil;
 import de.hub.clickwatch.analysis.composition.model.Node;
-import de.hub.clickwatch.analysis.ui.Activator;
+import de.hub.clickwatch.analysis.ui.PluginActivator;
+import de.hub.emfxml.XmlModelRepository;
 
 
 public class ModelNodeSection extends GFPropertySection implements ITabbedPropertyConstants {
@@ -384,7 +384,7 @@ public class ModelNodeSection extends GFPropertySection implements ITabbedProper
 			}
 		}
 		
-		Status myStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, "Could not load model", null);
+		Status myStatus = new Status(IStatus.ERROR, de.hub.clickwatch.analysis.ui.PluginActivator.PLUGIN_ID, "Could not load model", null);
 		StatusManager.getManager().handle(myStatus, StatusManager.SHOW);
 	}
 
@@ -417,14 +417,14 @@ public class ModelNodeSection extends GFPropertySection implements ITabbedProper
 					return;
 				} catch (Throwable e) {
 					e.printStackTrace();
-					Status myStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, "Could not load model", e);
+					Status myStatus = new Status(IStatus.ERROR, PluginActivator.PLUGIN_ID, "Could not load model", e);
 					StatusManager.getManager().handle(myStatus, StatusManager.SHOW);
 					return;
 				}
 			}
 		}
 		
-		Status myStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, "Could not load model", null);
+		Status myStatus = new Status(IStatus.ERROR, PluginActivator.PLUGIN_ID, "Could not load model", null);
 		StatusManager.getManager().handle(myStatus, StatusManager.SHOW);
 	}
 

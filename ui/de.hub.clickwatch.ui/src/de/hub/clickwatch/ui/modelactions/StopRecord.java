@@ -9,12 +9,12 @@ public class StopRecord extends AbstractNodeAction {
 
 	@Override
 	public void run(IAction action) {
-		if (node_it == null) {
+		if (selectedObjectsIterator == null) {
 			return;
 		}
 
-		while (node_it.hasNext()) {
-			Node node = node_it.next();
+		while (selectedObjectsIterator.hasNext()) {
+			Node node = selectedObjectsIterator.next();
 			if (!node.isRecording()) {
 //				MessageDialog.openError(editor.getSite().getShell(),
 //						"Not recording", "You can only stop an recording node");

@@ -2,9 +2,9 @@ package de.hub.clickwatch.tests;
 
 import click.ControlSocket.HandlerInfo;
 import de.hub.clickcontrol.IClickSocket;
-import de.hub.clickwatch.XmlModelRepository;
 import de.hub.clickwatch.tests.TestUtil.ClickSocketWrapper;
 import de.hub.clickwatch.util.ClickSocketTestImpl;
+import de.hub.emfxml.XmlModelRepository;
 
 public class AbstractAdapterTest extends AbstractTest {
 	
@@ -48,6 +48,10 @@ public class AbstractAdapterTest extends AbstractTest {
 
 	@Override
 	protected void additionalSetUp() {
+		adapterTestSetUp();
+	}
+	
+	protected void adapterTestSetUp() {
 		clickSocketWrapper = (ClickSocketWrapper)injector.getInstance(IClickSocket.class);
 		clickSocketWrapper.setSource(new ClickSocketDefaultTestImpl());
 	}

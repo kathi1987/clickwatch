@@ -52,7 +52,6 @@ import org.osgi.framework.BundleException;
 import org.osgi.framework.wiring.FrameworkWiring;
 import org.osgi.service.packageadmin.PackageAdmin;
 
-import de.hub.clickwatch.XmlModelRepository;
 import de.hub.clickwatch.analysis.composition.model.CompositionFactory;
 import de.hub.clickwatch.analysis.composition.model.DataSet;
 import de.hub.clickwatch.analysis.composition.model.DataSetNode;
@@ -64,8 +63,8 @@ import de.hub.clickwatch.analysis.composition.model.TargetSpec;
 import de.hub.clickwatch.analysis.composition.model.Transformation;
 import de.hub.clickwatch.analysis.composition.model.TransformationKind;
 import de.hub.clickwatch.analysis.composition.property.TransactionUtil;
-import de.hub.clickwatch.analysis.ui.Activator;
-import de.hub.clickwatch.ui.PluginActivator;
+import de.hub.clickwatch.analysis.ui.PluginActivator;
+import de.hub.emfxml.XmlModelRepository;
 
 public class TransformationEngine {
 	
@@ -273,7 +272,7 @@ public class TransformationEngine {
 			return result;
 		} catch (Exception e) {
 			e.printStackTrace();
-			Status myStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, "Could not run transformation", e);
+			Status myStatus = new Status(IStatus.ERROR, de.hub.clickwatch.analysis.ui.PluginActivator.PLUGIN_ID, "Could not run transformation", e);
 			StatusManager.getManager().handle(myStatus, StatusManager.SHOW);
 			return null;
 		}
@@ -314,7 +313,7 @@ public class TransformationEngine {
 		// get the URI to the xtend2 script that should be executed
 		String xtend2Uri = transformation.getTransformationUri();
 		if (xtend2Uri == null) {
-			Status myStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, "No transformation specified", null);
+			Status myStatus = new Status(IStatus.ERROR, PluginActivator.PLUGIN_ID, "No transformation specified", null);
 			StatusManager.getManager().handle(myStatus, StatusManager.SHOW);
 			return null;
 		}
@@ -333,7 +332,7 @@ public class TransformationEngine {
 			xtend2ClassName += "." + u.lastSegment().replaceAll(".xtend", "");
 		}
 		catch(Exception e) {
-			Status myStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, "Could not find the xtend2 class", null);
+			Status myStatus = new Status(IStatus.ERROR, PluginActivator.PLUGIN_ID, "Could not find the xtend2 class", null);
 			StatusManager.getManager().handle(myStatus, StatusManager.SHOW);
 			return null;
 		}		
@@ -381,7 +380,7 @@ public class TransformationEngine {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			Status myStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, "Could not run transformation", e);
+			Status myStatus = new Status(IStatus.ERROR, PluginActivator.PLUGIN_ID, "Could not run transformation", e);
 			StatusManager.getManager().handle(myStatus, StatusManager.SHOW);
 			return null;
 		}
@@ -491,7 +490,7 @@ public class TransformationEngine {
 	private Object executeXtendTransformation(EObject source, EObject target) {
 		String xtendUri = transformation.getTransformationUri();
 		if (xtendUri == null) {
-			Status myStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, "No transformation specified", null);
+			Status myStatus = new Status(IStatus.ERROR, PluginActivator.PLUGIN_ID, "No transformation specified", null);
 			StatusManager.getManager().handle(myStatus, StatusManager.SHOW);
 			return null;
 		}
@@ -522,7 +521,7 @@ public class TransformationEngine {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			Status myStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, "Could not run transformation", e);
+			Status myStatus = new Status(IStatus.ERROR, PluginActivator.PLUGIN_ID, "Could not run transformation", e);
 			StatusManager.getManager().handle(myStatus, StatusManager.SHOW);
 			return null;
 		}
@@ -532,7 +531,7 @@ public class TransformationEngine {
 	}
 	
 	private void raiseError(String string) {
-		Status myStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, string, null);
+		Status myStatus = new Status(IStatus.ERROR, PluginActivator.PLUGIN_ID, string, null);
 		StatusManager.getManager().handle(myStatus, StatusManager.SHOW);
 	}
 	

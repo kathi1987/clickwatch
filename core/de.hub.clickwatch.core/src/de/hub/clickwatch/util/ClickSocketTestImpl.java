@@ -1,7 +1,6 @@
 package de.hub.clickwatch.util;
 
 import java.io.IOException;
-import java.net.InetAddress;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -21,7 +20,7 @@ public abstract class ClickSocketTestImpl implements IClickSocket {
 	private boolean isConnected = false;
 
 	@Override
-	public void connect(InetAddress host, int port, int timeout) throws IOException {
+	public void connect(String host, int port, int timeout) throws IOException {
 		delay();
 		isConnected = true;
 	}

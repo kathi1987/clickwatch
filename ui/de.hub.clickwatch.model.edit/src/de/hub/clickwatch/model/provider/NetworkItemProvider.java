@@ -70,6 +70,7 @@ public class NetworkItemProvider
 			addHandlerFilterPropertyDescriptor(object);
 			addUpdateIntervallPropertyDescriptor(object);
 			addTimeoutPropertyDescriptor(object);
+			addTimePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -185,6 +186,28 @@ public class NetworkItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Time feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addTimePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Network_time_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Network_time_feature", "_UI_Network_type"),
+				 ClickWatchModelPackage.Literals.NETWORK__TIME,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -255,6 +278,7 @@ public class NetworkItemProvider
 			case ClickWatchModelPackage.NETWORK__HANDLER_FILTER:
 			case ClickWatchModelPackage.NETWORK__UPDATE_INTERVALL:
 			case ClickWatchModelPackage.NETWORK__TIMEOUT:
+			case ClickWatchModelPackage.NETWORK__TIME:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case ClickWatchModelPackage.NETWORK__NODES:

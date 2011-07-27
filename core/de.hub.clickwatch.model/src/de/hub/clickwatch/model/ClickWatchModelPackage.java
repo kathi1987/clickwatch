@@ -398,13 +398,22 @@ public interface ClickWatchModelPackage extends EPackage {
 	int NETWORK__TIMEOUT = 7;
 
 	/**
+	 * The feature id for the '<em><b>Time</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK__TIME = 8;
+
+	/**
 	 * The number of structural features of the '<em>Network</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NETWORK_FEATURE_COUNT = 8;
+	int NETWORK_FEATURE_COUNT = 9;
 
 	/**
 	 * The meta object id for the '{@link de.hub.clickwatch.model.impl.MultiNodeImpl <em>Multi Node</em>}' class.
@@ -897,6 +906,17 @@ public interface ClickWatchModelPackage extends EPackage {
 	EAttribute getNetwork_Timeout();
 
 	/**
+	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.model.Network#getTime <em>Time</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Time</em>'.
+	 * @see de.hub.clickwatch.model.Network#getTime()
+	 * @see #getNetwork()
+	 * @generated
+	 */
+	EAttribute getNetwork_Time();
+
+	/**
 	 * Returns the meta object for class '{@link de.hub.clickwatch.model.MultiNode <em>Multi Node</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1228,6 +1248,14 @@ public interface ClickWatchModelPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute NETWORK__TIMEOUT = eINSTANCE.getNetwork_Timeout();
+
+		/**
+		 * The meta object literal for the '<em><b>Time</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute NETWORK__TIME = eINSTANCE.getNetwork_Time();
 
 		/**
 		 * The meta object literal for the '{@link de.hub.clickwatch.model.impl.MultiNodeImpl <em>Multi Node</em>}' class.

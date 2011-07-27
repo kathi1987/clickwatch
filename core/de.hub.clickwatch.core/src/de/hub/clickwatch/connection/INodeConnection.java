@@ -36,5 +36,4 @@ public interface INodeConnection {
 	public boolean isConnected();
 
 	public <T> T getAdapter(Class<T> adapterClass);
-
 }

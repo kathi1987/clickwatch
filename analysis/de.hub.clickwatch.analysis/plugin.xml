@@ -243,5 +243,11 @@
           name="Topology">
     </visualization>
  </extension>
+ <extension
+       point="de.hub.clickwatch.ui.AdditionalModules">
+    <moduleProvider
+          class="de.hub.clickwatch.analysis.ui.CWAnalysisAdditionalModulesProvider">
+    </moduleProvider>
+ </extension>
 
 </plugin>

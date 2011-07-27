@@ -14,7 +14,6 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
  de.hub.clickwatch.analysis,
  de.hub.clickwatch.examples,
- com.google.guice;bundle-version="3.0.0",
  org.eclipse.ui;bundle-version="3.6.1",
  org.eclipse.emf.ecore.xmi;bundle-version="2.5.0",
  org.eclipse.emf.cdo;bundle-version="3.0.1"

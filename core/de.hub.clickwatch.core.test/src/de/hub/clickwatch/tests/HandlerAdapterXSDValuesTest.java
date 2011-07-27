@@ -9,7 +9,6 @@ import org.eclipse.emf.common.util.URI;
 import org.junit.Test;
 
 import de.hub.clickcontrol.IClickSocket;
-import de.hub.clickwatch.XmlModelRepository;
 import de.hub.clickwatch.connection.INodeConnection;
 import de.hub.clickwatch.connection.INodeConnectionProvider;
 import de.hub.clickwatch.connection.adapter.IHandlerAdapter;
@@ -20,6 +19,7 @@ import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.model.Node;
 import de.hub.clickwatch.tests.clicksockets.ClickSocketXSDDummy;
 import de.hub.clickwatch.util.Throwables;
+import de.hub.emfxml.XmlModelRepository;
 
 public class HandlerAdapterXSDValuesTest extends AbstractTest {
 	
