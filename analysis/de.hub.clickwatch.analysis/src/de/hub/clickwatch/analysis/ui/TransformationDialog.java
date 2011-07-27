@@ -3,6 +3,11 @@
  */
 package de.hub.clickwatch.analysis.ui;
 
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.debug.core.ILaunch;
+import org.eclipse.debug.core.ILaunchConfiguration;
+import org.eclipse.debug.core.model.ILaunchConfigurationDelegate;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ComboViewer;
@@ -20,7 +25,7 @@ import org.eclipse.swt.widgets.Shell;
  * @author Lars George
  * 
  */
-public class TransformationDialog extends Dialog {
+public class TransformationDialog extends Dialog implements ILaunchConfigurationDelegate {
 
 	protected TransformationDialog(Shell parentShell) {
 		super(parentShell);
@@ -74,5 +79,12 @@ public class TransformationDialog extends Dialog {
 		languagesCombo.setContentProvider(ArrayContentProvider.getInstance());
 		String[] languagesArr = {"Xtend2", "Xpand", "Java"};
 		languagesCombo.setInput(languagesArr);
+	}
+
+	@Override
+	public void launch(ILaunchConfiguration configuration, String mode,
+			ILaunch launch, IProgressMonitor monitor) throws CoreException {
+		// TODO Auto-generated method stub
+		
 	}
 }
