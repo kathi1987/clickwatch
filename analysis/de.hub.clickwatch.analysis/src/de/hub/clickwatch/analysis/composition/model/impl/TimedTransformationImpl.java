@@ -34,7 +34,6 @@ import de.hub.clickwatch.analysis.composition.model.TransformationKind;
  *   <li>{@link de.hub.clickwatch.analysis.composition.model.impl.TimedTransformationImpl#getInput <em>Input</em>}</li>
  *   <li>{@link de.hub.clickwatch.analysis.composition.model.impl.TimedTransformationImpl#getOutput <em>Output</em>}</li>
  *   <li>{@link de.hub.clickwatch.analysis.composition.model.impl.TimedTransformationImpl#getTargetSpec <em>Target Spec</em>}</li>
- *   <li>{@link de.hub.clickwatch.analysis.composition.model.impl.TimedTransformationImpl#getRequiredBundle <em>Required Bundle</em>}</li>
  * </ul>
  * </p>
  *
@@ -152,25 +151,6 @@ public class TimedTransformationImpl extends EdgeImpl implements TimedTransforma
 	 * @ordered
 	 */
 	protected TargetSpec targetSpec = TARGET_SPEC_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getRequiredBundle() <em>Required Bundle</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getRequiredBundle()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String REQUIRED_BUNDLE_EDEFAULT = null;
-	/**
-	 * The cached value of the '{@link #getRequiredBundle() <em>Required Bundle</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getRequiredBundle()
-	 * @generated
-	 * @ordered
-	 */
-	protected String requiredBundle = REQUIRED_BUNDLE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -387,27 +367,6 @@ public class TimedTransformationImpl extends EdgeImpl implements TimedTransforma
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getRequiredBundle() {
-		return requiredBundle;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setRequiredBundle(String newRequiredBundle) {
-		String oldRequiredBundle = requiredBundle;
-		requiredBundle = newRequiredBundle;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CompositionPackage.TIMED_TRANSFORMATION__REQUIRED_BUNDLE, oldRequiredBundle, requiredBundle));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -441,8 +400,6 @@ public class TimedTransformationImpl extends EdgeImpl implements TimedTransforma
 				return getOutput();
 			case CompositionPackage.TIMED_TRANSFORMATION__TARGET_SPEC:
 				return getTargetSpec();
-			case CompositionPackage.TIMED_TRANSFORMATION__REQUIRED_BUNDLE:
-				return getRequiredBundle();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -475,9 +432,6 @@ public class TimedTransformationImpl extends EdgeImpl implements TimedTransforma
 				return;
 			case CompositionPackage.TIMED_TRANSFORMATION__TARGET_SPEC:
 				setTargetSpec((TargetSpec)newValue);
-				return;
-			case CompositionPackage.TIMED_TRANSFORMATION__REQUIRED_BUNDLE:
-				setRequiredBundle((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -512,9 +466,6 @@ public class TimedTransformationImpl extends EdgeImpl implements TimedTransforma
 			case CompositionPackage.TIMED_TRANSFORMATION__TARGET_SPEC:
 				setTargetSpec(TARGET_SPEC_EDEFAULT);
 				return;
-			case CompositionPackage.TIMED_TRANSFORMATION__REQUIRED_BUNDLE:
-				setRequiredBundle(REQUIRED_BUNDLE_EDEFAULT);
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -541,8 +492,6 @@ public class TimedTransformationImpl extends EdgeImpl implements TimedTransforma
 				return output != null;
 			case CompositionPackage.TIMED_TRANSFORMATION__TARGET_SPEC:
 				return targetSpec != TARGET_SPEC_EDEFAULT;
-			case CompositionPackage.TIMED_TRANSFORMATION__REQUIRED_BUNDLE:
-				return REQUIRED_BUNDLE_EDEFAULT == null ? requiredBundle != null : !REQUIRED_BUNDLE_EDEFAULT.equals(requiredBundle);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -563,7 +512,6 @@ public class TimedTransformationImpl extends EdgeImpl implements TimedTransforma
 				case CompositionPackage.TIMED_TRANSFORMATION__INPUT: return CompositionPackage.TRANSFORMATION__INPUT;
 				case CompositionPackage.TIMED_TRANSFORMATION__OUTPUT: return CompositionPackage.TRANSFORMATION__OUTPUT;
 				case CompositionPackage.TIMED_TRANSFORMATION__TARGET_SPEC: return CompositionPackage.TRANSFORMATION__TARGET_SPEC;
-				case CompositionPackage.TIMED_TRANSFORMATION__REQUIRED_BUNDLE: return CompositionPackage.TRANSFORMATION__REQUIRED_BUNDLE;
 				default: return -1;
 			}
 		}
@@ -586,7 +534,6 @@ public class TimedTransformationImpl extends EdgeImpl implements TimedTransforma
 				case CompositionPackage.TRANSFORMATION__INPUT: return CompositionPackage.TIMED_TRANSFORMATION__INPUT;
 				case CompositionPackage.TRANSFORMATION__OUTPUT: return CompositionPackage.TIMED_TRANSFORMATION__OUTPUT;
 				case CompositionPackage.TRANSFORMATION__TARGET_SPEC: return CompositionPackage.TIMED_TRANSFORMATION__TARGET_SPEC;
-				case CompositionPackage.TRANSFORMATION__REQUIRED_BUNDLE: return CompositionPackage.TIMED_TRANSFORMATION__REQUIRED_BUNDLE;
 				default: return -1;
 			}
 		}
@@ -613,8 +560,6 @@ public class TimedTransformationImpl extends EdgeImpl implements TimedTransforma
 		result.append(predefinedTransformation);
 		result.append(", targetSpec: ");
 		result.append(targetSpec);
-		result.append(", requiredBundle: ");
-		result.append(requiredBundle);
 		result.append(')');
 		return result.toString();
 	}

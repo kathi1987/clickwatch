@@ -338,9 +338,6 @@ public class TransformationEngine {
 			return null;
 		}		
 		
-		// get the required bundle (if needed)
-		String xtend2ReqBundleUri = transformation.getRequiredBundle();
-		
 		// get the method name to be called in the xtend2 script
 		String xtend2Function = transformation.getTransformationFunction();
 		if (xtend2Function == null) {
@@ -352,28 +349,20 @@ public class TransformationEngine {
 				
 				Class<?> xtend2Class = null;
 				
-				// is there a bundle to load?
-				if(xtend2ReqBundleUri != null && xtend2ReqBundleUri != "")
-				{
-					// remove the first part if its an platform path
-					String shortBundleURI = xtend2ReqBundleUri;
-					if(shortBundleURI.startsWith("platform:/resource/")) shortBundleURI = shortBundleURI.substring(18);
-																																											
-					
-					// install bundle (if its already installed we just receive that reference)
-					Bundle newB = installBundleFromWorkspace(shortBundleURI);
-					
-					//installBundleFromWorkspace("/de.hu_berlin.clickwatch.examples").start();
-					
-					//Dictionary<?, ?> dict = newB.getHeaders();
-					//System.out.println(dict.get("Require-Bundle"));
-					
-					newB.start();					
-					
-					
-					// get the class for the xtend2 execution
-					xtend2Class = newB.loadClass(xtend2ClassName);	
-				}				
+				URI u = URI.createURI(xtend2Uri);
+				String shortBundleURI = u.segment(1);
+
+				// install bundle (if its already installed we just receive that reference)
+				Bundle newB = installBundleFromWorkspace(shortBundleURI);
+				
+				//Dictionary<?, ?> dict = newB.getHeaders();
+				//System.out.println(dict.get("Require-Bundle"));
+				
+				newB.start();					
+								
+				// get the class for the xtend2 execution
+				xtend2Class = newB.loadClass(xtend2ClassName);	
+			
 				
 				// if the class is not already loaded, try it with the default class loader
 				if(xtend2Class == null)
@@ -427,42 +416,11 @@ public class TransformationEngine {
 			// if its already installed, refresh it (maybe the code changed)
 			if(retBundle != null)	
 			{
-				retBundle.stop();
 				retBundle.update();
 			}
 			else
-				retBundle = PluginActivator.getInstance().getBundle().getBundleContext().installBundle(bundleLocation + bundleIdentifier);
+				retBundle = PluginActivator.getInstance().getBundle().getBundleContext().installBundle(bundleLocation + bundleIdentifier);									
 						
-
-			// install all bundles in the workspace (maybe needed depency)
-			
-			/* 
-			IPluginModelBase[] candidates = PluginRegistry.getWorkspaceModels();
-			for(IPluginModelBase candidate : candidates)
-			{
-				IResource candidateManifest = candidate.getUnderlyingResource();
-
-				String candidateLocationReference = "reference:" + candidateManifest.getProject().getLocationURI().toURL().toExternalForm();
-				
-				Bundle installedBundle = PluginActivator.getInstance().getBundle().getBundleContext().installBundle(candidateLocationReference);
-				installedBundle.update();
-							
-				 
-				// add the bin folder as classpath to the project 
-				IProject project = candidateManifest.getProject();
-				IJavaProject javaProject = JavaCore.create(project);
-				try {
-				    IPath output = javaProject.getOutputLocation();
-				    BaseData bundleData = (BaseData)((AbstractBundle)installedBundle).getBundleData();
-				    //bundleData.setClassPathString(output.removeFirstSegments(1).toString());				    				    
-				    bundleData.setClassPathString("/bin");
-				} catch (JavaModelException e) {
-				    System.out.println(e);
-				}
-				
-			}*/
-			
-			
 			Dictionary<String, String> dict =  retBundle.getHeaders();
 			
 			// try to install required bundles, so the dependencies are in the osgi container
@@ -492,8 +450,35 @@ public class TransformationEngine {
 				{
 					// dont do anything, it normal that most parts can not be loaded
 				}
-			}			
-			retBundle.update();
+			}						
+			
+			// install all bundles in the workspace (maybe needed depency)
+			
+			/* 
+			IPluginModelBase[] candidates = PluginRegistry.getWorkspaceModels();
+			for(IPluginModelBase candidate : candidates)
+			{
+				IResource candidateManifest = candidate.getUnderlyingResource();
+
+				String candidateLocationReference = "reference:" + candidateManifest.getProject().getLocationURI().toURL().toExternalForm();
+				
+				Bundle installedBundle = PluginActivator.getInstance().getBundle().getBundleContext().installBundle(candidateLocationReference);
+				installedBundle.update();
+							
+				 
+				// add the bin folder as classpath to the project 
+				IProject project = candidateManifest.getProject();
+				IJavaProject javaProject = JavaCore.create(project);
+				try {
+				    IPath output = javaProject.getOutputLocation();
+				    BaseData bundleData = (BaseData)((AbstractBundle)installedBundle).getBundleData();
+				    //bundleData.setClassPathString(output.removeFirstSegments(1).toString());				    				    
+				    bundleData.setClassPathString("/bin");
+				} catch (JavaModelException e) {
+				    System.out.println(e);
+				}
+				
+			}*/
 			
 		}
 		catch(Exception e)
