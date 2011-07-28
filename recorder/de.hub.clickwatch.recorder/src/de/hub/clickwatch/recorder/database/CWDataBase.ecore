@@ -74,6 +74,8 @@
         unsettable="true" derived="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="recordSize" eType="#//ESummaryStatistics"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="samplesR" eType="#//ESummaryStatistics"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="bytesRequestSample" eType="#//ESummaryStatistics"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="timeRequestSample" eType="#//ESummaryStatistics"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NodeRecordDescr">
     <eStructuralFeatures xsi:type="ecore:EReference" name="record" eType="#//NodeRecord"/>

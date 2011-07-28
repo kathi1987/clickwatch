@@ -27,6 +27,9 @@ public class DataBaseUtil {
 		dataBaseAdapter.initialize(experiment);
 		dataBaseAdapter.set(node, time);
 		Handler dbHandler = dataBaseAdapter.retrieve(handler);
+		if (dbHandler == null) {
+			return null;
+		}
 		Handler result = ClickWatchModelFactory.eINSTANCE.createHandler();
 		result.setTimestamp(dbHandler.getTimestamp());
 		if (dbValueAdapter.getClass().equals(valueAdapter.getClass())) {
@@ -64,20 +67,20 @@ public class DataBaseUtil {
 		dataBaseAdapter.set(node, time);
 		
 		for (Handler handlerTimeCopy: result.getAllHandlers()) {
-			Handler handler = dataBaseAdapter.retrieve(handlerTimeCopy.getQualifiedName());
-			if (handler != null) {
-				Preconditions.checkState(handler.getTimestamp() <= time);
+			Handler dbHandler = dataBaseAdapter.retrieve(handlerTimeCopy.getQualifiedName());
+			if (dbHandler != null) {
+				Preconditions.checkState(dbHandler.getTimestamp() <= time);
 				if (dbValueAdapter.getClass().equals(valueAdapter.getClass())) {
-					valueAdapter.moveValue(handler, handlerTimeCopy);
+					valueAdapter.moveValue(dbHandler, handlerTimeCopy);
 				} else {
-					String plainRealValue = dbValueAdapter.getPlainRealValue(handler);
+					String plainRealValue = dbValueAdapter.getPlainRealValue(dbHandler);
 					valueAdapter.setModelValue(handlerTimeCopy, plainRealValue);
 				}
 	
-				if (handler.getTimestamp() == 0) {
+				if (dbHandler.getTimestamp() == 0) {
 					logger.log(ILogger.WARNING, "empty timestamp", null);
 				}
-				handlerTimeCopy.setTimestamp(handler.getTimestamp());
+				handlerTimeCopy.setTimestamp(dbHandler.getTimestamp());
 			} else {
 				handlerTimeCopy.setTimestamp(0);
 				valueAdapter.clearValue(handlerTimeCopy);

@@ -13,7 +13,7 @@ public class AbstractTest extends AbstractMain {
 
 	@Override
 	protected int getLogLevel() {
-		return 2;
+		return 4;
 	}
 	
 }

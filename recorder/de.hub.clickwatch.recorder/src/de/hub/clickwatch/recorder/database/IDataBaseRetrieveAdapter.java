@@ -11,4 +11,6 @@ public interface IDataBaseRetrieveAdapter {
 	
 	public Handler retrieve(String handlerId);
 	
+	public Handler[] retrieve(String[] handlerId);
+	
 }

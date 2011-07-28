@@ -133,5 +133,10 @@ public class ClickSocketTestDummy implements IClickSocket {
 		System.out.println("set handler value " + new String(charArray)
 				+ " to handler [" + elementName + ", " + handlerName + "]");
 	}
+	
+	@Override
+	public <T> T getAdapter(Class<T> theClass) {
+		return null;
+	}
 
 }

@@ -18,6 +18,7 @@ import de.hub.clickwatch.connection.INodeConnectionProvider;
 import de.hub.clickwatch.connection.adapter.IHandlerAdapter;
 import de.hub.clickwatch.connection.adapter.IMetaDataAdapter;
 import de.hub.clickwatch.connection.adapter.IValueAdapter;
+import de.hub.clickwatch.connection.adapter.SocketStatisticsAdapter;
 import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.model.Network;
 import de.hub.clickwatch.model.Node;
@@ -41,6 +42,7 @@ public class NodeRecorder implements Runnable {
 	
 	private INodeConnection connection = null;
 	private IHandlerAdapter handlerAdapter = null;
+	private SocketStatisticsAdapter socketStatisticsAdapter = null;
 	private long updateInterval = -1;
 	private boolean isRecording = true;
 	private int samples = 0;
@@ -54,6 +56,8 @@ public class NodeRecorder implements Runnable {
 	
 	private List<Double> handlerPulledSValues = new ArrayList<Double>();
 	private List<Double> timeSValues = new ArrayList<Double>();
+	private List<Double> bytesRequestSValues = new ArrayList<Double>();
+	private List<Double> timeRequestSValues = new ArrayList<Double>();
 
 	private void initializeRecorder() {
 		logger.log(ILogger.DEBUG, "started recording of " + configuration.getINetAddress(), null);
@@ -79,6 +83,15 @@ public class NodeRecorder implements Runnable {
 		
 		handlerAdapter = connection.getAdapter(IHandlerAdapter.class);
 		EList<Handler> allHandlers = metaData.getAllHandlers();
+		configureHandlerAdapter(allHandlers);
+		
+		socketStatisticsAdapter = connection.getAdapter(SocketStatisticsAdapter.class);
+		if (socketStatisticsAdapter != null) {
+			socketStatisticsAdapter.activateSocketStatistics();
+		}
+	}
+
+	protected void configureHandlerAdapter(EList<Handler> allHandlers) {
 		handlerAdapter.configure(allHandlers);
 	}
 	
@@ -108,8 +121,13 @@ public class NodeRecorder implements Runnable {
 			}
 		}
 		
-		handlerPulledSValues.add((double)handlersPulled.size());
+		handlerPulledSValues.add((double)handlersPulled.size());		
 		timeSValues.add((double)System.nanoTime() - start);
+		if (socketStatisticsAdapter != null) {
+			bytesRequestSValues.add(socketStatisticsAdapter.getSocketStatistics().getBytesRequest());
+			timeRequestSValues.add(socketStatisticsAdapter.getSocketStatistics().getTimeRequest());
+			socketStatisticsAdapter.resetSocketStatistics();
+		}
 		
 		return recordedHandler;
 	}
@@ -175,7 +193,10 @@ public class NodeRecorder implements Runnable {
 		
 		addAll(stats.getHandlersPulledS(), handlerPulledSValues);
 		addAll(stats.getTimeS(), timeSValues);
+		addAll(stats.getBytesRequestSample(), bytesRequestSValues);
+		addAll(stats.getTimeRequestSample(), timeRequestSValues);
 		
+		parent.getDataBaseAdapter().close(nodeDBAdapter);
 		handlerAdapter.deconfigure();
 		parent.reportStopped();
 	}

@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 
+import com.google.inject.Binder;
 import com.google.inject.Module;
 import com.google.inject.name.Names;
 
@@ -60,10 +61,28 @@ public class AbstractDBTest  extends AbstractAdapterTest {
 			@Override
 			protected void configureDataBaseRetrieveAdapter() {
 				bind(IDataBaseRetrieveAdapter.class).to(getDataBaseRetrieveAdapterClass());
-			}			
+			}
+
+			@Override
+			protected void configureHBaseWithExtraQueue() {
+				bind(boolean.class).annotatedWith(Names.named(B_HBASE_WITH_EXTRA_QUUE)).toInstance(getHBaseWithExtraQueue());
+			}
+
+			@Override
+			protected void configureAdditionalBindings() {
+				AbstractDBTest.this.configureAdditionalBindings(binder());
+			}
 		}};
 	}
 	
+	protected void configureAdditionalBindings(Binder binder) {
+		// empty
+	}
+
+	protected Boolean getHBaseWithExtraQueue() {
+		return true;
+	}
+
 	protected Class<? extends IDataBaseRecordAdapter> getDataBaseRecordAdapterClass() {
 		return DataBaseAdapter.class;
 	}
@@ -89,10 +108,16 @@ public class AbstractDBTest  extends AbstractAdapterTest {
 	}
 	
 	protected ExperimentDescr performTest(String[] nodeIds) {
+		return performTest(nodeIds, true);
+	}
+	
+	protected ExperimentDescr performTest(String[] nodeIds, boolean assertTest) {
 		ExperimentRecorder recorder = injector.getInstance(ExperimentRecorder.class);
 		ExperimentDescr experiment = buildDataBase(nodeIds);
 		recorder.record(experiment);	
-		assertExperiment(experiment, nodeIds);
+		if (assertTest) {
+			assertExperiment(experiment, nodeIds);
+		}
 		return experiment;
 	}
 	
@@ -115,7 +140,7 @@ public class AbstractDBTest  extends AbstractAdapterTest {
 								.withName("test_network")
 								.withElementFilter("")
 								.withHandlerFilter("")
-								.withUpdateIntervall(0)
+								.withUpdateIntervall(getUpdateInterval())
 								.withNodes(nodes)
 						)
 				).build();
@@ -127,6 +152,10 @@ public class AbstractDBTest  extends AbstractAdapterTest {
 		return db.getExperiments().get(0);
 	}
 	
+	protected Integer getUpdateInterval() {
+		return 0;
+	}
+
 	protected boolean getInMemory() {
 		return true;
 	}

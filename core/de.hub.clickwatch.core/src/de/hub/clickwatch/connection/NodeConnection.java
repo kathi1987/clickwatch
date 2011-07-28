@@ -4,8 +4,10 @@ import java.io.IOException;
 
 import com.google.common.base.Preconditions;
 import com.google.inject.Inject;
+import com.google.inject.Provider;
 import com.google.inject.name.Named;
 
+import de.hub.clickcontrol.ClickSocketStatistics;
 import de.hub.clickcontrol.IClickSocket;
 import de.hub.clickwatch.ClickWatchModule;
 import de.hub.clickwatch.connection.adapter.AbstractAdapter;
@@ -13,22 +15,20 @@ import de.hub.clickwatch.connection.adapter.IHandlerAdapter;
 import de.hub.clickwatch.connection.adapter.IMetaDataAdapter;
 import de.hub.clickwatch.connection.adapter.INodeAdapter;
 import de.hub.clickwatch.connection.adapter.IValueAdapter;
+import de.hub.clickwatch.connection.adapter.SocketStatisticsAdapter;
 import de.hub.clickwatch.model.Node;
 import de.hub.clickwatch.util.Throwables;
 
 public class NodeConnection implements INodeConnection {
 
-	@Inject
-	private IClickSocket clickSocket;
+	@Inject private Provider<IClickSocket> clickSocketProvider;
+	private IClickSocket clickSocket = null;
 	
-	@Inject 
-	private IMetaDataAdapter metaDataAdapter;
-	@Inject
-	private IHandlerAdapter handlerAdapter;
-	@Inject 
-	private IValueAdapter valueAdapter;
-	@Inject 
-	private INodeAdapter nodeAdapter;
+	@Inject private IMetaDataAdapter metaDataAdapter;
+	@Inject private IHandlerAdapter handlerAdapter;
+	@Inject private IValueAdapter valueAdapter;
+	@Inject private INodeAdapter nodeAdapter;
+	private SocketStatisticsAdapter socketStatisticsAdapter;
 	
 	private String host;
 	private String port;
@@ -52,6 +52,9 @@ public class NodeConnection implements INodeConnection {
 
 	@Override
 	public void connect() {
+		if (clickSocket == null) {
+			clickSocket = clickSocketProvider.get();
+		}
 		try {
 			clickSocket.connect(host, new Integer(port), timeout);
 			isConnected = true;
@@ -78,6 +81,7 @@ public class NodeConnection implements INodeConnection {
 	@Override
 	public void disconnect() {
 		clickSocket.close();
+		clickSocket = null;
 		isConnected = false;
 	}
 	
@@ -100,6 +104,14 @@ public class NodeConnection implements INodeConnection {
 		} else if (adapterClass == INodeAdapter.class) {
 			init((AbstractAdapter)nodeAdapter);
 			return (T)nodeAdapter;
+		} else if (adapterClass == SocketStatisticsAdapter.class) {
+			if (socketStatisticsAdapter == null) {
+				if (clickSocket.getAdapter(ClickSocketStatistics.class) != null) {
+					socketStatisticsAdapter = new SocketStatisticsAdapter();
+					init(socketStatisticsAdapter);
+				}
+			}
+			return (T)socketStatisticsAdapter;
 		} else {
 			Preconditions.checkArgument(false, "Unknown adapter " + adapterClass.getCanonicalName());
 			return null;

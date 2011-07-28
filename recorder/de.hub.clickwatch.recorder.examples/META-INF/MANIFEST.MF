@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: ClickWatch Recorder Examples
+Bundle-SymbolicName: de.hub.clickwatch.recorder.examples
+Bundle-Version: 2.0.0.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Require-Bundle: de.hub.clickwatch.recorder;bundle-version="2.0.0",
+ de.hub.clickwatch.recorder.ui;bundle-version="2.0.0"

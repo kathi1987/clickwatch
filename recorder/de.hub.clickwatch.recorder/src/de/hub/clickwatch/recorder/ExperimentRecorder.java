@@ -46,7 +46,7 @@ public class ExperimentRecorder {
 			nodeRecorders.add(nodeRecorder);
 			
 			stats.getNodesA().addValue(1);
-			new Thread(nodeRecorder).start();
+			new Thread(nodeRecorder, "Node-Recorder for: " + recordedNode.getINetAddress()).start();
 		}
 		
 		try {
@@ -56,8 +56,10 @@ public class ExperimentRecorder {
 			for (NodeRecorder recorder: nodeRecorders) {
 				recorder.stop();
 			}
-			wait(10000); // for all reported stopped, timeout after 60 seconds
-			logger.log(ILogger.DEBUG, "All node recorder have stopped recording.", null);
+			wait(10000); // for all reported stopped, timeout after 10 seconds;
+			logger.log(ILogger.DEBUG, "All node recorder have stopped recording", null);
+			dataBaseAdapter.close();
+			logger.log(ILogger.DEBUG, "db-adapter has been shutdown", null);
 		} catch(InterruptedException e) {
 			Throwables.propagate(e);
 		}

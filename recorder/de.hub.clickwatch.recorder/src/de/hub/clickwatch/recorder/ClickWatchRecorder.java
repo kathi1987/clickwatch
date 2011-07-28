@@ -15,13 +15,16 @@ import com.google.inject.Module;
 import com.google.inject.name.Names;
 
 import de.hub.clickwatch.AbstractMain;
+import de.hub.clickwatch.ClickWatchStandaloneSetup;
 import de.hub.clickwatch.connection.adapter.CompoundHandlerAdapter;
 import de.hub.clickwatch.connection.adapter.HandlerAdapter;
 import de.hub.clickwatch.connection.adapter.IHandlerAdapter;
 import de.hub.clickwatch.recoder.cwdatabase.DataBase;
+import de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr;
+import de.hub.clickwatch.recorder.database.CWRecorderStandaloneSetup;
 import de.hub.clickwatch.recorder.database.IDataBaseRecordAdapter;
-import de.hub.clickwatch.recorder.database.IDataBaseRetrieveAdapter;
 import de.hub.clickwatch.recorder.database.hbase.HBaseDataBaseAdapter;
+import de.hub.clickwatch.recorder.database.logfile.LogFileDataBaseAdapter;
 import de.hub.clickwatch.util.ILogger;
 import de.hub.emfxml.XmlModelRepository;
 
@@ -46,19 +49,14 @@ public class ClickWatchRecorder extends AbstractMain implements IApplication {
 
 			@Override
 			protected void configureDataBaseRecordAdapter() {
-				if (hbase) {
+				if (db.equals("hbase")) {
 					bind(IDataBaseRecordAdapter.class).to(HBaseDataBaseAdapter.class);
-				} else {
+				} else if (db.equals("emf")){
 					super.configureDataBaseRecordAdapter();
-				}
-			}
-
-			@Override
-			protected void configureDataBaseRetrieveAdapter() {
-				if (hbase) {
-					bind(IDataBaseRetrieveAdapter.class).to(HBaseDataBaseAdapter.class);
+				} else if (db.equals("log")) {
+					bind(IDataBaseRecordAdapter.class).to(LogFileDataBaseAdapter.class);
 				} else {
-					super.configureDataBaseRetrieveAdapter();
+					throw new IllegalArgumentException("unknown db adapter " + db);
 				}
 			}
 		}};
@@ -77,28 +75,30 @@ public class ClickWatchRecorder extends AbstractMain implements IApplication {
 	private final int handlerPerRecord;
 	private final boolean useCompoundHandler;
 	private final boolean debug;
-	private final boolean hbase;
+	private final String db;
+	private final String experimentId;
 	
-	public ClickWatchRecorder(String experimentFile, int handlerPerRecord, boolean useCompoundHandler, boolean debug, boolean hbase) {
+	public ClickWatchRecorder(String experimentFile, String experiment, int handlerPerRecord, boolean useCompoundHandler, boolean debug, String db) {
 		super();
 		this.experimentFile = experimentFile;
 		this.handlerPerRecord = handlerPerRecord;
 		this.useCompoundHandler = useCompoundHandler;
 		this.debug = debug;
-		this.hbase = hbase;
+		this.db = db;
+		this.experimentId = experiment;
 	}
 	
 	public ClickWatchRecorder() {
 		experimentFile = null;
-		handlerPerRecord = -1;
+		handlerPerRecord = 0;
 		useCompoundHandler = false;
 		debug = false;
-		hbase = false;
+		db = "";
+		experimentId = null;
 	}
 
 	public void run() throws Exception {
 		setUp();
-		injector.getInstance(ILogger.class).log(ILogger.INFO, "Start recording on database: " + experimentFile, null);
 		
 		ResourceSet rs = new ResourceSetImpl();
 		rs.getLoadOptions().putAll(XmlModelRepository.defaultLoadSaveOptions());
@@ -106,7 +106,25 @@ public class ClickWatchRecorder extends AbstractMain implements IApplication {
 		DataBase database = (DataBase)resource.getContents().get(0);
 		ExperimentRecorder recorder = injector.getInstance(ExperimentRecorder.class);
 		
-		recorder.record(database.getExperiments().get(0));		
+		ExperimentDescr experiment = null;
+		if (experimentId == null || experimentId.equals("")) {
+			if (database.getExperiments().size() > 0) {
+				experiment = database.getExperiments().get(0);
+			}
+		} else {			
+			for (ExperimentDescr experimentInDB: database.getExperiments()) {
+				if (experimentId.equals(experimentInDB.getName())) {
+					experiment = experimentInDB;
+				}
+			}
+		}
+		if (experiment == null) {
+			injector.getInstance(ILogger.class).log(ILogger.ERROR, "Experiment does not exist", null);
+		}
+		
+		injector.getInstance(ILogger.class).log(ILogger.INFO, "Start recording on database: " + experimentFile + " for experiment " + experiment.getName(), null);
+		
+		recorder.record(experiment);		
 		resource.save(XmlModelRepository.defaultLoadSaveOptions());
 		
 		injector.getInstance(ILogger.class).log(ILogger.INFO, database.getExperiments().get(0).getStatistics().toString(), null);
@@ -114,16 +132,18 @@ public class ClickWatchRecorder extends AbstractMain implements IApplication {
 
 	public static final void main(String[] args) throws Exception {
 		Options options = new Options();
-		options.addOption("hbase", false, "use hbase instead of emf to store handler values.");
+		options.addOption("db", true, "choose the database: hbase for hbase, log for log-file, emf for emf");
 		options.addOption("h", "handler-per-record", true, "determines the estimated record size in handler count per record");
 		options.addOption("c", "compound-handler", false, "recorder uses the compound handler of nodes instead of reading each handler seperated");
 		options.addOption("d", "debug", false, "recorder logs extensive");
+		options.addOption("e", "experiment", true, "name of the experiment to be recorded, otherwise recorder uses the first experiment in db");
 		
 		String experimentFile = null;
+		String experiment = null;
 		int handlerPerRecord = 2000;
 		boolean useCompoundHandler = false;
 		boolean debug = false;
-		boolean hbase = false;
+		String db = null;
 		
 		try {
 			CommandLine commandLine = new PosixParser().parse(options, args);
@@ -133,17 +153,26 @@ public class ClickWatchRecorder extends AbstractMain implements IApplication {
 			}
 			useCompoundHandler = commandLine.hasOption("c");
 			debug = commandLine.hasOption("d");
-			hbase = commandLine.hasOption("hbase");
+			if (commandLine.hasOption("db")) {
+				db = commandLine.getOptionValue("db");
+			} else {
+				db = "hbase";
+			}
 			if (commandLine.hasOption("u")) {
 				handlerPerRecord = new Integer(commandLine.getOptionValue("u"));
 			}
+			if (commandLine.hasOption("e")) {
+				experiment = commandLine.getOptionValue("e");
+			}
 		} catch (Exception e) {
 			System.out.println("Illegal usage.");
-			new HelpFormatter().printHelp("eclipse -application de.hub.clickwatch.core.examples.recorder.RecorderOne -consolelog -nosplash [options...] database-file", options);
+			new HelpFormatter().printHelp("eclipse -application de.hub.clickwatch.core.recorder.ClickWatchRecorder -consolelog -nosplash [options...] database-file", options);
 			System.exit(1);
 		}
 		
-		ClickWatchRecorder instance = new ClickWatchRecorder(experimentFile, handlerPerRecord, useCompoundHandler, debug, hbase);
+		ClickWatchStandaloneSetup.doSetup();
+		CWRecorderStandaloneSetup.doSetup();
+		ClickWatchRecorder instance = new ClickWatchRecorder(experimentFile, experiment, handlerPerRecord, useCompoundHandler, debug, db);
 		instance.run();
 	}
 

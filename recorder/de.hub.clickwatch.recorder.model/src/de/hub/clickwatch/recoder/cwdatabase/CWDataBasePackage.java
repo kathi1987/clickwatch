@@ -546,13 +546,31 @@ public interface CWDataBasePackage extends EPackage {
 	int EXPERIMENT_STATISTICS__SAMPLES_R = 10;
 
 	/**
+	 * The feature id for the '<em><b>Bytes Request Sample</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPERIMENT_STATISTICS__BYTES_REQUEST_SAMPLE = 11;
+
+	/**
+	 * The feature id for the '<em><b>Time Request Sample</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPERIMENT_STATISTICS__TIME_REQUEST_SAMPLE = 12;
+
+	/**
 	 * The number of structural features of the '<em>Experiment Statistics</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXPERIMENT_STATISTICS_FEATURE_COUNT = 11;
+	int EXPERIMENT_STATISTICS_FEATURE_COUNT = 13;
 
 	/**
 	 * The meta object id for the '{@link de.hub.clickwatch.recoder.cwdatabase.impl.NodeRecordDescrImpl <em>Node Record Descr</em>}' class.
@@ -1107,6 +1125,28 @@ public interface CWDataBasePackage extends EPackage {
 	EAttribute getExperimentStatistics_SamplesR();
 
 	/**
+	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.recoder.cwdatabase.ExperimentStatistics#getBytesRequestSample <em>Bytes Request Sample</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Bytes Request Sample</em>'.
+	 * @see de.hub.clickwatch.recoder.cwdatabase.ExperimentStatistics#getBytesRequestSample()
+	 * @see #getExperimentStatistics()
+	 * @generated
+	 */
+	EAttribute getExperimentStatistics_BytesRequestSample();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.recoder.cwdatabase.ExperimentStatistics#getTimeRequestSample <em>Time Request Sample</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Time Request Sample</em>'.
+	 * @see de.hub.clickwatch.recoder.cwdatabase.ExperimentStatistics#getTimeRequestSample()
+	 * @see #getExperimentStatistics()
+	 * @generated
+	 */
+	EAttribute getExperimentStatistics_TimeRequestSample();
+
+	/**
 	 * Returns the meta object for class '{@link de.hub.clickwatch.recoder.cwdatabase.NodeRecordDescr <em>Node Record Descr</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1554,6 +1594,22 @@ public interface CWDataBasePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute EXPERIMENT_STATISTICS__SAMPLES_R = eINSTANCE.getExperimentStatistics_SamplesR();
+
+		/**
+		 * The meta object literal for the '<em><b>Bytes Request Sample</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute EXPERIMENT_STATISTICS__BYTES_REQUEST_SAMPLE = eINSTANCE.getExperimentStatistics_BytesRequestSample();
+
+		/**
+		 * The meta object literal for the '<em><b>Time Request Sample</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute EXPERIMENT_STATISTICS__TIME_REQUEST_SAMPLE = eINSTANCE.getExperimentStatistics_TimeRequestSample();
 
 		/**
 		 * The meta object literal for the '{@link de.hub.clickwatch.recoder.cwdatabase.impl.NodeRecordDescrImpl <em>Node Record Descr</em>}' class.

@@ -6,8 +6,8 @@ Bundle-Version: 2.0.0.qualifier
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  de.hub.clickwatch.recorder;bundle-version="2.0.0",
- de.hub.clickwatch.ui;bundle-version="2.0.0",
- de.hub.clickwatch.recorder.model.editor;bundle-version="1.0.0"
+ de.hub.clickwatch.ui;bundle-version="2.0.0";visibility:=reexport,
+ de.hub.clickwatch.recorder.model.editor;bundle-version="2.0.0";visibility:=reexport
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: de.hub.clickwatch.recorder.ui

@@ -71,5 +71,7 @@ public interface IClickSocket {
 
 	void write(String string, String string2, char[] charArray)
 			throws ClickException, IOException;
+	
+	public <T> T getAdapter(Class<T> theClass);
 
 }

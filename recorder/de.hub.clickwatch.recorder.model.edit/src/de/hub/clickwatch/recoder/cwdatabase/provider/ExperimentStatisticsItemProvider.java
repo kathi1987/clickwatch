@@ -77,6 +77,8 @@ public class ExperimentStatisticsItemProvider
 			addSamplesPerSecondPropertyDescriptor(object);
 			addRecordSizePropertyDescriptor(object);
 			addSamplesRPropertyDescriptor(object);
+			addBytesRequestSamplePropertyDescriptor(object);
+			addTimeRequestSamplePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -370,6 +372,50 @@ public class ExperimentStatisticsItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Bytes Request Sample feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addBytesRequestSamplePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ExperimentStatistics_bytesRequestSample_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ExperimentStatistics_bytesRequestSample_feature", "_UI_ExperimentStatistics_type"),
+				 CWDataBasePackage.Literals.EXPERIMENT_STATISTICS__BYTES_REQUEST_SAMPLE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Time Request Sample feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addTimeRequestSamplePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ExperimentStatistics_timeRequestSample_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ExperimentStatistics_timeRequestSample_feature", "_UI_ExperimentStatistics_type"),
+				 CWDataBasePackage.Literals.EXPERIMENT_STATISTICS__TIME_REQUEST_SAMPLE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns ExperimentStatistics.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -418,6 +464,8 @@ public class ExperimentStatisticsItemProvider
 			case CWDataBasePackage.EXPERIMENT_STATISTICS__SAMPLES_PER_SECOND:
 			case CWDataBasePackage.EXPERIMENT_STATISTICS__RECORD_SIZE:
 			case CWDataBasePackage.EXPERIMENT_STATISTICS__SAMPLES_R:
+			case CWDataBasePackage.EXPERIMENT_STATISTICS__BYTES_REQUEST_SAMPLE:
+			case CWDataBasePackage.EXPERIMENT_STATISTICS__TIME_REQUEST_SAMPLE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

@@ -52,5 +52,6 @@ Bundle-ClassPath: .,
 Export-Package: de.hub.clickwatch.recorder,
  de.hub.clickwatch.recorder.database,
  de.hub.clickwatch.recorder.database.emf,
- de.hub.clickwatch.recorder.database.hbase
+ de.hub.clickwatch.recorder.database.hbase,
+ de.hub.clickwatch.recorder.database.logfile
 Bundle-ActivationPolicy: lazy

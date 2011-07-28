@@ -1,12 +1,11 @@
 package de.hub.clickwatch.connection.adapter;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ArrayBlockingQueue;
 
 import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.xml.type.AnyType;
@@ -21,7 +20,8 @@ import de.hub.clickwatch.util.Throwables;
 import de.hub.emfxml.XmlModelRepository;
 
 public class CompoundHandlerAdapter extends HandlerAdapter {
-	
+
+	private static final int driftMavrSize = 20;
 	@Inject private XmlModelRepository xmlModelRepository;
 	@Inject private ILogger logger;
 	
@@ -34,6 +34,11 @@ public class CompoundHandlerAdapter extends HandlerAdapter {
 	
 	private List<Handler> handlers = null;
 	private String currentHandlerName = null;
+	
+	private long pullTime = 0;
+	private long driftMavrSum = 0;
+	private ArrayBlockingQueue<Long> driftMavrValues = new ArrayBlockingQueue<Long>(driftMavrSize);
+	private boolean inRecordMode = false;
 
 	@Override
 	public Collection<Handler> pullHandler() {
@@ -46,12 +51,14 @@ public class CompoundHandlerAdapter extends HandlerAdapter {
 		
 		char[] compundHandlerRawValue = null;
 		try {
+			pullTime = System.nanoTime();
 			compundHandlerRawValue = clickSocket.read(COMPOUND_HANDLER_ELEMENT, COMPOUND_HANDLER_READ_HANDLER);
 		} catch (Exception e) {
 			Throwables.propagate(e);
 		}
 	
-		XMLTypeDocumentRoot xml = (XMLTypeDocumentRoot)xmlModelRepository.deserializeXml(new String(compundHandlerRawValue));
+		String rawXml = new String(compundHandlerRawValue);
+		XMLTypeDocumentRoot xml = (XMLTypeDocumentRoot)xmlModelRepository.deserializeXml(rawXml);
 		traverse(xml.getMixed());
 				
 		return handlers;
@@ -59,13 +66,14 @@ public class CompoundHandlerAdapter extends HandlerAdapter {
 	
 	private void traverse(FeatureMap featureMap) {
 		for(FeatureMap.Entry fme: featureMap) {
+			boolean dive = false;
 			if (!fme.getEStructuralFeature().getName().equals("text")) {
-				handleFME(fme);
+				dive = handleFME(fme);
 			}
 			Object fmeValue = fme.getValue();
-			if (fmeValue instanceof AnyType) {
+			if (fmeValue instanceof AnyType && dive) {
 				AnyType value = (AnyType)fmeValue;
-				traverse(value.getMixed());				
+				traverse(value.getAny());				
 			}
 		}
 	}
@@ -82,7 +90,7 @@ public class CompoundHandlerAdapter extends HandlerAdapter {
 		return result;
 	}
 	
-	public void handleFME(FeatureMap.Entry fme) {
+	public boolean handleFME(FeatureMap.Entry fme) {
 		String elementName = fme.getEStructuralFeature().getName();
 		Object value = fme.getValue();
 		Map<String, String> attributes = null;
@@ -90,42 +98,59 @@ public class CompoundHandlerAdapter extends HandlerAdapter {
 			attributes = getAttributeMap(((AnyType)fme.getValue()).getAnyAttribute());
 		}
 		if (elementName.equals("compoundhandler")) {
-			
+			long drift = pullTime - time(attributes.get("time"));
+			if (driftMavrValues.size() == driftMavrSize) {
+				driftMavrSum -= driftMavrValues.poll();				
+			}
+			driftMavrSum += drift;
+			driftMavrValues.add(drift);
+			inRecordMode = "1".equals(attributes.get("recordmode"));
+		} else if (elementName.equals("compoundhandlerinfo")) {
+			return false;
 		} else if (elementName.equals("handler")) {
 			currentHandlerName = attributes.get("name").replace(".", "/");
-			if (attributes.get("overflow").equals("true")) {
-				// TODO handler overflow
-				logger.log(ILogger.WARNING, "Overflow in compound handler detected"
-						+ ", handler: "	+ currentHandlerName 
-						+ ", node: " + connection, null);
-
+			if (inRecordMode) {
+				if (attributes.get("overflow").equals("true")) {
+					logger.log(ILogger.WARNING, "Overflow in compound handler detected"
+							+ ", handler: "	+ currentHandlerName 
+							+ ", node: " + connection, null);
+	
+				}
+			} else {
+				createAndAddHandler(value, attributes);
 			}
 		} else if (elementName.equals("record")) {
-			if (attributes.get("update").equals("false")) {
-				return;
-			}
-			
-			Handler newHandler = ClickWatchModelFactory.eINSTANCE.createHandler();
-			// set name of handler
-			newHandler.setName(currentHandlerName);
-			
-			// set the timestamp
-			newHandler.setTimestamp(time(attributes.get("time")));
-			
-			// set the value
-			String recordStr = null;
-			for (FeatureMap.Entry valueFme: ((AnyType)value).getMixed()) {
-				if (valueFme.getEStructuralFeature().getName().equals("cDATA")) {
-					recordStr = (String)valueFme.getValue();
-				}
-			}
-			if (recordStr != null) {
-				valueAdapter.setModelValue(newHandler, recordStr);	
-			}
-			handlers.add(newHandler);
-		} else {
-			
+			if (!attributes.get("update").equals("false")) {
+				createAndAddHandler(value, attributes);
+			}						
 		}
+		return true;
+	}
+
+	private void createAndAddHandler(Object value, Map<String, String> attributes) {
+		Handler newHandler = ClickWatchModelFactory.eINSTANCE.createHandler();
+		// set name of handler
+		newHandler.setName(currentHandlerName);
+		
+		// set the timestamp
+		long drift = driftMavrSum / driftMavrValues.size();
+		if (inRecordMode) {
+			newHandler.setTimestamp(time(attributes.get("time")) + drift);
+		} else {
+			newHandler.setTimestamp(pullTime);
+		}
+		
+		// set the value
+		String recordStr = null;
+		for (FeatureMap.Entry valueFme: ((AnyType)value).getMixed()) {
+			if (valueFme.getEStructuralFeature().getName().equals("cDATA")) {
+				recordStr = (String)valueFme.getValue();
+			}
+		}
+		if (recordStr != null) {
+			valueAdapter.setModelValue(newHandler, recordStr);	
+		}
+		handlers.add(newHandler);
 	}
 
 	private long time(String timestampStr) {
@@ -134,10 +159,6 @@ public class CompoundHandlerAdapter extends HandlerAdapter {
 		return timestamp;
 	}
 	
-	private static Collection<String> commonHandler = new HashSet<String>(Arrays.asList(new String[] { 
-			"debug", "handlers", "ports", "config", "name", "version", "class" 
-	}));
-
 	@Override
 	public void configure(Collection<Handler> handlerConfig) {		
 		StringBuffer configurationString = new StringBuffer();

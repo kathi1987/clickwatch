@@ -21,8 +21,6 @@ public class ExperimentRecorderHBaseTest extends AbstractDBTest {
 		return HBaseDataBaseAdapter.class;
 	}
 	
-	
-
 	@Override
 	protected Class<? extends IDataBaseRetrieveAdapter> getDataBaseRetrieveAdapterClass() {
 		return HBaseDataBaseAdapter.class;
