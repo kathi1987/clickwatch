@@ -61,26 +61,6 @@
             </visibleWhen>
          </command>
       </menuContribution>
-      <menuContribution
-            locationURI="popup:org.eclipse.ui.popup.any">
-         <command
-               commandId="de.hub.clickwatch.analysis.ExecuteTansform"
-               label="Execute transformation"
-               style="push">
-            <visibleWhen
-                  checkEnabled="true">
-               <iterate>
-                  <adapt
-                        type="org.eclipse.core.resources.IResource">
-                     <test
-                           property="org.eclipse.core.resources.name"
-                           value="*.xtend">
-                     </test>
-                  </adapt>
-               </iterate>
-            </visibleWhen>
-         </command>
-      </menuContribution>
    </extension>
    <extension
          point="org.eclipse.ui.commands">
