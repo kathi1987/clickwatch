@@ -378,48 +378,6 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Click_binary">
-    <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-      <details key="target_id" value="Network/nodes:Node/elements:Element/version|handlers:Version|Handler/version|version:Version|EObject/click_binary|click_binary:Click_binary|EObject"/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_click_binary" eType="//ElementVersionVersion" transient="true" eOpposite="//ElementVersionVersion/click_binary"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" volatile="true" transient="true" derived="true">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/elements:Element/version|handlers:Version|Handler/version|version:Version|EObject/click_binary|click_binary:Click_binary|EObject/version|version:"/>
-      </eAnnotations>
-      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="brn_version" volatile="true" transient="true" derived="true">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/elements:Element/version|handlers:Version|Handler/version|version:Version|EObject/click_binary|click_binary:Click_binary|EObject/brn_version|brn_version:"/>
-      </eAnnotations>
-      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mode" volatile="true" transient="true" derived="true">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/elements:Element/version|handlers:Version|Handler/version|version:Version|EObject/click_binary|click_binary:Click_binary|EObject/mode|mode:"/>
-      </eAnnotations>
-      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="md5_id" volatile="true" transient="true" derived="true">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/elements:Element/version|handlers:Version|Handler/version|version:Version|EObject/click_binary|click_binary:Click_binary|EObject/md5_id|md5_id:"/>
-      </eAnnotations>
-      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBigInteger"/>
-    </eStructuralFeatures>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Click_script">
-    <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-      <details key="target_id" value="Network/nodes:Node/elements:Element/version|handlers:Version|Handler/version|version:Version|EObject/click_script|click_script:Click_script|EObject"/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_click_script" eType="//ElementVersionVersion" transient="true" eOpposite="//ElementVersionVersion/click_script"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="md5_id" volatile="true" transient="true" derived="true">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/elements:Element/version|handlers:Version|Handler/version|version:Version|EObject/click_script|click_script:Click_script|EObject/md5_id|md5_id:"/>
-      </eAnnotations>
-      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eStructuralFeatures>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ComplexType">
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/link_stat|children:Link_stat|Element/schema|handlers:Schema|Handler/schema|schema:Schema|EObject/element|element:Element|EObject/complexType|complexType:ComplexType|EObject"/>
@@ -623,12 +581,6 @@
       <details key="target_id" value="Network/nodes:Node/elements:Element/debug|handlers:Debug|Handler"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_debug" eType="//Element" eOpposite="//Element/debug"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/elements:Element/debug|handlers:Debug|Handler/text|text:"/>
-      </eAnnotations>
-      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Dev_decap" eSuperTypes="//Element">
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
@@ -2579,7 +2531,7 @@
       </eAnnotations>
       <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="version" eType="//ElementVersion" containment="true" resolveProxies="false" eOpposite="//ElementVersion/eContainer_version">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="version" eType="//Version" containment="true" resolveProxies="false" eOpposite="//Version/eContainer_version">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/elements:Element/version|handlers:Version|Handler"/>
         <details key="IsCopy" value="false"/>
@@ -2591,48 +2543,6 @@
         <details key="target_id" value="Network/nodes:Node/elements:Element/children:Element"/>
         <details key="IsCopy" value="true"/>
       </eAnnotations>
-    </eStructuralFeatures>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ElementVersion" eSuperTypes="//Handler">
-    <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-      <details key="target_id" value="Network/nodes:Node/elements:Element/version|handlers:Version|Handler"/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_version" eType="//Element" eOpposite="//Element/version"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="version" eType="//ElementVersionVersion" volatile="true" transient="true" derived="true" containment="true" resolveProxies="false" eOpposite="//ElementVersionVersion/eContainer_version">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/elements:Element/version|handlers:Version|Handler/version|version:Version|EObject"/>
-        <details key="IsCopy" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ElementVersionVersion">
-    <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-      <details key="target_id" value="Network/nodes:Node/elements:Element/version|handlers:Version|Handler/version|version:Version|EObject"/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_version" eType="//ElementVersion" transient="true" eOpposite="//ElementVersion/version"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" upperBound="-1" volatile="true" transient="true" derived="true">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/elements:Element/version|handlers:Version|Handler/version|version:Version|EObject/text|text:"/>
-      </eAnnotations>
-      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="click_binary" eType="//Click_binary" volatile="true" transient="true" derived="true" containment="true" resolveProxies="false" eOpposite="//Click_binary/eContainer_click_binary">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/elements:Element/version|handlers:Version|Handler/version|version:Version|EObject/click_binary|click_binary:Click_binary|EObject"/>
-        <details key="IsCopy" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="click_script" eType="//Click_script" volatile="true" transient="true" derived="true" containment="true" resolveProxies="false" eOpposite="//Click_script/eContainer_click_script">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/elements:Element/version|handlers:Version|Handler/version|version:Version|EObject/click_script|click_script:Click_script|EObject"/>
-        <details key="IsCopy" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" volatile="true" transient="true" derived="true">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/elements:Element/version|handlers:Version|Handler/version|version:Version|EObject/name|name:"/>
-      </eAnnotations>
-      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Entry">
@@ -2958,12 +2868,6 @@
       <details key="target_id" value="Network/nodes:Node/elements:Element/handlers|handlers:Handlers|Handler"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_handlersHandlers" eType="//Element" eOpposite="//Element/handlersHandlers"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/elements:Element/handlers|handlers:Handlers|Handler/text|text:"/>
-      </eAnnotations>
-      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Hosts" eSuperTypes="//Handler">
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
@@ -3516,12 +3420,6 @@
       <details key="target_id" value="Network/nodes:Node/elements:Element/name|handlers:Name|Handler"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_handlersName" eType="//Element" eOpposite="//Element/handlersName"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/elements:Element/name|handlers:Name|Handler/text|text:"/>
-      </eAnnotations>
-      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Network">
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
@@ -3767,12 +3665,6 @@
       <details key="target_id" value="Network/nodes:Node/elements:Element/ports|handlers:Ports|Handler"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_ports" eType="//Element" eOpposite="//Element/ports"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" volatile="true" transient="true" derived="true">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/elements:Element/ports|handlers:Ports|Handler/text|text:"/>
-      </eAnnotations>
-      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Probe">
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
@@ -4667,6 +4559,12 @@
       </eAnnotations>
       <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
     </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Version" eSuperTypes="//Handler">
+    <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+      <details key="target_id" value="Network/nodes:Node/elements:Element/version|handlers:Version|Handler"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_version" eType="//Element" eOpposite="//Element/version"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Wifidevice" eSuperTypes="//Element">
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">

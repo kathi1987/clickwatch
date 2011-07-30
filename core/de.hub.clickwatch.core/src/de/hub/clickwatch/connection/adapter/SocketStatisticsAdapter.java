@@ -9,10 +9,10 @@ public class SocketStatisticsAdapter extends AbstractAdapter {
 	}
 	
 	public void resetSocketStatistics() {
-		clickSocket.getAdapter(ClickSocketStatistics.class).resetStatistics();
+		clickSocket().getAdapter(ClickSocketStatistics.class).resetStatistics();
 	}
 
 	public ClickSocketStatistics getSocketStatistics() {
-		return clickSocket.getAdapter(ClickSocketStatistics.class); 
+		return clickSocket().getAdapter(ClickSocketStatistics.class); 
 	}
 }

@@ -15,6 +15,7 @@
   <packaging>pom</packaging>
   
   <modules>
+   <module>de.hub.clickwatch.main</module>
    <module>de.hub.clickwatch.analysis</module>
    <module>de.hub.clickwatch.examples</module>
    <!-- this is not a pde project yet-->

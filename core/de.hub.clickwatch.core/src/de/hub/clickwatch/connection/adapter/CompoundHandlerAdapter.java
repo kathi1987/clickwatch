@@ -12,18 +12,23 @@ import org.eclipse.emf.ecore.xml.type.AnyType;
 import org.eclipse.emf.ecore.xml.type.XMLTypeDocumentRoot;
 
 import com.google.inject.Inject;
+import com.google.inject.name.Named;
 
+import de.hub.clickwatch.ClickWatchModule;
 import de.hub.clickwatch.model.ClickWatchModelFactory;
 import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.util.ILogger;
 import de.hub.clickwatch.util.Throwables;
 import de.hub.emfxml.XmlModelRepository;
 
-public class CompoundHandlerAdapter extends HandlerAdapter {
+public class CompoundHandlerAdapter extends PullHandlerAdapter {
 
 	private static final int driftMavrSize = 20;
 	@Inject private XmlModelRepository xmlModelRepository;
 	@Inject private ILogger logger;
+	@Inject @Named(ClickWatchModule.B_COMPOUND_HANDLER_RECORDS) private boolean records;
+	@Inject @Named(ClickWatchModule.B_COMPOUND_HANDLER_CHANGES_ONLY) private boolean changesOnly;
+	@Inject @Named(ClickWatchModule.I_COMPOUND_HANDLER_SAMPLE_TIME) private int sampletime;
 	
 	private IValueAdapter valueAdapter = null;
 	
@@ -39,6 +44,25 @@ public class CompoundHandlerAdapter extends HandlerAdapter {
 	private long driftMavrSum = 0;
 	private ArrayBlockingQueue<Long> driftMavrValues = new ArrayBlockingQueue<Long>(driftMavrSize);
 	private boolean inRecordMode = false;
+	
+	public void configureCompoundHandler(boolean record, int sampletime) {
+		try {
+			if (record) {
+				clickSocket().write(COMPOUND_HANDLER_ELEMENT, "recordmode", "1".toCharArray());
+				if (changesOnly) {
+					clickSocket().write(COMPOUND_HANDLER_ELEMENT, "updatemode", "2".toCharArray());
+				} else {
+					clickSocket().write(COMPOUND_HANDLER_ELEMENT, "updatemode", "0".toCharArray());
+				}
+				clickSocket().write(COMPOUND_HANDLER_ELEMENT, "sampletime", new Integer(sampletime).toString().toCharArray());
+			} else {
+				clickSocket().write(COMPOUND_HANDLER_ELEMENT, "recordmode", "0".toCharArray());
+				clickSocket().write(COMPOUND_HANDLER_ELEMENT, "updatemode", "0".toCharArray());
+			}
+		} catch (Exception e) {
+			Throwables.propagate(e);
+		}
+	}
 
 	@Override
 	public Collection<Handler> pullHandler() {
@@ -52,7 +76,7 @@ public class CompoundHandlerAdapter extends HandlerAdapter {
 		char[] compundHandlerRawValue = null;
 		try {
 			pullTime = System.nanoTime();
-			compundHandlerRawValue = clickSocket.read(COMPOUND_HANDLER_ELEMENT, COMPOUND_HANDLER_READ_HANDLER);
+			compundHandlerRawValue = clickSocket().read(COMPOUND_HANDLER_ELEMENT, COMPOUND_HANDLER_READ_HANDLER);
 		} catch (Exception e) {
 			Throwables.propagate(e);
 		}
@@ -182,8 +206,9 @@ public class CompoundHandlerAdapter extends HandlerAdapter {
 	
 	private void resetCompoundHandler(String configurationString) {
 		try {
-			clickSocket.write(COMPOUND_HANDLER_ELEMENT, COMPOUND_HANDLER_RESET_HANDLER, "".toCharArray());
-			clickSocket.write(COMPOUND_HANDLER_ELEMENT, COMPOUND_HANDLER_INSERT_HANDLER, configurationString.trim().toCharArray());
+			configureCompoundHandler(records, sampletime);
+			clickSocket().write(COMPOUND_HANDLER_ELEMENT, COMPOUND_HANDLER_RESET_HANDLER, "".toCharArray());
+			clickSocket().write(COMPOUND_HANDLER_ELEMENT, COMPOUND_HANDLER_INSERT_HANDLER, configurationString.trim().toCharArray());
 			logger.log(ILogger.DEBUG, "Setting compound handler of " + connection + " with " + configurationString, null);
 		} catch (Exception e) {
 			Throwables.propagate(e);
@@ -193,7 +218,7 @@ public class CompoundHandlerAdapter extends HandlerAdapter {
 	@Override
 	public void deconfigure() {
 		try {
-			clickSocket.write(COMPOUND_HANDLER_ELEMENT, COMPOUND_HANDLER_RESET_HANDLER, "".toCharArray());
+			clickSocket().write(COMPOUND_HANDLER_ELEMENT, COMPOUND_HANDLER_RESET_HANDLER, "".toCharArray());
 			logger.log(ILogger.DEBUG, "Reseting compound handler of " + connection, null);
 		} catch (Exception e) {
 			Throwables.propagate(e);

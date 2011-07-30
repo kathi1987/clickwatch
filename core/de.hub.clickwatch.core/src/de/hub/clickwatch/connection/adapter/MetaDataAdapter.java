@@ -44,7 +44,7 @@ public class MetaDataAdapter extends AbstractAdapter implements IMetaDataAdapter
 		Map<String, Element> elementMap = new HashMap<String, Element>();
 		List<String> configElementNames = null;
 		try {
-			configElementNames = clickSocket.getConfigElementNames();
+			configElementNames = clickSocket().getConfigElementNames();
 			for (Object elementNameObject : configElementNames) {
 				String elementName = elementNameObject.toString();
 				if (!ignoreElement(elementName)) {
@@ -79,7 +79,7 @@ public class MetaDataAdapter extends AbstractAdapter implements IMetaDataAdapter
 				Element element = elementMap.get(elementPath);
 				Preconditions.checkState(element != null);
 				try {
-					handlerInfos = clickSocket.getElementHandlers(elementPath);
+					handlerInfos = clickSocket().getElementHandlers(elementPath);
 				} catch (Throwable e) {
 					Throwables.propagate(e);
 				}

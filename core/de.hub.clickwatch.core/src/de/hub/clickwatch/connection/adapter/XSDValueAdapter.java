@@ -102,14 +102,14 @@ public class XSDValueAdapter extends XmlValueAdapter {
 		String result = null;
 		try {
 			boolean hasXsd = false;
-			for(HandlerInfo hi: clickSocket.getElementHandlers(elementQualifiedName)) {
+			for(HandlerInfo hi: clickSocket().getElementHandlers(elementQualifiedName)) {
 				if (hi.getHandlerName().equals(XSD_HANDLER_NAME)) {
 					hasXsd = true;
 				}
 			}
 			
 			if (hasXsd) {
-				result =  new String(clickSocket.read(elementQualifiedName, XSD_HANDLER_NAME));
+				result =  new String(clickSocket().read(elementQualifiedName, XSD_HANDLER_NAME));
 			}
 		} catch (Throwable e) {
 			Throwables.propagate(e);

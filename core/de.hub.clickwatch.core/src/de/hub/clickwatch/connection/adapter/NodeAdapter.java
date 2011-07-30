@@ -27,7 +27,7 @@ public class NodeAdapter extends AbstractAdapter implements INodeAdapter {
 			this.handlerFilter = handlerFilter;
 		}
 		
-		IHandlerAdapter handlerAdapter = connection.getAdapter(IHandlerAdapter.class);
+		IPullHandlerAdapter handlerAdapter = connection.getAdapter(IPullHandlerAdapter.class);
 		IValueAdapter valueAdapter = connection.getAdapter(IValueAdapter.class);
 		if (nodeCache == null) {
 			nodeCache = connection.getAdapter(IMetaDataAdapter.class).pullAllMetaData();

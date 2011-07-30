@@ -15,17 +15,24 @@ import org.eclipse.emf.ecore.xml.type.AnyType;
 
 import com.google.inject.Inject;
 
+import de.hub.clickwatch.ClickWatchStandaloneSetup;
 import de.hub.clickwatch.connection.adapter.StringValueAdapter;
 import de.hub.clickwatch.connection.adapter.XmlValueAdapter;
+import de.hub.clickwatch.main.ClickWatchExternalLauncher;
+import de.hub.clickwatch.main.IClickWatchContext;
+import de.hub.clickwatch.main.IClickWatchMain;
+import de.hub.clickwatch.main.IExperimentProvider;
 import de.hub.clickwatch.model.ClickWatchModelFactory;
 import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.model.Node;
 import de.hub.clickwatch.model.provider.TimeStampLabelProvider;
 import de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr;
+import de.hub.clickwatch.recorder.database.CWRecorderStandaloneSetup;
 import de.hub.clickwatch.recorder.database.hbase.HBaseDataBaseAdapter;
 import de.hub.clickwatch.util.ILogger;
+import de.hub.clickwatch.util.Throwables;
 
-public class PdrPlotAnalysis {
+public class PdrPlotAnalysis implements IClickWatchMain {
 	
 	private static final long TIME_PRECISION_PER_SECOND = 1000000000;
 	private static final int SAMPLES = 2000;
@@ -250,5 +257,21 @@ public class PdrPlotAnalysis {
 		}
 	}
 
-	
+	@Override
+	public void main(IClickWatchContext ctx) {
+		logger.log(ILogger.INFO, "Start analysis on experiment " , null);
+		
+		try {
+			initialize(new PrintWriter("out.txt", "utf8"));
+		} catch (Exception e) {
+			Throwables.propagate(e);
+		}
+		perform(ctx.getAdapter(IExperimentProvider.class).getExperiment());
+	}
+
+	public static final void main(String args[]) {
+		ClickWatchStandaloneSetup.doSetup();
+		CWRecorderStandaloneSetup.doSetup();
+		ClickWatchExternalLauncher.launch(args, PdrPlotAnalysis.class);
+	}
 }

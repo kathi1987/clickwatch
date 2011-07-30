@@ -38,8 +38,9 @@ import de.hub.clickwatch.recoder.cwdatabase.ExperimentStatistics;
  *   <li>{@link de.hub.clickwatch.recoder.cwdatabase.impl.ExperimentStatisticsImpl#getSamplesPerSecond <em>Samples Per Second</em>}</li>
  *   <li>{@link de.hub.clickwatch.recoder.cwdatabase.impl.ExperimentStatisticsImpl#getRecordSize <em>Record Size</em>}</li>
  *   <li>{@link de.hub.clickwatch.recoder.cwdatabase.impl.ExperimentStatisticsImpl#getSamplesR <em>Samples R</em>}</li>
- *   <li>{@link de.hub.clickwatch.recoder.cwdatabase.impl.ExperimentStatisticsImpl#getBytesRequestSample <em>Bytes Request Sample</em>}</li>
- *   <li>{@link de.hub.clickwatch.recoder.cwdatabase.impl.ExperimentStatisticsImpl#getTimeRequestSample <em>Time Request Sample</em>}</li>
+ *   <li>{@link de.hub.clickwatch.recoder.cwdatabase.impl.ExperimentStatisticsImpl#getBytesRequestS <em>Bytes Request S</em>}</li>
+ *   <li>{@link de.hub.clickwatch.recoder.cwdatabase.impl.ExperimentStatisticsImpl#getTimeRequestS <em>Time Request S</em>}</li>
+ *   <li>{@link de.hub.clickwatch.recoder.cwdatabase.impl.ExperimentStatisticsImpl#getCpuLoadS <em>Cpu Load S</em>}</li>
  * </ul>
  * </p>
  *
@@ -276,44 +277,64 @@ public class ExperimentStatisticsImpl extends EObjectImpl implements ExperimentS
 	protected SummaryStatistics samplesR = SAMPLES_R_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getBytesRequestSample() <em>Bytes Request Sample</em>}' attribute.
+	 * The default value of the '{@link #getBytesRequestS() <em>Bytes Request S</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getBytesRequestSample()
+	 * @see #getBytesRequestS()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final SummaryStatistics BYTES_REQUEST_SAMPLE_EDEFAULT = null;
+	protected static final SummaryStatistics BYTES_REQUEST_S_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getBytesRequestSample() <em>Bytes Request Sample</em>}' attribute.
+	 * The cached value of the '{@link #getBytesRequestS() <em>Bytes Request S</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getBytesRequestSample()
+	 * @see #getBytesRequestS()
 	 * @generated
 	 * @ordered
 	 */
-	protected SummaryStatistics bytesRequestSample = BYTES_REQUEST_SAMPLE_EDEFAULT;
+	protected SummaryStatistics bytesRequestS = BYTES_REQUEST_S_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getTimeRequestSample() <em>Time Request Sample</em>}' attribute.
+	 * The default value of the '{@link #getTimeRequestS() <em>Time Request S</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTimeRequestSample()
+	 * @see #getTimeRequestS()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final SummaryStatistics TIME_REQUEST_SAMPLE_EDEFAULT = null;
+	protected static final SummaryStatistics TIME_REQUEST_S_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getTimeRequestSample() <em>Time Request Sample</em>}' attribute.
+	 * The cached value of the '{@link #getTimeRequestS() <em>Time Request S</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTimeRequestSample()
+	 * @see #getTimeRequestS()
 	 * @generated
 	 * @ordered
 	 */
-	protected SummaryStatistics timeRequestSample = TIME_REQUEST_SAMPLE_EDEFAULT;
+	protected SummaryStatistics timeRequestS = TIME_REQUEST_S_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getCpuLoadS() <em>Cpu Load S</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCpuLoadS()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final SummaryStatistics CPU_LOAD_S_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getCpuLoadS() <em>Cpu Load S</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCpuLoadS()
+	 * @generated
+	 * @ordered
+	 */
+	protected SummaryStatistics cpuLoadS = CPU_LOAD_S_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -336,8 +357,9 @@ public class ExperimentStatisticsImpl extends EObjectImpl implements ExperimentS
 		timeN = new SynchronizedSummaryStatistics();
 		timeS = new SynchronizedSummaryStatistics();
 		recordSize = new SynchronizedSummaryStatistics();
-		bytesRequestSample = new SynchronizedSummaryStatistics();
-		timeRequestSample = new SynchronizedSummaryStatistics();
+		bytesRequestS = new SynchronizedSummaryStatistics();
+		timeRequestS = new SynchronizedSummaryStatistics();
+		cpuLoadS = new SynchronizedSummaryStatistics();
 	}
 
 	/**
@@ -611,8 +633,8 @@ public class ExperimentStatisticsImpl extends EObjectImpl implements ExperimentS
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SummaryStatistics getBytesRequestSample() {
-		return bytesRequestSample;
+	public SummaryStatistics getBytesRequestS() {
+		return bytesRequestS;
 	}
 
 	/**
@@ -620,11 +642,11 @@ public class ExperimentStatisticsImpl extends EObjectImpl implements ExperimentS
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setBytesRequestSample(SummaryStatistics newBytesRequestSample) {
-		SummaryStatistics oldBytesRequestSample = bytesRequestSample;
-		bytesRequestSample = newBytesRequestSample;
+	public void setBytesRequestS(SummaryStatistics newBytesRequestS) {
+		SummaryStatistics oldBytesRequestS = bytesRequestS;
+		bytesRequestS = newBytesRequestS;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CWDataBasePackage.EXPERIMENT_STATISTICS__BYTES_REQUEST_SAMPLE, oldBytesRequestSample, bytesRequestSample));
+			eNotify(new ENotificationImpl(this, Notification.SET, CWDataBasePackage.EXPERIMENT_STATISTICS__BYTES_REQUEST_S, oldBytesRequestS, bytesRequestS));
 	}
 
 	/**
@@ -632,8 +654,8 @@ public class ExperimentStatisticsImpl extends EObjectImpl implements ExperimentS
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SummaryStatistics getTimeRequestSample() {
-		return timeRequestSample;
+	public SummaryStatistics getTimeRequestS() {
+		return timeRequestS;
 	}
 
 	/**
@@ -641,11 +663,32 @@ public class ExperimentStatisticsImpl extends EObjectImpl implements ExperimentS
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setTimeRequestSample(SummaryStatistics newTimeRequestSample) {
-		SummaryStatistics oldTimeRequestSample = timeRequestSample;
-		timeRequestSample = newTimeRequestSample;
+	public void setTimeRequestS(SummaryStatistics newTimeRequestS) {
+		SummaryStatistics oldTimeRequestS = timeRequestS;
+		timeRequestS = newTimeRequestS;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CWDataBasePackage.EXPERIMENT_STATISTICS__TIME_REQUEST_SAMPLE, oldTimeRequestSample, timeRequestSample));
+			eNotify(new ENotificationImpl(this, Notification.SET, CWDataBasePackage.EXPERIMENT_STATISTICS__TIME_REQUEST_S, oldTimeRequestS, timeRequestS));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SummaryStatistics getCpuLoadS() {
+		return cpuLoadS;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setCpuLoadS(SummaryStatistics newCpuLoadS) {
+		SummaryStatistics oldCpuLoadS = cpuLoadS;
+		cpuLoadS = newCpuLoadS;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CWDataBasePackage.EXPERIMENT_STATISTICS__CPU_LOAD_S, oldCpuLoadS, cpuLoadS));
 	}
 
 	/**
@@ -687,10 +730,12 @@ public class ExperimentStatisticsImpl extends EObjectImpl implements ExperimentS
 				return getRecordSize();
 			case CWDataBasePackage.EXPERIMENT_STATISTICS__SAMPLES_R:
 				return getSamplesR();
-			case CWDataBasePackage.EXPERIMENT_STATISTICS__BYTES_REQUEST_SAMPLE:
-				return getBytesRequestSample();
-			case CWDataBasePackage.EXPERIMENT_STATISTICS__TIME_REQUEST_SAMPLE:
-				return getTimeRequestSample();
+			case CWDataBasePackage.EXPERIMENT_STATISTICS__BYTES_REQUEST_S:
+				return getBytesRequestS();
+			case CWDataBasePackage.EXPERIMENT_STATISTICS__TIME_REQUEST_S:
+				return getTimeRequestS();
+			case CWDataBasePackage.EXPERIMENT_STATISTICS__CPU_LOAD_S:
+				return getCpuLoadS();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -736,11 +781,14 @@ public class ExperimentStatisticsImpl extends EObjectImpl implements ExperimentS
 			case CWDataBasePackage.EXPERIMENT_STATISTICS__SAMPLES_R:
 				setSamplesR((SummaryStatistics)newValue);
 				return;
-			case CWDataBasePackage.EXPERIMENT_STATISTICS__BYTES_REQUEST_SAMPLE:
-				setBytesRequestSample((SummaryStatistics)newValue);
+			case CWDataBasePackage.EXPERIMENT_STATISTICS__BYTES_REQUEST_S:
+				setBytesRequestS((SummaryStatistics)newValue);
 				return;
-			case CWDataBasePackage.EXPERIMENT_STATISTICS__TIME_REQUEST_SAMPLE:
-				setTimeRequestSample((SummaryStatistics)newValue);
+			case CWDataBasePackage.EXPERIMENT_STATISTICS__TIME_REQUEST_S:
+				setTimeRequestS((SummaryStatistics)newValue);
+				return;
+			case CWDataBasePackage.EXPERIMENT_STATISTICS__CPU_LOAD_S:
+				setCpuLoadS((SummaryStatistics)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -787,11 +835,14 @@ public class ExperimentStatisticsImpl extends EObjectImpl implements ExperimentS
 			case CWDataBasePackage.EXPERIMENT_STATISTICS__SAMPLES_R:
 				setSamplesR(SAMPLES_R_EDEFAULT);
 				return;
-			case CWDataBasePackage.EXPERIMENT_STATISTICS__BYTES_REQUEST_SAMPLE:
-				setBytesRequestSample(BYTES_REQUEST_SAMPLE_EDEFAULT);
+			case CWDataBasePackage.EXPERIMENT_STATISTICS__BYTES_REQUEST_S:
+				setBytesRequestS(BYTES_REQUEST_S_EDEFAULT);
 				return;
-			case CWDataBasePackage.EXPERIMENT_STATISTICS__TIME_REQUEST_SAMPLE:
-				setTimeRequestSample(TIME_REQUEST_SAMPLE_EDEFAULT);
+			case CWDataBasePackage.EXPERIMENT_STATISTICS__TIME_REQUEST_S:
+				setTimeRequestS(TIME_REQUEST_S_EDEFAULT);
+				return;
+			case CWDataBasePackage.EXPERIMENT_STATISTICS__CPU_LOAD_S:
+				setCpuLoadS(CPU_LOAD_S_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -827,10 +878,12 @@ public class ExperimentStatisticsImpl extends EObjectImpl implements ExperimentS
 				return RECORD_SIZE_EDEFAULT == null ? recordSize != null : !RECORD_SIZE_EDEFAULT.equals(recordSize);
 			case CWDataBasePackage.EXPERIMENT_STATISTICS__SAMPLES_R:
 				return SAMPLES_R_EDEFAULT == null ? samplesR != null : !SAMPLES_R_EDEFAULT.equals(samplesR);
-			case CWDataBasePackage.EXPERIMENT_STATISTICS__BYTES_REQUEST_SAMPLE:
-				return BYTES_REQUEST_SAMPLE_EDEFAULT == null ? bytesRequestSample != null : !BYTES_REQUEST_SAMPLE_EDEFAULT.equals(bytesRequestSample);
-			case CWDataBasePackage.EXPERIMENT_STATISTICS__TIME_REQUEST_SAMPLE:
-				return TIME_REQUEST_SAMPLE_EDEFAULT == null ? timeRequestSample != null : !TIME_REQUEST_SAMPLE_EDEFAULT.equals(timeRequestSample);
+			case CWDataBasePackage.EXPERIMENT_STATISTICS__BYTES_REQUEST_S:
+				return BYTES_REQUEST_S_EDEFAULT == null ? bytesRequestS != null : !BYTES_REQUEST_S_EDEFAULT.equals(bytesRequestS);
+			case CWDataBasePackage.EXPERIMENT_STATISTICS__TIME_REQUEST_S:
+				return TIME_REQUEST_S_EDEFAULT == null ? timeRequestS != null : !TIME_REQUEST_S_EDEFAULT.equals(timeRequestS);
+			case CWDataBasePackage.EXPERIMENT_STATISTICS__CPU_LOAD_S:
+				return CPU_LOAD_S_EDEFAULT == null ? cpuLoadS != null : !CPU_LOAD_S_EDEFAULT.equals(cpuLoadS);
 		}
 		return super.eIsSet(featureID);
 	}

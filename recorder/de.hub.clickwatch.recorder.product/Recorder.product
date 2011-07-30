@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="ClickWatchRecorder" uid="de.hub.clickwatch.recorder.product" id="de.hub.clickwatch.recorder.ClickWatchRecorder" application="de.hub.clickwatch.recorder.ClickWatchRecorder" version="2.0.0.qualifier" useFeatures="false" includeLaunchers="true">
+<product name="ClickWatchRecorder" uid="de.hub.clickwatch.recorder.product" id="de.hub.clickwatch.recorder.main.ClickWatchRecorder" application="de.hub.clickwatch.recorder.main.ClickWatchRecorder" version="2.0.0.qualifier" useFeatures="false" includeLaunchers="true">
 
    <configIni use="default">
    </configIni>
@@ -34,12 +34,12 @@
       <plugin id="org.eclipse.core.contenttype"/>
       <plugin id="org.eclipse.core.expressions"/>
       <plugin id="org.eclipse.core.filesystem"/>
-      <plugin id="org.eclipse.core.filesystem.linux.x86" fragment="true" os="linux" ws="gtk" arch="x86"/>
-      <plugin id="org.eclipse.core.filesystem.macosx" fragment="true" os="macosx" ws="cocoa" arch="x86"/>
-      <plugin id="org.eclipse.core.filesystem.win32.x86" fragment="true" os="win32" ws="win32" arch="x86"/>
+      <plugin id="org.eclipse.core.filesystem.linux.x86" os="linux" ws=" gtk" arch="x86" fragment="true"/>
+      <plugin id="org.eclipse.core.filesystem.macosx" os="macosx" ws= "carbon" arch="x86" fragment="true"/>
+      <plugin id="org.eclipse.core.filesystem.win32.x86" os="win32" ws ="win32" arch="x86" fragment="true"/>
       <plugin id="org.eclipse.core.jobs"/>
       <plugin id="org.eclipse.core.resources"/>
-      <plugin id="org.eclipse.core.resources.win32.x86" fragment="true" os="win32" ws="win32" arch="x86"/>
+      <plugin id="org.eclipse.core.resources.win32.x86" os="win32" ws ="win32" arch="x86" fragment="true"/>
       <plugin id="org.eclipse.core.runtime"/>
       <plugin id="org.eclipse.core.runtime.compatibility.auth"/>
       <plugin id="org.eclipse.core.runtime.compatibility.registry" fragment="true"/>

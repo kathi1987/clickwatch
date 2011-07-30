@@ -3,20 +3,27 @@ package de.hub.clickwatch.recorder.test;
 import java.io.File;
 import java.io.PrintWriter;
 
+import org.apache.commons.math.fraction.Fraction;
+import org.apache.commons.math.fraction.FractionField;
+import org.apache.commons.math.linear.BlockFieldMatrix;
+import org.apache.commons.math.linear.FieldMatrix;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
-import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import com.google.inject.Binder;
+import com.google.inject.name.Names;
 
 import de.hub.clickcontrol.ClickSocketImpl;
 import de.hub.clickcontrol.IClickSocket;
+import de.hub.clickwatch.ClickWatchModule;
 import de.hub.clickwatch.connection.adapter.CompoundHandlerAdapter;
-import de.hub.clickwatch.connection.adapter.HandlerAdapter;
-import de.hub.clickwatch.connection.adapter.IHandlerAdapter;
+import de.hub.clickwatch.connection.adapter.PullHandlerAdapter;
+import de.hub.clickwatch.connection.adapter.IPullHandlerAdapter;
 import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr;
+import de.hub.clickwatch.recoder.cwdatabase.ExperimentStatistics;
 import de.hub.clickwatch.recorder.NodeRecorder;
 import de.hub.clickwatch.recorder.database.DummyDataBaseAdapter;
 import de.hub.clickwatch.recorder.database.IDataBaseRecordAdapter;
@@ -24,52 +31,109 @@ import de.hub.clickwatch.recorder.database.IDataBaseRecordAdapter;
 public class StatisticsTest {
 	
 	private PrintWriter out = null;
-	private static int handlerCound = 0;
+	private static int handlerCount = 0;
+	private int updateInterval = 500;
+	private int duration = updateInterval * 100;
+	String[] nodeIds = new String[] { "192.168.3.32", "192.168.3.118" };
+//			, "192.168.3.32", "192.168.3.118",
+//			"192.168.3.33", "192.168.3.70", "192.168.3.78",
+//			"192.168.3.40", "192.168.3.77", "192.168.3.24", 
+//			"192.168.3.34", "192.168.3.35" };
 	
-	@Before
-	public void setup() throws Exception {
-		out = new PrintWriter(new File("out-5.txt"));
-	}
-
+	private static int localGlobalUpdateIntervalFactor = 10;
+	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	private FieldMatrix<Fraction> time = new BlockFieldMatrix(FractionField.getInstance(), 4, 4);
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	private FieldMatrix<Fraction> cpu = new BlockFieldMatrix(FractionField.getInstance(), 4, 4);
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	private FieldMatrix<Fraction> bytes = new BlockFieldMatrix(FractionField.getInstance(), 4, 4);
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	private FieldMatrix<Fraction> handler = new BlockFieldMatrix(FractionField.getInstance(), 4, 4);
+	
+	@Ignore("on demand only")
 	@Test
-	public void test() {
-		String[] wiredNodeIds = new String[] { "192.168.3.118",
-				"192.168.3.31", "192.168.3.32",
-				"192.168.3.33", "192.168.3.70", "192.168.3.78",
-				"192.168.3.40", "192.168.3.77",
-				"192.168.3.34", "192.168.3.35", "192.168.3.24" };
-		
-		out.println("compound duration updateInterval nodes samples handlerPerSampleAvr handlerPerSampleDev timeRSAvr timeRSDev bytesRSAvr bytesRSDev");
-		
-//		performTest(true, 30000, 1000, wiredNodeIds);
-//		performTest(false, 30000, 1000, wiredNodeIds);
-//		
-//		performTest(true, 30000, 0, wiredNodeIds);
-//		performTest(false, 30000, 0, wiredNodeIds);
-		
-		for (int count: new int[]{50, 100, 150, 200}) {
-			performTest(true, 30000, 0, new String[] { wiredNodeIds[0] }, count);
-			performTest(false, 30000, 0, new String[] { wiredNodeIds[0] }, count);
+	public void test() throws Exception {
+		for(String nodeId: nodeIds) {
+			out = new PrintWriter(new File("out-" + nodeId + ".txt"));
+			
+			int i = 0;
+			for (int count: new int[]{50, 100, 150, 200}) {
+				performExperiment(false, false, false, count, 0, i, nodeId);
+				performExperiment(true, false, false, count, 1, i, nodeId);
+				performExperiment(true, true, false, count, 2, i, nodeId);
+				performExperiment(true, true, true, count, 3, i, nodeId);			
+				i++;
+			}
+			
+			printResult(time, "time");
+			printResult(cpu, "cpu");
+			printResult(bytes, "bytes");
+//			printResult(handler, "handler");
+			out.close();
+		}
+	}
+	
+	private void performExperiment(final boolean compound, final boolean record, final boolean changesOnly, int handlerCount, int experiment, int i, String nodeId) throws Exception {
+		ExperimentStatistics statistics = performTest(compound, record, changesOnly, handlerCount, new String[] {nodeId});
+		double timeInMillies = statistics.getTimeRequestS().getMean()/1000000;
+		if (record) {
+			time.setEntry(experiment, i, new Fraction(timeInMillies/localGlobalUpdateIntervalFactor));
+		} else {
+			time.setEntry(experiment, i, new Fraction(timeInMillies));
+		}
+		if (record) {
+			bytes.setEntry(experiment, i, new Fraction(statistics.getBytesRequestS().getMean()/localGlobalUpdateIntervalFactor));
+		} else {
+			bytes.setEntry(experiment, i, new Fraction(statistics.getBytesRequestS().getMean()));
 		}
 		
-		out.close();
+		cpu.setEntry(experiment, i, new Fraction(statistics.getCpuLoadS().getMean()));
+		handler.setEntry(experiment, i, new Fraction(statistics.getHandlersPulledS().getSum()));
+		
+		out.println(compound + ", " + record + ", " + changesOnly);
+		out.println(statistics.toString());
+		out.println("");
 	}
 	
+	private void printResult(FieldMatrix<Fraction> result, String name) {
+		StringBuffer stringBuffer = new StringBuffer();
+		stringBuffer.append(name + "=[");
+		for (int i = 0; i < result.getColumnDimension(); i++) {			
+			for (int ii = 0; ii < result.getRowDimension(); ii++) {
+				stringBuffer.append(result.getEntry(ii, i).doubleValue() + " ");
+			}
+			stringBuffer.append(";");
+		}
+		stringBuffer.append("]\n");
+		out.println(stringBuffer.toString());
+	}
+
 	private static class MyNodeRecorder extends NodeRecorder {
 		@Override
 		protected void configureHandlerAdapter(EList<Handler> allHandlers) {
-			int count = Math.min(handlerCound, allHandlers.size());
+			int count = Math.min(handlerCount, allHandlers.size());
 			EList<Handler> result = new BasicEList<Handler>();
-			for (int i = 0; i < count; i++) {
-				result.add(allHandlers.get(i));
+			int i = 0;
+			for (Handler handler: allHandlers) {
+				if (!PullHandlerAdapter.commonHandler.contains(handler.getName())) {
+					if (i++ < count) {
+						result.add(handler);
+					} else if (handler.getQualifiedName().equals("sys_info/systeminfo")) {
+						i++;
+						result.add(handler);
+					}
+				}
+				
 			}
 			super.configureHandlerAdapter(result);
 		}		
 	}
 	
-	public void performTest(final boolean compound, final int duration, final int updateInterval, final String[] nodeIds, final int handlerCount) {
-		StatisticsTest.handlerCound = handlerCount;
+	public ExperimentStatistics performTest(final boolean compound, final boolean record, final boolean changesOnly, final int handlerCount, final String[] nodeIds) {
+		StatisticsTest.handlerCount = handlerCount;
 		AbstractDBTest test = new AbstractDataBaseAdapterTest() {
+
 			@Override
 			protected Class<? extends IDataBaseRecordAdapter> getDataBaseRecordAdapterClass() {
 				return DummyDataBaseAdapter.class;
@@ -97,15 +161,31 @@ public class StatisticsTest {
 
 			@Override
 			protected Integer getUpdateInterval() {
-				return updateInterval;
+				if (record) {
+					return updateInterval * localGlobalUpdateIntervalFactor;
+				} else {
+					return updateInterval;
+				}
 			}
 
 			@Override
-			protected Class<? extends IHandlerAdapter> getHandlerAdapterClass() {
+			protected void configureHandlerAdapter(Binder binder) {
+				if (compound) {
+					binder.bind(IPullHandlerAdapter.class).to(CompoundHandlerAdapter.class);
+					binder.bind(Boolean.class).annotatedWith(Names.named(ClickWatchModule.B_COMPOUND_HANDLER_RECORDS)).toInstance(record);
+					binder.bind(Integer.class).annotatedWith(Names.named(ClickWatchModule.I_COMPOUND_HANDLER_SAMPLE_TIME)).toInstance(updateInterval);
+					binder.bind(Boolean.class).annotatedWith(Names.named(ClickWatchModule.B_COMPOUND_HANDLER_CHANGES_ONLY)).toInstance(changesOnly);
+				} else { 
+					binder.bind(IPullHandlerAdapter.class).to(PullHandlerAdapter.class);
+				}
+			}
+
+			@Override
+			protected Class<? extends IPullHandlerAdapter> getHandlerAdapterClass() {
 				if (compound) {
 					return CompoundHandlerAdapter.class;
 				} else {
-					return HandlerAdapter.class;
+					return PullHandlerAdapter.class;
 				}
 			}
 
@@ -124,18 +204,7 @@ public class StatisticsTest {
 		test.setUp();
 		ExperimentDescr experiment = test.performTest(nodeIds, false);
 		
-		out.println(
-				  (compound ? "1" : "0") + " "
-				+ duration + " "
-				+ updateInterval + " "
-				+ nodeIds.length + " " 
-				+ experiment.getStatistics().getSamplesN().getSum() + " "
-				+ experiment.getStatistics().getHandlersPulledS().getMean() + " "
-				+ experiment.getStatistics().getHandlersPulledS().getStandardDeviation() + " "
-				+ experiment.getStatistics().getTimeRequestSample().getMean() + " "
-				+ experiment.getStatistics().getTimeRequestSample().getStandardDeviation() + " "
-				+ experiment.getStatistics().getBytesRequestSample().getMean() + " "
-				+ experiment.getStatistics().getBytesRequestSample().getStandardDeviation());
+		return experiment.getStatistics();
 	}
 
 }

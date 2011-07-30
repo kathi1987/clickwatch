@@ -15,14 +15,12 @@ public class CWRecorderModule extends AbstractModule {
 	public static final String I_HANDLER_PER_RECORD_PROPERTY 			= "CWRecorderModule.handlerPerRecord";
 	public static final String B_RECORD_CHANGES_ONLY_PROPERTY	 		= "CWRecorderModule.recordChangesOnly";
 	public static final String DB_VALUE_ADAPTER_PROPERTY 				= "CWRecorderModule.dbValueAdapter";
-	public static final String B_HBASE_WITH_EXTRA_QUUE 					= "CWRecorderModule.hbaseWithExtraQueue";
 	
 	@Override
 	protected void configure() {
 		configureDataBaseRecordAdapter();
 		configureDataBaseRetrieveAdapter();
 		bind(long.class).annotatedWith(Names.named(L_DEFAULT_UPDATE_INTERVAL_PROPERTY)).toInstance(new Long(2000));
-		configureHBaseWithExtraQueue();
 		configureHandlerPerRecord();
 		configureRecordChangesOnly();
 		configureDBValueAdapter();
@@ -32,10 +30,6 @@ public class CWRecorderModule extends AbstractModule {
 	
 	protected void configureAdditionalBindings() {
 		// empty
-	}
-
-	protected void configureHBaseWithExtraQueue() {
-		bind(boolean.class).annotatedWith(Names.named(B_HBASE_WITH_EXTRA_QUUE)).toInstance(true);
 	}
 
 	protected void configureRecordChangesOnly() {

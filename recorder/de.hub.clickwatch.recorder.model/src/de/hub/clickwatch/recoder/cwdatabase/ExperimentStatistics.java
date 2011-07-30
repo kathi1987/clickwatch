@@ -28,8 +28,9 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link de.hub.clickwatch.recoder.cwdatabase.ExperimentStatistics#getSamplesPerSecond <em>Samples Per Second</em>}</li>
  *   <li>{@link de.hub.clickwatch.recoder.cwdatabase.ExperimentStatistics#getRecordSize <em>Record Size</em>}</li>
  *   <li>{@link de.hub.clickwatch.recoder.cwdatabase.ExperimentStatistics#getSamplesR <em>Samples R</em>}</li>
- *   <li>{@link de.hub.clickwatch.recoder.cwdatabase.ExperimentStatistics#getBytesRequestSample <em>Bytes Request Sample</em>}</li>
- *   <li>{@link de.hub.clickwatch.recoder.cwdatabase.ExperimentStatistics#getTimeRequestSample <em>Time Request Sample</em>}</li>
+ *   <li>{@link de.hub.clickwatch.recoder.cwdatabase.ExperimentStatistics#getBytesRequestS <em>Bytes Request S</em>}</li>
+ *   <li>{@link de.hub.clickwatch.recoder.cwdatabase.ExperimentStatistics#getTimeRequestS <em>Time Request S</em>}</li>
+ *   <li>{@link de.hub.clickwatch.recoder.cwdatabase.ExperimentStatistics#getCpuLoadS <em>Cpu Load S</em>}</li>
  * </ul>
  * </p>
  *
@@ -352,56 +353,82 @@ public interface ExperimentStatistics extends EObject {
 	void setSamplesR(SummaryStatistics value);
 
 	/**
-	 * Returns the value of the '<em><b>Bytes Request Sample</b></em>' attribute.
+	 * Returns the value of the '<em><b>Bytes Request S</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Bytes Request Sample</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Bytes Request S</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Bytes Request Sample</em>' attribute.
-	 * @see #setBytesRequestSample(SummaryStatistics)
-	 * @see de.hub.clickwatch.recoder.cwdatabase.CWDataBasePackage#getExperimentStatistics_BytesRequestSample()
+	 * @return the value of the '<em>Bytes Request S</em>' attribute.
+	 * @see #setBytesRequestS(SummaryStatistics)
+	 * @see de.hub.clickwatch.recoder.cwdatabase.CWDataBasePackage#getExperimentStatistics_BytesRequestS()
 	 * @model dataType="de.hub.clickwatch.recoder.cwdatabase.ESummaryStatistics"
 	 * @generated
 	 */
-	SummaryStatistics getBytesRequestSample();
+	SummaryStatistics getBytesRequestS();
 
 	/**
-	 * Sets the value of the '{@link de.hub.clickwatch.recoder.cwdatabase.ExperimentStatistics#getBytesRequestSample <em>Bytes Request Sample</em>}' attribute.
+	 * Sets the value of the '{@link de.hub.clickwatch.recoder.cwdatabase.ExperimentStatistics#getBytesRequestS <em>Bytes Request S</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Bytes Request Sample</em>' attribute.
-	 * @see #getBytesRequestSample()
+	 * @param value the new value of the '<em>Bytes Request S</em>' attribute.
+	 * @see #getBytesRequestS()
 	 * @generated
 	 */
-	void setBytesRequestSample(SummaryStatistics value);
+	void setBytesRequestS(SummaryStatistics value);
 
 	/**
-	 * Returns the value of the '<em><b>Time Request Sample</b></em>' attribute.
+	 * Returns the value of the '<em><b>Time Request S</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Time Request Sample</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Time Request S</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Time Request Sample</em>' attribute.
-	 * @see #setTimeRequestSample(SummaryStatistics)
-	 * @see de.hub.clickwatch.recoder.cwdatabase.CWDataBasePackage#getExperimentStatistics_TimeRequestSample()
+	 * @return the value of the '<em>Time Request S</em>' attribute.
+	 * @see #setTimeRequestS(SummaryStatistics)
+	 * @see de.hub.clickwatch.recoder.cwdatabase.CWDataBasePackage#getExperimentStatistics_TimeRequestS()
 	 * @model dataType="de.hub.clickwatch.recoder.cwdatabase.ESummaryStatistics"
 	 * @generated
 	 */
-	SummaryStatistics getTimeRequestSample();
+	SummaryStatistics getTimeRequestS();
 
 	/**
-	 * Sets the value of the '{@link de.hub.clickwatch.recoder.cwdatabase.ExperimentStatistics#getTimeRequestSample <em>Time Request Sample</em>}' attribute.
+	 * Sets the value of the '{@link de.hub.clickwatch.recoder.cwdatabase.ExperimentStatistics#getTimeRequestS <em>Time Request S</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Time Request Sample</em>' attribute.
-	 * @see #getTimeRequestSample()
+	 * @param value the new value of the '<em>Time Request S</em>' attribute.
+	 * @see #getTimeRequestS()
 	 * @generated
 	 */
-	void setTimeRequestSample(SummaryStatistics value);
+	void setTimeRequestS(SummaryStatistics value);
+
+	/**
+	 * Returns the value of the '<em><b>Cpu Load S</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Cpu Load S</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Cpu Load S</em>' attribute.
+	 * @see #setCpuLoadS(SummaryStatistics)
+	 * @see de.hub.clickwatch.recoder.cwdatabase.CWDataBasePackage#getExperimentStatistics_CpuLoadS()
+	 * @model dataType="de.hub.clickwatch.recoder.cwdatabase.ESummaryStatistics"
+	 * @generated
+	 */
+	SummaryStatistics getCpuLoadS();
+
+	/**
+	 * Sets the value of the '{@link de.hub.clickwatch.recoder.cwdatabase.ExperimentStatistics#getCpuLoadS <em>Cpu Load S</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Cpu Load S</em>' attribute.
+	 * @see #getCpuLoadS()
+	 * @generated
+	 */
+	void setCpuLoadS(SummaryStatistics value);
 
 	/**
 	 * <!-- begin-user-doc -->

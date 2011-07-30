@@ -11,7 +11,7 @@ import org.junit.Test;
 import de.hub.clickcontrol.IClickSocket;
 import de.hub.clickwatch.connection.INodeConnection;
 import de.hub.clickwatch.connection.INodeConnectionProvider;
-import de.hub.clickwatch.connection.adapter.IHandlerAdapter;
+import de.hub.clickwatch.connection.adapter.IPullHandlerAdapter;
 import de.hub.clickwatch.connection.adapter.IMetaDataAdapter;
 import de.hub.clickwatch.connection.adapter.IValueAdapter;
 import de.hub.clickwatch.connection.adapter.XSDValueAdapter;
@@ -62,7 +62,7 @@ public class HandlerAdapterXSDValuesTest extends AbstractTest {
 		INodeConnectionProvider ncp = injector.getInstance(INodeConnectionProvider.class);
 		INodeConnection nodeConnection = ncp.createConnection(null, "0");
 		IMetaDataAdapter metaDataAdapter = nodeConnection.getAdapter(IMetaDataAdapter.class);
-		IHandlerAdapter handlerAdapter = nodeConnection.getAdapter(IHandlerAdapter.class);
+		IPullHandlerAdapter handlerAdapter = nodeConnection.getAdapter(IPullHandlerAdapter.class);
 		nodeConnection.connect();
 		Node metaData = metaDataAdapter.pullAllMetaData();
 		metaData.filter("link_stat", "bad_version");

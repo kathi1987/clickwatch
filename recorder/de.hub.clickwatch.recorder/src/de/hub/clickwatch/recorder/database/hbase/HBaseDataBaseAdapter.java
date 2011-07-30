@@ -5,8 +5,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Queue;
-import java.util.concurrent.ConcurrentLinkedQueue;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hbase.HBaseConfiguration;
@@ -18,6 +16,7 @@ import org.apache.hadoop.hbase.client.Put;
 import org.apache.hadoop.hbase.client.Result;
 import org.apache.hadoop.hbase.client.ResultScanner;
 import org.apache.hadoop.hbase.client.Scan;
+import org.apache.hadoop.hbase.client.ScannerTimeoutException;
 
 import com.google.common.base.Throwables;
 import com.google.inject.Inject;
@@ -41,7 +40,6 @@ public class HBaseDataBaseAdapter extends AbstractDataBaseRecordAdapter implemen
 	private static final byte[] col = "value".getBytes();
 	
 	@Inject @Named(CWRecorderModule.DB_VALUE_ADAPTER_PROPERTY) private IValueAdapter dbValueAdapter;
-	@Inject @Named(CWRecorderModule.B_HBASE_WITH_EXTRA_QUUE) private boolean withExtraQueue;
 	@Inject @Named(CWRecorderModule.I_HANDLER_PER_RECORD_PROPERTY) private int handlerPerRecord;
 	@Inject private ILogger logger;
 	
@@ -190,27 +188,11 @@ public class HBaseDataBaseAdapter extends AbstractDataBaseRecordAdapter implemen
 			super("Put Thread");
 		}
 
-		Queue<Put> queue = new ConcurrentLinkedQueue<Put>();
+		List<Put> queue = new ArrayList<Put>();
 		boolean isStopped = false;
 		
-		void add(List<Put> puts) {
-			if (withExtraQueue) {
-				queue.addAll(puts);
-			} else {
-				try {
-					table.put(puts);
-				} catch (IOException e) {
-					Throwables.propagate(e);
-				}
-			}
-		}
-		
-		List<Put> getWholeQueue() {
-			List<Put> puts = new ArrayList<Put>();
-			while (queue.size() > 0) {
-				puts.add(queue.poll());
-			}
-			return puts;
+		synchronized void add(List<Put> puts) {
+			queue.addAll(puts);
 		}
 		
 		synchronized void waitForNextPut() {
@@ -224,17 +206,28 @@ public class HBaseDataBaseAdapter extends AbstractDataBaseRecordAdapter implemen
 		@Override
 		public void run() {
 			while (!isStopped) {
-				waitForNextPut();
-			
-				if (queue.size() >= handlerPerRecord) {
-					try {
-						table.put(getWholeQueue());
-					} catch (IOException e) {
-						Throwables.propagate(e);
-					}					
+				waitForNextPut();		
+				doPut(false);
+			}
+			doPut(true);
+			reportClosed();
+		}
+
+		private void doPut(boolean force) {
+			List<Put> puts = null;
+			synchronized (this) {
+				if (queue.size() >= handlerPerRecord || force) {
+					puts = new ArrayList<Put>(queue);
+					queue.clear();
 				}
 			}
-			reportClosed();
+			if (puts != null) {
+				try {			
+					table.put(puts);	
+				} catch (IOException e) {
+					Throwables.propagate(e);
+				}
+			}
 		}
 		
 		synchronized void close() {
@@ -333,8 +326,8 @@ public class HBaseDataBaseAdapter extends AbstractDataBaseRecordAdapter implemen
 		Scan scan = new Scan(startRow, stopRow);
 		scan.addColumn(colFamily, col);
 		try {
-			table.setScannerCaching(5000);
-			return new ScannerIterator(handlerId, table.getScanner(scan));
+			table.setScannerCaching(100);
+			return new ScannerIterator(handlerId, scan, table.getScanner(scan));
 		} catch (IOException e) {
 			Throwables.propagate(e);
 			return null;
@@ -342,13 +335,17 @@ public class HBaseDataBaseAdapter extends AbstractDataBaseRecordAdapter implemen
 	}
 	
 	private class ScannerIterator implements Iterator<Handler> {
+		Scan scan;
+		byte[] currentRow = null;
 		ResultScanner scanner;
 		Result next = null;
 		String handlerId;
 		
-		public ScannerIterator(String handlerId, ResultScanner scanner) {
+		public ScannerIterator(String handlerId, Scan scan, ResultScanner scanner) {
 			super();
 			this.handlerId = handlerId;
+			this.scan = scan;
+			this.currentRow = scan.getStartRow();
 			this.scanner = scanner;
 		}
 
@@ -357,23 +354,43 @@ public class HBaseDataBaseAdapter extends AbstractDataBaseRecordAdapter implemen
 			if (next != null)  {
 				return true;
 			} else {
-				try {
-					next = scanner.next();
-				} catch (IOException e) {
-					Throwables.propagate(e);
-				}
+				next = scannerNext();
 				return next != null;
 			}
+		}
+		
+		private void reset() {
+			scan.setStartRow(currentRow);
+			try {
+				scanner = table.getScanner(scan);
+				scanner.next();
+			} catch (Exception ex) {
+				Throwables.propagate(ex);
+			}
+		}
+		
+		private Result scannerNext() {
+			Result result = null;
+			try {
+				result = scanner.next();
+			} catch (ScannerTimeoutException te) {
+				reset();
+				return scannerNext();
+			} catch (IOException e) {
+				Throwables.propagate(e);
+			}
+			if (result != null) {
+				currentRow = result.getRow();
+			} else {
+				currentRow = null;
+			}
+			return result;
 		}
 
 		@Override
 		public Handler next() {
 			if (next == null) {
-				try {
-					next = scanner.next();
-				} catch (IOException e) {
-					Throwables.propagate(e);
-				}
+				next = scannerNext();
 			}
 			if (next == null) {
 				return null;

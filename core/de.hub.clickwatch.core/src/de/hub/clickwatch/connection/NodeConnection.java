@@ -11,7 +11,7 @@ import de.hub.clickcontrol.ClickSocketStatistics;
 import de.hub.clickcontrol.IClickSocket;
 import de.hub.clickwatch.ClickWatchModule;
 import de.hub.clickwatch.connection.adapter.AbstractAdapter;
-import de.hub.clickwatch.connection.adapter.IHandlerAdapter;
+import de.hub.clickwatch.connection.adapter.IPullHandlerAdapter;
 import de.hub.clickwatch.connection.adapter.IMetaDataAdapter;
 import de.hub.clickwatch.connection.adapter.INodeAdapter;
 import de.hub.clickwatch.connection.adapter.IValueAdapter;
@@ -25,7 +25,7 @@ public class NodeConnection implements INodeConnection {
 	private IClickSocket clickSocket = null;
 	
 	@Inject private IMetaDataAdapter metaDataAdapter;
-	@Inject private IHandlerAdapter handlerAdapter;
+	@Inject private IPullHandlerAdapter handlerAdapter;
 	@Inject private IValueAdapter valueAdapter;
 	@Inject private INodeAdapter nodeAdapter;
 	private SocketStatisticsAdapter socketStatisticsAdapter;
@@ -86,7 +86,7 @@ public class NodeConnection implements INodeConnection {
 	}
 	
 	protected void init(AbstractAdapter abstractAdapter) {
-		abstractAdapter.init(clickSocket, this);
+		abstractAdapter.init(this);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -95,7 +95,7 @@ public class NodeConnection implements INodeConnection {
 		if (adapterClass == IMetaDataAdapter.class) {
 			init((AbstractAdapter)metaDataAdapter);
 			return (T)metaDataAdapter;
-		} else if (adapterClass == IHandlerAdapter.class) {
+		} else if (adapterClass == IPullHandlerAdapter.class) {
 			init((AbstractAdapter)handlerAdapter);
 			return (T)handlerAdapter;
 		} else if (adapterClass == IValueAdapter.class) {
@@ -121,6 +121,10 @@ public class NodeConnection implements INodeConnection {
 	@Override
 	public String toString() {
 		return host;
+	}
+	
+	public IClickSocket clickSocket() {
+		return clickSocket;
 	}
 	
 }

@@ -10,8 +10,8 @@ import de.hub.clickwatch.connection.INodeConnection;
 import de.hub.clickwatch.connection.INodeConnectionProvider;
 import de.hub.clickwatch.connection.NodeConnection;
 import de.hub.clickwatch.connection.NodeConnectionProvider;
-import de.hub.clickwatch.connection.adapter.HandlerAdapter;
-import de.hub.clickwatch.connection.adapter.IHandlerAdapter;
+import de.hub.clickwatch.connection.adapter.PullHandlerAdapter;
+import de.hub.clickwatch.connection.adapter.IPullHandlerAdapter;
 import de.hub.clickwatch.connection.adapter.IMetaDataAdapter;
 import de.hub.clickwatch.connection.adapter.INodeAdapter;
 import de.hub.clickwatch.connection.adapter.IValueAdapter;
@@ -24,6 +24,9 @@ import de.hub.clickwatch.util.ILogger;
 public class ClickWatchModule extends AbstractModule {
 	
 	public static final String DEFAULT_TIMEOUT = "timeout";
+	public static final String B_COMPOUND_HANDLER_RECORDS = "compoundHandlerRecords";
+	public static final String I_COMPOUND_HANDLER_SAMPLE_TIME = "compoundHandlerSampleTime";
+	public static final String B_COMPOUND_HANDLER_CHANGES_ONLY = "compoundHandlerChangesOnly";
 	
 	private ILogger logger = null;
 	
@@ -68,7 +71,7 @@ public class ClickWatchModule extends AbstractModule {
 	}
 	
 	protected void bindHandlerAdapter() {
-		bind(IHandlerAdapter.class).to(HandlerAdapter.class);
+		bind(IPullHandlerAdapter.class).to(PullHandlerAdapter.class);
 	}
 
 }

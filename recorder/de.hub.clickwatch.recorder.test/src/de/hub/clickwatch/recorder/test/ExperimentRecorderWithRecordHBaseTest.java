@@ -19,6 +19,7 @@ import de.hub.clickwatch.connection.adapter.IValueAdapter;
 import de.hub.clickwatch.connection.adapter.StringValueAdapter;
 import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.model.Node;
+import de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr;
 import de.hub.clickwatch.recorder.ClickSocketPlayer;
 import de.hub.clickwatch.recorder.ClickSocketPlayerSocketImpl;
 import de.hub.clickwatch.recorder.database.IDataBaseRecordAdapter;
@@ -92,8 +93,18 @@ public class ExperimentRecorderWithRecordHBaseTest extends AbstractDataBaseAdapt
 		});
 	}
 	
+	@Override
+	protected void assertRecord(ExperimentDescr experiment, String nodeId) {
+		// empty
+	}
+
 	protected void assertValue(Handler handler) {
 		Assert.assertTrue(true);
+	}
+	
+	@Override
+	protected Integer getUpdateInterval() {
+		return 10;
 	}
 
 	@Override

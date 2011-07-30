@@ -1,5 +1,7 @@
 package de.hub.clickwatch.recorder.database;
 
+import java.util.Iterator;
+
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import com.google.common.base.Preconditions;
@@ -13,6 +15,7 @@ import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.model.Node;
 import de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr;
 import de.hub.clickwatch.recorder.CWRecorderModule;
+import de.hub.clickwatch.recorder.database.hbase.HBaseDataBaseAdapter;
 import de.hub.clickwatch.util.ILogger;
 
 @Singleton
@@ -22,6 +25,36 @@ public class DataBaseUtil {
 	@Inject private IValueAdapter valueAdapter;
 	@Inject @Named(CWRecorderModule.DB_VALUE_ADAPTER_PROPERTY) private IValueAdapter dbValueAdapter;
 	@Inject private ILogger logger;
+	
+	public Iterator<Handler> getHandlerIterator(ExperimentDescr experiment, String node, String handler, long start, long end) {
+		dataBaseAdapter.initialize(experiment);
+		final Iterator<Handler> dbIterator = ((HBaseDataBaseAdapter)dataBaseAdapter).retrieve(node, handler, start, end);
+		return new Iterator<Handler>() {
+			@Override
+			public boolean hasNext() {
+				return dbIterator.hasNext();
+			}
+
+			@Override
+			public Handler next() {
+				Handler dbHandler = dbIterator.next();
+				if (dbHandler == null) {
+					return null;
+				} else {
+					Handler handler = ClickWatchModelFactory.eINSTANCE.createHandler();
+					valueAdapter.setModelValue(handler, dbValueAdapter.getPlainRealValue(dbHandler));
+					handler.setName(dbHandler.getQualifiedName());
+					handler.setTimestamp(dbHandler.getTimestamp());
+					return handler;
+				}
+			}
+
+			@Override
+			public void remove() {
+				dbIterator.remove();
+			}
+		};
+	}
 	
 	public Handler getHandler(ExperimentDescr experiment, String node, String handler, long time) {
 		dataBaseAdapter.initialize(experiment);

@@ -4,8 +4,8 @@ import com.google.inject.name.Names;
 
 import de.hub.clickwatch.ClickWatchModule;
 import de.hub.clickwatch.connection.INodeConnection;
-import de.hub.clickwatch.connection.adapter.HandlerAdapter;
-import de.hub.clickwatch.connection.adapter.IHandlerAdapter;
+import de.hub.clickwatch.connection.adapter.PullHandlerAdapter;
+import de.hub.clickwatch.connection.adapter.IPullHandlerAdapter;
 import de.hub.clickwatch.connection.adapter.IValueAdapter;
 import de.hub.clickwatch.connection.adapter.XmlValueAdapter;
 import de.hub.clickwatch.merge.IMergeConfiguration;
@@ -81,7 +81,7 @@ public class ClickWatchUIModule extends ClickWatchModule {
 
 	@Override
 	protected void bindHandlerAdapter() {
-		bind(IHandlerAdapter.class).to(HandlerAdapter.class);
+		bind(IPullHandlerAdapter.class).to(PullHandlerAdapter.class);
 	}
 
 }
