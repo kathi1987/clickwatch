@@ -23,7 +23,6 @@ import com.google.inject.Inject;
 import com.google.inject.name.Named;
 
 import de.hub.clickwatch.connection.adapter.IValueAdapter;
-import de.hub.clickwatch.model.ClickWatchModelFactory;
 import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.model.Node;
 import de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr;
@@ -303,11 +302,8 @@ public class HBaseDataBaseAdapter extends AbstractDataBaseRecordAdapter implemen
 	}
 
 	private Handler getHandlerFromResult(String handlerId, Result result) {
-		Handler handler = ClickWatchModelFactory.eINSTANCE.createHandler();
-		handler.setName(handlerId);
-		handler.setTimestamp(rowMap.getTime(result.getRow()));
 		String value = new String(result.getValue(colFamily, col));
-		dbValueAdapter.setModelValue(handler, value);
+		Handler handler = dbValueAdapter.create(handlerId, rowMap.getTime(result.getRow()), value);
 		return handler;
 	}
 	

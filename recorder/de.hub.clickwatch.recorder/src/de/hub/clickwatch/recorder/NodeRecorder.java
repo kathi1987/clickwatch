@@ -122,7 +122,7 @@ public class NodeRecorder implements Runnable {
 			keyMap.put(qualifiedName, handler);
 			
 			if (qualifiedName.equals("sys_info/systeminfo")) {
-				String value = valueAdapter.getPlainRealValue(handler);
+				String value = valueAdapter.getPlainValue(handler);
 				Matcher matcher = pattern.matcher(value.replace("\n", " "));
 				if (matcher.matches()) {
 					Double cpuLoad = new Double(matcher.group(1));

@@ -15,7 +15,6 @@ import com.google.inject.Inject;
 import com.google.inject.name.Named;
 
 import de.hub.clickwatch.ClickWatchModule;
-import de.hub.clickwatch.model.ClickWatchModelFactory;
 import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.util.ILogger;
 import de.hub.clickwatch.util.Throwables;
@@ -151,17 +150,14 @@ public class CompoundHandlerAdapter extends PullHandlerAdapter {
 		return true;
 	}
 
-	private void createAndAddHandler(Object value, Map<String, String> attributes) {
-		Handler newHandler = ClickWatchModelFactory.eINSTANCE.createHandler();
-		// set name of handler
-		newHandler.setName(currentHandlerName);
-		
+	private void createAndAddHandler(Object value, Map<String, String> attributes) {		
 		// set the timestamp
 		long drift = driftMavrSum / driftMavrValues.size();
+		long timestamp = 0;
 		if (inRecordMode) {
-			newHandler.setTimestamp(time(attributes.get("time")) + drift);
+			timestamp = time(attributes.get("time")) + drift;
 		} else {
-			newHandler.setTimestamp(pullTime);
+			timestamp = pullTime;
 		}
 		
 		// set the value
@@ -171,8 +167,11 @@ public class CompoundHandlerAdapter extends PullHandlerAdapter {
 				recordStr = (String)valueFme.getValue();
 			}
 		}
+		Handler newHandler;
 		if (recordStr != null) {
-			valueAdapter.setModelValue(newHandler, recordStr);	
+			newHandler = valueAdapter.create(currentHandlerName, timestamp, recordStr);
+		} else {
+			newHandler = valueAdapter.create(currentHandlerName, timestamp, "");
 		}
 		handlers.add(newHandler);
 	}

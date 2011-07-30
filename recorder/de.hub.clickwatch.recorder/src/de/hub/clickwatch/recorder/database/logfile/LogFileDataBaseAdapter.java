@@ -17,7 +17,6 @@ import com.google.inject.Singleton;
 
 import de.hub.clickwatch.connection.adapter.IValueAdapter;
 import de.hub.clickwatch.connection.adapter.XmlValueAdapter;
-import de.hub.clickwatch.model.ClickWatchModelFactory;
 import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr;
 import de.hub.clickwatch.recorder.database.AbstractDataBaseRecordAdapter;
@@ -55,13 +54,7 @@ public class LogFileDataBaseAdapter extends AbstractDataBaseRecordAdapter {
 	@Override
 	public boolean record(Object nodeDBAdapter, Handler handler,
 			boolean hasChanged, int sample) {	
-		Handler xmlHandler = ClickWatchModelFactory.eINSTANCE.createHandler();
-		xmlHandler.setName(handler.getQualifiedName());
-		xmlHandler.setTimestamp(handler.getTimestamp());
-		xmlValueAdapter.setModelValue(xmlHandler, valueAdapter.getPlainRealValue(handler));
-		
-		printLogEntries(xmlHandler);
-		
+		printLogEntries(xmlValueAdapter.create(handler, valueAdapter));
 		return super.record(nodeDBAdapter, handler, hasChanged, sample);
 	}
 

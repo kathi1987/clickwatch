@@ -8,7 +8,6 @@ import java.util.List;
 
 import com.google.common.base.Preconditions;
 
-import de.hub.clickwatch.model.ClickWatchModelFactory;
 import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.util.Throwables;
 
@@ -33,19 +32,17 @@ public class PullHandlerAdapter extends AbstractAdapter implements IPullHandlerA
 			}
 			
 			int splitIndex = qualifiedHandlerName.lastIndexOf("/");
-			char[] realValue = null;
+			String realValue = null;
 			try {
-				realValue = clickSocket().read(qualifiedHandlerName.substring(0, splitIndex), qualifiedHandlerName.substring(splitIndex + 1));
+				realValue = new String(clickSocket().read(
+						qualifiedHandlerName.substring(0, splitIndex),
+						qualifiedHandlerName.substring(splitIndex + 1)));
 			} catch (Exception e) {
 				Throwables.propagate(e);
 			}
-			Handler resultHandler = ClickWatchModelFactory.eINSTANCE.createHandler();
-			resultHandler.setName(handler.getQualifiedName());
-			resultHandler.setCanRead(handler.isCanRead());
-			resultHandler.setCanWrite(handler.isCanWrite());
-			resultHandler.setTimestamp(System.nanoTime());
-			connection.getAdapter(IValueAdapter.class).setModelValue(resultHandler, new String(realValue));
-			result.add(resultHandler);
+			
+			result.add(connection.getAdapter(IValueAdapter.class)
+					.create(handler, realValue));
 		}
 		
 		return result;

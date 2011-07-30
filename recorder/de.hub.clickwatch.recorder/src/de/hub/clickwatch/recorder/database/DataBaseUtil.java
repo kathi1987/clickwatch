@@ -10,7 +10,6 @@ import com.google.inject.Singleton;
 import com.google.inject.name.Named;
 
 import de.hub.clickwatch.connection.adapter.IValueAdapter;
-import de.hub.clickwatch.model.ClickWatchModelFactory;
 import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.model.Node;
 import de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr;
@@ -41,11 +40,7 @@ public class DataBaseUtil {
 				if (dbHandler == null) {
 					return null;
 				} else {
-					Handler handler = ClickWatchModelFactory.eINSTANCE.createHandler();
-					valueAdapter.setModelValue(handler, dbValueAdapter.getPlainRealValue(dbHandler));
-					handler.setName(dbHandler.getQualifiedName());
-					handler.setTimestamp(dbHandler.getTimestamp());
-					return handler;
+					return valueAdapter.create(dbHandler, dbValueAdapter);
 				}
 			}
 
@@ -63,15 +58,7 @@ public class DataBaseUtil {
 		if (dbHandler == null) {
 			return null;
 		}
-		Handler result = ClickWatchModelFactory.eINSTANCE.createHandler();
-		result.setTimestamp(dbHandler.getTimestamp());
-		if (dbValueAdapter.getClass().equals(valueAdapter.getClass())) {
-			valueAdapter.moveValue(dbHandler, result);
-		} else {
-			String plainRealValue = dbValueAdapter.getPlainRealValue(dbHandler);
-			valueAdapter.setModelValue(result, plainRealValue);
-		}
-		return result;
+		return valueAdapter.create(dbHandler, dbValueAdapter);
 	}
 	
 	public Node getNode(ExperimentDescr experiment, String node, long time) {
@@ -103,17 +90,10 @@ public class DataBaseUtil {
 			Handler dbHandler = dataBaseAdapter.retrieve(handlerTimeCopy.getQualifiedName());
 			if (dbHandler != null) {
 				Preconditions.checkState(dbHandler.getTimestamp() <= time);
-				if (dbValueAdapter.getClass().equals(valueAdapter.getClass())) {
-					valueAdapter.moveValue(dbHandler, handlerTimeCopy);
-				} else {
-					String plainRealValue = dbValueAdapter.getPlainRealValue(dbHandler);
-					valueAdapter.setModelValue(handlerTimeCopy, plainRealValue);
-				}
-	
 				if (dbHandler.getTimestamp() == 0) {
 					logger.log(ILogger.WARNING, "empty timestamp", null);
 				}
-				handlerTimeCopy.setTimestamp(dbHandler.getTimestamp());
+				valueAdapter.update(handlerTimeCopy, dbHandler, dbValueAdapter);
 			} else {
 				handlerTimeCopy.setTimestamp(0);
 				valueAdapter.clearValue(handlerTimeCopy);

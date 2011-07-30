@@ -14,19 +14,20 @@ import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.xml.type.AnyType;
 
 import com.google.inject.Inject;
+import com.google.inject.name.Named;
 
 import de.hub.clickwatch.ClickWatchStandaloneSetup;
-import de.hub.clickwatch.connection.adapter.StringValueAdapter;
+import de.hub.clickwatch.connection.adapter.IValueAdapter;
 import de.hub.clickwatch.connection.adapter.XmlValueAdapter;
 import de.hub.clickwatch.main.ClickWatchExternalLauncher;
 import de.hub.clickwatch.main.IClickWatchContext;
 import de.hub.clickwatch.main.IClickWatchMain;
 import de.hub.clickwatch.main.IExperimentProvider;
-import de.hub.clickwatch.model.ClickWatchModelFactory;
 import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.model.Node;
 import de.hub.clickwatch.model.provider.TimeStampLabelProvider;
 import de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr;
+import de.hub.clickwatch.recorder.CWRecorderModule;
 import de.hub.clickwatch.recorder.database.CWRecorderStandaloneSetup;
 import de.hub.clickwatch.recorder.database.hbase.HBaseDataBaseAdapter;
 import de.hub.clickwatch.util.ILogger;
@@ -40,7 +41,7 @@ public class PdrPlotAnalysis implements IClickWatchMain {
 	@Inject private HBaseDataBaseAdapter dbAdatper;
 	@Inject private ILogger logger;
 	@Inject private XmlValueAdapter xmlValueAdapter;
-	@Inject private StringValueAdapter stringValueAdapter;
+	@Inject @Named(CWRecorderModule.DB_VALUE_ADAPTER_PROPERTY) private IValueAdapter dbValueAdapter;
 	
 	private FeatureMapParserConfig fmpc = null;
 	private FeatureMapParser parser = null;
@@ -121,8 +122,7 @@ public class PdrPlotAnalysis implements IClickWatchMain {
 			int i = 0;
 			while(dbIterator.hasNext()) {
 				Handler dbHandler = dbIterator.next();
-				Handler handler = ClickWatchModelFactory.eINSTANCE.createHandler();
-				xmlValueAdapter.setModelValue(handler, stringValueAdapter.getPlainRealValue(dbHandler));
+				Handler handler = xmlValueAdapter.create(dbHandler, dbValueAdapter);
 				long time = dbHandler.getTimestamp();
 				fmpc.time = time;
 				parser.parse(handler.getAny());
