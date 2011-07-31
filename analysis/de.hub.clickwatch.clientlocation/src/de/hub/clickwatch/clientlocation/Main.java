@@ -2,6 +2,7 @@ package de.hub.clickwatch.clientlocation;
 
 import java.util.HashMap;
 
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -10,25 +11,25 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
-import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 
 import de.hub.clickwatch.ClickWatchModule;
 import de.hub.clickwatch.ClickWatchStandaloneSetup;
-import de.hub.clickwatch.analysis.specificmodels.SpecificMetaModelGenerator;
-import de.hub.clickwatch.analysis.specificmodels.SpecificModelGenerator;
+import de.hub.clickwatch.analysis.AbstractAnalysis;
 import de.hub.clickwatch.clientlocation.clientstats.ClientStats;
 import de.hub.clickwatch.clientlocation.clientstats.ClientStatsPackage;
-import de.hub.clickwatch.examples.AbstractAnalysis;
+import de.hub.clickwatch.connection.INodeConnection;
+import de.hub.clickwatch.connection.INodeConnectionProvider;
+import de.hub.clickwatch.connection.adapter.IValueAdapter;
+import de.hub.clickwatch.connection.adapter.XmlValueAdapter;
 import de.hub.clickwatch.model.ClickWatchModelFactory;
 import de.hub.clickwatch.model.Network;
 import de.hub.clickwatch.model.Node;
-import de.hub.clickwatch.nodeadapter.AbstractNodeAdapter;
-import de.hub.clickwatch.nodeadapter.ClickControlXSDNodeAdapter;
-import de.hub.clickwatch.nodeadapter.INodeAdapter;
+import de.hub.clickwatch.specificmodels.ClickWatchSpecificModelsModule;
 import de.hub.clickwatch.util.ILogger;
-
+import de.hub.specificmodels.metamodelgenerator.MetaModelGenerator;
+import de.hub.specificmodels.modelgenerator.ModelGenerator;
 
 public class Main extends AbstractAnalysis {
 	
@@ -44,20 +45,19 @@ public class Main extends AbstractAnalysis {
 		}
 		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("clientstats", new XMIResourceFactoryImpl());
 		
-		ClickWatchModule clickWatchModule = new ClickWatchModule();
+		ClickWatchModule clickWatchModule = new ClickWatchModule() {
+			@Override
+			protected void bindValueAdapter() {
+				bind(IValueAdapter.class).to(XmlValueAdapter.class);
+			}
+		};
 		clickWatchModule.setLogger(new ILogger() {			
 			@Override
 			public void log(int status, String message, Throwable exception) {
 				System.out.println(message + ": " + exception.getMessage());
 			}
 		});
-		injector = Guice.createInjector(clickWatchModule, new AbstractModule() {
-			
-			@Override
-			protected void configure() {
-				bind(INodeAdapter.class).to(ClickControlXSDNodeAdapter.class);
-			}
-		});
+		injector = Guice.createInjector(clickWatchModule);
 		
 		rs = new ResourceSetImpl();
 		cwResource = rs.createResource(URI.createURI("fake.clickwatchmodel"));
@@ -72,24 +72,26 @@ public class Main extends AbstractAnalysis {
 		
 		// retrieve node data
 		for (final String nodeAddress: nodeAddresses) { // TODO
-			INodeAdapter nodeAdapter = injector.getInstance(INodeAdapter.class);
-			((AbstractNodeAdapter)nodeAdapter).setUp(nodeAddress, "7777"); // TODO
-			nodeAdapter.connect();
-			Node node = nodeAdapter.retrieve(network.getElementFilter(), network.getHandlerFilter());
+			INodeConnectionProvider ncp = injector.getInstance(INodeConnectionProvider.class);
+			INodeConnection nodeConnection = ncp.createConnection(nodeAddress, "7777");
+			nodeConnection.connect();
+			Node node = nodeConnection.getAdapter(de.hub.clickwatch.connection.adapter.INodeAdapter.class).pullNode(network.getElementFilter(), network.getHandlerFilter());
+			nodeConnection.disconnect();
 			addNode(network, node);
 		}
 		
 		// create specific models
 		// network.getNode().getEle .. getHandler().getDecv
-		SpecificMetaModelGenerator metaModelGenerator = new SpecificMetaModelGenerator();
-		EPackage specificMetaModel = metaModelGenerator.generateMetaModel(network);
+		Injector injector = Guice.createInjector(new ClickWatchSpecificModelsModule());
+		MetaModelGenerator metaModelGenerator = injector.getInstance(MetaModelGenerator.class);
+		EPackage specificMetaModel = metaModelGenerator.generate(new NullProgressMonitor(), network);
 		Resource specificMetaModelResource = rs.createResource(URI.createFileURI("src/edu/hu/clickwatch/clientlocation/SpecificCSMetaModel.ecore")); // TODO
 		specificMetaModel.setName("SpecificCSMetaModel");
 		specificMetaModelResource.getContents().add(specificMetaModel);
 		specificMetaModelResource.save(new HashMap<Object, Object>());
 		
-		SpecificModelGenerator modelGenerator = new SpecificModelGenerator();
-		EObject specificModel = modelGenerator.generateModel(specificMetaModel, network);
+		ModelGenerator modelGenerator = injector.getInstance(ModelGenerator.class);
+		EObject specificModel = modelGenerator.generate(specificMetaModel, network);
 		
 		// run transformation
 		//initialize();	

@@ -24,9 +24,9 @@ import org.eclipse.ui.IWorkbenchPart;
 
 import com.google.inject.Inject;
 
-import de.hub.clickwatch.XmlModelRepository;
 import de.hub.clickwatch.model.SpecificMetaModelGenerator;
 import de.hub.clickwatch.model.SpecificModelGenerator;
+import de.hub.emfxml.XmlModelRepository;
 
 
 public class ShowXml implements IObjectActionDelegate {

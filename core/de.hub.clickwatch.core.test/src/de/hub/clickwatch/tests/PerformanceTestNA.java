@@ -3,44 +3,43 @@ package de.hub.clickwatch.tests;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 
-import junit.framework.TestCase;
-
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.junit.Ignore;
+import org.junit.Test;
 
-import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 
 import de.hub.clickcontrol.IClickSocket;
 import de.hub.clickwatch.ClickWatchModule;
-import de.hub.clickwatch.XmlModelRepository;
+import de.hub.clickwatch.connection.INodeConnection;
+import de.hub.clickwatch.connection.INodeConnectionProvider;
+import de.hub.clickwatch.connection.adapter.AbstractAdapter;
+import de.hub.clickwatch.connection.adapter.INodeAdapter;
+import de.hub.clickwatch.connection.adapter.IValueAdapter;
+import de.hub.clickwatch.connection.adapter.StringValueAdapter;
+import de.hub.clickwatch.connection.adapter.XmlValueAdapter;
 import de.hub.clickwatch.model.ClickWatchModelFactory;
 import de.hub.clickwatch.model.Network;
 import de.hub.clickwatch.model.Node;
-import de.hub.clickwatch.nodeadapter.ClickControlNodeAdapter;
-import de.hub.clickwatch.nodeadapter.ClickControlNodeXmlValuesAdapter;
-import de.hub.clickwatch.nodeadapter.INodeAdapter;
+import de.hub.emfxml.XmlModelRepository;
 
 
-public class PerformanceTestNA extends TestCase {
+public class PerformanceTestNA {
+
+	private static NumberFormat milliesFormat = new DecimalFormat("#00:000");
 	
-	private Runtime runtime = null;
-	private NumberFormat memFormat = new DecimalFormat("#00,000,000,000,000");
-	private NumberFormat updatesFormat = new DecimalFormat("#00,000,000");
-	private NumberFormat milliesFormat = new DecimalFormat("#00:000");
-	
-	@Override
-	public void setUp() {
-		runtime = Runtime.getRuntime();
-	}
-
-	private void performTest(final Class<? extends INodeAdapter> adapterClass, int numberOfElements, int numberOfHandler, int numberOfUpdates, int reportOnEach) {	
+	private void performTest(final Class<? extends IValueAdapter> adapterClass, int numberOfElements, int numberOfHandler, int numberOfUpdates, int reportOnEach) {	
 		final IClickSocket clickSocket = TestUtil.createClickSocket(numberOfElements, numberOfHandler, true);
-		Injector injector = Guice.createInjector(new ClickWatchModule(), new AbstractModule() {
+		Injector injector = Guice.createInjector(new ClickWatchModule() {
 			@Override
-			public void configure() {
+			protected void bindValueAdapter() {
+				bind(IValueAdapter.class).to(adapterClass);
+			}
+
+			@Override
+			protected void bindClickSocket() {
 				bind(IClickSocket.class).toInstance(clickSocket);
-				bind(INodeAdapter.class).to(adapterClass);
 			}			
 		});
 		
@@ -48,30 +47,40 @@ public class PerformanceTestNA extends TestCase {
 		Node node = ClickWatchModelFactory.eINSTANCE.createNode();
 		network.getNodes().add(node);
 		
-		NodeConnectionTestImpl connection = injector.getInstance(NodeConnectionTestImpl.class);
-		connection.setUp(node);
-		connection.connect(null);
-		connection.getNodeAdapter().connect();
+		INodeConnectionProvider ncp = injector.getInstance(INodeConnectionProvider.class);
+		INodeConnection connection = ncp.createConnection("localhost", "7777");
+		connection.connect();
+		
+		INodeAdapter nodeAdapter = connection.getAdapter(INodeAdapter.class);
+		
 		for (int i = 0; i < numberOfUpdates; i++) {
-			connection.runUpdate();
-			report("perfrom a test ", i, reportOnEach);
+			nodeAdapter.pullNode();
+			TestUtil.report("perfrom a test ", i, reportOnEach);
 		}
 	}
 	
+	@Ignore("memoryleak test, only perform when indicated")
+	@Test
 	public void testSingleUpdate() {
-		performTest(ClickControlNodeXmlValuesAdapter.class, 3, 3, 1, 1);
+		performTest(XmlValueAdapter.class, 3, 3, 1, 1);
 	}
 	
+	@Ignore("memoryleak test, only perform when indicated")
+	@Test
 	public void testSmallUpdates() {
-		performTest(ClickControlNodeXmlValuesAdapter.class, 3, 3, 100 * 1000, 100);
+		performTest(XmlValueAdapter.class, 3, 3, 100 * 1000, 100);
 	}
 	
+	@Ignore("memoryleak test, only perform when indicated")
+	@Test
 	public void testLargeUpdates() {
-		performTest(ClickControlNodeXmlValuesAdapter.class, 30, 10, 100 * 1000, 10);
+		performTest(XmlValueAdapter.class, 30, 10, 100 * 1000, 10);
 	}
 	
+	@Ignore("memoryleak test, only perform when indicated")
+	@Test
 	public void testLargeUpdatesOnSimpleAdapter() {
-		performTest(ClickControlNodeAdapter.class, 30, 10, 100 * 1000, 10);
+		performTest(StringValueAdapter.class, 30, 10, 100 * 1000, 10);
 	}
 	
 	private void performcePerformenceMeasure(Runnable runnable, long items) {
@@ -82,22 +91,26 @@ public class PerformanceTestNA extends TestCase {
 				", " + (long)(((double)items / millies) * 1000) + " updates per second\n\n");
 	}
 	
+	@Ignore("memoryleak test, only perform when indicated")
+	@Test
 	public void testPerformance() {
 		performcePerformenceMeasure(new Runnable() {			
 			@Override
 			public void run() {
-				performTest(ClickControlNodeAdapter.class, 10, 5, 1000, 100);
+				performTest(StringValueAdapter.class, 10, 5, 1000, 100);
 			}
 		}, 10 * 5 * 1000);
 		
 		performcePerformenceMeasure(new Runnable() {			
 			@Override
 			public void run() {
-				performTest(ClickControlNodeXmlValuesAdapter.class, 10, 5, 1000, 100);
+				performTest(XmlValueAdapter.class, 10, 5, 1000, 100);
 			}
 		}, 10 * 5 * 1000);
 	}
 	
+	@Ignore("memoryleak test, only perform when indicated")
+	@Test
 	public void testDeserializeForMemoryLeak() {	
 		XmlModelRepository xmlModelRepository = new XmlModelRepository();
 		long runs = 200000;
@@ -105,37 +118,39 @@ public class PerformanceTestNA extends TestCase {
 		
 		for (int i = 0; i < runs; i++) {
 			EcoreUtil.delete(xmlModelRepository.deserializeXml("<foo><bar>TEXT</bar></foo>"), true);
-			report("deserialize memory leak? ", i, reportOnEach);
+			TestUtil.report("deserialize memory leak? ", i, reportOnEach);
 		}
 	}
 	
+	@Ignore("memoryleak test, only perform when indicated")
+	@Test
 	public void testRetrieveForMemoryLeak() {
 		long runs = 500;
 		long reportOnEach = 10;
 		
 		final IClickSocket clickSocket = TestUtil.createClickSocket(30, 10, false);
-		Injector injector = Guice.createInjector(new ClickWatchModule(), new AbstractModule() {
-			protected void configure() {
+		Injector injector = Guice.createInjector(new ClickWatchModule() {
+			@Override
+			protected void bindValueAdapter() {
+				bind(IValueAdapter.class).to(StringValueAdapter.class);
+			}
+
+			@Override
+			protected void bindClickSocket() {
 				bind(IClickSocket.class).toInstance(clickSocket);
 			}			
 		});
-		INodeAdapter modelAdapter = injector.getInstance(ClickControlNodeXmlValuesAdapter.class);
-		((ClickControlNodeXmlValuesAdapter)modelAdapter).setUp("localhost", "7777");
-		modelAdapter.connect();
+		INodeConnectionProvider ncp = injector.getInstance(INodeConnectionProvider.class);
+		INodeConnection connection = ncp.createConnection("localhost", "7777");
+		connection.connect();
+		
+		INodeAdapter nodeAdapter = connection.getAdapter(INodeAdapter.class);
 		
 		for (int i = 0; i < runs; i++) {
-			EcoreUtil.delete(modelAdapter.retrieve(null, null), true);
-			report("retrieve memory leaks?", i, reportOnEach);
-		}
-
-	}
-	
-	private void report(String msg, long run, long reportOnEach) {
-		if (run % reportOnEach == 0) {
-			runtime.gc();
-			System.out.println(msg + " updates run: " + updatesFormat.format(run) + "; memory-usage: " + 
-					memFormat.format(runtime.totalMemory() - runtime.freeMemory()) +
-					"; heap-size: " + memFormat.format(runtime.totalMemory()));
+			Node node = nodeAdapter.pullNode();
+			((AbstractAdapter)nodeAdapter).clearCaches();
+			EcoreUtil.delete(node, true);
+			TestUtil.report("retrieve memory leaks?", i, reportOnEach);
 		}
 	}
 }

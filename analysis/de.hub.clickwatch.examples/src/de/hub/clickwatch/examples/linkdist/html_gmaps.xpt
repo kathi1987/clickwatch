@@ -52,7 +52,7 @@
 			marker = new GMarker(new GLatLng(«gps.lat», «gps.long»), { icon:xIcon });
 			GEvent.addListener(marker, "click", function() {
 				map.openInfoWindowTabsHtml(new GLatLng(«gps.lat», «gps.long»), new Array(new GInfoWindowTab("Node info",
-	  				"IP: «node.iNetAdress»<br/>Node: «node.address()»<br/>Hw_busy: «node.hwbusy()»")), {});
+	  				"IP: «node.iNetAddress»<br/>Node: «node.address()»<br/>Hw_busy: «node.hwbusy()»")), {});
 	  		});
 	  		map.addOverlay(marker);
 	  		

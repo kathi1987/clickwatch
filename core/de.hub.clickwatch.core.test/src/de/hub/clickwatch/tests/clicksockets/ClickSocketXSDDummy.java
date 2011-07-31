@@ -25,11 +25,11 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import click.ControlSocket.HandlerInfo;
-import de.hub.clickwatch.XmlModelRepository;
-import de.hub.clickwatch.nodeadapter.ClickControlXSDNodeAdapter;
+import de.hub.clickwatch.connection.adapter.XSDValueAdapter;
 import de.hub.clickwatch.tests.XmlModelRepositoryTest;
 import de.hub.clickwatch.util.ClickSocketTestImpl;
 import de.hub.clickwatch.util.Throwables;
+import de.hub.emfxml.XmlModelRepository;
 
 public class ClickSocketXSDDummy extends ClickSocketTestImpl {
 
@@ -70,7 +70,7 @@ public class ClickSocketXSDDummy extends ClickSocketTestImpl {
 				String serializedHandlerValue = xmlModelRepository.serializeModel(metaModel, documentRoot);
 				handlerXml.put(name, serializedHandlerValue);		
 			}
-			handlerXml.put(ClickControlXSDNodeAdapter.XSD_HANDLER_NAME, schemaStr);
+			handlerXml.put(XSDValueAdapter.XSD_HANDLER_NAME, schemaStr);
 		}
 	}
 	
@@ -90,7 +90,7 @@ public class ClickSocketXSDDummy extends ClickSocketTestImpl {
 	}
 	
 	protected String getDummyXmlEntry() {
-		return "src/" + getClass().getPackage().getName().replace(".", "/") + "/link_stat_runtime.xml";
+		return "resources/link_stat_runtime.xml";
 	}
 	
 	protected String readEntry(String entry) {

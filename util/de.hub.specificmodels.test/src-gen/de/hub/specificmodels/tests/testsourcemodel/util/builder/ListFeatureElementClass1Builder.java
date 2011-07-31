@@ -12,10 +12,12 @@ public class ListFeatureElementClass1Builder implements
   // features and builders
   private java.lang.String m_anAttributeOfFeatureClass1;
   private java.lang.String m_name;
+  private java.util.Collection<org.eclipse.emf.ecore.util.FeatureMap.Entry> m_any = new java.util.LinkedList<org.eclipse.emf.ecore.util.FeatureMap.Entry>();
   private java.util.Collection<de.hub.specificmodels.tests.testsourcemodel.ListFeatureElementClass3> m_listFeature3 = new java.util.LinkedList<de.hub.specificmodels.tests.testsourcemodel.ListFeatureElementClass3>();
   private java.util.Collection<de.hub.specificmodels.tests.testsourcemodel.util.builder.ITestsourcemodelBuilder<? extends de.hub.specificmodels.tests.testsourcemodel.ListFeatureElementClass3>> m_featureListFeature3Builder = new java.util.LinkedList<de.hub.specificmodels.tests.testsourcemodel.util.builder.ITestsourcemodelBuilder<? extends de.hub.specificmodels.tests.testsourcemodel.ListFeatureElementClass3>>();
   // helper attributes
   private boolean m_featureAnAttributeOfFeatureClass1Set = false;
+  private boolean m_featureAnySet = false;
   private boolean m_featureListFeature3Set = false;
   private boolean m_featureNameSet = false;
 
@@ -41,6 +43,8 @@ public class ListFeatureElementClass1Builder implements
     ListFeatureElementClass1Builder _builder = newListFeatureElementClass1Builder();
     _builder.m_featureAnAttributeOfFeatureClass1Set = m_featureAnAttributeOfFeatureClass1Set;
     _builder.m_anAttributeOfFeatureClass1 = m_anAttributeOfFeatureClass1;
+    _builder.m_featureAnySet = m_featureAnySet;
+    _builder.m_any = m_any;
     _builder.m_featureListFeature3Set = m_featureListFeature3Set;
     _builder.m_listFeature3 = m_listFeature3;
     _builder.m_featureListFeature3Builder = m_featureListFeature3Builder;
@@ -61,6 +65,9 @@ public class ListFeatureElementClass1Builder implements
     }
     if (m_featureNameSet) {
       _newInstance.setName(m_name);
+    }
+    if (m_featureAnySet) {
+      _newInstance.getAny().addAll(m_any);
     }
     if (m_featureListFeature3Set) {
       _newInstance.getListFeature3().addAll(m_listFeature3);
@@ -83,6 +90,18 @@ public class ListFeatureElementClass1Builder implements
   public ListFeatureElementClass1Builder withName(java.lang.String p_name) {
     m_name = p_name;
     m_featureNameSet = true;
+    return this;
+  }
+
+  public ListFeatureElementClass1Builder withAny(org.eclipse.emf.ecore.util.FeatureMap.Entry p_any) {
+    m_any.add(p_any);
+    m_featureAnySet = true;
+    return this;
+  }
+
+  public ListFeatureElementClass1Builder withAny(java.util.Collection<? extends org.eclipse.emf.ecore.util.FeatureMap.Entry> p_any) {
+    m_any.addAll(p_any);
+    m_featureAnySet = true;
     return this;
   }
 

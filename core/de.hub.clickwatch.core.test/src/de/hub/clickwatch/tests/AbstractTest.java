@@ -1,87 +1,136 @@
 package de.hub.clickwatch.tests;
 
-import junit.framework.TestCase;
+import java.text.DateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
 
-import org.eclipse.core.runtime.IStatus;
+import org.junit.Before;
 
 import com.google.inject.AbstractModule;
+import com.google.inject.Binder;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
+import com.google.inject.Module;
 
 import de.hub.clickcontrol.ClickSocketImpl;
 import de.hub.clickcontrol.IClickSocket;
+import de.hub.clickwatch.ClickWatchModule;
 import de.hub.clickwatch.ClickWatchStandaloneSetup;
-import de.hub.clickwatch.merge.IMergeConfiguration;
-import de.hub.clickwatch.merge.MergeModule;
-import de.hub.clickwatch.model.ClickWatchNodeMergeConfiguration;
-import de.hub.clickwatch.model.IConnectionConfiguration;
-import de.hub.clickwatch.nodeadapter.ClickControlXSDNodeAdapter;
-import de.hub.clickwatch.nodeadapter.INodeAdapter;
+import de.hub.clickwatch.connection.adapter.IPullHandlerAdapter;
+import de.hub.clickwatch.connection.adapter.IValueAdapter;
+import de.hub.clickwatch.connection.adapter.PullHandlerAdapter;
+import de.hub.clickwatch.connection.adapter.StringValueAdapter;
 import de.hub.clickwatch.util.ILogger;
 
+public class AbstractTest {
 
-public class AbstractTest extends TestCase {
-	
 	protected Injector injector;
-	
-	public final void setUp() {
+
+	@Before
+	public void setUp() {
 		ClickWatchStandaloneSetup.doSetup();
-		injector = Guice.createInjector(createModule());
+		List<Module> modules = new ArrayList<Module>();
+		modules.addAll(Arrays.asList(getAdditionalModules()));
+		modules.add(createModule());
+		injector = Guice.createInjector(modules);
 		additionalSetUp();
 	}
-	
+
 	protected AbstractModule createModule() {
 		return new TestModule();
 	}
-	
-	protected class TestModule extends AbstractModule {
-		
+
+	protected class TestModule extends ClickWatchModule {
 		@Override
-		protected void configure() {
-			install(new MergeModule());
-			bind(ILogger.class).toInstance(new ILogger() {				
-				@Override
-				public void log(int status, String message, Throwable exception) {
-					if (status == IStatus.ERROR) {
-						System.err.println("ERROR: " + message);
-						exception.printStackTrace(System.err);
-					} else {
-						System.out.println(message);
-					}
-				}
-			});
-			bind(INodeAdapter.class).to(getNodeAdapterClass());
-			bind(IMergeConfiguration.class).to(getMergeConfigurationClass());
-			bind(IClickSocket.class).to(getClickSocketClass());
-			bind(IConnectionConfiguration.class).toInstance(getConnectionConfiguration());
-			for (AbstractModule additionalModule: getAdditionalModules()) {
-				install(additionalModule);
-			}
+		protected ILogger getLogger() {
+			return AbstractTest.this.getLogger();
 		}
-		
-	}
-	
-	protected IConnectionConfiguration getConnectionConfiguration() {
-		return new TestConnectionConfiguration();
-	}
-	
-	protected AbstractModule[] getAdditionalModules() {
-		return new AbstractModule[] {};
+
+		@Override
+		protected void bindValueAdapter() {
+			bind(IValueAdapter.class).to(getValueAdapterClass());
+		}
+
+		@Override
+		protected void bindClickSocket() {
+			bind(IClickSocket.class).to(getClickSocketClass());
+		}
+
+		@Override
+		protected void bindHandlerAdapter() {
+			configureHandlerAdapter(binder());
+		}
+
 	}
 
-	protected Class<? extends IMergeConfiguration> getMergeConfigurationClass() {
-		return ClickWatchNodeMergeConfiguration.class;
+	protected ILogger getLogger() {
+		return new ILogger() {
+			@Override
+			public synchronized void log(int status, String message,
+					Throwable exception) {
+				if (getLogLevel() >= status) {
+					System.out.print(DateFormat.getDateTimeInstance().format(
+							new Date())
+							+ " ");
+
+					if (status == ILogger.DEBUG) {
+						System.out.print("[DEBUG] ");
+					} else if (status == ILogger.INFO) {
+						System.out.print("[INFO] ");
+					} else if (status == ILogger.WARNING) {
+						System.out.print("[WARNING] ");
+					} else if (status == ILogger.ERROR) {
+						System.out.print("[ERROR] ");
+					}
+
+					System.out.print(message);
+					if (exception != null) {
+						System.out.println(": " + exception.getMessage());
+						exception.printStackTrace();
+					}
+					System.out.println("");
+				}
+			}
+		};
 	}
 
-	protected Class<? extends INodeAdapter> getNodeAdapterClass() {
-		return ClickControlXSDNodeAdapter.class;
+	protected Module[] getAdditionalModules() {
+		return new Module[] { new Module() {
+			@Override
+			public void configure(Binder binder) {
+				AbstractTest.this.configureAnAdditionalModule(binder);
+			}
+		} };
+	}
+
+	protected void configureAnAdditionalModule(Binder binder) {
+
+	}
+
+	protected Class<? extends IValueAdapter> getValueAdapterClass() {
+		return StringValueAdapter.class;
 	}
 
 	protected Class<? extends IClickSocket> getClickSocketClass() {
 		return ClickSocketImpl.class;
 	}
 
-	protected void additionalSetUp() {
-		
+	protected void configureHandlerAdapter(Binder binder) {
+		binder.bind(IPullHandlerAdapter.class).to(getHandlerAdapterClass());
 	}
+
+	protected Class<? extends IPullHandlerAdapter> getHandlerAdapterClass() {
+		return PullHandlerAdapter.class;
+	}
+
+	protected void additionalSetUp() {
+
+	}
+
+	protected int getLogLevel() {
+		return 2;
+	}
+
 }

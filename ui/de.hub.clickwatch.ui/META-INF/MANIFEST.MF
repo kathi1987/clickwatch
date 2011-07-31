@@ -23,6 +23,8 @@ Bundle-ClassPath: lib/saxon.jar,
 Export-Package: de.hub.clickwatch.preferences,
  de.hub.clickwatch.ui,
  de.hub.clickwatch.ui.actions,
+ de.hub.clickwatch.ui.connection,
  de.hub.clickwatch.ui.modelactions,
  de.hub.clickwatch.ui.util,
  de.hub.clickwatch.ui.views
+Eclipse-BuddyPolicy: registered

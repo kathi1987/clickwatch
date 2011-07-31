@@ -22,11 +22,11 @@ import org.eclipse.ui.IViewReference;
 import com.google.inject.Inject;
 import com.jcraft.jsch.Session;
 
-import de.hub.clickwatch.XmlModelRepository;
-import de.hub.clickwatch.model.AbstractNodeConnection;
+import de.hub.clickwatch.connection.INodeConnection;
 import de.hub.clickwatch.model.Node;
 import de.hub.clickwatch.ui.util.SshConnectionFactory;
 import de.hub.clickwatch.ui.views.ResultView;
+import de.hub.emfxml.XmlModelRepository;
 
 /**
  * Hot deployment: do not reconfigure wireless device; restart click
@@ -343,7 +343,7 @@ public abstract class Deploy extends AbstractNodeAction implements SSHParams {
 	@Override
 	public void run(IAction action) {
 
-		if (node_lst == null || node_lst.isEmpty()) {
+		if (selectedObjects == null || selectedObjects.isEmpty()) {
 			return;
 		}
 		
@@ -359,9 +359,9 @@ public abstract class Deploy extends AbstractNodeAction implements SSHParams {
         }
 
 		//  create n parallel execution threads
-		final PrepareWorkerThread[] prepareWorkerThreads = new PrepareWorkerThread[node_lst.size()];
+		final PrepareWorkerThread[] prepareWorkerThreads = new PrepareWorkerThread[selectedObjects.size()];
 		//  create n parallel execution threads
-		final RunWorkerThread[] runWorkerThreads = new RunWorkerThread[node_lst.size()];
+		final RunWorkerThread[] runWorkerThreads = new RunWorkerThread[selectedObjects.size()];
 
 		final Marker canceled = new Marker(false);
 		try {
@@ -369,7 +369,7 @@ public abstract class Deploy extends AbstractNodeAction implements SSHParams {
 	        dialog.run(true, true, new IRunnableWithProgress() {
 	            public void run(IProgressMonitor monitor) {
 		        	try {
-		        		int numtasks = 1 + 2 * node_lst.size();
+		        		int numtasks = 1 + 2 * selectedObjects.size();
 		        		Counter counter = new Counter();
 		        		monitor.beginTask("Remote deployment", numtasks);
 
@@ -393,12 +393,12 @@ public abstract class Deploy extends AbstractNodeAction implements SSHParams {
 						
 				        //
 				        // Step 1: prepare, copy and unpack router conf in parallel
-						for (int idx=0; idx<node_lst.size(); idx++) {
-							final Node node = node_lst.get(idx);
+						for (int idx=0; idx<selectedObjects.size(); idx++) {
+							final Node node = selectedObjects.get(idx);
 				
 							// disconnect if connected
 							if (node.getConnection() != null) {
-								AbstractNodeConnection oldConnection = (AbstractNodeConnection)node.getConnection();
+								INodeConnection oldConnection = (INodeConnection)node.getConnection();
 								node.setConnection(null);
 								oldConnection.disconnect();
 							}
@@ -427,8 +427,8 @@ public abstract class Deploy extends AbstractNodeAction implements SSHParams {
 						final ObserverThread observer2 = new ObserverThread(runWorkerThreads, monitor, counter, "Start router conf ...");
 						//
 				        // Step 2: start router in parallel
-						for (int idx=0; idx<node_lst.size(); idx++) {
-							final Node node = node_lst.get(idx);
+						for (int idx=0; idx<selectedObjects.size(); idx++) {
+							final Node node = selectedObjects.get(idx);
 				
 							// do it in parallel
 							runWorkerThreads[idx] = new RunWorkerThread(node.getINetAddress(), prepareWorkerThreads[idx], counter);

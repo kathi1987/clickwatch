@@ -10,13 +10,16 @@ import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
 
+import com.google.inject.Inject;
+
 public class NewClickWatchProjectWizard extends Wizard implements INewWizard {
 
 	private WizardNewClickWatchCreationPage mainPage;
 	private IWorkbench workbench;
 	private IStructuredSelection selection;
 	
-	private ClickWatchProjectCreator creator = new ClickWatchProjectCreator();
+	@Inject
+	private ClickWatchProjectCreator creator;
 
 	public NewClickWatchProjectWizard() {
 		setWindowTitle("New Analysis project");

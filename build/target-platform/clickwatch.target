@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde version="3.6"?>
 
-<target name="clickwatch" sequenceNumber="10">
+<target name="clickwatch" sequenceNumber="14">
 <locations>
+<location includeAllPlatforms="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="de.hub.xveg.feature.feature.group" version="1.0.0.v201107081123"/>
+<repository location="http://metrikforge.informatik.hu-berlin.de/p2-repositories/"/>
+</location>
 <location includeAllPlatforms="false" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.emf.cdo.sdk.feature.group" version="4.0.0.v20110608-1747"/>
 <unit id="org.eclipse.platform.feature.group" version="3.7.0.v20110530-9gF7UHNFFt4cwE-pkZDJ7oz-mj4OSEIlu9SEv0f"/>
+<unit id="org.eclipse.platform.sdk" version="3.7.0.I20110613-1736"/>
+<unit id="org.eclipse.rcp.feature.group" version="3.7.0.v20110216-9DB5Fm1FpBGy_AaVz-mFamgY"/>
+<unit id="org.eclipse.sdk.ide" version="3.7.0.I20110613-1736"/>
 <unit id="org.eclipse.wst.xml_ui.feature.feature.group" version="3.3.0.v201103310011-7H7EFZ-DxumTla66ahfUnHfpsz0u5Z92pU4TxSL"/>
 <unit id="org.eclipse.wst.xsl.feature.feature.group" version="1.2.0.v201102200555-7T7YFRSFIqUoIrvYEvBiPGJXGZNg"/>
 <unit id="org.eclipse.emf.ecoretools.sdk.feature.group" version="1.0.0.v20110608-1633"/>
@@ -15,10 +22,6 @@
 <unit id="org.eclipse.xsd.sdk.feature.group" version="2.7.0.v20110606-0949"/>
 <unit id="org.eclipse.xtext.sdk.feature.group" version="2.0.0.v201106070531"/>
 <repository location="http://download.eclipse.org/releases/indigo"/>
-</location>
-<location includeAllPlatforms="false" includeMode="planner" includeSource="true" type="InstallableUnit">
-<unit id="de.hub.xveg.feature.feature.group" version="1.0.0.v201106291659"/>
-<repository location="http://www2.informatik.hu-berlin.de/~scheidge/p2/xveg"/>
 </location>
 </locations>
 </target>

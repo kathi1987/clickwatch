@@ -6,8 +6,8 @@
  */
 package de.hub.clickwatch.model;
 
-import org.eclipse.emf.cdo.CDOObject;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -26,10 +26,9 @@ import org.eclipse.emf.common.util.EList;
  *
  * @see de.hub.clickwatch.model.ClickWatchModelPackage#getElement()
  * @model
- * @extends CDOObject
  * @generated
  */
-public interface Element extends CDOObject {
+public interface Element extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -122,6 +121,30 @@ public interface Element extends CDOObject {
 	 * @model kind="operation"
 	 * @generated
 	 */
-	String getElementPath();
+	String getQualifiedName();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	Handler getHandler(String name);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	Element getChild(String name);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation"
+	 * @generated
+	 */
+	EList<Handler> getAllHandlers();
 
 } // Element

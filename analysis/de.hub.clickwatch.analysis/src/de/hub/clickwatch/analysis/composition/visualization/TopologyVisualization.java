@@ -8,7 +8,6 @@ import org.eclipse.emf.ecore.resource.Resource;
 import de.hub.clickwatch.analysis.models.topology.Link;
 import de.hub.clickwatch.analysis.models.topology.Node;
 import de.hub.clickwatch.analysis.models.topology.Topology;
-
 import edu.uci.ics.jung.algorithms.layout.CircleLayout;
 import edu.uci.ics.jung.algorithms.layout.Layout;
 import edu.uci.ics.jung.graph.Graph;

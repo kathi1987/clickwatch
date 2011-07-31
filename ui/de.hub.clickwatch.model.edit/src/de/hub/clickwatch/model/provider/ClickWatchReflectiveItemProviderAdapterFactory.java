@@ -11,19 +11,18 @@ import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.util.FeatureMap.Entry;
 import org.eclipse.emf.ecore.util.FeatureMapUtil;
 import org.eclipse.emf.ecore.xml.type.AnyType;
 import org.eclipse.emf.edit.EMFEditPlugin;
-import org.eclipse.emf.edit.provider.ComposedImage;
+import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.provider.DelegatingWrapperItemProvider;
 import org.eclipse.emf.edit.provider.FeatureMapEntryWrapperItemProvider;
 import org.eclipse.emf.edit.provider.IItemColorProvider;
 import org.eclipse.emf.edit.provider.ReflectiveItemProvider;
 import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
-
-import de.hub.clickwatch.model.IsRecordedAdapter;
 
 
 /**
@@ -146,20 +145,22 @@ public class ClickWatchReflectiveItemProviderAdapterFactory extends ReflectiveIt
 			}
 		}
 		
-		@Override
-		public Object getImage(Object object) {
-			if (object instanceof EObject) {
-				for (Adapter adapter: ((EObject)object).eAdapters()) {
-					if (adapter.equals(new IsRecordedAdapter())) {
-						List<Object> images = new ArrayList<Object>();
-						images.add(super.getImage(object));
-						images.add(NewEditPlugin.INSTANCE.getImage("full/ovr16/recording"));
-						return new ComposedImage(images);
-					}
-				}
-			}
-			return super.getImage(object);
-		}
+		// recording is not a feature any more, but maybe this piece of code can
+		// be used when we record with a DB		
+//		@Override
+//		public Object getImage(Object object) {
+//			if (object instanceof EObject) {
+//				for (Adapter adapter: ((EObject)object).eAdapters()) {
+//					if (adapter.equals(new IsRecordedAdapter())) {
+//						List<Object> images = new ArrayList<Object>();
+//						images.add(super.getImage(object));
+//						images.add(NewEditPlugin.INSTANCE.getImage("full/ovr16/recording"));
+//						return new ComposedImage(images);
+//					}
+//				}
+//			}
+//			return super.getImage(object);
+//		}
 
 		@Override
 		public Collection<?> getChildren(Object object) {
@@ -177,29 +178,28 @@ public class ClickWatchReflectiveItemProviderAdapterFactory extends ReflectiveIt
 				}
 			}
 			
-			// don't know what this code does, but it causes the double
-			// appearance of all elements in the tree (at least when the tree
-			// displays specific models
-//			if (object instanceof EObject) {
-//				EObject eObject = (EObject)object;
-//				for (EStructuralFeature feature: eObject.eClass().getEAllAttributes()) {
-//					if (feature.isMany()) {
-//						List<?> children = (List<?>) eObject.eGet(feature);
-//						int index = 0;
-//						for (Object unwrappedChild : children) {
-//							Object child = wrap(eObject, feature, unwrappedChild, index);
-//							result.add(child);
-//							index++;
-//						}
-//					} else {
-//						Object child = eObject.eGet(feature);
-//						if (child != null) {
-//							child = wrap(eObject, feature, child, CommandParameter.NO_INDEX);
-//							result.add(child);
-//						}
-//					}
-//				}
-//			}
+			if (object instanceof EObject) {
+				EObject eObject = (EObject)object;
+				for (EStructuralFeature feature: eObject.eClass().getEAllAttributes()) {
+					if (!(feature.getEType() == EcorePackage.eINSTANCE.getEFeatureMapEntry())) {
+						if (feature.isMany()) {
+							List<?> children = (List<?>) eObject.eGet(feature);
+							int index = 0;
+							for (Object unwrappedChild : children) {
+								Object child = wrap(eObject, feature, unwrappedChild, index);
+								result.add(child);
+								index++;
+							}
+						} else {
+							Object child = eObject.eGet(feature);
+							if (child != null) {
+								child = wrap(eObject, feature, child, CommandParameter.NO_INDEX);
+								result.add(child);
+							}
+						}
+					}
+				}
+			}
 			
 			
 			return result;

@@ -7,18 +7,18 @@ all_nodes(Network network):
 links(Network network):
 	network.all_nodes().collect(n|n.device_wifi.link_stat.bcast_stats.entry.link).flatten();
 	
-from(link l):
-	l.eContainer_entry.from;
+from(Link l):
+	l.eContainer_link.from;
 	
-to(link l):
+to(Link l):
 	l.to;
 	
 cached node(Network network, String address):
 	network.all_nodes().select(n|n.device_wifi.link_stat.bcast_stats.entry.from == address).first();
 
-cached reverse_link_info(Network network, link_info li):
-	let toAddr = li.eContainer_link.to:
-	let fromAddr = li.eContainer_link.eContainer_entry.from:
+cached reverse_link_info(Network network, Link_info li):
+	let toAddr = li.eContainer_link_info.to:
+	let fromAddr = li.eContainer_link_info.eContainer_link.from:
 	let toNode = node(network, toAddr): 
 		toNode.device_wifi.link_stat.bcast_stats.entry.link.select(l| l.to == fromAddr &&
 				l.link_info.rate == li.rate && l.link_info.size == li.size).first().link_info;

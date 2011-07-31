@@ -47,7 +47,7 @@ public class ControlSocket {
 	private InetAddress _host;
 	private int _port;
 	private Socket _sock;
-	private BufferedReader _in;
+	private BufferedReaderWithStatistics _in;
 	private BufferedWriter _out;
 	private int _protocolMinorVersion;
 
@@ -90,7 +90,7 @@ public class ControlSocket {
 		InputStream is = _sock.getInputStream();
 		OutputStream os = _sock.getOutputStream();
 
-		_in = new BufferedReader(new InputStreamReader(is));
+		_in = new BufferedReaderWithStatistics(new BufferedReader(new InputStreamReader(is)));
 		_out = new BufferedWriter(new OutputStreamWriter(os));
 
 		/*
@@ -849,5 +849,13 @@ public class ControlSocket {
 			System.out.println(ex.getMessage());
 			System.exit(1);
 		}
+	}
+	
+	public long getReadBytes() {
+		return _in.getReadBytes();
+	}
+	
+	public void resetStatistics() {
+		_in.resetStatistics();
 	}
 }

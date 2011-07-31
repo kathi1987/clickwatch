@@ -156,7 +156,7 @@ public class TestSourceModelPackageImpl extends EPackageImpl implements TestSour
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getRootClass_Mixed() {
+	public EAttribute getRootClass_Any() {
 		return (EAttribute)rootClassEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -165,8 +165,8 @@ public class TestSourceModelPackageImpl extends EPackageImpl implements TestSour
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getRootClass_Any() {
-		return (EAttribute)rootClassEClass.getEStructuralFeatures().get(3);
+	public EReference getRootClass_NonManyReference() {
+		return (EReference)rootClassEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -239,6 +239,15 @@ public class TestSourceModelPackageImpl extends EPackageImpl implements TestSour
 	 */
 	public EAttribute getListFeatureElementClass1_AnAttributeOfFeatureClass1() {
 		return (EAttribute)listFeatureElementClass1EClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getListFeatureElementClass1_Any() {
+		return (EAttribute)listFeatureElementClass1EClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -326,8 +335,8 @@ public class TestSourceModelPackageImpl extends EPackageImpl implements TestSour
 		rootClassEClass = createEClass(ROOT_CLASS);
 		createEAttribute(rootClassEClass, ROOT_CLASS__AN_ATTRIBUTE1);
 		createEReference(rootClassEClass, ROOT_CLASS__NORMAL_REFERENCE);
-		createEAttribute(rootClassEClass, ROOT_CLASS__MIXED);
 		createEAttribute(rootClassEClass, ROOT_CLASS__ANY);
+		createEReference(rootClassEClass, ROOT_CLASS__NON_MANY_REFERENCE);
 
 		classWithListFeaturesEClass = createEClass(CLASS_WITH_LIST_FEATURES);
 		createEReference(classWithListFeaturesEClass, CLASS_WITH_LIST_FEATURES__LIST_FEATURE1);
@@ -338,6 +347,7 @@ public class TestSourceModelPackageImpl extends EPackageImpl implements TestSour
 		createEAttribute(listFeatureElementClass1EClass, LIST_FEATURE_ELEMENT_CLASS1__NAME);
 		createEReference(listFeatureElementClass1EClass, LIST_FEATURE_ELEMENT_CLASS1__LIST_FEATURE3);
 		createEAttribute(listFeatureElementClass1EClass, LIST_FEATURE_ELEMENT_CLASS1__AN_ATTRIBUTE_OF_FEATURE_CLASS1);
+		createEAttribute(listFeatureElementClass1EClass, LIST_FEATURE_ELEMENT_CLASS1__ANY);
 
 		listFeatureElementClass2EClass = createEClass(LIST_FEATURE_ELEMENT_CLASS2);
 		createEAttribute(listFeatureElementClass2EClass, LIST_FEATURE_ELEMENT_CLASS2__NAME);
@@ -381,8 +391,8 @@ public class TestSourceModelPackageImpl extends EPackageImpl implements TestSour
 		initEClass(rootClassEClass, RootClass.class, "RootClass", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getRootClass_AnAttribute1(), ecorePackage.getEString(), "anAttribute1", null, 0, 1, RootClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRootClass_NormalReference(), this.getClassWithListFeatures(), null, "normalReference", null, 0, -1, RootClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getRootClass_Mixed(), ecorePackage.getEFeatureMapEntry(), "mixed", null, 0, -1, RootClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getRootClass_Any(), ecorePackage.getEFeatureMapEntry(), "any", null, 0, -1, RootClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRootClass_NonManyReference(), this.getClassWithListFeatures(), null, "nonManyReference", null, 0, 1, RootClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(classWithListFeaturesEClass, ClassWithListFeatures.class, "ClassWithListFeatures", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getClassWithListFeatures_ListFeature1(), this.getListFeatureElementClass1(), null, "listFeature1", null, 0, -1, ClassWithListFeatures.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -393,6 +403,7 @@ public class TestSourceModelPackageImpl extends EPackageImpl implements TestSour
 		initEAttribute(getListFeatureElementClass1_Name(), ecorePackage.getEString(), "name", null, 0, 1, ListFeatureElementClass1.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getListFeatureElementClass1_ListFeature3(), this.getListFeatureElementClass3(), null, "listFeature3", null, 0, -1, ListFeatureElementClass1.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getListFeatureElementClass1_AnAttributeOfFeatureClass1(), ecorePackage.getEString(), "anAttributeOfFeatureClass1", null, 0, 1, ListFeatureElementClass1.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getListFeatureElementClass1_Any(), ecorePackage.getEFeatureMapEntry(), "any", null, 0, -1, ListFeatureElementClass1.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(listFeatureElementClass2EClass, ListFeatureElementClass2.class, "ListFeatureElementClass2", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getListFeatureElementClass2_Name(), ecorePackage.getEString(), "name", null, 0, 1, ListFeatureElementClass2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -419,21 +430,16 @@ public class TestSourceModelPackageImpl extends EPackageImpl implements TestSour
 	protected void createExtendedMetaDataAnnotations() {
 		String source = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData";		
 		addAnnotation
-		  (rootClassEClass, 
-		   source, 
-		   new String[] {
-			 "name", "handler",
-			 "kind", "element"
-		   });		
-		addAnnotation
-		  (getRootClass_Mixed(), 
+		  (getRootClass_Any(), 
 		   source, 
 		   new String[] {
 			 "kind", "elementWildcard",
-			 "name", ":mixed"
+			 "name", ":1",
+			 "processing", "lax",
+			 "wildcards", "##any"
 		   });		
 		addAnnotation
-		  (getRootClass_Any(), 
+		  (getListFeatureElementClass1_Any(), 
 		   source, 
 		   new String[] {
 			 "kind", "elementWildcard",

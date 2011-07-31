@@ -30,8 +30,8 @@ import org.eclipse.ui.part.ViewPart;
 import com.google.common.base.Preconditions;
 import com.google.inject.Inject;
 
-import de.hub.clickwatch.XmlModelRepository;
 import de.hub.clickwatch.model.provider.ClickWatchReflectiveItemProviderAdapterFactory;
+import de.hub.emfxml.XmlModelRepository;
 
 
 public class ResultView extends ViewPart {
@@ -91,7 +91,6 @@ public class ResultView extends ViewPart {
 				layout.topControl = treeViewer.getControl();
 				treeViewer.getControl().getParent().layout();
 			}							
-
 		}
 	}
 	

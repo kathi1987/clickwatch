@@ -26,7 +26,6 @@
       <import plugin="org.eclipse.xtend" version="1.0.1" match="greaterOrEqual"/>
       <import plugin="org.eclipse.xtend.typesystem.emf" version="1.0.1" match="greaterOrEqual"/>
       <import plugin="com.google.collect" version="1.0.0" match="greaterOrEqual"/>
-      <import plugin="com.google.guice" version="3.0.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.jface" version="3.7.0" match="greaterOrEqual"/>
       <import plugin="de.hub.clickwatch.model.editor" version="1.0.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.jface.text" version="3.6.1" match="greaterOrEqual"/>
@@ -34,6 +33,9 @@
       <import plugin="org.eclipse.ui.ide" version="3.6.2" match="greaterOrEqual"/>
       <import plugin="org.eclipse.ui.editors" version="3.6.1" match="greaterOrEqual"/>
       <import plugin="org.eclipse.core.commands" version="3.6.0" match="greaterOrEqual"/>
+      <import plugin="de.hub.clickwatch.specificmodels" version="2.1.0" match="greaterOrEqual"/>
+      <import plugin="de.hub.clickwatch.recorder" version="2.0.0" match="greaterOrEqual"/>
+      <import plugin="de.hub.clickwatch.recorder.model.editor" version="1.0.0" match="greaterOrEqual"/>
       <import plugin="com.google.inject" version="2.0.0" match="greaterOrEqual"/>
       <import plugin="de.hub.xveg" version="1.0.0" match="greaterOrEqual"/>
       <import plugin="de.hub.clickwatch.core.test"/>
@@ -51,9 +53,7 @@
       <import plugin="org.eclipse.graphiti.ui" version="0.7.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.ui.views.properties.tabbed" version="3.5.100" match="greaterOrEqual"/>
       <import plugin="org.eclipse.emf.transaction" version="1.4.0" match="greaterOrEqual"/>
-      <import plugin="edu.uci.ics.jung"/>
       <import plugin="org.eclipse.emf.ecore.editor" version="2.6.0" match="greaterOrEqual"/>
-      <import plugin="org.jfree.jfreechart"/>
       <import plugin="org.eclipse.emf.cdo" version="3.0.1" match="greaterOrEqual"/>
       <import plugin="org.eclipse.emf" version="2.6.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.xtext.xtend2" version="2.0.0" match="greaterOrEqual"/>
@@ -62,6 +62,17 @@
       <import plugin="org.eclipse.swt" version="3.6.1" match="greaterOrEqual"/>
       <import plugin="org.eclipse.ui" version="3.6.1" match="greaterOrEqual"/>
       <import plugin="org.eclipse.emf.edit.ui"/>
+      <import plugin="org.eclipse.core.runtime" version="3.7.0" match="greaterOrEqual"/>
+      <import plugin="de.hub.clickwatch.core" version="2.0.0" match="greaterOrEqual"/>
+      <import plugin="de.hub.specificmodels" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="de.hub.clickwatch.recorder.model" version="2.0.0" match="greaterOrEqual"/>
+      <import plugin="de.hub.clickwatch.core.test" version="2.0.0" match="greaterOrEqual"/>
+      <import plugin="de.hub.clickwatch.ui" version="2.0.0" match="greaterOrEqual"/>
+      <import plugin="com.google.guice" version="3.0.0" match="greaterOrEqual"/>
+      <import plugin="de.hub.emfxml" version="2.0.0" match="greaterOrEqual"/>
+      <import plugin="de.hub.clickwatch.recorder.ui" version="2.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.ecore.xmi" version="2.7.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.mapping.xsd2ecore" version="2.5.0" match="greaterOrEqual"/>
    </requires>
 
    <plugin
@@ -93,13 +104,6 @@
          unpack="false"/>
 
    <plugin
-         id="com.google.guice"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="de.hub.clickwatch.analysis"
          download-size="0"
          install-size="0"
@@ -115,6 +119,62 @@
 
    <plugin
          id="de.hub.clickwatch.model.editor"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="de.hub.specificmodels"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="de.hub.clickwatch.specificmodels"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="de.hub.clickwatch.recorder"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="de.hub.clickwatch.recorder.model"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="de.hub.clickwatch.recorder.model.edit"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="de.hub.clickwatch.recorder.model.editor"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="de.hub.clickwatch.recorder.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="de.hub.emfxml"
          download-size="0"
          install-size="0"
          version="0.0.0"

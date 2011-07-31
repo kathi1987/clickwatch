@@ -1,8 +1,10 @@
 package de.hub.clickwatch.util;
 
 import java.io.IOException;
-import java.net.InetAddress;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 
 import click.ClickException;
@@ -16,15 +18,9 @@ import de.hub.clickcontrol.IClickSocket;
 public abstract class ClickSocketTestImpl implements IClickSocket {
 	
 	private boolean isConnected = false;
-	
-	protected InetAddress host;
-	protected int port;
 
 	@Override
-	public void connect(InetAddress host, int port, int timeout) throws IOException {
-		this.host = host;
-		this.port = port;
-		
+	public void connect(String host, int port, int timeout) throws IOException {
 		delay();
 		isConnected = true;
 	}
@@ -48,7 +44,29 @@ public abstract class ClickSocketTestImpl implements IClickSocket {
 		return Arrays.asList(elements);
 	}
 	
-	public abstract String[] getElements();
+	public HandlerInfo[] getHandlers() {
+		return new HandlerInfo[] {};
+	}
+	
+	public HandlerInfo[] getHandler(String elementName) {
+		List<HandlerInfo> result = new ArrayList<HandlerInfo>();
+		for (HandlerInfo handlerInfo: getHandlers()) {
+			if (handlerInfo.getElementName().equals(elementName)) {
+				result.add(handlerInfo);
+			}
+		}
+		return result.toArray(new HandlerInfo[] {});
+	}
+	
+	public String[] getElements() {
+		Collection<String> elements = new HashSet<String>();
+		for (HandlerInfo handlerInfo: getHandlers()) {
+			elements.add(handlerInfo.getElementName());
+		}
+		List<String> elementList = new ArrayList<String>();
+		elementList.addAll(elements);
+		return elementList.toArray(new String[] {});
+	}
 
 	@Override
 	public List<HandlerInfo> getElementHandlers(String name)
@@ -59,7 +77,7 @@ public abstract class ClickSocketTestImpl implements IClickSocket {
 		return Arrays.asList(handler);
 	}
 	
-	public abstract HandlerInfo[] getHandler(String element);
+	
 
 	@Override
 	public char[] read(String elementName, String handlerName)
@@ -85,6 +103,11 @@ public abstract class ClickSocketTestImpl implements IClickSocket {
 //			Throwables.propagate(e);
 //		}
 	}
-
+	
 	public abstract void handleWrite(String element, String handler, String value);
+	
+	@Override
+	public <T> T getAdapter(Class<T> theClass) {
+		return null;
+	}
 }

@@ -6,7 +6,7 @@
  */
 package de.hub.clickwatch.model;
 
-import org.eclipse.emf.cdo.CDOObject;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.FeatureMap;
 
 /**
@@ -25,15 +25,15 @@ import org.eclipse.emf.ecore.util.FeatureMap;
  *   <li>{@link de.hub.clickwatch.model.Handler#getMixed <em>Mixed</em>}</li>
  *   <li>{@link de.hub.clickwatch.model.Handler#getAny <em>Any</em>}</li>
  *   <li>{@link de.hub.clickwatch.model.Handler#getValue <em>Value</em>}</li>
+ *   <li>{@link de.hub.clickwatch.model.Handler#getTimestamp <em>Timestamp</em>}</li>
  * </ul>
  * </p>
  *
  * @see de.hub.clickwatch.model.ClickWatchModelPackage#getHandler()
  * @model extendedMetaData="kind='mixed'"
- * @extends CDOObject
  * @generated
  */
-public interface Handler extends CDOObject {
+public interface Handler extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -226,5 +226,39 @@ public interface Handler extends CDOObject {
 	 * @generated
 	 */
 	void setValue(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Timestamp</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Timestamp</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Timestamp</em>' attribute.
+	 * @see #setTimestamp(long)
+	 * @see de.hub.clickwatch.model.ClickWatchModelPackage#getHandler_Timestamp()
+	 * @model
+	 * @generated
+	 */
+	long getTimestamp();
+
+	/**
+	 * Sets the value of the '{@link de.hub.clickwatch.model.Handler#getTimestamp <em>Timestamp</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Timestamp</em>' attribute.
+	 * @see #getTimestamp()
+	 * @generated
+	 */
+	void setTimestamp(long value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation"
+	 * @generated
+	 */
+	String getQualifiedName();
 
 } // Handler

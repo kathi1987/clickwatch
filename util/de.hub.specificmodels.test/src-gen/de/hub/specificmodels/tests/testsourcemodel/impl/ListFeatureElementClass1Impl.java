@@ -23,7 +23,9 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
+import org.eclipse.emf.ecore.util.BasicFeatureMap;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -36,6 +38,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link de.hub.specificmodels.tests.testsourcemodel.impl.ListFeatureElementClass1Impl#getName <em>Name</em>}</li>
  *   <li>{@link de.hub.specificmodels.tests.testsourcemodel.impl.ListFeatureElementClass1Impl#getListFeature3 <em>List Feature3</em>}</li>
  *   <li>{@link de.hub.specificmodels.tests.testsourcemodel.impl.ListFeatureElementClass1Impl#getAnAttributeOfFeatureClass1 <em>An Attribute Of Feature Class1</em>}</li>
+ *   <li>{@link de.hub.specificmodels.tests.testsourcemodel.impl.ListFeatureElementClass1Impl#getAny <em>Any</em>}</li>
  * </ul>
  * </p>
  *
@@ -91,6 +94,16 @@ public class ListFeatureElementClass1Impl extends EObjectImpl implements ListFea
 	 * @ordered
 	 */
 	protected String anAttributeOfFeatureClass1 = AN_ATTRIBUTE_OF_FEATURE_CLASS1_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getAny() <em>Any</em>}' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAny()
+	 * @generated
+	 * @ordered
+	 */
+	protected FeatureMap any;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -170,11 +183,25 @@ public class ListFeatureElementClass1Impl extends EObjectImpl implements ListFea
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public FeatureMap getAny() {
+		if (any == null) {
+			any = new BasicFeatureMap(this, TestSourceModelPackage.LIST_FEATURE_ELEMENT_CLASS1__ANY);
+		}
+		return any;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case TestSourceModelPackage.LIST_FEATURE_ELEMENT_CLASS1__LIST_FEATURE3:
 				return ((InternalEList<?>)getListFeature3()).basicRemove(otherEnd, msgs);
+			case TestSourceModelPackage.LIST_FEATURE_ELEMENT_CLASS1__ANY:
+				return ((InternalEList<?>)getAny()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -193,6 +220,9 @@ public class ListFeatureElementClass1Impl extends EObjectImpl implements ListFea
 				return getListFeature3();
 			case TestSourceModelPackage.LIST_FEATURE_ELEMENT_CLASS1__AN_ATTRIBUTE_OF_FEATURE_CLASS1:
 				return getAnAttributeOfFeatureClass1();
+			case TestSourceModelPackage.LIST_FEATURE_ELEMENT_CLASS1__ANY:
+				if (coreType) return getAny();
+				return ((FeatureMap.Internal)getAny()).getWrapper();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -216,6 +246,9 @@ public class ListFeatureElementClass1Impl extends EObjectImpl implements ListFea
 			case TestSourceModelPackage.LIST_FEATURE_ELEMENT_CLASS1__AN_ATTRIBUTE_OF_FEATURE_CLASS1:
 				setAnAttributeOfFeatureClass1((String)newValue);
 				return;
+			case TestSourceModelPackage.LIST_FEATURE_ELEMENT_CLASS1__ANY:
+				((FeatureMap.Internal)getAny()).set(newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -237,6 +270,9 @@ public class ListFeatureElementClass1Impl extends EObjectImpl implements ListFea
 			case TestSourceModelPackage.LIST_FEATURE_ELEMENT_CLASS1__AN_ATTRIBUTE_OF_FEATURE_CLASS1:
 				setAnAttributeOfFeatureClass1(AN_ATTRIBUTE_OF_FEATURE_CLASS1_EDEFAULT);
 				return;
+			case TestSourceModelPackage.LIST_FEATURE_ELEMENT_CLASS1__ANY:
+				getAny().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -255,6 +291,8 @@ public class ListFeatureElementClass1Impl extends EObjectImpl implements ListFea
 				return listFeature3 != null && !listFeature3.isEmpty();
 			case TestSourceModelPackage.LIST_FEATURE_ELEMENT_CLASS1__AN_ATTRIBUTE_OF_FEATURE_CLASS1:
 				return AN_ATTRIBUTE_OF_FEATURE_CLASS1_EDEFAULT == null ? anAttributeOfFeatureClass1 != null : !AN_ATTRIBUTE_OF_FEATURE_CLASS1_EDEFAULT.equals(anAttributeOfFeatureClass1);
+			case TestSourceModelPackage.LIST_FEATURE_ELEMENT_CLASS1__ANY:
+				return any != null && !any.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -273,6 +311,8 @@ public class ListFeatureElementClass1Impl extends EObjectImpl implements ListFea
 		result.append(name);
 		result.append(", anAttributeOfFeatureClass1: ");
 		result.append(anAttributeOfFeatureClass1);
+		result.append(", any: ");
+		result.append(any);
 		result.append(')');
 		return result.toString();
 	}

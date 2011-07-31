@@ -24,12 +24,6 @@ import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 
 import com.google.common.base.Preconditions;
 
-import de.hub.clickwatch.model.ClickWatchModelPackage;
-import de.hub.clickwatch.model.Element;
-import de.hub.clickwatch.model.Handler;
-import de.hub.clickwatch.model.Network;
-import de.hub.clickwatch.model.Node;
-
 
 public class SpecificMetaModelGenerator {
 	

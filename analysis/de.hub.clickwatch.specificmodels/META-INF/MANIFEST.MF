@@ -2,8 +2,9 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Specificmodels
 Bundle-SymbolicName: de.hub.clickwatch.specificmodels
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 2.1.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Require-Bundle: de.hub.clickwatch.core;bundle-version="2.0.0",
- de.hub.specificmodels;bundle-version="1.0.0",
+ de.hub.specificmodels;bundle-version="1.0.0";visibility:=reexport,
  com.google.collect;bundle-version="1.0.0"
+Export-Package: de.hub.clickwatch.specificmodels

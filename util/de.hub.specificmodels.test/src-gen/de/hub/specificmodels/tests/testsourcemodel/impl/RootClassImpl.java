@@ -37,8 +37,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link de.hub.specificmodels.tests.testsourcemodel.impl.RootClassImpl#getAnAttribute1 <em>An Attribute1</em>}</li>
  *   <li>{@link de.hub.specificmodels.tests.testsourcemodel.impl.RootClassImpl#getNormalReference <em>Normal Reference</em>}</li>
- *   <li>{@link de.hub.specificmodels.tests.testsourcemodel.impl.RootClassImpl#getMixed <em>Mixed</em>}</li>
  *   <li>{@link de.hub.specificmodels.tests.testsourcemodel.impl.RootClassImpl#getAny <em>Any</em>}</li>
+ *   <li>{@link de.hub.specificmodels.tests.testsourcemodel.impl.RootClassImpl#getNonManyReference <em>Non Many Reference</em>}</li>
  * </ul>
  * </p>
  *
@@ -76,16 +76,6 @@ public class RootClassImpl extends EObjectImpl implements RootClass {
 	protected EList<ClassWithListFeatures> normalReference;
 
 	/**
-	 * The cached value of the '{@link #getMixed() <em>Mixed</em>}' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMixed()
-	 * @generated
-	 * @ordered
-	 */
-	protected FeatureMap mixed;
-
-	/**
 	 * The cached value of the '{@link #getAny() <em>Any</em>}' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -94,6 +84,16 @@ public class RootClassImpl extends EObjectImpl implements RootClass {
 	 * @ordered
 	 */
 	protected FeatureMap any;
+
+	/**
+	 * The cached value of the '{@link #getNonManyReference() <em>Non Many Reference</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNonManyReference()
+	 * @generated
+	 * @ordered
+	 */
+	protected ClassWithListFeatures nonManyReference;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -152,18 +152,6 @@ public class RootClassImpl extends EObjectImpl implements RootClass {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public FeatureMap getMixed() {
-		if (mixed == null) {
-			mixed = new BasicFeatureMap(this, TestSourceModelPackage.ROOT_CLASS__MIXED);
-		}
-		return mixed;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public FeatureMap getAny() {
 		if (any == null) {
 			any = new BasicFeatureMap(this, TestSourceModelPackage.ROOT_CLASS__ANY);
@@ -176,15 +164,58 @@ public class RootClassImpl extends EObjectImpl implements RootClass {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public ClassWithListFeatures getNonManyReference() {
+		return nonManyReference;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetNonManyReference(ClassWithListFeatures newNonManyReference, NotificationChain msgs) {
+		ClassWithListFeatures oldNonManyReference = nonManyReference;
+		nonManyReference = newNonManyReference;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, TestSourceModelPackage.ROOT_CLASS__NON_MANY_REFERENCE, oldNonManyReference, newNonManyReference);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setNonManyReference(ClassWithListFeatures newNonManyReference) {
+		if (newNonManyReference != nonManyReference) {
+			NotificationChain msgs = null;
+			if (nonManyReference != null)
+				msgs = ((InternalEObject)nonManyReference).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - TestSourceModelPackage.ROOT_CLASS__NON_MANY_REFERENCE, null, msgs);
+			if (newNonManyReference != null)
+				msgs = ((InternalEObject)newNonManyReference).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - TestSourceModelPackage.ROOT_CLASS__NON_MANY_REFERENCE, null, msgs);
+			msgs = basicSetNonManyReference(newNonManyReference, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TestSourceModelPackage.ROOT_CLASS__NON_MANY_REFERENCE, newNonManyReference, newNonManyReference));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case TestSourceModelPackage.ROOT_CLASS__NORMAL_REFERENCE:
 				return ((InternalEList<?>)getNormalReference()).basicRemove(otherEnd, msgs);
-			case TestSourceModelPackage.ROOT_CLASS__MIXED:
-				return ((InternalEList<?>)getMixed()).basicRemove(otherEnd, msgs);
 			case TestSourceModelPackage.ROOT_CLASS__ANY:
 				return ((InternalEList<?>)getAny()).basicRemove(otherEnd, msgs);
+			case TestSourceModelPackage.ROOT_CLASS__NON_MANY_REFERENCE:
+				return basicSetNonManyReference(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -201,12 +232,11 @@ public class RootClassImpl extends EObjectImpl implements RootClass {
 				return getAnAttribute1();
 			case TestSourceModelPackage.ROOT_CLASS__NORMAL_REFERENCE:
 				return getNormalReference();
-			case TestSourceModelPackage.ROOT_CLASS__MIXED:
-				if (coreType) return getMixed();
-				return ((FeatureMap.Internal)getMixed()).getWrapper();
 			case TestSourceModelPackage.ROOT_CLASS__ANY:
 				if (coreType) return getAny();
 				return ((FeatureMap.Internal)getAny()).getWrapper();
+			case TestSourceModelPackage.ROOT_CLASS__NON_MANY_REFERENCE:
+				return getNonManyReference();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -227,11 +257,11 @@ public class RootClassImpl extends EObjectImpl implements RootClass {
 				getNormalReference().clear();
 				getNormalReference().addAll((Collection<? extends ClassWithListFeatures>)newValue);
 				return;
-			case TestSourceModelPackage.ROOT_CLASS__MIXED:
-				((FeatureMap.Internal)getMixed()).set(newValue);
-				return;
 			case TestSourceModelPackage.ROOT_CLASS__ANY:
 				((FeatureMap.Internal)getAny()).set(newValue);
+				return;
+			case TestSourceModelPackage.ROOT_CLASS__NON_MANY_REFERENCE:
+				setNonManyReference((ClassWithListFeatures)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -251,11 +281,11 @@ public class RootClassImpl extends EObjectImpl implements RootClass {
 			case TestSourceModelPackage.ROOT_CLASS__NORMAL_REFERENCE:
 				getNormalReference().clear();
 				return;
-			case TestSourceModelPackage.ROOT_CLASS__MIXED:
-				getMixed().clear();
-				return;
 			case TestSourceModelPackage.ROOT_CLASS__ANY:
 				getAny().clear();
+				return;
+			case TestSourceModelPackage.ROOT_CLASS__NON_MANY_REFERENCE:
+				setNonManyReference((ClassWithListFeatures)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -273,10 +303,10 @@ public class RootClassImpl extends EObjectImpl implements RootClass {
 				return AN_ATTRIBUTE1_EDEFAULT == null ? anAttribute1 != null : !AN_ATTRIBUTE1_EDEFAULT.equals(anAttribute1);
 			case TestSourceModelPackage.ROOT_CLASS__NORMAL_REFERENCE:
 				return normalReference != null && !normalReference.isEmpty();
-			case TestSourceModelPackage.ROOT_CLASS__MIXED:
-				return mixed != null && !mixed.isEmpty();
 			case TestSourceModelPackage.ROOT_CLASS__ANY:
 				return any != null && !any.isEmpty();
+			case TestSourceModelPackage.ROOT_CLASS__NON_MANY_REFERENCE:
+				return nonManyReference != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -293,8 +323,6 @@ public class RootClassImpl extends EObjectImpl implements RootClass {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (anAttribute1: ");
 		result.append(anAttribute1);
-		result.append(", mixed: ");
-		result.append(mixed);
 		result.append(", any: ");
 		result.append(any);
 		result.append(')');

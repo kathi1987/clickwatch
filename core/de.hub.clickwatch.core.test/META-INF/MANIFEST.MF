@@ -4,9 +4,9 @@ Bundle-Name: ClickWatch core test
 Bundle-SymbolicName: de.hub.clickwatch.core.test
 Bundle-Version: 2.0.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Require-Bundle: de.hub.clickwatch.core,
+Require-Bundle: de.hub.clickwatch.core;visibility:=reexport,
  org.junit;bundle-version="4.8.2";visibility:=reexport,
- com.google.collect;bundle-version="1.0.0",
- com.google.guice;bundle-version="3.0.0"
+ com.google.collect;bundle-version="1.0.0";visibility:=reexport,
+ org.eclipse.xsd;bundle-version="2.7.0"
 Export-Package: de.hub.clickwatch.tests,
  de.hub.clickwatch.tests.clicksockets
