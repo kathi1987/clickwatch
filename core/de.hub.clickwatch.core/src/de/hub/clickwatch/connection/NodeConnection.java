@@ -11,6 +11,7 @@ import de.hub.clickcontrol.ClickSocketStatistics;
 import de.hub.clickcontrol.IClickSocket;
 import de.hub.clickwatch.ClickWatchModule;
 import de.hub.clickwatch.connection.adapter.AbstractAdapter;
+import de.hub.clickwatch.connection.adapter.IHandlerAdapter;
 import de.hub.clickwatch.connection.adapter.IPullHandlerAdapter;
 import de.hub.clickwatch.connection.adapter.IMetaDataAdapter;
 import de.hub.clickwatch.connection.adapter.INodeAdapter;
@@ -25,9 +26,10 @@ public class NodeConnection implements INodeConnection {
 	private IClickSocket clickSocket = null;
 	
 	@Inject private IMetaDataAdapter metaDataAdapter;
-	@Inject private IPullHandlerAdapter handlerAdapter;
+	@Inject private IPullHandlerAdapter pullHandlerAdapter;
 	@Inject private IValueAdapter valueAdapter;
 	@Inject private INodeAdapter nodeAdapter;
+	@Inject private IHandlerAdapter handlerAdapter;
 	private SocketStatisticsAdapter socketStatisticsAdapter;
 	
 	private String host;
@@ -63,13 +65,13 @@ public class NodeConnection implements INodeConnection {
 		}
 		
 		((AbstractAdapter)metaDataAdapter).clearCaches();
-		((AbstractAdapter)handlerAdapter).clearCaches();
+		((AbstractAdapter)pullHandlerAdapter).clearCaches();
 		((AbstractAdapter)nodeAdapter).clearCaches();
 	}
 	
 	protected void clearAllCaches() {
 		((AbstractAdapter)metaDataAdapter).clearCaches();
-		((AbstractAdapter)handlerAdapter).clearCaches();
+		((AbstractAdapter)pullHandlerAdapter).clearCaches();
 		((AbstractAdapter)nodeAdapter).clearCaches();
 	}
 
@@ -96,14 +98,17 @@ public class NodeConnection implements INodeConnection {
 			init((AbstractAdapter)metaDataAdapter);
 			return (T)metaDataAdapter;
 		} else if (adapterClass == IPullHandlerAdapter.class) {
-			init((AbstractAdapter)handlerAdapter);
-			return (T)handlerAdapter;
+			init((AbstractAdapter)pullHandlerAdapter);
+			return (T)pullHandlerAdapter;
 		} else if (adapterClass == IValueAdapter.class) {
 			init((AbstractAdapter)valueAdapter);
 			return (T)valueAdapter;
 		} else if (adapterClass == INodeAdapter.class) {
 			init((AbstractAdapter)nodeAdapter);
 			return (T)nodeAdapter;
+		} else if (adapterClass == IHandlerAdapter.class) {
+			init((AbstractAdapter)handlerAdapter);
+			return (T)handlerAdapter;
 		} else if (adapterClass == SocketStatisticsAdapter.class) {
 			if (socketStatisticsAdapter == null) {
 				if (clickSocket.getAdapter(ClickSocketStatistics.class) != null) {

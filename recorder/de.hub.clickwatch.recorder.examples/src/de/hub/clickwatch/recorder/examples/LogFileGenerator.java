@@ -19,7 +19,6 @@ import org.eclipse.emf.ecore.xml.type.AnyType;
 
 import com.google.inject.Inject;
 
-import de.hub.clickwatch.ClickWatchStandaloneSetup;
 import de.hub.clickwatch.main.ClickWatchExternalLauncher;
 import de.hub.clickwatch.main.IClickWatchContext;
 import de.hub.clickwatch.main.IClickWatchMain;
@@ -28,7 +27,6 @@ import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.model.Node;
 import de.hub.clickwatch.model.provider.TimeStampLabelProvider;
 import de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr;
-import de.hub.clickwatch.recorder.database.CWRecorderStandaloneSetup;
 import de.hub.clickwatch.recorder.database.DataBaseUtil;
 import de.hub.clickwatch.util.ILogger;
 import de.hub.clickwatch.util.Throwables;
@@ -169,12 +167,6 @@ public class LogFileGenerator implements IClickWatchMain {
 		}
 	}
 
-	public static final void main(String args[]) {
-		ClickWatchStandaloneSetup.doSetup();
-		CWRecorderStandaloneSetup.doSetup();
-		ClickWatchExternalLauncher.launch(args, LogFileGenerator.class);
-	}
-	
 	class CurrentIterator implements Iterator<Handler> {
 		private final Iterator<Handler> base;
 		private Handler current = null;
@@ -203,5 +195,9 @@ public class LogFileGenerator implements IClickWatchMain {
 		public Handler getCurrent() {
 			return current;
 		}
+	}
+	
+	public static final void main(String args[]) {
+		ClickWatchExternalLauncher.launch(args, LogFileGenerator.class);
 	}
 }

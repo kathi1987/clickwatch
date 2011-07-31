@@ -21,7 +21,7 @@ public class XmlValueAdapter extends AbstractValueAdapter implements IValueAdapt
 	@Inject private XmlModelRepository xmlModelRepository;
 
 	@Override
-	public void setValue(Handler handler, String plainRealValue) {
+	protected void setValue(Handler handler, String plainRealValue) {
 		plainRealValue = XmlModelRepository.stripProcessingInstructions(plainRealValue);
 		XMLTypeDocumentRoot xml = (XMLTypeDocumentRoot)xmlModelRepository.deserializeXml("<xml>" + plainRealValue + "</xml>");
 		FeatureMap xmlRootMixed = ((AnyType)xml.getMixed().getValue(0)).getMixed();

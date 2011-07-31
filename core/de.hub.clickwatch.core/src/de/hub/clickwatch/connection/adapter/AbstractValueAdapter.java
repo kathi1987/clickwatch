@@ -26,7 +26,7 @@ public abstract class AbstractValueAdapter extends AbstractAdapter implements IV
 	@Override
 	public Handler create(String qualifiedName, long timestamp,
 			String plainValue) {
-		Handler result = createNewHandler();
+		Handler result = createNewHandler(qualifiedName, plainValue);
 		result.setName(qualifiedName);
 		result.setTimestamp(timestamp);
 		setValue(result, plainValue);
@@ -46,7 +46,7 @@ public abstract class AbstractValueAdapter extends AbstractAdapter implements IV
 		}
 	}
 
-	protected Handler createNewHandler() {
+	protected Handler createNewHandler(String qualifiedName, String plainValue) {
 		return ClickWatchModelFactory.eINSTANCE.createHandler();
 	}
 

@@ -11,7 +11,6 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 
-import de.hub.clickwatch.main.IClickWatchContextAdapter;
 import de.hub.clickwatch.main.IExperimentProvider;
 import de.hub.clickwatch.recoder.cwdatabase.DataBase;
 import de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr;

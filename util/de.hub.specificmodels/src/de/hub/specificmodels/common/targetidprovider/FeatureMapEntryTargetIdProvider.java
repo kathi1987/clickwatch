@@ -7,6 +7,7 @@ import de.hub.specificmodels.common.SourceObjectKey;
 import de.hub.specificmodels.common.TargetId;
 import de.hub.specificmodels.common.targetproperties.GuessMultiplicities;
 import de.hub.specificmodels.common.targetproperties.GuessTypes;
+import de.hub.specificmodels.common.targetproperties.IsBasedOnXml;
 
 public class FeatureMapEntryTargetIdProvider extends AbstractTargetIdProvider {
 
@@ -29,6 +30,7 @@ public class FeatureMapEntryTargetIdProvider extends AbstractTargetIdProvider {
 			result.getProperty(GuessTypes.class).set(true);
 		}
 		result.getProperty(GuessMultiplicities.class).set(true);
+		result.getProperty(IsBasedOnXml.class).set(true);
 		return result;
 	}
 

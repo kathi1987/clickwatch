@@ -5,5 +5,6 @@ Bundle-SymbolicName: de.hub.clickwatch.main
 Bundle-Version: 2.0.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Require-Bundle: de.hub.clickwatch.core;bundle-version="2.0.0";visibility:=reexport,
- de.hub.clickwatch.recorder;bundle-version="2.0.0";visibility:=reexport
+ de.hub.clickwatch.recorder;bundle-version="2.0.0";visibility:=reexport,
+ de.hub.clickwatch.specificmodels.brn;bundle-version="2.0.0";visibility:=reexport
 Export-Package: de.hub.clickwatch.main

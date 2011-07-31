@@ -15,6 +15,10 @@ import org.apache.commons.cli.PosixParser;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 
+import de.hub.clickwatch.ClickWatchStandaloneSetup;
+import de.hub.clickwatch.main.internal.IClickWatchContextAdapter;
+import de.hub.clickwatch.recorder.database.CWRecorderStandaloneSetup;
+
 
 public class ClickWatchExternalLauncher {
 	
@@ -74,6 +78,7 @@ public class ClickWatchExternalLauncher {
 	}
 	
 	public static void launch(String[] args, Class<? extends IClickWatchMain> mainClass, Class<? extends IClickWatchContextAdapter>[] adapterClasses) {		
+		standaloneSetUp();
 		ClickWatchExternalLauncher launcher = new ClickWatchExternalLauncher(mainClass, adapterClasses);
 		if (launcher.initalize(args)) {
 			launcher.doLaunch();
@@ -85,6 +90,12 @@ public class ClickWatchExternalLauncher {
 		List<Class<?>> adapterClasses = new ArrayList<Class<?>>();
 		adapterClasses.add(IInjectorProvider.class);
 		adapterClasses.add(IExperimentProvider.class);
+		adapterClasses.add(IArgumentsProvider.class);
 		launch(args, mainClass, adapterClasses.toArray(new Class[]{}));
+	}
+
+	public static void standaloneSetUp() {
+		ClickWatchStandaloneSetup.doSetup();
+		CWRecorderStandaloneSetup.doSetup();
 	}
 }

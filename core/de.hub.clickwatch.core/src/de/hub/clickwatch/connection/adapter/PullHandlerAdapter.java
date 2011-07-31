@@ -9,6 +9,7 @@ import java.util.List;
 import com.google.common.base.Preconditions;
 
 import de.hub.clickwatch.model.Handler;
+import de.hub.clickwatch.model.util.HandlerUtil;
 import de.hub.clickwatch.util.Throwables;
 
 public class PullHandlerAdapter extends AbstractAdapter implements IPullHandlerAdapter {
@@ -25,18 +26,16 @@ public class PullHandlerAdapter extends AbstractAdapter implements IPullHandlerA
 		List<Handler> result = new ArrayList<Handler>();
 		loop: for (Handler handler: config) {
 			String qualifiedHandlerName = handler.getQualifiedName();
-			int slash = qualifiedHandlerName.lastIndexOf("/");
-			String plainHandlerName = qualifiedHandlerName.substring(slash + 1);
+			String[] splitName = HandlerUtil.getSplitQualifiedName(qualifiedHandlerName);
+			String plainHandlerName = splitName[1];
+			String elementName = splitName[0];
 			if (commonHandler.contains(plainHandlerName)) {
 				continue loop;
 			}
 			
-			int splitIndex = qualifiedHandlerName.lastIndexOf("/");
 			String realValue = null;
 			try {
-				realValue = new String(clickSocket().read(
-						qualifiedHandlerName.substring(0, splitIndex),
-						qualifiedHandlerName.substring(splitIndex + 1)));
+				realValue = new String(clickSocket().read(elementName, plainHandlerName));
 			} catch (Exception e) {
 				Throwables.propagate(e);
 			}

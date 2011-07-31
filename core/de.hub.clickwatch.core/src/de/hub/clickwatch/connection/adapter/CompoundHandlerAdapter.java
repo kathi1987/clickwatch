@@ -16,6 +16,7 @@ import com.google.inject.name.Named;
 
 import de.hub.clickwatch.ClickWatchModule;
 import de.hub.clickwatch.model.Handler;
+import de.hub.clickwatch.model.util.HandlerUtil;
 import de.hub.clickwatch.util.ILogger;
 import de.hub.clickwatch.util.Throwables;
 import de.hub.emfxml.XmlModelRepository;
@@ -187,9 +188,7 @@ public class CompoundHandlerAdapter extends PullHandlerAdapter {
 		StringBuffer configurationString = new StringBuffer();
 		loop: for(Handler handler: handlerConfig) {
 			String handlerName = handler.getQualifiedName();
-			int slash = handlerName.lastIndexOf("/");
-			String plainHandlerName = handlerName.substring(slash + 1);
-			handlerName = handlerName.substring(0, slash) + "." + plainHandlerName;
+			String plainHandlerName = HandlerUtil.getSplitQualifiedName(handlerName)[1];
 			if (commonHandler.contains(plainHandlerName)) {
 				continue loop;
 			}

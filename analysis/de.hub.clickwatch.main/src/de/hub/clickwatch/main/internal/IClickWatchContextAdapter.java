@@ -1,4 +1,4 @@
-package de.hub.clickwatch.main;
+package de.hub.clickwatch.main.internal;
 
 import java.util.List;
 

@@ -22,6 +22,7 @@ import de.hub.specificmodels.common.TargetId;
 import de.hub.specificmodels.common.targetproperties.Containment;
 import de.hub.specificmodels.common.targetproperties.GuessMultiplicities;
 import de.hub.specificmodels.common.targetproperties.GuessTypes;
+import de.hub.specificmodels.common.targetproperties.IsBasedOnXml;
 import de.hub.specificmodels.common.targetproperties.IsCopy;
 import de.hub.specificmodels.metamodelgenerator.types.ITypeDescription;
 import de.hub.specificmodels.metamodelgenerator.types.TypeDescriptions;
@@ -85,6 +86,7 @@ public class DefaultTargetObjectCreator implements ITargetObjectCreator {
 		targetFeature.setName(featureName);
 		targetFeature.setEType(type);
 		copyAttributeValues(targetId.getSourceFeature(), targetFeature);
+		setDefaultAttributeValue(targetId, targetFeature);
 		if (targetId.getProperty(GuessMultiplicities.class).get()) {
 			targetFeature.setUpperBound(1);
 		}
@@ -117,12 +119,22 @@ public class DefaultTargetObjectCreator implements ITargetObjectCreator {
 			targetFeature.setEType(targetId.getSourceFeature().getEType());
 		}
 		copyAttributeValues(targetId.getSourceFeature(), targetFeature);
+		setDefaultAttributeValue(targetId, targetFeature);
 		if (targetId.getProperty(GuessMultiplicities.class).get()) {
 			targetFeature.setUpperBound(1);
 		}
 		setLatestObject(sok, targetFeature);
 		addAnnotation(targetFeature, TARGET_ID, targetId.getTargetReferenceString());
 		return targetFeature;
+	}
+
+	private void setDefaultAttributeValue(TargetId targetId,
+			EStructuralFeature targetFeature) {
+		if (targetId.getProperty(IsBasedOnXml.class).get()) {
+			targetFeature.setDerived(false);
+			targetFeature.setTransient(false);
+			targetFeature.setVolatile(false);
+		}
 	}
 
 	@Override

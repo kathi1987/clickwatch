@@ -8,25 +8,30 @@ import java.util.List;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.Option;
 import org.apache.commons.cli.ParseException;
+import org.eclipse.emf.common.util.URI;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.name.Names;
 
+import de.hub.clickcontrol.ClickSocketImpl;
+import de.hub.clickcontrol.IClickSocket;
 import de.hub.clickwatch.ClickWatchModule;
 import de.hub.clickwatch.connection.adapter.CompoundHandlerAdapter;
-import de.hub.clickwatch.connection.adapter.PullHandlerAdapter;
 import de.hub.clickwatch.connection.adapter.IPullHandlerAdapter;
 import de.hub.clickwatch.connection.adapter.IValueAdapter;
+import de.hub.clickwatch.connection.adapter.PullHandlerAdapter;
 import de.hub.clickwatch.connection.adapter.XmlValueAdapter;
-import de.hub.clickwatch.main.IClickWatchContextAdapter;
 import de.hub.clickwatch.main.IInjectorProvider;
 import de.hub.clickwatch.recorder.CWRecorderModule;
+import de.hub.clickwatch.recorder.ClickSocketPlayer;
+import de.hub.clickwatch.recorder.ClickSocketPlayerSocketImpl;
 import de.hub.clickwatch.recorder.database.IDataBaseRecordAdapter;
 import de.hub.clickwatch.recorder.database.IDataBaseRetrieveAdapter;
 import de.hub.clickwatch.recorder.database.emf.DataBaseAdapter;
 import de.hub.clickwatch.recorder.database.hbase.HBaseDataBaseAdapter;
 import de.hub.clickwatch.recorder.database.logfile.LogFileDataBaseAdapter;
+import de.hub.clickwatch.specificmodels.brn.BrnValueAdapter;
 import de.hub.clickwatch.util.ILogger;
 
 
@@ -36,7 +41,10 @@ public class InjectorProvider implements IClickWatchContextAdapter, IInjectorPro
 	private boolean useCompoundHandler = false;
 	private boolean debug = false;
 	private boolean useXml = false;
+	private boolean useSpecificValues = false;
+	private boolean useRecord = false;
 	private String db = null;
+	private String recordFile = null;
 	
 	private Injector injector = null;
 
@@ -47,7 +55,9 @@ public class InjectorProvider implements IClickWatchContextAdapter, IInjectorPro
 		options.add(new Option("c", "compound-handler", false, "recorder uses the compound handler of nodes instead of reading each handler seperated"));
 		options.add(new Option("h", "handler-per-record", true, "determines the estimated record size in handler count per record"));
 		options.add(new Option("db", true, "choose the database: hbase for hbase, log for log-file, emf for emf"));		
-		options.add(new Option("x", "use-xml-vaues", false, "use xml values instead of string values"));
+		options.add(new Option("x", "xml-values", false, "use xml values instead of string values"));
+		options.add(new Option("s", "brn-specific-values", false, "use brn-specific values when possible, xml-values are used otherwise."));
+		options.add(new Option("r", "use-record", true, "uses the given clickwatch model to emulate an actual network"));
 		return options;
 	}
 
@@ -57,6 +67,7 @@ public class InjectorProvider implements IClickWatchContextAdapter, IInjectorPro
 			useCompoundHandler = commandLine.hasOption("c");
 			debug = commandLine.hasOption("d");
 			useXml = commandLine.hasOption("x");
+			useSpecificValues = commandLine.hasOption("s");
 			
 			if (commandLine.hasOption("db")) {
 				db = commandLine.getOptionValue("db");
@@ -65,6 +76,10 @@ public class InjectorProvider implements IClickWatchContextAdapter, IInjectorPro
 			}
 			if (commandLine.hasOption("h")) {
 				handlerPerRecord = new Integer(commandLine.getOptionValue("h"));
+			}
+			if (commandLine.hasOption("r")) {
+				useRecord = true;
+				recordFile = commandLine.getOptionValue("r");
 			}
 		} catch (Exception e) {
 			throw new ParseException(e.getMessage());
@@ -123,12 +138,35 @@ public class InjectorProvider implements IClickWatchContextAdapter, IInjectorPro
 
 			@Override
 			protected void bindValueAdapter() {
-				if (useXml) {
+				if (useSpecificValues) {
+					bind(IValueAdapter.class).to(BrnValueAdapter.class);
+				} else if (useXml) {
 					bind(IValueAdapter.class).to(XmlValueAdapter.class);
 				} else {
 					super.bindValueAdapter();
 				}
 			}
+			
+			@Override
+			protected void bindClickSocket() {
+				if (useRecord) {
+					bindToPlayer();
+				} else {
+					bind(IClickSocket.class).to(ClickSocketImpl.class);
+				}
+			}
+			
+			private ClickSocketPlayer player = null;
+			
+			private void bindToPlayer() {
+				if (player == null) {					
+					player = new ClickSocketPlayer();
+					player.initialize(URI.createFileURI(recordFile));
+				}
+				
+				bind(ClickSocketPlayer.class).toInstance(player);
+				bind(IClickSocket.class).to(ClickSocketPlayerSocketImpl.class);
+			}	
 		
 		};
 		CWRecorderModule cwRecorderModule = new CWRecorderModule() {
