@@ -9,7 +9,7 @@ Export-Package: de.hub.clickwatch.specificmodels
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
  org.eclipse.emf.ecore.xmi;visibility:=reexport,
- de.hub.clickwatch.main;bundle-version="2.0.0";visibility:=reexport,
+ de.hub.clickwatch.apps.main;bundle-version="2.0.0";visibility:=reexport,
  de.hub.specificmodels;bundle-version="1.0.0";visibility:=reexport,
  de.hub.clickwatch.specificmodels.brn;bundle-version="2.0.0"
 Bundle-ActivationPolicy: lazy

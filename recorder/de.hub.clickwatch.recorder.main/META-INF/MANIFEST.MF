@@ -3,6 +3,6 @@ Bundle-ManifestVersion: 2
 Bundle-Name: ClickWatch Recorder Main
 Bundle-SymbolicName: de.hub.clickwatch.recorder.main;singleton:=true
 Bundle-Version: 2.0.0.qualifier
-Require-Bundle: de.hub.clickwatch.main;bundle-version="2.0.0"
+Require-Bundle: de.hub.clickwatch.apps.main;bundle-version="2.0.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6

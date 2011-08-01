@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: God
+Bundle-SymbolicName: de.hub.clickwatch.apps.god
+Bundle-Version: 1.0.0.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Require-Bundle: de.hub.clickwatch.apps.main;bundle-version="2.0.0"

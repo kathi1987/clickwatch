@@ -10,18 +10,11 @@
   </parent>
 
   <groupId>de.hub.clickwatch</groupId>
-  <artifactId>analysis</artifactId>
+  <artifactId>apps</artifactId>
   <version>2.0.0-SNAPSHOT</version>
   <packaging>pom</packaging>
   
   <modules>
-   <module>de.hub.clickwatch.analysis</module>
-   <module>de.hub.clickwatch.examples</module>
-   <!-- this is not a pde project yet-->
-   <!--<module>de.hub.clickwatch.analysis.examples.composition</module>-->
-   <module>de.hub.clickwatch.clientlocation</module>
-   <module>de.hub.clickwatch.specificmodels</module>
-   <module>de.hub.clickwatch.specificmodels.brn</module>
-   <module>de.hub.clickwatch.specificmodels.test</module>
+   <module>de.hub.clickwatch.apps.main</module>
   </modules>
 </project>
