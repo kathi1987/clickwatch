@@ -1,11 +1,11 @@
 import java.net.InetAddress;
 import java.net.UnknownHostException;
-import java.io.IOException;
-import sun.misc.BASE64Decoder;
 
-import compression.BrnLZW;
+import org.eclipse.emf.ecore.xml.type.internal.DataValue.Base64;
 
 import click.ClickConnection;
+
+import compression.BrnLZW;
 
 /**
  * Created by IntelliJ IDEA. User: robert Date: 20.07.2008 Time: 14:34:47 To
@@ -53,16 +53,12 @@ public class ClickClient {
 					//System.out.println(result);
 					Integer uncomp_size = new Integer(result.substring(result.indexOf("uncompressed=")+14,
 	                                                   result.indexOf(" compressed") - 1));
-					Integer comp_size = new Integer(result.substring(result.indexOf(" compressed=")+13,
-					                                       result.indexOf("><!") - 1));
+//					Integer comp_size = new Integer(result.substring(result.indexOf(" compressed=")+13,
+//					                                       result.indexOf("><!") - 1));
 					
-					BASE64Decoder decoder = new BASE64Decoder();
 					byte[] decodedBytes = null;
-					try {
-					    decodedBytes = decoder.decodeBuffer(raw_data);
-					} catch (IOException e ) {
-					    e.printStackTrace();
-					}
+					decodedBytes = Base64.decode(raw_data);
+
 					
 					if ( decodedBytes != null ) {
 						//System.out.println("Base64 dec: " + decodedBytes.length + " Data 0: " + (int)decodedBytes[0]);
