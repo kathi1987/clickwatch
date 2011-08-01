@@ -23,11 +23,15 @@
    <plugins>
       <plugin id="com.google.collect"/>
       <plugin id="com.google.guice"/>
+      <plugin id="de.hub.clickwatch.apps.main"/>
       <plugin id="de.hub.clickwatch.core"/>
       <plugin id="de.hub.clickwatch.model"/>
       <plugin id="de.hub.clickwatch.recorder"/>
+      <plugin id="de.hub.clickwatch.recorder.main"/>
       <plugin id="de.hub.clickwatch.recorder.model"/>
+      <plugin id="de.hub.clickwatch.specificmodels.brn"/>
       <plugin id="de.hub.emfxml"/>
+      <plugin id="de.hub.specificmodels"/>
       <plugin id="edu.mit.clickcontrol"/>
       <plugin id="javax.servlet"/>
       <plugin id="org.eclipse.ant.core"/>
