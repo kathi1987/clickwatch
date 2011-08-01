@@ -42,7 +42,7 @@ public abstract class AbstractValueAdapter extends AbstractAdapter implements IV
 		if (valueAdapter.getClass() == this.getClass()) {
 			moveValue(source, target);
 		} else {
-			target.setValue(valueAdapter.getPlainValue(source));
+			setValue(target, valueAdapter.getPlainValue(source));
 		}
 	}
 

@@ -108,6 +108,10 @@ public class HBaseDataBaseAdapter extends AbstractDataBaseRecordAdapter implemen
 		
 		if (config == null) {
 			config = HBaseConfiguration.create();
+//			config.clear();
+//			config.set("hbase.zookeeper.quorum", "testbed-slave2");
+//			config.set("hbase.zookeeper.property.clientPort","2181");
+			
 			String hbaseRootDir = experiment.getHbaseRootDir();
 			if (!(hbaseRootDir == null || hbaseRootDir.equals(""))) {
 				String hbaseSite = ""
