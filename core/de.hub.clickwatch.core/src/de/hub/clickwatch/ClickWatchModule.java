@@ -27,6 +27,7 @@ public class ClickWatchModule extends AbstractModule {
 	public static final String B_COMPOUND_HANDLER_RECORDS = "compoundHandlerRecords";
 	public static final String I_COMPOUND_HANDLER_SAMPLE_TIME = "compoundHandlerSampleTime";
 	public static final String B_COMPOUND_HANDLER_CHANGES_ONLY = "compoundHandlerChangesOnly";
+	public static final String B_COMPOUND_HANDLER_COMPRESSION = "compoundHandlerCompression";
 	
 	private ILogger logger = null;
 	

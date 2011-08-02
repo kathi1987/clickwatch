@@ -1,15 +1,9 @@
 package de.hub.clickwatch.recorder.test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 
 import junit.framework.Assert;
-
-import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 
 import com.google.inject.Binder;
 import com.google.inject.Module;
@@ -20,13 +14,8 @@ import de.hub.clickwatch.connection.adapter.PullHandlerAdapter;
 import de.hub.clickwatch.connection.adapter.StringValueAdapter;
 import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.model.Node;
-import de.hub.clickwatch.model.util.builder.NetworkBuilder;
-import de.hub.clickwatch.model.util.builder.NodeBuilder;
-import de.hub.clickwatch.recoder.cwdatabase.CWDataBaseFactory;
-import de.hub.clickwatch.recoder.cwdatabase.DataBase;
 import de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr;
-import de.hub.clickwatch.recoder.cwdatabase.util.builder.DataBaseBuilder;
-import de.hub.clickwatch.recoder.cwdatabase.util.builder.ExperimentDescrBuilder;
+import de.hub.clickwatch.recoder.cwdatabase.util.ExperimentUtil;
 import de.hub.clickwatch.recorder.CWRecorderModule;
 import de.hub.clickwatch.recorder.ExperimentRecorder;
 import de.hub.clickwatch.recorder.database.CWRecorderStandaloneSetup;
@@ -118,34 +107,12 @@ public class AbstractDBTest extends AbstractAdapterTest {
 	}
 	
 	protected ExperimentDescr buildDataBase(String[] nodeIds) {
-		Collection<Node> nodes = new ArrayList<Node>();
-		for (String nodeId: nodeIds) {
-			nodes.add(NodeBuilder.newNodeBuilder()
-					.withINetAddress(nodeId)
-					.withPort("7777").build());
-		}
-		
-		DataBase db = DataBaseBuilder.newDataBaseBuilder()
-				.withInMemory(getInMemory())
-				.withExperiments(ExperimentDescrBuilder.newExperimentDescrBuilder()
-						.withName(getExperimentName())
-						.withDescription("this is onyl for testing")
-						.withDuration(getExperimentDuration())
-						.withStatistics(CWDataBaseFactory.eINSTANCE.createExperimentStatistics())
-						.withNetwork(NetworkBuilder.newNetworkBuilder()
-								.withName("test_network")
-								.withElementFilter("")
-								.withHandlerFilter("")
-								.withUpdateIntervall(getUpdateInterval())
-								.withNodes(nodes)
-						)
-				).build();
-		
-		ResourceSet rs = new ResourceSetImpl();
-		Resource dataBaseResource = rs.createResource(URI.createURI("test_db.cwdatabase"));
-		dataBaseResource.getContents().add(db);
-		
-		return db.getExperiments().get(0);
+		return ExperimentUtil.buildDataBase(
+				getExperimentName(), 
+				getInMemory(), 
+				getExperimentDuration(), 
+				getUpdateInterval(), 
+				nodeIds);
 	}
 	
 	protected Integer getUpdateInterval() {

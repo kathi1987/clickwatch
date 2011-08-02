@@ -26,6 +26,7 @@ import de.hub.clickwatch.main.IInjectorProvider;
 import de.hub.clickwatch.recorder.CWRecorderModule;
 import de.hub.clickwatch.recorder.ClickSocketPlayer;
 import de.hub.clickwatch.recorder.ClickSocketPlayerSocketImpl;
+import de.hub.clickwatch.recorder.database.DummyDataBaseAdapter;
 import de.hub.clickwatch.recorder.database.IDataBaseRecordAdapter;
 import de.hub.clickwatch.recorder.database.IDataBaseRetrieveAdapter;
 import de.hub.clickwatch.recorder.database.emf.DataBaseAdapter;
@@ -39,6 +40,9 @@ public class InjectorProvider implements IClickWatchContextAdapter, IInjectorPro
 	
 	private int handlerPerRecord = 2000;
 	private boolean useCompoundHandler = false;
+	private boolean withRecord = true;
+	private boolean withChangedOnly = true;
+	private boolean withCompression = false;
 	private boolean debug = false;
 	private boolean useXml = false;
 	private boolean useSpecificValues = false;
@@ -52,11 +56,17 @@ public class InjectorProvider implements IClickWatchContextAdapter, IInjectorPro
 	public List<Option> getCommandLineOptions() {
 		List<Option> options = new ArrayList<Option>();
 		options.add(new Option("d", "debug", false, "recorder logs extensive"));
-		options.add(new Option("c", "compound-handler", false, "recorder uses the compound handler of nodes instead of reading each handler seperated"));
+		
+		options.add(new Option("c", "compound-handler", false, "use the compound handler of nodes instead of reading each handler seperated"));
+		options.add(new Option("cr", "compound-handler-records", false, "use compound handler, compound handler records values"));
+		options.add(new Option("crc", "compound-handler-records-changes-only", false, "use compound handler compound handler records values and delivers only changes"));
+		
 		options.add(new Option("h", "handler-per-record", true, "determines the estimated record size in handler count per record"));
-		options.add(new Option("db", true, "choose the database: hbase for hbase, log for log-file, emf for emf"));		
+		options.add(new Option("db", true, "choose the database: hbase for hbase, log for log-file, emf for emf"));
+		
 		options.add(new Option("x", "xml-values", false, "use xml values instead of string values"));
 		options.add(new Option("s", "brn-specific-values", false, "use brn-specific values when possible, xml-values are used otherwise."));
+		
 		options.add(new Option("r", "use-record", true, "uses the given clickwatch model to emulate an actual network"));
 		return options;
 	}
@@ -64,7 +74,9 @@ public class InjectorProvider implements IClickWatchContextAdapter, IInjectorPro
 	@Override
 	public void initalize(CommandLine commandLine) throws ParseException {
 		try {
-			useCompoundHandler = commandLine.hasOption("c");
+			useCompoundHandler = commandLine.hasOption("c") | commandLine.hasOption("cr") || commandLine.hasOption("cru");
+			withRecord = commandLine.hasOption("cr") || commandLine.hasOption("cru");
+			withChangedOnly = commandLine.hasOption("cru");
 			debug = commandLine.hasOption("d");
 			useXml = commandLine.hasOption("x");
 			useSpecificValues = commandLine.hasOption("s");
@@ -128,9 +140,10 @@ public class InjectorProvider implements IClickWatchContextAdapter, IInjectorPro
 			protected void bindHandlerAdapter() {
 				if (useCompoundHandler) {
 					bind(IPullHandlerAdapter.class).to(CompoundHandlerAdapter.class);
-					bind(Boolean.class).annotatedWith(Names.named(ClickWatchModule.B_COMPOUND_HANDLER_RECORDS)).toInstance(true);
+					bind(Boolean.class).annotatedWith(Names.named(ClickWatchModule.B_COMPOUND_HANDLER_RECORDS)).toInstance(withRecord);
 					bind(Integer.class).annotatedWith(Names.named(ClickWatchModule.I_COMPOUND_HANDLER_SAMPLE_TIME)).toInstance(200);
-					bind(Boolean.class).annotatedWith(Names.named(ClickWatchModule.B_COMPOUND_HANDLER_CHANGES_ONLY)).toInstance(true);
+					bind(Boolean.class).annotatedWith(Names.named(ClickWatchModule.B_COMPOUND_HANDLER_CHANGES_ONLY)).toInstance(withChangedOnly);
+					bind(Boolean.class).annotatedWith(Names.named(ClickWatchModule.B_COMPOUND_HANDLER_COMPRESSION)).toInstance(withCompression);
 				} else { 
 					bind(IPullHandlerAdapter.class).to(PullHandlerAdapter.class);
 				}
@@ -179,6 +192,8 @@ public class InjectorProvider implements IClickWatchContextAdapter, IInjectorPro
 					bind(IDataBaseRecordAdapter.class).to(DataBaseAdapter.class);
 				} else if (db.equals("logfile")) {
 					bind(IDataBaseRecordAdapter.class).to(LogFileDataBaseAdapter.class);
+				} else if (db.equals("dummy")) {
+					bind(IDataBaseRecordAdapter.class).to(DummyDataBaseAdapter.class);
 				} else {
 					throw new IllegalArgumentException("unknown database-adatper");
 				}

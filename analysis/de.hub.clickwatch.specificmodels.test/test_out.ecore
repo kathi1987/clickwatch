@@ -3412,6 +3412,10 @@
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/sys_info|elements:Sys_info|Element/systeminfo|handlers:Systeminfo|Handler/system|system:System|EObject/mem|mem:Mem|EObject/nFS_Unstable|NFS_Unstable:"/>
       </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="name" value="NFS_Unstable"/>
+        <details key="kind" value="attribute"/>
+      </eAnnotations>
       <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     </eStructuralFeatures>
   </eClassifiers>
@@ -4196,6 +4200,10 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="hDOP">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/seismo|elements:Seismo|Element/channelstatinfo|handlers:Channelstatinfo|Handler/node|node:Node|EObject/gps|gps:Gps|EObject/hDOP|HDOP:"/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="name" value="HDOP"/>
+        <details key="kind" value="attribute"/>
       </eAnnotations>
       <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     </eStructuralFeatures>

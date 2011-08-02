@@ -62,6 +62,7 @@ public class CompoundHandlerAdapter extends PullHandlerAdapter {
 		} catch (Exception e) {
 			Throwables.propagate(e);
 		}
+		logger.log(ILogger.DEBUG, "configured click compound handler of " + connection + " with " + record + ", " + changesOnly + ", " + sampletime, null);
 	}
 
 	@Override
@@ -188,14 +189,16 @@ public class CompoundHandlerAdapter extends PullHandlerAdapter {
 		StringBuffer configurationString = new StringBuffer();
 		loop: for(Handler handler: handlerConfig) {
 			String handlerName = handler.getQualifiedName();
-			String plainHandlerName = HandlerUtil.getSplitQualifiedName(handlerName)[1];
+			String[] splitQualifiedName = HandlerUtil.getSplitQualifiedName(handlerName);
+			String plainHandlerName = splitQualifiedName[1];
+			String elementName = splitQualifiedName[0];
 			if (commonHandler.contains(plainHandlerName)) {
 				continue loop;
 			}
-			if (handlerName.equals("com.read")) {
+			if (handlerName.equals("com/read")) {
 				continue loop;
 			}
-			configurationString.append(handlerName);
+			configurationString.append(elementName + "." + plainHandlerName);
 			configurationString.append(" ");
 		}
 		

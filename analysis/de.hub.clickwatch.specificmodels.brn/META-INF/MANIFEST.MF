@@ -9,9 +9,8 @@ Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: de.hub.clickwatch.specificmodels.brn,
  de.hub.clickwatch.specificmodels.brn.device_wifi_link_stat_bcast_stats,
- de.hub.clickwatch.specificmodels.brn.device_wifi_link_stat_bcast_stats.impl,
- de.hub.clickwatch.specificmodels.brn.device_wifi_link_stat_bcast_stats.util,
- de.hub.clickwatch.specificmodels.brn.impl,
+ de.hub.clickwatch.specificmodels.brn.device_wifi_wifidevice_cst_stats,
+ de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo,
  de.hub.clickwatch.specificmodels.brn.util
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,

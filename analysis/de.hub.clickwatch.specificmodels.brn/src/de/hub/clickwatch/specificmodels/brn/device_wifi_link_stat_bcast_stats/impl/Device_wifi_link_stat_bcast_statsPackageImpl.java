@@ -17,8 +17,12 @@ import de.hub.clickwatch.specificmodels.brn.device_wifi_link_stat_bcast_stats.En
 import de.hub.clickwatch.specificmodels.brn.device_wifi_link_stat_bcast_stats.Link;
 import de.hub.clickwatch.specificmodels.brn.device_wifi_link_stat_bcast_stats.Link_info;
 
+import de.hub.clickwatch.specificmodels.brn.device_wifi_wifidevice_cst_stats.Device_wifi_wifidevice_cst_statsPackage;
+import de.hub.clickwatch.specificmodels.brn.device_wifi_wifidevice_cst_stats.impl.Device_wifi_wifidevice_cst_statsPackageImpl;
 import de.hub.clickwatch.specificmodels.brn.impl.BrnPackageImpl;
 
+import de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.Sys_info_systeminfoPackage;
+import de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.impl.Sys_info_systeminfoPackageImpl;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
@@ -112,14 +116,20 @@ public class Device_wifi_link_stat_bcast_statsPackageImpl extends EPackageImpl i
 
 		// Obtain or create and register interdependencies
 		BrnPackageImpl theBrnPackage = (BrnPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(BrnPackage.eNS_URI) instanceof BrnPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(BrnPackage.eNS_URI) : BrnPackage.eINSTANCE);
+		Device_wifi_wifidevice_cst_statsPackageImpl theDevice_wifi_wifidevice_cst_statsPackage = (Device_wifi_wifidevice_cst_statsPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Device_wifi_wifidevice_cst_statsPackage.eNS_URI) instanceof Device_wifi_wifidevice_cst_statsPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Device_wifi_wifidevice_cst_statsPackage.eNS_URI) : Device_wifi_wifidevice_cst_statsPackage.eINSTANCE);
+		Sys_info_systeminfoPackageImpl theSys_info_systeminfoPackage = (Sys_info_systeminfoPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Sys_info_systeminfoPackage.eNS_URI) instanceof Sys_info_systeminfoPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Sys_info_systeminfoPackage.eNS_URI) : Sys_info_systeminfoPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theDevice_wifi_link_stat_bcast_statsPackage.createPackageContents();
 		theBrnPackage.createPackageContents();
+		theDevice_wifi_wifidevice_cst_statsPackage.createPackageContents();
+		theSys_info_systeminfoPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theDevice_wifi_link_stat_bcast_statsPackage.initializePackageContents();
 		theBrnPackage.initializePackageContents();
+		theDevice_wifi_wifidevice_cst_statsPackage.initializePackageContents();
+		theSys_info_systeminfoPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theDevice_wifi_link_stat_bcast_statsPackage.freeze();

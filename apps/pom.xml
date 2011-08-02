@@ -16,5 +16,7 @@
   
   <modules>
    <module>de.hub.clickwatch.apps.main</module>
+   <module>de.hub.clickwatch.apps.performance</module>
+   <module>de.hub.clickwatch.apps.recorder</module>
   </modules>
 </project>

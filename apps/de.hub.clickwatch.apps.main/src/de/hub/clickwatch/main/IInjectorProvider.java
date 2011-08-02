@@ -7,6 +7,6 @@ import de.hub.clickwatch.main.internal.InjectorProvider;
 
 @ImplementedBy(InjectorProvider.class)
 public interface IInjectorProvider {
-
+	
 	public Injector getInjector();
 }

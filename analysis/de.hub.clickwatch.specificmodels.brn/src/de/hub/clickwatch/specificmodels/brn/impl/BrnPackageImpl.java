@@ -16,6 +16,10 @@ import de.hub.clickwatch.specificmodels.brn.device_wifi_link_stat_bcast_stats.De
 
 import de.hub.clickwatch.specificmodels.brn.device_wifi_link_stat_bcast_stats.impl.Device_wifi_link_stat_bcast_statsPackageImpl;
 
+import de.hub.clickwatch.specificmodels.brn.device_wifi_wifidevice_cst_stats.Device_wifi_wifidevice_cst_statsPackage;
+import de.hub.clickwatch.specificmodels.brn.device_wifi_wifidevice_cst_stats.impl.Device_wifi_wifidevice_cst_statsPackageImpl;
+import de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.Sys_info_systeminfoPackage;
+import de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.impl.Sys_info_systeminfoPackageImpl;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -86,14 +90,20 @@ public class BrnPackageImpl extends EPackageImpl implements BrnPackage {
 
 		// Obtain or create and register interdependencies
 		Device_wifi_link_stat_bcast_statsPackageImpl theDevice_wifi_link_stat_bcast_statsPackage = (Device_wifi_link_stat_bcast_statsPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Device_wifi_link_stat_bcast_statsPackage.eNS_URI) instanceof Device_wifi_link_stat_bcast_statsPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Device_wifi_link_stat_bcast_statsPackage.eNS_URI) : Device_wifi_link_stat_bcast_statsPackage.eINSTANCE);
+		Device_wifi_wifidevice_cst_statsPackageImpl theDevice_wifi_wifidevice_cst_statsPackage = (Device_wifi_wifidevice_cst_statsPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Device_wifi_wifidevice_cst_statsPackage.eNS_URI) instanceof Device_wifi_wifidevice_cst_statsPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Device_wifi_wifidevice_cst_statsPackage.eNS_URI) : Device_wifi_wifidevice_cst_statsPackage.eINSTANCE);
+		Sys_info_systeminfoPackageImpl theSys_info_systeminfoPackage = (Sys_info_systeminfoPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Sys_info_systeminfoPackage.eNS_URI) instanceof Sys_info_systeminfoPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Sys_info_systeminfoPackage.eNS_URI) : Sys_info_systeminfoPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theBrnPackage.createPackageContents();
 		theDevice_wifi_link_stat_bcast_statsPackage.createPackageContents();
+		theDevice_wifi_wifidevice_cst_statsPackage.createPackageContents();
+		theSys_info_systeminfoPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theBrnPackage.initializePackageContents();
 		theDevice_wifi_link_stat_bcast_statsPackage.initializePackageContents();
+		theDevice_wifi_wifidevice_cst_statsPackage.initializePackageContents();
+		theSys_info_systeminfoPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theBrnPackage.freeze();
@@ -169,10 +179,14 @@ public class BrnPackageImpl extends EPackageImpl implements BrnPackage {
 
 		// Obtain other dependent packages
 		Device_wifi_link_stat_bcast_statsPackage theDevice_wifi_link_stat_bcast_statsPackage = (Device_wifi_link_stat_bcast_statsPackage)EPackage.Registry.INSTANCE.getEPackage(Device_wifi_link_stat_bcast_statsPackage.eNS_URI);
+		Device_wifi_wifidevice_cst_statsPackage theDevice_wifi_wifidevice_cst_statsPackage = (Device_wifi_wifidevice_cst_statsPackage)EPackage.Registry.INSTANCE.getEPackage(Device_wifi_wifidevice_cst_statsPackage.eNS_URI);
+		Sys_info_systeminfoPackage theSys_info_systeminfoPackage = (Sys_info_systeminfoPackage)EPackage.Registry.INSTANCE.getEPackage(Sys_info_systeminfoPackage.eNS_URI);
 		ClickWatchModelPackage theClickWatchModelPackage = (ClickWatchModelPackage)EPackage.Registry.INSTANCE.getEPackage(ClickWatchModelPackage.eNS_URI);
 
 		// Add subpackages
 		getESubpackages().add(theDevice_wifi_link_stat_bcast_statsPackage);
+		getESubpackages().add(theDevice_wifi_wifidevice_cst_statsPackage);
+		getESubpackages().add(theSys_info_systeminfoPackage);
 
 		// Create type parameters
 
