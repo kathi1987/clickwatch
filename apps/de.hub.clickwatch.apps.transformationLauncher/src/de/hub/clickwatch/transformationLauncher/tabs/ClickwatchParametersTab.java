@@ -1,4 +1,4 @@
-package de.hub.clickwatch.transformationLauncher;
+package de.hub.clickwatch.transformationLauncher.tabs;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.CoreException;
@@ -25,17 +25,16 @@ import org.eclipse.swt.widgets.Text;
  * @author Lars George
  * 
  */
-public class TransformationParametersTab extends AbstractLaunchConfigurationTab {
+public class ClickwatchParametersTab extends AbstractLaunchConfigurationTab {
 
 	/**
 	 * The attribute constant to get the transformation file value of a
 	 * ILaunchConfigurationWorkingCopy
 	 */
 	public static final String ATTR_TRANSFORMATION_FILE = "attr_transformation_file";
-	
 	public static final String ATTR_SOURCE_MODEL_FILE = "attr_source_model_file";
 
-	private final String TAB_NAME = "Transformation";
+	private final String TAB_NAME = "Clickwatch";
 	private Text transformationFile;
 	private Text sourceModel;
 
@@ -50,7 +49,7 @@ public class TransformationParametersTab extends AbstractLaunchConfigurationTab 
 		transformationFileGroup.setText("Transformation File");
 		transformationFileGroup.setLayoutData(new GridData(SWT.FILL, SWT.TOP,
 				true, false));
-		transformationFileGroup.setLayout(new GridLayout(2, false));
+		transformationFileGroup.setLayout(new GridLayout(1, false));
 
 		Composite composite = new Composite(transformationFileGroup, SWT.NONE);
 		composite.setLayoutData(new GridData(SWT.FILL, SWT.TOP, true, false));
@@ -165,10 +164,10 @@ public class TransformationParametersTab extends AbstractLaunchConfigurationTab 
 	public void initializeFrom(ILaunchConfiguration configuration) {
 		try {
 			transformationFile.setText(configuration.getAttribute(
-					TransformationParametersTab.ATTR_TRANSFORMATION_FILE, ""));
-			
+					ClickwatchParametersTab.ATTR_TRANSFORMATION_FILE, ""));
+
 			sourceModel.setText(configuration.getAttribute(
-					TransformationParametersTab.ATTR_SOURCE_MODEL_FILE, ""));
+					ClickwatchParametersTab.ATTR_SOURCE_MODEL_FILE, ""));
 		} catch (CoreException e) {
 			transformationFile.setText("");
 		}
@@ -178,11 +177,11 @@ public class TransformationParametersTab extends AbstractLaunchConfigurationTab 
 	public void performApply(ILaunchConfigurationWorkingCopy configuration) {
 		// set the values of the tab components in the configuration object
 		configuration.setAttribute(
-				TransformationParametersTab.ATTR_TRANSFORMATION_FILE,
+				ClickwatchParametersTab.ATTR_TRANSFORMATION_FILE,
 				transformationFile.getText());
-		
+
 		configuration.setAttribute(
-				TransformationParametersTab.ATTR_SOURCE_MODEL_FILE,
+				ClickwatchParametersTab.ATTR_SOURCE_MODEL_FILE,
 				sourceModel.getText());
 	}
 

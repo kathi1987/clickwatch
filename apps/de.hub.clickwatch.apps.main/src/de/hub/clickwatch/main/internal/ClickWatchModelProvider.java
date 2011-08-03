@@ -33,7 +33,7 @@ public class ClickWatchModelProvider implements IClickWatchContextAdapter,
 	}
 
 	@Override
-	public void initalize(CommandLine commandLine) throws ParseException {
+	public void initialize(CommandLine commandLine) throws ParseException {
 		clickWatchModel = commandLine.getOptionValue("uri");
 		clickWatchObject = commandLine.getOptionValue("obj");
 	}

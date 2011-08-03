@@ -8,7 +8,8 @@ import java.util.Dictionary;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.osgi.framework.Bundle;
 
-import de.hub.clickwatch.analysis.ui.PluginActivator;
+import de.hub.clickwatch.ui.PluginActivator;
+
 
 /**
  * This class offers helper method to handle bundles on the fly

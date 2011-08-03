@@ -229,30 +229,5 @@
           class="de.hub.clickwatch.analysis.ui.CWAnalysisAdditionalModulesProvider">
     </moduleProvider>
  </extension>
- <extension
-       point="org.eclipse.debug.core.launchConfigurationTypes">
-    <launchConfigurationType
-          delegate="de.hub.clickwatch.transformationLauncher.TransformationLaunchConfigurationDelegate"
-          id="de.hub.clickwatch.analysis.ui.TransformationLaunchConfiguration"
-          modes="run"
-          name="Transformation">
-    </launchConfigurationType>
- </extension>
- <extension
-       point="org.eclipse.debug.ui.launchConfigurationTypeImages">
-    <launchConfigurationTypeImage
-          configTypeID="de.hub.clickwatch.analysis.ui.TransformationLaunchConfiguration"
-          icon="icons/Analysis.gif"
-          id="de.hub.clickwatch.analysis.ui.TransformationLaunchConfigurationTypeImage">
-    </launchConfigurationTypeImage>
- </extension>
- <extension
-       point="org.eclipse.debug.ui.launchConfigurationTabGroups">
-    <launchConfigurationTabGroup
-          class="de.hub.clickwatch.transformationLauncher.TransformationTabGroup"
-          id="de.hub.clickwatch.analysis.ui.TransformationTabGroup"
-          type="de.hub.clickwatch.analysis.ui.TransformationLaunchConfiguration">
-    </launchConfigurationTabGroup>
- </extension>
 
 </plugin>
