@@ -3,7 +3,7 @@ package de.hub.clickwatch.connection;
 import com.google.inject.ImplementedBy;
 
 import de.hub.clickcontrol.IClickSocket;
-import de.hub.clickwatch.connection.adapter.IHandlerAdapter;
+import de.hub.clickwatch.connection.adapter.IPullHandlerAdapter;
 import de.hub.clickwatch.connection.adapter.IMetaDataAdapter;
 import de.hub.clickwatch.connection.adapter.INodeAdapter;
 import de.hub.clickwatch.connection.adapter.IValueAdapter;
@@ -20,10 +20,10 @@ import de.hub.clickwatch.connection.adapter.IValueAdapter;
  * 
  * Adapters use each other an form a call hierarchy. {@link IMetaDataAdapter}
  * for example provides information about elements and handlers.
- * {@link IHandlerAdapter} allows to pull handler values. {@link IValueAdapter}
- * allows to serialize and de-serialize handler values. {@link IHandlerAdapter}
+ * {@link IPullHandlerAdapter} allows to pull handler values. {@link IValueAdapter}
+ * allows to serialize and de-serialize handler values. {@link IPullHandlerAdapter}
  * use {@link IValueAdapter} to deal with the values. {@link INodeAdapter} uses
- * {@link IMetaDataAdapter} and {@link IHandlerAdapter} to create a node
+ * {@link IMetaDataAdapter} and {@link IPullHandlerAdapter} to create a node
  * representation. Clients might add further adapters that use these adapters.
  */
 @ImplementedBy(NodeConnection.class)
@@ -36,4 +36,5 @@ public interface INodeConnection {
 	public boolean isConnected();
 
 	public <T> T getAdapter(Class<T> adapterClass);
+
 }

@@ -9,7 +9,7 @@ import org.junit.Test;
 import click.ControlSocket.HandlerInfo;
 import de.hub.clickwatch.connection.INodeConnection;
 import de.hub.clickwatch.connection.INodeConnectionProvider;
-import de.hub.clickwatch.connection.adapter.IHandlerAdapter;
+import de.hub.clickwatch.connection.adapter.IPullHandlerAdapter;
 import de.hub.clickwatch.connection.adapter.IMetaDataAdapter;
 import de.hub.clickwatch.connection.adapter.IValueAdapter;
 import de.hub.clickwatch.connection.adapter.XmlValueAdapter;
@@ -48,7 +48,7 @@ public class HandlerAdapterXmlValuesTest extends AbstractAdapterTest {
 		INodeConnectionProvider ncp = injector.getInstance(INodeConnectionProvider.class);
 		INodeConnection nodeConnection = ncp.createConnection(null, "0");
 		IMetaDataAdapter metaDataAdapter = nodeConnection.getAdapter(IMetaDataAdapter.class);
-		IHandlerAdapter handlerAdapter = nodeConnection.getAdapter(IHandlerAdapter.class);
+		IPullHandlerAdapter handlerAdapter = nodeConnection.getAdapter(IPullHandlerAdapter.class);
 		nodeConnection.connect();
 		Node metaData = metaDataAdapter.pullAllMetaData();
 		handlerAdapter.configure(metaData.getAllHandlers());

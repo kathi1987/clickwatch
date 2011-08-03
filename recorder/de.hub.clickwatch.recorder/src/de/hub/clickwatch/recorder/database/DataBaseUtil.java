@@ -1,5 +1,7 @@
 package de.hub.clickwatch.recorder.database;
 
+import java.util.Iterator;
+
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import com.google.common.base.Preconditions;
@@ -8,11 +10,11 @@ import com.google.inject.Singleton;
 import com.google.inject.name.Named;
 
 import de.hub.clickwatch.connection.adapter.IValueAdapter;
-import de.hub.clickwatch.model.ClickWatchModelFactory;
 import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.model.Node;
 import de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr;
 import de.hub.clickwatch.recorder.CWRecorderModule;
+import de.hub.clickwatch.recorder.database.hbase.HBaseDataBaseAdapter;
 import de.hub.clickwatch.util.ILogger;
 
 @Singleton
@@ -23,19 +25,40 @@ public class DataBaseUtil {
 	@Inject @Named(CWRecorderModule.DB_VALUE_ADAPTER_PROPERTY) private IValueAdapter dbValueAdapter;
 	@Inject private ILogger logger;
 	
+	public Iterator<Handler> getHandlerIterator(ExperimentDescr experiment, String node, String handler, long start, long end) {
+		dataBaseAdapter.initialize(experiment);
+		final Iterator<Handler> dbIterator = ((HBaseDataBaseAdapter)dataBaseAdapter).retrieve(node, handler, start, end);
+		return new Iterator<Handler>() {
+			@Override
+			public boolean hasNext() {
+				return dbIterator.hasNext();
+			}
+
+			@Override
+			public Handler next() {
+				Handler dbHandler = dbIterator.next();
+				if (dbHandler == null) {
+					return null;
+				} else {
+					return valueAdapter.create(dbHandler, dbValueAdapter);
+				}
+			}
+
+			@Override
+			public void remove() {
+				dbIterator.remove();
+			}
+		};
+	}
+	
 	public Handler getHandler(ExperimentDescr experiment, String node, String handler, long time) {
 		dataBaseAdapter.initialize(experiment);
 		dataBaseAdapter.set(node, time);
 		Handler dbHandler = dataBaseAdapter.retrieve(handler);
-		Handler result = ClickWatchModelFactory.eINSTANCE.createHandler();
-		result.setTimestamp(dbHandler.getTimestamp());
-		if (dbValueAdapter.getClass().equals(valueAdapter.getClass())) {
-			valueAdapter.moveValue(dbHandler, result);
-		} else {
-			String plainRealValue = dbValueAdapter.getPlainRealValue(dbHandler);
-			valueAdapter.setModelValue(result, plainRealValue);
+		if (dbHandler == null) {
+			return null;
 		}
-		return result;
+		return valueAdapter.create(dbHandler, dbValueAdapter);
 	}
 	
 	public Node getNode(ExperimentDescr experiment, String node, long time) {
@@ -64,20 +87,13 @@ public class DataBaseUtil {
 		dataBaseAdapter.set(node, time);
 		
 		for (Handler handlerTimeCopy: result.getAllHandlers()) {
-			Handler handler = dataBaseAdapter.retrieve(handlerTimeCopy.getQualifiedName());
-			if (handler != null) {
-				Preconditions.checkState(handler.getTimestamp() <= time);
-				if (dbValueAdapter.getClass().equals(valueAdapter.getClass())) {
-					valueAdapter.moveValue(handler, handlerTimeCopy);
-				} else {
-					String plainRealValue = dbValueAdapter.getPlainRealValue(handler);
-					valueAdapter.setModelValue(handlerTimeCopy, plainRealValue);
-				}
-	
-				if (handler.getTimestamp() == 0) {
+			Handler dbHandler = dataBaseAdapter.retrieve(handlerTimeCopy.getQualifiedName());
+			if (dbHandler != null) {
+				Preconditions.checkState(dbHandler.getTimestamp() <= time);
+				if (dbHandler.getTimestamp() == 0) {
 					logger.log(ILogger.WARNING, "empty timestamp", null);
 				}
-				handlerTimeCopy.setTimestamp(handler.getTimestamp());
+				valueAdapter.update(handlerTimeCopy, dbHandler, dbValueAdapter);
 			} else {
 				handlerTimeCopy.setTimestamp(0);
 				valueAdapter.clearValue(handlerTimeCopy);

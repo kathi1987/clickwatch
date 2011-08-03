@@ -19,5 +19,6 @@
 		<module>p2-repository</module>
 		<module>target-platform</module>
 		<module>de.hub.clickwatch.feature</module>
+		<module>de.hub.clickwatch.product</module>
 	</modules>
 </project>

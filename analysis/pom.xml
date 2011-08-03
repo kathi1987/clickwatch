@@ -16,11 +16,13 @@
   
   <modules>
    <module>de.hub.clickwatch.analysis</module>
+   <module>de.hub.clickwatch.analysis.data</module>
    <module>de.hub.clickwatch.examples</module>
    <!-- this is not a pde project yet-->
    <!--<module>de.hub.clickwatch.analysis.examples.composition</module>-->
    <module>de.hub.clickwatch.clientlocation</module>
    <module>de.hub.clickwatch.specificmodels</module>
+   <module>de.hub.clickwatch.specificmodels.brn</module>
    <module>de.hub.clickwatch.specificmodels.test</module>
   </modules>
 </project>

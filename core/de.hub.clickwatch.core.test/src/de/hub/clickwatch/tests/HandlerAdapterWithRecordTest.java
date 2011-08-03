@@ -8,7 +8,7 @@ import com.google.inject.AbstractModule;
 import de.hub.clickcontrol.IClickSocket;
 import de.hub.clickwatch.connection.INodeConnection;
 import de.hub.clickwatch.connection.INodeConnectionProvider;
-import de.hub.clickwatch.connection.adapter.IHandlerAdapter;
+import de.hub.clickwatch.connection.adapter.IPullHandlerAdapter;
 import de.hub.clickwatch.connection.adapter.IMetaDataAdapter;
 import de.hub.clickwatch.connection.adapter.IValueAdapter;
 import de.hub.clickwatch.connection.adapter.StringValueAdapter;
@@ -40,7 +40,7 @@ public class HandlerAdapterWithRecordTest extends AbstractTest {
 		INodeConnectionProvider ncp = injector.getInstance(INodeConnectionProvider.class);
 		INodeConnection connection = ncp.createConnection("192.168.3.152", "7777");
 		connection.connect();
-		IHandlerAdapter handlerAdapter = connection.getAdapter(IHandlerAdapter.class);
+		IPullHandlerAdapter handlerAdapter = connection.getAdapter(IPullHandlerAdapter.class);
 		handlerAdapter.configure(connection.getAdapter(IMetaDataAdapter.class).pullAllMetaData().getAllHandlers());
 		
 		for (int i = 0; i < 200000; i++) {

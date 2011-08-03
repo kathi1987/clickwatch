@@ -1,5 +1,7 @@
 *.class
 *.swp
 target/
-build/
 bin/
+out.*
+out-*.*
+log.*

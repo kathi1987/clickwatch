@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.ecore.util.ExtendedMetaData;
 
 import com.google.common.base.Preconditions;
 
@@ -22,7 +23,9 @@ import de.hub.specificmodels.common.TargetId;
 import de.hub.specificmodels.common.targetproperties.Containment;
 import de.hub.specificmodels.common.targetproperties.GuessMultiplicities;
 import de.hub.specificmodels.common.targetproperties.GuessTypes;
+import de.hub.specificmodels.common.targetproperties.IsBasedOnXml;
 import de.hub.specificmodels.common.targetproperties.IsCopy;
+import de.hub.specificmodels.common.targetproperties.XmlName;
 import de.hub.specificmodels.metamodelgenerator.types.ITypeDescription;
 import de.hub.specificmodels.metamodelgenerator.types.TypeDescriptions;
 
@@ -85,6 +88,7 @@ public class DefaultTargetObjectCreator implements ITargetObjectCreator {
 		targetFeature.setName(featureName);
 		targetFeature.setEType(type);
 		copyAttributeValues(targetId.getSourceFeature(), targetFeature);
+		setDefaultAttributeValue(targetId, targetFeature);
 		if (targetId.getProperty(GuessMultiplicities.class).get()) {
 			targetFeature.setUpperBound(1);
 		}
@@ -102,6 +106,7 @@ public class DefaultTargetObjectCreator implements ITargetObjectCreator {
 		targetFeature.setEOpposite(parentFeature);
 		parentFeature.setTransient(targetFeature.isTransient());
 		
+		addXmlNameAnnotation(targetFeature, targetId);
 		return targetFeature;
 	}
 
@@ -117,12 +122,39 @@ public class DefaultTargetObjectCreator implements ITargetObjectCreator {
 			targetFeature.setEType(targetId.getSourceFeature().getEType());
 		}
 		copyAttributeValues(targetId.getSourceFeature(), targetFeature);
+		setDefaultAttributeValue(targetId, targetFeature);
 		if (targetId.getProperty(GuessMultiplicities.class).get()) {
 			targetFeature.setUpperBound(1);
 		}
 		setLatestObject(sok, targetFeature);
 		addAnnotation(targetFeature, TARGET_ID, targetId.getTargetReferenceString());
+		addXmlNameAnnotation(targetFeature, targetId);
 		return targetFeature;
+	}
+
+	private void addXmlNameAnnotation(EStructuralFeature targetFeature,
+			TargetId targetId) {
+		String xmlName = targetId.getProperty(XmlName.class).get();
+		if (xmlName != null && !targetFeature.getName().equals(xmlName)) {
+			EAnnotation annotation = EcoreFactory.eINSTANCE.createEAnnotation();
+			annotation.setSource(ExtendedMetaData.ANNOTATION_URI);
+			annotation.getDetails().put("name", xmlName);
+			if (targetFeature instanceof EAttribute) {
+				annotation.getDetails().put("kind", ExtendedMetaData.FEATURE_KINDS[ExtendedMetaData.ATTRIBUTE_FEATURE]);
+			} else if (targetFeature instanceof EReference) {
+				annotation.getDetails().put("kind", ExtendedMetaData.FEATURE_KINDS[ExtendedMetaData.ELEMENT_FEATURE]);
+			}
+			targetFeature.getEAnnotations().add(annotation);
+		}
+	}
+
+	private void setDefaultAttributeValue(TargetId targetId,
+			EStructuralFeature targetFeature) {
+		if (targetId.getProperty(IsBasedOnXml.class).get()) {
+			targetFeature.setDerived(false);
+			targetFeature.setTransient(false);
+			targetFeature.setVolatile(false);
+		}
 	}
 
 	@Override

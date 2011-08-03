@@ -259,4 +259,12 @@ public class DataBaseAdapter extends AbstractDataBaseRecordAdapter implements ID
 		}
 	}
 
+	@Override
+	public Handler[] retrieve(String[] handlerIds) {
+		Handler[] result = new Handler[handlerIds.length];
+		for (int i = 0; i < handlerIds.length; i++) {
+			result[i] = retrieve(handlerIds[i]);
+		}
+		return result;
+	}
 }

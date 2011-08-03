@@ -2,15 +2,18 @@ package de.hub.clickwatch.connection.adapter;
 
 import de.hub.clickcontrol.IClickSocket;
 import de.hub.clickwatch.connection.INodeConnection;
+import de.hub.clickwatch.connection.NodeConnection;
 
 public abstract class AbstractAdapter {
 
-	protected IClickSocket clickSocket;
 	protected INodeConnection connection;
 	
-	public void init(IClickSocket clickSocket, INodeConnection connection) {
-		this.clickSocket = clickSocket;
+	public void init(INodeConnection connection) {
 		this.connection = connection;
+	}
+	
+	protected IClickSocket clickSocket() {
+		return ((NodeConnection)connection).clickSocket();
 	}
 	
 	public void clearCaches() {

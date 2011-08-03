@@ -105,4 +105,9 @@ public abstract class ClickSocketTestImpl implements IClickSocket {
 	}
 	
 	public abstract void handleWrite(String element, String handler, String value);
+	
+	@Override
+	public <T> T getAdapter(Class<T> theClass) {
+		return null;
+	}
 }

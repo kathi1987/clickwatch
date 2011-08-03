@@ -21,8 +21,6 @@ public class ExperimentRecorderHBaseTest extends AbstractDBTest {
 		return HBaseDataBaseAdapter.class;
 	}
 	
-	
-
 	@Override
 	protected Class<? extends IDataBaseRetrieveAdapter> getDataBaseRetrieveAdapterClass() {
 		return HBaseDataBaseAdapter.class;
@@ -42,6 +40,11 @@ public class ExperimentRecorderHBaseTest extends AbstractDBTest {
 		};
 	}
 	
+	@Override
+	protected Integer getUpdateInterval() {
+		return 10;
+	}
+
 	@Override
 	protected boolean getInMemory() {
 		return false;

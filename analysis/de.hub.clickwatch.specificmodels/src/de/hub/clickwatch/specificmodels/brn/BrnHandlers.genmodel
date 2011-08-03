@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/de.hub.clickwatch.specificmodels.brn/src"
+    modelPluginID="de.hub.clickwatch.specificmodels.brn" modelName="BrnHandlers" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="6.0" copyrightFields="false" usedGenPackages="../../../../../../../de.hub.clickwatch.core/src/de/hub/clickwatch/model/ClickWatchModel.genmodel#//model">
+  <foreignModel>BrnHandlers.ecore</foreignModel>
+  <genPackages prefix="Brn" basePackage="de.hub.clickwatch.specificmodels" resource="XML"
+      disposableProviderFactory="true" ecorePackage="BrnHandlers.ecore#/">
+    <genClasses ecoreClass="BrnHandlers.ecore#//HandlerSubClass"/>
+    <nestedGenPackages prefix="Device_wifi_link_stat_bcast_stats" resource="XML" disposableProviderFactory="true"
+        ecorePackage="BrnHandlers.ecore#//device_wifi_link_stat_bcast_stats">
+      <genClasses ecoreClass="BrnHandlers.ecore#//device_wifi_link_stat_bcast_stats/Bcast_stats">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference BrnHandlers.ecore#//device_wifi_link_stat_bcast_stats/Bcast_stats/entry"/>
+      </genClasses>
+      <genClasses ecoreClass="BrnHandlers.ecore#//device_wifi_link_stat_bcast_stats/Entry">
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference BrnHandlers.ecore#//device_wifi_link_stat_bcast_stats/Entry/eContainer_entry"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BrnHandlers.ecore#//device_wifi_link_stat_bcast_stats/Entry/text"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference BrnHandlers.ecore#//device_wifi_link_stat_bcast_stats/Entry/link"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BrnHandlers.ecore#//device_wifi_link_stat_bcast_stats/Entry/from"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BrnHandlers.ecore#//device_wifi_link_stat_bcast_stats/Entry/time"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BrnHandlers.ecore#//device_wifi_link_stat_bcast_stats/Entry/seq"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BrnHandlers.ecore#//device_wifi_link_stat_bcast_stats/Entry/period"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BrnHandlers.ecore#//device_wifi_link_stat_bcast_stats/Entry/tau"/>
+      </genClasses>
+      <genClasses ecoreClass="BrnHandlers.ecore#//device_wifi_link_stat_bcast_stats/Link">
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference BrnHandlers.ecore#//device_wifi_link_stat_bcast_stats/Link/eContainer_link"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BrnHandlers.ecore#//device_wifi_link_stat_bcast_stats/Link/text"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference BrnHandlers.ecore#//device_wifi_link_stat_bcast_stats/Link/link_info"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BrnHandlers.ecore#//device_wifi_link_stat_bcast_stats/Link/to"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BrnHandlers.ecore#//device_wifi_link_stat_bcast_stats/Link/seq"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BrnHandlers.ecore#//device_wifi_link_stat_bcast_stats/Link/period"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BrnHandlers.ecore#//device_wifi_link_stat_bcast_stats/Link/tau"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BrnHandlers.ecore#//device_wifi_link_stat_bcast_stats/Link/last_rx"/>
+      </genClasses>
+      <genClasses ecoreClass="BrnHandlers.ecore#//device_wifi_link_stat_bcast_stats/Link_info">
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference BrnHandlers.ecore#//device_wifi_link_stat_bcast_stats/Link_info/eContainer_link_info"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BrnHandlers.ecore#//device_wifi_link_stat_bcast_stats/Link_info/size"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BrnHandlers.ecore#//device_wifi_link_stat_bcast_stats/Link_info/rate"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BrnHandlers.ecore#//device_wifi_link_stat_bcast_stats/Link_info/fwd"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BrnHandlers.ecore#//device_wifi_link_stat_bcast_stats/Link_info/rev"/>
+      </genClasses>
+    </nestedGenPackages>
+  </genPackages>
+</genmodel:GenModel>

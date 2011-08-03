@@ -1,29 +1,34 @@
 package de.hub.clickwatch.connection.adapter;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ArrayBlockingQueue;
 
 import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.xml.type.AnyType;
 import org.eclipse.emf.ecore.xml.type.XMLTypeDocumentRoot;
 
 import com.google.inject.Inject;
+import com.google.inject.name.Named;
 
-import de.hub.clickwatch.model.ClickWatchModelFactory;
+import de.hub.clickwatch.ClickWatchModule;
 import de.hub.clickwatch.model.Handler;
+import de.hub.clickwatch.model.util.HandlerUtil;
 import de.hub.clickwatch.util.ILogger;
 import de.hub.clickwatch.util.Throwables;
 import de.hub.emfxml.XmlModelRepository;
 
-public class CompoundHandlerAdapter extends HandlerAdapter {
-	
+public class CompoundHandlerAdapter extends PullHandlerAdapter {
+
+	private static final int driftMavrSize = 20;
 	@Inject private XmlModelRepository xmlModelRepository;
 	@Inject private ILogger logger;
+	@Inject @Named(ClickWatchModule.B_COMPOUND_HANDLER_RECORDS) private boolean records;
+	@Inject @Named(ClickWatchModule.B_COMPOUND_HANDLER_CHANGES_ONLY) private boolean changesOnly;
+	@Inject @Named(ClickWatchModule.I_COMPOUND_HANDLER_SAMPLE_TIME) private int sampletime;
 	
 	private IValueAdapter valueAdapter = null;
 	
@@ -34,6 +39,31 @@ public class CompoundHandlerAdapter extends HandlerAdapter {
 	
 	private List<Handler> handlers = null;
 	private String currentHandlerName = null;
+	
+	private long pullTime = 0;
+	private long driftMavrSum = 0;
+	private ArrayBlockingQueue<Long> driftMavrValues = new ArrayBlockingQueue<Long>(driftMavrSize);
+	private boolean inRecordMode = false;
+	
+	public void configureCompoundHandler(boolean record, int sampletime) {
+		try {
+			if (record) {
+				clickSocket().write(COMPOUND_HANDLER_ELEMENT, "recordmode", "1".toCharArray());
+				if (changesOnly) {
+					clickSocket().write(COMPOUND_HANDLER_ELEMENT, "updatemode", "2".toCharArray());
+				} else {
+					clickSocket().write(COMPOUND_HANDLER_ELEMENT, "updatemode", "0".toCharArray());
+				}
+				clickSocket().write(COMPOUND_HANDLER_ELEMENT, "sampletime", new Integer(sampletime).toString().toCharArray());
+			} else {
+				clickSocket().write(COMPOUND_HANDLER_ELEMENT, "recordmode", "0".toCharArray());
+				clickSocket().write(COMPOUND_HANDLER_ELEMENT, "updatemode", "0".toCharArray());
+			}
+		} catch (Exception e) {
+			Throwables.propagate(e);
+		}
+		logger.log(ILogger.DEBUG, "configured click compound handler of " + connection + " with " + record + ", " + changesOnly + ", " + sampletime, null);
+	}
 
 	@Override
 	public Collection<Handler> pullHandler() {
@@ -46,12 +76,14 @@ public class CompoundHandlerAdapter extends HandlerAdapter {
 		
 		char[] compundHandlerRawValue = null;
 		try {
-			compundHandlerRawValue = clickSocket.read(COMPOUND_HANDLER_ELEMENT, COMPOUND_HANDLER_READ_HANDLER);
+			pullTime = System.nanoTime();
+			compundHandlerRawValue = clickSocket().read(COMPOUND_HANDLER_ELEMENT, COMPOUND_HANDLER_READ_HANDLER);
 		} catch (Exception e) {
 			Throwables.propagate(e);
 		}
 	
-		XMLTypeDocumentRoot xml = (XMLTypeDocumentRoot)xmlModelRepository.deserializeXml(new String(compundHandlerRawValue));
+		String rawXml = new String(compundHandlerRawValue);
+		XMLTypeDocumentRoot xml = (XMLTypeDocumentRoot)xmlModelRepository.deserializeXml(rawXml);
 		traverse(xml.getMixed());
 				
 		return handlers;
@@ -59,13 +91,14 @@ public class CompoundHandlerAdapter extends HandlerAdapter {
 	
 	private void traverse(FeatureMap featureMap) {
 		for(FeatureMap.Entry fme: featureMap) {
+			boolean dive = false;
 			if (!fme.getEStructuralFeature().getName().equals("text")) {
-				handleFME(fme);
+				dive = handleFME(fme);
 			}
 			Object fmeValue = fme.getValue();
-			if (fmeValue instanceof AnyType) {
+			if (fmeValue instanceof AnyType && dive) {
 				AnyType value = (AnyType)fmeValue;
-				traverse(value.getMixed());				
+				traverse(value.getAny());				
 			}
 		}
 	}
@@ -82,7 +115,7 @@ public class CompoundHandlerAdapter extends HandlerAdapter {
 		return result;
 	}
 	
-	public void handleFME(FeatureMap.Entry fme) {
+	public boolean handleFME(FeatureMap.Entry fme) {
 		String elementName = fme.getEStructuralFeature().getName();
 		Object value = fme.getValue();
 		Map<String, String> attributes = null;
@@ -90,42 +123,59 @@ public class CompoundHandlerAdapter extends HandlerAdapter {
 			attributes = getAttributeMap(((AnyType)fme.getValue()).getAnyAttribute());
 		}
 		if (elementName.equals("compoundhandler")) {
-			
+			long drift = pullTime - time(attributes.get("time"));
+			if (driftMavrValues.size() == driftMavrSize) {
+				driftMavrSum -= driftMavrValues.poll();				
+			}
+			driftMavrSum += drift;
+			driftMavrValues.add(drift);
+			inRecordMode = "1".equals(attributes.get("recordmode"));
+		} else if (elementName.equals("compoundhandlerinfo")) {
+			return false;
 		} else if (elementName.equals("handler")) {
 			currentHandlerName = attributes.get("name").replace(".", "/");
-			if (attributes.get("overflow").equals("true")) {
-				// TODO handler overflow
-				logger.log(ILogger.WARNING, "Overflow in compound handler detected"
-						+ ", handler: "	+ currentHandlerName 
-						+ ", node: " + connection, null);
-
+			if (inRecordMode) {
+				if (attributes.get("overflow").equals("true")) {
+					logger.log(ILogger.WARNING, "Overflow in compound handler detected"
+							+ ", handler: "	+ currentHandlerName 
+							+ ", node: " + connection, null);
+	
+				}
+			} else {
+				createAndAddHandler(value, attributes);
 			}
 		} else if (elementName.equals("record")) {
-			if (attributes.get("update").equals("false")) {
-				return;
-			}
-			
-			Handler newHandler = ClickWatchModelFactory.eINSTANCE.createHandler();
-			// set name of handler
-			newHandler.setName(currentHandlerName);
-			
-			// set the timestamp
-			newHandler.setTimestamp(time(attributes.get("time")));
-			
-			// set the value
-			String recordStr = null;
-			for (FeatureMap.Entry valueFme: ((AnyType)value).getMixed()) {
-				if (valueFme.getEStructuralFeature().getName().equals("cDATA")) {
-					recordStr = (String)valueFme.getValue();
-				}
-			}
-			if (recordStr != null) {
-				valueAdapter.setModelValue(newHandler, recordStr);	
-			}
-			handlers.add(newHandler);
-		} else {
-			
+			if (!attributes.get("update").equals("false")) {
+				createAndAddHandler(value, attributes);
+			}						
 		}
+		return true;
+	}
+
+	private void createAndAddHandler(Object value, Map<String, String> attributes) {		
+		// set the timestamp
+		long drift = driftMavrSum / driftMavrValues.size();
+		long timestamp = 0;
+		if (inRecordMode) {
+			timestamp = time(attributes.get("time")) + drift;
+		} else {
+			timestamp = pullTime;
+		}
+		
+		// set the value
+		String recordStr = null;
+		for (FeatureMap.Entry valueFme: ((AnyType)value).getMixed()) {
+			if (valueFme.getEStructuralFeature().getName().equals("cDATA")) {
+				recordStr = (String)valueFme.getValue();
+			}
+		}
+		Handler newHandler;
+		if (recordStr != null) {
+			newHandler = valueAdapter.create(currentHandlerName, timestamp, recordStr);
+		} else {
+			newHandler = valueAdapter.create(currentHandlerName, timestamp, "");
+		}
+		handlers.add(newHandler);
 	}
 
 	private long time(String timestampStr) {
@@ -134,25 +184,21 @@ public class CompoundHandlerAdapter extends HandlerAdapter {
 		return timestamp;
 	}
 	
-	private static Collection<String> commonHandler = new HashSet<String>(Arrays.asList(new String[] { 
-			"debug", "handlers", "ports", "config", "name", "version", "class" 
-	}));
-
 	@Override
 	public void configure(Collection<Handler> handlerConfig) {		
 		StringBuffer configurationString = new StringBuffer();
 		loop: for(Handler handler: handlerConfig) {
 			String handlerName = handler.getQualifiedName();
-			int slash = handlerName.lastIndexOf("/");
-			String plainHandlerName = handlerName.substring(slash + 1);
-			handlerName = handlerName.substring(0, slash) + "." + plainHandlerName;
+			String[] splitQualifiedName = HandlerUtil.getSplitQualifiedName(handlerName);
+			String plainHandlerName = splitQualifiedName[1];
+			String elementName = splitQualifiedName[0];
 			if (commonHandler.contains(plainHandlerName)) {
 				continue loop;
 			}
-			if (handlerName.equals("com.read")) {
+			if (handlerName.equals("com/read")) {
 				continue loop;
 			}
-			configurationString.append(handlerName);
+			configurationString.append(elementName + "." + plainHandlerName);
 			configurationString.append(" ");
 		}
 		
@@ -161,8 +207,9 @@ public class CompoundHandlerAdapter extends HandlerAdapter {
 	
 	private void resetCompoundHandler(String configurationString) {
 		try {
-			clickSocket.write(COMPOUND_HANDLER_ELEMENT, COMPOUND_HANDLER_RESET_HANDLER, "".toCharArray());
-			clickSocket.write(COMPOUND_HANDLER_ELEMENT, COMPOUND_HANDLER_INSERT_HANDLER, configurationString.trim().toCharArray());
+			configureCompoundHandler(records, sampletime);
+			clickSocket().write(COMPOUND_HANDLER_ELEMENT, COMPOUND_HANDLER_RESET_HANDLER, "".toCharArray());
+			clickSocket().write(COMPOUND_HANDLER_ELEMENT, COMPOUND_HANDLER_INSERT_HANDLER, configurationString.trim().toCharArray());
 			logger.log(ILogger.DEBUG, "Setting compound handler of " + connection + " with " + configurationString, null);
 		} catch (Exception e) {
 			Throwables.propagate(e);
@@ -172,7 +219,7 @@ public class CompoundHandlerAdapter extends HandlerAdapter {
 	@Override
 	public void deconfigure() {
 		try {
-			clickSocket.write(COMPOUND_HANDLER_ELEMENT, COMPOUND_HANDLER_RESET_HANDLER, "".toCharArray());
+			clickSocket().write(COMPOUND_HANDLER_ELEMENT, COMPOUND_HANDLER_RESET_HANDLER, "".toCharArray());
 			logger.log(ILogger.DEBUG, "Reseting compound handler of " + connection, null);
 		} catch (Exception e) {
 			Throwables.propagate(e);

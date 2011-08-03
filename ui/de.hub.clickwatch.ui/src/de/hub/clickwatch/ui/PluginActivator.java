@@ -75,8 +75,7 @@ public class PluginActivator extends AbstractUIPlugin {
 					
 					bind(ClickSocketPlayer.class).toInstance(player);
 					bind(IClickSocket.class).to(ClickSocketPlayerSocketImpl.class);
-				}
-				
+				}	
 			};
 			clickWatchModule.setLogger(new ILogger() {				
 				@Override

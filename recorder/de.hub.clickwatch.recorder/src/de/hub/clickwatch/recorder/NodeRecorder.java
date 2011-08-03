@@ -5,6 +5,8 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.commons.math.stat.descriptive.SummaryStatistics;
 import org.eclipse.emf.common.util.EList;
@@ -15,9 +17,10 @@ import com.google.inject.name.Named;
 
 import de.hub.clickwatch.connection.INodeConnection;
 import de.hub.clickwatch.connection.INodeConnectionProvider;
-import de.hub.clickwatch.connection.adapter.IHandlerAdapter;
+import de.hub.clickwatch.connection.adapter.IPullHandlerAdapter;
 import de.hub.clickwatch.connection.adapter.IMetaDataAdapter;
 import de.hub.clickwatch.connection.adapter.IValueAdapter;
+import de.hub.clickwatch.connection.adapter.SocketStatisticsAdapter;
 import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.model.Network;
 import de.hub.clickwatch.model.Node;
@@ -26,6 +29,8 @@ import de.hub.clickwatch.util.ILogger;
 import de.hub.clickwatch.util.Throwables;
 
 public class NodeRecorder implements Runnable {
+	
+	private static final Pattern pattern = Pattern.compile(".*real=\"(\\d+\\.\\d+)\".*");
 	
 	private ExperimentRecorder parent;
 	private Node configuration;
@@ -40,7 +45,8 @@ public class NodeRecorder implements Runnable {
 	private Object nodeDBAdapter = null;
 	
 	private INodeConnection connection = null;
-	private IHandlerAdapter handlerAdapter = null;
+	private IPullHandlerAdapter handlerAdapter = null;
+	private SocketStatisticsAdapter socketStatisticsAdapter = null;
 	private long updateInterval = -1;
 	private boolean isRecording = true;
 	private int samples = 0;
@@ -50,10 +56,13 @@ public class NodeRecorder implements Runnable {
 	
 	@Inject @Named(CWRecorderModule.L_DEFAULT_UPDATE_INTERVAL_PROPERTY) private long defaultUpdateInterval;
 	@Inject @Named(CWRecorderModule.B_RECORD_CHANGES_ONLY_PROPERTY) private boolean recordChangesOnly;
-	@Inject @Named(CWRecorderModule.DB_VALUE_ADAPTER_PROPERTY) private IValueAdapter valueAdapter;
+	@Inject private IValueAdapter valueAdapter;
 	
 	private List<Double> handlerPulledSValues = new ArrayList<Double>();
 	private List<Double> timeSValues = new ArrayList<Double>();
+	private List<Double> bytesRequestSValues = new ArrayList<Double>();
+	private List<Double> timeRequestSValues = new ArrayList<Double>();
+	private List<Double> cpuLoadSValues = new ArrayList<Double>();
 
 	private void initializeRecorder() {
 		logger.log(ILogger.DEBUG, "started recording of " + configuration.getINetAddress(), null);
@@ -77,8 +86,17 @@ public class NodeRecorder implements Runnable {
 		nodeDBAdapter = parent.getDataBaseAdapter().addNode(metaData);
 		logger.log(ILogger.DEBUG, "pulled meta-data for " + configuration.getINetAddress(), null);
 		
-		handlerAdapter = connection.getAdapter(IHandlerAdapter.class);
+		handlerAdapter = connection.getAdapter(IPullHandlerAdapter.class);
 		EList<Handler> allHandlers = metaData.getAllHandlers();
+		configureHandlerAdapter(allHandlers);
+		
+		socketStatisticsAdapter = connection.getAdapter(SocketStatisticsAdapter.class);
+		if (socketStatisticsAdapter != null) {
+			socketStatisticsAdapter.activateSocketStatistics();
+		}
+	}
+
+	protected void configureHandlerAdapter(EList<Handler> allHandlers) {
 		handlerAdapter.configure(allHandlers);
 	}
 	
@@ -103,13 +121,27 @@ public class NodeRecorder implements Runnable {
 			boolean hasChanged = key == null || !(valueAdapter.valuesEquals(key, handler)); 
 			keyMap.put(qualifiedName, handler);
 			
+			if (qualifiedName.equals("sys_info/systeminfo")) {
+				String value = valueAdapter.getPlainValue(handler);
+				Matcher matcher = pattern.matcher(value.replace("\n", " "));
+				if (matcher.matches()) {
+					Double cpuLoad = new Double(matcher.group(1));
+					cpuLoadSValues.add(cpuLoad);
+				}
+			}
+			
 			if (parent.getDataBaseAdapter().record(nodeDBAdapter, handler, !recordChangesOnly || hasChanged, samples)) {
 				recordedHandler++;
 			}
 		}
 		
-		handlerPulledSValues.add((double)handlersPulled.size());
+		handlerPulledSValues.add((double)handlersPulled.size());		
 		timeSValues.add((double)System.nanoTime() - start);
+		if (socketStatisticsAdapter != null) {
+			bytesRequestSValues.add(socketStatisticsAdapter.getSocketStatistics().getBytesRequest());
+			timeRequestSValues.add(socketStatisticsAdapter.getSocketStatistics().getTimeRequest());
+			socketStatisticsAdapter.resetSocketStatistics();
+		}
 		
 		return recordedHandler;
 	}
@@ -158,6 +190,7 @@ public class NodeRecorder implements Runnable {
 			if (samples % 100 == 0) {
 				logger.log(ILogger.DEBUG, "Recording " + samples + "th sample for " 
 						+ configuration.getINetAddress(), null);
+				saveStatistics();
 			}
 
 			recordedHandlerN += recordedHandlerS;
@@ -173,17 +206,27 @@ public class NodeRecorder implements Runnable {
 		stats.getSamplesN().addValue(samples);
 		stats.getTimeN().addValue(System.nanoTime() - start);
 		
-		addAll(stats.getHandlersPulledS(), handlerPulledSValues);
-		addAll(stats.getTimeS(), timeSValues);
+		saveStatistics();
 		
+		parent.getDataBaseAdapter().close(nodeDBAdapter);
 		handlerAdapter.deconfigure();
 		parent.reportStopped();
+	}
+	
+	private void saveStatistics() {
+		ExperimentStatistics stats = parent.getStatistics();
+		addAll(stats.getHandlersPulledS(), handlerPulledSValues);
+		addAll(stats.getTimeS(), timeSValues);
+		addAll(stats.getBytesRequestS(), bytesRequestSValues);
+		addAll(stats.getTimeRequestS(), timeRequestSValues);
+		addAll(stats.getCpuLoadS(), cpuLoadSValues);
 	}
 	
 	private void addAll(SummaryStatistics stat, Collection<Double> values) {
 		for(Double d: values) {
 			stat.addValue(d);
 		}
+		values.clear();
 	}
 	
 	public synchronized void waitForUpdateInterval() {

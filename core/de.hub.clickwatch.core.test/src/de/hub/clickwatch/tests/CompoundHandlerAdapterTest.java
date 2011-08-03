@@ -11,7 +11,7 @@ import de.hub.clickcontrol.IClickSocket;
 import de.hub.clickwatch.connection.INodeConnection;
 import de.hub.clickwatch.connection.INodeConnectionProvider;
 import de.hub.clickwatch.connection.adapter.CompoundHandlerAdapter;
-import de.hub.clickwatch.connection.adapter.IHandlerAdapter;
+import de.hub.clickwatch.connection.adapter.IPullHandlerAdapter;
 import de.hub.clickwatch.connection.adapter.IMetaDataAdapter;
 import de.hub.clickwatch.model.Handler;
 
@@ -23,7 +23,7 @@ public class CompoundHandlerAdapterTest extends AbstractTest {
 	}
 
 	@Override
-	protected Class<? extends IHandlerAdapter> getHandlerAdapterClass() {
+	protected Class<? extends IPullHandlerAdapter> getHandlerAdapterClass() {
 		return CompoundHandlerAdapter.class;
 	}
 
@@ -32,7 +32,7 @@ public class CompoundHandlerAdapterTest extends AbstractTest {
 	public void test() throws Exception {
 		INodeConnectionProvider ncp = injector.getInstance(INodeConnectionProvider.class);
 		INodeConnection nodeConnection = ncp.createConnection("localhost", "7777");
-		IHandlerAdapter handlerAdapter = nodeConnection.getAdapter(IHandlerAdapter.class);
+		IPullHandlerAdapter handlerAdapter = nodeConnection.getAdapter(IPullHandlerAdapter.class);
 		nodeConnection.connect();
 		
 		IMetaDataAdapter metaDataAdapter = nodeConnection.getAdapter(IMetaDataAdapter.class);

@@ -35,10 +35,10 @@ public class XSDValueAdapter extends XmlValueAdapter {
 	private static final EPackage NULL_PACKAGE = EcoreFactory.eINSTANCE.createEPackage();
 
 	@Override
-	public void setModelValue(Handler handler, String plainRealValue) {
+	public void setValue(Handler handler, String plainRealValue) {
 		EPackage metaModel = getMetaModel(handler);
 		if (metaModel == null) {
-			super.setModelValue(handler, plainRealValue);
+			super.setValue(handler, plainRealValue);
 		} else {
 			EObject documentRoot = xmlModelRepository.deserializeModel(metaModel, plainRealValue);
 			EObject modelValue = documentRoot.eContents().get(0);
@@ -62,10 +62,10 @@ public class XSDValueAdapter extends XmlValueAdapter {
 
 	
 	@Override
-	public String getPlainRealValue(Handler handler) {
+	public String getPlainValue(Handler handler) {
 		EPackage metaModel = getMetaModel(handler);
 		if (metaModel == null) {
-			return super.getPlainRealValue(handler);
+			return super.getPlainValue(handler);
 		} else {
 			FeatureMap mixed = handler.getMixed();
 			Object modelValue;
@@ -102,14 +102,14 @@ public class XSDValueAdapter extends XmlValueAdapter {
 		String result = null;
 		try {
 			boolean hasXsd = false;
-			for(HandlerInfo hi: clickSocket.getElementHandlers(elementQualifiedName)) {
+			for(HandlerInfo hi: clickSocket().getElementHandlers(elementQualifiedName)) {
 				if (hi.getHandlerName().equals(XSD_HANDLER_NAME)) {
 					hasXsd = true;
 				}
 			}
 			
 			if (hasXsd) {
-				result =  new String(clickSocket.read(elementQualifiedName, XSD_HANDLER_NAME));
+				result =  new String(clickSocket().read(elementQualifiedName, XSD_HANDLER_NAME));
 			}
 		} catch (Throwable e) {
 			Throwables.propagate(e);

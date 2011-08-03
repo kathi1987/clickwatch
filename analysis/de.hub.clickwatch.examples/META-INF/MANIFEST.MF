@@ -3,7 +3,6 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: de.hub.clickwatch.examples;singleton:=true
 Bundle-Version: 2.0.0.qualifier
-Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-Activator: de.hub.clickwatch.examples.ClickWatchExamplesPluginActivator
@@ -15,10 +14,10 @@ Export-Package: de.hub.clickwatch.examples,
  de.hub.clickwatch.examples.linkdist.ldp.impl,
  de.hub.clickwatch.examples.linkdist.ldp.util,
  de.hub.clickwatch.examples.seismo
-Require-Bundle: de.hub.clickwatch.analysis,
- org.junit;bundle-version="4.8.2",
- de.hub.clickwatch.recorder;bundle-version="2.0.0",
- de.hub.clickwatch.core.test;bundle-version="2.0.0"
+Require-Bundle: de.hub.clickwatch.recorder;bundle-version="2.0.0",
+ de.hub.clickwatch.core.test;bundle-version="2.0.0",
+ de.hub.clickwatch.analysis,
+ org.junit;bundle-version="4.8.2"
 Bundle-ActivationPolicy: lazy
 Import-Package: org.antlr.runtime;version="3.0.0",
  org.apache.commons.logging

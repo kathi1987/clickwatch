@@ -14,6 +14,10 @@ public class ClickWatchSpecificModelsModule extends AbstractModule {
 		ClickWatchModelPackage clickWatchModel = ClickWatchModelPackage.eINSTANCE;
 		
 		bind(String.class).annotatedWith(Names.named(MetaModelGenerator.COMMON_CLASS_PREFIX_NAME)).toInstance(clickWatchModel.getNetwork().getName() + clickWatchModel.getNode().getName());
+		configureTargetIdProvider();
+	}
+	
+	protected void configureTargetIdProvider() {
 		bind(ITargetIdProvider.class).toInstance(new TargetIdProviderFactoryProvider(new ClickWatchTargetIdProviderFactory()));
 	}
 }

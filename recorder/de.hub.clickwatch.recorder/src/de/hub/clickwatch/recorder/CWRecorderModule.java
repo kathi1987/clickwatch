@@ -24,8 +24,14 @@ public class CWRecorderModule extends AbstractModule {
 		configureHandlerPerRecord();
 		configureRecordChangesOnly();
 		configureDBValueAdapter();
+		
+		configureAdditionalBindings();
 	}
 	
+	protected void configureAdditionalBindings() {
+		// empty
+	}
+
 	protected void configureRecordChangesOnly() {
 		bind(boolean.class).annotatedWith(Names.named(B_RECORD_CHANGES_ONLY_PROPERTY)).toInstance(true);
 	}

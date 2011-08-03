@@ -2,15 +2,15 @@ package de.hub.clickwatch.connection.adapter;
 
 import de.hub.clickwatch.model.Handler;
 
-public class StringValueAdapter extends AbstractAdapter implements IValueAdapter {
+public class StringValueAdapter extends AbstractValueAdapter implements IValueAdapter {
 
 	@Override
-	public String getPlainRealValue(Handler handler) {
+	public String getPlainValue(Handler handler) {
 		return handler.getValue();
 	}
 
 	@Override
-	public void setModelValue(Handler handler, String realValue) {
+	protected void setValue(Handler handler, String realValue) {
 		handler.setValue(realValue);
 	}
 

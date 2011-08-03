@@ -16,12 +16,12 @@ import com.google.inject.Inject;
 import de.hub.clickwatch.model.Handler;
 import de.hub.emfxml.XmlModelRepository;
 
-public class XmlValueAdapter extends AbstractAdapter implements IValueAdapter {
+public class XmlValueAdapter extends AbstractValueAdapter implements IValueAdapter {
 	
 	@Inject private XmlModelRepository xmlModelRepository;
 
 	@Override
-	public void setModelValue(Handler handler, String plainRealValue) {
+	protected void setValue(Handler handler, String plainRealValue) {
 		plainRealValue = XmlModelRepository.stripProcessingInstructions(plainRealValue);
 		XMLTypeDocumentRoot xml = (XMLTypeDocumentRoot)xmlModelRepository.deserializeXml("<xml>" + plainRealValue + "</xml>");
 		FeatureMap xmlRootMixed = ((AnyType)xml.getMixed().getValue(0)).getMixed();
@@ -44,7 +44,7 @@ public class XmlValueAdapter extends AbstractAdapter implements IValueAdapter {
 	}
 
 	@Override
-	public String getPlainRealValue(Handler handler) {
+	public String getPlainValue(Handler handler) {
 		Object modelValue;
 		FeatureMap any = handler.getAny();
 		if (!any.isEmpty()) {

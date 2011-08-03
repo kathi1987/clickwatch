@@ -23,7 +23,7 @@ import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 
 import com.google.common.base.Preconditions;
 
-
+@Deprecated
 public class SpecificModelGenerator {
 	
 	private EFactory factory;

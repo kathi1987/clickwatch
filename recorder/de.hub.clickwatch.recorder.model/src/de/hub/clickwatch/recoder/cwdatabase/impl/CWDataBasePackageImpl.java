@@ -595,6 +595,33 @@ public class CWDataBasePackageImpl extends EPackageImpl implements CWDataBasePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getExperimentStatistics_BytesRequestS() {
+		return (EAttribute)experimentStatisticsEClass.getEStructuralFeatures().get(11);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getExperimentStatistics_TimeRequestS() {
+		return (EAttribute)experimentStatisticsEClass.getEStructuralFeatures().get(12);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getExperimentStatistics_CpuLoadS() {
+		return (EAttribute)experimentStatisticsEClass.getEStructuralFeatures().get(13);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getNodeRecordDescr() {
 		return nodeRecordDescrEClass;
 	}
@@ -707,6 +734,9 @@ public class CWDataBasePackageImpl extends EPackageImpl implements CWDataBasePac
 		createEAttribute(experimentStatisticsEClass, EXPERIMENT_STATISTICS__SAMPLES_PER_SECOND);
 		createEAttribute(experimentStatisticsEClass, EXPERIMENT_STATISTICS__RECORD_SIZE);
 		createEAttribute(experimentStatisticsEClass, EXPERIMENT_STATISTICS__SAMPLES_R);
+		createEAttribute(experimentStatisticsEClass, EXPERIMENT_STATISTICS__BYTES_REQUEST_S);
+		createEAttribute(experimentStatisticsEClass, EXPERIMENT_STATISTICS__TIME_REQUEST_S);
+		createEAttribute(experimentStatisticsEClass, EXPERIMENT_STATISTICS__CPU_LOAD_S);
 
 		nodeRecordDescrEClass = createEClass(NODE_RECORD_DESCR);
 		createEReference(nodeRecordDescrEClass, NODE_RECORD_DESCR__RECORD);
@@ -802,6 +832,9 @@ public class CWDataBasePackageImpl extends EPackageImpl implements CWDataBasePac
 		initEAttribute(getExperimentStatistics_SamplesPerSecond(), ecorePackage.getEDouble(), "samplesPerSecond", null, 0, 1, ExperimentStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEAttribute(getExperimentStatistics_RecordSize(), this.getESummaryStatistics(), "recordSize", null, 0, 1, ExperimentStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getExperimentStatistics_SamplesR(), this.getESummaryStatistics(), "samplesR", null, 0, 1, ExperimentStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getExperimentStatistics_BytesRequestS(), this.getESummaryStatistics(), "bytesRequestS", null, 0, 1, ExperimentStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getExperimentStatistics_TimeRequestS(), this.getESummaryStatistics(), "timeRequestS", null, 0, 1, ExperimentStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getExperimentStatistics_CpuLoadS(), this.getESummaryStatistics(), "cpuLoadS", null, 0, 1, ExperimentStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		addEOperation(experimentStatisticsEClass, null, "reset", 0, 1, IS_UNIQUE, IS_ORDERED);
 

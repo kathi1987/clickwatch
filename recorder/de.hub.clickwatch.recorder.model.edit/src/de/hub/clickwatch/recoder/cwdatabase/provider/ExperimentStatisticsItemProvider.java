@@ -77,6 +77,9 @@ public class ExperimentStatisticsItemProvider
 			addSamplesPerSecondPropertyDescriptor(object);
 			addRecordSizePropertyDescriptor(object);
 			addSamplesRPropertyDescriptor(object);
+			addBytesRequestSPropertyDescriptor(object);
+			addTimeRequestSPropertyDescriptor(object);
+			addCpuLoadSPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -370,6 +373,72 @@ public class ExperimentStatisticsItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Bytes Request S feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addBytesRequestSPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ExperimentStatistics_bytesRequestS_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ExperimentStatistics_bytesRequestS_feature", "_UI_ExperimentStatistics_type"),
+				 CWDataBasePackage.Literals.EXPERIMENT_STATISTICS__BYTES_REQUEST_S,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Time Request S feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addTimeRequestSPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ExperimentStatistics_timeRequestS_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ExperimentStatistics_timeRequestS_feature", "_UI_ExperimentStatistics_type"),
+				 CWDataBasePackage.Literals.EXPERIMENT_STATISTICS__TIME_REQUEST_S,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Cpu Load S feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addCpuLoadSPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ExperimentStatistics_cpuLoadS_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ExperimentStatistics_cpuLoadS_feature", "_UI_ExperimentStatistics_type"),
+				 CWDataBasePackage.Literals.EXPERIMENT_STATISTICS__CPU_LOAD_S,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns ExperimentStatistics.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -418,6 +487,9 @@ public class ExperimentStatisticsItemProvider
 			case CWDataBasePackage.EXPERIMENT_STATISTICS__SAMPLES_PER_SECOND:
 			case CWDataBasePackage.EXPERIMENT_STATISTICS__RECORD_SIZE:
 			case CWDataBasePackage.EXPERIMENT_STATISTICS__SAMPLES_R:
+			case CWDataBasePackage.EXPERIMENT_STATISTICS__BYTES_REQUEST_S:
+			case CWDataBasePackage.EXPERIMENT_STATISTICS__TIME_REQUEST_S:
+			case CWDataBasePackage.EXPERIMENT_STATISTICS__CPU_LOAD_S:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

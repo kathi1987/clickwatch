@@ -546,13 +546,40 @@ public interface CWDataBasePackage extends EPackage {
 	int EXPERIMENT_STATISTICS__SAMPLES_R = 10;
 
 	/**
+	 * The feature id for the '<em><b>Bytes Request S</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPERIMENT_STATISTICS__BYTES_REQUEST_S = 11;
+
+	/**
+	 * The feature id for the '<em><b>Time Request S</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPERIMENT_STATISTICS__TIME_REQUEST_S = 12;
+
+	/**
+	 * The feature id for the '<em><b>Cpu Load S</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPERIMENT_STATISTICS__CPU_LOAD_S = 13;
+
+	/**
 	 * The number of structural features of the '<em>Experiment Statistics</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXPERIMENT_STATISTICS_FEATURE_COUNT = 11;
+	int EXPERIMENT_STATISTICS_FEATURE_COUNT = 14;
 
 	/**
 	 * The meta object id for the '{@link de.hub.clickwatch.recoder.cwdatabase.impl.NodeRecordDescrImpl <em>Node Record Descr</em>}' class.
@@ -1107,6 +1134,39 @@ public interface CWDataBasePackage extends EPackage {
 	EAttribute getExperimentStatistics_SamplesR();
 
 	/**
+	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.recoder.cwdatabase.ExperimentStatistics#getBytesRequestS <em>Bytes Request S</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Bytes Request S</em>'.
+	 * @see de.hub.clickwatch.recoder.cwdatabase.ExperimentStatistics#getBytesRequestS()
+	 * @see #getExperimentStatistics()
+	 * @generated
+	 */
+	EAttribute getExperimentStatistics_BytesRequestS();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.recoder.cwdatabase.ExperimentStatistics#getTimeRequestS <em>Time Request S</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Time Request S</em>'.
+	 * @see de.hub.clickwatch.recoder.cwdatabase.ExperimentStatistics#getTimeRequestS()
+	 * @see #getExperimentStatistics()
+	 * @generated
+	 */
+	EAttribute getExperimentStatistics_TimeRequestS();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.recoder.cwdatabase.ExperimentStatistics#getCpuLoadS <em>Cpu Load S</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Cpu Load S</em>'.
+	 * @see de.hub.clickwatch.recoder.cwdatabase.ExperimentStatistics#getCpuLoadS()
+	 * @see #getExperimentStatistics()
+	 * @generated
+	 */
+	EAttribute getExperimentStatistics_CpuLoadS();
+
+	/**
 	 * Returns the meta object for class '{@link de.hub.clickwatch.recoder.cwdatabase.NodeRecordDescr <em>Node Record Descr</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1554,6 +1614,30 @@ public interface CWDataBasePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute EXPERIMENT_STATISTICS__SAMPLES_R = eINSTANCE.getExperimentStatistics_SamplesR();
+
+		/**
+		 * The meta object literal for the '<em><b>Bytes Request S</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute EXPERIMENT_STATISTICS__BYTES_REQUEST_S = eINSTANCE.getExperimentStatistics_BytesRequestS();
+
+		/**
+		 * The meta object literal for the '<em><b>Time Request S</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute EXPERIMENT_STATISTICS__TIME_REQUEST_S = eINSTANCE.getExperimentStatistics_TimeRequestS();
+
+		/**
+		 * The meta object literal for the '<em><b>Cpu Load S</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute EXPERIMENT_STATISTICS__CPU_LOAD_S = eINSTANCE.getExperimentStatistics_CpuLoadS();
 
 		/**
 		 * The meta object literal for the '{@link de.hub.clickwatch.recoder.cwdatabase.impl.NodeRecordDescrImpl <em>Node Record Descr</em>}' class.

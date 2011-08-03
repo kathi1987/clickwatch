@@ -1,30 +1,21 @@
 package de.hub.clickwatch.recorder.test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 
 import junit.framework.Assert;
 
-import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-
+import com.google.inject.Binder;
 import com.google.inject.Module;
 import com.google.inject.name.Names;
 
 import de.hub.clickwatch.connection.adapter.IValueAdapter;
+import de.hub.clickwatch.connection.adapter.PullHandlerAdapter;
 import de.hub.clickwatch.connection.adapter.StringValueAdapter;
 import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.model.Node;
-import de.hub.clickwatch.model.util.builder.NetworkBuilder;
-import de.hub.clickwatch.model.util.builder.NodeBuilder;
-import de.hub.clickwatch.recoder.cwdatabase.CWDataBaseFactory;
-import de.hub.clickwatch.recoder.cwdatabase.DataBase;
 import de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr;
-import de.hub.clickwatch.recoder.cwdatabase.util.builder.DataBaseBuilder;
-import de.hub.clickwatch.recoder.cwdatabase.util.builder.ExperimentDescrBuilder;
+import de.hub.clickwatch.recoder.cwdatabase.util.ExperimentUtil;
 import de.hub.clickwatch.recorder.CWRecorderModule;
 import de.hub.clickwatch.recorder.ExperimentRecorder;
 import de.hub.clickwatch.recorder.database.CWRecorderStandaloneSetup;
@@ -34,7 +25,7 @@ import de.hub.clickwatch.recorder.database.IDataBaseRetrieveAdapter;
 import de.hub.clickwatch.recorder.database.emf.DataBaseAdapter;
 import de.hub.clickwatch.tests.AbstractAdapterTest;
 
-public class AbstractDBTest  extends AbstractAdapterTest {
+public class AbstractDBTest extends AbstractAdapterTest {
 	
 	private DataBaseUtil dbUtil = null;	
 
@@ -60,10 +51,23 @@ public class AbstractDBTest  extends AbstractAdapterTest {
 			@Override
 			protected void configureDataBaseRetrieveAdapter() {
 				bind(IDataBaseRetrieveAdapter.class).to(getDataBaseRetrieveAdapterClass());
-			}			
+			}
+
+			@Override
+			protected void configureAdditionalBindings() {
+				AbstractDBTest.this.configureAdditionalBindings(binder());
+			}
 		}};
 	}
 	
+	protected void configureAdditionalBindings(Binder binder) {
+		// empty
+	}
+
+	protected Boolean getHBaseWithExtraQueue() {
+		return true;
+	}
+
 	protected Class<? extends IDataBaseRecordAdapter> getDataBaseRecordAdapterClass() {
 		return DataBaseAdapter.class;
 	}
@@ -89,44 +93,32 @@ public class AbstractDBTest  extends AbstractAdapterTest {
 	}
 	
 	protected ExperimentDescr performTest(String[] nodeIds) {
+		return performTest(nodeIds, true);
+	}
+	
+	protected ExperimentDescr performTest(String[] nodeIds, boolean assertTest) {
 		ExperimentRecorder recorder = injector.getInstance(ExperimentRecorder.class);
 		ExperimentDescr experiment = buildDataBase(nodeIds);
 		recorder.record(experiment);	
-		assertExperiment(experiment, nodeIds);
+		if (assertTest) {
+			assertExperiment(experiment, nodeIds);
+		}
 		return experiment;
 	}
 	
 	protected ExperimentDescr buildDataBase(String[] nodeIds) {
-		Collection<Node> nodes = new ArrayList<Node>();
-		for (String nodeId: nodeIds) {
-			nodes.add(NodeBuilder.newNodeBuilder()
-					.withINetAddress(nodeId)
-					.withPort("7777").build());
-		}
-		
-		DataBase db = DataBaseBuilder.newDataBaseBuilder()
-				.withInMemory(getInMemory())
-				.withExperiments(ExperimentDescrBuilder.newExperimentDescrBuilder()
-						.withName(getExperimentName())
-						.withDescription("this is onyl for testing")
-						.withDuration(getExperimentDuration())
-						.withStatistics(CWDataBaseFactory.eINSTANCE.createExperimentStatistics())
-						.withNetwork(NetworkBuilder.newNetworkBuilder()
-								.withName("test_network")
-								.withElementFilter("")
-								.withHandlerFilter("")
-								.withUpdateIntervall(0)
-								.withNodes(nodes)
-						)
-				).build();
-		
-		ResourceSet rs = new ResourceSetImpl();
-		Resource dataBaseResource = rs.createResource(URI.createURI("test_db.cwdatabase"));
-		dataBaseResource.getContents().add(db);
-		
-		return db.getExperiments().get(0);
+		return ExperimentUtil.buildDataBase(
+				getExperimentName(), 
+				getInMemory(), 
+				getExperimentDuration(), 
+				getUpdateInterval(), 
+				nodeIds);
 	}
 	
+	protected Integer getUpdateInterval() {
+		return 0;
+	}
+
 	protected boolean getInMemory() {
 		return true;
 	}
@@ -180,12 +172,14 @@ public class AbstractDBTest  extends AbstractAdapterTest {
 
 	private void assertHandler(Node node, String handler, long time, boolean emptyHandlerAllowed) {
 		Handler nodeHandler = node.getHandler(handler);
-		if (nodeHandler.getTimestamp() == 0) {
-			Assert.assertTrue(emptyHandlerAllowed);
-			Assert.assertTrue(nodeHandler.getValue() == null || nodeHandler.getValue().equals(""));
-		} else {
-			Assert.assertTrue(nodeHandler.getTimestamp() <= time);
-			assertValue(nodeHandler);
+		if (!PullHandlerAdapter.commonHandler.contains(handler.substring(handler.lastIndexOf("/")+1))) {
+			if (nodeHandler.getTimestamp() == 0) {
+				Assert.assertTrue(emptyHandlerAllowed);
+				Assert.assertTrue(nodeHandler.getValue() == null || nodeHandler.getValue().equals(""));
+			} else {
+				Assert.assertTrue(nodeHandler.getTimestamp() <= time);
+				assertValue(nodeHandler);
+			}
 		}
 	}
 }

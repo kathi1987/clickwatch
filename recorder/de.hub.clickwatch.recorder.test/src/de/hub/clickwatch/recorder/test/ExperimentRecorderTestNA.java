@@ -55,7 +55,7 @@ public class ExperimentRecorderTestNA extends AbstractTest {
 		CWRecorderStandaloneSetup.doSetup();
 	}
 
-	@Ignore("work in progress")
+	@Ignore("only on demand")
 	@Test
 	public void testWithRecord() throws Exception {		
 		ResourceSet rs = new ResourceSetImpl();
