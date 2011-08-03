@@ -62,7 +62,7 @@ public class ClickWatchExternalLauncher {
 		try {
 			commandLine = new PosixParser().parse(commandLineOptions, args);
 			for(IClickWatchContextAdapter adapter: adapters.values()) {
-				adapter.initalize(commandLine);
+				adapter.initialize(commandLine);
 			}
 		} catch (ParseException e) {
 			new HelpFormatter().printHelp(e.getLocalizedMessage(), commandLineOptions);

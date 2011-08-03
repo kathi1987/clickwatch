@@ -1,6 +1,7 @@
 package de.hub.clickwatch.apps.performance.compoundhandler;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.PrintStream;
 
 import org.apache.commons.cli.CommandLine;
@@ -25,6 +26,7 @@ import de.hub.clickwatch.recoder.cwdatabase.ExperimentStatistics;
 import de.hub.clickwatch.recorder.database.CWRecorderStandaloneSetup;
 import de.hub.clickwatch.specificmodels.brn.BrnValueAdapter;
 import de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.Systeminfo;
+import de.hub.clickwatch.util.Throwables;
 
 public class PerformanceExperiment implements IApplication {
 	
@@ -34,6 +36,7 @@ public class PerformanceExperiment implements IApplication {
 
 	public void runExperiment(String args[]) {
 		PrintStream out = System.out;
+		File file = null;
 		String[] nodeIds = null;
 		
 		Options options = new Options();
@@ -55,7 +58,8 @@ public class PerformanceExperiment implements IApplication {
 				remoteLocalUpdateIntervalFactor = Integer.parseInt(cl.getOptionValue("r"));
 			}
 			if (cl.hasOption("o")) {
-				out = new PrintStream(new File(cl.getOptionValue("o"))); 
+				file = new File(cl.getOptionValue("o"));
+				out = new PrintStream(file); 
 			}
 		
 			nodeIds = cl.getArgs();
@@ -93,13 +97,20 @@ public class PerformanceExperiment implements IApplication {
 								statistics.getCpuLoadS().getMean(),
 								statistics.getSamplesN().getSum()*remoteLocalUpdateIntervalInfluence,
 								baseCpuLoad);
-										
+								
+						out.close();
+						try {
+							out = new PrintStream(file);
+						} catch (FileNotFoundException e) {
+							Throwables.propagate(e);
+						} 
 						plot.printCSV(out);
 						out.flush();
 					}
 				}
 			}
 		}	
+		out.close();
 	}
 	
 	private double getCpuLoad(String nodeId) {

@@ -24,7 +24,7 @@ public class ArgumentsProvider implements IClickWatchContextAdapter, IArgumentsP
 	}
 
 	@Override
-	public void initalize(CommandLine commandLine) throws ParseException {
+	public void initialize(CommandLine commandLine) throws ParseException {
 		args = commandLine.getArgs();
 	}
 

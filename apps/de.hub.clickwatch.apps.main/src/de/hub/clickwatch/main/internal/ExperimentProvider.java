@@ -19,7 +19,7 @@ import de.hub.emfxml.XmlModelRepository;
 public class ExperimentProvider implements IClickWatchContextAdapter, IExperimentProvider {
 	
 	private String experimentId = null;
-	private String dataBaseFile = null;
+	private URI dataBaseURI = null;
 	
 	private DataBase dataBase = null;
 	private ExperimentDescr experiment = null;
@@ -27,13 +27,13 @@ public class ExperimentProvider implements IClickWatchContextAdapter, IExperimen
 	@Override
 	public DataBase getDataBase() {
 		if (dataBase == null) {
-			if (dataBaseFile == null || dataBaseFile.equals("")) {
+			if (dataBaseURI == null) {
 				throw new IllegalArgumentException("no database given");
 			}
 			
 			ResourceSet rs = new ResourceSetImpl();
 			rs.getLoadOptions().putAll(XmlModelRepository.defaultLoadSaveOptions());
-			Resource resource = rs.getResource(URI.createFileURI(dataBaseFile), true);
+			Resource resource = rs.getResource(dataBaseURI, true);
 			dataBase = (DataBase)resource.getContents().get(0);
 		}
 		
@@ -68,9 +68,14 @@ public class ExperimentProvider implements IClickWatchContextAdapter, IExperimen
 	}
 
 	@Override
-	public void initalize(CommandLine commandLine) throws ParseException {
+	public void initialize(CommandLine commandLine) throws ParseException {
 		experimentId = commandLine.getOptionValue("e");
-		dataBaseFile = commandLine.getOptionValue("f");
+		dataBaseURI = URI.createFileURI(commandLine.getOptionValue("f"));
+	}
+	
+	public void initialize(URI dataBaseURI, String experimentId) {
+		this.dataBaseURI = dataBaseURI;
+		this.experimentId = experimentId;
 	}
 
 }
