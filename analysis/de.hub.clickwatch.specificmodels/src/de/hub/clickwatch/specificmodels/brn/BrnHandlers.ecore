@@ -988,4 +988,205 @@
       </eStructuralFeatures>
     </eClassifiers>
   </eSubpackages>
+  <eSubpackages name="gps_gps_coord" nsURI="http://de.hub.clickwatch.specificmodels.brn/gps/gps_coord" nsPrefix="gps_gps_coord">
+    <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+      <details key="handler_class" value="Gps_coord"/>
+    </eAnnotations>
+    <eClassifiers xsi:type="ecore:EClass" name="Gps">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Gps_coord|Handler/gps|gps:Gps|EObject"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_gps" eType="//gps_gps_coord/Gps_coord" eOpposite="//gps_gps_coord/Gps_coord/gps"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="id">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Gps_coord|Handler/gps|gps:Gps|EObject/id|id:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="time">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Gps_coord|Handler/gps|gps:Gps|EObject/time|time:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="lat">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Gps_coord|Handler/gps|gps:Gps|EObject/lat|lat:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="long">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Gps_coord|Handler/gps|gps:Gps|EObject/long|long:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="alt">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Gps_coord|Handler/gps|gps:Gps|EObject/alt|alt:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="speed">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Gps_coord|Handler/gps|gps:Gps|EObject/speed|speed:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Gps_coord">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Gps_coord|Handler"/>
+      </eAnnotations>
+      <eSuperTypes href="../../../../../../../de.hub.clickwatch.core/src/de/hub/clickwatch/model/ClickWatchModel.ecore#//Handler"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="gps" eType="//gps_gps_coord/Gps" containment="true" resolveProxies="false" eOpposite="//gps_gps_coord/Gps/eContainer_gps">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Gps_coord|Handler/gps|gps:Gps|EObject"/>
+          <details key="IsCopy" value="false"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="device_wifi_data_power_systempower" nsURI="http://de.hub.clickwatch.specificmodels.brn/device_wifi/data_power/systempower" nsPrefix="device_wifi_data_power_systempower">
+    <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+      <details key="handler_class" value="Systempower"/>
+    </eAnnotations>
+    <eClassifiers xsi:type="ecore:EClass" name="Device">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Systempower|Handler/settxpower|settxpower:Settxpower|EObject/device|device:Device|EObject"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_device" eType="//device_wifi_data_power_systempower/Settxpower" eOpposite="//device_wifi_data_power_systempower/Settxpower/device"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Systempower|Handler/settxpower|settxpower:Settxpower|EObject/device|device:Device|EObject/name|name:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="device_addr">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Systempower|Handler/settxpower|settxpower:Settxpower|EObject/device|device:Device|EObject/device_addr|device_addr:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Settxpower">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Systempower|Handler/settxpower|settxpower:Settxpower|EObject"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_settxpower" eType="//device_wifi_data_power_systempower/Systempower" eOpposite="//device_wifi_data_power_systempower/Systempower/settxpower"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" upperBound="-1">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Systempower|Handler/settxpower|settxpower:Settxpower|EObject/text|text:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="device" eType="//device_wifi_data_power_systempower/Device" containment="true" resolveProxies="false" eOpposite="//device_wifi_data_power_systempower/Device/eContainer_device">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Systempower|Handler/settxpower|settxpower:Settxpower|EObject/device|device:Device|EObject"/>
+          <details key="IsCopy" value="false"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Systempower|Handler/settxpower|settxpower:Settxpower|EObject/name|name:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="id">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Systempower|Handler/settxpower|settxpower:Settxpower|EObject/id|id:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="power">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Systempower|Handler/settxpower|settxpower:Settxpower|EObject/power|power:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Systempower">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Systempower|Handler"/>
+      </eAnnotations>
+      <eSuperTypes href="../../../../../../../de.hub.clickwatch.core/src/de/hub/clickwatch/model/ClickWatchModel.ecore#//Handler"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="settxpower" eType="//device_wifi_data_power_systempower/Settxpower" containment="true" resolveProxies="false" eOpposite="//device_wifi_data_power_systempower/Settxpower/eContainer_settxpower">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Systempower|Handler/settxpower|settxpower:Settxpower|EObject"/>
+          <details key="IsCopy" value="false"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="device_wifi_wifidevice_sc_systemchannel" nsURI="http://de.hub.clickwatch.specificmodels.brn/device_wifi/wifidevice/sc/systemchannel" nsPrefix="device_wifi_wifidevice_sc_systemchannel">
+    <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+      <details key="handler_class" value="Systemchannel"/>
+    </eAnnotations>
+    <eClassifiers xsi:type="ecore:EClass" name="Device">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Systemchannel|Handler/setchannel|setchannel:Setchannel|EObject/device|device:Device|EObject"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_device" eType="//device_wifi_wifidevice_sc_systemchannel/Setchannel" eOpposite="//device_wifi_wifidevice_sc_systemchannel/Setchannel/device"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Systemchannel|Handler/setchannel|setchannel:Setchannel|EObject/device|device:Device|EObject/name|name:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="device_addr">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Systemchannel|Handler/setchannel|setchannel:Setchannel|EObject/device|device:Device|EObject/device_addr|device_addr:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Setchannel">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Systemchannel|Handler/setchannel|setchannel:Setchannel|EObject"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_setchannel" eType="//device_wifi_wifidevice_sc_systemchannel/Systemchannel" eOpposite="//device_wifi_wifidevice_sc_systemchannel/Systemchannel/setchannel"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" upperBound="-1">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Systemchannel|Handler/setchannel|setchannel:Setchannel|EObject/text|text:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="device" eType="//device_wifi_wifidevice_sc_systemchannel/Device" containment="true" resolveProxies="false" eOpposite="//device_wifi_wifidevice_sc_systemchannel/Device/eContainer_device">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Systemchannel|Handler/setchannel|setchannel:Setchannel|EObject/device|device:Device|EObject"/>
+          <details key="IsCopy" value="false"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Systemchannel|Handler/setchannel|setchannel:Setchannel|EObject/name|name:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="id">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Systemchannel|Handler/setchannel|setchannel:Setchannel|EObject/id|id:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="channel">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Systemchannel|Handler/setchannel|setchannel:Setchannel|EObject/channel|channel:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Systemchannel">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Systemchannel|Handler"/>
+      </eAnnotations>
+      <eSuperTypes href="../../../../../../../de.hub.clickwatch.core/src/de/hub/clickwatch/model/ClickWatchModel.ecore#//Handler"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="setchannel" eType="//device_wifi_wifidevice_sc_systemchannel/Setchannel" containment="true" resolveProxies="false" eOpposite="//device_wifi_wifidevice_sc_systemchannel/Setchannel/eContainer_setchannel">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Systemchannel|Handler/setchannel|setchannel:Setchannel|EObject"/>
+          <details key="IsCopy" value="false"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+  </eSubpackages>
 </ecore:EPackage>

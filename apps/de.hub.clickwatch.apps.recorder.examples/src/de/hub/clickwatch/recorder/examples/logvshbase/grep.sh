@@ -1,0 +1,1 @@
+grep -P  "cst/stats_xml" out.log | grep -P "hwbusy" | awk '{ print $2 " " $4 " " $10}' | sed -e 's/node=//g' | sed -e 's/-//g' | sed -e 's/hwbusy=//g' | sed -e 's/:/ /g' | sed -e 's/,//g' > logfile.out

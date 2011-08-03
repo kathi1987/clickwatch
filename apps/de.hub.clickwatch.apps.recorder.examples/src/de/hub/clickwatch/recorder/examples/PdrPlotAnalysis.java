@@ -1,10 +1,15 @@
 package de.hub.clickwatch.recorder.examples;
 
+import java.io.ByteArrayInputStream;
 import java.io.PrintStream;
 import java.util.Date;
 import java.util.Iterator;
 
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.xml.sax.helpers.DefaultHandler;
 
 import com.google.inject.Inject;
 
@@ -33,6 +38,14 @@ public class PdrPlotAnalysis implements IClickWatchMain {
 	
 	@SuppressWarnings("deprecation")
 	public void performWithStrings(ExperimentDescr experiment) {
+		SAXParserFactory saxParserFactory = SAXParserFactory.newInstance();
+		SAXParser saxParser = null;
+		try {
+			saxParser = saxParserFactory.newSAXParser();
+		} catch (Exception e) {
+			Throwables.propagate(e);
+		}
+		
 		long start = System.currentTimeMillis();
 		for (Node nodeConfig: experiment.getNetwork().getNodes()) {						
 			String nodeId = nodeConfig.getINetAddress();
@@ -47,8 +60,19 @@ public class PdrPlotAnalysis implements IClickWatchMain {
 				int hwbusy = Integer.parseInt(value);
 				long time = handler.getTimestamp() / 1000000;
 				Date date = new Date(time);
-
+		
 				out.println(date.getHours() + " " + date.getMinutes() + " " + (date.getSeconds() * 1e9 + time % 1e9) + " " + nodeId.replace(".", "") + " " + hwbusy);
+		
+				
+				try {
+					saxParser.parse(new ByteArrayInputStream(("<?xml version='1.0' encoding='ISO-8859-1'?>"
+							+ "<handler>"
+							+ value
+							+ "</handler>").getBytes()), 
+							new DefaultHandler(), "");
+				} catch (Exception e) {
+					Throwables.propagate(e);
+				}
 				
 				EcoreUtil.delete(handler);
 			}
@@ -56,11 +80,12 @@ public class PdrPlotAnalysis implements IClickWatchMain {
 			logger.log(ILogger.INFO, "created plot for " + nodeId, null);
 		}
 		out.close();
-		System.out.println("time in millies: " + (System.currentTimeMillis() - start));
+		logger.log(ILogger.INFO, "time in millies: " + (System.currentTimeMillis() - start), null);
 	}
 	
 	@SuppressWarnings("deprecation")
 	public void perform(ExperimentDescr experiment) {
+		long start = System.currentTimeMillis();
 		for (Node nodeConfig: experiment.getNetwork().getNodes()) {						
 			String nodeId = nodeConfig.getINetAddress();
 			Iterator<Handler> iterator = dbUtil.getHandlerIterator(experiment, nodeId, "device_wifi/wifidevice/cst/stats", 
@@ -79,6 +104,7 @@ public class PdrPlotAnalysis implements IClickWatchMain {
 			logger.log(ILogger.INFO, "created plot for " + nodeId, null);
 		}
 		out.close();
+		logger.log(ILogger.INFO, "time in millies: " + (System.currentTimeMillis() - start), null);
 	}
 	
 	@Override

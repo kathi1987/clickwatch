@@ -70,7 +70,9 @@ public class ExperimentProvider implements IClickWatchContextAdapter, IExperimen
 	@Override
 	public void initialize(CommandLine commandLine) throws ParseException {
 		experimentId = commandLine.getOptionValue("e");
-		dataBaseURI = URI.createFileURI(commandLine.getOptionValue("f"));
+		if (commandLine.hasOption("f")) {
+			dataBaseURI = URI.createFileURI(commandLine.getOptionValue("f"));
+		}
 	}
 	
 	public void initialize(URI dataBaseURI, String experimentId) {

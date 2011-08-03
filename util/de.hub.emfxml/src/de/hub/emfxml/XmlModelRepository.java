@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.GenericXMLResourceFactoryImpl;
+import org.eclipse.emf.ecore.xmi.impl.XMLParserPoolImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMLResourceFactoryImpl;
 import org.eclipse.emf.ecore.xml.type.AnyType;
 import org.eclipse.emf.ecore.xml.type.XMLTypeFactory;
@@ -39,6 +40,12 @@ import de.hub.emfxml.util.Throwables;
 
 @Singleton
 public class XmlModelRepository {
+	
+	private XMLParserPoolImpl xmlParserPool;
+	
+	public XmlModelRepository() {
+		xmlParserPool = new XMLParserPoolImpl(true);
+	}
 	
 	private class XmlStringAdapter extends AdapterImpl {
 		final String xmlString;
@@ -86,6 +93,7 @@ public class XmlModelRepository {
 			options.put(XSDResourceImpl.XSD_TRACK_LOCATION, Boolean.TRUE);
 			options.put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);
 			options.put(XMLResource.OPTION_ENCODING, "UTF-8");
+			options.put(XMLResource.OPTION_USE_PARSER_POOL, xmlParserPool);
 			HashMap<String, Boolean> parserFeatures = new HashMap<String, Boolean>();
 			parserFeatures.put("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
 			options.put(XMLResource.OPTION_PARSER_FEATURES, parserFeatures);
