@@ -25,6 +25,14 @@ public class DataBaseUtil {
 	@Inject @Named(CWRecorderModule.DB_VALUE_ADAPTER_PROPERTY) private IValueAdapter dbValueAdapter;
 	@Inject private ILogger logger;
 	
+	public <T extends Handler> Iterable<T> getHandler(ExperimentDescr experiment, String nodeId, Class<T> handlerClass) {
+		return null;
+	}
+	
+	public Iterator<Handler> getHandlerIterator(ExperimentDescr experiment, String node, String handler) {
+		return getHandlerIterator(experiment, node, handler, experiment.getStart(), experiment.getEnd());
+	}
+	
 	public Iterator<Handler> getHandlerIterator(ExperimentDescr experiment, String node, String handler, long start, long end) {
 		dataBaseAdapter.initialize(experiment);
 		final Iterator<Handler> dbIterator = ((HBaseDataBaseAdapter)dataBaseAdapter).retrieve(node, handler, start, end);
