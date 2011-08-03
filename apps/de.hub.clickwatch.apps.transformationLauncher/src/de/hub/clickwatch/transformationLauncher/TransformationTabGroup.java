@@ -1,10 +1,8 @@
-package de.hub.clickwatch.analysis.ui;
+package de.hub.clickwatch.transformationLauncher;
 
 import org.eclipse.debug.ui.AbstractLaunchConfigurationTabGroup;
-import org.eclipse.debug.ui.CommonTab;
 import org.eclipse.debug.ui.ILaunchConfigurationDialog;
 import org.eclipse.debug.ui.ILaunchConfigurationTab;
-import org.eclipse.debug.ui.sourcelookup.SourceLookupTab;
 
 /**
  * The tab group for transformation launch configurations
@@ -20,8 +18,7 @@ public class TransformationTabGroup extends AbstractLaunchConfigurationTabGroup 
 
 	@Override
 	public void createTabs(ILaunchConfigurationDialog dialog, String mode) {
-		ILaunchConfigurationTab[] tabs = new ILaunchConfigurationTab[] {
-				new TransformationParametersTab() };
+		ILaunchConfigurationTab[] tabs = new ILaunchConfigurationTab[] { new TransformationParametersTab() };
 		setTabs(tabs);
 
 	}

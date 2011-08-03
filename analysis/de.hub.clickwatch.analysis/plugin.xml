@@ -232,7 +232,7 @@
  <extension
        point="org.eclipse.debug.core.launchConfigurationTypes">
     <launchConfigurationType
-          delegate="de.hub.clickwatch.analysis.ui.TransformationLaunchConfigurationDelegate"
+          delegate="de.hub.clickwatch.transformationLauncher.TransformationLaunchConfigurationDelegate"
           id="de.hub.clickwatch.analysis.ui.TransformationLaunchConfiguration"
           modes="run"
           name="Transformation">
@@ -249,7 +249,7 @@
  <extension
        point="org.eclipse.debug.ui.launchConfigurationTabGroups">
     <launchConfigurationTabGroup
-          class="de.hub.clickwatch.analysis.ui.TransformationTabGroup"
+          class="de.hub.clickwatch.transformationLauncher.TransformationTabGroup"
           id="de.hub.clickwatch.analysis.ui.TransformationTabGroup"
           type="de.hub.clickwatch.analysis.ui.TransformationLaunchConfiguration">
     </launchConfigurationTabGroup>

@@ -1,4 +1,4 @@
-package de.hub.clickwatch.analysis.ui;
+package de.hub.clickwatch.transformationLauncher;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.CoreException;
@@ -32,13 +32,16 @@ public class TransformationParametersTab extends AbstractLaunchConfigurationTab 
 	 * ILaunchConfigurationWorkingCopy
 	 */
 	public static final String ATTR_TRANSFORMATION_FILE = "attr_transformation_file";
+	
+	public static final String ATTR_SOURCE_MODEL_FILE = "attr_source_model_file";
 
 	private final String TAB_NAME = "Transformation";
 	private Text transformationFile;
+	private Text sourceModel;
 
 	@Override
-	public void createControl(Composite parent) {		
-		
+	public void createControl(Composite parent) {
+
 		final Shell shell = parent.getShell();
 
 		// transformation file chooser
@@ -84,8 +87,44 @@ public class TransformationParametersTab extends AbstractLaunchConfigurationTab 
 			}
 		});
 
+		// source model
+		composite = new Composite(transformationFileGroup, SWT.NONE);
+		composite.setLayoutData(new GridData(SWT.FILL, SWT.TOP, true, false));
+		composite.setLayout(new GridLayout(3, false));
+
+		transfLabel = new Label(composite, SWT.FILL);
+		transfLabel.setText("Source model: ");
+
+		sourceModel = new Text(composite, SWT.FILL);
+		sourceModel.setText("Test");
+		layoutData = new GridData(SWT.FILL, SWT.TOP, true, false);
+		sourceModel.setLayoutData(layoutData);
+
+		Button selectSourceModelButton = new Button(composite, SWT.PUSH);
+		selectSourceModelButton.setText("...");
+		selectSourceModelButton.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent selectionEvent) {
+				IFile file = null;
+
+				IFile[] files = WorkspaceResourceDialog.openFileSelection(
+						shell, null, null, false, null, null);
+				if (files.length != 0) {
+					file = files[0];
+				}
+
+				if (file != null) {
+					String uriString = URI.createPlatformResourceURI(
+							file.getFullPath().toString(), true).toString();
+					setSourceModelFile(uriString);
+					setDirty(true);
+					updateLaunchConfigurationDialog();
+				}
+			}
+		});
+
 		setControl(transformationFileGroup);
-		
+
 		// schedule an update job so every change is noticed
 		scheduleUpdateJob();
 	}
@@ -93,15 +132,13 @@ public class TransformationParametersTab extends AbstractLaunchConfigurationTab 
 	@Override
 	public boolean isValid(ILaunchConfiguration launchConfig) {
 		setErrorMessage(null);
-		
-		if(transformationFile.getText().equals(""))
+
+		if (transformationFile.getText().equals(""))
 			setErrorMessage("No transformation file given");
-			
+
 		return true;
-	} 
-	
-	
-	
+	}
+
 	/**
 	 * sets the string parameter for the transformation file
 	 * 
@@ -109,6 +146,15 @@ public class TransformationParametersTab extends AbstractLaunchConfigurationTab 
 	 */
 	private void setTransfFile(String uriString) {
 		transformationFile.setText(uriString);
+	}
+
+	/**
+	 * sets the string parameter for the source model in the gui
+	 * 
+	 * @param uriString
+	 */
+	private void setSourceModelFile(String uriString) {
+		sourceModel.setText(uriString);
 	}
 
 	@Override
@@ -120,6 +166,9 @@ public class TransformationParametersTab extends AbstractLaunchConfigurationTab 
 		try {
 			transformationFile.setText(configuration.getAttribute(
 					TransformationParametersTab.ATTR_TRANSFORMATION_FILE, ""));
+			
+			sourceModel.setText(configuration.getAttribute(
+					TransformationParametersTab.ATTR_SOURCE_MODEL_FILE, ""));
 		} catch (CoreException e) {
 			transformationFile.setText("");
 		}
@@ -131,6 +180,10 @@ public class TransformationParametersTab extends AbstractLaunchConfigurationTab 
 		configuration.setAttribute(
 				TransformationParametersTab.ATTR_TRANSFORMATION_FILE,
 				transformationFile.getText());
+		
+		configuration.setAttribute(
+				TransformationParametersTab.ATTR_SOURCE_MODEL_FILE,
+				sourceModel.getText());
 	}
 
 	@Override
