@@ -4,7 +4,7 @@
  *
  * $Id$
  */
-package de.hub.clickwatch.specificmodels.brn.gps_gps_coord.impl;
+package de.hub.clickwatch.specificmodels.brn.lease_tab_leases.impl;
 
 import de.hub.clickwatch.model.ClickWatchModelPackage;
 
@@ -26,15 +26,17 @@ import de.hub.clickwatch.specificmodels.brn.device_wifi_wifidevice_sc_systemchan
 
 import de.hub.clickwatch.specificmodels.brn.device_wifi_wifidevice_sc_systemchannel.impl.Device_wifi_wifidevice_sc_systemchannelPackageImpl;
 
-import de.hub.clickwatch.specificmodels.brn.gps_gps_coord.Gps;
-import de.hub.clickwatch.specificmodels.brn.gps_gps_coord.Gps_coord;
-import de.hub.clickwatch.specificmodels.brn.gps_gps_coord.Gps_gps_coordFactory;
 import de.hub.clickwatch.specificmodels.brn.gps_gps_coord.Gps_gps_coordPackage;
+
+import de.hub.clickwatch.specificmodels.brn.gps_gps_coord.impl.Gps_gps_coordPackageImpl;
 
 import de.hub.clickwatch.specificmodels.brn.impl.BrnPackageImpl;
 
+import de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Dhcpleases;
+import de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Lease_tab_leasesFactory;
 import de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Lease_tab_leasesPackage;
-import de.hub.clickwatch.specificmodels.brn.lease_tab_leases.impl.Lease_tab_leasesPackageImpl;
+import de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Leases;
+
 import de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.Sys_info_systeminfoPackage;
 
 import de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.impl.Sys_info_systeminfoPackageImpl;
@@ -52,20 +54,20 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
  * <!-- end-user-doc -->
  * @generated
  */
-public class Gps_gps_coordPackageImpl extends EPackageImpl implements Gps_gps_coordPackage {
+public class Lease_tab_leasesPackageImpl extends EPackageImpl implements Lease_tab_leasesPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass gpsEClass = null;
+	private EClass dhcpleasesEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass gps_coordEClass = null;
+	private EClass leasesEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -78,12 +80,12 @@ public class Gps_gps_coordPackageImpl extends EPackageImpl implements Gps_gps_co
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
-	 * @see de.hub.clickwatch.specificmodels.brn.gps_gps_coord.Gps_gps_coordPackage#eNS_URI
+	 * @see de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Lease_tab_leasesPackage#eNS_URI
 	 * @see #init()
 	 * @generated
 	 */
-	private Gps_gps_coordPackageImpl() {
-		super(eNS_URI, Gps_gps_coordFactory.eINSTANCE);
+	private Lease_tab_leasesPackageImpl() {
+		super(eNS_URI, Lease_tab_leasesFactory.eINSTANCE);
 	}
 
 	/**
@@ -96,7 +98,7 @@ public class Gps_gps_coordPackageImpl extends EPackageImpl implements Gps_gps_co
 	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
 	 * 
-	 * <p>This method is used to initialize {@link Gps_gps_coordPackage#eINSTANCE} when that field is accessed.
+	 * <p>This method is used to initialize {@link Lease_tab_leasesPackage#eINSTANCE} when that field is accessed.
 	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -105,11 +107,11 @@ public class Gps_gps_coordPackageImpl extends EPackageImpl implements Gps_gps_co
 	 * @see #initializePackageContents()
 	 * @generated
 	 */
-	public static Gps_gps_coordPackage init() {
-		if (isInited) return (Gps_gps_coordPackage)EPackage.Registry.INSTANCE.getEPackage(Gps_gps_coordPackage.eNS_URI);
+	public static Lease_tab_leasesPackage init() {
+		if (isInited) return (Lease_tab_leasesPackage)EPackage.Registry.INSTANCE.getEPackage(Lease_tab_leasesPackage.eNS_URI);
 
 		// Obtain or create and register package
-		Gps_gps_coordPackageImpl theGps_gps_coordPackage = (Gps_gps_coordPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof Gps_gps_coordPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new Gps_gps_coordPackageImpl());
+		Lease_tab_leasesPackageImpl theLease_tab_leasesPackage = (Lease_tab_leasesPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof Lease_tab_leasesPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new Lease_tab_leasesPackageImpl());
 
 		isInited = true;
 
@@ -121,37 +123,37 @@ public class Gps_gps_coordPackageImpl extends EPackageImpl implements Gps_gps_co
 		Device_wifi_link_stat_bcast_statsPackageImpl theDevice_wifi_link_stat_bcast_statsPackage = (Device_wifi_link_stat_bcast_statsPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Device_wifi_link_stat_bcast_statsPackage.eNS_URI) instanceof Device_wifi_link_stat_bcast_statsPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Device_wifi_link_stat_bcast_statsPackage.eNS_URI) : Device_wifi_link_stat_bcast_statsPackage.eINSTANCE);
 		Device_wifi_wifidevice_cst_statsPackageImpl theDevice_wifi_wifidevice_cst_statsPackage = (Device_wifi_wifidevice_cst_statsPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Device_wifi_wifidevice_cst_statsPackage.eNS_URI) instanceof Device_wifi_wifidevice_cst_statsPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Device_wifi_wifidevice_cst_statsPackage.eNS_URI) : Device_wifi_wifidevice_cst_statsPackage.eINSTANCE);
 		Sys_info_systeminfoPackageImpl theSys_info_systeminfoPackage = (Sys_info_systeminfoPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Sys_info_systeminfoPackage.eNS_URI) instanceof Sys_info_systeminfoPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Sys_info_systeminfoPackage.eNS_URI) : Sys_info_systeminfoPackage.eINSTANCE);
+		Gps_gps_coordPackageImpl theGps_gps_coordPackage = (Gps_gps_coordPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Gps_gps_coordPackage.eNS_URI) instanceof Gps_gps_coordPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Gps_gps_coordPackage.eNS_URI) : Gps_gps_coordPackage.eINSTANCE);
 		Device_wifi_data_power_systempowerPackageImpl theDevice_wifi_data_power_systempowerPackage = (Device_wifi_data_power_systempowerPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Device_wifi_data_power_systempowerPackage.eNS_URI) instanceof Device_wifi_data_power_systempowerPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Device_wifi_data_power_systempowerPackage.eNS_URI) : Device_wifi_data_power_systempowerPackage.eINSTANCE);
 		Device_wifi_wifidevice_sc_systemchannelPackageImpl theDevice_wifi_wifidevice_sc_systemchannelPackage = (Device_wifi_wifidevice_sc_systemchannelPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Device_wifi_wifidevice_sc_systemchannelPackage.eNS_URI) instanceof Device_wifi_wifidevice_sc_systemchannelPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Device_wifi_wifidevice_sc_systemchannelPackage.eNS_URI) : Device_wifi_wifidevice_sc_systemchannelPackage.eINSTANCE);
-		Lease_tab_leasesPackageImpl theLease_tab_leasesPackage = (Lease_tab_leasesPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Lease_tab_leasesPackage.eNS_URI) instanceof Lease_tab_leasesPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Lease_tab_leasesPackage.eNS_URI) : Lease_tab_leasesPackage.eINSTANCE);
 
 		// Create package meta-data objects
-		theGps_gps_coordPackage.createPackageContents();
+		theLease_tab_leasesPackage.createPackageContents();
 		theBrnPackage.createPackageContents();
 		theDevice_wifi_link_stat_bcast_statsPackage.createPackageContents();
 		theDevice_wifi_wifidevice_cst_statsPackage.createPackageContents();
 		theSys_info_systeminfoPackage.createPackageContents();
+		theGps_gps_coordPackage.createPackageContents();
 		theDevice_wifi_data_power_systempowerPackage.createPackageContents();
 		theDevice_wifi_wifidevice_sc_systemchannelPackage.createPackageContents();
-		theLease_tab_leasesPackage.createPackageContents();
 
 		// Initialize created meta-data
-		theGps_gps_coordPackage.initializePackageContents();
+		theLease_tab_leasesPackage.initializePackageContents();
 		theBrnPackage.initializePackageContents();
 		theDevice_wifi_link_stat_bcast_statsPackage.initializePackageContents();
 		theDevice_wifi_wifidevice_cst_statsPackage.initializePackageContents();
 		theSys_info_systeminfoPackage.initializePackageContents();
+		theGps_gps_coordPackage.initializePackageContents();
 		theDevice_wifi_data_power_systempowerPackage.initializePackageContents();
 		theDevice_wifi_wifidevice_sc_systemchannelPackage.initializePackageContents();
-		theLease_tab_leasesPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
-		theGps_gps_coordPackage.freeze();
+		theLease_tab_leasesPackage.freeze();
 
   
 		// Update the registry and return the package
-		EPackage.Registry.INSTANCE.put(Gps_gps_coordPackage.eNS_URI, theGps_gps_coordPackage);
-		return theGps_gps_coordPackage;
+		EPackage.Registry.INSTANCE.put(Lease_tab_leasesPackage.eNS_URI, theLease_tab_leasesPackage);
+		return theLease_tab_leasesPackage;
 	}
 
 	/**
@@ -159,8 +161,8 @@ public class Gps_gps_coordPackageImpl extends EPackageImpl implements Gps_gps_co
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getGps() {
-		return gpsEClass;
+	public EClass getDhcpleases() {
+		return dhcpleasesEClass;
 	}
 
 	/**
@@ -168,8 +170,8 @@ public class Gps_gps_coordPackageImpl extends EPackageImpl implements Gps_gps_co
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getGps_EContainer_gps() {
-		return (EReference)gpsEClass.getEStructuralFeatures().get(0);
+	public EReference getDhcpleases_EContainer_dhcpleases() {
+		return (EReference)dhcpleasesEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -177,8 +179,8 @@ public class Gps_gps_coordPackageImpl extends EPackageImpl implements Gps_gps_co
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getGps_Id() {
-		return (EAttribute)gpsEClass.getEStructuralFeatures().get(1);
+	public EAttribute getDhcpleases_Text() {
+		return (EAttribute)dhcpleasesEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -186,8 +188,8 @@ public class Gps_gps_coordPackageImpl extends EPackageImpl implements Gps_gps_co
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getGps_Time() {
-		return (EAttribute)gpsEClass.getEStructuralFeatures().get(2);
+	public EAttribute getDhcpleases_Count() {
+		return (EAttribute)dhcpleasesEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -195,8 +197,8 @@ public class Gps_gps_coordPackageImpl extends EPackageImpl implements Gps_gps_co
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getGps_Lat() {
-		return (EAttribute)gpsEClass.getEStructuralFeatures().get(3);
+	public EAttribute getDhcpleases_Time() {
+		return (EAttribute)dhcpleasesEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -204,8 +206,8 @@ public class Gps_gps_coordPackageImpl extends EPackageImpl implements Gps_gps_co
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getGps_Long() {
-		return (EAttribute)gpsEClass.getEStructuralFeatures().get(4);
+	public EClass getLeases() {
+		return leasesEClass;
 	}
 
 	/**
@@ -213,8 +215,8 @@ public class Gps_gps_coordPackageImpl extends EPackageImpl implements Gps_gps_co
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getGps_Alt() {
-		return (EAttribute)gpsEClass.getEStructuralFeatures().get(5);
+	public EReference getLeases_Dhcpleases() {
+		return (EReference)leasesEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -222,35 +224,8 @@ public class Gps_gps_coordPackageImpl extends EPackageImpl implements Gps_gps_co
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getGps_Speed() {
-		return (EAttribute)gpsEClass.getEStructuralFeatures().get(6);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getGps_coord() {
-		return gps_coordEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getGps_coord_Gps() {
-		return (EReference)gps_coordEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Gps_gps_coordFactory getGps_gps_coordFactory() {
-		return (Gps_gps_coordFactory)getEFactoryInstance();
+	public Lease_tab_leasesFactory getLease_tab_leasesFactory() {
+		return (Lease_tab_leasesFactory)getEFactoryInstance();
 	}
 
 	/**
@@ -272,17 +247,14 @@ public class Gps_gps_coordPackageImpl extends EPackageImpl implements Gps_gps_co
 		isCreated = true;
 
 		// Create classes and their features
-		gpsEClass = createEClass(GPS);
-		createEReference(gpsEClass, GPS__ECONTAINER_GPS);
-		createEAttribute(gpsEClass, GPS__ID);
-		createEAttribute(gpsEClass, GPS__TIME);
-		createEAttribute(gpsEClass, GPS__LAT);
-		createEAttribute(gpsEClass, GPS__LONG);
-		createEAttribute(gpsEClass, GPS__ALT);
-		createEAttribute(gpsEClass, GPS__SPEED);
+		dhcpleasesEClass = createEClass(DHCPLEASES);
+		createEReference(dhcpleasesEClass, DHCPLEASES__ECONTAINER_DHCPLEASES);
+		createEAttribute(dhcpleasesEClass, DHCPLEASES__TEXT);
+		createEAttribute(dhcpleasesEClass, DHCPLEASES__COUNT);
+		createEAttribute(dhcpleasesEClass, DHCPLEASES__TIME);
 
-		gps_coordEClass = createEClass(GPS_COORD);
-		createEReference(gps_coordEClass, GPS_COORD__GPS);
+		leasesEClass = createEClass(LEASES);
+		createEReference(leasesEClass, LEASES__DHCPLEASES);
 	}
 
 	/**
@@ -316,20 +288,17 @@ public class Gps_gps_coordPackageImpl extends EPackageImpl implements Gps_gps_co
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		gps_coordEClass.getESuperTypes().add(theClickWatchModelPackage.getHandler());
+		leasesEClass.getESuperTypes().add(theClickWatchModelPackage.getHandler());
 
 		// Initialize classes and features; add operations and parameters
-		initEClass(gpsEClass, Gps.class, "Gps", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getGps_EContainer_gps(), this.getGps_coord(), this.getGps_coord_Gps(), "eContainer_gps", null, 0, 1, Gps.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getGps_Id(), ecorePackage.getEString(), "id", null, 0, 1, Gps.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getGps_Time(), ecorePackage.getEDouble(), "time", null, 0, 1, Gps.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getGps_Lat(), ecorePackage.getEDouble(), "lat", null, 0, 1, Gps.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getGps_Long(), ecorePackage.getEDouble(), "long", null, 0, 1, Gps.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getGps_Alt(), ecorePackage.getEDouble(), "alt", null, 0, 1, Gps.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getGps_Speed(), ecorePackage.getEDouble(), "speed", null, 0, 1, Gps.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(dhcpleasesEClass, Dhcpleases.class, "Dhcpleases", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getDhcpleases_EContainer_dhcpleases(), this.getLeases(), this.getLeases_Dhcpleases(), "eContainer_dhcpleases", null, 0, 1, Dhcpleases.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDhcpleases_Text(), ecorePackage.getEString(), "text", null, 0, 1, Dhcpleases.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDhcpleases_Count(), ecorePackage.getEInt(), "count", null, 0, 1, Dhcpleases.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDhcpleases_Time(), ecorePackage.getEDouble(), "time", null, 0, 1, Dhcpleases.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(gps_coordEClass, Gps_coord.class, "Gps_coord", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getGps_coord_Gps(), this.getGps(), this.getGps_EContainer_gps(), "gps", null, 0, 1, Gps_coord.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(leasesEClass, Leases.class, "Leases", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getLeases_Dhcpleases(), this.getDhcpleases(), this.getDhcpleases_EContainer_dhcpleases(), "dhcpleases", null, 0, -1, Leases.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create annotations
 		// http://de.hub.clickwatch.specificmodels
@@ -348,63 +317,45 @@ public class Gps_gps_coordPackageImpl extends EPackageImpl implements Gps_gps_co
 		  (this, 
 		   source, 
 		   new String[] {
-			 "handler_class", "Gps_coord"
+			 "handler_class", "Leases"
 		   });		
 		addAnnotation
-		  (gpsEClass, 
+		  (dhcpleasesEClass, 
 		   source, 
 		   new String[] {
-			 "target_id", "Gps_coord|Handler/gps|gps:Gps|EObject"
+			 "target_id", "Leases|Handler/dhcpleases|dhcpleases:Dhcpleases|EObject"
 		   });		
 		addAnnotation
-		  (getGps_Id(), 
+		  (getDhcpleases_Text(), 
 		   source, 
 		   new String[] {
-			 "target_id", "Gps_coord|Handler/gps|gps:Gps|EObject/id|id:"
+			 "target_id", "Leases|Handler/dhcpleases|dhcpleases:Dhcpleases|EObject/text|text:"
 		   });		
 		addAnnotation
-		  (getGps_Time(), 
+		  (getDhcpleases_Count(), 
 		   source, 
 		   new String[] {
-			 "target_id", "Gps_coord|Handler/gps|gps:Gps|EObject/time|time:"
+			 "target_id", "Leases|Handler/dhcpleases|dhcpleases:Dhcpleases|EObject/count|count:"
 		   });		
 		addAnnotation
-		  (getGps_Lat(), 
+		  (getDhcpleases_Time(), 
 		   source, 
 		   new String[] {
-			 "target_id", "Gps_coord|Handler/gps|gps:Gps|EObject/lat|lat:"
+			 "target_id", "Leases|Handler/dhcpleases|dhcpleases:Dhcpleases|EObject/time|time:"
 		   });		
 		addAnnotation
-		  (getGps_Long(), 
+		  (leasesEClass, 
 		   source, 
 		   new String[] {
-			 "target_id", "Gps_coord|Handler/gps|gps:Gps|EObject/long|long:"
+			 "target_id", "Leases|Handler"
 		   });		
 		addAnnotation
-		  (getGps_Alt(), 
+		  (getLeases_Dhcpleases(), 
 		   source, 
 		   new String[] {
-			 "target_id", "Gps_coord|Handler/gps|gps:Gps|EObject/alt|alt:"
-		   });		
-		addAnnotation
-		  (getGps_Speed(), 
-		   source, 
-		   new String[] {
-			 "target_id", "Gps_coord|Handler/gps|gps:Gps|EObject/speed|speed:"
-		   });		
-		addAnnotation
-		  (gps_coordEClass, 
-		   source, 
-		   new String[] {
-			 "target_id", "Gps_coord|Handler"
-		   });		
-		addAnnotation
-		  (getGps_coord_Gps(), 
-		   source, 
-		   new String[] {
-			 "target_id", "Gps_coord|Handler/gps|gps:Gps|EObject",
+			 "target_id", "Leases|Handler/dhcpleases|dhcpleases:Dhcpleases|EObject",
 			 "IsCopy", "false"
 		   });
 	}
 
-} //Gps_gps_coordPackageImpl
+} //Lease_tab_leasesPackageImpl
