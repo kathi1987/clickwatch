@@ -2,6 +2,9 @@ package de.hub.clickwatch.apps.performance.compoundhandler;
 
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
@@ -125,25 +128,32 @@ public class PerformanceGauge {
 		return Guice.createInjector(clickWatchModule, cwRecorderModule);
 	}
 	
+	private static Map<Integer, List<Handler>> handlerSubSets = new HashMap<Integer, List<Handler>>();
+	
 	private static class MyNodeRecorder extends NodeRecorder {
+		
 		@Override
-		protected void configureHandlerAdapter(EList<Handler> allHandlers) {
-			int count = Math.min(handlerCount, allHandlers.size());
-			EList<Handler> result = new BasicEList<Handler>();
-			int i = 0;
-			for (Handler handler: allHandlers) {
-				if (!PullHandlerAdapter.commonHandler.contains(handler.getName())) {
-					if (i++ < count) {
-						result.add(handler);
-					} else if (handler.getQualifiedName().equals("sys_info/systeminfo")) {
-						i++;
-						result.add(handler);
+		protected List<Handler> filterHandler(EList<Handler> allHandlers) {
+			List<Handler> result = handlerSubSets.get(handlerCount);
+			if (result == null) {			
+				int count = Math.min(handlerCount, allHandlers.size());
+				result = new BasicEList<Handler>();
+				int i = 0;
+				for (Handler handler: allHandlers) {
+					if (!PullHandlerAdapter.commonHandler.contains(handler.getName())) {
+						if (i++ < count) {
+							result.add(handler);
+						} else if (handler.getQualifiedName().equals("sys_info/systeminfo")) {
+							i++;
+							result.add(handler);
+						}
 					}
+					
 				}
-				
+				handlerSubSets.put(handlerCount, result);
 			}
-			super.configureHandlerAdapter(result);
-		}		
+			return result;
+		}
 	}
 
 }
