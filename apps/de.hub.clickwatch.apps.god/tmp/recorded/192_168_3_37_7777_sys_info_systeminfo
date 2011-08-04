@@ -1,0 +1,7 @@
+<system id="06-0F-B5-97-33-D2" name="wgt37" time="1308668615.746046930">
+	<mem total="29900" used="2100" cached="18120" buffers="0" NFS_Unstable="0" />
+	<loadavg onemin="0.19" fivemin="0.16" fifteen="0.07" />
+	<cpu_usage real="6.6" user="4.4" sys="2.2" unit="percent" />
+	<uptime total="2274965.46" idle="2270061.70" />
+	<linux version="Linux version 2.6.26.5 (mj@brn-suse093-7) (gcc version 4.1.2) #16 Wed Sep 17 23:32:31 CEST 2008" />
+</system>

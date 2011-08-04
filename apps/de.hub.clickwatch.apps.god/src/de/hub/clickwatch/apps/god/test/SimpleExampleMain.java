@@ -1,8 +1,6 @@
-package de.hub.clickwatch.apps.god;
-
+package de.hub.clickwatch.apps.god.test;
 
 import com.google.inject.Inject;
-
 import de.hub.clickwatch.connection.INodeConnection;
 import de.hub.clickwatch.connection.INodeConnectionProvider;
 import de.hub.clickwatch.connection.adapter.IHandlerAdapter;
@@ -19,7 +17,6 @@ public class SimpleExampleMain implements IClickWatchMain {
 	@Inject private ILogger logger;
 	@Inject private INodeConnectionProvider nodeConnectionProvider;
 	
-
 	@Override
 	public void main(IClickWatchContext ctx) {
 		INodeConnection nodeConnection = nodeConnectionProvider.createConnection("localhost", "7777");
@@ -42,6 +39,7 @@ public class SimpleExampleMain implements IClickWatchMain {
 
 	public static final void main(String args[]) {
 		args = new String[] { "-d", "-s", "-r../../ui/de.hub.clickwatch.ui/resources/records/record_11-06-23.clickwatchmodel" };
+		//args = new String[] { "-d", "-s"};
 		ClickWatchExternalLauncher.launch(args, SimpleExampleMain.class);
 	}
 }
