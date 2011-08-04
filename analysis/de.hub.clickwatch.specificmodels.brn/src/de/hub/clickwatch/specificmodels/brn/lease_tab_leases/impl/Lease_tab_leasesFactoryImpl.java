@@ -60,11 +60,22 @@ public class Lease_tab_leasesFactoryImpl extends EFactoryImpl implements Lease_t
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
+			case Lease_tab_leasesPackage.CLIENT: return createClient();
 			case Lease_tab_leasesPackage.DHCPLEASES: return createDhcpleases();
 			case Lease_tab_leasesPackage.LEASES: return createLeases();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Client createClient() {
+		ClientImpl client = new ClientImpl();
+		return client;
 	}
 
 	/**

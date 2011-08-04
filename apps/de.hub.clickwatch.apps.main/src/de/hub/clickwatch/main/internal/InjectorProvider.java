@@ -43,6 +43,8 @@ public class InjectorProvider implements IClickWatchContextAdapter, IInjectorPro
 	public enum DataBaseType { HBASE, EMF, LOGFILE, DUMMY };
 	
 	private HandlerBehaviour handlerBehaviour;
+	private int remoteUpdateInterval;
+	private long localUpdateInterval;
 	private ValueType valueType;
 	private int debugLevel; // 1,2,3,4
 	
@@ -61,6 +63,8 @@ public class InjectorProvider implements IClickWatchContextAdapter, IInjectorPro
 		options.add(new Option("c", "compound-handler", false, "use the compound handler of nodes instead of reading each handler seperated"));
 		options.add(new Option("cr", "compound-handler-records", false, "use compound handler, compound handler records values"));
 		options.add(new Option("crc", "compound-handler-records-changes-only", false, "use compound handler compound handler records values and delivers only changes"));
+		options.add(new Option("ru", "remote-update-interval", true, "interval used on node by compound handler."));
+		options.add(new Option("lu", "local-update-interval", true, "default interval used between requests, if not given otherwise"));
 		
 		options.add(new Option("h", "handler-per-record", true, "determines the estimated record size in handler count per record"));
 		options.add(new Option("db", true, "choose the database: hbase for hbase, log for log-file, emf for emf"));
@@ -75,9 +79,17 @@ public class InjectorProvider implements IClickWatchContextAdapter, IInjectorPro
 	@Override
 	public void initialize(CommandLine commandLine) throws ParseException {
 		try {
-			boolean useCompoundHandler = commandLine.hasOption("c") | commandLine.hasOption("cr") || commandLine.hasOption("cru");
-			boolean withRecord = commandLine.hasOption("cr") || commandLine.hasOption("cru");
-			boolean withChangesOnly = commandLine.hasOption("cru");
+			boolean useCompoundHandler = commandLine.hasOption("c") | commandLine.hasOption("cr") || commandLine.hasOption("crc");
+			boolean withRecord = commandLine.hasOption("cr") || commandLine.hasOption("crc");
+			boolean withChangesOnly = commandLine.hasOption("crc");
+			remoteUpdateInterval = 500;
+			if (commandLine.hasOption("ru")) {
+				remoteUpdateInterval = Integer.parseInt(commandLine.getOptionValue("ru"));
+			}
+			localUpdateInterval = 2000;
+			if (commandLine.hasOption("lu")) {
+				localUpdateInterval = Integer.parseInt(commandLine.getOptionValue("lu"));
+			}
 			
 			if (useCompoundHandler && withRecord && withChangesOnly) {
 				handlerBehaviour = HandlerBehaviour.COMPOUND_RECORDING_DIFFERENCES;
@@ -208,7 +220,7 @@ public class InjectorProvider implements IClickWatchContextAdapter, IInjectorPro
 					bind(Boolean.class).annotatedWith(Names.named(ClickWatchModule.B_COMPOUND_HANDLER_CHANGES_ONLY)).toInstance(false);
 				}
 					
-				bind(Integer.class).annotatedWith(Names.named(ClickWatchModule.I_COMPOUND_HANDLER_SAMPLE_TIME)).toInstance(handlerPerRecord);
+				bind(Integer.class).annotatedWith(Names.named(ClickWatchModule.I_COMPOUND_HANDLER_SAMPLE_TIME)).toInstance(remoteUpdateInterval);
 				bind(Boolean.class).annotatedWith(Names.named(ClickWatchModule.B_COMPOUND_HANDLER_COMPRESSION)).toInstance(false);
 			}
 
@@ -276,6 +288,11 @@ public class InjectorProvider implements IClickWatchContextAdapter, IInjectorPro
 			@Override
 			protected void configureHandlerPerRecord() {
 				bind(int.class).annotatedWith(Names.named(I_HANDLER_PER_RECORD_PROPERTY)).toInstance(handlerPerRecord);
+			}
+
+			@Override
+			protected void configureDefaultUpdateInterval() {
+				bind(long.class).annotatedWith(Names.named(L_DEFAULT_UPDATE_INTERVAL_PROPERTY)).toInstance(localUpdateInterval);
 			}
 			
 		};

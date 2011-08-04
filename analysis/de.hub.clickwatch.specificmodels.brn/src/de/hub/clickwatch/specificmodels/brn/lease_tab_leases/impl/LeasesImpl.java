@@ -12,6 +12,7 @@ import de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Dhcpleases;
 import de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Lease_tab_leasesPackage;
 import de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Leases;
 
+import org.eclipse.emf.common.notify.Notification;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -21,6 +22,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -39,14 +41,14 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class LeasesImpl extends HandlerImpl implements Leases {
 	/**
-	 * The cached value of the '{@link #getDhcpleases() <em>Dhcpleases</em>}' containment reference list.
+	 * The cached value of the '{@link #getDhcpleases() <em>Dhcpleases</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getDhcpleases()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Dhcpleases> dhcpleases;
+	protected Dhcpleases dhcpleases;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -72,11 +74,42 @@ public class LeasesImpl extends HandlerImpl implements Leases {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Dhcpleases> getDhcpleases() {
-		if (dhcpleases == null) {
-			dhcpleases = new EObjectContainmentWithInverseEList<Dhcpleases>(Dhcpleases.class, this, Lease_tab_leasesPackage.LEASES__DHCPLEASES, Lease_tab_leasesPackage.DHCPLEASES__ECONTAINER_DHCPLEASES);
-		}
+	public Dhcpleases getDhcpleases() {
 		return dhcpleases;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetDhcpleases(Dhcpleases newDhcpleases, NotificationChain msgs) {
+		Dhcpleases oldDhcpleases = dhcpleases;
+		dhcpleases = newDhcpleases;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, Lease_tab_leasesPackage.LEASES__DHCPLEASES, oldDhcpleases, newDhcpleases);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDhcpleases(Dhcpleases newDhcpleases) {
+		if (newDhcpleases != dhcpleases) {
+			NotificationChain msgs = null;
+			if (dhcpleases != null)
+				msgs = ((InternalEObject)dhcpleases).eInverseRemove(this, Lease_tab_leasesPackage.DHCPLEASES__ECONTAINER_DHCPLEASES, Dhcpleases.class, msgs);
+			if (newDhcpleases != null)
+				msgs = ((InternalEObject)newDhcpleases).eInverseAdd(this, Lease_tab_leasesPackage.DHCPLEASES__ECONTAINER_DHCPLEASES, Dhcpleases.class, msgs);
+			msgs = basicSetDhcpleases(newDhcpleases, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, Lease_tab_leasesPackage.LEASES__DHCPLEASES, newDhcpleases, newDhcpleases));
 	}
 
 	/**
@@ -89,7 +122,9 @@ public class LeasesImpl extends HandlerImpl implements Leases {
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case Lease_tab_leasesPackage.LEASES__DHCPLEASES:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getDhcpleases()).basicAdd(otherEnd, msgs);
+				if (dhcpleases != null)
+					msgs = ((InternalEObject)dhcpleases).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - Lease_tab_leasesPackage.LEASES__DHCPLEASES, null, msgs);
+				return basicSetDhcpleases((Dhcpleases)otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -103,7 +138,7 @@ public class LeasesImpl extends HandlerImpl implements Leases {
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case Lease_tab_leasesPackage.LEASES__DHCPLEASES:
-				return ((InternalEList<?>)getDhcpleases()).basicRemove(otherEnd, msgs);
+				return basicSetDhcpleases(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -132,8 +167,7 @@ public class LeasesImpl extends HandlerImpl implements Leases {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case Lease_tab_leasesPackage.LEASES__DHCPLEASES:
-				getDhcpleases().clear();
-				getDhcpleases().addAll((Collection<? extends Dhcpleases>)newValue);
+				setDhcpleases((Dhcpleases)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -148,7 +182,7 @@ public class LeasesImpl extends HandlerImpl implements Leases {
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case Lease_tab_leasesPackage.LEASES__DHCPLEASES:
-				getDhcpleases().clear();
+				setDhcpleases((Dhcpleases)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -163,7 +197,7 @@ public class LeasesImpl extends HandlerImpl implements Leases {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case Lease_tab_leasesPackage.LEASES__DHCPLEASES:
-				return dhcpleases != null && !dhcpleases.isEmpty();
+				return dhcpleases != null;
 		}
 		return super.eIsSet(featureID);
 	}

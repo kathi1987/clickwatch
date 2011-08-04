@@ -1189,47 +1189,6 @@
       </eStructuralFeatures>
     </eClassifiers>
   </eSubpackages>
-  <eSubpackages name="lease_tab_leases" nsURI="http://de.hub.clickwatch.specificmodels.brn/lease_tab/leases" nsPrefix="lease_tab_leases">
-    <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-      <details key="handler_class" value="Leases"/>
-    </eAnnotations>
-    <eClassifiers xsi:type="ecore:EClass" name="Dhcpleases">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Leases|Handler/dhcpleases|dhcpleases:Dhcpleases|EObject"/>
-      </eAnnotations>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_dhcpleases" eType="//lease_tab_leases/Leases" eOpposite="//lease_tab_leases/Leases/dhcpleases"/>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false">
-        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-          <details key="target_id" value="Leases|Handler/dhcpleases|dhcpleases:Dhcpleases|EObject/text|text:"/>
-        </eAnnotations>
-        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="count">
-        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-          <details key="target_id" value="Leases|Handler/dhcpleases|dhcpleases:Dhcpleases|EObject/count|count:"/>
-        </eAnnotations>
-        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="time">
-        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-          <details key="target_id" value="Leases|Handler/dhcpleases|dhcpleases:Dhcpleases|EObject/time|time:"/>
-        </eAnnotations>
-        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
-      </eStructuralFeatures>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Leases">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Leases|Handler"/>
-      </eAnnotations>
-      <eSuperTypes href="../../../../../../../de.hub.clickwatch.core/src/de/hub/clickwatch/model/ClickWatchModel.ecore#//Handler"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="dhcpleases" upperBound="-1" eType="//lease_tab_leases/Dhcpleases" containment="true" resolveProxies="false" eOpposite="//lease_tab_leases/Dhcpleases/eContainer_dhcpleases">
-        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-          <details key="target_id" value="Leases|Handler/dhcpleases|dhcpleases:Dhcpleases|EObject"/>
-          <details key="IsCopy" value="false"/>
-        </eAnnotations>
-      </eStructuralFeatures>
-    </eClassifiers>
-  </eSubpackages>
   <eSubpackages name="lt_routes" nsURI="http://de.hub.clickwatch.specificmodels.brn/lt/routes" nsPrefix="lt_routes">
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="handler_class" value="Routes"/>
@@ -1261,6 +1220,95 @@
           <details key="target_id" value="Links|Handler/text|text:"/>
         </eAnnotations>
         <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eStructuralFeatures>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="lease_tab_leases" nsURI="http://de.hub.clickwatch.specificmodels.brn/lease_tab/leases" nsPrefix="lease_tab_leases">
+    <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+      <details key="handler_class" value="Leases"/>
+    </eAnnotations>
+    <eClassifiers xsi:type="ecore:EClass" name="Client">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Leases|Handler/dhcpleases|dhcpleases:Dhcpleases|EObject/client|client:Client|EObject"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_client" eType="//lease_tab_leases/Dhcpleases" eOpposite="//lease_tab_leases/Dhcpleases/client"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="ip">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Leases|Handler/dhcpleases|dhcpleases:Dhcpleases|EObject/client|client:Client|EObject/ip|ip:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="mac">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Leases|Handler/dhcpleases|dhcpleases:Dhcpleases|EObject/client|client:Client|EObject/mac|mac:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="start">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Leases|Handler/dhcpleases|dhcpleases:Dhcpleases|EObject/client|client:Client|EObject/start|start:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="end">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Leases|Handler/dhcpleases|dhcpleases:Dhcpleases|EObject/client|client:Client|EObject/end|end:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="duration">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Leases|Handler/dhcpleases|dhcpleases:Dhcpleases|EObject/client|client:Client|EObject/duration|duration:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="time_left">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Leases|Handler/dhcpleases|dhcpleases:Dhcpleases|EObject/client|client:Client|EObject/time_left|time_left:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Dhcpleases">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Leases|Handler/dhcpleases|dhcpleases:Dhcpleases|EObject"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_dhcpleases" eType="//lease_tab_leases/Leases" eOpposite="//lease_tab_leases/Leases/dhcpleases"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" upperBound="-1">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Leases|Handler/dhcpleases|dhcpleases:Dhcpleases|EObject/text|text:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="client" upperBound="-1" eType="//lease_tab_leases/Client" containment="true" resolveProxies="false" eOpposite="//lease_tab_leases/Client/eContainer_client">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Leases|Handler/dhcpleases|dhcpleases:Dhcpleases|EObject/client|client:Client|EObject"/>
+          <details key="IsCopy" value="false"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="count">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Leases|Handler/dhcpleases|dhcpleases:Dhcpleases|EObject/count|count:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="time">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Leases|Handler/dhcpleases|dhcpleases:Dhcpleases|EObject/time|time:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Leases">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Leases|Handler"/>
+      </eAnnotations>
+      <eSuperTypes href="../../../../../../../de.hub.clickwatch.core/src/de/hub/clickwatch/model/ClickWatchModel.ecore#//Handler"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="dhcpleases" eType="//lease_tab_leases/Dhcpleases" containment="true" resolveProxies="false" eOpposite="//lease_tab_leases/Dhcpleases/eContainer_dhcpleases">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Leases|Handler/dhcpleases|dhcpleases:Dhcpleases|EObject"/>
+          <details key="IsCopy" value="false"/>
+        </eAnnotations>
       </eStructuralFeatures>
     </eClassifiers>
   </eSubpackages>

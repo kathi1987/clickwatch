@@ -63,6 +63,88 @@ public interface Lease_tab_leasesPackage extends EPackage {
 	Lease_tab_leasesPackage eINSTANCE = de.hub.clickwatch.specificmodels.brn.lease_tab_leases.impl.Lease_tab_leasesPackageImpl.init();
 
 	/**
+	 * The meta object id for the '{@link de.hub.clickwatch.specificmodels.brn.lease_tab_leases.impl.ClientImpl <em>Client</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.hub.clickwatch.specificmodels.brn.lease_tab_leases.impl.ClientImpl
+	 * @see de.hub.clickwatch.specificmodels.brn.lease_tab_leases.impl.Lease_tab_leasesPackageImpl#getClient()
+	 * @generated
+	 */
+	int CLIENT = 0;
+
+	/**
+	 * The feature id for the '<em><b>EContainer client</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLIENT__ECONTAINER_CLIENT = 0;
+
+	/**
+	 * The feature id for the '<em><b>Ip</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLIENT__IP = 1;
+
+	/**
+	 * The feature id for the '<em><b>Mac</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLIENT__MAC = 2;
+
+	/**
+	 * The feature id for the '<em><b>Start</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLIENT__START = 3;
+
+	/**
+	 * The feature id for the '<em><b>End</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLIENT__END = 4;
+
+	/**
+	 * The feature id for the '<em><b>Duration</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLIENT__DURATION = 5;
+
+	/**
+	 * The feature id for the '<em><b>Time left</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLIENT__TIME_LEFT = 6;
+
+	/**
+	 * The number of structural features of the '<em>Client</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLIENT_FEATURE_COUNT = 7;
+
+	/**
 	 * The meta object id for the '{@link de.hub.clickwatch.specificmodels.brn.lease_tab_leases.impl.DhcpleasesImpl <em>Dhcpleases</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -70,7 +152,7 @@ public interface Lease_tab_leasesPackage extends EPackage {
 	 * @see de.hub.clickwatch.specificmodels.brn.lease_tab_leases.impl.Lease_tab_leasesPackageImpl#getDhcpleases()
 	 * @generated
 	 */
-	int DHCPLEASES = 0;
+	int DHCPLEASES = 1;
 
 	/**
 	 * The feature id for the '<em><b>EContainer dhcpleases</b></em>' container reference.
@@ -82,7 +164,7 @@ public interface Lease_tab_leasesPackage extends EPackage {
 	int DHCPLEASES__ECONTAINER_DHCPLEASES = 0;
 
 	/**
-	 * The feature id for the '<em><b>Text</b></em>' attribute.
+	 * The feature id for the '<em><b>Text</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -91,13 +173,22 @@ public interface Lease_tab_leasesPackage extends EPackage {
 	int DHCPLEASES__TEXT = 1;
 
 	/**
+	 * The feature id for the '<em><b>Client</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DHCPLEASES__CLIENT = 2;
+
+	/**
 	 * The feature id for the '<em><b>Count</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DHCPLEASES__COUNT = 2;
+	int DHCPLEASES__COUNT = 3;
 
 	/**
 	 * The feature id for the '<em><b>Time</b></em>' attribute.
@@ -106,7 +197,7 @@ public interface Lease_tab_leasesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DHCPLEASES__TIME = 3;
+	int DHCPLEASES__TIME = 4;
 
 	/**
 	 * The number of structural features of the '<em>Dhcpleases</em>' class.
@@ -115,7 +206,7 @@ public interface Lease_tab_leasesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DHCPLEASES_FEATURE_COUNT = 4;
+	int DHCPLEASES_FEATURE_COUNT = 5;
 
 	/**
 	 * The meta object id for the '{@link de.hub.clickwatch.specificmodels.brn.lease_tab_leases.impl.LeasesImpl <em>Leases</em>}' class.
@@ -125,7 +216,7 @@ public interface Lease_tab_leasesPackage extends EPackage {
 	 * @see de.hub.clickwatch.specificmodels.brn.lease_tab_leases.impl.Lease_tab_leasesPackageImpl#getLeases()
 	 * @generated
 	 */
-	int LEASES = 1;
+	int LEASES = 2;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -209,7 +300,7 @@ public interface Lease_tab_leasesPackage extends EPackage {
 	int LEASES__TIMESTAMP = ClickWatchModelPackage.HANDLER__TIMESTAMP;
 
 	/**
-	 * The feature id for the '<em><b>Dhcpleases</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Dhcpleases</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -226,6 +317,93 @@ public interface Lease_tab_leasesPackage extends EPackage {
 	 */
 	int LEASES_FEATURE_COUNT = ClickWatchModelPackage.HANDLER_FEATURE_COUNT + 1;
 
+
+	/**
+	 * Returns the meta object for class '{@link de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Client <em>Client</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Client</em>'.
+	 * @see de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Client
+	 * @generated
+	 */
+	EClass getClient();
+
+	/**
+	 * Returns the meta object for the container reference '{@link de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Client#getEContainer_client <em>EContainer client</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>EContainer client</em>'.
+	 * @see de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Client#getEContainer_client()
+	 * @see #getClient()
+	 * @generated
+	 */
+	EReference getClient_EContainer_client();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Client#getIp <em>Ip</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Ip</em>'.
+	 * @see de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Client#getIp()
+	 * @see #getClient()
+	 * @generated
+	 */
+	EAttribute getClient_Ip();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Client#getMac <em>Mac</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Mac</em>'.
+	 * @see de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Client#getMac()
+	 * @see #getClient()
+	 * @generated
+	 */
+	EAttribute getClient_Mac();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Client#getStart <em>Start</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Start</em>'.
+	 * @see de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Client#getStart()
+	 * @see #getClient()
+	 * @generated
+	 */
+	EAttribute getClient_Start();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Client#getEnd <em>End</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>End</em>'.
+	 * @see de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Client#getEnd()
+	 * @see #getClient()
+	 * @generated
+	 */
+	EAttribute getClient_End();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Client#getDuration <em>Duration</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Duration</em>'.
+	 * @see de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Client#getDuration()
+	 * @see #getClient()
+	 * @generated
+	 */
+	EAttribute getClient_Duration();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Client#getTime_left <em>Time left</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Time left</em>'.
+	 * @see de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Client#getTime_left()
+	 * @see #getClient()
+	 * @generated
+	 */
+	EAttribute getClient_Time_left();
 
 	/**
 	 * Returns the meta object for class '{@link de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Dhcpleases <em>Dhcpleases</em>}'.
@@ -249,15 +427,26 @@ public interface Lease_tab_leasesPackage extends EPackage {
 	EReference getDhcpleases_EContainer_dhcpleases();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Dhcpleases#getText <em>Text</em>}'.
+	 * Returns the meta object for the attribute list '{@link de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Dhcpleases#getText <em>Text</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Text</em>'.
+	 * @return the meta object for the attribute list '<em>Text</em>'.
 	 * @see de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Dhcpleases#getText()
 	 * @see #getDhcpleases()
 	 * @generated
 	 */
 	EAttribute getDhcpleases_Text();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Dhcpleases#getClient <em>Client</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Client</em>'.
+	 * @see de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Dhcpleases#getClient()
+	 * @see #getDhcpleases()
+	 * @generated
+	 */
+	EReference getDhcpleases_Client();
 
 	/**
 	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Dhcpleases#getCount <em>Count</em>}'.
@@ -292,10 +481,10 @@ public interface Lease_tab_leasesPackage extends EPackage {
 	EClass getLeases();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Leases#getDhcpleases <em>Dhcpleases</em>}'.
+	 * Returns the meta object for the containment reference '{@link de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Leases#getDhcpleases <em>Dhcpleases</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Dhcpleases</em>'.
+	 * @return the meta object for the containment reference '<em>Dhcpleases</em>'.
 	 * @see de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Leases#getDhcpleases()
 	 * @see #getLeases()
 	 * @generated
@@ -325,6 +514,72 @@ public interface Lease_tab_leasesPackage extends EPackage {
 	 */
 	interface Literals {
 		/**
+		 * The meta object literal for the '{@link de.hub.clickwatch.specificmodels.brn.lease_tab_leases.impl.ClientImpl <em>Client</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.hub.clickwatch.specificmodels.brn.lease_tab_leases.impl.ClientImpl
+		 * @see de.hub.clickwatch.specificmodels.brn.lease_tab_leases.impl.Lease_tab_leasesPackageImpl#getClient()
+		 * @generated
+		 */
+		EClass CLIENT = eINSTANCE.getClient();
+
+		/**
+		 * The meta object literal for the '<em><b>EContainer client</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CLIENT__ECONTAINER_CLIENT = eINSTANCE.getClient_EContainer_client();
+
+		/**
+		 * The meta object literal for the '<em><b>Ip</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CLIENT__IP = eINSTANCE.getClient_Ip();
+
+		/**
+		 * The meta object literal for the '<em><b>Mac</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CLIENT__MAC = eINSTANCE.getClient_Mac();
+
+		/**
+		 * The meta object literal for the '<em><b>Start</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CLIENT__START = eINSTANCE.getClient_Start();
+
+		/**
+		 * The meta object literal for the '<em><b>End</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CLIENT__END = eINSTANCE.getClient_End();
+
+		/**
+		 * The meta object literal for the '<em><b>Duration</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CLIENT__DURATION = eINSTANCE.getClient_Duration();
+
+		/**
+		 * The meta object literal for the '<em><b>Time left</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CLIENT__TIME_LEFT = eINSTANCE.getClient_Time_left();
+
+		/**
 		 * The meta object literal for the '{@link de.hub.clickwatch.specificmodels.brn.lease_tab_leases.impl.DhcpleasesImpl <em>Dhcpleases</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -343,12 +598,20 @@ public interface Lease_tab_leasesPackage extends EPackage {
 		EReference DHCPLEASES__ECONTAINER_DHCPLEASES = eINSTANCE.getDhcpleases_EContainer_dhcpleases();
 
 		/**
-		 * The meta object literal for the '<em><b>Text</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Text</b></em>' attribute list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EAttribute DHCPLEASES__TEXT = eINSTANCE.getDhcpleases_Text();
+
+		/**
+		 * The meta object literal for the '<em><b>Client</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DHCPLEASES__CLIENT = eINSTANCE.getDhcpleases_Client();
 
 		/**
 		 * The meta object literal for the '<em><b>Count</b></em>' attribute feature.
@@ -377,7 +640,7 @@ public interface Lease_tab_leasesPackage extends EPackage {
 		EClass LEASES = eINSTANCE.getLeases();
 
 		/**
-		 * The meta object literal for the '<em><b>Dhcpleases</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Dhcpleases</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

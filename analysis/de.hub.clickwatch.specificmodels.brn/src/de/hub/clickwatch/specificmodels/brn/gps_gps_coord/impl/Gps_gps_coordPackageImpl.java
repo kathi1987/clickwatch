@@ -127,9 +127,9 @@ public class Gps_gps_coordPackageImpl extends EPackageImpl implements Gps_gps_co
 		Sys_info_systeminfoPackageImpl theSys_info_systeminfoPackage = (Sys_info_systeminfoPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Sys_info_systeminfoPackage.eNS_URI) instanceof Sys_info_systeminfoPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Sys_info_systeminfoPackage.eNS_URI) : Sys_info_systeminfoPackage.eINSTANCE);
 		Device_wifi_data_power_systempowerPackageImpl theDevice_wifi_data_power_systempowerPackage = (Device_wifi_data_power_systempowerPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Device_wifi_data_power_systempowerPackage.eNS_URI) instanceof Device_wifi_data_power_systempowerPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Device_wifi_data_power_systempowerPackage.eNS_URI) : Device_wifi_data_power_systempowerPackage.eINSTANCE);
 		Device_wifi_wifidevice_sc_systemchannelPackageImpl theDevice_wifi_wifidevice_sc_systemchannelPackage = (Device_wifi_wifidevice_sc_systemchannelPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Device_wifi_wifidevice_sc_systemchannelPackage.eNS_URI) instanceof Device_wifi_wifidevice_sc_systemchannelPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Device_wifi_wifidevice_sc_systemchannelPackage.eNS_URI) : Device_wifi_wifidevice_sc_systemchannelPackage.eINSTANCE);
-		Lease_tab_leasesPackageImpl theLease_tab_leasesPackage = (Lease_tab_leasesPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Lease_tab_leasesPackage.eNS_URI) instanceof Lease_tab_leasesPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Lease_tab_leasesPackage.eNS_URI) : Lease_tab_leasesPackage.eINSTANCE);
 		Lt_routesPackageImpl theLt_routesPackage = (Lt_routesPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Lt_routesPackage.eNS_URI) instanceof Lt_routesPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Lt_routesPackage.eNS_URI) : Lt_routesPackage.eINSTANCE);
 		Lt_linksPackageImpl theLt_linksPackage = (Lt_linksPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Lt_linksPackage.eNS_URI) instanceof Lt_linksPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Lt_linksPackage.eNS_URI) : Lt_linksPackage.eINSTANCE);
+		Lease_tab_leasesPackageImpl theLease_tab_leasesPackage = (Lease_tab_leasesPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Lease_tab_leasesPackage.eNS_URI) instanceof Lease_tab_leasesPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Lease_tab_leasesPackage.eNS_URI) : Lease_tab_leasesPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theGps_gps_coordPackage.createPackageContents();
@@ -139,9 +139,9 @@ public class Gps_gps_coordPackageImpl extends EPackageImpl implements Gps_gps_co
 		theSys_info_systeminfoPackage.createPackageContents();
 		theDevice_wifi_data_power_systempowerPackage.createPackageContents();
 		theDevice_wifi_wifidevice_sc_systemchannelPackage.createPackageContents();
-		theLease_tab_leasesPackage.createPackageContents();
 		theLt_routesPackage.createPackageContents();
 		theLt_linksPackage.createPackageContents();
+		theLease_tab_leasesPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theGps_gps_coordPackage.initializePackageContents();
@@ -151,9 +151,9 @@ public class Gps_gps_coordPackageImpl extends EPackageImpl implements Gps_gps_co
 		theSys_info_systeminfoPackage.initializePackageContents();
 		theDevice_wifi_data_power_systempowerPackage.initializePackageContents();
 		theDevice_wifi_wifidevice_sc_systemchannelPackage.initializePackageContents();
-		theLease_tab_leasesPackage.initializePackageContents();
 		theLt_routesPackage.initializePackageContents();
 		theLt_linksPackage.initializePackageContents();
+		theLease_tab_leasesPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theGps_gps_coordPackage.freeze();

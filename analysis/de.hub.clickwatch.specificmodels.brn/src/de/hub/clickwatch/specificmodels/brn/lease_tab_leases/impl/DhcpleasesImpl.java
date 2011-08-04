@@ -6,20 +6,26 @@
  */
 package de.hub.clickwatch.specificmodels.brn.lease_tab_leases.impl;
 
+import de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Client;
 import de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Dhcpleases;
 import de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Lease_tab_leasesPackage;
 import de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Leases;
 
+import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
+import org.eclipse.emf.ecore.util.EDataTypeEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -30,6 +36,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * <ul>
  *   <li>{@link de.hub.clickwatch.specificmodels.brn.lease_tab_leases.impl.DhcpleasesImpl#getEContainer_dhcpleases <em>EContainer dhcpleases</em>}</li>
  *   <li>{@link de.hub.clickwatch.specificmodels.brn.lease_tab_leases.impl.DhcpleasesImpl#getText <em>Text</em>}</li>
+ *   <li>{@link de.hub.clickwatch.specificmodels.brn.lease_tab_leases.impl.DhcpleasesImpl#getClient <em>Client</em>}</li>
  *   <li>{@link de.hub.clickwatch.specificmodels.brn.lease_tab_leases.impl.DhcpleasesImpl#getCount <em>Count</em>}</li>
  *   <li>{@link de.hub.clickwatch.specificmodels.brn.lease_tab_leases.impl.DhcpleasesImpl#getTime <em>Time</em>}</li>
  * </ul>
@@ -39,24 +46,24 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  */
 public class DhcpleasesImpl extends EObjectImpl implements Dhcpleases {
 	/**
-	 * The default value of the '{@link #getText() <em>Text</em>}' attribute.
+	 * The cached value of the '{@link #getText() <em>Text</em>}' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getText()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String TEXT_EDEFAULT = null;
+	protected EList<String> text;
 
 	/**
-	 * The cached value of the '{@link #getText() <em>Text</em>}' attribute.
+	 * The cached value of the '{@link #getClient() <em>Client</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getText()
+	 * @see #getClient()
 	 * @generated
 	 * @ordered
 	 */
-	protected String text = TEXT_EDEFAULT;
+	protected EList<Client> client;
 
 	/**
 	 * The default value of the '{@link #getCount() <em>Count</em>}' attribute.
@@ -163,7 +170,10 @@ public class DhcpleasesImpl extends EObjectImpl implements Dhcpleases {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getText() {
+	public EList<String> getText() {
+		if (text == null) {
+			text = new EDataTypeEList<String>(String.class, this, Lease_tab_leasesPackage.DHCPLEASES__TEXT);
+		}
 		return text;
 	}
 
@@ -172,11 +182,11 @@ public class DhcpleasesImpl extends EObjectImpl implements Dhcpleases {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setText(String newText) {
-		String oldText = text;
-		text = newText;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, Lease_tab_leasesPackage.DHCPLEASES__TEXT, oldText, text));
+	public EList<Client> getClient() {
+		if (client == null) {
+			client = new EObjectContainmentWithInverseEList<Client>(Client.class, this, Lease_tab_leasesPackage.DHCPLEASES__CLIENT, Lease_tab_leasesPackage.CLIENT__ECONTAINER_CLIENT);
+		}
+		return client;
 	}
 
 	/**
@@ -226,6 +236,7 @@ public class DhcpleasesImpl extends EObjectImpl implements Dhcpleases {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -233,6 +244,8 @@ public class DhcpleasesImpl extends EObjectImpl implements Dhcpleases {
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
 				return basicSetEContainer_dhcpleases((Leases)otherEnd, msgs);
+			case Lease_tab_leasesPackage.DHCPLEASES__CLIENT:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getClient()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -247,6 +260,8 @@ public class DhcpleasesImpl extends EObjectImpl implements Dhcpleases {
 		switch (featureID) {
 			case Lease_tab_leasesPackage.DHCPLEASES__ECONTAINER_DHCPLEASES:
 				return basicSetEContainer_dhcpleases(null, msgs);
+			case Lease_tab_leasesPackage.DHCPLEASES__CLIENT:
+				return ((InternalEList<?>)getClient()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -277,6 +292,8 @@ public class DhcpleasesImpl extends EObjectImpl implements Dhcpleases {
 				return getEContainer_dhcpleases();
 			case Lease_tab_leasesPackage.DHCPLEASES__TEXT:
 				return getText();
+			case Lease_tab_leasesPackage.DHCPLEASES__CLIENT:
+				return getClient();
 			case Lease_tab_leasesPackage.DHCPLEASES__COUNT:
 				return getCount();
 			case Lease_tab_leasesPackage.DHCPLEASES__TIME:
@@ -290,6 +307,7 @@ public class DhcpleasesImpl extends EObjectImpl implements Dhcpleases {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -297,7 +315,12 @@ public class DhcpleasesImpl extends EObjectImpl implements Dhcpleases {
 				setEContainer_dhcpleases((Leases)newValue);
 				return;
 			case Lease_tab_leasesPackage.DHCPLEASES__TEXT:
-				setText((String)newValue);
+				getText().clear();
+				getText().addAll((Collection<? extends String>)newValue);
+				return;
+			case Lease_tab_leasesPackage.DHCPLEASES__CLIENT:
+				getClient().clear();
+				getClient().addAll((Collection<? extends Client>)newValue);
 				return;
 			case Lease_tab_leasesPackage.DHCPLEASES__COUNT:
 				setCount((Integer)newValue);
@@ -321,7 +344,10 @@ public class DhcpleasesImpl extends EObjectImpl implements Dhcpleases {
 				setEContainer_dhcpleases((Leases)null);
 				return;
 			case Lease_tab_leasesPackage.DHCPLEASES__TEXT:
-				setText(TEXT_EDEFAULT);
+				getText().clear();
+				return;
+			case Lease_tab_leasesPackage.DHCPLEASES__CLIENT:
+				getClient().clear();
 				return;
 			case Lease_tab_leasesPackage.DHCPLEASES__COUNT:
 				setCount(COUNT_EDEFAULT);
@@ -344,7 +370,9 @@ public class DhcpleasesImpl extends EObjectImpl implements Dhcpleases {
 			case Lease_tab_leasesPackage.DHCPLEASES__ECONTAINER_DHCPLEASES:
 				return getEContainer_dhcpleases() != null;
 			case Lease_tab_leasesPackage.DHCPLEASES__TEXT:
-				return TEXT_EDEFAULT == null ? text != null : !TEXT_EDEFAULT.equals(text);
+				return text != null && !text.isEmpty();
+			case Lease_tab_leasesPackage.DHCPLEASES__CLIENT:
+				return client != null && !client.isEmpty();
 			case Lease_tab_leasesPackage.DHCPLEASES__COUNT:
 				return count != COUNT_EDEFAULT;
 			case Lease_tab_leasesPackage.DHCPLEASES__TIME:

@@ -28,8 +28,7 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface Leases extends Handler {
 	/**
-	 * Returns the value of the '<em><b>Dhcpleases</b></em>' containment reference list.
-	 * The list contents are of type {@link de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Dhcpleases}.
+	 * Returns the value of the '<em><b>Dhcpleases</b></em>' containment reference.
 	 * It is bidirectional and its opposite is '{@link de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Dhcpleases#getEContainer_dhcpleases <em>EContainer dhcpleases</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -37,13 +36,24 @@ public interface Leases extends Handler {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Dhcpleases</em>' containment reference list.
+	 * @return the value of the '<em>Dhcpleases</em>' containment reference.
+	 * @see #setDhcpleases(Dhcpleases)
 	 * @see de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Lease_tab_leasesPackage#getLeases_Dhcpleases()
 	 * @see de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Dhcpleases#getEContainer_dhcpleases
 	 * @model opposite="eContainer_dhcpleases" containment="true"
 	 *        annotation="http://de.hub.clickwatch.specificmodels target_id='Leases|Handler/dhcpleases|dhcpleases:Dhcpleases|EObject' IsCopy='false'"
 	 * @generated
 	 */
-	EList<Dhcpleases> getDhcpleases();
+	Dhcpleases getDhcpleases();
+
+	/**
+	 * Sets the value of the '{@link de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Leases#getDhcpleases <em>Dhcpleases</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Dhcpleases</em>' containment reference.
+	 * @see #getDhcpleases()
+	 * @generated
+	 */
+	void setDhcpleases(Dhcpleases value);
 
 } // Leases

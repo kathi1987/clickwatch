@@ -6,6 +6,7 @@
  */
 package de.hub.clickwatch.specificmodels.brn.lease_tab_leases;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -18,6 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Dhcpleases#getEContainer_dhcpleases <em>EContainer dhcpleases</em>}</li>
  *   <li>{@link de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Dhcpleases#getText <em>Text</em>}</li>
+ *   <li>{@link de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Dhcpleases#getClient <em>Client</em>}</li>
  *   <li>{@link de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Dhcpleases#getCount <em>Count</em>}</li>
  *   <li>{@link de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Dhcpleases#getTime <em>Time</em>}</li>
  * </ul>
@@ -57,31 +59,40 @@ public interface Dhcpleases extends EObject {
 	void setEContainer_dhcpleases(Leases value);
 
 	/**
-	 * Returns the value of the '<em><b>Text</b></em>' attribute.
+	 * Returns the value of the '<em><b>Text</b></em>' attribute list.
+	 * The list contents are of type {@link java.lang.String}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Text</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Text</em>' attribute.
-	 * @see #setText(String)
+	 * @return the value of the '<em>Text</em>' attribute list.
 	 * @see de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Lease_tab_leasesPackage#getDhcpleases_Text()
 	 * @model unique="false"
 	 *        annotation="http://de.hub.clickwatch.specificmodels target_id='Leases|Handler/dhcpleases|dhcpleases:Dhcpleases|EObject/text|text:'"
 	 * @generated
 	 */
-	String getText();
+	EList<String> getText();
 
 	/**
-	 * Sets the value of the '{@link de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Dhcpleases#getText <em>Text</em>}' attribute.
+	 * Returns the value of the '<em><b>Client</b></em>' containment reference list.
+	 * The list contents are of type {@link de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Client}.
+	 * It is bidirectional and its opposite is '{@link de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Client#getEContainer_client <em>EContainer client</em>}'.
 	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Client</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Text</em>' attribute.
-	 * @see #getText()
+	 * @return the value of the '<em>Client</em>' containment reference list.
+	 * @see de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Lease_tab_leasesPackage#getDhcpleases_Client()
+	 * @see de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Client#getEContainer_client
+	 * @model opposite="eContainer_client" containment="true"
+	 *        annotation="http://de.hub.clickwatch.specificmodels target_id='Leases|Handler/dhcpleases|dhcpleases:Dhcpleases|EObject/client|client:Client|EObject' IsCopy='false'"
 	 * @generated
 	 */
-	void setText(String value);
+	EList<Client> getClient();
 
 	/**
 	 * Returns the value of the '<em><b>Count</b></em>' attribute.

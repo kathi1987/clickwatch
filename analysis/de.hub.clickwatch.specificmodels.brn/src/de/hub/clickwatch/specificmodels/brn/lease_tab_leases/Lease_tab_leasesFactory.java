@@ -26,6 +26,15 @@ public interface Lease_tab_leasesFactory extends EFactory {
 	Lease_tab_leasesFactory eINSTANCE = de.hub.clickwatch.specificmodels.brn.lease_tab_leases.impl.Lease_tab_leasesFactoryImpl.init();
 
 	/**
+	 * Returns a new object of class '<em>Client</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Client</em>'.
+	 * @generated
+	 */
+	Client createClient();
+
+	/**
 	 * Returns a new object of class '<em>Dhcpleases</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

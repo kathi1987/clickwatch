@@ -20,14 +20,17 @@ public class CWRecorderModule extends AbstractModule {
 	protected void configure() {
 		configureDataBaseRecordAdapter();
 		configureDataBaseRetrieveAdapter();
-		bind(long.class).annotatedWith(Names.named(L_DEFAULT_UPDATE_INTERVAL_PROPERTY)).toInstance(new Long(2000));
+		configureDefaultUpdateInterval();
 		configureHandlerPerRecord();
 		configureRecordChangesOnly();
-		configureDBValueAdapter();
-		
-		configureAdditionalBindings();
+		configureDBValueAdapter();		
+		configureAdditionalBindings();		
 	}
 	
+	protected void configureDefaultUpdateInterval() {
+		bind(long.class).annotatedWith(Names.named(L_DEFAULT_UPDATE_INTERVAL_PROPERTY)).toInstance(new Long(2000));
+	}
+
 	protected void configureAdditionalBindings() {
 		// empty
 	}

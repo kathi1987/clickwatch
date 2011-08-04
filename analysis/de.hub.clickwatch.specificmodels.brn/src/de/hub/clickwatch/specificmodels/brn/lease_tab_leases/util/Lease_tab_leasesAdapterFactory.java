@@ -74,6 +74,10 @@ public class Lease_tab_leasesAdapterFactory extends AdapterFactoryImpl {
 	protected Lease_tab_leasesSwitch<Adapter> modelSwitch =
 		new Lease_tab_leasesSwitch<Adapter>() {
 			@Override
+			public Adapter caseClient(Client object) {
+				return createClientAdapter();
+			}
+			@Override
 			public Adapter caseDhcpleases(Dhcpleases object) {
 				return createDhcpleasesAdapter();
 			}
@@ -104,6 +108,20 @@ public class Lease_tab_leasesAdapterFactory extends AdapterFactoryImpl {
 		return modelSwitch.doSwitch((EObject)target);
 	}
 
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Client <em>Client</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Client
+	 * @generated
+	 */
+	public Adapter createClientAdapter() {
+		return null;
+	}
 
 	/**
 	 * Creates a new adapter for an object of class '{@link de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Dhcpleases <em>Dhcpleases</em>}'.
