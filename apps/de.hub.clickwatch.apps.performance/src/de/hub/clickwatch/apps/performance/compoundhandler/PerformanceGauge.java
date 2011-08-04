@@ -85,6 +85,9 @@ public class PerformanceGauge {
 				switch (retrievalType) {
 				case BASE_LINE:
 					bind(IPullHandlerAdapter.class).to(PullHandlerAdapter.class);
+					bind(Boolean.class).annotatedWith(Names.named(ClickWatchModule.B_COMPOUND_HANDLER_RECORDS)).toInstance(false);
+					bind(Boolean.class).annotatedWith(Names.named(ClickWatchModule.B_COMPOUND_HANDLER_CHANGES_ONLY)).toInstance(false);
+					bind(Boolean.class).annotatedWith(Names.named(ClickWatchModule.B_COMPOUND_HANDLER_COMPRESSION)).toInstance(false);
 					break;
 				case ON_DEMAND:
 					bind(IPullHandlerAdapter.class).to(CompoundHandlerAdapter.class);
