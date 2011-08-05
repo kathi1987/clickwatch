@@ -1,4 +1,4 @@
-package de.hub.clickwatch.recorder.examples;
+package de.hub.clickwatch.recorder.examples.logvshbase;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -16,10 +16,13 @@ import java.util.PriorityQueue;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.xml.type.AnyType;
+import org.eclipse.equinox.app.IApplication;
+import org.eclipse.equinox.app.IApplicationContext;
 
 import com.google.inject.Inject;
 
 import de.hub.clickwatch.main.ClickWatchExternalLauncher;
+import de.hub.clickwatch.main.IArgumentsProvider;
 import de.hub.clickwatch.main.IClickWatchContext;
 import de.hub.clickwatch.main.IClickWatchMain;
 import de.hub.clickwatch.main.IExperimentProvider;
@@ -31,7 +34,7 @@ import de.hub.clickwatch.recorder.database.DataBaseUtil;
 import de.hub.clickwatch.util.ILogger;
 import de.hub.clickwatch.util.Throwables;
 
-public class LogFileGenerator implements IClickWatchMain {
+public class LogFileGenerator implements IClickWatchMain, IApplication {
 	
 	private static final TimeStampLabelProvider timeStampLabelProvider = new TimeStampLabelProvider();
 	@Inject private ILogger logger;
@@ -42,7 +45,7 @@ public class LogFileGenerator implements IClickWatchMain {
 	@Override
 	public void main(IClickWatchContext ctx) {
 		try {
-			out = new PrintStream(new File("out.log"));
+			out = new PrintStream(new File(ctx.getAdapter(IArgumentsProvider.class).getArguments()[0]));
 		} catch (FileNotFoundException e) {
 			Throwables.propagate(e);
 		}
@@ -195,6 +198,18 @@ public class LogFileGenerator implements IClickWatchMain {
 		public Handler getCurrent() {
 			return current;
 		}
+	}
+	
+	@Override
+	public Object start(IApplicationContext context) throws Exception {
+		String[] args = (String[]) context.getArguments().get("application.args");
+	    ClickWatchExternalLauncher.launch(args, LogFileGenerator.class);
+	    return EXIT_OK;
+	}
+
+	@Override
+	public void stop() {
+		System.out.println("forced to stop ... rude by OSGI!");
 	}
 	
 	public static final void main(String args[]) {

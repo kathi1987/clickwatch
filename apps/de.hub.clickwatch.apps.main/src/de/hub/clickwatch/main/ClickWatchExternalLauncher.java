@@ -91,6 +91,7 @@ public class ClickWatchExternalLauncher {
 		adapterClasses.add(IInjectorProvider.class);
 		adapterClasses.add(IExperimentProvider.class);
 		adapterClasses.add(IArgumentsProvider.class);
+		adapterClasses.add(IResultsProvider.class);
 		launch(args, mainClass, adapterClasses.toArray(new Class[]{}));
 	}
 
