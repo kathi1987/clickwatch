@@ -87,6 +87,8 @@ public class NodeRecorder implements Runnable {
 			updateInterval = defaultUpdateInterval;
 		}
 		
+		logger.log(ILogger.DEBUG, "Recordeing " + connection + " with local update interval of " + updateInterval, null);
+		
 		metaData.setINetAddress(configuration.getINetAddress());
 		nodeDBAdapter = parent.getDataBaseAdapter().addNode(metaData);
 		logger.log(ILogger.DEBUG, "pulled meta-data for " + configuration.getINetAddress(), null);
