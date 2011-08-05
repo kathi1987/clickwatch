@@ -7,10 +7,15 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.util.Comparator;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
+import java.util.PriorityQueue;
 
-import org.apache.commons.math.stat.descriptive.SummaryStatistics;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import com.google.inject.Inject;
@@ -34,21 +39,33 @@ public class LogFileVsHbaseExperiment implements IClickWatchMain {
 	private static final TimeStampLabelProvider timeStampLabelProvider = new TimeStampLabelProvider();
 	@Inject private ILogger logger;
 	@Inject private DataBaseUtil dbUtil;
+	private static int numberOfDataPoints = 20;
 	
-	private SummaryStatistics hbaseSize = new SummaryStatistics();
+	long getDuration(int dataPoint, long durationAll) {
+		return (durationAll / numberOfDataPoints) * dataPoint;
+	}
+	
+	long[] getDurations(ExperimentDescr experiment) {	
+		long durationAll = experiment.getEnd() - experiment.getStart();
+		long[] durations = new long[numberOfDataPoints];
+		for (int i = 0; i < numberOfDataPoints; i++) {
+			durations[i] = getDuration(i+1, durationAll);
+		}
+		return durations;
+	}
 
 	@Override
 	public void main(IClickWatchContext ctx) {		
 		ExperimentDescr experiment = ctx.getAdapter(IExperimentProvider.class).getExperiment();
 		File sourceLogFile = new File(ctx.getAdapter(IArgumentsProvider.class).getArguments()[0]);
-		
-		int numberOfDataPoints = 10;
+	
 		Plot plot = new Plot();
-		for (int run = 1; run <= 10; run++) {
-			long duration = run * ((experiment.getEnd() - experiment.getStart()) / numberOfDataPoints);
+		long durations[] = getDurations(experiment);
+		long hbaseSizes[] = getHBaseSizes(experiment, durations);
+  		
+		for (int run = 0; run < durations.length; run++) {
+			long duration = durations[run];
 			long logSize = 0;
-			hbaseSize.clear();
-			
 			
 			// step 1 create a subset log file from existing log file
 			Handler handler = dbUtil.getHandler(experiment, "192.168.3.118", "device_wifi/link_stat/bcast_stats", experiment.getStart() + duration);
@@ -98,8 +115,8 @@ public class LogFileVsHbaseExperiment implements IClickWatchMain {
 			long hbaseTime = stop - start;
 			logger.log(ILogger.DEBUG, "performed hbase analysis for " + run, null);
 			
-			logger.log(ILogger.INFO, "Run " + run + " completed with " + new long[]{(long)(duration/1e6), (long)logSize, (long)hbaseSize.getSum(), logtime, hbaseTime}, null);
-			plot.addEntry(duration / 1e6, logSize, hbaseSize.getSum(), logtime, hbaseTime);
+			logger.log(ILogger.INFO, "Run " + run + " completed with " + new long[]{(long)(duration/1e6), (long)logSize, (long)hbaseSizes[run], logtime, hbaseTime}, null);
+			plot.addEntry(duration / 1e6, logSize, hbaseSizes[run], logtime, hbaseTime);
 		}
 		
 		try {
@@ -139,6 +156,103 @@ public class LogFileVsHbaseExperiment implements IClickWatchMain {
 			logger.log(ILogger.INFO, "created plot for " + nodeId, null);
 		}
 		out.close();
+	}
+	
+	public long[] getHBaseSizes(ExperimentDescr experiment, long[] durations) { 
+		long[] result = new long[durations.length];
+		long size = 0;
+		int durationsIndex = 0;
+		
+		logger.log(ILogger.INFO, "Start analysis on experiment " + experiment.getName(), null);
+		
+		PriorityQueue<CurrentIterator> handlers = new PriorityQueue<CurrentIterator>(1000, new Comparator<CurrentIterator>() {
+			@Override
+			public int compare(CurrentIterator one,
+					CurrentIterator two) {
+				if (one.getCurrent().getTimestamp() < two.getCurrent().getTimestamp()) {
+					return -1;
+				} else if (one.getCurrent().getTimestamp() == two.getCurrent().getTimestamp()) {
+					return 0;
+				} else {
+					return 1;
+				}
+			}			
+		});
+		Map<CurrentIterator, String> nodeIds = new HashMap<CurrentIterator, String>();
+		
+		logger.log(ILogger.INFO, "Creating database scanners for all handers for all nodes", null);
+		for (Node node: experiment.getMetaData()) {
+			for(Handler handler: node.getAllHandlers()) {
+				CurrentIterator iterator = new CurrentIterator(dbUtil.getHandlerIterator(experiment, 
+						node.getINetAddress(), handler.getQualifiedName(), 
+						experiment.getStart(), experiment.getEnd()));
+				insert(iterator, handlers);
+				nodeIds.put(iterator, node.getINetAddress());
+			}
+		}
+		
+		logger.log(ILogger.INFO, "Starting to go through all handlers and measure hbase size", null);
+		int logCounter = 0;
+		long duration = experiment.getEnd() - experiment.getStart();
+		long expStart = experiment.getStart();
+		NumberFormat percentFormat = new DecimalFormat("0.000");
+		while(!handlers.isEmpty()) {
+			CurrentIterator current = handlers.poll();
+			long timestamp = current.getCurrent().getTimestamp();
+			size += current.getCurrent().getValue().length();
+			if (timestamp >= durations[durationsIndex]) {
+				result[durationsIndex] = size;
+				durationsIndex++;
+			}
+			
+			EcoreUtil.delete(current.getCurrent());
+			insert(current, handlers);
+			if (logCounter++ == 10000) {
+				logCounter = 0;				
+				double percent = ((double)(timestamp - expStart)*100)/(double)duration;
+				logger.log(ILogger.DEBUG, "Measuing sizes at " 
+						+ percentFormat.format(percent) + "%, "
+						, null);
+			}
+		}
+		return result;
+	}
+	
+	private void insert(CurrentIterator iterator, PriorityQueue<CurrentIterator> handlers) {
+		if (iterator.hasNext()) {
+			iterator.next();
+			handlers.add(iterator);			
+		}
+	}
+	
+	class CurrentIterator implements Iterator<Handler> {
+		private final Iterator<Handler> base;
+		private Handler current = null;
+		
+		public CurrentIterator(Iterator<Handler> base) {
+			super();
+			this.base = base;
+		}
+
+		@Override
+		public boolean hasNext() {
+			return base.hasNext();
+		}
+
+		@Override
+		public Handler next() {
+			current = base.next();
+			return current;
+		}
+
+		@Override
+		public void remove() {
+			base.remove();
+		}
+		
+		public Handler getCurrent() {
+			return current;
+		}
 	}
 	
 	public static final void main(String args[]) {
