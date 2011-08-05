@@ -1,0 +1,21 @@
+<entry from='06-0F-B5-97-36-83' time='1308906161.678352430' seq='604' period='1000' tau='100000' >
+	<link to='06-0F-B5-97-25-7B' seq='607' period='1000' tau='100000' last_rx='0.027568430' >
+		<link_info size='300' rate='2' fwd='89' rev='45'/>
+		<link_info size='300' rate='12' fwd='78' rev='52'/>
+	</link>
+	<link to='06-0F-B5-97-33-8B' seq='607' period='1000' tau='100000' last_rx='0.055752430' >
+		<link_info size='300' rate='2' fwd='78' rev='74'/>
+		<link_info size='300' rate='12' fwd='68' rev='62'/>
+	</link>
+	<link to='06-0F-B5-97-33-D2' seq='601' period='1000' tau='100000' last_rx='3.894971430' >
+		<link_info size='300' rate='12' fwd='2' rev='4'/>
+		<link_info size='300' rate='2' fwd='18' rev='5'/>
+	</link>
+	<link to='06-1B-B1-05-46-08' seq='480537' period='1000' tau='100000' last_rx='3.056055430' >
+		<link_info size='300' rate='2' fwd='79' rev='46'/>
+	</link>
+	<link to='06-1B-B1-05-46-10' seq='480520' period='1000' tau='100000' last_rx='0.446921430' >
+		<link_info size='300' rate='2' fwd='78' rev='39'/>
+		<link_info size='300' rate='12' fwd='45' rev='36'/>
+	</link>
+</entry>

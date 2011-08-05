@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde version="3.6"?>
 
-<target name="clickwatch" sequenceNumber="14">
+<target name="clickwatch" sequenceNumber="15">
 <locations>
 <location includeAllPlatforms="false" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="de.hub.xveg.feature.feature.group" version="1.0.0.v201107081123"/>
@@ -22,6 +22,11 @@
 <unit id="org.eclipse.xsd.sdk.feature.group" version="2.7.0.v20110606-0949"/>
 <unit id="org.eclipse.xtext.sdk.feature.group" version="2.0.0.v201106070531"/>
 <repository location="http://download.eclipse.org/releases/indigo"/>
+</location>
+<location includeAllPlatforms="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="org.scala-ide.sdt.weaving.feature.feature.group" version="2.0.0.beta09-29-201107201639-529111d"/>
+<unit id="org.scala-ide.sdt.feature.feature.group" version="2.0.0.beta09-29-201107201639-529111d"/>
+<repository location="http://download.scala-ide.org/releases/2.0.0-beta"/>
 </location>
 </locations>
 </target>

@@ -1,0 +1,18 @@
+<entry from='06-0F-B5-97-33-8B' time='1308906161.760749370' seq='607' period='1000' tau='100000' >
+	<link to='06-0F-B5-97-25-7B' seq='607' period='1000' tau='100000' last_rx='0.106049370' >
+		<link_info size='300' rate='2' fwd='100' rev='85'/>
+		<link_info size='300' rate='12' fwd='96' rev='60'/>
+	</link>
+	<link to='06-0F-B5-97-33-D2' seq='608' period='1000' tau='100000' last_rx='0.426788370' >
+		<link_info size='300' rate='2' fwd='92' rev='69'/>
+		<link_info size='300' rate='12' fwd='83' rev='52'/>
+	</link>
+	<link to='06-0F-B5-97-36-83' seq='602' period='1000' tau='100000' last_rx='1.181246370' >
+		<link_info size='300' rate='12' fwd='63' rev='67'/>
+		<link_info size='300' rate='2' fwd='73' rev='78'/>
+	</link>
+	<link to='OUTER_SPACE' seq='4949494' period='4949494' tau='4949494' last_rx='4949494.49' >
+		<link_info size='4949494' rate='4949494' fwd='4949494' rev='4949494'/>
+		<link_info size='4949494' rate='4949494' fwd='4949494' rev='4949494'/>
+	</link>
+</entry>

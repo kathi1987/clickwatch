@@ -196,6 +196,9 @@ public class HBaseDataBaseAdapter extends AbstractDataBaseRecordAdapter implemen
 		
 		synchronized void add(List<Put> puts) {
 			queue.addAll(puts);
+			if (queue.size() > handlerPerRecord * 50) {
+				logger.log(ILogger.WARNING, "hbase put thread queue is getting veryyyy big, size is " + queue.size(), null);
+			}
 		}
 		
 		synchronized void waitForNextPut() {

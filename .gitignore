@@ -2,6 +2,8 @@
 *.swp
 target/
 bin/
+*.out
 out.*
 out-*.*
 log.*
+*.DS_Store

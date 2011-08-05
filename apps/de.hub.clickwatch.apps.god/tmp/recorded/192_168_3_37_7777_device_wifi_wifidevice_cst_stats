@@ -1,0 +1,30 @@
+<channelstats node="06-0F-B5-97-33-D2" time="1308668615.657228150" id="294" length="200" hw_duration="200" unit="ms" >
+	<mac packets="2" rx_pkt="2" no_err_pkt="2" crc_err_pkt="0" phy_err_pkt="0" unknown_err_pkt="0" tx_pkt="0" rx_unicast_pkt="0" rx_retry_pkt="0" rx_bcast_pkt="2 " rx_bytes="672" tx_unicast_pkt="0" tx_retry_pkt="0" tx_bcast_pkt="0 " tx_bytes="0" zero_err_pkt="0" last_packet_time="1308668615.559610" no_src="2" />
+	<mac_percentage busy="1" rx="1" tx="0" noerr_rx="1" crc_rx="0" phy_rx="0" unknown_err_rx="0" unit="percent" />
+	<mac_duration busy="3331" rx="3331" tx="0" noerr_rx="3331" crc_rx="0" phy_rx="0" unknown_err_rx="0" unit="us" />
+	<phy hwbusy="44" hwrx="27" hwtx="0" last_hw_stat_time="1308668615.657046700" hw_stats_count="1" avg_noise="-96" std_noise="0" avg_rssi="24" std_rssi="8" ctl_rssi0="0" ctl_rssi1="0" ctl_rssi2="0" ext_rssi0="0" ext_rssi1="0" ext_rssi2="0" channel="9" />
+	<perf_counter cycles="8620219" busy_cycles="3859026" rx_cycles="2358241" tx_cycles="0" />
+	<neighbourstats>
+		<nb addr="06-0F-B5-97-36-83" rssi="14" std_rssi="0" min_rssi="14" max_rssi="14" pkt_cnt="3">
+			<rssi_extended>
+				<ctl rssi0="0" rssi1="0" rssi2="0" />
+				<ext rssi0="0" rssi1="0" rssi2="0" />
+			</rssi_extended>
+			<rssi_hist size="1" max_size="50" overflow="false" values="14" />
+		</nb>
+		<nb addr="06-0F-B5-97-25-7B" rssi="31" std_rssi="0" min_rssi="31" max_rssi="31" pkt_cnt="3">
+			<rssi_extended>
+				<ctl rssi0="0" rssi1="0" rssi2="0" />
+				<ext rssi0="0" rssi1="0" rssi2="0" />
+			</rssi_extended>
+			<rssi_hist size="1" max_size="50" overflow="false" values="31" />
+		</nb>
+		<nb addr="06-0F-B5-97-33-8B" rssi="31" std_rssi="0" min_rssi="31" max_rssi="31" pkt_cnt="3">
+			<rssi_extended>
+				<ctl rssi0="0" rssi1="0" rssi2="0" />
+				<ext rssi0="0" rssi1="0" rssi2="0" />
+			</rssi_extended>
+			<rssi_hist size="1" max_size="50" overflow="false" values="31" />
+		</nb>
+	</neighbourstats>
+</channelstats>

@@ -35,21 +35,15 @@ import de.hub.specificmodels.metamodelgenerator.MetaModelGenerator;
 
 public class HandlerMetaModelGenerator implements IClickWatchMain {
 
-
 	@Inject INodeConnectionProvider ncp;
 	
 	@Override
 	public void main(IClickWatchContext ctx) {
 		String[] args = ctx.getAdapter(IArgumentsProvider.class).getArguments();
-		String handlerId = args[0];
-		String nodeId = args[1];
+		String nodeId = args[0];
 		
 		INodeConnection nc = ncp.createConnection(nodeId, "7777");
 		nc.connect();
-		
-		Handler handler = nc.getAdapter(IHandlerAdapter.class).getHandler(handlerId);
-		String handlerName = HandlerUtil.getSplitQualifiedName(handlerId)[1];
-		final String handlerClassName = handlerName.substring(0,1).toUpperCase() + handlerName.substring(1);
 		
 		ResourceSet resourseSet = new ResourceSetImpl();
 		resourseSet.getLoadOptions().putAll(XmlModelRepository.defaultLoadSaveOptions());
@@ -59,37 +53,47 @@ public class HandlerMetaModelGenerator implements IClickWatchMain {
 		EPackage brnHandlersPackage = (EPackage)resource.getContents().get(0);
 		EClass handlerSuperClass = ((EClass)brnHandlersPackage.getEClassifier("HandlerSubClass")).getESuperTypes().get(0);
 		
-		Injector mmgInjector = Guice.createInjector(new ClickWatchSpecificModelsModule() {
-			@Override
-			protected void configureTargetIdProvider() {
-				bind(ITargetIdProvider.class).toInstance(
-						new TargetIdProviderFactoryProvider(
-								new HandlerTargetIdProviderFactory(handlerClassName)));
-			}			
-		});
-		MetaModelGenerator metaModelGenerator = mmgInjector.getInstance(MetaModelGenerator.class);
-		EPackage metaModel = metaModelGenerator.generate(handler);
-		metaModel.setName(handlerId.replace("/", "_"));
-		metaModel.setNsPrefix(metaModel.getName());
-		metaModel.setNsURI("http://de.hub.clickwatch.specificmodels.brn/" + handlerId);
-		EClass handlerClass = (EClass)metaModel.getEClassifier(handlerClassName);	
-		handlerClass.getESuperTypes().add(handlerSuperClass);
-		EAnnotation annotation = EcoreFactory.eINSTANCE.createEAnnotation();
-		annotation.setSource(DefaultTargetObjectCreator.ANNOTATION_SOURCE);
-		annotation.getDetails().put(BrnValueAdapter.HANDLER_CLASS, handlerClassName);
-		metaModel.getEAnnotations().add(annotation);
-	
-		EPackage oldPackage = null;
-		EList<EPackage> brnHandlerPackages = brnHandlersPackage.getESubpackages();
-		for(EPackage handlerPackage: brnHandlerPackages) {
-			if (handlerPackage.getName().equals(metaModel.getName())) {
-				oldPackage = handlerPackage;
+		for(int i = 1; i < args.length; i++) {
+			String handlerId = args[i];
+
+			Handler handler = nc.getAdapter(IHandlerAdapter.class).getHandler(handlerId);
+			String handlerName = HandlerUtil.getSplitQualifiedName(handlerId)[1];
+			final String handlerClassName = handlerName.substring(0,1).toUpperCase() + handlerName.substring(1);
+			
+			
+			
+			Injector mmgInjector = Guice.createInjector(new ClickWatchSpecificModelsModule() {
+				@Override
+				protected void configureTargetIdProvider() {
+					bind(ITargetIdProvider.class).toInstance(
+							new TargetIdProviderFactoryProvider(
+									new HandlerTargetIdProviderFactory(handlerClassName)));
+				}			
+			});
+			MetaModelGenerator metaModelGenerator = mmgInjector.getInstance(MetaModelGenerator.class);
+			EPackage metaModel = metaModelGenerator.generate(handler);
+			metaModel.setName(handlerId.replace("/", "_"));
+			metaModel.setNsPrefix(metaModel.getName());
+			metaModel.setNsURI("http://de.hub.clickwatch.specificmodels.brn/" + handlerId);
+			EClass handlerClass = (EClass)metaModel.getEClassifier(handlerClassName);	
+			handlerClass.getESuperTypes().add(handlerSuperClass);
+			EAnnotation annotation = EcoreFactory.eINSTANCE.createEAnnotation();
+			annotation.setSource(DefaultTargetObjectCreator.ANNOTATION_SOURCE);
+			annotation.getDetails().put(BrnValueAdapter.HANDLER_CLASS, handlerClassName);
+			metaModel.getEAnnotations().add(annotation);
+		
+			EPackage oldPackage = null;
+			EList<EPackage> brnHandlerPackages = brnHandlersPackage.getESubpackages();
+			for(EPackage handlerPackage: brnHandlerPackages) {
+				if (handlerPackage.getName().equals(metaModel.getName())) {
+					oldPackage = handlerPackage;
+				}
 			}
+			if (oldPackage != null) {
+				brnHandlerPackages.remove(oldPackage);
+			}
+			brnHandlerPackages.add(metaModel);
 		}
-		if (oldPackage != null) {
-			brnHandlerPackages.remove(oldPackage);
-		}
-		brnHandlerPackages.add(metaModel);
 				
 		try {
 			resource.save(XmlModelRepository.defaultLoadSaveOptions());
@@ -97,7 +101,6 @@ public class HandlerMetaModelGenerator implements IClickWatchMain {
 			Throwables.propagate(e);
 		}
 
-		// TODO put it into the registry
 	}
 	
 	public static final void main(String args[]) {

@@ -55,8 +55,21 @@ public class BrnValueAdapter extends XmlValueAdapter {
 		if (metaModel != null) {
 			String className = metaModel.getEAnnotation(
 					DefaultTargetObjectCreator.ANNOTATION_SOURCE).getDetails().get(HANDLER_CLASS);
+			StringBuffer xml = new StringBuffer();
+			xml.append("<");
+			xml.append(className);
+			xml.append(" xmlns:xmi=\"http://www.omg.org/XMI\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"");
+			xml.append(" ");
+			xml.append("xsi:noNamespaceSchemaLocation=\"");
+			xml.append(metaModel.getNsURI());
+			xml.append("\">");
+			xml.append(plainValue);
+			xml.append("</");
+			xml.append(className);
+			xml.append(">");
+			
 			return (Handler)xmlModelRepository.deserializeModel(metaModel, 
-					"<" + className + ">" + plainValue + "</" + className + ">");
+					xml.toString());
 		} else {
 			return super.createNewHandler(qualifiedName, plainValue);
 		}
