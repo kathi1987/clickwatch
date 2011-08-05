@@ -30,7 +30,7 @@ import de.hub.clickwatch.merge.Merger;
 import de.hub.clickwatch.model.ChangeMark;
 import de.hub.clickwatch.model.Network;
 import de.hub.clickwatch.model.Node;
-import de.hub.clickwatch.model.provider.TimeStampLabelProvider;
+import de.hub.clickwatch.model.util.TimeStampLabelProvider;
 import de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr;
 import de.hub.clickwatch.recoder.cwdatabase.presentation.CWDataBaseEditor;
 import de.hub.clickwatch.recorder.database.DataBaseUtil;

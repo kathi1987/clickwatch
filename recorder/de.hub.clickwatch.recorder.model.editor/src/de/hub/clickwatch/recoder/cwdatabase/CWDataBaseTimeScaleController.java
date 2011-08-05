@@ -32,7 +32,7 @@ import de.hub.clickwatch.model.ClickWatchModelFactory;
 import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.model.Network;
 import de.hub.clickwatch.model.Node;
-import de.hub.clickwatch.model.provider.TimeStampLabelProvider;
+import de.hub.clickwatch.model.util.TimeStampLabelProvider;
 import de.hub.clickwatch.recoder.cwdatabase.presentation.CWDataBaseEditor;
 import de.hub.clickwatch.recorder.database.DataBaseUtil;
 import de.hub.clickwatch.ui.connection.MergingNodeAdapterMergeConfiguration;

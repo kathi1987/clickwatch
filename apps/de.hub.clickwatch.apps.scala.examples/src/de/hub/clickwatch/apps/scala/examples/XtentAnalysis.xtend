@@ -1,4 +1,4 @@
-package de.hub.clickwatch.recorder.examples
+package de.hub.clickwatch.apps.scala.examples
 
 import de.hub.clickwatch.main.IClickWatchMain
 import de.hub.clickwatch.main.IClickWatchContext
