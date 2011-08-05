@@ -18,8 +18,8 @@ import de.hub.clickwatch.main.IClickWatchModelProvider;
 public class ClickWatchModelProvider implements IClickWatchContextAdapter,
 		IClickWatchModelProvider {
 
-	private String clickWatchModel = null;
-	private String clickWatchObject = null;
+	private URI clickWatchModel = null;
+	private EObject clickWatchObject = null;
 
 	@Override
 	public List<Option> getCommandLineOptions() {
@@ -34,22 +34,26 @@ public class ClickWatchModelProvider implements IClickWatchContextAdapter,
 
 	@Override
 	public void initialize(CommandLine commandLine) throws ParseException {
-		clickWatchModel = commandLine.getOptionValue("uri");
-		clickWatchObject = commandLine.getOptionValue("obj");
-	}
-
-	@Override
-	public EObject getInputObject() {
-		EObject ret = null;
-
+		clickWatchModel = URI.createPlatformResourceURI(commandLine.getOptionValue("uri"), true);
+		
 		ResourceSet resourceSet = new ResourceSetImpl();
 		resourceSet.getLoadOptions().put(XMLResource.OPTION_EXTENDED_META_DATA,
 				Boolean.TRUE);
 		Resource modelResource = resourceSet.getResource(
-				URI.createFileURI(clickWatchModel), true);
-		ret = modelResource.getContents().get(0);
+				URI.createFileURI(commandLine.getOptionValue("obj")), true);
+		clickWatchObject = modelResource.getContents().get(0);
+	}
+	
+	public void initialize(URI clickWatchModel, EObject clickWatchObject)
+	{
+		this.clickWatchModel = clickWatchModel;
+		this.clickWatchObject = clickWatchObject;
+	}
 
-		return ret;
+	@Override
+	public EObject getInputObject() {
+
+		return clickWatchObject;
 	}
 
 }

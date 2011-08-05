@@ -3,11 +3,8 @@ package de.hub.clickwatch.transformationLauncher;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 
-import org.eclipse.core.resources.IProject;
-import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
@@ -17,15 +14,17 @@ import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.ILaunchManager;
 import org.eclipse.debug.core.model.ILaunchConfigurationDelegate;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.URIConverter;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.ui.statushandlers.StatusManager;
 import org.osgi.framework.Bundle;
 
-import de.hub.clickwatch.main.ClickWatchExternalLauncher;
+import de.hub.clickwatch.main.ClickWatchRunConfigurationLauncher;
+import de.hub.clickwatch.main.ELaunchConfigurationParameters;
 import de.hub.clickwatch.main.IClickWatchMain;
-import de.hub.clickwatch.main.IClickWatchModelProvider;
-import de.hub.clickwatch.main.IExperimentProvider;
-import de.hub.clickwatch.main.IInjectorProvider;
 import de.hub.clickwatch.transformationLauncher.tabs.ClickwatchParametersTab;
 import de.hub.clickwatch.transformationLauncher.tabs.ExperimentParametersTab;
 import de.hub.clickwatch.transformationLauncher.tabs.MainParametersTab;
@@ -68,11 +67,6 @@ public class TransformationLaunchConfigurationDelegate implements
 		if (mode.equals(ILaunchManager.RUN_MODE)) {
 			try {
 
-				List<Class<?>> adapterClasses = new ArrayList<Class<?>>();
-				adapterClasses.add(IExperimentProvider.class);
-				adapterClasses.add(IInjectorProvider.class);
-				adapterClasses.add(IClickWatchModelProvider.class);
-
 				URI u = URI.createURI(transformationFile);
 				String bundleIdentifier = u.segment(1);
 
@@ -95,13 +89,27 @@ public class TransformationLaunchConfigurationDelegate implements
 
 				Class<IClickWatchMain> mainClass = (Class<IClickWatchMain>) transformationClass;
 
-				String[] args = { "-uri", "\"" + sourceModelFile + "\"",
-						"-obj", "\""+ modelObject + "\"" };
+				// build the configuration
+				HashMap<ELaunchConfigurationParameters, Object> config = new HashMap<ELaunchConfigurationParameters, Object>();
+				config.put(ELaunchConfigurationParameters.ClickWatchModelFile,
+						URI.createURI(sourceModelFile));
 
-				ClickWatchExternalLauncher.launch(args, mainClass,
-						adapterClasses.toArray(new Class[] {}));
+				if (modelObject != "") {
+					ResourceSet resourceSet = new ResourceSetImpl();
+					resourceSet.getLoadOptions()
+							.put(XMLResource.OPTION_EXTENDED_META_DATA,
+									Boolean.TRUE);
+					Resource modelResource = resourceSet.getResource(
+							URI.createFileURI(modelObject), true);
+					config.put(ELaunchConfigurationParameters.ClickWatchObject,
+							modelResource.getContents().get(0));
+				} else
+					config.put(ELaunchConfigurationParameters.ClickWatchObject,
+							null);
+
+				ClickWatchRunConfigurationLauncher.launch(config, mainClass);
 			} catch (Exception e) {
-
+				System.out.println(e);
 			}
 
 		} else if (mode.equals(ILaunchManager.DEBUG_MODE)) {
@@ -118,7 +126,7 @@ public class TransformationLaunchConfigurationDelegate implements
 	 */
 	private String getFullClassName(URI fileURI) {
 		String className = "";
-		try {			
+		try {
 			InputStream is = URIConverter.INSTANCE.createInputStream(fileURI);
 			InputStreamReader isr = new InputStreamReader(is);
 			BufferedReader br = new BufferedReader(isr);
@@ -126,12 +134,13 @@ public class TransformationLaunchConfigurationDelegate implements
 			if (line.startsWith("package")) {
 				className = line.substring(7).trim();
 			}
-			
-			if(className.endsWith(";"))
+
+			if (className.endsWith(";"))
 				className = className.replaceAll(";", "");
-			
-			className += "." + fileURI.lastSegment().replaceAll(".java|.xtend", "");
-			
+
+			className += "."
+					+ fileURI.lastSegment().replaceAll(".java|.xtend", "");
+
 		} catch (Exception e) {
 			Status myStatus = new Status(IStatus.ERROR, "",
 					"Could not find the class", null);
