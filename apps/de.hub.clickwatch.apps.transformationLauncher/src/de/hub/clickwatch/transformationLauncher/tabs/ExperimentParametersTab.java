@@ -56,7 +56,7 @@ public class ExperimentParametersTab extends AbstractLaunchConfigurationTab {
 		// transformation file chooser
 		Group textGroup = new Group(parent, SWT.NONE);
 		textGroup.setFont(parent.getFont());
-		textGroup.setText("Transformation File");
+		textGroup.setText("Experiment configurations");
 		textGroup.setLayoutData(new GridData(SWT.FILL, SWT.TOP, true, false));
 		textGroup.setLayout(new GridLayout(1, false));
 

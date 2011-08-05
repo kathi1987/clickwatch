@@ -27,76 +27,35 @@ import org.eclipse.swt.widgets.Text;
  */
 public class ClickwatchParametersTab extends AbstractLaunchConfigurationTab {
 
-	/**
-	 * The attribute constant to get the transformation file value of a
-	 * ILaunchConfigurationWorkingCopy
-	 */
-	public static final String ATTR_TRANSFORMATION_FILE = "attr_transformation_file";
 	public static final String ATTR_SOURCE_MODEL_FILE = "attr_source_model_file";
+	public static final String ATTR_MODEL_OBJECT = "attr_model_object";
 
 	private final String TAB_NAME = "Clickwatch";
-	private Text transformationFile;
 	private Text sourceModel;
+
+	private Text modelObject;
 
 	@Override
 	public void createControl(Composite parent) {
 
 		final Shell shell = parent.getShell();
 
-		// transformation file chooser
-		Group transformationFileGroup = new Group(parent, SWT.NONE);
-		transformationFileGroup.setFont(parent.getFont());
-		transformationFileGroup.setText("Transformation File");
-		transformationFileGroup.setLayoutData(new GridData(SWT.FILL, SWT.TOP,
-				true, false));
-		transformationFileGroup.setLayout(new GridLayout(1, false));
+		Group mainGroup = new Group(parent, SWT.NONE);
+		mainGroup.setFont(parent.getFont());
+		mainGroup.setText("Clickwatch configurations");
+		mainGroup.setLayoutData(new GridData(SWT.FILL, SWT.TOP, true, false));
+		mainGroup.setLayout(new GridLayout(1, false));
 
-		Composite composite = new Composite(transformationFileGroup, SWT.NONE);
+		// source model
+		Composite composite = new Composite(mainGroup, SWT.NONE);
 		composite.setLayoutData(new GridData(SWT.FILL, SWT.TOP, true, false));
 		composite.setLayout(new GridLayout(3, false));
 
 		Label transfLabel = new Label(composite, SWT.FILL);
-		transfLabel.setText("File: ");
-
-		transformationFile = new Text(composite, SWT.FILL);
-		transformationFile.setText("Test");
-		GridData layoutData = new GridData(SWT.FILL, SWT.TOP, true, false);
-		transformationFile.setLayoutData(layoutData);
-
-		Button selectTransfButton = new Button(composite, SWT.PUSH);
-		selectTransfButton.setText("...");
-		selectTransfButton.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent selectionEvent) {
-				IFile file = null;
-
-				IFile[] files = WorkspaceResourceDialog.openFileSelection(
-						shell, null, null, false, null, null);
-				if (files.length != 0) {
-					file = files[0];
-				}
-
-				if (file != null) {
-					String uriString = URI.createPlatformResourceURI(
-							file.getFullPath().toString(), true).toString();
-					setTransfFile(uriString);
-					setDirty(true);
-					updateLaunchConfigurationDialog();
-				}
-			}
-		});
-
-		// source model
-		composite = new Composite(transformationFileGroup, SWT.NONE);
-		composite.setLayoutData(new GridData(SWT.FILL, SWT.TOP, true, false));
-		composite.setLayout(new GridLayout(3, false));
-
-		transfLabel = new Label(composite, SWT.FILL);
 		transfLabel.setText("Source model: ");
 
 		sourceModel = new Text(composite, SWT.FILL);
-		sourceModel.setText("Test");
-		layoutData = new GridData(SWT.FILL, SWT.TOP, true, false);
+		GridData layoutData = new GridData(SWT.FILL, SWT.TOP, true, false);
 		sourceModel.setLayoutData(layoutData);
 
 		Button selectSourceModelButton = new Button(composite, SWT.PUSH);
@@ -122,7 +81,20 @@ public class ClickwatchParametersTab extends AbstractLaunchConfigurationTab {
 			}
 		});
 
-		setControl(transformationFileGroup);
+		// model object
+		composite = new Composite(mainGroup, SWT.NONE);
+		composite.setLayoutData(new GridData(SWT.FILL, SWT.TOP, true, false));
+		composite.setLayout(new GridLayout(2, false));
+
+		transfLabel = new Label(composite, SWT.FILL);
+		transfLabel.setText("Model object: ");
+
+		modelObject = new Text(composite, SWT.FILL);
+		layoutData = new GridData(SWT.FILL, SWT.TOP, true, false);
+		modelObject.setLayoutData(layoutData);
+				
+		
+		setControl(mainGroup);
 
 		// schedule an update job so every change is noticed
 		scheduleUpdateJob();
@@ -132,19 +104,7 @@ public class ClickwatchParametersTab extends AbstractLaunchConfigurationTab {
 	public boolean isValid(ILaunchConfiguration launchConfig) {
 		setErrorMessage(null);
 
-		if (transformationFile.getText().equals(""))
-			setErrorMessage("No transformation file given");
-
 		return true;
-	}
-
-	/**
-	 * sets the string parameter for the transformation file
-	 * 
-	 * @param uriString
-	 */
-	private void setTransfFile(String uriString) {
-		transformationFile.setText(uriString);
 	}
 
 	/**
@@ -163,26 +123,27 @@ public class ClickwatchParametersTab extends AbstractLaunchConfigurationTab {
 	@Override
 	public void initializeFrom(ILaunchConfiguration configuration) {
 		try {
-			transformationFile.setText(configuration.getAttribute(
-					ClickwatchParametersTab.ATTR_TRANSFORMATION_FILE, ""));
 
 			sourceModel.setText(configuration.getAttribute(
 					ClickwatchParametersTab.ATTR_SOURCE_MODEL_FILE, ""));
+
+			modelObject.setText(configuration.getAttribute(
+					ClickwatchParametersTab.ATTR_MODEL_OBJECT, ""));
+
 		} catch (CoreException e) {
-			transformationFile.setText("");
 		}
 	}
 
 	@Override
 	public void performApply(ILaunchConfigurationWorkingCopy configuration) {
 		// set the values of the tab components in the configuration object
-		configuration.setAttribute(
-				ClickwatchParametersTab.ATTR_TRANSFORMATION_FILE,
-				transformationFile.getText());
 
 		configuration.setAttribute(
 				ClickwatchParametersTab.ATTR_SOURCE_MODEL_FILE,
 				sourceModel.getText());
+
+		configuration.setAttribute(ClickwatchParametersTab.ATTR_MODEL_OBJECT,
+				modelObject.getText());
 	}
 
 	@Override

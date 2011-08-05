@@ -27,7 +27,7 @@ public class ClickWatchModelProvider implements IClickWatchContextAdapter,
 		options.add(new Option("uri", "model-file", true,
 				"path to the .clickwatchmodel-file"));
 
-		options.add(new Option("obj", "used object", true,
+		options.add(new Option("obj", "use-object", true,
 				"the object in the clickwatchmodel that should be used"));
 		return options;
 	}
