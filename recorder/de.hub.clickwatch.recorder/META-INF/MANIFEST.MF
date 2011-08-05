@@ -54,5 +54,6 @@ Export-Package: de.hub.clickwatch.recorder,
  de.hub.clickwatch.recorder.database.emf,
  de.hub.clickwatch.recorder.database.hbase,
  de.hub.clickwatch.recorder.database.logfile,
- org.apache.commons.cli
+ org.apache.commons.cli,
+ org.apache.hadoop.hbase.client
 Bundle-ActivationPolicy: lazy

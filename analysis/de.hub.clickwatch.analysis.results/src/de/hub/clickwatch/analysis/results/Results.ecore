@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="results"
+    nsURI="http://de.hub.clickwatch.analysis.results" nsPrefix="results">
+  <eClassifiers xsi:type="ecore:EClass" name="DataSet">
+    <eOperations name="addEntry">
+      <eParameters name="values" upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="entries" upperBound="-1"
+        eType="#//DataEntry" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DataEntry" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="values" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Chart" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//ChartType"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="valueSpecs" upperBound="-1"
+        eType="#//ValueSpec" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ChartType" eSuperTypes="#//NamedElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ValueSpec" abstract="true" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="constraint" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="column" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NamedElement" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Axis" eSuperTypes="#//ValueSpec"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Series" eSuperTypes="#//ValueSpec"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Category" eSuperTypes="#//ValueSpec"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Result" eSuperTypes="#//NamedElement">
+    <eOperations name="exportCSV">
+      <eParameters name="fileName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="timestamp" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="diagrams" upperBound="-1"
+        eType="#//Chart" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dataSet" eType="#//DataSet"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="XY" eSuperTypes="#//ChartType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BoxAndWhiskers" eSuperTypes="#//ChartType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Bar" eSuperTypes="#//ChartType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Results">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="results" upperBound="-1"
+        eType="#//Result" containment="true"/>
+  </eClassifiers>
+</ecore:EPackage>

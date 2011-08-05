@@ -23,19 +23,29 @@ public class HBaseRowMap implements Serializable {
 	public byte[] createRow(String nodeId, String handlerId, long time) {
 		byte[] nodeKey = nodeKeys.get(nodeId);
 		byte[] handlerKey = handlerKeys.get(handlerId);
-	
-		byte [] timeKey = new byte[TIME_KEY_LENGTH];  
-		for(int i= 0; i < TIME_KEY_LENGTH; i++){  
-			timeKey[TIME_KEY_LENGTH - 1 - i] = (byte)(time);
-			time = time >>> 8;
-		}  
+		byte[] timeKey = createTimeKey(time);  
 		
 		byte[] row = new byte[nodeKey.length + handlerKey.length + timeKey.length];
 		for (int i = 0; i < nodeKey.length; i++) row[i] = nodeKey[i];
 		for (int i = 0; i < handlerKey.length; i++) row[i + nodeKey.length] = handlerKey[i];
 		for (int i = 0; i < timeKey.length; i++) row[i + nodeKey.length + handlerKey.length] = timeKey[i];
-		
+	
 		return row;
+	}
+	
+	public byte[] createRow(byte[] row, long time) {
+		byte[] timeKey = createTimeKey(time);
+		for (int i = 0; i < timeKey.length; i++) row[i + NODE_KEY_LENGTH + HANDLER_KEY_LENGTH] = timeKey[i];
+		return row;
+	}
+
+	private byte[] createTimeKey(long time) {
+		byte [] timeKey = new byte[TIME_KEY_LENGTH];  
+		for(int i= 0; i < TIME_KEY_LENGTH; i++){  
+			timeKey[TIME_KEY_LENGTH - 1 - i] = (byte)(time);
+			time = time >>> 8;
+		}
+		return timeKey;
 	}
 	
 	private byte[] toByteArray(int value, int length) {
@@ -80,4 +90,6 @@ public class HBaseRowMap implements Serializable {
 		}
 		return true;
 	}
+
+	
 }

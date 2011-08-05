@@ -51,7 +51,7 @@ public class LogFileVsHbaseExperiment implements IClickWatchMain {
 	@Override
 	public void main(IClickWatchContext ctx) {
 		ExperimentDescr experiment = ctx.getAdapter(IExperimentProvider.class).getExperiment();
-		int numberOfDataPoints = 500;
+		int numberOfDataPoints = 10;
 		Plot plot = new Plot();
 		for (int run = 1; run <= 10; run++) {
 			long duration = run * ((experiment.getEnd() - experiment.getStart()) / numberOfDataPoints);

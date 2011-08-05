@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+ <extension
+       point="org.eclipse.ui.views">
+    <view
+          category="edu.hu.clickwatch.viewCategory"
+          class="de.hub.clickwatch.analysis.results.ui.ResultsView"
+          icon="icons/Analysis.gif"
+          id="de.hub.clickwatch.analysis.results.ResultsView"
+          name="Results View">
+    </view>
+ </extension>
+</plugin>

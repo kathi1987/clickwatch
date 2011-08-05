@@ -100,7 +100,8 @@ public class ClickWatchExternalLauncher {
 		adapterClasses.add(IExperimentProvider.class);
 		adapterClasses.add(IArgumentsProvider.class);
 		adapterClasses.add(IClickWatchModelProvider.class);
-		launch(args, mainClass, adapterClasses.toArray(new Class[] {}));
+		adapterClasses.add(IResultsProvider.class);
+		launch(args, mainClass, adapterClasses.toArray(new Class[]{}));
 	}
 
 	public static void standaloneSetUp() {

@@ -1,16 +1,10 @@
 package de.hub.clickwatch.recorder.database.hbase;
 
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import org.apache.hadoop.conf.Configuration;
-import org.apache.hadoop.hbase.HBaseConfiguration;
-import org.apache.hadoop.hbase.HColumnDescriptor;
-import org.apache.hadoop.hbase.HTableDescriptor;
-import org.apache.hadoop.hbase.client.HBaseAdmin;
 import org.apache.hadoop.hbase.client.HTable;
 import org.apache.hadoop.hbase.client.Put;
 import org.apache.hadoop.hbase.client.Result;
@@ -35,16 +29,13 @@ import de.hub.emfxml.XmlModelRepository;
 
 public class HBaseDataBaseAdapter extends AbstractDataBaseRecordAdapter implements IDataBaseRetrieveAdapter {
 	
-	private static final byte[] colFamily = "value".getBytes();
-	private static final byte[] col = "value".getBytes();
-	
 	@Inject @Named(CWRecorderModule.DB_VALUE_ADAPTER_PROPERTY) private IValueAdapter dbValueAdapter;
 	@Inject @Named(CWRecorderModule.I_HANDLER_PER_RECORD_PROPERTY) private int handlerPerRecord;
 	@Inject private ILogger logger;
+	@Inject HBaseUtil hbaseUtil;
 	
 	private HBaseRowMap rowMap = null;
 	private HTable table = null;
-	private Configuration config = null;
 	
 	private PutThread putThread = null;
 	
@@ -70,7 +61,7 @@ public class HBaseDataBaseAdapter extends AbstractDataBaseRecordAdapter implemen
 			}
 			byte[] row = rowMap.createRow(nodeId, handler.getQualifiedName(), time);
 			Put put = new Put(row);
-			put.add(colFamily, col, handler.getValue().getBytes());
+			put.add(HBaseUtil.colFamily, HBaseUtil.col, handler.getValue().getBytes());
 			puts.add(put);
 			super.record(handler, sample);
 		}
@@ -80,19 +71,6 @@ public class HBaseDataBaseAdapter extends AbstractDataBaseRecordAdapter implemen
 			HBaseDataBaseAdapter.this.save(puts, start, end);
 			super.save();
 		}
-	}
-	
-	private boolean compare(byte[] bytes, String name) {
-		if (name.length() != bytes.length) {
-			return false;
-		}
-		byte[] stringBytes = name.getBytes();
-		for (int i = 0; i < bytes.length; i++) {
-			if (stringBytes[i] != bytes[i]) {
-				return false;
-			}
-		}
-		return true;
 	}
 
 	@Override
@@ -106,60 +84,8 @@ public class HBaseDataBaseAdapter extends AbstractDataBaseRecordAdapter implemen
 			rowMap.reset();
 		}
 		
-		if (config == null) {
-			config = HBaseConfiguration.create();
-//			config.clear();
-//			config.set("hbase.zookeeper.quorum", "testbed-slave2");
-//			config.set("hbase.zookeeper.property.clientPort","2181");
-			
-			String hbaseRootDir = experiment.getHbaseRootDir();
-			if (!(hbaseRootDir == null || hbaseRootDir.equals(""))) {
-				String hbaseSite = ""
-						 + "<?xml version='1.0'?>"
-						 + "<?xml-stylesheet type='text/xsl' href='configuration.xsl'?>"
-						 + "<configuration>"
-						 + "  <property>"
-						 + "    <name>hbase.zookeeper.quorum</name>"
-						 + "    <value>" + hbaseRootDir + "</value>"
-						 + "  </property>"
-						 + "</configuration>                                                ";
-						
-				ByteArrayInputStream baos = new ByteArrayInputStream(hbaseSite.getBytes());
-				config.addResource(baos);
-				try {
-					baos.close();
-				} catch (IOException e) {
-					Throwables.propagate(e);
-				}
-			}
-		}
-	
-		try {
-			if (overwrite) {		
-				HBaseAdmin admin = new HBaseAdmin(config);
-				
-				boolean tableExists = admin.tableExists(experiment.getName().getBytes());
-				if (tableExists && overwrite) {
-					logger.log(ILogger.WARNING, "table for experiment already exists, i am dropping the existing table", null);
-					admin.disableTable(experiment.getName());
-					admin.deleteTable(experiment.getName());
-					tableExists = false;
-				}
-				
-				if (!tableExists) {
-					HTableDescriptor tableDescr = new HTableDescriptor(experiment.getName());
-					tableDescr.addFamily(new HColumnDescriptor(colFamily));
-					admin.createTable(tableDescr);
-				}
-				table = new HTable(config, experiment.getName());	
-			} else {
-				if (table == null || !compare(table.getTableDescriptor().getName(), experiment.getName())) {
-					table = new HTable(config, experiment.getName()); 
-				}
-			}
-		} catch (Exception e) {
-			Throwables.propagate(e);
-		}
+		hbaseUtil.getHBaseConfig(experiment.getHbaseRootDir());
+		table = hbaseUtil.getHBaseTable(experiment.getName(), overwrite);
 		
 		super.initialize(experiment, overwrite);	
 	}
@@ -296,7 +222,7 @@ public class HBaseDataBaseAdapter extends AbstractDataBaseRecordAdapter implemen
 		
 		Result result = null;
 		try {
-			result = table.getRowOrBefore(row, colFamily);
+			result = table.getRowOrBefore(row, HBaseUtil.colFamily);
 		} catch (IOException e) {
 			Throwables.propagate(e);
 		}
@@ -309,7 +235,7 @@ public class HBaseDataBaseAdapter extends AbstractDataBaseRecordAdapter implemen
 	}
 
 	private Handler getHandlerFromResult(String handlerId, Result result) {
-		String value = new String(result.getValue(colFamily, col));
+		String value = new String(result.getValue(HBaseUtil.colFamily, HBaseUtil.col));
 		Handler handler = dbValueAdapter.create(handlerId, rowMap.getTime(result.getRow()), value);
 		return handler;
 	}
@@ -327,7 +253,7 @@ public class HBaseDataBaseAdapter extends AbstractDataBaseRecordAdapter implemen
 		byte[] startRow = rowMap.createRow(nodeId, handlerId, start);
 		byte[] stopRow = rowMap.createRow(nodeId, handlerId, end);
 		Scan scan = new Scan(startRow, stopRow);
-		scan.addColumn(colFamily, col);
+		scan.addColumn(HBaseUtil.colFamily, HBaseUtil.col);
 		try {
 			table.setScannerCaching(100);
 			return new ScannerIterator(handlerId, scan, table.getScanner(scan));
