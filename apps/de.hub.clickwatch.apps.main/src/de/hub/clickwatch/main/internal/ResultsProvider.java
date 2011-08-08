@@ -8,6 +8,7 @@ import java.util.List;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.Option;
 import org.apache.commons.cli.ParseException;
+import org.eclipse.core.runtime.IConfigurationElement;
 
 import de.hub.clickwatch.analysis.results.Result;
 import de.hub.clickwatch.analysis.results.Results;
@@ -38,6 +39,11 @@ public class ResultsProvider implements IClickWatchContextAdapter, IResultsProvi
 		results = ResultsFactory.eINSTANCE.createResults();
 	}
 	
+	@Override
+	public void initialize(IConfigurationElement configurationElement) {
+		// empty
+	}
+
 	public void initialize(Results results) {
 		this.results = results;
 	}

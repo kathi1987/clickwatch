@@ -8,6 +8,7 @@ import java.util.List;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.Option;
 import org.apache.commons.cli.ParseException;
+import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.emf.common.util.URI;
 
 import com.google.inject.Guice;
@@ -162,6 +163,37 @@ public class InjectorProvider implements IClickWatchContextAdapter, IInjectorPro
 		this.dataBaseType = dataBaseType;
 		this.handlerPerRecord = handlerPerRecord;
 		this.recordURI = recordURI;
+	}
+
+	@Override
+	public void initialize(IConfigurationElement configurationElement) {
+		String debugStr = configurationElement.getAttribute("debug");
+		String compoundStr = configurationElement.getAttribute("compound");
+		String withRecordStr = configurationElement.getAttribute("with_record");
+		String withChangesOnlyStr = configurationElement.getAttribute("with_changes_only");
+		String xmlValuesStr = configurationElement.getAttribute("xml_values");
+		String specificModelsStr = configurationElement.getAttribute("specific_models");
+		
+		int debug = debugStr.equals("true") ? 4 : 2;
+		HandlerBehaviour handlerBehaviour = HandlerBehaviour.DEFAULT;
+		if (compoundStr.equals("true")) {
+			handlerBehaviour = HandlerBehaviour.COMPOUND;
+			if (withRecordStr.equals("true")) {
+				handlerBehaviour = HandlerBehaviour.COMPOUND_RECORDING;
+				if (withChangesOnlyStr.equals("true")) {
+					handlerBehaviour = HandlerBehaviour.COMPOUND_RECORDING_DIFFERENCES;	
+				}
+			}
+		}
+		ValueType valueType = ValueType.STRING;
+		if (xmlValuesStr.equals("true")) {
+			valueType = ValueType.XML;
+		} 
+		if (specificModelsStr.equals("true")) {
+			valueType = ValueType.SPECIFIC;
+		}
+		
+		initialize(handlerBehaviour, valueType, debug, DataBaseType.HBASE, 2000, null /* TODO */);
 	}
 
 	public Injector getInjector() {

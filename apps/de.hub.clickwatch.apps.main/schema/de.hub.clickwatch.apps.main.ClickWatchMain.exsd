@@ -18,8 +18,7 @@
       </annotation>
       <complexType>
          <sequence>
-            <element ref="InjectorProvider" minOccurs="0" maxOccurs="1"/>
-            <element ref="MainClass"/>
+            <element ref="main" minOccurs="1" maxOccurs="unbounded"/>
          </sequence>
          <attribute name="point" type="string" use="required">
             <annotation>
@@ -105,8 +104,18 @@
       </complexType>
    </element>
 
-   <element name="MainClass">
+   <element name="main">
       <complexType>
+         <sequence>
+            <element ref="InjectorProvider" minOccurs="0" maxOccurs="1"/>
+         </sequence>
+         <attribute name="name" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
          <attribute name="class" type="string" use="required">
             <annotation>
                <documentation>
