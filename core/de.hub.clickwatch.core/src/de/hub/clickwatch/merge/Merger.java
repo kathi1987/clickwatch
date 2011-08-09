@@ -90,8 +90,8 @@ public class Merger {
 		final Map<Object, Item> oldIdentityMap = createIdentityMap(context, lOldValue);
 		final Map<Object, Item> newIdentityMap = createIdentityMap(context, lNewValue);
 		Set<Object> oldIdentities = oldIdentityMap.keySet();
-		Set<Object> newIdentities = newIdentityMap.keySet();
 		Item[] toRemove = new Item[lOldValue.size()];
+		// merge existing identities
 		for (Object oldIdentity: oldIdentities) {
 			Item oldItem = oldIdentityMap.get(oldIdentity);
 			Item newItem = newIdentityMap.get(oldIdentity);
@@ -109,6 +109,7 @@ public class Merger {
 				}
 			}
 		}
+		// remove old identities
 		for (int i = toRemove.length - 1; i >= 0; i--) {
 			Item item = toRemove[i];
 			if (item != null) {
@@ -117,14 +118,31 @@ public class Merger {
 				configuration.dispose(context, item.object);
 			}
 		}
-		for (Object newIdentity: newIdentities) {
-			if (oldIdentityMap.get(newIdentity) == null) {
+		
+		// add new identities
+		List<Object> newValues = new ArrayList<Object>();
+		int addedValues = 0;
+		for (Object newValue: lNewValue) {
+			Object newIdentity = configuration.identity(context, newValue);
+			Item oldItem = oldIdentityMap.get(newIdentity);
+			if (oldItem == null) {
 				Item newItem = newIdentityMap.get(newIdentity);
 				Object newCreatedValue = configuration.create(context, newItem.object);
-				lOldValue.add(newCreatedValue);
-				configuration.handleDiffernce(context, null, newCreatedValue, lOldValue.size() - 1);
+				newValues.add(newCreatedValue);
+			} else {
+				int oldIndex = oldItem.index;
+				for (Object newCreatedValue: newValues) {
+					int newIndex = oldIndex + addedValues++;
+					lOldValue.add(newIndex, newCreatedValue);
+					configuration.handleDiffernce(context, null, newCreatedValue, newIndex);
+				}				
+				newValues.clear();
 			}
 		}
+		for (Object newCreatedValue: newValues) {
+			lOldValue.add(newCreatedValue);
+			configuration.handleDiffernce(context, null, newCreatedValue, lOldValue.size() - 1);
+		}	
 	}
 	
 	private void mergeListByIndices(MergeContext context, 

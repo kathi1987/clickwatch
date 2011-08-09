@@ -1,5 +1,7 @@
 package de.hub.clickwatch.connection.adapter;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -7,6 +9,7 @@ import java.util.Map;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import click.ControlSocket;
+import click.ControlSocket.HandlerInfo;
 
 import com.google.common.base.Preconditions;
 
@@ -45,6 +48,9 @@ public class MetaDataAdapter extends AbstractAdapter implements IMetaDataAdapter
 		List<String> configElementNames = null;
 		try {
 			configElementNames = clickSocket().getConfigElementNames();
+			
+			Collections.sort(configElementNames);
+			
 			for (Object elementNameObject : configElementNames) {
 				String elementName = elementNameObject.toString();
 				if (!ignoreElement(elementName)) {
@@ -83,6 +89,13 @@ public class MetaDataAdapter extends AbstractAdapter implements IMetaDataAdapter
 				} catch (Throwable e) {
 					Throwables.propagate(e);
 				}
+				
+				Collections.sort(handlerInfos, new Comparator<ControlSocket.HandlerInfo>() {
+					@Override
+					public int compare(HandlerInfo o1, HandlerInfo o2) {
+						return o1.getHandlerName().compareTo(o2.getHandlerName());
+					}
+				});
 
 				for (ControlSocket.HandlerInfo handlerInfo : handlerInfos) {
 					Handler newHandler = modelFactory
@@ -97,5 +110,4 @@ public class MetaDataAdapter extends AbstractAdapter implements IMetaDataAdapter
 			}
 		}
 	}
-
 }
