@@ -26,6 +26,8 @@ import de.hub.clickwatch.specificmodels.brn.device_wifi_wifidevice_sc_systemchan
 
 import de.hub.clickwatch.specificmodels.brn.device_wifi_wifidevice_sc_systemchannel.impl.Device_wifi_wifidevice_sc_systemchannelPackageImpl;
 
+import de.hub.clickwatch.specificmodels.brn.gps_cart_coord.Gps_cart_coordPackage;
+import de.hub.clickwatch.specificmodels.brn.gps_cart_coord.impl.Gps_cart_coordPackageImpl;
 import de.hub.clickwatch.specificmodels.brn.gps_gps_coord.Gps;
 import de.hub.clickwatch.specificmodels.brn.gps_gps_coord.Gps_coord;
 import de.hub.clickwatch.specificmodels.brn.gps_gps_coord.Gps_gps_coordFactory;
@@ -130,6 +132,7 @@ public class Gps_gps_coordPackageImpl extends EPackageImpl implements Gps_gps_co
 		Lt_routesPackageImpl theLt_routesPackage = (Lt_routesPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Lt_routesPackage.eNS_URI) instanceof Lt_routesPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Lt_routesPackage.eNS_URI) : Lt_routesPackage.eINSTANCE);
 		Lt_linksPackageImpl theLt_linksPackage = (Lt_linksPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Lt_linksPackage.eNS_URI) instanceof Lt_linksPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Lt_linksPackage.eNS_URI) : Lt_linksPackage.eINSTANCE);
 		Lease_tab_leasesPackageImpl theLease_tab_leasesPackage = (Lease_tab_leasesPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Lease_tab_leasesPackage.eNS_URI) instanceof Lease_tab_leasesPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Lease_tab_leasesPackage.eNS_URI) : Lease_tab_leasesPackage.eINSTANCE);
+		Gps_cart_coordPackageImpl theGps_cart_coordPackage = (Gps_cart_coordPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Gps_cart_coordPackage.eNS_URI) instanceof Gps_cart_coordPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Gps_cart_coordPackage.eNS_URI) : Gps_cart_coordPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theGps_gps_coordPackage.createPackageContents();
@@ -142,6 +145,7 @@ public class Gps_gps_coordPackageImpl extends EPackageImpl implements Gps_gps_co
 		theLt_routesPackage.createPackageContents();
 		theLt_linksPackage.createPackageContents();
 		theLease_tab_leasesPackage.createPackageContents();
+		theGps_cart_coordPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theGps_gps_coordPackage.initializePackageContents();
@@ -154,6 +158,7 @@ public class Gps_gps_coordPackageImpl extends EPackageImpl implements Gps_gps_co
 		theLt_routesPackage.initializePackageContents();
 		theLt_linksPackage.initializePackageContents();
 		theLease_tab_leasesPackage.initializePackageContents();
+		theGps_cart_coordPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theGps_gps_coordPackage.freeze();
