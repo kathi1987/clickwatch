@@ -8,9 +8,12 @@ import org.eclipse.debug.ui.AbstractLaunchConfigurationTab;
 import org.eclipse.emf.common.ui.dialogs.WorkspaceResourceDialog;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecore.xmi.XMLResource;
+import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -27,6 +30,7 @@ import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PlatformUI;
 
 import de.hub.clickwatch.model.presentation.ClickWatchModelEditor;
+import de.hub.clickwatch.transformationLauncher.dialog.ClickWatchModelObjectChooser;
 
 /**
  * The tab for a transformation launch configuration
@@ -93,7 +97,7 @@ public class ClickwatchParametersTab extends AbstractLaunchConfigurationTab {
 		// model object
 		composite = new Composite(mainGroup, SWT.NONE);
 		composite.setLayoutData(new GridData(SWT.FILL, SWT.TOP, true, false));
-		composite.setLayout(new GridLayout(2, false));
+		composite.setLayout(new GridLayout(3, false));
 
 		transfLabel = new Label(composite, SWT.FILL);
 		transfLabel.setText("Model object: ");
@@ -101,18 +105,39 @@ public class ClickwatchParametersTab extends AbstractLaunchConfigurationTab {
 		modelObject = new Text(composite, SWT.FILL);
 		layoutData = new GridData(SWT.FILL, SWT.TOP, true, false);
 		modelObject.setLayoutData(layoutData);
-		
-		IEditorPart activeEditor = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
-		if(activeEditor instanceof ClickWatchModelEditor)
-		{
-			Object firstElement = ((IStructuredSelection)((ClickWatchModelEditor) activeEditor).getSelection()).getFirstElement();
-			if(firstElement instanceof EObject)
-			{
-				URI eProxyURI = EcoreUtil.getURI((EObject)firstElement);
-				modelObject.setText(eProxyURI.toString());				
+
+		Button selectModelObjectButton = new Button(composite, SWT.PUSH);
+		selectModelObjectButton.setText("...");
+		selectModelObjectButton.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent selectionEvent) {
+
+				ResourceSet resourceSet = new ResourceSetImpl();
+				resourceSet.getLoadOptions().put(
+						XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);
+				Resource modelResource = resourceSet.getResource(
+						URI.createURI(sourceModel.getText()), true);
+				if (modelResource != null) {
+					ClickWatchModelObjectChooser dialog = new ClickWatchModelObjectChooser(
+							shell, modelResource);
+					if (dialog.open() == Dialog.OK) {
+						setModelObjectURI(dialog.getSelecteID());
+					}
+				}
+			}
+		});
+
+		IEditorPart activeEditor = PlatformUI.getWorkbench()
+				.getActiveWorkbenchWindow().getActivePage().getActiveEditor();
+		if (activeEditor instanceof ClickWatchModelEditor) {
+			Object firstElement = ((IStructuredSelection) ((ClickWatchModelEditor) activeEditor)
+					.getSelection()).getFirstElement();
+			if (firstElement instanceof EObject) {
+				URI eProxyURI = EcoreUtil.getURI((EObject) firstElement);
+				modelObject.setText(eProxyURI.toString());
 			}
 		}
-		
+
 		setControl(mainGroup);
 
 		// schedule an update job so every change is noticed
@@ -133,6 +158,15 @@ public class ClickwatchParametersTab extends AbstractLaunchConfigurationTab {
 	 */
 	private void setSourceModelFile(String uriString) {
 		sourceModel.setText(uriString);
+	}
+
+	/**
+	 * sets the string parameter for the model object in the gui
+	 * 
+	 * @param uriString
+	 */
+	private void setModelObjectURI(String uriString) {
+		modelObject.setText(uriString);
 	}
 
 	@Override
