@@ -2,6 +2,7 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension-point id="de.hub.clickwatch.apps.main.ClickWatchMain" name="ClickWatch Main" schema="schema/de.hub.clickwatch.apps.main.ClickWatchMain.exsd"/>
+   <extension-point id="de.hub.clickwatch.apps.main.ClickWatchContextAdapter" name="ClickWatch Context Adapter" schema="schema/de.hub.clickwatch.apps.main.ClickWatchContextAdapter.exsd"/>
    <extension
          id="ClickWatch"
          name="ClickWatch"
@@ -14,6 +15,33 @@
                value="ClickWatch">
          </property>
       </product>
+   </extension>
+   <extension
+         point="de.hub.clickwatch.apps.main.ClickWatchContextAdapter">
+      <ContextAdapter
+            class="de.hub.clickwatch.main.impl.InjectorProvider"
+            id="de.hub.clickwatch.apps.main.InjectorProvider">
+      </ContextAdapter>
+      <ContextAdapter
+            class="de.hub.clickwatch.main.impl.ResultsProvider"
+            id="de.hub.clickwatch.apps.main.ResultsProvider">
+      </ContextAdapter>
+      <ContextAdapter
+            class="de.hub.clickwatch.main.impl.ArgumentsProvider"
+            id="de.hub.clickwatch.apps.main.ArgumentsProvider">
+      </ContextAdapter>
+      <ContextAdapter
+            class="de.hub.clickwatch.main.impl.ExperimentProvider"
+            id="de.hub.clickwatch.apps.main.ExperimentProvider">
+      </ContextAdapter>
+      <ContextAdapter
+            class="de.hub.clickwatch.main.impl.ProgressMonitorProvider"
+            id="de.hub.clickwatch.apps.main.ProgressMonitorProvider">
+      </ContextAdapter>
+      <ContextAdapter
+            class="de.hub.clickwatch.main.impl.SourceProvider"
+            id="de.hub.clickwatch.apps.main.ClickWatchSourceProvider">
+      </ContextAdapter>
    </extension>
 
 </plugin>

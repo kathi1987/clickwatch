@@ -187,6 +187,11 @@ public class ChartItemProvider
 			(createChildParameter
 				(ResultsPackage.Literals.CHART__VALUE_SPECS,
 				 ResultsFactory.eINSTANCE.createCategory()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ResultsPackage.Literals.CHART__VALUE_SPECS,
+				 ResultsFactory.eINSTANCE.createConstraint()));
 	}
 
 }

@@ -1,24 +1,31 @@
 package de.hub.clickwatch.recorder.examples;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import com.google.inject.Inject;
 
 import de.hub.clickwatch.analysis.results.Result;
+import de.hub.clickwatch.analysis.results.util.builder.AxisBuilder;
+import de.hub.clickwatch.analysis.results.util.builder.ChartBuilder;
+import de.hub.clickwatch.analysis.results.util.builder.SeriesBuilder;
+import de.hub.clickwatch.analysis.results.util.builder.XYBuilder;
 import de.hub.clickwatch.main.ClickWatchExternalLauncher;
 import de.hub.clickwatch.main.IClickWatchContext;
 import de.hub.clickwatch.main.IClickWatchMain;
+import de.hub.clickwatch.main.IClickWatchSourceProvider;
 import de.hub.clickwatch.main.IExperimentProvider;
+import de.hub.clickwatch.main.IProgressMonitorProvider;
 import de.hub.clickwatch.main.IResultsProvider;
 import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.model.Node;
 import de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr;
 import de.hub.clickwatch.recorder.database.DataBaseUtil;
-import de.hub.clickwatch.specificmodels.brn.device_wifi_link_stat_bcast_stats.Bcast_stats;
-import de.hub.clickwatch.specificmodels.brn.device_wifi_link_stat_bcast_stats.Link;
-import de.hub.clickwatch.specificmodels.brn.device_wifi_link_stat_bcast_stats.Link_info;
 import de.hub.clickwatch.specificmodels.brn.device_wifi_wifidevice_cst_stats.Stats;
 import de.hub.clickwatch.util.ILogger;
 
@@ -41,30 +48,45 @@ public class HwBusyPlotAnalysis implements IClickWatchMain {
 		this.experiment = ctx.getAdapter(IExperimentProvider.class).getExperiment();
 		final Result result = ctx.getAdapter(IResultsProvider.class).createNewResult("HwBusyPlotAnalysis");
 
-		for (Node nodeConfig: experiment.getNetwork().getNodes()) {						
-			plot(nodeConfig.getINetAddress(), "device_wifi/link_stat/bcast_stats", new IPlotConfig<Bcast_stats>() {
-				@Override
-				public void doPlot(Bcast_stats bcastStats, double time) {
-					long from = getMac(bcastStats.getEntry().getFrom());
-					for(Link link: bcastStats.getEntry().getLink()) {
-						long to = getMac(link.getTo());
-						for(Link_info linkInfo: link.getLink_info()) {
-							if (linkInfo.getRate() == 2) {
-								result.getDataSet().add(1, from, to, time, linkInfo.getRev());
-							}
-						}
-					}
+		EObject source = ctx.getAdapter(IClickWatchSourceProvider.class).getSourceObject();		
+		List<Node> nodes = null;
+		if (source != null) {
+			loop: while (source != null) {
+				if (source instanceof Node) {
+					nodes = new ArrayList<Node>();
+					nodes.add((Node)source);
+					break loop;
 				}
-			});	
-			
+				source = source.eContainer();
+			}
+		}
+		if (nodes == null) {
+			nodes = experiment.getNetwork().getNodes();
+		}
+		
+		IProgressMonitor monitor = ctx.getAdapter(IProgressMonitorProvider.class).getProgressMonitor();	
+		monitor.beginTask("Performing analysis on all nodes", nodes.size());
+		
+		for (Node nodeConfig: nodes) {									
 			plot(nodeConfig.getINetAddress(), "device_wifi/wifidevice/cst/stats", new IPlotConfig<Stats>() {
 				@Override
 				public void doPlot(Stats handler, double time) {
-					result.getDataSet().add(2, getMac(handler.getChannelstats().getNode()), time, handler.getChannelstats().getPhy().getHwbusy());
+					result.getDataSet().add(getMac(handler.getChannelstats().getNode()), time, handler.getChannelstats().getPhy().getHwbusy());
 				}
 			});			
+			monitor.worked(1);
 		}
+		
+		result.getDiagrams().add(ChartBuilder.newChartBuilder()
+				.withName("Plot over time")
+				.withType(XYBuilder.newXYBuilder())
+				.withValueSpecs(SeriesBuilder.newSeriesBuilder().withColumn(0).withName("node"))
+				.withValueSpecs(AxisBuilder.newAxisBuilder().withColumn(1).withName("time"))
+				.withValueSpecs(AxisBuilder.newAxisBuilder().withColumn(2).withName("HW_busy"))
+				.build());
+		
 		ctx.getAdapter(IResultsProvider.class).saveResults();
+		monitor.done();
 	}
 	
 	interface IPlotConfig<HC> {

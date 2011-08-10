@@ -246,22 +246,13 @@ public interface ResultsPackage extends EPackage {
 	int VALUE_SPEC__NAME = NAMED_ELEMENT__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Constraint</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_SPEC__CONSTRAINT = NAMED_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
 	 * The feature id for the '<em><b>Column</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VALUE_SPEC__COLUMN = NAMED_ELEMENT_FEATURE_COUNT + 1;
+	int VALUE_SPEC__COLUMN = NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Value Spec</em>' class.
@@ -270,7 +261,7 @@ public interface ResultsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VALUE_SPEC_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 2;
+	int VALUE_SPEC_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link de.hub.clickwatch.analysis.results.impl.AxisImpl <em>Axis</em>}' class.
@@ -290,15 +281,6 @@ public interface ResultsPackage extends EPackage {
 	 * @ordered
 	 */
 	int AXIS__NAME = VALUE_SPEC__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Constraint</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AXIS__CONSTRAINT = VALUE_SPEC__CONSTRAINT;
 
 	/**
 	 * The feature id for the '<em><b>Column</b></em>' attribute.
@@ -338,15 +320,6 @@ public interface ResultsPackage extends EPackage {
 	int SERIES__NAME = VALUE_SPEC__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Constraint</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SERIES__CONSTRAINT = VALUE_SPEC__CONSTRAINT;
-
-	/**
 	 * The feature id for the '<em><b>Column</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -382,15 +355,6 @@ public interface ResultsPackage extends EPackage {
 	 * @ordered
 	 */
 	int CATEGORY__NAME = VALUE_SPEC__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Constraint</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CATEGORY__CONSTRAINT = VALUE_SPEC__CONSTRAINT;
 
 	/**
 	 * The feature id for the '<em><b>Column</b></em>' attribute.
@@ -579,6 +543,53 @@ public interface ResultsPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link de.hub.clickwatch.analysis.results.impl.ConstraintImpl <em>Constraint</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.hub.clickwatch.analysis.results.impl.ConstraintImpl
+	 * @see de.hub.clickwatch.analysis.results.impl.ResultsPackageImpl#getConstraint()
+	 * @generated
+	 */
+	int CONSTRAINT = 14;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRAINT__NAME = VALUE_SPEC__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Column</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRAINT__COLUMN = VALUE_SPEC__COLUMN;
+
+	/**
+	 * The feature id for the '<em><b>Constraint</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRAINT__CONSTRAINT = VALUE_SPEC_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Constraint</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRAINT_FEATURE_COUNT = VALUE_SPEC_FEATURE_COUNT + 1;
+
+
+	/**
 	 * Returns the meta object for class '{@link de.hub.clickwatch.analysis.results.DataSet <em>Data Set</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -671,17 +682,6 @@ public interface ResultsPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getValueSpec();
-
-	/**
-	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.analysis.results.ValueSpec#getConstraint <em>Constraint</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Constraint</em>'.
-	 * @see de.hub.clickwatch.analysis.results.ValueSpec#getConstraint()
-	 * @see #getValueSpec()
-	 * @generated
-	 */
-	EAttribute getValueSpec_Constraint();
 
 	/**
 	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.analysis.results.ValueSpec#getColumn <em>Column</em>}'.
@@ -840,6 +840,27 @@ public interface ResultsPackage extends EPackage {
 	EReference getResults_Results();
 
 	/**
+	 * Returns the meta object for class '{@link de.hub.clickwatch.analysis.results.Constraint <em>Constraint</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Constraint</em>'.
+	 * @see de.hub.clickwatch.analysis.results.Constraint
+	 * @generated
+	 */
+	EClass getConstraint();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.analysis.results.Constraint#getConstraint <em>Constraint</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Constraint</em>'.
+	 * @see de.hub.clickwatch.analysis.results.Constraint#getConstraint()
+	 * @see #getConstraint()
+	 * @generated
+	 */
+	EAttribute getConstraint_Constraint();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -942,14 +963,6 @@ public interface ResultsPackage extends EPackage {
 		 * @generated
 		 */
 		EClass VALUE_SPEC = eINSTANCE.getValueSpec();
-
-		/**
-		 * The meta object literal for the '<em><b>Constraint</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute VALUE_SPEC__CONSTRAINT = eINSTANCE.getValueSpec_Constraint();
 
 		/**
 		 * The meta object literal for the '<em><b>Column</b></em>' attribute feature.
@@ -1088,6 +1101,24 @@ public interface ResultsPackage extends EPackage {
 		 * @generated
 		 */
 		EReference RESULTS__RESULTS = eINSTANCE.getResults_Results();
+
+		/**
+		 * The meta object literal for the '{@link de.hub.clickwatch.analysis.results.impl.ConstraintImpl <em>Constraint</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.hub.clickwatch.analysis.results.impl.ConstraintImpl
+		 * @see de.hub.clickwatch.analysis.results.impl.ResultsPackageImpl#getConstraint()
+		 * @generated
+		 */
+		EClass CONSTRAINT = eINSTANCE.getConstraint();
+
+		/**
+		 * The meta object literal for the '<em><b>Constraint</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONSTRAINT__CONSTRAINT = eINSTANCE.getConstraint_Constraint();
 
 	}
 

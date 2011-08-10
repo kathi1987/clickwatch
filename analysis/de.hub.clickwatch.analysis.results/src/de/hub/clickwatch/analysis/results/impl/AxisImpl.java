@@ -6,10 +6,10 @@
  */
 package de.hub.clickwatch.analysis.results.impl;
 
+import org.eclipse.emf.ecore.EClass;
+
 import de.hub.clickwatch.analysis.results.Axis;
 import de.hub.clickwatch.analysis.results.ResultsPackage;
-
-import org.eclipse.emf.ecore.EClass;
 
 /**
  * <!-- begin-user-doc -->

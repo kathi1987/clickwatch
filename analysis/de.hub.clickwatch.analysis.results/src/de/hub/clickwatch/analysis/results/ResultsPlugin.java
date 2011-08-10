@@ -23,7 +23,6 @@ public class ResultsPlugin extends Plugin {
 		if (results == null) {
 			results = ResultsFactory.eINSTANCE.createResults();
 		}
-		results.getResults().add(ResultsFactory.eINSTANCE.createResult());
 		return results;
 	}
 

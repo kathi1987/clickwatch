@@ -6,15 +6,27 @@
  */
 package de.hub.clickwatch.analysis.results.impl;
 
-import de.hub.clickwatch.analysis.results.*;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+
+import de.hub.clickwatch.analysis.results.Axis;
+import de.hub.clickwatch.analysis.results.Bar;
+import de.hub.clickwatch.analysis.results.BoxAndWhiskers;
+import de.hub.clickwatch.analysis.results.Category;
+import de.hub.clickwatch.analysis.results.Chart;
+import de.hub.clickwatch.analysis.results.ChartType;
+import de.hub.clickwatch.analysis.results.Constraint;
+import de.hub.clickwatch.analysis.results.DataEntry;
+import de.hub.clickwatch.analysis.results.DataSet;
+import de.hub.clickwatch.analysis.results.Result;
+import de.hub.clickwatch.analysis.results.Results;
+import de.hub.clickwatch.analysis.results.ResultsFactory;
+import de.hub.clickwatch.analysis.results.ResultsPackage;
+import de.hub.clickwatch.analysis.results.Series;
+import de.hub.clickwatch.analysis.results.XY;
 
 /**
  * <!-- begin-user-doc -->
@@ -72,6 +84,7 @@ public class ResultsFactoryImpl extends EFactoryImpl implements ResultsFactory {
 			case ResultsPackage.BOX_AND_WHISKERS: return createBoxAndWhiskers();
 			case ResultsPackage.BAR: return createBar();
 			case ResultsPackage.RESULTS: return createResults();
+			case ResultsPackage.CONSTRAINT: return createConstraint();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -195,6 +208,16 @@ public class ResultsFactoryImpl extends EFactoryImpl implements ResultsFactory {
 	public Results createResults() {
 		ResultsImpl results = new ResultsImpl();
 		return results;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Constraint createConstraint() {
+		ConstraintImpl constraint = new ConstraintImpl();
+		return constraint;
 	}
 
 	/**

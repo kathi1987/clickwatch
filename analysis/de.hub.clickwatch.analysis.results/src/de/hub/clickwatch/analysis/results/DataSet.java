@@ -46,7 +46,7 @@ public interface DataSet extends EObject {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model valuesMany="true"
-	 * @generated 
+	 * @generated
 	 */
 	void addEntry(EList<Double> values);
 	

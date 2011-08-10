@@ -11,4 +11,12 @@
           name="Results View">
     </view>
  </extension>
+ <extension
+       point="de.hub.clickwatch.apps.main.ClickWatchContextAdapter">
+    <ContextAdapter
+          class="de.hub.clickwatch.analysis.results.ui.ResultsUIResultsProvider"
+          id="de.hub.clickwatch.analysis.results.ui.ResultsProvider"
+          replaces="de.hub.clickwatch.apps.main.ResultsProvider">
+    </ContextAdapter>
+ </extension>
 </plugin>

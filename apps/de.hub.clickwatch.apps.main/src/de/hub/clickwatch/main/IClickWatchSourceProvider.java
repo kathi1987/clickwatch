@@ -1,5 +1,9 @@
 package de.hub.clickwatch.main;
 
-public class IClickWatchSourceProvider {
+import org.eclipse.emf.ecore.EObject;
 
+public interface IClickWatchSourceProvider {
+
+	public EObject getSourceObject();
+	
 }
