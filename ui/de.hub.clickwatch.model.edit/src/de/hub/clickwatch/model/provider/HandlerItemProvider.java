@@ -32,7 +32,6 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import de.hub.clickwatch.model.ClickWatchModelPackage;
 import de.hub.clickwatch.model.Handler;
 
-
 /**
  * This is the item provider adapter for a {@link de.hub.clickwatch.model.Handler} object.
  * <!-- begin-user-doc -->

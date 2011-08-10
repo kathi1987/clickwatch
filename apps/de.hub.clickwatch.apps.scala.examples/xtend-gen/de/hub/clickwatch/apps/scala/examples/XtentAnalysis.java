@@ -1,4 +1,4 @@
-package de.hub.clickwatch.recorder.examples;
+package de.hub.clickwatch.apps.scala.examples;
 
 import com.google.inject.Inject;
 import de.hub.clickwatch.analysis.data.Plot;

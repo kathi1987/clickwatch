@@ -13,6 +13,7 @@ import com.google.inject.Binder;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.Module;
+import com.google.inject.name.Names;
 
 import de.hub.clickcontrol.ClickSocketImpl;
 import de.hub.clickcontrol.IClickSocket;
@@ -119,6 +120,10 @@ public class AbstractTest {
 
 	protected void configureHandlerAdapter(Binder binder) {
 		binder.bind(IPullHandlerAdapter.class).to(getHandlerAdapterClass());
+		binder.bind(Boolean.class).annotatedWith(Names.named(ClickWatchModule.B_COMPOUND_HANDLER_RECORDS)).toInstance(false);
+		binder.bind(Boolean.class).annotatedWith(Names.named(ClickWatchModule.B_COMPOUND_HANDLER_CHANGES_ONLY)).toInstance(false);
+		binder.bind(Integer.class).annotatedWith(Names.named(ClickWatchModule.I_COMPOUND_HANDLER_SAMPLE_TIME)).toInstance(1000);
+		binder.bind(Boolean.class).annotatedWith(Names.named(ClickWatchModule.B_COMPOUND_HANDLER_COMPRESSION)).toInstance(false);
 	}
 
 	protected Class<? extends IPullHandlerAdapter> getHandlerAdapterClass() {

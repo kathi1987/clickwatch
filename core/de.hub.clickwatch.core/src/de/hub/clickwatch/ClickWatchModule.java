@@ -73,6 +73,10 @@ public class ClickWatchModule extends AbstractModule {
 	
 	protected void bindHandlerAdapter() {
 		bind(IPullHandlerAdapter.class).to(PullHandlerAdapter.class);
+		bind(Boolean.class).annotatedWith(Names.named(ClickWatchModule.B_COMPOUND_HANDLER_RECORDS)).toInstance(false);
+		bind(Boolean.class).annotatedWith(Names.named(ClickWatchModule.B_COMPOUND_HANDLER_CHANGES_ONLY)).toInstance(false);
+		bind(Integer.class).annotatedWith(Names.named(ClickWatchModule.I_COMPOUND_HANDLER_SAMPLE_TIME)).toInstance(1000);
+		bind(Boolean.class).annotatedWith(Names.named(ClickWatchModule.B_COMPOUND_HANDLER_COMPRESSION)).toInstance(false);
 	}
 
 }

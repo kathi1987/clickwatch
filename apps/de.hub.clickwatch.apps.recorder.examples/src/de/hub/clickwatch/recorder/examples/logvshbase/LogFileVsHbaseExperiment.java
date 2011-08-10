@@ -1,36 +1,34 @@
 package de.hub.clickwatch.recorder.examples.logvshbase;
 
+import java.io.BufferedReader;
+import java.io.DataInputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
 
-import org.apache.commons.math.stat.descriptive.SummaryStatistics;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.ecore.util.FeatureMap;
-import org.eclipse.emf.ecore.xml.type.AnyType;
 
 import com.google.inject.Inject;
 
 import de.hub.clickwatch.analysis.data.Plot;
-import de.hub.clickwatch.connection.adapter.StringValueAdapter;
-import de.hub.clickwatch.connection.adapter.XmlValueAdapter;
 import de.hub.clickwatch.main.ClickWatchExternalLauncher;
+import de.hub.clickwatch.main.IArgumentsProvider;
 import de.hub.clickwatch.main.IClickWatchContext;
 import de.hub.clickwatch.main.IClickWatchMain;
 import de.hub.clickwatch.main.IExperimentProvider;
 import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.model.Node;
-import de.hub.clickwatch.model.provider.TimeStampLabelProvider;
+import de.hub.clickwatch.model.util.TimeStampLabelProvider;
 import de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr;
 import de.hub.clickwatch.recorder.database.DataBaseUtil;
 import de.hub.clickwatch.util.ILogger;
@@ -41,25 +39,56 @@ public class LogFileVsHbaseExperiment implements IClickWatchMain {
 	private static final TimeStampLabelProvider timeStampLabelProvider = new TimeStampLabelProvider();
 	@Inject private ILogger logger;
 	@Inject private DataBaseUtil dbUtil;
-	@Inject private XmlValueAdapter xmlValueAdapter;
-	@Inject private StringValueAdapter stringValueAdapter;
+	private static int numberOfDataPoints = 20;
 	
-	private PrintStream  out = null;
-	private SummaryStatistics logSize = new SummaryStatistics();
-	private SummaryStatistics hbaseSize = new SummaryStatistics();
+	long getDuration(int dataPoint, long durationAll) {
+		return (durationAll / numberOfDataPoints) * dataPoint;
+	}
+	
+	long[] getDurations(ExperimentDescr experiment) {	
+		long durationAll = experiment.getEnd() - experiment.getStart();
+		long[] durations = new long[numberOfDataPoints];
+		for (int i = 0; i < numberOfDataPoints; i++) {
+			durations[i] = getDuration(i+1, durationAll);
+		}
+		return durations;
+	}
 
 	@Override
-	public void main(IClickWatchContext ctx) {
+	public void main(IClickWatchContext ctx) {		
 		ExperimentDescr experiment = ctx.getAdapter(IExperimentProvider.class).getExperiment();
-		int numberOfDataPoints = 10;
+		File sourceLogFile = new File(ctx.getAdapter(IArgumentsProvider.class).getArguments()[0]);
+	
 		Plot plot = new Plot();
-		for (int run = 1; run <= 10; run++) {
-			long duration = run * ((experiment.getEnd() - experiment.getStart()) / numberOfDataPoints);
+		long durations[] = getDurations(experiment);
+		long hbaseSizes[] = getHBaseSizes(experiment, durations);
+  		
+		for (int run = 0; run < durations.length; run++) {
+			long duration = durations[run];
+			long logSize = 0;
 			
-			// step 1 generate log file, obtain sizes of xml and logfiles
-			logSize.clear();
-			hbaseSize.clear();
-			generateLogFile(duration, "out.log", experiment);
+			// step 1 create a subset log file from existing log file
+			Handler handler = dbUtil.getHandler(experiment, "192.168.3.118", "device_wifi/link_stat/bcast_stats", experiment.getStart() + duration);
+			String timestampStr = timeStampLabelProvider.getText(handler.getTimestamp());
+			try {
+				File targetLogFile = new File("out.log");
+				PrintStream out = new PrintStream(targetLogFile);
+				FileInputStream fstream = new FileInputStream(sourceLogFile);
+				DataInputStream in = new DataInputStream(fstream);
+				BufferedReader br = new BufferedReader(new InputStreamReader(in));
+				String strLine;
+				loop: while ((strLine = br.readLine()) != null) {
+					out.println(strLine);
+					if (strLine.startsWith(timestampStr)) {
+						break loop;
+					}
+				}
+				in.close();
+				out.close();
+				logSize = targetLogFile.length();
+			} catch (Exception e) {
+				Throwables.propagate(e);
+			}
 			logger.log(ILogger.DEBUG, "created logfile for run " + run, null);
 			
 			// step 2 get log file time
@@ -86,8 +115,8 @@ public class LogFileVsHbaseExperiment implements IClickWatchMain {
 			long hbaseTime = stop - start;
 			logger.log(ILogger.DEBUG, "performed hbase analysis for " + run, null);
 			
-			logger.log(ILogger.INFO, "Run " + run + " completed with " + new long[]{(long)(duration/1e6), (long)logSize.getSum(), (long)hbaseSize.getSum(), logtime, hbaseTime}, null);
-			plot.addEntry(duration / 1e6, logSize.getSum(), hbaseSize.getSum(), logtime, hbaseTime);
+			logger.log(ILogger.INFO, "Run " + run + " completed with " + new long[]{(long)(duration/1e6), (long)logSize, (long)hbaseSizes[run], logtime, hbaseTime}, null);
+			plot.addEntry(duration / 1e6, logSize, hbaseSizes[run], logtime, hbaseTime);
 		}
 		
 		try {
@@ -129,14 +158,12 @@ public class LogFileVsHbaseExperiment implements IClickWatchMain {
 		out.close();
 	}
 	
-	private void generateLogFile(long durationInNanos, String fileName, ExperimentDescr experiment) {
-		try {
-			out = new PrintStream(new File(fileName));
-		} catch (FileNotFoundException e) {
-			Throwables.propagate(e);
-		}
+	public long[] getHBaseSizes(ExperimentDescr experiment, long[] durations) { 
+		long[] result = new long[durations.length];
+		long size = 0;
+		int durationsIndex = 0;
 		
-		logger.log(ILogger.INFO, "Start logfile generation on experiment " + experiment.getName(), null);
+		logger.log(ILogger.INFO, "Start analysis on experiment " + experiment.getName(), null);
 		
 		PriorityQueue<CurrentIterator> handlers = new PriorityQueue<CurrentIterator>(1000, new Comparator<CurrentIterator>() {
 			@Override
@@ -151,42 +178,44 @@ public class LogFileVsHbaseExperiment implements IClickWatchMain {
 				}
 			}			
 		});
-		Map<CurrentIterator, String> nodeIds = new HashMap<LogFileVsHbaseExperiment.CurrentIterator, String>();
+		Map<CurrentIterator, String> nodeIds = new HashMap<CurrentIterator, String>();
 		
 		logger.log(ILogger.INFO, "Creating database scanners for all handers for all nodes", null);
 		for (Node node: experiment.getMetaData()) {
 			for(Handler handler: node.getAllHandlers()) {
 				CurrentIterator iterator = new CurrentIterator(dbUtil.getHandlerIterator(experiment, 
 						node.getINetAddress(), handler.getQualifiedName(), 
-						experiment.getStart(), experiment.getStart() + durationInNanos));
+						experiment.getStart(), experiment.getEnd()));
 				insert(iterator, handlers);
 				nodeIds.put(iterator, node.getINetAddress());
 			}
 		}
 		
-		logger.log(ILogger.INFO, "Starting to go through all handlers and to create log entries", null);
-		int i = 0;
+		logger.log(ILogger.INFO, "Starting to go through all handlers and measure hbase size", null);
+		int logCounter = 0;
+		long duration = experiment.getEnd() - experiment.getStart();
 		long expStart = experiment.getStart();
 		NumberFormat percentFormat = new DecimalFormat("0.000");
 		while(!handlers.isEmpty()) {
 			CurrentIterator current = handlers.poll();
-			Handler stringHandler = current.getCurrent();
-			long timestamp = stringHandler.getTimestamp();
-			hbaseSize.addValue(stringHandler.getValue().length());
-			Handler xmlHandler = xmlValueAdapter.create(stringHandler, stringValueAdapter);
-			printLogEntries(xmlHandler, nodeIds.get(current));
-			EcoreUtil.delete(stringHandler);
-			EcoreUtil.delete(xmlHandler);
+			long timestamp = current.getCurrent().getTimestamp();
+			size += current.getCurrent().getValue().length();
+			if (timestamp >= durations[durationsIndex]) {
+				result[durationsIndex] = size;
+				durationsIndex++;
+			}
+			
+			EcoreUtil.delete(current.getCurrent());
 			insert(current, handlers);
-			if (i++ == 1000) {
-				i = 0;				
-				double percent = ((double)(timestamp - expStart)*100)/(double)durationInNanos;
-				logger.log(ILogger.DEBUG, "Creating log entries at " 
+			if (logCounter++ == 10000) {
+				logCounter = 0;				
+				double percent = ((double)(timestamp - expStart)*100)/(double)duration;
+				logger.log(ILogger.DEBUG, "Measuing sizes at " 
 						+ percentFormat.format(percent) + "%, "
 						, null);
 			}
 		}
-		out.close();
+		return result;
 	}
 	
 	private void insert(CurrentIterator iterator, PriorityQueue<CurrentIterator> handlers) {
@@ -196,71 +225,6 @@ public class LogFileVsHbaseExperiment implements IClickWatchMain {
 		}
 	}
 	
-	private void printLogEntries(Handler xmlHandler, String nodeId) {
-		List<AnyType> leafs = new ArrayList<AnyType>();
-		String text = "";
-		for (FeatureMap.Entry fme: xmlHandler.getMixed()) {
-			text = fme.getValue().toString().replace("\n", " ").trim();
-		}
-		for (FeatureMap.Entry fme: xmlHandler.getAny()) {
-			if (fme.getValue() instanceof AnyType) {
-				getLeafs((AnyType)fme.getValue(), leafs);
-			}
-		}
-		
-		String qualifiedName = xmlHandler.getQualifiedName();
-		if (leafs.size() == 0) {
-			String logEntry = timeStampLabelProvider.getText(xmlHandler.getTimestamp()) + " " + nodeId + "/"					
-					+ qualifiedName + " "
-					+ text.trim();
-			out.println(logEntry);
-			logSize.addValue(logEntry.length());
-		}
-		for (AnyType leaf: leafs) {
-			String logEntry = timeStampLabelProvider.getText(xmlHandler.getTimestamp())  + " "	+ nodeId + "/"
-					+ qualifiedName + " "
-					+ text + (text.equals("")?"":" ")
-					+ getLogEntry(leaf).trim();
-			out.println(logEntry);
-			logSize.addValue(logEntry.length());
-		}
-	}
-
-	private String getLogEntry(AnyType leaf) {
-		StringBuffer result = new StringBuffer();
-		for(FeatureMap.Entry fme: leaf.getAnyAttribute()) {
-			result.append(fme.getEStructuralFeature().getName() + "=" + fme.getValue().toString().replace("\n", " ").trim() + " ");
-		}
-		for(FeatureMap.Entry fme: leaf.getMixed()) {
-			if (fme.getEStructuralFeature().getName().equals("text")) {
-				String text = fme.getValue().toString().replace("\n", " ").trim();
-				result.append(text);
-				if (!text.equals("")) {
-					result.append(" ");
-				}
-			}
-		}
-		if (leaf.eContainer() instanceof AnyType) {
-			return getLogEntry((AnyType)leaf.eContainer()) + result.toString();
-		} else {
-			return result.toString();
-		}
-	}
-
-	private void getLeafs(AnyType any, List<AnyType> result) {
-		boolean hasChild = false;
-		for (FeatureMap.Entry fme: any.getAny()) {
-			Object child = fme.getValue();
-			if (child instanceof AnyType) {
-				hasChild = true;
-				getLeafs((AnyType)child, result);
-			}
-		}
-		if (!hasChild) {
-			result.add(any);
-		}
-	}
-
 	class CurrentIterator implements Iterator<Handler> {
 		private final Iterator<Handler> base;
 		private Handler current = null;

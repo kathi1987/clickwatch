@@ -28,7 +28,7 @@ import de.hub.clickwatch.main.IClickWatchMain;
 import de.hub.clickwatch.main.IExperimentProvider;
 import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.model.Node;
-import de.hub.clickwatch.model.provider.TimeStampLabelProvider;
+import de.hub.clickwatch.model.util.TimeStampLabelProvider;
 import de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr;
 import de.hub.clickwatch.recorder.database.DataBaseUtil;
 import de.hub.clickwatch.util.ILogger;

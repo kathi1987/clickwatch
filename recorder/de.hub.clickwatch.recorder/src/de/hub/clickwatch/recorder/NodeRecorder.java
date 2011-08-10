@@ -15,7 +15,6 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
 
-import de.hub.clickwatch.ClickWatchModule;
 import de.hub.clickwatch.connection.INodeConnection;
 import de.hub.clickwatch.connection.INodeConnectionProvider;
 import de.hub.clickwatch.connection.adapter.IMetaDataAdapter;
@@ -52,16 +51,12 @@ public class NodeRecorder implements Runnable {
 	private boolean isRecording = true;
 	private int samples = 0;
 	
-	private int numberOfConfiguredHandlers = 0;
-	
 	@Inject private ILogger logger;
 	@Inject private INodeConnectionProvider ncp;
 	
 	@Inject @Named(CWRecorderModule.L_DEFAULT_UPDATE_INTERVAL_PROPERTY) private long defaultUpdateInterval;
 	@Inject @Named(CWRecorderModule.B_RECORD_CHANGES_ONLY_PROPERTY) private boolean recordChangesOnly;
 	@Inject private IValueAdapter valueAdapter;
-	@Inject @Named(ClickWatchModule.B_COMPOUND_HANDLER_RECORDS) private boolean compoundHandlerRecords;
-	@Inject @Named(ClickWatchModule.B_COMPOUND_HANDLER_CHANGES_ONLY) private boolean compoundHandlerChangesOnly;
 	
 	private List<Double> handlerPulledSValues = new ArrayList<Double>();
 	private List<Double> timeSValues = new ArrayList<Double>();
@@ -96,7 +91,6 @@ public class NodeRecorder implements Runnable {
 		handlerAdapter = connection.getAdapter(IPullHandlerAdapter.class);
 		EList<Handler> allHandlers = metaData.getAllHandlers();
 		List<Handler> filteredHandlers = filterHandler(allHandlers);
-		numberOfConfiguredHandlers = filteredHandlers.size();
 		handlerAdapter.configure(filteredHandlers);
 		
 		socketStatisticsAdapter = connection.getAdapter(SocketStatisticsAdapter.class);
@@ -124,18 +118,6 @@ public class NodeRecorder implements Runnable {
 		long start = System.nanoTime();
 		int recordedHandler = 0;
 		Collection<Handler> handlersPulled = handlerAdapter.pullHandler();
-		int numberOfPulledHandlers = handlersPulled.size();
-		if (numberOfPulledHandlers != numberOfConfiguredHandlers) {
-			if (!compoundHandlerRecords) {
-				logger.log(ILogger.WARNING, "different numbers of configured and pulled handlers, different is " 
-						+ (numberOfConfiguredHandlers - numberOfPulledHandlers), null);
-			} else if (!compoundHandlerChangesOnly) {
-				if (numberOfPulledHandlers < numberOfConfiguredHandlers) {
-					logger.log(ILogger.WARNING, "less pulled handlers than configured in record (with changes) mode, different is " 
-							+ (numberOfConfiguredHandlers - numberOfPulledHandlers), null);
-				}
-			}
-		}
 		for(Handler handler: handlersPulled) {			
 			String qualifiedName = handler.getQualifiedName();
 			Handler key = keyMap.get(qualifiedName);
