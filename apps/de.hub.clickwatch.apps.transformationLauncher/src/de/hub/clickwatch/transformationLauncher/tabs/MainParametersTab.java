@@ -67,7 +67,6 @@ public class MainParametersTab extends AbstractLaunchConfigurationTab {
 		transfLabel.setText("File: ");
 
 		transformationFile = new Text(composite, SWT.FILL);
-		transformationFile.setText("Test");
 		GridData layoutData = new GridData(SWT.FILL, SWT.TOP, true, false);
 		transformationFile.setLayoutData(layoutData);
 
@@ -103,7 +102,7 @@ public class MainParametersTab extends AbstractLaunchConfigurationTab {
 		transfLabel.setText("Value Type: ");
 
 		valueType = new Combo(composite, SWT.FILL);
-		valueType.setItems(new String[] { "SPECIFIC", "String", "XML" });
+		valueType.setItems(new String[] { "SPECIFIC", "STRING", "XML" });
 		layoutData = new GridData(SWT.FILL, SWT.TOP, true, false);
 		valueType.select(0);
 		valueType.setLayoutData(layoutData);
@@ -114,7 +113,7 @@ public class MainParametersTab extends AbstractLaunchConfigurationTab {
 		composite.setLayout(new GridLayout(3, false));
 
 		transfLabel = new Label(composite, SWT.FILL);
-		transfLabel.setText("Source model: ");
+		transfLabel.setText("Debug level: ");
 
 		debugLevel = new Combo(composite, SWT.FILL);
 		debugLevel
@@ -220,7 +219,7 @@ public class MainParametersTab extends AbstractLaunchConfigurationTab {
 				debugLevel.getItem(debugLevel.getSelectionIndex()));
 
 		configuration.setAttribute(MainParametersTab.ATTR_VALUE_TYPE,
-				debugLevel.getItem(debugLevel.getSelectionIndex()));
+				valueType.getItem(valueType.getSelectionIndex()));
 
 	}
 

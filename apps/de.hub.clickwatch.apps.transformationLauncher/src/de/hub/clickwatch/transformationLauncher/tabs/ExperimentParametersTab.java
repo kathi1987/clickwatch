@@ -33,8 +33,8 @@ public class ExperimentParametersTab extends AbstractLaunchConfigurationTab {
 
 	private final String TAB_NAME = "Experiments";
 
-	private Text experimentId = null;
-	private Text dataBaseURI = null;
+	private Text databaseFile = null;
+	private Text experimentID = null;
 
 	@Override
 	public boolean isValid(ILaunchConfiguration launchConfig) {
@@ -67,9 +67,9 @@ public class ExperimentParametersTab extends AbstractLaunchConfigurationTab {
 		Label label = new Label(composite, SWT.FILL);
 		label.setText("Database File: ");
 
-		experimentId = new Text(composite, SWT.FILL);
+		databaseFile = new Text(composite, SWT.FILL);
 		GridData layoutData = new GridData(SWT.FILL, SWT.TOP, true, false);
-		experimentId.setLayoutData(layoutData);
+		databaseFile.setLayoutData(layoutData);
 
 		Button selectButton = new Button(composite, SWT.PUSH);
 		selectButton.setText("...");
@@ -87,7 +87,7 @@ public class ExperimentParametersTab extends AbstractLaunchConfigurationTab {
 				if (file != null) {
 					String uriString = URI.createPlatformResourceURI(
 							file.getFullPath().toString(), true).toString();
-					setExperimentID(uriString);
+					setDatabaseFile(uriString);
 					setDirty(true);
 					updateLaunchConfigurationDialog();
 				}
@@ -97,43 +97,19 @@ public class ExperimentParametersTab extends AbstractLaunchConfigurationTab {
 		// databse uri
 		composite = new Composite(textGroup, SWT.NONE);
 		composite.setLayoutData(new GridData(SWT.FILL, SWT.TOP, true, false));
-		composite.setLayout(new GridLayout(3, false));
+		composite.setLayout(new GridLayout(2, false));
 
 		label = new Label(composite, SWT.FILL);
 		label.setText("Experiment ID: ");
 
-		dataBaseURI = new Text(composite, SWT.FILL);
+		experimentID = new Text(composite, SWT.FILL);
 		layoutData = new GridData(SWT.FILL, SWT.TOP, true, false);
-		dataBaseURI.setLayoutData(layoutData);
-
-		selectButton = new Button(composite, SWT.PUSH);
-		selectButton.setText("...");
-		selectButton.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent selectionEvent) {
-				IFile file = null;
-
-				IFile[] files = WorkspaceResourceDialog.openFileSelection(
-						shell, null, null, false, null, null);
-				if (files.length != 0) {
-					file = files[0];
-				}
-
-				if (file != null) {
-					String uriString = URI.createPlatformResourceURI(
-							file.getFullPath().toString(), true).toString();
-					setDatabase(uriString);
-					setDirty(true);
-					updateLaunchConfigurationDialog();
-				}
-			}
-		});
+		experimentID.setLayoutData(layoutData);
 
 		setControl(textGroup);
 
 		// schedule an update job so every change is noticed
 		scheduleUpdateJob();
-
 	}
 
 	/**
@@ -141,17 +117,8 @@ public class ExperimentParametersTab extends AbstractLaunchConfigurationTab {
 	 * 
 	 * @param uriString
 	 */
-	private void setExperimentID(String uriString) {
-		experimentId.setText(uriString);
-	}
-
-	/**
-	 * sets the text of the gui element
-	 * 
-	 * @param uriString
-	 */
-	private void setDatabase(String uriString) {
-		dataBaseURI.setText(uriString);
+	private void setDatabaseFile(String uriString) {
+		databaseFile.setText(uriString);
 	}
 
 	/*
@@ -176,14 +143,14 @@ public class ExperimentParametersTab extends AbstractLaunchConfigurationTab {
 	@Override
 	public void initializeFrom(ILaunchConfiguration configuration) {
 		try {
-			dataBaseURI.setText(configuration.getAttribute(
-					ExperimentParametersTab.ATTR_DATABASE_URI, ""));
-
-			experimentId.setText(configuration.getAttribute(
+			experimentID.setText(configuration.getAttribute(
 					ExperimentParametersTab.ATTR_EXPERIMENT_ID, ""));
+
+			databaseFile.setText(configuration.getAttribute(
+					ExperimentParametersTab.ATTR_DATABASE_URI, ""));
 		} catch (CoreException e) {
-			dataBaseURI.setText("");
-			experimentId.setText("");
+			experimentID.setText("");
+			databaseFile.setText("");
 		}
 	}
 
@@ -197,11 +164,11 @@ public class ExperimentParametersTab extends AbstractLaunchConfigurationTab {
 	@Override
 	public void performApply(ILaunchConfigurationWorkingCopy configuration) {
 		// set the values of the tab components in the configuration object
-		configuration.setAttribute(ExperimentParametersTab.ATTR_DATABASE_URI,
-				dataBaseURI.getText());
-
 		configuration.setAttribute(ExperimentParametersTab.ATTR_EXPERIMENT_ID,
-				experimentId.getText());
+				experimentID.getText());
+
+		configuration.setAttribute(ExperimentParametersTab.ATTR_DATABASE_URI,
+				databaseFile.getText());
 	}
 
 	/*

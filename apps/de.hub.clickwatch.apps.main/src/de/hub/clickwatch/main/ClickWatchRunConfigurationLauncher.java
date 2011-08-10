@@ -72,10 +72,12 @@ public class ClickWatchRunConfigurationLauncher {
 			hBehav = (HandlerBehaviour) configuration
 					.get(ELaunchConfigurationParameters.HandlerBehaviour);
 
-		ValueType valType = ValueType.SPECIFIC;
+		ValueType valType = ValueType.SPECIFIC;		
 		if (configuration.get(ELaunchConfigurationParameters.ValueType) != null)
-			valType = (ValueType) configuration
-					.get(ELaunchConfigurationParameters.ValueType);
+		{
+			// due to visibility reasons, the configuration can only hold string values
+			valType = ValueType.valueOf((String)configuration.get(ELaunchConfigurationParameters.ValueType));
+		}			
 
 		Integer debugLev = 2;
 		if (configuration.get(ELaunchConfigurationParameters.DebugLevel) != null)

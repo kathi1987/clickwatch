@@ -14,6 +14,7 @@ import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.ILaunchManager;
 import org.eclipse.debug.core.model.ILaunchConfigurationDelegate;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.URIConverter;
@@ -89,26 +90,69 @@ public class TransformationLaunchConfigurationDelegate implements
 
 				Class<IClickWatchMain> mainClass = (Class<IClickWatchMain>) transformationClass;
 
+				// *******************************
 				// build the configuration
 				HashMap<ELaunchConfigurationParameters, Object> config = new HashMap<ELaunchConfigurationParameters, Object>();
+
+				// *************
+				// Main tab
+
+				// transformatiopn file
+				config.put(ELaunchConfigurationParameters.TransformationFile,
+						URI.createURI(transformationFile));
+
+				// value type
+				config.put(ELaunchConfigurationParameters.ValueType, valueType);
+
+				// debug level
+				Integer debugLvl = 2;
+				if (debugLevel.equals("Error"))
+					debugLvl = 1;
+				else if (debugLevel.equals("Warning"))
+					debugLvl = 2;
+				else if (debugLevel.equals("Info"))
+					debugLvl = 3;
+				else if (debugLevel.equals("Debug"))
+					debugLvl = 4;
+				config.put(ELaunchConfigurationParameters.DebugLevel, debugLvl);
+
+				// *************
+				// Experiment tab
+
+				// *************
+				// ClickWatch Model tab
+
+				// source model file
 				config.put(ELaunchConfigurationParameters.ClickWatchModelFile,
 						URI.createURI(sourceModelFile));
 
+				// model object
 				if (modelObject != "") {
 					ResourceSet resourceSet = new ResourceSetImpl();
 					resourceSet.getLoadOptions()
 							.put(XMLResource.OPTION_EXTENDED_META_DATA,
 									Boolean.TRUE);
 					Resource modelResource = resourceSet.getResource(
-							URI.createFileURI(modelObject), true);
+							URI.createURI(sourceModelFile), true);
+
+					// XPath path = XPathFactory.newInstance().newXPath();
+					// XPathExpression expresison = path.compile(modelObject);
+					// Object result = expresison.evaluate(modelResource);				
+					
 					config.put(ELaunchConfigurationParameters.ClickWatchObject,
-							modelResource.getContents().get(0));
+							modelResource.getEObject(modelObject));
 				} else
 					config.put(ELaunchConfigurationParameters.ClickWatchObject,
 							null);
 
 				ClickWatchRunConfigurationLauncher.launch(config, mainClass);
 			} catch (Exception e) {
+
+				Status myStatus = new Status(IStatus.ERROR, "",
+						"Could not read all configuration values properly",
+						null);
+				StatusManager.getManager().handle(myStatus, StatusManager.SHOW);
+
 				System.out.println(e);
 			}
 

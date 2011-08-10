@@ -7,6 +7,11 @@ import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
 import org.eclipse.debug.ui.AbstractLaunchConfigurationTab;
 import org.eclipse.emf.common.ui.dialogs.WorkspaceResourceDialog;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -18,6 +23,10 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
+import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.PlatformUI;
+
+import de.hub.clickwatch.model.presentation.ClickWatchModelEditor;
 
 /**
  * The tab for a transformation launch configuration
@@ -92,7 +101,17 @@ public class ClickwatchParametersTab extends AbstractLaunchConfigurationTab {
 		modelObject = new Text(composite, SWT.FILL);
 		layoutData = new GridData(SWT.FILL, SWT.TOP, true, false);
 		modelObject.setLayoutData(layoutData);
-				
+		
+		IEditorPart activeEditor = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
+		if(activeEditor instanceof ClickWatchModelEditor)
+		{
+			Object firstElement = ((IStructuredSelection)((ClickWatchModelEditor) activeEditor).getSelection()).getFirstElement();
+			if(firstElement instanceof EObject)
+			{
+				URI eProxyURI = EcoreUtil.getURI((EObject)firstElement);
+				modelObject.setText(eProxyURI.toString());				
+			}
+		}
 		
 		setControl(mainGroup);
 
