@@ -2,17 +2,16 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension
-         id="de.hub.clickwatch.apps.recorder.examples.HwBusyPlotAnalysis"
-         name="HwBusyPlotAnalysis"
          point="de.hub.clickwatch.apps.main.ClickWatchMain">
-      <MainClass
-            class="de.hub.clickwatch.recorder.examples.HwBusyPlotAnalysis">
-      </MainClass>
-      <InjectorProvider
-            debug="true"
-            specific_models="true"
-            xml_values="true">
-      </InjectorProvider>
+      <main
+            class="de.hub.clickwatch.recorder.examples.HwBusyPlotAnalysis"
+            name="HwBusyAnalysis">
+         <InjectorProvider
+               debug="true"
+               specific_models="true"
+               xml_values="true">
+         </InjectorProvider>
+      </main>
    </extension>
    <extension
          id="ExtrapolateDataBase"

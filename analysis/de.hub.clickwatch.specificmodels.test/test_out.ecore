@@ -41,15 +41,15 @@
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/ath_op|children:Ath_op|Element"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_ath_op" eType="//Wifidevice" eOpposite="//Wifidevice/ath_op"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="pkt_count" eType="//Pkt_count" containment="true" resolveProxies="false" eOpposite="//Pkt_count/eContainer_pkt_count">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/ath_op|children:Ath_op|Element/pkt_count|handlers:Pkt_count|Handler"/>
-        <details key="IsCopy" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="//Device_wifiWifideviceAth_opClass" containment="true" resolveProxies="false" eOpposite="//Device_wifiWifideviceAth_opClass/eContainer_class">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/ath_op|children:Ath_op|Element/class|handlers:Class|Handler"/>
+        <details key="IsCopy" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pkt_count" eType="//Pkt_count" containment="true" resolveProxies="false" eOpposite="//Pkt_count/eContainer_pkt_count">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/ath_op|children:Ath_op|Element/pkt_count|handlers:Pkt_count|Handler"/>
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
@@ -59,15 +59,21 @@
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/ath_op_q|children:Ath_op_q|Element"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_ath_op_q" eType="//Wifidevice" eOpposite="//Wifidevice/ath_op_q"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="drops" eType="//Device_wifiWifideviceAth_op_qDrops" containment="true" resolveProxies="false" eOpposite="//Device_wifiWifideviceAth_op_qDrops/eContainer_drops">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/ath_op_q|children:Ath_op_q|Element/drops|handlers:Drops|Handler"/>
-        <details key="IsCopy" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="capacity" eType="//Device_wifiWifideviceAth_op_qCapacity" containment="true" resolveProxies="false" eOpposite="//Device_wifiWifideviceAth_op_qCapacity/eContainer_capacity">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/ath_op_q|children:Ath_op_q|Element/capacity|handlers:Capacity|Handler"/>
+        <details key="IsCopy" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="//Device_wifiWifideviceAth_op_qClass" containment="true" resolveProxies="false" eOpposite="//Device_wifiWifideviceAth_op_qClass/eContainer_class">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/ath_op_q|children:Ath_op_q|Element/class|handlers:Class|Handler"/>
+        <details key="IsCopy" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="drops" eType="//Device_wifiWifideviceAth_op_qDrops" containment="true" resolveProxies="false" eOpposite="//Device_wifiWifideviceAth_op_qDrops/eContainer_drops">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/ath_op_q|children:Ath_op_q|Element/drops|handlers:Drops|Handler"/>
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
@@ -80,12 +86,6 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="length" eType="//Device_wifiWifideviceAth_op_qLength" containment="true" resolveProxies="false" eOpposite="//Device_wifiWifideviceAth_op_qLength/eContainer_length">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/ath_op_q|children:Ath_op_q|Element/length|handlers:Length|Handler"/>
-        <details key="IsCopy" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="//Device_wifiWifideviceAth_op_qClass" containment="true" resolveProxies="false" eOpposite="//Device_wifiWifideviceAth_op_qClass/eContainer_class">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/ath_op_q|children:Ath_op_q|Element/class|handlers:Class|Handler"/>
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
@@ -203,15 +203,15 @@
       <details key="target_id" value="Network/nodes:Node/brn_clf|elements:Brn_clf|Element"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_brn_clf" eType="//Node" eOpposite="//Node/brn_clf"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="program" eType="//Brn_clfProgram" containment="true" resolveProxies="false" eOpposite="//Brn_clfProgram/eContainer_program">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/brn_clf|elements:Brn_clf|Element/program|handlers:Program|Handler"/>
-        <details key="IsCopy" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="//Brn_clfClass" containment="true" resolveProxies="false" eOpposite="//Brn_clfClass/eContainer_class">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/brn_clf|elements:Brn_clf|Element/class|handlers:Class|Handler"/>
+        <details key="IsCopy" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="program" eType="//Brn_clfProgram" containment="true" resolveProxies="false" eOpposite="//Brn_clfProgram/eContainer_program">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/brn_clf|elements:Brn_clf|Element/program|handlers:Program|Handler"/>
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
@@ -245,15 +245,15 @@
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/brn_ether_clf|children:Brn_ether_clf|Element"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_brn_ether_clf" eType="//Device_wifi" eOpposite="//Device_wifi/brn_ether_clf"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="program" eType="//Device_wifiBrn_ether_clfProgram" containment="true" resolveProxies="false" eOpposite="//Device_wifiBrn_ether_clfProgram/eContainer_program">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/brn_ether_clf|children:Brn_ether_clf|Element/program|handlers:Program|Handler"/>
-        <details key="IsCopy" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="//Device_wifiBrn_ether_clfClass" containment="true" resolveProxies="false" eOpposite="//Device_wifiBrn_ether_clfClass/eContainer_class">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/brn_ether_clf|children:Brn_ether_clf|Element/class|handlers:Class|Handler"/>
+        <details key="IsCopy" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="program" eType="//Device_wifiBrn_ether_clfProgram" containment="true" resolveProxies="false" eOpposite="//Device_wifiBrn_ether_clfProgram/eContainer_program">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/brn_ether_clf|children:Brn_ether_clf|Element/program|handlers:Program|Handler"/>
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
@@ -269,15 +269,15 @@
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="mode" eType="//Device_wifiBrnwifiMode" containment="true" resolveProxies="false" eOpposite="//Device_wifiBrnwifiMode/eContainer_mode">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/brnwifi|children:Brnwifi|Element/mode|handlers:Mode|Handler"/>
-        <details key="IsCopy" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="//Device_wifiBrnwifiClass" containment="true" resolveProxies="false" eOpposite="//Device_wifiBrnwifiClass/eContainer_class">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/brnwifi|children:Brnwifi|Element/class|handlers:Class|Handler"/>
+        <details key="IsCopy" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mode" eType="//Device_wifiBrnwifiMode" containment="true" resolveProxies="false" eOpposite="//Device_wifiBrnwifiMode/eContainer_mode">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/brnwifi|children:Brnwifi|Element/mode|handlers:Mode|Handler"/>
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
@@ -449,15 +449,9 @@
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/cst|children:Cst|Element"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_cst" eType="//Wifidevice" eOpposite="//Wifidevice/cst"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="stats_xml" eType="//Stats_xml" containment="true" resolveProxies="false" eOpposite="//Stats_xml/eContainer_stats_xml">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="//Device_wifiWifideviceCstClass" containment="true" resolveProxies="false" eOpposite="//Device_wifiWifideviceCstClass/eContainer_class">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/cst|children:Cst|Element/stats_xml|handlers:Stats_xml|Handler"/>
-        <details key="IsCopy" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="stats" eType="//Device_wifiWifideviceCstStats" containment="true" resolveProxies="false" eOpposite="//Device_wifiWifideviceCstStats/eContainer_stats">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/cst|children:Cst|Element/stats|handlers:Stats|Handler"/>
+        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/cst|children:Cst|Element/class|handlers:Class|Handler"/>
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
@@ -467,9 +461,15 @@
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="//Device_wifiWifideviceCstClass" containment="true" resolveProxies="false" eOpposite="//Device_wifiWifideviceCstClass/eContainer_class">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="stats" eType="//Device_wifiWifideviceCstStats" containment="true" resolveProxies="false" eOpposite="//Device_wifiWifideviceCstStats/eContainer_stats">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/cst|children:Cst|Element/class|handlers:Class|Handler"/>
+        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/cst|children:Cst|Element/stats|handlers:Stats|Handler"/>
+        <details key="IsCopy" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="stats_xml" eType="//Stats_xml" containment="true" resolveProxies="false" eOpposite="//Stats_xml/eContainer_stats_xml">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/cst|children:Cst|Element/stats_xml|handlers:Stats_xml|Handler"/>
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
@@ -479,15 +479,15 @@
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/data_power|children:Data_power|Element"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_data_power" eType="//Device_wifi" eOpposite="//Device_wifi/data_power"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="power" eType="//Device_wifiData_powerPower" containment="true" resolveProxies="false" eOpposite="//Device_wifiData_powerPower/eContainer_power">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/data_power|children:Data_power|Element/power|handlers:Power|Handler"/>
-        <details key="IsCopy" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="//Device_wifiData_powerClass" containment="true" resolveProxies="false" eOpposite="//Device_wifiData_powerClass/eContainer_class">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/data_power|children:Data_power|Element/class|handlers:Class|Handler"/>
+        <details key="IsCopy" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="power" eType="//Device_wifiData_powerPower" containment="true" resolveProxies="false" eOpposite="//Device_wifiData_powerPower/eContainer_power">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/data_power|children:Data_power|Element/power|handlers:Power|Handler"/>
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
@@ -497,15 +497,21 @@
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/data_queue|children:Data_queue|Element"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_data_queue" eType="//Device_wifi" eOpposite="//Device_wifi/data_queue"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="drops" eType="//Device_wifiData_queueDrops" containment="true" resolveProxies="false" eOpposite="//Device_wifiData_queueDrops/eContainer_drops">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/data_queue|children:Data_queue|Element/drops|handlers:Drops|Handler"/>
-        <details key="IsCopy" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="capacity" eType="//Device_wifiData_queueCapacity" containment="true" resolveProxies="false" eOpposite="//Device_wifiData_queueCapacity/eContainer_capacity">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/data_queue|children:Data_queue|Element/capacity|handlers:Capacity|Handler"/>
+        <details key="IsCopy" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="//Device_wifiData_queueClass" containment="true" resolveProxies="false" eOpposite="//Device_wifiData_queueClass/eContainer_class">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/data_queue|children:Data_queue|Element/class|handlers:Class|Handler"/>
+        <details key="IsCopy" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="drops" eType="//Device_wifiData_queueDrops" containment="true" resolveProxies="false" eOpposite="//Device_wifiData_queueDrops/eContainer_drops">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/data_queue|children:Data_queue|Element/drops|handlers:Drops|Handler"/>
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
@@ -521,21 +527,15 @@
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="//Device_wifiData_queueClass" containment="true" resolveProxies="false" eOpposite="//Device_wifiData_queueClass/eContainer_class">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/data_queue|children:Data_queue|Element/class|handlers:Class|Handler"/>
-        <details key="IsCopy" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Data_rate" eSuperTypes="//Element">
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/data_rate|children:Data_rate|Element"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_data_rate" eType="//Device_wifi" eOpposite="//Device_wifi/data_rate"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="tries" eType="//Tries" containment="true" resolveProxies="false" eOpposite="//Tries/eContainer_tries">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="//Device_wifiData_rateClass" containment="true" resolveProxies="false" eOpposite="//Device_wifiData_rateClass/eContainer_class">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/data_rate|children:Data_rate|Element/tries|handlers:Tries|Handler"/>
+        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/data_rate|children:Data_rate|Element/class|handlers:Class|Handler"/>
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
@@ -545,9 +545,9 @@
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="//Device_wifiData_rateClass" containment="true" resolveProxies="false" eOpposite="//Device_wifiData_rateClass/eContainer_class">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tries" eType="//Tries" containment="true" resolveProxies="false" eOpposite="//Tries/eContainer_tries">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/data_rate|children:Data_rate|Element/class|handlers:Class|Handler"/>
+        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/data_rate|children:Data_rate|Element/tries|handlers:Tries|Handler"/>
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
@@ -557,15 +557,15 @@
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/data_suppressor|children:Data_suppressor|Element"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_data_suppressor" eType="//Device_wifi" eOpposite="//Device_wifi/data_suppressor"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="active1" eType="//Active1" containment="true" resolveProxies="false" eOpposite="//Active1/eContainer_active1">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/data_suppressor|children:Data_suppressor|Element/active1|handlers:Active1|Handler"/>
-        <details key="IsCopy" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="active0" eType="//Device_wifiData_suppressorActive0" containment="true" resolveProxies="false" eOpposite="//Device_wifiData_suppressorActive0/eContainer_active0">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/data_suppressor|children:Data_suppressor|Element/active0|handlers:Active0|Handler"/>
+        <details key="IsCopy" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="active1" eType="//Active1" containment="true" resolveProxies="false" eOpposite="//Active1/eContainer_active1">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/data_suppressor|children:Data_suppressor|Element/active1|handlers:Active1|Handler"/>
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
@@ -599,93 +599,9 @@
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_device_wifi" eType="//Node" eOpposite="//Node/device_wifi"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="rates" eType="//Device_wifiRates" containment="true" resolveProxies="false" eOpposite="//Device_wifiRates/eContainer_rates">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/rates|children:Rates|Element"/>
-        <details key="IsCopy" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="proberates" eType="//Proberates" containment="true" resolveProxies="false" eOpposite="//Proberates/eContainer_proberates">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/proberates|children:Proberates|Element"/>
-        <details key="IsCopy" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="etx_metric" eType="//Etx_metric" containment="true" resolveProxies="false" eOpposite="//Etx_metric/eContainer_etx_metric">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/etx_metric|children:Etx_metric|Element"/>
-        <details key="IsCopy" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="link_stat" eType="//Link_stat" containment="true" resolveProxies="false" eOpposite="//Link_stat/eContainer_link_stat">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/link_stat|children:Link_stat|Element"/>
-        <details key="IsCopy" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="brnToMe" eType="//BrnToMe" containment="true" resolveProxies="false" eOpposite="//BrnToMe/eContainer_brnToMe">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/brnToMe|children:BrnToMe|Element"/>
-        <details key="IsCopy" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="wifidevice" eType="//Wifidevice" containment="true" resolveProxies="false" eOpposite="//Wifidevice/eContainer_wifidevice">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element"/>
-        <details key="IsCopy" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="data_power" eType="//Data_power" containment="true" resolveProxies="false" eOpposite="//Data_power/eContainer_data_power">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/data_power|children:Data_power|Element"/>
-        <details key="IsCopy" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="data_rate" eType="//Data_rate" containment="true" resolveProxies="false" eOpposite="//Data_rate/eContainer_data_rate">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/data_rate|children:Data_rate|Element"/>
-        <details key="IsCopy" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="brnwifi" eType="//Brnwifi" containment="true" resolveProxies="false" eOpposite="//Brnwifi/eContainer_brnwifi">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/brnwifi|children:Brnwifi|Element"/>
-        <details key="IsCopy" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="data_queue" eType="//Data_queue" containment="true" resolveProxies="false" eOpposite="//Data_queue/eContainer_data_queue">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/data_queue|children:Data_queue|Element"/>
-        <details key="IsCopy" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="data_suppressor" eType="//Data_suppressor" containment="true" resolveProxies="false" eOpposite="//Data_suppressor/eContainer_data_suppressor">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/data_suppressor|children:Data_suppressor|Element"/>
-        <details key="IsCopy" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="lp_data_scheduler" eType="//Lp_data_scheduler" containment="true" resolveProxies="false" eOpposite="//Lp_data_scheduler/eContainer_lp_data_scheduler">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_data_scheduler|children:Lp_data_scheduler|Element"/>
-        <details key="IsCopy" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="filter_tx" eType="//Filter_tx" containment="true" resolveProxies="false" eOpposite="//Filter_tx/eContainer_filter_tx">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/filter_tx|children:Filter_tx|Element"/>
-        <details key="IsCopy" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="error_clf" eType="//Error_clf" containment="true" resolveProxies="false" eOpposite="//Error_clf/eContainer_error_clf">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/error_clf|children:Error_clf|Element"/>
-        <details key="IsCopy" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="wififrame_clf" eType="//Wififrame_clf" containment="true" resolveProxies="false" eOpposite="//Wififrame_clf/eContainer_wififrame_clf">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wififrame_clf|children:Wififrame_clf|Element"/>
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
@@ -695,9 +611,69 @@
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="brnwifi" eType="//Brnwifi" containment="true" resolveProxies="false" eOpposite="//Brnwifi/eContainer_brnwifi">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/brnwifi|children:Brnwifi|Element"/>
+        <details key="IsCopy" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="data_power" eType="//Data_power" containment="true" resolveProxies="false" eOpposite="//Data_power/eContainer_data_power">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/data_power|children:Data_power|Element"/>
+        <details key="IsCopy" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="data_queue" eType="//Data_queue" containment="true" resolveProxies="false" eOpposite="//Data_queue/eContainer_data_queue">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/data_queue|children:Data_queue|Element"/>
+        <details key="IsCopy" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="data_rate" eType="//Data_rate" containment="true" resolveProxies="false" eOpposite="//Data_rate/eContainer_data_rate">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/data_rate|children:Data_rate|Element"/>
+        <details key="IsCopy" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="data_suppressor" eType="//Data_suppressor" containment="true" resolveProxies="false" eOpposite="//Data_suppressor/eContainer_data_suppressor">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/data_suppressor|children:Data_suppressor|Element"/>
+        <details key="IsCopy" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="error_clf" eType="//Error_clf" containment="true" resolveProxies="false" eOpposite="//Error_clf/eContainer_error_clf">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/error_clf|children:Error_clf|Element"/>
+        <details key="IsCopy" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="etx_metric" eType="//Etx_metric" containment="true" resolveProxies="false" eOpposite="//Etx_metric/eContainer_etx_metric">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/etx_metric|children:Etx_metric|Element"/>
+        <details key="IsCopy" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="filter_tx" eType="//Filter_tx" containment="true" resolveProxies="false" eOpposite="//Filter_tx/eContainer_filter_tx">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/filter_tx|children:Filter_tx|Element"/>
+        <details key="IsCopy" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="link_stat" eType="//Link_stat" containment="true" resolveProxies="false" eOpposite="//Link_stat/eContainer_link_stat">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/link_stat|children:Link_stat|Element"/>
+        <details key="IsCopy" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="lp_clf" eType="//Lp_clf" containment="true" resolveProxies="false" eOpposite="//Lp_clf/eContainer_lp_clf">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_clf|children:Lp_clf|Element"/>
+        <details key="IsCopy" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="lp_data_scheduler" eType="//Lp_data_scheduler" containment="true" resolveProxies="false" eOpposite="//Lp_data_scheduler/eContainer_lp_data_scheduler">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_data_scheduler|children:Lp_data_scheduler|Element"/>
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
@@ -713,12 +689,6 @@
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="lp_wifiencap" eType="//Lp_wifiencap" containment="true" resolveProxies="false" eOpposite="//Lp_wifiencap/eContainer_lp_wifiencap">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_wifiencap|children:Lp_wifiencap|Element"/>
-        <details key="IsCopy" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="lp_queue" eType="//Lp_queue" containment="true" resolveProxies="false" eOpposite="//Lp_queue/eContainer_lp_queue">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_queue|children:Lp_queue|Element"/>
@@ -728,6 +698,36 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="lp_suppressor" eType="//Lp_suppressor" containment="true" resolveProxies="false" eOpposite="//Lp_suppressor/eContainer_lp_suppressor">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_suppressor|children:Lp_suppressor|Element"/>
+        <details key="IsCopy" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="lp_wifiencap" eType="//Lp_wifiencap" containment="true" resolveProxies="false" eOpposite="//Lp_wifiencap/eContainer_lp_wifiencap">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_wifiencap|children:Lp_wifiencap|Element"/>
+        <details key="IsCopy" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="proberates" eType="//Proberates" containment="true" resolveProxies="false" eOpposite="//Proberates/eContainer_proberates">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/proberates|children:Proberates|Element"/>
+        <details key="IsCopy" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rates" eType="//Device_wifiRates" containment="true" resolveProxies="false" eOpposite="//Device_wifiRates/eContainer_rates">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/rates|children:Rates|Element"/>
+        <details key="IsCopy" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="wifidevice" eType="//Wifidevice" containment="true" resolveProxies="false" eOpposite="//Wifidevice/eContainer_wifidevice">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element"/>
+        <details key="IsCopy" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="wififrame_clf" eType="//Wififrame_clf" containment="true" resolveProxies="false" eOpposite="//Wififrame_clf/eContainer_wififrame_clf">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wififrame_clf|children:Wififrame_clf|Element"/>
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
@@ -1391,15 +1391,15 @@
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/rates|children:Rates|Element"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_rates" eType="//Device_wifi" eOpposite="//Device_wifi/rates"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="rates" eType="//Device_wifiRatesRates" containment="true" resolveProxies="false" eOpposite="//Device_wifiRatesRates/eContainer_rates">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/rates|children:Rates|Element/rates|handlers:Rates|Handler"/>
-        <details key="IsCopy" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="//Device_wifiRatesClass" containment="true" resolveProxies="false" eOpposite="//Device_wifiRatesClass/eContainer_class">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/rates|children:Rates|Element/class|handlers:Class|Handler"/>
+        <details key="IsCopy" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rates" eType="//Device_wifiRatesRates" containment="true" resolveProxies="false" eOpposite="//Device_wifiRatesRates/eContainer_rates">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/rates|children:Rates|Element/rates|handlers:Rates|Handler"/>
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
@@ -2453,15 +2453,15 @@
       <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/dsrclf|children:Dsrclf|Element"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_dsrclf" eType="//Routing" eOpposite="//Routing/dsrclf"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="program" eType="//RoutingDsrclfProgram" containment="true" resolveProxies="false" eOpposite="//RoutingDsrclfProgram/eContainer_program">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/dsrclf|children:Dsrclf|Element/program|handlers:Program|Handler"/>
-        <details key="IsCopy" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="//RoutingDsrclfClass" containment="true" resolveProxies="false" eOpposite="//RoutingDsrclfClass/eContainer_class">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/dsrclf|children:Dsrclf|Element/class|handlers:Class|Handler"/>
+        <details key="IsCopy" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="program" eType="//RoutingDsrclfProgram" containment="true" resolveProxies="false" eOpposite="//RoutingDsrclfProgram/eContainer_program">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/dsrclf|children:Dsrclf|Element/program|handlers:Program|Handler"/>
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
@@ -2495,9 +2495,9 @@
         <details key="IsCopy" value="true"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="debug" eType="//Debug" containment="true" resolveProxies="false" eOpposite="//Debug/eContainer_debug">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="config" eType="//Config" containment="true" resolveProxies="false" eOpposite="//Config/eContainer_config">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/elements:Element/debug|handlers:Debug|Handler"/>
+        <details key="target_id" value="Network/nodes:Node/elements:Element/config|handlers:Config|Handler"/>
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
@@ -2507,21 +2507,15 @@
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ports" eType="//Ports" containment="true" resolveProxies="false" eOpposite="//Ports/eContainer_ports">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/elements:Element/ports|handlers:Ports|Handler"/>
-        <details key="IsCopy" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="config" eType="//Config" containment="true" resolveProxies="false" eOpposite="//Config/eContainer_config">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/elements:Element/config|handlers:Config|Handler"/>
-        <details key="IsCopy" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="handlersName" eType="//Name" containment="true" resolveProxies="false" eOpposite="//Name/eContainer_handlersName">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/elements:Element/name|handlers:Name|Handler"/>
+        <details key="IsCopy" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ports" eType="//Ports" containment="true" resolveProxies="false" eOpposite="//Ports/eContainer_ports">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/elements:Element/ports|handlers:Ports|Handler"/>
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
@@ -2531,17 +2525,23 @@
       </eAnnotations>
       <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="version" eType="//Version" containment="true" resolveProxies="false" eOpposite="//Version/eContainer_version">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/elements:Element/version|handlers:Version|Handler"/>
-        <details key="IsCopy" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_children" eType="//Element" eOpposite="//Element/children"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1" eType="//Element" resolveProxies="false" eOpposite="//Element/eContainer_children">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/elements:Element/children:Element"/>
         <details key="IsCopy" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="debug" eType="//Debug" containment="true" resolveProxies="false" eOpposite="//Debug/eContainer_debug">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/elements:Element/debug|handlers:Debug|Handler"/>
+        <details key="IsCopy" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="version" eType="//Version" containment="true" resolveProxies="false" eOpposite="//Version/eContainer_version">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/elements:Element/version|handlers:Version|Handler"/>
+        <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
@@ -2622,9 +2622,9 @@
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/error_clf|children:Error_clf|Element"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_error_clf" eType="//Device_wifi" eOpposite="//Device_wifi/error_clf"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="phy" eType="//Device_wifiError_clfPhy" containment="true" resolveProxies="false" eOpposite="//Device_wifiError_clfPhy/eContainer_phy">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="//Device_wifiError_clfClass" containment="true" resolveProxies="false" eOpposite="//Device_wifiError_clfClass/eContainer_class">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/error_clf|children:Error_clf|Element/phy|handlers:Phy|Handler"/>
+        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/error_clf|children:Error_clf|Element/class|handlers:Class|Handler"/>
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
@@ -2640,9 +2640,9 @@
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="//Device_wifiError_clfClass" containment="true" resolveProxies="false" eOpposite="//Device_wifiError_clfClass/eContainer_class">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="phy" eType="//Device_wifiError_clfPhy" containment="true" resolveProxies="false" eOpposite="//Device_wifiError_clfPhy/eContainer_phy">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/error_clf|children:Error_clf|Element/class|handlers:Class|Handler"/>
+        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/error_clf|children:Error_clf|Element/phy|handlers:Phy|Handler"/>
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
@@ -2688,15 +2688,15 @@
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/filter_tx|children:Filter_tx|Element"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_filter_tx" eType="//Device_wifi" eOpposite="//Device_wifi/filter_tx"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="drops" eType="//Device_wifiFilter_txDrops" containment="true" resolveProxies="false" eOpposite="//Device_wifiFilter_txDrops/eContainer_drops">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/filter_tx|children:Filter_tx|Element/drops|handlers:Drops|Handler"/>
-        <details key="IsCopy" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="//Device_wifiFilter_txClass" containment="true" resolveProxies="false" eOpposite="//Device_wifiFilter_txClass/eContainer_class">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/filter_tx|children:Filter_tx|Element/class|handlers:Class|Handler"/>
+        <details key="IsCopy" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="drops" eType="//Device_wifiFilter_txDrops" containment="true" resolveProxies="false" eOpposite="//Device_wifiFilter_txDrops/eContainer_drops">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/filter_tx|children:Filter_tx|Element/drops|handlers:Drops|Handler"/>
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
@@ -2730,12 +2730,6 @@
       <details key="target_id" value="Network/nodes:Node/gps|elements:Gps|Element"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_gps" eType="//Node" eOpposite="//Node/gps"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="gps_coord" eType="//Gps_coord" containment="true" resolveProxies="false" eOpposite="//Gps_coord/eContainer_gps_coord">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/gps|elements:Gps|Element/gps_coord|handlers:Gps_coord|Handler"/>
-        <details key="IsCopy" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="cart_coord" eType="//Cart_coord" containment="true" resolveProxies="false" eOpposite="//Cart_coord/eContainer_cart_coord">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/gps|elements:Gps|Element/cart_coord|handlers:Cart_coord|Handler"/>
@@ -2745,6 +2739,12 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="//GpsClass" containment="true" resolveProxies="false" eOpposite="//GpsClass/eContainer_class">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/gps|elements:Gps|Element/class|handlers:Class|Handler"/>
+        <details key="IsCopy" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="gps_coord" eType="//Gps_coord" containment="true" resolveProxies="false" eOpposite="//Gps_coord/eContainer_gps_coord">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/gps|elements:Gps|Element/gps_coord|handlers:Gps_coord|Handler"/>
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
@@ -2886,15 +2886,15 @@
       <details key="target_id" value="Network/nodes:Node/id|elements:Id|Element"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_id" eType="//Node" eOpposite="//Node/id"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="devinfo" eType="//Devinfo" containment="true" resolveProxies="false" eOpposite="//Devinfo/eContainer_devinfo">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/id|elements:Id|Element/devinfo|handlers:Devinfo|Handler"/>
-        <details key="IsCopy" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="//IdClass" containment="true" resolveProxies="false" eOpposite="//IdClass/eContainer_class">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/id|elements:Id|Element/class|handlers:Class|Handler"/>
+        <details key="IsCopy" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="devinfo" eType="//Devinfo" containment="true" resolveProxies="false" eOpposite="//Devinfo/eContainer_devinfo">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/id|elements:Id|Element/devinfo|handlers:Devinfo|Handler"/>
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
@@ -3048,30 +3048,6 @@
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/link_stat|children:Link_stat|Element"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_link_stat" eType="//Device_wifi" eOpposite="//Device_wifi/link_stat"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="schema" eType="//Device_wifiLink_statSchema" containment="true" resolveProxies="false" eOpposite="//Device_wifiLink_statSchema/eContainer_schema">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/link_stat|children:Link_stat|Element/schema|handlers:Schema|Handler"/>
-        <details key="IsCopy" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="probes" eType="//Device_wifiLink_statProbes" containment="true" resolveProxies="false" eOpposite="//Device_wifiLink_statProbes/eContainer_probes">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/link_stat|children:Link_stat|Element/probes|handlers:Probes|Handler"/>
-        <details key="IsCopy" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="period" eType="//Device_wifiLink_statPeriod" containment="true" resolveProxies="false" eOpposite="//Device_wifiLink_statPeriod/eContainer_period">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/link_stat|children:Link_stat|Element/period|handlers:Period|Handler"/>
-        <details key="IsCopy" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="tau" eType="//Device_wifiLink_statTau" containment="true" resolveProxies="false" eOpposite="//Device_wifiLink_statTau/eContainer_tau">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/link_stat|children:Link_stat|Element/tau|handlers:Tau|Handler"/>
-        <details key="IsCopy" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="bad_version" eType="//Bad_version" containment="true" resolveProxies="false" eOpposite="//Bad_version/eContainer_bad_version">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/link_stat|children:Link_stat|Element/bad_version|handlers:Bad_version|Handler"/>
@@ -3087,6 +3063,30 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="//Device_wifiLink_statClass" containment="true" resolveProxies="false" eOpposite="//Device_wifiLink_statClass/eContainer_class">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/link_stat|children:Link_stat|Element/class|handlers:Class|Handler"/>
+        <details key="IsCopy" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="period" eType="//Device_wifiLink_statPeriod" containment="true" resolveProxies="false" eOpposite="//Device_wifiLink_statPeriod/eContainer_period">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/link_stat|children:Link_stat|Element/period|handlers:Period|Handler"/>
+        <details key="IsCopy" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="probes" eType="//Device_wifiLink_statProbes" containment="true" resolveProxies="false" eOpposite="//Device_wifiLink_statProbes/eContainer_probes">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/link_stat|children:Link_stat|Element/probes|handlers:Probes|Handler"/>
+        <details key="IsCopy" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="schema" eType="//Device_wifiLink_statSchema" containment="true" resolveProxies="false" eOpposite="//Device_wifiLink_statSchema/eContainer_schema">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/link_stat|children:Link_stat|Element/schema|handlers:Schema|Handler"/>
+        <details key="IsCopy" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tau" eType="//Device_wifiLink_statTau" containment="true" resolveProxies="false" eOpposite="//Device_wifiLink_statTau/eContainer_tau">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/link_stat|children:Link_stat|Element/tau|handlers:Tau|Handler"/>
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
@@ -3144,15 +3144,15 @@
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_clf|children:Lp_clf|Element"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_lp_clf" eType="//Device_wifi" eOpposite="//Device_wifi/lp_clf"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="program" eType="//Device_wifiLp_clfProgram" containment="true" resolveProxies="false" eOpposite="//Device_wifiLp_clfProgram/eContainer_program">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_clf|children:Lp_clf|Element/program|handlers:Program|Handler"/>
-        <details key="IsCopy" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="//Device_wifiLp_clfClass" containment="true" resolveProxies="false" eOpposite="//Device_wifiLp_clfClass/eContainer_class">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_clf|children:Lp_clf|Element/class|handlers:Class|Handler"/>
+        <details key="IsCopy" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="program" eType="//Device_wifiLp_clfProgram" containment="true" resolveProxies="false" eOpposite="//Device_wifiLp_clfProgram/eContainer_program">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_clf|children:Lp_clf|Element/program|handlers:Program|Handler"/>
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
@@ -3174,15 +3174,9 @@
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_etherencap|children:Lp_etherencap|Element"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_lp_etherencap" eType="//Device_wifi" eOpposite="//Device_wifi/lp_etherencap"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="etht" eType="//Etht" containment="true" resolveProxies="false" eOpposite="//Etht/eContainer_etht">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="//Device_wifiLp_etherencapClass" containment="true" resolveProxies="false" eOpposite="//Device_wifiLp_etherencapClass/eContainer_class">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_etherencap|children:Lp_etherencap|Element/etht|handlers:Etht|Handler"/>
-        <details key="IsCopy" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ethertype" eType="//Ethertype" containment="true" resolveProxies="false" eOpposite="//Ethertype/eContainer_ethertype">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_etherencap|children:Lp_etherencap|Element/ethertype|handlers:Ethertype|Handler"/>
+        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_etherencap|children:Lp_etherencap|Element/class|handlers:Class|Handler"/>
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
@@ -3192,15 +3186,21 @@
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="src" eType="//Src" containment="true" resolveProxies="false" eOpposite="//Src/eContainer_src">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ethertype" eType="//Ethertype" containment="true" resolveProxies="false" eOpposite="//Ethertype/eContainer_ethertype">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_etherencap|children:Lp_etherencap|Element/src|handlers:Src|Handler"/>
+        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_etherencap|children:Lp_etherencap|Element/ethertype|handlers:Ethertype|Handler"/>
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="//Device_wifiLp_etherencapClass" containment="true" resolveProxies="false" eOpposite="//Device_wifiLp_etherencapClass/eContainer_class">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="etht" eType="//Etht" containment="true" resolveProxies="false" eOpposite="//Etht/eContainer_etht">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_etherencap|children:Lp_etherencap|Element/class|handlers:Class|Handler"/>
+        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_etherencap|children:Lp_etherencap|Element/etht|handlers:Etht|Handler"/>
+        <details key="IsCopy" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="src" eType="//Src" containment="true" resolveProxies="false" eOpposite="//Src/eContainer_src">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_etherencap|children:Lp_etherencap|Element/src|handlers:Src|Handler"/>
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
@@ -3210,15 +3210,15 @@
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_power|children:Lp_power|Element"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_lp_power" eType="//Device_wifi" eOpposite="//Device_wifi/lp_power"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="power" eType="//Device_wifiLp_powerPower" containment="true" resolveProxies="false" eOpposite="//Device_wifiLp_powerPower/eContainer_power">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_power|children:Lp_power|Element/power|handlers:Power|Handler"/>
-        <details key="IsCopy" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="//Device_wifiLp_powerClass" containment="true" resolveProxies="false" eOpposite="//Device_wifiLp_powerClass/eContainer_class">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_power|children:Lp_power|Element/class|handlers:Class|Handler"/>
+        <details key="IsCopy" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="power" eType="//Device_wifiLp_powerPower" containment="true" resolveProxies="false" eOpposite="//Device_wifiLp_powerPower/eContainer_power">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_power|children:Lp_power|Element/power|handlers:Power|Handler"/>
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
@@ -3228,15 +3228,21 @@
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_queue|children:Lp_queue|Element"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_lp_queue" eType="//Device_wifi" eOpposite="//Device_wifi/lp_queue"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="drops" eType="//Device_wifiLp_queueDrops" containment="true" resolveProxies="false" eOpposite="//Device_wifiLp_queueDrops/eContainer_drops">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_queue|children:Lp_queue|Element/drops|handlers:Drops|Handler"/>
-        <details key="IsCopy" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="capacity" eType="//Device_wifiLp_queueCapacity" containment="true" resolveProxies="false" eOpposite="//Device_wifiLp_queueCapacity/eContainer_capacity">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_queue|children:Lp_queue|Element/capacity|handlers:Capacity|Handler"/>
+        <details key="IsCopy" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="//Device_wifiLp_queueClass" containment="true" resolveProxies="false" eOpposite="//Device_wifiLp_queueClass/eContainer_class">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_queue|children:Lp_queue|Element/class|handlers:Class|Handler"/>
+        <details key="IsCopy" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="drops" eType="//Device_wifiLp_queueDrops" containment="true" resolveProxies="false" eOpposite="//Device_wifiLp_queueDrops/eContainer_drops">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_queue|children:Lp_queue|Element/drops|handlers:Drops|Handler"/>
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
@@ -3249,12 +3255,6 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="length" eType="//Device_wifiLp_queueLength" containment="true" resolveProxies="false" eOpposite="//Device_wifiLp_queueLength/eContainer_length">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_queue|children:Lp_queue|Element/length|handlers:Length|Handler"/>
-        <details key="IsCopy" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="//Device_wifiLp_queueClass" containment="true" resolveProxies="false" eOpposite="//Device_wifiLp_queueClass/eContainer_class">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_queue|children:Lp_queue|Element/class|handlers:Class|Handler"/>
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
@@ -3288,15 +3288,15 @@
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="mode" eType="//Device_wifiLp_wifiencapMode" containment="true" resolveProxies="false" eOpposite="//Device_wifiLp_wifiencapMode/eContainer_mode">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_wifiencap|children:Lp_wifiencap|Element/mode|handlers:Mode|Handler"/>
-        <details key="IsCopy" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="//Device_wifiLp_wifiencapClass" containment="true" resolveProxies="false" eOpposite="//Device_wifiLp_wifiencapClass/eContainer_class">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_wifiencap|children:Lp_wifiencap|Element/class|handlers:Class|Handler"/>
+        <details key="IsCopy" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mode" eType="//Device_wifiLp_wifiencapMode" containment="true" resolveProxies="false" eOpposite="//Device_wifiLp_wifiencapMode/eContainer_mode">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/lp_wifiencap|children:Lp_wifiencap|Element/mode|handlers:Mode|Handler"/>
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
@@ -3306,15 +3306,21 @@
       <details key="target_id" value="Network/nodes:Node/lt|elements:Lt|Element"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_lt" eType="//Node" eOpposite="//Node/lt"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="dijkstra_time" eType="//Dijkstra_time" containment="true" resolveProxies="false" eOpposite="//Dijkstra_time/eContainer_dijkstra_time">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/lt|elements:Lt|Element/dijkstra_time|handlers:Dijkstra_time|Handler"/>
-        <details key="IsCopy" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="blacklist" eType="//Blacklist" containment="true" resolveProxies="false" eOpposite="//Blacklist/eContainer_blacklist">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/lt|elements:Lt|Element/blacklist|handlers:Blacklist|Handler"/>
+        <details key="IsCopy" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="//LtClass" containment="true" resolveProxies="false" eOpposite="//LtClass/eContainer_class">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/lt|elements:Lt|Element/class|handlers:Class|Handler"/>
+        <details key="IsCopy" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dijkstra_time" eType="//Dijkstra_time" containment="true" resolveProxies="false" eOpposite="//Dijkstra_time/eContainer_dijkstra_time">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/lt|elements:Lt|Element/dijkstra_time|handlers:Dijkstra_time|Handler"/>
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
@@ -3330,9 +3336,9 @@
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="routes_to" eType="//Routes_to" containment="true" resolveProxies="false" eOpposite="//Routes_to/eContainer_routes_to">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="routes" eType="//Routes" containment="true" resolveProxies="false" eOpposite="//Routes/eContainer_routes">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/lt|elements:Lt|Element/routes_to|handlers:Routes_to|Handler"/>
+        <details key="target_id" value="Network/nodes:Node/lt|elements:Lt|Element/routes|handlers:Routes|Handler"/>
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
@@ -3342,15 +3348,9 @@
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="routes" eType="//Routes" containment="true" resolveProxies="false" eOpposite="//Routes/eContainer_routes">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="routes_to" eType="//Routes_to" containment="true" resolveProxies="false" eOpposite="//Routes_to/eContainer_routes_to">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/lt|elements:Lt|Element/routes|handlers:Routes|Handler"/>
-        <details key="IsCopy" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="//LtClass" containment="true" resolveProxies="false" eOpposite="//LtClass/eContainer_class">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/lt|elements:Lt|Element/class|handlers:Class|Handler"/>
+        <details key="target_id" value="Network/nodes:Node/lt|elements:Lt|Element/routes_to|handlers:Routes_to|Handler"/>
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
@@ -3483,48 +3483,6 @@
         <details key="IsCopy" value="true"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="wireless" eType="//Wireless" containment="true" resolveProxies="false" eOpposite="//Wireless/eContainer_wireless">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/wireless|elements:Wireless|Element"/>
-        <details key="IsCopy" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="id" eType="//Id" containment="true" resolveProxies="false" eOpposite="//Id/eContainer_id">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/id|elements:Id|Element"/>
-        <details key="IsCopy" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="rc" eType="//Rc" containment="true" resolveProxies="false" eOpposite="//Rc/eContainer_rc">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/rc|elements:Rc|Element"/>
-        <details key="IsCopy" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="lt" eType="//Lt" containment="true" resolveProxies="false" eOpposite="//Lt/eContainer_lt">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/lt|elements:Lt|Element"/>
-        <details key="IsCopy" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="sys_info" eType="//Sys_info" containment="true" resolveProxies="false" eOpposite="//Sys_info/eContainer_sys_info">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/sys_info|elements:Sys_info|Element"/>
-        <details key="IsCopy" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="gps" eType="//Gps" containment="true" resolveProxies="false" eOpposite="//Gps/eContainer_gps">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/gps|elements:Gps|Element"/>
-        <details key="IsCopy" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="seismo" eType="//Seismo" containment="true" resolveProxies="false" eOpposite="//Seismo/eContainer_seismo">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/seismo|elements:Seismo|Element"/>
-        <details key="IsCopy" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="label_brnether" eType="//Label_brnether" containment="true" resolveProxies="false" eOpposite="//Label_brnether/eContainer_label_brnether">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/label_brnether|elements:Label_brnether|Element"/>
@@ -3537,9 +3495,57 @@
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="device_wifi" eType="//Device_wifi" containment="true" resolveProxies="false" eOpposite="//Device_wifi/eContainer_device_wifi">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element"/>
+        <details key="IsCopy" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="gps" eType="//Gps" containment="true" resolveProxies="false" eOpposite="//Gps/eContainer_gps">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/gps|elements:Gps|Element"/>
+        <details key="IsCopy" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="id" eType="//Id" containment="true" resolveProxies="false" eOpposite="//Id/eContainer_id">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/id|elements:Id|Element"/>
+        <details key="IsCopy" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="lt" eType="//Lt" containment="true" resolveProxies="false" eOpposite="//Lt/eContainer_lt">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/lt|elements:Lt|Element"/>
+        <details key="IsCopy" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rc" eType="//Rc" containment="true" resolveProxies="false" eOpposite="//Rc/eContainer_rc">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/rc|elements:Rc|Element"/>
+        <details key="IsCopy" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="routing" eType="//Routing" containment="true" resolveProxies="false" eOpposite="//Routing/eContainer_routing">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element"/>
+        <details key="IsCopy" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="seismo" eType="//Seismo" containment="true" resolveProxies="false" eOpposite="//Seismo/eContainer_seismo">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/seismo|elements:Seismo|Element"/>
+        <details key="IsCopy" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="sf" eType="//Sf" containment="true" resolveProxies="false" eOpposite="//Sf/eContainer_sf">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/sf|elements:Sf|Element"/>
+        <details key="IsCopy" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sys_info" eType="//Sys_info" containment="true" resolveProxies="false" eOpposite="//Sys_info/eContainer_sys_info">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/sys_info|elements:Sys_info|Element"/>
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
@@ -3549,15 +3555,9 @@
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="device_wifi" eType="//Device_wifi" containment="true" resolveProxies="false" eOpposite="//Device_wifi/eContainer_device_wifi">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="wireless" eType="//Wireless" containment="true" resolveProxies="false" eOpposite="//Wireless/eContainer_wireless">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element"/>
-        <details key="IsCopy" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="routing" eType="//Routing" containment="true" resolveProxies="false" eOpposite="//Routing/eContainer_routing">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element"/>
+        <details key="target_id" value="Network/nodes:Node/wireless|elements:Wireless|Element"/>
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
@@ -3693,15 +3693,15 @@
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/proberates|children:Proberates|Element"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_proberates" eType="//Device_wifi" eOpposite="//Device_wifi/proberates"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="rates" eType="//Device_wifiProberatesRates" containment="true" resolveProxies="false" eOpposite="//Device_wifiProberatesRates/eContainer_rates">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/proberates|children:Proberates|Element/rates|handlers:Rates|Handler"/>
-        <details key="IsCopy" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="//Device_wifiProberatesClass" containment="true" resolveProxies="false" eOpposite="//Device_wifiProberatesClass/eContainer_class">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/proberates|children:Proberates|Element/class|handlers:Class|Handler"/>
+        <details key="IsCopy" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rates" eType="//Device_wifiProberatesRates" containment="true" resolveProxies="false" eOpposite="//Device_wifiProberatesRates/eContainer_rates">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/proberates|children:Proberates|Element/rates|handlers:Rates|Handler"/>
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
@@ -3711,15 +3711,15 @@
       <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/querier|children:Querier|Element"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_querier" eType="//Routing" eOpposite="//Routing/querier"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="fixed_route" eType="//Fixed_route" containment="true" resolveProxies="false" eOpposite="//Fixed_route/eContainer_fixed_route">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/querier|children:Querier|Element/fixed_route|handlers:Fixed_route|Handler"/>
-        <details key="IsCopy" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="//RoutingQuerierClass" containment="true" resolveProxies="false" eOpposite="//RoutingQuerierClass/eContainer_class">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/querier|children:Querier|Element/class|handlers:Class|Handler"/>
+        <details key="IsCopy" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="fixed_route" eType="//Fixed_route" containment="true" resolveProxies="false" eOpposite="//Fixed_route/eContainer_fixed_route">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/querier|children:Querier|Element/fixed_route|handlers:Fixed_route|Handler"/>
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
@@ -3729,27 +3729,9 @@
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/rawwifidev_too_small_cnt|children:Rawwifidev_too_small_cnt|Element"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_rawwifidev_too_small_cnt" eType="//Wifidevice" eOpposite="//Wifidevice/rawwifidev_too_small_cnt"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="count_call" eType="//Count_call" containment="true" resolveProxies="false" eOpposite="//Count_call/eContainer_count_call">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/rawwifidev_too_small_cnt|children:Rawwifidev_too_small_cnt|Element/count_call|handlers:Count_call|Handler"/>
-        <details key="IsCopy" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="byte_rate" eType="//Byte_rate" containment="true" resolveProxies="false" eOpposite="//Byte_rate/eContainer_byte_rate">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/rawwifidev_too_small_cnt|children:Rawwifidev_too_small_cnt|Element/byte_rate|handlers:Byte_rate|Handler"/>
-        <details key="IsCopy" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="bit_rate" eType="//Bit_rate" containment="true" resolveProxies="false" eOpposite="//Bit_rate/eContainer_bit_rate">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/rawwifidev_too_small_cnt|children:Rawwifidev_too_small_cnt|Element/bit_rate|handlers:Bit_rate|Handler"/>
-        <details key="IsCopy" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="rate" eType="//Device_wifiWifideviceRawwifidev_too_small_cntRate" containment="true" resolveProxies="false" eOpposite="//Device_wifiWifideviceRawwifidev_too_small_cntRate/eContainer_rate">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/rawwifidev_too_small_cnt|children:Rawwifidev_too_small_cnt|Element/rate|handlers:Rate|Handler"/>
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
@@ -3759,15 +3741,33 @@
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="count" eType="//Count" containment="true" resolveProxies="false" eOpposite="//Count/eContainer_count">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="byte_rate" eType="//Byte_rate" containment="true" resolveProxies="false" eOpposite="//Byte_rate/eContainer_byte_rate">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/rawwifidev_too_small_cnt|children:Rawwifidev_too_small_cnt|Element/count|handlers:Count|Handler"/>
+        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/rawwifidev_too_small_cnt|children:Rawwifidev_too_small_cnt|Element/byte_rate|handlers:Byte_rate|Handler"/>
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="//Device_wifiWifideviceRawwifidev_too_small_cntClass" containment="true" resolveProxies="false" eOpposite="//Device_wifiWifideviceRawwifidev_too_small_cntClass/eContainer_class">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/rawwifidev_too_small_cnt|children:Rawwifidev_too_small_cnt|Element/class|handlers:Class|Handler"/>
+        <details key="IsCopy" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="count" eType="//Count" containment="true" resolveProxies="false" eOpposite="//Count/eContainer_count">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/rawwifidev_too_small_cnt|children:Rawwifidev_too_small_cnt|Element/count|handlers:Count|Handler"/>
+        <details key="IsCopy" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="count_call" eType="//Count_call" containment="true" resolveProxies="false" eOpposite="//Count_call/eContainer_count_call">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/rawwifidev_too_small_cnt|children:Rawwifidev_too_small_cnt|Element/count_call|handlers:Count_call|Handler"/>
+        <details key="IsCopy" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rate" eType="//Device_wifiWifideviceRawwifidev_too_small_cntRate" containment="true" resolveProxies="false" eOpposite="//Device_wifiWifideviceRawwifidev_too_small_cntRate/eContainer_rate">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/rawwifidev_too_small_cnt|children:Rawwifidev_too_small_cnt|Element/rate|handlers:Rate|Handler"/>
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
@@ -3819,15 +3819,15 @@
       <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/req_forwarder|children:Req_forwarder|Element"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_req_forwarder" eType="//Routing" eOpposite="//Routing/req_forwarder"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="stats" eType="//RoutingReq_forwarderStats" containment="true" resolveProxies="false" eOpposite="//RoutingReq_forwarderStats/eContainer_stats">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/req_forwarder|children:Req_forwarder|Element/stats|handlers:Stats|Handler"/>
-        <details key="IsCopy" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="//RoutingReq_forwarderClass" containment="true" resolveProxies="false" eOpposite="//RoutingReq_forwarderClass/eContainer_class">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/req_forwarder|children:Req_forwarder|Element/class|handlers:Class|Handler"/>
+        <details key="IsCopy" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="stats" eType="//RoutingReq_forwarderStats" containment="true" resolveProxies="false" eOpposite="//RoutingReq_forwarderStats/eContainer_stats">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/req_forwarder|children:Req_forwarder|Element/stats|handlers:Stats|Handler"/>
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
@@ -3885,27 +3885,9 @@
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="querier" eType="//Querier" containment="true" resolveProxies="false" eOpposite="//Querier/eContainer_querier">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dsrclf" eType="//Dsrclf" containment="true" resolveProxies="false" eOpposite="//Dsrclf/eContainer_dsrclf">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/querier|children:Querier|Element"/>
-        <details key="IsCopy" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="req_forwarder" eType="//Req_forwarder" containment="true" resolveProxies="false" eOpposite="//Req_forwarder/eContainer_req_forwarder">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/req_forwarder|children:Req_forwarder|Element"/>
-        <details key="IsCopy" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="rep_forwarder" eType="//Rep_forwarder" containment="true" resolveProxies="false" eOpposite="//Rep_forwarder/eContainer_rep_forwarder">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/rep_forwarder|children:Rep_forwarder|Element"/>
-        <details key="IsCopy" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="src_forwarder" eType="//Src_forwarder" containment="true" resolveProxies="false" eOpposite="//Src_forwarder/eContainer_src_forwarder">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/src_forwarder|children:Src_forwarder|Element"/>
+        <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/dsrclf|children:Dsrclf|Element"/>
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
@@ -3915,21 +3897,39 @@
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="querier" eType="//Querier" containment="true" resolveProxies="false" eOpposite="//Querier/eContainer_querier">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/querier|children:Querier|Element"/>
+        <details key="IsCopy" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rep_forwarder" eType="//Rep_forwarder" containment="true" resolveProxies="false" eOpposite="//Rep_forwarder/eContainer_rep_forwarder">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/rep_forwarder|children:Rep_forwarder|Element"/>
+        <details key="IsCopy" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="req_forwarder" eType="//Req_forwarder" containment="true" resolveProxies="false" eOpposite="//Req_forwarder/eContainer_req_forwarder">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/req_forwarder|children:Req_forwarder|Element"/>
+        <details key="IsCopy" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="routing_peek" eType="//Routing_peek" containment="true" resolveProxies="false" eOpposite="//Routing_peek/eContainer_routing_peek">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/routing_peek|children:Routing_peek|Element"/>
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="tee_to_err_fwd" eType="//Tee_to_err_fwd" containment="true" resolveProxies="false" eOpposite="//Tee_to_err_fwd/eContainer_tee_to_err_fwd">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="src_forwarder" eType="//Src_forwarder" containment="true" resolveProxies="false" eOpposite="//Src_forwarder/eContainer_src_forwarder">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/tee_to_err_fwd|children:Tee_to_err_fwd|Element"/>
+        <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/src_forwarder|children:Src_forwarder|Element"/>
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="dsrclf" eType="//Dsrclf" containment="true" resolveProxies="false" eOpposite="//Dsrclf/eContainer_dsrclf">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tee_to_err_fwd" eType="//Tee_to_err_fwd" containment="true" resolveProxies="false" eOpposite="//Tee_to_err_fwd/eContainer_tee_to_err_fwd">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/dsrclf|children:Dsrclf|Element"/>
+        <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/tee_to_err_fwd|children:Tee_to_err_fwd|Element"/>
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
@@ -4095,15 +4095,15 @@
       <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/routing_peek|children:Routing_peek|Element"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_routing_peek" eType="//Routing" eOpposite="//Routing/routing_peek"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="peek_info" eType="//Peek_info" containment="true" resolveProxies="false" eOpposite="//Peek_info/eContainer_peek_info">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/routing_peek|children:Routing_peek|Element/peek_info|handlers:Peek_info|Handler"/>
-        <details key="IsCopy" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="//RoutingRouting_peekClass" containment="true" resolveProxies="false" eOpposite="//RoutingRouting_peekClass/eContainer_class">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/routing_peek|children:Routing_peek|Element/class|handlers:Class|Handler"/>
+        <details key="IsCopy" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="peek_info" eType="//Peek_info" containment="true" resolveProxies="false" eOpposite="//Peek_info/eContainer_peek_info">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/routing|elements:Routing|Element/routing_peek|children:Routing_peek|Element/peek_info|handlers:Peek_info|Handler"/>
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
@@ -4279,9 +4279,9 @@
       <details key="target_id" value="Network/nodes:Node/sf|elements:Sf|Element"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_sf" eType="//Node" eOpposite="//Node/sf"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="stats" eType="//SfStats" containment="true" resolveProxies="false" eOpposite="//SfStats/eContainer_stats">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="//SfClass" containment="true" resolveProxies="false" eOpposite="//SfClass/eContainer_class">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/sf|elements:Sf|Element/stats|handlers:Stats|Handler"/>
+        <details key="target_id" value="Network/nodes:Node/sf|elements:Sf|Element/class|handlers:Class|Handler"/>
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
@@ -4291,15 +4291,15 @@
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="txflows" eType="//Txflows" containment="true" resolveProxies="false" eOpposite="//Txflows/eContainer_txflows">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="stats" eType="//SfStats" containment="true" resolveProxies="false" eOpposite="//SfStats/eContainer_stats">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/sf|elements:Sf|Element/txflows|handlers:Txflows|Handler"/>
+        <details key="target_id" value="Network/nodes:Node/sf|elements:Sf|Element/stats|handlers:Stats|Handler"/>
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="//SfClass" containment="true" resolveProxies="false" eOpposite="//SfClass/eContainer_class">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="txflows" eType="//Txflows" containment="true" resolveProxies="false" eOpposite="//Txflows/eContainer_txflows">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/sf|elements:Sf|Element/class|handlers:Class|Handler"/>
+        <details key="target_id" value="Network/nodes:Node/sf|elements:Sf|Element/txflows|handlers:Txflows|Handler"/>
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
@@ -4381,6 +4381,12 @@
       <details key="target_id" value="Network/nodes:Node/sys_info|elements:Sys_info|Element"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_sys_info" eType="//Node" eOpposite="//Node/sys_info"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="//Sys_infoClass" containment="true" resolveProxies="false" eOpposite="//Sys_infoClass/eContainer_class">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/sys_info|elements:Sys_info|Element/class|handlers:Class|Handler"/>
+        <details key="IsCopy" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="schema" eType="//Sys_infoSchema" containment="true" resolveProxies="false" eOpposite="//Sys_infoSchema/eContainer_schema">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/sys_info|elements:Sys_info|Element/schema|handlers:Schema|Handler"/>
@@ -4390,12 +4396,6 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="systeminfo" eType="//Systeminfo" containment="true" resolveProxies="false" eOpposite="//Systeminfo/eContainer_systeminfo">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/sys_info|elements:Sys_info|Element/systeminfo|handlers:Systeminfo|Handler"/>
-        <details key="IsCopy" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="//Sys_infoClass" containment="true" resolveProxies="false" eOpposite="//Sys_infoClass/eContainer_class">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/sys_info|elements:Sys_info|Element/class|handlers:Class|Handler"/>
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
@@ -4579,18 +4579,6 @@
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_wifidevice" eType="//Device_wifi" eOpposite="//Device_wifi/wifidevice"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="cst" eType="//Cst" containment="true" resolveProxies="false" eOpposite="//Cst/eContainer_cst">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/cst|children:Cst|Element"/>
-        <details key="IsCopy" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="op_prio_s" eType="//Op_prio_s" containment="true" resolveProxies="false" eOpposite="//Op_prio_s/eContainer_op_prio_s">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/op_prio_s|children:Op_prio_s|Element"/>
-        <details key="IsCopy" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ath_op" eType="//Ath_op" containment="true" resolveProxies="false" eOpposite="//Ath_op/eContainer_ath_op">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/ath_op|children:Ath_op|Element"/>
@@ -4603,9 +4591,21 @@
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cst" eType="//Cst" containment="true" resolveProxies="false" eOpposite="//Cst/eContainer_cst">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/cst|children:Cst|Element"/>
+        <details key="IsCopy" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="dev_decap" eType="//Dev_decap" containment="true" resolveProxies="false" eOpposite="//Dev_decap/eContainer_dev_decap">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/dev_decap|children:Dev_decap|Element"/>
+        <details key="IsCopy" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="op_prio_s" eType="//Op_prio_s" containment="true" resolveProxies="false" eOpposite="//Op_prio_s/eContainer_op_prio_s">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wifidevice|children:Wifidevice|Element/op_prio_s|children:Op_prio_s|Element"/>
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
@@ -4621,15 +4621,15 @@
       <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wififrame_clf|children:Wififrame_clf|Element"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_wififrame_clf" eType="//Device_wifi" eOpposite="//Device_wifi/wififrame_clf"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="program" eType="//Device_wifiWififrame_clfProgram" containment="true" resolveProxies="false" eOpposite="//Device_wifiWififrame_clfProgram/eContainer_program">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wififrame_clf|children:Wififrame_clf|Element/program|handlers:Program|Handler"/>
-        <details key="IsCopy" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="//Device_wifiWififrame_clfClass" containment="true" resolveProxies="false" eOpposite="//Device_wifiWififrame_clfClass/eContainer_class">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wififrame_clf|children:Wififrame_clf|Element/class|handlers:Class|Handler"/>
+        <details key="IsCopy" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="program" eType="//Device_wifiWififrame_clfProgram" containment="true" resolveProxies="false" eOpposite="//Device_wifiWififrame_clfProgram/eContainer_program">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/device_wifi|elements:Device_wifi|Element/wififrame_clf|children:Wififrame_clf|Element/program|handlers:Program|Handler"/>
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
@@ -4645,15 +4645,15 @@
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="deviceinfo" eType="//Deviceinfo" containment="true" resolveProxies="false" eOpposite="//Deviceinfo/eContainer_deviceinfo">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/wireless|elements:Wireless|Element/deviceinfo|handlers:Deviceinfo|Handler"/>
-        <details key="IsCopy" value="false"/>
-      </eAnnotations>
-    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="class" eType="//WirelessClass" containment="true" resolveProxies="false" eOpposite="//WirelessClass/eContainer_class">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/wireless|elements:Wireless|Element/class|handlers:Class|Handler"/>
+        <details key="IsCopy" value="false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="deviceinfo" eType="//Deviceinfo" containment="true" resolveProxies="false" eOpposite="//Deviceinfo/eContainer_deviceinfo">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/wireless|elements:Wireless|Element/deviceinfo|handlers:Deviceinfo|Handler"/>
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>

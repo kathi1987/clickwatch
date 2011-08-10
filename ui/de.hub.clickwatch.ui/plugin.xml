@@ -119,6 +119,13 @@
                label="Copy XPath expression to clip board"
                menubarPath="additions">
          </action>
+         <action
+               class="de.hub.clickwatch.ui.GuiceAwareExecutableExtensionFactory:de.hub.clickwatch.ui.modelactions.ExecuteClickWatchMain"
+               enablesFor="1"
+               id="de.hub.clickwatch.ui.ExecuteClickWatchMain"
+               label="Execute an ClickWatch Main"
+               menubarPath="additions">
+         </action>
       </objectContribution>
    </extension>
    

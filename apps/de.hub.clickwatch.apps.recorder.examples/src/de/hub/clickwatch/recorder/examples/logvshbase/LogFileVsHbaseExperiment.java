@@ -7,8 +7,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
@@ -20,12 +18,13 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import com.google.inject.Inject;
 
-import de.hub.clickwatch.analysis.data.Plot;
+import de.hub.clickwatch.analysis.results.Result;
 import de.hub.clickwatch.main.ClickWatchExternalLauncher;
 import de.hub.clickwatch.main.IArgumentsProvider;
 import de.hub.clickwatch.main.IClickWatchContext;
 import de.hub.clickwatch.main.IClickWatchMain;
 import de.hub.clickwatch.main.IExperimentProvider;
+import de.hub.clickwatch.main.IResultsProvider;
 import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.model.Node;
 import de.hub.clickwatch.model.util.TimeStampLabelProvider;
@@ -46,7 +45,7 @@ public class LogFileVsHbaseExperiment implements IClickWatchMain {
 	}
 	
 	long[] getDurations(ExperimentDescr experiment) {	
-		long durationAll = experiment.getEnd() - experiment.getStart();
+		long durationAll = (experiment.getEnd() - experiment.getStart());
 		long[] durations = new long[numberOfDataPoints];
 		for (int i = 0; i < numberOfDataPoints; i++) {
 			durations[i] = getDuration(i+1, durationAll);
@@ -55,13 +54,47 @@ public class LogFileVsHbaseExperiment implements IClickWatchMain {
 	}
 
 	@Override
-	public void main(IClickWatchContext ctx) {		
-		ExperimentDescr experiment = ctx.getAdapter(IExperimentProvider.class).getExperiment();
-		File sourceLogFile = new File(ctx.getAdapter(IArgumentsProvider.class).getArguments()[0]);
+	public void main(IClickWatchContext ctx) {				
+		String prefix = ctx.getAdapter(IArgumentsProvider.class).getArguments()[3];
+		
+		Result logResult = measureLog(ctx);
+		logResult.exportCSV(prefix + "_log_results.txt");
+		
+		Result hbaseResult = measureHBase(ctx);
+		hbaseResult.exportCSV(prefix + "_hbase_results.txt");
+	}
 	
-		Plot plot = new Plot();
+	private Result measureHBase(IClickWatchContext ctx) {
+		ExperimentDescr experiment = ctx.getAdapter(IExperimentProvider.class).getExperiment();
+		numberOfDataPoints = Integer.parseInt(ctx.getAdapter(IArgumentsProvider.class).getArguments()[1]);
+		Result result = ctx.getAdapter(IResultsProvider.class).createNewResult("hbaseresults");
+	
 		long durations[] = getDurations(experiment);
 		long hbaseSizes[] = getHBaseSizes(experiment, durations);
+		logger.log(ILogger.DEBUG, "determined all hbase sizes", null);
+  		
+		for (int run = 0; run < durations.length; run++) {
+			long duration = durations[run];
+			
+			long start = System.currentTimeMillis();
+			performHbaseWithStrings(duration, experiment);
+			long stop = System.currentTimeMillis();
+			long hbaseTime = stop - start;
+			logger.log(ILogger.DEBUG, "performed hbase analysis for " + run, null);
+			result.getDataSet().add(duration / 1e6, hbaseSizes[run], hbaseTime);
+		}
+		logger.log(ILogger.DEBUG, "finished hbase analysis", null);
+		return result;
+	}
+	
+	private Result measureLog(IClickWatchContext ctx) {
+		ExperimentDescr experiment = ctx.getAdapter(IExperimentProvider.class).getExperiment();
+		File sourceLogFile = new File(ctx.getAdapter(IArgumentsProvider.class).getArguments()[0]);
+		String grepCommand = ctx.getAdapter(IArgumentsProvider.class).getArguments()[2];
+		numberOfDataPoints = Integer.parseInt(ctx.getAdapter(IArgumentsProvider.class).getArguments()[1]);
+		Result result = ctx.getAdapter(IResultsProvider.class).createNewResult("logresults");
+		
+		long durations[] = getDurations(experiment);
   		
 		for (int run = 0; run < durations.length; run++) {
 			long duration = durations[run];
@@ -91,39 +124,38 @@ public class LogFileVsHbaseExperiment implements IClickWatchMain {
 			}
 			logger.log(ILogger.DEBUG, "created logfile for run " + run, null);
 			
+			// step 1.5 reread the source log file to clear fs virtualization caches
+//			try {
+//				FileInputStream fstream = new FileInputStream(sourceLogFile);
+//				DataInputStream in = new DataInputStream(fstream);
+//				BufferedReader br = new BufferedReader(new InputStreamReader(in));
+//				while (br.readLine() != null);
+//				in.close();
+//			} catch (IOException e) {
+//				Throwables.propagate(e);
+//			}
+			logger.log(ILogger.DEBUG, "reread source log file for run " + run, null);
+			
 			// step 2 get log file time
 			long start = System.currentTimeMillis();
 			int exit = 1;
-			String command = "sh src/" + getClass().getPackage().getName().replaceAll("\\.", "/") + "/grep.sh";
 			try {				
-				Process process = Runtime.getRuntime().exec(command);
+				Process process = Runtime.getRuntime().exec(grepCommand);
 				exit = process.waitFor();
 			} catch (Exception e) {
 				logger.log(ILogger.ERROR, "abnormal grep termination", e);
 			}	
 			if (exit != 0) {
-				logger.log(ILogger.ERROR, "abnormal grep termination for command " + command, null);
+				logger.log(ILogger.ERROR, "abnormal grep termination for command " + grepCommand, null);
 			}
 			long stop = System.currentTimeMillis();
 			long logtime = stop - start;
 			logger.log(ILogger.DEBUG, "performed grep analysis for " + run, null);
 			
-			// step 3 get hbase time
-			start = System.currentTimeMillis();
-			performHbaseWithStrings(duration, experiment);
-			stop = System.currentTimeMillis();
-			long hbaseTime = stop - start;
-			logger.log(ILogger.DEBUG, "performed hbase analysis for " + run, null);
-			
-			logger.log(ILogger.INFO, "Run " + run + " completed with " + new long[]{(long)(duration/1e6), (long)logSize, (long)hbaseSizes[run], logtime, hbaseTime}, null);
-			plot.addEntry(duration / 1e6, logSize, hbaseSizes[run], logtime, hbaseTime);
+			result.getDataSet().add(duration / 1e6, logSize, logtime);			
 		}
-		
-		try {
-			plot.printCSV(new PrintStream(new File("out.txt")));
-		} catch (FileNotFoundException e) {
-			Throwables.propagate(e);
-		}
+		logger.log(ILogger.DEBUG, "finished log analysis", null);
+		return result;
 	}
 	
 	@SuppressWarnings("deprecation")
@@ -158,7 +190,7 @@ public class LogFileVsHbaseExperiment implements IClickWatchMain {
 		out.close();
 	}
 	
-	public long[] getHBaseSizes(ExperimentDescr experiment, long[] durations) { 
+	private long[] getHBaseSizes(ExperimentDescr experiment, long[] durations) { 
 		long[] result = new long[durations.length];
 		long size = 0;
 		int durationsIndex = 0;
@@ -192,28 +224,22 @@ public class LogFileVsHbaseExperiment implements IClickWatchMain {
 		}
 		
 		logger.log(ILogger.INFO, "Starting to go through all handlers and measure hbase size", null);
-		int logCounter = 0;
-		long duration = experiment.getEnd() - experiment.getStart();
-		long expStart = experiment.getStart();
-		NumberFormat percentFormat = new DecimalFormat("0.000");
+
 		while(!handlers.isEmpty()) {
 			CurrentIterator current = handlers.poll();
 			long timestamp = current.getCurrent().getTimestamp();
 			size += current.getCurrent().getValue().length();
-			if (timestamp >= durations[durationsIndex]) {
+			if (timestamp >= (durations[durationsIndex] + experiment.getStart())) {
 				result[durationsIndex] = size;
 				durationsIndex++;
+				logger.log(ILogger.DEBUG, "data base size for duration number " + durationsIndex + " is " + size, null);
+				if (durationsIndex >= durations.length) {
+					return result;
+				}
 			}
 			
 			EcoreUtil.delete(current.getCurrent());
 			insert(current, handlers);
-			if (logCounter++ == 10000) {
-				logCounter = 0;				
-				double percent = ((double)(timestamp - expStart)*100)/(double)duration;
-				logger.log(ILogger.DEBUG, "Measuing sizes at " 
-						+ percentFormat.format(percent) + "%, "
-						, null);
-			}
 		}
 		return result;
 	}

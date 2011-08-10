@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.Option;
 import org.apache.commons.cli.ParseException;
+import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -78,6 +79,11 @@ public class ExperimentProvider implements IClickWatchContextAdapter, IExperimen
 	public void initialize(URI dataBaseURI, String experimentId) {
 		this.dataBaseURI = dataBaseURI;
 		this.experimentId = experimentId;
+	}
+
+	@Override
+	public void initialize(IConfigurationElement configurationElement) {
+		// emptry
 	}
 
 }

@@ -10,9 +10,7 @@ import org.apache.hadoop.hbase.client.Put;
 import org.apache.hadoop.hbase.client.Result;
 import org.apache.hadoop.hbase.client.ResultScanner;
 import org.apache.hadoop.hbase.client.Scan;
-import org.apache.hadoop.hbase.client.ScannerTimeoutException;
 
-import com.google.common.base.Throwables;
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
 
@@ -25,6 +23,7 @@ import de.hub.clickwatch.recorder.CWRecorderModule;
 import de.hub.clickwatch.recorder.database.AbstractDataBaseRecordAdapter;
 import de.hub.clickwatch.recorder.database.IDataBaseRetrieveAdapter;
 import de.hub.clickwatch.util.ILogger;
+import de.hub.clickwatch.util.Throwables;
 import de.hub.emfxml.XmlModelRepository;
 
 public class HBaseDataBaseAdapter extends AbstractDataBaseRecordAdapter implements IDataBaseRetrieveAdapter {
@@ -302,11 +301,9 @@ public class HBaseDataBaseAdapter extends AbstractDataBaseRecordAdapter implemen
 			Result result = null;
 			try {
 				result = scanner.next();
-			} catch (ScannerTimeoutException te) {
+			} catch (Exception te) {
 				reset();
 				return scannerNext();
-			} catch (IOException e) {
-				Throwables.propagate(e);
 			}
 			if (result != null) {
 				currentRow = result.getRow();
