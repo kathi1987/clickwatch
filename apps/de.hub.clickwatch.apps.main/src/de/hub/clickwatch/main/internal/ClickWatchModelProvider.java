@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.Option;
 import org.apache.commons.cli.ParseException;
+import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -54,6 +55,12 @@ public class ClickWatchModelProvider implements IClickWatchContextAdapter,
 	public EObject getInputObject() {
 
 		return clickWatchObject;
+	}
+
+	@Override
+	public void initialize(IConfigurationElement configurationElement) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
