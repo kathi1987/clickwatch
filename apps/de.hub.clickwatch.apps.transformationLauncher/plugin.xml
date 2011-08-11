@@ -8,7 +8,7 @@
           delegate="de.hub.clickwatch.transformationLauncher.TransformationLaunchConfigurationDelegate"
           id="de.hub.clickwatch.analysis.ui.TransformationLaunchConfiguration"
           modes="run"
-          name="Transformation">
+          name="ClickWatchMain">
     </launchConfigurationType>
  </extension>
  <extension
@@ -26,6 +26,48 @@
           id="de.hub.clickwatch.analysis.ui.TransformationTabGroup"
           type="de.hub.clickwatch.analysis.ui.TransformationLaunchConfiguration">
     </launchConfigurationTabGroup>
+ </extension>
+ <extension
+       point="org.eclipse.core.expressions.propertyTesters">
+    <propertyTester
+          class="de.hub.clickwatch.transformationLauncher.propertyTester.HasTransformationMain"
+          id="de.hub.clickwatch.apps.transformationLauncher.ITransformationMainTester"
+          namespace="de.hub.clickwatch.apps.transformationLauncher"
+          properties="hasTransformationMain"
+          type="java.lang.Object">
+    </propertyTester>
+ </extension>
+ <extension
+       point="org.eclipse.debug.ui.launchShortcuts">
+    <shortcut
+          class="de.hub.clickwatch.transformationLauncher.TransformationLaunchShortcut"
+          icon="icons/Analysis.gif"
+          id="de.hub.clickwatch.apps.transformationLauncher.TransformationShortcut"
+          label="ClickWatchMain"
+          modes="run, debug" 
+          description="Launches a transformation">
+          <contextualLaunch>
+	         <enablement>
+	           <with variable="selection">
+	             <count value="1"/>
+	              <iterate
+                     operator="and">
+                 <test
+                       forcePluginActivation="true"
+                       property="de.hub.clickwatch.apps.transformationLauncher.hasTransformationMain">
+                 </test>
+	              </iterate>
+	             </with>
+	         </enablement>
+ 		</contextualLaunch>
+       	<configurationType
+              id="org.eclipse.jdt.launching.localJavaApplication">
+       	</configurationType>
+        <description
+                description="Runs a transformation"
+                mode="run">
+        </description>
+    </shortcut>
  </extension>
 </plugin>
 

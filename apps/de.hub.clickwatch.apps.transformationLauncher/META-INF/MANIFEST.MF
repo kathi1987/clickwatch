@@ -10,5 +10,7 @@ Require-Bundle: org.eclipse.debug.core;bundle-version="3.7.0",
  de.hub.clickwatch.core;bundle-version="2.0.0";visibility:=reexport,
  org.eclipse.emf.common.ui,
  de.hub.clickwatch.apps.main,
- de.hub.clickwatch.ui;bundle-version="2.0.0"
+ de.hub.clickwatch.ui;bundle-version="2.0.0",
+ org.eclipse.jdt.core;bundle-version="3.7.0",
+ org.eclipse.core.expressions;bundle-version="3.4.300"
 Export-Package: de.hub.clickwatch.transformationLauncher

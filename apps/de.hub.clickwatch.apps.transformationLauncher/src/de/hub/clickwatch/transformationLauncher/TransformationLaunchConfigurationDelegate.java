@@ -14,7 +14,6 @@ import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.ILaunchManager;
 import org.eclipse.debug.core.model.ILaunchConfigurationDelegate;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.URIConverter;
@@ -137,8 +136,8 @@ public class TransformationLaunchConfigurationDelegate implements
 
 					// XPath path = XPathFactory.newInstance().newXPath();
 					// XPathExpression expresison = path.compile(modelObject);
-					// Object result = expresison.evaluate(modelResource);				
-					
+					// Object result = expresison.evaluate(modelResource);
+
 					config.put(ELaunchConfigurationParameters.ClickWatchObject,
 							modelResource.getEObject(modelObject));
 				} else
@@ -148,12 +147,7 @@ public class TransformationLaunchConfigurationDelegate implements
 				ClickWatchRunConfigurationLauncher.launch(config, mainClass);
 			} catch (Exception e) {
 
-				Status myStatus = new Status(IStatus.ERROR, "",
-						"Could not read all configuration values properly",
-						null);
-				StatusManager.getManager().handle(myStatus, StatusManager.SHOW);
-
-				System.out.println(e);
+				System.out.println("Error: " + e);
 			}
 
 		} else if (mode.equals(ILaunchManager.DEBUG_MODE)) {
@@ -182,8 +176,10 @@ public class TransformationLaunchConfigurationDelegate implements
 			if (className.endsWith(";"))
 				className = className.replaceAll(";", "");
 
-			className += "."
-					+ fileURI.lastSegment().replaceAll(".java|.xtend", "");
+			if (className != "")
+				className += ".";
+			
+			className += fileURI.lastSegment().replaceAll(".java|.xtend", "");
 
 		} catch (Exception e) {
 			Status myStatus = new Status(IStatus.ERROR, "",
