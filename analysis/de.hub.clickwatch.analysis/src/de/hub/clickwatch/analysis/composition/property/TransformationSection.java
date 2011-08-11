@@ -20,7 +20,6 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
-import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.common.ui.dialogs.WorkspaceResourceDialog;
 import org.eclipse.emf.common.util.URI;
@@ -54,10 +53,8 @@ public class TransformationSection extends GFPropertySection implements ITabbedP
 	private Text labelText;
 	private Button selectXtendButton;
 	private Button selectXtend2Button;
-	private Button selectXtend2ReqBundleButton;
 	private Text xtendText;
 	private Text xtend2Text;
-	private Text xtend2ReqBundleText;
 	private Text xtendFuncText;
 	private Text xtend2FuncText;
 	private Button executeButton;
@@ -198,65 +195,13 @@ public class TransformationSection extends GFPropertySection implements ITabbedP
 		});
 		xtend2Widgets.add(xtend2Text);
 		
-		// required bundle
-		CLabel xtend2RequiredBundleLabel = factory.createCLabel(composite, "Req. bundle:");
-		data = new FormData();
-		data.left = new FormAttachment(0, STANDARD_LABEL_WIDTH+HSPACE*2);
-		data.right = new FormAttachment(0, STANDARD_LABEL_WIDTH*2+HSPACE*2);
-		data.top = new FormAttachment(xtend2Text, VSPACE);
-		xtend2RequiredBundleLabel.setLayoutData(data);
-		xtend2Widgets.add(xtend2RequiredBundleLabel);
-		
-		selectXtend2ReqBundleButton = factory.createButton(composite, "...", SWT.PUSH);
-		selectXtend2ReqBundleButton.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent selectionEvent) {
-				IContainer file = null;
-				IContainer[] files = WorkspaceResourceDialog.openFolderSelection(shell, null, null, false, null, null);
-				if (files.length != 0) {
-					file = files[0];
-				}
-
-				if (file != null) {		
-					try
-					{
-						String uriString = URI.createPlatformResourceURI(file.getFullPath().toString(), true).toString();
-						setRequiredBundle(uriString);						
-						refresh();
-					}
-					catch (Exception e) {}
-				}
-			}
-		});
-		data = new FormData();
-		data.left = new FormAttachment(100, -30);
-		data.right = new FormAttachment(100, 0);
-		data.top = new FormAttachment(xtend2RequiredBundleLabel, 0, SWT.CENTER);
-		selectXtend2ReqBundleButton.setLayoutData(data);
-		xtend2Widgets.add(selectXtend2ReqBundleButton);				
-		
-		xtend2ReqBundleText = factory.createText(composite, ""); //$NON-NLS-1$
-		xtend2ReqBundleText.setEditable(true);
-		data = new FormData();
-		data.left = new FormAttachment(xtend2RequiredBundleLabel, HSPACE);
-		data.right = new FormAttachment(selectXtend2ReqBundleButton, -HSPACE);
-		data.top = new FormAttachment(xtend2RequiredBundleLabel, 0, SWT.CENTER);
-		xtend2ReqBundleText.setLayoutData(data);
-		xtend2ReqBundleText.addFocusListener(new AbstractFocusLostListener() {
-			@Override
-			protected void handleFocusLost() {
-				setRequiredBundle(xtend2ReqBundleText.getText());
-			}
-		});
-		xtend2Widgets.add(xtend2ReqBundleText);
-		
 		
 		// xtend2 function
 		CLabel xtend2FuncLabel = factory.createCLabel(composite, "function:"); //$NON-NLS-1$
 		data = new FormData();
 		data.left = new FormAttachment(0, STANDARD_LABEL_WIDTH+HSPACE*2);
 		data.right = new FormAttachment(0, STANDARD_LABEL_WIDTH*2+HSPACE*2);
-		data.top = new FormAttachment(xtend2ReqBundleText, VSPACE);
+		data.top = new FormAttachment(xtend2Text, VSPACE);
 		xtend2FuncLabel.setLayoutData(data);
 		xtend2Widgets.add(xtend2FuncLabel);
 
@@ -425,16 +370,6 @@ public class TransformationSection extends GFPropertySection implements ITabbedP
 			}
 		}, transformation);
 	}
-	
-	private void setRequiredBundle(final String uriString) {
-		final Transformation transformation = getSelectedTransformation();
-		TransactionUtil.runSafely(new Runnable() {
-			@Override
-			public void run() {
-				transformation.setRequiredBundle(uriString);
-			}
-		}, transformation);
-	}
 
 	public Transformation getSelectedTransformation() {
 		PictogramElement pe = getSelectedPictogramElement();
@@ -466,7 +401,6 @@ public class TransformationSection extends GFPropertySection implements ITabbedP
 			
 			xtend2FuncText.setText(transformationFunction == null ? "" : transformationFunction);			
 			xtend2Text.setText(transformationUri == null ? "" : transformationUri);			
-			xtend2ReqBundleText.setText(transformation.getRequiredBundle() == null ? "" : transformation.getRequiredBundle());
 			
 			String predefinedTransformation = transformation.getPredefinedTransformation();
 			predefinedTransCombo.setText(predefinedTransformation == null ? "": predefinedTransformation);

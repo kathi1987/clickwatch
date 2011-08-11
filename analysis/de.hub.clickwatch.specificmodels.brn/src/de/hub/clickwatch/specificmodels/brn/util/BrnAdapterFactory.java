@@ -6,16 +6,14 @@
  */
 package de.hub.clickwatch.specificmodels.brn.util;
 
-import de.hub.clickwatch.model.Handler;
-
-import de.hub.clickwatch.specificmodels.brn.*;
-
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
-
 import org.eclipse.emf.ecore.EObject;
+
+import de.hub.clickwatch.model.Handler;
+import de.hub.clickwatch.specificmodels.brn.BrnPackage;
+import de.hub.clickwatch.specificmodels.brn.HandlerSubClass;
 
 /**
  * <!-- begin-user-doc -->

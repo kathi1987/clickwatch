@@ -69,6 +69,11 @@
             id="edu.hu.clickwatch.analysis.CreateConcreteModels"
             name="Create specific ClickWatch models">
       </command>
+      <command
+            defaultHandler="de.hub.clickwatch.ui.GuiceAwareExecutableExtensionFactory:de.hub.clickwatch.analysis.ui.ExecuteTransformationHandler"
+            id="de.hub.clickwatch.analysis.ExecuteTansform"
+            name="Execute transformation">
+      </command>
    </extension>
 	
 	<!-- extension for the Composition editor -->

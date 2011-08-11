@@ -6,20 +6,20 @@
  */
 package de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.impl;
 
+import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.impl.EPackageImpl;
+
 import de.hub.clickwatch.model.ClickWatchModelPackage;
-
 import de.hub.clickwatch.specificmodels.brn.BrnPackage;
-
 import de.hub.clickwatch.specificmodels.brn.device_wifi_data_power_systempower.Device_wifi_data_power_systempowerPackage;
 import de.hub.clickwatch.specificmodels.brn.device_wifi_data_power_systempower.impl.Device_wifi_data_power_systempowerPackageImpl;
 import de.hub.clickwatch.specificmodels.brn.device_wifi_link_stat_bcast_stats.Device_wifi_link_stat_bcast_statsPackage;
-
 import de.hub.clickwatch.specificmodels.brn.device_wifi_link_stat_bcast_stats.impl.Device_wifi_link_stat_bcast_statsPackageImpl;
-
 import de.hub.clickwatch.specificmodels.brn.device_wifi_wifidevice_cst_stats.Device_wifi_wifidevice_cst_statsPackage;
-
 import de.hub.clickwatch.specificmodels.brn.device_wifi_wifidevice_cst_stats.impl.Device_wifi_wifidevice_cst_statsPackageImpl;
-
 import de.hub.clickwatch.specificmodels.brn.device_wifi_wifidevice_sc_systemchannel.Device_wifi_wifidevice_sc_systemchannelPackage;
 import de.hub.clickwatch.specificmodels.brn.device_wifi_wifidevice_sc_systemchannel.impl.Device_wifi_wifidevice_sc_systemchannelPackageImpl;
 import de.hub.clickwatch.specificmodels.brn.gps_cart_coord.Gps_cart_coordPackage;
@@ -27,7 +27,6 @@ import de.hub.clickwatch.specificmodels.brn.gps_cart_coord.impl.Gps_cart_coordPa
 import de.hub.clickwatch.specificmodels.brn.gps_gps_coord.Gps_gps_coordPackage;
 import de.hub.clickwatch.specificmodels.brn.gps_gps_coord.impl.Gps_gps_coordPackageImpl;
 import de.hub.clickwatch.specificmodels.brn.impl.BrnPackageImpl;
-
 import de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Lease_tab_leasesPackage;
 import de.hub.clickwatch.specificmodels.brn.lease_tab_leases.impl.Lease_tab_leasesPackageImpl;
 import de.hub.clickwatch.specificmodels.brn.lt_links.Lt_linksPackage;
@@ -42,13 +41,6 @@ import de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.Sys_info_systemi
 import de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.Sys_info_systeminfoPackage;
 import de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.Systeminfo;
 import de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.Uptime;
-
-import org.eclipse.emf.ecore.EAttribute;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EReference;
-
-import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 /**
  * <!-- begin-user-doc -->

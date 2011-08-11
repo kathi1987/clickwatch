@@ -18,7 +18,7 @@ import de.hub.clickwatch.analysis.results.util.builder.XYBuilder;
 import de.hub.clickwatch.main.ClickWatchExternalLauncher;
 import de.hub.clickwatch.main.IClickWatchContext;
 import de.hub.clickwatch.main.IClickWatchMain;
-import de.hub.clickwatch.main.IClickWatchSourceProvider;
+import de.hub.clickwatch.main.IClickWatchModelProvider;
 import de.hub.clickwatch.main.IExperimentProvider;
 import de.hub.clickwatch.main.IProgressMonitorProvider;
 import de.hub.clickwatch.main.IResultsProvider;
@@ -48,7 +48,7 @@ public class HwBusyPlotAnalysis implements IClickWatchMain {
 		this.experiment = ctx.getAdapter(IExperimentProvider.class).getExperiment();
 		final Result result = ctx.getAdapter(IResultsProvider.class).createNewResult("HwBusyPlotAnalysis");
 
-		EObject source = ctx.getAdapter(IClickWatchSourceProvider.class).getSourceObject();		
+		EObject source = ctx.getAdapter(IClickWatchModelProvider.class).getInputObject();		
 		List<Node> nodes = null;
 		if (source != null) {
 			loop: while (source != null) {

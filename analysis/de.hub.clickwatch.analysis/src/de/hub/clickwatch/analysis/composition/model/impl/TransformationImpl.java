@@ -33,7 +33,6 @@ import de.hub.clickwatch.analysis.composition.model.TransformationKind;
  *   <li>{@link de.hub.clickwatch.analysis.composition.model.impl.TransformationImpl#getInput <em>Input</em>}</li>
  *   <li>{@link de.hub.clickwatch.analysis.composition.model.impl.TransformationImpl#getOutput <em>Output</em>}</li>
  *   <li>{@link de.hub.clickwatch.analysis.composition.model.impl.TransformationImpl#getTargetSpec <em>Target Spec</em>}</li>
- *   <li>{@link de.hub.clickwatch.analysis.composition.model.impl.TransformationImpl#getRequiredBundle <em>Required Bundle</em>}</li>
  * </ul>
  * </p>
  *
@@ -151,25 +150,6 @@ public class TransformationImpl extends EdgeImpl implements Transformation {
 	 * @ordered
 	 */
 	protected TargetSpec targetSpec = TARGET_SPEC_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getRequiredBundle() <em>Required Bundle</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getRequiredBundle()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String REQUIRED_BUNDLE_EDEFAULT = null;
-	/**
-	 * The cached value of the '{@link #getRequiredBundle() <em>Required Bundle</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getRequiredBundle()
-	 * @generated
-	 * @ordered
-	 */
-	protected String requiredBundle = REQUIRED_BUNDLE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -386,27 +366,6 @@ public class TransformationImpl extends EdgeImpl implements Transformation {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getRequiredBundle() {
-		return requiredBundle;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setRequiredBundle(String newRequiredBundle) {
-		String oldRequiredBundle = requiredBundle;
-		requiredBundle = newRequiredBundle;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CompositionPackage.TRANSFORMATION__REQUIRED_BUNDLE, oldRequiredBundle, requiredBundle));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -440,8 +399,6 @@ public class TransformationImpl extends EdgeImpl implements Transformation {
 				return getOutput();
 			case CompositionPackage.TRANSFORMATION__TARGET_SPEC:
 				return getTargetSpec();
-			case CompositionPackage.TRANSFORMATION__REQUIRED_BUNDLE:
-				return getRequiredBundle();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -474,9 +431,6 @@ public class TransformationImpl extends EdgeImpl implements Transformation {
 				return;
 			case CompositionPackage.TRANSFORMATION__TARGET_SPEC:
 				setTargetSpec((TargetSpec)newValue);
-				return;
-			case CompositionPackage.TRANSFORMATION__REQUIRED_BUNDLE:
-				setRequiredBundle((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -511,9 +465,6 @@ public class TransformationImpl extends EdgeImpl implements Transformation {
 			case CompositionPackage.TRANSFORMATION__TARGET_SPEC:
 				setTargetSpec(TARGET_SPEC_EDEFAULT);
 				return;
-			case CompositionPackage.TRANSFORMATION__REQUIRED_BUNDLE:
-				setRequiredBundle(REQUIRED_BUNDLE_EDEFAULT);
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -540,8 +491,6 @@ public class TransformationImpl extends EdgeImpl implements Transformation {
 				return output != null;
 			case CompositionPackage.TRANSFORMATION__TARGET_SPEC:
 				return targetSpec != TARGET_SPEC_EDEFAULT;
-			case CompositionPackage.TRANSFORMATION__REQUIRED_BUNDLE:
-				return REQUIRED_BUNDLE_EDEFAULT == null ? requiredBundle != null : !REQUIRED_BUNDLE_EDEFAULT.equals(requiredBundle);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -566,8 +515,6 @@ public class TransformationImpl extends EdgeImpl implements Transformation {
 		result.append(predefinedTransformation);
 		result.append(", targetSpec: ");
 		result.append(targetSpec);
-		result.append(", requiredBundle: ");
-		result.append(requiredBundle);
 		result.append(')');
 		return result.toString();
 	}

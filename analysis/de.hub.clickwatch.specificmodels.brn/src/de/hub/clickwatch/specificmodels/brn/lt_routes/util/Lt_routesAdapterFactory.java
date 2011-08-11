@@ -6,16 +6,14 @@
  */
 package de.hub.clickwatch.specificmodels.brn.lt_routes.util;
 
-import de.hub.clickwatch.model.Handler;
-
-import de.hub.clickwatch.specificmodels.brn.lt_routes.*;
-
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
-
 import org.eclipse.emf.ecore.EObject;
+
+import de.hub.clickwatch.model.Handler;
+import de.hub.clickwatch.specificmodels.brn.lt_routes.Lt_routesPackage;
+import de.hub.clickwatch.specificmodels.brn.lt_routes.Routes;
 
 /**
  * <!-- begin-user-doc -->

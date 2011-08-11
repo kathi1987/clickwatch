@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.URI;
@@ -35,6 +34,7 @@ import de.hub.clickwatch.analysis.composition.model.Transformation;
 import de.hub.clickwatch.analysis.composition.model.TransformationKind;
 import de.hub.clickwatch.analysis.composition.property.TransactionUtil;
 import de.hub.clickwatch.analysis.ui.PluginActivator;
+import de.hub.clickwatch.transformationLauncher.BundleHelper;
 import de.hub.emfxml.XmlModelRepository;
 
 public class TransformationEngine {
@@ -308,9 +308,6 @@ public class TransformationEngine {
 			return null;
 		}		
 		
-		// get the required bundle (if needed)
-		String xtend2ReqBundleUri = transformation.getRequiredBundle();
-		
 		// get the method name to be called in the xtend2 script
 		String xtend2Function = transformation.getTransformationFunction();
 		if (xtend2Function == null) {
@@ -322,28 +319,20 @@ public class TransformationEngine {
 				
 				Class<?> xtend2Class = null;
 				
-				// is there a bundle to load?
-				if(xtend2ReqBundleUri != null && xtend2ReqBundleUri != "")
-				{
-					// remove the first part if its an platform path
-					String shortBundleURI = xtend2ReqBundleUri;
-					if(shortBundleURI.startsWith("platform:/resource/")) shortBundleURI = shortBundleURI.substring(18);
-																													
-															
-					
-					// install bundle (if its already installed we just receive that reference)
-					Bundle newB = installBundleFromWorkspace(shortBundleURI);
-					
-					//installBundleFromWorkspace("/de.hu_berlin.clickwatch.examples").start();
-					
-					//Dictionary<?, ?> dict = newB.getHeaders();
-					//System.out.println(dict.get("Require-Bundle"));
-					
-					newB.start(org.osgi.framework.Bundle.START_ACTIVATION_POLICY);
-					
-					// get the class for the xtend2 execution
-					xtend2Class = newB.loadClass(xtend2ClassName);	
-				}				
+				URI u = URI.createURI(xtend2Uri);
+				String shortBundleURI = u.segment(1);
+
+				// install bundle (if its already installed we just receive that reference)
+				Bundle newB = BundleHelper.installBundleFromWorkspace(shortBundleURI);
+				
+				//Dictionary<?, ?> dict = newB.getHeaders();
+				//System.out.println(dict.get("Require-Bundle"));
+				
+				newB.start();					
+								
+				// get the class for the xtend2 execution
+				xtend2Class = newB.loadClass(xtend2ClassName);	
+			
 				
 				// if the class is not already loaded, try it with the default class loader
 				if(xtend2Class == null)
@@ -370,35 +359,6 @@ public class TransformationEngine {
 		//raiseError("could not run transformation");
 		
 		return null;
-	}
-	
-	/**
-	 * Tries to install a bundle in the workspace with the given name. If the bundle is already installed, the reference to this one is returned.
-	 * 
-	 * @param bundleIdentifier the name of the bundle that should be installed
-	 * @return the installed bundle or null if the installation process failed
-	 */
-	private Bundle installBundleFromWorkspace(String bundleIdentifier) 
-	{		
-		Bundle retBundle = null;
-		
-		try
-		{
-			// add a slash to the beginning of the identifier if needed
-			if( !(bundleIdentifier.startsWith("/") || bundleIdentifier.startsWith("\\")) )
-			{
-				bundleIdentifier = "/" + bundleIdentifier;				
-			}		
-			// try to install the bundle
-			retBundle = PluginActivator.getInstance().getBundle().getBundleContext().installBundle("reference:" + ResourcesPlugin.getWorkspace().getRoot().getLocationURI().toURL().toString() + bundleIdentifier);
-			
-			retBundle.update();			
-		}
-		catch(Exception e)
-		{
-			System.out.println(e);
-		}
-		return retBundle;
 	}
 	
 	private Object executeXtendTransformation(EObject source, EObject target) {

@@ -23,7 +23,6 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetSpec" eType="#//TargetSpec"
         defaultValueLiteral="add"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="requiredBundle" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Element">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="label" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

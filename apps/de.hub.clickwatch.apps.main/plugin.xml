@@ -39,8 +39,8 @@
             id="de.hub.clickwatch.apps.main.ProgressMonitorProvider">
       </ContextAdapter>
       <ContextAdapter
-            class="de.hub.clickwatch.main.impl.SourceProvider"
-            id="de.hub.clickwatch.apps.main.ClickWatchSourceProvider">
+            class="de.hub.clickwatch.main.impl.ClickWatchModelProvider"
+            id="de.hub.clickwatch.apps.main.ClickWatchModelProvider">
       </ContextAdapter>
    </extension>
 
