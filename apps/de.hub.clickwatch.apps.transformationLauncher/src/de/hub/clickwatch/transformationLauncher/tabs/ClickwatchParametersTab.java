@@ -1,5 +1,7 @@
 package de.hub.clickwatch.transformationLauncher.tabs;
 
+import java.io.File;
+
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.debug.core.ILaunchConfiguration;
@@ -28,7 +30,9 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorReference;
+import org.eclipse.ui.IFileEditorMapping;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.part.FileEditorInput;
 
 import de.hub.clickwatch.model.presentation.ClickWatchModelEditor;
 import de.hub.clickwatch.transformationLauncher.dialog.ClickWatchModelObjectChooser;
@@ -176,9 +180,14 @@ public class ClickwatchParametersTab extends AbstractLaunchConfigurationTab {
 		IEditorReference[] editorReferences = PlatformUI.getWorkbench()
 				.getActiveWorkbenchWindow().getActivePage()
 				.getEditorReferences();
+
+		// check every editor for selections that can be default values
 		for (IEditorReference editorRef : editorReferences) {
-			if (editorRef.getEditor(true) instanceof ClickWatchModelEditor) {
-				Object firstElement = ((IStructuredSelection) ((ClickWatchModelEditor)editorRef.getEditor(true))
+			IEditorPart editorPart = editorRef.getEditor(true);
+			
+			// a clickwatch model?
+			if (editorPart instanceof ClickWatchModelEditor) {
+				Object firstElement = ((IStructuredSelection) ((ClickWatchModelEditor)editorPart)
 						.getSelection()).getFirstElement();
 				if (firstElement instanceof EObject) {
 					URI eProxyURI = EcoreUtil.getURI((EObject) firstElement);
@@ -187,7 +196,12 @@ public class ClickwatchParametersTab extends AbstractLaunchConfigurationTab {
 							ClickwatchParametersTab.ATTR_MODEL_OBJECT,
 							eProxyURI.fragment());
 				}
+			}			
+			else if (editorPart.getEditorInput() instanceof FileEditorInput) {				
+				FileEditorInput fInput = (FileEditorInput)editorPart.getEditorInput();
+				// System.out.println( fInput.getFile());
 			}
+						
 		}
 	}
 
