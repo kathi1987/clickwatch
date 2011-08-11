@@ -27,6 +27,7 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.IEditorReference;
 import org.eclipse.ui.PlatformUI;
 
 import de.hub.clickwatch.model.presentation.ClickWatchModelEditor;
@@ -170,7 +171,24 @@ public class ClickwatchParametersTab extends AbstractLaunchConfigurationTab {
 	}
 
 	@Override
-	public void setDefaults(ILaunchConfigurationWorkingCopy configuration) {
+	public void setDefaults(ILaunchConfigurationWorkingCopy configuration) {		
+
+		IEditorReference[] editorReferences = PlatformUI.getWorkbench()
+				.getActiveWorkbenchWindow().getActivePage()
+				.getEditorReferences();
+		for (IEditorReference editorRef : editorReferences) {
+			if (editorRef.getEditor(true) instanceof ClickWatchModelEditor) {
+				Object firstElement = ((IStructuredSelection) ((ClickWatchModelEditor)editorRef.getEditor(true))
+						.getSelection()).getFirstElement();
+				if (firstElement instanceof EObject) {
+					URI eProxyURI = EcoreUtil.getURI((EObject) firstElement);
+
+					configuration.setAttribute(
+							ClickwatchParametersTab.ATTR_MODEL_OBJECT,
+							eProxyURI.fragment());
+				}
+			}
+		}
 	}
 
 	@Override
