@@ -19,5 +19,6 @@
    <module>de.hub.clickwatch.apps.performance</module>
    <module>de.hub.clickwatch.apps.recorder</module>
    <module>de.hub.clickwatch.apps.recorder.examples</module>
+   <module>de.hub.clickwatch.apps.transformationLauncher</module>
   </modules>
 </project>

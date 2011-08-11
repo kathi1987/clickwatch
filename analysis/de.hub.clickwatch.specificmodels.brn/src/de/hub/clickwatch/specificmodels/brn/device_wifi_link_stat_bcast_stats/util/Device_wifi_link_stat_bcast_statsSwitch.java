@@ -6,14 +6,16 @@
  */
 package de.hub.clickwatch.specificmodels.brn.device_wifi_link_stat_bcast_stats.util;
 
-import de.hub.clickwatch.model.Handler;
-
-import de.hub.clickwatch.specificmodels.brn.device_wifi_link_stat_bcast_stats.*;
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.util.Switch;
+
+import de.hub.clickwatch.model.Handler;
+import de.hub.clickwatch.specificmodels.brn.device_wifi_link_stat_bcast_stats.Bcast_stats;
+import de.hub.clickwatch.specificmodels.brn.device_wifi_link_stat_bcast_stats.Device_wifi_link_stat_bcast_statsPackage;
+import de.hub.clickwatch.specificmodels.brn.device_wifi_link_stat_bcast_stats.Entry;
+import de.hub.clickwatch.specificmodels.brn.device_wifi_link_stat_bcast_stats.Link;
+import de.hub.clickwatch.specificmodels.brn.device_wifi_link_stat_bcast_stats.Link_info;
 
 /**
  * <!-- begin-user-doc -->

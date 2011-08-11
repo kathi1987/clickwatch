@@ -6,15 +6,15 @@
  */
 package de.hub.clickwatch.specificmodels.brn.lt_routes.impl;
 
-import de.hub.clickwatch.specificmodels.brn.lt_routes.*;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+
+import de.hub.clickwatch.specificmodels.brn.lt_routes.Lt_routesFactory;
+import de.hub.clickwatch.specificmodels.brn.lt_routes.Lt_routesPackage;
+import de.hub.clickwatch.specificmodels.brn.lt_routes.Routes;
 
 /**
  * <!-- begin-user-doc -->

@@ -16,7 +16,6 @@ import com.google.inject.Guice;
 import com.google.inject.Injector;
 
 import de.hub.clickwatch.ClickWatchStandaloneSetup;
-import de.hub.clickwatch.main.internal.IClickWatchContextAdapter;
 import de.hub.clickwatch.recorder.database.CWRecorderStandaloneSetup;
 
 public class ClickWatchExternalLauncher {

@@ -10,13 +10,12 @@ import com.google.inject.Guice;
 import com.google.inject.Injector;
 
 import de.hub.clickwatch.ClickWatchStandaloneSetup;
-import de.hub.clickwatch.main.internal.ClickWatchModelProvider;
-import de.hub.clickwatch.main.internal.ExperimentProvider;
-import de.hub.clickwatch.main.internal.IClickWatchContextAdapter;
-import de.hub.clickwatch.main.internal.InjectorProvider;
-import de.hub.clickwatch.main.internal.InjectorProvider.DataBaseType;
-import de.hub.clickwatch.main.internal.InjectorProvider.HandlerBehaviour;
-import de.hub.clickwatch.main.internal.InjectorProvider.ValueType;
+import de.hub.clickwatch.main.impl.ClickWatchModelProvider;
+import de.hub.clickwatch.main.impl.ExperimentProvider;
+import de.hub.clickwatch.main.impl.InjectorProvider;
+import de.hub.clickwatch.main.impl.InjectorProvider.DataBaseType;
+import de.hub.clickwatch.main.impl.InjectorProvider.HandlerBehaviour;
+import de.hub.clickwatch.main.impl.InjectorProvider.ValueType;
 import de.hub.clickwatch.recorder.database.CWRecorderStandaloneSetup;
 
 /**

@@ -6,15 +6,13 @@
  */
 package de.hub.clickwatch.analysis.results.impl;
 
-import de.hub.clickwatch.analysis.results.NamedElement;
-import de.hub.clickwatch.analysis.results.ResultsPackage;
-
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+
+import de.hub.clickwatch.analysis.results.NamedElement;
+import de.hub.clickwatch.analysis.results.ResultsPackage;
 
 /**
  * <!-- begin-user-doc -->

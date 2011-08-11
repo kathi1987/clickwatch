@@ -6,19 +6,16 @@
  */
 package de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.impl;
 
-import de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.Linux;
-import de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.Sys_info_systeminfoPackage;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.eclipse.emf.ecore.util.EcoreUtil;
+
+import de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.Linux;
+import de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.Sys_info_systeminfoPackage;
 
 /**
  * <!-- begin-user-doc -->

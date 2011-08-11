@@ -61,32 +61,9 @@ public class ValueSpecItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addConstraintPropertyDescriptor(object);
 			addColumnPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Constraint feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addConstraintPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ValueSpec_constraint_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ValueSpec_constraint_feature", "_UI_ValueSpec_type"),
-				 ResultsPackage.Literals.VALUE_SPEC__CONSTRAINT,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
 	}
 
 	/**
@@ -137,7 +114,6 @@ public class ValueSpecItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(ValueSpec.class)) {
-			case ResultsPackage.VALUE_SPEC__CONSTRAINT:
 			case ResultsPackage.VALUE_SPEC__COLUMN:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;

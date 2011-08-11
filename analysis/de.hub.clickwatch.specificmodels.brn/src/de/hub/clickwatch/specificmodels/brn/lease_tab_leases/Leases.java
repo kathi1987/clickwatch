@@ -8,8 +8,6 @@ package de.hub.clickwatch.specificmodels.brn.lease_tab_leases;
 
 import de.hub.clickwatch.model.Handler;
 
-import org.eclipse.emf.common.util.EList;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Leases</b></em>'.

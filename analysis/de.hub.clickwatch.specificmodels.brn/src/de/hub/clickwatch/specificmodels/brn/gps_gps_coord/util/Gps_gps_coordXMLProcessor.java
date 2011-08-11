@@ -6,15 +6,13 @@
  */
 package de.hub.clickwatch.specificmodels.brn.gps_gps_coord.util;
 
-import de.hub.clickwatch.specificmodels.brn.gps_gps_coord.Gps_gps_coordPackage;
-
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.resource.Resource;
-
 import org.eclipse.emf.ecore.xmi.util.XMLProcessor;
+
+import de.hub.clickwatch.specificmodels.brn.gps_gps_coord.Gps_gps_coordPackage;
 
 /**
  * This class contains helper methods to serialize and deserialize XML documents

@@ -6,14 +6,13 @@
  */
 package de.hub.clickwatch.specificmodels.brn.lt_links.util;
 
-import de.hub.clickwatch.model.Handler;
-
-import de.hub.clickwatch.specificmodels.brn.lt_links.*;
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.util.Switch;
+
+import de.hub.clickwatch.model.Handler;
+import de.hub.clickwatch.specificmodels.brn.lt_links.Links;
+import de.hub.clickwatch.specificmodels.brn.lt_links.Lt_linksPackage;
 
 /**
  * <!-- begin-user-doc -->

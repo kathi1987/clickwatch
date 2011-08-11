@@ -6,14 +6,25 @@
  */
 package de.hub.clickwatch.specificmodels.brn.device_wifi_wifidevice_cst_stats.util;
 
-import de.hub.clickwatch.model.Handler;
-
-import de.hub.clickwatch.specificmodels.brn.device_wifi_wifidevice_cst_stats.*;
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.util.Switch;
+
+import de.hub.clickwatch.model.Handler;
+import de.hub.clickwatch.specificmodels.brn.device_wifi_wifidevice_cst_stats.Channelstats;
+import de.hub.clickwatch.specificmodels.brn.device_wifi_wifidevice_cst_stats.Ctl;
+import de.hub.clickwatch.specificmodels.brn.device_wifi_wifidevice_cst_stats.Device_wifi_wifidevice_cst_statsPackage;
+import de.hub.clickwatch.specificmodels.brn.device_wifi_wifidevice_cst_stats.Ext;
+import de.hub.clickwatch.specificmodels.brn.device_wifi_wifidevice_cst_stats.Mac;
+import de.hub.clickwatch.specificmodels.brn.device_wifi_wifidevice_cst_stats.Mac_duration;
+import de.hub.clickwatch.specificmodels.brn.device_wifi_wifidevice_cst_stats.Mac_percentage;
+import de.hub.clickwatch.specificmodels.brn.device_wifi_wifidevice_cst_stats.Nb;
+import de.hub.clickwatch.specificmodels.brn.device_wifi_wifidevice_cst_stats.Neighbourstats;
+import de.hub.clickwatch.specificmodels.brn.device_wifi_wifidevice_cst_stats.Perf_counter;
+import de.hub.clickwatch.specificmodels.brn.device_wifi_wifidevice_cst_stats.Phy;
+import de.hub.clickwatch.specificmodels.brn.device_wifi_wifidevice_cst_stats.Rssi_extended;
+import de.hub.clickwatch.specificmodels.brn.device_wifi_wifidevice_cst_stats.Rssi_hist;
+import de.hub.clickwatch.specificmodels.brn.device_wifi_wifidevice_cst_stats.Stats;
 
 /**
  * <!-- begin-user-doc -->

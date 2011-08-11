@@ -1,4 +1,4 @@
-package de.hub.clickwatch.main.internal;
+package de.hub.clickwatch.main.impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,10 +8,12 @@ import org.apache.commons.cli.Option;
 import org.apache.commons.cli.ParseException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 
+import de.hub.clickwatch.main.IClickWatchContextAdapter;
 import de.hub.clickwatch.main.IExperimentProvider;
 import de.hub.clickwatch.recoder.cwdatabase.DataBase;
 import de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr;
@@ -82,8 +84,19 @@ public class ExperimentProvider implements IClickWatchContextAdapter, IExperimen
 	}
 
 	@Override
-	public void initialize(IConfigurationElement configurationElement) {
-		// emptry
+	public void initialize(IConfigurationElement configurationElement, EObject selection) {
+		while(selection != null) {
+			if (selection instanceof DataBase) {
+				this.dataBase = (DataBase)selection;
+			} else if (selection instanceof ExperimentDescr) {
+				this.experiment = (ExperimentDescr)selection;
+			}
+			selection = selection.eContainer();
+		}
 	}
 
+	@Override
+	public Class<?> getAdpaterClass() {
+		return IExperimentProvider.class;
+	}
 }

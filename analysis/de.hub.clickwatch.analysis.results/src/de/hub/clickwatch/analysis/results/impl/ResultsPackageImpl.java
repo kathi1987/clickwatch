@@ -6,12 +6,20 @@
  */
 package de.hub.clickwatch.analysis.results.impl;
 
+import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EOperation;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.impl.EPackageImpl;
+
 import de.hub.clickwatch.analysis.results.Axis;
 import de.hub.clickwatch.analysis.results.Bar;
 import de.hub.clickwatch.analysis.results.BoxAndWhiskers;
 import de.hub.clickwatch.analysis.results.Category;
 import de.hub.clickwatch.analysis.results.Chart;
 import de.hub.clickwatch.analysis.results.ChartType;
+import de.hub.clickwatch.analysis.results.Constraint;
 import de.hub.clickwatch.analysis.results.DataEntry;
 import de.hub.clickwatch.analysis.results.DataSet;
 import de.hub.clickwatch.analysis.results.NamedElement;
@@ -21,14 +29,6 @@ import de.hub.clickwatch.analysis.results.ResultsFactory;
 import de.hub.clickwatch.analysis.results.ResultsPackage;
 import de.hub.clickwatch.analysis.results.Series;
 import de.hub.clickwatch.analysis.results.ValueSpec;
-
-import org.eclipse.emf.ecore.EAttribute;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EOperation;
-import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EReference;
-
-import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -134,6 +134,13 @@ public class ResultsPackageImpl extends EPackageImpl implements ResultsPackage {
 	 * @generated
 	 */
 	private EClass resultsEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass constraintEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -282,17 +289,8 @@ public class ResultsPackageImpl extends EPackageImpl implements ResultsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getValueSpec_Constraint() {
-		return (EAttribute)valueSpecEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EAttribute getValueSpec_Column() {
-		return (EAttribute)valueSpecEClass.getEStructuralFeatures().get(1);
+		return (EAttribute)valueSpecEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -426,6 +424,24 @@ public class ResultsPackageImpl extends EPackageImpl implements ResultsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getConstraint() {
+		return constraintEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getConstraint_Constraint() {
+		return (EAttribute)constraintEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public ResultsFactory getResultsFactory() {
 		return (ResultsFactory)getEFactoryInstance();
 	}
@@ -462,7 +478,6 @@ public class ResultsPackageImpl extends EPackageImpl implements ResultsPackage {
 		chartTypeEClass = createEClass(CHART_TYPE);
 
 		valueSpecEClass = createEClass(VALUE_SPEC);
-		createEAttribute(valueSpecEClass, VALUE_SPEC__CONSTRAINT);
 		createEAttribute(valueSpecEClass, VALUE_SPEC__COLUMN);
 
 		namedElementEClass = createEClass(NAMED_ELEMENT);
@@ -487,6 +502,9 @@ public class ResultsPackageImpl extends EPackageImpl implements ResultsPackage {
 
 		resultsEClass = createEClass(RESULTS);
 		createEReference(resultsEClass, RESULTS__RESULTS);
+
+		constraintEClass = createEClass(CONSTRAINT);
+		createEAttribute(constraintEClass, CONSTRAINT__CONSTRAINT);
 	}
 
 	/**
@@ -528,6 +546,7 @@ public class ResultsPackageImpl extends EPackageImpl implements ResultsPackage {
 		xyEClass.getESuperTypes().add(this.getChartType());
 		boxAndWhiskersEClass.getESuperTypes().add(this.getChartType());
 		barEClass.getESuperTypes().add(this.getChartType());
+		constraintEClass.getESuperTypes().add(this.getValueSpec());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(dataSetEClass, DataSet.class, "DataSet", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -546,7 +565,6 @@ public class ResultsPackageImpl extends EPackageImpl implements ResultsPackage {
 		initEClass(chartTypeEClass, ChartType.class, "ChartType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(valueSpecEClass, ValueSpec.class, "ValueSpec", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getValueSpec_Constraint(), ecorePackage.getEString(), "constraint", null, 0, 1, ValueSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getValueSpec_Column(), ecorePackage.getEInt(), "column", null, 0, 1, ValueSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(namedElementEClass, NamedElement.class, "NamedElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -574,6 +592,9 @@ public class ResultsPackageImpl extends EPackageImpl implements ResultsPackage {
 
 		initEClass(resultsEClass, Results.class, "Results", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getResults_Results(), this.getResult(), null, "results", null, 0, -1, Results.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(constraintEClass, Constraint.class, "Constraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getConstraint_Constraint(), ecorePackage.getEString(), "constraint", null, 0, 1, Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

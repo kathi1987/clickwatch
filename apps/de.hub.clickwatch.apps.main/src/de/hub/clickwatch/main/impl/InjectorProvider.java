@@ -1,4 +1,4 @@
-package de.hub.clickwatch.main.internal;
+package de.hub.clickwatch.main.impl;
 
 import java.text.DateFormat;
 import java.util.ArrayList;
@@ -10,6 +10,7 @@ import org.apache.commons.cli.Option;
 import org.apache.commons.cli.ParseException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
@@ -23,6 +24,7 @@ import de.hub.clickwatch.connection.adapter.IPullHandlerAdapter;
 import de.hub.clickwatch.connection.adapter.IValueAdapter;
 import de.hub.clickwatch.connection.adapter.PullHandlerAdapter;
 import de.hub.clickwatch.connection.adapter.XmlValueAdapter;
+import de.hub.clickwatch.main.IClickWatchContextAdapter;
 import de.hub.clickwatch.main.IInjectorProvider;
 import de.hub.clickwatch.recorder.CWRecorderModule;
 import de.hub.clickwatch.recorder.ClickSocketPlayer;
@@ -166,7 +168,7 @@ public class InjectorProvider implements IClickWatchContextAdapter, IInjectorPro
 	}
 
 	@Override
-	public void initialize(IConfigurationElement configurationElement) {
+	public void initialize(IConfigurationElement configurationElement, EObject selection) {
 		String debugStr = configurationElement.getAttribute("debug");
 		String compoundStr = configurationElement.getAttribute("compound");
 		String withRecordStr = configurationElement.getAttribute("with_record");
@@ -174,22 +176,22 @@ public class InjectorProvider implements IClickWatchContextAdapter, IInjectorPro
 		String xmlValuesStr = configurationElement.getAttribute("xml_values");
 		String specificModelsStr = configurationElement.getAttribute("specific_models");
 		
-		int debug = debugStr.equals("true") ? 4 : 2;
+		int debug = "true".equals(debugStr) ? 4 : 2;
 		HandlerBehaviour handlerBehaviour = HandlerBehaviour.DEFAULT;
-		if (compoundStr.equals("true")) {
+		if ("true".equals(compoundStr)) {
 			handlerBehaviour = HandlerBehaviour.COMPOUND;
-			if (withRecordStr.equals("true")) {
+			if ("true".equals(withRecordStr)) {
 				handlerBehaviour = HandlerBehaviour.COMPOUND_RECORDING;
-				if (withChangesOnlyStr.equals("true")) {
+				if ("true".equals(withChangesOnlyStr)) {
 					handlerBehaviour = HandlerBehaviour.COMPOUND_RECORDING_DIFFERENCES;	
 				}
 			}
 		}
 		ValueType valueType = ValueType.STRING;
-		if (xmlValuesStr.equals("true")) {
+		if ("true".equals(xmlValuesStr)) {
 			valueType = ValueType.XML;
 		} 
-		if (specificModelsStr.equals("true")) {
+		if ("true".equals(specificModelsStr)) {
 			valueType = ValueType.SPECIFIC;
 		}
 		
@@ -329,5 +331,10 @@ public class InjectorProvider implements IClickWatchContextAdapter, IInjectorPro
 			
 		};
 		return Guice.createInjector(clickWatchModule, cwRecorderModule);
+	}
+	
+	@Override
+	public Class<?> getAdpaterClass() {
+		return IInjectorProvider.class;
 	}
 }

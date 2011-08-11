@@ -6,12 +6,12 @@
  */
 package de.hub.clickwatch.specificmodels.brn.gps_gps_coord;
 
-import de.hub.clickwatch.model.ClickWatchModelPackage;
-
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
+
+import de.hub.clickwatch.model.ClickWatchModelPackage;
 
 /**
  * <!-- begin-user-doc -->

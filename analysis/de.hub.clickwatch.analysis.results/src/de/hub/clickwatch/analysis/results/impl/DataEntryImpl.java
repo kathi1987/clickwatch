@@ -6,16 +6,14 @@
  */
 package de.hub.clickwatch.analysis.results.impl;
 
-import de.hub.clickwatch.analysis.results.DataEntry;
-import de.hub.clickwatch.analysis.results.ResultsPackage;
-
 import java.util.Collection;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
+
+import de.hub.clickwatch.analysis.results.DataEntry;
+import de.hub.clickwatch.analysis.results.ResultsPackage;
 
 /**
  * <!-- begin-user-doc -->

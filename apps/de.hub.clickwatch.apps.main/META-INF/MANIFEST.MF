@@ -8,4 +8,5 @@ Require-Bundle: de.hub.clickwatch.core;bundle-version="2.0.0";visibility:=reexpo
  de.hub.clickwatch.recorder;bundle-version="2.0.0";visibility:=reexport,
  de.hub.clickwatch.specificmodels.brn;bundle-version="2.0.0";visibility:=reexport,
  de.hub.clickwatch.analysis.results;bundle-version="2.0.0";visibility:=reexport
-Export-Package: de.hub.clickwatch.main
+Export-Package: de.hub.clickwatch.main,
+ de.hub.clickwatch.main.impl
