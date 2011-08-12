@@ -17,10 +17,10 @@ import de.hub.clickwatch.analysis.results.Bar;
 import de.hub.clickwatch.analysis.results.BoxAndWhiskers;
 import de.hub.clickwatch.analysis.results.Category;
 import de.hub.clickwatch.analysis.results.Chart;
-import de.hub.clickwatch.analysis.results.ChartType;
-import de.hub.clickwatch.analysis.results.Constraint;
 import de.hub.clickwatch.analysis.results.DataEntry;
 import de.hub.clickwatch.analysis.results.DataSet;
+import de.hub.clickwatch.analysis.results.EqualsConstraint;
+import de.hub.clickwatch.analysis.results.Or;
 import de.hub.clickwatch.analysis.results.Result;
 import de.hub.clickwatch.analysis.results.Results;
 import de.hub.clickwatch.analysis.results.ResultsFactory;
@@ -75,7 +75,6 @@ public class ResultsFactoryImpl extends EFactoryImpl implements ResultsFactory {
 			case ResultsPackage.DATA_SET: return createDataSet();
 			case ResultsPackage.DATA_ENTRY: return createDataEntry();
 			case ResultsPackage.CHART: return createChart();
-			case ResultsPackage.CHART_TYPE: return createChartType();
 			case ResultsPackage.AXIS: return createAxis();
 			case ResultsPackage.SERIES: return createSeries();
 			case ResultsPackage.CATEGORY: return createCategory();
@@ -84,7 +83,8 @@ public class ResultsFactoryImpl extends EFactoryImpl implements ResultsFactory {
 			case ResultsPackage.BOX_AND_WHISKERS: return createBoxAndWhiskers();
 			case ResultsPackage.BAR: return createBar();
 			case ResultsPackage.RESULTS: return createResults();
-			case ResultsPackage.CONSTRAINT: return createConstraint();
+			case ResultsPackage.EQUALS_CONSTRAINT: return createEqualsConstraint();
+			case ResultsPackage.OR: return createOr();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -118,16 +118,6 @@ public class ResultsFactoryImpl extends EFactoryImpl implements ResultsFactory {
 	public Chart createChart() {
 		ChartImpl chart = new ChartImpl();
 		return chart;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ChartType createChartType() {
-		ChartTypeImpl chartType = new ChartTypeImpl();
-		return chartType;
 	}
 
 	/**
@@ -215,9 +205,19 @@ public class ResultsFactoryImpl extends EFactoryImpl implements ResultsFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Constraint createConstraint() {
-		ConstraintImpl constraint = new ConstraintImpl();
-		return constraint;
+	public EqualsConstraint createEqualsConstraint() {
+		EqualsConstraintImpl equalsConstraint = new EqualsConstraintImpl();
+		return equalsConstraint;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Or createOr() {
+		OrImpl or = new OrImpl();
+		return or;
 	}
 
 	/**

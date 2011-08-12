@@ -23,10 +23,11 @@ public class VisualizationView extends AbstractDataView {
 	private Frame frame = null;
 	
 	protected void setInput(Object input) {
-		frame.removeAll();
-		frame.setVisible(false);
 		for (IVisualization visualization: getVisualizations()) {
 			if (visualization.isEnabledForInput(input)) {
+				frame.removeAll();
+				frame.setVisible(false);
+				
 				frame.add(visualization.createVisualization(input));
 				frame.setVisible(true);
 				return;

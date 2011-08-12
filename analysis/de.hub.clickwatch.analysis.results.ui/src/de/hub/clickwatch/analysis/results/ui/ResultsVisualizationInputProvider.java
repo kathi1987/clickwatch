@@ -1,5 +1,8 @@
 package de.hub.clickwatch.analysis.results.ui;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.IWorkbenchPart;
@@ -11,12 +14,18 @@ public class ResultsVisualizationInputProvider implements IVisualizationInputPro
 
 	@Override
 	public Object getInput(IWorkbenchPart part, ISelection selection) {
-		if (selection instanceof IStructuredSelection) {
-			Object input = ((IStructuredSelection)selection).getFirstElement();
-			if (input instanceof Result) {
-				return input;
-			}
+		List<Result> result = new ArrayList<Result>();
+		if (selection instanceof IStructuredSelection) {			
+			for (Object input :((IStructuredSelection)selection).toArray()) {
+				if (input instanceof Result) {
+					result.add((Result)input);
+				}	
+			}			
 		}
-		return null;
+		if (result.isEmpty()) {
+			return null;	
+		} else {
+			return result;
+		}		
 	}
 }

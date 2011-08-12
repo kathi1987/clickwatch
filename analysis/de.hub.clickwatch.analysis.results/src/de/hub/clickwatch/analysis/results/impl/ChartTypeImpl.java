@@ -20,7 +20,7 @@ import de.hub.clickwatch.analysis.results.ResultsPackage;
  *
  * @generated
  */
-public class ChartTypeImpl extends NamedElementImpl implements ChartType {
+public abstract class ChartTypeImpl extends NamedElementImpl implements ChartType {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

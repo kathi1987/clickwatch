@@ -1,6 +1,7 @@
 package de.hub.clickwatch.analysis.results.ui;
 
 import java.awt.Component;
+import java.awt.Panel;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -16,7 +17,6 @@ import org.jfree.data.xy.XYSeriesCollection;
 
 import de.hub.clickwatch.analysis.results.Axis;
 import de.hub.clickwatch.analysis.results.Chart;
-import de.hub.clickwatch.analysis.results.Constraint;
 import de.hub.clickwatch.analysis.results.DataEntry;
 import de.hub.clickwatch.analysis.results.DataSet;
 import de.hub.clickwatch.analysis.results.Result;
@@ -27,9 +27,16 @@ import de.hub.clickwatch.analysis.visualization.IVisualization;
 
 public class ResultsChartVisualization implements IVisualization {
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public boolean isEnabledForInput(Object input) {
-		return getChart(input) != null;
+		boolean hasChart = false;
+		if (input != null) {
+			for (Result result: (List<Result>)input) {
+				hasChart |= getChart(result) != null; 
+			}
+		}
+		return hasChart;
 	}
 	
 	private Chart getChart(Object input) {
@@ -44,11 +51,10 @@ public class ResultsChartVisualization implements IVisualization {
 		}
 		return null;
 	}
-
-	@Override
-	public Component createVisualization(Object input) {
-		Chart chart = getChart(input);
-		DataSet dataSet = ((Result)input).getDataSet();
+	
+	private Component createChart(Result result) {
+		Chart chart = getChart(result);
+		DataSet dataSet = result.getDataSet();
 		
 		List<ValueSpec> columns = new ArrayList<ValueSpec>();
 		for (ValueSpec spec: chart.getValueSpecs()) {
@@ -77,7 +83,7 @@ public class ResultsChartVisualization implements IVisualization {
 					ValueSpec spec = columns.get(i);
 					if (spec == null) {
 						continue loop;
-					} else if (spec instanceof Axis) {
+					} else if (spec instanceof Axis) {						
 						if (first) {
 							x = convert(values.get(i));
 							xAxisName = spec.getName();
@@ -86,12 +92,12 @@ public class ResultsChartVisualization implements IVisualization {
 							yAxisName = spec.getName();
 							y = convert(values.get(i));
 						}
-					} else if (spec instanceof Series) {
+					} else if (spec instanceof Series) {						
 						s = values.get(i);
-					} else if (spec instanceof Constraint) {
-						double contraint = Double.parseDouble(((Constraint)spec).getConstraint());
-						skip |= contraint != (Double)values.get(i);
-					}					
+					} 
+					if (spec != null && spec.getConstraint() != null) {
+						skip |= !spec.getConstraint().evaluate(entry);
+					}
 				}
 				if (!skip) {
 					XYSeries series = seriesMap.get(s);
@@ -123,6 +129,24 @@ public class ResultsChartVisualization implements IVisualization {
 		} else {
 			return null;
 		}
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public Component createVisualization(Object input) {	
+		if (input != null) {
+			List<Result> results = (List<Result>)input;
+			if (results.size() > 1) {
+				Panel panel = new Panel();
+				for (Result result: results) {
+					panel.add(createChart(result));
+				}	
+				return panel;
+			} else {
+				return createChart(results.get(0));
+			}
+		}
+		return null;
 	}
 
 	

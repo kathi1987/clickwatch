@@ -99,8 +99,8 @@ public class DataBaseUtil {
 				if (dbHandler == null) {
 					return null;
 				} else {
-					long time = h.start - dbHandler.getTimestamp();
-					int newProgress = (int)((double)time / duration)*100;
+					long time = dbHandler.getTimestamp() - h.start;
+					int newProgress = (int)(((double)time / (double)duration)*100);
 					if (newProgress > progress) {
 						monitor.worked(newProgress - progress);
 						progress = newProgress;

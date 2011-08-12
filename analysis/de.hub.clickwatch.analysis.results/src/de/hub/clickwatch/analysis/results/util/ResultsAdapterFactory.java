@@ -128,8 +128,16 @@ public class ResultsAdapterFactory extends AdapterFactoryImpl {
 				return createResultsAdapter();
 			}
 			@Override
+			public Adapter caseEqualsConstraint(EqualsConstraint object) {
+				return createEqualsConstraintAdapter();
+			}
+			@Override
 			public Adapter caseConstraint(Constraint object) {
 				return createConstraintAdapter();
+			}
+			@Override
+			public Adapter caseOr(Or object) {
+				return createOrAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -348,6 +356,20 @@ public class ResultsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link de.hub.clickwatch.analysis.results.EqualsConstraint <em>Equals Constraint</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.hub.clickwatch.analysis.results.EqualsConstraint
+	 * @generated
+	 */
+	public Adapter createEqualsConstraintAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link de.hub.clickwatch.analysis.results.Constraint <em>Constraint</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -358,6 +380,20 @@ public class ResultsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createConstraintAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.hub.clickwatch.analysis.results.Or <em>Or</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.hub.clickwatch.analysis.results.Or
+	 * @generated
+	 */
+	public Adapter createOrAdapter() {
 		return null;
 	}
 

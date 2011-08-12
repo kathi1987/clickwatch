@@ -7,9 +7,12 @@
 package de.hub.clickwatch.analysis.results.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import de.hub.clickwatch.analysis.results.Constraint;
 import de.hub.clickwatch.analysis.results.ResultsPackage;
 import de.hub.clickwatch.analysis.results.ValueSpec;
 
@@ -21,6 +24,7 @@ import de.hub.clickwatch.analysis.results.ValueSpec;
  * The following features are implemented:
  * <ul>
  *   <li>{@link de.hub.clickwatch.analysis.results.impl.ValueSpecImpl#getColumn <em>Column</em>}</li>
+ *   <li>{@link de.hub.clickwatch.analysis.results.impl.ValueSpecImpl#getConstraint <em>Constraint</em>}</li>
  * </ul>
  * </p>
  *
@@ -46,6 +50,16 @@ public abstract class ValueSpecImpl extends NamedElementImpl implements ValueSpe
 	 * @ordered
 	 */
 	protected int column = COLUMN_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getConstraint() <em>Constraint</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getConstraint()
+	 * @generated
+	 * @ordered
+	 */
+	protected Constraint constraint;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -92,11 +106,70 @@ public abstract class ValueSpecImpl extends NamedElementImpl implements ValueSpe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Constraint getConstraint() {
+		return constraint;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetConstraint(Constraint newConstraint, NotificationChain msgs) {
+		Constraint oldConstraint = constraint;
+		constraint = newConstraint;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ResultsPackage.VALUE_SPEC__CONSTRAINT, oldConstraint, newConstraint);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setConstraint(Constraint newConstraint) {
+		if (newConstraint != constraint) {
+			NotificationChain msgs = null;
+			if (constraint != null)
+				msgs = ((InternalEObject)constraint).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ResultsPackage.VALUE_SPEC__CONSTRAINT, null, msgs);
+			if (newConstraint != null)
+				msgs = ((InternalEObject)newConstraint).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ResultsPackage.VALUE_SPEC__CONSTRAINT, null, msgs);
+			msgs = basicSetConstraint(newConstraint, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ResultsPackage.VALUE_SPEC__CONSTRAINT, newConstraint, newConstraint));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case ResultsPackage.VALUE_SPEC__CONSTRAINT:
+				return basicSetConstraint(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case ResultsPackage.VALUE_SPEC__COLUMN:
 				return getColumn();
+			case ResultsPackage.VALUE_SPEC__CONSTRAINT:
+				return getConstraint();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -111,6 +184,9 @@ public abstract class ValueSpecImpl extends NamedElementImpl implements ValueSpe
 		switch (featureID) {
 			case ResultsPackage.VALUE_SPEC__COLUMN:
 				setColumn((Integer)newValue);
+				return;
+			case ResultsPackage.VALUE_SPEC__CONSTRAINT:
+				setConstraint((Constraint)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -127,6 +203,9 @@ public abstract class ValueSpecImpl extends NamedElementImpl implements ValueSpe
 			case ResultsPackage.VALUE_SPEC__COLUMN:
 				setColumn(COLUMN_EDEFAULT);
 				return;
+			case ResultsPackage.VALUE_SPEC__CONSTRAINT:
+				setConstraint((Constraint)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -141,6 +220,8 @@ public abstract class ValueSpecImpl extends NamedElementImpl implements ValueSpe
 		switch (featureID) {
 			case ResultsPackage.VALUE_SPEC__COLUMN:
 				return column != COLUMN_EDEFAULT;
+			case ResultsPackage.VALUE_SPEC__CONSTRAINT:
+				return constraint != null;
 		}
 		return super.eIsSet(featureID);
 	}

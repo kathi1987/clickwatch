@@ -171,11 +171,23 @@ public class ResultsSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case ResultsPackage.EQUALS_CONSTRAINT: {
+				EqualsConstraint equalsConstraint = (EqualsConstraint)theEObject;
+				T result = caseEqualsConstraint(equalsConstraint);
+				if (result == null) result = caseConstraint(equalsConstraint);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case ResultsPackage.CONSTRAINT: {
 				Constraint constraint = (Constraint)theEObject;
 				T result = caseConstraint(constraint);
-				if (result == null) result = caseValueSpec(constraint);
-				if (result == null) result = caseNamedElement(constraint);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ResultsPackage.OR: {
+				Or or = (Or)theEObject;
+				T result = caseOr(or);
+				if (result == null) result = caseConstraint(or);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -394,6 +406,21 @@ public class ResultsSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Equals Constraint</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Equals Constraint</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseEqualsConstraint(EqualsConstraint object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Constraint</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -405,6 +432,21 @@ public class ResultsSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseConstraint(Constraint object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Or</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Or</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseOr(Or object) {
 		return null;
 	}
 

@@ -145,29 +145,6 @@ public class ResultsItemProviderAdapterFactory extends ResultsAdapterFactory imp
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link de.hub.clickwatch.analysis.results.ChartType} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ChartTypeItemProvider chartTypeItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link de.hub.clickwatch.analysis.results.ChartType}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createChartTypeAdapter() {
-		if (chartTypeItemProvider == null) {
-			chartTypeItemProvider = new ChartTypeItemProvider(this);
-		}
-
-		return chartTypeItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link de.hub.clickwatch.analysis.results.Axis} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -352,26 +329,49 @@ public class ResultsItemProviderAdapterFactory extends ResultsAdapterFactory imp
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link de.hub.clickwatch.analysis.results.Constraint} instances.
+	 * This keeps track of the one adapter used for all {@link de.hub.clickwatch.analysis.results.EqualsConstraint} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ConstraintItemProvider constraintItemProvider;
+	protected EqualsConstraintItemProvider equalsConstraintItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link de.hub.clickwatch.analysis.results.Constraint}.
+	 * This creates an adapter for a {@link de.hub.clickwatch.analysis.results.EqualsConstraint}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createConstraintAdapter() {
-		if (constraintItemProvider == null) {
-			constraintItemProvider = new ConstraintItemProvider(this);
+	public Adapter createEqualsConstraintAdapter() {
+		if (equalsConstraintItemProvider == null) {
+			equalsConstraintItemProvider = new EqualsConstraintItemProvider(this);
 		}
 
-		return constraintItemProvider;
+		return equalsConstraintItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.hub.clickwatch.analysis.results.Or} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected OrItemProvider orItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.hub.clickwatch.analysis.results.Or}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createOrAdapter() {
+		if (orItemProvider == null) {
+			orItemProvider = new OrItemProvider(this);
+		}
+
+		return orItemProvider;
 	}
 
 	/**
@@ -476,7 +476,6 @@ public class ResultsItemProviderAdapterFactory extends ResultsAdapterFactory imp
 		if (dataSetItemProvider != null) dataSetItemProvider.dispose();
 		if (dataEntryItemProvider != null) dataEntryItemProvider.dispose();
 		if (chartItemProvider != null) chartItemProvider.dispose();
-		if (chartTypeItemProvider != null) chartTypeItemProvider.dispose();
 		if (axisItemProvider != null) axisItemProvider.dispose();
 		if (seriesItemProvider != null) seriesItemProvider.dispose();
 		if (categoryItemProvider != null) categoryItemProvider.dispose();
@@ -485,7 +484,8 @@ public class ResultsItemProviderAdapterFactory extends ResultsAdapterFactory imp
 		if (boxAndWhiskersItemProvider != null) boxAndWhiskersItemProvider.dispose();
 		if (barItemProvider != null) barItemProvider.dispose();
 		if (resultsItemProvider != null) resultsItemProvider.dispose();
-		if (constraintItemProvider != null) constraintItemProvider.dispose();
+		if (equalsConstraintItemProvider != null) equalsConstraintItemProvider.dispose();
+		if (orItemProvider != null) orItemProvider.dispose();
 	}
 
 }
