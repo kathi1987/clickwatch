@@ -361,7 +361,7 @@ public class ResultsPackageImpl extends EPackageImpl implements ResultsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getResult_Diagrams() {
+	public EReference getResult_Charts() {
 		return (EReference)resultEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -491,7 +491,7 @@ public class ResultsPackageImpl extends EPackageImpl implements ResultsPackage {
 
 		resultEClass = createEClass(RESULT);
 		createEAttribute(resultEClass, RESULT__TIMESTAMP);
-		createEReference(resultEClass, RESULT__DIAGRAMS);
+		createEReference(resultEClass, RESULT__CHARTS);
 		createEReference(resultEClass, RESULT__DATA_SET);
 
 		xyEClass = createEClass(XY);
@@ -553,10 +553,10 @@ public class ResultsPackageImpl extends EPackageImpl implements ResultsPackage {
 		initEReference(getDataSet_Entries(), this.getDataEntry(), null, "entries", null, 0, -1, DataSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		EOperation op = addEOperation(dataSetEClass, null, "addEntry", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEDouble(), "values", 0, -1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEJavaObject(), "values", 0, -1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(dataEntryEClass, DataEntry.class, "DataEntry", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getDataEntry_Values(), ecorePackage.getEDouble(), "values", null, 0, -1, DataEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDataEntry_Values(), ecorePackage.getEJavaObject(), "values", null, 0, -1, DataEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(chartEClass, Chart.class, "Chart", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getChart_Type(), this.getChartType(), null, "type", null, 0, 1, Chart.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -578,7 +578,7 @@ public class ResultsPackageImpl extends EPackageImpl implements ResultsPackage {
 
 		initEClass(resultEClass, Result.class, "Result", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getResult_Timestamp(), ecorePackage.getEDate(), "timestamp", null, 0, 1, Result.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getResult_Diagrams(), this.getChart(), null, "diagrams", null, 0, -1, Result.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getResult_Charts(), this.getChart(), null, "charts", null, 0, -1, Result.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getResult_DataSet(), this.getDataSet(), null, "dataSet", null, 0, 1, Result.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		op = addEOperation(resultEClass, null, "exportCSV", 0, 1, IS_UNIQUE, IS_ORDERED);

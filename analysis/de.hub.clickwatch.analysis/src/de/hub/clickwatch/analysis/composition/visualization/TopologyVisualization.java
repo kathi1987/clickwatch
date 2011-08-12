@@ -5,9 +5,14 @@ import java.awt.Dimension;
 
 import org.eclipse.emf.ecore.resource.Resource;
 
+import de.hub.clickwatch.analysis.composition.model.DataNode;
+import de.hub.clickwatch.analysis.composition.model.ModelNode;
+import de.hub.clickwatch.analysis.composition.model.ModelUtil;
+import de.hub.clickwatch.analysis.composition.model.Visualization;
 import de.hub.clickwatch.analysis.models.topology.Link;
 import de.hub.clickwatch.analysis.models.topology.Node;
 import de.hub.clickwatch.analysis.models.topology.Topology;
+import de.hub.clickwatch.analysis.visualization.IVisualization;
 import edu.uci.ics.jung.algorithms.layout.CircleLayout;
 import edu.uci.ics.jung.algorithms.layout.Layout;
 import edu.uci.ics.jung.graph.Graph;
@@ -16,8 +21,24 @@ import edu.uci.ics.jung.visualization.BasicVisualizationServer;
 
 public class TopologyVisualization implements IVisualization {
 
+	public static final String VisualizationName = "Topology";
+	
+	@Override
+	public boolean isEnabledForInput(Object input) {
+		if (input instanceof ModelNode) {
+			DataNode node = (DataNode)input;
+			Visualization visualization = node.getVisualization();
+			if (visualization != null && visualization.getKind() != null && !visualization.getKind().equals("")) {
+				return visualization.getKind().equals(VisualizationName);
+			}
+		}
+		return false;
+	}
+
 	@Override
 	public Component createVisualization(Object input) {
+		input = ModelUtil.getModelFromModelNode((ModelNode)input);
+		
 		if (input instanceof Resource) {
 			input = ((Resource)input).getContents().get(0);
 		} 

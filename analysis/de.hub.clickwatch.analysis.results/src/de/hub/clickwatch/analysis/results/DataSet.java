@@ -48,11 +48,11 @@ public interface DataSet extends EObject {
 	 * @model valuesMany="true"
 	 * @generated
 	 */
-	void addEntry(EList<Double> values);
+	void addEntry(EList<Object> values);
 	
 	/**
 	 * @generated NOT
 	 */
-	void add(double... values);
+	void add(Object... values);
 
 } // DataSet

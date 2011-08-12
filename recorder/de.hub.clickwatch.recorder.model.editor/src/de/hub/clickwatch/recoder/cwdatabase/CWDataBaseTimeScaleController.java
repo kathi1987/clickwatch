@@ -193,7 +193,7 @@ public class CWDataBaseTimeScaleController {
 		getMergeConfiguration().getNewHandlerMap().clear();
 		
 		if (selectedHandler != null) {
-			Handler dbHandler = dataBaseUtil.getHandler(currentExperiment, selectedNode.getINetAddress(), selectedHandler.getQualifiedName(), time);
+			Handler dbHandler = dataBaseUtil.getHandler(DataBaseUtil.createHandle(currentExperiment, selectedNode, selectedHandler, time));
 			if (dbHandler == null) {
 				dbHandler = ClickWatchModelFactory.eINSTANCE.createHandler();
 				dbHandler.setName(selectedHandler.getName());
@@ -212,7 +212,7 @@ public class CWDataBaseTimeScaleController {
 			}
 			for (Node currentNode: nodes) {						
 				// get node from data base
-				Node nodeTimeCopy = dataBaseUtil.getNode(currentExperiment, currentNode.getINetAddress(), time);
+				Node nodeTimeCopy = dataBaseUtil.getNode(DataBaseUtil.createHandle(currentExperiment, currentNode.getINetAddress(), time));
 				
 				// merge node into gui
 				merger.merge(currentNode, nodeTimeCopy);

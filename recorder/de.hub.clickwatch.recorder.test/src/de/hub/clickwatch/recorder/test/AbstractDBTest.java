@@ -155,7 +155,7 @@ public class AbstractDBTest extends AbstractAdapterTest {
 	}
 	
 	private void assertNodeAtTime(ExperimentDescr experiment, String nodeId, long time, boolean emptyHandlerAllowed) {
-		Node node = dbUtil.getNode(experiment, nodeId, time);
+		Node node = dbUtil.getNode(DataBaseUtil.createHandle(experiment, nodeId, time));
 		Assert.assertNotNull(node);
 		for (String handlerName: handlerNamesOfNode(node)) {
 			assertHandler(node, handlerName, time, emptyHandlerAllowed);

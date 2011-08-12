@@ -270,7 +270,7 @@ public class ExperimentDescrItemProvider
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
@@ -279,7 +279,7 @@ public class ExperimentDescrItemProvider
 			childrenFeatures.add(CWDataBasePackage.Literals.EXPERIMENT_DESCR__NETWORK);
 			childrenFeatures.add(CWDataBasePackage.Literals.EXPERIMENT_DESCR__NETWORK_TIME_COPY);
 			childrenFeatures.add(CWDataBasePackage.Literals.EXPERIMENT_DESCR__STATISTICS);
-			childrenFeatures.add(CWDataBasePackage.Literals.EXPERIMENT_DESCR__META_DATA);
+//			childrenFeatures.add(CWDataBasePackage.Literals.EXPERIMENT_DESCR__META_DATA);
 		}
 		return childrenFeatures;
 	}

@@ -13,11 +13,11 @@ public class ResultBuilder implements de.hub.clickwatch.analysis.results.util.bu
   private de.hub.clickwatch.analysis.results.util.builder.IResultsBuilder<? extends de.hub.clickwatch.analysis.results.DataSet> m_featureDataSetBuilder;
   private java.lang.String m_name;
   private java.util.Date m_timestamp;
-  private java.util.Collection<de.hub.clickwatch.analysis.results.Chart> m_diagrams = new java.util.LinkedList<de.hub.clickwatch.analysis.results.Chart>();
-  private java.util.Collection<de.hub.clickwatch.analysis.results.util.builder.IResultsBuilder<? extends de.hub.clickwatch.analysis.results.Chart>> m_featureDiagramsBuilder = new java.util.LinkedList<de.hub.clickwatch.analysis.results.util.builder.IResultsBuilder<? extends de.hub.clickwatch.analysis.results.Chart>>();
+  private java.util.Collection<de.hub.clickwatch.analysis.results.Chart> m_charts = new java.util.LinkedList<de.hub.clickwatch.analysis.results.Chart>();
+  private java.util.Collection<de.hub.clickwatch.analysis.results.util.builder.IResultsBuilder<? extends de.hub.clickwatch.analysis.results.Chart>> m_featureChartsBuilder = new java.util.LinkedList<de.hub.clickwatch.analysis.results.util.builder.IResultsBuilder<? extends de.hub.clickwatch.analysis.results.Chart>>();
   // helper attributes
+  private boolean m_featureChartsSet = false;
   private boolean m_featureDataSetSet = false;
-  private boolean m_featureDiagramsSet = false;
   private boolean m_featureNameSet = false;
   private boolean m_featureTimestampSet = false;
 
@@ -41,12 +41,12 @@ public class ResultBuilder implements de.hub.clickwatch.analysis.results.util.bu
    */
   public ResultBuilder but() {
     ResultBuilder _builder = newResultBuilder();
+    _builder.m_featureChartsSet = m_featureChartsSet;
+    _builder.m_charts = m_charts;
+    _builder.m_featureChartsBuilder = m_featureChartsBuilder;
     _builder.m_featureDataSetSet = m_featureDataSetSet;
     _builder.m_dataSet = m_dataSet;
     _builder.m_featureDataSetBuilder = m_featureDataSetBuilder;
-    _builder.m_featureDiagramsSet = m_featureDiagramsSet;
-    _builder.m_diagrams = m_diagrams;
-    _builder.m_featureDiagramsBuilder = m_featureDiagramsBuilder;
     _builder.m_featureNameSet = m_featureNameSet;
     _builder.m_name = m_name;
     _builder.m_featureTimestampSet = m_featureTimestampSet;
@@ -73,12 +73,12 @@ public class ResultBuilder implements de.hub.clickwatch.analysis.results.util.bu
     if (m_featureTimestampSet) {
       _newInstance.setTimestamp(m_timestamp);
     }
-    if (m_featureDiagramsSet) {
-      _newInstance.getDiagrams().addAll(m_diagrams);
+    if (m_featureChartsSet) {
+      _newInstance.getCharts().addAll(m_charts);
     } else {
-      if (!m_featureDiagramsBuilder.isEmpty()) {
-        for (de.hub.clickwatch.analysis.results.util.builder.IResultsBuilder<? extends de.hub.clickwatch.analysis.results.Chart> builder : m_featureDiagramsBuilder) {
-          _newInstance.getDiagrams().add(builder.build());
+      if (!m_featureChartsBuilder.isEmpty()) {
+        for (de.hub.clickwatch.analysis.results.util.builder.IResultsBuilder<? extends de.hub.clickwatch.analysis.results.Chart> builder : m_featureChartsBuilder) {
+          _newInstance.getCharts().add(builder.build());
         }
       }
     }
@@ -108,20 +108,20 @@ public class ResultBuilder implements de.hub.clickwatch.analysis.results.util.bu
     return this;
   }
 
-  public ResultBuilder withDiagrams(de.hub.clickwatch.analysis.results.Chart p_diagrams) {
-    m_diagrams.add(p_diagrams);
-    m_featureDiagramsSet = true;
+  public ResultBuilder withCharts(de.hub.clickwatch.analysis.results.Chart p_charts) {
+    m_charts.add(p_charts);
+    m_featureChartsSet = true;
     return this;
   }
 
-  public ResultBuilder withDiagrams(java.util.Collection<? extends de.hub.clickwatch.analysis.results.Chart> p_diagrams) {
-    m_diagrams.addAll(p_diagrams);
-    m_featureDiagramsSet = true;
+  public ResultBuilder withCharts(java.util.Collection<? extends de.hub.clickwatch.analysis.results.Chart> p_charts) {
+    m_charts.addAll(p_charts);
+    m_featureChartsSet = true;
     return this;
   }
 
-  public ResultBuilder withDiagrams(de.hub.clickwatch.analysis.results.util.builder.IResultsBuilder<? extends de.hub.clickwatch.analysis.results.Chart> p_chartBuilder) {
-    m_featureDiagramsBuilder.add(p_chartBuilder);
+  public ResultBuilder withCharts(de.hub.clickwatch.analysis.results.util.builder.IResultsBuilder<? extends de.hub.clickwatch.analysis.results.Chart> p_chartBuilder) {
+    m_featureChartsBuilder.add(p_chartBuilder);
     return this;
   }
 }

@@ -77,10 +77,8 @@ public class DataBaseUtilTest extends AbstractDBTest {
 		 for (int i = 0; i < runs; i++) {
 			 long time = exprDescr.getStart() + (i* (duration/runs));
 			 System.out.println("run: " + i);
-			 util.getNode(exprDescr,
-			 exprDescr.getNetwork().getNodes().get(0).getINetAddress(), time);
+			 util.getNode(DataBaseUtil.createHandle(exprDescr, exprDescr.getNetwork().getNodes().get(0), time));
 		 }
-
 	}
 
 	@Override

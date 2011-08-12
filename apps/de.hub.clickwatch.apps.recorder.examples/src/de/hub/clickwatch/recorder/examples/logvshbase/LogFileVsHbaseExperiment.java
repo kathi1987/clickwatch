@@ -101,7 +101,7 @@ public class LogFileVsHbaseExperiment implements IClickWatchMain {
 			long logSize = 0;
 			
 			// step 1 create a subset log file from existing log file
-			Handler handler = dbUtil.getHandler(experiment, "192.168.3.118", "device_wifi/link_stat/bcast_stats", experiment.getStart() + duration);
+			Handler handler = dbUtil.getHandler(DataBaseUtil.createHandle(experiment, "192.168.3.118", "device_wifi/link_stat/bcast_stats", experiment.getStart() + duration, 0));
 			String timestampStr = timeStampLabelProvider.getText(handler.getTimestamp());
 			try {
 				File targetLogFile = new File("out.log");
@@ -168,8 +168,8 @@ public class LogFileVsHbaseExperiment implements IClickWatchMain {
 		}
 		for (Node nodeConfig: experiment.getNetwork().getNodes()) {						
 			String nodeId = nodeConfig.getINetAddress();
-			Iterator<Handler> iterator = dbUtil.getHandlerIterator(experiment, nodeId, "device_wifi/wifidevice/cst/stats", 
-					experiment.getStart(), experiment.getStart() + durationInNanos);
+			Iterator<Handler> iterator = dbUtil.getHandlerIterator(DataBaseUtil.createHandle(experiment, nodeId, "device_wifi/wifidevice/cst/stats", 
+					experiment.getStart(), experiment.getStart() + durationInNanos));
 			
 			while(iterator.hasNext()) {
 				Handler handler = iterator.next();
@@ -215,9 +215,7 @@ public class LogFileVsHbaseExperiment implements IClickWatchMain {
 		logger.log(ILogger.INFO, "Creating database scanners for all handers for all nodes", null);
 		for (Node node: experiment.getMetaData()) {
 			for(Handler handler: node.getAllHandlers()) {
-				CurrentIterator iterator = new CurrentIterator(dbUtil.getHandlerIterator(experiment, 
-						node.getINetAddress(), handler.getQualifiedName(), 
-						experiment.getStart(), experiment.getEnd()));
+				CurrentIterator iterator = new CurrentIterator(dbUtil.getHandlerIterator(DataBaseUtil.createHandle(experiment, node, handler)));
 				insert(iterator, handlers);
 				nodeIds.put(iterator, node.getINetAddress());
 			}

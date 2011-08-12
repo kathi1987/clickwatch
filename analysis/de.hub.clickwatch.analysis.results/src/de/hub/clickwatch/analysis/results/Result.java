@@ -19,7 +19,7 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * <ul>
  *   <li>{@link de.hub.clickwatch.analysis.results.Result#getTimestamp <em>Timestamp</em>}</li>
- *   <li>{@link de.hub.clickwatch.analysis.results.Result#getDiagrams <em>Diagrams</em>}</li>
+ *   <li>{@link de.hub.clickwatch.analysis.results.Result#getCharts <em>Charts</em>}</li>
  *   <li>{@link de.hub.clickwatch.analysis.results.Result#getDataSet <em>Data Set</em>}</li>
  * </ul>
  * </p>
@@ -56,20 +56,20 @@ public interface Result extends NamedElement {
 	void setTimestamp(Date value);
 
 	/**
-	 * Returns the value of the '<em><b>Diagrams</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Charts</b></em>' containment reference list.
 	 * The list contents are of type {@link de.hub.clickwatch.analysis.results.Chart}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Diagrams</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Charts</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Diagrams</em>' containment reference list.
-	 * @see de.hub.clickwatch.analysis.results.ResultsPackage#getResult_Diagrams()
+	 * @return the value of the '<em>Charts</em>' containment reference list.
+	 * @see de.hub.clickwatch.analysis.results.ResultsPackage#getResult_Charts()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<Chart> getDiagrams();
+	EList<Chart> getCharts();
 
 	/**
 	 * Returns the value of the '<em><b>Data Set</b></em>' containment reference.

@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 
 import de.hub.clickwatch.main.IClickWatchContextAdapter;
 import de.hub.clickwatch.main.IExperimentProvider;
+import de.hub.clickwatch.model.Node;
 import de.hub.clickwatch.recoder.cwdatabase.DataBase;
 import de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr;
 import de.hub.emfxml.XmlModelRepository;
@@ -26,6 +27,7 @@ public class ExperimentProvider implements IClickWatchContextAdapter, IExperimen
 	
 	private DataBase dataBase = null;
 	private ExperimentDescr experiment = null;
+	private Node[] selectedNodes = null;
 
 	@Override
 	public DataBase getDataBase() {
@@ -90,6 +92,8 @@ public class ExperimentProvider implements IClickWatchContextAdapter, IExperimen
 				this.dataBase = (DataBase)selection;
 			} else if (selection instanceof ExperimentDescr) {
 				this.experiment = (ExperimentDescr)selection;
+			} else if (selection instanceof Node) {
+				this.selectedNodes = new Node[]{(Node)selection};
 			}
 			selection = selection.eContainer();
 		}
@@ -99,4 +103,13 @@ public class ExperimentProvider implements IClickWatchContextAdapter, IExperimen
 	public Class<?> getAdpaterClass() {
 		return IExperimentProvider.class;
 	}
+
+	public Node[] getSelectedNodes() {
+		if (selectedNodes == null) {
+			return experiment.getNetwork().getNodes().toArray(new Node[]{});
+		}
+		return selectedNodes;
+	}
+	
+	
 }

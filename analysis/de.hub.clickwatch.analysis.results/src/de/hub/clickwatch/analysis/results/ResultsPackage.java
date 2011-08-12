@@ -403,13 +403,13 @@ public interface ResultsPackage extends EPackage {
 	int RESULT__TIMESTAMP = NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Diagrams</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Charts</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RESULT__DIAGRAMS = NAMED_ELEMENT_FEATURE_COUNT + 1;
+	int RESULT__CHARTS = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Data Set</b></em>' containment reference.
@@ -767,15 +767,15 @@ public interface ResultsPackage extends EPackage {
 	EAttribute getResult_Timestamp();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link de.hub.clickwatch.analysis.results.Result#getDiagrams <em>Diagrams</em>}'.
+	 * Returns the meta object for the containment reference list '{@link de.hub.clickwatch.analysis.results.Result#getCharts <em>Charts</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Diagrams</em>'.
-	 * @see de.hub.clickwatch.analysis.results.Result#getDiagrams()
+	 * @return the meta object for the containment reference list '<em>Charts</em>'.
+	 * @see de.hub.clickwatch.analysis.results.Result#getCharts()
 	 * @see #getResult()
 	 * @generated
 	 */
-	EReference getResult_Diagrams();
+	EReference getResult_Charts();
 
 	/**
 	 * Returns the meta object for the containment reference '{@link de.hub.clickwatch.analysis.results.Result#getDataSet <em>Data Set</em>}'.
@@ -1039,12 +1039,12 @@ public interface ResultsPackage extends EPackage {
 		EAttribute RESULT__TIMESTAMP = eINSTANCE.getResult_Timestamp();
 
 		/**
-		 * The meta object literal for the '<em><b>Diagrams</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Charts</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference RESULT__DIAGRAMS = eINSTANCE.getResult_Diagrams();
+		EReference RESULT__CHARTS = eINSTANCE.getResult_Charts();
 
 		/**
 		 * The meta object literal for the '<em><b>Data Set</b></em>' containment reference feature.

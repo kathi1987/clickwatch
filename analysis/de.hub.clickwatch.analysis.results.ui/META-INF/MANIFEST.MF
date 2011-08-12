@@ -10,8 +10,18 @@ Require-Bundle: org.eclipse.ui;bundle-version="3.7.0",
  org.eclipse.emf.edit.ui;bundle-version="2.7.0",
  org.eclipse.ui.ide;visibility:=reexport,
  de.hub.clickwatch.core;bundle-version="2.0.0",
- de.hub.clickwatch.apps.main;bundle-version="2.0.0"
+ de.hub.clickwatch.apps.main;bundle-version="2.0.0",
+ de.hub.clickwatch.analysis.visualization;bundle-version="2.0.0",
+ de.hub.clickwatch.model.edit;bundle-version="2.0.0",
+ de.hub.clickwatch.recorder.ui;bundle-version="2.0.0",
+ de.hub.clickwatch.ui;bundle-version="2.0.0",
+ org.eclipse.core.expressions;bundle-version="3.4.300"
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: de.hub.clickwatch.analysis.results.ui.ResultsUIPlugin
-Bundle-ClassPath: .
+Bundle-ClassPath: .,
+ lib/gnujaxp.jar,
+ lib/iText-2.1.5.jar,
+ lib/jcommon-1.0.16.jar,
+ lib/jfreechart-1.0.13.jar
 Export-Package: de.hub.clickwatch.analysis.results.ui
+Eclipse-RegisterBuddy: de.hub.clickwatch.ui

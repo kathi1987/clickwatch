@@ -195,7 +195,7 @@ public class JumpToTime extends AbstractAction<ExperimentDescr> {
 					changes.clear();
 					getMergeConfiguration().getNewHandlerMap().clear();
 					for (Node currentNode: networkTimeCopy.getNodes()) {
-						Node nodeTimeCopy = dataBaseUtil.getNode(experimimentDescr, currentNode.getINetAddress(), time);
+						Node nodeTimeCopy = dataBaseUtil.getNode(DataBaseUtil.createHandle(experimimentDescr, currentNode, time));
 						
 						merger.merge(currentNode, nodeTimeCopy);
 						EcoreUtil.delete(nodeTimeCopy);						

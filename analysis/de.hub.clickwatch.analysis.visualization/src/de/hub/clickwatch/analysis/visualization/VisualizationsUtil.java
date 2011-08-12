@@ -1,4 +1,4 @@
-package de.hub.clickwatch.analysis.composition.visualization;
+package de.hub.clickwatch.analysis.visualization;
 
 import java.util.HashMap;
 import java.util.Map;

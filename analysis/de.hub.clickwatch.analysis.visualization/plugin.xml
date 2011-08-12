@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+<extension
+       point="org.eclipse.ui.views">
+    <view
+          category="edu.hu.clickwatch.viewCategory"
+          class="de.hub.clickwatch.analysis.visualization.ModelView"
+          icon="icons/Analysis.gif"
+          id="de.hub.clickwatch.analysis.ModelView"
+          name="Model View">
+    </view>
+    <view
+          category="edu.hu.clickwatch.viewCategory"
+          class="de.hub.clickwatch.analysis.visualization.VisualizationView"
+          icon="icons/Analysis.gif"
+          id="de.hub.clickwatch.analysis.VisualizationView"
+          name="Visualization View">
+    </view>
+ </extension>
+ 
+ <extension-point id="de.hub.clickwatch.analysis.Visualization" name="Visualization" schema="schema/de.hub.clickwatch.analysis.Visualization.exsd"/>
+ <extension-point id="de.hub.clickwatch.analysis.VisualizationInputProvider" name="ClickWatch Visualization Input Provider" schema="schema/de.hub.clickwatch.analysis.VisualizationInputProvider.exsd"/>
+</plugin>
