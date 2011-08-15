@@ -6,6 +6,7 @@
  */
 package de.hub.clickwatch.specificmodels.brn.lt_routes.impl;
 
+import de.hub.clickwatch.specificmodels.brn.lt_routes.*;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -60,7 +61,10 @@ public class Lt_routesFactoryImpl extends EFactoryImpl implements Lt_routesFacto
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
+			case Lt_routesPackage.LINK: return createLink();
+			case Lt_routesPackage.ROUTE: return createRoute();
 			case Lt_routesPackage.ROUTES: return createRoutes();
+			case Lt_routesPackage.ROUTETABLE: return createRoutetable();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -71,9 +75,39 @@ public class Lt_routesFactoryImpl extends EFactoryImpl implements Lt_routesFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Link createLink() {
+		LinkImpl link = new LinkImpl();
+		return link;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Route createRoute() {
+		RouteImpl route = new RouteImpl();
+		return route;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public Routes createRoutes() {
 		RoutesImpl routes = new RoutesImpl();
 		return routes;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Routetable createRoutetable() {
+		RoutetableImpl routetable = new RoutetableImpl();
+		return routetable;
 	}
 
 	/**

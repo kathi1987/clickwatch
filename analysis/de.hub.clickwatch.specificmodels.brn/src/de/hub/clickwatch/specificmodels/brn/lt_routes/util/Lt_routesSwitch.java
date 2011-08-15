@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
 
 import de.hub.clickwatch.model.Handler;
+import de.hub.clickwatch.specificmodels.brn.lt_routes.*;
 import de.hub.clickwatch.specificmodels.brn.lt_routes.Lt_routesPackage;
 import de.hub.clickwatch.specificmodels.brn.lt_routes.Routes;
 
@@ -71,6 +72,18 @@ public class Lt_routesSwitch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
+			case Lt_routesPackage.LINK: {
+				Link link = (Link)theEObject;
+				T result = caseLink(link);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case Lt_routesPackage.ROUTE: {
+				Route route = (Route)theEObject;
+				T result = caseRoute(route);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case Lt_routesPackage.ROUTES: {
 				Routes routes = (Routes)theEObject;
 				T result = caseRoutes(routes);
@@ -78,8 +91,44 @@ public class Lt_routesSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case Lt_routesPackage.ROUTETABLE: {
+				Routetable routetable = (Routetable)theEObject;
+				T result = caseRoutetable(routetable);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Link</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Link</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLink(Link object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Route</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Route</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseRoute(Route object) {
+		return null;
 	}
 
 	/**
@@ -94,6 +143,21 @@ public class Lt_routesSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseRoutes(Routes object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Routetable</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Routetable</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseRoutetable(Routetable object) {
 		return null;
 	}
 

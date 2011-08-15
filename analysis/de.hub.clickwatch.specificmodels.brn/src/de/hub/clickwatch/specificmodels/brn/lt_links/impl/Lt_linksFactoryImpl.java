@@ -6,6 +6,7 @@
  */
 package de.hub.clickwatch.specificmodels.brn.lt_links.impl;
 
+import de.hub.clickwatch.specificmodels.brn.lt_links.*;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -60,7 +61,9 @@ public class Lt_linksFactoryImpl extends EFactoryImpl implements Lt_linksFactory
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
+			case Lt_linksPackage.LINK: return createLink();
 			case Lt_linksPackage.LINKS: return createLinks();
+			case Lt_linksPackage.LINKTABLE: return createLinktable();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -71,9 +74,29 @@ public class Lt_linksFactoryImpl extends EFactoryImpl implements Lt_linksFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Link createLink() {
+		LinkImpl link = new LinkImpl();
+		return link;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public Links createLinks() {
 		LinksImpl links = new LinksImpl();
 		return links;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Linktable createLinktable() {
+		LinktableImpl linktable = new LinktableImpl();
+		return linktable;
 	}
 
 	/**

@@ -5,7 +5,8 @@ Bundle-SymbolicName: de.hub.clickwatch.specificmodels;singleton:=true
 Bundle-Version: 2.1.0.qualifier
 Bundle-ClassPath: .
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Export-Package: de.hub.clickwatch.specificmodels
+Export-Package: de.hub.clickwatch.specificmodels,
+ de.hub.clickwatch.specificmodels.brn
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
  org.eclipse.emf.ecore.xmi;visibility:=reexport,

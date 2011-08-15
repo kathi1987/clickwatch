@@ -15,12 +15,14 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 
 import de.hub.clickwatch.main.IClickWatchContextAdapter;
 import de.hub.clickwatch.main.IClickWatchModelProvider;
+import de.hub.clickwatch.model.Network;
 import de.hub.emfxml.XmlModelRepository;
 
 public class ClickWatchModelProvider implements IClickWatchContextAdapter,
 		IClickWatchModelProvider {
 
 	private EObject clickWatchObject = null;
+	private Network network = null;
 
 	@Override
 	public List<Option> getCommandLineOptions() {
@@ -38,7 +40,7 @@ public class ClickWatchModelProvider implements IClickWatchContextAdapter,
 		String objectURIFragment = null;
 		URI clickWatchModel = null;
 		if (commandLine.hasOption("uri")) {
-			clickWatchModel = URI.createPlatformResourceURI(commandLine.getOptionValue("uri"), true);
+			clickWatchModel = URI.createFileURI(commandLine.getOptionValue("uri"));
 		}
 		if (commandLine.hasOption("obj")) {
 			objectURIFragment = commandLine.getOptionValue("obj");
@@ -53,18 +55,24 @@ public class ClickWatchModelProvider implements IClickWatchContextAdapter,
 				modelResource.getEObject(objectURIFragment);
 			} else {
 				clickWatchObject = modelResource.getContents().get(0);
+				network = (Network)modelResource.getContents().get(0);
 			}
 		}
 	}
 	
-	public void initialize(URI clickWatchModel, EObject clickWatchObject)
-	{
+	public void initialize(URI clickWatchModel, EObject clickWatchObject) {
 		this.clickWatchObject = clickWatchObject;
+		loop: while (clickWatchObject != null) {
+			if (clickWatchObject instanceof Network) {
+				this.network = (Network)clickWatchObject;
+				break loop;
+			}
+			clickWatchObject = clickWatchObject.eContainer();
+		}
 	}
 
 	@Override
 	public EObject getInputObject() {
-
 		return clickWatchObject;
 	}
 
@@ -78,4 +86,8 @@ public class ClickWatchModelProvider implements IClickWatchContextAdapter,
 		return IClickWatchModelProvider.class;
 	}
 
+	@Override
+	public Network getNetwork() {
+		return network;
+	}
 }

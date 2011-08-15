@@ -7,6 +7,7 @@
 package de.hub.clickwatch.recoder.cwdatabase.provider;
 
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -15,6 +16,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
+import org.eclipse.emf.edit.provider.ComposedImage;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
@@ -301,11 +303,16 @@ public class ExperimentDescrItemProvider
 	 * This returns ExperimentDescr.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/ExperimentDescr"));
+		List<Object> images = new ArrayList<Object>(2);
+		images.add(getResourceLocator().getImage("full/obj16/ExperimentDescr"));
+		if (((ExperimentDescr)object).getStatistics() != null) {
+			images.add(getResourceLocator().getImage("full/ovr16/hasrecord"));
+		}
+		return new ComposedImage(images);
 	}
 
 	/**

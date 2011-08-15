@@ -6,6 +6,7 @@
  */
 package de.hub.clickwatch.specificmodels.brn.device_wifi_wifidevice_cst_stats.impl;
 
+import de.hub.clickwatch.specificmodels.brn.device_wifi_wifidevice_cst_stats.*;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;

@@ -26,6 +26,24 @@ public interface Lt_routesFactory extends EFactory {
 	Lt_routesFactory eINSTANCE = de.hub.clickwatch.specificmodels.brn.lt_routes.impl.Lt_routesFactoryImpl.init();
 
 	/**
+	 * Returns a new object of class '<em>Link</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Link</em>'.
+	 * @generated
+	 */
+	Link createLink();
+
+	/**
+	 * Returns a new object of class '<em>Route</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Route</em>'.
+	 * @generated
+	 */
+	Route createRoute();
+
+	/**
 	 * Returns a new object of class '<em>Routes</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -33,6 +51,15 @@ public interface Lt_routesFactory extends EFactory {
 	 * @generated
 	 */
 	Routes createRoutes();
+
+	/**
+	 * Returns a new object of class '<em>Routetable</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Routetable</em>'.
+	 * @generated
+	 */
+	Routetable createRoutetable();
 
 	/**
 	 * Returns the package supported by this factory.

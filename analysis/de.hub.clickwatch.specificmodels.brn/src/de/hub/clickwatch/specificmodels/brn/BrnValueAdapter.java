@@ -16,6 +16,7 @@ import de.hub.specificmodels.metamodelgenerator.DefaultTargetObjectCreator;
 public class BrnValueAdapter extends XmlValueAdapter {
 	
 	public static final String HANDLER_CLASS = "handler_class";
+	public static final String HANDLER_QUALIFIED_NAME ="handler_name";
 	
 	@Inject XmlModelRepository xmlModelRepository;
 	private final Map<String, EPackage> metaModelCache = new HashMap<String, EPackage>();

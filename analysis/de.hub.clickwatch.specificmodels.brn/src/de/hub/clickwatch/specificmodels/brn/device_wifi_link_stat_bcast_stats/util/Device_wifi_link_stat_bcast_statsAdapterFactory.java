@@ -12,6 +12,7 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
 
 import de.hub.clickwatch.model.Handler;
+import de.hub.clickwatch.specificmodels.brn.device_wifi_link_stat_bcast_stats.*;
 import de.hub.clickwatch.specificmodels.brn.device_wifi_link_stat_bcast_stats.Bcast_stats;
 import de.hub.clickwatch.specificmodels.brn.device_wifi_link_stat_bcast_stats.Device_wifi_link_stat_bcast_statsPackage;
 import de.hub.clickwatch.specificmodels.brn.device_wifi_link_stat_bcast_stats.Entry;

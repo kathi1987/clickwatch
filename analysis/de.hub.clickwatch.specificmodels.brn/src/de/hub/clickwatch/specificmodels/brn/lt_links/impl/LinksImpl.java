@@ -7,11 +7,14 @@
 package de.hub.clickwatch.specificmodels.brn.lt_links.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import de.hub.clickwatch.model.impl.HandlerImpl;
 import de.hub.clickwatch.specificmodels.brn.lt_links.Links;
+import de.hub.clickwatch.specificmodels.brn.lt_links.Linktable;
 import de.hub.clickwatch.specificmodels.brn.lt_links.Lt_linksPackage;
 
 /**
@@ -21,7 +24,7 @@ import de.hub.clickwatch.specificmodels.brn.lt_links.Lt_linksPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link de.hub.clickwatch.specificmodels.brn.lt_links.impl.LinksImpl#getText <em>Text</em>}</li>
+ *   <li>{@link de.hub.clickwatch.specificmodels.brn.lt_links.impl.LinksImpl#getLinktable <em>Linktable</em>}</li>
  * </ul>
  * </p>
  *
@@ -29,24 +32,14 @@ import de.hub.clickwatch.specificmodels.brn.lt_links.Lt_linksPackage;
  */
 public class LinksImpl extends HandlerImpl implements Links {
 	/**
-	 * The default value of the '{@link #getText() <em>Text</em>}' attribute.
+	 * The cached value of the '{@link #getLinktable() <em>Linktable</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getText()
+	 * @see #getLinktable()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String TEXT_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getText() <em>Text</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getText()
-	 * @generated
-	 * @ordered
-	 */
-	protected String text = TEXT_EDEFAULT;
+	protected Linktable linktable;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -72,8 +65,8 @@ public class LinksImpl extends HandlerImpl implements Links {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getText() {
-		return text;
+	public Linktable getLinktable() {
+		return linktable;
 	}
 
 	/**
@@ -81,11 +74,63 @@ public class LinksImpl extends HandlerImpl implements Links {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setText(String newText) {
-		String oldText = text;
-		text = newText;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, Lt_linksPackage.LINKS__TEXT, oldText, text));
+	public NotificationChain basicSetLinktable(Linktable newLinktable, NotificationChain msgs) {
+		Linktable oldLinktable = linktable;
+		linktable = newLinktable;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, Lt_linksPackage.LINKS__LINKTABLE, oldLinktable, newLinktable);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setLinktable(Linktable newLinktable) {
+		if (newLinktable != linktable) {
+			NotificationChain msgs = null;
+			if (linktable != null)
+				msgs = ((InternalEObject)linktable).eInverseRemove(this, Lt_linksPackage.LINKTABLE__ECONTAINER_LINKTABLE, Linktable.class, msgs);
+			if (newLinktable != null)
+				msgs = ((InternalEObject)newLinktable).eInverseAdd(this, Lt_linksPackage.LINKTABLE__ECONTAINER_LINKTABLE, Linktable.class, msgs);
+			msgs = basicSetLinktable(newLinktable, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, Lt_linksPackage.LINKS__LINKTABLE, newLinktable, newLinktable));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case Lt_linksPackage.LINKS__LINKTABLE:
+				if (linktable != null)
+					msgs = ((InternalEObject)linktable).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - Lt_linksPackage.LINKS__LINKTABLE, null, msgs);
+				return basicSetLinktable((Linktable)otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case Lt_linksPackage.LINKS__LINKTABLE:
+				return basicSetLinktable(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -96,8 +141,8 @@ public class LinksImpl extends HandlerImpl implements Links {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case Lt_linksPackage.LINKS__TEXT:
-				return getText();
+			case Lt_linksPackage.LINKS__LINKTABLE:
+				return getLinktable();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -110,8 +155,8 @@ public class LinksImpl extends HandlerImpl implements Links {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case Lt_linksPackage.LINKS__TEXT:
-				setText((String)newValue);
+			case Lt_linksPackage.LINKS__LINKTABLE:
+				setLinktable((Linktable)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -125,8 +170,8 @@ public class LinksImpl extends HandlerImpl implements Links {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case Lt_linksPackage.LINKS__TEXT:
-				setText(TEXT_EDEFAULT);
+			case Lt_linksPackage.LINKS__LINKTABLE:
+				setLinktable((Linktable)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -140,26 +185,10 @@ public class LinksImpl extends HandlerImpl implements Links {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case Lt_linksPackage.LINKS__TEXT:
-				return TEXT_EDEFAULT == null ? text != null : !TEXT_EDEFAULT.equals(text);
+			case Lt_linksPackage.LINKS__LINKTABLE:
+				return linktable != null;
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (text: ");
-		result.append(text);
-		result.append(')');
-		return result.toString();
 	}
 
 } //LinksImpl

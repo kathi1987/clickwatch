@@ -12,6 +12,7 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
 
 import de.hub.clickwatch.model.Handler;
+import de.hub.clickwatch.specificmodels.brn.lt_links.*;
 import de.hub.clickwatch.specificmodels.brn.lt_links.Links;
 import de.hub.clickwatch.specificmodels.brn.lt_links.Lt_linksPackage;
 
@@ -72,8 +73,16 @@ public class Lt_linksAdapterFactory extends AdapterFactoryImpl {
 	protected Lt_linksSwitch<Adapter> modelSwitch =
 		new Lt_linksSwitch<Adapter>() {
 			@Override
+			public Adapter caseLink(Link object) {
+				return createLinkAdapter();
+			}
+			@Override
 			public Adapter caseLinks(Links object) {
 				return createLinksAdapter();
+			}
+			@Override
+			public Adapter caseLinktable(Linktable object) {
+				return createLinktableAdapter();
 			}
 			@Override
 			public Adapter caseHandler(Handler object) {
@@ -100,6 +109,20 @@ public class Lt_linksAdapterFactory extends AdapterFactoryImpl {
 
 
 	/**
+	 * Creates a new adapter for an object of class '{@link de.hub.clickwatch.specificmodels.brn.lt_links.Link <em>Link</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.hub.clickwatch.specificmodels.brn.lt_links.Link
+	 * @generated
+	 */
+	public Adapter createLinkAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link de.hub.clickwatch.specificmodels.brn.lt_links.Links <em>Links</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -110,6 +133,20 @@ public class Lt_linksAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createLinksAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.hub.clickwatch.specificmodels.brn.lt_links.Linktable <em>Linktable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.hub.clickwatch.specificmodels.brn.lt_links.Linktable
+	 * @generated
+	 */
+	public Adapter createLinktableAdapter() {
 		return null;
 	}
 

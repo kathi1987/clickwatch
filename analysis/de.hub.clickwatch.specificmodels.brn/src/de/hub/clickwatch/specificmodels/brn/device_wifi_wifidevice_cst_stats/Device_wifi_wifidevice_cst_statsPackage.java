@@ -26,7 +26,7 @@ import de.hub.clickwatch.model.ClickWatchModelPackage;
  * <!-- end-user-doc -->
  * @see de.hub.clickwatch.specificmodels.brn.device_wifi_wifidevice_cst_stats.Device_wifi_wifidevice_cst_statsFactory
  * @model kind="package"
- *        annotation="http://de.hub.clickwatch.specificmodels handler_class='Stats'"
+ *        annotation="http://de.hub.clickwatch.specificmodels handler_class='Stats' handler_name='device_wifi/wifidevice/cst/stats'"
  * @generated
  */
 public interface Device_wifi_wifidevice_cst_statsPackage extends EPackage {
