@@ -4,10 +4,10 @@ import com.google.inject.Inject;
 import de.hub.clickwatch.analysis.data.Plot;
 import de.hub.clickwatch.main.IClickWatchContext;
 import de.hub.clickwatch.main.IClickWatchMain;
-import de.hub.clickwatch.main.IExperimentProvider;
+import de.hub.clickwatch.main.IRecordProvider;
 import de.hub.clickwatch.model.Network;
 import de.hub.clickwatch.model.Node;
-import de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr;
+import de.hub.clickwatch.recoder.cwdatabase.Record;
 import de.hub.clickwatch.recorder.database.DataBaseUtil;
 import de.hub.clickwatch.specificmodels.brn.device_wifi_link_stat_bcast_stats.Bcast_stats;
 import de.hub.clickwatch.specificmodels.brn.device_wifi_link_stat_bcast_stats.Entry;
@@ -26,18 +26,18 @@ public class XtentAnalysis implements IClickWatchMain {
   @Inject
   private DataBaseUtil db;
   
-  private ExperimentDescr exp;
+  private Record record;
   
   public void main(final IClickWatchContext ctx) throws NumberFormatException {
     {
       Plot _plot = new Plot();
       final Plot plot = _plot;
-      IExperimentProvider _adapter = ctx.<IExperimentProvider>getAdapter(de.hub.clickwatch.main.IExperimentProvider.class);
-      final IExperimentProvider ep = _adapter;
-      ExperimentDescr _experiment = ep.getExperiment();
-      this.exp = _experiment;
-      Network _network = this.exp.getNetwork();
-      EList<Node> _nodes = _network.getNodes();
+      IRecordProvider _adapter = ctx.<IRecordProvider>getAdapter(de.hub.clickwatch.main.IRecordProvider.class);
+      final IRecordProvider rp = _adapter;
+      Record _record = rp.getRecord();
+      this.record = _record;
+      Network _configuration = this.record.getConfiguration();
+      EList<Node> _nodes = _configuration.getNodes();
       final Function1<Node,String> _function = new Function1<Node,String>() {
           public String apply(final Node e) {
             String _iNetAddress = e.getINetAddress();
@@ -46,7 +46,7 @@ public class XtentAnalysis implements IClickWatchMain {
         };
       List<String> _map = ListExtensions.<Node, String>map(_nodes, _function);
       for (String nodeId : _map) {
-        Iterable<Bcast_stats> _handler = this.db.<Bcast_stats>getHandler(this.exp, nodeId, de.hub.clickwatch.specificmodels.brn.device_wifi_link_stat_bcast_stats.Bcast_stats.class);
+        Iterable<Bcast_stats> _handler = this.db.<Bcast_stats>getHandler(this.record, nodeId, de.hub.clickwatch.specificmodels.brn.device_wifi_link_stat_bcast_stats.Bcast_stats.class);
         for (Bcast_stats handler : _handler) {
           {
             Entry _entry = handler.getEntry();

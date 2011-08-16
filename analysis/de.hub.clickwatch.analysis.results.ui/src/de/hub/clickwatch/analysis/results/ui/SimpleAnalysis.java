@@ -33,7 +33,7 @@ import de.hub.clickwatch.analysis.results.util.builder.XYBuilder;
 import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.model.Node;
 import de.hub.clickwatch.model.provider.XmlAttributeValue;
-import de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr;
+import de.hub.clickwatch.recoder.cwdatabase.Record;
 import de.hub.clickwatch.recorder.database.DataBaseUtil;
 import de.hub.clickwatch.ui.PluginActivator;
 import de.hub.clickwatch.util.Throwables;
@@ -83,18 +83,18 @@ public class SimpleAnalysis implements IObjectActionDelegate {
 		EObject object = value.getObject();
 		Node node = null;
 		Handler handler = null;
-		ExperimentDescr experiment = null;
+		Record record = null;
 		while (object != null) {
 			if (object instanceof Handler) {
 				handler = (Handler)object;
 			} else if (object instanceof Node) {
 				node = (Node)object;
-			} else if (object instanceof ExperimentDescr) {
-				experiment = (ExperimentDescr)object;
+			} else if (object instanceof Record) {
+				record = (Record)object;
 			} 
 			object = object.eContainer();
 		}
-		if (experiment == null) {
+		if (record == null) {
 			return;
 		}
 		
@@ -118,11 +118,11 @@ public class SimpleAnalysis implements IObjectActionDelegate {
 				.withValueSpecs(AxisBuilder.newAxisBuilder().withColumn(1).withName(value.getEntry().getEStructuralFeature().getName())).build());
 		
 		Iterator<Handler> iterator = dbUtil.getHandlerIterator(
-				DataBaseUtil.createHandle(experiment, node.getINetAddress(), handler.getQualifiedName()),
+				DataBaseUtil.createHandle(record, node.getINetAddress(), handler.getQualifiedName()),
 				monitor);
 		while (iterator.hasNext()) {			
 			Handler newHandler = iterator.next();
-			long time = newHandler.getTimestamp() - experiment.getStart();
+			long time = newHandler.getTimestamp() - record.getStart();
 			FeatureMap map = newHandler.getAny();
 			AnyType container = null;
 			loop: for(EStructuralFeature feature: containmentFeatures) {

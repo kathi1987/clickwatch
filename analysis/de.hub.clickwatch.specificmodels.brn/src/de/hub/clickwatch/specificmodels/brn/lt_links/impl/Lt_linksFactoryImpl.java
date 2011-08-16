@@ -6,14 +6,15 @@
  */
 package de.hub.clickwatch.specificmodels.brn.lt_links.impl;
 
-import de.hub.clickwatch.specificmodels.brn.lt_links.*;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
+import de.hub.clickwatch.specificmodels.brn.lt_links.Link;
 import de.hub.clickwatch.specificmodels.brn.lt_links.Links;
+import de.hub.clickwatch.specificmodels.brn.lt_links.Linktable;
 import de.hub.clickwatch.specificmodels.brn.lt_links.Lt_linksFactory;
 import de.hub.clickwatch.specificmodels.brn.lt_links.Lt_linksPackage;
 

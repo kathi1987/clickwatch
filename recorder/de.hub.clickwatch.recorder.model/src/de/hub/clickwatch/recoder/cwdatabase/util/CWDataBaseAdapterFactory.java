@@ -6,8 +6,6 @@
  */
 package de.hub.clickwatch.recoder.cwdatabase.util;
 
-import java.util.Map;
-
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
@@ -15,12 +13,8 @@ import org.eclipse.emf.ecore.EObject;
 
 import de.hub.clickwatch.recoder.cwdatabase.CWDataBasePackage;
 import de.hub.clickwatch.recoder.cwdatabase.DataBase;
-import de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr;
-import de.hub.clickwatch.recoder.cwdatabase.ExperimentNodeRecordTimeTable;
-import de.hub.clickwatch.recoder.cwdatabase.ExperimentRecord;
-import de.hub.clickwatch.recoder.cwdatabase.ExperimentStatistics;
-import de.hub.clickwatch.recoder.cwdatabase.NodeRecord;
-import de.hub.clickwatch.recoder.cwdatabase.NodeRecordDescr;
+import de.hub.clickwatch.recoder.cwdatabase.Record;
+import de.hub.clickwatch.recoder.cwdatabase.RecordStatistics;
 
 /**
  * <!-- begin-user-doc -->
@@ -79,40 +73,16 @@ public class CWDataBaseAdapterFactory extends AdapterFactoryImpl {
 	protected CWDataBaseSwitch<Adapter> modelSwitch =
 		new CWDataBaseSwitch<Adapter>() {
 			@Override
-			public Adapter caseExperimentDescr(ExperimentDescr object) {
-				return createExperimentDescrAdapter();
-			}
-			@Override
-			public Adapter caseNodeRecord(NodeRecord object) {
-				return createNodeRecordAdapter();
+			public Adapter caseRecord(Record object) {
+				return createRecordAdapter();
 			}
 			@Override
 			public Adapter caseDataBase(DataBase object) {
 				return createDataBaseAdapter();
 			}
 			@Override
-			public Adapter caseExperimentRecord(ExperimentRecord object) {
-				return createExperimentRecordAdapter();
-			}
-			@Override
-			public Adapter caseExperimentNodeRecordTimeTable(ExperimentNodeRecordTimeTable object) {
-				return createExperimentNodeRecordTimeTableAdapter();
-			}
-			@Override
-			public Adapter caseEStringToExperimentNodeRecordTimeTableMap(Map.Entry<String, ExperimentNodeRecordTimeTable> object) {
-				return createEStringToExperimentNodeRecordTimeTableMapAdapter();
-			}
-			@Override
-			public Adapter caseELongObjectToNodeRecordDescrMap(Map.Entry<Long, NodeRecordDescr> object) {
-				return createELongObjectToNodeRecordDescrMapAdapter();
-			}
-			@Override
-			public Adapter caseExperimentStatistics(ExperimentStatistics object) {
-				return createExperimentStatisticsAdapter();
-			}
-			@Override
-			public Adapter caseNodeRecordDescr(NodeRecordDescr object) {
-				return createNodeRecordDescrAdapter();
+			public Adapter caseRecordStatistics(RecordStatistics object) {
+				return createRecordStatisticsAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -135,30 +105,16 @@ public class CWDataBaseAdapterFactory extends AdapterFactoryImpl {
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr <em>Experiment Descr</em>}'.
+	 * Creates a new adapter for an object of class '{@link de.hub.clickwatch.recoder.cwdatabase.Record <em>Record</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr
+	 * @see de.hub.clickwatch.recoder.cwdatabase.Record
 	 * @generated
 	 */
-	public Adapter createExperimentDescrAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link de.hub.clickwatch.recoder.cwdatabase.NodeRecord <em>Node Record</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see de.hub.clickwatch.recoder.cwdatabase.NodeRecord
-	 * @generated
-	 */
-	public Adapter createNodeRecordAdapter() {
+	public Adapter createRecordAdapter() {
 		return null;
 	}
 
@@ -177,86 +133,16 @@ public class CWDataBaseAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.hub.clickwatch.recoder.cwdatabase.ExperimentRecord <em>Experiment Record</em>}'.
+	 * Creates a new adapter for an object of class '{@link de.hub.clickwatch.recoder.cwdatabase.RecordStatistics <em>Record Statistics</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.hub.clickwatch.recoder.cwdatabase.ExperimentRecord
+	 * @see de.hub.clickwatch.recoder.cwdatabase.RecordStatistics
 	 * @generated
 	 */
-	public Adapter createExperimentRecordAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link de.hub.clickwatch.recoder.cwdatabase.ExperimentNodeRecordTimeTable <em>Experiment Node Record Time Table</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see de.hub.clickwatch.recoder.cwdatabase.ExperimentNodeRecordTimeTable
-	 * @generated
-	 */
-	public Adapter createExperimentNodeRecordTimeTableAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link java.util.Map.Entry <em>EString To Experiment Node Record Time Table Map</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see java.util.Map.Entry
-	 * @generated
-	 */
-	public Adapter createEStringToExperimentNodeRecordTimeTableMapAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link java.util.Map.Entry <em>ELong Object To Node Record Descr Map</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see java.util.Map.Entry
-	 * @generated
-	 */
-	public Adapter createELongObjectToNodeRecordDescrMapAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link de.hub.clickwatch.recoder.cwdatabase.ExperimentStatistics <em>Experiment Statistics</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see de.hub.clickwatch.recoder.cwdatabase.ExperimentStatistics
-	 * @generated
-	 */
-	public Adapter createExperimentStatisticsAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link de.hub.clickwatch.recoder.cwdatabase.NodeRecordDescr <em>Node Record Descr</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see de.hub.clickwatch.recoder.cwdatabase.NodeRecordDescr
-	 * @generated
-	 */
-	public Adapter createNodeRecordDescrAdapter() {
+	public Adapter createRecordStatisticsAdapter() {
 		return null;
 	}
 

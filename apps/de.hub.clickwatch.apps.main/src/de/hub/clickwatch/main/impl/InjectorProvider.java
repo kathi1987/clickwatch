@@ -32,7 +32,6 @@ import de.hub.clickwatch.recorder.ClickSocketPlayerSocketImpl;
 import de.hub.clickwatch.recorder.database.DummyDataBaseAdapter;
 import de.hub.clickwatch.recorder.database.IDataBaseRecordAdapter;
 import de.hub.clickwatch.recorder.database.IDataBaseRetrieveAdapter;
-import de.hub.clickwatch.recorder.database.emf.DataBaseAdapter;
 import de.hub.clickwatch.recorder.database.hbase.HBaseDataBaseAdapter;
 import de.hub.clickwatch.recorder.database.logfile.LogFileDataBaseAdapter;
 import de.hub.clickwatch.specificmodels.brn.BrnValueAdapter;
@@ -297,8 +296,6 @@ public class InjectorProvider implements IClickWatchContextAdapter, IInjectorPro
 			protected void configureDataBaseRecordAdapter() {
 				if (dataBaseType == DataBaseType.HBASE) {
 					bind(IDataBaseRecordAdapter.class).to(HBaseDataBaseAdapter.class);
-				} else if (dataBaseType == DataBaseType.EMF) {
-					bind(IDataBaseRecordAdapter.class).to(DataBaseAdapter.class);
 				} else if (dataBaseType == DataBaseType.LOGFILE) {
 					bind(IDataBaseRecordAdapter.class).to(LogFileDataBaseAdapter.class);
 				} else if (dataBaseType == DataBaseType.DUMMY) {
@@ -312,8 +309,6 @@ public class InjectorProvider implements IClickWatchContextAdapter, IInjectorPro
 			protected void configureDataBaseRetrieveAdapter() {
 				if (dataBaseType == DataBaseType.HBASE) {
 					bind(IDataBaseRetrieveAdapter.class).to(HBaseDataBaseAdapter.class);
-				} else if (dataBaseType == DataBaseType.EMF) {
-					bind(IDataBaseRetrieveAdapter.class).to(DataBaseAdapter.class);
 				} else {
 					bind(IDataBaseRetrieveAdapter.class).to(HBaseDataBaseAdapter.class);
 				}

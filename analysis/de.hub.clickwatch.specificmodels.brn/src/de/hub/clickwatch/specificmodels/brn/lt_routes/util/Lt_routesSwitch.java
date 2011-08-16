@@ -11,9 +11,11 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
 
 import de.hub.clickwatch.model.Handler;
-import de.hub.clickwatch.specificmodels.brn.lt_routes.*;
+import de.hub.clickwatch.specificmodels.brn.lt_routes.Link;
 import de.hub.clickwatch.specificmodels.brn.lt_routes.Lt_routesPackage;
+import de.hub.clickwatch.specificmodels.brn.lt_routes.Route;
 import de.hub.clickwatch.specificmodels.brn.lt_routes.Routes;
+import de.hub.clickwatch.specificmodels.brn.lt_routes.Routetable;
 
 /**
  * <!-- begin-user-doc -->

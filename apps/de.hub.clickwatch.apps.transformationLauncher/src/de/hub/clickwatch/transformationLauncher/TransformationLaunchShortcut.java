@@ -14,7 +14,7 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.IEditorPart;
 
 import de.hub.clickwatch.transformationLauncher.tabs.ClickwatchParametersTab;
-import de.hub.clickwatch.transformationLauncher.tabs.ExperimentParametersTab;
+import de.hub.clickwatch.transformationLauncher.tabs.RecordParametersTab;
 import de.hub.clickwatch.transformationLauncher.tabs.MainParametersTab;
 
 /**
@@ -65,8 +65,8 @@ public class TransformationLaunchShortcut implements ILaunchShortcut {
 			wc.setAttribute(MainParametersTab.ATTR_TRANSFORMATION_FILE, transformationFile);
 			wc.setAttribute(MainParametersTab.ATTR_VALUE_TYPE, "SPECIFIC");
 			wc.setAttribute(MainParametersTab.ATTR_DEBUG_LEVEL, "Warning");
-			wc.setAttribute(ExperimentParametersTab.ATTR_DATABASE_URI, "");
-			wc.setAttribute(ExperimentParametersTab.ATTR_EXPERIMENT_ID, "");
+			wc.setAttribute(RecordParametersTab.ATTR_DATABASE_URI, "");
+			wc.setAttribute(RecordParametersTab.ATTR_RECORD_ID, "");
 			wc.setAttribute(ClickwatchParametersTab.ATTR_MODEL_OBJECT, "//@nodes.3/@elements.12");
 			wc.setAttribute(ClickwatchParametersTab.ATTR_SOURCE_MODEL_FILE, "platform:/resource/de.hub.clickwatch.analysis.examples.composition/src/SeismoOutdoor.clickwatchmodel");
 			

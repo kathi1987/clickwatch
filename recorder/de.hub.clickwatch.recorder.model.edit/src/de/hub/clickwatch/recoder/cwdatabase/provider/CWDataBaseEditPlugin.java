@@ -6,11 +6,10 @@
  */
 package de.hub.clickwatch.recoder.cwdatabase.provider;
 
-import de.hub.clickwatch.model.provider.ClickWatchModelEditPlugin;
-
 import org.eclipse.emf.common.EMFPlugin;
-
 import org.eclipse.emf.common.util.ResourceLocator;
+
+import de.hub.clickwatch.model.provider.ClickWatchModelEditPlugin;
 
 /**
  * This is the central singleton for the CWDataBase edit plugin.

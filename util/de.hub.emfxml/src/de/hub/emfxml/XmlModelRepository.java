@@ -248,6 +248,17 @@ public class XmlModelRepository {
 						nsURI + "'" + xml.substring(xsdRefPos);
 			}
 		}
+		if (!xml.contains("xmlns:xsi=") && xml.contains("xsi")) {
+			int refPos = xml.indexOf(">");
+			if (refPos > 0) {
+				if (xml.charAt(refPos - 1) == '/') {
+					refPos -= 1;
+				}
+				xml = xml.substring(0, refPos) + 
+						" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" + 
+						xml.substring(refPos);
+			}
+		}
 		return xml;
 	}
 }

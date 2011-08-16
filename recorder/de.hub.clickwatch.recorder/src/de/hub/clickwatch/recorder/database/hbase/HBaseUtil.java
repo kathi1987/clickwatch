@@ -66,7 +66,7 @@ public class HBaseUtil {
 				
 				boolean tableExists = admin.tableExists(tableName);
 				if (tableExists && overwrite) {
-					logger.log(ILogger.WARNING, "table for experiment already exists, i am dropping the existing table", null);
+					logger.log(ILogger.WARNING, "table for record already exists, i am dropping the existing table", null);
 					admin.disableTable(tableName);
 					admin.deleteTable(tableName);
 					tableExists = false;

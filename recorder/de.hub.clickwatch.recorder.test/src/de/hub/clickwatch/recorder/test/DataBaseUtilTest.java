@@ -20,7 +20,7 @@ import de.hub.clickwatch.connection.adapter.IValueAdapter;
 import de.hub.clickwatch.connection.adapter.XmlValueAdapter;
 import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.model.Node;
-import de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr;
+import de.hub.clickwatch.recoder.cwdatabase.Record;
 import de.hub.clickwatch.recorder.ClickSocketPlayer;
 import de.hub.clickwatch.recorder.ClickSocketPlayerSocketImpl;
 import de.hub.clickwatch.recorder.database.DataBaseUtil;
@@ -64,7 +64,7 @@ public class DataBaseUtilTest extends AbstractDBTest {
 	@Ignore("work in progress")
 	@Test
 	public void testWithRecord() throws Exception {
-		ExperimentDescr exprDescr = performTest(new String[] { "localhost",
+		Record exprDescr = performTest(new String[] { "localhost",
 			 "seismo171.testbed",
 			 "seismo161.testbed", "seismo191.testbed", "seismo160.testbed",
 			 "seismo185.testbed", "seismo196.testbed", "seismo172.testbed"
@@ -77,7 +77,7 @@ public class DataBaseUtilTest extends AbstractDBTest {
 		 for (int i = 0; i < runs; i++) {
 			 long time = exprDescr.getStart() + (i* (duration/runs));
 			 System.out.println("run: " + i);
-			 util.getNode(DataBaseUtil.createHandle(exprDescr, exprDescr.getNetwork().getNodes().get(0), time));
+			 util.getNode(DataBaseUtil.createHandle(exprDescr, exprDescr.getConfiguration().getNodes().get(0), time));
 		 }
 	}
 
@@ -96,7 +96,7 @@ public class DataBaseUtilTest extends AbstractDBTest {
 	}
 
 	@Override
-	protected int getExperimentDuration() {
+	protected int getRecordDuration() {
 		return 30000;
 	}
 }

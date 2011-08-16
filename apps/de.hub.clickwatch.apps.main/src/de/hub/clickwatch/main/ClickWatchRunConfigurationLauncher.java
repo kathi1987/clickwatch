@@ -11,7 +11,7 @@ import com.google.inject.Injector;
 
 import de.hub.clickwatch.ClickWatchStandaloneSetup;
 import de.hub.clickwatch.main.impl.ClickWatchModelProvider;
-import de.hub.clickwatch.main.impl.ExperimentProvider;
+import de.hub.clickwatch.main.impl.RecordProvider;
 import de.hub.clickwatch.main.impl.InjectorProvider;
 import de.hub.clickwatch.main.impl.InjectorProvider.DataBaseType;
 import de.hub.clickwatch.main.impl.InjectorProvider.HandlerBehaviour;
@@ -29,7 +29,7 @@ public class ClickWatchRunConfigurationLauncher {
 	private final Class<? extends IClickWatchMain> mainClass;
 	private final InjectorProvider injProv;
 	private final ClickWatchModelProvider clickProv;
-	private final ExperimentProvider expProv;
+	private final RecordProvider expProv;
 
 	private Map<Class<?>, IClickWatchContextAdapter> adapters = new HashMap<Class<?>, IClickWatchContextAdapter>();
 
@@ -52,7 +52,7 @@ public class ClickWatchRunConfigurationLauncher {
 				mainClass);
 
 		if (launcher.initalizeInjectorProvider(configuration)
-				&& launcher.initalizeExperimentProvider(configuration)
+				&& launcher.initalizeRecordProvider(configuration)
 				&& launcher.initalizeClickWatchModelProvider(configuration)) {
 			launcher.doLaunch();
 		}
@@ -110,7 +110,7 @@ public class ClickWatchRunConfigurationLauncher {
 	 * @param configuration
 	 * @return
 	 */
-	private boolean initalizeExperimentProvider(
+	private boolean initalizeRecordProvider(
 			HashMap<ELaunchConfigurationParameters, Object> configuration) {
 
 		URI dbUri = null;
@@ -119,9 +119,9 @@ public class ClickWatchRunConfigurationLauncher {
 					.get(ELaunchConfigurationParameters.DataBaseURI);
 
 		String expId = "";
-		if (configuration.get(ELaunchConfigurationParameters.ExperimentId) != null)
+		if (configuration.get(ELaunchConfigurationParameters.RecordId) != null)
 			expId = (String) configuration
-					.get(ELaunchConfigurationParameters.ExperimentId);
+					.get(ELaunchConfigurationParameters.RecordId);
 
 		expProv.initialize(dbUri, expId);
 		return true;
@@ -180,9 +180,9 @@ public class ClickWatchRunConfigurationLauncher {
 				.getInstance(IInjectorProvider.class);
 		adapters.put(IInjectorProvider.class, injProv);
 
-		expProv = (ExperimentProvider) adapterInjector
-				.getInstance(IExperimentProvider.class);
-		adapters.put(IExperimentProvider.class, expProv);
+		expProv = (RecordProvider) adapterInjector
+				.getInstance(IRecordProvider.class);
+		adapters.put(IRecordProvider.class, expProv);
 
 		clickProv = (ClickWatchModelProvider) adapterInjector
 				.getInstance(IClickWatchModelProvider.class);

@@ -18,7 +18,7 @@ import com.google.inject.Singleton;
 import de.hub.clickwatch.connection.adapter.IValueAdapter;
 import de.hub.clickwatch.connection.adapter.XmlValueAdapter;
 import de.hub.clickwatch.model.Handler;
-import de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr;
+import de.hub.clickwatch.recoder.cwdatabase.Record;
 import de.hub.clickwatch.recorder.database.AbstractDataBaseRecordAdapter;
 
 @Singleton
@@ -40,7 +40,7 @@ public class LogFileDataBaseAdapter extends AbstractDataBaseRecordAdapter {
 	}
 
 	@Override
-	public void initialize(ExperimentDescr experiment, boolean overwrite) {
+	public void initialize(Record record, boolean overwrite) {
 		if (this.out == null) {
 			try {
 				out = new PrintStream(new File("db_log"));
@@ -48,7 +48,7 @@ public class LogFileDataBaseAdapter extends AbstractDataBaseRecordAdapter {
 				Throwables.propagate(e);
 			}
 		}
-		super.initialize(experiment, overwrite);
+		super.initialize(record, overwrite);
 	}
 
 	@Override

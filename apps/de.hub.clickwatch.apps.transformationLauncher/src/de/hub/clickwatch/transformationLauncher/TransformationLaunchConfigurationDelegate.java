@@ -26,7 +26,7 @@ import de.hub.clickwatch.main.ClickWatchRunConfigurationLauncher;
 import de.hub.clickwatch.main.ELaunchConfigurationParameters;
 import de.hub.clickwatch.main.IClickWatchMain;
 import de.hub.clickwatch.transformationLauncher.tabs.ClickwatchParametersTab;
-import de.hub.clickwatch.transformationLauncher.tabs.ExperimentParametersTab;
+import de.hub.clickwatch.transformationLauncher.tabs.RecordParametersTab;
 import de.hub.clickwatch.transformationLauncher.tabs.MainParametersTab;
 import de.hub.clickwatch.ui.PluginActivator;
 
@@ -58,10 +58,10 @@ public class TransformationLaunchConfigurationDelegate implements
 		String modelObject = configuration.getAttribute(
 				ClickwatchParametersTab.ATTR_MODEL_OBJECT, "");
 
-		String experimentID = configuration.getAttribute(
-				ExperimentParametersTab.ATTR_EXPERIMENT_ID, "");
+		String recordID = configuration.getAttribute(
+				RecordParametersTab.ATTR_RECORD_ID, "");
 		String databaseURI = configuration.getAttribute(
-				ExperimentParametersTab.ATTR_DATABASE_URI, "");
+				RecordParametersTab.ATTR_DATABASE_URI, "");
 
 		// RUN MODE
 		if (mode.equals(ILaunchManager.RUN_MODE)) {
@@ -116,7 +116,7 @@ public class TransformationLaunchConfigurationDelegate implements
 				config.put(ELaunchConfigurationParameters.DebugLevel, debugLvl);
 
 				// *************
-				// Experiment tab
+				// Record tab
 
 				// *************
 				// ClickWatch Model tab

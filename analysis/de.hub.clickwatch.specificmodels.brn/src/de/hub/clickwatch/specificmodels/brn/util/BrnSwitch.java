@@ -11,7 +11,6 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
 
 import de.hub.clickwatch.model.Handler;
-import de.hub.clickwatch.specificmodels.brn.*;
 import de.hub.clickwatch.specificmodels.brn.BrnPackage;
 import de.hub.clickwatch.specificmodels.brn.HandlerSubClass;
 

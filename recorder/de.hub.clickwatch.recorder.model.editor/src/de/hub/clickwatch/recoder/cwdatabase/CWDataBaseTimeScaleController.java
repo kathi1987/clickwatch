@@ -48,7 +48,7 @@ public class CWDataBaseTimeScaleController {
 	
 	private ISelectionChangedListener viewerListener;
 
-	private ExperimentDescr currentExperiment = null;
+	private Record currentRecord = null;
 	private Node selectedNode = null;
 	private Handler selectedHandler = null;
 	
@@ -123,7 +123,7 @@ public class CWDataBaseTimeScaleController {
 			Object object = structuredSelection.getFirstElement();
 			if (object instanceof EObject) {
 				EObject eObject = (EObject)object;
-				while (!(eObject instanceof ExperimentDescr) && eObject != null) {
+				while (!(eObject instanceof Record) && eObject != null) {
 					if (eObject instanceof Node) {
 						this.selectedNode = (Node)eObject;
 					} else if (eObject instanceof Handler) {
@@ -131,43 +131,43 @@ public class CWDataBaseTimeScaleController {
 					}
 					eObject = eObject.eContainer();
 				}
-				if (eObject != null && eObject instanceof ExperimentDescr) {
-					if (currentExperiment != eObject) {
-						setCurrentExperiment((ExperimentDescr)eObject);					
+				if (eObject != null && eObject instanceof Record) {
+					if (currentRecord != eObject) {
+						setCurrentRecord((Record)eObject);					
 					}
 					return;
 				}
 			}
 		}
-		unsetCurrentExperiment();
+		unsetCurrentRecord();
 	}
 	
-	private void unsetCurrentExperiment() {
-		this.currentExperiment = null;
+	private void unsetCurrentRecord() {
+		this.currentRecord = null;
 		scale.setEnabled(false);
 	}
 	
 	private void setTime(long time) {
-		Preconditions.checkArgument(currentExperiment != null);
-		long duration = currentExperiment.getEnd() - currentExperiment.getStart();
-		long relativeTime = time - currentExperiment.getStart();
+		Preconditions.checkArgument(currentRecord != null);
+		long duration = currentRecord.getEnd() - currentRecord.getStart();
+		long relativeTime = time - currentRecord.getStart();
 		scale.setSelection((int)(relativeTime * scale.getMaximum() / duration));
 	}
 	
 
 	private void sliding() {
-		Preconditions.checkArgument(currentExperiment != null);
-		long duration = currentExperiment.getEnd() - currentExperiment.getStart();
+		Preconditions.checkArgument(currentRecord != null);
+		long duration = currentRecord.getEnd() - currentRecord.getStart();
 		long relativeTime = scale.getSelection() * duration / scale.getMaximum();
-		final long time = currentExperiment.getStart() + relativeTime;
+		final long time = currentRecord.getStart() + relativeTime;
 		
 		scale.setToolTipText(new TimeStampLabelProvider().getText(time));
 	}
 
-	private void setCurrentExperiment(ExperimentDescr currentExperiment) {
-		this.currentExperiment = currentExperiment;
+	private void setCurrentRecord(Record currentRecord) {
+		this.currentRecord = currentRecord;
 		scale.setEnabled(true);
-		Network ntc = currentExperiment.getNetworkTimeCopy();
+		Network ntc = currentRecord.getNetworkTimeCopy();
 		if (ntc != null && ntc.getTime() > 0) {
 			setTime(ntc.getTime());
 			sliding();
@@ -177,10 +177,10 @@ public class CWDataBaseTimeScaleController {
 	}
 	
 	private void runJump(long time, IProgressMonitor monitor) {
-		Network networkTimeCopy = currentExperiment.getNetworkTimeCopy();
+		Network networkTimeCopy = currentRecord.getNetworkTimeCopy();
 		if (networkTimeCopy == null) {
-			networkTimeCopy = EcoreUtil.copy(currentExperiment.getNetwork());
-			currentExperiment.setNetworkTimeCopy(networkTimeCopy);
+			networkTimeCopy = EcoreUtil.copy(currentRecord.getConfiguration());
+			currentRecord.setNetworkTimeCopy(networkTimeCopy);
 		}
 		
 		monitor.beginTask("resetting nodes to new time", networkTimeCopy.getNodes().size() + 1);
@@ -193,7 +193,7 @@ public class CWDataBaseTimeScaleController {
 		getMergeConfiguration().getNewHandlerMap().clear();
 		
 		if (selectedHandler != null) {
-			Handler dbHandler = dataBaseUtil.getHandler(DataBaseUtil.createHandle(currentExperiment, selectedNode, selectedHandler, time));
+			Handler dbHandler = dataBaseUtil.getHandler(DataBaseUtil.createHandle(currentRecord, selectedNode, selectedHandler, time));
 			if (dbHandler == null) {
 				dbHandler = ClickWatchModelFactory.eINSTANCE.createHandler();
 				dbHandler.setName(selectedHandler.getName());
@@ -212,7 +212,7 @@ public class CWDataBaseTimeScaleController {
 			}
 			for (Node currentNode: nodes) {						
 				// get node from data base
-				Node nodeTimeCopy = dataBaseUtil.getNode(DataBaseUtil.createHandle(currentExperiment, currentNode.getINetAddress(), time));
+				Node nodeTimeCopy = dataBaseUtil.getNode(DataBaseUtil.createHandle(currentRecord, currentNode.getINetAddress(), time));
 				
 				// merge node into gui
 				merger.merge(currentNode, nodeTimeCopy);
@@ -228,10 +228,10 @@ public class CWDataBaseTimeScaleController {
 	}
 	
 	private void jump() {
-		Preconditions.checkArgument(currentExperiment != null);
-		long duration = currentExperiment.getEnd() - currentExperiment.getStart();
+		Preconditions.checkArgument(currentRecord != null);
+		long duration = currentRecord.getEnd() - currentRecord.getStart();
 		long relativeTime = scale.getSelection() * duration / scale.getMaximum();
-		final long time = currentExperiment.getStart() + relativeTime;
+		final long time = currentRecord.getStart() + relativeTime;
 		
 		try {
 			if (selectedHandler == null) {

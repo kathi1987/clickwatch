@@ -19,11 +19,11 @@ import de.hub.clickwatch.connection.adapter.CompoundHandlerAdapter;
 import de.hub.clickwatch.connection.adapter.IPullHandlerAdapter;
 import de.hub.clickwatch.connection.adapter.PullHandlerAdapter;
 import de.hub.clickwatch.model.Handler;
-import de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr;
-import de.hub.clickwatch.recoder.cwdatabase.ExperimentStatistics;
-import de.hub.clickwatch.recoder.cwdatabase.util.ExperimentUtil;
+import de.hub.clickwatch.recoder.cwdatabase.Record;
+import de.hub.clickwatch.recoder.cwdatabase.RecordStatistics;
+import de.hub.clickwatch.recoder.cwdatabase.util.RecordUtil;
 import de.hub.clickwatch.recorder.CWRecorderModule;
-import de.hub.clickwatch.recorder.ExperimentRecorder;
+import de.hub.clickwatch.recorder.NetworkRecorder;
 import de.hub.clickwatch.recorder.NodeRecorder;
 import de.hub.clickwatch.recorder.database.DummyDataBaseAdapter;
 import de.hub.clickwatch.recorder.database.IDataBaseRecordAdapter;
@@ -40,14 +40,14 @@ public class PerformanceGauge {
 		this.remoteLocalUpdateIntervalFactor = remoteLocalUpdateIntervalFactor;
 	}
 
-	public ExperimentStatistics measure(RetrievalType retrievalType, int duration, int updateInterval, int handler, String nodeId) {
+	public RecordStatistics measure(RetrievalType retrievalType, int duration, int updateInterval, int handler, String nodeId) {
 		handlerCount = handler;
 		int localUpdateInterval = (retrievalType == RetrievalType.COMPOUND_HANDLER || retrievalType == RetrievalType.DELTA_COMPOUND_HANDLER) ? updateInterval * remoteLocalUpdateIntervalFactor : updateInterval;
 		int remoteUpdateInterval = updateInterval;
 		Injector injector = createInjector(retrievalType, remoteUpdateInterval);
-		ExperimentDescr experiment = ExperimentUtil.buildDataBase("test", true, duration, localUpdateInterval, nodeId);
-		injector.getInstance(ExperimentRecorder.class).record(experiment);
-		return experiment.getStatistics();
+		Record record = RecordUtil.buildDataBase("test", duration, localUpdateInterval, nodeId);
+		injector.getInstance(NetworkRecorder.class).record(record);
+		return record.getStatistics();
 	}
 	
 	private Injector createInjector(final RetrievalType retrievalType, final int remoteUpdateInterval) {

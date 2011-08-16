@@ -9,8 +9,8 @@ package de.hub.clickwatch.specificmodels.brn.lt_routes;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.EReference;
+
 import de.hub.clickwatch.model.ClickWatchModelPackage;
 
 /**

@@ -17,15 +17,15 @@ import de.hub.clickwatch.analysis.data.Plot
 class XtentAnalysis implements IClickWatchMain {
 	
 	@Inject DataBaseUtil db
-	ExperimentDescr exp
+	de.hub.clickwatch.recoder.cwdatabase.Record record
 	
 	override main(IClickWatchContext ctx) {
 		val plot = new Plot()
-		val ep = ctx.getAdapter(typeof(IExperimentProvider));
-		exp = ep.experiment;
+		val rp = ctx.getAdapter(typeof(de.hub.clickwatch.main.IRecordProvider));
+		record = rp.getRecord;
 		
-		for(nodeId: exp.network.nodes.map(e|e.INetAddress)) {			
-			for(handler: db.getHandler(exp, nodeId, typeof(Bcast_stats))) {
+		for(nodeId: record.getConfiguration.nodes.map(e|e.INetAddress)) {			
+			for(handler: db.getHandler(record, nodeId, typeof(Bcast_stats))) {
 				for(link: handler.entry.link) {
 					for(link_info: link.link_info) {
 						if (link_info.rate == 2) { 

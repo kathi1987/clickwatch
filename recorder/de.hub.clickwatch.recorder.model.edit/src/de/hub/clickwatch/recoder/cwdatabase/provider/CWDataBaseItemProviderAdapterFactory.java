@@ -6,15 +6,12 @@
  */
 package de.hub.clickwatch.recoder.cwdatabase.provider;
 
-import de.hub.clickwatch.recoder.cwdatabase.util.CWDataBaseAdapterFactory;
-
 import java.util.ArrayList;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.edit.provider.ChangeNotifier;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
@@ -26,6 +23,8 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+
+import de.hub.clickwatch.recoder.cwdatabase.util.CWDataBaseAdapterFactory;
 
 /**
  * This is the factory that is used to provide the interfaces needed to support Viewers.
@@ -76,49 +75,26 @@ public class CWDataBaseItemProviderAdapterFactory extends CWDataBaseAdapterFacto
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr} instances.
+	 * This keeps track of the one adapter used for all {@link de.hub.clickwatch.recoder.cwdatabase.Record} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ExperimentDescrItemProvider experimentDescrItemProvider;
+	protected RecordItemProvider recordItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr}.
+	 * This creates an adapter for a {@link de.hub.clickwatch.recoder.cwdatabase.Record}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createExperimentDescrAdapter() {
-		if (experimentDescrItemProvider == null) {
-			experimentDescrItemProvider = new ExperimentDescrItemProvider(this);
+	public Adapter createRecordAdapter() {
+		if (recordItemProvider == null) {
+			recordItemProvider = new RecordItemProvider(this);
 		}
 
-		return experimentDescrItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link de.hub.clickwatch.recoder.cwdatabase.NodeRecord} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected NodeRecordItemProvider nodeRecordItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link de.hub.clickwatch.recoder.cwdatabase.NodeRecord}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createNodeRecordAdapter() {
-		if (nodeRecordItemProvider == null) {
-			nodeRecordItemProvider = new NodeRecordItemProvider(this);
-		}
-
-		return nodeRecordItemProvider;
+		return recordItemProvider;
 	}
 
 	/**
@@ -145,141 +121,26 @@ public class CWDataBaseItemProviderAdapterFactory extends CWDataBaseAdapterFacto
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link de.hub.clickwatch.recoder.cwdatabase.ExperimentRecord} instances.
+	 * This keeps track of the one adapter used for all {@link de.hub.clickwatch.recoder.cwdatabase.RecordStatistics} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ExperimentRecordItemProvider experimentRecordItemProvider;
+	protected RecordStatisticsItemProvider recordStatisticsItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link de.hub.clickwatch.recoder.cwdatabase.ExperimentRecord}.
+	 * This creates an adapter for a {@link de.hub.clickwatch.recoder.cwdatabase.RecordStatistics}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createExperimentRecordAdapter() {
-		if (experimentRecordItemProvider == null) {
-			experimentRecordItemProvider = new ExperimentRecordItemProvider(this);
+	public Adapter createRecordStatisticsAdapter() {
+		if (recordStatisticsItemProvider == null) {
+			recordStatisticsItemProvider = new RecordStatisticsItemProvider(this);
 		}
 
-		return experimentRecordItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link de.hub.clickwatch.recoder.cwdatabase.ExperimentNodeRecordTimeTable} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ExperimentNodeRecordTimeTableItemProvider experimentNodeRecordTimeTableItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link de.hub.clickwatch.recoder.cwdatabase.ExperimentNodeRecordTimeTable}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createExperimentNodeRecordTimeTableAdapter() {
-		if (experimentNodeRecordTimeTableItemProvider == null) {
-			experimentNodeRecordTimeTableItemProvider = new ExperimentNodeRecordTimeTableItemProvider(this);
-		}
-
-		return experimentNodeRecordTimeTableItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link java.util.Map.Entry} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected EStringToExperimentNodeRecordTimeTableMapItemProvider eStringToExperimentNodeRecordTimeTableMapItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link java.util.Map.Entry}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createEStringToExperimentNodeRecordTimeTableMapAdapter() {
-		if (eStringToExperimentNodeRecordTimeTableMapItemProvider == null) {
-			eStringToExperimentNodeRecordTimeTableMapItemProvider = new EStringToExperimentNodeRecordTimeTableMapItemProvider(this);
-		}
-
-		return eStringToExperimentNodeRecordTimeTableMapItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link java.util.Map.Entry} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ELongObjectToNodeRecordDescrMapItemProvider eLongObjectToNodeRecordDescrMapItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link java.util.Map.Entry}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createELongObjectToNodeRecordDescrMapAdapter() {
-		if (eLongObjectToNodeRecordDescrMapItemProvider == null) {
-			eLongObjectToNodeRecordDescrMapItemProvider = new ELongObjectToNodeRecordDescrMapItemProvider(this);
-		}
-
-		return eLongObjectToNodeRecordDescrMapItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link de.hub.clickwatch.recoder.cwdatabase.ExperimentStatistics} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ExperimentStatisticsItemProvider experimentStatisticsItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link de.hub.clickwatch.recoder.cwdatabase.ExperimentStatistics}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createExperimentStatisticsAdapter() {
-		if (experimentStatisticsItemProvider == null) {
-			experimentStatisticsItemProvider = new ExperimentStatisticsItemProvider(this);
-		}
-
-		return experimentStatisticsItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link de.hub.clickwatch.recoder.cwdatabase.NodeRecordDescr} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected NodeRecordDescrItemProvider nodeRecordDescrItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link de.hub.clickwatch.recoder.cwdatabase.NodeRecordDescr}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createNodeRecordDescrAdapter() {
-		if (nodeRecordDescrItemProvider == null) {
-			nodeRecordDescrItemProvider = new NodeRecordDescrItemProvider(this);
-		}
-
-		return nodeRecordDescrItemProvider;
+		return recordStatisticsItemProvider;
 	}
 
 	/**
@@ -381,15 +242,9 @@ public class CWDataBaseItemProviderAdapterFactory extends CWDataBaseAdapterFacto
 	 * @generated
 	 */
 	public void dispose() {
-		if (experimentDescrItemProvider != null) experimentDescrItemProvider.dispose();
-		if (nodeRecordItemProvider != null) nodeRecordItemProvider.dispose();
+		if (recordItemProvider != null) recordItemProvider.dispose();
 		if (dataBaseItemProvider != null) dataBaseItemProvider.dispose();
-		if (experimentRecordItemProvider != null) experimentRecordItemProvider.dispose();
-		if (experimentNodeRecordTimeTableItemProvider != null) experimentNodeRecordTimeTableItemProvider.dispose();
-		if (eStringToExperimentNodeRecordTimeTableMapItemProvider != null) eStringToExperimentNodeRecordTimeTableMapItemProvider.dispose();
-		if (eLongObjectToNodeRecordDescrMapItemProvider != null) eLongObjectToNodeRecordDescrMapItemProvider.dispose();
-		if (experimentStatisticsItemProvider != null) experimentStatisticsItemProvider.dispose();
-		if (nodeRecordDescrItemProvider != null) nodeRecordDescrItemProvider.dispose();
+		if (recordStatisticsItemProvider != null) recordStatisticsItemProvider.dispose();
 	}
 
 }

@@ -11,5 +11,5 @@ public enum ELaunchConfigurationParameters {
 	HandlerPerRecord,
 	RecordURI,
 	DataBaseURI,
-	ExperimentId
+	RecordId
 }

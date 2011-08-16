@@ -6,7 +6,7 @@ import com.google.inject.name.Named;
 
 import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.model.Node;
-import de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr;
+import de.hub.clickwatch.recoder.cwdatabase.Record;
 import de.hub.clickwatch.recorder.CWRecorderModule;
 import de.hub.clickwatch.util.ILogger;
 
@@ -16,7 +16,7 @@ public abstract class AbstractDataBaseRecordAdapter implements IDataBaseRecordAd
 	
 	@Inject protected ILogger logger;
 	
-	protected ExperimentDescr experiment;
+	protected Record record;
 	
 	protected abstract class AbstractNodeDataBaseAdapter {
 		protected String nodeId = null;
@@ -44,19 +44,19 @@ public abstract class AbstractDataBaseRecordAdapter implements IDataBaseRecordAd
 		}
 		
 		protected void save() {
-			experiment.getStatistics().getSamplesR().addValue(sample - startSample);
+			record.getStatistics().getSamplesR().addValue(sample - startSample);
 			startSample = sample;
-			experiment.getStatistics().getHandlersR().addValue(recordedHandler);
+			record.getStatistics().getHandlersR().addValue(recordedHandler);
 		}
 	}
 	
 	@Override
-	public void initialize(ExperimentDescr experiment, boolean overwrite) {
-		this.experiment = experiment;
-		if (overwrite && experiment.getMetaData() != null) {
-			experiment.setStart(0);
-			experiment.setEnd(0);
-			experiment.getMetaData().clear();
+	public void initialize(Record record, boolean overwrite) {
+		this.record = record;
+		if (overwrite && record.getMetaData() != null) {
+			record.setStart(0);
+			record.setEnd(0);
+			record.getMetaData().clear();
 		}
 	}
 	
@@ -64,7 +64,7 @@ public abstract class AbstractDataBaseRecordAdapter implements IDataBaseRecordAd
 	
 	@Override
 	public synchronized Object addNode(Node metaData) {
-		experiment.getMetaData().add(metaData);
+		record.getMetaData().add(metaData);
 		AbstractNodeDataBaseAdapter nodeDBAdapter = createNodeDataBaseAdapter();
 		nodeDBAdapter.initialize(metaData);
 		return nodeDBAdapter;

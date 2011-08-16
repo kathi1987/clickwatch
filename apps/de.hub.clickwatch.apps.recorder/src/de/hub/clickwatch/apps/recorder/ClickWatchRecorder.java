@@ -9,10 +9,10 @@ import de.hub.clickwatch.ClickWatchStandaloneSetup;
 import de.hub.clickwatch.main.ClickWatchExternalLauncher;
 import de.hub.clickwatch.main.IClickWatchContext;
 import de.hub.clickwatch.main.IClickWatchMain;
-import de.hub.clickwatch.main.IExperimentProvider;
+import de.hub.clickwatch.main.IRecordProvider;
 import de.hub.clickwatch.main.IInjectorProvider;
-import de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr;
-import de.hub.clickwatch.recorder.ExperimentRecorder;
+import de.hub.clickwatch.recoder.cwdatabase.Record;
+import de.hub.clickwatch.recorder.NetworkRecorder;
 import de.hub.clickwatch.recorder.database.CWRecorderStandaloneSetup;
 import de.hub.clickwatch.util.ILogger;
 
@@ -22,12 +22,12 @@ public class ClickWatchRecorder implements IClickWatchMain, IApplication {
 	public void main(IClickWatchContext ctx) {
 		Injector injector = ctx.getAdapter(IInjectorProvider.class).getInjector();
 		ILogger logger = injector.getInstance(ILogger.class);
-		ExperimentRecorder recorder = injector.getInstance(ExperimentRecorder.class);
-		ExperimentDescr experiment = ctx.getAdapter(IExperimentProvider.class).getExperiment();
+		NetworkRecorder recorder = injector.getInstance(NetworkRecorder.class);
+		Record record = ctx.getAdapter(IRecordProvider.class).getRecord();
 		
-		logger.log(ILogger.INFO, "Start recording for experiment " + experiment.getName(), null);
-		recorder.record(experiment);
-		logger.log(ILogger.INFO, "Stopped recording for experiment " + experiment.getName() + "\nStatistics\n: " + experiment.getStatistics().toString(), null);
+		logger.log(ILogger.INFO, "Start recording for record " + record.getName(), null);
+		recorder.record(record);
+		logger.log(ILogger.INFO, "Stopped recording for record " + record.getName() + "\nStatistics\n: " + record.getStatistics().toString(), null);
 	}
 
 	public static final void main(String[] args) throws Exception {

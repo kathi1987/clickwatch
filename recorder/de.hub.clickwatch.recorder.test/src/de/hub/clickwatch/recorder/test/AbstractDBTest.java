@@ -14,15 +14,15 @@ import de.hub.clickwatch.connection.adapter.PullHandlerAdapter;
 import de.hub.clickwatch.connection.adapter.StringValueAdapter;
 import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.model.Node;
-import de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr;
-import de.hub.clickwatch.recoder.cwdatabase.util.ExperimentUtil;
+import de.hub.clickwatch.recoder.cwdatabase.Record;
+import de.hub.clickwatch.recoder.cwdatabase.util.RecordUtil;
 import de.hub.clickwatch.recorder.CWRecorderModule;
-import de.hub.clickwatch.recorder.ExperimentRecorder;
+import de.hub.clickwatch.recorder.NetworkRecorder;
 import de.hub.clickwatch.recorder.database.CWRecorderStandaloneSetup;
 import de.hub.clickwatch.recorder.database.DataBaseUtil;
 import de.hub.clickwatch.recorder.database.IDataBaseRecordAdapter;
 import de.hub.clickwatch.recorder.database.IDataBaseRetrieveAdapter;
-import de.hub.clickwatch.recorder.database.emf.DataBaseAdapter;
+import de.hub.clickwatch.recorder.database.hbase.HBaseDataBaseAdapter;
 import de.hub.clickwatch.tests.AbstractAdapterTest;
 
 public class AbstractDBTest extends AbstractAdapterTest {
@@ -69,11 +69,11 @@ public class AbstractDBTest extends AbstractAdapterTest {
 	}
 
 	protected Class<? extends IDataBaseRecordAdapter> getDataBaseRecordAdapterClass() {
-		return DataBaseAdapter.class;
+		return HBaseDataBaseAdapter.class;
 	}
 	
 	protected Class<? extends IDataBaseRetrieveAdapter> getDataBaseRetrieveAdapterClass() {
-		return DataBaseAdapter.class;
+		return HBaseDataBaseAdapter.class;
 	}
 
 
@@ -92,25 +92,24 @@ public class AbstractDBTest extends AbstractAdapterTest {
 		dbUtil = injector.getInstance(DataBaseUtil.class);
 	}
 	
-	protected ExperimentDescr performTest(String[] nodeIds) {
+	protected Record performTest(String[] nodeIds) {
 		return performTest(nodeIds, true);
 	}
 	
-	protected ExperimentDescr performTest(String[] nodeIds, boolean assertTest) {
-		ExperimentRecorder recorder = injector.getInstance(ExperimentRecorder.class);
-		ExperimentDescr experiment = buildDataBase(nodeIds);
-		recorder.record(experiment);	
+	protected Record performTest(String[] nodeIds, boolean assertTest) {
+		NetworkRecorder recorder = injector.getInstance(NetworkRecorder.class);
+		Record record = buildDataBase(nodeIds);
+		recorder.record(record);	
 		if (assertTest) {
-			assertExperiment(experiment, nodeIds);
+			assertRecord(record, nodeIds);
 		}
-		return experiment;
+		return record;
 	}
 	
-	protected ExperimentDescr buildDataBase(String[] nodeIds) {
-		return ExperimentUtil.buildDataBase(
-				getExperimentName(), 
-				getInMemory(), 
-				getExperimentDuration(), 
+	protected Record buildDataBase(String[] nodeIds) {
+		return RecordUtil.buildDataBase(
+				getRecordName(),  
+				getRecordDuration(), 
 				getUpdateInterval(), 
 				nodeIds);
 	}
@@ -123,39 +122,39 @@ public class AbstractDBTest extends AbstractAdapterTest {
 		return true;
 	}
 	
-	protected String getExperimentName() {
-		return "test_experiment";
+	protected String getRecordName() {
+		return "test_record";
 	}
 
-	protected int getExperimentDuration() {
+	protected int getRecordDuration() {
 		return 2000;
 	}
 	
-	private void assertExperiment(ExperimentDescr experiment, String[] nodeIds) {		
-		Assert.assertTrue(experiment.getStart() > 0);
-		Assert.assertTrue(experiment.getEnd() > experiment.getStart());
+	private void assertRecord(Record record, String[] nodeIds) {		
+		Assert.assertTrue(record.getStart() > 0);
+		Assert.assertTrue(record.getEnd() > record.getStart());
 		for (String nodeId: nodeIds) {
-			assertNode(experiment, nodeId);
+			assertNode(record, nodeId);
 		}
 	}
 	
-	private void assertNode(ExperimentDescr experiment, String nodeId) {
-		assertRecord(experiment, nodeId);
+	private void assertNode(Record record, String nodeId) {
+		assertRecord(record, nodeId);
 		
-		long endTime = experiment.getEnd();
-		long startTime = experiment.getStart();
+		long endTime = record.getEnd();
+		long startTime = record.getStart();
 		
-		assertNodeAtTime(experiment, nodeId, startTime, true);
-		assertNodeAtTime(experiment, nodeId, endTime, false);
-		assertNodeAtTime(experiment, nodeId, startTime + endTime / 2, false);
+		assertNodeAtTime(record, nodeId, startTime, true);
+		assertNodeAtTime(record, nodeId, endTime, false);
+		assertNodeAtTime(record, nodeId, startTime + endTime / 2, false);
 	}
 	
-	protected void assertRecord(ExperimentDescr experiment, String nodeId) {
+	protected void assertRecord(Record record, String nodeId) {
 		
 	}
 	
-	private void assertNodeAtTime(ExperimentDescr experiment, String nodeId, long time, boolean emptyHandlerAllowed) {
-		Node node = dbUtil.getNode(DataBaseUtil.createHandle(experiment, nodeId, time));
+	private void assertNodeAtTime(Record record, String nodeId, long time, boolean emptyHandlerAllowed) {
+		Node node = dbUtil.getNode(DataBaseUtil.createHandle(record, nodeId, time));
 		Assert.assertNotNull(node);
 		for (String handlerName: handlerNamesOfNode(node)) {
 			assertHandler(node, handlerName, time, emptyHandlerAllowed);

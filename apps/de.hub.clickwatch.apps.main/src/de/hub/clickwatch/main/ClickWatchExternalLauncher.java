@@ -96,7 +96,7 @@ public class ClickWatchExternalLauncher {
 			Class<? extends IClickWatchMain> mainClass) {
 		List<Class<?>> adapterClasses = new ArrayList<Class<?>>();
 		adapterClasses.add(IInjectorProvider.class);
-		adapterClasses.add(IExperimentProvider.class);
+		adapterClasses.add(IRecordProvider.class);
 		adapterClasses.add(IArgumentsProvider.class);
 		adapterClasses.add(IClickWatchModelProvider.class);
 		adapterClasses.add(IResultsProvider.class);

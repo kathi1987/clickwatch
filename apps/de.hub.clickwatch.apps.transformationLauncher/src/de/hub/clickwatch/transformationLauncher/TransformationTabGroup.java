@@ -5,7 +5,7 @@ import org.eclipse.debug.ui.ILaunchConfigurationDialog;
 import org.eclipse.debug.ui.ILaunchConfigurationTab;
 
 import de.hub.clickwatch.transformationLauncher.tabs.ClickwatchParametersTab;
-import de.hub.clickwatch.transformationLauncher.tabs.ExperimentParametersTab;
+import de.hub.clickwatch.transformationLauncher.tabs.RecordParametersTab;
 import de.hub.clickwatch.transformationLauncher.tabs.MainParametersTab;
 
 /**
@@ -23,7 +23,7 @@ public class TransformationTabGroup extends AbstractLaunchConfigurationTabGroup 
 	@Override
 	public void createTabs(ILaunchConfigurationDialog dialog, String mode) {
 		ILaunchConfigurationTab[] tabs = new ILaunchConfigurationTab[] {
-				new MainParametersTab(), new ExperimentParametersTab(),
+				new MainParametersTab(), new RecordParametersTab(),
 				new ClickwatchParametersTab() };
 		setTabs(tabs);
 

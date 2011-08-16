@@ -26,22 +26,13 @@ public interface CWDataBaseFactory extends EFactory {
 	CWDataBaseFactory eINSTANCE = de.hub.clickwatch.recoder.cwdatabase.impl.CWDataBaseFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>Experiment Descr</em>'.
+	 * Returns a new object of class '<em>Record</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Experiment Descr</em>'.
+	 * @return a new object of class '<em>Record</em>'.
 	 * @generated
 	 */
-	ExperimentDescr createExperimentDescr();
-
-	/**
-	 * Returns a new object of class '<em>Node Record</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Node Record</em>'.
-	 * @generated
-	 */
-	NodeRecord createNodeRecord();
+	Record createRecord();
 
 	/**
 	 * Returns a new object of class '<em>Data Base</em>'.
@@ -53,40 +44,13 @@ public interface CWDataBaseFactory extends EFactory {
 	DataBase createDataBase();
 
 	/**
-	 * Returns a new object of class '<em>Experiment Record</em>'.
+	 * Returns a new object of class '<em>Record Statistics</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Experiment Record</em>'.
+	 * @return a new object of class '<em>Record Statistics</em>'.
 	 * @generated
 	 */
-	ExperimentRecord createExperimentRecord();
-
-	/**
-	 * Returns a new object of class '<em>Experiment Node Record Time Table</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Experiment Node Record Time Table</em>'.
-	 * @generated
-	 */
-	ExperimentNodeRecordTimeTable createExperimentNodeRecordTimeTable();
-
-	/**
-	 * Returns a new object of class '<em>Experiment Statistics</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Experiment Statistics</em>'.
-	 * @generated
-	 */
-	ExperimentStatistics createExperimentStatistics();
-
-	/**
-	 * Returns a new object of class '<em>Node Record Descr</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Node Record Descr</em>'.
-	 * @generated
-	 */
-	NodeRecordDescr createNodeRecordDescr();
+	RecordStatistics createRecordStatistics();
 
 	/**
 	 * Returns the package supported by this factory.

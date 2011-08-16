@@ -14,7 +14,7 @@ import com.google.inject.name.Named;
 import de.hub.clickwatch.connection.adapter.IValueAdapter;
 import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.model.Node;
-import de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr;
+import de.hub.clickwatch.recoder.cwdatabase.Record;
 import de.hub.clickwatch.recorder.CWRecorderModule;
 import de.hub.clickwatch.recorder.database.hbase.HBaseDataBaseAdapter;
 import de.hub.clickwatch.util.ILogger;
@@ -28,40 +28,40 @@ public class DataBaseUtil {
 	@Inject private ILogger logger;
 	
 	private static class DataBaseHandle {
-		ExperimentDescr experiment;
+		Record record;
 		String nodeId;
 		String handlerId;
 		long start;
 		long end;
 	}
 	
-	public static DataBaseHandle createHandle(ExperimentDescr experiment, Node node, long time) {
-		return createHandle(experiment, node.getINetAddress(), null, time, 0);
+	public static DataBaseHandle createHandle(Record record, Node node, long time) {
+		return createHandle(record, node.getINetAddress(), null, time, 0);
 	}
 	
-	public static DataBaseHandle createHandle(ExperimentDescr experiment, String nodeId, long time) {
-		return createHandle(experiment, nodeId, null, time, 0);
+	public static DataBaseHandle createHandle(Record record, String nodeId, long time) {
+		return createHandle(record, nodeId, null, time, 0);
 	}
 	
-	public static DataBaseHandle createHandle(ExperimentDescr experiment, Node node, Handler handler) {
-		return createHandle(experiment, node.getINetAddress(), handler.getQualifiedName());
+	public static DataBaseHandle createHandle(Record record, Node node, Handler handler) {
+		return createHandle(record, node.getINetAddress(), handler.getQualifiedName());
 	}
 	
-	public static DataBaseHandle createHandle(ExperimentDescr experiment, String nodeId, String handlerId) {
-		return createHandle(experiment, nodeId, handlerId, experiment.getStart(), experiment.getEnd());
+	public static DataBaseHandle createHandle(Record record, String nodeId, String handlerId) {
+		return createHandle(record, nodeId, handlerId, record.getStart(), record.getEnd());
 	}
 	
-	public static DataBaseHandle createHandle(ExperimentDescr experiment, Node node, Handler handler, long time) {
-		return createHandle(experiment, node.getINetAddress(), handler.getQualifiedName(), time, 0);
+	public static DataBaseHandle createHandle(Record record, Node node, Handler handler, long time) {
+		return createHandle(record, node.getINetAddress(), handler.getQualifiedName(), time, 0);
 	}
 	
-	public static DataBaseHandle createHandle(ExperimentDescr experiment, String nodeId, String handlerId, long time) {
-		return createHandle(experiment, nodeId, handlerId, time, 0);
+	public static DataBaseHandle createHandle(Record record, String nodeId, String handlerId, long time) {
+		return createHandle(record, nodeId, handlerId, time, 0);
 	}
 	
-	public static DataBaseHandle createHandle(ExperimentDescr experiment, String nodeId, String handlerId, long start, long end) {
+	public static DataBaseHandle createHandle(Record record, String nodeId, String handlerId, long start, long end) {
 		DataBaseHandle result = new DataBaseHandle();
-		result.experiment = experiment;
+		result.record = record;
 		result.nodeId = nodeId;
 		result.handlerId = handlerId;
 		result.start = start;
@@ -69,7 +69,7 @@ public class DataBaseUtil {
 		return result;
 	}
 	
-	public <T extends Handler> Iterable<T> getHandler(ExperimentDescr experiment, String nodeId, Class<T> handlerClass) {
+	public <T extends Handler> Iterable<T> getHandler(Record record, String nodeId, Class<T> handlerClass) {
 		return null; // TODO
 	}
 	
@@ -79,7 +79,7 @@ public class DataBaseUtil {
 	
 	public Iterator<Handler> getHandlerIterator(final DataBaseHandle h, final IProgressMonitor monitor) {
 		monitor.beginTask("Going throw the data base", 100);
-		dataBaseAdapter.initialize(h.experiment);
+		dataBaseAdapter.initialize(h.record);
 		final Iterator<Handler> dbIterator = ((HBaseDataBaseAdapter)dataBaseAdapter).retrieve(h.nodeId, h.handlerId, h.start, h.end);
 		final long duration = h.end - h.start;
 		return new Iterator<Handler>() {
@@ -117,7 +117,7 @@ public class DataBaseUtil {
 	}
 	
 	public Handler getHandler(DataBaseHandle h) {
-		dataBaseAdapter.initialize(h.experiment);
+		dataBaseAdapter.initialize(h.record);
 		dataBaseAdapter.set(h.nodeId, h.start);
 		Handler dbHandler = dataBaseAdapter.retrieve(h.handlerId);
 		if (dbHandler == null) {
@@ -131,17 +131,17 @@ public class DataBaseUtil {
 	}
 	
 	public Node getNode(DataBaseHandle h, String elementFilter, String handlerFilter) {
-		dataBaseAdapter.initialize(h.experiment);
+		dataBaseAdapter.initialize(h.record);
 		
 		Node result = null;
-		for (Node metaData: h.experiment.getMetaData()) {
+		for (Node metaData: h.record.getMetaData()) {
 			if (metaData.getINetAddress().equals(h.nodeId)) {
 				result = EcoreUtil.copy(metaData);
 			}
 		}
 		
 		if (result == null) {
-			// node was not recorded in this experiment
+			// node was not recorded in this record
 			return null;
 		}
 		
