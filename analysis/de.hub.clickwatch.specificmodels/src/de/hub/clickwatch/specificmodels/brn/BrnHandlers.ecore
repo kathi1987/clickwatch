@@ -3,9 +3,704 @@
   <eClassifiers xsi:type="ecore:EClass" name="HandlerSubClass">
     <eSuperTypes href="../../../../../../../de.hub.clickwatch.core/src/de/hub/clickwatch/model/ClickWatchModel.ecore#//Handler"/>
   </eClassifiers>
+  <eSubpackages name="sys_info_systeminfo" nsURI="http://de.hub.clickwatch.specificmodels.brn/sys_info/systeminfo" nsPrefix="sys_info_systeminfo">
+    <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+      <details key="handler_class" value="Systeminfo"/>
+    </eAnnotations>
+    <eClassifiers xsi:type="ecore:EClass" name="Cpu_usage">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Systeminfo|Handler/system|system:System|EObject/cpu_usage|cpu_usage:Cpu_usage|EObject"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_cpu_usage" eType="//sys_info_systeminfo/System" eOpposite="//sys_info_systeminfo/System/cpu_usage"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="real">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Systeminfo|Handler/system|system:System|EObject/cpu_usage|cpu_usage:Cpu_usage|EObject/real|real:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="user">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Systeminfo|Handler/system|system:System|EObject/cpu_usage|cpu_usage:Cpu_usage|EObject/user|user:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="sys">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Systeminfo|Handler/system|system:System|EObject/cpu_usage|cpu_usage:Cpu_usage|EObject/sys|sys:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="unit">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Systeminfo|Handler/system|system:System|EObject/cpu_usage|cpu_usage:Cpu_usage|EObject/unit|unit:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Linux">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Systeminfo|Handler/system|system:System|EObject/linux|linux:Linux|EObject"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_linux" eType="//sys_info_systeminfo/System" eOpposite="//sys_info_systeminfo/System/linux"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="version">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Systeminfo|Handler/system|system:System|EObject/linux|linux:Linux|EObject/version|version:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Loadavg">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Systeminfo|Handler/system|system:System|EObject/loadavg|loadavg:Loadavg|EObject"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_loadavg" eType="//sys_info_systeminfo/System" eOpposite="//sys_info_systeminfo/System/loadavg"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="onemin">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Systeminfo|Handler/system|system:System|EObject/loadavg|loadavg:Loadavg|EObject/onemin|onemin:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="fivemin">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Systeminfo|Handler/system|system:System|EObject/loadavg|loadavg:Loadavg|EObject/fivemin|fivemin:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="fifteen">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Systeminfo|Handler/system|system:System|EObject/loadavg|loadavg:Loadavg|EObject/fifteen|fifteen:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Mem">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Systeminfo|Handler/system|system:System|EObject/mem|mem:Mem|EObject"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_mem" eType="//sys_info_systeminfo/System" eOpposite="//sys_info_systeminfo/System/mem"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="total">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Systeminfo|Handler/system|system:System|EObject/mem|mem:Mem|EObject/total|total:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="used">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Systeminfo|Handler/system|system:System|EObject/mem|mem:Mem|EObject/used|used:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="cached">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Systeminfo|Handler/system|system:System|EObject/mem|mem:Mem|EObject/cached|cached:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="buffers">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Systeminfo|Handler/system|system:System|EObject/mem|mem:Mem|EObject/buffers|buffers:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="nFS_Unstable">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Systeminfo|Handler/system|system:System|EObject/mem|mem:Mem|EObject/nFS_Unstable|NFS_Unstable:"/>
+        </eAnnotations>
+        <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+          <details key="name" value="NFS_Unstable"/>
+          <details key="kind" value="attribute"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="System">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Systeminfo|Handler/system|system:System|EObject"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_system" eType="//sys_info_systeminfo/Systeminfo" eOpposite="//sys_info_systeminfo/Systeminfo/system"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" upperBound="-1">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Systeminfo|Handler/system|system:System|EObject/text|text:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="mem" eType="//sys_info_systeminfo/Mem" containment="true" resolveProxies="false" eOpposite="//sys_info_systeminfo/Mem/eContainer_mem">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Systeminfo|Handler/system|system:System|EObject/mem|mem:Mem|EObject"/>
+          <details key="IsCopy" value="false"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="loadavg" eType="//sys_info_systeminfo/Loadavg" containment="true" resolveProxies="false" eOpposite="//sys_info_systeminfo/Loadavg/eContainer_loadavg">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Systeminfo|Handler/system|system:System|EObject/loadavg|loadavg:Loadavg|EObject"/>
+          <details key="IsCopy" value="false"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="cpu_usage" eType="//sys_info_systeminfo/Cpu_usage" containment="true" resolveProxies="false" eOpposite="//sys_info_systeminfo/Cpu_usage/eContainer_cpu_usage">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Systeminfo|Handler/system|system:System|EObject/cpu_usage|cpu_usage:Cpu_usage|EObject"/>
+          <details key="IsCopy" value="false"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="uptime" eType="//sys_info_systeminfo/Uptime" containment="true" resolveProxies="false" eOpposite="//sys_info_systeminfo/Uptime/eContainer_uptime">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Systeminfo|Handler/system|system:System|EObject/uptime|uptime:Uptime|EObject"/>
+          <details key="IsCopy" value="false"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="linux" eType="//sys_info_systeminfo/Linux" containment="true" resolveProxies="false" eOpposite="//sys_info_systeminfo/Linux/eContainer_linux">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Systeminfo|Handler/system|system:System|EObject/linux|linux:Linux|EObject"/>
+          <details key="IsCopy" value="false"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="id">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Systeminfo|Handler/system|system:System|EObject/id|id:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Systeminfo|Handler/system|system:System|EObject/name|name:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="time">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Systeminfo|Handler/system|system:System|EObject/time|time:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Systeminfo">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Systeminfo|Handler"/>
+      </eAnnotations>
+      <eSuperTypes href="../../../../../../../de.hub.clickwatch.core/src/de/hub/clickwatch/model/ClickWatchModel.ecore#//Handler"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="system" eType="//sys_info_systeminfo/System" containment="true" resolveProxies="false" eOpposite="//sys_info_systeminfo/System/eContainer_system">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Systeminfo|Handler/system|system:System|EObject"/>
+          <details key="IsCopy" value="false"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Uptime">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Systeminfo|Handler/system|system:System|EObject/uptime|uptime:Uptime|EObject"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_uptime" eType="//sys_info_systeminfo/System" eOpposite="//sys_info_systeminfo/System/uptime"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="total">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Systeminfo|Handler/system|system:System|EObject/uptime|uptime:Uptime|EObject/total|total:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="idle">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Systeminfo|Handler/system|system:System|EObject/uptime|uptime:Uptime|EObject/idle|idle:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </eStructuralFeatures>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="device_wifi_data_power_systempower" nsURI="http://de.hub.clickwatch.specificmodels.brn/device_wifi/data_power/systempower" nsPrefix="device_wifi_data_power_systempower">
+    <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+      <details key="handler_class" value="Systempower"/>
+    </eAnnotations>
+    <eClassifiers xsi:type="ecore:EClass" name="Device">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Systempower|Handler/settxpower|settxpower:Settxpower|EObject/device|device:Device|EObject"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_device" eType="//device_wifi_data_power_systempower/Settxpower" eOpposite="//device_wifi_data_power_systempower/Settxpower/device"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Systempower|Handler/settxpower|settxpower:Settxpower|EObject/device|device:Device|EObject/name|name:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="device_addr">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Systempower|Handler/settxpower|settxpower:Settxpower|EObject/device|device:Device|EObject/device_addr|device_addr:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Settxpower">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Systempower|Handler/settxpower|settxpower:Settxpower|EObject"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_settxpower" eType="//device_wifi_data_power_systempower/Systempower" eOpposite="//device_wifi_data_power_systempower/Systempower/settxpower"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" upperBound="-1">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Systempower|Handler/settxpower|settxpower:Settxpower|EObject/text|text:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="device" eType="//device_wifi_data_power_systempower/Device" containment="true" resolveProxies="false" eOpposite="//device_wifi_data_power_systempower/Device/eContainer_device">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Systempower|Handler/settxpower|settxpower:Settxpower|EObject/device|device:Device|EObject"/>
+          <details key="IsCopy" value="false"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Systempower|Handler/settxpower|settxpower:Settxpower|EObject/name|name:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="id">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Systempower|Handler/settxpower|settxpower:Settxpower|EObject/id|id:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="power">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Systempower|Handler/settxpower|settxpower:Settxpower|EObject/power|power:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Systempower">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Systempower|Handler"/>
+      </eAnnotations>
+      <eSuperTypes href="../../../../../../../de.hub.clickwatch.core/src/de/hub/clickwatch/model/ClickWatchModel.ecore#//Handler"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="settxpower" eType="//device_wifi_data_power_systempower/Settxpower" containment="true" resolveProxies="false" eOpposite="//device_wifi_data_power_systempower/Settxpower/eContainer_settxpower">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Systempower|Handler/settxpower|settxpower:Settxpower|EObject"/>
+          <details key="IsCopy" value="false"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="device_wifi_wifidevice_sc_systemchannel" nsURI="http://de.hub.clickwatch.specificmodels.brn/device_wifi/wifidevice/sc/systemchannel" nsPrefix="device_wifi_wifidevice_sc_systemchannel">
+    <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+      <details key="handler_class" value="Systemchannel"/>
+    </eAnnotations>
+    <eClassifiers xsi:type="ecore:EClass" name="Device">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Systemchannel|Handler/setchannel|setchannel:Setchannel|EObject/device|device:Device|EObject"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_device" eType="//device_wifi_wifidevice_sc_systemchannel/Setchannel" eOpposite="//device_wifi_wifidevice_sc_systemchannel/Setchannel/device"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Systemchannel|Handler/setchannel|setchannel:Setchannel|EObject/device|device:Device|EObject/name|name:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="device_addr">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Systemchannel|Handler/setchannel|setchannel:Setchannel|EObject/device|device:Device|EObject/device_addr|device_addr:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Setchannel">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Systemchannel|Handler/setchannel|setchannel:Setchannel|EObject"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_setchannel" eType="//device_wifi_wifidevice_sc_systemchannel/Systemchannel" eOpposite="//device_wifi_wifidevice_sc_systemchannel/Systemchannel/setchannel"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" upperBound="-1">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Systemchannel|Handler/setchannel|setchannel:Setchannel|EObject/text|text:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="device" eType="//device_wifi_wifidevice_sc_systemchannel/Device" containment="true" resolveProxies="false" eOpposite="//device_wifi_wifidevice_sc_systemchannel/Device/eContainer_device">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Systemchannel|Handler/setchannel|setchannel:Setchannel|EObject/device|device:Device|EObject"/>
+          <details key="IsCopy" value="false"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Systemchannel|Handler/setchannel|setchannel:Setchannel|EObject/name|name:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="id">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Systemchannel|Handler/setchannel|setchannel:Setchannel|EObject/id|id:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="channel">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Systemchannel|Handler/setchannel|setchannel:Setchannel|EObject/channel|channel:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Systemchannel">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Systemchannel|Handler"/>
+      </eAnnotations>
+      <eSuperTypes href="../../../../../../../de.hub.clickwatch.core/src/de/hub/clickwatch/model/ClickWatchModel.ecore#//Handler"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="setchannel" eType="//device_wifi_wifidevice_sc_systemchannel/Setchannel" containment="true" resolveProxies="false" eOpposite="//device_wifi_wifidevice_sc_systemchannel/Setchannel/eContainer_setchannel">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Systemchannel|Handler/setchannel|setchannel:Setchannel|EObject"/>
+          <details key="IsCopy" value="false"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="lease_tab_leases" nsURI="http://de.hub.clickwatch.specificmodels.brn/lease_tab/leases" nsPrefix="lease_tab_leases">
+    <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+      <details key="handler_class" value="Leases"/>
+    </eAnnotations>
+    <eClassifiers xsi:type="ecore:EClass" name="Client">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Leases|Handler/dhcpleases|dhcpleases:Dhcpleases|EObject/client|client:Client|EObject"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_client" eType="//lease_tab_leases/Dhcpleases" eOpposite="//lease_tab_leases/Dhcpleases/client"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="ip">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Leases|Handler/dhcpleases|dhcpleases:Dhcpleases|EObject/client|client:Client|EObject/ip|ip:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="mac">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Leases|Handler/dhcpleases|dhcpleases:Dhcpleases|EObject/client|client:Client|EObject/mac|mac:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="start">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Leases|Handler/dhcpleases|dhcpleases:Dhcpleases|EObject/client|client:Client|EObject/start|start:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="end">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Leases|Handler/dhcpleases|dhcpleases:Dhcpleases|EObject/client|client:Client|EObject/end|end:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="duration">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Leases|Handler/dhcpleases|dhcpleases:Dhcpleases|EObject/client|client:Client|EObject/duration|duration:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="time_left">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Leases|Handler/dhcpleases|dhcpleases:Dhcpleases|EObject/client|client:Client|EObject/time_left|time_left:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Dhcpleases">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Leases|Handler/dhcpleases|dhcpleases:Dhcpleases|EObject"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_dhcpleases" eType="//lease_tab_leases/Leases" eOpposite="//lease_tab_leases/Leases/dhcpleases"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" upperBound="-1">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Leases|Handler/dhcpleases|dhcpleases:Dhcpleases|EObject/text|text:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="client" upperBound="-1" eType="//lease_tab_leases/Client" containment="true" resolveProxies="false" eOpposite="//lease_tab_leases/Client/eContainer_client">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Leases|Handler/dhcpleases|dhcpleases:Dhcpleases|EObject/client|client:Client|EObject"/>
+          <details key="IsCopy" value="false"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="count">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Leases|Handler/dhcpleases|dhcpleases:Dhcpleases|EObject/count|count:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="time">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Leases|Handler/dhcpleases|dhcpleases:Dhcpleases|EObject/time|time:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Leases">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Leases|Handler"/>
+      </eAnnotations>
+      <eSuperTypes href="../../../../../../../de.hub.clickwatch.core/src/de/hub/clickwatch/model/ClickWatchModel.ecore#//Handler"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="dhcpleases" eType="//lease_tab_leases/Dhcpleases" containment="true" resolveProxies="false" eOpposite="//lease_tab_leases/Dhcpleases/eContainer_dhcpleases">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Leases|Handler/dhcpleases|dhcpleases:Dhcpleases|EObject"/>
+          <details key="IsCopy" value="false"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="gps_gps_coord" nsURI="http://de.hub.clickwatch.specificmodels.brn/gps/gps_coord" nsPrefix="gps_gps_coord">
+    <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+      <details key="handler_class" value="Gps_coord"/>
+    </eAnnotations>
+    <eClassifiers xsi:type="ecore:EClass" name="Gps">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Gps_coord|Handler/gps|gps:Gps|EObject"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_gps" eType="//gps_gps_coord/Gps_coord" eOpposite="//gps_gps_coord/Gps_coord/gps"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="id">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Gps_coord|Handler/gps|gps:Gps|EObject/id|id:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="time">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Gps_coord|Handler/gps|gps:Gps|EObject/time|time:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="lat">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Gps_coord|Handler/gps|gps:Gps|EObject/lat|lat:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="long">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Gps_coord|Handler/gps|gps:Gps|EObject/long|long:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="alt">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Gps_coord|Handler/gps|gps:Gps|EObject/alt|alt:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="speed">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Gps_coord|Handler/gps|gps:Gps|EObject/speed|speed:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Gps_coord">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Gps_coord|Handler"/>
+      </eAnnotations>
+      <eSuperTypes href="../../../../../../../de.hub.clickwatch.core/src/de/hub/clickwatch/model/ClickWatchModel.ecore#//Handler"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="gps" eType="//gps_gps_coord/Gps" containment="true" resolveProxies="false" eOpposite="//gps_gps_coord/Gps/eContainer_gps">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Gps_coord|Handler/gps|gps:Gps|EObject"/>
+          <details key="IsCopy" value="false"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="gps_cart_coord" nsURI="http://de.hub.clickwatch.specificmodels.brn/gps/cart_coord" nsPrefix="gps_cart_coord">
+    <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+      <details key="handler_class" value="Cart_coord"/>
+    </eAnnotations>
+    <eClassifiers xsi:type="ecore:EClass" name="Cart_coord">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Cart_coord|Handler"/>
+      </eAnnotations>
+      <eSuperTypes href="../../../../../../../de.hub.clickwatch.core/src/de/hub/clickwatch/model/ClickWatchModel.ecore#//Handler"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Cart_coord|Handler/text|text:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eStructuralFeatures>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="lt_routes" nsURI="http://de.hub.clickwatch.specificmodels.brn/lt/routes" nsPrefix="lt_routes">
+    <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+      <details key="handler_class" value="Routes"/>
+      <details key="handler_name" value="lt/routes"/>
+    </eAnnotations>
+    <eClassifiers xsi:type="ecore:EClass" name="Link">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Routes|Handler/routetable|routetable:Routetable|EObject/route|route:Route|EObject/link|link:Link|EObject"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_link" eType="//lt_routes/Route" eOpposite="//lt_routes/Route/link"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="from">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Routes|Handler/routetable|routetable:Routetable|EObject/route|route:Route|EObject/link|link:Link|EObject/from|from:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="to">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Routes|Handler/routetable|routetable:Routetable|EObject/route|route:Route|EObject/link|link:Link|EObject/to|to:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="metric">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Routes|Handler/routetable|routetable:Routetable|EObject/route|route:Route|EObject/link|link:Link|EObject/metric|metric:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="seq">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Routes|Handler/routetable|routetable:Routetable|EObject/route|route:Route|EObject/link|link:Link|EObject/seq|seq:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="age">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Routes|Handler/routetable|routetable:Routetable|EObject/route|route:Route|EObject/link|link:Link|EObject/age|age:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Route">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Routes|Handler/routetable|routetable:Routetable|EObject/route|route:Route|EObject"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_route" eType="//lt_routes/Routetable" eOpposite="//lt_routes/Routetable/route"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" upperBound="-1">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Routes|Handler/routetable|routetable:Routetable|EObject/route|route:Route|EObject/text|text:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="link" upperBound="-1" eType="//lt_routes/Link" containment="true" resolveProxies="false" eOpposite="//lt_routes/Link/eContainer_link">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Routes|Handler/routetable|routetable:Routetable|EObject/route|route:Route|EObject/link|link:Link|EObject"/>
+          <details key="IsCopy" value="false"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="from">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Routes|Handler/routetable|routetable:Routetable|EObject/route|route:Route|EObject/from|from:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="to">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Routes|Handler/routetable|routetable:Routetable|EObject/route|route:Route|EObject/to|to:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Routes">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Routes|Handler"/>
+      </eAnnotations>
+      <eSuperTypes href="../../../../../../../de.hub.clickwatch.core/src/de/hub/clickwatch/model/ClickWatchModel.ecore#//Handler"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="routetable" eType="//lt_routes/Routetable" containment="true" resolveProxies="false" eOpposite="//lt_routes/Routetable/eContainer_routetable">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Routes|Handler/routetable|routetable:Routetable|EObject"/>
+          <details key="IsCopy" value="false"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Routetable">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Routes|Handler/routetable|routetable:Routetable|EObject"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_routetable" eType="//lt_routes/Routes" eOpposite="//lt_routes/Routes/routetable"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" upperBound="-1">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Routes|Handler/routetable|routetable:Routetable|EObject/text|text:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="route" upperBound="-1" eType="//lt_routes/Route" containment="true" resolveProxies="false" eOpposite="//lt_routes/Route/eContainer_route">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Routes|Handler/routetable|routetable:Routetable|EObject/route|route:Route|EObject"/>
+          <details key="IsCopy" value="false"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="id">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Routes|Handler/routetable|routetable:Routetable|EObject/id|id:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eStructuralFeatures>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="lt_links" nsURI="http://de.hub.clickwatch.specificmodels.brn/lt/links" nsPrefix="lt_links">
+    <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+      <details key="handler_class" value="Links"/>
+      <details key="handler_name" value="lt/links"/>
+    </eAnnotations>
+    <eClassifiers xsi:type="ecore:EClass" name="Link">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Links|Handler/linktable|linktable:Linktable|EObject/link|link:Link|EObject"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_link" eType="//lt_links/Linktable" eOpposite="//lt_links/Linktable/link"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="from">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Links|Handler/linktable|linktable:Linktable|EObject/link|link:Link|EObject/from|from:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="to">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Links|Handler/linktable|linktable:Linktable|EObject/link|link:Link|EObject/to|to:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="metric">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Links|Handler/linktable|linktable:Linktable|EObject/link|link:Link|EObject/metric|metric:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="seq">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Links|Handler/linktable|linktable:Linktable|EObject/link|link:Link|EObject/seq|seq:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="age">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Links|Handler/linktable|linktable:Linktable|EObject/link|link:Link|EObject/age|age:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Links">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Links|Handler"/>
+      </eAnnotations>
+      <eSuperTypes href="../../../../../../../de.hub.clickwatch.core/src/de/hub/clickwatch/model/ClickWatchModel.ecore#//Handler"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="linktable" eType="//lt_links/Linktable" containment="true" resolveProxies="false" eOpposite="//lt_links/Linktable/eContainer_linktable">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Links|Handler/linktable|linktable:Linktable|EObject"/>
+          <details key="IsCopy" value="false"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Linktable">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Links|Handler/linktable|linktable:Linktable|EObject"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_linktable" eType="//lt_links/Links" eOpposite="//lt_links/Links/linktable"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" upperBound="-1">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Links|Handler/linktable|linktable:Linktable|EObject/text|text:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="link" upperBound="-1" eType="//lt_links/Link" containment="true" resolveProxies="false" eOpposite="//lt_links/Link/eContainer_link">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Links|Handler/linktable|linktable:Linktable|EObject/link|link:Link|EObject"/>
+          <details key="IsCopy" value="false"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="id">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Links|Handler/linktable|linktable:Linktable|EObject/id|id:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eStructuralFeatures>
+    </eClassifiers>
+  </eSubpackages>
   <eSubpackages name="device_wifi_link_stat_bcast_stats" nsURI="http://de.hub.clickwatch.specificmodels.brn/device_wifi/link_stat/bcast_stats" nsPrefix="device_wifi_link_stat_bcast_stats">
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="handler_class" value="Bcast_stats"/>
+      <details key="handler_name" value="device_wifi/link_stat/bcast_stats"/>
     </eAnnotations>
     <eClassifiers xsi:type="ecore:EClass" name="Bcast_stats">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
@@ -149,6 +844,7 @@
   <eSubpackages name="device_wifi_wifidevice_cst_stats" nsURI="http://de.hub.clickwatch.specificmodels.brn/device_wifi/wifidevice/cst/stats" nsPrefix="device_wifi_wifidevice_cst_stats">
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
       <details key="handler_class" value="Stats"/>
+      <details key="handler_name" value="device_wifi/wifidevice/cst/stats"/>
     </eAnnotations>
     <eClassifiers xsi:type="ecore:EClass" name="Channelstats">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
@@ -784,548 +1480,6 @@
           <details key="target_id" value="Stats|Handler/channelstats|channelstats:Channelstats|EObject"/>
           <details key="IsCopy" value="false"/>
         </eAnnotations>
-      </eStructuralFeatures>
-    </eClassifiers>
-  </eSubpackages>
-  <eSubpackages name="sys_info_systeminfo" nsURI="http://de.hub.clickwatch.specificmodels.brn/sys_info/systeminfo" nsPrefix="sys_info_systeminfo">
-    <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-      <details key="handler_class" value="Systeminfo"/>
-    </eAnnotations>
-    <eClassifiers xsi:type="ecore:EClass" name="Cpu_usage">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Systeminfo|Handler/system|system:System|EObject/cpu_usage|cpu_usage:Cpu_usage|EObject"/>
-      </eAnnotations>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_cpu_usage" eType="//sys_info_systeminfo/System" eOpposite="//sys_info_systeminfo/System/cpu_usage"/>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="real">
-        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-          <details key="target_id" value="Systeminfo|Handler/system|system:System|EObject/cpu_usage|cpu_usage:Cpu_usage|EObject/real|real:"/>
-        </eAnnotations>
-        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="user">
-        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-          <details key="target_id" value="Systeminfo|Handler/system|system:System|EObject/cpu_usage|cpu_usage:Cpu_usage|EObject/user|user:"/>
-        </eAnnotations>
-        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="sys">
-        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-          <details key="target_id" value="Systeminfo|Handler/system|system:System|EObject/cpu_usage|cpu_usage:Cpu_usage|EObject/sys|sys:"/>
-        </eAnnotations>
-        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="unit">
-        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-          <details key="target_id" value="Systeminfo|Handler/system|system:System|EObject/cpu_usage|cpu_usage:Cpu_usage|EObject/unit|unit:"/>
-        </eAnnotations>
-        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      </eStructuralFeatures>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Linux">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Systeminfo|Handler/system|system:System|EObject/linux|linux:Linux|EObject"/>
-      </eAnnotations>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_linux" eType="//sys_info_systeminfo/System" eOpposite="//sys_info_systeminfo/System/linux"/>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="version">
-        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-          <details key="target_id" value="Systeminfo|Handler/system|system:System|EObject/linux|linux:Linux|EObject/version|version:"/>
-        </eAnnotations>
-        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      </eStructuralFeatures>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Loadavg">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Systeminfo|Handler/system|system:System|EObject/loadavg|loadavg:Loadavg|EObject"/>
-      </eAnnotations>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_loadavg" eType="//sys_info_systeminfo/System" eOpposite="//sys_info_systeminfo/System/loadavg"/>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="onemin">
-        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-          <details key="target_id" value="Systeminfo|Handler/system|system:System|EObject/loadavg|loadavg:Loadavg|EObject/onemin|onemin:"/>
-        </eAnnotations>
-        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="fivemin">
-        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-          <details key="target_id" value="Systeminfo|Handler/system|system:System|EObject/loadavg|loadavg:Loadavg|EObject/fivemin|fivemin:"/>
-        </eAnnotations>
-        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="fifteen">
-        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-          <details key="target_id" value="Systeminfo|Handler/system|system:System|EObject/loadavg|loadavg:Loadavg|EObject/fifteen|fifteen:"/>
-        </eAnnotations>
-        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
-      </eStructuralFeatures>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Mem">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Systeminfo|Handler/system|system:System|EObject/mem|mem:Mem|EObject"/>
-      </eAnnotations>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_mem" eType="//sys_info_systeminfo/System" eOpposite="//sys_info_systeminfo/System/mem"/>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="total">
-        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-          <details key="target_id" value="Systeminfo|Handler/system|system:System|EObject/mem|mem:Mem|EObject/total|total:"/>
-        </eAnnotations>
-        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="used">
-        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-          <details key="target_id" value="Systeminfo|Handler/system|system:System|EObject/mem|mem:Mem|EObject/used|used:"/>
-        </eAnnotations>
-        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="cached">
-        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-          <details key="target_id" value="Systeminfo|Handler/system|system:System|EObject/mem|mem:Mem|EObject/cached|cached:"/>
-        </eAnnotations>
-        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="buffers">
-        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-          <details key="target_id" value="Systeminfo|Handler/system|system:System|EObject/mem|mem:Mem|EObject/buffers|buffers:"/>
-        </eAnnotations>
-        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="nFS_Unstable">
-        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-          <details key="target_id" value="Systeminfo|Handler/system|system:System|EObject/mem|mem:Mem|EObject/nFS_Unstable|NFS_Unstable:"/>
-        </eAnnotations>
-        <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
-          <details key="name" value="NFS_Unstable"/>
-          <details key="kind" value="attribute"/>
-        </eAnnotations>
-        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-      </eStructuralFeatures>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="System">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Systeminfo|Handler/system|system:System|EObject"/>
-      </eAnnotations>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_system" eType="//sys_info_systeminfo/Systeminfo" eOpposite="//sys_info_systeminfo/Systeminfo/system"/>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" upperBound="-1">
-        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-          <details key="target_id" value="Systeminfo|Handler/system|system:System|EObject/text|text:"/>
-        </eAnnotations>
-        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="mem" eType="//sys_info_systeminfo/Mem" containment="true" resolveProxies="false" eOpposite="//sys_info_systeminfo/Mem/eContainer_mem">
-        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-          <details key="target_id" value="Systeminfo|Handler/system|system:System|EObject/mem|mem:Mem|EObject"/>
-          <details key="IsCopy" value="false"/>
-        </eAnnotations>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="loadavg" eType="//sys_info_systeminfo/Loadavg" containment="true" resolveProxies="false" eOpposite="//sys_info_systeminfo/Loadavg/eContainer_loadavg">
-        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-          <details key="target_id" value="Systeminfo|Handler/system|system:System|EObject/loadavg|loadavg:Loadavg|EObject"/>
-          <details key="IsCopy" value="false"/>
-        </eAnnotations>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="cpu_usage" eType="//sys_info_systeminfo/Cpu_usage" containment="true" resolveProxies="false" eOpposite="//sys_info_systeminfo/Cpu_usage/eContainer_cpu_usage">
-        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-          <details key="target_id" value="Systeminfo|Handler/system|system:System|EObject/cpu_usage|cpu_usage:Cpu_usage|EObject"/>
-          <details key="IsCopy" value="false"/>
-        </eAnnotations>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="uptime" eType="//sys_info_systeminfo/Uptime" containment="true" resolveProxies="false" eOpposite="//sys_info_systeminfo/Uptime/eContainer_uptime">
-        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-          <details key="target_id" value="Systeminfo|Handler/system|system:System|EObject/uptime|uptime:Uptime|EObject"/>
-          <details key="IsCopy" value="false"/>
-        </eAnnotations>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="linux" eType="//sys_info_systeminfo/Linux" containment="true" resolveProxies="false" eOpposite="//sys_info_systeminfo/Linux/eContainer_linux">
-        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-          <details key="target_id" value="Systeminfo|Handler/system|system:System|EObject/linux|linux:Linux|EObject"/>
-          <details key="IsCopy" value="false"/>
-        </eAnnotations>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="id">
-        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-          <details key="target_id" value="Systeminfo|Handler/system|system:System|EObject/id|id:"/>
-        </eAnnotations>
-        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name">
-        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-          <details key="target_id" value="Systeminfo|Handler/system|system:System|EObject/name|name:"/>
-        </eAnnotations>
-        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="time">
-        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-          <details key="target_id" value="Systeminfo|Handler/system|system:System|EObject/time|time:"/>
-        </eAnnotations>
-        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
-      </eStructuralFeatures>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Systeminfo">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Systeminfo|Handler"/>
-      </eAnnotations>
-      <eSuperTypes href="../../../../../../../de.hub.clickwatch.core/src/de/hub/clickwatch/model/ClickWatchModel.ecore#//Handler"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="system" eType="//sys_info_systeminfo/System" containment="true" resolveProxies="false" eOpposite="//sys_info_systeminfo/System/eContainer_system">
-        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-          <details key="target_id" value="Systeminfo|Handler/system|system:System|EObject"/>
-          <details key="IsCopy" value="false"/>
-        </eAnnotations>
-      </eStructuralFeatures>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Uptime">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Systeminfo|Handler/system|system:System|EObject/uptime|uptime:Uptime|EObject"/>
-      </eAnnotations>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_uptime" eType="//sys_info_systeminfo/System" eOpposite="//sys_info_systeminfo/System/uptime"/>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="total">
-        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-          <details key="target_id" value="Systeminfo|Handler/system|system:System|EObject/uptime|uptime:Uptime|EObject/total|total:"/>
-        </eAnnotations>
-        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="idle">
-        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-          <details key="target_id" value="Systeminfo|Handler/system|system:System|EObject/uptime|uptime:Uptime|EObject/idle|idle:"/>
-        </eAnnotations>
-        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
-      </eStructuralFeatures>
-    </eClassifiers>
-  </eSubpackages>
-  <eSubpackages name="device_wifi_data_power_systempower" nsURI="http://de.hub.clickwatch.specificmodels.brn/device_wifi/data_power/systempower" nsPrefix="device_wifi_data_power_systempower">
-    <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-      <details key="handler_class" value="Systempower"/>
-    </eAnnotations>
-    <eClassifiers xsi:type="ecore:EClass" name="Device">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Systempower|Handler/settxpower|settxpower:Settxpower|EObject/device|device:Device|EObject"/>
-      </eAnnotations>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_device" eType="//device_wifi_data_power_systempower/Settxpower" eOpposite="//device_wifi_data_power_systempower/Settxpower/device"/>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name">
-        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-          <details key="target_id" value="Systempower|Handler/settxpower|settxpower:Settxpower|EObject/device|device:Device|EObject/name|name:"/>
-        </eAnnotations>
-        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="device_addr">
-        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-          <details key="target_id" value="Systempower|Handler/settxpower|settxpower:Settxpower|EObject/device|device:Device|EObject/device_addr|device_addr:"/>
-        </eAnnotations>
-        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      </eStructuralFeatures>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Settxpower">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Systempower|Handler/settxpower|settxpower:Settxpower|EObject"/>
-      </eAnnotations>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_settxpower" eType="//device_wifi_data_power_systempower/Systempower" eOpposite="//device_wifi_data_power_systempower/Systempower/settxpower"/>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" upperBound="-1">
-        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-          <details key="target_id" value="Systempower|Handler/settxpower|settxpower:Settxpower|EObject/text|text:"/>
-        </eAnnotations>
-        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="device" eType="//device_wifi_data_power_systempower/Device" containment="true" resolveProxies="false" eOpposite="//device_wifi_data_power_systempower/Device/eContainer_device">
-        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-          <details key="target_id" value="Systempower|Handler/settxpower|settxpower:Settxpower|EObject/device|device:Device|EObject"/>
-          <details key="IsCopy" value="false"/>
-        </eAnnotations>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name">
-        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-          <details key="target_id" value="Systempower|Handler/settxpower|settxpower:Settxpower|EObject/name|name:"/>
-        </eAnnotations>
-        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="id">
-        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-          <details key="target_id" value="Systempower|Handler/settxpower|settxpower:Settxpower|EObject/id|id:"/>
-        </eAnnotations>
-        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="power">
-        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-          <details key="target_id" value="Systempower|Handler/settxpower|settxpower:Settxpower|EObject/power|power:"/>
-        </eAnnotations>
-        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-      </eStructuralFeatures>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Systempower">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Systempower|Handler"/>
-      </eAnnotations>
-      <eSuperTypes href="../../../../../../../de.hub.clickwatch.core/src/de/hub/clickwatch/model/ClickWatchModel.ecore#//Handler"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="settxpower" eType="//device_wifi_data_power_systempower/Settxpower" containment="true" resolveProxies="false" eOpposite="//device_wifi_data_power_systempower/Settxpower/eContainer_settxpower">
-        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-          <details key="target_id" value="Systempower|Handler/settxpower|settxpower:Settxpower|EObject"/>
-          <details key="IsCopy" value="false"/>
-        </eAnnotations>
-      </eStructuralFeatures>
-    </eClassifiers>
-  </eSubpackages>
-  <eSubpackages name="device_wifi_wifidevice_sc_systemchannel" nsURI="http://de.hub.clickwatch.specificmodels.brn/device_wifi/wifidevice/sc/systemchannel" nsPrefix="device_wifi_wifidevice_sc_systemchannel">
-    <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-      <details key="handler_class" value="Systemchannel"/>
-    </eAnnotations>
-    <eClassifiers xsi:type="ecore:EClass" name="Device">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Systemchannel|Handler/setchannel|setchannel:Setchannel|EObject/device|device:Device|EObject"/>
-      </eAnnotations>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_device" eType="//device_wifi_wifidevice_sc_systemchannel/Setchannel" eOpposite="//device_wifi_wifidevice_sc_systemchannel/Setchannel/device"/>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name">
-        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-          <details key="target_id" value="Systemchannel|Handler/setchannel|setchannel:Setchannel|EObject/device|device:Device|EObject/name|name:"/>
-        </eAnnotations>
-        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="device_addr">
-        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-          <details key="target_id" value="Systemchannel|Handler/setchannel|setchannel:Setchannel|EObject/device|device:Device|EObject/device_addr|device_addr:"/>
-        </eAnnotations>
-        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      </eStructuralFeatures>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Setchannel">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Systemchannel|Handler/setchannel|setchannel:Setchannel|EObject"/>
-      </eAnnotations>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_setchannel" eType="//device_wifi_wifidevice_sc_systemchannel/Systemchannel" eOpposite="//device_wifi_wifidevice_sc_systemchannel/Systemchannel/setchannel"/>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" upperBound="-1">
-        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-          <details key="target_id" value="Systemchannel|Handler/setchannel|setchannel:Setchannel|EObject/text|text:"/>
-        </eAnnotations>
-        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="device" eType="//device_wifi_wifidevice_sc_systemchannel/Device" containment="true" resolveProxies="false" eOpposite="//device_wifi_wifidevice_sc_systemchannel/Device/eContainer_device">
-        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-          <details key="target_id" value="Systemchannel|Handler/setchannel|setchannel:Setchannel|EObject/device|device:Device|EObject"/>
-          <details key="IsCopy" value="false"/>
-        </eAnnotations>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name">
-        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-          <details key="target_id" value="Systemchannel|Handler/setchannel|setchannel:Setchannel|EObject/name|name:"/>
-        </eAnnotations>
-        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="id">
-        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-          <details key="target_id" value="Systemchannel|Handler/setchannel|setchannel:Setchannel|EObject/id|id:"/>
-        </eAnnotations>
-        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="channel">
-        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-          <details key="target_id" value="Systemchannel|Handler/setchannel|setchannel:Setchannel|EObject/channel|channel:"/>
-        </eAnnotations>
-        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-      </eStructuralFeatures>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Systemchannel">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Systemchannel|Handler"/>
-      </eAnnotations>
-      <eSuperTypes href="../../../../../../../de.hub.clickwatch.core/src/de/hub/clickwatch/model/ClickWatchModel.ecore#//Handler"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="setchannel" eType="//device_wifi_wifidevice_sc_systemchannel/Setchannel" containment="true" resolveProxies="false" eOpposite="//device_wifi_wifidevice_sc_systemchannel/Setchannel/eContainer_setchannel">
-        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-          <details key="target_id" value="Systemchannel|Handler/setchannel|setchannel:Setchannel|EObject"/>
-          <details key="IsCopy" value="false"/>
-        </eAnnotations>
-      </eStructuralFeatures>
-    </eClassifiers>
-  </eSubpackages>
-  <eSubpackages name="lt_routes" nsURI="http://de.hub.clickwatch.specificmodels.brn/lt/routes" nsPrefix="lt_routes">
-    <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-      <details key="handler_class" value="Routes"/>
-    </eAnnotations>
-    <eClassifiers xsi:type="ecore:EClass" name="Routes">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Routes|Handler"/>
-      </eAnnotations>
-      <eSuperTypes href="../../../../../../../de.hub.clickwatch.core/src/de/hub/clickwatch/model/ClickWatchModel.ecore#//Handler"/>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false">
-        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-          <details key="target_id" value="Routes|Handler/text|text:"/>
-        </eAnnotations>
-        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      </eStructuralFeatures>
-    </eClassifiers>
-  </eSubpackages>
-  <eSubpackages name="lt_links" nsURI="http://de.hub.clickwatch.specificmodels.brn/lt/links" nsPrefix="lt_links">
-    <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-      <details key="handler_class" value="Links"/>
-    </eAnnotations>
-    <eClassifiers xsi:type="ecore:EClass" name="Links">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Links|Handler"/>
-      </eAnnotations>
-      <eSuperTypes href="../../../../../../../de.hub.clickwatch.core/src/de/hub/clickwatch/model/ClickWatchModel.ecore#//Handler"/>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false">
-        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-          <details key="target_id" value="Links|Handler/text|text:"/>
-        </eAnnotations>
-        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      </eStructuralFeatures>
-    </eClassifiers>
-  </eSubpackages>
-  <eSubpackages name="lease_tab_leases" nsURI="http://de.hub.clickwatch.specificmodels.brn/lease_tab/leases" nsPrefix="lease_tab_leases">
-    <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-      <details key="handler_class" value="Leases"/>
-    </eAnnotations>
-    <eClassifiers xsi:type="ecore:EClass" name="Client">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Leases|Handler/dhcpleases|dhcpleases:Dhcpleases|EObject/client|client:Client|EObject"/>
-      </eAnnotations>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_client" eType="//lease_tab_leases/Dhcpleases" eOpposite="//lease_tab_leases/Dhcpleases/client"/>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="ip">
-        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-          <details key="target_id" value="Leases|Handler/dhcpleases|dhcpleases:Dhcpleases|EObject/client|client:Client|EObject/ip|ip:"/>
-        </eAnnotations>
-        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="mac">
-        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-          <details key="target_id" value="Leases|Handler/dhcpleases|dhcpleases:Dhcpleases|EObject/client|client:Client|EObject/mac|mac:"/>
-        </eAnnotations>
-        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="start">
-        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-          <details key="target_id" value="Leases|Handler/dhcpleases|dhcpleases:Dhcpleases|EObject/client|client:Client|EObject/start|start:"/>
-        </eAnnotations>
-        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="end">
-        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-          <details key="target_id" value="Leases|Handler/dhcpleases|dhcpleases:Dhcpleases|EObject/client|client:Client|EObject/end|end:"/>
-        </eAnnotations>
-        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="duration">
-        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-          <details key="target_id" value="Leases|Handler/dhcpleases|dhcpleases:Dhcpleases|EObject/client|client:Client|EObject/duration|duration:"/>
-        </eAnnotations>
-        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="time_left">
-        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-          <details key="target_id" value="Leases|Handler/dhcpleases|dhcpleases:Dhcpleases|EObject/client|client:Client|EObject/time_left|time_left:"/>
-        </eAnnotations>
-        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-      </eStructuralFeatures>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Dhcpleases">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Leases|Handler/dhcpleases|dhcpleases:Dhcpleases|EObject"/>
-      </eAnnotations>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_dhcpleases" eType="//lease_tab_leases/Leases" eOpposite="//lease_tab_leases/Leases/dhcpleases"/>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" upperBound="-1">
-        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-          <details key="target_id" value="Leases|Handler/dhcpleases|dhcpleases:Dhcpleases|EObject/text|text:"/>
-        </eAnnotations>
-        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="client" upperBound="-1" eType="//lease_tab_leases/Client" containment="true" resolveProxies="false" eOpposite="//lease_tab_leases/Client/eContainer_client">
-        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-          <details key="target_id" value="Leases|Handler/dhcpleases|dhcpleases:Dhcpleases|EObject/client|client:Client|EObject"/>
-          <details key="IsCopy" value="false"/>
-        </eAnnotations>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="count">
-        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-          <details key="target_id" value="Leases|Handler/dhcpleases|dhcpleases:Dhcpleases|EObject/count|count:"/>
-        </eAnnotations>
-        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="time">
-        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-          <details key="target_id" value="Leases|Handler/dhcpleases|dhcpleases:Dhcpleases|EObject/time|time:"/>
-        </eAnnotations>
-        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
-      </eStructuralFeatures>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Leases">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Leases|Handler"/>
-      </eAnnotations>
-      <eSuperTypes href="../../../../../../../de.hub.clickwatch.core/src/de/hub/clickwatch/model/ClickWatchModel.ecore#//Handler"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="dhcpleases" eType="//lease_tab_leases/Dhcpleases" containment="true" resolveProxies="false" eOpposite="//lease_tab_leases/Dhcpleases/eContainer_dhcpleases">
-        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-          <details key="target_id" value="Leases|Handler/dhcpleases|dhcpleases:Dhcpleases|EObject"/>
-          <details key="IsCopy" value="false"/>
-        </eAnnotations>
-      </eStructuralFeatures>
-    </eClassifiers>
-  </eSubpackages>
-  <eSubpackages name="gps_gps_coord" nsURI="http://de.hub.clickwatch.specificmodels.brn/gps/gps_coord" nsPrefix="gps_gps_coord">
-    <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-      <details key="handler_class" value="Gps_coord"/>
-    </eAnnotations>
-    <eClassifiers xsi:type="ecore:EClass" name="Gps">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Gps_coord|Handler/gps|gps:Gps|EObject"/>
-      </eAnnotations>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_gps" eType="//gps_gps_coord/Gps_coord" eOpposite="//gps_gps_coord/Gps_coord/gps"/>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="id">
-        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-          <details key="target_id" value="Gps_coord|Handler/gps|gps:Gps|EObject/id|id:"/>
-        </eAnnotations>
-        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="time">
-        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-          <details key="target_id" value="Gps_coord|Handler/gps|gps:Gps|EObject/time|time:"/>
-        </eAnnotations>
-        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="lat">
-        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-          <details key="target_id" value="Gps_coord|Handler/gps|gps:Gps|EObject/lat|lat:"/>
-        </eAnnotations>
-        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="long">
-        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-          <details key="target_id" value="Gps_coord|Handler/gps|gps:Gps|EObject/long|long:"/>
-        </eAnnotations>
-        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="alt">
-        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-          <details key="target_id" value="Gps_coord|Handler/gps|gps:Gps|EObject/alt|alt:"/>
-        </eAnnotations>
-        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="speed">
-        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-          <details key="target_id" value="Gps_coord|Handler/gps|gps:Gps|EObject/speed|speed:"/>
-        </eAnnotations>
-        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
-      </eStructuralFeatures>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Gps_coord">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Gps_coord|Handler"/>
-      </eAnnotations>
-      <eSuperTypes href="../../../../../../../de.hub.clickwatch.core/src/de/hub/clickwatch/model/ClickWatchModel.ecore#//Handler"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="gps" eType="//gps_gps_coord/Gps" containment="true" resolveProxies="false" eOpposite="//gps_gps_coord/Gps/eContainer_gps">
-        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-          <details key="target_id" value="Gps_coord|Handler/gps|gps:Gps|EObject"/>
-          <details key="IsCopy" value="false"/>
-        </eAnnotations>
-      </eStructuralFeatures>
-    </eClassifiers>
-  </eSubpackages>
-  <eSubpackages name="gps_cart_coord" nsURI="http://de.hub.clickwatch.specificmodels.brn/gps/cart_coord" nsPrefix="gps_cart_coord">
-    <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-      <details key="handler_class" value="Cart_coord"/>
-    </eAnnotations>
-    <eClassifiers xsi:type="ecore:EClass" name="Cart_coord">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Cart_coord|Handler"/>
-      </eAnnotations>
-      <eSuperTypes href="../../../../../../../de.hub.clickwatch.core/src/de/hub/clickwatch/model/ClickWatchModel.ecore#//Handler"/>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false">
-        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-          <details key="target_id" value="Cart_coord|Handler/text|text:"/>
-        </eAnnotations>
-        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </eStructuralFeatures>
     </eClassifiers>
   </eSubpackages>

@@ -92,7 +92,44 @@ public class ClickWatchReflectiveItemProviderAdapterFactory extends ReflectiveIt
 				
 				return result == null ? super.getForeground(object) : result;
 			}
+
+			@Override
+			public Object getValue() {				
+				Object superValue = super.getValue();
+				if (superValue != null && (superValue instanceof FeatureMap.Entry)) {
+					return new ExtendedFeatureMapEntry((FeatureMap.Entry)superValue,
+							new XmlAttributeValue((EObject)getOwner(), getFeature(), (FeatureMap.Entry)superValue));
+				} else {
+					return superValue;
+				}
+			}		
+
+		}
 		
+		class ExtendedFeatureMapEntry implements FeatureMap.Entry {			
+			private FeatureMap.Entry entry;
+			private XmlAttributeValue xmlAttributeValue;
+		
+			ExtendedFeatureMapEntry(Entry entry, XmlAttributeValue xmlAttributeValue) {
+				super();
+				this.entry = entry;
+				this.xmlAttributeValue = xmlAttributeValue;
+			}
+
+			@Override
+			public EStructuralFeature getEStructuralFeature() {
+				return entry.getEStructuralFeature();
+			}
+			
+			public Object getOriginalValue() {
+				return entry.getValue();
+			}
+
+			@Override
+			public Object getValue() {
+				return xmlAttributeValue;
+			}
+			
 		}
 		
 		class AttributeWrapperItemProvider extends DelegatingWrapperItemProvider 
@@ -129,7 +166,7 @@ public class ClickWatchReflectiveItemProviderAdapterFactory extends ReflectiveIt
 						getBackground((EObject)owner, feature, value);
 				return result == null ? super.getBackground(object) : result;
 			}
-		}
+		}	
 		
 		@Override
 		public String getText(Object object) {
@@ -168,7 +205,7 @@ public class ClickWatchReflectiveItemProviderAdapterFactory extends ReflectiveIt
 			for(Object child: super.getChildren(object)) {	
 				boolean ommit = false;
 				if (child instanceof FeatureMapEntryWrapperItemProvider) {
-					Object value = ((FeatureMap.Entry)((FeatureMapEntryWrapperItemProvider)child).getValue()).getValue();
+					Object value = ((ExtendedFeatureMapEntry)((FeatureMapEntryWrapperItemProvider)child).getValue()).getOriginalValue();
 					if (value instanceof String && ((String)value).trim().equals("")) {
 						ommit = true;
 					}

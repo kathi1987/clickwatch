@@ -9,13 +9,37 @@ import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.statistics.HistogramDataset;
 import org.jfree.data.statistics.HistogramType;
 
+import de.hub.clickwatch.analysis.composition.model.DataNode;
 import de.hub.clickwatch.analysis.composition.model.DataSet;
-
+import de.hub.clickwatch.analysis.composition.model.DataSetNode;
+import de.hub.clickwatch.analysis.composition.model.MeasureNode;
+import de.hub.clickwatch.analysis.composition.model.Visualization;
+import de.hub.clickwatch.analysis.visualization.IVisualization;
 
 public class HistogramVisualization implements IVisualization {
+	
+	public static final String VisualizationName = "Histogram";
+	
+	@Override
+	public boolean isEnabledForInput(Object input) {
+		if (input instanceof DataSetNode || input instanceof MeasureNode) {
+			DataNode node = (DataNode)input;
+			Visualization visualization = node.getVisualization();
+			if (visualization != null && visualization.getKind() != null && !visualization.getKind().equals("")) {
+				return visualization.getKind().equals(VisualizationName);
+			}
+		}
+		return false;
+	}
 
 	@Override
 	public Component createVisualization(Object input) {
+		if (input instanceof DataSetNode) {
+			input = ((DataSetNode)input).getData();
+		} else if (input instanceof MeasureNode) {
+			input = ((MeasureNode)input).getData();
+		}
+		
 		if (input instanceof DataSet) {
 			DataSet dataSet = (DataSet)input;
 		

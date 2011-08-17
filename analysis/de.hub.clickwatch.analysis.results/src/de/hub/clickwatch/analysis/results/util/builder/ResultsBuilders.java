@@ -20,10 +20,6 @@ public class ResultsBuilders {
     return ChartBuilder.newChartBuilder();
   }
 
-  public static final ChartTypeBuilder newChartTypeBuilder() {
-    return ChartTypeBuilder.newChartTypeBuilder();
-  }
-
   public static final AxisBuilder newAxisBuilder() {
     return AxisBuilder.newAxisBuilder();
   }
@@ -56,7 +52,11 @@ public class ResultsBuilders {
     return ResultsBuilder.newResultsBuilder();
   }
 
-  public static final ConstraintBuilder newConstraintBuilder() {
-    return ConstraintBuilder.newConstraintBuilder();
+  public static final EqualsConstraintBuilder newEqualsConstraintBuilder() {
+    return EqualsConstraintBuilder.newEqualsConstraintBuilder();
+  }
+
+  public static final OrBuilder newOrBuilder() {
+    return OrBuilder.newOrBuilder();
   }
 }

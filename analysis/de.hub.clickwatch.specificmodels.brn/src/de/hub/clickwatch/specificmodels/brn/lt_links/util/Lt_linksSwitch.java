@@ -11,7 +11,9 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
 
 import de.hub.clickwatch.model.Handler;
+import de.hub.clickwatch.specificmodels.brn.lt_links.Link;
 import de.hub.clickwatch.specificmodels.brn.lt_links.Links;
+import de.hub.clickwatch.specificmodels.brn.lt_links.Linktable;
 import de.hub.clickwatch.specificmodels.brn.lt_links.Lt_linksPackage;
 
 /**
@@ -71,6 +73,12 @@ public class Lt_linksSwitch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
+			case Lt_linksPackage.LINK: {
+				Link link = (Link)theEObject;
+				T result = caseLink(link);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case Lt_linksPackage.LINKS: {
 				Links links = (Links)theEObject;
 				T result = caseLinks(links);
@@ -78,8 +86,29 @@ public class Lt_linksSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case Lt_linksPackage.LINKTABLE: {
+				Linktable linktable = (Linktable)theEObject;
+				T result = caseLinktable(linktable);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Link</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Link</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLink(Link object) {
+		return null;
 	}
 
 	/**
@@ -94,6 +123,21 @@ public class Lt_linksSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseLinks(Links object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Linktable</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Linktable</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLinktable(Linktable object) {
 		return null;
 	}
 

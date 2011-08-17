@@ -22,7 +22,7 @@ import de.hub.clickwatch.connection.INodeConnection;
 import de.hub.clickwatch.connection.INodeConnectionProvider;
 import de.hub.clickwatch.connection.adapter.IHandlerAdapter;
 import de.hub.clickwatch.connection.adapter.IValueAdapter;
-import de.hub.clickwatch.recoder.cwdatabase.ExperimentStatistics;
+import de.hub.clickwatch.recoder.cwdatabase.RecordStatistics;
 import de.hub.clickwatch.recorder.database.CWRecorderStandaloneSetup;
 import de.hub.clickwatch.specificmodels.brn.BrnValueAdapter;
 import de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.Systeminfo;
@@ -81,7 +81,7 @@ public class PerformanceExperiment implements IApplication {
 					for(String nodeId: nodeIds) {
 						double baseCpuLoad = getCpuLoad(nodeId);
 						
-						ExperimentStatistics statistics = gauge.measure(retrievalType, duration, updateInterval, handler, nodeId);
+						RecordStatistics statistics = gauge.measure(retrievalType, duration, updateInterval, handler, nodeId);
 						
 						int remoteLocalUpdateIntervalInfluence = 1;
 						if (retrievalType == RetrievalType.COMPOUND_HANDLER || retrievalType == RetrievalType.DELTA_COMPOUND_HANDLER) {

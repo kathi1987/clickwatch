@@ -17,9 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link de.hub.clickwatch.recoder.cwdatabase.DataBase#getExperiments <em>Experiments</em>}</li>
- *   <li>{@link de.hub.clickwatch.recoder.cwdatabase.DataBase#getStorageBaseFileString <em>Storage Base File String</em>}</li>
- *   <li>{@link de.hub.clickwatch.recoder.cwdatabase.DataBase#getInMemory <em>In Memory</em>}</li>
+ *   <li>{@link de.hub.clickwatch.recoder.cwdatabase.DataBase#getRecords <em>Records</em>}</li>
  * </ul>
  * </p>
  *
@@ -29,75 +27,21 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface DataBase extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Experiments</b></em>' containment reference list.
-	 * The list contents are of type {@link de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr}.
-	 * It is bidirectional and its opposite is '{@link de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr#getDataBase <em>Data Base</em>}'.
+	 * Returns the value of the '<em><b>Records</b></em>' containment reference list.
+	 * The list contents are of type {@link de.hub.clickwatch.recoder.cwdatabase.Record}.
+	 * It is bidirectional and its opposite is '{@link de.hub.clickwatch.recoder.cwdatabase.Record#getDataBase <em>Data Base</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Experiments</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Records</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Experiments</em>' containment reference list.
-	 * @see de.hub.clickwatch.recoder.cwdatabase.CWDataBasePackage#getDataBase_Experiments()
-	 * @see de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr#getDataBase
+	 * @return the value of the '<em>Records</em>' containment reference list.
+	 * @see de.hub.clickwatch.recoder.cwdatabase.CWDataBasePackage#getDataBase_Records()
+	 * @see de.hub.clickwatch.recoder.cwdatabase.Record#getDataBase
 	 * @model opposite="dataBase" containment="true"
 	 * @generated
 	 */
-	EList<ExperimentDescr> getExperiments();
-
-	/**
-	 * Returns the value of the '<em><b>Storage Base File String</b></em>' attribute.
-	 * The default value is <code>""</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Storage Base File String</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Storage Base File String</em>' attribute.
-	 * @see #setStorageBaseFileString(String)
-	 * @see de.hub.clickwatch.recoder.cwdatabase.CWDataBasePackage#getDataBase_StorageBaseFileString()
-	 * @model default=""
-	 * @generated
-	 */
-	String getStorageBaseFileString();
-
-	/**
-	 * Sets the value of the '{@link de.hub.clickwatch.recoder.cwdatabase.DataBase#getStorageBaseFileString <em>Storage Base File String</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Storage Base File String</em>' attribute.
-	 * @see #getStorageBaseFileString()
-	 * @generated
-	 */
-	void setStorageBaseFileString(String value);
-
-	/**
-	 * Returns the value of the '<em><b>In Memory</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>In Memory</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>In Memory</em>' attribute.
-	 * @see #setInMemory(Boolean)
-	 * @see de.hub.clickwatch.recoder.cwdatabase.CWDataBasePackage#getDataBase_InMemory()
-	 * @model default="false"
-	 * @generated
-	 */
-	Boolean getInMemory();
-
-	/**
-	 * Sets the value of the '{@link de.hub.clickwatch.recoder.cwdatabase.DataBase#getInMemory <em>In Memory</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>In Memory</em>' attribute.
-	 * @see #getInMemory()
-	 * @generated
-	 */
-	void setInMemory(Boolean value);
+	EList<Record> getRecords();
 
 } // DataBase

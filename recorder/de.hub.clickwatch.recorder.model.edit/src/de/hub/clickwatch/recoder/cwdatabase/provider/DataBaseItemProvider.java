@@ -7,30 +7,25 @@
 package de.hub.clickwatch.recoder.cwdatabase.provider;
 
 
-import de.hub.clickwatch.recoder.cwdatabase.CWDataBaseFactory;
-import de.hub.clickwatch.recoder.cwdatabase.CWDataBasePackage;
-import de.hub.clickwatch.recoder.cwdatabase.DataBase;
-
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.ecore.EStructuralFeature;
-
-import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+
+import de.hub.clickwatch.recoder.cwdatabase.CWDataBaseFactory;
+import de.hub.clickwatch.recoder.cwdatabase.CWDataBasePackage;
+import de.hub.clickwatch.recoder.cwdatabase.DataBase;
 
 /**
  * This is the item provider adapter for a {@link de.hub.clickwatch.recoder.cwdatabase.DataBase} object.
@@ -67,54 +62,8 @@ public class DataBaseItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addStorageBaseFileStringPropertyDescriptor(object);
-			addInMemoryPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Storage Base File String feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addStorageBaseFileStringPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_DataBase_storageBaseFileString_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_DataBase_storageBaseFileString_feature", "_UI_DataBase_type"),
-				 CWDataBasePackage.Literals.DATA_BASE__STORAGE_BASE_FILE_STRING,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the In Memory feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addInMemoryPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_DataBase_inMemory_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_DataBase_inMemory_feature", "_UI_DataBase_type"),
-				 CWDataBasePackage.Literals.DATA_BASE__IN_MEMORY,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
 	}
 
 	/**
@@ -129,7 +78,7 @@ public class DataBaseItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(CWDataBasePackage.Literals.DATA_BASE__EXPERIMENTS);
+			childrenFeatures.add(CWDataBasePackage.Literals.DATA_BASE__RECORDS);
 		}
 		return childrenFeatures;
 	}
@@ -166,10 +115,7 @@ public class DataBaseItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((DataBase)object).getStorageBaseFileString();
-		return label == null || label.length() == 0 ?
-			getString("_UI_DataBase_type") :
-			getString("_UI_DataBase_type") + " " + label;
+		return getString("_UI_DataBase_type");
 	}
 
 	/**
@@ -184,11 +130,7 @@ public class DataBaseItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(DataBase.class)) {
-			case CWDataBasePackage.DATA_BASE__STORAGE_BASE_FILE_STRING:
-			case CWDataBasePackage.DATA_BASE__IN_MEMORY:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
-			case CWDataBasePackage.DATA_BASE__EXPERIMENTS:
+			case CWDataBasePackage.DATA_BASE__RECORDS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -208,8 +150,8 @@ public class DataBaseItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(CWDataBasePackage.Literals.DATA_BASE__EXPERIMENTS,
-				 CWDataBaseFactory.eINSTANCE.createExperimentDescr()));
+				(CWDataBasePackage.Literals.DATA_BASE__RECORDS,
+				 CWDataBaseFactory.eINSTANCE.createRecord()));
 	}
 
 	/**

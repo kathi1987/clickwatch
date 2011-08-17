@@ -19,8 +19,8 @@ import de.hub.clickwatch.main.ClickWatchExternalLauncher;
 import de.hub.clickwatch.main.IArgumentsProvider;
 import de.hub.clickwatch.main.IClickWatchContext;
 import de.hub.clickwatch.main.IClickWatchMain;
-import de.hub.clickwatch.main.IExperimentProvider;
-import de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr;
+import de.hub.clickwatch.main.IRecordProvider;
+import de.hub.clickwatch.recoder.cwdatabase.Record;
 import de.hub.clickwatch.recoder.cwdatabase.HBaseRowMap;
 import de.hub.clickwatch.recorder.CWRecorderModule;
 import de.hub.clickwatch.recorder.database.hbase.HBaseUtil;
@@ -36,20 +36,20 @@ public class ExtrapolateDataBase implements IClickWatchMain, IApplication {
 	
 	@Override
 	public void main(IClickWatchContext ctx) {
-		ExperimentDescr sourceExperiment = ctx.getAdapter(IExperimentProvider.class).getExperiment();
-		ExperimentDescr targetExperiment = EcoreUtil.copy(sourceExperiment);
+		Record sourceRecord = ctx.getAdapter(IRecordProvider.class).getRecord();
+		Record targetRecord = EcoreUtil.copy(sourceRecord);
 		
-		HBaseRowMap sourceRowMap = sourceExperiment.getHBaseRowMap();
+		HBaseRowMap sourceRowMap = sourceRecord.getHBaseRowMap();
 		
 		String[] args = ctx.getAdapter(IArgumentsProvider.class).getArguments();
-		String targetExperimentName = args[0];
+		String targetRecordName = args[0];
 		int factor = Integer.parseInt(args[1]);
-		long offset = sourceExperiment.getEnd() - sourceExperiment.getStart();
+		long offset = sourceRecord.getEnd() - sourceRecord.getStart();
 		
-		targetExperiment.setName(targetExperimentName);
+		targetRecord.setName(targetRecordName);
 		
-		HTable targetTable = hbaseUtil.getHBaseTable(targetExperimentName, true);
-		HTable sourceTable = hbaseUtil.getHBaseTable(sourceExperiment.getName(), false);
+		HTable targetTable = hbaseUtil.getHBaseTable(targetRecordName, true);
+		HTable sourceTable = hbaseUtil.getHBaseTable(sourceRecord.getName(), false);
 
 		List<Put> puts = new ArrayList<Put>();
 		try {
@@ -81,10 +81,10 @@ public class ExtrapolateDataBase implements IClickWatchMain, IApplication {
 			Throwables.propagate(e);
 		}
 		
-		targetExperiment.setEnd(sourceExperiment.getStart() + (factor*offset));		
-		sourceExperiment.getDataBase().getExperiments().add(targetExperiment);
+		targetRecord.setEnd(sourceRecord.getStart() + (factor*offset));		
+		sourceRecord.getDataBase().getRecords().add(targetRecord);
 		try {
-			targetExperiment.eResource().save(XmlModelRepository.defaultLoadSaveOptions());
+			targetRecord.eResource().save(XmlModelRepository.defaultLoadSaveOptions());
 		} catch (IOException e) {
 			Throwables.propagate(e);
 		}

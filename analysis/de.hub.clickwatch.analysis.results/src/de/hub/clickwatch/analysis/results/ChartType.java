@@ -14,7 +14,7 @@ package de.hub.clickwatch.analysis.results;
  *
  *
  * @see de.hub.clickwatch.analysis.results.ResultsPackage#getChartType()
- * @model
+ * @model abstract="true"
  * @generated
  */
 public interface ChartType extends NamedElement {

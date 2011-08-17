@@ -7,12 +7,15 @@
 package de.hub.clickwatch.specificmodels.brn.lt_routes.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import de.hub.clickwatch.model.impl.HandlerImpl;
 import de.hub.clickwatch.specificmodels.brn.lt_routes.Lt_routesPackage;
 import de.hub.clickwatch.specificmodels.brn.lt_routes.Routes;
+import de.hub.clickwatch.specificmodels.brn.lt_routes.Routetable;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,7 +24,7 @@ import de.hub.clickwatch.specificmodels.brn.lt_routes.Routes;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link de.hub.clickwatch.specificmodels.brn.lt_routes.impl.RoutesImpl#getText <em>Text</em>}</li>
+ *   <li>{@link de.hub.clickwatch.specificmodels.brn.lt_routes.impl.RoutesImpl#getRoutetable <em>Routetable</em>}</li>
  * </ul>
  * </p>
  *
@@ -29,24 +32,14 @@ import de.hub.clickwatch.specificmodels.brn.lt_routes.Routes;
  */
 public class RoutesImpl extends HandlerImpl implements Routes {
 	/**
-	 * The default value of the '{@link #getText() <em>Text</em>}' attribute.
+	 * The cached value of the '{@link #getRoutetable() <em>Routetable</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getText()
+	 * @see #getRoutetable()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String TEXT_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getText() <em>Text</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getText()
-	 * @generated
-	 * @ordered
-	 */
-	protected String text = TEXT_EDEFAULT;
+	protected Routetable routetable;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -72,8 +65,8 @@ public class RoutesImpl extends HandlerImpl implements Routes {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getText() {
-		return text;
+	public Routetable getRoutetable() {
+		return routetable;
 	}
 
 	/**
@@ -81,11 +74,63 @@ public class RoutesImpl extends HandlerImpl implements Routes {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setText(String newText) {
-		String oldText = text;
-		text = newText;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, Lt_routesPackage.ROUTES__TEXT, oldText, text));
+	public NotificationChain basicSetRoutetable(Routetable newRoutetable, NotificationChain msgs) {
+		Routetable oldRoutetable = routetable;
+		routetable = newRoutetable;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, Lt_routesPackage.ROUTES__ROUTETABLE, oldRoutetable, newRoutetable);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setRoutetable(Routetable newRoutetable) {
+		if (newRoutetable != routetable) {
+			NotificationChain msgs = null;
+			if (routetable != null)
+				msgs = ((InternalEObject)routetable).eInverseRemove(this, Lt_routesPackage.ROUTETABLE__ECONTAINER_ROUTETABLE, Routetable.class, msgs);
+			if (newRoutetable != null)
+				msgs = ((InternalEObject)newRoutetable).eInverseAdd(this, Lt_routesPackage.ROUTETABLE__ECONTAINER_ROUTETABLE, Routetable.class, msgs);
+			msgs = basicSetRoutetable(newRoutetable, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, Lt_routesPackage.ROUTES__ROUTETABLE, newRoutetable, newRoutetable));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case Lt_routesPackage.ROUTES__ROUTETABLE:
+				if (routetable != null)
+					msgs = ((InternalEObject)routetable).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - Lt_routesPackage.ROUTES__ROUTETABLE, null, msgs);
+				return basicSetRoutetable((Routetable)otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case Lt_routesPackage.ROUTES__ROUTETABLE:
+				return basicSetRoutetable(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -96,8 +141,8 @@ public class RoutesImpl extends HandlerImpl implements Routes {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case Lt_routesPackage.ROUTES__TEXT:
-				return getText();
+			case Lt_routesPackage.ROUTES__ROUTETABLE:
+				return getRoutetable();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -110,8 +155,8 @@ public class RoutesImpl extends HandlerImpl implements Routes {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case Lt_routesPackage.ROUTES__TEXT:
-				setText((String)newValue);
+			case Lt_routesPackage.ROUTES__ROUTETABLE:
+				setRoutetable((Routetable)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -125,8 +170,8 @@ public class RoutesImpl extends HandlerImpl implements Routes {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case Lt_routesPackage.ROUTES__TEXT:
-				setText(TEXT_EDEFAULT);
+			case Lt_routesPackage.ROUTES__ROUTETABLE:
+				setRoutetable((Routetable)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -140,26 +185,10 @@ public class RoutesImpl extends HandlerImpl implements Routes {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case Lt_routesPackage.ROUTES__TEXT:
-				return TEXT_EDEFAULT == null ? text != null : !TEXT_EDEFAULT.equals(text);
+			case Lt_routesPackage.ROUTES__ROUTETABLE:
+				return routetable != null;
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (text: ");
-		result.append(text);
-		result.append(')');
-		return result.toString();
 	}
 
 } //RoutesImpl

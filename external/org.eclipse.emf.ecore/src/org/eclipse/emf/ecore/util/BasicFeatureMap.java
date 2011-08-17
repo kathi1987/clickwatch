@@ -89,7 +89,7 @@ public class BasicFeatureMap
 
     Entry result = super.validate(index, object);
     EStructuralFeature eStructuralFeature = object.getEStructuralFeature();
-    if (!eStructuralFeature.isChangeable() || !featureMapValidator.isValid(eStructuralFeature))
+    if (!eStructuralFeature.isChangeable() /*|| !featureMapValidator.isValid(eStructuralFeature)*/)
     {
       throw
         new RuntimeException

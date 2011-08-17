@@ -7,7 +7,7 @@ import de.hub.clickwatch.connection.adapter.IValueAdapter;
 import de.hub.clickwatch.connection.adapter.StringValueAdapter;
 import de.hub.clickwatch.recorder.database.IDataBaseRecordAdapter;
 import de.hub.clickwatch.recorder.database.IDataBaseRetrieveAdapter;
-import de.hub.clickwatch.recorder.database.emf.DataBaseAdapter;
+import de.hub.clickwatch.recorder.database.hbase.HBaseDataBaseAdapter;
 
 public class CWRecorderModule extends AbstractModule {
 
@@ -40,11 +40,11 @@ public class CWRecorderModule extends AbstractModule {
 	}
 
 	protected void configureDataBaseRecordAdapter() {
-		bind(IDataBaseRecordAdapter.class).to(DataBaseAdapter.class);
+		bind(IDataBaseRecordAdapter.class).to(HBaseDataBaseAdapter.class);
 	}
 
 	protected void configureDataBaseRetrieveAdapter() {
-		bind(IDataBaseRetrieveAdapter.class).to(DataBaseAdapter.class);
+		bind(IDataBaseRetrieveAdapter.class).to(HBaseDataBaseAdapter.class);
 	}
 
 	

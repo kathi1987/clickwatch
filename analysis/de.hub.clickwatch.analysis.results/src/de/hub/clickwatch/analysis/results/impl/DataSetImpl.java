@@ -68,7 +68,7 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public EList<DataEntry> getEntries() {
 		if (entries == null) {
@@ -82,7 +82,8 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public void addEntry(EList<Double> values) {
+	@Override
+	public void addEntry(EList<Object> values) {
 		DataEntry entry = ResultsFactory.eINSTANCE.createDataEntry();
 		entry.getValues().addAll(values);
 		getEntries().add(entry);
@@ -94,9 +95,9 @@ public class DataSetImpl extends EObjectImpl implements DataSet {
 	 * @generated NOT
 	 */
 	@Override
-	public void add(double... values) {
-		EList<Double> result = new BasicEList<Double>();
-		for (double value: values) {
+	public void add(Object... values) {
+		EList<Object> result = new BasicEList<Object>();
+		for (Object value: values) {
 			result.add(value);
 		}
 		addEntry(result);

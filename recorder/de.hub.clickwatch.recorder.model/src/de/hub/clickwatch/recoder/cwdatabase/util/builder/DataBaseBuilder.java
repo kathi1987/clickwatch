@@ -9,14 +9,10 @@ package de.hub.clickwatch.recoder.cwdatabase.util.builder;
  */
 public class DataBaseBuilder implements de.hub.clickwatch.recoder.cwdatabase.util.builder.ICwdatabaseBuilder<de.hub.clickwatch.recoder.cwdatabase.DataBase> {
   // features and builders
-  private java.lang.Boolean m_inMemory;
-  private java.lang.String m_storageBaseFileString;
-  private java.util.Collection<de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr> m_experiments = new java.util.LinkedList<de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr>();
-  private java.util.Collection<de.hub.clickwatch.recoder.cwdatabase.util.builder.ICwdatabaseBuilder<? extends de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr>> m_featureExperimentsBuilder = new java.util.LinkedList<de.hub.clickwatch.recoder.cwdatabase.util.builder.ICwdatabaseBuilder<? extends de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr>>();
+  private java.util.Collection<de.hub.clickwatch.recoder.cwdatabase.Record> m_records = new java.util.LinkedList<de.hub.clickwatch.recoder.cwdatabase.Record>();
+  private java.util.Collection<de.hub.clickwatch.recoder.cwdatabase.util.builder.ICwdatabaseBuilder<? extends de.hub.clickwatch.recoder.cwdatabase.Record>> m_featureRecordsBuilder = new java.util.LinkedList<de.hub.clickwatch.recoder.cwdatabase.util.builder.ICwdatabaseBuilder<? extends de.hub.clickwatch.recoder.cwdatabase.Record>>();
   // helper attributes
-  private boolean m_featureExperimentsSet = false;
-  private boolean m_featureInMemorySet = false;
-  private boolean m_featureStorageBaseFileStringSet = false;
+  private boolean m_featureRecordsSet = false;
 
   /**
    * Builder is not instantiated with a constructor.
@@ -38,13 +34,9 @@ public class DataBaseBuilder implements de.hub.clickwatch.recoder.cwdatabase.uti
    */
   public DataBaseBuilder but() {
     DataBaseBuilder _builder = newDataBaseBuilder();
-    _builder.m_featureExperimentsSet = m_featureExperimentsSet;
-    _builder.m_experiments = m_experiments;
-    _builder.m_featureExperimentsBuilder = m_featureExperimentsBuilder;
-    _builder.m_featureInMemorySet = m_featureInMemorySet;
-    _builder.m_inMemory = m_inMemory;
-    _builder.m_featureStorageBaseFileStringSet = m_featureStorageBaseFileStringSet;
-    _builder.m_storageBaseFileString = m_storageBaseFileString;
+    _builder.m_featureRecordsSet = m_featureRecordsSet;
+    _builder.m_records = m_records;
+    _builder.m_featureRecordsBuilder = m_featureRecordsBuilder;
     return _builder;
   }
 
@@ -54,50 +46,32 @@ public class DataBaseBuilder implements de.hub.clickwatch.recoder.cwdatabase.uti
    */
   public de.hub.clickwatch.recoder.cwdatabase.DataBase build() {
     final de.hub.clickwatch.recoder.cwdatabase.DataBase _newInstance = de.hub.clickwatch.recoder.cwdatabase.CWDataBaseFactory.eINSTANCE.createDataBase();
-    if (m_featureInMemorySet) {
-      _newInstance.setInMemory(m_inMemory);
-    }
-    if (m_featureStorageBaseFileStringSet) {
-      _newInstance.setStorageBaseFileString(m_storageBaseFileString);
-    }
-    if (m_featureExperimentsSet) {
-      _newInstance.getExperiments().addAll(m_experiments);
+    if (m_featureRecordsSet) {
+      _newInstance.getRecords().addAll(m_records);
     } else {
-      if (!m_featureExperimentsBuilder.isEmpty()) {
-        for (de.hub.clickwatch.recoder.cwdatabase.util.builder.ICwdatabaseBuilder<? extends de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr> builder : m_featureExperimentsBuilder) {
-          _newInstance.getExperiments().add(builder.build());
+      if (!m_featureRecordsBuilder.isEmpty()) {
+        for (de.hub.clickwatch.recoder.cwdatabase.util.builder.ICwdatabaseBuilder<? extends de.hub.clickwatch.recoder.cwdatabase.Record> builder : m_featureRecordsBuilder) {
+          _newInstance.getRecords().add(builder.build());
         }
       }
     }
     return _newInstance;
   }
 
-  public DataBaseBuilder withInMemory(java.lang.Boolean p_inMemory) {
-    m_inMemory = p_inMemory;
-    m_featureInMemorySet = true;
+  public DataBaseBuilder withRecords(de.hub.clickwatch.recoder.cwdatabase.Record p_records) {
+    m_records.add(p_records);
+    m_featureRecordsSet = true;
     return this;
   }
 
-  public DataBaseBuilder withStorageBaseFileString(java.lang.String p_storageBaseFileString) {
-    m_storageBaseFileString = p_storageBaseFileString;
-    m_featureStorageBaseFileStringSet = true;
+  public DataBaseBuilder withRecords(java.util.Collection<? extends de.hub.clickwatch.recoder.cwdatabase.Record> p_records) {
+    m_records.addAll(p_records);
+    m_featureRecordsSet = true;
     return this;
   }
 
-  public DataBaseBuilder withExperiments(de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr p_experiments) {
-    m_experiments.add(p_experiments);
-    m_featureExperimentsSet = true;
-    return this;
-  }
-
-  public DataBaseBuilder withExperiments(java.util.Collection<? extends de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr> p_experiments) {
-    m_experiments.addAll(p_experiments);
-    m_featureExperimentsSet = true;
-    return this;
-  }
-
-  public DataBaseBuilder withExperiments(de.hub.clickwatch.recoder.cwdatabase.util.builder.ICwdatabaseBuilder<? extends de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr> p_experimentDescrBuilder) {
-    m_featureExperimentsBuilder.add(p_experimentDescrBuilder);
+  public DataBaseBuilder withRecords(de.hub.clickwatch.recoder.cwdatabase.util.builder.ICwdatabaseBuilder<? extends de.hub.clickwatch.recoder.cwdatabase.Record> p_recordBuilder) {
+    m_featureRecordsBuilder.add(p_recordBuilder);
     return this;
   }
 }

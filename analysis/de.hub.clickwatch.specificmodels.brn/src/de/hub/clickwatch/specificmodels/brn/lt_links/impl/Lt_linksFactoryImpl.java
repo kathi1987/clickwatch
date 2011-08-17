@@ -12,7 +12,9 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
+import de.hub.clickwatch.specificmodels.brn.lt_links.Link;
 import de.hub.clickwatch.specificmodels.brn.lt_links.Links;
+import de.hub.clickwatch.specificmodels.brn.lt_links.Linktable;
 import de.hub.clickwatch.specificmodels.brn.lt_links.Lt_linksFactory;
 import de.hub.clickwatch.specificmodels.brn.lt_links.Lt_linksPackage;
 
@@ -60,7 +62,9 @@ public class Lt_linksFactoryImpl extends EFactoryImpl implements Lt_linksFactory
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
+			case Lt_linksPackage.LINK: return createLink();
 			case Lt_linksPackage.LINKS: return createLinks();
+			case Lt_linksPackage.LINKTABLE: return createLinktable();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -71,9 +75,29 @@ public class Lt_linksFactoryImpl extends EFactoryImpl implements Lt_linksFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Link createLink() {
+		LinkImpl link = new LinkImpl();
+		return link;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public Links createLinks() {
 		LinksImpl links = new LinksImpl();
 		return links;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Linktable createLinktable() {
+		LinktableImpl linktable = new LinktableImpl();
+		return linktable;
 	}
 
 	/**

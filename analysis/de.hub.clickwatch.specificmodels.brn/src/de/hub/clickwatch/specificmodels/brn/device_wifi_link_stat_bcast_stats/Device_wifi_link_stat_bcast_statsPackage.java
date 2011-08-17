@@ -26,7 +26,7 @@ import de.hub.clickwatch.model.ClickWatchModelPackage;
  * <!-- end-user-doc -->
  * @see de.hub.clickwatch.specificmodels.brn.device_wifi_link_stat_bcast_stats.Device_wifi_link_stat_bcast_statsFactory
  * @model kind="package"
- *        annotation="http://de.hub.clickwatch.specificmodels handler_class='Bcast_stats'"
+ *        annotation="http://de.hub.clickwatch.specificmodels handler_class='Bcast_stats' handler_name='device_wifi/link_stat/bcast_stats'"
  * @generated
  */
 public interface Device_wifi_link_stat_bcast_statsPackage extends EPackage {

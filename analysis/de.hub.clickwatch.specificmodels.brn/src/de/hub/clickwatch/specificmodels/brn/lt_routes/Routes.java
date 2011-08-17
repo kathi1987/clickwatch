@@ -16,7 +16,7 @@ import de.hub.clickwatch.model.Handler;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link de.hub.clickwatch.specificmodels.brn.lt_routes.Routes#getText <em>Text</em>}</li>
+ *   <li>{@link de.hub.clickwatch.specificmodels.brn.lt_routes.Routes#getRoutetable <em>Routetable</em>}</li>
  * </ul>
  * </p>
  *
@@ -26,30 +26,32 @@ import de.hub.clickwatch.model.Handler;
  */
 public interface Routes extends Handler {
 	/**
-	 * Returns the value of the '<em><b>Text</b></em>' attribute.
+	 * Returns the value of the '<em><b>Routetable</b></em>' containment reference.
+	 * It is bidirectional and its opposite is '{@link de.hub.clickwatch.specificmodels.brn.lt_routes.Routetable#getEContainer_routetable <em>EContainer routetable</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Text</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Routetable</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Text</em>' attribute.
-	 * @see #setText(String)
-	 * @see de.hub.clickwatch.specificmodels.brn.lt_routes.Lt_routesPackage#getRoutes_Text()
-	 * @model unique="false"
-	 *        annotation="http://de.hub.clickwatch.specificmodels target_id='Routes|Handler/text|text:'"
+	 * @return the value of the '<em>Routetable</em>' containment reference.
+	 * @see #setRoutetable(Routetable)
+	 * @see de.hub.clickwatch.specificmodels.brn.lt_routes.Lt_routesPackage#getRoutes_Routetable()
+	 * @see de.hub.clickwatch.specificmodels.brn.lt_routes.Routetable#getEContainer_routetable
+	 * @model opposite="eContainer_routetable" containment="true"
+	 *        annotation="http://de.hub.clickwatch.specificmodels target_id='Routes|Handler/routetable|routetable:Routetable|EObject' IsCopy='false'"
 	 * @generated
 	 */
-	String getText();
+	Routetable getRoutetable();
 
 	/**
-	 * Sets the value of the '{@link de.hub.clickwatch.specificmodels.brn.lt_routes.Routes#getText <em>Text</em>}' attribute.
+	 * Sets the value of the '{@link de.hub.clickwatch.specificmodels.brn.lt_routes.Routes#getRoutetable <em>Routetable</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Text</em>' attribute.
-	 * @see #getText()
+	 * @param value the new value of the '<em>Routetable</em>' containment reference.
+	 * @see #getRoutetable()
 	 * @generated
 	 */
-	void setText(String value);
+	void setRoutetable(Routetable value);
 
 } // Routes

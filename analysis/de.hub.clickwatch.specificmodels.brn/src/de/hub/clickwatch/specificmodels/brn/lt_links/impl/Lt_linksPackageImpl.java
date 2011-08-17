@@ -9,6 +9,7 @@ package de.hub.clickwatch.specificmodels.brn.lt_links.impl;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import de.hub.clickwatch.model.ClickWatchModelPackage;
@@ -28,7 +29,9 @@ import de.hub.clickwatch.specificmodels.brn.gps_gps_coord.impl.Gps_gps_coordPack
 import de.hub.clickwatch.specificmodels.brn.impl.BrnPackageImpl;
 import de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Lease_tab_leasesPackage;
 import de.hub.clickwatch.specificmodels.brn.lease_tab_leases.impl.Lease_tab_leasesPackageImpl;
+import de.hub.clickwatch.specificmodels.brn.lt_links.Link;
 import de.hub.clickwatch.specificmodels.brn.lt_links.Links;
+import de.hub.clickwatch.specificmodels.brn.lt_links.Linktable;
 import de.hub.clickwatch.specificmodels.brn.lt_links.Lt_linksFactory;
 import de.hub.clickwatch.specificmodels.brn.lt_links.Lt_linksPackage;
 import de.hub.clickwatch.specificmodels.brn.lt_routes.Lt_routesPackage;
@@ -48,7 +51,20 @@ public class Lt_linksPackageImpl extends EPackageImpl implements Lt_linksPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass linkEClass = null;
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass linksEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass linktableEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -101,41 +117,41 @@ public class Lt_linksPackageImpl extends EPackageImpl implements Lt_linksPackage
 
 		// Obtain or create and register interdependencies
 		BrnPackageImpl theBrnPackage = (BrnPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(BrnPackage.eNS_URI) instanceof BrnPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(BrnPackage.eNS_URI) : BrnPackage.eINSTANCE);
-		Device_wifi_link_stat_bcast_statsPackageImpl theDevice_wifi_link_stat_bcast_statsPackage = (Device_wifi_link_stat_bcast_statsPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Device_wifi_link_stat_bcast_statsPackage.eNS_URI) instanceof Device_wifi_link_stat_bcast_statsPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Device_wifi_link_stat_bcast_statsPackage.eNS_URI) : Device_wifi_link_stat_bcast_statsPackage.eINSTANCE);
-		Device_wifi_wifidevice_cst_statsPackageImpl theDevice_wifi_wifidevice_cst_statsPackage = (Device_wifi_wifidevice_cst_statsPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Device_wifi_wifidevice_cst_statsPackage.eNS_URI) instanceof Device_wifi_wifidevice_cst_statsPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Device_wifi_wifidevice_cst_statsPackage.eNS_URI) : Device_wifi_wifidevice_cst_statsPackage.eINSTANCE);
 		Sys_info_systeminfoPackageImpl theSys_info_systeminfoPackage = (Sys_info_systeminfoPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Sys_info_systeminfoPackage.eNS_URI) instanceof Sys_info_systeminfoPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Sys_info_systeminfoPackage.eNS_URI) : Sys_info_systeminfoPackage.eINSTANCE);
 		Device_wifi_data_power_systempowerPackageImpl theDevice_wifi_data_power_systempowerPackage = (Device_wifi_data_power_systempowerPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Device_wifi_data_power_systempowerPackage.eNS_URI) instanceof Device_wifi_data_power_systempowerPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Device_wifi_data_power_systempowerPackage.eNS_URI) : Device_wifi_data_power_systempowerPackage.eINSTANCE);
 		Device_wifi_wifidevice_sc_systemchannelPackageImpl theDevice_wifi_wifidevice_sc_systemchannelPackage = (Device_wifi_wifidevice_sc_systemchannelPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Device_wifi_wifidevice_sc_systemchannelPackage.eNS_URI) instanceof Device_wifi_wifidevice_sc_systemchannelPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Device_wifi_wifidevice_sc_systemchannelPackage.eNS_URI) : Device_wifi_wifidevice_sc_systemchannelPackage.eINSTANCE);
-		Lt_routesPackageImpl theLt_routesPackage = (Lt_routesPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Lt_routesPackage.eNS_URI) instanceof Lt_routesPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Lt_routesPackage.eNS_URI) : Lt_routesPackage.eINSTANCE);
 		Lease_tab_leasesPackageImpl theLease_tab_leasesPackage = (Lease_tab_leasesPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Lease_tab_leasesPackage.eNS_URI) instanceof Lease_tab_leasesPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Lease_tab_leasesPackage.eNS_URI) : Lease_tab_leasesPackage.eINSTANCE);
 		Gps_gps_coordPackageImpl theGps_gps_coordPackage = (Gps_gps_coordPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Gps_gps_coordPackage.eNS_URI) instanceof Gps_gps_coordPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Gps_gps_coordPackage.eNS_URI) : Gps_gps_coordPackage.eINSTANCE);
 		Gps_cart_coordPackageImpl theGps_cart_coordPackage = (Gps_cart_coordPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Gps_cart_coordPackage.eNS_URI) instanceof Gps_cart_coordPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Gps_cart_coordPackage.eNS_URI) : Gps_cart_coordPackage.eINSTANCE);
+		Lt_routesPackageImpl theLt_routesPackage = (Lt_routesPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Lt_routesPackage.eNS_URI) instanceof Lt_routesPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Lt_routesPackage.eNS_URI) : Lt_routesPackage.eINSTANCE);
+		Device_wifi_link_stat_bcast_statsPackageImpl theDevice_wifi_link_stat_bcast_statsPackage = (Device_wifi_link_stat_bcast_statsPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Device_wifi_link_stat_bcast_statsPackage.eNS_URI) instanceof Device_wifi_link_stat_bcast_statsPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Device_wifi_link_stat_bcast_statsPackage.eNS_URI) : Device_wifi_link_stat_bcast_statsPackage.eINSTANCE);
+		Device_wifi_wifidevice_cst_statsPackageImpl theDevice_wifi_wifidevice_cst_statsPackage = (Device_wifi_wifidevice_cst_statsPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Device_wifi_wifidevice_cst_statsPackage.eNS_URI) instanceof Device_wifi_wifidevice_cst_statsPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Device_wifi_wifidevice_cst_statsPackage.eNS_URI) : Device_wifi_wifidevice_cst_statsPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theLt_linksPackage.createPackageContents();
 		theBrnPackage.createPackageContents();
-		theDevice_wifi_link_stat_bcast_statsPackage.createPackageContents();
-		theDevice_wifi_wifidevice_cst_statsPackage.createPackageContents();
 		theSys_info_systeminfoPackage.createPackageContents();
 		theDevice_wifi_data_power_systempowerPackage.createPackageContents();
 		theDevice_wifi_wifidevice_sc_systemchannelPackage.createPackageContents();
-		theLt_routesPackage.createPackageContents();
 		theLease_tab_leasesPackage.createPackageContents();
 		theGps_gps_coordPackage.createPackageContents();
 		theGps_cart_coordPackage.createPackageContents();
+		theLt_routesPackage.createPackageContents();
+		theDevice_wifi_link_stat_bcast_statsPackage.createPackageContents();
+		theDevice_wifi_wifidevice_cst_statsPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theLt_linksPackage.initializePackageContents();
 		theBrnPackage.initializePackageContents();
-		theDevice_wifi_link_stat_bcast_statsPackage.initializePackageContents();
-		theDevice_wifi_wifidevice_cst_statsPackage.initializePackageContents();
 		theSys_info_systeminfoPackage.initializePackageContents();
 		theDevice_wifi_data_power_systempowerPackage.initializePackageContents();
 		theDevice_wifi_wifidevice_sc_systemchannelPackage.initializePackageContents();
-		theLt_routesPackage.initializePackageContents();
 		theLease_tab_leasesPackage.initializePackageContents();
 		theGps_gps_coordPackage.initializePackageContents();
 		theGps_cart_coordPackage.initializePackageContents();
+		theLt_routesPackage.initializePackageContents();
+		theDevice_wifi_link_stat_bcast_statsPackage.initializePackageContents();
+		theDevice_wifi_wifidevice_cst_statsPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theLt_linksPackage.freeze();
@@ -144,6 +160,69 @@ public class Lt_linksPackageImpl extends EPackageImpl implements Lt_linksPackage
 		// Update the registry and return the package
 		EPackage.Registry.INSTANCE.put(Lt_linksPackage.eNS_URI, theLt_linksPackage);
 		return theLt_linksPackage;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getLink() {
+		return linkEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getLink_EContainer_link() {
+		return (EReference)linkEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLink_From() {
+		return (EAttribute)linkEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLink_To() {
+		return (EAttribute)linkEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLink_Metric() {
+		return (EAttribute)linkEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLink_Seq() {
+		return (EAttribute)linkEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLink_Age() {
+		return (EAttribute)linkEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -160,8 +239,53 @@ public class Lt_linksPackageImpl extends EPackageImpl implements Lt_linksPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getLinks_Text() {
-		return (EAttribute)linksEClass.getEStructuralFeatures().get(0);
+	public EReference getLinks_Linktable() {
+		return (EReference)linksEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getLinktable() {
+		return linktableEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getLinktable_EContainer_linktable() {
+		return (EReference)linktableEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLinktable_Text() {
+		return (EAttribute)linktableEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getLinktable_Link() {
+		return (EReference)linktableEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLinktable_Id() {
+		return (EAttribute)linktableEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -192,8 +316,22 @@ public class Lt_linksPackageImpl extends EPackageImpl implements Lt_linksPackage
 		isCreated = true;
 
 		// Create classes and their features
+		linkEClass = createEClass(LINK);
+		createEReference(linkEClass, LINK__ECONTAINER_LINK);
+		createEAttribute(linkEClass, LINK__FROM);
+		createEAttribute(linkEClass, LINK__TO);
+		createEAttribute(linkEClass, LINK__METRIC);
+		createEAttribute(linkEClass, LINK__SEQ);
+		createEAttribute(linkEClass, LINK__AGE);
+
 		linksEClass = createEClass(LINKS);
-		createEAttribute(linksEClass, LINKS__TEXT);
+		createEReference(linksEClass, LINKS__LINKTABLE);
+
+		linktableEClass = createEClass(LINKTABLE);
+		createEReference(linktableEClass, LINKTABLE__ECONTAINER_LINKTABLE);
+		createEAttribute(linktableEClass, LINKTABLE__TEXT);
+		createEReference(linktableEClass, LINKTABLE__LINK);
+		createEAttribute(linktableEClass, LINKTABLE__ID);
 	}
 
 	/**
@@ -230,8 +368,22 @@ public class Lt_linksPackageImpl extends EPackageImpl implements Lt_linksPackage
 		linksEClass.getESuperTypes().add(theClickWatchModelPackage.getHandler());
 
 		// Initialize classes and features; add operations and parameters
+		initEClass(linkEClass, Link.class, "Link", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getLink_EContainer_link(), this.getLinktable(), this.getLinktable_Link(), "eContainer_link", null, 0, 1, Link.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLink_From(), ecorePackage.getEString(), "from", null, 0, 1, Link.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLink_To(), ecorePackage.getEString(), "to", null, 0, 1, Link.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLink_Metric(), ecorePackage.getEInt(), "metric", null, 0, 1, Link.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLink_Seq(), ecorePackage.getEInt(), "seq", null, 0, 1, Link.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLink_Age(), ecorePackage.getEInt(), "age", null, 0, 1, Link.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(linksEClass, Links.class, "Links", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getLinks_Text(), ecorePackage.getEString(), "text", null, 0, 1, Links.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLinks_Linktable(), this.getLinktable(), this.getLinktable_EContainer_linktable(), "linktable", null, 0, 1, Links.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(linktableEClass, Linktable.class, "Linktable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getLinktable_EContainer_linktable(), this.getLinks(), this.getLinks_Linktable(), "eContainer_linktable", null, 0, 1, Linktable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLinktable_Text(), ecorePackage.getEString(), "text", null, 0, -1, Linktable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLinktable_Link(), this.getLink(), this.getLink_EContainer_link(), "link", null, 0, -1, Linktable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLinktable_Id(), ecorePackage.getEString(), "id", null, 0, 1, Linktable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create annotations
 		// http://de.hub.clickwatch.specificmodels
@@ -250,7 +402,44 @@ public class Lt_linksPackageImpl extends EPackageImpl implements Lt_linksPackage
 		  (this, 
 		   source, 
 		   new String[] {
-			 "handler_class", "Links"
+			 "handler_class", "Links",
+			 "handler_name", "lt/links"
+		   });		
+		addAnnotation
+		  (linkEClass, 
+		   source, 
+		   new String[] {
+			 "target_id", "Links|Handler/linktable|linktable:Linktable|EObject/link|link:Link|EObject"
+		   });		
+		addAnnotation
+		  (getLink_From(), 
+		   source, 
+		   new String[] {
+			 "target_id", "Links|Handler/linktable|linktable:Linktable|EObject/link|link:Link|EObject/from|from:"
+		   });		
+		addAnnotation
+		  (getLink_To(), 
+		   source, 
+		   new String[] {
+			 "target_id", "Links|Handler/linktable|linktable:Linktable|EObject/link|link:Link|EObject/to|to:"
+		   });		
+		addAnnotation
+		  (getLink_Metric(), 
+		   source, 
+		   new String[] {
+			 "target_id", "Links|Handler/linktable|linktable:Linktable|EObject/link|link:Link|EObject/metric|metric:"
+		   });		
+		addAnnotation
+		  (getLink_Seq(), 
+		   source, 
+		   new String[] {
+			 "target_id", "Links|Handler/linktable|linktable:Linktable|EObject/link|link:Link|EObject/seq|seq:"
+		   });		
+		addAnnotation
+		  (getLink_Age(), 
+		   source, 
+		   new String[] {
+			 "target_id", "Links|Handler/linktable|linktable:Linktable|EObject/link|link:Link|EObject/age|age:"
 		   });		
 		addAnnotation
 		  (linksEClass, 
@@ -259,10 +448,36 @@ public class Lt_linksPackageImpl extends EPackageImpl implements Lt_linksPackage
 			 "target_id", "Links|Handler"
 		   });		
 		addAnnotation
-		  (getLinks_Text(), 
+		  (getLinks_Linktable(), 
 		   source, 
 		   new String[] {
-			 "target_id", "Links|Handler/text|text:"
+			 "target_id", "Links|Handler/linktable|linktable:Linktable|EObject",
+			 "IsCopy", "false"
+		   });		
+		addAnnotation
+		  (linktableEClass, 
+		   source, 
+		   new String[] {
+			 "target_id", "Links|Handler/linktable|linktable:Linktable|EObject"
+		   });		
+		addAnnotation
+		  (getLinktable_Text(), 
+		   source, 
+		   new String[] {
+			 "target_id", "Links|Handler/linktable|linktable:Linktable|EObject/text|text:"
+		   });		
+		addAnnotation
+		  (getLinktable_Link(), 
+		   source, 
+		   new String[] {
+			 "target_id", "Links|Handler/linktable|linktable:Linktable|EObject/link|link:Link|EObject",
+			 "IsCopy", "false"
+		   });		
+		addAnnotation
+		  (getLinktable_Id(), 
+		   source, 
+		   new String[] {
+			 "target_id", "Links|Handler/linktable|linktable:Linktable|EObject/id|id:"
 		   });
 	}
 

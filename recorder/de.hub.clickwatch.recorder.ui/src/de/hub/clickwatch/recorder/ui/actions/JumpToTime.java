@@ -31,13 +31,13 @@ import de.hub.clickwatch.model.ChangeMark;
 import de.hub.clickwatch.model.Network;
 import de.hub.clickwatch.model.Node;
 import de.hub.clickwatch.model.util.TimeStampLabelProvider;
-import de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr;
+import de.hub.clickwatch.recoder.cwdatabase.Record;
 import de.hub.clickwatch.recoder.cwdatabase.presentation.CWDataBaseEditor;
 import de.hub.clickwatch.recorder.database.DataBaseUtil;
 import de.hub.clickwatch.ui.connection.MergingNodeAdapterMergeConfiguration;
 import de.hub.clickwatch.ui.modelactions.AbstractAction;
 
-public class JumpToTime extends AbstractAction<ExperimentDescr> {
+public class JumpToTime extends AbstractAction<Record> {
 	
 	@Inject private DataBaseUtil dataBaseUtil;
 	@Inject private Merger merger;
@@ -165,7 +165,7 @@ public class JumpToTime extends AbstractAction<ExperimentDescr> {
 	
 	@Override
 	public void run(IAction action) {
-		final ExperimentDescr experimimentDescr = selectedObjects.get(0);
+		final Record experimimentDescr = selectedObjects.get(0);
 		
 		InputDialog dialog = new InputDialog(shell, experimimentDescr.getStart(), experimimentDescr.getEnd());
 		dialog.open();
@@ -182,7 +182,7 @@ public class JumpToTime extends AbstractAction<ExperimentDescr> {
 				public void run(IProgressMonitor monitor) {					
 					Network networkTimeCopy = experimimentDescr.getNetworkTimeCopy();
 					if (networkTimeCopy == null) {
-						networkTimeCopy = EcoreUtil.copy(experimimentDescr.getNetwork());
+						networkTimeCopy = EcoreUtil.copy(experimimentDescr.getConfiguration());
 						experimimentDescr.setNetworkTimeCopy(networkTimeCopy);
 					}
 					
@@ -195,7 +195,7 @@ public class JumpToTime extends AbstractAction<ExperimentDescr> {
 					changes.clear();
 					getMergeConfiguration().getNewHandlerMap().clear();
 					for (Node currentNode: networkTimeCopy.getNodes()) {
-						Node nodeTimeCopy = dataBaseUtil.getNode(experimimentDescr, currentNode.getINetAddress(), time);
+						Node nodeTimeCopy = dataBaseUtil.getNode(DataBaseUtil.createHandle(experimimentDescr, currentNode, time));
 						
 						merger.merge(currentNode, nodeTimeCopy);
 						EcoreUtil.delete(nodeTimeCopy);						

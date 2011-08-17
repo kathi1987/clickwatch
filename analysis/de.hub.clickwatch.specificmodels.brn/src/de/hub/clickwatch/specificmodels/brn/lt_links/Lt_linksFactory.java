@@ -26,6 +26,15 @@ public interface Lt_linksFactory extends EFactory {
 	Lt_linksFactory eINSTANCE = de.hub.clickwatch.specificmodels.brn.lt_links.impl.Lt_linksFactoryImpl.init();
 
 	/**
+	 * Returns a new object of class '<em>Link</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Link</em>'.
+	 * @generated
+	 */
+	Link createLink();
+
+	/**
 	 * Returns a new object of class '<em>Links</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -33,6 +42,15 @@ public interface Lt_linksFactory extends EFactory {
 	 * @generated
 	 */
 	Links createLinks();
+
+	/**
+	 * Returns a new object of class '<em>Linktable</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Linktable</em>'.
+	 * @generated
+	 */
+	Linktable createLinktable();
 
 	/**
 	 * Returns the package supported by this factory.

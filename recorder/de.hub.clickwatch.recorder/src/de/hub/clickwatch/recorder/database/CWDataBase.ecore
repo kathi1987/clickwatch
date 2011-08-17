@@ -3,64 +3,29 @@
     xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="cwdatabase"
     nsURI="http://de.hub.clickwatch/cwdatabase" nsPrefix="cwdb">
-  <eClassifiers xsi:type="ecore:EClass" name="ExperimentDescr">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="network" eType="ecore:EClass ../../../../../../../de.hub.clickwatch.core/src/de/hub/clickwatch/model/ClickWatchModel.ecore#//Network"
+  <eClassifiers xsi:type="ecore:EClass" name="Record">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="configuration" eType="ecore:EClass ../../../../../../../de.hub.clickwatch.core/src/de/hub/clickwatch/model/ClickWatchModel.ecore#//Network"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="start" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="record" eType="#//ExperimentRecord"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="networkTimeCopy" eType="ecore:EClass ../../../../../../../de.hub.clickwatch.core/src/de/hub/clickwatch/model/ClickWatchModel.ecore#//Network"
-        transient="true" containment="true"/>
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="dataBase" eType="#//DataBase"
-        eOpposite="#//DataBase/experiments"/>
+        eOpposite="#//DataBase/records"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="duration" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="end" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="statistics" eType="#//ExperimentStatistics"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="statistics" eType="#//RecordStatistics"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="hBaseRowMap" eType="#//HBaseRowMap"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="metaData" upperBound="-1"
         eType="ecore:EClass ../../../../../../../de.hub.clickwatch.core/src/de/hub/clickwatch/model/ClickWatchModel.ecore#//Node"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hbaseRootDir" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="NodeRecord">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="records" upperBound="-1"
-        eType="ecore:EClass ../../../../../../../de.hub.clickwatch.core/src/de/hub/clickwatch/model/ClickWatchModel.ecore#//Handler"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="start" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="end" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="node" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DataBase">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="experiments" upperBound="-1"
-        eType="#//ExperimentDescr" containment="true" eOpposite="#//ExperimentDescr/dataBase"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="storageBaseFileString"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral=""/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="inMemory" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"
-        defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="records" upperBound="-1"
+        eType="#//Record" containment="true" eOpposite="#//Record/dataBase"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ExperimentRecord">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="nodeMap" upperBound="-1"
-        eType="#//EStringToExperimentNodeRecordTimeTableMap" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ExperimentNodeRecordTimeTable">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="nodeMap" upperBound="-1"
-        eType="#//ELongObjectToNodeRecordDescrMap" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="EStringToExperimentNodeRecordTimeTableMap"
-      instanceClassName="java.util.Map$Entry">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="key" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//ExperimentNodeRecordTimeTable"
-        containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ELongObjectToNodeRecordDescrMap" instanceClassName="java.util.Map$Entry">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="key" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELongObject"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//NodeRecordDescr"
-        containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ExperimentStatistics">
+  <eClassifiers xsi:type="ecore:EClass" name="RecordStatistics">
     <eOperations name="reset"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="nodesA" eType="#//ESummaryStatistics"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="samplesN" eType="#//ESummaryStatistics"/>
@@ -77,9 +42,6 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="bytesRequestS" eType="#//ESummaryStatistics"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="timeRequestS" eType="#//ESummaryStatistics"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="cpuLoadS" eType="#//ESummaryStatistics"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="NodeRecordDescr">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="record" eType="#//NodeRecord"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="ESummaryStatistics" instanceClassName="org.apache.commons.math.stat.descriptive.SummaryStatistics"/>
   <eClassifiers xsi:type="ecore:EDataType" name="HBaseRowMap" instanceClassName="de.hub.clickwatch.recoder.cwdatabase.HBaseRowMap"/>

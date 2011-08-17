@@ -255,13 +255,22 @@ public interface ResultsPackage extends EPackage {
 	int VALUE_SPEC__COLUMN = NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Constraint</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_SPEC__CONSTRAINT = NAMED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Value Spec</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VALUE_SPEC_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 1;
+	int VALUE_SPEC_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link de.hub.clickwatch.analysis.results.impl.AxisImpl <em>Axis</em>}' class.
@@ -290,6 +299,15 @@ public interface ResultsPackage extends EPackage {
 	 * @ordered
 	 */
 	int AXIS__COLUMN = VALUE_SPEC__COLUMN;
+
+	/**
+	 * The feature id for the '<em><b>Constraint</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AXIS__CONSTRAINT = VALUE_SPEC__CONSTRAINT;
 
 	/**
 	 * The number of structural features of the '<em>Axis</em>' class.
@@ -329,6 +347,15 @@ public interface ResultsPackage extends EPackage {
 	int SERIES__COLUMN = VALUE_SPEC__COLUMN;
 
 	/**
+	 * The feature id for the '<em><b>Constraint</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERIES__CONSTRAINT = VALUE_SPEC__CONSTRAINT;
+
+	/**
 	 * The number of structural features of the '<em>Series</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -364,6 +391,15 @@ public interface ResultsPackage extends EPackage {
 	 * @ordered
 	 */
 	int CATEGORY__COLUMN = VALUE_SPEC__COLUMN;
+
+	/**
+	 * The feature id for the '<em><b>Constraint</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CATEGORY__CONSTRAINT = VALUE_SPEC__CONSTRAINT;
 
 	/**
 	 * The number of structural features of the '<em>Category</em>' class.
@@ -403,13 +439,13 @@ public interface ResultsPackage extends EPackage {
 	int RESULT__TIMESTAMP = NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Diagrams</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Charts</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RESULT__DIAGRAMS = NAMED_ELEMENT_FEATURE_COUNT + 1;
+	int RESULT__CHARTS = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Data Set</b></em>' containment reference.
@@ -550,34 +586,7 @@ public interface ResultsPackage extends EPackage {
 	 * @see de.hub.clickwatch.analysis.results.impl.ResultsPackageImpl#getConstraint()
 	 * @generated
 	 */
-	int CONSTRAINT = 14;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONSTRAINT__NAME = VALUE_SPEC__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Column</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONSTRAINT__COLUMN = VALUE_SPEC__COLUMN;
-
-	/**
-	 * The feature id for the '<em><b>Constraint</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONSTRAINT__CONSTRAINT = VALUE_SPEC_FEATURE_COUNT + 0;
+	int CONSTRAINT = 15;
 
 	/**
 	 * The number of structural features of the '<em>Constraint</em>' class.
@@ -586,7 +595,64 @@ public interface ResultsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONSTRAINT_FEATURE_COUNT = VALUE_SPEC_FEATURE_COUNT + 1;
+	int CONSTRAINT_FEATURE_COUNT = 0;
+
+
+	/**
+	 * The meta object id for the '{@link de.hub.clickwatch.analysis.results.impl.EqualsConstraintImpl <em>Equals Constraint</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.hub.clickwatch.analysis.results.impl.EqualsConstraintImpl
+	 * @see de.hub.clickwatch.analysis.results.impl.ResultsPackageImpl#getEqualsConstraint()
+	 * @generated
+	 */
+	int EQUALS_CONSTRAINT = 14;
+
+	/**
+	 * The feature id for the '<em><b>Constraint</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EQUALS_CONSTRAINT__CONSTRAINT = CONSTRAINT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Equals Constraint</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EQUALS_CONSTRAINT_FEATURE_COUNT = CONSTRAINT_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link de.hub.clickwatch.analysis.results.impl.OrImpl <em>Or</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.hub.clickwatch.analysis.results.impl.OrImpl
+	 * @see de.hub.clickwatch.analysis.results.impl.ResultsPackageImpl#getOr()
+	 * @generated
+	 */
+	int OR = 16;
+
+	/**
+	 * The feature id for the '<em><b>Ops</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OR__OPS = CONSTRAINT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Or</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OR_FEATURE_COUNT = CONSTRAINT_FEATURE_COUNT + 1;
 
 
 	/**
@@ -695,6 +761,17 @@ public interface ResultsPackage extends EPackage {
 	EAttribute getValueSpec_Column();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link de.hub.clickwatch.analysis.results.ValueSpec#getConstraint <em>Constraint</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Constraint</em>'.
+	 * @see de.hub.clickwatch.analysis.results.ValueSpec#getConstraint()
+	 * @see #getValueSpec()
+	 * @generated
+	 */
+	EReference getValueSpec_Constraint();
+
+	/**
 	 * Returns the meta object for class '{@link de.hub.clickwatch.analysis.results.NamedElement <em>Named Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -767,15 +844,15 @@ public interface ResultsPackage extends EPackage {
 	EAttribute getResult_Timestamp();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link de.hub.clickwatch.analysis.results.Result#getDiagrams <em>Diagrams</em>}'.
+	 * Returns the meta object for the containment reference list '{@link de.hub.clickwatch.analysis.results.Result#getCharts <em>Charts</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Diagrams</em>'.
-	 * @see de.hub.clickwatch.analysis.results.Result#getDiagrams()
+	 * @return the meta object for the containment reference list '<em>Charts</em>'.
+	 * @see de.hub.clickwatch.analysis.results.Result#getCharts()
 	 * @see #getResult()
 	 * @generated
 	 */
-	EReference getResult_Diagrams();
+	EReference getResult_Charts();
 
 	/**
 	 * Returns the meta object for the containment reference '{@link de.hub.clickwatch.analysis.results.Result#getDataSet <em>Data Set</em>}'.
@@ -840,6 +917,27 @@ public interface ResultsPackage extends EPackage {
 	EReference getResults_Results();
 
 	/**
+	 * Returns the meta object for class '{@link de.hub.clickwatch.analysis.results.EqualsConstraint <em>Equals Constraint</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Equals Constraint</em>'.
+	 * @see de.hub.clickwatch.analysis.results.EqualsConstraint
+	 * @generated
+	 */
+	EClass getEqualsConstraint();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.analysis.results.EqualsConstraint#getConstraint <em>Constraint</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Constraint</em>'.
+	 * @see de.hub.clickwatch.analysis.results.EqualsConstraint#getConstraint()
+	 * @see #getEqualsConstraint()
+	 * @generated
+	 */
+	EAttribute getEqualsConstraint_Constraint();
+
+	/**
 	 * Returns the meta object for class '{@link de.hub.clickwatch.analysis.results.Constraint <em>Constraint</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -850,15 +948,25 @@ public interface ResultsPackage extends EPackage {
 	EClass getConstraint();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.analysis.results.Constraint#getConstraint <em>Constraint</em>}'.
+	 * Returns the meta object for class '{@link de.hub.clickwatch.analysis.results.Or <em>Or</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Constraint</em>'.
-	 * @see de.hub.clickwatch.analysis.results.Constraint#getConstraint()
-	 * @see #getConstraint()
+	 * @return the meta object for class '<em>Or</em>'.
+	 * @see de.hub.clickwatch.analysis.results.Or
 	 * @generated
 	 */
-	EAttribute getConstraint_Constraint();
+	EClass getOr();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link de.hub.clickwatch.analysis.results.Or#getOps <em>Ops</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Ops</em>'.
+	 * @see de.hub.clickwatch.analysis.results.Or#getOps()
+	 * @see #getOr()
+	 * @generated
+	 */
+	EReference getOr_Ops();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -973,6 +1081,14 @@ public interface ResultsPackage extends EPackage {
 		EAttribute VALUE_SPEC__COLUMN = eINSTANCE.getValueSpec_Column();
 
 		/**
+		 * The meta object literal for the '<em><b>Constraint</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference VALUE_SPEC__CONSTRAINT = eINSTANCE.getValueSpec_Constraint();
+
+		/**
 		 * The meta object literal for the '{@link de.hub.clickwatch.analysis.results.impl.NamedElementImpl <em>Named Element</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1039,12 +1155,12 @@ public interface ResultsPackage extends EPackage {
 		EAttribute RESULT__TIMESTAMP = eINSTANCE.getResult_Timestamp();
 
 		/**
-		 * The meta object literal for the '<em><b>Diagrams</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Charts</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference RESULT__DIAGRAMS = eINSTANCE.getResult_Diagrams();
+		EReference RESULT__CHARTS = eINSTANCE.getResult_Charts();
 
 		/**
 		 * The meta object literal for the '<em><b>Data Set</b></em>' containment reference feature.
@@ -1103,6 +1219,24 @@ public interface ResultsPackage extends EPackage {
 		EReference RESULTS__RESULTS = eINSTANCE.getResults_Results();
 
 		/**
+		 * The meta object literal for the '{@link de.hub.clickwatch.analysis.results.impl.EqualsConstraintImpl <em>Equals Constraint</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.hub.clickwatch.analysis.results.impl.EqualsConstraintImpl
+		 * @see de.hub.clickwatch.analysis.results.impl.ResultsPackageImpl#getEqualsConstraint()
+		 * @generated
+		 */
+		EClass EQUALS_CONSTRAINT = eINSTANCE.getEqualsConstraint();
+
+		/**
+		 * The meta object literal for the '<em><b>Constraint</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute EQUALS_CONSTRAINT__CONSTRAINT = eINSTANCE.getEqualsConstraint_Constraint();
+
+		/**
 		 * The meta object literal for the '{@link de.hub.clickwatch.analysis.results.impl.ConstraintImpl <em>Constraint</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1113,12 +1247,22 @@ public interface ResultsPackage extends EPackage {
 		EClass CONSTRAINT = eINSTANCE.getConstraint();
 
 		/**
-		 * The meta object literal for the '<em><b>Constraint</b></em>' attribute feature.
+		 * The meta object literal for the '{@link de.hub.clickwatch.analysis.results.impl.OrImpl <em>Or</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.hub.clickwatch.analysis.results.impl.OrImpl
+		 * @see de.hub.clickwatch.analysis.results.impl.ResultsPackageImpl#getOr()
+		 * @generated
+		 */
+		EClass OR = eINSTANCE.getOr();
+
+		/**
+		 * The meta object literal for the '<em><b>Ops</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CONSTRAINT__CONSTRAINT = eINSTANCE.getConstraint_Constraint();
+		EReference OR__OPS = eINSTANCE.getOr_Ops();
 
 	}
 

@@ -80,6 +80,7 @@ public class HandlerMetaModelGenerator implements IClickWatchMain {
 			EAnnotation annotation = EcoreFactory.eINSTANCE.createEAnnotation();
 			annotation.setSource(DefaultTargetObjectCreator.ANNOTATION_SOURCE);
 			annotation.getDetails().put(BrnValueAdapter.HANDLER_CLASS, handlerClassName);
+			annotation.getDetails().put(BrnValueAdapter.HANDLER_QUALIFIED_NAME, handlerId);
 			metaModel.getEAnnotations().add(annotation);
 		
 			EPackage oldPackage = null;

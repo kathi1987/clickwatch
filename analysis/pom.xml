@@ -16,6 +16,7 @@
   
   <modules>
    <module>de.hub.clickwatch.analysis</module>
+   <module>de.hub.clickwatch.analysis.visualization</module>
    <module>de.hub.clickwatch.analysis.data</module>
    <module>de.hub.clickwatch.analysis.results</module>
    <module>de.hub.clickwatch.analysis.results.edit</module>

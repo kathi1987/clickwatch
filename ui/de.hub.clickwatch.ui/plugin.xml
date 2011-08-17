@@ -12,70 +12,70 @@
                enablesFor="+"
                id="edu.hu.clickwatch.rebootAction"
                label="Reboot"
-               menubarPath="additions">
+               menubarPath="clickwatch/deploy">
          </action>
          <action
                class="de.hub.clickwatch.ui.GuiceAwareExecutableExtensionFactory:de.hub.clickwatch.ui.modelactions.HotDeploy"
                enablesFor="+"
                id="edu.hu.clickwatch.hotDeployAction"
                label="HotDeploy"
-               menubarPath="additions">
+               menubarPath="clickwatch/deploy">
          </action>
          <action
                class="de.hub.clickwatch.ui.GuiceAwareExecutableExtensionFactory:de.hub.clickwatch.ui.modelactions.Execute"
                enablesFor="+"
                id="edu.hu.clickwatch.execAction"
                label="Execute"
-               menubarPath="additions">
+               menubarPath="clickwatch/deploy">
          </action>
          <action
                class="de.hub.clickwatch.ui.GuiceAwareExecutableExtensionFactory:de.hub.clickwatch.ui.modelactions.FullDeploy"
                enablesFor="+"
                id="edu.hu.clickwatch.deployAction"
                label="Deploy"
-               menubarPath="additions">
+               menubarPath="clickwatch/deploy">
          </action>
          <action
                class="de.hub.clickwatch.ui.GuiceAwareExecutableExtensionFactory:de.hub.clickwatch.ui.modelactions.Configure"
                enablesFor="+"
                id="edu.hu.clickwatch.configAction"
                label="Configure"
-               menubarPath="additions">
+               menubarPath="clickwatch/deploy">
          </action>
          <action
                class="de.hub.clickwatch.ui.GuiceAwareExecutableExtensionFactory:de.hub.clickwatch.ui.modelactions.StartRecord"
                enablesFor="+"
                id="edu.hu.clickwatch.startRecordAction"
                label="Start record"
-               menubarPath="additions">
+               menubarPath="clickwatch/record">
          </action>
          <action
                class="de.hub.clickwatch.ui.GuiceAwareExecutableExtensionFactory:de.hub.clickwatch.ui.modelactions.StopRecord"
                enablesFor="+"
                id="edu.hu.clickwatch.stopRecordAction"
                label="Stop record"
-               menubarPath="additions">
+               menubarPath="clickwatch/record">
          </action>
          <action
                class="de.hub.clickwatch.ui.GuiceAwareExecutableExtensionFactory:de.hub.clickwatch.ui.modelactions.ClearRecord"
                enablesFor="+"
                id="edu.hu.clickwatch.clearRecordAction"
                label="Clear record"
-               menubarPath="additions">
+               menubarPath="clickwatch/record">
          </action>
          <action
                class="de.hub.clickwatch.ui.GuiceAwareExecutableExtensionFactory:de.hub.clickwatch.ui.modelactions.Connect"
                enablesFor="+"
                id="de.hub.clickwatch.connectAction"
                label="Connect"
-               menubarPath="additions">
+               menubarPath="clickwatch/basic">
          </action>
          <action
                class="de.hub.clickwatch.ui.GuiceAwareExecutableExtensionFactory:de.hub.clickwatch.ui.modelactions.Disconnect"
                enablesFor="+"
                id="edu.hu.clickwatch.disconnectAction"
                label="Disconnect"
-               menubarPath="additions">
+               menubarPath="clickwatch/basic">
          </action>
       </objectContribution>
       <objectContribution
@@ -86,14 +86,14 @@
                enablesFor="1"
                id="edu.hu.clickwatch.resetAction"
                label="Reset"
-               menubarPath="additions">
+               menubarPath="clickwatch/record">
          </action>
          <action
                class="de.hub.clickwatch.ui.GuiceAwareExecutableExtensionFactory:de.hub.clickwatch.ui.modelactions.Import"
                enablesFor="1"
                id="edu.hu.clickwatch.importAction"
                label="Import"
-               menubarPath="additions">
+               menubarPath="clickwatch/basic">
          </action>
       </objectContribution>
       <objectContribution
@@ -105,7 +105,7 @@
                enablesFor="1"
                id="edu.hu.clickwatch.showXmlAction"
                label="Show XML"
-               menubarPath="additions">
+               menubarPath="clickwatch/basic">
          </action>
       </objectContribution>
       <objectContribution
@@ -117,14 +117,7 @@
                enablesFor="1"
                id="edu.hu.clickwatch.copyXPathAction"
                label="Copy XPath expression to clip board"
-               menubarPath="additions">
-         </action>
-         <action
-               class="de.hub.clickwatch.ui.GuiceAwareExecutableExtensionFactory:de.hub.clickwatch.ui.modelactions.ExecuteClickWatchMain"
-               enablesFor="1"
-               id="de.hub.clickwatch.ui.ExecuteClickWatchMain"
-               label="Execute an ClickWatch Main"
-               menubarPath="additions">
+               menubarPath="clickwatch/basic">
          </action>
       </objectContribution>
    </extension>
@@ -169,11 +162,37 @@
            locationURI="popup:org.eclipse.wst.sse.ui.StructuredTextEditor.EditorContext?before=additions">
         <command
               commandId="de.hub.clickwatch.ui.PerformXsl"
+              icon="icons/logo_16.gif"
               id="performXSL"
               label="perform XSL"
               style="push"
               tooltip="performs the XSL on one of the opened ClickWatch models">
         </command>
+     </menuContribution>
+     <menuContribution
+           allPopups="false"
+           locationURI="popup:org.eclipse.ui.popup.any?before=additions">
+        <menu
+              icon="icons/logo_16.gif"
+              id="clickwatch"
+              label="ClickWatch">
+           <separator
+                 name="basic"
+                 visible="false">
+           </separator>
+           <separator
+                 name="deploy"
+                 visible="true">
+           </separator>
+           <separator
+                 name="record"
+                 visible="true">
+           </separator>
+           <separator
+                 name="analysis"
+                 visible="true">
+           </separator>
+        </menu>
      </menuContribution>
   </extension>
    <extension

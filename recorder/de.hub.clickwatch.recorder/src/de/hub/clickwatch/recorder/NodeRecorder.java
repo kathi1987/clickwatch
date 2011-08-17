@@ -24,7 +24,7 @@ import de.hub.clickwatch.connection.adapter.SocketStatisticsAdapter;
 import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.model.Network;
 import de.hub.clickwatch.model.Node;
-import de.hub.clickwatch.recoder.cwdatabase.ExperimentStatistics;
+import de.hub.clickwatch.recoder.cwdatabase.RecordStatistics;
 import de.hub.clickwatch.util.ILogger;
 import de.hub.clickwatch.util.Throwables;
 
@@ -32,10 +32,10 @@ public class NodeRecorder implements Runnable {
 	
 	private static final Pattern pattern = Pattern.compile(".*real=\"(\\d+\\.\\d+)\".*");
 	
-	private ExperimentRecorder parent;
+	private NetworkRecorder parent;
 	private Node configuration;
 
-	public void setup(ExperimentRecorder parent, Node configuration) {
+	public void setup(NetworkRecorder parent, Node configuration) {
 		this.parent = parent;
 		this.configuration = configuration;
 	}
@@ -204,7 +204,7 @@ public class NodeRecorder implements Runnable {
 
 		parent.getDataBaseAdapter().close(nodeDBAdapter);
 		
-		ExperimentStatistics stats = parent.getStatistics();
+		RecordStatistics stats = parent.getStatistics();
 		stats.getHandlersN().addValue(recordedHandlerN);
 		stats.getSamplesN().addValue(samples);
 		stats.getTimeN().addValue(System.nanoTime() - start);
@@ -217,7 +217,7 @@ public class NodeRecorder implements Runnable {
 	}
 	
 	private void saveStatistics() {
-		ExperimentStatistics stats = parent.getStatistics();
+		RecordStatistics stats = parent.getStatistics();
 		addAll(stats.getHandlersPulledS(), handlerPulledSValues);
 		addAll(stats.getTimeS(), timeSValues);
 		addAll(stats.getBytesRequestS(), bytesRequestSValues);

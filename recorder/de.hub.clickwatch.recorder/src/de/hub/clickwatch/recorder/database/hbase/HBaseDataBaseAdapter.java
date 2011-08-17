@@ -17,7 +17,7 @@ import com.google.inject.name.Named;
 import de.hub.clickwatch.connection.adapter.IValueAdapter;
 import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.model.Node;
-import de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr;
+import de.hub.clickwatch.recoder.cwdatabase.Record;
 import de.hub.clickwatch.recoder.cwdatabase.HBaseRowMap;
 import de.hub.clickwatch.recorder.CWRecorderModule;
 import de.hub.clickwatch.recorder.database.AbstractDataBaseRecordAdapter;
@@ -73,33 +73,33 @@ public class HBaseDataBaseAdapter extends AbstractDataBaseRecordAdapter implemen
 	}
 
 	@Override
-	public void initialize(ExperimentDescr experiment, boolean overwrite) {	
-		rowMap = experiment.getHBaseRowMap();
+	public void initialize(Record record, boolean overwrite) {	
+		rowMap = record.getHBaseRowMap();
 		if (rowMap == null) {
 			rowMap = new HBaseRowMap();
-			experiment.setHBaseRowMap(rowMap);
+			record.setHBaseRowMap(rowMap);
 		}
 		if (overwrite) {
 			rowMap.reset();
 		}
 		
-		hbaseUtil.getHBaseConfig(experiment.getHbaseRootDir());
-		table = hbaseUtil.getHBaseTable(experiment.getName(), overwrite);
+		hbaseUtil.getHBaseConfig(null);
+		table = hbaseUtil.getHBaseTable(record.getName(), overwrite);
 		
-		super.initialize(experiment, overwrite);	
+		super.initialize(record, overwrite);	
 	}
 	
 	private synchronized void save(List<Put> puts, long start, long end) {
 		try {
-			if (experiment.getStart() <= 0 || start < experiment.getStart()) {
-				experiment.setStart(start);
+			if (record.getStart() <= 0 || start < record.getStart()) {
+				record.setStart(start);
 			}
-			if (end > experiment.getEnd()) {
-				experiment.setEnd(end);
+			if (end > record.getEnd()) {
+				record.setEnd(end);
 			}
 			logger.log(ILogger.DEBUG, "Writing puts to hbase, number of puts: " + puts.size(), null);
-			logger.log(ILogger.DEBUG, "also saving the experiment file", null);
-			experiment.eResource().save(XmlModelRepository.defaultLoadSaveOptions());
+			logger.log(ILogger.DEBUG, "also saving the record file", null);
+			record.eResource().save(XmlModelRepository.defaultLoadSaveOptions());
 			if (putThread == null) {
 				putThread = new PutThread();
 				putThread.start();
@@ -204,8 +204,8 @@ public class HBaseDataBaseAdapter extends AbstractDataBaseRecordAdapter implemen
 	private long time = 0;
 
 	@Override
-	public void initialize(ExperimentDescr experiment) {
-		this.initialize(experiment, false);
+	public void initialize(Record record) {
+		this.initialize(record, false);
 	}
 
 	@Override

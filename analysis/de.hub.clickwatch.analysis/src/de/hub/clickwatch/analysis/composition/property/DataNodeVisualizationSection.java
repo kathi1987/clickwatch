@@ -1,7 +1,5 @@
 package de.hub.clickwatch.analysis.composition.property;
 
-import java.util.Collection;
-
 import org.eclipse.graphiti.mm.pictograms.PictogramElement;
 import org.eclipse.graphiti.services.Graphiti;
 import org.eclipse.graphiti.ui.platform.GFPropertySection;
@@ -21,10 +19,11 @@ import de.hub.clickwatch.analysis.composition.model.CompositionFactory;
 import de.hub.clickwatch.analysis.composition.model.DataNode;
 import de.hub.clickwatch.analysis.composition.model.TransformationKind;
 import de.hub.clickwatch.analysis.composition.model.Visualization;
-import de.hub.clickwatch.analysis.composition.visualization.VisualizationsUtil;
+import de.hub.clickwatch.analysis.composition.visualization.HistogramVisualization;
+import de.hub.clickwatch.analysis.composition.visualization.TopologyVisualization;
 
 
-public class DataNodeVisualizationSection  extends GFPropertySection implements ITabbedPropertyConstants {
+public class DataNodeVisualizationSection extends GFPropertySection implements ITabbedPropertyConstants {
 
 	private CCombo visualizationCombo;
 	protected CLabel mapKeyLabel;
@@ -47,13 +46,7 @@ public class DataNodeVisualizationSection  extends GFPropertySection implements 
 		visualizationLabel.setLayoutData(data);
 		
 		visualizationCombo = factory.createCCombo(composite, SWT.DROP_DOWN);
-		Collection<String> visualizations = 
-			VisualizationsUtil.getVisualizations().keySet();
-		String[] visualizationArray = new String[visualizations.size()];
-		int i = 0;
-		for (String visualization: visualizations) {
-			visualizationArray[i++] = visualization;
-		}
+		String[] visualizationArray = new String[] { HistogramVisualization.VisualizationName, TopologyVisualization.VisualizationName };
 		
 		visualizationCombo.setItems(visualizationArray);
 		data = new FormData();

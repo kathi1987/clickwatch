@@ -23,12 +23,12 @@ import de.hub.clickwatch.main.ClickWatchExternalLauncher;
 import de.hub.clickwatch.main.IArgumentsProvider;
 import de.hub.clickwatch.main.IClickWatchContext;
 import de.hub.clickwatch.main.IClickWatchMain;
-import de.hub.clickwatch.main.IExperimentProvider;
+import de.hub.clickwatch.main.IRecordProvider;
 import de.hub.clickwatch.main.IResultsProvider;
 import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.model.Node;
 import de.hub.clickwatch.model.util.TimeStampLabelProvider;
-import de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr;
+import de.hub.clickwatch.recoder.cwdatabase.Record;
 import de.hub.clickwatch.recorder.database.DataBaseUtil;
 import de.hub.clickwatch.util.ILogger;
 import de.hub.clickwatch.util.Throwables;
@@ -44,8 +44,8 @@ public class LogFileVsHbaseExperiment implements IClickWatchMain {
 		return (durationAll / numberOfDataPoints) * dataPoint;
 	}
 	
-	long[] getDurations(ExperimentDescr experiment) {	
-		long durationAll = (experiment.getEnd() - experiment.getStart());
+	long[] getDurations(Record record) {	
+		long durationAll = (record.getEnd() - record.getStart());
 		long[] durations = new long[numberOfDataPoints];
 		for (int i = 0; i < numberOfDataPoints; i++) {
 			durations[i] = getDuration(i+1, durationAll);
@@ -65,19 +65,19 @@ public class LogFileVsHbaseExperiment implements IClickWatchMain {
 	}
 	
 	private Result measureHBase(IClickWatchContext ctx) {
-		ExperimentDescr experiment = ctx.getAdapter(IExperimentProvider.class).getExperiment();
+		Record record = ctx.getAdapter(IRecordProvider.class).getRecord();
 		numberOfDataPoints = Integer.parseInt(ctx.getAdapter(IArgumentsProvider.class).getArguments()[1]);
 		Result result = ctx.getAdapter(IResultsProvider.class).createNewResult("hbaseresults");
 	
-		long durations[] = getDurations(experiment);
-		long hbaseSizes[] = getHBaseSizes(experiment, durations);
+		long durations[] = getDurations(record);
+		long hbaseSizes[] = getHBaseSizes(record, durations);
 		logger.log(ILogger.DEBUG, "determined all hbase sizes", null);
   		
 		for (int run = 0; run < durations.length; run++) {
 			long duration = durations[run];
 			
 			long start = System.currentTimeMillis();
-			performHbaseWithStrings(duration, experiment);
+			performHbaseWithStrings(duration, record);
 			long stop = System.currentTimeMillis();
 			long hbaseTime = stop - start;
 			logger.log(ILogger.DEBUG, "performed hbase analysis for " + run, null);
@@ -88,20 +88,20 @@ public class LogFileVsHbaseExperiment implements IClickWatchMain {
 	}
 	
 	private Result measureLog(IClickWatchContext ctx) {
-		ExperimentDescr experiment = ctx.getAdapter(IExperimentProvider.class).getExperiment();
+		Record record = ctx.getAdapter(IRecordProvider.class).getRecord();
 		File sourceLogFile = new File(ctx.getAdapter(IArgumentsProvider.class).getArguments()[0]);
 		String grepCommand = ctx.getAdapter(IArgumentsProvider.class).getArguments()[2];
 		numberOfDataPoints = Integer.parseInt(ctx.getAdapter(IArgumentsProvider.class).getArguments()[1]);
 		Result result = ctx.getAdapter(IResultsProvider.class).createNewResult("logresults");
 		
-		long durations[] = getDurations(experiment);
+		long durations[] = getDurations(record);
   		
 		for (int run = 0; run < durations.length; run++) {
 			long duration = durations[run];
 			long logSize = 0;
 			
 			// step 1 create a subset log file from existing log file
-			Handler handler = dbUtil.getHandler(experiment, "192.168.3.118", "device_wifi/link_stat/bcast_stats", experiment.getStart() + duration);
+			Handler handler = dbUtil.getHandler(DataBaseUtil.createHandle(record, "192.168.3.118", "device_wifi/link_stat/bcast_stats", record.getStart() + duration, 0));
 			String timestampStr = timeStampLabelProvider.getText(handler.getTimestamp());
 			try {
 				File targetLogFile = new File("out.log");
@@ -159,17 +159,17 @@ public class LogFileVsHbaseExperiment implements IClickWatchMain {
 	}
 	
 	@SuppressWarnings("deprecation")
-	private void performHbaseWithStrings(long durationInNanos, ExperimentDescr experiment) {
+	private void performHbaseWithStrings(long durationInNanos, Record record) {
 		PrintStream out = null;
 		try {
 			out = new PrintStream(new File("hbase.out"));
 		} catch (FileNotFoundException e) {
 			Throwables.propagate(e);
 		}
-		for (Node nodeConfig: experiment.getNetwork().getNodes()) {						
+		for (Node nodeConfig: record.getConfiguration().getNodes()) {						
 			String nodeId = nodeConfig.getINetAddress();
-			Iterator<Handler> iterator = dbUtil.getHandlerIterator(experiment, nodeId, "device_wifi/wifidevice/cst/stats", 
-					experiment.getStart(), experiment.getStart() + durationInNanos);
+			Iterator<Handler> iterator = dbUtil.getHandlerIterator(DataBaseUtil.createHandle(record, nodeId, "device_wifi/wifidevice/cst/stats", 
+					record.getStart(), record.getStart() + durationInNanos));
 			
 			while(iterator.hasNext()) {
 				Handler handler = iterator.next();
@@ -190,12 +190,12 @@ public class LogFileVsHbaseExperiment implements IClickWatchMain {
 		out.close();
 	}
 	
-	private long[] getHBaseSizes(ExperimentDescr experiment, long[] durations) { 
+	private long[] getHBaseSizes(Record record, long[] durations) { 
 		long[] result = new long[durations.length];
 		long size = 0;
 		int durationsIndex = 0;
 		
-		logger.log(ILogger.INFO, "Start analysis on experiment " + experiment.getName(), null);
+		logger.log(ILogger.INFO, "Start analysis on record " + record.getName(), null);
 		
 		PriorityQueue<CurrentIterator> handlers = new PriorityQueue<CurrentIterator>(1000, new Comparator<CurrentIterator>() {
 			@Override
@@ -213,11 +213,9 @@ public class LogFileVsHbaseExperiment implements IClickWatchMain {
 		Map<CurrentIterator, String> nodeIds = new HashMap<CurrentIterator, String>();
 		
 		logger.log(ILogger.INFO, "Creating database scanners for all handers for all nodes", null);
-		for (Node node: experiment.getMetaData()) {
+		for (Node node: record.getMetaData()) {
 			for(Handler handler: node.getAllHandlers()) {
-				CurrentIterator iterator = new CurrentIterator(dbUtil.getHandlerIterator(experiment, 
-						node.getINetAddress(), handler.getQualifiedName(), 
-						experiment.getStart(), experiment.getEnd()));
+				CurrentIterator iterator = new CurrentIterator(dbUtil.getHandlerIterator(DataBaseUtil.createHandle(record, node, handler)));
 				insert(iterator, handlers);
 				nodeIds.put(iterator, node.getINetAddress());
 			}
@@ -229,7 +227,7 @@ public class LogFileVsHbaseExperiment implements IClickWatchMain {
 			CurrentIterator current = handlers.poll();
 			long timestamp = current.getCurrent().getTimestamp();
 			size += current.getCurrent().getValue().length();
-			if (timestamp >= (durations[durationsIndex] + experiment.getStart())) {
+			if (timestamp >= (durations[durationsIndex] + record.getStart())) {
 				result[durationsIndex] = size;
 				durationsIndex++;
 				logger.log(ILogger.DEBUG, "data base size for duration number " + durationsIndex + " is " + size, null);

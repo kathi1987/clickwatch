@@ -12,12 +12,12 @@ import de.hub.clickwatch.analysis.results.Result;
 import de.hub.clickwatch.main.ClickWatchExternalLauncher;
 import de.hub.clickwatch.main.IClickWatchContext;
 import de.hub.clickwatch.main.IClickWatchMain;
-import de.hub.clickwatch.main.IExperimentProvider;
+import de.hub.clickwatch.main.IRecordProvider;
 import de.hub.clickwatch.main.IProgressMonitorProvider;
 import de.hub.clickwatch.main.IResultsProvider;
 import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.model.Node;
-import de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr;
+import de.hub.clickwatch.recoder.cwdatabase.Record;
 import de.hub.clickwatch.recorder.database.DataBaseUtil;
 import de.hub.clickwatch.specificmodels.brn.device_wifi_link_stat_bcast_stats.Bcast_stats;
 import de.hub.clickwatch.specificmodels.brn.device_wifi_link_stat_bcast_stats.Link;
@@ -32,7 +32,7 @@ public class HwBusyAndPdrPlotAnalysis implements IClickWatchMain {
 	@Inject private DataBaseUtil dbUtil;
 	@Inject private ILogger logger;
 	
-	private ExperimentDescr experiment;
+	private Record record;
 	
 	private long getMac(String mac) {
 		return Long.parseLong(mac.replaceAll("-", ""), 16);
@@ -40,12 +40,12 @@ public class HwBusyAndPdrPlotAnalysis implements IClickWatchMain {
 	
 	@Override
 	public void main(IClickWatchContext ctx) {
-		logger.log(ILogger.INFO, "Start analysis on experiment " , null);
-		this.experiment = ctx.getAdapter(IExperimentProvider.class).getExperiment();
+		logger.log(ILogger.INFO, "Start analysis on record " , null);
+		this.record = ctx.getAdapter(IRecordProvider.class).getRecord();
 		final Result result = ctx.getAdapter(IResultsProvider.class).createNewResult("HwBusyPlotAnalysis");
 
 		IProgressMonitor monitor = ctx.getAdapter(IProgressMonitorProvider.class).getProgressMonitor();
-		EList<Node> nodes = experiment.getNetwork().getNodes();
+		EList<Node> nodes = record.getConfiguration().getNodes();
 		monitor.beginTask("Performing analysis on all nodes", nodes.size());
 		
 		for (Node nodeConfig: nodes) {						
@@ -82,12 +82,11 @@ public class HwBusyAndPdrPlotAnalysis implements IClickWatchMain {
 	
 	@SuppressWarnings("unchecked")
 	private <HC> void plot(String nodeId, String handlerId, IPlotConfig<HC> config) {
-		Iterator<Handler> iterator = dbUtil.getHandlerIterator(experiment, nodeId, handlerId, 
-				experiment.getStart(), experiment.getEnd());
+		Iterator<Handler> iterator = dbUtil.getHandlerIterator(DataBaseUtil.createHandle(record, nodeId, handlerId));
 		
 		while(iterator.hasNext()) {
 			Handler handler = iterator.next();
-			config.doPlot((HC)handler, (handler.getTimestamp() - experiment.getStart()) / PRECISION);
+			config.doPlot((HC)handler, (handler.getTimestamp() - record.getStart()) / PRECISION);
 			EcoreUtil.delete(handler);
 		}
 

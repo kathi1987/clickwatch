@@ -12,8 +12,11 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
 
 import de.hub.clickwatch.model.Handler;
+import de.hub.clickwatch.specificmodels.brn.lt_routes.Link;
 import de.hub.clickwatch.specificmodels.brn.lt_routes.Lt_routesPackage;
+import de.hub.clickwatch.specificmodels.brn.lt_routes.Route;
 import de.hub.clickwatch.specificmodels.brn.lt_routes.Routes;
+import de.hub.clickwatch.specificmodels.brn.lt_routes.Routetable;
 
 /**
  * <!-- begin-user-doc -->
@@ -72,8 +75,20 @@ public class Lt_routesAdapterFactory extends AdapterFactoryImpl {
 	protected Lt_routesSwitch<Adapter> modelSwitch =
 		new Lt_routesSwitch<Adapter>() {
 			@Override
+			public Adapter caseLink(Link object) {
+				return createLinkAdapter();
+			}
+			@Override
+			public Adapter caseRoute(Route object) {
+				return createRouteAdapter();
+			}
+			@Override
 			public Adapter caseRoutes(Routes object) {
 				return createRoutesAdapter();
+			}
+			@Override
+			public Adapter caseRoutetable(Routetable object) {
+				return createRoutetableAdapter();
 			}
 			@Override
 			public Adapter caseHandler(Handler object) {
@@ -100,6 +115,34 @@ public class Lt_routesAdapterFactory extends AdapterFactoryImpl {
 
 
 	/**
+	 * Creates a new adapter for an object of class '{@link de.hub.clickwatch.specificmodels.brn.lt_routes.Link <em>Link</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.hub.clickwatch.specificmodels.brn.lt_routes.Link
+	 * @generated
+	 */
+	public Adapter createLinkAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.hub.clickwatch.specificmodels.brn.lt_routes.Route <em>Route</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.hub.clickwatch.specificmodels.brn.lt_routes.Route
+	 * @generated
+	 */
+	public Adapter createRouteAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link de.hub.clickwatch.specificmodels.brn.lt_routes.Routes <em>Routes</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -110,6 +153,20 @@ public class Lt_routesAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createRoutesAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.hub.clickwatch.specificmodels.brn.lt_routes.Routetable <em>Routetable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.hub.clickwatch.specificmodels.brn.lt_routes.Routetable
+	 * @generated
+	 */
+	public Adapter createRoutetableAdapter() {
 		return null;
 	}
 

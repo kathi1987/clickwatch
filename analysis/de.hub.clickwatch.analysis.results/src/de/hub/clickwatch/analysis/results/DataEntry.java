@@ -27,7 +27,7 @@ import org.eclipse.emf.common.util.EList;
 public interface DataEntry extends NamedElement {
 	/**
 	 * Returns the value of the '<em><b>Values</b></em>' attribute list.
-	 * The list contents are of type {@link java.lang.Double}.
+	 * The list contents are of type {@link java.lang.Object}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Values</em>' attribute list isn't clear,
@@ -39,6 +39,6 @@ public interface DataEntry extends NamedElement {
 	 * @model
 	 * @generated
 	 */
-	EList<Double> getValues();
+	EList<Object> getValues();
 
 } // DataEntry

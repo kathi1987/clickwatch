@@ -48,21 +48,22 @@ public class XmlValueAdapter extends AbstractValueAdapter implements IValueAdapt
 		Object modelValue;
 		FeatureMap any = handler.getAny();
 		if (!any.isEmpty()) {
-			modelValue = any.getValue(0);
+			modelValue = any.get(0);
 		} else {
 			FeatureMap mixed = handler.getMixed();
 			if (mixed.isEmpty()) {
 				modelValue = null;
 			} else {
-				modelValue = mixed.getValue(0);
+				modelValue = mixed.get(0);
 			}
 		}
 		
 		XMLTypeDocumentRoot xml = XMLTypeFactory.eINSTANCE.createXMLTypeDocumentRoot();
 		if (modelValue instanceof String) {
 			xml.getMixed().add(XMLTypePackage.eINSTANCE.getXMLTypeDocumentRoot_Text(), modelValue);
-		} else if (modelValue instanceof AnyType) {
-			xml.getMixed().add(((EObject)modelValue).eContainingFeature(), EcoreUtil.copy((EObject)modelValue));
+		} else if (modelValue instanceof FeatureMap.Entry) {
+			FeatureMap.Entry fmeValue = (FeatureMap.Entry)modelValue;
+			xml.getMixed().add(FeatureMapUtil.createEntry(fmeValue.getEStructuralFeature(), EcoreUtil.copy((EObject)fmeValue.getValue())));
 		} else {
 			Preconditions.checkArgument(false);	
 		}

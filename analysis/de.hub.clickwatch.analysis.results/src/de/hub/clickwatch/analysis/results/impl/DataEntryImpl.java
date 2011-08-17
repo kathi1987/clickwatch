@@ -37,7 +37,7 @@ public class DataEntryImpl extends NamedElementImpl implements DataEntry {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Double> values;
+	protected EList<Object> values;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -63,9 +63,9 @@ public class DataEntryImpl extends NamedElementImpl implements DataEntry {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Double> getValues() {
+	public EList<Object> getValues() {
 		if (values == null) {
-			values = new EDataTypeUniqueEList<Double>(Double.class, this, ResultsPackage.DATA_ENTRY__VALUES);
+			values = new EDataTypeUniqueEList<Object>(Object.class, this, ResultsPackage.DATA_ENTRY__VALUES);
 		}
 		return values;
 	}
@@ -95,7 +95,7 @@ public class DataEntryImpl extends NamedElementImpl implements DataEntry {
 		switch (featureID) {
 			case ResultsPackage.DATA_ENTRY__VALUES:
 				getValues().clear();
-				getValues().addAll((Collection<? extends Double>)newValue);
+				getValues().addAll((Collection<? extends Object>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

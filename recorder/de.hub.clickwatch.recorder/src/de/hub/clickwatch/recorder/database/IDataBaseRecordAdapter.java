@@ -2,16 +2,16 @@ package de.hub.clickwatch.recorder.database;
 
 import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.model.Node;
-import de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr;
-import de.hub.clickwatch.recorder.ExperimentRecorder;
+import de.hub.clickwatch.recoder.cwdatabase.Record;
+import de.hub.clickwatch.recorder.NetworkRecorder;
 import de.hub.clickwatch.recorder.NodeRecorder;
 
 public interface IDataBaseRecordAdapter {
 
 	/**
-	 * Is called by the {@link ExperimentRecorder} to initialize the data-base.
+	 * Is called by the {@link NetworkRecorder} to initialize the data-base.
 	 */
-	public void initialize(ExperimentDescr experiment, boolean overwrite);
+	public void initialize(Record record, boolean overwrite);
 
 	/**
 	 * Is called by each {@link NodeRecorder} before starting the actual
@@ -35,7 +35,7 @@ public interface IDataBaseRecordAdapter {
 	public void close(Object nodeAdapter);
 
 	/**
-	 * Is called by the {@link ExperimentRecorder} when everything is over.
+	 * Is called by the {@link NetworkRecorder} when everything is over.
 	 */
 	public void close();
 

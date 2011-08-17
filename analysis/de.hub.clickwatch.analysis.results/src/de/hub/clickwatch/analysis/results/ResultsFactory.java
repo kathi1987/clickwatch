@@ -53,15 +53,6 @@ public interface ResultsFactory extends EFactory {
 	Chart createChart();
 
 	/**
-	 * Returns a new object of class '<em>Chart Type</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Chart Type</em>'.
-	 * @generated
-	 */
-	ChartType createChartType();
-
-	/**
 	 * Returns a new object of class '<em>Axis</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -134,13 +125,22 @@ public interface ResultsFactory extends EFactory {
 	Results createResults();
 
 	/**
-	 * Returns a new object of class '<em>Constraint</em>'.
+	 * Returns a new object of class '<em>Equals Constraint</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Constraint</em>'.
+	 * @return a new object of class '<em>Equals Constraint</em>'.
 	 * @generated
 	 */
-	Constraint createConstraint();
+	EqualsConstraint createEqualsConstraint();
+
+	/**
+	 * Returns a new object of class '<em>Or</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Or</em>'.
+	 * @generated
+	 */
+	Or createOr();
 
 	/**
 	 * Returns the package supported by this factory.

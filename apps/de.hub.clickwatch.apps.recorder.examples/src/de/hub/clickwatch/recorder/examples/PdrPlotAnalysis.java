@@ -1,122 +1,67 @@
 package de.hub.clickwatch.recorder.examples;
 
-import java.io.ByteArrayInputStream;
-import java.io.PrintStream;
-import java.util.Date;
+import static de.hub.clickwatch.recorder.database.DataBaseUtil.createHandle;
+
 import java.util.Iterator;
 
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
-
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.xml.sax.helpers.DefaultHandler;
 
 import com.google.inject.Inject;
 
+import de.hub.clickwatch.analysis.results.Result;
+import de.hub.clickwatch.analysis.results.util.ChartUtil;
 import de.hub.clickwatch.main.ClickWatchExternalLauncher;
 import de.hub.clickwatch.main.IClickWatchContext;
 import de.hub.clickwatch.main.IClickWatchMain;
-import de.hub.clickwatch.main.IExperimentProvider;
+import de.hub.clickwatch.main.IRecordProvider;
+import de.hub.clickwatch.main.IProgressMonitorProvider;
+import de.hub.clickwatch.main.IResultsProvider;
 import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.model.Node;
-import de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr;
+import de.hub.clickwatch.recoder.cwdatabase.Record;
 import de.hub.clickwatch.recorder.database.DataBaseUtil;
-import de.hub.clickwatch.specificmodels.brn.device_wifi_wifidevice_cst_stats.Stats;
-import de.hub.clickwatch.util.ILogger;
-import de.hub.clickwatch.util.Throwables;
+import de.hub.clickwatch.specificmodels.brn.device_wifi_link_stat_bcast_stats.Bcast_stats;
+import de.hub.clickwatch.specificmodels.brn.device_wifi_link_stat_bcast_stats.Link;
+import de.hub.clickwatch.specificmodels.brn.device_wifi_link_stat_bcast_stats.Link_info;
 
 public class PdrPlotAnalysis implements IClickWatchMain {
 	
 	@Inject private DataBaseUtil dbUtil;
-	@Inject private ILogger logger;
 	
-	private PrintStream out;
-	
-	public void initialize(PrintStream out) {
-		this.out = out;
-	}
-	
-	@SuppressWarnings("deprecation")
-	public void performWithStrings(ExperimentDescr experiment) {
-		SAXParserFactory saxParserFactory = SAXParserFactory.newInstance();
-		SAXParser saxParser = null;
-		try {
-			saxParser = saxParserFactory.newSAXParser();
-		} catch (Exception e) {
-			Throwables.propagate(e);
-		}
+	@Override
+	public void main(IClickWatchContext ctx) {
+		Record record = ctx.getAdapter(IRecordProvider.class).getRecord();
+		Node[] nodes = ctx.getAdapter(IRecordProvider.class).getSelectedNodes();
+		Result result = ctx.getAdapter(IResultsProvider.class).createNewResult("PDR Analysis");
+		IProgressMonitor monitor = ctx.getAdapter(IProgressMonitorProvider.class).getProgressMonitor();
 		
-		long start = System.currentTimeMillis();
-		for (Node nodeConfig: experiment.getNetwork().getNodes()) {						
-			String nodeId = nodeConfig.getINetAddress();
-			Iterator<Handler> iterator = dbUtil.getHandlerIterator(experiment, nodeId, "device_wifi/wifidevice/cst/stats", 
-					experiment.getStart(), experiment.getEnd());
-			
+		monitor.beginTask("Performing analysis on all nodes", nodes.length*100);
+		for (Node node: nodes) {
+			Iterator<Handler> iterator = dbUtil.getHandlerIterator(
+					createHandle(record, node.getINetAddress(), "device_wifi/link_stat/bcast_stats"),
+					new SubProgressMonitor(monitor, 100));
 			while(iterator.hasNext()) {
-				Handler handler = iterator.next();
-				String value = handler.getValue();
-				value = value.substring(value.indexOf("hwbusy=\"")+8);
-				value = value.substring(0, value.indexOf("\""));
-				int hwbusy = Integer.parseInt(value);
-				long time = handler.getTimestamp() / 1000000;
-				Date date = new Date(time);
-		
-				out.println(date.getHours() + " " + date.getMinutes() + " " + (date.getSeconds() * 1e9 + time % 1e9) + " " + nodeId.replace(".", "") + " " + hwbusy);
-		
-				
-				try {
-					saxParser.parse(new ByteArrayInputStream(("<?xml version='1.0' encoding='ISO-8859-1'?>"
-							+ "<handler>"
-							+ value
-							+ "</handler>").getBytes()), 
-							new DefaultHandler(), "");
-				} catch (Exception e) {
-					Throwables.propagate(e);
+				Bcast_stats handler = (Bcast_stats)iterator.next();
+				for(Link link: handler.getEntry().getLink()) {
+					for(Link_info linkInfo: link.getLink_info()) {
+						if (linkInfo.getRate() == 2) {
+							result.getDataSet().add(
+									handler.getEntry().getFrom() + "->" + link.getTo(), 
+									handler.getTimestamp() - record.getStart(), 
+									linkInfo.getRev());
+						}
+					}
 				}
 				
 				EcoreUtil.delete(handler);
 			}
-
-			logger.log(ILogger.INFO, "created plot for " + nodeId, null);
 		}
-		out.close();
-		logger.log(ILogger.INFO, "time in millies: " + (System.currentTimeMillis() - start), null);
-	}
-	
-	@SuppressWarnings("deprecation")
-	public void perform(ExperimentDescr experiment) {
-		long start = System.currentTimeMillis();
-		for (Node nodeConfig: experiment.getNetwork().getNodes()) {						
-			String nodeId = nodeConfig.getINetAddress();
-			Iterator<Handler> iterator = dbUtil.getHandlerIterator(experiment, nodeId, "device_wifi/wifidevice/cst/stats", 
-					experiment.getStart(), experiment.getEnd());
-			
-			while(iterator.hasNext()) {
-				Stats handler = (Stats)iterator.next();
-				long time = handler.getTimestamp() / 1000000;
-				Date date = new Date(time);
-				out.println(date.getHours() + " " + date.getMinutes() + " " + (date.getSeconds() * 1e9 + time % 1e9) + " "
-						+ handler.getChannelstats().getNode().replace("-", "") + " " + handler.getChannelstats().getPhy().getHwbusy());
-				
-				EcoreUtil.delete(handler);
-			}
-
-			logger.log(ILogger.INFO, "created plot for " + nodeId, null);
-		}
-		out.close();
-		logger.log(ILogger.INFO, "time in millies: " + (System.currentTimeMillis() - start), null);
-	}
-	
-	@Override
-	public void main(IClickWatchContext ctx) {
-		logger.log(ILogger.INFO, "Start analysis on experiment " , null);
 		
-		try {
-			initialize(new PrintStream("out.txt", "utf8"));
-		} catch (Exception e) {
-			Throwables.propagate(e);
-		}
-		perform(ctx.getAdapter(IExperimentProvider.class).getExperiment());
+		result.getCharts().add(ChartUtil.createXYChart("Plot over time", "link", "time", "PDR"));		
+		ctx.getAdapter(IResultsProvider.class).saveResults();
+		monitor.done();
 	}
 
 	public static final void main(String args[]) {

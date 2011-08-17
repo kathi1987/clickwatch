@@ -36,7 +36,7 @@ import de.hub.clickwatch.analysis.results.ResultsPackage;
  * The following features are implemented:
  * <ul>
  *   <li>{@link de.hub.clickwatch.analysis.results.impl.ResultImpl#getTimestamp <em>Timestamp</em>}</li>
- *   <li>{@link de.hub.clickwatch.analysis.results.impl.ResultImpl#getDiagrams <em>Diagrams</em>}</li>
+ *   <li>{@link de.hub.clickwatch.analysis.results.impl.ResultImpl#getCharts <em>Charts</em>}</li>
  *   <li>{@link de.hub.clickwatch.analysis.results.impl.ResultImpl#getDataSet <em>Data Set</em>}</li>
  * </ul>
  * </p>
@@ -65,14 +65,14 @@ public class ResultImpl extends NamedElementImpl implements Result {
 	protected Date timestamp = TIMESTAMP_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getDiagrams() <em>Diagrams</em>}' containment reference list.
+	 * The cached value of the '{@link #getCharts() <em>Charts</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getDiagrams()
+	 * @see #getCharts()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Chart> diagrams;
+	protected EList<Chart> charts;
 
 	/**
 	 * The cached value of the '{@link #getDataSet() <em>Data Set</em>}' containment reference.
@@ -130,11 +130,11 @@ public class ResultImpl extends NamedElementImpl implements Result {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Chart> getDiagrams() {
-		if (diagrams == null) {
-			diagrams = new EObjectContainmentEList<Chart>(Chart.class, this, ResultsPackage.RESULT__DIAGRAMS);
+	public EList<Chart> getCharts() {
+		if (charts == null) {
+			charts = new EObjectContainmentEList<Chart>(Chart.class, this, ResultsPackage.RESULT__CHARTS);
 		}
-		return diagrams;
+		return charts;
 	}
 
 	/**
@@ -194,7 +194,7 @@ public class ResultImpl extends NamedElementImpl implements Result {
 		}
 		if (getDataSet() != null) {
 			for (DataEntry entry: getDataSet().getEntries()) {
-				for (double value: entry.getValues()) {
+				for (Object value: entry.getValues()) {
 					out.print(value);
 					out.print(" ");
 				}
@@ -212,8 +212,8 @@ public class ResultImpl extends NamedElementImpl implements Result {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case ResultsPackage.RESULT__DIAGRAMS:
-				return ((InternalEList<?>)getDiagrams()).basicRemove(otherEnd, msgs);
+			case ResultsPackage.RESULT__CHARTS:
+				return ((InternalEList<?>)getCharts()).basicRemove(otherEnd, msgs);
 			case ResultsPackage.RESULT__DATA_SET:
 				return basicSetDataSet(null, msgs);
 		}
@@ -230,8 +230,8 @@ public class ResultImpl extends NamedElementImpl implements Result {
 		switch (featureID) {
 			case ResultsPackage.RESULT__TIMESTAMP:
 				return getTimestamp();
-			case ResultsPackage.RESULT__DIAGRAMS:
-				return getDiagrams();
+			case ResultsPackage.RESULT__CHARTS:
+				return getCharts();
 			case ResultsPackage.RESULT__DATA_SET:
 				return getDataSet();
 		}
@@ -250,9 +250,9 @@ public class ResultImpl extends NamedElementImpl implements Result {
 			case ResultsPackage.RESULT__TIMESTAMP:
 				setTimestamp((Date)newValue);
 				return;
-			case ResultsPackage.RESULT__DIAGRAMS:
-				getDiagrams().clear();
-				getDiagrams().addAll((Collection<? extends Chart>)newValue);
+			case ResultsPackage.RESULT__CHARTS:
+				getCharts().clear();
+				getCharts().addAll((Collection<? extends Chart>)newValue);
 				return;
 			case ResultsPackage.RESULT__DATA_SET:
 				setDataSet((DataSet)newValue);
@@ -272,8 +272,8 @@ public class ResultImpl extends NamedElementImpl implements Result {
 			case ResultsPackage.RESULT__TIMESTAMP:
 				setTimestamp(TIMESTAMP_EDEFAULT);
 				return;
-			case ResultsPackage.RESULT__DIAGRAMS:
-				getDiagrams().clear();
+			case ResultsPackage.RESULT__CHARTS:
+				getCharts().clear();
 				return;
 			case ResultsPackage.RESULT__DATA_SET:
 				setDataSet((DataSet)null);
@@ -292,8 +292,8 @@ public class ResultImpl extends NamedElementImpl implements Result {
 		switch (featureID) {
 			case ResultsPackage.RESULT__TIMESTAMP:
 				return TIMESTAMP_EDEFAULT == null ? timestamp != null : !TIMESTAMP_EDEFAULT.equals(timestamp);
-			case ResultsPackage.RESULT__DIAGRAMS:
-				return diagrams != null && !diagrams.isEmpty();
+			case ResultsPackage.RESULT__CHARTS:
+				return charts != null && !charts.isEmpty();
 			case ResultsPackage.RESULT__DATA_SET:
 				return dataSet != null;
 		}

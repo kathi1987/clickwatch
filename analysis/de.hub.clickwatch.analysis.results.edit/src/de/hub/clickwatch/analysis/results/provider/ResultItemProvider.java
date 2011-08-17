@@ -103,7 +103,7 @@ public class ResultItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(ResultsPackage.Literals.RESULT__DIAGRAMS);
+			childrenFeatures.add(ResultsPackage.Literals.RESULT__CHARTS);
 			childrenFeatures.add(ResultsPackage.Literals.RESULT__DATA_SET);
 		}
 		return childrenFeatures;
@@ -162,7 +162,7 @@ public class ResultItemProvider
 			case ResultsPackage.RESULT__TIMESTAMP:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
-			case ResultsPackage.RESULT__DIAGRAMS:
+			case ResultsPackage.RESULT__CHARTS:
 			case ResultsPackage.RESULT__DATA_SET:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
@@ -183,7 +183,7 @@ public class ResultItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(ResultsPackage.Literals.RESULT__DIAGRAMS,
+				(ResultsPackage.Literals.RESULT__CHARTS,
 				 ResultsFactory.eINSTANCE.createChart()));
 
 		newChildDescriptors.add

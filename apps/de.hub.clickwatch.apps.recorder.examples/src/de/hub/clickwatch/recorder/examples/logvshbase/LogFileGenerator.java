@@ -25,11 +25,11 @@ import de.hub.clickwatch.main.ClickWatchExternalLauncher;
 import de.hub.clickwatch.main.IArgumentsProvider;
 import de.hub.clickwatch.main.IClickWatchContext;
 import de.hub.clickwatch.main.IClickWatchMain;
-import de.hub.clickwatch.main.IExperimentProvider;
+import de.hub.clickwatch.main.IRecordProvider;
 import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.model.Node;
 import de.hub.clickwatch.model.util.TimeStampLabelProvider;
-import de.hub.clickwatch.recoder.cwdatabase.ExperimentDescr;
+import de.hub.clickwatch.recoder.cwdatabase.Record;
 import de.hub.clickwatch.recorder.database.DataBaseUtil;
 import de.hub.clickwatch.util.ILogger;
 import de.hub.clickwatch.util.Throwables;
@@ -50,8 +50,8 @@ public class LogFileGenerator implements IClickWatchMain, IApplication {
 			Throwables.propagate(e);
 		}
 		
-		ExperimentDescr experiment = ctx.getAdapter(IExperimentProvider.class).getExperiment();
-		logger.log(ILogger.INFO, "Start analysis on experiment " + experiment.getName(), null);
+		Record record = ctx.getAdapter(IRecordProvider.class).getRecord();
+		logger.log(ILogger.INFO, "Start analysis on record " + record.getName(), null);
 		
 		PriorityQueue<CurrentIterator> handlers = new PriorityQueue<CurrentIterator>(1000, new Comparator<CurrentIterator>() {
 			@Override
@@ -69,11 +69,9 @@ public class LogFileGenerator implements IClickWatchMain, IApplication {
 		Map<CurrentIterator, String> nodeIds = new HashMap<LogFileGenerator.CurrentIterator, String>();
 		
 		logger.log(ILogger.INFO, "Creating database scanners for all handers for all nodes", null);
-		for (Node node: experiment.getMetaData()) {
+		for (Node node: record.getMetaData()) {
 			for(Handler handler: node.getAllHandlers()) {
-				CurrentIterator iterator = new CurrentIterator(dbUtil.getHandlerIterator(experiment, 
-						node.getINetAddress(), handler.getQualifiedName(), 
-						experiment.getStart(), experiment.getEnd()));
+				CurrentIterator iterator = new CurrentIterator(dbUtil.getHandlerIterator(DataBaseUtil.createHandle(record, node, handler)));
 				insert(iterator, handlers);
 				nodeIds.put(iterator, node.getINetAddress());
 			}
@@ -81,8 +79,8 @@ public class LogFileGenerator implements IClickWatchMain, IApplication {
 		
 		logger.log(ILogger.INFO, "Starting to go through all handlers and to create log entries", null);
 		int i = 0;
-		long duration = experiment.getEnd() - experiment.getStart();
-		long expStart = experiment.getStart();
+		long duration = record.getEnd() - record.getStart();
+		long expStart = record.getStart();
 		NumberFormat percentFormat = new DecimalFormat("0.000");
 		while(!handlers.isEmpty()) {
 			CurrentIterator current = handlers.poll();

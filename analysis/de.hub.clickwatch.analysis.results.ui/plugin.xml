@@ -19,4 +19,61 @@
           replaces="de.hub.clickwatch.apps.main.ResultsProvider">
     </ContextAdapter>
  </extension>
+ <extension
+       point="de.hub.clickwatch.analysis.VisualizationInputProvider">
+    <InputProvider
+          class="de.hub.clickwatch.analysis.results.ui.ResultsVisualizationInputProvider">
+    </InputProvider>
+ </extension>
+ <extension
+       point="de.hub.clickwatch.analysis.Visualization">
+    <visualization
+          class="de.hub.clickwatch.analysis.results.ui.ResultsChartVisualization">
+    </visualization>
+ </extension>
+ <extension
+       point="org.eclipse.ui.popupMenus">
+    <objectContribution
+          adaptable="false"
+          id="de.hub.clickwatch.analysis.results.ui.XmlAttribute"
+          objectClass="de.hub.clickwatch.model.provider.XmlAttributeValue">
+       <action
+             class="de.hub.clickwatch.ui.GuiceAwareExecutableExtensionFactory:de.hub.clickwatch.analysis.results.ui.SimpleAnalysis"
+             enablesFor="1"
+             id="de.hub.clickwatch.analysis.results.ui.SimpleAnalysis"
+             label="SimpleAnalysis"
+             menubarPath="clickwatch/analysis">
+       </action>
+    </objectContribution>
+ </extension>
+ <extension
+       point="org.eclipse.ui.commands">
+    <command
+          defaultHandler="de.hub.clickwatch.ui.GuiceAwareExecutableExtensionFactory:de.hub.clickwatch.analysis.results.ui.ExecuteMain"
+          description="Execute Main"
+          id="de.hub.clickwatch.analysis.results.ui.ExecuteMain"
+          name="Execute Main">
+       <commandParameter
+             id="id"
+             name="id"
+             optional="true">
+       </commandParameter>
+    </command>
+ </extension>
+ <extension
+       point="org.eclipse.ui.menus">
+    <menuContribution
+          allPopups="false"
+          class="de.hub.clickwatch.ui.GuiceAwareExecutableExtensionFactory:de.hub.clickwatch.analysis.results.ui.PredefinedAnalysis"
+          locationURI="popup:clickwatch?after=analysis">
+       <menu
+             label="Predefined Analysis">
+          <command
+                commandId="de.hub.clickwatch.analysis.results.ui.ExecuteMain"
+                label="Execute Main"
+                style="push">
+          </command>
+       </menu>
+    </menuContribution>
+ </extension>
 </plugin>
