@@ -1,5 +1,6 @@
 package de.hub.clickwatch.transformationLauncher;
 
+import org.eclipse.core.internal.resources.File;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.debug.core.DebugPlugin;
 import org.eclipse.debug.core.ILaunchConfiguration;
@@ -11,7 +12,8 @@ import org.eclipse.debug.ui.ILaunchShortcut;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.jdt.core.dom.CompilationUnit;
+import org.eclipse.jdt.core.JavaModelException;
+import org.eclipse.jdt.internal.core.CompilationUnit;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.IEditorPart;
@@ -21,8 +23,8 @@ import org.eclipse.ui.part.FileEditorInput;
 
 import de.hub.clickwatch.model.presentation.ClickWatchModelEditor;
 import de.hub.clickwatch.transformationLauncher.tabs.ClickwatchParametersTab;
-import de.hub.clickwatch.transformationLauncher.tabs.RecordParametersTab;
 import de.hub.clickwatch.transformationLauncher.tabs.MainParametersTab;
+import de.hub.clickwatch.transformationLauncher.tabs.RecordParametersTab;
 
 /**
  * This class is used when a transformation should be performed as a shorcut
@@ -42,11 +44,23 @@ public class TransformationLaunchShortcut implements ILaunchShortcut {
 		// "platform:/resource/de.hub.clickwatch.analysis.examples.xtend2/src/de/hub/clickwatch/analysis/examples/java/TestRunConfiguration2.java";
 		String file = "";
 		Object selected = ((IStructuredSelection) selection).getFirstElement();
+
 		if (selected instanceof CompilationUnit) {
-			file = ((CompilationUnit) selected).getJavaElement().getPath()
-					.toString()
-					+ ((CompilationUnit) selected).getJavaElement()
-							.getElementName();
+			try {
+				file = URI.createPlatformResourceURI(((CompilationUnit) selected).getPath().toString(), true).toString();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}										
+		}
+		else if(selected instanceof File)
+		{
+			try {
+				file = URI.createPlatformResourceURI(((File) selected).getFullPath().toString(), true).toString();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}	
 		}
 
 		launch(file, mode);
