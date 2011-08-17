@@ -218,11 +218,23 @@ public class ClickwatchParametersTab extends AbstractLaunchConfigurationTab {
 					configuration.setAttribute(
 							ClickwatchParametersTab.ATTR_MODEL_OBJECT,
 							eProxyURI.fragment());
+
+					configuration.setAttribute(
+							ClickwatchParametersTab.ATTR_SOURCE_MODEL_FILE,
+							URI.createPlatformResourceURI(
+									eProxyURI.toPlatformString(true), true)
+									.toString());
 				}
 			} else if (editorPart.getEditorInput() instanceof FileEditorInput) {
 				FileEditorInput fInput = (FileEditorInput) editorPart
 						.getEditorInput();
-				// System.out.println( fInput.getFile());
+				
+				configuration
+						.setAttribute(
+								MainParametersTab.ATTR_TRANSFORMATION_FILE,
+								URI.createPlatformResourceURI(
+										fInput.getFile().getFullPath()
+												.toString(), true).toString());
 			}
 
 		}
@@ -258,11 +270,11 @@ public class ClickwatchParametersTab extends AbstractLaunchConfigurationTab {
 	public String getName() {
 		return TAB_NAME;
 	}
-	
+
 	@Override
-	public Image getImage() {		
+	public Image getImage() {
 		return JavaDebugImages.get(JavaDebugImages.IMG_OBJS_THREAD_GROUP);
-		
+
 	}
 
 }
