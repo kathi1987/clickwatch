@@ -1,12 +1,13 @@
 package de.hub.clickwatch.transformationLauncher.tabs;
 
-import java.io.File;
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
+import org.eclipse.core.internal.resources.File;
+import org.eclipse.core.internal.resources.Folder;
+import org.eclipse.core.internal.resources.Project;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.Platform;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
 import org.eclipse.debug.internal.ui.SWTFactory;
@@ -19,15 +20,13 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.XMLResource;
-import org.eclipse.jdt.internal.debug.ui.JDIDebugUIPlugin;
 import org.eclipse.jdt.internal.debug.ui.JavaDebugImages;
 import org.eclipse.jdt.internal.debug.ui.actions.ControlAccessibleListener;
 import org.eclipse.jdt.internal.debug.ui.launcher.LauncherMessages;
 import org.eclipse.jface.dialogs.Dialog;
-import org.eclipse.jface.resource.ImageDescriptor;
-import org.eclipse.jface.resource.ImageRegistry;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.swt.SWT;
+import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Image;
@@ -36,12 +35,10 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
-import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorReference;
-import org.eclipse.ui.IFileEditorMapping;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.FileEditorInput;
 
@@ -96,7 +93,7 @@ public class ClickwatchParametersTab extends AbstractLaunchConfigurationTab {
 
 		final Shell shell = parent.getShell();
 
-		Group group = SWTFactory.createGroup(parent, "Source model", 2, 1,
+		Group group = SWTFactory.createGroup(parent, "Model object", 2, 1,
 				GridData.FILL_HORIZONTAL);
 		modelObject = SWTFactory.createSingleText(group, 1);
 		// transformationFile.addModifyListener(fListener);
@@ -144,9 +141,25 @@ public class ClickwatchParametersTab extends AbstractLaunchConfigurationTab {
 			@Override
 			public void widgetSelected(SelectionEvent selectionEvent) {
 				IFile file = null;
+				List<ViewerFilter> filters = new ArrayList<ViewerFilter>();
+				filters.add(new ViewerFilter() {
 
+					@Override
+					public boolean select(Viewer viewer, Object parentElement,
+							Object element) {
+						if (element instanceof Project
+								|| element instanceof Folder)
+							return true;
+
+						if ((element instanceof File))
+							if (((File) element).getFileExtension().equals(
+									"clickwatchmodel"))
+								return true;
+						return false;
+					}
+				});
 				IFile[] files = WorkspaceResourceDialog.openFileSelection(
-						shell, null, null, false, null, null);
+						shell, null, null, false, null, filters);
 				if (files.length != 0) {
 					file = files[0];
 				}
@@ -228,7 +241,7 @@ public class ClickwatchParametersTab extends AbstractLaunchConfigurationTab {
 			} else if (editorPart.getEditorInput() instanceof FileEditorInput) {
 				FileEditorInput fInput = (FileEditorInput) editorPart
 						.getEditorInput();
-				
+
 				configuration
 						.setAttribute(
 								MainParametersTab.ATTR_TRANSFORMATION_FILE,

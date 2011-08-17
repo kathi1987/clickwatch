@@ -26,8 +26,8 @@ import de.hub.clickwatch.main.ClickWatchRunConfigurationLauncher;
 import de.hub.clickwatch.main.ELaunchConfigurationParameters;
 import de.hub.clickwatch.main.IClickWatchMain;
 import de.hub.clickwatch.transformationLauncher.tabs.ClickwatchParametersTab;
-import de.hub.clickwatch.transformationLauncher.tabs.RecordParametersTab;
 import de.hub.clickwatch.transformationLauncher.tabs.MainParametersTab;
+import de.hub.clickwatch.transformationLauncher.tabs.RecordParametersTab;
 import de.hub.clickwatch.ui.PluginActivator;
 
 /**
@@ -118,8 +118,13 @@ public class TransformationLaunchConfigurationDelegate implements
 				// *************
 				// Record tab
 
+				//config.put(ELaunchConfigurationParameters.RecordURI, URI.createURI(databaseURI));
+				
+				//config.put(ELaunchConfigurationParameters.RecordId, recordID);
+				
 				// *************
 				// ClickWatch Model tab
+				
 
 				// source model file
 				config.put(ELaunchConfigurationParameters.ClickWatchModelFile,
@@ -178,7 +183,7 @@ public class TransformationLaunchConfigurationDelegate implements
 
 			if (className != "")
 				className += ".";
-			
+
 			className += fileURI.lastSegment().replaceAll(".java|.xtend", "");
 
 		} catch (Exception e) {

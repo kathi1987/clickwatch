@@ -12,7 +12,6 @@ import org.eclipse.debug.ui.ILaunchShortcut;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.jdt.core.JavaModelException;
 import org.eclipse.jdt.internal.core.CompilationUnit;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -47,20 +46,23 @@ public class TransformationLaunchShortcut implements ILaunchShortcut {
 
 		if (selected instanceof CompilationUnit) {
 			try {
-				file = URI.createPlatformResourceURI(((CompilationUnit) selected).getPath().toString(), true).toString();
+				file = URI
+						.createPlatformResourceURI(
+								((CompilationUnit) selected).getPath()
+										.toString(), true).toString();
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}										
-		}
-		else if(selected instanceof File)
-		{
+			}
+		} else if (selected instanceof File) {
 			try {
-				file = URI.createPlatformResourceURI(((File) selected).getFullPath().toString(), true).toString();
+				file = URI.createPlatformResourceURI(
+						((File) selected).getFullPath().toString(), true)
+						.toString();
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}	
+			}
 		}
 
 		launch(file, mode);
@@ -122,7 +124,6 @@ public class TransformationLaunchShortcut implements ILaunchShortcut {
 	}
 
 	private void tryFindClickWatchModel() {
-		String ret = "";
 
 		IEditorReference[] editorReferences = PlatformUI.getWorkbench()
 				.getActiveWorkbenchWindow().getActivePage()

@@ -14,7 +14,6 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.jdt.internal.debug.ui.JavaDebugImages;
 import org.eclipse.jdt.internal.debug.ui.actions.ControlAccessibleListener;
 import org.eclipse.jdt.internal.debug.ui.launcher.LauncherMessages;
-import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Image;
@@ -23,7 +22,6 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
-import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
@@ -61,14 +59,14 @@ public class RecordParametersTab extends AbstractLaunchConfigurationTab {
 		((GridLayout) comp.getLayout()).verticalSpacing = 0;
 		createDatabaseFileGroup(comp);
 		createVerticalSpacer(comp, 1);
-		createRecordIDGroup(comp);		
+		createRecordIDGroup(comp);
 
 		setControl(comp);
 
 		// schedule an update job so every change is noticed
 		scheduleUpdateJob();
 	}
-	
+
 	/**
 	 * creates the visual components for the database file group
 	 * 
@@ -79,12 +77,11 @@ public class RecordParametersTab extends AbstractLaunchConfigurationTab {
 
 		final Shell shell = parent.getShell();
 
-		Group group = SWTFactory.createGroup(parent, "Database file", 2,
-				1, GridData.FILL_HORIZONTAL);
+		Group group = SWTFactory.createGroup(parent, "Database file", 2, 1,
+				GridData.FILL_HORIZONTAL);
 		databaseFile = SWTFactory.createSingleText(group, 1);
 		// transformationFile.addModifyListener(fListener);
-		ControlAccessibleListener.addListener(databaseFile,
-				group.getText());
+		ControlAccessibleListener.addListener(databaseFile, group.getText());
 		Button selectButton = createPushButton(group,
 				LauncherMessages.AbstractJavaMainTab_1, null);
 		selectButton.addSelectionListener(new SelectionAdapter() {
@@ -108,7 +105,7 @@ public class RecordParametersTab extends AbstractLaunchConfigurationTab {
 			}
 		});
 	}
-	
+
 	/**
 	 * creates the visual components for the record id group
 	 * 
@@ -116,12 +113,11 @@ public class RecordParametersTab extends AbstractLaunchConfigurationTab {
 	 *            the component within this group shoul dbe created
 	 */
 	protected void createRecordIDGroup(Composite parent) {
-		Group group = SWTFactory.createGroup(parent, "Record ID", 1,
-				1, GridData.FILL_HORIZONTAL);
+		Group group = SWTFactory.createGroup(parent, "Record ID", 1, 1,
+				GridData.FILL_HORIZONTAL);
 		recordID = SWTFactory.createSingleText(group, 1);
 		// transformationFile.addModifyListener(fListener);
-		ControlAccessibleListener.addListener(recordID,
-				group.getText());
+		ControlAccessibleListener.addListener(recordID, group.getText());
 	}
 
 	/**
@@ -192,7 +188,7 @@ public class RecordParametersTab extends AbstractLaunchConfigurationTab {
 	public String getName() {
 		return TAB_NAME;
 	}
-	
+
 	@Override
 	public Image getImage() {
 		// TODO Auto-generated method stub
