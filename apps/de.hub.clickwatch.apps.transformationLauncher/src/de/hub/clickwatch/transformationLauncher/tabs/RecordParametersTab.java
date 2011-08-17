@@ -7,12 +7,17 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
+import org.eclipse.debug.internal.ui.SWTFactory;
 import org.eclipse.debug.ui.AbstractLaunchConfigurationTab;
 import org.eclipse.emf.common.ui.dialogs.WorkspaceResourceDialog;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.jdt.internal.debug.ui.JavaDebugImages;
+import org.eclipse.jdt.internal.debug.ui.actions.ControlAccessibleListener;
+import org.eclipse.jdt.internal.debug.ui.launcher.LauncherMessages;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
@@ -51,28 +56,37 @@ public class RecordParametersTab extends AbstractLaunchConfigurationTab {
 	 */
 	@Override
 	public void createControl(Composite parent) {
+		Composite comp = SWTFactory.createComposite(parent, parent.getFont(),
+				1, 1, GridData.FILL_BOTH);
+		((GridLayout) comp.getLayout()).verticalSpacing = 0;
+		createDatabaseFileGroup(comp);
+		createVerticalSpacer(comp, 1);
+		createRecordIDGroup(comp);		
+
+		setControl(comp);
+
+		// schedule an update job so every change is noticed
+		scheduleUpdateJob();
+	}
+	
+	/**
+	 * creates the visual components for the database file group
+	 * 
+	 * @param parent
+	 *            the component within this group shoul dbe created
+	 */
+	protected void createDatabaseFileGroup(Composite parent) {
+
 		final Shell shell = parent.getShell();
 
-		// transformation file chooser
-		Group textGroup = new Group(parent, SWT.NONE);
-		textGroup.setFont(parent.getFont());
-		textGroup.setText("Record configurations");
-		textGroup.setLayoutData(new GridData(SWT.FILL, SWT.TOP, true, false));
-		textGroup.setLayout(new GridLayout(1, false));
-
-		Composite composite = new Composite(textGroup, SWT.NONE);
-		composite.setLayoutData(new GridData(SWT.FILL, SWT.TOP, true, false));
-		composite.setLayout(new GridLayout(3, false));
-
-		Label label = new Label(composite, SWT.FILL);
-		label.setText("Database File: ");
-
-		databaseFile = new Text(composite, SWT.FILL);
-		GridData layoutData = new GridData(SWT.FILL, SWT.TOP, true, false);
-		databaseFile.setLayoutData(layoutData);
-
-		Button selectButton = new Button(composite, SWT.PUSH);
-		selectButton.setText("...");
+		Group group = SWTFactory.createGroup(parent, "Database file", 2,
+				1, GridData.FILL_HORIZONTAL);
+		databaseFile = SWTFactory.createSingleText(group, 1);
+		// transformationFile.addModifyListener(fListener);
+		ControlAccessibleListener.addListener(databaseFile,
+				group.getText());
+		Button selectButton = createPushButton(group,
+				LauncherMessages.AbstractJavaMainTab_1, null);
 		selectButton.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent selectionEvent) {
@@ -93,23 +107,21 @@ public class RecordParametersTab extends AbstractLaunchConfigurationTab {
 				}
 			}
 		});
-
-		// databse uri
-		composite = new Composite(textGroup, SWT.NONE);
-		composite.setLayoutData(new GridData(SWT.FILL, SWT.TOP, true, false));
-		composite.setLayout(new GridLayout(2, false));
-
-		label = new Label(composite, SWT.FILL);
-		label.setText("Record ID: ");
-
-		recordID = new Text(composite, SWT.FILL);
-		layoutData = new GridData(SWT.FILL, SWT.TOP, true, false);
-		recordID.setLayoutData(layoutData);
-
-		setControl(textGroup);
-
-		// schedule an update job so every change is noticed
-		scheduleUpdateJob();
+	}
+	
+	/**
+	 * creates the visual components for the record id group
+	 * 
+	 * @param parent
+	 *            the component within this group shoul dbe created
+	 */
+	protected void createRecordIDGroup(Composite parent) {
+		Group group = SWTFactory.createGroup(parent, "Record ID", 1,
+				1, GridData.FILL_HORIZONTAL);
+		recordID = SWTFactory.createSingleText(group, 1);
+		// transformationFile.addModifyListener(fListener);
+		ControlAccessibleListener.addListener(recordID,
+				group.getText());
 	}
 
 	/**
@@ -179,6 +191,12 @@ public class RecordParametersTab extends AbstractLaunchConfigurationTab {
 	@Override
 	public String getName() {
 		return TAB_NAME;
+	}
+	
+	@Override
+	public Image getImage() {
+		// TODO Auto-generated method stub
+		return JavaDebugImages.get(JavaDebugImages.IMG_VIEW_ARGUMENTS_TAB);
 	}
 
 }

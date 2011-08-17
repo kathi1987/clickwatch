@@ -4,19 +4,23 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
+import org.eclipse.debug.internal.ui.SWTFactory;
 import org.eclipse.debug.ui.AbstractLaunchConfigurationTab;
 import org.eclipse.emf.common.ui.dialogs.WorkspaceResourceDialog;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.jdt.internal.debug.ui.JavaDebugImages;
+import org.eclipse.jdt.internal.debug.ui.actions.ControlAccessibleListener;
+import org.eclipse.jdt.internal.debug.ui.launcher.LauncherMessages;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
-import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
@@ -50,28 +54,39 @@ public class MainParametersTab extends AbstractLaunchConfigurationTab {
 	 */
 	@Override
 	public void createControl(Composite parent) {
+		Composite comp = SWTFactory.createComposite(parent, parent.getFont(),
+				1, 1, GridData.FILL_BOTH);
+		((GridLayout) comp.getLayout()).verticalSpacing = 0;
+		createTransformationFileGroup(comp);
+		createVerticalSpacer(comp, 1);
+		createValueTypeGroup(comp);
+		createVerticalSpacer(comp, 1);
+		createDebugLevelGroup(comp);
+
+		setControl(comp);
+
+		// schedule an update job so every change is noticed
+		scheduleUpdateJob();
+	}
+
+	/**
+	 * creates the visual components for the transformation file group
+	 * 
+	 * @param parent
+	 *            the component within this group shoul dbe created
+	 */
+	protected void createTransformationFileGroup(Composite parent) {
+
 		final Shell shell = parent.getShell();
 
-		Group mainGroup = new Group(parent, SWT.NONE);
-		mainGroup.setFont(parent.getFont());
-		mainGroup.setText("Main configurations");
-		mainGroup.setLayoutData(new GridData(SWT.FILL, SWT.TOP, true, false));
-		mainGroup.setLayout(new GridLayout(1, false));
-
-		// transformation file chooser
-		Composite composite = new Composite(mainGroup, SWT.NONE);
-		composite.setLayoutData(new GridData(SWT.FILL, SWT.TOP, true, false));
-		composite.setLayout(new GridLayout(3, false));
-
-		Label transfLabel = new Label(composite, SWT.FILL);
-		transfLabel.setText("File: ");
-
-		transformationFile = new Text(composite, SWT.FILL);
-		GridData layoutData = new GridData(SWT.FILL, SWT.TOP, true, false);
-		transformationFile.setLayoutData(layoutData);
-
-		Button selectTransfButton = new Button(composite, SWT.PUSH);
-		selectTransfButton.setText("...");
+		Group group = SWTFactory.createGroup(parent, "Transformation File", 2,
+				1, GridData.FILL_HORIZONTAL);
+		transformationFile = SWTFactory.createSingleText(group, 1);
+		// transformationFile.addModifyListener(fListener);
+		ControlAccessibleListener.addListener(transformationFile,
+				group.getText());
+		Button selectTransfButton = createPushButton(group,
+				LauncherMessages.AbstractJavaMainTab_1, null);
 		selectTransfButton.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent selectionEvent) {
@@ -92,41 +107,34 @@ public class MainParametersTab extends AbstractLaunchConfigurationTab {
 				}
 			}
 		});
+	}
 
-		// value type chooser
-		composite = new Composite(mainGroup, SWT.NONE);
-		composite.setLayoutData(new GridData(SWT.FILL, SWT.TOP, true, false));
-		composite.setLayout(new GridLayout(2, false));
-
-		transfLabel = new Label(composite, SWT.FILL);
-		transfLabel.setText("Value Type: ");
-
-		valueType = new Combo(composite, SWT.FILL);
-		valueType.setItems(new String[] { "SPECIFIC", "STRING", "XML" });
-		layoutData = new GridData(SWT.FILL, SWT.TOP, true, false);
+	/**
+	 * creates the visual components for the value type group
+	 * 
+	 * @param parent
+	 *            the component within this group shoul dbe created
+	 */
+	private void createValueTypeGroup(Composite parent) {
+		Group group = SWTFactory.createGroup(parent, "Value Type", 2, 1,
+				GridData.FILL_HORIZONTAL);
+		valueType = SWTFactory.createCombo(group, SWT.FILL, 5, 5, new String[] {
+				"SPECIFIC", "STRING", "XML" });
 		valueType.select(0);
-		valueType.setLayoutData(layoutData);
+	}
 
-		// debug level
-		composite = new Composite(mainGroup, SWT.NONE);
-		composite.setLayoutData(new GridData(SWT.FILL, SWT.TOP, true, false));
-		composite.setLayout(new GridLayout(3, false));
-
-		transfLabel = new Label(composite, SWT.FILL);
-		transfLabel.setText("Debug level: ");
-
-		debugLevel = new Combo(composite, SWT.FILL);
-		debugLevel
-				.setItems(new String[] { "Error", "Warning", "Info", "Debug" });
-		debugLevel.select(1);
-		layoutData = new GridData(SWT.FILL, SWT.TOP, true, false);
-		debugLevel.setLayoutData(layoutData);
-
-		setControl(mainGroup);
-
-		// schedule an update job so every change is noticed
-		scheduleUpdateJob();
-
+	/**
+	 * creates the visual components for the debug level group
+	 * 
+	 * @param parent
+	 *            the component within this group shoul dbe created
+	 */
+	private void createDebugLevelGroup(Composite parent) {
+		Group group = SWTFactory.createGroup(parent, "Debug Level", 2, 1,
+				GridData.FILL_HORIZONTAL);
+		debugLevel = SWTFactory.createCombo(group, SWT.FILL, 5, 5,
+				new String[] { "Error", "Warning", "Info", "Debug" });
+		debugLevel.select(2);
 	}
 
 	/**
@@ -159,10 +167,10 @@ public class MainParametersTab extends AbstractLaunchConfigurationTab {
 	@Override
 	public void initializeFrom(ILaunchConfiguration configuration) {
 		try {
-			
+
 			transformationFile.setText(configuration.getAttribute(
 					MainParametersTab.ATTR_TRANSFORMATION_FILE, ""));
-			
+
 			int i = 0;
 			String valueTypeConfigValue = configuration.getAttribute(
 					MainParametersTab.ATTR_VALUE_TYPE, "");
@@ -197,8 +205,8 @@ public class MainParametersTab extends AbstractLaunchConfigurationTab {
 	public boolean isValid(ILaunchConfiguration launchConfig) {
 		setErrorMessage(null);
 
-		if (transformationFile.getText().equals(""))
-			setErrorMessage("No transformation file given");
+		//if (transformationFile.getText().equals(""))
+		//	setErrorMessage("No transformation file given");
 
 		return true;
 	}
@@ -231,6 +239,12 @@ public class MainParametersTab extends AbstractLaunchConfigurationTab {
 	@Override
 	public String getName() {
 		return TAB_NAME;
+	}
+	
+	@Override
+	public Image getImage() {
+		// TODO Auto-generated method stub
+		return JavaDebugImages.get(JavaDebugImages.IMG_OBJS_MONITOR);
 	}
 
 }

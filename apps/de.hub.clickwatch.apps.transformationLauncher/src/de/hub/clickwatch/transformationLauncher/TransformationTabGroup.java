@@ -3,6 +3,7 @@ package de.hub.clickwatch.transformationLauncher;
 import org.eclipse.debug.ui.AbstractLaunchConfigurationTabGroup;
 import org.eclipse.debug.ui.ILaunchConfigurationDialog;
 import org.eclipse.debug.ui.ILaunchConfigurationTab;
+import org.eclipse.jdt.internal.debug.ui.launcher.JavaAppletTabGroup;
 
 import de.hub.clickwatch.transformationLauncher.tabs.ClickwatchParametersTab;
 import de.hub.clickwatch.transformationLauncher.tabs.RecordParametersTab;
@@ -26,7 +27,6 @@ public class TransformationTabGroup extends AbstractLaunchConfigurationTabGroup 
 				new MainParametersTab(), new RecordParametersTab(),
 				new ClickwatchParametersTab() };
 		setTabs(tabs);
-
 	}
-
+	
 }
