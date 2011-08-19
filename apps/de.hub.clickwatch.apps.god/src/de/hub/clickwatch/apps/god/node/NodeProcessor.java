@@ -6,6 +6,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import click.ClickConnection;
+
 import de.hub.clickwatch.apps.god.Server;
 import de.hub.clickwatch.apps.god.information.ClientInformations;
 import de.hub.clickwatch.connection.INodeConnection;
@@ -18,7 +20,7 @@ public class NodeProcessor extends Thread {
 	private Server server = null;
 	private int maxCounter = 0;
 	private NodeInformations nodeInfos = null;
-	private INodeConnection nodeConnection;
+	private INodeConnection nodeConnection = null;
 	private int nodeProcessingTimer = 0;
 	private boolean callsSetter = false;
 	private boolean readFromFile = false;
@@ -33,9 +35,15 @@ public class NodeProcessor extends Thread {
 		nodeInfos = nodeInfo;
 		readFromFile = i_readFromFile;
 		
-		nodeConnection = nodeConnectionProvider.createConnection(nodeInfos.getHost().getHostName(), ""+nodeInfos.getPort());
+		if (nodeConnectionProvider != null) {
+			nodeConnection = nodeConnectionProvider.createConnection(nodeInfos.getHost().getHostName(), ""+nodeInfos.getPort());
+		}
 		server = clientLocManager;
 		nodeProcessingTimer = server.getSzenario().get_NODE_POCESSING_TIMER();
+	}
+	
+	public NodeProcessor(Server clientLocManager, NodeInformations nodeInfo, boolean i_readFromFile) {
+		this(clientLocManager, null, nodeInfo, i_readFromFile);
 	}
 	
 	public void callsSetter(boolean callsSetter) {
@@ -49,7 +57,7 @@ public class NodeProcessor extends Thread {
 	public void run() {
 		int calls = 0;
 		
-		if (nodeConnection == null) {
+		if ((nodeConnection == null) && (!callsSetter)) {
 			System.err.println("Connection to Click-Node is <null>");
 			return;
 		}
@@ -94,13 +102,22 @@ public class NodeProcessor extends Thread {
 					}
 					
 				} else {
-					nodeConnection.connect();
+					if (nodeConnection != null) {
+						nodeConnection.connect();
+					}
+					
 					for (String[] handler : nodeInfos.getElementFilter().keySet()) {
 						if (callsSetter) {
-							//TODO:_scurow: correct this later ... writeHandler is currently not implemented in ClickWatch
-							//call something like: writeHandler(handler[0], handler[1], handler[2]);
-						
-						} else {
+							ClickConnection cc = new ClickConnection(nodeInfos.getHost(), nodeInfos.getPort());
+							cc.openClickConnection();
+							int res = cc.writeHandler(handler[0], handler[1], handler[2]);
+							cc.closeClickConnection();
+							
+							if (res == -1) {
+								System.err.println("ERROR while calling writeHandler " + handler[0] + "/" + handler[1] + " with args '" + handler[2] + "' on node " + nodeInfos.getHost().getHostAddress() + ":" + nodeInfos.getPort());
+							}
+						} else if ((nodeConnection != null) && (nodeConnection.isConnected())) {
+							
 							//ask the node, and process result
 							IHandlerAdapter handlerAdapter = nodeConnection.getAdapter(IHandlerAdapter.class);
 							Handler resultHandler = handlerAdapter.getHandler(handler[0] + "/" + handler[1]);
@@ -113,7 +130,10 @@ public class NodeProcessor extends Thread {
 							}
 						}
 					}
-					nodeConnection.disconnect();
+					
+					if ((nodeConnection != null) && (nodeConnection.isConnected())) {
+						nodeConnection.disconnect();
+					}
 				}
 				
 				//end this thread, if it is planned to end, and the end is right now

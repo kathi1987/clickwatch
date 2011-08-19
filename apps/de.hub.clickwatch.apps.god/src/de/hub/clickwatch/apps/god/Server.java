@@ -39,17 +39,39 @@ public class Server implements IClickWatchMain {
 			return;
 		}
 		
-		
 		try {
 			Thread.sleep(2*1000);
 			System.out.println("all started...\n");
-			Thread.sleep(10*1000);
+			Thread.sleep(5*1000);
 		} catch (InterruptedException int_exc) {
 			//nothing to do
 		}
-		System.out.println(storageMgr.getClientMonitor());
-		System.exit(0);
 		
+		//System.out.println(storageMgr.getClientMonitor());
+		/*
+		if (handleSetter("192.168.3.47", 7777, "device_wifi/wifidevice/sc", "systemchannel", "0")) {
+			System.out.println("setting was cool");
+		} else {
+			System.out.println("setting was totally uncool");
+		}
+		*/
+		System.exit(0);
+	}
+	
+	public boolean handleSetter(String host, Integer port, String element, String handler, String value) {
+		try {
+			NodeInformations nodeInf = new NodeInformations(host, port);
+			nodeInf.addFilter(element, handler, value);
+			NodeProcessor singleProc = new NodeProcessor(this, nodeInf, getSzenario().get_USE_FILE_FOR_NODE_PROCESSOR());
+			singleProc.callsSetter(true);
+			singleProc.start();
+			singleProc.join();
+			return true;
+		} catch (Exception exc) {
+			System.err.println("Exception in handlerSetter: " + exc.getMessage());
+		}
+		
+		return false;
 	}
 	
 	public Map<String, String> getApList() {
