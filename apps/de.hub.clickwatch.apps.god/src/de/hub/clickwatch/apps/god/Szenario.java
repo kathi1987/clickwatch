@@ -27,6 +27,18 @@ public interface Szenario {
 	
 	public Class<? extends NodeInformationProcessor> get_CHANNEL_PROCESSOR();
 	
+	public String[] get_GET_ROUTINGTABLE_HANDLER();
+	
+	public String[] get_SET_ROUTINGTABLE_HANDLER();
+	
+	public Class<? extends NodeInformationProcessor> get_ROUTINGTABLE_PROCESSOR();
+	
+	public String[] get_GET_LINKTABLE_HANDLER();
+	
+	public String[] get_SET_LINKTABLE_HANDLER();
+	
+	public Class<? extends NodeInformationProcessor> get_LINKTABLE_PROCESSOR();
+	
 	public String[] get_GET_POWER_HANDLER();
 	
 	public String[] get_SET_POWER_HANDLER(int power);

@@ -47,6 +47,16 @@ public class StatsInformation implements ClientInformations {
 	}
 	
 	@Override
+	public void setTime(long time) {
+		this.time = time;
+	}
+
+	@Override
+	public long getTime() {
+		return time;
+	}
+	
+	@Override
 	public void merge(ClientInformations newInfos) {
 		if (newInfos == null) {
 			System.err.println("cannot merge <null> newInfos as StatsInformation");
@@ -64,15 +74,5 @@ public class StatsInformation implements ClientInformations {
 		for (String ap : statsInfos.getApList().keySet()) {
 			apList.put(ap, statsInfos.getApList().get(ap));
 		}
-	}
-
-	@Override
-	public void setTime(long time) {
-		this.time = time;
-	}
-
-	@Override
-	public long getTime() {
-		return time;
 	}
   }

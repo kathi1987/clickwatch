@@ -39,7 +39,7 @@ public class Server implements IClickWatchMain {
 			return;
 		}
 		
-		/*
+		
 		try {
 			Thread.sleep(2*1000);
 			System.out.println("all started...\n");
@@ -49,7 +49,7 @@ public class Server implements IClickWatchMain {
 		}
 		System.out.println(storageMgr.getClientMonitor());
 		System.exit(0);
-		*/
+		
 	}
 	
 	public Map<String, String> getApList() {
@@ -111,6 +111,8 @@ public class Server implements IClickWatchMain {
 			nodeInf.addFilter(getSzenario().get_GET_POWER_HANDLER()[0], getSzenario().get_GET_POWER_HANDLER()[1], getSzenario().get_POWER_PROCESSOR());
 			nodeInf.addFilter(getSzenario().get_LINK_HANDLER()[0], getSzenario().get_LINK_HANDLER()[1], getSzenario().get_LINK_PROCESSOR());
 			nodeInf.addFilter(getSzenario().get_CHANNELSTAT_HANDLER()[0], getSzenario().get_CHANNELSTAT_HANDLER()[1], getSzenario().get_CHANNELSTAT_PROCESSOR());
+			nodeInf.addFilter(getSzenario().get_GET_LINKTABLE_HANDLER()[0], getSzenario().get_GET_LINKTABLE_HANDLER()[1], getSzenario().get_LINKTABLE_PROCESSOR());
+			nodeInf.addFilter(getSzenario().get_GET_ROUTINGTABLE_HANDLER()[0], getSzenario().get_GET_ROUTINGTABLE_HANDLER()[1], getSzenario().get_ROUTINGTABLE_PROCESSOR());
 			macIpAPList.put(getSzenario().get_ACCESS_POINTS()[k][0] + ":" + getSzenario().get_ACCESS_POINTS()[k][1], "-1");
 			
 			NodeProcessor np = new NodeProcessor(this, nodeConnectionProvider, nodeInf, getSzenario().get_USE_FILE_FOR_NODE_PROCESSOR());

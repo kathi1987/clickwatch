@@ -11,6 +11,8 @@ import de.hub.clickwatch.apps.god.node.ChannelProcessor;
 import de.hub.clickwatch.apps.god.node.ChannelStatsProcessor;
 import de.hub.clickwatch.apps.god.node.GpsProcessor;
 import de.hub.clickwatch.apps.god.node.LinkProcessor;
+import de.hub.clickwatch.apps.god.node.LinktableProcessor;
+import de.hub.clickwatch.apps.god.node.RoutingtableProcessor;
 import de.hub.clickwatch.apps.god.node.MacIpProcessor;
 import de.hub.clickwatch.apps.god.node.PowerProcessor;
 import de.hub.clickwatch.apps.god.node.StatsProcessor;
@@ -78,7 +80,25 @@ public class StorageManager {
 						
 					} else if (handler.equals(MacIpProcessor.class.getName())) {
 						info += "\t\tMac " + ((MacIpInformation)clientInfos.get(client).get(handler)).getClientMac() + " <===> " + ((MacIpInformation)clientInfos.get(client).get(handler)).getClientIP() + "\n";
-						
+					
+					} else if (handler.equals(LinktableProcessor.class.getName())) {
+						LinktableInformation inf = (LinktableInformation)clientInfos.get(client).get(handler);
+						info += "\t\tLinktable size: " + inf.getLinktable().size() + "\n";
+						/*
+						for (String link : inf.getLinktable().keySet()) {
+							info += "\t\t\tfr/to: " + link + " --- metric: " + inf.getLinktable().get(link).getMetric() + "\n";
+						}
+						*/
+					} else if (handler.equals(RoutingtableProcessor.class.getName())) {
+						RoutingtableInformation inf = (RoutingtableInformation)clientInfos.get(client).get(handler);
+						info += "\t\tRoutingtable size: " + inf.getRoutingtable().size() + "\n";
+						/*
+						for (String link : inf.getRoutingtable().keySet()) {
+							for (RoutingtableLinkInformation rinf: inf.getRoutingtable().get(link).getRoute()) {
+								info += "\t\t\torig: " + link + " (" + rinf.getFrom() + " to " + rinf.getTo() + ")" + " --- metric: " + rinf.getMetric() + "\n";
+							}
+						}
+						*/
 					} else if (handler.equals(GpsProcessor.class.getName())) {
 						boolean guessed = ((GpsInformation)clientInfos.get(client).get(handler)).isGuessed();
 						

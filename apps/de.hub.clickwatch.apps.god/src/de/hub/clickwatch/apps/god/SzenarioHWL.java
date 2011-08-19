@@ -11,6 +11,8 @@ import de.hub.clickwatch.apps.god.node.StatsProcessor;
 import de.hub.clickwatch.apps.god.node.ChannelStatsProcessor;
 import de.hub.clickwatch.apps.god.node.GpsProcessor;
 import de.hub.clickwatch.apps.god.node.LinkProcessor;
+import de.hub.clickwatch.apps.god.node.LinktableProcessor;
+import de.hub.clickwatch.apps.god.node.RoutingtableProcessor;
 import de.hub.clickwatch.apps.god.node.MacIpProcessor;
 
 public class SzenarioHWL implements Szenario {
@@ -51,6 +53,18 @@ public class SzenarioHWL implements Szenario {
     private static final String[] LINK_HANDLER = new String[] {"device_wifi/link_stat", "bcast_stats"};
 
 	private static final Class<? extends NodeInformationProcessor> LINK_PROCESSOR = LinkProcessor.class;
+	
+	private static final String[] GET_LINKTABLE_HANDLER = new String[] {"lt", "links"};
+	
+	private static final String[] SET_LINKTABLE_HANDLER = new String[] {"lt", "links"};
+
+	private static final Class<? extends NodeInformationProcessor> LINKTABLE_PROCESSOR = LinktableProcessor.class;
+	
+	private static final String[] GET_ROUTINGTABLE_HANDLER = new String[] {"lt", "routes"};
+	
+	private static final String[] SET_ROUTINGTABLE_HANDLER = new String[] {"lt", "routes"};
+
+	private static final Class<? extends NodeInformationProcessor> ROUTINGTABLE_PROCESSOR = RoutingtableProcessor.class;
 
 	private static final String[] GATEWAY = new String[] {"192.168.4.164", "7777"};
 	
@@ -206,5 +220,29 @@ public class SzenarioHWL implements Szenario {
 	@Override
 	public String get_NODE_PROCESSOR_FILEROOT() {
 		return NODE_PROCESSOR_FILEROOT;
+	}
+	@Override
+	public String[] get_GET_ROUTINGTABLE_HANDLER() {
+		return GET_ROUTINGTABLE_HANDLER;
+	}
+	@Override
+	public String[] get_SET_ROUTINGTABLE_HANDLER() {
+		return SET_ROUTINGTABLE_HANDLER;
+	}
+	@Override
+	public Class<? extends NodeInformationProcessor> get_ROUTINGTABLE_PROCESSOR() {
+		return ROUTINGTABLE_PROCESSOR;
+	}
+	@Override
+	public String[] get_GET_LINKTABLE_HANDLER() {
+		return GET_LINKTABLE_HANDLER;
+	}
+	@Override
+	public String[] get_SET_LINKTABLE_HANDLER() {
+		return SET_LINKTABLE_HANDLER;
+	}
+	@Override
+	public Class<? extends NodeInformationProcessor> get_LINKTABLE_PROCESSOR() {
+		return LINKTABLE_PROCESSOR;
 	}
 }
