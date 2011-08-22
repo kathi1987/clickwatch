@@ -78,6 +78,10 @@ public class Sf_statsAdapterFactory extends AdapterFactoryImpl {
 				return createFlowstatsAdapter();
 			}
 			@Override
+			public Adapter caseRxflow(Rxflow object) {
+				return createRxflowAdapter();
+			}
+			@Override
 			public Adapter caseStats(Stats object) {
 				return createStatsAdapter();
 			}
@@ -120,6 +124,20 @@ public class Sf_statsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createFlowstatsAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.hub.clickwatch.specificmodels.brn.sf_stats.Rxflow <em>Rxflow</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.hub.clickwatch.specificmodels.brn.sf_stats.Rxflow
+	 * @generated
+	 */
+	public Adapter createRxflowAdapter() {
 		return null;
 	}
 

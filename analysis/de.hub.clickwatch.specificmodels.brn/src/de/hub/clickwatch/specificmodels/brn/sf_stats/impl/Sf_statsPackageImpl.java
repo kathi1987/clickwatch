@@ -49,6 +49,7 @@ import de.hub.clickwatch.specificmodels.brn.lt_routes.Lt_routesPackage;
 import de.hub.clickwatch.specificmodels.brn.lt_routes.impl.Lt_routesPackageImpl;
 
 import de.hub.clickwatch.specificmodels.brn.sf_stats.Flowstats;
+import de.hub.clickwatch.specificmodels.brn.sf_stats.Rxflow;
 import de.hub.clickwatch.specificmodels.brn.sf_stats.Sf_statsFactory;
 import de.hub.clickwatch.specificmodels.brn.sf_stats.Sf_statsPackage;
 import de.hub.clickwatch.specificmodels.brn.sf_stats.Stats;
@@ -78,6 +79,13 @@ public class Sf_statsPackageImpl extends EPackageImpl implements Sf_statsPackage
 	 * @generated
 	 */
 	private EClass flowstatsEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass rxflowEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -233,8 +241,98 @@ public class Sf_statsPackageImpl extends EPackageImpl implements Sf_statsPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getFlowstats_Rxflow() {
+		return (EReference)flowstatsEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EAttribute getFlowstats_Node() {
-		return (EAttribute)flowstatsEClass.getEStructuralFeatures().get(3);
+		return (EAttribute)flowstatsEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getRxflow() {
+		return rxflowEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getRxflow_EContainer_rxflow() {
+		return (EReference)rxflowEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getRxflow_Src() {
+		return (EAttribute)rxflowEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getRxflow_Dst() {
+		return (EAttribute)rxflowEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getRxflow_Flowid() {
+		return (EAttribute)rxflowEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getRxflow_Packet_count() {
+		return (EAttribute)rxflowEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getRxflow_Packet_size() {
+		return (EAttribute)rxflowEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getRxflow_Crc_err() {
+		return (EAttribute)rxflowEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getRxflow_Avg_hops() {
+		return (EAttribute)rxflowEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
@@ -377,7 +475,18 @@ public class Sf_statsPackageImpl extends EPackageImpl implements Sf_statsPackage
 		createEReference(flowstatsEClass, FLOWSTATS__ECONTAINER_FLOWSTATS);
 		createEAttribute(flowstatsEClass, FLOWSTATS__TEXT);
 		createEReference(flowstatsEClass, FLOWSTATS__TXFLOW);
+		createEReference(flowstatsEClass, FLOWSTATS__RXFLOW);
 		createEAttribute(flowstatsEClass, FLOWSTATS__NODE);
+
+		rxflowEClass = createEClass(RXFLOW);
+		createEReference(rxflowEClass, RXFLOW__ECONTAINER_RXFLOW);
+		createEAttribute(rxflowEClass, RXFLOW__SRC);
+		createEAttribute(rxflowEClass, RXFLOW__DST);
+		createEAttribute(rxflowEClass, RXFLOW__FLOWID);
+		createEAttribute(rxflowEClass, RXFLOW__PACKET_COUNT);
+		createEAttribute(rxflowEClass, RXFLOW__PACKET_SIZE);
+		createEAttribute(rxflowEClass, RXFLOW__CRC_ERR);
+		createEAttribute(rxflowEClass, RXFLOW__AVG_HOPS);
 
 		statsEClass = createEClass(STATS);
 		createEReference(statsEClass, STATS__FLOWSTATS);
@@ -432,7 +541,18 @@ public class Sf_statsPackageImpl extends EPackageImpl implements Sf_statsPackage
 		initEReference(getFlowstats_EContainer_flowstats(), this.getStats(), this.getStats_Flowstats(), "eContainer_flowstats", null, 0, 1, Flowstats.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getFlowstats_Text(), ecorePackage.getEString(), "text", null, 0, -1, Flowstats.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getFlowstats_Txflow(), this.getTxflow(), this.getTxflow_EContainer_txflow(), "txflow", null, 0, -1, Flowstats.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getFlowstats_Rxflow(), this.getRxflow(), this.getRxflow_EContainer_rxflow(), "rxflow", null, 0, -1, Flowstats.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getFlowstats_Node(), ecorePackage.getEString(), "node", null, 0, 1, Flowstats.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(rxflowEClass, Rxflow.class, "Rxflow", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getRxflow_EContainer_rxflow(), this.getFlowstats(), this.getFlowstats_Rxflow(), "eContainer_rxflow", null, 0, 1, Rxflow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRxflow_Src(), ecorePackage.getEString(), "src", null, 0, 1, Rxflow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRxflow_Dst(), ecorePackage.getEString(), "dst", null, 0, 1, Rxflow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRxflow_Flowid(), ecorePackage.getEInt(), "flowid", null, 0, 1, Rxflow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRxflow_Packet_count(), ecorePackage.getEInt(), "packet_count", null, 0, 1, Rxflow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRxflow_Packet_size(), ecorePackage.getEInt(), "packet_size", null, 0, 1, Rxflow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRxflow_Crc_err(), ecorePackage.getEInt(), "crc_err", null, 0, 1, Rxflow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRxflow_Avg_hops(), ecorePackage.getEInt(), "avg_hops", null, 0, 1, Rxflow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(statsEClass, Stats.class, "Stats", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getStats_Flowstats(), this.getFlowstats(), this.getFlowstats_EContainer_flowstats(), "flowstats", null, 0, 1, Stats.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -488,10 +608,65 @@ public class Sf_statsPackageImpl extends EPackageImpl implements Sf_statsPackage
 			 "IsCopy", "false"
 		   });		
 		addAnnotation
+		  (getFlowstats_Rxflow(), 
+		   source, 
+		   new String[] {
+			 "target_id", "Stats|Handler/flowstats|flowstats:Flowstats|EObject/rxflow|rxflow:Rxflow|EObject",
+			 "IsCopy", "false"
+		   });		
+		addAnnotation
 		  (getFlowstats_Node(), 
 		   source, 
 		   new String[] {
 			 "target_id", "Stats|Handler/flowstats|flowstats:Flowstats|EObject/node|node:"
+		   });		
+		addAnnotation
+		  (rxflowEClass, 
+		   source, 
+		   new String[] {
+			 "target_id", "Stats|Handler/flowstats|flowstats:Flowstats|EObject/rxflow|rxflow:Rxflow|EObject"
+		   });		
+		addAnnotation
+		  (getRxflow_Src(), 
+		   source, 
+		   new String[] {
+			 "target_id", "Stats|Handler/flowstats|flowstats:Flowstats|EObject/rxflow|rxflow:Rxflow|EObject/src|src:"
+		   });		
+		addAnnotation
+		  (getRxflow_Dst(), 
+		   source, 
+		   new String[] {
+			 "target_id", "Stats|Handler/flowstats|flowstats:Flowstats|EObject/rxflow|rxflow:Rxflow|EObject/dst|dst:"
+		   });		
+		addAnnotation
+		  (getRxflow_Flowid(), 
+		   source, 
+		   new String[] {
+			 "target_id", "Stats|Handler/flowstats|flowstats:Flowstats|EObject/rxflow|rxflow:Rxflow|EObject/flowid|flowid:"
+		   });		
+		addAnnotation
+		  (getRxflow_Packet_count(), 
+		   source, 
+		   new String[] {
+			 "target_id", "Stats|Handler/flowstats|flowstats:Flowstats|EObject/rxflow|rxflow:Rxflow|EObject/packet_count|packet_count:"
+		   });		
+		addAnnotation
+		  (getRxflow_Packet_size(), 
+		   source, 
+		   new String[] {
+			 "target_id", "Stats|Handler/flowstats|flowstats:Flowstats|EObject/rxflow|rxflow:Rxflow|EObject/packet_size|packet_size:"
+		   });		
+		addAnnotation
+		  (getRxflow_Crc_err(), 
+		   source, 
+		   new String[] {
+			 "target_id", "Stats|Handler/flowstats|flowstats:Flowstats|EObject/rxflow|rxflow:Rxflow|EObject/crc_err|crc_err:"
+		   });		
+		addAnnotation
+		  (getRxflow_Avg_hops(), 
+		   source, 
+		   new String[] {
+			 "target_id", "Stats|Handler/flowstats|flowstats:Flowstats|EObject/rxflow|rxflow:Rxflow|EObject/avg_hops|avg_hops:"
 		   });		
 		addAnnotation
 		  (statsEClass, 

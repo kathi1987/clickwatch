@@ -7,6 +7,7 @@
 package de.hub.clickwatch.specificmodels.brn.sf_stats.impl;
 
 import de.hub.clickwatch.specificmodels.brn.sf_stats.Flowstats;
+import de.hub.clickwatch.specificmodels.brn.sf_stats.Rxflow;
 import de.hub.clickwatch.specificmodels.brn.sf_stats.Sf_statsPackage;
 import de.hub.clickwatch.specificmodels.brn.sf_stats.Stats;
 import de.hub.clickwatch.specificmodels.brn.sf_stats.Txflow;
@@ -39,6 +40,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link de.hub.clickwatch.specificmodels.brn.sf_stats.impl.FlowstatsImpl#getEContainer_flowstats <em>EContainer flowstats</em>}</li>
  *   <li>{@link de.hub.clickwatch.specificmodels.brn.sf_stats.impl.FlowstatsImpl#getText <em>Text</em>}</li>
  *   <li>{@link de.hub.clickwatch.specificmodels.brn.sf_stats.impl.FlowstatsImpl#getTxflow <em>Txflow</em>}</li>
+ *   <li>{@link de.hub.clickwatch.specificmodels.brn.sf_stats.impl.FlowstatsImpl#getRxflow <em>Rxflow</em>}</li>
  *   <li>{@link de.hub.clickwatch.specificmodels.brn.sf_stats.impl.FlowstatsImpl#getNode <em>Node</em>}</li>
  * </ul>
  * </p>
@@ -65,6 +67,16 @@ public class FlowstatsImpl extends EObjectImpl implements Flowstats {
 	 * @ordered
 	 */
 	protected EList<Txflow> txflow;
+
+	/**
+	 * The cached value of the '{@link #getRxflow() <em>Rxflow</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRxflow()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Rxflow> rxflow;
 
 	/**
 	 * The default value of the '{@link #getNode() <em>Node</em>}' attribute.
@@ -175,6 +187,18 @@ public class FlowstatsImpl extends EObjectImpl implements Flowstats {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<Rxflow> getRxflow() {
+		if (rxflow == null) {
+			rxflow = new EObjectContainmentWithInverseEList<Rxflow>(Rxflow.class, this, Sf_statsPackage.FLOWSTATS__RXFLOW, Sf_statsPackage.RXFLOW__ECONTAINER_RXFLOW);
+		}
+		return rxflow;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public String getNode() {
 		return node;
 	}
@@ -206,6 +230,8 @@ public class FlowstatsImpl extends EObjectImpl implements Flowstats {
 				return basicSetEContainer_flowstats((Stats)otherEnd, msgs);
 			case Sf_statsPackage.FLOWSTATS__TXFLOW:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getTxflow()).basicAdd(otherEnd, msgs);
+			case Sf_statsPackage.FLOWSTATS__RXFLOW:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getRxflow()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -222,6 +248,8 @@ public class FlowstatsImpl extends EObjectImpl implements Flowstats {
 				return basicSetEContainer_flowstats(null, msgs);
 			case Sf_statsPackage.FLOWSTATS__TXFLOW:
 				return ((InternalEList<?>)getTxflow()).basicRemove(otherEnd, msgs);
+			case Sf_statsPackage.FLOWSTATS__RXFLOW:
+				return ((InternalEList<?>)getRxflow()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -254,6 +282,8 @@ public class FlowstatsImpl extends EObjectImpl implements Flowstats {
 				return getText();
 			case Sf_statsPackage.FLOWSTATS__TXFLOW:
 				return getTxflow();
+			case Sf_statsPackage.FLOWSTATS__RXFLOW:
+				return getRxflow();
 			case Sf_statsPackage.FLOWSTATS__NODE:
 				return getNode();
 		}
@@ -280,6 +310,10 @@ public class FlowstatsImpl extends EObjectImpl implements Flowstats {
 				getTxflow().clear();
 				getTxflow().addAll((Collection<? extends Txflow>)newValue);
 				return;
+			case Sf_statsPackage.FLOWSTATS__RXFLOW:
+				getRxflow().clear();
+				getRxflow().addAll((Collection<? extends Rxflow>)newValue);
+				return;
 			case Sf_statsPackage.FLOWSTATS__NODE:
 				setNode((String)newValue);
 				return;
@@ -304,6 +338,9 @@ public class FlowstatsImpl extends EObjectImpl implements Flowstats {
 			case Sf_statsPackage.FLOWSTATS__TXFLOW:
 				getTxflow().clear();
 				return;
+			case Sf_statsPackage.FLOWSTATS__RXFLOW:
+				getRxflow().clear();
+				return;
 			case Sf_statsPackage.FLOWSTATS__NODE:
 				setNode(NODE_EDEFAULT);
 				return;
@@ -325,6 +362,8 @@ public class FlowstatsImpl extends EObjectImpl implements Flowstats {
 				return text != null && !text.isEmpty();
 			case Sf_statsPackage.FLOWSTATS__TXFLOW:
 				return txflow != null && !txflow.isEmpty();
+			case Sf_statsPackage.FLOWSTATS__RXFLOW:
+				return rxflow != null && !rxflow.isEmpty();
 			case Sf_statsPackage.FLOWSTATS__NODE:
 				return NODE_EDEFAULT == null ? node != null : !NODE_EDEFAULT.equals(node);
 		}

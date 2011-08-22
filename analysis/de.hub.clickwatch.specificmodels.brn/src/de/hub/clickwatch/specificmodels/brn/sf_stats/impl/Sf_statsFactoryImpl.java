@@ -61,6 +61,7 @@ public class Sf_statsFactoryImpl extends EFactoryImpl implements Sf_statsFactory
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case Sf_statsPackage.FLOWSTATS: return createFlowstats();
+			case Sf_statsPackage.RXFLOW: return createRxflow();
 			case Sf_statsPackage.STATS: return createStats();
 			case Sf_statsPackage.TXFLOW: return createTxflow();
 			default:
@@ -76,6 +77,16 @@ public class Sf_statsFactoryImpl extends EFactoryImpl implements Sf_statsFactory
 	public Flowstats createFlowstats() {
 		FlowstatsImpl flowstats = new FlowstatsImpl();
 		return flowstats;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Rxflow createRxflow() {
+		RxflowImpl rxflow = new RxflowImpl();
+		return rxflow;
 	}
 
 	/**

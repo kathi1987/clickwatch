@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link de.hub.clickwatch.specificmodels.brn.sf_stats.Flowstats#getEContainer_flowstats <em>EContainer flowstats</em>}</li>
  *   <li>{@link de.hub.clickwatch.specificmodels.brn.sf_stats.Flowstats#getText <em>Text</em>}</li>
  *   <li>{@link de.hub.clickwatch.specificmodels.brn.sf_stats.Flowstats#getTxflow <em>Txflow</em>}</li>
+ *   <li>{@link de.hub.clickwatch.specificmodels.brn.sf_stats.Flowstats#getRxflow <em>Rxflow</em>}</li>
  *   <li>{@link de.hub.clickwatch.specificmodels.brn.sf_stats.Flowstats#getNode <em>Node</em>}</li>
  * </ul>
  * </p>
@@ -93,6 +94,25 @@ public interface Flowstats extends EObject {
 	 * @generated
 	 */
 	EList<Txflow> getTxflow();
+
+	/**
+	 * Returns the value of the '<em><b>Rxflow</b></em>' containment reference list.
+	 * The list contents are of type {@link de.hub.clickwatch.specificmodels.brn.sf_stats.Rxflow}.
+	 * It is bidirectional and its opposite is '{@link de.hub.clickwatch.specificmodels.brn.sf_stats.Rxflow#getEContainer_rxflow <em>EContainer rxflow</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Rxflow</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Rxflow</em>' containment reference list.
+	 * @see de.hub.clickwatch.specificmodels.brn.sf_stats.Sf_statsPackage#getFlowstats_Rxflow()
+	 * @see de.hub.clickwatch.specificmodels.brn.sf_stats.Rxflow#getEContainer_rxflow
+	 * @model opposite="eContainer_rxflow" containment="true"
+	 *        annotation="http://de.hub.clickwatch.specificmodels target_id='Stats|Handler/flowstats|flowstats:Flowstats|EObject/rxflow|rxflow:Rxflow|EObject' IsCopy='false'"
+	 * @generated
+	 */
+	EList<Rxflow> getRxflow();
 
 	/**
 	 * Returns the value of the '<em><b>Node</b></em>' attribute.

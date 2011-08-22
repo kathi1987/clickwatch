@@ -35,6 +35,15 @@ public interface Sf_statsFactory extends EFactory {
 	Flowstats createFlowstats();
 
 	/**
+	 * Returns a new object of class '<em>Rxflow</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Rxflow</em>'.
+	 * @generated
+	 */
+	Rxflow createRxflow();
+
+	/**
 	 * Returns a new object of class '<em>Stats</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

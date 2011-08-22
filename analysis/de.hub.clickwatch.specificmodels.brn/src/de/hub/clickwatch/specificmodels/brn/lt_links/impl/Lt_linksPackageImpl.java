@@ -36,6 +36,8 @@ import de.hub.clickwatch.specificmodels.brn.lt_links.Lt_linksFactory;
 import de.hub.clickwatch.specificmodels.brn.lt_links.Lt_linksPackage;
 import de.hub.clickwatch.specificmodels.brn.lt_routes.Lt_routesPackage;
 import de.hub.clickwatch.specificmodels.brn.lt_routes.impl.Lt_routesPackageImpl;
+import de.hub.clickwatch.specificmodels.brn.sf_stats.Sf_statsPackage;
+import de.hub.clickwatch.specificmodels.brn.sf_stats.impl.Sf_statsPackageImpl;
 import de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.Sys_info_systeminfoPackage;
 import de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.impl.Sys_info_systeminfoPackageImpl;
 
@@ -126,6 +128,7 @@ public class Lt_linksPackageImpl extends EPackageImpl implements Lt_linksPackage
 		Lt_routesPackageImpl theLt_routesPackage = (Lt_routesPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Lt_routesPackage.eNS_URI) instanceof Lt_routesPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Lt_routesPackage.eNS_URI) : Lt_routesPackage.eINSTANCE);
 		Device_wifi_link_stat_bcast_statsPackageImpl theDevice_wifi_link_stat_bcast_statsPackage = (Device_wifi_link_stat_bcast_statsPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Device_wifi_link_stat_bcast_statsPackage.eNS_URI) instanceof Device_wifi_link_stat_bcast_statsPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Device_wifi_link_stat_bcast_statsPackage.eNS_URI) : Device_wifi_link_stat_bcast_statsPackage.eINSTANCE);
 		Device_wifi_wifidevice_cst_statsPackageImpl theDevice_wifi_wifidevice_cst_statsPackage = (Device_wifi_wifidevice_cst_statsPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Device_wifi_wifidevice_cst_statsPackage.eNS_URI) instanceof Device_wifi_wifidevice_cst_statsPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Device_wifi_wifidevice_cst_statsPackage.eNS_URI) : Device_wifi_wifidevice_cst_statsPackage.eINSTANCE);
+		Sf_statsPackageImpl theSf_statsPackage = (Sf_statsPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Sf_statsPackage.eNS_URI) instanceof Sf_statsPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Sf_statsPackage.eNS_URI) : Sf_statsPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theLt_linksPackage.createPackageContents();
@@ -139,6 +142,7 @@ public class Lt_linksPackageImpl extends EPackageImpl implements Lt_linksPackage
 		theLt_routesPackage.createPackageContents();
 		theDevice_wifi_link_stat_bcast_statsPackage.createPackageContents();
 		theDevice_wifi_wifidevice_cst_statsPackage.createPackageContents();
+		theSf_statsPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theLt_linksPackage.initializePackageContents();
@@ -152,6 +156,7 @@ public class Lt_linksPackageImpl extends EPackageImpl implements Lt_linksPackage
 		theLt_routesPackage.initializePackageContents();
 		theDevice_wifi_link_stat_bcast_statsPackage.initializePackageContents();
 		theDevice_wifi_wifidevice_cst_statsPackage.initializePackageContents();
+		theSf_statsPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theLt_linksPackage.freeze();

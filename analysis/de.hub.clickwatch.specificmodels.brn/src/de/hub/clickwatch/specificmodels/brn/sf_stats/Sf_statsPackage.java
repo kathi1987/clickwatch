@@ -100,13 +100,22 @@ public interface Sf_statsPackage extends EPackage {
 	int FLOWSTATS__TXFLOW = 2;
 
 	/**
+	 * The feature id for the '<em><b>Rxflow</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FLOWSTATS__RXFLOW = 3;
+
+	/**
 	 * The feature id for the '<em><b>Node</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FLOWSTATS__NODE = 3;
+	int FLOWSTATS__NODE = 4;
 
 	/**
 	 * The number of structural features of the '<em>Flowstats</em>' class.
@@ -115,7 +124,98 @@ public interface Sf_statsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FLOWSTATS_FEATURE_COUNT = 4;
+	int FLOWSTATS_FEATURE_COUNT = 5;
+
+	/**
+	 * The meta object id for the '{@link de.hub.clickwatch.specificmodels.brn.sf_stats.impl.RxflowImpl <em>Rxflow</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.hub.clickwatch.specificmodels.brn.sf_stats.impl.RxflowImpl
+	 * @see de.hub.clickwatch.specificmodels.brn.sf_stats.impl.Sf_statsPackageImpl#getRxflow()
+	 * @generated
+	 */
+	int RXFLOW = 1;
+
+	/**
+	 * The feature id for the '<em><b>EContainer rxflow</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RXFLOW__ECONTAINER_RXFLOW = 0;
+
+	/**
+	 * The feature id for the '<em><b>Src</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RXFLOW__SRC = 1;
+
+	/**
+	 * The feature id for the '<em><b>Dst</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RXFLOW__DST = 2;
+
+	/**
+	 * The feature id for the '<em><b>Flowid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RXFLOW__FLOWID = 3;
+
+	/**
+	 * The feature id for the '<em><b>Packet count</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RXFLOW__PACKET_COUNT = 4;
+
+	/**
+	 * The feature id for the '<em><b>Packet size</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RXFLOW__PACKET_SIZE = 5;
+
+	/**
+	 * The feature id for the '<em><b>Crc err</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RXFLOW__CRC_ERR = 6;
+
+	/**
+	 * The feature id for the '<em><b>Avg hops</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RXFLOW__AVG_HOPS = 7;
+
+	/**
+	 * The number of structural features of the '<em>Rxflow</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RXFLOW_FEATURE_COUNT = 8;
 
 	/**
 	 * The meta object id for the '{@link de.hub.clickwatch.specificmodels.brn.sf_stats.impl.StatsImpl <em>Stats</em>}' class.
@@ -125,7 +225,7 @@ public interface Sf_statsPackage extends EPackage {
 	 * @see de.hub.clickwatch.specificmodels.brn.sf_stats.impl.Sf_statsPackageImpl#getStats()
 	 * @generated
 	 */
-	int STATS = 1;
+	int STATS = 2;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -234,7 +334,7 @@ public interface Sf_statsPackage extends EPackage {
 	 * @see de.hub.clickwatch.specificmodels.brn.sf_stats.impl.Sf_statsPackageImpl#getTxflow()
 	 * @generated
 	 */
-	int TXFLOW = 2;
+	int TXFLOW = 3;
 
 	/**
 	 * The feature id for the '<em><b>EContainer txflow</b></em>' container reference.
@@ -371,6 +471,17 @@ public interface Sf_statsPackage extends EPackage {
 	EReference getFlowstats_Txflow();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link de.hub.clickwatch.specificmodels.brn.sf_stats.Flowstats#getRxflow <em>Rxflow</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Rxflow</em>'.
+	 * @see de.hub.clickwatch.specificmodels.brn.sf_stats.Flowstats#getRxflow()
+	 * @see #getFlowstats()
+	 * @generated
+	 */
+	EReference getFlowstats_Rxflow();
+
+	/**
 	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.specificmodels.brn.sf_stats.Flowstats#getNode <em>Node</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -380,6 +491,104 @@ public interface Sf_statsPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getFlowstats_Node();
+
+	/**
+	 * Returns the meta object for class '{@link de.hub.clickwatch.specificmodels.brn.sf_stats.Rxflow <em>Rxflow</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Rxflow</em>'.
+	 * @see de.hub.clickwatch.specificmodels.brn.sf_stats.Rxflow
+	 * @generated
+	 */
+	EClass getRxflow();
+
+	/**
+	 * Returns the meta object for the container reference '{@link de.hub.clickwatch.specificmodels.brn.sf_stats.Rxflow#getEContainer_rxflow <em>EContainer rxflow</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>EContainer rxflow</em>'.
+	 * @see de.hub.clickwatch.specificmodels.brn.sf_stats.Rxflow#getEContainer_rxflow()
+	 * @see #getRxflow()
+	 * @generated
+	 */
+	EReference getRxflow_EContainer_rxflow();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.specificmodels.brn.sf_stats.Rxflow#getSrc <em>Src</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Src</em>'.
+	 * @see de.hub.clickwatch.specificmodels.brn.sf_stats.Rxflow#getSrc()
+	 * @see #getRxflow()
+	 * @generated
+	 */
+	EAttribute getRxflow_Src();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.specificmodels.brn.sf_stats.Rxflow#getDst <em>Dst</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Dst</em>'.
+	 * @see de.hub.clickwatch.specificmodels.brn.sf_stats.Rxflow#getDst()
+	 * @see #getRxflow()
+	 * @generated
+	 */
+	EAttribute getRxflow_Dst();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.specificmodels.brn.sf_stats.Rxflow#getFlowid <em>Flowid</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Flowid</em>'.
+	 * @see de.hub.clickwatch.specificmodels.brn.sf_stats.Rxflow#getFlowid()
+	 * @see #getRxflow()
+	 * @generated
+	 */
+	EAttribute getRxflow_Flowid();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.specificmodels.brn.sf_stats.Rxflow#getPacket_count <em>Packet count</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Packet count</em>'.
+	 * @see de.hub.clickwatch.specificmodels.brn.sf_stats.Rxflow#getPacket_count()
+	 * @see #getRxflow()
+	 * @generated
+	 */
+	EAttribute getRxflow_Packet_count();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.specificmodels.brn.sf_stats.Rxflow#getPacket_size <em>Packet size</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Packet size</em>'.
+	 * @see de.hub.clickwatch.specificmodels.brn.sf_stats.Rxflow#getPacket_size()
+	 * @see #getRxflow()
+	 * @generated
+	 */
+	EAttribute getRxflow_Packet_size();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.specificmodels.brn.sf_stats.Rxflow#getCrc_err <em>Crc err</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Crc err</em>'.
+	 * @see de.hub.clickwatch.specificmodels.brn.sf_stats.Rxflow#getCrc_err()
+	 * @see #getRxflow()
+	 * @generated
+	 */
+	EAttribute getRxflow_Crc_err();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.specificmodels.brn.sf_stats.Rxflow#getAvg_hops <em>Avg hops</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Avg hops</em>'.
+	 * @see de.hub.clickwatch.specificmodels.brn.sf_stats.Rxflow#getAvg_hops()
+	 * @see #getRxflow()
+	 * @generated
+	 */
+	EAttribute getRxflow_Avg_hops();
 
 	/**
 	 * Returns the meta object for class '{@link de.hub.clickwatch.specificmodels.brn.sf_stats.Stats <em>Stats</em>}'.
@@ -568,12 +777,94 @@ public interface Sf_statsPackage extends EPackage {
 		EReference FLOWSTATS__TXFLOW = eINSTANCE.getFlowstats_Txflow();
 
 		/**
+		 * The meta object literal for the '<em><b>Rxflow</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference FLOWSTATS__RXFLOW = eINSTANCE.getFlowstats_Rxflow();
+
+		/**
 		 * The meta object literal for the '<em><b>Node</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EAttribute FLOWSTATS__NODE = eINSTANCE.getFlowstats_Node();
+
+		/**
+		 * The meta object literal for the '{@link de.hub.clickwatch.specificmodels.brn.sf_stats.impl.RxflowImpl <em>Rxflow</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.hub.clickwatch.specificmodels.brn.sf_stats.impl.RxflowImpl
+		 * @see de.hub.clickwatch.specificmodels.brn.sf_stats.impl.Sf_statsPackageImpl#getRxflow()
+		 * @generated
+		 */
+		EClass RXFLOW = eINSTANCE.getRxflow();
+
+		/**
+		 * The meta object literal for the '<em><b>EContainer rxflow</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference RXFLOW__ECONTAINER_RXFLOW = eINSTANCE.getRxflow_EContainer_rxflow();
+
+		/**
+		 * The meta object literal for the '<em><b>Src</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute RXFLOW__SRC = eINSTANCE.getRxflow_Src();
+
+		/**
+		 * The meta object literal for the '<em><b>Dst</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute RXFLOW__DST = eINSTANCE.getRxflow_Dst();
+
+		/**
+		 * The meta object literal for the '<em><b>Flowid</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute RXFLOW__FLOWID = eINSTANCE.getRxflow_Flowid();
+
+		/**
+		 * The meta object literal for the '<em><b>Packet count</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute RXFLOW__PACKET_COUNT = eINSTANCE.getRxflow_Packet_count();
+
+		/**
+		 * The meta object literal for the '<em><b>Packet size</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute RXFLOW__PACKET_SIZE = eINSTANCE.getRxflow_Packet_size();
+
+		/**
+		 * The meta object literal for the '<em><b>Crc err</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute RXFLOW__CRC_ERR = eINSTANCE.getRxflow_Crc_err();
+
+		/**
+		 * The meta object literal for the '<em><b>Avg hops</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute RXFLOW__AVG_HOPS = eINSTANCE.getRxflow_Avg_hops();
 
 		/**
 		 * The meta object literal for the '{@link de.hub.clickwatch.specificmodels.brn.sf_stats.impl.StatsImpl <em>Stats</em>}' class.
