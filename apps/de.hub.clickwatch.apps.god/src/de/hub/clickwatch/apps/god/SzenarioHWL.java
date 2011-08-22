@@ -10,6 +10,7 @@ import de.hub.clickwatch.apps.god.node.ChannelProcessor;
 import de.hub.clickwatch.apps.god.node.StatsProcessor;
 import de.hub.clickwatch.apps.god.node.ChannelStatsProcessor;
 import de.hub.clickwatch.apps.god.node.GpsProcessor;
+import de.hub.clickwatch.apps.god.node.FlowstatsProcessor;
 import de.hub.clickwatch.apps.god.node.LinkProcessor;
 import de.hub.clickwatch.apps.god.node.LinktableProcessor;
 import de.hub.clickwatch.apps.god.node.RoutingtableProcessor;
@@ -24,10 +25,13 @@ public class SzenarioHWL implements Szenario {
 	private static final int WAIT_AFTER_COMPUTE_POSITION_ERROR = 10000;
 	
 	public static final String[][] ACCESS_POINTS = new String[][] {
-		{"192.168.3.71", "7777", "wgt71"},
-		{"192.168.3.47", "7777", "wgt47"},
-		{"192.168.3.38", "7777", "wgt38"},
-		{"192.168.3.37", "7777", "wgt37"}
+		//{"192.168.3.71", "7777", "wgt71"},
+		//{"192.168.3.47", "7777", "wgt47"},
+		//{"192.168.3.38", "7777", "wgt38"},
+		//{"192.168.3.37", "7777", "wgt37"},
+		{"192.168.3.110", "7777", "sk110"},
+		{"192.168.3.111", "7777", "sk111"},
+		{"192.168.3.112", "7777", "sk112"}
 	};
 	
 	private static final String[] POWER = new String[] {"device_wifi/data_power", "systempower"};
@@ -49,7 +53,12 @@ public class SzenarioHWL implements Szenario {
 	private static final String[] GPS_HANDLER = new String[] {"gps", "gps_coord"};
 	
 	private static final Class<? extends NodeInformationProcessor> GPS_PROCESSOR = GpsProcessor.class;
+	
+	private static final String[] FLOWSTATS_HANDLER = new String[] {"sf", "stats"};
+	
+	private static final Class<? extends NodeInformationProcessor> FLOWSTATS_PROCESSOR = FlowstatsProcessor.class;
 
+	
     private static final String[] LINK_HANDLER = new String[] {"device_wifi/link_stat", "bcast_stats"};
 
 	private static final Class<? extends NodeInformationProcessor> LINK_PROCESSOR = LinkProcessor.class;
@@ -244,5 +253,13 @@ public class SzenarioHWL implements Szenario {
 	@Override
 	public Class<? extends NodeInformationProcessor> get_LINKTABLE_PROCESSOR() {
 		return LINKTABLE_PROCESSOR;
+	}
+	@Override
+	public String[] get_FLOWSTATS_HANDLER() {
+		return FLOWSTATS_HANDLER;
+	}
+	@Override
+	public Class<? extends NodeInformationProcessor> get_FLOWSTATS_PROCESSOR() {
+		return FLOWSTATS_PROCESSOR;
 	}
 }

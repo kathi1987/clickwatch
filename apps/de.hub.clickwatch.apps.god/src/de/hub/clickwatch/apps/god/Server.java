@@ -150,6 +150,7 @@ public class Server implements IClickWatchMain {
 			if (!szenario.get_USE_FILE_FOR_NODE_PROCESSOR()) {
 				nodeInf.addFilter(getSzenario().get_GET_LINKTABLE_HANDLER()[0], getSzenario().get_GET_LINKTABLE_HANDLER()[1], getSzenario().get_LINKTABLE_PROCESSOR());
 				nodeInf.addFilter(getSzenario().get_GET_ROUTINGTABLE_HANDLER()[0], getSzenario().get_GET_ROUTINGTABLE_HANDLER()[1], getSzenario().get_ROUTINGTABLE_PROCESSOR());
+				nodeInf.addFilter(getSzenario().get_FLOWSTATS_HANDLER()[0], getSzenario().get_FLOWSTATS_HANDLER()[1], getSzenario().get_FLOWSTATS_PROCESSOR());
 			}
 			macIpAPList.put(getSzenario().get_ACCESS_POINTS()[k][0] + ":" + getSzenario().get_ACCESS_POINTS()[k][1], "-1");
 			
