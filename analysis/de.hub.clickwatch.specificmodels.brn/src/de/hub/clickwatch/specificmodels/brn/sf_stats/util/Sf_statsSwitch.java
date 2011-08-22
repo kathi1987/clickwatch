@@ -4,16 +4,16 @@
  *
  * $Id$
  */
-package de.hub.clickwatch.specificmodels.brn.util;
+package de.hub.clickwatch.specificmodels.brn.sf_stats.util;
+
+import de.hub.clickwatch.model.Handler;
+
+import de.hub.clickwatch.specificmodels.brn.sf_stats.*;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.util.Switch;
 
-import de.hub.clickwatch.model.Handler;
-import de.hub.clickwatch.specificmodels.brn.*;
-import de.hub.clickwatch.specificmodels.brn.BrnPackage;
-import de.hub.clickwatch.specificmodels.brn.HandlerSubClass;
+import org.eclipse.emf.ecore.util.Switch;
 
 /**
  * <!-- begin-user-doc -->
@@ -25,17 +25,17 @@ import de.hub.clickwatch.specificmodels.brn.HandlerSubClass;
  * until a non-null result is returned,
  * which is the result of the switch.
  * <!-- end-user-doc -->
- * @see de.hub.clickwatch.specificmodels.brn.BrnPackage
+ * @see de.hub.clickwatch.specificmodels.brn.sf_stats.Sf_statsPackage
  * @generated
  */
-public class BrnSwitch<T> extends Switch<T> {
+public class Sf_statsSwitch<T> extends Switch<T> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static BrnPackage modelPackage;
+	protected static Sf_statsPackage modelPackage;
 
 	/**
 	 * Creates an instance of the switch.
@@ -43,9 +43,9 @@ public class BrnSwitch<T> extends Switch<T> {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public BrnSwitch() {
+	public Sf_statsSwitch() {
 		if (modelPackage == null) {
-			modelPackage = BrnPackage.eINSTANCE;
+			modelPackage = Sf_statsPackage.eINSTANCE;
 		}
 	}
 
@@ -72,10 +72,22 @@ public class BrnSwitch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-			case BrnPackage.HANDLER_SUB_CLASS: {
-				HandlerSubClass handlerSubClass = (HandlerSubClass)theEObject;
-				T result = caseHandlerSubClass(handlerSubClass);
-				if (result == null) result = caseHandler(handlerSubClass);
+			case Sf_statsPackage.FLOWSTATS: {
+				Flowstats flowstats = (Flowstats)theEObject;
+				T result = caseFlowstats(flowstats);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case Sf_statsPackage.STATS: {
+				Stats stats = (Stats)theEObject;
+				T result = caseStats(stats);
+				if (result == null) result = caseHandler(stats);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case Sf_statsPackage.TXFLOW: {
+				Txflow txflow = (Txflow)theEObject;
+				T result = caseTxflow(txflow);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -84,17 +96,47 @@ public class BrnSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Handler Sub Class</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Flowstats</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Handler Sub Class</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Flowstats</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseHandlerSubClass(HandlerSubClass object) {
+	public T caseFlowstats(Flowstats object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Stats</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Stats</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseStats(Stats object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Txflow</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Txflow</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTxflow(Txflow object) {
 		return null;
 	}
 
@@ -129,4 +171,4 @@ public class BrnSwitch<T> extends Switch<T> {
 		return null;
 	}
 
-} //BrnSwitch
+} //Sf_statsSwitch

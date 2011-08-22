@@ -4,34 +4,35 @@
  *
  * $Id$
  */
-package de.hub.clickwatch.specificmodels.brn.util;
+package de.hub.clickwatch.specificmodels.brn.sf_stats.util;
+
+import de.hub.clickwatch.model.Handler;
+
+import de.hub.clickwatch.specificmodels.brn.sf_stats.*;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
-import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
-import org.eclipse.emf.ecore.EObject;
 
-import de.hub.clickwatch.model.Handler;
-import de.hub.clickwatch.specificmodels.brn.*;
-import de.hub.clickwatch.specificmodels.brn.BrnPackage;
-import de.hub.clickwatch.specificmodels.brn.HandlerSubClass;
+import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
+
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
  * The <b>Adapter Factory</b> for the model.
  * It provides an adapter <code>createXXX</code> method for each class of the model.
  * <!-- end-user-doc -->
- * @see de.hub.clickwatch.specificmodels.brn.BrnPackage
+ * @see de.hub.clickwatch.specificmodels.brn.sf_stats.Sf_statsPackage
  * @generated
  */
-public class BrnAdapterFactory extends AdapterFactoryImpl {
+public class Sf_statsAdapterFactory extends AdapterFactoryImpl {
 	/**
 	 * The cached model package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static BrnPackage modelPackage;
+	protected static Sf_statsPackage modelPackage;
 
 	/**
 	 * Creates an instance of the adapter factory.
@@ -39,9 +40,9 @@ public class BrnAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public BrnAdapterFactory() {
+	public Sf_statsAdapterFactory() {
 		if (modelPackage == null) {
-			modelPackage = BrnPackage.eINSTANCE;
+			modelPackage = Sf_statsPackage.eINSTANCE;
 		}
 	}
 
@@ -70,11 +71,19 @@ public class BrnAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected BrnSwitch<Adapter> modelSwitch =
-		new BrnSwitch<Adapter>() {
+	protected Sf_statsSwitch<Adapter> modelSwitch =
+		new Sf_statsSwitch<Adapter>() {
 			@Override
-			public Adapter caseHandlerSubClass(HandlerSubClass object) {
-				return createHandlerSubClassAdapter();
+			public Adapter caseFlowstats(Flowstats object) {
+				return createFlowstatsAdapter();
+			}
+			@Override
+			public Adapter caseStats(Stats object) {
+				return createStatsAdapter();
+			}
+			@Override
+			public Adapter caseTxflow(Txflow object) {
+				return createTxflowAdapter();
 			}
 			@Override
 			public Adapter caseHandler(Handler object) {
@@ -101,16 +110,44 @@ public class BrnAdapterFactory extends AdapterFactoryImpl {
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.hub.clickwatch.specificmodels.brn.HandlerSubClass <em>Handler Sub Class</em>}'.
+	 * Creates a new adapter for an object of class '{@link de.hub.clickwatch.specificmodels.brn.sf_stats.Flowstats <em>Flowstats</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.hub.clickwatch.specificmodels.brn.HandlerSubClass
+	 * @see de.hub.clickwatch.specificmodels.brn.sf_stats.Flowstats
 	 * @generated
 	 */
-	public Adapter createHandlerSubClassAdapter() {
+	public Adapter createFlowstatsAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.hub.clickwatch.specificmodels.brn.sf_stats.Stats <em>Stats</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.hub.clickwatch.specificmodels.brn.sf_stats.Stats
+	 * @generated
+	 */
+	public Adapter createStatsAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.hub.clickwatch.specificmodels.brn.sf_stats.Txflow <em>Txflow</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.hub.clickwatch.specificmodels.brn.sf_stats.Txflow
+	 * @generated
+	 */
+	public Adapter createTxflowAdapter() {
 		return null;
 	}
 
@@ -140,4 +177,4 @@ public class BrnAdapterFactory extends AdapterFactoryImpl {
 		return null;
 	}
 
-} //BrnAdapterFactory
+} //Sf_statsAdapterFactory

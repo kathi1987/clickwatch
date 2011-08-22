@@ -1483,4 +1483,100 @@
       </eStructuralFeatures>
     </eClassifiers>
   </eSubpackages>
+  <eSubpackages name="sf_stats" nsURI="http://de.hub.clickwatch.specificmodels.brn/sf/stats" nsPrefix="sf_stats">
+    <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+      <details key="handler_class" value="Stats"/>
+      <details key="handler_name" value="sf/stats"/>
+    </eAnnotations>
+    <eClassifiers xsi:type="ecore:EClass" name="Flowstats">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Stats|Handler/flowstats|flowstats:Flowstats|EObject"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_flowstats" eType="//sf_stats/Stats" eOpposite="//sf_stats/Stats/flowstats"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" upperBound="-1">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Stats|Handler/flowstats|flowstats:Flowstats|EObject/text|text:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="txflow" upperBound="-1" eType="//sf_stats/Txflow" containment="true" resolveProxies="false" eOpposite="//sf_stats/Txflow/eContainer_txflow">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Stats|Handler/flowstats|flowstats:Flowstats|EObject/txflow|txflow:Txflow|EObject"/>
+          <details key="IsCopy" value="false"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="node">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Stats|Handler/flowstats|flowstats:Flowstats|EObject/node|node:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Stats">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Stats|Handler"/>
+      </eAnnotations>
+      <eSuperTypes href="../../../../../../../de.hub.clickwatch.core/src/de/hub/clickwatch/model/ClickWatchModel.ecore#//Handler"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="flowstats" eType="//sf_stats/Flowstats" containment="true" resolveProxies="false" eOpposite="//sf_stats/Flowstats/eContainer_flowstats">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Stats|Handler/flowstats|flowstats:Flowstats|EObject"/>
+          <details key="IsCopy" value="false"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Txflow">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Stats|Handler/flowstats|flowstats:Flowstats|EObject/txflow|txflow:Txflow|EObject"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_txflow" eType="//sf_stats/Flowstats" eOpposite="//sf_stats/Flowstats/txflow"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="src">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Stats|Handler/flowstats|flowstats:Flowstats|EObject/txflow|txflow:Txflow|EObject/src|src:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="dst">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Stats|Handler/flowstats|flowstats:Flowstats|EObject/txflow|txflow:Txflow|EObject/dst|dst:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="flowid">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Stats|Handler/flowstats|flowstats:Flowstats|EObject/txflow|txflow:Txflow|EObject/flowid|flowid:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="packet_count">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Stats|Handler/flowstats|flowstats:Flowstats|EObject/txflow|txflow:Txflow|EObject/packet_count|packet_count:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="packet_size">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Stats|Handler/flowstats|flowstats:Flowstats|EObject/txflow|txflow:Txflow|EObject/packet_size|packet_size:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="replies">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Stats|Handler/flowstats|flowstats:Flowstats|EObject/txflow|txflow:Txflow|EObject/replies|replies:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="avg_hops">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Stats|Handler/flowstats|flowstats:Flowstats|EObject/txflow|txflow:Txflow|EObject/avg_hops|avg_hops:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="time">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Stats|Handler/flowstats|flowstats:Flowstats|EObject/txflow|txflow:Txflow|EObject/time|time:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </eStructuralFeatures>
+    </eClassifiers>
+  </eSubpackages>
 </ecore:EPackage>
