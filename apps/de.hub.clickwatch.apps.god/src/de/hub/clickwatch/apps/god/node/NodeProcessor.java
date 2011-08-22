@@ -24,7 +24,7 @@ public class NodeProcessor extends Thread {
 	private int nodeProcessingTimer = 0;
 	private boolean callsSetter = false;
 	private boolean readFromFile = false;
-	
+	private boolean stopNodeProcessor = false;
 	
 	public NodeProcessor(Server clientLocManager, INodeConnectionProvider nodeConnectionProvider, NodeInformations nodeInfo, boolean i_readFromFile) {
 		if ((clientLocManager == null) || (nodeInfo == null)) {
@@ -40,6 +40,7 @@ public class NodeProcessor extends Thread {
 		}
 		server = clientLocManager;
 		nodeProcessingTimer = server.getSzenario().get_NODE_POCESSING_TIMER();
+		stopNodeProcessor = false;
 	}
 	
 	public NodeProcessor(Server clientLocManager, NodeInformations nodeInfo, boolean i_readFromFile) {
@@ -53,7 +54,11 @@ public class NodeProcessor extends Thread {
 	public void setNodeProcessingTimer(int nodeProcessingTimer) {
 		this.nodeProcessingTimer = nodeProcessingTimer;
 	}
-
+	
+	public void stopProcessor() {
+		this.stopNodeProcessor = true;
+	}
+	
 	public void run() {
 		int calls = 0;
 		
@@ -62,7 +67,7 @@ public class NodeProcessor extends Thread {
 			return;
 		}
 		
-		while (true) {
+		while (!stopNodeProcessor) {
 			try {
 				if (nodeInfos.getElementFilter().size() == 0) {
 					if (callsSetter) {

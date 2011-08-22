@@ -24,6 +24,10 @@ import de.hub.clickwatch.main.IClickWatchMain;
 public class Server implements IClickWatchMain {
 	private static StorageManager storageMgr = null;
 	private static LocationProcessor locationProcessor = null;
+	private static Server server = null;
+	private static boolean startTheSzenario = true;
+	private NodeProcessor gateway = null;
+	private List<NodeProcessor> nodes = null;
 	private HashMap<String, String> macIpAPList = new HashMap<String, String>();
 	private Szenario szenario = null;
 	
@@ -31,31 +35,40 @@ public class Server implements IClickWatchMain {
 	
 	@Override
 	public void main(IClickWatchContext ctx) {
+		server = this;
+		if (startTheSzenario) {
+			startSzenario();
+		}
+	}
+	
+	public void stopSzenario() {
+		for (NodeProcessor np : nodes) {
+			np.stopProcessor();
+		}
+		gateway.stopProcessor();
+		System.out.print("Stopping processors ... ");
+		try {
+			for (NodeProcessor np : nodes) {
+				np.join();
+			}
+			gateway.join();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		
+		System.out.println("done");
+	}
+	
+	public void startSzenario() {
+		System.out.print("starting Szenario ... ");
 		try {
 			storageMgr = new StorageManager();
 			init_szenario();
 		} catch (UnknownHostException e) {
-			System.err.println("Given Host not known");
+			System.err.println("\nERROR: Given Host not known");
 			return;
 		}
-		
-		try {
-			Thread.sleep(2*1000);
-			System.out.println("all started...\n");
-			Thread.sleep(5*1000);
-		} catch (InterruptedException int_exc) {
-			//nothing to do
-		}
-		
-		//System.out.println(storageMgr.getClientMonitor());
-		/*
-		if (handleSetter("192.168.3.47", 7777, "device_wifi/wifidevice/sc", "systemchannel", "0")) {
-			System.out.println("setting was cool");
-		} else {
-			System.out.println("setting was totally uncool");
-		}
-		*/
-		System.exit(0);
+		System.out.println("done");
 	}
 	
 	public boolean handleSetter(String host, Integer port, String element, String handler, String value) {
@@ -123,6 +136,7 @@ public class Server implements IClickWatchMain {
 	
 	private void init_szenario() throws UnknownHostException {
 		this.szenario = new SzenarioHWL();
+		this.nodes = new ArrayList<NodeProcessor>();
 		
 		//start asking APs
 		for (int k = 0; k < getSzenario().get_ACCESS_POINTS().length; k++) {
@@ -133,24 +147,29 @@ public class Server implements IClickWatchMain {
 			nodeInf.addFilter(getSzenario().get_GET_POWER_HANDLER()[0], getSzenario().get_GET_POWER_HANDLER()[1], getSzenario().get_POWER_PROCESSOR());
 			nodeInf.addFilter(getSzenario().get_LINK_HANDLER()[0], getSzenario().get_LINK_HANDLER()[1], getSzenario().get_LINK_PROCESSOR());
 			nodeInf.addFilter(getSzenario().get_CHANNELSTAT_HANDLER()[0], getSzenario().get_CHANNELSTAT_HANDLER()[1], getSzenario().get_CHANNELSTAT_PROCESSOR());
-			nodeInf.addFilter(getSzenario().get_GET_LINKTABLE_HANDLER()[0], getSzenario().get_GET_LINKTABLE_HANDLER()[1], getSzenario().get_LINKTABLE_PROCESSOR());
-			nodeInf.addFilter(getSzenario().get_GET_ROUTINGTABLE_HANDLER()[0], getSzenario().get_GET_ROUTINGTABLE_HANDLER()[1], getSzenario().get_ROUTINGTABLE_PROCESSOR());
+			if (!szenario.get_USE_FILE_FOR_NODE_PROCESSOR()) {
+				nodeInf.addFilter(getSzenario().get_GET_LINKTABLE_HANDLER()[0], getSzenario().get_GET_LINKTABLE_HANDLER()[1], getSzenario().get_LINKTABLE_PROCESSOR());
+				nodeInf.addFilter(getSzenario().get_GET_ROUTINGTABLE_HANDLER()[0], getSzenario().get_GET_ROUTINGTABLE_HANDLER()[1], getSzenario().get_ROUTINGTABLE_PROCESSOR());
+			}
 			macIpAPList.put(getSzenario().get_ACCESS_POINTS()[k][0] + ":" + getSzenario().get_ACCESS_POINTS()[k][1], "-1");
 			
 			NodeProcessor np = new NodeProcessor(this, nodeConnectionProvider, nodeInf, getSzenario().get_USE_FILE_FOR_NODE_PROCESSOR());
 			np.start();
+			
+			nodes.add(np);
 		}
 		
 		//start asking dhcp
 		NodeInformations nodeInf = new NodeInformations(getSzenario().get_GATEWAY()[0], new Integer(getSzenario().get_GATEWAY()[1]));
 		nodeInf.addFilter(getSzenario().get_GATEWAY_HANDLER()[0], getSzenario().get_GATEWAY_HANDLER()[1], getSzenario().get_GATEWAY_PROCESSOR());
-		NodeProcessor gateway = new NodeProcessor(this, nodeConnectionProvider, nodeInf, getSzenario().get_USE_FILE_FOR_NODE_PROCESSOR());
+		gateway = new NodeProcessor(this, nodeConnectionProvider, nodeInf, getSzenario().get_USE_FILE_FOR_NODE_PROCESSOR());
 		gateway.setNodeProcessingTimer(szenario.get_GATEWAY_PROCESSING_TIMER());
 		gateway.start();
 		
-		initLocationProcessor(false);
+		//initLocationProcessor(false);
 	}
 	
+	@SuppressWarnings("unused")
 	private void initLocationProcessor(boolean halfhalfMethod) {
 		//start LocationProcessor
 		locationProcessor = new LocationProcessor(this, storageMgr);
@@ -163,9 +182,18 @@ public class Server implements IClickWatchMain {
 		}
 	}
 	
-	public static final void main(String args[]) {
-		//args = new String[] { "-d", "-s", "-r../../ui/de.hub.clickwatch.ui/resources/records/record_11-06-23.clickwatchmodel" };
-		args = new String[] { "-d", "-s"};
+	public static Server getInstance() {
+		return server;
+	}
+	
+	public static final void startServer(boolean startSzenario) {
+		//String[] args = new String[] { "-d", "-s", "-r../../ui/de.hub.clickwatch.ui/resources/records/record_11-06-23.clickwatchmodel" };
+		startTheSzenario = startSzenario; 
+		String[] args = new String[] { "-d", "-s"};
 		ClickWatchExternalLauncher.launch(args, Server.class);
+	} 
+	
+	public static final void main(String args[]) {
+		startServer(true);
 	}
 }
