@@ -152,7 +152,8 @@ public class TransformationLaunchConfigurationDelegate implements
 				ClickWatchRunConfigurationLauncher.launch(config, mainClass);
 			} catch (Exception e) {
 
-				System.out.println("Error: " + e);
+				Status s = new Status(IStatus.ERROR, "not_used", e.toString(), null); 
+				StatusManager.getManager().handle(s, StatusManager.SHOW);
 			}
 
 		} else if (mode.equals(ILaunchManager.DEBUG_MODE)) {
