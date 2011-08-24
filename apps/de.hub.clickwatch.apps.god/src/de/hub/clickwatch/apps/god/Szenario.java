@@ -21,6 +21,8 @@ public interface Szenario {
 	
 	public String[][] get_ACCESS_POINTS();
 	
+	public void set_ACCESS_POINTS(String[][] aps);
+	
 	public String[] get_GET_CHANNEL_HANDLER();
 	
 	public String[] get_SET_CHANNEL_HANDLER(int channel);

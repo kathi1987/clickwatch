@@ -159,9 +159,9 @@ public class StorageManager {
 		return info;
 	}
 	
-	public HashMap<String, ClientInformations> getClientInformations(String MacAddr) {
-		if (clientInfos.containsKey(MacAddr)) {
-			return clientInfos.get(MacAddr);
+	public HashMap<String, ClientInformations> getClientInformations(String macAddr) {
+		if (clientInfos.containsKey(macAddr)) {
+			return clientInfos.get(macAddr);
 		}
 		
 		return null;

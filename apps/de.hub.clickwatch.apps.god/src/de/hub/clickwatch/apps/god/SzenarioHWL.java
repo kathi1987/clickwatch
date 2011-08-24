@@ -24,7 +24,7 @@ public class SzenarioHWL implements Szenario {
 	private static final int COMPUTE_POSITION_TIMER = 3000;
 	private static final int WAIT_AFTER_COMPUTE_POSITION_ERROR = 10000;
 	
-	public static final String[][] ACCESS_POINTS = new String[][] {
+	private String[][] ACCESS_POINTS = new String[][] {
 		//{"192.168.3.71", "7777", "wgt71"},
 		//{"192.168.3.47", "7777", "wgt47"},
 		//{"192.168.3.38", "7777", "wgt38"},
@@ -261,5 +261,9 @@ public class SzenarioHWL implements Szenario {
 	@Override
 	public Class<? extends NodeInformationProcessor> get_FLOWSTATS_PROCESSOR() {
 		return FLOWSTATS_PROCESSOR;
+	}
+	@Override
+	public void set_ACCESS_POINTS(String[][] aps) {
+		this.ACCESS_POINTS = aps;
 	}
 }

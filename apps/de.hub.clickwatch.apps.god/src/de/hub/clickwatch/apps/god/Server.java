@@ -135,7 +135,9 @@ public class Server implements IClickWatchMain {
 	}
 	
 	private void init_szenario() throws UnknownHostException {
-		this.szenario = new SzenarioHWL();
+		if (this.szenario == null) {
+			this.szenario = new SzenarioHWL();
+		}
 		this.nodes = new ArrayList<NodeProcessor>();
 		
 		//start asking APs
