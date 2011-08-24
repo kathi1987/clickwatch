@@ -46,7 +46,7 @@ public class Server implements IClickWatchMain {
 			np.stopProcessor();
 		}
 		gateway.stopProcessor();
-		System.out.print("Stopping processors ... ");
+		System.out.print("stopping processors ... ");
 		try {
 			for (NodeProcessor np : nodes) {
 				np.join();
@@ -60,7 +60,7 @@ public class Server implements IClickWatchMain {
 	}
 	
 	public void startSzenario() {
-		System.out.print("starting Szenario ... ");
+		System.out.print("starting szenario ... ");
 		try {
 			storageMgr = new StorageManager();
 			init_szenario();
@@ -134,6 +134,27 @@ public class Server implements IClickWatchMain {
 		storageMgr.store(handler, informations);
 	}
 	
+	private NodeProcessor startAskingAp(String hostname, int port) throws UnknownHostException {
+		NodeInformations nodeInf = new NodeInformations(hostname, port);
+		nodeInf.addFilter(getSzenario().get_STATS_HANDLER()[0], getSzenario().get_STATS_HANDLER()[1], getSzenario().get_STATS_PROCESSOR());
+		nodeInf.addFilter(getSzenario().get_GPS_HANDLER()[0], getSzenario().get_GPS_HANDLER()[1], getSzenario().get_GPS_PROCESSOR());
+		nodeInf.addFilter(getSzenario().get_GET_CHANNEL_HANDLER()[0], getSzenario().get_GET_CHANNEL_HANDLER()[1], getSzenario().get_CHANNEL_PROCESSOR());
+		nodeInf.addFilter(getSzenario().get_GET_POWER_HANDLER()[0], getSzenario().get_GET_POWER_HANDLER()[1], getSzenario().get_POWER_PROCESSOR());
+		nodeInf.addFilter(getSzenario().get_LINK_HANDLER()[0], getSzenario().get_LINK_HANDLER()[1], getSzenario().get_LINK_PROCESSOR());
+		nodeInf.addFilter(getSzenario().get_CHANNELSTAT_HANDLER()[0], getSzenario().get_CHANNELSTAT_HANDLER()[1], getSzenario().get_CHANNELSTAT_PROCESSOR());
+		if (!szenario.get_USE_FILE_FOR_NODE_PROCESSOR()) {
+			nodeInf.addFilter(getSzenario().get_GET_LINKTABLE_HANDLER()[0], getSzenario().get_GET_LINKTABLE_HANDLER()[1], getSzenario().get_LINKTABLE_PROCESSOR());
+			nodeInf.addFilter(getSzenario().get_GET_ROUTINGTABLE_HANDLER()[0], getSzenario().get_GET_ROUTINGTABLE_HANDLER()[1], getSzenario().get_ROUTINGTABLE_PROCESSOR());
+			nodeInf.addFilter(getSzenario().get_FLOWSTATS_HANDLER()[0], getSzenario().get_FLOWSTATS_HANDLER()[1], getSzenario().get_FLOWSTATS_PROCESSOR());
+		}
+		macIpAPList.put(hostname + ":" + port, "-1");
+		
+		NodeProcessor np = new NodeProcessor(this, nodeConnectionProvider, nodeInf, getSzenario().get_USE_FILE_FOR_NODE_PROCESSOR());
+		np.start();
+		
+		return np;
+	}
+	
 	private void init_szenario() throws UnknownHostException {
 		if (this.szenario == null) {
 			this.szenario = new SzenarioHWL();
@@ -142,24 +163,7 @@ public class Server implements IClickWatchMain {
 		
 		//start asking APs
 		for (int k = 0; k < getSzenario().get_ACCESS_POINTS().length; k++) {
-			NodeInformations nodeInf = new NodeInformations(getSzenario().get_ACCESS_POINTS()[k][0], new Integer(getSzenario().get_ACCESS_POINTS()[k][1]));
-			nodeInf.addFilter(getSzenario().get_STATS_HANDLER()[0], getSzenario().get_STATS_HANDLER()[1], getSzenario().get_STATS_PROCESSOR());
-			nodeInf.addFilter(getSzenario().get_GPS_HANDLER()[0], getSzenario().get_GPS_HANDLER()[1], getSzenario().get_GPS_PROCESSOR());
-			nodeInf.addFilter(getSzenario().get_GET_CHANNEL_HANDLER()[0], getSzenario().get_GET_CHANNEL_HANDLER()[1], getSzenario().get_CHANNEL_PROCESSOR());
-			nodeInf.addFilter(getSzenario().get_GET_POWER_HANDLER()[0], getSzenario().get_GET_POWER_HANDLER()[1], getSzenario().get_POWER_PROCESSOR());
-			nodeInf.addFilter(getSzenario().get_LINK_HANDLER()[0], getSzenario().get_LINK_HANDLER()[1], getSzenario().get_LINK_PROCESSOR());
-			nodeInf.addFilter(getSzenario().get_CHANNELSTAT_HANDLER()[0], getSzenario().get_CHANNELSTAT_HANDLER()[1], getSzenario().get_CHANNELSTAT_PROCESSOR());
-			if (!szenario.get_USE_FILE_FOR_NODE_PROCESSOR()) {
-				nodeInf.addFilter(getSzenario().get_GET_LINKTABLE_HANDLER()[0], getSzenario().get_GET_LINKTABLE_HANDLER()[1], getSzenario().get_LINKTABLE_PROCESSOR());
-				nodeInf.addFilter(getSzenario().get_GET_ROUTINGTABLE_HANDLER()[0], getSzenario().get_GET_ROUTINGTABLE_HANDLER()[1], getSzenario().get_ROUTINGTABLE_PROCESSOR());
-				nodeInf.addFilter(getSzenario().get_FLOWSTATS_HANDLER()[0], getSzenario().get_FLOWSTATS_HANDLER()[1], getSzenario().get_FLOWSTATS_PROCESSOR());
-			}
-			macIpAPList.put(getSzenario().get_ACCESS_POINTS()[k][0] + ":" + getSzenario().get_ACCESS_POINTS()[k][1], "-1");
-			
-			NodeProcessor np = new NodeProcessor(this, nodeConnectionProvider, nodeInf, getSzenario().get_USE_FILE_FOR_NODE_PROCESSOR());
-			np.start();
-			
-			nodes.add(np);
+			nodes.add(startAskingAp(getSzenario().get_ACCESS_POINTS()[k][0], new Integer(getSzenario().get_ACCESS_POINTS()[k][1])));
 		}
 		
 		//start asking dhcp
@@ -170,6 +174,23 @@ public class Server implements IClickWatchMain {
 		gateway.start();
 		
 		//initLocationProcessor(false);
+	}
+	
+	public void addNode(String ip, String port, String mac) throws UnknownHostException {
+		String[][] aps = server.getSzenario().get_ACCESS_POINTS();
+		String[][] newAps = new String[aps.length+1][3];
+		for (int m = 0; m < aps.length; m++) {
+			newAps[m][0] = aps[m][0];
+			newAps[m][1] = aps[m][1];
+			newAps[m][2] = aps[m][2];
+		}
+		
+		newAps[newAps.length-1][0] = ip;
+		newAps[newAps.length-1][1] = port;
+		newAps[newAps.length-1][2] = mac;
+		
+		server.getSzenario().set_ACCESS_POINTS(newAps);
+		nodes.add(startAskingAp(ip, new Integer(port)));
 	}
 	
 	@SuppressWarnings("unused")
