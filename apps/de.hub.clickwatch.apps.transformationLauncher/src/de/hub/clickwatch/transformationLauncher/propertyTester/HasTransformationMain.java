@@ -13,8 +13,8 @@ public class HasTransformationMain extends PropertyTester {
 		Boolean ret = false;
 
 		if (receiver instanceof CompilationUnit) {
-			ret = true;
-		} else if (receiver instanceof IFile) {
+			ret = true;					
+		} else if (receiver instanceof IFile) {			
 			if (((IFile) receiver).getName().endsWith(".xtend"))
 				ret = true;
 		} else if (receiver instanceof IEditorInput) {
