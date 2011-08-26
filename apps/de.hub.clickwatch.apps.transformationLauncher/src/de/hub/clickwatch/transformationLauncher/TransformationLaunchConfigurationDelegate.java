@@ -87,6 +87,24 @@ public class TransformationLaunchConfigurationDelegate implements
 							.getClass().getClassLoader()
 							.loadClass(transformationClassName);
 
+				// check if the interface is used in this class
+				boolean hasMainInterface = false;
+				for(Class<?> c : transformationClass.getInterfaces())
+				{
+					if(c.equals(IClickWatchMain.class))
+					{
+						hasMainInterface = true;
+						break;
+					}
+				}
+				if(!hasMainInterface)
+				{
+					Status s = new Status(IStatus.ERROR, "not_used", "The transformation file does not use the interface IClickWatchMain", null); 
+					StatusManager.getManager().handle(s, StatusManager.SHOW);
+					
+					return;					
+				}
+				
 				Class<IClickWatchMain> mainClass = (Class<IClickWatchMain>) transformationClass;
 
 				// *******************************

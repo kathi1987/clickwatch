@@ -54,7 +54,6 @@ public class TransformationLaunchShortcut extends JavaLaunchShortcut {
 	public void launch(ISelection selection, String mode) {
 		// String file =
 		// "platform:/resource/de.hub.clickwatch.analysis.examples.xtend2/src/de/hub/clickwatch/analysis/examples/java/TestRunConfiguration2.java";
-		String file = "";
 		Object selected = ((IStructuredSelection) selection).getFirstElement();
 
 		if (selected instanceof CompilationUnit) {
@@ -92,17 +91,29 @@ public class TransformationLaunchShortcut extends JavaLaunchShortcut {
 			transformationFile = URI.createPlatformResourceURI(
 					fInput.getFile().getFullPath().toString(), true).toString();
 		}
+
+		if (!(transformationFile.endsWith(".xtend") || transformationFile
+				.endsWith(".java"))) {
+			Status s = new Status(IStatus.ERROR, "not_used",
+					"No valid transformation file could be found.", null);
+			StatusManager.getManager().handle(s, StatusManager.SHOW);
+			
+			return;
+		}
+
 		tryFindClickWatchModel();
 
 		this.launch(mode);
 
 	}
-	
+
 	/**
 	 * Launches the given type in the specified mode.
 	 * 
-	 * @param type type to launch
-	 * @param mode launch mode
+	 * @param type
+	 *            type to launch
+	 * @param mode
+	 *            launch mode
 	 * @since 3.5
 	 */
 	protected void launch(String mode) {
@@ -112,7 +123,7 @@ public class TransformationLaunchShortcut extends JavaLaunchShortcut {
 		}
 		if (config != null) {
 			DebugUITools.launch(config, mode);
-		}			
+		}
 	}
 
 	protected ILaunchConfigurationType getConfigurationType() {
@@ -120,40 +131,6 @@ public class TransformationLaunchShortcut extends JavaLaunchShortcut {
 		return lm
 				.getLaunchConfigurationType("de.hub.clickwatch.analysis.ui.TransformationLaunchConfiguration");
 	}
-
-//	private void launch(String transformationFile, String mode) {
-//
-//		tryFindClickWatchModel();
-//
-//		ILaunchConfiguration config = null;
-//		try {
-//			ILaunchConfigurationType configType = getConfigurationType();
-//			ILaunchConfigurationWorkingCopy wc = configType.newInstance(
-//					null,
-//					DebugPlugin
-//							.getDefault()
-//							.getLaunchManager()
-//							.generateLaunchConfigurationName(
-//									configType.getName()));
-//
-//			wc.setAttribute(MainParametersTab.ATTR_TRANSFORMATION_FILE,
-//					transformationFile);
-//			wc.setAttribute(MainParametersTab.ATTR_VALUE_TYPE, "SPECIFIC");
-//			wc.setAttribute(MainParametersTab.ATTR_DEBUG_LEVEL, "Warning");
-//			wc.setAttribute(RecordParametersTab.ATTR_DATABASE_URI, "");
-//			wc.setAttribute(RecordParametersTab.ATTR_RECORD_ID, "");
-//			wc.setAttribute(ClickwatchParametersTab.ATTR_MODEL_OBJECT,
-//					modelObject);
-//			wc.setAttribute(ClickwatchParametersTab.ATTR_SOURCE_MODEL_FILE,
-//					sourceModelFile);
-//
-//			config = wc.doSave();
-//
-//			DebugUITools.launch(config, mode);
-//
-//		} catch (CoreException ce) {
-//		}
-//	}
 
 	protected ILaunchConfiguration findLaunchConfiguration() {
 		List candidateConfigs = Collections.EMPTY_LIST;
@@ -167,11 +144,18 @@ public class TransformationLaunchShortcut extends JavaLaunchShortcut {
 				if (config.getAttribute(
 						MainParametersTab.ATTR_TRANSFORMATION_FILE, "").equals(
 						transformationFile)
-						&& config.getAttribute(ClickwatchParametersTab.ATTR_SOURCE_MODEL_FILE, "").equals(sourceModelFile)
-						&& config.getAttribute(ClickwatchParametersTab.ATTR_MODEL_OBJECT, "").equals(modelObject)
-						&& config.getAttribute(MainParametersTab.ATTR_VALUE_TYPE, "").equals("SPECIFIC")						
-						&& config.getAttribute(MainParametersTab.ATTR_DEBUG_LEVEL, "").equals("Warning")						
-						) {
+						&& config.getAttribute(
+								ClickwatchParametersTab.ATTR_SOURCE_MODEL_FILE,
+								"").equals(sourceModelFile)
+						&& config.getAttribute(
+								ClickwatchParametersTab.ATTR_MODEL_OBJECT, "")
+								.equals(modelObject)
+						&& config.getAttribute(
+								MainParametersTab.ATTR_VALUE_TYPE, "").equals(
+								"SPECIFIC")
+						&& config.getAttribute(
+								MainParametersTab.ATTR_DEBUG_LEVEL, "").equals(
+								"Warning")) {
 					candidateConfigs.add(config);
 				}
 			}
