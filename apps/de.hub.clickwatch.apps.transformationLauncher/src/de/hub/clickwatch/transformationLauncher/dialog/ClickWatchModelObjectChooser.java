@@ -1,5 +1,6 @@
 package de.hub.clickwatch.transformationLauncher.dialog;
 
+import org.eclipse.debug.internal.ui.SWTFactory;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -14,8 +15,10 @@ import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.TreeViewer;
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Shell;
@@ -39,6 +42,7 @@ public class ClickWatchModelObjectChooser extends Dialog {
 		super(parentShell);
 		this.source = source;
 		initialize();
+		setShellStyle(SWT.RESIZE | SWT.TITLE);
 	}
 
 	private void initialize() {
@@ -54,6 +58,9 @@ public class ClickWatchModelObjectChooser extends Dialog {
 	protected Control createDialogArea(Composite parent) {
 
 		Composite composite = (Composite) super.createDialogArea(parent);
+		
+		((GridLayout) composite.getLayout()).verticalSpacing = 0;
+		
 		// composite.setLayout(new GridLayout(1, false));
 
 		treeViewer = new TreeViewer(composite);
