@@ -26,6 +26,7 @@ public class Server implements IClickWatchMain {
 	private static LocationProcessor locationProcessor = null;
 	private static Server server = null;
 	private static boolean startTheSzenario = true;
+	private static boolean startUpdatingProcess = true;
 	private NodeProcessor gateway = null;
 	private List<NodeProcessor> nodes = null;
 	private HashMap<String, String> macIpAPList = new HashMap<String, String>();
@@ -150,9 +151,19 @@ public class Server implements IClickWatchMain {
 		macIpAPList.put(hostname + ":" + port, "-1");
 		
 		NodeProcessor np = new NodeProcessor(this, nodeConnectionProvider, nodeInf, getSzenario().get_USE_FILE_FOR_NODE_PROCESSOR());
-		np.start();
+		if (startUpdatingProcess) {
+			np.start();
+		}
 		
 		return np;
+	}
+	
+	public void updateInfosFromNodes() {
+		for (NodeProcessor np: nodes) {
+			np.setMaxCounter(1);
+			np.run();
+			np.resetMaxCounter();
+		}
 	}
 	
 	private void init_szenario() throws UnknownHostException {
@@ -210,14 +221,15 @@ public class Server implements IClickWatchMain {
 		return server;
 	}
 	
-	public static final void startServer(boolean startSzenario) {
+	public static final void startServer(boolean startSzenario, boolean startAutomaticUpdating) {
 		//String[] args = new String[] { "-d", "-s", "-r../../ui/de.hub.clickwatch.ui/resources/records/record_11-06-23.clickwatchmodel" };
 		startTheSzenario = startSzenario; 
+		startUpdatingProcess = startAutomaticUpdating;
 		String[] args = new String[] { "-d", "-s"};
 		ClickWatchExternalLauncher.launch(args, Server.class);
 	} 
 	
 	public static final void main(String args[]) {
-		startServer(true);
+		startServer(true, true);
 	}
 }

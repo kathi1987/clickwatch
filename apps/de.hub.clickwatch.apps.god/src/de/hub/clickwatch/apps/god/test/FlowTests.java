@@ -18,7 +18,7 @@ public class FlowTests {
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		Server.startServer(false);
+		Server.startServer(false, false);
 		server = Server.getInstance();
 		
 		try {
@@ -41,6 +41,8 @@ public class FlowTests {
 	private void resetFlows(String [][] usableMacIps) {
 		while (true) {
 			int resetCount = 0;
+			server.updateInfosFromNodes();
+			
 			for (int k = 0; k < usableMacIps.length; k++) {
 				FlowInformation f = null;
 				if ((server.getStorageManager().getClientInformations(usableMacIps[k][0]) != null) 
@@ -115,7 +117,8 @@ public class FlowTests {
 			Thread.sleep(1*1000);
 			server.handleSetter(usableMacIps[0][1], 7777, "sf", "add_flow", usableMacIps[0][0] + " " + usableMacIps[2][0] + " 300 100 0 100 false");
 			System.out.println("done");
-			Thread.sleep(3*1000);
+			
+			server.updateInfosFromNodes();
 		} catch (InterruptedException int_exc) {
 			//nothing to do
 		}
@@ -148,7 +151,8 @@ public class FlowTests {
 			server.handleSetter(usableMacIps[0][1], 7777, "sf", "add_flow", usableMacIps[0][0] + " " + usableMacIps[4][0] + " 300 100 2 100 false");
 			
 			System.out.println("done");
-			Thread.sleep(3*1000);
+			
+			server.updateInfosFromNodes();
 		} catch (InterruptedException int_exc) {
 			//nothing to do
 		}

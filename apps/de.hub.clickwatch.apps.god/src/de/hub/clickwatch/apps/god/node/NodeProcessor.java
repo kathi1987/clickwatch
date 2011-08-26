@@ -59,6 +59,14 @@ public class NodeProcessor extends Thread {
 		this.stopNodeProcessor = true;
 	}
 	
+	public void setMaxCounter(int count) {
+		this.maxCounter = count;
+	}
+	
+	public void resetMaxCounter() {
+		this.maxCounter = 0;
+	}
+	
 	public void run() {
 		int calls = 0;
 		
@@ -143,7 +151,7 @@ public class NodeProcessor extends Thread {
 				
 				//end this thread, if it is planned to end, and the end is right now
 				if (((this.maxCounter > 0) && (++calls > this.maxCounter)) || (callsSetter)) {
-					break;
+					return;
 				}
 				
 				//wait the NODE_PROCESSING_TIME
