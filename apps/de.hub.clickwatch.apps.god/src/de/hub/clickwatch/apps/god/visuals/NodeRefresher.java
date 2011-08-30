@@ -1,5 +1,7 @@
 package de.hub.clickwatch.apps.god.visuals;
 
+import de.hub.clickwatch.apps.god.routing.GlobalRoutingtable;
+
 public class NodeRefresher extends Thread {
 	private GodNetwork parent;
 	
@@ -16,7 +18,7 @@ public class NodeRefresher extends Thread {
 				//nothing
 			}
 			
-			for (String node : parent.getServer().getRoutingtable().getNodes()) {
+			for (String node : GlobalRoutingtable.getNodes()) {
 				boolean found = false;
 				for (String known : parent.getNodeNames()) {
 					if (known.equals(node)) {

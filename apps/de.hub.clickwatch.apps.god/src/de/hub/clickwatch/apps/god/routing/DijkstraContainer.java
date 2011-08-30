@@ -6,30 +6,23 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import de.hub.clickwatch.apps.god.Server;
 import de.hub.clickwatch.apps.god.SzenarioHWL;
 
 public class DijkstraContainer {
 	private String startNode = null;
 	private Map<String, String> bestRoute = new HashMap<String, String>();
 	private Map<String, Integer> bestRouteLength = new HashMap<String, Integer>();
-	private Server parent = null;
 	
 	@SuppressWarnings("unused")
 	private DijkstraContainer() {
 		//nothing, just set the default constructor private, so that it cannot be used
 	}
 	
-	public DijkstraContainer(Server parent, String i_startNode) {
+	public DijkstraContainer(String i_startNode) {
 		if (i_startNode == null) {
 			throw new InvalidParameterException("start node cannot be <null>");
 		}
-		if (parent == null) {
-			throw new InvalidParameterException("server object cannot be <null>");
-		}
-		
 		this.startNode = i_startNode;
-		this.parent = parent;
 	}
 	
 	public void removeLink(String from, String to) {
@@ -85,7 +78,7 @@ public class DijkstraContainer {
 		bestRouteLength = new HashMap<String, Integer>();
 		bestRouteLength.put(startNode, 0);
 		
-		Set<String> unvisited = parent.getRoutingtable().getNodes();
+		Set<String> unvisited = GlobalRoutingtable.getNodes();
 		unvisited.remove(startNode);
 		
 		Set<String> currentNodes = new HashSet<String>();
@@ -104,13 +97,13 @@ public class DijkstraContainer {
 			
 			if (takeNode != null) {
 				unvisited.remove(takeNode);
-				Set<String> neighbors = parent.getLinktable().getNeighbors(takeNode);
+				Set<String> neighbors = GlobalLinktable.getNeighbors(takeNode);
 				currentNodes.addAll(neighbors);
 				currentNodes.remove(takeNode);
 				
 				for (String neigh : neighbors) {
 					if (unvisited.contains(neigh)) {
-						int neighborMetric = parent.getLinktable().getLinktable().get(takeNode + SzenarioHWL.LINKTABLE_SEPARATOR + neigh).getMetric();
+						int neighborMetric = GlobalLinktable.getLinktable().get(takeNode + SzenarioHWL.LINKTABLE_SEPARATOR + neigh).getMetric();
 						if ((!bestRouteLength.containsKey(neigh)) || 
 							(bestRouteLength.get(neigh) > bestRouteLength.get(takeNode) + neighborMetric)) {
 							

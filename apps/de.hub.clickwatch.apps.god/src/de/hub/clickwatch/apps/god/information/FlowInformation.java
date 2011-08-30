@@ -3,8 +3,6 @@ package de.hub.clickwatch.apps.god.information;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.hub.clickwatch.apps.god.Server;
-
 public class FlowInformation implements ClientInformations {
 	private static final long serialVersionUID = -6583001475924368084L;
 	private String ip, mac = null;
@@ -75,14 +73,4 @@ public class FlowInformation implements ClientInformations {
 		this.setRxflows(flowInfos.getRxflows());
 		this.setTxflows(flowInfos.getTxflows());
 	}
-
-	@Override
-	public void setServer(Server server) {
-	}
-
-	@Override
-	public Server getServer() {
-		return null;
-	}
-
 }

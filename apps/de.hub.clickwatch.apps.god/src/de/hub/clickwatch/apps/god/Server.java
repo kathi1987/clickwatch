@@ -16,7 +16,6 @@ import de.hub.clickwatch.apps.god.node.MacIpProcessor;
 import de.hub.clickwatch.apps.god.node.NodeInformations;
 import de.hub.clickwatch.apps.god.node.NodeProcessor;
 import de.hub.clickwatch.apps.god.routing.GlobalLinktable;
-import de.hub.clickwatch.apps.god.routing.GlobalRoutingtable;
 import de.hub.clickwatch.apps.god.visuals.GodNetwork;
 import de.hub.clickwatch.connection.INodeConnectionProvider;
 import de.hub.clickwatch.main.ClickWatchExternalLauncher;
@@ -32,8 +31,6 @@ public class Server implements IClickWatchMain {
 	private static boolean startUpdatingProcess = true;
 	private NodeProcessor gateway = null;
 	private List<NodeProcessor> nodes = null;
-	private GlobalRoutingtable routingtable = null;
-	private GlobalLinktable linktable = null;
 	private HashMap<String, String> macIpAPList = new HashMap<String, String>();
 	private Szenario szenario = null;
 	
@@ -42,8 +39,6 @@ public class Server implements IClickWatchMain {
 	@Override
 	public void main(IClickWatchContext ctx) {
 		server = this;
-		routingtable = new GlobalRoutingtable(server);
-		linktable = new GlobalLinktable(server);
 		
 		if (startThePreview) {
 			startPreview();
@@ -89,7 +84,7 @@ public class Server implements IClickWatchMain {
 			//nothing to do
 		}
 		
-		System.out.println("size was " + linktable.getLinktable().size());
+		System.out.println("size was " + GlobalLinktable.getLinktable().size());
 		System.exit(0);
 	}
 	
@@ -111,14 +106,6 @@ public class Server implements IClickWatchMain {
 		}
 		
 		return false;
-	}
-	
-	public GlobalRoutingtable getRoutingtable() {
-		return routingtable;
-	}
-
-	public GlobalLinktable getLinktable() {
-		return linktable;
 	}
 
 	public Map<String, String> getApList() {

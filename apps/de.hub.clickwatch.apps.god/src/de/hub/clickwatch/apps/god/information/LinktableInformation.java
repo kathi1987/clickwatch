@@ -3,13 +3,12 @@ package de.hub.clickwatch.apps.god.information;
 import java.util.HashMap;
 import java.util.Map;
 
-import de.hub.clickwatch.apps.god.Server;
 import de.hub.clickwatch.apps.god.SzenarioHWL;
+import de.hub.clickwatch.apps.god.routing.GlobalLinktable;
 
 public class LinktableInformation implements ClientInformations {
 	private static final long serialVersionUID = 7429643927719980046L;
 	private String ip, mac = null;
-	private Server parent = null;
 	private long time = -1l;
 	private Map<String, LinktableLinkInformation> linktable = new HashMap<String, LinktableLinkInformation>();
 	
@@ -68,7 +67,7 @@ public class LinktableInformation implements ClientInformations {
 		for (String l : this.getLinktable().keySet()) {
 			if (l.startsWith(getClientMac())) {
 				if (!linktableInfos.getLinktable().containsKey(l)) {
-					parent.getLinktable().removeFromGlobalLinktableIfExistent(l);
+					GlobalLinktable.removeFromGlobalLinktableIfExistent(l);
 				}
 			}
 		}
@@ -77,25 +76,14 @@ public class LinktableInformation implements ClientInformations {
 			if (l.startsWith(getClientMac())) {
 				if (this.getLinktable().containsKey(l)) {
 					if (Math.abs((this.getLinktable().get(l).getMetric() - linktableInfos.getLinktable().get(l).getMetric()) / (float)this.getLinktable().get(l).getMetric()) >= SzenarioHWL.LINK_UPDATE_MIN_THRESHOLD) {
-						parent.getLinktable().updateOrAddToGlobalLinktable(l, linktableInfos.getLinktable().get(l));
+						GlobalLinktable.updateOrAddToGlobalLinktable(l, linktableInfos.getLinktable().get(l));
 					}
 				} else {
-					parent.getLinktable().updateOrAddToGlobalLinktable(l, linktableInfos.getLinktable().get(l));
+					GlobalLinktable.updateOrAddToGlobalLinktable(l, linktableInfos.getLinktable().get(l));
 				}
 			}
 		}
 		
 		this.setLinktable(linktableInfos.getLinktable());
 	}
-
-	@Override
-	public void setServer(Server server) {
-		parent = server;
-	}
-
-	@Override
-	public Server getServer() {
-		return parent;
-	}
-
 }
