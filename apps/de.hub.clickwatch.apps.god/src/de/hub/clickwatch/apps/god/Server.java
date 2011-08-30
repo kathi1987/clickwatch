@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import processing.core.PApplet;
+
 import com.google.inject.Inject;
 
 import de.hub.clickwatch.apps.god.information.ClientInformations;
@@ -16,7 +19,6 @@ import de.hub.clickwatch.apps.god.node.MacIpProcessor;
 import de.hub.clickwatch.apps.god.node.NodeInformations;
 import de.hub.clickwatch.apps.god.node.NodeProcessor;
 import de.hub.clickwatch.apps.god.routing.GlobalLinktable;
-import de.hub.clickwatch.apps.god.visuals.GodNetwork;
 import de.hub.clickwatch.connection.INodeConnectionProvider;
 import de.hub.clickwatch.main.ClickWatchExternalLauncher;
 import de.hub.clickwatch.main.IClickWatchContext;
@@ -89,7 +91,7 @@ public class Server implements IClickWatchMain {
 	}
 	
 	private void startPreview() {
-		GodNetwork.myMain(new String[] {"--hide-stop", "--bgcolor=#000000", "de.hub.clickwatch.apps.god.visuals.GodNetwork"}, server);
+		PApplet.main(new String[] {"--hide-stop", "--bgcolor=#000000", "de.hub.clickwatch.apps.god.visuals.GodNetwork"});
 	}
 	
 	public boolean handleSetter(String host, Integer port, String element, String handler, String value) {

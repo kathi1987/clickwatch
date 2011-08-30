@@ -3,24 +3,12 @@ package de.hub.clickwatch.apps.god.visuals;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.hub.clickwatch.apps.god.Server;
-
 import processing.core.PApplet;
 
 public class GodNetwork extends PApplet {
 	private static final long serialVersionUID = 1256103591115689424L;
 	private List<NetworkNode> nodes = new ArrayList<NetworkNode>();
 	private NodeRefresher nodeRefresher = null;
-	private static Server server = null;
-	
-	public Server getServer() {
-		return server;
-	}
-	
-	public static void myMain(String[] args, Server i_server) {
-		server = i_server;
-		main(args);
-	}
 	
 	@Override
 	public void setup() {
@@ -37,6 +25,26 @@ public class GodNetwork extends PApplet {
 		synchronized (nodes) {
 			for (NetworkNode n : nodes) {
 				n.display();
+			}
+		}
+	}
+	
+	@Override
+	public void mousePressed() {
+		synchronized (nodes) {
+			for (NetworkNode n : nodes) {
+				if (n.selectItem(mouseX, mouseY)) {
+					break;
+				}
+			}
+		}
+	}
+	
+	@Override
+	public void mouseReleased() {
+		synchronized (nodes) {
+			for (NetworkNode n : nodes) {
+				n.deselectItem();
 			}
 		}
 	}
