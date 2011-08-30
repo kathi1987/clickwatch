@@ -1,5 +1,7 @@
 package de.hub.clickwatch.apps.god.information;
 
+import de.hub.clickwatch.apps.god.Server;
+
 public class GpsInformation implements ClientInformations {
 	private static final long serialVersionUID = -8187574858511994953L;
 	private String ip, mac = null;
@@ -131,5 +133,13 @@ public class GpsInformation implements ClientInformations {
 		this.setLat(gpsInfos.getLat());
 		this.setSpeed(gpsInfos.getSpeed());
 	}
+	
+	@Override
+	public void setServer(Server server) {
+	}
 
+	@Override
+	public Server getServer() {
+		return null;
+	}
 }

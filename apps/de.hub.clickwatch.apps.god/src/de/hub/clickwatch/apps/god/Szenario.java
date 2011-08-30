@@ -19,6 +19,8 @@ public interface Szenario {
 	
 	public int get_WAIT_AFTER_COMPUTE_POSITION_ERROR();
 	
+	public char get_LINKTABLE_SEPARATOR();
+	
 	public String[][] get_ACCESS_POINTS();
 	
 	public void set_ACCESS_POINTS(String[][] aps);

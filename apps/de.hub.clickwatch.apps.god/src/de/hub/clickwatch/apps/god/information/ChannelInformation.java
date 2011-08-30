@@ -1,5 +1,7 @@
 package de.hub.clickwatch.apps.god.information;
 
+import de.hub.clickwatch.apps.god.Server;
+
 public class ChannelInformation implements ClientInformations {
 	private static final long serialVersionUID = 5036356980563045390L;
 	private long time = -1l;
@@ -59,5 +61,14 @@ public class ChannelInformation implements ClientInformations {
 		}
 		
 		this.setChannel(channelInfos.getChannel());
+	}
+
+	@Override
+	public void setServer(Server server) {
+	}
+
+	@Override
+	public Server getServer() {
+		return null;
 	}
 }

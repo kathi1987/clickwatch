@@ -3,6 +3,8 @@ package de.hub.clickwatch.apps.god.node;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.hub.clickwatch.apps.god.Server;
+import de.hub.clickwatch.apps.god.SzenarioHWL;
 import de.hub.clickwatch.apps.god.information.ClientInformations;
 import de.hub.clickwatch.apps.god.information.LinktableInformation;
 import de.hub.clickwatch.apps.god.information.LinktableLinkInformation;
@@ -11,7 +13,12 @@ import de.hub.clickwatch.specificmodels.brn.lt_links.Links;
 import de.hub.clickwatch.specificmodels.brn.lt_links.Link;
 
 public class LinktableProcessor implements NodeInformationProcessor {
-
+	private Server parent = null;
+	
+	public void setServer(Server server) {
+		parent = server;
+	}
+	
 	@Override
 	public List<ClientInformations> handleInformations(Handler data) {
 		if (data != null) {
@@ -19,6 +26,7 @@ public class LinktableProcessor implements NodeInformationProcessor {
 			Links links = (Links)data;
 			
 			LinktableInformation linktable = new LinktableInformation();
+			linktable.setServer(parent);
 			linktable.setClientMac(links.getLinktable().getId());
         	linktable.setTime(System.currentTimeMillis());
         	for (Link l : links.getLinktable().getLink()) {
@@ -26,7 +34,7 @@ public class LinktableProcessor implements NodeInformationProcessor {
         		linkInf.setAge(l.getAge());
         		linkInf.setMetric(l.getMetric());
         		linkInf.setSeq(l.getSeq());
-        		linktable.getLinktable().put(l.getFrom() + l.getTo(), linkInf);
+        		linktable.getLinktable().put(l.getFrom() + SzenarioHWL.LINKTABLE_SEPARATOR + l.getTo(), linkInf);
         	}
         	
         	linktableInfos.add(linktable);

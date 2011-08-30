@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import com.google.inject.Inject;
 
 import de.hub.clickwatch.apps.god.information.ClientInformations;
@@ -16,6 +15,9 @@ import de.hub.clickwatch.apps.god.node.GpsProcessor;
 import de.hub.clickwatch.apps.god.node.MacIpProcessor;
 import de.hub.clickwatch.apps.god.node.NodeInformations;
 import de.hub.clickwatch.apps.god.node.NodeProcessor;
+import de.hub.clickwatch.apps.god.routing.GlobalLinktable;
+import de.hub.clickwatch.apps.god.routing.GlobalRoutingtable;
+import de.hub.clickwatch.apps.god.visuals.GodNetwork;
 import de.hub.clickwatch.connection.INodeConnectionProvider;
 import de.hub.clickwatch.main.ClickWatchExternalLauncher;
 import de.hub.clickwatch.main.IClickWatchContext;
@@ -26,9 +28,12 @@ public class Server implements IClickWatchMain {
 	private static LocationProcessor locationProcessor = null;
 	private static Server server = null;
 	private static boolean startTheSzenario = true;
+	private static boolean startThePreview = false;
 	private static boolean startUpdatingProcess = true;
 	private NodeProcessor gateway = null;
 	private List<NodeProcessor> nodes = null;
+	private GlobalRoutingtable routingtable = null;
+	private GlobalLinktable linktable = null;
 	private HashMap<String, String> macIpAPList = new HashMap<String, String>();
 	private Szenario szenario = null;
 	
@@ -37,6 +42,12 @@ public class Server implements IClickWatchMain {
 	@Override
 	public void main(IClickWatchContext ctx) {
 		server = this;
+		routingtable = new GlobalRoutingtable(server);
+		linktable = new GlobalLinktable(server);
+		
+		if (startThePreview) {
+			startPreview();
+		}
 		if (startTheSzenario) {
 			startSzenario();
 		}
@@ -70,6 +81,20 @@ public class Server implements IClickWatchMain {
 			return;
 		}
 		System.out.println("done");
+		
+		
+		try {
+			Thread.sleep(20000);
+		} catch (InterruptedException e) {
+			//nothing to do
+		}
+		
+		System.out.println("size was " + linktable.getLinktable().size());
+		System.exit(0);
+	}
+	
+	private void startPreview() {
+		GodNetwork.myMain(new String[] {"--hide-stop", "--bgcolor=#000000", "de.hub.clickwatch.apps.god.visuals.GodNetwork"}, server);
 	}
 	
 	public boolean handleSetter(String host, Integer port, String element, String handler, String value) {
@@ -88,6 +113,14 @@ public class Server implements IClickWatchMain {
 		return false;
 	}
 	
+	public GlobalRoutingtable getRoutingtable() {
+		return routingtable;
+	}
+
+	public GlobalLinktable getLinktable() {
+		return linktable;
+	}
+
 	public Map<String, String> getApList() {
 		Map<String, String> list = new HashMap<String, String>();
 		for (int k=0; k < getSzenario().get_ACCESS_POINTS().length; k++) {
@@ -221,15 +254,21 @@ public class Server implements IClickWatchMain {
 		return server;
 	}
 	
-	public static final void startServer(boolean startSzenario, boolean startAutomaticUpdating) {
+	public static final void startServer(boolean startSzenario, boolean startAutomaticUpdating, String[] consoleArgs) {
 		//String[] args = new String[] { "-d", "-s", "-r../../ui/de.hub.clickwatch.ui/resources/records/record_11-06-23.clickwatchmodel" };
 		startTheSzenario = startSzenario; 
 		startUpdatingProcess = startAutomaticUpdating;
+		if ((consoleArgs != null) 
+				&& (consoleArgs.length == 1) 
+				&& (consoleArgs[0].equals("preview"))) {
+			startThePreview = true;
+		}
+		
 		String[] args = new String[] { "-d", "-s"};
 		ClickWatchExternalLauncher.launch(args, Server.class);
 	} 
 	
 	public static final void main(String args[]) {
-		startServer(true, true);
+		startServer(true, true, args);
 	}
 }

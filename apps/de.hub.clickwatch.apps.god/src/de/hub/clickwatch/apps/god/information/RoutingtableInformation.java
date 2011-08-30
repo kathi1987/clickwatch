@@ -3,6 +3,8 @@ package de.hub.clickwatch.apps.god.information;
 import java.util.HashMap;
 import java.util.Map;
 
+import de.hub.clickwatch.apps.god.Server;
+
 public class RoutingtableInformation implements ClientInformations {
 	private static final long serialVersionUID = -955379912962923052L;
 	private String ip, mac = null;
@@ -63,5 +65,13 @@ public class RoutingtableInformation implements ClientInformations {
 		
 		this.setRoutingtable(routingtableInfos.getRoutingtable());
 	}
+	
+	@Override
+	public void setServer(Server server) {
+	}
 
+	@Override
+	public Server getServer() {
+		return null;
+	}
 }

@@ -1,5 +1,7 @@
 package de.hub.clickwatch.apps.god.information;
 
+import de.hub.clickwatch.apps.god.Server;
+
 public class MacIpInformation implements ClientInformations {
 	private static final long serialVersionUID = -2733669306142897408L;
 	private long time;
@@ -56,5 +58,13 @@ public class MacIpInformation implements ClientInformations {
 		mac = newMacIp.getClientMac();
 		ip = newMacIp.getClientIP();
 	}
+	
+	@Override
+	public void setServer(Server server) {
+	}
 
+	@Override
+	public Server getServer() {
+		return null;
+	}
 }

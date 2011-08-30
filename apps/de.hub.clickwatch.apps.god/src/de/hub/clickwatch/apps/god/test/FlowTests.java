@@ -18,7 +18,7 @@ public class FlowTests {
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		Server.startServer(false, false);
+		Server.startServer(false, false, null);
 		server = Server.getInstance();
 		
 		try {

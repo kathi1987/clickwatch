@@ -23,15 +23,35 @@ public class SzenarioHWL implements Szenario {
 	private static final int GATEWAY_PROCESSING_TIMER = 10000;
 	private static final int COMPUTE_POSITION_TIMER = 3000;
 	private static final int WAIT_AFTER_COMPUTE_POSITION_ERROR = 10000;
+	public static final char LINKTABLE_SEPARATOR = ';';
+	public static final float LINK_UPDATE_MIN_THRESHOLD = 0.15f;
+	public static final int LINK_ADD_MIN_THRESHOLD = 5000;
 	
 	private String[][] ACCESS_POINTS = new String[][] {
 		//{"192.168.3.71", "7777", "wgt71"},
 		//{"192.168.3.47", "7777", "wgt47"},
 		//{"192.168.3.38", "7777", "wgt38"},
 		//{"192.168.3.37", "7777", "wgt37"},
+		
+		{"192.168.3.34", "7777", "wgt34"},
+		{"192.168.3.24", "7777", "wgt24"},
+		{"192.168.3.31", "7777", "wgt31"},
+		{"192.168.3.73", "7777", "wgt73"},
+		{"192.168.3.45", "7777", "wgt45"},
 		{"192.168.3.110", "7777", "sk110"},
 		{"192.168.3.111", "7777", "sk111"},
 		{"192.168.3.112", "7777", "sk112"}
+		
+		/*	
+		{"127.0.0.1", "23454", "wgt34"},
+		{"127.0.0.1", "23455", "wgt24"},
+		{"127.0.0.1", "23456", "wgt31"},
+		{"127.0.0.1", "23457", "wgt73"},
+		{"127.0.0.1", "23458", "wgt45"},
+		{"127.0.0.1", "23459", "sk110"},
+		{"127.0.0.1", "23460", "sk111"},
+		{"127.0.0.1", "23461", "sk112"}
+		*/	
 	};
 	
 	private static final String[] POWER = new String[] {"device_wifi/data_power", "systempower"};
@@ -58,7 +78,6 @@ public class SzenarioHWL implements Szenario {
 	
 	private static final Class<? extends NodeInformationProcessor> FLOWSTATS_PROCESSOR = FlowstatsProcessor.class;
 
-	
     private static final String[] LINK_HANDLER = new String[] {"device_wifi/link_stat", "bcast_stats"};
 
 	private static final Class<? extends NodeInformationProcessor> LINK_PROCESSOR = LinkProcessor.class;
@@ -265,5 +284,9 @@ public class SzenarioHWL implements Szenario {
 	@Override
 	public void set_ACCESS_POINTS(String[][] aps) {
 		this.ACCESS_POINTS = aps;
+	}
+	@Override
+	public char get_LINKTABLE_SEPARATOR() {
+		return LINKTABLE_SEPARATOR;
 	}
 }

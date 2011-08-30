@@ -136,10 +136,20 @@ public class NodeProcessor extends Thread {
 							Handler resultHandler = handlerAdapter.getHandler(handler[0] + "/" + handler[1]);
 							
 							//process results
-							NodeInformationProcessor proc = nodeInfos.getElementFilter().get(handler).newInstance();
-							List<ClientInformations> clInfo = proc.handleInformations(resultHandler);
-							if ((clInfo != null) && (clInfo.size() > 0)) {
-								server.storeInformations(nodeInfos.getElementFilter().get(handler).getName(), clInfo, nodeInfos.getHost().getHostAddress(), ""+nodeInfos.getPort());
+							if ((handler[0].equals(server.getSzenario().get_GET_LINKTABLE_HANDLER()[0]))
+								&& (handler[1].equals(server.getSzenario().get_GET_LINKTABLE_HANDLER()[1]))) {
+								LinktableProcessor proc = new LinktableProcessor();
+								proc.setServer(server);
+								List<ClientInformations> clInfo = proc.handleInformations(resultHandler);
+								if ((clInfo != null) && (clInfo.size() > 0)) {
+									server.storeInformations(nodeInfos.getElementFilter().get(handler).getName(), clInfo, nodeInfos.getHost().getHostAddress(), ""+nodeInfos.getPort());
+								}
+							} else {
+								NodeInformationProcessor proc = nodeInfos.getElementFilter().get(handler).newInstance();
+								List<ClientInformations> clInfo = proc.handleInformations(resultHandler);
+								if ((clInfo != null) && (clInfo.size() > 0)) {
+									server.storeInformations(nodeInfos.getElementFilter().get(handler).getName(), clInfo, nodeInfos.getHost().getHostAddress(), ""+nodeInfos.getPort());
+								}
 							}
 						}
 					}

@@ -2,6 +2,8 @@ package de.hub.clickwatch.apps.god.information;
 
 import java.util.HashMap;
 
+import de.hub.clickwatch.apps.god.Server;
+
 public class LinkInformation implements ClientInformations {
 	private static final long serialVersionUID = 9214305293191383001L;
 	private String ip, mac = null;
@@ -82,5 +84,14 @@ public class LinkInformation implements ClientInformations {
 		//replace old linkList
 		linkList = new HashMap<String, SpecificLinkInformation>();
 		linkList = linkInfos.getLinkList();
+	}
+	
+	@Override
+	public void setServer(Server server) {
+	}
+
+	@Override
+	public Server getServer() {
+		return null;
 	}
 }
