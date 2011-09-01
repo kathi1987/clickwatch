@@ -18,7 +18,6 @@ import de.hub.clickwatch.apps.god.node.GpsProcessor;
 import de.hub.clickwatch.apps.god.node.MacIpProcessor;
 import de.hub.clickwatch.apps.god.node.NodeInformations;
 import de.hub.clickwatch.apps.god.node.NodeProcessor;
-import de.hub.clickwatch.apps.god.routing.GlobalLinktable;
 import de.hub.clickwatch.connection.INodeConnectionProvider;
 import de.hub.clickwatch.main.ClickWatchExternalLauncher;
 import de.hub.clickwatch.main.IClickWatchContext;
@@ -78,16 +77,6 @@ public class Server implements IClickWatchMain {
 			return;
 		}
 		System.out.println("done");
-		
-		
-		try {
-			Thread.sleep(20000);
-		} catch (InterruptedException e) {
-			//nothing to do
-		}
-		
-		System.out.println("size was " + GlobalLinktable.getLinktable().size());
-		System.exit(0);
 	}
 	
 	private void startPreview() {

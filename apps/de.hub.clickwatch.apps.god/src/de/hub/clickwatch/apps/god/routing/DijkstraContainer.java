@@ -18,6 +18,14 @@ public class DijkstraContainer {
 		//nothing, just set the default constructor private, so that it cannot be used
 	}
 	
+	public int getBestRouteLength(String to) {
+		if (bestRouteLength.containsKey(to)) {
+			return bestRouteLength.get(to);
+		}
+		
+		return -1;
+	}
+	
 	public DijkstraContainer(String i_startNode) {
 		if (i_startNode == null) {
 			throw new InvalidParameterException("start node cannot be <null>");

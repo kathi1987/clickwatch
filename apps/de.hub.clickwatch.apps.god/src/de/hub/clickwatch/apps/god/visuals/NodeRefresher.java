@@ -1,5 +1,6 @@
 package de.hub.clickwatch.apps.god.visuals;
 
+import de.hub.clickwatch.apps.god.routing.GlobalLinktable;
 import de.hub.clickwatch.apps.god.routing.GlobalRoutingtable;
 
 public class NodeRefresher extends Thread {
@@ -13,7 +14,7 @@ public class NodeRefresher extends Thread {
 	public void run() {
 		while (true) {
 			try {
-				Thread.sleep(1000);
+				Thread.sleep(2000);
 			} catch (InterruptedException intExc) {
 				//nothing
 			}
@@ -29,6 +30,10 @@ public class NodeRefresher extends Thread {
 				
 				if (!found) {
 					parent.addNode(node);
+					
+					for (String r : GlobalLinktable.getNeighbors(node)) {
+						parent.addLink(node, r);
+					}
 				}
 			}
 		}

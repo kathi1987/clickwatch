@@ -1,19 +1,30 @@
 package de.hub.clickwatch.apps.god.visuals;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
+import de.hub.clickwatch.apps.god.SzenarioHWL;
+import de.hub.clickwatch.apps.god.routing.GlobalRoutingtable;
 
 import processing.core.PApplet;
+import processing.core.PFont;
 
 public class GodNetwork extends PApplet {
 	private static final long serialVersionUID = 1256103591115689424L;
-	private List<NetworkNode> nodes = new ArrayList<NetworkNode>();
+	private Map<String, NetworkNode> nodes = new HashMap<String, NetworkNode>();
+	private Map<String, NetworkLink> links = new HashMap<String, NetworkLink>();
+	private Map<String, String> selectedRoute = new HashMap<String, String>();
 	private NodeRefresher nodeRefresher = null;
+	private PFont font = null;
 	
 	@Override
 	public void setup() {
 		size(800, 600, JAVA2D);
+		frameRate(15);
 		smooth();
+		
+		font = createFont("Helvetica", 14, true);
 		
 		nodeRefresher = new NodeRefresher(this);
 		nodeRefresher.start();
@@ -22,18 +33,39 @@ public class GodNetwork extends PApplet {
 	@Override
 	public void draw() {
 		background(255);
-		synchronized (nodes) {
-			for (NetworkNode n : nodes) {
-				n.display();
+		synchronized (links) {
+			for (String l : links.keySet()) {
+				links.get(l).display();
 			}
+		}
+		synchronized (nodes) {
+			for (String n : nodes.keySet()) {
+				nodes.get(n).display();
+			}
+		}
+		
+		for (String r : selectedRoute.keySet()) {
+			stroke(160,20,20);
+			strokeWeight(2);
+			line(getX(r), getY(r), getX(selectedRoute.get(r)), getY(selectedRoute.get(r)));
+			
+			fill(160,20,20);
+			textFont(font);
+			text(GlobalRoutingtable.getRoutingtable().get(r).getBestRouteLength(selectedRoute.get(r)),
+					getX(r) + 0.5f * (getX(selectedRoute.get(r)) - getX(r)), 
+					getY(r) + 0.5f * (getY(selectedRoute.get(r)) - getY(r)));
 		}
 	}
 	
 	@Override
 	public void mousePressed() {
 		synchronized (nodes) {
-			for (NetworkNode n : nodes) {
-				if (n.selectItem(mouseX, mouseY)) {
+			for (String n : nodes.keySet()) {
+				if (nodes.get(n).selectItem(mouseX, mouseY)) {
+					if (mouseButton == RIGHT) {
+						nodes.get(n).setPreselection(true);
+						checkRoutePreselectionsAndAddRoute(n);
+					}
 					break;
 				}
 			}
@@ -41,27 +73,75 @@ public class GodNetwork extends PApplet {
 	}
 	
 	@Override
-	public void mouseReleased() {
-		synchronized (nodes) {
-			for (NetworkNode n : nodes) {
-				n.deselectItem();
+	public void keyPressed() {
+		if (key == 'r') {
+			synchronized (selectedRoute) {
+				selectedRoute = new HashMap<String, String>();
 			}
 		}
+	}
+	
+	@Override
+	public void mouseReleased() {
+		synchronized (nodes) {
+			for (String n : nodes.keySet()) {
+				nodes.get(n).deselectItem();
+			}
+		}
+	}
+	
+	private void checkRoutePreselectionsAndAddRoute(String n2) {
+		boolean added = false;
+		for (String n : nodes.keySet()) {
+			if ((!n.equals(n2)) && (nodes.get(n).getPreselection())) {
+				selectedRoute.put(n, n2);
+				added = true;
+				break;
+			}
+		}
+		
+		if (added) {
+			for (String n : nodes.keySet()) {
+				nodes.get(n).setPreselection(false);
+			}
+		}
+	}
+	
+	public PFont getTheFont() {
+		return this.font;
 	}
 	
 	public void addNode(String mac) {
 		synchronized (nodes) {
-			nodes.add(new NetworkNode(this, mac));
+			nodes.put(mac, new NetworkNode(this, mac));
 		}
 	}
 	
-	public List<String> getNodeNames() {
-		List<String> names = new ArrayList<String>();
-		synchronized (nodes) {
-			for (NetworkNode node : nodes) {
-				names.add(node.getMac());
+	public void addLink(String from, String to) {
+		synchronized (links) {
+			if (!links.containsKey(from + SzenarioHWL.LINKTABLE_SEPARATOR + to )) {
+				links.put(from + SzenarioHWL.LINKTABLE_SEPARATOR + to, new NetworkLink(this, from, to));
 			}
 		}
-		return names;
+	}
+	
+	public Set<String> getNodeNames() {
+		return nodes.keySet();
+	}
+	
+	public float getX(String mac) {
+		if (nodes.containsKey(mac)) {
+			return nodes.get(mac).getX();
+		} else {
+			return -1f;
+		}
+	}
+	
+	public float getY(String mac) {
+		if (nodes.containsKey(mac)) {
+			return nodes.get(mac).getY();
+		} else {
+			return -1f;
+		}
 	}
 }
