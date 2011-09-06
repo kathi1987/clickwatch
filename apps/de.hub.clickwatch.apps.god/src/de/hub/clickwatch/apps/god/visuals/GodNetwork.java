@@ -1,10 +1,10 @@
 package de.hub.clickwatch.apps.god.visuals;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
-import de.hub.clickwatch.apps.god.SzenarioHWL;
 import de.hub.clickwatch.apps.god.routing.GlobalRoutingtable;
 
 import processing.core.PApplet;
@@ -13,14 +13,13 @@ import processing.core.PFont;
 public class GodNetwork extends PApplet {
 	private static final long serialVersionUID = 1256103591115689424L;
 	private Map<String, NetworkNode> nodes = new HashMap<String, NetworkNode>();
-	private Map<String, NetworkLink> links = new HashMap<String, NetworkLink>();
 	private Map<String, String> selectedRoute = new HashMap<String, String>();
 	private NodeRefresher nodeRefresher = null;
 	private PFont font = null;
 	
 	@Override
 	public void setup() {
-		size(800, 600, JAVA2D);
+		size(950, 700, JAVA2D);
 		frameRate(15);
 		smooth();
 		
@@ -33,14 +32,24 @@ public class GodNetwork extends PApplet {
 	@Override
 	public void draw() {
 		background(255);
-		synchronized (links) {
-			for (String l : links.keySet()) {
-				links.get(l).display();
-			}
-		}
 		synchronized (nodes) {
-			for (String n : nodes.keySet()) {
-				nodes.get(n).display();
+			Iterator<String> nodeIter = nodes.keySet().iterator();
+			while (nodeIter.hasNext()) {
+				NetworkNode node = nodes.get(nodeIter.next());
+				
+				Iterator<String> nodeIter2 = nodes.keySet().iterator();
+				boolean startDisplay = false;
+				while (nodeIter2.hasNext()) {
+					NetworkNode node2 = nodes.get(nodeIter2.next());
+					
+					if (startDisplay) {
+						new NetworkLink(this, node.getMac(), node2.getMac()).display();
+					} else if (node2.equals(node)) {
+						startDisplay = true;
+					}
+				}
+				
+				node.display();
 			}
 		}
 		
@@ -51,9 +60,9 @@ public class GodNetwork extends PApplet {
 			
 			fill(160,20,20);
 			textFont(font);
-			text(GlobalRoutingtable.getRoutingtable().get(r).getBestRouteLength(selectedRoute.get(r)),
+			text(GlobalRoutingtable.getShortestLength(r, selectedRoute.get(r)) + "\n" + GlobalRoutingtable.getShortestPath(r, selectedRoute.get(r)),
 					getX(r) + 0.5f * (getX(selectedRoute.get(r)) - getX(r)), 
-					getY(r) + 0.5f * (getY(selectedRoute.get(r)) - getY(r)));
+					getY(r) + 0.5f * (getY(selectedRoute.get(r)) - getY(r)) + 17);
 		}
 	}
 	
@@ -117,13 +126,13 @@ public class GodNetwork extends PApplet {
 		}
 	}
 	
-	public void addLink(String from, String to) {
-		synchronized (links) {
-			if (!links.containsKey(from + SzenarioHWL.LINKTABLE_SEPARATOR + to )) {
-				links.put(from + SzenarioHWL.LINKTABLE_SEPARATOR + to, new NetworkLink(this, from, to));
+	public void removeNodes(Set<String> removeNodes) {
+		synchronized (nodes) {
+			for (String remove : removeNodes) {
+				nodes.remove(remove);
 			}
 		}
-	}
+	} 
 	
 	public Set<String> getNodeNames() {
 		return nodes.keySet();

@@ -1,5 +1,7 @@
 package de.hub.clickwatch.apps.god.visuals;
 
+import de.hub.clickwatch.apps.god.Server;
+
 public class NetworkNode {
 	private final float mousePressDiff = 7f;
 	private float x,y;
@@ -29,7 +31,14 @@ public class NetworkNode {
 			x = parent.mouseX;
 			y = parent.mouseY;
 		}
-		parent.ellipse(x, y, 12, 12);
+		
+		if (Server.getMacIpList().containsValue(mac)) {
+			parent.ellipse(x, y, 12, 12);	//our node
+		} else {
+			parent.line(x-6, y-6, x+6, y+6);	//client
+			parent.line(x-6, y+6, x+6, y-6);
+		}
+		
 		
 		parent.fill(90);
 		parent.textAlign(GodNetwork.CENTER);

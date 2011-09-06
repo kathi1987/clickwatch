@@ -32,7 +32,7 @@ public class Server implements IClickWatchMain {
 	private static boolean startUpdatingProcess = true;
 	private NodeProcessor gateway = null;
 	private List<NodeProcessor> nodes = null;
-	private HashMap<String, String> macIpAPList = new HashMap<String, String>();
+	private static HashMap<String, String> macIpAPList = new HashMap<String, String>();
 	private Szenario szenario = null;
 	
 	@Inject private INodeConnectionProvider nodeConnectionProvider;
@@ -47,6 +47,10 @@ public class Server implements IClickWatchMain {
 		if (startTheSzenario) {
 			startSzenario();
 		}
+	}
+	
+	public static Map<String, String> getMacIpList() {
+		return new HashMap<String, String>(macIpAPList);
 	}
 	
 	public void stopSzenario() {

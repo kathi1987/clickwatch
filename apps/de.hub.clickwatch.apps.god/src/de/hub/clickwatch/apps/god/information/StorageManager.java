@@ -40,8 +40,21 @@ public class StorageManager {
 					//we need to merge
 					clientInfos.get(clInfos.getClientMac()).get(handler).merge(clInfos);
 				} else {
-					//insert item into inner HashMap for client
-					clientInfos.get(clInfos.getClientMac()).put(handler, clInfos);
+					//only linktable must do "merge"
+					if (handler.equals(LinktableProcessor.class.getName())) {
+						LinktableInformation lInf = (LinktableInformation)clInfos;
+						
+						LinktableInformation newList = new LinktableInformation();
+						newList.setClientIP(lInf.getClientIP());
+						newList.setClientMac(lInf.getClientMac());
+						newList.setTime(lInf.getTime());
+						newList.merge(lInf);	//important is THIS merge (to build the GlobalLinktable)
+						
+						clientInfos.get(clInfos.getClientMac()).put(handler, newList);
+					} else {
+						//insert item into inner HashMap for client
+						clientInfos.get(clInfos.getClientMac()).put(handler, clInfos);
+					}
 				}
 			} else {
 				//create new HashMap

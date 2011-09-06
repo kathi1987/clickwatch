@@ -63,15 +63,13 @@ public class LinktableInformation implements ClientInformations {
 		if (linktableInfos.getClientMac() != null) {
 			this.setClientMac(linktableInfos.getClientMac());
 		}
-		
-		for (String l : this.getLinktable().keySet()) {
+		for (String l : linktable.keySet()) {
 			if (l.startsWith(getClientMac())) {
 				if (!linktableInfos.getLinktable().containsKey(l)) {
 					GlobalLinktable.removeFromGlobalLinktableIfExistent(l);
 				}
 			}
 		}
-		
 		for (String l : linktableInfos.getLinktable().keySet()) {
 			if (l.startsWith(getClientMac())) {
 				if (this.getLinktable().containsKey(l)) {

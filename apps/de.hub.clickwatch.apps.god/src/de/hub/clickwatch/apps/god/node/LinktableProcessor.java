@@ -29,7 +29,6 @@ public class LinktableProcessor implements NodeInformationProcessor {
         		linkInf.setSeq(l.getSeq());
         		linktable.getLinktable().put(l.getFrom() + SzenarioHWL.LINKTABLE_SEPARATOR + l.getTo(), linkInf);
         	}
-        	
         	linktableInfos.add(linktable);
         	return linktableInfos;
         }

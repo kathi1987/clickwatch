@@ -11,12 +11,32 @@ public class GlobalRoutingtable implements Serializable {
 	private static Set<String> nodes = new HashSet<String>();
 	private static Map<String, DijkstraContainer> routingtable = new HashMap<String, DijkstraContainer>();
 	
-	public static Map<String, DijkstraContainer> getRoutingtable() {
-		return routingtable;
-	}
-	
 	public static Set<String> getNodes() {
 		return new HashSet<String>(nodes);
+	}
+	
+	public static Set<String> getRoutesFrom(String mac) {
+		if (routingtable.containsKey(mac)) {
+			return routingtable.get(mac).getPossibleRoutes();
+		} else {
+			return new HashSet<String>();
+		}
+	}
+	
+	public static int getShortestLength(String from, String to) {
+		if (routingtable.containsKey(from)) {
+			return routingtable.get(from).getBestRouteLength(to);
+		}
+		
+		return -1;
+	}
+	
+	public static String getShortestPath(String from, String to) {
+		if (routingtable.containsKey(from)) {
+			return routingtable.get(from).getBestRoutePath(to);
+		}
+		
+		return null;
 	}
 	
 	public static void removeUsedLink(String from, String to) {
