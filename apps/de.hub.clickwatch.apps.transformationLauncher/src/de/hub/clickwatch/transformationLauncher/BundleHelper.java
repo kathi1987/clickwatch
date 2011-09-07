@@ -3,16 +3,21 @@
  */
 package de.hub.clickwatch.transformationLauncher;
 
+import java.io.IOException;
 import java.util.Dictionary;
+import java.util.jar.Manifest;
 
 import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.resource.URIConverter;
 import org.eclipse.jdt.core.IJavaModel;
 import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.ui.statushandlers.StatusManager;
 import org.osgi.framework.Bundle;
+import org.osgi.framework.Constants;
 
 import de.hub.clickwatch.ui.PluginActivator;
 
@@ -41,15 +46,6 @@ public class BundleHelper {
 				bundleIdentifier = "/" + bundleIdentifier;
 			}
 
-			// String projName = bundleIdentifier;
-			// IJavaProject proj = getJavaModel().getJavaProject(projName);
-			// for(IClasspathEntry entry : proj.getRawClasspath())
-			// System.out.println(entry.toString());
-
-			// proj.setOutputLocation(new Path(bundleIdentifier + "/bin"),
-			// null);
-			// System.out.println(proj.getOutputLocation());
-
 			// try to install the bundle
 			String bundleLocation = "reference:"
 					+ ResourcesPlugin.getWorkspace().getRoot().getLocationURI()
@@ -69,7 +65,7 @@ public class BundleHelper {
 
 			Dictionary<String, String> dict = retBundle.getHeaders();
 
-			String classPath = dict.get("Bundle-ClassPath");
+			String classPath = dict.get(Constants.BUNDLE_CLASSPATH);
 			boolean hasBinFolder = false;
 			if (classPath != null) {
 				String[] classPathArray = classPath.split(",");
@@ -80,14 +76,30 @@ public class BundleHelper {
 				}
 			} else {
 				// no classpath entry in the manifest
-				Status s = new Status(IStatus.ERROR, "not_used", "Your plugin project does not have a ClassPath entry in its Manifest.mf", null); 
+				addBinToManifestClassPath(URI.createURI("platform:/resource"
+						+ bundleIdentifier + "/META-INF/MANIFEST.MF"));
+
+				Status s = new Status(IStatus.INFO, "not_used",
+						"A ClassPath entry has been added to your Manifest.mf",
+						null);
 				StatusManager.getManager().handle(s, StatusManager.SHOW);
-				//return null;
+				hasBinFolder = true;
+
+				retBundle.update();
 			}
 			// no bin folder in the manifest of this project?
 			if (!hasBinFolder) {
-				Status s = new Status(IStatus.ERROR, "not_used", "Your plugin project does not contain the bin folder in the ClassPath entry of the Manifest.mf", null); 
-				StatusManager.getManager().handle(s, StatusManager.SHOW);			
+				addBinToManifestClassPath(URI.createURI("platform:/resource"
+						+ bundleIdentifier + "/META-INF/MANIFEST.MF"));
+
+				Status s = new Status(
+						IStatus.INFO,
+						"not_used",
+						"The the bin folder has been added to your ClassPath entry of the Manifest.mf",
+						null);
+				StatusManager.getManager().handle(s, StatusManager.SHOW);
+
+				retBundle.update();
 			}
 
 			// try to install required bundles, so the dependencies are in the
@@ -117,10 +129,11 @@ public class BundleHelper {
 
 				} catch (Exception e) {
 					// dont do anything, it normal that most parts can not be
-					// loaded					
-					//Status s = new Status(IStatus.ERROR, "not_used", 0, e.toString(), null); 
-					//StatusManager.getManager().handle(s, StatusManager.SHOW);
-					
+					// loaded
+					// Status s = new Status(IStatus.ERROR, "not_used", 0,
+					// e.toString(), null);
+					// StatusManager.getManager().handle(s, StatusManager.SHOW);
+
 				}
 			}
 
@@ -156,11 +169,44 @@ public class BundleHelper {
 			 */
 
 		} catch (Exception e) {
-			Status s = new Status(IStatus.ERROR, "not_used", e.toString(), null); 
+			Status s = new Status(IStatus.ERROR, "not_used", e.toString(), null);
 			StatusManager.getManager().handle(s, StatusManager.SHOW);
-			//System.out.println(e);
+			// System.out.println(e);
 		}
 		return retBundle;
+	}
+
+	/**
+	 * looks for a 'bin' entry in the given manifest and adds it if necessary
+	 * 
+	 * @param uri
+	 *            the uri to the bundles manifest
+	 * 
+	 * @throws IOException
+	 */
+	private static void addBinToManifestClassPath(URI uri) throws IOException {
+		Manifest m = new Manifest(URIConverter.INSTANCE.createInputStream(uri));
+
+		// is there a classpath entry?
+		boolean found = false;
+		for (Object o : m.getMainAttributes().keySet()) {
+			if (o.toString().equals("Bundle-ClassPath")) {
+				// is the bin folder in this classpath?
+				String oldVal = m.getMainAttributes().get(o).toString();
+
+				if (!oldVal.contains("bin")) {
+					m.getMainAttributes().putValue("Bundle-ClassPath",
+							oldVal + ", bin");
+					found = true;
+					break;
+				}
+			}
+		}
+		if (!found) {
+			m.getMainAttributes().putValue("Bundle-ClassPath", "., bin");
+		}
+
+		m.write(URIConverter.INSTANCE.createOutputStream(uri));
 	}
 
 	/**
