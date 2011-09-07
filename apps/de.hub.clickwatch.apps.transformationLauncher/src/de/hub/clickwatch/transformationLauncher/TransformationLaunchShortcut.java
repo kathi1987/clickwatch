@@ -52,8 +52,6 @@ public class TransformationLaunchShortcut extends JavaLaunchShortcut {
 
 	@Override
 	public void launch(ISelection selection, String mode) {
-		// String file =
-		// "platform:/resource/de.hub.clickwatch.analysis.examples.xtend2/src/de/hub/clickwatch/analysis/examples/java/TestRunConfiguration2.java";
 		Object selected = ((IStructuredSelection) selection).getFirstElement();
 
 		if (selected instanceof CompilationUnit) {
@@ -94,10 +92,13 @@ public class TransformationLaunchShortcut extends JavaLaunchShortcut {
 
 		if (!(transformationFile.endsWith(".xtend") || transformationFile
 				.endsWith(".java"))) {
-			Status s = new Status(IStatus.ERROR, "not_used",
-					"No valid transformation file could be found.", null);
+			Status s = new Status(
+					IStatus.ERROR,
+					"not_used",
+					"No valid transformation file could be found (only .xtend and .java files are supported)).",
+					null);
 			StatusManager.getManager().handle(s, StatusManager.SHOW);
-			
+
 			return;
 		}
 

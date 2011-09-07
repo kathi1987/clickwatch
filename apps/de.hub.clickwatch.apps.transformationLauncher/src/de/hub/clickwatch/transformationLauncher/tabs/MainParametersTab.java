@@ -12,8 +12,11 @@ import org.eclipse.jdt.internal.debug.ui.JavaDebugImages;
 import org.eclipse.jdt.internal.debug.ui.actions.ControlAccessibleListener;
 import org.eclipse.jdt.internal.debug.ui.launcher.LauncherMessages;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -82,7 +85,14 @@ public class MainParametersTab extends AbstractLaunchConfigurationTab {
 		Group group = SWTFactory.createGroup(parent, "Transformation File", 2,
 				1, GridData.FILL_HORIZONTAL);
 		transformationFile = SWTFactory.createSingleText(group, 1);
-		// transformationFile.addModifyListener(fListener);
+		transformationFile.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				setDirty(true);
+				updateLaunchConfigurationDialog();
+			}
+		});
+		
 		ControlAccessibleListener.addListener(transformationFile,
 				group.getText());
 		Button selectTransfButton = createPushButton(group,
@@ -121,6 +131,20 @@ public class MainParametersTab extends AbstractLaunchConfigurationTab {
 		valueType = SWTFactory.createCombo(group, SWT.FILL, 5, 5, new String[] {
 				"SPECIFIC", "STRING", "XML" });
 		valueType.select(0);
+		valueType.addSelectionListener(new SelectionListener() {
+
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				setDirty(true);
+				updateLaunchConfigurationDialog();
+			}
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+		});
 	}
 
 	/**
@@ -135,6 +159,20 @@ public class MainParametersTab extends AbstractLaunchConfigurationTab {
 		debugLevel = SWTFactory.createCombo(group, SWT.FILL, 5, 5,
 				new String[] { "Error", "Warning", "Info", "Debug" });
 		debugLevel.select(2);
+		debugLevel.addSelectionListener(new SelectionListener() {
+
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				setDirty(true);
+				updateLaunchConfigurationDialog();
+			}
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+		});
 	}
 
 	/**
@@ -205,8 +243,8 @@ public class MainParametersTab extends AbstractLaunchConfigurationTab {
 	public boolean isValid(ILaunchConfiguration launchConfig) {
 		setErrorMessage(null);
 
-		//if (transformationFile.getText().equals(""))
-		//	setErrorMessage("No transformation file given");
+		// if (transformationFile.getText().equals(""))
+		// setErrorMessage("No transformation file given");
 
 		return true;
 	}
@@ -240,7 +278,7 @@ public class MainParametersTab extends AbstractLaunchConfigurationTab {
 	public String getName() {
 		return TAB_NAME;
 	}
-	
+
 	@Override
 	public Image getImage() {
 		// TODO Auto-generated method stub

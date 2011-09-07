@@ -8,6 +8,8 @@ import org.eclipse.core.internal.resources.Folder;
 import org.eclipse.core.internal.resources.Project;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
 import org.eclipse.debug.internal.ui.SWTFactory;
@@ -27,6 +29,8 @@ import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Image;
@@ -41,6 +45,7 @@ import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorReference;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.FileEditorInput;
+import org.eclipse.ui.statushandlers.StatusManager;
 
 import de.hub.clickwatch.model.presentation.ClickWatchModelEditor;
 import de.hub.clickwatch.transformationLauncher.dialog.ClickWatchModelObjectChooser;
@@ -96,7 +101,13 @@ public class ClickwatchParametersTab extends AbstractLaunchConfigurationTab {
 		Group group = SWTFactory.createGroup(parent, "Model object", 2, 1,
 				GridData.FILL_HORIZONTAL);
 		modelObject = SWTFactory.createSingleText(group, 1);
-		// transformationFile.addModifyListener(fListener);
+		modelObject.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				setDirty(true);
+				updateLaunchConfigurationDialog();
+			}
+		});
 		ControlAccessibleListener.addListener(modelObject, group.getText());
 		Button selectModelObjectButton = createPushButton(group,
 				LauncherMessages.AbstractJavaMainTab_1, null);
@@ -107,8 +118,18 @@ public class ClickwatchParametersTab extends AbstractLaunchConfigurationTab {
 				ResourceSet resourceSet = new ResourceSetImpl();
 				resourceSet.getLoadOptions().put(
 						XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);
-				Resource modelResource = resourceSet.getResource(
-						URI.createURI(sourceModel.getText()), true);
+
+				Resource modelResource = null;
+
+				try {
+					modelResource = resourceSet.getResource(
+							URI.createURI(sourceModel.getText()), true);
+				} catch (Exception e) {
+					Status s = new Status(IStatus.ERROR, "not_used",
+							"The given source model file is not valid: "
+									+ sourceModel.getText(), null);
+					StatusManager.getManager().handle(s, StatusManager.SHOW);
+				}
 				if (modelResource != null) {
 					ClickWatchModelObjectChooser dialog = new ClickWatchModelObjectChooser(
 							shell, modelResource);
@@ -133,7 +154,14 @@ public class ClickwatchParametersTab extends AbstractLaunchConfigurationTab {
 		Group group = SWTFactory.createGroup(parent, "Source model", 2, 1,
 				GridData.FILL_HORIZONTAL);
 		sourceModel = SWTFactory.createSingleText(group, 1);
-		// transformationFile.addModifyListener(fListener);
+		sourceModel.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				setDirty(true);
+				updateLaunchConfigurationDialog();
+			}
+		});
+		
 		ControlAccessibleListener.addListener(sourceModel, group.getText());
 		Button selectSourceModelButton = createPushButton(group,
 				LauncherMessages.AbstractJavaMainTab_1, null);
@@ -147,6 +175,7 @@ public class ClickwatchParametersTab extends AbstractLaunchConfigurationTab {
 					@Override
 					public boolean select(Viewer viewer, Object parentElement,
 							Object element) {
+						// show projects, folders and ClickWatch-model files
 						if (element instanceof Project
 								|| element instanceof Folder)
 							return true;
@@ -202,16 +231,6 @@ public class ClickwatchParametersTab extends AbstractLaunchConfigurationTab {
 
 	@Override
 	public void setDefaults(ILaunchConfigurationWorkingCopy configuration) {
-
-		/*
-		 * IEditorPart activeEditor = PlatformUI.getWorkbench()
-		 * .getActiveWorkbenchWindow().getActivePage().getActiveEditor(); if
-		 * (activeEditor instanceof ClickWatchModelEditor) { Object firstElement
-		 * = ((IStructuredSelection) ((ClickWatchModelEditor) activeEditor)
-		 * .getSelection()).getFirstElement(); if (firstElement instanceof
-		 * EObject) { URI eProxyURI = EcoreUtil.getURI((EObject) firstElement);
-		 * modelObject.setText(eProxyURI.toString()); } }
-		 */
 
 		IEditorReference[] editorReferences = PlatformUI.getWorkbench()
 				.getActiveWorkbenchWindow().getActivePage()

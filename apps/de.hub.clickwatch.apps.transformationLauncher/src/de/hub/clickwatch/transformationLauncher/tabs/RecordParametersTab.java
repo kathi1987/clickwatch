@@ -14,6 +14,8 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.jdt.internal.debug.ui.JavaDebugImages;
 import org.eclipse.jdt.internal.debug.ui.actions.ControlAccessibleListener;
 import org.eclipse.jdt.internal.debug.ui.launcher.LauncherMessages;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Image;
@@ -80,7 +82,13 @@ public class RecordParametersTab extends AbstractLaunchConfigurationTab {
 		Group group = SWTFactory.createGroup(parent, "Database file", 2, 1,
 				GridData.FILL_HORIZONTAL);
 		databaseFile = SWTFactory.createSingleText(group, 1);
-		// transformationFile.addModifyListener(fListener);
+		databaseFile.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				setDirty(true);
+				updateLaunchConfigurationDialog();
+			}
+		});
 		ControlAccessibleListener.addListener(databaseFile, group.getText());
 		Button selectButton = createPushButton(group,
 				LauncherMessages.AbstractJavaMainTab_1, null);
@@ -116,7 +124,13 @@ public class RecordParametersTab extends AbstractLaunchConfigurationTab {
 		Group group = SWTFactory.createGroup(parent, "Record ID", 1, 1,
 				GridData.FILL_HORIZONTAL);
 		recordID = SWTFactory.createSingleText(group, 1);
-		// transformationFile.addModifyListener(fListener);
+		recordID.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				setDirty(true);
+				updateLaunchConfigurationDialog();
+			}
+		});
 		ControlAccessibleListener.addListener(recordID, group.getText());
 	}
 
