@@ -26,6 +26,7 @@ public class SzenarioHWL implements Szenario {
 	public static final char LINKTABLE_SEPARATOR = ';';
 	public static final float LINK_UPDATE_MIN_THRESHOLD = 0.15f;
 	public static final int LINK_ADD_MIN_THRESHOLD = 5000;
+	public static final int MODEL_SIZE_FACTOR = 8;
 	
 	private String[][] ACCESS_POINTS = new String[][] {
 		//{"192.168.3.71", "7777", "wgt71"},
@@ -177,7 +178,7 @@ public class SzenarioHWL implements Szenario {
 	public float[] get_AP_METRIC_POSITION(String mac) {
 		for (int k = 0; k < AP_POSITIONS.length; k++) {
 			if (AP_POSITIONS[k][1].equals(mac)) {
-				return new float[] {new Float(AP_POSITIONS[k][5]), new Float(AP_POSITIONS[k][6]), new Float(AP_POSITIONS[k][7])};
+				return new float[] {new Float(AP_POSITIONS[k][5]) * MODEL_SIZE_FACTOR, new Float(AP_POSITIONS[k][7]) * MODEL_SIZE_FACTOR, new Float(AP_POSITIONS[k][6]) * MODEL_SIZE_FACTOR};
 			}
 		}
 		

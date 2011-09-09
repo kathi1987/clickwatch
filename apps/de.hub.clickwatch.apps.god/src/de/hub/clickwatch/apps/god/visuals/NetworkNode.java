@@ -20,9 +20,9 @@ public class NetworkNode {
 			this.y = parent.random(-700, 700);
 			this.z = parent.random(-700, 700);
 		} else {
-			this.x = pos[0]*8f;
-			this.y = pos[1]*8f;
-			this.z = pos[2]*8f;
+			this.x = pos[0];
+			this.y = pos[1];
+			this.z = pos[2];
 		}
 	}
 	

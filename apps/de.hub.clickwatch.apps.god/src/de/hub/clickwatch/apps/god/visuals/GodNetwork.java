@@ -15,6 +15,7 @@ public class GodNetwork extends PApplet {
 	private static final long serialVersionUID = 1256103591115689424L;
 	private Map<String, NetworkNode> nodes = new HashMap<String, NetworkNode>();
 	private Map<String, String> selectedRoute = new HashMap<String, String>();
+	private NetworkSurrounding surrounding = null;
 	private NodeRefresher nodeRefresher = null;
 	private PFont font = null;
 	private PeasyCam camera;
@@ -25,8 +26,8 @@ public class GodNetwork extends PApplet {
 		frameRate(15);
 		smooth();
 		
-		camera = new PeasyCam(this, 0, 0, 0, 1300);
-		camera.getDistance();
+		camera = new PeasyCam(this, 0, 0, 0, 1100);
+		surrounding = new NetworkSurrounding(this);
 		font = createFont("Helvetica", 20, true);
 		nodeRefresher = new NodeRefresher(this);
 		nodeRefresher.start();
@@ -36,9 +37,11 @@ public class GodNetwork extends PApplet {
 	public void draw() {
 		background(255);
 		pushMatrix();
-		translate(475, 350);
+		translate(width/2f, height/2f);
 		lights();
 		popMatrix();
+		
+		surrounding.display();
 		
 		synchronized (nodes) {
 			Iterator<String> nodeIter = nodes.keySet().iterator();
@@ -103,6 +106,7 @@ public class GodNetwork extends PApplet {
 		synchronized (nodes) {
 			for (String n : nodes.keySet()) {
 				nodes.get(n).deselectItem();
+				camera.setActive(true);
 			}
 		}
 	}
