@@ -3,6 +3,12 @@
  */
 package de.hub.clickwatch.transformationLauncher.tabs;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.eclipse.core.internal.resources.File;
+import org.eclipse.core.internal.resources.Folder;
+import org.eclipse.core.internal.resources.Project;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.debug.core.ILaunchConfiguration;
@@ -14,6 +20,8 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.jdt.internal.debug.ui.JavaDebugImages;
 import org.eclipse.jdt.internal.debug.ui.actions.ControlAccessibleListener;
 import org.eclipse.jdt.internal.debug.ui.launcher.LauncherMessages;
+import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -96,9 +104,26 @@ public class RecordParametersTab extends AbstractLaunchConfigurationTab {
 			@Override
 			public void widgetSelected(SelectionEvent selectionEvent) {
 				IFile file = null;
+				List<ViewerFilter> filters = new ArrayList<ViewerFilter>();
+				filters.add(new ViewerFilter() {
+					@Override
+					public boolean select(Viewer viewer, Object parentElement,
+							Object element) {
+						// show projects, folders and ClickWatch-model files
+						if (element instanceof Project
+								|| element instanceof Folder)
+							return true;
+
+						if ((element instanceof File))
+							if (((File) element).getFileExtension().equals(
+									"cwdatabase"))
+								return true;
+						return false;
+					}
+				});
 
 				IFile[] files = WorkspaceResourceDialog.openFileSelection(
-						shell, null, null, false, null, null);
+						shell, null, null, false, null, filters);
 				if (files.length != 0) {
 					file = files[0];
 				}

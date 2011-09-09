@@ -215,12 +215,16 @@ public class TransformationLaunchShortcut extends JavaLaunchShortcut {
 					transformationFile);
 			wc.setAttribute(MainParametersTab.ATTR_VALUE_TYPE, "SPECIFIC");
 			wc.setAttribute(MainParametersTab.ATTR_DEBUG_LEVEL, "Warning");
-			wc.setAttribute(RecordParametersTab.ATTR_DATABASE_URI, "");
+			wc.setAttribute(MainParametersTab.ATTR_HANDLER_PER_RECORD, "2000");
+			wc.setAttribute(MainParametersTab.ATTR_DATABASE_TYPE, "HBASE");
+			wc.setAttribute(MainParametersTab.ATTR_HANDLER_BEHAVIOUR, "DEFAULT");
+			wc.setAttribute(MainParametersTab.ATTR_RECORD_URI, "");
+			
 			wc.setAttribute(RecordParametersTab.ATTR_RECORD_ID, "");
 			wc.setAttribute(ClickwatchParametersTab.ATTR_MODEL_OBJECT,
 					modelObject);
 			wc.setAttribute(ClickwatchParametersTab.ATTR_SOURCE_MODEL_FILE,
-					sourceModelFile);
+					sourceModelFile);			
 
 			config = wc.doSave();
 		} catch (Exception e) {

@@ -25,6 +25,8 @@ import org.osgi.framework.Bundle;
 import de.hub.clickwatch.main.ClickWatchRunConfigurationLauncher;
 import de.hub.clickwatch.main.ELaunchConfigurationParameters;
 import de.hub.clickwatch.main.IClickWatchMain;
+import de.hub.clickwatch.main.impl.InjectorProvider.DataBaseType;
+import de.hub.clickwatch.main.impl.InjectorProvider.HandlerBehaviour;
 import de.hub.clickwatch.transformationLauncher.tabs.ClickwatchParametersTab;
 import de.hub.clickwatch.transformationLauncher.tabs.MainParametersTab;
 import de.hub.clickwatch.transformationLauncher.tabs.RecordParametersTab;
@@ -52,6 +54,14 @@ public class TransformationLaunchConfigurationDelegate implements
 				MainParametersTab.ATTR_DEBUG_LEVEL, "");
 		String valueType = configuration.getAttribute(
 				MainParametersTab.ATTR_VALUE_TYPE, "");
+		String handlerBehaviour = configuration.getAttribute(
+				MainParametersTab.ATTR_HANDLER_BEHAVIOUR, "");
+		String databaseType = configuration.getAttribute(
+				MainParametersTab.ATTR_DATABASE_TYPE, "");
+		String handlerPerRecord = configuration.getAttribute(
+				MainParametersTab.ATTR_HANDLER_PER_RECORD, "");
+		String recordURI = configuration.getAttribute(
+				MainParametersTab.ATTR_RECORD_URI, "");
 
 		String sourceModelFile = configuration.getAttribute(
 				ClickwatchParametersTab.ATTR_SOURCE_MODEL_FILE, "");
@@ -119,6 +129,23 @@ public class TransformationLaunchConfigurationDelegate implements
 				config.put(ELaunchConfigurationParameters.TransformationFile,
 						URI.createURI(transformationFile));
 
+				// record uri
+				if (recordURI != "" && recordID != null)
+					config.put(ELaunchConfigurationParameters.RecordURI,
+							URI.createURI(recordURI));
+
+				// handler per record
+				config.put(ELaunchConfigurationParameters.HandlerPerRecord,
+						Integer.parseInt(handlerPerRecord));
+
+				// database type
+				config.put(ELaunchConfigurationParameters.DataBaseType,
+						DataBaseType.valueOf(databaseType));
+
+				// handler behaviour
+				config.put(ELaunchConfigurationParameters.HandlerBehaviour,
+						HandlerBehaviour.valueOf(handlerBehaviour));
+
 				// value type
 				config.put(ELaunchConfigurationParameters.ValueType, valueType);
 
@@ -137,11 +164,10 @@ public class TransformationLaunchConfigurationDelegate implements
 				// *************
 				// Record tab
 
-				// config.put(ELaunchConfigurationParameters.RecordURI,
-				// URI.createURI(databaseURI));
+				config.put(ELaunchConfigurationParameters.DataBaseURI,
+						URI.createURI(databaseURI));
 
-				// config.put(ELaunchConfigurationParameters.RecordId,
-				// recordID);
+				config.put(ELaunchConfigurationParameters.RecordId, recordID);
 
 				// *************
 				// ClickWatch Model tab
