@@ -184,29 +184,40 @@ public class BundleHelper {
 	 * 
 	 * @throws IOException
 	 */
-	private static void addBinToManifestClassPath(URI uri) throws IOException {
-		Manifest m = new Manifest(URIConverter.INSTANCE.createInputStream(uri));
+	private static void addBinToManifestClassPath(URI uri) {
+		try {
 
-		// is there a classpath entry?
-		boolean found = false;
-		for (Object o : m.getMainAttributes().keySet()) {
-			if (o.toString().equals("Bundle-ClassPath")) {
-				// is the bin folder in this classpath?
-				String oldVal = m.getMainAttributes().get(o).toString();
+			Manifest m = new Manifest(
+					URIConverter.INSTANCE.createInputStream(uri));
 
-				if (!oldVal.contains("bin")) {
-					m.getMainAttributes().putValue("Bundle-ClassPath",
-							oldVal + ", bin");
-					found = true;
-					break;
+			// is there a classpath entry?
+			boolean found = false;
+			for (Object o : m.getMainAttributes().keySet()) {
+				if (o.toString().equals("Bundle-ClassPath")) {
+					// is the bin folder in this classpath?
+					String oldVal = m.getMainAttributes().get(o).toString();
+
+					if (!oldVal.contains("bin")) {
+						m.getMainAttributes().putValue("Bundle-ClassPath",
+								oldVal + ", bin");
+						found = true;
+						break;
+					}
 				}
 			}
-		}
-		if (!found) {
-			m.getMainAttributes().putValue("Bundle-ClassPath", "., bin");
-		}
+			if (!found) {
+				m.getMainAttributes().putValue("Bundle-ClassPath", "., bin");
+			}
 
-		m.write(URIConverter.INSTANCE.createOutputStream(uri));
+			m.write(URIConverter.INSTANCE.createOutputStream(uri));
+		} catch (Exception e) {
+			Status s = new Status(
+					IStatus.ERROR,
+					"not_used",
+					"Could not add the bin folder to the projects manifest file",
+					null);
+			StatusManager.getManager().handle(s, StatusManager.SHOW);
+		}
 	}
 
 	/**

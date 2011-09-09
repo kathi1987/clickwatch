@@ -33,6 +33,7 @@ import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.statushandlers.StatusManager;
 
 import de.hub.clickwatch.model.presentation.ClickWatchModelEditor;
+import de.hub.clickwatch.recoder.cwdatabase.presentation.CWDataBaseEditor;
 import de.hub.clickwatch.transformationLauncher.tabs.ClickwatchParametersTab;
 import de.hub.clickwatch.transformationLauncher.tabs.MainParametersTab;
 import de.hub.clickwatch.transformationLauncher.tabs.RecordParametersTab;
@@ -48,6 +49,8 @@ public class TransformationLaunchShortcut extends JavaLaunchShortcut {
 
 	private String modelObject = "";
 	private String sourceModelFile = "";
+	private String recordDatabaseFile = "";
+	private String recordID = "";
 	private String transformationFile = "";
 
 	@Override
@@ -77,6 +80,7 @@ public class TransformationLaunchShortcut extends JavaLaunchShortcut {
 			}
 		}
 		tryFindClickWatchModel();
+		tryFindRecordDatabase();
 
 		this.launch(mode);
 	}
@@ -103,9 +107,9 @@ public class TransformationLaunchShortcut extends JavaLaunchShortcut {
 		}
 
 		tryFindClickWatchModel();
+		tryFindRecordDatabase();
 
 		this.launch(mode);
-
 	}
 
 	/**
@@ -156,7 +160,13 @@ public class TransformationLaunchShortcut extends JavaLaunchShortcut {
 								"SPECIFIC")
 						&& config.getAttribute(
 								MainParametersTab.ATTR_DEBUG_LEVEL, "").equals(
-								"Warning")) {
+								"Warning")
+						&& config.getAttribute(
+								RecordParametersTab.ATTR_DATABASE_URI, "")
+								.equals(recordDatabaseFile)
+						&& config.getAttribute(
+								RecordParametersTab.ATTR_RECORD_ID, "").equals(
+								recordID)) {
 					candidateConfigs.add(config);
 				}
 			}
@@ -198,6 +208,31 @@ public class TransformationLaunchShortcut extends JavaLaunchShortcut {
 		}
 	}
 
+	private void tryFindRecordDatabase() {
+		IEditorReference[] editorReferences = PlatformUI.getWorkbench()
+				.getActiveWorkbenchWindow().getActivePage()
+				.getEditorReferences();
+
+		// check every editor for selections that can be default values
+		for (IEditorReference editorRef : editorReferences) {
+			IEditorPart editorPart = editorRef.getEditor(true);
+
+			// a cw database editor?
+			if (editorPart instanceof CWDataBaseEditor) {
+				Object firstElement = ((IStructuredSelection) ((CWDataBaseEditor) editorPart)
+						.getSelection()).getFirstElement();
+				if (firstElement instanceof EObject) {
+					URI eProxyURI = EcoreUtil.getURI((EObject) firstElement);
+
+					recordID = eProxyURI.fragment();
+
+					recordDatabaseFile = URI.createPlatformResourceURI(
+							eProxyURI.toPlatformString(true), true).toString();
+				}
+			}
+		}
+	}
+
 	protected ILaunchConfiguration createConfiguration() {
 
 		ILaunchConfiguration config = null;
@@ -219,12 +254,16 @@ public class TransformationLaunchShortcut extends JavaLaunchShortcut {
 			wc.setAttribute(MainParametersTab.ATTR_DATABASE_TYPE, "HBASE");
 			wc.setAttribute(MainParametersTab.ATTR_HANDLER_BEHAVIOUR, "DEFAULT");
 			wc.setAttribute(MainParametersTab.ATTR_RECORD_URI, "");
-			
-			wc.setAttribute(RecordParametersTab.ATTR_RECORD_ID, "");
+
+			if (recordDatabaseFile != null && recordDatabaseFile != "")
+				wc.setAttribute(RecordParametersTab.ATTR_DATABASE_URI,
+						recordDatabaseFile);
+			wc.setAttribute(RecordParametersTab.ATTR_RECORD_ID, recordID);
+
 			wc.setAttribute(ClickwatchParametersTab.ATTR_MODEL_OBJECT,
 					modelObject);
 			wc.setAttribute(ClickwatchParametersTab.ATTR_SOURCE_MODEL_FILE,
-					sourceModelFile);			
+					sourceModelFile);
 
 			config = wc.doSave();
 		} catch (Exception e) {

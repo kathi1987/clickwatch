@@ -48,6 +48,7 @@ import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.statushandlers.StatusManager;
 
 import de.hub.clickwatch.model.presentation.ClickWatchModelEditor;
+import de.hub.clickwatch.recoder.cwdatabase.presentation.CWDataBaseEditor;
 import de.hub.clickwatch.transformationLauncher.dialog.ClickWatchModelObjectChooser;
 
 /**
@@ -161,7 +162,7 @@ public class ClickwatchParametersTab extends AbstractLaunchConfigurationTab {
 				updateLaunchConfigurationDialog();
 			}
 		});
-		
+
 		ControlAccessibleListener.addListener(sourceModel, group.getText());
 		Button selectSourceModelButton = createPushButton(group,
 				LauncherMessages.AbstractJavaMainTab_1, null);
@@ -257,16 +258,34 @@ public class ClickwatchParametersTab extends AbstractLaunchConfigurationTab {
 									eProxyURI.toPlatformString(true), true)
 									.toString());
 				}
+			} else if (editorPart instanceof CWDataBaseEditor) {
+				Object firstElement = ((IStructuredSelection) ((CWDataBaseEditor) editorPart)
+						.getSelection()).getFirstElement();
+
+				if (firstElement instanceof EObject) {
+					URI eProxyURI = EcoreUtil.getURI((EObject) firstElement);
+
+					configuration.setAttribute(
+							RecordParametersTab.ATTR_RECORD_ID,
+							eProxyURI.fragment());
+
+					configuration.setAttribute(
+							RecordParametersTab.ATTR_DATABASE_URI,
+							URI.createPlatformResourceURI(
+									eProxyURI.toPlatformString(true), true)
+									.toString());
+				}
 			} else if (editorPart.getEditorInput() instanceof FileEditorInput) {
 				FileEditorInput fInput = (FileEditorInput) editorPart
 						.getEditorInput();
-
-				configuration
-						.setAttribute(
-								MainParametersTab.ATTR_TRANSFORMATION_FILE,
-								URI.createPlatformResourceURI(
-										fInput.getFile().getFullPath()
-												.toString(), true).toString());
+				if ((fInput.getFile().getFileExtension().endsWith("java") || fInput
+						.getFile().getFileExtension().endsWith("xtend"))) {
+					configuration.setAttribute(
+							MainParametersTab.ATTR_TRANSFORMATION_FILE,
+							URI.createPlatformResourceURI(
+									fInput.getFile().getFullPath().toString(),
+									true).toString());
+				}			
 			}
 
 		}

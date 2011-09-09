@@ -11,15 +11,22 @@ import org.eclipse.core.internal.resources.Folder;
 import org.eclipse.core.internal.resources.Project;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
 import org.eclipse.debug.internal.ui.SWTFactory;
 import org.eclipse.debug.ui.AbstractLaunchConfigurationTab;
 import org.eclipse.emf.common.ui.dialogs.WorkspaceResourceDialog;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.jdt.internal.debug.ui.JavaDebugImages;
 import org.eclipse.jdt.internal.debug.ui.actions.ControlAccessibleListener;
 import org.eclipse.jdt.internal.debug.ui.launcher.LauncherMessages;
+import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.events.ModifyEvent;
@@ -34,6 +41,9 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
+import org.eclipse.ui.statushandlers.StatusManager;
+
+import de.hub.clickwatch.transformationLauncher.dialog.RecordObjectChooser;
 
 /**
  * @author Lars George
@@ -146,7 +156,9 @@ public class RecordParametersTab extends AbstractLaunchConfigurationTab {
 	 *            the component within this group shoul dbe created
 	 */
 	protected void createRecordIDGroup(Composite parent) {
-		Group group = SWTFactory.createGroup(parent, "Record ID", 1, 1,
+		final Shell shell = parent.getShell();
+
+		Group group = SWTFactory.createGroup(parent, "Record ID", 2, 1,
 				GridData.FILL_HORIZONTAL);
 		recordID = SWTFactory.createSingleText(group, 1);
 		recordID.addModifyListener(new ModifyListener() {
@@ -157,6 +169,46 @@ public class RecordParametersTab extends AbstractLaunchConfigurationTab {
 			}
 		});
 		ControlAccessibleListener.addListener(recordID, group.getText());
+
+		Button selectModelObjectButton = createPushButton(group,
+				LauncherMessages.AbstractJavaMainTab_1, null);
+		selectModelObjectButton.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent selectionEvent) {
+
+				ResourceSet resourceSet = new ResourceSetImpl();
+				resourceSet.getLoadOptions().put(
+						XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);
+
+				Resource modelResource = null;
+
+				try {
+					modelResource = resourceSet.getResource(
+							URI.createURI(databaseFile.getText()), true);
+				} catch (Exception e) {
+					Status s = new Status(IStatus.ERROR, "not_used",
+							"The given database file is not valid: "
+									+ databaseFile.getText(), null);
+					StatusManager.getManager().handle(s, StatusManager.SHOW);
+				}
+				if (modelResource != null) {
+					RecordObjectChooser dialog = new RecordObjectChooser(shell,
+							modelResource);
+					if (dialog.open() == Dialog.OK) {
+						setRecordID(dialog.getSelectedID());
+					}
+				}
+			}
+		});
+	}
+
+	/**
+	 * sets the string parameter for the model object in the gui
+	 * 
+	 * @param uriString
+	 */
+	private void setRecordID(String uriString) {
+		recordID.setText(uriString);
 	}
 
 	/**
