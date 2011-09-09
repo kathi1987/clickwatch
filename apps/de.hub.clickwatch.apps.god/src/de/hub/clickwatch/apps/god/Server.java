@@ -33,7 +33,7 @@ public class Server implements IClickWatchMain {
 	private NodeProcessor gateway = null;
 	private List<NodeProcessor> nodes = null;
 	private static HashMap<String, String> macIpAPList = new HashMap<String, String>();
-	private Szenario szenario = null;
+	private static Szenario szenario = null;
 	
 	@Inject private INodeConnectionProvider nodeConnectionProvider;
 	
@@ -120,7 +120,7 @@ public class Server implements IClickWatchMain {
 		return list;
 	}
 	
-	public Szenario getSzenario() {
+	public static Szenario getSzenario() {
 		return szenario;
 	}
 	
@@ -182,8 +182,8 @@ public class Server implements IClickWatchMain {
 	}
 	
 	private void init_szenario() throws UnknownHostException {
-		if (this.szenario == null) {
-			this.szenario = new SzenarioHWL();
+		if (Server.szenario == null) {
+			Server.szenario = new SzenarioHWL();
 		}
 		this.nodes = new ArrayList<NodeProcessor>();
 		
@@ -203,7 +203,7 @@ public class Server implements IClickWatchMain {
 	}
 	
 	public void addNode(String ip, String port, String mac) throws UnknownHostException {
-		String[][] aps = server.getSzenario().get_ACCESS_POINTS();
+		String[][] aps = szenario.get_ACCESS_POINTS();
 		String[][] newAps = new String[aps.length+1][3];
 		for (int m = 0; m < aps.length; m++) {
 			newAps[m][0] = aps[m][0];
@@ -215,14 +215,14 @@ public class Server implements IClickWatchMain {
 		newAps[newAps.length-1][1] = port;
 		newAps[newAps.length-1][2] = mac;
 		
-		server.getSzenario().set_ACCESS_POINTS(newAps);
+		szenario.set_ACCESS_POINTS(newAps);
 		nodes.add(startAskingAp(ip, new Integer(port)));
 	}
 	
 	@SuppressWarnings("unused")
 	private void initLocationProcessor(boolean halfhalfMethod) {
 		//start LocationProcessor
-		locationProcessor = new LocationProcessor(this, storageMgr);
+		locationProcessor = new LocationProcessor(storageMgr);
 		locationProcessor.setTakeHalfTrainingData(halfhalfMethod);
 		if (locationProcessor.setup()) {
 			locationProcessor.start();

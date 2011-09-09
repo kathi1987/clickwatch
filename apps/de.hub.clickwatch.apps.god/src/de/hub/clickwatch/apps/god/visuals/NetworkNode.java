@@ -4,7 +4,7 @@ import de.hub.clickwatch.apps.god.Server;
 
 public class NetworkNode {
 	private final float mousePressDiff = 7f;
-	private float x,y;
+	private float x,y,z;
 	private String mac;
 	private GodNetwork parent = null;
 	private boolean selected = false;
@@ -13,18 +13,26 @@ public class NetworkNode {
 	public NetworkNode(GodNetwork parent, String mac) {
 		this.parent = parent;
 		this.mac = mac;
-		this.x = parent.random(10, parent.width-20);
-		this.y = parent.random(10, parent.height-20);
+		
+		float[] pos = Server.getSzenario().get_AP_METRIC_POSITION(mac);
+		if (pos[0] == -1f) {
+			this.x = parent.random(-800, 800);
+			this.y = parent.random(-700, 700);
+			this.z = parent.random(-700, 700);
+		} else {
+			this.x = pos[0]*8f;
+			this.y = pos[1]*8f;
+			this.z = pos[2]*8f;
+		}
 	}
 	
-	public void display() {
+	public void display(float angleX, float angleY, float angleZ) {
 		parent.fill(255);
 		if (preselectedRoute) {
 			parent.stroke(parent.color(160,30,20));
 		} else {
-			parent.stroke(90);
+			parent.stroke(180,180,180,100);
 		}
-		parent.strokeWeight(3);
 		parent.ellipseMode(GodNetwork.CENTER);
 		
 		if (selected) {
@@ -32,18 +40,21 @@ public class NetworkNode {
 			y = parent.mouseY;
 		}
 		
-		if (Server.getMacIpList().containsValue(mac)) {
-			parent.ellipse(x, y, 12, 12);	//our node
-		} else {
-			parent.line(x-6, y-6, x+6, y+6);	//client
-			parent.line(x-6, y+6, x+6, y-6);
-		}
-		
-		
+		parent.pushMatrix();
+		parent.translate(x, y, z);
+		parent.strokeWeight(1);
+		parent.noFill();
+		parent.sphereDetail(20);
+		parent.sphere(20);
 		parent.fill(90);
 		parent.textAlign(GodNetwork.CENTER);
 		parent.textFont(parent.getTheFont());
-		parent.text(mac, x, y+19);
+		
+		parent.rotateX(angleX);
+		parent.rotateY(angleY);
+		parent.rotateZ(angleZ);
+		parent.text(mac, 0, 20, 0);
+		parent.popMatrix();
 	}
 	
 	public boolean selectItem(int posX, int posY) {
@@ -77,5 +88,9 @@ public class NetworkNode {
 	
 	public float getY() {
 		return this.y;
+	}
+	
+	public float getZ() {
+		return this.z;
 	}
 }

@@ -7,6 +7,7 @@ import java.util.Set;
 
 import de.hub.clickwatch.apps.god.routing.GlobalRoutingtable;
 
+import peasy.PeasyCam;
 import processing.core.PApplet;
 import processing.core.PFont;
 
@@ -16,15 +17,17 @@ public class GodNetwork extends PApplet {
 	private Map<String, String> selectedRoute = new HashMap<String, String>();
 	private NodeRefresher nodeRefresher = null;
 	private PFont font = null;
+	private PeasyCam camera;
 	
 	@Override
 	public void setup() {
-		size(950, 700, JAVA2D);
+		size(950, 700, P3D);
 		frameRate(15);
 		smooth();
 		
-		font = createFont("Helvetica", 14, true);
-		
+		camera = new PeasyCam(this, 0, 0, 0, 1300);
+		camera.getDistance();
+		font = createFont("Helvetica", 20, true);
 		nodeRefresher = new NodeRefresher(this);
 		nodeRefresher.start();
 	}
@@ -32,6 +35,11 @@ public class GodNetwork extends PApplet {
 	@Override
 	public void draw() {
 		background(255);
+		pushMatrix();
+		translate(475, 350);
+		lights();
+		popMatrix();
+		
 		synchronized (nodes) {
 			Iterator<String> nodeIter = nodes.keySet().iterator();
 			while (nodeIter.hasNext()) {
@@ -43,13 +51,13 @@ public class GodNetwork extends PApplet {
 					NetworkNode node2 = nodes.get(nodeIter2.next());
 					
 					if (startDisplay) {
-						new NetworkLink(this, node.getMac(), node2.getMac()).display();
+						new NetworkLink(this, node.getMac(), node2.getMac()).display(camera.getRotations()[0], camera.getRotations()[1], camera.getRotations()[2]);
 					} else if (node2.equals(node)) {
 						startDisplay = true;
 					}
 				}
 				
-				node.display();
+				node.display(camera.getRotations()[0], camera.getRotations()[1], camera.getRotations()[2]);
 			}
 		}
 		
@@ -149,6 +157,14 @@ public class GodNetwork extends PApplet {
 	public float getY(String mac) {
 		if (nodes.containsKey(mac)) {
 			return nodes.get(mac).getY();
+		} else {
+			return -1f;
+		}
+	}
+	
+	public float getZ(String mac) {
+		if (nodes.containsKey(mac)) {
+			return nodes.get(mac).getZ();
 		} else {
 			return -1f;
 		}

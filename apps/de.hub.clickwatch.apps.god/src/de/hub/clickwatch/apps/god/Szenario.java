@@ -7,6 +7,8 @@ import de.hub.clickwatch.apps.god.node.NodeInformationProcessor;
 
 public interface Szenario {
 	
+	public float[] get_AP_METRIC_POSITION(String mac);
+	
 	public int get_NODE_POCESSING_TIMER();
 	
 	public int get_GATEWAY_POCESSING_TIMER();

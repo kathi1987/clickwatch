@@ -39,7 +39,7 @@ public class NodeProcessor extends Thread {
 			nodeConnection = nodeConnectionProvider.createConnection(nodeInfos.getHost().getHostName(), ""+nodeInfos.getPort());
 		}
 		server = clientLocManager;
-		nodeProcessingTimer = server.getSzenario().get_NODE_POCESSING_TIMER();
+		nodeProcessingTimer = Server.getSzenario().get_NODE_POCESSING_TIMER();
 		stopNodeProcessor = false;
 	}
 	
@@ -82,8 +82,8 @@ public class NodeProcessor extends Thread {
 						break;
 					}
 					
-					System.err.println("element filter is empty ... waiting " + server.getSzenario().get_WAIT_AFTER_ASKING_ERROR()/1000 + "sec, and starting process again");
-					try { sleep(server.getSzenario().get_WAIT_AFTER_ASKING_ERROR()); } catch (InterruptedException int_exc) {/*nothing to do*/}	
+					System.err.println("element filter is empty ... waiting " + Server.getSzenario().get_WAIT_AFTER_ASKING_ERROR()/1000 + "sec, and starting process again");
+					try { sleep(Server.getSzenario().get_WAIT_AFTER_ASKING_ERROR()); } catch (InterruptedException int_exc) {/*nothing to do*/}	
 				}
 				
 				if (readFromFile) {
@@ -96,7 +96,7 @@ public class NodeProcessor extends Thread {
 							String resultAsXML = "";
 							
 							try {
-								BufferedReader buffIn = new BufferedReader(new FileReader(server.getSzenario().get_NODE_PROCESSOR_FILEROOT() + handlerName));
+								BufferedReader buffIn = new BufferedReader(new FileReader(Server.getSzenario().get_NODE_PROCESSOR_FILEROOT() + handlerName));
 								String strLine;
 								while ((strLine = buffIn.readLine()) != null)   {
 									resultAsXML += strLine;
@@ -167,13 +167,13 @@ public class NodeProcessor extends Thread {
 				
 				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd @ HH:mm:ss");
 				System.err.println(dateFormat.format(new Date()) + " -> node '" + nodeInfos.getHost().getHostAddress() + ":" + nodeInfos.getPort() + "' throwed Exception: " + exc.getMessage() +
-						" ...waiting " + server.getSzenario().get_WAIT_AFTER_ASKING_ERROR()/1000 + "sec, and starting to ask the node again");
+						" ...waiting " + Server.getSzenario().get_WAIT_AFTER_ASKING_ERROR()/1000 + "sec, and starting to ask the node again");
 				
 				if (nodeConnection.isConnected()) {
 					nodeConnection.disconnect();
 				}
 				
-				try { sleep(server.getSzenario().get_WAIT_AFTER_ASKING_ERROR()); } catch (InterruptedException int_exc) {/*nothing to do*/}
+				try { sleep(Server.getSzenario().get_WAIT_AFTER_ASKING_ERROR()); } catch (InterruptedException int_exc) {/*nothing to do*/}
 			}
 		}
 	}

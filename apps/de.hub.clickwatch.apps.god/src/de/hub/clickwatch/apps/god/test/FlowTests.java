@@ -74,7 +74,7 @@ public class FlowTests {
 	
 	private void addNodesToSzenario(String[][] usableMacIps) {
 		for (int k = 0; k < usableMacIps.length; k++) {
-			String[][] aps = server.getSzenario().get_ACCESS_POINTS();
+			String[][] aps = Server.getSzenario().get_ACCESS_POINTS();
 			
 			boolean alreadyIn = false;
 			for (int m = 0; m < aps.length; m++) {
