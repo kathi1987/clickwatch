@@ -5,7 +5,12 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
-import de.hub.clickwatch.apps.god.routing.GlobalRoutingtable;
+import controlP5.Button;
+import controlP5.ControlFont;
+import controlP5.ControlP5;
+import controlP5.ControlWindow;
+import controlP5.ListBox;
+import controlP5.Textarea;
 
 import peasy.PeasyCam;
 import processing.core.PApplet;
@@ -18,7 +23,10 @@ public class GodNetwork extends PApplet {
 	private NetworkSurrounding surrounding = null;
 	private NodeRefresher nodeRefresher = null;
 	private PFont font = null;
-	private PeasyCam camera;
+	private ControlFont ctrlFont = null;
+	private PeasyCam camera = null;
+	private ControlP5 controlp5 = null;
+	private ListBox lbFirst, lbSecond = null;
 	
 	@Override
 	public void setup() {
@@ -28,13 +36,63 @@ public class GodNetwork extends PApplet {
 		
 		camera = new PeasyCam(this, 0, 0, 0, 1100);
 		surrounding = new NetworkSurrounding(this);
-		font = createFont("Helvetica", 20, true);
+		font = createFont("Helvetica", 15, true);
+		ctrlFont = new ControlFont(createFont("Helvetica", 12, true));
 		nodeRefresher = new NodeRefresher(this);
 		nodeRefresher.start();
+		
+		init_controlP5();
+	}
+	
+	private void init_controlP5() {
+		controlp5 = new ControlP5(this);
+		controlp5.setAutoDraw(false);
+		
+		ControlWindow controlWindow = controlp5.addControlWindow("controlWindow", 20, 20, 380, 230, 10);
+		controlWindow.hideCoordinates();
+		controlWindow.setBackground(color(240));
+		
+		Button btn = controlp5.addButton("add", 0f, 170, 80, 40, 24);
+		btn.setTab(controlWindow, "default");
+		btn.captionLabel().setControlFont(ctrlFont);
+		
+		Textarea tl = controlp5.addTextarea("label1", "first node", 20, 20, 100, 24);
+		tl.setTab(controlWindow, "default");
+		tl.setColor(0xff000000);
+		
+		lbFirst = controlp5.addListBox("firstNode", 20, 50, 160, 170);
+		lbFirst.captionLabel().set("choose...");
+		lbFirst.setTab(controlWindow, "default");
+		lbFirst.setItemHeight(16);
+		lbFirst.setBarHeight(16);
+		lbFirst.captionLabel().style().marginTop = 3;
+		lbFirst.actAsPulldownMenu(true);
+		
+		tl = controlp5.addTextarea("label2", "second node", 200, 20, 170, 24);
+		tl.setTab(controlWindow, "default");
+		tl.setColor(0xff000000);
+		
+		lbSecond = controlp5.addListBox("secondNode", 200, 50, 160, 170);
+		lbSecond.captionLabel().set("choose...");
+		lbSecond.setTab(controlWindow, "default");
+		lbSecond.setItemHeight(16);
+		lbSecond.setBarHeight(16);
+		lbSecond.captionLabel().style().marginTop = 3;
+		lbSecond.actAsPulldownMenu(true);
+	}
+	
+	public void add(int value) {
+		if ((!lbFirst.captionLabel().getText().equals("choose...")) &&
+			(!lbSecond.captionLabel().getText().equals("choose..."))){
+			
+			selectedRoute.put(lbFirst.captionLabel().getText(), lbSecond.captionLabel().getText());
+		}
 	}
 	
 	@Override
 	public void draw() {
+		controlp5.draw();
+		
 		background(255);
 		pushMatrix();
 		translate(width/2f, height/2f);
@@ -65,30 +123,7 @@ public class GodNetwork extends PApplet {
 		}
 		
 		for (String r : selectedRoute.keySet()) {
-			stroke(160,20,20);
-			strokeWeight(2);
-			line(getX(r), getY(r), getX(selectedRoute.get(r)), getY(selectedRoute.get(r)));
-			
-			fill(160,20,20);
-			textFont(font);
-			text(GlobalRoutingtable.getShortestLength(r, selectedRoute.get(r)) + "\n" + GlobalRoutingtable.getShortestPath(r, selectedRoute.get(r)),
-					getX(r) + 0.5f * (getX(selectedRoute.get(r)) - getX(r)), 
-					getY(r) + 0.5f * (getY(selectedRoute.get(r)) - getY(r)) + 17);
-		}
-	}
-	
-	@Override
-	public void mousePressed() {
-		synchronized (nodes) {
-			for (String n : nodes.keySet()) {
-				if (nodes.get(n).selectItem(mouseX, mouseY)) {
-					if (mouseButton == RIGHT) {
-						nodes.get(n).setPreselection(true);
-						checkRoutePreselectionsAndAddRoute(n);
-					}
-					break;
-				}
-			}
+			new NetworkLink(this, r, selectedRoute.get(r), true).display(camera.getRotations()[0], camera.getRotations()[1], camera.getRotations()[2]);
 		}
 	}
 	
@@ -101,33 +136,6 @@ public class GodNetwork extends PApplet {
 		}
 	}
 	
-	@Override
-	public void mouseReleased() {
-		synchronized (nodes) {
-			for (String n : nodes.keySet()) {
-				nodes.get(n).deselectItem();
-				camera.setActive(true);
-			}
-		}
-	}
-	
-	private void checkRoutePreselectionsAndAddRoute(String n2) {
-		boolean added = false;
-		for (String n : nodes.keySet()) {
-			if ((!n.equals(n2)) && (nodes.get(n).getPreselection())) {
-				selectedRoute.put(n, n2);
-				added = true;
-				break;
-			}
-		}
-		
-		if (added) {
-			for (String n : nodes.keySet()) {
-				nodes.get(n).setPreselection(false);
-			}
-		}
-	}
-	
 	public PFont getTheFont() {
 		return this.font;
 	}
@@ -135,6 +143,8 @@ public class GodNetwork extends PApplet {
 	public void addNode(String mac) {
 		synchronized (nodes) {
 			nodes.put(mac, new NetworkNode(this, mac));
+			lbFirst.addItem(mac, 0);
+			lbSecond.addItem(mac, 0);
 		}
 	}
 	
@@ -142,6 +152,8 @@ public class GodNetwork extends PApplet {
 		synchronized (nodes) {
 			for (String remove : removeNodes) {
 				nodes.remove(remove);
+				lbFirst.removeItem(remove);
+				lbSecond.removeItem(remove);
 			}
 		}
 	} 
