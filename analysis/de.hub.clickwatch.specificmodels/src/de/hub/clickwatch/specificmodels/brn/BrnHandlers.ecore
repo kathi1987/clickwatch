@@ -1633,4 +1633,124 @@
       </eStructuralFeatures>
     </eClassifiers>
   </eSubpackages>
+  <eSubpackages name="routing_dsr_stats_stats" nsURI="http://de.hub.clickwatch.specificmodels.brn/routing/dsr_stats/stats" nsPrefix="routing_dsr_stats_stats">
+    <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+      <details key="handler_class" value="Stats"/>
+      <details key="handler_name" value="routing/dsr_stats/stats"/>
+    </eAnnotations>
+    <eClassifiers xsi:type="ecore:EClass" name="Dsr_route_stats">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Stats|Handler/dsr_route_stats|dsr_route_stats:Dsr_route_stats|EObject"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_dsr_route_stats" eType="//routing_dsr_stats_stats/Stats" eOpposite="//routing_dsr_stats_stats/Stats/dsr_route_stats"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" upperBound="-1">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Stats|Handler/dsr_route_stats|dsr_route_stats:Dsr_route_stats|EObject/text|text:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="route_info" upperBound="-1" eType="//routing_dsr_stats_stats/Route_info" containment="true" resolveProxies="false" eOpposite="//routing_dsr_stats_stats/Route_info/eContainer_route_info">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Stats|Handler/dsr_route_stats|dsr_route_stats:Dsr_route_stats|EObject/route_info|route_info:Route_info|EObject"/>
+          <details key="IsCopy" value="false"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="id">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Stats|Handler/dsr_route_stats|dsr_route_stats:Dsr_route_stats|EObject/id|id:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="node_pairs">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Stats|Handler/dsr_route_stats|dsr_route_stats:Dsr_route_stats|EObject/node_pairs|node_pairs:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Route">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Stats|Handler/dsr_route_stats|dsr_route_stats:Dsr_route_stats|EObject/route_info|route_info:Route_info|EObject/route|route:Route|EObject"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_route" eType="//routing_dsr_stats_stats/Route_info" eOpposite="//routing_dsr_stats_stats/Route_info/route"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="id">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Stats|Handler/dsr_route_stats|dsr_route_stats:Dsr_route_stats|EObject/route_info|route_info:Route_info|EObject/route|route:Route|EObject/id|id:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="metric">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Stats|Handler/dsr_route_stats|dsr_route_stats:Dsr_route_stats|EObject/route_info|route_info:Route_info|EObject/route|route:Route|EObject/metric|metric:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="usage">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Stats|Handler/dsr_route_stats|dsr_route_stats:Dsr_route_stats|EObject/route_info|route_info:Route_info|EObject/route|route:Route|EObject/usage|usage:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="last_usage">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Stats|Handler/dsr_route_stats|dsr_route_stats:Dsr_route_stats|EObject/route_info|route_info:Route_info|EObject/route|route:Route|EObject/last_usage|last_usage:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="hop_count">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Stats|Handler/dsr_route_stats|dsr_route_stats:Dsr_route_stats|EObject/route_info|route_info:Route_info|EObject/route|route:Route|EObject/hop_count|hop_count:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="hops">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Stats|Handler/dsr_route_stats|dsr_route_stats:Dsr_route_stats|EObject/route_info|route_info:Route_info|EObject/route|route:Route|EObject/hops|hops:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Route_info">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Stats|Handler/dsr_route_stats|dsr_route_stats:Dsr_route_stats|EObject/route_info|route_info:Route_info|EObject"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_route_info" eType="//routing_dsr_stats_stats/Dsr_route_stats" eOpposite="//routing_dsr_stats_stats/Dsr_route_stats/route_info"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" upperBound="-1">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Stats|Handler/dsr_route_stats|dsr_route_stats:Dsr_route_stats|EObject/route_info|route_info:Route_info|EObject/text|text:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="route" upperBound="-1" eType="//routing_dsr_stats_stats/Route" containment="true" resolveProxies="false" eOpposite="//routing_dsr_stats_stats/Route/eContainer_route">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Stats|Handler/dsr_route_stats|dsr_route_stats:Dsr_route_stats|EObject/route_info|route_info:Route_info|EObject/route|route:Route|EObject"/>
+          <details key="IsCopy" value="false"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="src">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Stats|Handler/dsr_route_stats|dsr_route_stats:Dsr_route_stats|EObject/route_info|route_info:Route_info|EObject/src|src:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="dst">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Stats|Handler/dsr_route_stats|dsr_route_stats:Dsr_route_stats|EObject/route_info|route_info:Route_info|EObject/dst|dst:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Stats">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Stats|Handler"/>
+      </eAnnotations>
+      <eSuperTypes href="../../../../../../../de.hub.clickwatch.core/src/de/hub/clickwatch/model/ClickWatchModel.ecore#//Handler"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="dsr_route_stats" eType="//routing_dsr_stats_stats/Dsr_route_stats" containment="true" resolveProxies="false" eOpposite="//routing_dsr_stats_stats/Dsr_route_stats/eContainer_dsr_route_stats">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Stats|Handler/dsr_route_stats|dsr_route_stats:Dsr_route_stats|EObject"/>
+          <details key="IsCopy" value="false"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+  </eSubpackages>
 </ecore:EPackage>

@@ -9,7 +9,8 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import de.hub.clickwatch.apps.god.node.ChannelProcessor;
 import de.hub.clickwatch.apps.god.node.ChannelStatsProcessor;
-import de.hub.clickwatch.apps.god.node.FlowstatsProcessor;
+import de.hub.clickwatch.apps.god.node.FlowInfoProcessor;
+import de.hub.clickwatch.apps.god.node.FlowStatProcessor;
 import de.hub.clickwatch.apps.god.node.GpsProcessor;
 import de.hub.clickwatch.apps.god.node.LinkProcessor;
 import de.hub.clickwatch.apps.god.node.LinktableProcessor;
@@ -95,8 +96,11 @@ public class StorageManager {
 					} else if (handler.equals(MacIpProcessor.class.getName())) {
 						info += "\t\tMac " + ((MacIpInformation)clientInfos.get(client).get(handler)).getClientMac() + " <===> " + ((MacIpInformation)clientInfos.get(client).get(handler)).getClientIP() + "\n";
 					
-					} else if (handler.equals(FlowstatsProcessor.class.getName())) {
-						info += "\t\tFlowstat rx-size: " + ((FlowInformation)clientInfos.get(client).get(handler)).getRxflows().size() + "\ttx size: " + ((FlowInformation)clientInfos.get(client).get(handler)).getTxflows().size() + "\n";
+					} else if (handler.equals(FlowInfoProcessor.class.getName())) {
+						info += "\t\tFlowInfo rx-size: " + ((FlowInformation)clientInfos.get(client).get(handler)).getRxflows().size() + "\ttx size: " + ((FlowInformation)clientInfos.get(client).get(handler)).getTxflows().size() + "\n";
+					
+					} else if (handler.equals(FlowStatProcessor.class.getName())) {
+						info += "\t\tFlowstat Route-Infos: " + ((FlowStatInformation)clientInfos.get(client).get(handler)).getFlowRoutes().size() + "\n";
 					
 					} else if (handler.equals(LinktableProcessor.class.getName())) {
 						LinktableInformation inf = (LinktableInformation)clientInfos.get(client).get(handler);

@@ -161,7 +161,8 @@ public class Server implements IClickWatchMain {
 		if (!szenario.get_USE_FILE_FOR_NODE_PROCESSOR()) {
 			nodeInf.addFilter(getSzenario().get_GET_LINKTABLE_HANDLER()[0], getSzenario().get_GET_LINKTABLE_HANDLER()[1], getSzenario().get_LINKTABLE_PROCESSOR());
 			nodeInf.addFilter(getSzenario().get_GET_ROUTINGTABLE_HANDLER()[0], getSzenario().get_GET_ROUTINGTABLE_HANDLER()[1], getSzenario().get_ROUTINGTABLE_PROCESSOR());
-			nodeInf.addFilter(getSzenario().get_FLOWSTATS_HANDLER()[0], getSzenario().get_FLOWSTATS_HANDLER()[1], getSzenario().get_FLOWSTATS_PROCESSOR());
+			nodeInf.addFilter(getSzenario().get_FLOWINFO_HANDLER()[0], getSzenario().get_FLOWINFO_HANDLER()[1], getSzenario().get_FLOWINFO_PROCESSOR());
+			nodeInf.addFilter(getSzenario().get_FLOWSTAT_HANDLER()[0], getSzenario().get_FLOWSTAT_HANDLER()[1], getSzenario().get_FLOWSTAT_PROCESSOR());
 		}
 		macIpAPList.put(hostname + ":" + port, "-1");
 		

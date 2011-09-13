@@ -59,9 +59,13 @@ public interface Szenario {
 	
 	public Class<? extends NodeInformationProcessor> get_GPS_PROCESSOR();
 	
-	public String[] get_FLOWSTATS_HANDLER();
+	public String[] get_FLOWINFO_HANDLER();
 	
-	public Class<? extends NodeInformationProcessor> get_FLOWSTATS_PROCESSOR();
+	public Class<? extends NodeInformationProcessor> get_FLOWINFO_PROCESSOR();
+	
+	public String[] get_FLOWSTAT_HANDLER();
+	
+	public Class<? extends NodeInformationProcessor> get_FLOWSTAT_PROCESSOR();
 	
 	public String[] get_CHANNELSTAT_HANDLER();
 

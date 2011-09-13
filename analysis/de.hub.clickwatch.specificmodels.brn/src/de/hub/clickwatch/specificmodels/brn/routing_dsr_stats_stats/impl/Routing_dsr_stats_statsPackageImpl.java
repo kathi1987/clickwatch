@@ -4,45 +4,71 @@
  *
  * $Id$
  */
-package de.hub.clickwatch.specificmodels.brn.lt_routes.impl;
+package de.hub.clickwatch.specificmodels.brn.routing_dsr_stats_stats.impl;
+
+import de.hub.clickwatch.model.ClickWatchModelPackage;
+
+import de.hub.clickwatch.specificmodels.brn.BrnPackage;
+
+import de.hub.clickwatch.specificmodels.brn.device_wifi_data_power_systempower.Device_wifi_data_power_systempowerPackage;
+
+import de.hub.clickwatch.specificmodels.brn.device_wifi_data_power_systempower.impl.Device_wifi_data_power_systempowerPackageImpl;
+
+import de.hub.clickwatch.specificmodels.brn.device_wifi_link_stat_bcast_stats.Device_wifi_link_stat_bcast_statsPackage;
+
+import de.hub.clickwatch.specificmodels.brn.device_wifi_link_stat_bcast_stats.impl.Device_wifi_link_stat_bcast_statsPackageImpl;
+
+import de.hub.clickwatch.specificmodels.brn.device_wifi_wifidevice_cst_stats.Device_wifi_wifidevice_cst_statsPackage;
+
+import de.hub.clickwatch.specificmodels.brn.device_wifi_wifidevice_cst_stats.impl.Device_wifi_wifidevice_cst_statsPackageImpl;
+
+import de.hub.clickwatch.specificmodels.brn.device_wifi_wifidevice_sc_systemchannel.Device_wifi_wifidevice_sc_systemchannelPackage;
+
+import de.hub.clickwatch.specificmodels.brn.device_wifi_wifidevice_sc_systemchannel.impl.Device_wifi_wifidevice_sc_systemchannelPackageImpl;
+
+import de.hub.clickwatch.specificmodels.brn.gps_cart_coord.Gps_cart_coordPackage;
+
+import de.hub.clickwatch.specificmodels.brn.gps_cart_coord.impl.Gps_cart_coordPackageImpl;
+
+import de.hub.clickwatch.specificmodels.brn.gps_gps_coord.Gps_gps_coordPackage;
+
+import de.hub.clickwatch.specificmodels.brn.gps_gps_coord.impl.Gps_gps_coordPackageImpl;
+
+import de.hub.clickwatch.specificmodels.brn.impl.BrnPackageImpl;
+
+import de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Lease_tab_leasesPackage;
+
+import de.hub.clickwatch.specificmodels.brn.lease_tab_leases.impl.Lease_tab_leasesPackageImpl;
+
+import de.hub.clickwatch.specificmodels.brn.lt_links.Lt_linksPackage;
+
+import de.hub.clickwatch.specificmodels.brn.lt_links.impl.Lt_linksPackageImpl;
+
+import de.hub.clickwatch.specificmodels.brn.lt_routes.Lt_routesPackage;
+
+import de.hub.clickwatch.specificmodels.brn.lt_routes.impl.Lt_routesPackageImpl;
+
+import de.hub.clickwatch.specificmodels.brn.routing_dsr_stats_stats.Dsr_route_stats;
+import de.hub.clickwatch.specificmodels.brn.routing_dsr_stats_stats.Route;
+import de.hub.clickwatch.specificmodels.brn.routing_dsr_stats_stats.Route_info;
+import de.hub.clickwatch.specificmodels.brn.routing_dsr_stats_stats.Routing_dsr_stats_statsFactory;
+import de.hub.clickwatch.specificmodels.brn.routing_dsr_stats_stats.Routing_dsr_stats_statsPackage;
+import de.hub.clickwatch.specificmodels.brn.routing_dsr_stats_stats.Stats;
+
+import de.hub.clickwatch.specificmodels.brn.sf_stats.Sf_statsPackage;
+
+import de.hub.clickwatch.specificmodels.brn.sf_stats.impl.Sf_statsPackageImpl;
+
+import de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.Sys_info_systeminfoPackage;
+
+import de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.impl.Sys_info_systeminfoPackageImpl;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.impl.EPackageImpl;
 
-import de.hub.clickwatch.model.ClickWatchModelPackage;
-import de.hub.clickwatch.specificmodels.brn.BrnPackage;
-import de.hub.clickwatch.specificmodels.brn.device_wifi_data_power_systempower.Device_wifi_data_power_systempowerPackage;
-import de.hub.clickwatch.specificmodels.brn.device_wifi_data_power_systempower.impl.Device_wifi_data_power_systempowerPackageImpl;
-import de.hub.clickwatch.specificmodels.brn.device_wifi_link_stat_bcast_stats.Device_wifi_link_stat_bcast_statsPackage;
-import de.hub.clickwatch.specificmodels.brn.device_wifi_link_stat_bcast_stats.impl.Device_wifi_link_stat_bcast_statsPackageImpl;
-import de.hub.clickwatch.specificmodels.brn.device_wifi_wifidevice_cst_stats.Device_wifi_wifidevice_cst_statsPackage;
-import de.hub.clickwatch.specificmodels.brn.device_wifi_wifidevice_cst_stats.impl.Device_wifi_wifidevice_cst_statsPackageImpl;
-import de.hub.clickwatch.specificmodels.brn.device_wifi_wifidevice_sc_systemchannel.Device_wifi_wifidevice_sc_systemchannelPackage;
-import de.hub.clickwatch.specificmodels.brn.device_wifi_wifidevice_sc_systemchannel.impl.Device_wifi_wifidevice_sc_systemchannelPackageImpl;
-import de.hub.clickwatch.specificmodels.brn.gps_cart_coord.Gps_cart_coordPackage;
-import de.hub.clickwatch.specificmodels.brn.gps_cart_coord.impl.Gps_cart_coordPackageImpl;
-import de.hub.clickwatch.specificmodels.brn.gps_gps_coord.Gps_gps_coordPackage;
-import de.hub.clickwatch.specificmodels.brn.gps_gps_coord.impl.Gps_gps_coordPackageImpl;
-import de.hub.clickwatch.specificmodels.brn.impl.BrnPackageImpl;
-import de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Lease_tab_leasesPackage;
-import de.hub.clickwatch.specificmodels.brn.lease_tab_leases.impl.Lease_tab_leasesPackageImpl;
-import de.hub.clickwatch.specificmodels.brn.lt_links.Lt_linksPackage;
-import de.hub.clickwatch.specificmodels.brn.lt_links.impl.Lt_linksPackageImpl;
-import de.hub.clickwatch.specificmodels.brn.lt_routes.Link;
-import de.hub.clickwatch.specificmodels.brn.lt_routes.Lt_routesFactory;
-import de.hub.clickwatch.specificmodels.brn.lt_routes.Lt_routesPackage;
-import de.hub.clickwatch.specificmodels.brn.lt_routes.Route;
-import de.hub.clickwatch.specificmodels.brn.lt_routes.Routes;
-import de.hub.clickwatch.specificmodels.brn.lt_routes.Routetable;
-import de.hub.clickwatch.specificmodels.brn.routing_dsr_stats_stats.Routing_dsr_stats_statsPackage;
-import de.hub.clickwatch.specificmodels.brn.routing_dsr_stats_stats.impl.Routing_dsr_stats_statsPackageImpl;
-import de.hub.clickwatch.specificmodels.brn.sf_stats.Sf_statsPackage;
-import de.hub.clickwatch.specificmodels.brn.sf_stats.impl.Sf_statsPackageImpl;
-import de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.Sys_info_systeminfoPackage;
-import de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.impl.Sys_info_systeminfoPackageImpl;
+import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -50,32 +76,34 @@ import de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.impl.Sys_info_sy
  * <!-- end-user-doc -->
  * @generated
  */
-public class Lt_routesPackageImpl extends EPackageImpl implements Lt_routesPackage {
+public class Routing_dsr_stats_statsPackageImpl extends EPackageImpl implements Routing_dsr_stats_statsPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass linkEClass = null;
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass routeEClass = null;
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass routesEClass = null;
+	private EClass dsr_route_statsEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass routetableEClass = null;
+	private EClass routeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass route_infoEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass statsEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -88,12 +116,12 @@ public class Lt_routesPackageImpl extends EPackageImpl implements Lt_routesPacka
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
-	 * @see de.hub.clickwatch.specificmodels.brn.lt_routes.Lt_routesPackage#eNS_URI
+	 * @see de.hub.clickwatch.specificmodels.brn.routing_dsr_stats_stats.Routing_dsr_stats_statsPackage#eNS_URI
 	 * @see #init()
 	 * @generated
 	 */
-	private Lt_routesPackageImpl() {
-		super(eNS_URI, Lt_routesFactory.eINSTANCE);
+	private Routing_dsr_stats_statsPackageImpl() {
+		super(eNS_URI, Routing_dsr_stats_statsFactory.eINSTANCE);
 	}
 
 	/**
@@ -106,7 +134,7 @@ public class Lt_routesPackageImpl extends EPackageImpl implements Lt_routesPacka
 	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
 	 * 
-	 * <p>This method is used to initialize {@link Lt_routesPackage#eINSTANCE} when that field is accessed.
+	 * <p>This method is used to initialize {@link Routing_dsr_stats_statsPackage#eINSTANCE} when that field is accessed.
 	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -115,11 +143,11 @@ public class Lt_routesPackageImpl extends EPackageImpl implements Lt_routesPacka
 	 * @see #initializePackageContents()
 	 * @generated
 	 */
-	public static Lt_routesPackage init() {
-		if (isInited) return (Lt_routesPackage)EPackage.Registry.INSTANCE.getEPackage(Lt_routesPackage.eNS_URI);
+	public static Routing_dsr_stats_statsPackage init() {
+		if (isInited) return (Routing_dsr_stats_statsPackage)EPackage.Registry.INSTANCE.getEPackage(Routing_dsr_stats_statsPackage.eNS_URI);
 
 		// Obtain or create and register package
-		Lt_routesPackageImpl theLt_routesPackage = (Lt_routesPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof Lt_routesPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new Lt_routesPackageImpl());
+		Routing_dsr_stats_statsPackageImpl theRouting_dsr_stats_statsPackage = (Routing_dsr_stats_statsPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof Routing_dsr_stats_statsPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new Routing_dsr_stats_statsPackageImpl());
 
 		isInited = true;
 
@@ -134,14 +162,14 @@ public class Lt_routesPackageImpl extends EPackageImpl implements Lt_routesPacka
 		Lease_tab_leasesPackageImpl theLease_tab_leasesPackage = (Lease_tab_leasesPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Lease_tab_leasesPackage.eNS_URI) instanceof Lease_tab_leasesPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Lease_tab_leasesPackage.eNS_URI) : Lease_tab_leasesPackage.eINSTANCE);
 		Gps_gps_coordPackageImpl theGps_gps_coordPackage = (Gps_gps_coordPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Gps_gps_coordPackage.eNS_URI) instanceof Gps_gps_coordPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Gps_gps_coordPackage.eNS_URI) : Gps_gps_coordPackage.eINSTANCE);
 		Gps_cart_coordPackageImpl theGps_cart_coordPackage = (Gps_cart_coordPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Gps_cart_coordPackage.eNS_URI) instanceof Gps_cart_coordPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Gps_cart_coordPackage.eNS_URI) : Gps_cart_coordPackage.eINSTANCE);
+		Lt_routesPackageImpl theLt_routesPackage = (Lt_routesPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Lt_routesPackage.eNS_URI) instanceof Lt_routesPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Lt_routesPackage.eNS_URI) : Lt_routesPackage.eINSTANCE);
 		Lt_linksPackageImpl theLt_linksPackage = (Lt_linksPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Lt_linksPackage.eNS_URI) instanceof Lt_linksPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Lt_linksPackage.eNS_URI) : Lt_linksPackage.eINSTANCE);
 		Device_wifi_link_stat_bcast_statsPackageImpl theDevice_wifi_link_stat_bcast_statsPackage = (Device_wifi_link_stat_bcast_statsPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Device_wifi_link_stat_bcast_statsPackage.eNS_URI) instanceof Device_wifi_link_stat_bcast_statsPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Device_wifi_link_stat_bcast_statsPackage.eNS_URI) : Device_wifi_link_stat_bcast_statsPackage.eINSTANCE);
 		Device_wifi_wifidevice_cst_statsPackageImpl theDevice_wifi_wifidevice_cst_statsPackage = (Device_wifi_wifidevice_cst_statsPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Device_wifi_wifidevice_cst_statsPackage.eNS_URI) instanceof Device_wifi_wifidevice_cst_statsPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Device_wifi_wifidevice_cst_statsPackage.eNS_URI) : Device_wifi_wifidevice_cst_statsPackage.eINSTANCE);
 		Sf_statsPackageImpl theSf_statsPackage = (Sf_statsPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Sf_statsPackage.eNS_URI) instanceof Sf_statsPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Sf_statsPackage.eNS_URI) : Sf_statsPackage.eINSTANCE);
-		Routing_dsr_stats_statsPackageImpl theRouting_dsr_stats_statsPackage = (Routing_dsr_stats_statsPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Routing_dsr_stats_statsPackage.eNS_URI) instanceof Routing_dsr_stats_statsPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Routing_dsr_stats_statsPackage.eNS_URI) : Routing_dsr_stats_statsPackage.eINSTANCE);
 
 		// Create package meta-data objects
-		theLt_routesPackage.createPackageContents();
+		theRouting_dsr_stats_statsPackage.createPackageContents();
 		theBrnPackage.createPackageContents();
 		theSys_info_systeminfoPackage.createPackageContents();
 		theDevice_wifi_data_power_systempowerPackage.createPackageContents();
@@ -149,14 +177,14 @@ public class Lt_routesPackageImpl extends EPackageImpl implements Lt_routesPacka
 		theLease_tab_leasesPackage.createPackageContents();
 		theGps_gps_coordPackage.createPackageContents();
 		theGps_cart_coordPackage.createPackageContents();
+		theLt_routesPackage.createPackageContents();
 		theLt_linksPackage.createPackageContents();
 		theDevice_wifi_link_stat_bcast_statsPackage.createPackageContents();
 		theDevice_wifi_wifidevice_cst_statsPackage.createPackageContents();
 		theSf_statsPackage.createPackageContents();
-		theRouting_dsr_stats_statsPackage.createPackageContents();
 
 		// Initialize created meta-data
-		theLt_routesPackage.initializePackageContents();
+		theRouting_dsr_stats_statsPackage.initializePackageContents();
 		theBrnPackage.initializePackageContents();
 		theSys_info_systeminfoPackage.initializePackageContents();
 		theDevice_wifi_data_power_systempowerPackage.initializePackageContents();
@@ -164,19 +192,19 @@ public class Lt_routesPackageImpl extends EPackageImpl implements Lt_routesPacka
 		theLease_tab_leasesPackage.initializePackageContents();
 		theGps_gps_coordPackage.initializePackageContents();
 		theGps_cart_coordPackage.initializePackageContents();
+		theLt_routesPackage.initializePackageContents();
 		theLt_linksPackage.initializePackageContents();
 		theDevice_wifi_link_stat_bcast_statsPackage.initializePackageContents();
 		theDevice_wifi_wifidevice_cst_statsPackage.initializePackageContents();
 		theSf_statsPackage.initializePackageContents();
-		theRouting_dsr_stats_statsPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
-		theLt_routesPackage.freeze();
+		theRouting_dsr_stats_statsPackage.freeze();
 
   
 		// Update the registry and return the package
-		EPackage.Registry.INSTANCE.put(Lt_routesPackage.eNS_URI, theLt_routesPackage);
-		return theLt_routesPackage;
+		EPackage.Registry.INSTANCE.put(Routing_dsr_stats_statsPackage.eNS_URI, theRouting_dsr_stats_statsPackage);
+		return theRouting_dsr_stats_statsPackage;
 	}
 
 	/**
@@ -184,8 +212,8 @@ public class Lt_routesPackageImpl extends EPackageImpl implements Lt_routesPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getLink() {
-		return linkEClass;
+	public EClass getDsr_route_stats() {
+		return dsr_route_statsEClass;
 	}
 
 	/**
@@ -193,8 +221,8 @@ public class Lt_routesPackageImpl extends EPackageImpl implements Lt_routesPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getLink_EContainer_link() {
-		return (EReference)linkEClass.getEStructuralFeatures().get(0);
+	public EReference getDsr_route_stats_EContainer_dsr_route_stats() {
+		return (EReference)dsr_route_statsEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -202,8 +230,8 @@ public class Lt_routesPackageImpl extends EPackageImpl implements Lt_routesPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getLink_From() {
-		return (EAttribute)linkEClass.getEStructuralFeatures().get(1);
+	public EAttribute getDsr_route_stats_Text() {
+		return (EAttribute)dsr_route_statsEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -211,8 +239,8 @@ public class Lt_routesPackageImpl extends EPackageImpl implements Lt_routesPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getLink_To() {
-		return (EAttribute)linkEClass.getEStructuralFeatures().get(2);
+	public EReference getDsr_route_stats_Route_info() {
+		return (EReference)dsr_route_statsEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -220,8 +248,8 @@ public class Lt_routesPackageImpl extends EPackageImpl implements Lt_routesPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getLink_Metric() {
-		return (EAttribute)linkEClass.getEStructuralFeatures().get(3);
+	public EAttribute getDsr_route_stats_Id() {
+		return (EAttribute)dsr_route_statsEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -229,17 +257,8 @@ public class Lt_routesPackageImpl extends EPackageImpl implements Lt_routesPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getLink_Seq() {
-		return (EAttribute)linkEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getLink_Age() {
-		return (EAttribute)linkEClass.getEStructuralFeatures().get(5);
+	public EAttribute getDsr_route_stats_Node_pairs() {
+		return (EAttribute)dsr_route_statsEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -265,7 +284,7 @@ public class Lt_routesPackageImpl extends EPackageImpl implements Lt_routesPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getRoute_Text() {
+	public EAttribute getRoute_Id() {
 		return (EAttribute)routeEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -274,8 +293,8 @@ public class Lt_routesPackageImpl extends EPackageImpl implements Lt_routesPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getRoute_Link() {
-		return (EReference)routeEClass.getEStructuralFeatures().get(2);
+	public EAttribute getRoute_Metric() {
+		return (EAttribute)routeEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -283,7 +302,7 @@ public class Lt_routesPackageImpl extends EPackageImpl implements Lt_routesPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getRoute_From() {
+	public EAttribute getRoute_Usage() {
 		return (EAttribute)routeEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -292,7 +311,7 @@ public class Lt_routesPackageImpl extends EPackageImpl implements Lt_routesPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getRoute_To() {
+	public EAttribute getRoute_Last_usage() {
 		return (EAttribute)routeEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -301,8 +320,8 @@ public class Lt_routesPackageImpl extends EPackageImpl implements Lt_routesPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getRoutes() {
-		return routesEClass;
+	public EAttribute getRoute_Hop_count() {
+		return (EAttribute)routeEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -310,8 +329,8 @@ public class Lt_routesPackageImpl extends EPackageImpl implements Lt_routesPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getRoutes_Routetable() {
-		return (EReference)routesEClass.getEStructuralFeatures().get(0);
+	public EAttribute getRoute_Hops() {
+		return (EAttribute)routeEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -319,8 +338,8 @@ public class Lt_routesPackageImpl extends EPackageImpl implements Lt_routesPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getRoutetable() {
-		return routetableEClass;
+	public EClass getRoute_info() {
+		return route_infoEClass;
 	}
 
 	/**
@@ -328,8 +347,8 @@ public class Lt_routesPackageImpl extends EPackageImpl implements Lt_routesPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getRoutetable_EContainer_routetable() {
-		return (EReference)routetableEClass.getEStructuralFeatures().get(0);
+	public EReference getRoute_info_EContainer_route_info() {
+		return (EReference)route_infoEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -337,8 +356,8 @@ public class Lt_routesPackageImpl extends EPackageImpl implements Lt_routesPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getRoutetable_Text() {
-		return (EAttribute)routetableEClass.getEStructuralFeatures().get(1);
+	public EAttribute getRoute_info_Text() {
+		return (EAttribute)route_infoEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -346,8 +365,8 @@ public class Lt_routesPackageImpl extends EPackageImpl implements Lt_routesPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getRoutetable_Route() {
-		return (EReference)routetableEClass.getEStructuralFeatures().get(2);
+	public EReference getRoute_info_Route() {
+		return (EReference)route_infoEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -355,8 +374,8 @@ public class Lt_routesPackageImpl extends EPackageImpl implements Lt_routesPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getRoutetable_Id() {
-		return (EAttribute)routetableEClass.getEStructuralFeatures().get(3);
+	public EAttribute getRoute_info_Src() {
+		return (EAttribute)route_infoEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -364,8 +383,35 @@ public class Lt_routesPackageImpl extends EPackageImpl implements Lt_routesPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Lt_routesFactory getLt_routesFactory() {
-		return (Lt_routesFactory)getEFactoryInstance();
+	public EAttribute getRoute_info_Dst() {
+		return (EAttribute)route_infoEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getStats() {
+		return statsEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getStats_Dsr_route_stats() {
+		return (EReference)statsEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Routing_dsr_stats_statsFactory getRouting_dsr_stats_statsFactory() {
+		return (Routing_dsr_stats_statsFactory)getEFactoryInstance();
 	}
 
 	/**
@@ -387,29 +433,31 @@ public class Lt_routesPackageImpl extends EPackageImpl implements Lt_routesPacka
 		isCreated = true;
 
 		// Create classes and their features
-		linkEClass = createEClass(LINK);
-		createEReference(linkEClass, LINK__ECONTAINER_LINK);
-		createEAttribute(linkEClass, LINK__FROM);
-		createEAttribute(linkEClass, LINK__TO);
-		createEAttribute(linkEClass, LINK__METRIC);
-		createEAttribute(linkEClass, LINK__SEQ);
-		createEAttribute(linkEClass, LINK__AGE);
+		dsr_route_statsEClass = createEClass(DSR_ROUTE_STATS);
+		createEReference(dsr_route_statsEClass, DSR_ROUTE_STATS__ECONTAINER_DSR_ROUTE_STATS);
+		createEAttribute(dsr_route_statsEClass, DSR_ROUTE_STATS__TEXT);
+		createEReference(dsr_route_statsEClass, DSR_ROUTE_STATS__ROUTE_INFO);
+		createEAttribute(dsr_route_statsEClass, DSR_ROUTE_STATS__ID);
+		createEAttribute(dsr_route_statsEClass, DSR_ROUTE_STATS__NODE_PAIRS);
 
 		routeEClass = createEClass(ROUTE);
 		createEReference(routeEClass, ROUTE__ECONTAINER_ROUTE);
-		createEAttribute(routeEClass, ROUTE__TEXT);
-		createEReference(routeEClass, ROUTE__LINK);
-		createEAttribute(routeEClass, ROUTE__FROM);
-		createEAttribute(routeEClass, ROUTE__TO);
+		createEAttribute(routeEClass, ROUTE__ID);
+		createEAttribute(routeEClass, ROUTE__METRIC);
+		createEAttribute(routeEClass, ROUTE__USAGE);
+		createEAttribute(routeEClass, ROUTE__LAST_USAGE);
+		createEAttribute(routeEClass, ROUTE__HOP_COUNT);
+		createEAttribute(routeEClass, ROUTE__HOPS);
 
-		routesEClass = createEClass(ROUTES);
-		createEReference(routesEClass, ROUTES__ROUTETABLE);
+		route_infoEClass = createEClass(ROUTE_INFO);
+		createEReference(route_infoEClass, ROUTE_INFO__ECONTAINER_ROUTE_INFO);
+		createEAttribute(route_infoEClass, ROUTE_INFO__TEXT);
+		createEReference(route_infoEClass, ROUTE_INFO__ROUTE);
+		createEAttribute(route_infoEClass, ROUTE_INFO__SRC);
+		createEAttribute(route_infoEClass, ROUTE_INFO__DST);
 
-		routetableEClass = createEClass(ROUTETABLE);
-		createEReference(routetableEClass, ROUTETABLE__ECONTAINER_ROUTETABLE);
-		createEAttribute(routetableEClass, ROUTETABLE__TEXT);
-		createEReference(routetableEClass, ROUTETABLE__ROUTE);
-		createEAttribute(routetableEClass, ROUTETABLE__ID);
+		statsEClass = createEClass(STATS);
+		createEReference(statsEClass, STATS__DSR_ROUTE_STATS);
 	}
 
 	/**
@@ -443,32 +491,34 @@ public class Lt_routesPackageImpl extends EPackageImpl implements Lt_routesPacka
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		routesEClass.getESuperTypes().add(theClickWatchModelPackage.getHandler());
+		statsEClass.getESuperTypes().add(theClickWatchModelPackage.getHandler());
 
 		// Initialize classes and features; add operations and parameters
-		initEClass(linkEClass, Link.class, "Link", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getLink_EContainer_link(), this.getRoute(), this.getRoute_Link(), "eContainer_link", null, 0, 1, Link.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getLink_From(), ecorePackage.getEString(), "from", null, 0, 1, Link.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getLink_To(), ecorePackage.getEString(), "to", null, 0, 1, Link.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getLink_Metric(), ecorePackage.getEInt(), "metric", null, 0, 1, Link.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getLink_Seq(), ecorePackage.getEInt(), "seq", null, 0, 1, Link.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getLink_Age(), ecorePackage.getEInt(), "age", null, 0, 1, Link.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(dsr_route_statsEClass, Dsr_route_stats.class, "Dsr_route_stats", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getDsr_route_stats_EContainer_dsr_route_stats(), this.getStats(), this.getStats_Dsr_route_stats(), "eContainer_dsr_route_stats", null, 0, 1, Dsr_route_stats.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDsr_route_stats_Text(), ecorePackage.getEString(), "text", null, 0, -1, Dsr_route_stats.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDsr_route_stats_Route_info(), this.getRoute_info(), this.getRoute_info_EContainer_route_info(), "route_info", null, 0, -1, Dsr_route_stats.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDsr_route_stats_Id(), ecorePackage.getEString(), "id", null, 0, 1, Dsr_route_stats.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDsr_route_stats_Node_pairs(), ecorePackage.getEInt(), "node_pairs", null, 0, 1, Dsr_route_stats.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(routeEClass, Route.class, "Route", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getRoute_EContainer_route(), this.getRoutetable(), this.getRoutetable_Route(), "eContainer_route", null, 0, 1, Route.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getRoute_Text(), ecorePackage.getEString(), "text", null, 0, -1, Route.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getRoute_Link(), this.getLink(), this.getLink_EContainer_link(), "link", null, 0, -1, Route.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getRoute_From(), ecorePackage.getEString(), "from", null, 0, 1, Route.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getRoute_To(), ecorePackage.getEString(), "to", null, 0, 1, Route.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRoute_EContainer_route(), this.getRoute_info(), this.getRoute_info_Route(), "eContainer_route", null, 0, 1, Route.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRoute_Id(), ecorePackage.getEInt(), "id", null, 0, 1, Route.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRoute_Metric(), ecorePackage.getEInt(), "metric", null, 0, 1, Route.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRoute_Usage(), ecorePackage.getEInt(), "usage", null, 0, 1, Route.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRoute_Last_usage(), ecorePackage.getEDouble(), "last_usage", null, 0, 1, Route.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRoute_Hop_count(), ecorePackage.getEInt(), "hop_count", null, 0, 1, Route.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRoute_Hops(), ecorePackage.getEString(), "hops", null, 0, 1, Route.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(routesEClass, Routes.class, "Routes", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getRoutes_Routetable(), this.getRoutetable(), this.getRoutetable_EContainer_routetable(), "routetable", null, 0, 1, Routes.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(route_infoEClass, Route_info.class, "Route_info", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getRoute_info_EContainer_route_info(), this.getDsr_route_stats(), this.getDsr_route_stats_Route_info(), "eContainer_route_info", null, 0, 1, Route_info.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRoute_info_Text(), ecorePackage.getEString(), "text", null, 0, -1, Route_info.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRoute_info_Route(), this.getRoute(), this.getRoute_EContainer_route(), "route", null, 0, -1, Route_info.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRoute_info_Src(), ecorePackage.getEString(), "src", null, 0, 1, Route_info.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRoute_info_Dst(), ecorePackage.getEString(), "dst", null, 0, 1, Route_info.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(routetableEClass, Routetable.class, "Routetable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getRoutetable_EContainer_routetable(), this.getRoutes(), this.getRoutes_Routetable(), "eContainer_routetable", null, 0, 1, Routetable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getRoutetable_Text(), ecorePackage.getEString(), "text", null, 0, -1, Routetable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getRoutetable_Route(), this.getRoute(), this.getRoute_EContainer_route(), "route", null, 0, -1, Routetable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getRoutetable_Id(), ecorePackage.getEString(), "id", null, 0, 1, Routetable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(statsEClass, Stats.class, "Stats", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getStats_Dsr_route_stats(), this.getDsr_route_stats(), this.getDsr_route_stats_EContainer_dsr_route_stats(), "dsr_route_stats", null, 0, 1, Stats.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create annotations
 		// http://de.hub.clickwatch.specificmodels
@@ -487,114 +537,126 @@ public class Lt_routesPackageImpl extends EPackageImpl implements Lt_routesPacka
 		  (this, 
 		   source, 
 		   new String[] {
-			 "handler_class", "Routes",
-			 "handler_name", "lt/routes"
+			 "handler_class", "Stats",
+			 "handler_name", "routing/dsr_stats/stats"
 		   });		
 		addAnnotation
-		  (linkEClass, 
+		  (dsr_route_statsEClass, 
 		   source, 
 		   new String[] {
-			 "target_id", "Routes|Handler/routetable|routetable:Routetable|EObject/route|route:Route|EObject/link|link:Link|EObject"
+			 "target_id", "Stats|Handler/dsr_route_stats|dsr_route_stats:Dsr_route_stats|EObject"
 		   });		
 		addAnnotation
-		  (getLink_From(), 
+		  (getDsr_route_stats_Text(), 
 		   source, 
 		   new String[] {
-			 "target_id", "Routes|Handler/routetable|routetable:Routetable|EObject/route|route:Route|EObject/link|link:Link|EObject/from|from:"
+			 "target_id", "Stats|Handler/dsr_route_stats|dsr_route_stats:Dsr_route_stats|EObject/text|text:"
 		   });		
 		addAnnotation
-		  (getLink_To(), 
+		  (getDsr_route_stats_Route_info(), 
 		   source, 
 		   new String[] {
-			 "target_id", "Routes|Handler/routetable|routetable:Routetable|EObject/route|route:Route|EObject/link|link:Link|EObject/to|to:"
+			 "target_id", "Stats|Handler/dsr_route_stats|dsr_route_stats:Dsr_route_stats|EObject/route_info|route_info:Route_info|EObject",
+			 "IsCopy", "false"
 		   });		
 		addAnnotation
-		  (getLink_Metric(), 
+		  (getDsr_route_stats_Id(), 
 		   source, 
 		   new String[] {
-			 "target_id", "Routes|Handler/routetable|routetable:Routetable|EObject/route|route:Route|EObject/link|link:Link|EObject/metric|metric:"
+			 "target_id", "Stats|Handler/dsr_route_stats|dsr_route_stats:Dsr_route_stats|EObject/id|id:"
 		   });		
 		addAnnotation
-		  (getLink_Seq(), 
+		  (getDsr_route_stats_Node_pairs(), 
 		   source, 
 		   new String[] {
-			 "target_id", "Routes|Handler/routetable|routetable:Routetable|EObject/route|route:Route|EObject/link|link:Link|EObject/seq|seq:"
-		   });		
-		addAnnotation
-		  (getLink_Age(), 
-		   source, 
-		   new String[] {
-			 "target_id", "Routes|Handler/routetable|routetable:Routetable|EObject/route|route:Route|EObject/link|link:Link|EObject/age|age:"
+			 "target_id", "Stats|Handler/dsr_route_stats|dsr_route_stats:Dsr_route_stats|EObject/node_pairs|node_pairs:"
 		   });		
 		addAnnotation
 		  (routeEClass, 
 		   source, 
 		   new String[] {
-			 "target_id", "Routes|Handler/routetable|routetable:Routetable|EObject/route|route:Route|EObject"
+			 "target_id", "Stats|Handler/dsr_route_stats|dsr_route_stats:Dsr_route_stats|EObject/route_info|route_info:Route_info|EObject/route|route:Route|EObject"
 		   });		
 		addAnnotation
-		  (getRoute_Text(), 
+		  (getRoute_Id(), 
 		   source, 
 		   new String[] {
-			 "target_id", "Routes|Handler/routetable|routetable:Routetable|EObject/route|route:Route|EObject/text|text:"
+			 "target_id", "Stats|Handler/dsr_route_stats|dsr_route_stats:Dsr_route_stats|EObject/route_info|route_info:Route_info|EObject/route|route:Route|EObject/id|id:"
 		   });		
 		addAnnotation
-		  (getRoute_Link(), 
+		  (getRoute_Metric(), 
 		   source, 
 		   new String[] {
-			 "target_id", "Routes|Handler/routetable|routetable:Routetable|EObject/route|route:Route|EObject/link|link:Link|EObject",
+			 "target_id", "Stats|Handler/dsr_route_stats|dsr_route_stats:Dsr_route_stats|EObject/route_info|route_info:Route_info|EObject/route|route:Route|EObject/metric|metric:"
+		   });		
+		addAnnotation
+		  (getRoute_Usage(), 
+		   source, 
+		   new String[] {
+			 "target_id", "Stats|Handler/dsr_route_stats|dsr_route_stats:Dsr_route_stats|EObject/route_info|route_info:Route_info|EObject/route|route:Route|EObject/usage|usage:"
+		   });		
+		addAnnotation
+		  (getRoute_Last_usage(), 
+		   source, 
+		   new String[] {
+			 "target_id", "Stats|Handler/dsr_route_stats|dsr_route_stats:Dsr_route_stats|EObject/route_info|route_info:Route_info|EObject/route|route:Route|EObject/last_usage|last_usage:"
+		   });		
+		addAnnotation
+		  (getRoute_Hop_count(), 
+		   source, 
+		   new String[] {
+			 "target_id", "Stats|Handler/dsr_route_stats|dsr_route_stats:Dsr_route_stats|EObject/route_info|route_info:Route_info|EObject/route|route:Route|EObject/hop_count|hop_count:"
+		   });		
+		addAnnotation
+		  (getRoute_Hops(), 
+		   source, 
+		   new String[] {
+			 "target_id", "Stats|Handler/dsr_route_stats|dsr_route_stats:Dsr_route_stats|EObject/route_info|route_info:Route_info|EObject/route|route:Route|EObject/hops|hops:"
+		   });		
+		addAnnotation
+		  (route_infoEClass, 
+		   source, 
+		   new String[] {
+			 "target_id", "Stats|Handler/dsr_route_stats|dsr_route_stats:Dsr_route_stats|EObject/route_info|route_info:Route_info|EObject"
+		   });		
+		addAnnotation
+		  (getRoute_info_Text(), 
+		   source, 
+		   new String[] {
+			 "target_id", "Stats|Handler/dsr_route_stats|dsr_route_stats:Dsr_route_stats|EObject/route_info|route_info:Route_info|EObject/text|text:"
+		   });		
+		addAnnotation
+		  (getRoute_info_Route(), 
+		   source, 
+		   new String[] {
+			 "target_id", "Stats|Handler/dsr_route_stats|dsr_route_stats:Dsr_route_stats|EObject/route_info|route_info:Route_info|EObject/route|route:Route|EObject",
 			 "IsCopy", "false"
 		   });		
 		addAnnotation
-		  (getRoute_From(), 
+		  (getRoute_info_Src(), 
 		   source, 
 		   new String[] {
-			 "target_id", "Routes|Handler/routetable|routetable:Routetable|EObject/route|route:Route|EObject/from|from:"
+			 "target_id", "Stats|Handler/dsr_route_stats|dsr_route_stats:Dsr_route_stats|EObject/route_info|route_info:Route_info|EObject/src|src:"
 		   });		
 		addAnnotation
-		  (getRoute_To(), 
+		  (getRoute_info_Dst(), 
 		   source, 
 		   new String[] {
-			 "target_id", "Routes|Handler/routetable|routetable:Routetable|EObject/route|route:Route|EObject/to|to:"
+			 "target_id", "Stats|Handler/dsr_route_stats|dsr_route_stats:Dsr_route_stats|EObject/route_info|route_info:Route_info|EObject/dst|dst:"
 		   });		
 		addAnnotation
-		  (routesEClass, 
+		  (statsEClass, 
 		   source, 
 		   new String[] {
-			 "target_id", "Routes|Handler"
+			 "target_id", "Stats|Handler"
 		   });		
 		addAnnotation
-		  (getRoutes_Routetable(), 
+		  (getStats_Dsr_route_stats(), 
 		   source, 
 		   new String[] {
-			 "target_id", "Routes|Handler/routetable|routetable:Routetable|EObject",
+			 "target_id", "Stats|Handler/dsr_route_stats|dsr_route_stats:Dsr_route_stats|EObject",
 			 "IsCopy", "false"
-		   });		
-		addAnnotation
-		  (routetableEClass, 
-		   source, 
-		   new String[] {
-			 "target_id", "Routes|Handler/routetable|routetable:Routetable|EObject"
-		   });		
-		addAnnotation
-		  (getRoutetable_Text(), 
-		   source, 
-		   new String[] {
-			 "target_id", "Routes|Handler/routetable|routetable:Routetable|EObject/text|text:"
-		   });		
-		addAnnotation
-		  (getRoutetable_Route(), 
-		   source, 
-		   new String[] {
-			 "target_id", "Routes|Handler/routetable|routetable:Routetable|EObject/route|route:Route|EObject",
-			 "IsCopy", "false"
-		   });		
-		addAnnotation
-		  (getRoutetable_Id(), 
-		   source, 
-		   new String[] {
-			 "target_id", "Routes|Handler/routetable|routetable:Routetable|EObject/id|id:"
 		   });
 	}
 
-} //Lt_routesPackageImpl
+} //Routing_dsr_stats_statsPackageImpl

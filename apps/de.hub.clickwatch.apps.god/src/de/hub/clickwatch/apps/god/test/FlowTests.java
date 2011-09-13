@@ -10,7 +10,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import de.hub.clickwatch.apps.god.Server;
-import de.hub.clickwatch.apps.god.node.FlowstatsProcessor;
+import de.hub.clickwatch.apps.god.node.FlowInfoProcessor;
 import de.hub.clickwatch.apps.god.information.FlowInformation;
 
 public class FlowTests {
@@ -46,8 +46,8 @@ public class FlowTests {
 			for (int k = 0; k < usableMacIps.length; k++) {
 				FlowInformation f = null;
 				if ((server.getStorageManager().getClientInformations(usableMacIps[k][0]) != null) 
-						&& server.getStorageManager().getClientInformations(usableMacIps[k][0]).containsKey(FlowstatsProcessor.class.getName())) {
-					f = ((FlowInformation)server.getStorageManager().getClientInformations(usableMacIps[k][0]).get(FlowstatsProcessor.class.getName()));
+						&& server.getStorageManager().getClientInformations(usableMacIps[k][0]).containsKey(FlowInfoProcessor.class.getName())) {
+					f = ((FlowInformation)server.getStorageManager().getClientInformations(usableMacIps[k][0]).get(FlowInfoProcessor.class.getName()));
 				}
 				
 				if ((f != null) && (f.getRxflows().size() == 0) && (f.getTxflows().size() == 0)) {
@@ -123,9 +123,9 @@ public class FlowTests {
 			//nothing to do
 		}
 		
-		FlowInformation f0 = (FlowInformation)server.getStorageManager().getClientInformations(usableMacIps[0][0]).get(FlowstatsProcessor.class.getName());
-		FlowInformation f1 = (FlowInformation)server.getStorageManager().getClientInformations(usableMacIps[1][0]).get(FlowstatsProcessor.class.getName());
-		FlowInformation f2 = (FlowInformation)server.getStorageManager().getClientInformations(usableMacIps[2][0]).get(FlowstatsProcessor.class.getName());
+		FlowInformation f0 = (FlowInformation)server.getStorageManager().getClientInformations(usableMacIps[0][0]).get(FlowInfoProcessor.class.getName());
+		FlowInformation f1 = (FlowInformation)server.getStorageManager().getClientInformations(usableMacIps[1][0]).get(FlowInfoProcessor.class.getName());
+		FlowInformation f2 = (FlowInformation)server.getStorageManager().getClientInformations(usableMacIps[2][0]).get(FlowInfoProcessor.class.getName());
 		
 		assertEquals(2, f0.getTxflows().size());
 		assertEquals(1, f1.getRxflows().size());
@@ -157,8 +157,8 @@ public class FlowTests {
 			//nothing to do
 		}
 		
-		FlowInformation f0 = (FlowInformation)server.getStorageManager().getClientInformations(usableMacIps[0][0]).get(FlowstatsProcessor.class.getName());
-		FlowInformation f4 = (FlowInformation)server.getStorageManager().getClientInformations(usableMacIps[4][0]).get(FlowstatsProcessor.class.getName());
+		FlowInformation f0 = (FlowInformation)server.getStorageManager().getClientInformations(usableMacIps[0][0]).get(FlowInfoProcessor.class.getName());
+		FlowInformation f4 = (FlowInformation)server.getStorageManager().getClientInformations(usableMacIps[4][0]).get(FlowInfoProcessor.class.getName());
 		
 		assertEquals(1, f0.getTxflows().size());
 		assertEquals(1, f4.getRxflows().size());

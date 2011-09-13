@@ -10,7 +10,8 @@ import de.hub.clickwatch.apps.god.node.ChannelProcessor;
 import de.hub.clickwatch.apps.god.node.StatsProcessor;
 import de.hub.clickwatch.apps.god.node.ChannelStatsProcessor;
 import de.hub.clickwatch.apps.god.node.GpsProcessor;
-import de.hub.clickwatch.apps.god.node.FlowstatsProcessor;
+import de.hub.clickwatch.apps.god.node.FlowInfoProcessor;
+import de.hub.clickwatch.apps.god.node.FlowStatProcessor;
 import de.hub.clickwatch.apps.god.node.LinkProcessor;
 import de.hub.clickwatch.apps.god.node.LinktableProcessor;
 import de.hub.clickwatch.apps.god.node.RoutingtableProcessor;
@@ -75,9 +76,13 @@ public class SzenarioHWL implements Szenario {
 	
 	private static final Class<? extends NodeInformationProcessor> GPS_PROCESSOR = GpsProcessor.class;
 	
-	private static final String[] FLOWSTATS_HANDLER = new String[] {"sf", "stats"};
+	private static final String[] FLOWINFO_HANDLER = new String[] {"sf", "stats"};
 	
-	private static final Class<? extends NodeInformationProcessor> FLOWSTATS_PROCESSOR = FlowstatsProcessor.class;
+	private static final Class<? extends NodeInformationProcessor> FLOWINFO_PROCESSOR = FlowInfoProcessor.class;
+
+	private static final String[] FLOWSTAT_HANDLER = new String[] {"routing/dsr_stats", "stats"};
+	
+	private static final Class<? extends NodeInformationProcessor> FLOWSTAT_PROCESSOR = FlowStatProcessor.class;
 
     private static final String[] LINK_HANDLER = new String[] {"device_wifi/link_stat", "bcast_stats"};
 
@@ -330,12 +335,12 @@ public class SzenarioHWL implements Szenario {
 		return LINKTABLE_PROCESSOR;
 	}
 	@Override
-	public String[] get_FLOWSTATS_HANDLER() {
-		return FLOWSTATS_HANDLER;
+	public String[] get_FLOWINFO_HANDLER() {
+		return FLOWINFO_HANDLER;
 	}
 	@Override
-	public Class<? extends NodeInformationProcessor> get_FLOWSTATS_PROCESSOR() {
-		return FLOWSTATS_PROCESSOR;
+	public Class<? extends NodeInformationProcessor> get_FLOWINFO_PROCESSOR() {
+		return FLOWINFO_PROCESSOR;
 	}
 	@Override
 	public void set_ACCESS_POINTS(String[][] aps) {
@@ -344,5 +349,15 @@ public class SzenarioHWL implements Szenario {
 	@Override
 	public char get_LINKTABLE_SEPARATOR() {
 		return LINKTABLE_SEPARATOR;
+	}
+
+	@Override
+	public String[] get_FLOWSTAT_HANDLER() {
+		return FLOWSTAT_HANDLER;
+	}
+
+	@Override
+	public Class<? extends NodeInformationProcessor> get_FLOWSTAT_PROCESSOR() {
+		return FLOWSTAT_PROCESSOR;
 	}
 }
