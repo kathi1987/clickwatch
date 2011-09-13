@@ -3,6 +3,8 @@ package de.hub.clickwatch.apps.god.test;
 import static org.junit.Assert.*;
 
 import java.net.UnknownHostException;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.junit.After;
 import org.junit.Before;
@@ -14,15 +16,13 @@ import de.hub.clickwatch.apps.god.node.FlowInfoProcessor;
 import de.hub.clickwatch.apps.god.information.FlowInformation;
 
 public class FlowTests {
-	private static Server server = null;
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		Server.startServer(false, false, null);
-		server = Server.getInstance();
 		
 		try {
-			Thread.sleep(2*1000);
+			Thread.sleep(2000);
 		} catch (InterruptedException intExc) {
 			//nothing
 		}
@@ -30,46 +30,12 @@ public class FlowTests {
 
 	@Before
 	public void setUp() throws Exception {
-		server.startSzenario();
+		Server.getInstance().startSzenario();
 	}
 
 	@After
 	public void tearDown() throws Exception {
-		server.stopSzenario();
-	}
-	
-	private void resetFlows(String [][] usableMacIps) {
-		while (true) {
-			int resetCount = 0;
-			server.updateInfosFromNodes();
-			
-			for (int k = 0; k < usableMacIps.length; k++) {
-				FlowInformation f = null;
-				if ((server.getStorageManager().getClientInformations(usableMacIps[k][0]) != null) 
-						&& server.getStorageManager().getClientInformations(usableMacIps[k][0]).containsKey(FlowInfoProcessor.class.getName())) {
-					f = ((FlowInformation)server.getStorageManager().getClientInformations(usableMacIps[k][0]).get(FlowInfoProcessor.class.getName()));
-				}
-				
-				if ((f != null) && (f.getRxflows().size() == 0) && (f.getTxflows().size() == 0)) {
-					resetCount++;
-				}
-			}
-			
-			if (resetCount == usableMacIps.length) {
-				break;
-			} else {
-				for (int k = 0; k < usableMacIps.length; k++) {
-					System.out.println("\tINFO: resetting flowstats of node " + usableMacIps[k][1]);
-					server.handleSetter(usableMacIps[k][1], 7777, "sf", "reset", "");
-				}
-			}
-			
-			try {
-				Thread.sleep(1*1000);
-			} catch (InterruptedException e) {
-				//nothing
-			}
-		}
+		Server.getInstance().stopSzenario();
 	}
 	
 	private void addNodesToSzenario(String[][] usableMacIps) {
@@ -87,7 +53,7 @@ public class FlowTests {
 			if (!alreadyIn) {
 				System.out.println("\tINFO: adding node " + usableMacIps[k][1] + ":7777 " + usableMacIps[k][2] + " to szenario");
 				try {
-					server.addNode(usableMacIps[k][1], "7777", usableMacIps[k][2]);
+					Server.getInstance().addNode(usableMacIps[k][1], "7777", usableMacIps[k][2]);
 				} catch (UnknownHostException uExc) {
 					System.err.println("UnknownHostException: " + uExc.getMessage());
 					System.exit(-1);
@@ -104,28 +70,34 @@ public class FlowTests {
 			{"06-0B-6B-09-F2-94", "192.168.3.111", "sk111"},
 			{"06-0C-42-0C-74-0D", "192.168.3.112", "sk112"}
 		};
+		
+		Map<String, String> apResetList = new HashMap<String, String>();
+		for (String[] ap : usableMacIps) {
+			apResetList.put(ap[0], ap[1]);
+		}
+		
 		addNodesToSzenario(usableMacIps);
-		resetFlows(usableMacIps);
+		FlowWrapper.resetFlows(apResetList, true, true);
 		
 		try {
 			System.out.print("testing flow functionality ... ");
-			server.handleSetter(usableMacIps[0][1], 7777, "sf", "add_flow", usableMacIps[0][0] + " " + usableMacIps[1][0] + " 300 100 0 100 true");
+			Server.getInstance().handleSetter(usableMacIps[0][1], 7777, "sf", "add_flow", usableMacIps[0][0] + " " + usableMacIps[1][0] + " 300 100 0 100 true");
 			Thread.sleep(1*1000);
-			server.handleSetter(usableMacIps[0][1], 7777, "sf", "add_flow", usableMacIps[0][0] + " " + usableMacIps[1][0] + " 300 100 0 100 false");
+			Server.getInstance().handleSetter(usableMacIps[0][1], 7777, "sf", "add_flow", usableMacIps[0][0] + " " + usableMacIps[1][0] + " 300 100 0 100 false");
 			
-			server.handleSetter(usableMacIps[0][1], 7777, "sf", "add_flow", usableMacIps[0][0] + " " + usableMacIps[2][0] + " 300 100 0 100 true");
+			Server.getInstance().handleSetter(usableMacIps[0][1], 7777, "sf", "add_flow", usableMacIps[0][0] + " " + usableMacIps[2][0] + " 300 100 0 100 true");
 			Thread.sleep(1*1000);
-			server.handleSetter(usableMacIps[0][1], 7777, "sf", "add_flow", usableMacIps[0][0] + " " + usableMacIps[2][0] + " 300 100 0 100 false");
+			Server.getInstance().handleSetter(usableMacIps[0][1], 7777, "sf", "add_flow", usableMacIps[0][0] + " " + usableMacIps[2][0] + " 300 100 0 100 false");
 			System.out.println("done");
 			
-			server.updateInfosFromNodes();
+			Server.getInstance().updateInfosFromNodes();
 		} catch (InterruptedException int_exc) {
 			//nothing to do
 		}
 		
-		FlowInformation f0 = (FlowInformation)server.getStorageManager().getClientInformations(usableMacIps[0][0]).get(FlowInfoProcessor.class.getName());
-		FlowInformation f1 = (FlowInformation)server.getStorageManager().getClientInformations(usableMacIps[1][0]).get(FlowInfoProcessor.class.getName());
-		FlowInformation f2 = (FlowInformation)server.getStorageManager().getClientInformations(usableMacIps[2][0]).get(FlowInfoProcessor.class.getName());
+		FlowInformation f0 = (FlowInformation)Server.getInstance().getStorageManager().getClientInformations(usableMacIps[0][0]).get(FlowInfoProcessor.class.getName());
+		FlowInformation f1 = (FlowInformation)Server.getInstance().getStorageManager().getClientInformations(usableMacIps[1][0]).get(FlowInfoProcessor.class.getName());
+		FlowInformation f2 = (FlowInformation)Server.getInstance().getStorageManager().getClientInformations(usableMacIps[2][0]).get(FlowInfoProcessor.class.getName());
 		
 		assertEquals(2, f0.getTxflows().size());
 		assertEquals(1, f1.getRxflows().size());
@@ -141,24 +113,29 @@ public class FlowTests {
 			{"06-0F-B5-97-34-BC", "192.168.3.73", "wgt73"},
 			{"06-0F-B5-3F-58-49", "192.168.3.45", "wgt45"}
 		};
+		Map<String, String> apResetList = new HashMap<String, String>();
+		for (String[] ap : usableMacIps) {
+			apResetList.put(ap[0], ap[1]);
+		}
+		
 		addNodesToSzenario(usableMacIps);
-		resetFlows(usableMacIps);
+		FlowWrapper.resetFlows(apResetList, true, true);
 		
 		try {
 			System.out.print("testing multihop flow ... ");
-			server.handleSetter(usableMacIps[0][1], 7777, "sf", "add_flow", usableMacIps[0][0] + " " + usableMacIps[4][0] + " 300 100 2 100 true");
+			Server.getInstance().handleSetter(usableMacIps[0][1], 7777, "sf", "add_flow", usableMacIps[0][0] + " " + usableMacIps[4][0] + " 300 100 2 100 true");
 			Thread.sleep(1*1000);
-			server.handleSetter(usableMacIps[0][1], 7777, "sf", "add_flow", usableMacIps[0][0] + " " + usableMacIps[4][0] + " 300 100 2 100 false");
+			Server.getInstance().handleSetter(usableMacIps[0][1], 7777, "sf", "add_flow", usableMacIps[0][0] + " " + usableMacIps[4][0] + " 300 100 2 100 false");
 			
 			System.out.println("done");
 			
-			server.updateInfosFromNodes();
+			Server.getInstance().updateInfosFromNodes();
 		} catch (InterruptedException int_exc) {
 			//nothing to do
 		}
 		
-		FlowInformation f0 = (FlowInformation)server.getStorageManager().getClientInformations(usableMacIps[0][0]).get(FlowInfoProcessor.class.getName());
-		FlowInformation f4 = (FlowInformation)server.getStorageManager().getClientInformations(usableMacIps[4][0]).get(FlowInfoProcessor.class.getName());
+		FlowInformation f0 = (FlowInformation)Server.getInstance().getStorageManager().getClientInformations(usableMacIps[0][0]).get(FlowInfoProcessor.class.getName());
+		FlowInformation f4 = (FlowInformation)Server.getInstance().getStorageManager().getClientInformations(usableMacIps[4][0]).get(FlowInfoProcessor.class.getName());
 		
 		assertEquals(1, f0.getTxflows().size());
 		assertEquals(1, f4.getRxflows().size());

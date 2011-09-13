@@ -18,6 +18,8 @@ import de.hub.clickwatch.apps.god.node.GpsProcessor;
 import de.hub.clickwatch.apps.god.node.MacIpProcessor;
 import de.hub.clickwatch.apps.god.node.NodeInformations;
 import de.hub.clickwatch.apps.god.node.NodeProcessor;
+import de.hub.clickwatch.apps.god.validation.FlowValidator;
+import de.hub.clickwatch.apps.god.validation.Validator;
 import de.hub.clickwatch.connection.INodeConnectionProvider;
 import de.hub.clickwatch.main.ClickWatchExternalLauncher;
 import de.hub.clickwatch.main.IClickWatchContext;
@@ -29,6 +31,7 @@ public class Server implements IClickWatchMain {
 	private static Server server = null;
 	private static boolean startTheSzenario = true;
 	private static boolean startThePreview = false;
+	private static boolean startTheValidator = false;
 	private static boolean startUpdatingProcess = true;
 	private NodeProcessor gateway = null;
 	private List<NodeProcessor> nodes = null;
@@ -76,11 +79,23 @@ public class Server implements IClickWatchMain {
 		try {
 			storageMgr = new StorageManager();
 			init_szenario();
+			Thread.sleep(2000);
 		} catch (UnknownHostException e) {
 			System.err.println("\nERROR: Given Host not known");
 			return;
+		} catch (InterruptedException inX) {
+			//nothing to do
 		}
 		System.out.println("done");
+		
+		if (startTheValidator) {
+			System.out.println("starting validation ... ");
+			Validator validator = new FlowValidator();
+			validator.init();
+			validator.startValidation();
+			System.out.println("validation done");
+			System.exit(0);
+		}
 	}
 	
 	private void startPreview() {
@@ -242,10 +257,17 @@ public class Server implements IClickWatchMain {
 		startTheSzenario = startSzenario; 
 		startUpdatingProcess = startAutomaticUpdating;
 		if ((consoleArgs != null) 
-				&& (consoleArgs.length == 1) 
-				&& (consoleArgs[0].equals("preview"))) {
-			startThePreview = true;
-		}
+				&& (consoleArgs.length >= 1)) {
+			
+			for (String arg : consoleArgs) {
+				if (arg.equals("preview")) {
+					startThePreview = true;
+				}
+				if (arg.equals("validator")) {
+					startTheValidator = true;
+				}
+			}
+		} 
 		
 		String[] args = new String[] { "-d", "-s"};
 		ClickWatchExternalLauncher.launch(args, Server.class);
