@@ -29,13 +29,15 @@ public class GlobalLinktable implements Serializable {
 	public static Set<String> getNeighbors(String node) {
 		Set<String> neighbors = new HashSet<String>();
 		for (String link : linktable.keySet()) {
-			if (link.startsWith(node)) {
-				StringTokenizer strTok = new StringTokenizer(link, "" + SzenarioHWL.LINKTABLE_SEPARATOR);
-				strTok.nextToken();
-				neighbors.add(strTok.nextToken());
-			} else if (link.endsWith(node)){
-				StringTokenizer strTok = new StringTokenizer(link, "" + SzenarioHWL.LINKTABLE_SEPARATOR);
-				neighbors.add(strTok.nextToken());
+			if (linktable.get(link).getMetric() < SzenarioHWL.LINK_USE_IN_DIJKSTRA_MAX_VALUE) {
+				if (link.startsWith(node)) {
+					StringTokenizer strTok = new StringTokenizer(link, "" + SzenarioHWL.LINKTABLE_SEPARATOR);
+					strTok.nextToken();
+					neighbors.add(strTok.nextToken());
+				} else if (link.endsWith(node)){
+					StringTokenizer strTok = new StringTokenizer(link, "" + SzenarioHWL.LINKTABLE_SEPARATOR);
+					neighbors.add(strTok.nextToken());
+				}
 			}
 		}
 		return neighbors;

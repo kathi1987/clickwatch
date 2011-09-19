@@ -99,7 +99,9 @@ public class GodNetwork extends PApplet {
 		lights();
 		popMatrix();
 		
+		rotate(QUARTER_PI);
 		surrounding.display();
+		rotate(-QUARTER_PI);
 		
 		synchronized (nodes) {
 			Iterator<String> nodeIter = nodes.keySet().iterator();

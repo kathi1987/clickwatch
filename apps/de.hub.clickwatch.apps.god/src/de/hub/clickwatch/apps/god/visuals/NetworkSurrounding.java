@@ -10,9 +10,9 @@ public class NetworkSurrounding {
 	private final float house_diff_y = 30f * SzenarioHWL.MODEL_SIZE_FACTOR;
 	private final int num_floors = 5;
 	private final int num_houses = 4;
-	private final float house_offset_x = -40f * SzenarioHWL.MODEL_SIZE_FACTOR;
-	private final float house_offset_y = -38.5f * SzenarioHWL.MODEL_SIZE_FACTOR;
-	private final  float house_offset_z = -13f * SzenarioHWL.MODEL_SIZE_FACTOR;
+	private final float house_offset_x = 0f;//-40f * SzenarioHWL.MODEL_SIZE_FACTOR;
+	private final float house_offset_y = 0f;//-38.5f * SzenarioHWL.MODEL_SIZE_FACTOR;
+	private final  float house_offset_z = -1*house_size_z;//-13f * SzenarioHWL.MODEL_SIZE_FACTOR;
 	
 	public NetworkSurrounding(GodNetwork parent) {
 		this.parent = parent;
@@ -22,6 +22,7 @@ public class NetworkSurrounding {
 		parent.stroke(parent.color(230, 20, 20));
 		parent.fill(parent.color(230, 20, 20));
 		parent.box(8);	//tolja's room at (0,0,0)
+		
 		
 		parent.fill(parent.color(190, 100));
 		parent.noStroke();

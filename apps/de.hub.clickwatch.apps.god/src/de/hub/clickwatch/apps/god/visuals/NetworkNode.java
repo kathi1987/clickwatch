@@ -13,9 +13,9 @@ public class NetworkNode {
 		
 		float[] pos = Server.getSzenario().get_AP_METRIC_POSITION(mac);
 		if (pos[0] == -1f) {
-			this.x = parent.random(-800, 800);
-			this.y = parent.random(-700, 700);
-			this.z = parent.random(-700, 700);
+			this.x = 100f;//parent.random(-800, 800);
+			this.y = 100f;//parent.random(-700, 700);
+			this.z = 0f;//parent.random(-700, 700);
 		} else {
 			this.x = pos[0];
 			this.y = pos[1];

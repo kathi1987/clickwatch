@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.StringTokenizer;
 
 public class GlobalRoutingtable implements Serializable {
 	private static final long serialVersionUID = -6046518405036658052L;
@@ -34,6 +35,16 @@ public class GlobalRoutingtable implements Serializable {
 	public static String getShortestPath(String from, String to) {
 		if (routingtable.containsKey(from)) {
 			return routingtable.get(from).getBestRoutePath(to);
+		}
+		
+		return null;
+	}
+	
+	public static Integer getShortestHopCount(String from, String to) {
+		if (routingtable.containsKey(from)) {
+			String route = routingtable.get(from).getBestRoutePath(to);
+			StringTokenizer tok = new StringTokenizer(route, ",");
+			return tok.countTokens();
 		}
 		
 		return null;

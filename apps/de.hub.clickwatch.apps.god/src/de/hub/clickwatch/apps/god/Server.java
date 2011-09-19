@@ -93,7 +93,7 @@ public class Server implements IClickWatchMain {
 			Validator validator = new FlowValidator();
 			validator.init();
 			validator.startValidation();
-			System.out.println("validation done");
+			System.out.println("\nvalidation done");
 			System.exit(0);
 		}
 	}
@@ -260,10 +260,10 @@ public class Server implements IClickWatchMain {
 				&& (consoleArgs.length >= 1)) {
 			
 			for (String arg : consoleArgs) {
-				if (arg.equals("preview")) {
+				if (arg.equals("--preview")) {
 					startThePreview = true;
 				}
-				if (arg.equals("validator")) {
+				if (arg.equals("--validator")) {
 					startTheValidator = true;
 				}
 			}
