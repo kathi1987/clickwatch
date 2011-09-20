@@ -107,7 +107,7 @@ public class SimpleAnalysis implements IObjectActionDelegate {
 		
 		Results results = ResultsPlugin.getInstance().getResults();
 		Result result = ResultsFactory.eINSTANCE.createResult();
-		result.setName(value.getFeature().getName());
+		result.setName(value.getEntry().getEStructuralFeature().getName());
 		result.setTimestamp(new Date());
 		results.getResults().add(result);
 		
