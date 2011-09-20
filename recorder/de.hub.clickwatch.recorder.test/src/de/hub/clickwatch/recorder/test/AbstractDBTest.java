@@ -107,7 +107,7 @@ public class AbstractDBTest extends AbstractAdapterTest {
 	}
 	
 	protected Record buildDataBase(String[] nodeIds) {
-		return RecordUtil.buildDataBase(
+		return RecordUtil.buildRecord(
 				getRecordName(),  
 				getRecordDuration(), 
 				getUpdateInterval(), 

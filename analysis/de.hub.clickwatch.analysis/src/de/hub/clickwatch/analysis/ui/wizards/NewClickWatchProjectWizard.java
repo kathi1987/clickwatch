@@ -1,4 +1,4 @@
-package de.hub.clickwatch.analysis.ui;
+package de.hub.clickwatch.analysis.ui.wizards;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -12,16 +12,16 @@ import org.eclipse.ui.IWorkbench;
 
 import com.google.inject.Inject;
 
-public class NewAnalysisProjectWizard extends Wizard implements INewWizard {
+public class NewClickWatchProjectWizard extends Wizard implements INewWizard {
 
-	private WizardNewAnalysisCreationPage mainPage;
+	private WizardNewClickWatchProjectCreationPage mainPage;
 	private IWorkbench workbench;
 	private IStructuredSelection selection;
 	
 	@Inject
-	AnalysisProjectCreator creator;
+	ClickWatchProjectCreator creator;
 
-	public NewAnalysisProjectWizard() {
+	public NewClickWatchProjectWizard() {
 		setWindowTitle("New Analysis project");
 		//setDefaultPageImageDescriptor(getImageDescriptor("icons/newxprj_wiz.png")); //$NON-NLS-1$
 	}
@@ -38,13 +38,14 @@ public class NewAnalysisProjectWizard extends Wizard implements INewWizard {
 	@Override
 	public void addPages() {
 		super.addPages();
-		mainPage = new WizardNewAnalysisCreationPage("mainPage", this.selection); //$NON-NLS-1$
+		mainPage = new WizardNewClickWatchProjectCreationPage("mainPage", this.selection); //$NON-NLS-1$
 		addPage(mainPage);
 	}
 	
-	private AnalysisProjectInfo getProjectInfo() {
-		AnalysisProjectInfo result = new AnalysisProjectInfo();
+	private ClickWatchProjectInfo getProjectInfo() {
+		ClickWatchProjectInfo result = new ClickWatchProjectInfo();
 		result.setClickWatchModel(mainPage.getClickWatchModel());
+		result.setClickWatchDataBase(mainPage.getClickWatchDataBase());
 		result.setProjectName(mainPage.getProjectName());
 		result.setLocationPath(mainPage.getLocationPath());
 		result.setSelectedWorkingSets(mainPage.getSelectedWorkingSets());
@@ -53,7 +54,7 @@ public class NewAnalysisProjectWizard extends Wizard implements INewWizard {
 
 	@Override
 	public boolean performFinish() {
-		final AnalysisProjectInfo info = getProjectInfo();
+		final ClickWatchProjectInfo info = getProjectInfo();
 		IRunnableWithProgress op = new IRunnableWithProgress() {			
 			@Override
 			public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {			

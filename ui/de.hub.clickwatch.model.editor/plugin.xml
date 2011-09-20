@@ -92,7 +92,7 @@
       <editor
             id="edu.hu.clickwatch.model.presentation.ClickWatchModelEditorID"
             name="%_UI_ClickWatchModelEditor_label"
-            icon="icons/full/obj16/ClickWatchModelModelFile.gif"
+            icon="icons/full/obj16/ClickWatchModelModelFile.gif_bak"
             extensions="clickwatchmodel"
             class="de.hub.clickwatch.model.presentation.ClickWatchModelEditor"
             contributorClass="de.hub.clickwatch.model.presentation.ClickWatchModelActionBarContributor">

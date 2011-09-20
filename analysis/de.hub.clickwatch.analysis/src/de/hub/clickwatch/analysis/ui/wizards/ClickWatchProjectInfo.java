@@ -1,13 +1,14 @@
-package de.hub.clickwatch.analysis.ui;
+package de.hub.clickwatch.analysis.ui.wizards;
 
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.ui.IWorkingSet;
 
 
-public class AnalysisProjectInfo {
+public class ClickWatchProjectInfo {
 	
 	private URI clickWatchModel;
+	private URI clickWatchDataBase;
 	private IPath locationPath;
 	private String projectName;
 	private IWorkingSet[] selectedWorkingSets;
@@ -43,5 +44,12 @@ public class AnalysisProjectInfo {
 	public void setSelectedWorkingSets(IWorkingSet[] selectedWorkingSets) {
 		this.selectedWorkingSets = selectedWorkingSets;
 	}
-	
+
+	public URI getClickWatchDataBase() {
+		return clickWatchDataBase;
+	}
+
+	public void setClickWatchDataBase(URI clickWatchDataBase) {
+		this.clickWatchDataBase = clickWatchDataBase;
+	}	
 }

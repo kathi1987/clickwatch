@@ -45,7 +45,7 @@ public class PerformanceGauge {
 		int localUpdateInterval = (retrievalType == RetrievalType.COMPOUND_HANDLER || retrievalType == RetrievalType.DELTA_COMPOUND_HANDLER) ? updateInterval * remoteLocalUpdateIntervalFactor : updateInterval;
 		int remoteUpdateInterval = updateInterval;
 		Injector injector = createInjector(retrievalType, remoteUpdateInterval);
-		Record record = RecordUtil.buildDataBase("test", duration, localUpdateInterval, nodeId);
+		Record record = RecordUtil.buildRecord("test", duration, localUpdateInterval, nodeId);
 		injector.getInstance(NetworkRecorder.class).record(record);
 		return record.getStatistics();
 	}

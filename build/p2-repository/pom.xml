@@ -35,8 +35,8 @@
 								</goals>
 								<configuration>
 									<fromDir>${project.build.directory}/repository</fromDir>
-									<url>scpexe://scheidge@rabe.informatik.hu-berlin.de</url>
-									<toDir>/vol/fob-vol3/mi98/scheidge/.public_html/p2/clickwatch</toDir>
+									<url>scpexe://bitnami@metrikforge.informatik.hu-berlin.de</url>
+									<toDir>/var/p2-repositories/clickwatch</toDir>
 									<serverId>clickwatch-repository</serverId>
 								</configuration>
 							</execution>

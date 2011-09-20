@@ -18,8 +18,12 @@ import de.hub.clickwatch.recoder.cwdatabase.util.builder.DataBaseBuilder;
 import de.hub.clickwatch.recoder.cwdatabase.util.builder.RecordBuilder;
 
 public class RecordUtil {
-
-	public static Record buildDataBase(String recordName, long duration, int updateInterval, String... nodeIds) {
+	
+	public static Record buildRecord(String recordName, long duration, int updateInterval, String... nodeIds) {
+		return buildDataBase(recordName, duration, updateInterval, nodeIds).getRecords().get(0);
+	}
+	
+	public static DataBase buildDataBase(String recordName, long duration, int updateInterval, String... nodeIds) {
 		Collection<Node> nodes = new ArrayList<Node>();
 		for (String nodeId: nodeIds) {
 			nodes.add(NodeBuilder.newNodeBuilder()
@@ -44,7 +48,6 @@ public class RecordUtil {
 		ResourceSet rs = new ResourceSetImpl();
 		Resource dataBaseResource = rs.createResource(URI.createURI("test_db.cwdatabase"));
 		dataBaseResource.getContents().add(db);
-		
-		return db.getRecords().get(0);
+		return db;
 	}
 }

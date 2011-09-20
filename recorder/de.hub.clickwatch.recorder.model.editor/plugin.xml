@@ -11,14 +11,11 @@
 <plugin>
 
    <extension point="org.eclipse.ui.newWizards">
-      <category
-            id="org.eclipse.emf.ecore.Wizard.category.ID"
-            name="%_UI_Wizard_category"/>
       <wizard
             id="de.hub.clickwatch.recoder.cwdatabase.presentation.CWDataBaseModelWizardID"
-            name="%_UI_CWDataBaseModelWizard_label"
+            name="ClickWatch data base"
             class="de.hub.clickwatch.recoder.cwdatabase.presentation.CWDataBaseModelWizard"
-            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            category="edu.hu.clickwatch.analysis.WizardCategory"
             icon="icons/full/obj16/CWDataBaseModelFile.gif">
          <description>%_UI_CWDataBaseModelWizard_description</description>
          <selection class="org.eclipse.core.resources.IResource"/>

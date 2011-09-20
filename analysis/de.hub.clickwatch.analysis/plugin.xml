@@ -20,24 +20,16 @@
 		</category>
 		<wizard
 			category="edu.hu.clickwatch.analysis.WizardCategory"
-			class="de.hub.clickwatch.ui.GuiceAwareExecutableExtensionFactory:de.hub.clickwatch.analysis.ui.NewAnalysisProjectWizard"
-			icon="icons/Analysis.gif"
-			id="edu.hu.clickwatch.analysis.NewAnalysisProjectWizard"
-			name="%Analysis_Project"
+			class="de.hub.clickwatch.ui.GuiceAwareExecutableExtensionFactory:de.hub.clickwatch.analysis.ui.wizards.NewClickWatchProjectWizard"
+			icon="icons/ClickWatch.gif"
+			id="edu.hu.clickwatch.analysis.NewClickWatchProjectWizard"
+			name="%ClickWatch_Project"
 			project="true">
 		</wizard>
   <wizard
         category="edu.hu.clickwatch.analysis.WizardCategory"
-        class="de.hub.clickwatch.ui.GuiceAwareExecutableExtensionFactory:de.hub.clickwatch.analysis.ui.NewClickWatchProjectWizard"
-        icon="icons/Analysis.gif"
-        id="edu.hu.clickwatch.analysis.NewClickWatchProjectWizard"
-        name="%ClickWatch_Project"
-        project="true">
-  </wizard>
-  <wizard
-        category="edu.hu.clickwatch.analysis.WizardCategory"
         class="de.hub.clickwatch.analysis.composition.diagram.NewDiagramWizard"
-        icon="icons/Analysis.gif"
+        icon="icons/ClickWatch.gif"
         id="edu.hu.clickwatch.analysis.CompositionDiagramWizard"
         name="Composition Diagram">
   </wizard>
