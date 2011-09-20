@@ -16,6 +16,8 @@ Export-Package: de.hub.clickwatch.specificmodels.brn,
  de.hub.clickwatch.specificmodels.brn.lease_tab_leases,
  de.hub.clickwatch.specificmodels.brn.lt_links,
  de.hub.clickwatch.specificmodels.brn.lt_routes,
+ de.hub.clickwatch.specificmodels.brn.routing_dsr_stats_stats,
+ de.hub.clickwatch.specificmodels.brn.sf_stats,
  de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo,
  de.hub.clickwatch.specificmodels.brn.util
 Require-Bundle: org.eclipse.core.runtime,

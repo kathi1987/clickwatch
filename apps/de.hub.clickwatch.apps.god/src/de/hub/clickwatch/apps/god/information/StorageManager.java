@@ -9,8 +9,12 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import de.hub.clickwatch.apps.god.node.ChannelProcessor;
 import de.hub.clickwatch.apps.god.node.ChannelStatsProcessor;
+import de.hub.clickwatch.apps.god.node.FlowInfoProcessor;
+import de.hub.clickwatch.apps.god.node.FlowStatProcessor;
 import de.hub.clickwatch.apps.god.node.GpsProcessor;
 import de.hub.clickwatch.apps.god.node.LinkProcessor;
+import de.hub.clickwatch.apps.god.node.LinktableProcessor;
+import de.hub.clickwatch.apps.god.node.RoutingtableProcessor;
 import de.hub.clickwatch.apps.god.node.MacIpProcessor;
 import de.hub.clickwatch.apps.god.node.PowerProcessor;
 import de.hub.clickwatch.apps.god.node.StatsProcessor;
@@ -37,8 +41,21 @@ public class StorageManager {
 					//we need to merge
 					clientInfos.get(clInfos.getClientMac()).get(handler).merge(clInfos);
 				} else {
-					//insert item into inner HashMap for client
-					clientInfos.get(clInfos.getClientMac()).put(handler, clInfos);
+					//only linktable must do "merge"
+					if (handler.equals(LinktableProcessor.class.getName())) {
+						LinktableInformation lInf = (LinktableInformation)clInfos;
+						
+						LinktableInformation newList = new LinktableInformation();
+						newList.setClientIP(lInf.getClientIP());
+						newList.setClientMac(lInf.getClientMac());
+						newList.setTime(lInf.getTime());
+						newList.merge(lInf);	//important is THIS merge (to build the GlobalLinktable)
+						
+						clientInfos.get(clInfos.getClientMac()).put(handler, newList);
+					} else {
+						//insert item into inner HashMap for client
+						clientInfos.get(clInfos.getClientMac()).put(handler, clInfos);
+					}
 				}
 			} else {
 				//create new HashMap
@@ -78,7 +95,31 @@ public class StorageManager {
 						
 					} else if (handler.equals(MacIpProcessor.class.getName())) {
 						info += "\t\tMac " + ((MacIpInformation)clientInfos.get(client).get(handler)).getClientMac() + " <===> " + ((MacIpInformation)clientInfos.get(client).get(handler)).getClientIP() + "\n";
-						
+					
+					} else if (handler.equals(FlowInfoProcessor.class.getName())) {
+						info += "\t\tFlowInfo rx-size: " + ((FlowInformation)clientInfos.get(client).get(handler)).getRxflows().size() + "\ttx size: " + ((FlowInformation)clientInfos.get(client).get(handler)).getTxflows().size() + "\n";
+					
+					} else if (handler.equals(FlowStatProcessor.class.getName())) {
+						info += "\t\tFlowstat Route-Infos: " + ((FlowStatInformation)clientInfos.get(client).get(handler)).getFlowRoutes().size() + "\n";
+					
+					} else if (handler.equals(LinktableProcessor.class.getName())) {
+						LinktableInformation inf = (LinktableInformation)clientInfos.get(client).get(handler);
+						info += "\t\tLinktable size: " + inf.getLinktable().size() + "\n";
+						/*
+						for (String link : inf.getLinktable().keySet()) {
+							info += "\t\t\tfr/to: " + link + " --- metric: " + inf.getLinktable().get(link).getMetric() + "\n";
+						}
+						*/
+					} else if (handler.equals(RoutingtableProcessor.class.getName())) {
+						RoutingtableInformation inf = (RoutingtableInformation)clientInfos.get(client).get(handler);
+						info += "\t\tRoutingtable size: " + inf.getRoutingtable().size() + "\n";
+						/*
+						for (String link : inf.getRoutingtable().keySet()) {
+							for (RoutingtableLinkInformation rinf: inf.getRoutingtable().get(link).getRoute()) {
+								info += "\t\t\torig: " + link + " (" + rinf.getFrom() + " to " + rinf.getTo() + ")" + " --- metric: " + rinf.getMetric() + "\n";
+							}
+						}
+						*/
 					} else if (handler.equals(GpsProcessor.class.getName())) {
 						boolean guessed = ((GpsInformation)clientInfos.get(client).get(handler)).isGuessed();
 						
@@ -135,9 +176,9 @@ public class StorageManager {
 		return info;
 	}
 	
-	public HashMap<String, ClientInformations> getClientInformations(String MacAddr) {
-		if (clientInfos.containsKey(MacAddr)) {
-			return clientInfos.get(MacAddr);
+	public HashMap<String, ClientInformations> getClientInformations(String macAddr) {
+		if (clientInfos.containsKey(macAddr)) {
+			return clientInfos.get(macAddr);
 		}
 		
 		return null;

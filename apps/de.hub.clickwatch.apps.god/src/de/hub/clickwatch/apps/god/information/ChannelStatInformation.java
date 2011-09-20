@@ -3,7 +3,6 @@ package de.hub.clickwatch.apps.god.information;
 import java.util.HashMap;
 import java.util.Map;
 
-
 public class ChannelStatInformation implements ClientInformations {
 	private static final long serialVersionUID = 723457074176675694L;
 	private String ip, mac = null;
@@ -83,5 +82,4 @@ public class ChannelStatInformation implements ClientInformations {
 		this.channelLoad = chStatInfos.getChannelLoad();
 		this.rssiList = chStatInfos.getRssiList();
 	}
-
 }

@@ -12,6 +12,7 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
 
 import de.hub.clickwatch.model.Handler;
+import de.hub.clickwatch.specificmodels.brn.gps_cart_coord.*;
 import de.hub.clickwatch.specificmodels.brn.gps_cart_coord.Cart_coord;
 import de.hub.clickwatch.specificmodels.brn.gps_cart_coord.Gps_cart_coordPackage;
 

@@ -71,12 +71,13 @@ public class ClickWatchRunConfigurationLauncher {
 			hBehav = (HandlerBehaviour) configuration
 					.get(ELaunchConfigurationParameters.HandlerBehaviour);
 
-		ValueType valType = ValueType.SPECIFIC;		
-		if (configuration.get(ELaunchConfigurationParameters.ValueType) != null)
-		{
-			// due to visibility reasons, the configuration can only hold string values
-			valType = ValueType.valueOf((String)configuration.get(ELaunchConfigurationParameters.ValueType));
-		}			
+		ValueType valType = ValueType.SPECIFIC;
+		if (configuration.get(ELaunchConfigurationParameters.ValueType) != null) {
+			// due to visibility reasons, the configuration can only hold string
+			// values
+			valType = ValueType.valueOf((String) configuration
+					.get(ELaunchConfigurationParameters.ValueType));
+		}
 
 		Integer debugLev = 2;
 		if (configuration.get(ELaunchConfigurationParameters.DebugLevel) != null)
@@ -94,7 +95,8 @@ public class ClickWatchRunConfigurationLauncher {
 					.get(ELaunchConfigurationParameters.HandlerPerRecord);
 
 		URI recUri = null;
-		if (configuration.get(ELaunchConfigurationParameters.RecordURI) != null)
+		if (configuration.get(ELaunchConfigurationParameters.RecordURI) != null
+				&& configuration.get(ELaunchConfigurationParameters.RecordURI) != "")
 			recUri = (URI) configuration
 					.get(ELaunchConfigurationParameters.RecordURI);
 

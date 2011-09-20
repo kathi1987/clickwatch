@@ -6,6 +6,7 @@
  */
 package de.hub.clickwatch.specificmodels.brn.device_wifi_data_power_systempower.impl;
 
+import de.hub.clickwatch.specificmodels.brn.device_wifi_data_power_systempower.*;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;

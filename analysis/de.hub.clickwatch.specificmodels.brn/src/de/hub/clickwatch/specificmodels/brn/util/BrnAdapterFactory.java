@@ -12,6 +12,7 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
 
 import de.hub.clickwatch.model.Handler;
+import de.hub.clickwatch.specificmodels.brn.*;
 import de.hub.clickwatch.specificmodels.brn.BrnPackage;
 import de.hub.clickwatch.specificmodels.brn.HandlerSubClass;
 

@@ -25,9 +25,11 @@ import org.osgi.framework.Bundle;
 import de.hub.clickwatch.main.ClickWatchRunConfigurationLauncher;
 import de.hub.clickwatch.main.ELaunchConfigurationParameters;
 import de.hub.clickwatch.main.IClickWatchMain;
+import de.hub.clickwatch.main.impl.InjectorProvider.DataBaseType;
+import de.hub.clickwatch.main.impl.InjectorProvider.HandlerBehaviour;
 import de.hub.clickwatch.transformationLauncher.tabs.ClickwatchParametersTab;
-import de.hub.clickwatch.transformationLauncher.tabs.RecordParametersTab;
 import de.hub.clickwatch.transformationLauncher.tabs.MainParametersTab;
+import de.hub.clickwatch.transformationLauncher.tabs.RecordParametersTab;
 import de.hub.clickwatch.ui.PluginActivator;
 
 /**
@@ -52,6 +54,14 @@ public class TransformationLaunchConfigurationDelegate implements
 				MainParametersTab.ATTR_DEBUG_LEVEL, "");
 		String valueType = configuration.getAttribute(
 				MainParametersTab.ATTR_VALUE_TYPE, "");
+		String handlerBehaviour = configuration.getAttribute(
+				MainParametersTab.ATTR_HANDLER_BEHAVIOUR, "");
+		String databaseType = configuration.getAttribute(
+				MainParametersTab.ATTR_DATABASE_TYPE, "");
+		String handlerPerRecord = configuration.getAttribute(
+				MainParametersTab.ATTR_HANDLER_PER_RECORD, "");
+		String recordURI = configuration.getAttribute(
+				MainParametersTab.ATTR_RECORD_URI, "");
 
 		String sourceModelFile = configuration.getAttribute(
 				ClickwatchParametersTab.ATTR_SOURCE_MODEL_FILE, "");
@@ -77,7 +87,7 @@ public class TransformationLaunchConfigurationDelegate implements
 				Class<?> transformationClass = null;
 				String transformationClassName = getFullClassName(u);
 
-				// get the class for the xtend2 execution
+				// get the class for the transformation execution
 				transformationClass = bundle.loadClass(transformationClassName);
 
 				// if the class is not already loaded, try it with the default
@@ -86,6 +96,25 @@ public class TransformationLaunchConfigurationDelegate implements
 					transformationClass = PluginActivator.getInstance()
 							.getClass().getClassLoader()
 							.loadClass(transformationClassName);
+
+				// check if the interface is used in this class
+				boolean hasMainInterface = false;
+				for (Class<?> c : transformationClass.getInterfaces()) {
+					if (c.equals(IClickWatchMain.class)) {
+						hasMainInterface = true;
+						break;
+					}
+				}
+				if (!hasMainInterface) {
+					Status s = new Status(
+							IStatus.ERROR,
+							"not_used",
+							"The transformation file does not use the interface IClickWatchMain",
+							null);
+					StatusManager.getManager().handle(s, StatusManager.SHOW);
+
+					return;
+				}
 
 				Class<IClickWatchMain> mainClass = (Class<IClickWatchMain>) transformationClass;
 
@@ -99,6 +128,23 @@ public class TransformationLaunchConfigurationDelegate implements
 				// transformatiopn file
 				config.put(ELaunchConfigurationParameters.TransformationFile,
 						URI.createURI(transformationFile));
+
+				// record uri
+				if (recordURI != "" && recordID != null)
+					config.put(ELaunchConfigurationParameters.RecordURI,
+							URI.createURI(recordURI));
+
+				// handler per record
+				config.put(ELaunchConfigurationParameters.HandlerPerRecord,
+						Integer.parseInt(handlerPerRecord));
+
+				// database type
+				config.put(ELaunchConfigurationParameters.DataBaseType,
+						DataBaseType.valueOf(databaseType));
+
+				// handler behaviour
+				config.put(ELaunchConfigurationParameters.HandlerBehaviour,
+						HandlerBehaviour.valueOf(handlerBehaviour));
 
 				// value type
 				config.put(ELaunchConfigurationParameters.ValueType, valueType);
@@ -118,6 +164,11 @@ public class TransformationLaunchConfigurationDelegate implements
 				// *************
 				// Record tab
 
+				config.put(ELaunchConfigurationParameters.DataBaseURI,
+						URI.createURI(databaseURI));
+
+				config.put(ELaunchConfigurationParameters.RecordId, recordID);
+
 				// *************
 				// ClickWatch Model tab
 
@@ -134,10 +185,6 @@ public class TransformationLaunchConfigurationDelegate implements
 					Resource modelResource = resourceSet.getResource(
 							URI.createURI(sourceModelFile), true);
 
-					// XPath path = XPathFactory.newInstance().newXPath();
-					// XPathExpression expresison = path.compile(modelObject);
-					// Object result = expresison.evaluate(modelResource);
-
 					config.put(ELaunchConfigurationParameters.ClickWatchObject,
 							modelResource.getEObject(modelObject));
 				} else
@@ -147,12 +194,15 @@ public class TransformationLaunchConfigurationDelegate implements
 				ClickWatchRunConfigurationLauncher.launch(config, mainClass);
 			} catch (Exception e) {
 
-				System.out.println("Error: " + e);
+				Status s = new Status(IStatus.ERROR, "not_used", e.toString(),
+						null);
+				StatusManager.getManager().handle(s, StatusManager.SHOW);
 			}
 
 		} else if (mode.equals(ILaunchManager.DEBUG_MODE)) {
-			// TODO: implement debug mode handling
-
+			Status s = new Status(IStatus.ERROR, "not_used",
+					"Debug execution mode not yet supported", null);
+			StatusManager.getManager().handle(s, StatusManager.SHOW);
 		}
 	}
 
@@ -178,7 +228,7 @@ public class TransformationLaunchConfigurationDelegate implements
 
 			if (className != "")
 				className += ".";
-			
+
 			className += fileURI.lastSegment().replaceAll(".java|.xtend", "");
 
 		} catch (Exception e) {

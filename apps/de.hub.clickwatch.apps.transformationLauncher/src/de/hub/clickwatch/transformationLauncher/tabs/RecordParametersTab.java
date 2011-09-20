@@ -3,24 +3,47 @@
  */
 package de.hub.clickwatch.transformationLauncher.tabs;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.eclipse.core.internal.resources.File;
+import org.eclipse.core.internal.resources.Folder;
+import org.eclipse.core.internal.resources.Project;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
+import org.eclipse.debug.internal.ui.SWTFactory;
 import org.eclipse.debug.ui.AbstractLaunchConfigurationTab;
 import org.eclipse.emf.common.ui.dialogs.WorkspaceResourceDialog;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.swt.SWT;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.xmi.XMLResource;
+import org.eclipse.jdt.internal.debug.ui.JavaDebugImages;
+import org.eclipse.jdt.internal.debug.ui.actions.ControlAccessibleListener;
+import org.eclipse.jdt.internal.debug.ui.launcher.LauncherMessages;
+import org.eclipse.jface.dialogs.Dialog;
+import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.jface.viewers.ViewerFilter;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
-import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
+import org.eclipse.ui.statushandlers.StatusManager;
+
+import de.hub.clickwatch.transformationLauncher.dialog.RecordObjectChooser;
 
 /**
  * @author Lars George
@@ -51,35 +74,66 @@ public class RecordParametersTab extends AbstractLaunchConfigurationTab {
 	 */
 	@Override
 	public void createControl(Composite parent) {
+		Composite comp = SWTFactory.createComposite(parent, parent.getFont(),
+				1, 1, GridData.FILL_BOTH);
+		((GridLayout) comp.getLayout()).verticalSpacing = 0;
+		createDatabaseFileGroup(comp);
+		createVerticalSpacer(comp, 1);
+		createRecordIDGroup(comp);
+
+		setControl(comp);
+
+		// schedule an update job so every change is noticed
+		scheduleUpdateJob();
+	}
+
+	/**
+	 * creates the visual components for the database file group
+	 * 
+	 * @param parent
+	 *            the component within this group shoul dbe created
+	 */
+	protected void createDatabaseFileGroup(Composite parent) {
+
 		final Shell shell = parent.getShell();
 
-		// transformation file chooser
-		Group textGroup = new Group(parent, SWT.NONE);
-		textGroup.setFont(parent.getFont());
-		textGroup.setText("Record configurations");
-		textGroup.setLayoutData(new GridData(SWT.FILL, SWT.TOP, true, false));
-		textGroup.setLayout(new GridLayout(1, false));
-
-		Composite composite = new Composite(textGroup, SWT.NONE);
-		composite.setLayoutData(new GridData(SWT.FILL, SWT.TOP, true, false));
-		composite.setLayout(new GridLayout(3, false));
-
-		Label label = new Label(composite, SWT.FILL);
-		label.setText("Database File: ");
-
-		databaseFile = new Text(composite, SWT.FILL);
-		GridData layoutData = new GridData(SWT.FILL, SWT.TOP, true, false);
-		databaseFile.setLayoutData(layoutData);
-
-		Button selectButton = new Button(composite, SWT.PUSH);
-		selectButton.setText("...");
+		Group group = SWTFactory.createGroup(parent, "Database file", 2, 1,
+				GridData.FILL_HORIZONTAL);
+		databaseFile = SWTFactory.createSingleText(group, 1);
+		databaseFile.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				setDirty(true);
+				updateLaunchConfigurationDialog();
+			}
+		});
+		ControlAccessibleListener.addListener(databaseFile, group.getText());
+		Button selectButton = createPushButton(group,
+				LauncherMessages.AbstractJavaMainTab_1, null);
 		selectButton.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent selectionEvent) {
 				IFile file = null;
+				List<ViewerFilter> filters = new ArrayList<ViewerFilter>();
+				filters.add(new ViewerFilter() {
+					@Override
+					public boolean select(Viewer viewer, Object parentElement,
+							Object element) {
+						// show projects, folders and ClickWatch-model files
+						if (element instanceof Project
+								|| element instanceof Folder)
+							return true;
+
+						if ((element instanceof File))
+							if (((File) element).getFileExtension().equals(
+									"cwdatabase"))
+								return true;
+						return false;
+					}
+				});
 
 				IFile[] files = WorkspaceResourceDialog.openFileSelection(
-						shell, null, null, false, null, null);
+						shell, null, null, false, null, filters);
 				if (files.length != 0) {
 					file = files[0];
 				}
@@ -93,23 +147,68 @@ public class RecordParametersTab extends AbstractLaunchConfigurationTab {
 				}
 			}
 		});
+	}
 
-		// databse uri
-		composite = new Composite(textGroup, SWT.NONE);
-		composite.setLayoutData(new GridData(SWT.FILL, SWT.TOP, true, false));
-		composite.setLayout(new GridLayout(2, false));
+	/**
+	 * creates the visual components for the record id group
+	 * 
+	 * @param parent
+	 *            the component within this group shoul dbe created
+	 */
+	protected void createRecordIDGroup(Composite parent) {
+		final Shell shell = parent.getShell();
 
-		label = new Label(composite, SWT.FILL);
-		label.setText("Record ID: ");
+		Group group = SWTFactory.createGroup(parent, "Record ID", 2, 1,
+				GridData.FILL_HORIZONTAL);
+		recordID = SWTFactory.createSingleText(group, 1);
+		recordID.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				setDirty(true);
+				updateLaunchConfigurationDialog();
+			}
+		});
+		ControlAccessibleListener.addListener(recordID, group.getText());
 
-		recordID = new Text(composite, SWT.FILL);
-		layoutData = new GridData(SWT.FILL, SWT.TOP, true, false);
-		recordID.setLayoutData(layoutData);
+		Button selectModelObjectButton = createPushButton(group,
+				LauncherMessages.AbstractJavaMainTab_1, null);
+		selectModelObjectButton.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent selectionEvent) {
 
-		setControl(textGroup);
+				ResourceSet resourceSet = new ResourceSetImpl();
+				resourceSet.getLoadOptions().put(
+						XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);
 
-		// schedule an update job so every change is noticed
-		scheduleUpdateJob();
+				Resource modelResource = null;
+
+				try {
+					modelResource = resourceSet.getResource(
+							URI.createURI(databaseFile.getText()), true);
+				} catch (Exception e) {
+					Status s = new Status(IStatus.ERROR, "not_used",
+							"The given database file is not valid: "
+									+ databaseFile.getText(), null);
+					StatusManager.getManager().handle(s, StatusManager.SHOW);
+				}
+				if (modelResource != null) {
+					RecordObjectChooser dialog = new RecordObjectChooser(shell,
+							modelResource);
+					if (dialog.open() == Dialog.OK) {
+						setRecordID(dialog.getSelectedID());
+					}
+				}
+			}
+		});
+	}
+
+	/**
+	 * sets the string parameter for the model object in the gui
+	 * 
+	 * @param uriString
+	 */
+	private void setRecordID(String uriString) {
+		recordID.setText(uriString);
 	}
 
 	/**
@@ -179,6 +278,12 @@ public class RecordParametersTab extends AbstractLaunchConfigurationTab {
 	@Override
 	public String getName() {
 		return TAB_NAME;
+	}
+
+	@Override
+	public Image getImage() {
+		// TODO Auto-generated method stub
+		return JavaDebugImages.get(JavaDebugImages.IMG_VIEW_ARGUMENTS_TAB);
 	}
 
 }

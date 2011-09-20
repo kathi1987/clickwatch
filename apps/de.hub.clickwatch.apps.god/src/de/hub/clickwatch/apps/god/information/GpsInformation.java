@@ -131,5 +131,4 @@ public class GpsInformation implements ClientInformations {
 		this.setLat(gpsInfos.getLat());
 		this.setSpeed(gpsInfos.getSpeed());
 	}
-
 }

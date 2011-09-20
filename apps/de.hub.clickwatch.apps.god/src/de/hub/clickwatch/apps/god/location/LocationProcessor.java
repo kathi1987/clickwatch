@@ -27,15 +27,13 @@ public class LocationProcessor extends Thread {
 	private int rssi_columns = -1;
 	private int rssi_rows = -1;
 	private StorageManager storageMgr;
-	private Server server;
 	private double alphaVal = 9;
 	private boolean activeComputation = true;
 	private boolean takeHalfTrainingData = false;
 	private HashMap<String, TrainingData> otherHalfTrainingData = new HashMap<String, TrainingData>();
 	
-	public LocationProcessor(Server clMan, StorageManager storageMgr) {
+	public LocationProcessor(StorageManager storageMgr) {
 		this.storageMgr = storageMgr;
-		this.server = clMan;
 	}
 	
 	public double getAlphaVal() {
@@ -68,7 +66,7 @@ public class LocationProcessor extends Thread {
 
 	public boolean setup() {
 		//load CSV-files
-		for (String knownAp : server.getSzenario().get_TRAINING_GPS_RSSI_DATA()) {
+		for (String knownAp : Server.getSzenario().get_TRAINING_GPS_RSSI_DATA()) {
 			try {
 				TrainingData trDat = new TrainingData(knownAp);
 				trDat.setLatitude(loadFromFile(knownAp, "latitude", 0));
@@ -227,7 +225,7 @@ public class LocationProcessor extends Thread {
 	}
 	
 	private double[][] loadFromFile(String apMac, String type, int odd_or_even) throws Exception {
-		File file = new File(server.getSzenario().get_TRAINING_GPS_RSSI_DATA_FOLDER() + apMac + server.getSzenario().get_DATA_MAP_ENDING().get(type));
+		File file = new File(Server.getSzenario().get_TRAINING_GPS_RSSI_DATA_FOLDER() + apMac + Server.getSzenario().get_DATA_MAP_ENDING().get(type));
 		int row = 0;
 		int col = 0;
 		
@@ -296,14 +294,14 @@ public class LocationProcessor extends Thread {
 					computePositions();
 				}
 				try {
-					sleep(server.getSzenario().get_COMPUTE_POSITION_TIMER());
+					sleep(Server.getSzenario().get_COMPUTE_POSITION_TIMER());
 				} catch (InterruptedException int_exc) {
 					System.err.println("");
 				}
 			} catch (Exception exc) {
 				System.err.println("Error while computePositions: " + exc.getMessage());
 				
-				try { sleep(server.getSzenario().get_WAIT_AFTER_COMPUTE_POSITION_ERROR()); } catch (InterruptedException int_exc) {/*nothing to do*/}
+				try { sleep(Server.getSzenario().get_WAIT_AFTER_COMPUTE_POSITION_ERROR()); } catch (InterruptedException int_exc) {/*nothing to do*/}
 			}
 		}
 	}

@@ -7,6 +7,8 @@ import de.hub.clickwatch.apps.god.node.NodeInformationProcessor;
 
 public interface Szenario {
 	
+	public float[] get_AP_METRIC_POSITION(String mac);
+	
 	public int get_NODE_POCESSING_TIMER();
 	
 	public int get_GATEWAY_POCESSING_TIMER();
@@ -19,13 +21,29 @@ public interface Szenario {
 	
 	public int get_WAIT_AFTER_COMPUTE_POSITION_ERROR();
 	
+	public char get_LINKTABLE_SEPARATOR();
+	
 	public String[][] get_ACCESS_POINTS();
+	
+	public void set_ACCESS_POINTS(String[][] aps);
 	
 	public String[] get_GET_CHANNEL_HANDLER();
 	
 	public String[] get_SET_CHANNEL_HANDLER(int channel);
 	
 	public Class<? extends NodeInformationProcessor> get_CHANNEL_PROCESSOR();
+	
+	public String[] get_GET_ROUTINGTABLE_HANDLER();
+	
+	public String[] get_SET_ROUTINGTABLE_HANDLER();
+	
+	public Class<? extends NodeInformationProcessor> get_ROUTINGTABLE_PROCESSOR();
+	
+	public String[] get_GET_LINKTABLE_HANDLER();
+	
+	public String[] get_SET_LINKTABLE_HANDLER();
+	
+	public Class<? extends NodeInformationProcessor> get_LINKTABLE_PROCESSOR();
 	
 	public String[] get_GET_POWER_HANDLER();
 	
@@ -40,6 +58,14 @@ public interface Szenario {
 	public String[] get_GPS_HANDLER();
 	
 	public Class<? extends NodeInformationProcessor> get_GPS_PROCESSOR();
+	
+	public String[] get_FLOWINFO_HANDLER();
+	
+	public Class<? extends NodeInformationProcessor> get_FLOWINFO_PROCESSOR();
+	
+	public String[] get_FLOWSTAT_HANDLER();
+	
+	public Class<? extends NodeInformationProcessor> get_FLOWSTAT_PROCESSOR();
 	
 	public String[] get_CHANNELSTAT_HANDLER();
 

@@ -56,5 +56,4 @@ public class MacIpInformation implements ClientInformations {
 		mac = newMacIp.getClientMac();
 		ip = newMacIp.getClientIP();
 	}
-
 }
