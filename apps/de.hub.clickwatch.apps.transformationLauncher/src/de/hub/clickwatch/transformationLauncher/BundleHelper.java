@@ -115,25 +115,9 @@ public class BundleHelper {
 							.getBundleContext()
 							.installBundle(bundleLocation + "/" + parts[0]);
 
-					/*
-					 * IProject project = candidateManifest.getProject();
-					 * IJavaProject javaProject = JavaCore.create(project); try
-					 * { IPath output = javaProject.getOutputLocation();
-					 * BaseData bundleData =
-					 * (BaseData)((AbstractBundle)bundle).getBundleData();
-					 * bundleData
-					 * .setClassPathString(output.removeFirstSegments(1
-					 * ).toString()); } catch (JavaModelException e) {
-					 * Activator.log(e, false); }
-					 */
-
 				} catch (Exception e) {
 					// dont do anything, it normal that most parts can not be
 					// loaded
-					// Status s = new Status(IStatus.ERROR, "not_used", 0,
-					// e.toString(), null);
-					// StatusManager.getManager().handle(s, StatusManager.SHOW);
-
 				}
 			}
 

@@ -13,6 +13,7 @@ import de.hub.clickwatch.ClickWatchStandaloneSetup;
 import de.hub.clickwatch.main.impl.ClickWatchModelProvider;
 import de.hub.clickwatch.main.impl.RecordProvider;
 import de.hub.clickwatch.main.impl.InjectorProvider;
+import de.hub.clickwatch.main.impl.ResultsProvider;
 import de.hub.clickwatch.main.impl.InjectorProvider.DataBaseType;
 import de.hub.clickwatch.main.impl.InjectorProvider.HandlerBehaviour;
 import de.hub.clickwatch.main.impl.InjectorProvider.ValueType;
@@ -30,6 +31,7 @@ public class ClickWatchRunConfigurationLauncher {
 	private final InjectorProvider injProv;
 	private final ClickWatchModelProvider clickProv;
 	private final RecordProvider expProv;
+	private final ResultsProvider resultProv;
 
 	private Map<Class<?>, IClickWatchContextAdapter> adapters = new HashMap<Class<?>, IClickWatchContextAdapter>();
 
@@ -53,11 +55,21 @@ public class ClickWatchRunConfigurationLauncher {
 
 		if (launcher.initalizeInjectorProvider(configuration)
 				&& launcher.initalizeRecordProvider(configuration)
-				&& launcher.initalizeClickWatchModelProvider(configuration)) {
+				&& launcher.initalizeClickWatchModelProvider(configuration) &&
+				launcher.initalizeResultProvider(configuration)) {
 			launcher.doLaunch();
 		}
 	}
-
+	
+	/**
+	 * 
+	 * @param configuration
+	 * @return
+	 */
+	private boolean initalizeResultProvider(HashMap<ELaunchConfigurationParameters, Object> configuration) {
+		return true;
+	}
+	
 	/**
 	 * 
 	 * @param configuration
@@ -189,6 +201,9 @@ public class ClickWatchRunConfigurationLauncher {
 		clickProv = (ClickWatchModelProvider) adapterInjector
 				.getInstance(IClickWatchModelProvider.class);
 		adapters.put(IClickWatchModelProvider.class, clickProv);
+		
+		resultProv = (ResultsProvider) adapterInjector.getInstance(IResultsProvider.class);
+		adapters.put(IResultsProvider.class, resultProv);
 	}
 
 	/**
