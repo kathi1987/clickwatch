@@ -76,6 +76,8 @@ public class NodeProcessor extends Thread {
 		}
 		
 		while (!stopNodeProcessor) {
+			String askingFor = "";
+			
 			try {
 				if (nodeInfos.getElementFilter().size() == 0) {
 					if (callsSetter) {
@@ -121,6 +123,8 @@ public class NodeProcessor extends Thread {
 					
 					for (String[] handler : nodeInfos.getElementFilter().keySet()) {
 						if (callsSetter) {
+							askingFor = "\"write: " + handler[0] + " " + handler[1] + " --> " + handler[2] + "\"";
+							
 							ClickConnection cc = new ClickConnection(nodeInfos.getHost(), nodeInfos.getPort());
 							cc.openClickConnection();
 							int res = cc.writeHandler(handler[0], handler[1], handler[2]);
@@ -134,7 +138,7 @@ public class NodeProcessor extends Thread {
 							//ask the node, and process result
 							IHandlerAdapter handlerAdapter = nodeConnection.getAdapter(IHandlerAdapter.class);
 							Handler resultHandler = handlerAdapter.getHandler(handler[0] + "/" + handler[1]);
-							
+							askingFor = "\"read: " + handler[0] + " " + handler[1] + "\"";
 							//process results
 							NodeInformationProcessor proc = nodeInfos.getElementFilter().get(handler).newInstance();
 							List<ClientInformations> clInfo = proc.handleInformations(resultHandler);
@@ -167,7 +171,9 @@ public class NodeProcessor extends Thread {
 				
 				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd @ HH:mm:ss");
 				System.err.println(dateFormat.format(new Date()) + " -> node '" + nodeInfos.getHost().getHostAddress() + ":" + nodeInfos.getPort() + "' throwed Exception: " + exc.getMessage() +
-						" ...waiting " + Server.getSzenario().get_WAIT_AFTER_ASKING_ERROR()/1000 + "sec, and starting to ask the node again");
+						" while asking for: " + askingFor + "\t...waiting " + Server.getSzenario().get_WAIT_AFTER_ASKING_ERROR()/1000 + "sec, and starting to ask the node again");
+				
+				//exc.printStackTrace();
 				
 				if (nodeConnection.isConnected()) {
 					nodeConnection.disconnect();

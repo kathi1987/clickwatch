@@ -61,9 +61,12 @@ public class DijkstraContainer {
 	}
 	
 	public void upgradeLink(String from, String to, int metricDiff) {
+		/*
 		boolean linkIsNotInBestRoute = false;
 		for (String route : bestRoute.keySet()) {
-			if (bestRoute.get(route).contains(from + SzenarioHWL.LINKTABLE_SEPARATOR + to)) {
+			String bRoute = bestRoute.get(route);
+			
+			if ((bRoute != null) && (bRoute.contains(from + SzenarioHWL.LINKTABLE_SEPARATOR + to))) {
 				linkIsNotInBestRoute = true;
 				break;
 			}
@@ -73,18 +76,23 @@ public class DijkstraContainer {
 			runDijkstra();
 		} else {
 			for (String route : bestRouteLength.keySet()) {
-				if (bestRoute.get(route).contains(from + SzenarioHWL.LINKTABLE_SEPARATOR + to)) {
+				String bRoute = bestRoute.get(route);
+				if ((bRoute != null) && (bRoute.contains(from + SzenarioHWL.LINKTABLE_SEPARATOR + to))) {
 					int now = bestRouteLength.get(route).intValue() + metricDiff;
 					bestRouteLength.put(route, new Integer(now));
 				}
 			}
 		}
+		*/
+		runDijkstra();
 	}
 	
 	public void degradeLink(String from, String to) {
 		boolean linkIsInBestRoute = false;
 		for (String route : bestRoute.keySet()) {
-			if (bestRoute.get(route).contains(from + SzenarioHWL.LINKTABLE_SEPARATOR + to)) {
+			String bRoute = bestRoute.get(route);
+			
+			if ((bRoute != null) && (bRoute.contains(from + SzenarioHWL.LINKTABLE_SEPARATOR + to))) {
 				linkIsInBestRoute = true;
 				break;
 			}

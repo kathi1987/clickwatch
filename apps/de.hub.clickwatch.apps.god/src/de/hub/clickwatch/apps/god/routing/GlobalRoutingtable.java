@@ -51,20 +51,26 @@ public class GlobalRoutingtable implements Serializable {
 	}
 	
 	public static void removeUsedLink(String from, String to) {
-		for (String s : routingtable.keySet()) {
-			routingtable.get(s).removeLink(from, to);
+		synchronized (routingtable) {
+			for (String s : routingtable.keySet()) {
+				routingtable.get(s).removeLink(from, to);
+			}
 		}
 	}
 	
 	public static void upgradeUsedLink(String from, String to, int metricDiff) {
-		for (String s : routingtable.keySet()) {
-			routingtable.get(s).upgradeLink(from, to, metricDiff);
+		synchronized (routingtable) {
+			for (String s : routingtable.keySet()) {
+				routingtable.get(s).upgradeLink(from, to, metricDiff);
+			}
 		}
 	}
 	
 	public static void degradeUsedLink(String from, String to) {
-		for (String s : routingtable.keySet()) {
-			routingtable.get(s).degradeLink(from, to);
+		synchronized (routingtable) {
+			for (String s : routingtable.keySet()) {
+				routingtable.get(s).degradeLink(from, to);
+			}
 		}
 	}
 	
@@ -72,15 +78,17 @@ public class GlobalRoutingtable implements Serializable {
 		nodes.add(from);
 		nodes.add(to);
 		
-		if (!routingtable.containsKey(from)) {
-			routingtable.put(from, new DijkstraContainer(from));
-		}
-		if (!routingtable.containsKey(to)) {
-			routingtable.put(to, new DijkstraContainer(to));
-		}
-		
-		for (String s : routingtable.keySet()) {
-			routingtable.get(s).runDijkstra();
+		synchronized (routingtable) {
+			if (!routingtable.containsKey(from)) {
+				routingtable.put(from, new DijkstraContainer(from));
+			}
+			if (!routingtable.containsKey(to)) {
+				routingtable.put(to, new DijkstraContainer(to));
+			}
+			
+			for (String s : routingtable.keySet()) {
+				routingtable.get(s).runDijkstra();
+			}
 		}
 	}
 }

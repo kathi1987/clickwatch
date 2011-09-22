@@ -28,15 +28,18 @@ public class GlobalLinktable implements Serializable {
 	
 	public static Set<String> getNeighbors(String node) {
 		Set<String> neighbors = new HashSet<String>();
-		for (String link : linktable.keySet()) {
-			if (linktable.get(link).getMetric() < SzenarioHWL.LINK_USE_IN_DIJKSTRA_MAX_VALUE) {
-				if (link.startsWith(node)) {
-					StringTokenizer strTok = new StringTokenizer(link, "" + SzenarioHWL.LINKTABLE_SEPARATOR);
-					strTok.nextToken();
-					neighbors.add(strTok.nextToken());
-				} else if (link.endsWith(node)){
-					StringTokenizer strTok = new StringTokenizer(link, "" + SzenarioHWL.LINKTABLE_SEPARATOR);
-					neighbors.add(strTok.nextToken());
+		synchronized (linktable) {
+			for (String link : linktable.keySet()) {
+				LinktableLinkInformation linkInf = linktable.get(link); 
+				if ((linkInf != null) && (linkInf.getMetric() < SzenarioHWL.LINK_USE_IN_DIJKSTRA_MAX_VALUE)) {
+					if (link.startsWith(node)) {
+						StringTokenizer strTok = new StringTokenizer(link, "" + SzenarioHWL.LINKTABLE_SEPARATOR);
+						strTok.nextToken();
+						neighbors.add(strTok.nextToken());
+					} else if (link.endsWith(node)){
+						StringTokenizer strTok = new StringTokenizer(link, "" + SzenarioHWL.LINKTABLE_SEPARATOR);
+						neighbors.add(strTok.nextToken());
+					}
 				}
 			}
 		}
@@ -50,9 +53,11 @@ public class GlobalLinktable implements Serializable {
 				String from = strTok.nextToken();
 				String to = strTok.nextToken();
 				
-				if (linktable.containsKey(fromTo)) {
-					linktable.remove(fromTo);
-					GlobalRoutingtable.removeUsedLink(from, to);
+				synchronized (linktable) {
+					if (linktable.containsKey(fromTo)) {
+						linktable.remove(fromTo);
+						GlobalRoutingtable.removeUsedLink(from, to);
+					}
 				}
 			} else {
 				System.err.println("WARNING: someone tries to remove a link, but does not provide exactly 2 node mac-addresses, but: " + strTok.countTokens());
@@ -79,8 +84,8 @@ public class GlobalLinktable implements Serializable {
 	}
 	
 	private static void updateLinktable(String from, String to, LinktableLinkInformation infos) {
-		if (linktable.containsKey(from + SzenarioHWL.LINKTABLE_SEPARATOR + to)) {
-			
+		//if (linktable.containsKey(from + SzenarioHWL.LINKTABLE_SEPARATOR + to)) {
+		synchronized (linktable) {	
 			int metricDiff = linktable.get(from + SzenarioHWL.LINKTABLE_SEPARATOR + to).getMetric() - infos.getMetric();
 			linktable.put(from + SzenarioHWL.LINKTABLE_SEPARATOR + to, infos);
 			
@@ -90,12 +95,14 @@ public class GlobalLinktable implements Serializable {
 				GlobalRoutingtable.degradeUsedLink(from, to);	//new link is worse (bigger value)
 			}
 		}
+		//}
 	}
 	
 	private static void addToLinktable(String from, String to, LinktableLinkInformation infos) {
 		if (infos.getMetric() < SzenarioHWL.LINK_ADD_MIN_THRESHOLD) {
-			linktable.put(from + SzenarioHWL.LINKTABLE_SEPARATOR + to, infos);
-			
+			synchronized (linktable) {
+				linktable.put(from + SzenarioHWL.LINKTABLE_SEPARATOR + to, infos);
+			}
 			GlobalRoutingtable.addLink(from, to);
 		}
 	}
