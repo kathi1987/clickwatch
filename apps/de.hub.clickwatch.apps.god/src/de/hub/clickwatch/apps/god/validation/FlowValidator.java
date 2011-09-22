@@ -103,7 +103,7 @@ public class FlowValidator implements Validator {
 	public void startValidation() {
 		int flowNum = 1;
 		for (String flow : validatingFlows.keySet()) {
-			System.out.print((flowNum++) + ". flow:\t" + flow + " -->");
+			System.out.print((flowNum++) + ". flow (of " + validatingFlows.size() + "):\t" + flow + " -->");
 			
 			for (String participant : allParticipatingAPs) {
 				Server.getInstance().handleSetter(participant, 7777, "lt", "fix_linktable", "false");
@@ -138,7 +138,7 @@ public class FlowValidator implements Validator {
 				//2. add flow
 				System.out.print("adding flow, ");
 				Server.getInstance().handleSetter(data[2], 7777, "sf", "add_flow", data[0] + " " + data[1] + " 300 100 0 100 true");
-				Thread.sleep(2000);
+				Thread.sleep(8000);
 				
 				//3. stop flow
 				System.out.print("stopping flow, ");
