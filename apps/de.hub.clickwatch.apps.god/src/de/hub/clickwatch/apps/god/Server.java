@@ -267,7 +267,7 @@ public class Server implements IClickWatchMain {
 					startTheValidator = true;
 				}
 			}
-		} 
+		}
 		
 		String[] args = new String[] { "-d", "-s"};
 		ClickWatchExternalLauncher.launch(args, Server.class);

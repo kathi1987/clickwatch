@@ -13,7 +13,7 @@ public class GlobalRoutingtable implements Serializable {
 	private static Map<String, DijkstraContainer> routingtable = new HashMap<String, DijkstraContainer>();
 	
 	public static Set<String> getNodes() {
-		return new HashSet<String>(nodes);
+		return new HashSet<String>(nodes);	
 	}
 	
 	public static Set<String> getRoutesFrom(String mac) {
@@ -75,8 +75,10 @@ public class GlobalRoutingtable implements Serializable {
 	}
 	
 	public static void addLink(String from, String to) {
-		nodes.add(from);
-		nodes.add(to);
+		synchronized (nodes) {
+			nodes.add(from);
+			nodes.add(to);
+		}
 		
 		synchronized (routingtable) {
 			if (!routingtable.containsKey(from)) {

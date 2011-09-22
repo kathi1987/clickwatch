@@ -134,7 +134,6 @@ public class NodeProcessor extends Thread {
 								System.err.println("ERROR while calling writeHandler " + handler[0] + "/" + handler[1] + " with args '" + handler[2] + "' on node " + nodeInfos.getHost().getHostAddress() + ":" + nodeInfos.getPort());
 							}
 						} else if ((nodeConnection != null) && (nodeConnection.isConnected())) {
-							
 							//ask the node, and process result
 							IHandlerAdapter handlerAdapter = nodeConnection.getAdapter(IHandlerAdapter.class);
 							Handler resultHandler = handlerAdapter.getHandler(handler[0] + "/" + handler[1]);
@@ -142,6 +141,7 @@ public class NodeProcessor extends Thread {
 							//process results
 							NodeInformationProcessor proc = nodeInfos.getElementFilter().get(handler).newInstance();
 							List<ClientInformations> clInfo = proc.handleInformations(resultHandler);
+							
 							if ((clInfo != null) && (clInfo.size() > 0)) {
 								server.storeInformations(nodeInfos.getElementFilter().get(handler).getName(), clInfo, nodeInfos.getHost().getHostAddress(), ""+nodeInfos.getPort());
 							}

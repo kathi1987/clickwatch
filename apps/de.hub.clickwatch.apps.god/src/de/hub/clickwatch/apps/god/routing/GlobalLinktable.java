@@ -85,16 +85,17 @@ public class GlobalLinktable implements Serializable {
 	
 	private static void updateLinktable(String from, String to, LinktableLinkInformation infos) {
 		//if (linktable.containsKey(from + SzenarioHWL.LINKTABLE_SEPARATOR + to)) {
-		synchronized (linktable) {	
-			int metricDiff = linktable.get(from + SzenarioHWL.LINKTABLE_SEPARATOR + to).getMetric() - infos.getMetric();
+		int metricDiff = linktable.get(from + SzenarioHWL.LINKTABLE_SEPARATOR + to).getMetric() - infos.getMetric();
+		synchronized (linktable) {
 			linktable.put(from + SzenarioHWL.LINKTABLE_SEPARATOR + to, infos);
-			
-			if (metricDiff >= 0) {
-				GlobalRoutingtable.upgradeUsedLink(from, to, metricDiff);	//new link is better (smaller value)
-			} else {
-				GlobalRoutingtable.degradeUsedLink(from, to);	//new link is worse (bigger value)
-			}
+		}	
+		
+		if (metricDiff >= 0) {
+			GlobalRoutingtable.upgradeUsedLink(from, to, metricDiff);	//new link is better (smaller value)
+		} else {
+			GlobalRoutingtable.degradeUsedLink(from, to);	//new link is worse (bigger value)
 		}
+		
 		//}
 	}
 	

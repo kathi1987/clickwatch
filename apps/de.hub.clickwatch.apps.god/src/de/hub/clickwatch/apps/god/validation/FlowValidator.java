@@ -1,5 +1,7 @@
 package de.hub.clickwatch.apps.god.validation;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -14,7 +16,6 @@ import de.hub.clickwatch.apps.god.information.FlowStatInformation;
 import de.hub.clickwatch.apps.god.node.FlowStatProcessor;
 import de.hub.clickwatch.apps.god.routing.GlobalLinktable;
 import de.hub.clickwatch.apps.god.routing.GlobalRoutingtable;
-import de.hub.clickwatch.apps.god.test.FlowWrapper;
 
 public class FlowValidator implements Validator {
 	private Map<String, String[]> validatingFlows = new HashMap<String, String[]>();
@@ -91,17 +92,11 @@ public class FlowValidator implements Validator {
 			apResetList.put(ap[0], ap[1]);
 			
 			for (String[] targetAp : aps) {
-				
-				if (validatingFlows.size() >= 12) {
-					break;
-				}
-				
 				if (!targetAp[0].equals(ap[0])) {
 					validatingFlows.put(ap[0] + " -> " + targetAp[0], new String[] {ap[0], targetAp[0], ap[1], targetAp[1]});
 				}
 			}
 		}
-		FlowWrapper.resetFlows(apResetList, false, false);
 	}
 
 	@Override
@@ -151,17 +146,16 @@ public class FlowValidator implements Validator {
 				Thread.sleep(2000);
 				
 				//4. read stats about the flow
-				System.out.print("processing results, ");
+				System.out.print("processing results ... ");
 				boolean gotInfos = false;
 				int tries = 0;
-				while (!gotInfos && (tries < 20)) {
+				while (!gotInfos && (tries < 50)) {
 					tries++;
 					HashMap<String, ClientInformations> apInfos = Server.getInstance().getStorageManager().getClientInformations(data[0]);
 					if (apInfos.containsKey(FlowStatProcessor.class.getName())) {
 						FlowStatInformation fs = (FlowStatInformation)apInfos.get(FlowStatProcessor.class.getName());
 						for (FlowRoute route : fs.getFlowRoutes()) {
 							if ((route.getSrc().equals(data[0])) && (route.getDst().equals(data[1]))) {
-								route.getChildren();
 								gotInfos = true;
 								
 								//found statistics, collect them
@@ -193,14 +187,17 @@ public class FlowValidator implements Validator {
 										GlobalRoutingtable.getShortestPath(data[0], data[1]);
 								
 								if (!noControlProblem) {
+									System.out.print("[added], ");
 									validationDiff.put(flow, stats);
+								} else {
+									System.out.print("[NOT ADDED], ");
 								}
 								
 								break;
 							}
 						}
 					}
-					Thread.sleep(300);
+					Thread.sleep(250);
 				}
 				
 				//5. reactivate linktable of all participants
@@ -214,9 +211,25 @@ public class FlowValidator implements Validator {
 			}
 		}
 		
-		for (String k : validationDiff.keySet()) {
-			System.out.println(validationDiff.get(k) + "\n");
-		}
+		FileWriter fw = null;
+		try {
+			fw = new FileWriter("resultsFlowRun.csv");
+			for (String k : validationDiff.keySet()) {
+				//System.out.println(validationDiff.get(k));
+				fw.write(validationDiff.get(k) + "\n");
+			}
+			fw.close();
+		} catch (Exception exc) {
+			//nothing
+		} finally { 
+			if (fw != null) {
+				try {
+					fw.close();
+				} catch (IOException e) {
+					//nothing
+				}
+			}
+		}	
 	}
 
 }
