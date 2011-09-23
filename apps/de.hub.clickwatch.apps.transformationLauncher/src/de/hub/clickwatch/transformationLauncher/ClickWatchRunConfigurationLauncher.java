@@ -3,8 +3,11 @@ package de.hub.clickwatch.transformationLauncher;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.ui.statushandlers.StatusManager;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
@@ -17,6 +20,7 @@ import de.hub.clickwatch.main.IClickWatchContextAdapter;
 import de.hub.clickwatch.main.IClickWatchMain;
 import de.hub.clickwatch.main.IClickWatchModelProvider;
 import de.hub.clickwatch.main.IInjectorProvider;
+import de.hub.clickwatch.main.IProgressMonitorProvider;
 import de.hub.clickwatch.main.IRecordProvider;
 import de.hub.clickwatch.main.IResultsProvider;
 import de.hub.clickwatch.main.impl.ArgumentsProvider;
@@ -25,6 +29,7 @@ import de.hub.clickwatch.main.impl.InjectorProvider;
 import de.hub.clickwatch.main.impl.InjectorProvider.DataBaseType;
 import de.hub.clickwatch.main.impl.InjectorProvider.HandlerBehaviour;
 import de.hub.clickwatch.main.impl.InjectorProvider.ValueType;
+import de.hub.clickwatch.main.impl.ProgressMonitorProvider;
 import de.hub.clickwatch.main.impl.RecordProvider;
 import de.hub.clickwatch.main.impl.ResultsProvider;
 import de.hub.clickwatch.recorder.database.CWRecorderStandaloneSetup;
@@ -43,6 +48,7 @@ public class ClickWatchRunConfigurationLauncher {
 	private final RecordProvider expProv;
 	private final ResultsProvider resultProv;
 	private final ArgumentsProvider argProv;
+	private final ProgressMonitorProvider monitorProv;
 
 	private Map<Class<?>, IClickWatchContextAdapter> adapters = new HashMap<Class<?>, IClickWatchContextAdapter>();
 
@@ -68,9 +74,21 @@ public class ClickWatchRunConfigurationLauncher {
 				&& launcher.initalizeRecordProvider(configuration)
 				&& launcher.initalizeClickWatchModelProvider(configuration)
 				&& launcher.initalizeResultProvider(configuration)
-				&& launcher.initializeArgumentsProvider(configuration)) {
+				&& launcher.initializeArgumentsProvider(configuration)
+				&& launcher.initalizeProgressMonitorProvider(configuration)) {
 			launcher.doLaunch();
 		}
+	}
+
+	/**
+	 * 
+	 * @param configuration
+	 * @return
+	 */
+	private boolean initalizeProgressMonitorProvider(
+			HashMap<ELaunchConfigurationParameters, Object> configuration) {
+		monitorProv.initialize(null, null);
+		return true;
 	}
 
 	/**
@@ -205,7 +223,15 @@ public class ClickWatchRunConfigurationLauncher {
 		IClickWatchContext ctx = createContext();
 		IClickWatchMain main = ctx.getAdapter(IInjectorProvider.class)
 				.getInjector().getInstance(mainClass);
-		main.main(ctx);
+		try {
+			main.main(ctx);
+		} catch (Exception e) {
+			Status s = new Status(IStatus.ERROR, "not_used",
+					"The following error occcured while executing the transformation: "
+							+ e.toString(), null);
+			StatusManager.getManager().handle(s, StatusManager.SHOW);
+		}
+
 	}
 
 	/**
@@ -239,6 +265,10 @@ public class ClickWatchRunConfigurationLauncher {
 		resultProv = (ResultsProvider) adapterInjector
 				.getInstance(ResultsUIResultsProvider.class);
 		adapters.put(IResultsProvider.class, resultProv);
+
+		monitorProv = (ProgressMonitorProvider) adapterInjector
+				.getInstance(IProgressMonitorProvider.class);
+		adapters.put(IProgressMonitorProvider.class, monitorProv);
 
 		argProv = (ArgumentsProvider) adapterInjector
 				.getInstance(IArgumentsProvider.class);
