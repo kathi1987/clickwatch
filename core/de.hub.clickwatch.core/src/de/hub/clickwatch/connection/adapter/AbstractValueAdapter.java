@@ -1,9 +1,14 @@
 package de.hub.clickwatch.connection.adapter;
 
+import com.google.inject.Inject;
+
 import de.hub.clickwatch.model.ClickWatchModelFactory;
 import de.hub.clickwatch.model.Handler;
+import de.hub.clickwatch.util.NanoClock;
 
 public abstract class AbstractValueAdapter extends AbstractAdapter implements IValueAdapter {
+	
+	@Inject NanoClock clock;
 	
 	@Override
 	public Handler create(Handler handler, IValueAdapter valueAdapter) {
@@ -15,7 +20,7 @@ public abstract class AbstractValueAdapter extends AbstractAdapter implements IV
 	public Handler create(Handler handler, String plainValue) {
 		long timestamp = handler.getTimestamp();
 		if (timestamp <= 0) {
-			timestamp = System.nanoTime();
+			timestamp = clock.currentTimeNanos();
 		}
 		Handler result = create(handler.getQualifiedName(), timestamp, plainValue);
 		result.setCanRead(handler.isCanRead());

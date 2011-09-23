@@ -12,6 +12,12 @@
                label="Jump"
                menubarPath="clickwatch/record">
          </action>
+         <action
+               class="de.hub.clickwatch.ui.GuiceAwareExecutableExtensionFactory:de.hub.clickwatch.recorder.ui.actions.RecordAction"
+               id="de.hub.clickwatch.recorder.ui.Record"
+               label="record ..."
+               menubarPath="clickwatch/record">
+         </action>
       </objectContribution>
    </extension>
    <extension

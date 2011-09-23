@@ -23,10 +23,10 @@
 <unit id="org.eclipse.xtext.sdk.feature.group" version="2.0.0.v201106070531"/>
 <repository location="http://download.eclipse.org/releases/indigo"/>
 </location>
-<location includeAllPlatforms="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+<!--<location includeAllPlatforms="false" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.scala-ide.sdt.weaving.feature.feature.group" version="2.0.0.beta09-29-201107201639-529111d"/>
 <unit id="org.scala-ide.sdt.feature.feature.group" version="2.0.0.beta09-29-201107201639-529111d"/>
 <repository location="http://download.scala-ide.org/releases/2.0.0-beta"/>
-</location>
+</location>-->
 </locations>
 </target>

@@ -6,69 +6,45 @@
  */
 package de.hub.clickwatch.specificmodels.brn.routing_dsr_stats_stats.impl;
 
+import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.impl.EPackageImpl;
+
 import de.hub.clickwatch.model.ClickWatchModelPackage;
-
 import de.hub.clickwatch.specificmodels.brn.BrnPackage;
-
 import de.hub.clickwatch.specificmodels.brn.device_wifi_data_power_systempower.Device_wifi_data_power_systempowerPackage;
-
 import de.hub.clickwatch.specificmodels.brn.device_wifi_data_power_systempower.impl.Device_wifi_data_power_systempowerPackageImpl;
-
 import de.hub.clickwatch.specificmodels.brn.device_wifi_link_stat_bcast_stats.Device_wifi_link_stat_bcast_statsPackage;
-
 import de.hub.clickwatch.specificmodels.brn.device_wifi_link_stat_bcast_stats.impl.Device_wifi_link_stat_bcast_statsPackageImpl;
-
 import de.hub.clickwatch.specificmodels.brn.device_wifi_wifidevice_cst_stats.Device_wifi_wifidevice_cst_statsPackage;
-
 import de.hub.clickwatch.specificmodels.brn.device_wifi_wifidevice_cst_stats.impl.Device_wifi_wifidevice_cst_statsPackageImpl;
-
 import de.hub.clickwatch.specificmodels.brn.device_wifi_wifidevice_sc_systemchannel.Device_wifi_wifidevice_sc_systemchannelPackage;
-
 import de.hub.clickwatch.specificmodels.brn.device_wifi_wifidevice_sc_systemchannel.impl.Device_wifi_wifidevice_sc_systemchannelPackageImpl;
-
 import de.hub.clickwatch.specificmodels.brn.gps_cart_coord.Gps_cart_coordPackage;
-
 import de.hub.clickwatch.specificmodels.brn.gps_cart_coord.impl.Gps_cart_coordPackageImpl;
-
 import de.hub.clickwatch.specificmodels.brn.gps_gps_coord.Gps_gps_coordPackage;
-
 import de.hub.clickwatch.specificmodels.brn.gps_gps_coord.impl.Gps_gps_coordPackageImpl;
-
 import de.hub.clickwatch.specificmodels.brn.impl.BrnPackageImpl;
-
 import de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Lease_tab_leasesPackage;
-
 import de.hub.clickwatch.specificmodels.brn.lease_tab_leases.impl.Lease_tab_leasesPackageImpl;
-
 import de.hub.clickwatch.specificmodels.brn.lt_links.Lt_linksPackage;
-
 import de.hub.clickwatch.specificmodels.brn.lt_links.impl.Lt_linksPackageImpl;
-
 import de.hub.clickwatch.specificmodels.brn.lt_routes.Lt_routesPackage;
-
 import de.hub.clickwatch.specificmodels.brn.lt_routes.impl.Lt_routesPackageImpl;
-
 import de.hub.clickwatch.specificmodels.brn.routing_dsr_stats_stats.Dsr_route_stats;
 import de.hub.clickwatch.specificmodels.brn.routing_dsr_stats_stats.Route;
 import de.hub.clickwatch.specificmodels.brn.routing_dsr_stats_stats.Route_info;
 import de.hub.clickwatch.specificmodels.brn.routing_dsr_stats_stats.Routing_dsr_stats_statsFactory;
 import de.hub.clickwatch.specificmodels.brn.routing_dsr_stats_stats.Routing_dsr_stats_statsPackage;
 import de.hub.clickwatch.specificmodels.brn.routing_dsr_stats_stats.Stats;
-
+import de.hub.clickwatch.specificmodels.brn.seismo_latestchannelinfos.Seismo_latestchannelinfosPackage;
+import de.hub.clickwatch.specificmodels.brn.seismo_latestchannelinfos.impl.Seismo_latestchannelinfosPackageImpl;
 import de.hub.clickwatch.specificmodels.brn.sf_stats.Sf_statsPackage;
-
 import de.hub.clickwatch.specificmodels.brn.sf_stats.impl.Sf_statsPackageImpl;
-
 import de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.Sys_info_systeminfoPackage;
-
 import de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.impl.Sys_info_systeminfoPackageImpl;
-
-import org.eclipse.emf.ecore.EAttribute;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EReference;
-
-import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -167,6 +143,7 @@ public class Routing_dsr_stats_statsPackageImpl extends EPackageImpl implements 
 		Device_wifi_link_stat_bcast_statsPackageImpl theDevice_wifi_link_stat_bcast_statsPackage = (Device_wifi_link_stat_bcast_statsPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Device_wifi_link_stat_bcast_statsPackage.eNS_URI) instanceof Device_wifi_link_stat_bcast_statsPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Device_wifi_link_stat_bcast_statsPackage.eNS_URI) : Device_wifi_link_stat_bcast_statsPackage.eINSTANCE);
 		Device_wifi_wifidevice_cst_statsPackageImpl theDevice_wifi_wifidevice_cst_statsPackage = (Device_wifi_wifidevice_cst_statsPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Device_wifi_wifidevice_cst_statsPackage.eNS_URI) instanceof Device_wifi_wifidevice_cst_statsPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Device_wifi_wifidevice_cst_statsPackage.eNS_URI) : Device_wifi_wifidevice_cst_statsPackage.eINSTANCE);
 		Sf_statsPackageImpl theSf_statsPackage = (Sf_statsPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Sf_statsPackage.eNS_URI) instanceof Sf_statsPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Sf_statsPackage.eNS_URI) : Sf_statsPackage.eINSTANCE);
+		Seismo_latestchannelinfosPackageImpl theSeismo_latestchannelinfosPackage = (Seismo_latestchannelinfosPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Seismo_latestchannelinfosPackage.eNS_URI) instanceof Seismo_latestchannelinfosPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Seismo_latestchannelinfosPackage.eNS_URI) : Seismo_latestchannelinfosPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theRouting_dsr_stats_statsPackage.createPackageContents();
@@ -182,6 +159,7 @@ public class Routing_dsr_stats_statsPackageImpl extends EPackageImpl implements 
 		theDevice_wifi_link_stat_bcast_statsPackage.createPackageContents();
 		theDevice_wifi_wifidevice_cst_statsPackage.createPackageContents();
 		theSf_statsPackage.createPackageContents();
+		theSeismo_latestchannelinfosPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theRouting_dsr_stats_statsPackage.initializePackageContents();
@@ -197,6 +175,7 @@ public class Routing_dsr_stats_statsPackageImpl extends EPackageImpl implements 
 		theDevice_wifi_link_stat_bcast_statsPackage.initializePackageContents();
 		theDevice_wifi_wifidevice_cst_statsPackage.initializePackageContents();
 		theSf_statsPackage.initializePackageContents();
+		theSeismo_latestchannelinfosPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theRouting_dsr_stats_statsPackage.freeze();

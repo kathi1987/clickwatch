@@ -214,9 +214,11 @@ public class CWDataBaseTimeScaleController {
 				// get node from data base
 				Node nodeTimeCopy = dataBaseUtil.getNode(DataBaseUtil.createHandle(currentRecord, currentNode.getINetAddress(), time));
 				
-				// merge node into gui
-				merger.merge(currentNode, nodeTimeCopy);
-				EcoreUtil.delete(nodeTimeCopy);						
+				if (nodeTimeCopy != null) {
+					// merge node into gui
+					merger.merge(currentNode, nodeTimeCopy);
+					EcoreUtil.delete(nodeTimeCopy);				
+				}
 				
 				monitor.worked(1);
 			}

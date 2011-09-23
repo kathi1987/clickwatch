@@ -11,7 +11,6 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
 
 import de.hub.clickwatch.model.Handler;
-import de.hub.clickwatch.specificmodels.brn.gps_cart_coord.*;
 import de.hub.clickwatch.specificmodels.brn.gps_cart_coord.Cart_coord;
 import de.hub.clickwatch.specificmodels.brn.gps_cart_coord.Gps_cart_coordPackage;
 

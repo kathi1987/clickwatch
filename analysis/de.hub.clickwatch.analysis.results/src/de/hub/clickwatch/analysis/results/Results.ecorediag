@@ -286,7 +286,7 @@
     </children>
     <styles xmi:type="notation:ShapeStyle" xmi:id="_fhyywcTwEeCRq8czE9D46A" fontColor="4210752" fontName="Lucida Grande" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
     <element xmi:type="ecore:EClass" href="Results.ecore#//Or"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_fhyywsTwEeCRq8czE9D46A" x="783" y="666"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_fhyywsTwEeCRq8czE9D46A" x="852" y="672"/>
   </children>
   <styles xmi:type="notation:DiagramStyle" xmi:id="_ZG1uor33EeCysZNwnRpnrA"/>
   <element xmi:type="ecore:EPackage" href="Results.ecore#/"/>

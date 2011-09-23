@@ -6,16 +6,17 @@
  */
 package de.hub.clickwatch.specificmodels.brn.routing_dsr_stats_stats.util;
 
-import de.hub.clickwatch.model.Handler;
-
-import de.hub.clickwatch.specificmodels.brn.routing_dsr_stats_stats.*;
-
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
-
 import org.eclipse.emf.ecore.EObject;
+
+import de.hub.clickwatch.model.Handler;
+import de.hub.clickwatch.specificmodels.brn.routing_dsr_stats_stats.Dsr_route_stats;
+import de.hub.clickwatch.specificmodels.brn.routing_dsr_stats_stats.Route;
+import de.hub.clickwatch.specificmodels.brn.routing_dsr_stats_stats.Route_info;
+import de.hub.clickwatch.specificmodels.brn.routing_dsr_stats_stats.Routing_dsr_stats_statsPackage;
+import de.hub.clickwatch.specificmodels.brn.routing_dsr_stats_stats.Stats;
 
 /**
  * <!-- begin-user-doc -->

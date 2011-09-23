@@ -12,6 +12,7 @@ import de.hub.clickwatch.recoder.cwdatabase.Record;
 import de.hub.clickwatch.recoder.cwdatabase.RecordStatistics;
 import de.hub.clickwatch.recorder.database.IDataBaseRecordAdapter;
 import de.hub.clickwatch.util.ILogger;
+import de.hub.clickwatch.util.NanoClock;
 import de.hub.clickwatch.util.Throwables;
 
 public class NetworkRecorder {
@@ -22,12 +23,17 @@ public class NetworkRecorder {
 	private int stoppedNodeRecorders = 0;
 	private RecordStatistics stats = null;
 	
+	@Inject private NanoClock clock;
 	@Inject private IDataBaseRecordAdapter dataBaseAdapter;
 	@Inject private ILogger logger;
-	@Inject private Provider<NodeRecorder> recorderProvider;	
+	@Inject private Provider<NodeRecorder> recorderProvider;
 	
 	public synchronized void record(Record pRecord) {
-		long start = System.nanoTime();
+		record(pRecord, pRecord.getDuration(), new NullNetworkRecorderStatusProvider());
+	}
+	
+	public synchronized void record(Record pRecord, long pDuration, INetworkRecorderStatusProvider pNetworkRecorderStatusProvider) {
+		long start = clock.currentTimeNanos();
 		this.record = pRecord;
 		this.stats = record.getStatistics();
 		if (stats != null) {
@@ -50,13 +56,21 @@ public class NetworkRecorder {
 		}
 		
 		try {
+			long reports = (pDuration / Math.max(pDuration / 100, 5000)) + 3;
+			pNetworkRecorderStatusProvider.setExpectedNumberOfReports(reports);
+			pNetworkRecorderStatusProvider.report("start recording on all nodes");
 			wait(20000); // timeout after 20 second of initialization
 			logger.log(ILogger.DEBUG, "All node recorder are initialized and recording.", null);
-			wait(record.getDuration());
+			for (long i = 0; i < pDuration; i = System.currentTimeMillis() - (start / 1000000)) {
+				pNetworkRecorderStatusProvider.report("recording");
+				wait(Math.max(pDuration / 100, 5000));
+			}
+			pNetworkRecorderStatusProvider.report("stop recording on all nodes");
 			for (NodeRecorder recorder: nodeRecorders) {
 				recorder.stop();
 			}
 			wait(10000); // for all reported stopped, timeout after 10 seconds;
+			pNetworkRecorderStatusProvider.report("finalizing record");
 			logger.log(ILogger.DEBUG, "All node recorder have stopped recording", null);
 			dataBaseAdapter.close();
 			logger.log(ILogger.DEBUG, "db-adapter has been shutdown", null);
@@ -65,7 +79,7 @@ public class NetworkRecorder {
 		}
 		
 		
-		stats.getTimeA().addValue(System.nanoTime() - start);
+		stats.getTimeA().addValue(clock.currentTimeNanos() - start);
 		logger.log(ILogger.DEBUG, stats.toString(), null);
 	}
 	

@@ -9,8 +9,8 @@ import de.hub.clickwatch.model.Node;
 @Singleton
 public class NodeConnectionProvider implements INodeConnectionProvider {
 
-	@Inject
-	Provider<INodeConnection> ncp;
+	@Inject Provider<INodeConnection> ncp;
+	@Inject Provider<NodeConnection> simpleNcp;
 
 	@Override
 	public INodeConnection createConnection(String host, String port) {
@@ -24,6 +24,15 @@ public class NodeConnectionProvider implements INodeConnectionProvider {
 	@Override
 	public INodeConnection createConnection(Node node) {
 		INodeConnection connection = ncp.get();
+		if (connection instanceof NodeConnection) {
+			((NodeConnection)connection).init(node);
+		}
+		return connection;
+	}
+
+	@Override
+	public INodeConnection createSimpleConnection(Node node) {
+		INodeConnection connection = simpleNcp.get();
 		if (connection instanceof NodeConnection) {
 			((NodeConnection)connection).init(node);
 		}
