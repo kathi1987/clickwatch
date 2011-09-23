@@ -54,7 +54,7 @@ public class ClickWatchUIModule extends ClickWatchModule {
 	}
 	
 	protected int getLogLevel() {
-		return 2;
+		return 4;
 	}
 	
 	protected void bindUpdateInterval() {

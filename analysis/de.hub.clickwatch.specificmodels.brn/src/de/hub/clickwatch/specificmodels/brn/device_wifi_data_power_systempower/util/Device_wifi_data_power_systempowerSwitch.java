@@ -11,7 +11,6 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
 
 import de.hub.clickwatch.model.Handler;
-import de.hub.clickwatch.specificmodels.brn.device_wifi_data_power_systempower.*;
 import de.hub.clickwatch.specificmodels.brn.device_wifi_data_power_systempower.Device;
 import de.hub.clickwatch.specificmodels.brn.device_wifi_data_power_systempower.Device_wifi_data_power_systempowerPackage;
 import de.hub.clickwatch.specificmodels.brn.device_wifi_data_power_systempower.Settxpower;

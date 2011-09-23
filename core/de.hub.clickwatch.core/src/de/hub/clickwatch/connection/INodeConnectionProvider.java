@@ -16,5 +16,7 @@ public interface INodeConnectionProvider {
 	public INodeConnection createConnection(String host, String port);
 	
 	public INodeConnection createConnection(Node node);
+	
+	public INodeConnection createSimpleConnection(Node node);
 
 }

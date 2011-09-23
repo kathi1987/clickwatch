@@ -18,6 +18,7 @@ import de.hub.clickwatch.ClickWatchModule;
 import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.model.util.HandlerUtil;
 import de.hub.clickwatch.util.ILogger;
+import de.hub.clickwatch.util.NanoClock;
 import de.hub.clickwatch.util.Throwables;
 import de.hub.emfxml.XmlModelRepository;
 
@@ -29,6 +30,8 @@ public class CompoundHandlerAdapter extends PullHandlerAdapter {
 	@Inject @Named(ClickWatchModule.B_COMPOUND_HANDLER_RECORDS) private boolean records;
 	@Inject @Named(ClickWatchModule.B_COMPOUND_HANDLER_CHANGES_ONLY) private boolean changesOnly;
 	@Inject @Named(ClickWatchModule.I_COMPOUND_HANDLER_SAMPLE_TIME) private int sampletime;
+	
+	@Inject private NanoClock clock;
 	
 	private IValueAdapter valueAdapter = null;
 	
@@ -76,7 +79,7 @@ public class CompoundHandlerAdapter extends PullHandlerAdapter {
 		
 		char[] compundHandlerRawValue = null;
 		try {
-			pullTime = System.nanoTime();
+			pullTime = clock.currentTimeNanos();
 			compundHandlerRawValue = clickSocket().read(COMPOUND_HANDLER_ELEMENT, COMPOUND_HANDLER_READ_HANDLER);
 		} catch (Exception e) {
 			Throwables.propagate(e);

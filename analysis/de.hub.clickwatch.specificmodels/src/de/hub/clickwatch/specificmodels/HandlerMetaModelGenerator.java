@@ -60,8 +60,6 @@ public class HandlerMetaModelGenerator implements IClickWatchMain {
 			String handlerName = HandlerUtil.getSplitQualifiedName(handlerId)[1];
 			final String handlerClassName = handlerName.substring(0,1).toUpperCase() + handlerName.substring(1);
 			
-			
-			
 			Injector mmgInjector = Guice.createInjector(new ClickWatchSpecificModelsModule() {
 				@Override
 				protected void configureTargetIdProvider() {

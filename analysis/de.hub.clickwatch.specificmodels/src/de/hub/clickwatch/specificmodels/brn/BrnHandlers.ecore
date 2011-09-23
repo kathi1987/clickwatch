@@ -1753,4 +1753,76 @@
       </eStructuralFeatures>
     </eClassifiers>
   </eSubpackages>
+  <eSubpackages name="seismo_latestchannelinfos" nsURI="http://de.hub.clickwatch.specificmodels.brn/seismo/latestchannelinfos" nsPrefix="seismo_latestchannelinfos">
+    <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+      <details key="handler_class" value="Latestchannelinfos"/>
+      <details key="handler_name" value="seismo/latestchannelinfos"/>
+    </eAnnotations>
+    <eClassifiers xsi:type="ecore:EClass" name="Channel_info">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Latestchannelinfos|Handler/channel_infos|channel_infos:Channel_infos|EObject/channel_info|channel_info:Channel_info|EObject"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_channel_info" eType="//seismo_latestchannelinfos/Channel_infos" eOpposite="//seismo_latestchannelinfos/Channel_infos/channel_info"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="time">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Latestchannelinfos|Handler/channel_infos|channel_infos:Channel_infos|EObject/channel_info|channel_info:Channel_info|EObject/time|time:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="channel_0">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Latestchannelinfos|Handler/channel_infos|channel_infos:Channel_infos|EObject/channel_info|channel_info:Channel_info|EObject/channel_0|channel_0:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="channel_1">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Latestchannelinfos|Handler/channel_infos|channel_infos:Channel_infos|EObject/channel_info|channel_info:Channel_info|EObject/channel_1|channel_1:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="channel_2">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Latestchannelinfos|Handler/channel_infos|channel_infos:Channel_infos|EObject/channel_info|channel_info:Channel_info|EObject/channel_2|channel_2:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="channel_3">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Latestchannelinfos|Handler/channel_infos|channel_infos:Channel_infos|EObject/channel_info|channel_info:Channel_info|EObject/channel_3|channel_3:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Channel_infos">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Latestchannelinfos|Handler/channel_infos|channel_infos:Channel_infos|EObject"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_channel_infos" eType="//seismo_latestchannelinfos/Latestchannelinfos" eOpposite="//seismo_latestchannelinfos/Latestchannelinfos/channel_infos"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" upperBound="-1">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Latestchannelinfos|Handler/channel_infos|channel_infos:Channel_infos|EObject/text|text:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="channel_info" upperBound="-1" eType="//seismo_latestchannelinfos/Channel_info" containment="true" resolveProxies="false" eOpposite="//seismo_latestchannelinfos/Channel_info/eContainer_channel_info">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Latestchannelinfos|Handler/channel_infos|channel_infos:Channel_infos|EObject/channel_info|channel_info:Channel_info|EObject"/>
+          <details key="IsCopy" value="false"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Latestchannelinfos">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Latestchannelinfos|Handler"/>
+      </eAnnotations>
+      <eSuperTypes href="../../../../../../../de.hub.clickwatch.core/src/de/hub/clickwatch/model/ClickWatchModel.ecore#//Handler"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="channel_infos" eType="//seismo_latestchannelinfos/Channel_infos" containment="true" resolveProxies="false" eOpposite="//seismo_latestchannelinfos/Channel_infos/eContainer_channel_infos">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Latestchannelinfos|Handler/channel_infos|channel_infos:Channel_infos|EObject"/>
+          <details key="IsCopy" value="false"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+  </eSubpackages>
 </ecore:EPackage>

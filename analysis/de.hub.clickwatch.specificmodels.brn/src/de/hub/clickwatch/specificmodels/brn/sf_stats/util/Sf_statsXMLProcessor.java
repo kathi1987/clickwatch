@@ -6,15 +6,13 @@
  */
 package de.hub.clickwatch.specificmodels.brn.sf_stats.util;
 
-import de.hub.clickwatch.specificmodels.brn.sf_stats.Sf_statsPackage;
-
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.resource.Resource;
-
 import org.eclipse.emf.ecore.xmi.util.XMLProcessor;
+
+import de.hub.clickwatch.specificmodels.brn.sf_stats.Sf_statsPackage;
 
 /**
  * This class contains helper methods to serialize and deserialize XML documents

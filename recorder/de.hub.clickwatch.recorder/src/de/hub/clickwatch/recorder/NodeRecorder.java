@@ -26,6 +26,7 @@ import de.hub.clickwatch.model.Network;
 import de.hub.clickwatch.model.Node;
 import de.hub.clickwatch.recoder.cwdatabase.RecordStatistics;
 import de.hub.clickwatch.util.ILogger;
+import de.hub.clickwatch.util.NanoClock;
 import de.hub.clickwatch.util.Throwables;
 
 public class NodeRecorder implements Runnable {
@@ -51,6 +52,7 @@ public class NodeRecorder implements Runnable {
 	private boolean isRecording = true;
 	private int samples = 0;
 	
+	@Inject private NanoClock clock;
 	@Inject private ILogger logger;
 	@Inject private INodeConnectionProvider ncp;
 	
@@ -68,7 +70,7 @@ public class NodeRecorder implements Runnable {
 		logger.log(ILogger.DEBUG, "started recording of " + configuration.getINetAddress(), null);
 		
 		if (connection == null) {
-			connection = ncp.createConnection(configuration);
+			connection = ncp.createSimpleConnection(configuration);
 		}
 		connection.connect();
 		
@@ -115,7 +117,7 @@ public class NodeRecorder implements Runnable {
 	}
 	
 	private int pullAndRecordHandler() {
-		long start = System.nanoTime();
+		long start = clock.currentTimeNanos();
 		int recordedHandler = 0;
 		Collection<Handler> handlersPulled = handlerAdapter.pullHandler();
 		for(Handler handler: handlersPulled) {			
@@ -139,7 +141,7 @@ public class NodeRecorder implements Runnable {
 		}
 		
 		handlerPulledSValues.add((double)handlersPulled.size());		
-		timeSValues.add((double)System.nanoTime() - start);
+		timeSValues.add((double)clock.currentTimeNanos() - start);
 		if (socketStatisticsAdapter != null) {
 			bytesRequestSValues.add(socketStatisticsAdapter.getSocketStatistics().getBytesRequest());
 			timeRequestSValues.add(socketStatisticsAdapter.getSocketStatistics().getTimeRequest());
@@ -155,7 +157,7 @@ public class NodeRecorder implements Runnable {
 		parent.reportInitialized();
 
 		int recordedHandlerN = 0;
-		long start = System.nanoTime();
+		long start = clock.currentTimeNanos();
 		
 		boolean isRecovering = false;
 		int recoveringTries = 0;
@@ -207,7 +209,7 @@ public class NodeRecorder implements Runnable {
 		RecordStatistics stats = parent.getStatistics();
 		stats.getHandlersN().addValue(recordedHandlerN);
 		stats.getSamplesN().addValue(samples);
-		stats.getTimeN().addValue(System.nanoTime() - start);
+		stats.getTimeN().addValue(clock.currentTimeNanos() - start);
 		
 		saveStatistics();
 		

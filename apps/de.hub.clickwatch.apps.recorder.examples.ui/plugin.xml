@@ -21,6 +21,15 @@
                xml_values="true">
          </InjectorProvider>
       </main>
+      <main
+            class="de.hub.clickwatch.ui.GuiceAwareExecutableExtensionFactory:de.hub.clickwatch.recorder.examples.SimpleSeismoPlotAnalysis"
+            name="SeismoAnalysis">
+         <InjectorProvider
+               debug="true"
+               specific_models="true"
+               xml_values="true">
+         </InjectorProvider>
+      </main>
    </extension>
 
 </plugin>

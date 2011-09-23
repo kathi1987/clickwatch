@@ -13,6 +13,7 @@ import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
 import org.osgi.framework.Bundle;
 
+import com.google.inject.Guice;
 import com.google.inject.Injector;
 
 import de.hub.clickwatch.main.impl.ProgressMonitorProvider;

@@ -15,7 +15,7 @@ import de.hub.clickwatch.util.Throwables;
 public class PullHandlerAdapter extends AbstractAdapter implements IPullHandlerAdapter {
 	
 	public static Collection<String> commonHandler = new HashSet<String>(Arrays.asList(new String[] { 
-			"debug", "handlers", "ports", "name", "version", // config, class 
+			"debug", "handlers", "ports", "name", "links"// config, class 
 	}));
 	
 	private Collection<Handler> config = null;
