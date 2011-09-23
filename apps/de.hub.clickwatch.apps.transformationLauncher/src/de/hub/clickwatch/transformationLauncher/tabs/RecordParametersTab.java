@@ -283,7 +283,7 @@ public class RecordParametersTab extends AbstractLaunchConfigurationTab {
 	@Override
 	public Image getImage() {
 		// TODO Auto-generated method stub
-		return JavaDebugImages.get(JavaDebugImages.IMG_VIEW_ARGUMENTS_TAB);
+		return JavaDebugImages.get(JavaDebugImages.IMG_ELCL_AUTO_FORMAT);
 	}
 
 }

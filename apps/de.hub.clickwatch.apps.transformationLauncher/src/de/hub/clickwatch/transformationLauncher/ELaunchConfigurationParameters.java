@@ -1,4 +1,4 @@
-package de.hub.clickwatch.main;
+package de.hub.clickwatch.transformationLauncher;
 
 public enum ELaunchConfigurationParameters {
 	TransformationFile,
@@ -11,5 +11,6 @@ public enum ELaunchConfigurationParameters {
 	HandlerPerRecord,
 	RecordURI,
 	DataBaseURI,
-	RecordId
+	RecordId,
+	TransformationArguments
 }

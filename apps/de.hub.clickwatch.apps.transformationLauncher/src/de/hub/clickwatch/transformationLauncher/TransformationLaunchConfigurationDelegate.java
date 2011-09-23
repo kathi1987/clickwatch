@@ -22,11 +22,10 @@ import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.ui.statushandlers.StatusManager;
 import org.osgi.framework.Bundle;
 
-import de.hub.clickwatch.main.ClickWatchRunConfigurationLauncher;
-import de.hub.clickwatch.main.ELaunchConfigurationParameters;
 import de.hub.clickwatch.main.IClickWatchMain;
 import de.hub.clickwatch.main.impl.InjectorProvider.DataBaseType;
 import de.hub.clickwatch.main.impl.InjectorProvider.HandlerBehaviour;
+import de.hub.clickwatch.transformationLauncher.tabs.ArgumentsParametersTab;
 import de.hub.clickwatch.transformationLauncher.tabs.ClickwatchParametersTab;
 import de.hub.clickwatch.transformationLauncher.tabs.MainParametersTab;
 import de.hub.clickwatch.transformationLauncher.tabs.RecordParametersTab;
@@ -72,6 +71,9 @@ public class TransformationLaunchConfigurationDelegate implements
 				RecordParametersTab.ATTR_RECORD_ID, "");
 		String databaseURI = configuration.getAttribute(
 				RecordParametersTab.ATTR_DATABASE_URI, "");
+
+		String transformationArguments = configuration.getAttribute(
+				ArgumentsParametersTab.ATTR_TRANSFORMATION_ARGUMENTS, "");
 
 		// RUN MODE
 		if (mode.equals(ILaunchManager.RUN_MODE)) {
@@ -162,6 +164,11 @@ public class TransformationLaunchConfigurationDelegate implements
 				config.put(ELaunchConfigurationParameters.DebugLevel, debugLvl);
 
 				// *************
+				// Arguments tab
+				if(transformationArguments != null)
+					config.put(ELaunchConfigurationParameters.TransformationArguments, transformationArguments.split(" "));
+				
+				// *************
 				// Record tab
 
 				config.put(ELaunchConfigurationParameters.DataBaseURI,
@@ -190,6 +197,8 @@ public class TransformationLaunchConfigurationDelegate implements
 				} else
 					config.put(ELaunchConfigurationParameters.ClickWatchObject,
 							null);
+				
+				
 
 				ClickWatchRunConfigurationLauncher.launch(config, mainClass);
 			} catch (Exception e) {

@@ -12,8 +12,9 @@ import org.eclipse.emf.ecore.EObject;
 import de.hub.clickwatch.main.IArgumentsProvider;
 import de.hub.clickwatch.main.IClickWatchContextAdapter;
 
-public class ArgumentsProvider implements IClickWatchContextAdapter, IArgumentsProvider {
-	
+public class ArgumentsProvider implements IClickWatchContextAdapter,
+		IArgumentsProvider {
+
 	private String[] args = null;
 
 	@Override
@@ -32,13 +33,22 @@ public class ArgumentsProvider implements IClickWatchContextAdapter, IArgumentsP
 	}
 
 	@Override
-	public void initialize(IConfigurationElement configurationElement, EObject selection) {
+	public void initialize(IConfigurationElement configurationElement,
+			EObject selection) {
 		args = new String[] {};
 	}
 	
+	/**
+	 * init this provider with the needed information
+	 * 
+	 * @param args
+	 */
+	public void initialize(String[] args) {
+		this.args = args;
+	}
+
 	@Override
 	public Class<?> getAdpaterClass() {
 		return IArgumentsProvider.class;
 	}
-	
 }
