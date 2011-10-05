@@ -37,62 +37,88 @@ import de.hub.clickwatch.recorder.database.logfile.LogFileDataBaseAdapter;
 import de.hub.clickwatch.specificmodels.brn.BrnValueAdapter;
 import de.hub.clickwatch.util.ILogger;
 
+public class InjectorProvider implements IClickWatchContextAdapter,
+		IInjectorProvider {
 
-public class InjectorProvider implements IClickWatchContextAdapter, IInjectorProvider {
-	
-	public enum HandlerBehaviour { DEFAULT, COMPOUND, COMPOUND_RECORDING, COMPOUND_RECORDING_DIFFERENCES };
-	public enum ValueType { STRING, XML, SPECIFIC };
-	public enum DataBaseType { HBASE, EMF, LOGFILE, DUMMY };
-	
+	public enum HandlerBehaviour {
+		DEFAULT, COMPOUND, COMPOUND_RECORDING, COMPOUND_RECORDING_DIFFERENCES
+	};
+
+	public enum ValueType {
+		STRING, XML, SPECIFIC
+	};
+
+	public enum DataBaseType {
+		HBASE, EMF, LOGFILE, DUMMY
+	};
+
 	private HandlerBehaviour handlerBehaviour;
 	private int remoteUpdateInterval;
 	private long localUpdateInterval;
 	private ValueType valueType;
 	private int debugLevel; // 1,2,3,4
-	
+
 	private DataBaseType dataBaseType;
 	private int handlerPerRecord;
-	
+
 	private URI recordURI;
-	
+
 	private Injector injector = null;
 
 	@Override
 	public List<Option> getCommandLineOptions() {
 		List<Option> options = new ArrayList<Option>();
 		options.add(new Option("d", "debug", false, "recorder logs extensive"));
-		
-		options.add(new Option("c", "compound-handler", false, "use the compound handler of nodes instead of reading each handler seperated"));
-		options.add(new Option("cr", "compound-handler-records", false, "use compound handler, compound handler records values"));
-		options.add(new Option("crc", "compound-handler-records-changes-only", false, "use compound handler compound handler records values and delivers only changes"));
-		options.add(new Option("ru", "remote-update-interval", true, "interval used on node by compound handler."));
-		options.add(new Option("lu", "local-update-interval", true, "default interval used between requests, if not given otherwise"));
-		
-		options.add(new Option("h", "handler-per-record", true, "determines the estimated record size in handler count per record"));
-		options.add(new Option("db", true, "choose the database: hbase for hbase, log for log-file, emf for emf"));
-		
-		options.add(new Option("x", "xml-values", false, "use xml values instead of string values"));
-		options.add(new Option("s", "brn-specific-values", false, "use brn-specific values when possible, xml-values are used otherwise."));
-		
-		options.add(new Option("r", "use-record", true, "uses the given clickwatch model to emulate an actual network"));
+
+		options.add(new Option("c", "compound-handler", false,
+				"use the compound handler of nodes instead of reading each handler seperated"));
+		options.add(new Option("cr", "compound-handler-records", false,
+				"use compound handler, compound handler records values"));
+		options.add(new Option(
+				"crc",
+				"compound-handler-records-changes-only",
+				false,
+				"use compound handler compound handler records values and delivers only changes"));
+		options.add(new Option("ru", "remote-update-interval", true,
+				"interval used on node by compound handler."));
+		options.add(new Option("lu", "local-update-interval", true,
+				"default interval used between requests, if not given otherwise"));
+
+		options.add(new Option("h", "handler-per-record", true,
+				"determines the estimated record size in handler count per record"));
+		options.add(new Option("db", true,
+				"choose the database: hbase for hbase, log for log-file, emf for emf"));
+
+		options.add(new Option("x", "xml-values", false,
+				"use xml values instead of string values"));
+		options.add(new Option("s", "brn-specific-values", false,
+				"use brn-specific values when possible, xml-values are used otherwise."));
+
+		options.add(new Option("r", "use-record", true,
+				"uses the given clickwatch model to emulate an actual network"));
 		return options;
 	}
 
 	@Override
 	public void initialize(CommandLine commandLine) throws ParseException {
 		try {
-			boolean useCompoundHandler = commandLine.hasOption("c") | commandLine.hasOption("cr") || commandLine.hasOption("crc");
-			boolean withRecord = commandLine.hasOption("cr") || commandLine.hasOption("crc");
+			boolean useCompoundHandler = commandLine.hasOption("c")
+					| commandLine.hasOption("cr")
+					|| commandLine.hasOption("crc");
+			boolean withRecord = commandLine.hasOption("cr")
+					|| commandLine.hasOption("crc");
 			boolean withChangesOnly = commandLine.hasOption("crc");
 			remoteUpdateInterval = 500;
 			if (commandLine.hasOption("ru")) {
-				remoteUpdateInterval = Integer.parseInt(commandLine.getOptionValue("ru"));
+				remoteUpdateInterval = Integer.parseInt(commandLine
+						.getOptionValue("ru"));
 			}
 			localUpdateInterval = 2000;
 			if (commandLine.hasOption("lu")) {
-				localUpdateInterval = Integer.parseInt(commandLine.getOptionValue("lu"));
+				localUpdateInterval = Integer.parseInt(commandLine
+						.getOptionValue("lu"));
 			}
-			
+
 			if (useCompoundHandler && withRecord && withChangesOnly) {
 				handlerBehaviour = HandlerBehaviour.COMPOUND_RECORDING_DIFFERENCES;
 			} else if (useCompoundHandler && withRecord && !withChangesOnly) {
@@ -102,11 +128,11 @@ public class InjectorProvider implements IClickWatchContextAdapter, IInjectorPro
 			} else if (!useCompoundHandler) {
 				handlerBehaviour = HandlerBehaviour.DEFAULT;
 			}
-			
+
 			debugLevel = commandLine.hasOption("d") ? 4 : 2;
-			
+
 			boolean useXml = commandLine.hasOption("x");
-			boolean useSpecificValues = commandLine.hasOption("s");			
+			boolean useSpecificValues = commandLine.hasOption("s");
 			if (useXml) {
 				valueType = ValueType.XML;
 			} else if (useSpecificValues) {
@@ -114,7 +140,7 @@ public class InjectorProvider implements IClickWatchContextAdapter, IInjectorPro
 			} else {
 				valueType = ValueType.STRING;
 			}
-			
+
 			String db = null;
 			if (commandLine.hasOption("db")) {
 				db = commandLine.getOptionValue("db");
@@ -132,13 +158,13 @@ public class InjectorProvider implements IClickWatchContextAdapter, IInjectorPro
 			} else {
 				throw new IllegalArgumentException();
 			}
-			
+
 			if (commandLine.hasOption("h")) {
 				handlerPerRecord = new Integer(commandLine.getOptionValue("h"));
 			} else {
 				handlerPerRecord = 2000;
 			}
-			
+
 			if (commandLine.hasOption("r")) {
 				recordURI = URI.createFileURI(commandLine.getOptionValue("r"));
 			}
@@ -146,7 +172,7 @@ public class InjectorProvider implements IClickWatchContextAdapter, IInjectorPro
 			throw new ParseException(e.getMessage());
 		}
 	}
-	
+
 	public void initialize(ValueType valueType, int debugLevel) {
 		this.handlerBehaviour = HandlerBehaviour.DEFAULT;
 		this.valueType = valueType;
@@ -155,8 +181,23 @@ public class InjectorProvider implements IClickWatchContextAdapter, IInjectorPro
 		this.handlerPerRecord = 2000;
 		this.recordURI = null;
 	}
-	
-	public void initialize(HandlerBehaviour handlerBehaviour, ValueType valueType, int debugLevel, DataBaseType dataBaseType,
+
+	public void initialize(HandlerBehaviour handlerBehaviour,
+			ValueType valueType, int debugLevel, DataBaseType dataBaseType,
+			int handlerPerRecord, URI recordURI, Integer localUpdateInterval,
+			Integer remoteUpdateInterval) {
+		this.handlerBehaviour = handlerBehaviour;
+		this.valueType = valueType;
+		this.debugLevel = debugLevel;
+		this.dataBaseType = dataBaseType;
+		this.handlerPerRecord = handlerPerRecord;
+		this.recordURI = recordURI;
+		this.localUpdateInterval = localUpdateInterval;
+		this.remoteUpdateInterval = remoteUpdateInterval;
+	}
+
+	public void initialize(HandlerBehaviour handlerBehaviour,
+			ValueType valueType, int debugLevel, DataBaseType dataBaseType,
 			int handlerPerRecord, URI recordURI) {
 		this.handlerBehaviour = handlerBehaviour;
 		this.valueType = valueType;
@@ -167,14 +208,17 @@ public class InjectorProvider implements IClickWatchContextAdapter, IInjectorPro
 	}
 
 	@Override
-	public void initialize(IConfigurationElement configurationElement, EObject selection) {
+	public void initialize(IConfigurationElement configurationElement,
+			EObject selection) {
 		String debugStr = configurationElement.getAttribute("debug");
 		String compoundStr = configurationElement.getAttribute("compound");
 		String withRecordStr = configurationElement.getAttribute("with_record");
-		String withChangesOnlyStr = configurationElement.getAttribute("with_changes_only");
+		String withChangesOnlyStr = configurationElement
+				.getAttribute("with_changes_only");
 		String xmlValuesStr = configurationElement.getAttribute("xml_values");
-		String specificModelsStr = configurationElement.getAttribute("specific_models");
-		
+		String specificModelsStr = configurationElement
+				.getAttribute("specific_models");
+
 		int debug = "true".equals(debugStr) ? 4 : 2;
 		HandlerBehaviour handlerBehaviour = HandlerBehaviour.DEFAULT;
 		if ("true".equals(compoundStr)) {
@@ -182,19 +226,20 @@ public class InjectorProvider implements IClickWatchContextAdapter, IInjectorPro
 			if ("true".equals(withRecordStr)) {
 				handlerBehaviour = HandlerBehaviour.COMPOUND_RECORDING;
 				if ("true".equals(withChangesOnlyStr)) {
-					handlerBehaviour = HandlerBehaviour.COMPOUND_RECORDING_DIFFERENCES;	
+					handlerBehaviour = HandlerBehaviour.COMPOUND_RECORDING_DIFFERENCES;
 				}
 			}
 		}
 		ValueType valueType = ValueType.STRING;
 		if ("true".equals(xmlValuesStr)) {
 			valueType = ValueType.XML;
-		} 
+		}
 		if ("true".equals(specificModelsStr)) {
 			valueType = ValueType.SPECIFIC;
 		}
-		
-		initialize(handlerBehaviour, valueType, debug, DataBaseType.HBASE, 2000, null /* TODO */);
+
+		initialize(handlerBehaviour, valueType, debug, DataBaseType.HBASE,
+				2000, null /* TODO */);
 	}
 
 	public Injector getInjector() {
@@ -208,12 +253,14 @@ public class InjectorProvider implements IClickWatchContextAdapter, IInjectorPro
 		ClickWatchModule clickWatchModule = new ClickWatchModule() {
 			@Override
 			protected ILogger getLogger() {
-				return new ILogger() {				
+				return new ILogger() {
 					@Override
-					public synchronized void log(int status, String message, Throwable exception) {
-						if ((debugLevel) >= status) {				
-							System.out.print(DateFormat.getDateTimeInstance().format(new Date()) + " ");
-							
+					public synchronized void log(int status, String message,
+							Throwable exception) {
+						if ((debugLevel) >= status) {
+							System.out.print(DateFormat.getDateTimeInstance()
+									.format(new Date()) + " ");
+
 							if (status == ILogger.DEBUG) {
 								System.out.print("[DEBUG] ");
 							} else if (status == ILogger.INFO) {
@@ -223,10 +270,11 @@ public class InjectorProvider implements IClickWatchContextAdapter, IInjectorPro
 							} else if (status == ILogger.ERROR) {
 								System.out.print("[ERROR] ");
 							}
-							
+
 							System.out.print(message);
 							if (exception != null) {
-								System.out.println(": " + exception.getMessage());
+								System.out.println(": "
+										+ exception.getMessage());
 								exception.printStackTrace();
 							}
 							System.out.println("");
@@ -237,24 +285,46 @@ public class InjectorProvider implements IClickWatchContextAdapter, IInjectorPro
 
 			@Override
 			protected void bindHandlerAdapter() {
-				if (handlerBehaviour.ordinal() >= HandlerBehaviour.COMPOUND.ordinal()) {
-					bind(IPullHandlerAdapter.class).to(CompoundHandlerAdapter.class);
+				if (handlerBehaviour.ordinal() >= HandlerBehaviour.COMPOUND
+						.ordinal()) {
+					bind(IPullHandlerAdapter.class).to(
+							CompoundHandlerAdapter.class);
 				} else {
-					bind(IPullHandlerAdapter.class).to(PullHandlerAdapter.class);
+					bind(IPullHandlerAdapter.class)
+							.to(PullHandlerAdapter.class);
 				}
-				if (handlerBehaviour.ordinal() >= HandlerBehaviour.COMPOUND_RECORDING.ordinal()) {
-					bind(Boolean.class).annotatedWith(Names.named(ClickWatchModule.B_COMPOUND_HANDLER_RECORDS)).toInstance(true);
+				if (handlerBehaviour.ordinal() >= HandlerBehaviour.COMPOUND_RECORDING
+						.ordinal()) {
+					bind(Boolean.class)
+							.annotatedWith(
+									Names.named(ClickWatchModule.B_COMPOUND_HANDLER_RECORDS))
+							.toInstance(true);
 				} else {
-					bind(Boolean.class).annotatedWith(Names.named(ClickWatchModule.B_COMPOUND_HANDLER_RECORDS)).toInstance(false);
+					bind(Boolean.class)
+							.annotatedWith(
+									Names.named(ClickWatchModule.B_COMPOUND_HANDLER_RECORDS))
+							.toInstance(false);
 				}
 				if (handlerBehaviour == HandlerBehaviour.COMPOUND_RECORDING_DIFFERENCES) {
-					bind(Boolean.class).annotatedWith(Names.named(ClickWatchModule.B_COMPOUND_HANDLER_CHANGES_ONLY)).toInstance(true);
+					bind(Boolean.class)
+							.annotatedWith(
+									Names.named(ClickWatchModule.B_COMPOUND_HANDLER_CHANGES_ONLY))
+							.toInstance(true);
 				} else {
-					bind(Boolean.class).annotatedWith(Names.named(ClickWatchModule.B_COMPOUND_HANDLER_CHANGES_ONLY)).toInstance(false);
+					bind(Boolean.class)
+							.annotatedWith(
+									Names.named(ClickWatchModule.B_COMPOUND_HANDLER_CHANGES_ONLY))
+							.toInstance(false);
 				}
-					
-				bind(Integer.class).annotatedWith(Names.named(ClickWatchModule.I_COMPOUND_HANDLER_SAMPLE_TIME)).toInstance(remoteUpdateInterval);
-				bind(Boolean.class).annotatedWith(Names.named(ClickWatchModule.B_COMPOUND_HANDLER_COMPRESSION)).toInstance(false);
+
+				bind(Integer.class)
+						.annotatedWith(
+								Names.named(ClickWatchModule.I_COMPOUND_HANDLER_SAMPLE_TIME))
+						.toInstance(remoteUpdateInterval);
+				bind(Boolean.class)
+						.annotatedWith(
+								Names.named(ClickWatchModule.B_COMPOUND_HANDLER_COMPRESSION))
+						.toInstance(false);
 			}
 
 			@Override
@@ -267,7 +337,7 @@ public class InjectorProvider implements IClickWatchContextAdapter, IInjectorPro
 					super.bindValueAdapter();
 				}
 			}
-			
+
 			@Override
 			protected void bindClickSocket() {
 				if (recordURI != null) {
@@ -276,58 +346,68 @@ public class InjectorProvider implements IClickWatchContextAdapter, IInjectorPro
 					bind(IClickSocket.class).to(ClickSocketImpl.class);
 				}
 			}
-			
+
 			private ClickSocketPlayer player = null;
-			
+
 			private void bindToPlayer() {
-				if (player == null) {					
+				if (player == null) {
 					player = new ClickSocketPlayer();
 					player.initialize(recordURI);
 				}
-				
+
 				bind(ClickSocketPlayer.class).toInstance(player);
 				bind(IClickSocket.class).to(ClickSocketPlayerSocketImpl.class);
-			}	
-		
+			}
+
 		};
 		CWRecorderModule cwRecorderModule = new CWRecorderModule() {
 
 			@Override
 			protected void configureDataBaseRecordAdapter() {
 				if (dataBaseType == DataBaseType.HBASE) {
-					bind(IDataBaseRecordAdapter.class).to(HBaseDataBaseAdapter.class);
+					bind(IDataBaseRecordAdapter.class).to(
+							HBaseDataBaseAdapter.class);
 				} else if (dataBaseType == DataBaseType.LOGFILE) {
-					bind(IDataBaseRecordAdapter.class).to(LogFileDataBaseAdapter.class);
+					bind(IDataBaseRecordAdapter.class).to(
+							LogFileDataBaseAdapter.class);
 				} else if (dataBaseType == DataBaseType.DUMMY) {
-					bind(IDataBaseRecordAdapter.class).to(DummyDataBaseAdapter.class);
+					bind(IDataBaseRecordAdapter.class).to(
+							DummyDataBaseAdapter.class);
 				} else {
-					throw new IllegalArgumentException("unknown database-adatper");
+					throw new IllegalArgumentException(
+							"unknown database-adatper");
 				}
 			}
 
 			@Override
 			protected void configureDataBaseRetrieveAdapter() {
 				if (dataBaseType == DataBaseType.HBASE) {
-					bind(IDataBaseRetrieveAdapter.class).to(HBaseDataBaseAdapter.class);
+					bind(IDataBaseRetrieveAdapter.class).to(
+							HBaseDataBaseAdapter.class);
 				} else {
-					bind(IDataBaseRetrieveAdapter.class).to(HBaseDataBaseAdapter.class);
+					bind(IDataBaseRetrieveAdapter.class).to(
+							HBaseDataBaseAdapter.class);
 				}
 			}
 
 			@Override
 			protected void configureHandlerPerRecord() {
-				bind(int.class).annotatedWith(Names.named(I_HANDLER_PER_RECORD_PROPERTY)).toInstance(handlerPerRecord);
+				bind(int.class).annotatedWith(
+						Names.named(I_HANDLER_PER_RECORD_PROPERTY)).toInstance(
+						handlerPerRecord);
 			}
 
 			@Override
 			protected void configureDefaultUpdateInterval() {
-				bind(long.class).annotatedWith(Names.named(L_DEFAULT_UPDATE_INTERVAL_PROPERTY)).toInstance(localUpdateInterval);
+				bind(long.class).annotatedWith(
+						Names.named(L_DEFAULT_UPDATE_INTERVAL_PROPERTY))
+						.toInstance(localUpdateInterval);
 			}
-			
+
 		};
 		return Guice.createInjector(clickWatchModule, cwRecorderModule);
 	}
-	
+
 	@Override
 	public Class<?> getAdpaterClass() {
 		return IInjectorProvider.class;

@@ -158,6 +158,18 @@ public class ClickWatchRunConfigurationLauncher {
 			handlerPerRec = (Integer) configuration
 					.get(ELaunchConfigurationParameters.HandlerPerRecord);
 
+		Integer localUpdateInterval = 2000;
+		if (configuration
+				.get(ELaunchConfigurationParameters.LocalUpdateInterval) != null)
+			localUpdateInterval = (Integer) configuration
+					.get(ELaunchConfigurationParameters.LocalUpdateInterval);
+
+		Integer remoteUpdateInterval = 2000;
+		if (configuration
+				.get(ELaunchConfigurationParameters.RemoteUpdateInterval) != null)
+			remoteUpdateInterval = (Integer) configuration
+					.get(ELaunchConfigurationParameters.RemoteUpdateInterval);
+
 		URI recUri = null;
 		if (configuration.get(ELaunchConfigurationParameters.RecordURI) != null
 				&& configuration.get(ELaunchConfigurationParameters.RecordURI) != "")
@@ -166,7 +178,7 @@ public class ClickWatchRunConfigurationLauncher {
 
 		// call the init method
 		injProv.initialize(hBehav, valType, debugLev, dbType, handlerPerRec,
-				recUri);
+				recUri, localUpdateInterval, remoteUpdateInterval);
 
 		return true;
 	}
