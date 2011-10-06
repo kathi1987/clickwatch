@@ -17,7 +17,6 @@
   <modules>
    <module>de.hub.clickwatch.recorder</module>
    <module>de.hub.clickwatch.recorder.test</module>
-   <module>de.hub.clickwatch.recorder.model</module>
    <module>de.hub.clickwatch.recorder.model.edit</module>
    <module>de.hub.clickwatch.recorder.model.editor</module>
    <module>de.hub.clickwatch.recorder.ui</module>

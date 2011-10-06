@@ -17,11 +17,11 @@ import com.google.inject.name.Named;
 import de.hub.clickwatch.connection.adapter.IValueAdapter;
 import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.model.Node;
-import de.hub.clickwatch.recoder.cwdatabase.Record;
-import de.hub.clickwatch.recoder.cwdatabase.HBaseRowMap;
 import de.hub.clickwatch.recorder.CWRecorderModule;
 import de.hub.clickwatch.recorder.database.AbstractDataBaseRecordAdapter;
 import de.hub.clickwatch.recorder.database.IDataBaseRetrieveAdapter;
+import de.hub.clickwatch.recorder.database.cwdatabase.HBaseRowMap;
+import de.hub.clickwatch.recorder.database.cwdatabase.Record;
 import de.hub.clickwatch.util.ILogger;
 import de.hub.clickwatch.util.Throwables;
 import de.hub.emfxml.XmlModelRepository;
@@ -30,8 +30,10 @@ public class HBaseDataBaseAdapter extends AbstractDataBaseRecordAdapter implemen
 	
 	@Inject @Named(CWRecorderModule.DB_VALUE_ADAPTER_PROPERTY) private IValueAdapter dbValueAdapter;
 	@Inject @Named(CWRecorderModule.I_HANDLER_PER_RECORD_PROPERTY) private int handlerPerRecord;
+	@Inject @Named(CWRecorderModule.B_SAVE_RECORD_FILE) private boolean saveRecordFile;
 	@Inject private ILogger logger;
 	@Inject HBaseUtil hbaseUtil;
+	@Inject private IValueAdapter valueAdapter;
 	
 	private HBaseRowMap rowMap = null;
 	private HTable table = null;
@@ -60,7 +62,7 @@ public class HBaseDataBaseAdapter extends AbstractDataBaseRecordAdapter implemen
 			}
 			byte[] row = rowMap.createRow(nodeId, handler.getQualifiedName(), time);
 			Put put = new Put(row);
-			put.add(HBaseUtil.colFamily, HBaseUtil.col, handler.getValue().getBytes());
+			put.add(HBaseUtil.colFamily, HBaseUtil.col, valueAdapter.getPlainValue(handler).getBytes());
 			puts.add(put);
 			super.record(handler, sample);
 		}
@@ -99,7 +101,9 @@ public class HBaseDataBaseAdapter extends AbstractDataBaseRecordAdapter implemen
 			}
 			logger.log(ILogger.DEBUG, "Writing puts to hbase, number of puts: " + puts.size(), null);
 			logger.log(ILogger.DEBUG, "also saving the record file", null);
-			record.eResource().save(XmlModelRepository.defaultLoadSaveOptions());
+			if (saveRecordFile) {
+				record.eResource().save(XmlModelRepository.defaultLoadSaveOptions());
+			}
 			if (putThread == null) {
 				putThread = new PutThread();
 				putThread.start();

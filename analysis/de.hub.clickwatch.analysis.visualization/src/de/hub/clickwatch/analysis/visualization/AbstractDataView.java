@@ -19,7 +19,7 @@ public abstract class AbstractDataView extends ViewPart implements ISelectionLis
 	private static final String visualizationInputPorviderExtensionId = "de.hub.clickwatch.analysis.VisualizationInputProvider";
 	private static List<IVisualizationInputProvider> providersCache = null;
 	
-	protected abstract void setInput(Object input);
+	protected abstract void setInput(IVisualizationInput input);
 
 	public void createPartControl(Composite parent) {		
 		getViewSite().getPage().addSelectionListener(this);
@@ -28,7 +28,7 @@ public abstract class AbstractDataView extends ViewPart implements ISelectionLis
 	@Override
 	public final void selectionChanged(IWorkbenchPart part, ISelection selection) {
 		for (IVisualizationInputProvider provider: getVisualizationInputProviders()) {
-			Object providedInput = provider.getInput(part, selection);
+			IVisualizationInput providedInput = provider.getInput(part, selection);
 			if (providedInput != null) {
 				setInput(providedInput);
 				return;

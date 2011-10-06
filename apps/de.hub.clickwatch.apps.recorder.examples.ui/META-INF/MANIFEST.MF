@@ -4,7 +4,12 @@ Bundle-Name: Ui
 Bundle-SymbolicName: de.hub.clickwatch.apps.recorder.examples.ui;singleton:=true
 Bundle-Version: 2.0.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Require-Bundle: de.hub.clickwatch.recorder.ui;bundle-version="2.0.0",
- de.hub.clickwatch.apps.recorder.examples;bundle-version="2.0.0",
- de.hub.clickwatch.apps.main;bundle-version="2.0.0"
+Require-Bundle: de.hub.clickwatch.apps.recorder.examples;bundle-version="2.0.0",
+ de.hub.clickwatch.apps.main;bundle-version="2.0.0",
+ org.eclipse.ui;bundle-version="3.7.0",
+ de.hub.clickwatch.ui;bundle-version="2.0.0",
+ de.hub.clickwatch.analysis.results.ui;bundle-version="2.0.0"
 Eclipse-RegisterBuddy: de.hub.clickwatch.ui
+Bundle-ActivationPolicy: lazy
+Export-Package: de.hub.clickwatch.recorder.examples.ui
+

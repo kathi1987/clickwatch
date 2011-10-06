@@ -14,8 +14,8 @@ import com.google.inject.name.Named;
 import de.hub.clickwatch.connection.adapter.IValueAdapter;
 import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.model.Node;
-import de.hub.clickwatch.recoder.cwdatabase.Record;
 import de.hub.clickwatch.recorder.CWRecorderModule;
+import de.hub.clickwatch.recorder.database.cwdatabase.Record;
 import de.hub.clickwatch.recorder.database.hbase.HBaseDataBaseAdapter;
 import de.hub.clickwatch.util.ILogger;
 

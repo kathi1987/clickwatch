@@ -18,8 +18,8 @@ import com.google.inject.Singleton;
 import de.hub.clickwatch.connection.adapter.IValueAdapter;
 import de.hub.clickwatch.connection.adapter.XmlValueAdapter;
 import de.hub.clickwatch.model.Handler;
-import de.hub.clickwatch.recoder.cwdatabase.Record;
 import de.hub.clickwatch.recorder.database.AbstractDataBaseRecordAdapter;
+import de.hub.clickwatch.recorder.database.cwdatabase.Record;
 
 @Singleton
 public class LogFileDataBaseAdapter extends AbstractDataBaseRecordAdapter {

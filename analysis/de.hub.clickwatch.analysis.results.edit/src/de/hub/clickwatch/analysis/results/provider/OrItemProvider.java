@@ -115,7 +115,7 @@ public class OrItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		return "||";
+		return getString("_UI_Or_type");
 	}
 
 	/**

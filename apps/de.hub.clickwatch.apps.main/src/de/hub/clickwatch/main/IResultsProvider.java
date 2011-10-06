@@ -10,6 +10,8 @@ public interface IResultsProvider {
 
 	public Result createNewResult(String name);
 	
+	public Result getResult(String name);
+	
 	public void saveResults();
 	
 }

@@ -168,6 +168,8 @@ public class ResultsSwitch<T> extends Switch<T> {
 			case ResultsPackage.RESULTS: {
 				Results results = (Results)theEObject;
 				T result = caseResults(results);
+				if (result == null) result = caseChart(results);
+				if (result == null) result = caseNamedElement(results);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}

@@ -35,6 +35,7 @@ import de.hub.clickwatch.model.Node;
 import de.hub.clickwatch.model.util.TimeStampLabelProvider;
 import de.hub.clickwatch.recoder.cwdatabase.presentation.CWDataBaseEditor;
 import de.hub.clickwatch.recorder.database.DataBaseUtil;
+import de.hub.clickwatch.recorder.database.cwdatabase.Record;
 import de.hub.clickwatch.ui.connection.MergingNodeAdapterMergeConfiguration;
 
 public class CWDataBaseTimeScaleController {

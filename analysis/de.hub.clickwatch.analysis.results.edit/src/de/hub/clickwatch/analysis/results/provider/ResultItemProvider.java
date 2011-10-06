@@ -188,6 +188,11 @@ public class ResultItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
+				(ResultsPackage.Literals.RESULT__CHARTS,
+				 ResultsFactory.eINSTANCE.createResults()));
+
+		newChildDescriptors.add
+			(createChildParameter
 				(ResultsPackage.Literals.RESULT__DATA_SET,
 				 ResultsFactory.eINSTANCE.createDataSet()));
 	}

@@ -12,6 +12,7 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
 
 import de.hub.clickwatch.model.Handler;
+import de.hub.clickwatch.specificmodels.brn.routing_dsr_stats_stats.*;
 import de.hub.clickwatch.specificmodels.brn.routing_dsr_stats_stats.Dsr_route_stats;
 import de.hub.clickwatch.specificmodels.brn.routing_dsr_stats_stats.Route;
 import de.hub.clickwatch.specificmodels.brn.routing_dsr_stats_stats.Route_info;

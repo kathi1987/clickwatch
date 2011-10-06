@@ -59,11 +59,18 @@ public class XmlValueAdapter extends AbstractValueAdapter implements IValueAdapt
 		}
 		
 		XMLTypeDocumentRoot xml = XMLTypeFactory.eINSTANCE.createXMLTypeDocumentRoot();
-		if (modelValue instanceof String) {
+		if (modelValue == null) {
+			return "";
+		} if (modelValue instanceof String) {
 			xml.getMixed().add(XMLTypePackage.eINSTANCE.getXMLTypeDocumentRoot_Text(), modelValue);
 		} else if (modelValue instanceof FeatureMap.Entry) {
 			FeatureMap.Entry fmeValue = (FeatureMap.Entry)modelValue;
-			xml.getMixed().add(FeatureMapUtil.createEntry(fmeValue.getEStructuralFeature(), EcoreUtil.copy((EObject)fmeValue.getValue())));
+			if (fmeValue.getValue() instanceof String) {
+//				xml.getMixed().add(XMLTypePackage.eINSTANCE.getXMLTypeDocumentRoot_Text(), fmeValue.getValue());
+				xml.getMixed().add(FeatureMapUtil.createEntry(fmeValue.getEStructuralFeature(), fmeValue.getValue()));
+			} else {
+				xml.getMixed().add(FeatureMapUtil.createEntry(fmeValue.getEStructuralFeature(), EcoreUtil.copy((EObject)fmeValue.getValue())));
+			}
 		} else {
 			Preconditions.checkArgument(false);	
 		}

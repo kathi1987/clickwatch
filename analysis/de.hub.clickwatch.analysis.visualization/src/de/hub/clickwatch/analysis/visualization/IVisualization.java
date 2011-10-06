@@ -7,4 +7,6 @@ public interface IVisualization {
 	public boolean isEnabledForInput(Object input);
 
 	public Component createVisualization(Object input);
+	
+	public void updateVisualization(Object input);
 }

@@ -310,13 +310,31 @@ public interface ResultsPackage extends EPackage {
 	int AXIS__CONSTRAINT = VALUE_SPEC__CONSTRAINT;
 
 	/**
+	 * The feature id for the '<em><b>To</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AXIS__TO = VALUE_SPEC_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>From</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AXIS__FROM = VALUE_SPEC_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Axis</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int AXIS_FEATURE_COUNT = VALUE_SPEC_FEATURE_COUNT + 0;
+	int AXIS_FEATURE_COUNT = VALUE_SPEC_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link de.hub.clickwatch.analysis.results.impl.SeriesImpl <em>Series</em>}' class.
@@ -560,13 +578,49 @@ public interface ResultsPackage extends EPackage {
 	int RESULTS = 13;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESULTS__NAME = CHART__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESULTS__TYPE = CHART__TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Value Specs</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESULTS__VALUE_SPECS = CHART__VALUE_SPECS;
+
+	/**
 	 * The feature id for the '<em><b>Results</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RESULTS__RESULTS = 0;
+	int RESULTS__RESULTS = CHART_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Groups</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESULTS__GROUPS = CHART_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Results</em>' class.
@@ -575,7 +629,7 @@ public interface ResultsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESULTS_FEATURE_COUNT = 1;
+	int RESULTS_FEATURE_COUNT = CHART_FEATURE_COUNT + 2;
 
 
 	/**
@@ -803,6 +857,28 @@ public interface ResultsPackage extends EPackage {
 	EClass getAxis();
 
 	/**
+	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.analysis.results.Axis#getTo <em>To</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>To</em>'.
+	 * @see de.hub.clickwatch.analysis.results.Axis#getTo()
+	 * @see #getAxis()
+	 * @generated
+	 */
+	EAttribute getAxis_To();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.analysis.results.Axis#getFrom <em>From</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>From</em>'.
+	 * @see de.hub.clickwatch.analysis.results.Axis#getFrom()
+	 * @see #getAxis()
+	 * @generated
+	 */
+	EAttribute getAxis_From();
+
+	/**
 	 * Returns the meta object for class '{@link de.hub.clickwatch.analysis.results.Series <em>Series</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -915,6 +991,17 @@ public interface ResultsPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getResults_Results();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link de.hub.clickwatch.analysis.results.Results#getGroups <em>Groups</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Groups</em>'.
+	 * @see de.hub.clickwatch.analysis.results.Results#getGroups()
+	 * @see #getResults()
+	 * @generated
+	 */
+	EReference getResults_Groups();
 
 	/**
 	 * Returns the meta object for class '{@link de.hub.clickwatch.analysis.results.EqualsConstraint <em>Equals Constraint</em>}'.
@@ -1117,6 +1204,22 @@ public interface ResultsPackage extends EPackage {
 		EClass AXIS = eINSTANCE.getAxis();
 
 		/**
+		 * The meta object literal for the '<em><b>To</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute AXIS__TO = eINSTANCE.getAxis_To();
+
+		/**
+		 * The meta object literal for the '<em><b>From</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute AXIS__FROM = eINSTANCE.getAxis_From();
+
+		/**
 		 * The meta object literal for the '{@link de.hub.clickwatch.analysis.results.impl.SeriesImpl <em>Series</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1217,6 +1320,14 @@ public interface ResultsPackage extends EPackage {
 		 * @generated
 		 */
 		EReference RESULTS__RESULTS = eINSTANCE.getResults_Results();
+
+		/**
+		 * The meta object literal for the '<em><b>Groups</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference RESULTS__GROUPS = eINSTANCE.getResults_Groups();
 
 		/**
 		 * The meta object literal for the '{@link de.hub.clickwatch.analysis.results.impl.EqualsConstraintImpl <em>Equals Constraint</em>}' class.

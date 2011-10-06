@@ -28,8 +28,8 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import de.hub.clickwatch.recoder.cwdatabase.CWDataBasePackage;
-import de.hub.clickwatch.recoder.cwdatabase.RecordStatistics;
+import de.hub.clickwatch.recorder.database.cwdatabase.CWDataBasePackage;
+import de.hub.clickwatch.recorder.database.cwdatabase.RecordStatistics;
 
 /**
  * This is the item provider adapter for a {@link de.hub.clickwatch.recoder.cwdatabase.RecordStatistics} object.
@@ -453,15 +453,11 @@ public class RecordStatisticsItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public String getText(Object object) {
-		SummaryStatistics labelValue = ((RecordStatistics)object).getNodesA();
-		String label = labelValue == null ? null : labelValue.toString();
-		return label == null || label.length() == 0 ?
-			getString("_UI_RecordStatistics_type") :
-			getString("_UI_RecordStatistics_type") + " " + label;
+		return getString("_UI_RecordStatistics_type");
 	}
 
 	/**

@@ -4,8 +4,8 @@ import com.google.inject.ImplementedBy;
 
 import de.hub.clickwatch.main.impl.RecordProvider;
 import de.hub.clickwatch.model.Node;
-import de.hub.clickwatch.recoder.cwdatabase.DataBase;
-import de.hub.clickwatch.recoder.cwdatabase.Record;
+import de.hub.clickwatch.recorder.database.cwdatabase.DataBase;
+import de.hub.clickwatch.recorder.database.cwdatabase.Record;
 
 @ImplementedBy(RecordProvider.class)
 public interface IRecordProvider {

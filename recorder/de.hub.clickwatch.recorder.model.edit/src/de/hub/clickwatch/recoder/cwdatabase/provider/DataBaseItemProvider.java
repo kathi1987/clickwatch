@@ -23,9 +23,9 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import de.hub.clickwatch.recoder.cwdatabase.CWDataBaseFactory;
-import de.hub.clickwatch.recoder.cwdatabase.CWDataBasePackage;
-import de.hub.clickwatch.recoder.cwdatabase.DataBase;
+import de.hub.clickwatch.recorder.database.cwdatabase.CWDataBaseFactory;
+import de.hub.clickwatch.recorder.database.cwdatabase.CWDataBasePackage;
+import de.hub.clickwatch.recorder.database.cwdatabase.DataBase;
 
 /**
  * This is the item provider adapter for a {@link de.hub.clickwatch.recoder.cwdatabase.DataBase} object.

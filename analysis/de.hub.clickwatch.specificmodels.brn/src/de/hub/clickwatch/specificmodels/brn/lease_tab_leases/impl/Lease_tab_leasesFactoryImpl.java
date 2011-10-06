@@ -6,6 +6,7 @@
  */
 package de.hub.clickwatch.specificmodels.brn.lease_tab_leases.impl;
 
+import de.hub.clickwatch.specificmodels.brn.lease_tab_leases.*;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;

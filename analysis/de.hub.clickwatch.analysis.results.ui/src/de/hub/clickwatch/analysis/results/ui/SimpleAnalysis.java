@@ -33,8 +33,8 @@ import de.hub.clickwatch.analysis.results.util.builder.XYBuilder;
 import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.model.Node;
 import de.hub.clickwatch.model.provider.XmlAttributeValue;
-import de.hub.clickwatch.recoder.cwdatabase.Record;
 import de.hub.clickwatch.recorder.database.DataBaseUtil;
+import de.hub.clickwatch.recorder.database.cwdatabase.Record;
 import de.hub.clickwatch.ui.PluginActivator;
 import de.hub.clickwatch.util.Throwables;
 

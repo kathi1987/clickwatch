@@ -29,9 +29,9 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import de.hub.clickwatch.model.ClickWatchModelFactory;
 import de.hub.clickwatch.model.provider.TimeStampLabelProvider;
-import de.hub.clickwatch.recoder.cwdatabase.CWDataBaseFactory;
-import de.hub.clickwatch.recoder.cwdatabase.CWDataBasePackage;
-import de.hub.clickwatch.recoder.cwdatabase.Record;
+import de.hub.clickwatch.recorder.database.cwdatabase.CWDataBaseFactory;
+import de.hub.clickwatch.recorder.database.cwdatabase.CWDataBasePackage;
+import de.hub.clickwatch.recorder.database.cwdatabase.Record;
 
 /**
  * This is the item provider adapter for a {@link de.hub.clickwatch.recoder.cwdatabase.Record} object.
@@ -73,6 +73,7 @@ public class RecordItemProvider
 			addDurationPropertyDescriptor(object);
 			addEndPropertyDescriptor(object);
 			addHBaseRowMapPropertyDescriptor(object);
+			addNetworkRecorderPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -198,6 +199,28 @@ public class RecordItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Network Recorder feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addNetworkRecorderPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Record_networkRecorder_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Record_networkRecorder_feature", "_UI_Record_type"),
+				 CWDataBasePackage.Literals.RECORD__NETWORK_RECORDER,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -250,14 +273,24 @@ public class RecordItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Record)object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_Record_type") :
-			getString("_UI_Record_type") + " " + label;
+		String result = null;
+		Record record = (Record)object;
+		String name = record.getName();
+		if (name != null && !name.equals("")) {
+			result = name;
+		} else {
+			result = getString("_UI_Record_type"); 
+		}
+		
+		if (record.getNetworkRecorder() != null) {
+			result += " (recording)";
+		}
+		
+		return result;
 	}
 
 	/**
@@ -277,6 +310,7 @@ public class RecordItemProvider
 			case CWDataBasePackage.RECORD__DURATION:
 			case CWDataBasePackage.RECORD__END:
 			case CWDataBasePackage.RECORD__HBASE_ROW_MAP:
+			case CWDataBasePackage.RECORD__NETWORK_RECORDER:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case CWDataBasePackage.RECORD__CONFIGURATION:

@@ -4,18 +4,15 @@ Bundle-Name: %pluginName
 Bundle-SymbolicName: de.hub.clickwatch.analysis.results.ui;singleton:=true
 Bundle-Version: 2.0.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Require-Bundle: org.eclipse.ui;bundle-version="3.7.0",
- de.hub.clickwatch.analysis.results.edit;bundle-version="2.0.0",
- org.eclipse.core.runtime;bundle-version="3.7.0",
- org.eclipse.emf.edit.ui;bundle-version="2.7.0",
+Require-Bundle: org.eclipse.core.runtime;bundle-version="3.7.0",
+ org.eclipse.ui;bundle-version="3.7.0",
  org.eclipse.ui.ide;visibility:=reexport,
- de.hub.clickwatch.core;bundle-version="2.0.0",
- de.hub.clickwatch.apps.main;bundle-version="2.0.0",
- de.hub.clickwatch.analysis.visualization;bundle-version="2.0.0",
- de.hub.clickwatch.model.edit;bundle-version="2.0.0",
- de.hub.clickwatch.recorder.ui;bundle-version="2.0.0",
+ org.eclipse.core.expressions;bundle-version="3.4.300",
+ org.eclipse.emf.edit.ui;bundle-version="2.7.0",
  de.hub.clickwatch.ui;bundle-version="2.0.0",
- org.eclipse.core.expressions;bundle-version="3.4.300"
+ de.hub.clickwatch.analysis.results.edit;bundle-version="2.0.0",
+ de.hub.clickwatch.analysis.visualization;bundle-version="2.0.0",
+ de.hub.clickwatch.apps.main;bundle-version="2.0.0"
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: de.hub.clickwatch.analysis.results.ui.ResultsUIPlugin
 Bundle-ClassPath: .,

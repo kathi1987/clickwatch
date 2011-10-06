@@ -10,6 +10,7 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.util.EDataTypeEList;
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 
 import de.hub.clickwatch.analysis.results.DataEntry;
@@ -65,7 +66,7 @@ public class DataEntryImpl extends NamedElementImpl implements DataEntry {
 	 */
 	public EList<Object> getValues() {
 		if (values == null) {
-			values = new EDataTypeUniqueEList<Object>(Object.class, this, ResultsPackage.DATA_ENTRY__VALUES);
+			values = new EDataTypeEList<Object>(Object.class, this, ResultsPackage.DATA_ENTRY__VALUES);
 		}
 		return values;
 	}

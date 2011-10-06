@@ -28,12 +28,13 @@ import de.hub.clickwatch.analysis.results.ResultsPackage;
  * The following features are implemented:
  * <ul>
  *   <li>{@link de.hub.clickwatch.analysis.results.impl.ResultsImpl#getResults <em>Results</em>}</li>
+ *   <li>{@link de.hub.clickwatch.analysis.results.impl.ResultsImpl#getGroups <em>Groups</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class ResultsImpl extends EObjectImpl implements Results {
+public class ResultsImpl extends ChartImpl implements Results {
 	/**
 	 * The cached value of the '{@link #getResults() <em>Results</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -43,6 +44,16 @@ public class ResultsImpl extends EObjectImpl implements Results {
 	 * @ordered
 	 */
 	protected EList<Result> results;
+
+	/**
+	 * The cached value of the '{@link #getGroups() <em>Groups</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getGroups()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Results> groups;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -80,11 +91,25 @@ public class ResultsImpl extends EObjectImpl implements Results {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<Results> getGroups() {
+		if (groups == null) {
+			groups = new EObjectContainmentEList<Results>(Results.class, this, ResultsPackage.RESULTS__GROUPS);
+		}
+		return groups;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case ResultsPackage.RESULTS__RESULTS:
 				return ((InternalEList<?>)getResults()).basicRemove(otherEnd, msgs);
+			case ResultsPackage.RESULTS__GROUPS:
+				return ((InternalEList<?>)getGroups()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -99,6 +124,8 @@ public class ResultsImpl extends EObjectImpl implements Results {
 		switch (featureID) {
 			case ResultsPackage.RESULTS__RESULTS:
 				return getResults();
+			case ResultsPackage.RESULTS__GROUPS:
+				return getGroups();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -116,6 +143,10 @@ public class ResultsImpl extends EObjectImpl implements Results {
 				getResults().clear();
 				getResults().addAll((Collection<? extends Result>)newValue);
 				return;
+			case ResultsPackage.RESULTS__GROUPS:
+				getGroups().clear();
+				getGroups().addAll((Collection<? extends Results>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -131,6 +162,9 @@ public class ResultsImpl extends EObjectImpl implements Results {
 			case ResultsPackage.RESULTS__RESULTS:
 				getResults().clear();
 				return;
+			case ResultsPackage.RESULTS__GROUPS:
+				getGroups().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -145,6 +179,8 @@ public class ResultsImpl extends EObjectImpl implements Results {
 		switch (featureID) {
 			case ResultsPackage.RESULTS__RESULTS:
 				return results != null && !results.isEmpty();
+			case ResultsPackage.RESULTS__GROUPS:
+				return groups != null && !groups.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

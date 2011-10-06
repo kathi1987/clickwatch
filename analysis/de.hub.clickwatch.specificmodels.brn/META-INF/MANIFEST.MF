@@ -18,6 +18,7 @@ Export-Package: de.hub.clickwatch.specificmodels.brn,
  de.hub.clickwatch.specificmodels.brn.lt_routes,
  de.hub.clickwatch.specificmodels.brn.routing_dsr_stats_stats,
  de.hub.clickwatch.specificmodels.brn.seismo_latestchannelinfos,
+ de.hub.clickwatch.specificmodels.brn.seismo_small,
  de.hub.clickwatch.specificmodels.brn.sf_stats,
  de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo,
  de.hub.clickwatch.specificmodels.brn.util

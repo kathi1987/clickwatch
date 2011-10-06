@@ -24,7 +24,7 @@ import de.hub.clickwatch.connection.adapter.SocketStatisticsAdapter;
 import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.model.Network;
 import de.hub.clickwatch.model.Node;
-import de.hub.clickwatch.recoder.cwdatabase.RecordStatistics;
+import de.hub.clickwatch.recorder.database.cwdatabase.RecordStatistics;
 import de.hub.clickwatch.util.ILogger;
 import de.hub.clickwatch.util.NanoClock;
 import de.hub.clickwatch.util.Throwables;
@@ -93,6 +93,23 @@ public class NodeRecorder implements Runnable {
 		handlerAdapter = connection.getAdapter(IPullHandlerAdapter.class);
 		EList<Handler> allHandlers = metaData.getAllHandlers();
 		List<Handler> filteredHandlers = filterHandler(allHandlers);
+		
+		// if configuration has elements and handlers, only use those that are present
+		EList<Handler> configuredHandlers = configuration.getAllHandlers();
+		if (!configuredHandlers.isEmpty()) {
+			Map<String, Handler> filteredHandlersNameMap = new HashMap<String, Handler>();
+			for (Handler handler: filteredHandlers) {
+				filteredHandlersNameMap.put(handler.getQualifiedName(), handler);
+			}
+			filteredHandlers.clear();
+			for (Handler handler: configuredHandlers) {
+				Handler filteredHandler = filteredHandlersNameMap.get(handler.getQualifiedName());
+				if (filteredHandler != null) {
+					filteredHandlers.add(filteredHandler);
+				}
+			}
+		}
+		
 		handlerAdapter.configure(filteredHandlers);
 		
 		socketStatisticsAdapter = connection.getAdapter(SocketStatisticsAdapter.class);
@@ -136,6 +153,7 @@ public class NodeRecorder implements Runnable {
 			}
 			
 			if (parent.getDataBaseAdapter().record(nodeDBAdapter, handler, !recordChangesOnly || hasChanged, samples)) {
+				parent.reportHandlerRecorded(configuration, handler);
 				recordedHandler++;
 			}
 		}

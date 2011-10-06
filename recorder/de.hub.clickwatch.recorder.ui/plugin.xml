@@ -5,7 +5,7 @@
          point="org.eclipse.ui.popupMenus">
       <objectContribution
             id="de.hub.clickwatch.RecordContribution"
-            objectClass="de.hub.clickwatch.recoder.cwdatabase.Record">
+            objectClass="de.hub.clickwatch.recorder.database.cwdatabase.Record">
          <action
                class="de.hub.clickwatch.ui.GuiceAwareExecutableExtensionFactory:de.hub.clickwatch.recorder.ui.actions.JumpToTime"
                id="de.hub.clickwatch.recorder.ui.JumpToTimeAction"
@@ -16,6 +16,18 @@
                class="de.hub.clickwatch.ui.GuiceAwareExecutableExtensionFactory:de.hub.clickwatch.recorder.ui.actions.RecordAction"
                id="de.hub.clickwatch.recorder.ui.Record"
                label="record ..."
+               menubarPath="clickwatch/record">
+         </action>
+         <action
+               class="de.hub.clickwatch.ui.GuiceAwareExecutableExtensionFactory:de.hub.clickwatch.recorder.ui.actions.StartRecordAction"
+               id="de.hub.clickwatch.recorder.ui.StartRecord"
+               label="start recording"
+               menubarPath="clickwatch/record">
+         </action>
+         <action
+               class="de.hub.clickwatch.ui.GuiceAwareExecutableExtensionFactory:de.hub.clickwatch.recorder.ui.actions.StopRecordAction"
+               id="de.hub.clickwatch.recorder.ui.StopRecord"
+               label="stop recording"
                menubarPath="clickwatch/record">
          </action>
       </objectContribution>

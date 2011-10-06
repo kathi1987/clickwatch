@@ -36,7 +36,7 @@ public interface DataEntry extends NamedElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Values</em>' attribute list.
 	 * @see de.hub.clickwatch.analysis.results.ResultsPackage#getDataEntry_Values()
-	 * @model
+	 * @model unique="false"
 	 * @generated
 	 */
 	EList<Object> getValues();

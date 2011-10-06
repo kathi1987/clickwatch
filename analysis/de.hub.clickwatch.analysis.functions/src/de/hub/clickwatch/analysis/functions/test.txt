@@ -1,0 +1,22 @@
+
+()									:: CWDB			:: (Node node,String name,Long t,Handler handler)
+
+(String str, Type x)				:: Filter<Type>	:: (Type x)
+
+(_,Handler handler) 				:: SeismoInfo 	:: (Long time, Integer channel, Integer ampl)
+
+(Object... s, Double x, Double y) 	:: Plot 		:: ()
+
+
+{
+	CWDB::(node,name,t,handler);
+	(name,[t,handler])::Filter::([t, handler]);
+	(t,handler)::SeismoInfo::(t,channel,ampl);
+	(node;channel,t,ampl)::Plot
+}
+
+def (Node node, String name, Long t, Handler handler)::SeismoAnalyis::(Node node;Integer channel, Long t, Integer ampl) {
+	(name,[t,handler])::Filter::([t, handler]);
+	(t,handler)::SeismoInfo::(t,channel,ampl);
+	return (node,channel,t,ampl);
+}

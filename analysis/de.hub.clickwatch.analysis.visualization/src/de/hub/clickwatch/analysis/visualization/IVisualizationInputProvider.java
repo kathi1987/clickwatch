@@ -5,5 +5,5 @@ import org.eclipse.ui.IWorkbenchPart;
 
 public interface IVisualizationInputProvider {
 
-	public Object getInput(IWorkbenchPart part, ISelection selection);
+	public IVisualizationInput getInput(IWorkbenchPart part, ISelection selection);
 }

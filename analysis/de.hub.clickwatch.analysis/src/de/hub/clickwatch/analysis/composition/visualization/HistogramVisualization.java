@@ -62,4 +62,10 @@ public class HistogramVisualization implements IVisualization {
 			return null;
 		}
 	}
+
+	@Override
+	public void updateVisualization(Object input) {
+		// empty	
+	}
+	
 }

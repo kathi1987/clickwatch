@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
 
 import de.hub.clickwatch.model.Handler;
+import de.hub.clickwatch.specificmodels.brn.seismo_latestchannelinfos.*;
 import de.hub.clickwatch.specificmodels.brn.seismo_latestchannelinfos.Channel_info;
 import de.hub.clickwatch.specificmodels.brn.seismo_latestchannelinfos.Channel_infos;
 import de.hub.clickwatch.specificmodels.brn.seismo_latestchannelinfos.Latestchannelinfos;

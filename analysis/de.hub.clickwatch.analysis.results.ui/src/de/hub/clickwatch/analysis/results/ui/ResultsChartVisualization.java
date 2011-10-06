@@ -12,6 +12,8 @@ import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.chart.plot.XYPlot;
+import org.jfree.data.Range;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 
@@ -26,6 +28,8 @@ import de.hub.clickwatch.analysis.results.XY;
 import de.hub.clickwatch.analysis.visualization.IVisualization;
 
 public class ResultsChartVisualization implements IVisualization {
+	
+	private static Map<Result, ChartPanel> cache = new HashMap<Result, ChartPanel>();
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -52,23 +56,25 @@ public class ResultsChartVisualization implements IVisualization {
 		return null;
 	}
 	
-	private Component createChart(Result result) {
+	private JFreeChart createChart(Result result) {
 		Chart chart = getChart(result);
-		DataSet dataSet = result.getDataSet();
-		
-		List<ValueSpec> columns = new ArrayList<ValueSpec>();
-		for (ValueSpec spec: chart.getValueSpecs()) {
-			int column = spec.getColumn();
-			while (column >= columns.size()) {
-				columns.add(null);
-			}
-			columns.set(column, spec);
-		}
-		
-		String xAxisName = null;
-		String yAxisName = null;
 		
 		if (chart.getType() instanceof XY) {
+			DataSet dataSet = result.getDataSet();
+			
+			List<ValueSpec> columns = new ArrayList<ValueSpec>();
+			for (ValueSpec spec: chart.getValueSpecs()) {
+				int column = spec.getColumn();
+				while (column >= columns.size()) {
+					columns.add(null);
+				}
+				columns.set(column, spec);
+			}
+			
+			String xAxisName = null;
+			String yAxisName = null;
+			Axis yAxis = null;
+			
 			XYSeriesCollection jfDataSet = new XYSeriesCollection();
 			Map<Object, XYSeries> seriesMap = new HashMap<Object, XYSeries>();
 			for (DataEntry entry: dataSet.getEntries()) {
@@ -91,6 +97,9 @@ public class ResultsChartVisualization implements IVisualization {
 						} else {
 							yAxisName = spec.getName();
 							y = convert(values.get(i));
+							if (yAxis == null) {
+								yAxis = (Axis)spec;
+							}
 						}
 					} else if (spec instanceof Series) {						
 						s = values.get(i);
@@ -120,36 +129,62 @@ public class ResultsChartVisualization implements IVisualization {
 		            false,                            
 		            false
 		        );
-
-		        jfChart.getXYPlot();
-			
-			ChartPanel chartPanel = new ChartPanel(jfChart);
-	        chartPanel.setMouseZoomable(true, false);
-			return chartPanel;
+	
+		    XYPlot xyPlot = jfChart.getXYPlot();
+		    if (yAxis != null && yAxis.getFrom() != yAxis.getTo()) {
+		    	xyPlot.getRangeAxis().setRange(new Range(yAxis.getFrom(), yAxis.getTo()));	
+		    } 
+		    return jfChart;
 		} else {
 			return null;
+		}
+	}
+	
+	private Component createChartPanel(Result result) {
+		JFreeChart jfChart = createChart(result);	
+		if (jfChart == null) {
+			return null;
+		} else {
+			ChartPanel chartPanel = new ChartPanel(jfChart);
+	        chartPanel.setMouseZoomable(true, false);
+	        cache.put(result, chartPanel);
+			return chartPanel;
 		}
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public Component createVisualization(Object input) {	
+		cache.clear();
 		if (input != null) {
 			List<Result> results = (List<Result>)input;
 			if (results.size() > 1) {
 				Panel panel = new Panel();
 				for (Result result: results) {
-					panel.add(createChart(result));
+					panel.add(createChartPanel(result));
 				}	
 				return panel;
 			} else {
-				return createChart(results.get(0));
+				return createChartPanel(results.get(0));
 			}
 		}
 		return null;
 	}
-
 	
+	@SuppressWarnings("unchecked")
+	@Override
+	public void updateVisualization(Object input) {
+		if (input != null) {
+			List<Result> results = (List<Result>)input;
+			for (Result result: results) {
+				ChartPanel panel = cache.get(result);
+				if (panel != null) {
+					panel.setChart(createChart(result));
+				}	
+			}
+		}
+	}
+
 	private double convert(Object value) {
 		if (value instanceof Long) {
 			return (double)(Long)value;

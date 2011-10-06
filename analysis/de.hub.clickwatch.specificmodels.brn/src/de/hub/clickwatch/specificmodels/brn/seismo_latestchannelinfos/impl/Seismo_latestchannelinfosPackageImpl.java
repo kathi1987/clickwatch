@@ -40,6 +40,8 @@ import de.hub.clickwatch.specificmodels.brn.seismo_latestchannelinfos.Channel_in
 import de.hub.clickwatch.specificmodels.brn.seismo_latestchannelinfos.Latestchannelinfos;
 import de.hub.clickwatch.specificmodels.brn.seismo_latestchannelinfos.Seismo_latestchannelinfosFactory;
 import de.hub.clickwatch.specificmodels.brn.seismo_latestchannelinfos.Seismo_latestchannelinfosPackage;
+import de.hub.clickwatch.specificmodels.brn.seismo_small.Seismo_smallPackage;
+import de.hub.clickwatch.specificmodels.brn.seismo_small.impl.Seismo_smallPackageImpl;
 import de.hub.clickwatch.specificmodels.brn.sf_stats.Sf_statsPackage;
 import de.hub.clickwatch.specificmodels.brn.sf_stats.impl.Sf_statsPackageImpl;
 import de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.Sys_info_systeminfoPackage;
@@ -136,6 +138,7 @@ public class Seismo_latestchannelinfosPackageImpl extends EPackageImpl implement
 		Device_wifi_wifidevice_cst_statsPackageImpl theDevice_wifi_wifidevice_cst_statsPackage = (Device_wifi_wifidevice_cst_statsPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Device_wifi_wifidevice_cst_statsPackage.eNS_URI) instanceof Device_wifi_wifidevice_cst_statsPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Device_wifi_wifidevice_cst_statsPackage.eNS_URI) : Device_wifi_wifidevice_cst_statsPackage.eINSTANCE);
 		Sf_statsPackageImpl theSf_statsPackage = (Sf_statsPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Sf_statsPackage.eNS_URI) instanceof Sf_statsPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Sf_statsPackage.eNS_URI) : Sf_statsPackage.eINSTANCE);
 		Routing_dsr_stats_statsPackageImpl theRouting_dsr_stats_statsPackage = (Routing_dsr_stats_statsPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Routing_dsr_stats_statsPackage.eNS_URI) instanceof Routing_dsr_stats_statsPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Routing_dsr_stats_statsPackage.eNS_URI) : Routing_dsr_stats_statsPackage.eINSTANCE);
+		Seismo_smallPackageImpl theSeismo_smallPackage = (Seismo_smallPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Seismo_smallPackage.eNS_URI) instanceof Seismo_smallPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Seismo_smallPackage.eNS_URI) : Seismo_smallPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theSeismo_latestchannelinfosPackage.createPackageContents();
@@ -152,6 +155,7 @@ public class Seismo_latestchannelinfosPackageImpl extends EPackageImpl implement
 		theDevice_wifi_wifidevice_cst_statsPackage.createPackageContents();
 		theSf_statsPackage.createPackageContents();
 		theRouting_dsr_stats_statsPackage.createPackageContents();
+		theSeismo_smallPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theSeismo_latestchannelinfosPackage.initializePackageContents();
@@ -168,6 +172,7 @@ public class Seismo_latestchannelinfosPackageImpl extends EPackageImpl implement
 		theDevice_wifi_wifidevice_cst_statsPackage.initializePackageContents();
 		theSf_statsPackage.initializePackageContents();
 		theRouting_dsr_stats_statsPackage.initializePackageContents();
+		theSeismo_smallPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theSeismo_latestchannelinfosPackage.freeze();

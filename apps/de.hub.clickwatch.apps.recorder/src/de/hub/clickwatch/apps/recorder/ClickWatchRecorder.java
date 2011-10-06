@@ -11,9 +11,9 @@ import de.hub.clickwatch.main.IClickWatchContext;
 import de.hub.clickwatch.main.IClickWatchMain;
 import de.hub.clickwatch.main.IRecordProvider;
 import de.hub.clickwatch.main.IInjectorProvider;
-import de.hub.clickwatch.recoder.cwdatabase.Record;
 import de.hub.clickwatch.recorder.NetworkRecorder;
 import de.hub.clickwatch.recorder.database.CWRecorderStandaloneSetup;
+import de.hub.clickwatch.recorder.database.cwdatabase.Record;
 import de.hub.clickwatch.util.ILogger;
 
 public class ClickWatchRecorder implements IClickWatchMain, IApplication {

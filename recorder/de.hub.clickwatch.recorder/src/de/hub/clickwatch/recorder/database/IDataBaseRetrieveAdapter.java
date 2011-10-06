@@ -1,7 +1,7 @@
 package de.hub.clickwatch.recorder.database;
 
 import de.hub.clickwatch.model.Handler;
-import de.hub.clickwatch.recoder.cwdatabase.Record;
+import de.hub.clickwatch.recorder.database.cwdatabase.Record;
 
 public interface IDataBaseRetrieveAdapter {
 

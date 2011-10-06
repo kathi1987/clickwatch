@@ -22,7 +22,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Shell;
 
-import de.hub.clickwatch.recoder.cwdatabase.util.CWDataBaseAdapterFactory;
+import de.hub.clickwatch.recorder.database.cwdatabase.util.CWDataBaseAdapterFactory;
 
 public class RecordObjectChooser extends Dialog {
 	private TreeViewer treeViewer;

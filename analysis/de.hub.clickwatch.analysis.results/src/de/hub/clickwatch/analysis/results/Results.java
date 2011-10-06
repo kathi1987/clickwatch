@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link de.hub.clickwatch.analysis.results.Results#getResults <em>Results</em>}</li>
+ *   <li>{@link de.hub.clickwatch.analysis.results.Results#getGroups <em>Groups</em>}</li>
  * </ul>
  * </p>
  *
@@ -26,7 +27,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface Results extends EObject {
+public interface Results extends Chart {
 	/**
 	 * Returns the value of the '<em><b>Results</b></em>' containment reference list.
 	 * The list contents are of type {@link de.hub.clickwatch.analysis.results.Result}.
@@ -42,5 +43,21 @@ public interface Results extends EObject {
 	 * @generated
 	 */
 	EList<Result> getResults();
+
+	/**
+	 * Returns the value of the '<em><b>Groups</b></em>' containment reference list.
+	 * The list contents are of type {@link de.hub.clickwatch.analysis.results.Results}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Groups</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Groups</em>' containment reference list.
+	 * @see de.hub.clickwatch.analysis.results.ResultsPackage#getResults_Groups()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<Results> getGroups();
 
 } // Results

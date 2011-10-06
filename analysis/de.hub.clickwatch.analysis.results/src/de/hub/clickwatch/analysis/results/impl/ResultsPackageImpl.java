@@ -350,6 +350,24 @@ public class ResultsPackageImpl extends EPackageImpl implements ResultsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getAxis_To() {
+		return (EAttribute)axisEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAxis_From() {
+		return (EAttribute)axisEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getSeries() {
 		return seriesEClass;
 	}
@@ -449,6 +467,15 @@ public class ResultsPackageImpl extends EPackageImpl implements ResultsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getResults_Groups() {
+		return (EReference)resultsEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getEqualsConstraint() {
 		return equalsConstraintEClass;
 	}
@@ -537,6 +564,8 @@ public class ResultsPackageImpl extends EPackageImpl implements ResultsPackage {
 		createEAttribute(namedElementEClass, NAMED_ELEMENT__NAME);
 
 		axisEClass = createEClass(AXIS);
+		createEAttribute(axisEClass, AXIS__TO);
+		createEAttribute(axisEClass, AXIS__FROM);
 
 		seriesEClass = createEClass(SERIES);
 
@@ -555,6 +584,7 @@ public class ResultsPackageImpl extends EPackageImpl implements ResultsPackage {
 
 		resultsEClass = createEClass(RESULTS);
 		createEReference(resultsEClass, RESULTS__RESULTS);
+		createEReference(resultsEClass, RESULTS__GROUPS);
 
 		equalsConstraintEClass = createEClass(EQUALS_CONSTRAINT);
 		createEAttribute(equalsConstraintEClass, EQUALS_CONSTRAINT__CONSTRAINT);
@@ -604,6 +634,7 @@ public class ResultsPackageImpl extends EPackageImpl implements ResultsPackage {
 		xyEClass.getESuperTypes().add(this.getChartType());
 		boxAndWhiskersEClass.getESuperTypes().add(this.getChartType());
 		barEClass.getESuperTypes().add(this.getChartType());
+		resultsEClass.getESuperTypes().add(this.getChart());
 		equalsConstraintEClass.getESuperTypes().add(this.getConstraint());
 		orEClass.getESuperTypes().add(this.getConstraint());
 
@@ -615,7 +646,7 @@ public class ResultsPackageImpl extends EPackageImpl implements ResultsPackage {
 		addEParameter(op, ecorePackage.getEJavaObject(), "values", 0, -1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(dataEntryEClass, DataEntry.class, "DataEntry", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getDataEntry_Values(), ecorePackage.getEJavaObject(), "values", null, 0, -1, DataEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDataEntry_Values(), ecorePackage.getEJavaObject(), "values", null, 0, -1, DataEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(chartEClass, Chart.class, "Chart", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getChart_Type(), this.getChartType(), null, "type", null, 0, 1, Chart.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -631,6 +662,8 @@ public class ResultsPackageImpl extends EPackageImpl implements ResultsPackage {
 		initEAttribute(getNamedElement_Name(), ecorePackage.getEString(), "name", null, 0, 1, NamedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(axisEClass, Axis.class, "Axis", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getAxis_To(), ecorePackage.getEDouble(), "to", null, 0, 1, Axis.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAxis_From(), ecorePackage.getEDouble(), "from", null, 0, 1, Axis.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(seriesEClass, Series.class, "Series", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -652,6 +685,7 @@ public class ResultsPackageImpl extends EPackageImpl implements ResultsPackage {
 
 		initEClass(resultsEClass, Results.class, "Results", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getResults_Results(), this.getResult(), null, "results", null, 0, -1, Results.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getResults_Groups(), this.getResults(), null, "groups", null, 0, -1, Results.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(equalsConstraintEClass, EqualsConstraint.class, "EqualsConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getEqualsConstraint_Constraint(), ecorePackage.getEJavaObject(), "constraint", null, 0, 1, EqualsConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

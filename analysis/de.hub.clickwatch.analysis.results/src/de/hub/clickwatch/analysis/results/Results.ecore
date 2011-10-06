@@ -11,8 +11,8 @@
         eType="#//DataEntry" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DataEntry" eSuperTypes="#//NamedElement">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="values" upperBound="-1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="values" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Chart" eSuperTypes="#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//ChartType"
@@ -29,7 +29,10 @@
   <eClassifiers xsi:type="ecore:EClass" name="NamedElement" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Axis" eSuperTypes="#//ValueSpec"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Axis" eSuperTypes="#//ValueSpec">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="to" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="from" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Series" eSuperTypes="#//ValueSpec"/>
   <eClassifiers xsi:type="ecore:EClass" name="Category" eSuperTypes="#//ValueSpec"/>
   <eClassifiers xsi:type="ecore:EClass" name="Result" eSuperTypes="#//NamedElement">
@@ -45,9 +48,11 @@
   <eClassifiers xsi:type="ecore:EClass" name="XY" eSuperTypes="#//ChartType"/>
   <eClassifiers xsi:type="ecore:EClass" name="BoxAndWhiskers" eSuperTypes="#//ChartType"/>
   <eClassifiers xsi:type="ecore:EClass" name="Bar" eSuperTypes="#//ChartType"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Results">
+  <eClassifiers xsi:type="ecore:EClass" name="Results" eSuperTypes="#//Chart">
     <eStructuralFeatures xsi:type="ecore:EReference" name="results" upperBound="-1"
         eType="#//Result" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="groups" upperBound="-1"
+        eType="#//Results" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EqualsConstraint" eSuperTypes="#//Constraint">
     <eOperations name="getValues" upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>

@@ -64,4 +64,9 @@ public class TopologyVisualization implements IVisualization {
 		return vv;
 	}
 
+	@Override
+	public void updateVisualization(Object input) {
+		// empty	
+	}
+
 }

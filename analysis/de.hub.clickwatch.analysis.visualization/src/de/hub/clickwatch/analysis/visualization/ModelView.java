@@ -20,7 +20,7 @@ public class ModelView extends AbstractDataView {
 	private TreeViewer treeViewer;
 	private ComposedAdapterFactory adapterFactory;
 	
-	protected void setInput(Object input) {
+	protected void setInput(IVisualizationInput input) {
 		if (input instanceof EObject) {
 			treeViewer.setInput(input);
 		}

@@ -4,8 +4,7 @@ Bundle-Name: ClickWatch Recorder
 Bundle-SymbolicName: de.hub.clickwatch.recorder;singleton:=true
 Bundle-Version: 2.0.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Require-Bundle: de.hub.clickwatch.core;bundle-version="2.0.0";visibility:=reexport,
- de.hub.clickwatch.recorder.model;bundle-version="2.0.0";visibility:=reexport
+Require-Bundle: de.hub.clickwatch.core;bundle-version="2.0.0";visibility:=reexport
 Bundle-ClassPath: .,
  lib/commons-cli-1.2-sources.jar,
  lib/commons-cli-1.2.jar,
@@ -48,11 +47,18 @@ Bundle-ClassPath: .,
  lib/stax-api-1.0.1.jar,
  lib/thrift-0.2.0.jar,
  lib/xmlenc-0.52.jar,
- lib/zookeeper-3.3.2.jar
+ lib/zookeeper-3.3.2.jar,
+ lib/commons-math-2.2.jar
 Export-Package: de.hub.clickwatch.recorder,
  de.hub.clickwatch.recorder.database,
+ de.hub.clickwatch.recorder.database.cwdatabase,
+ de.hub.clickwatch.recorder.database.cwdatabase.impl,
+ de.hub.clickwatch.recorder.database.cwdatabase.util,
+ de.hub.clickwatch.recorder.database.cwdatabase.util.builder,
  de.hub.clickwatch.recorder.database.hbase,
  de.hub.clickwatch.recorder.database.logfile,
  org.apache.commons.cli,
+ org.apache.commons.math.stat.descriptive,
+ org.apache.commons.math.stat.descriptive.summary,
  org.apache.hadoop.hbase.client
 Bundle-ActivationPolicy: lazy

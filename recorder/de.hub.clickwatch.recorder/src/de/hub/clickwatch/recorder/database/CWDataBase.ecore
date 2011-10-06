@@ -20,6 +20,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="metaData" upperBound="-1"
         eType="ecore:EClass ../../../../../../../de.hub.clickwatch.core/src/de/hub/clickwatch/model/ClickWatchModel.ecore#//Node"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="networkRecorder" eType="#//NetworkRecorder"
+        transient="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DataBase">
     <eStructuralFeatures xsi:type="ecore:EReference" name="records" upperBound="-1"
@@ -44,5 +46,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="cpuLoadS" eType="#//ESummaryStatistics"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="ESummaryStatistics" instanceClassName="org.apache.commons.math.stat.descriptive.SummaryStatistics"/>
-  <eClassifiers xsi:type="ecore:EDataType" name="HBaseRowMap" instanceClassName="de.hub.clickwatch.recoder.cwdatabase.HBaseRowMap"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="HBaseRowMap" instanceClassName="de.hub.clickwatch.recorder.database.cwdatabase.HBaseRowMap"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="NetworkRecorder" instanceClassName="de.hub.clickwatch.recorder.NetworkRecorder"
+      serializable="false"/>
 </ecore:EPackage>

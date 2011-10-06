@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
 
 import de.hub.clickwatch.model.Handler;
+import de.hub.clickwatch.specificmodels.brn.routing_dsr_stats_stats.*;
 import de.hub.clickwatch.specificmodels.brn.routing_dsr_stats_stats.Dsr_route_stats;
 import de.hub.clickwatch.specificmodels.brn.routing_dsr_stats_stats.Route;
 import de.hub.clickwatch.specificmodels.brn.routing_dsr_stats_stats.Route_info;

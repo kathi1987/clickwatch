@@ -64,6 +64,7 @@ public class ValueSpecItemProvider
 			super.getPropertyDescriptors(object);
 
 			addColumnPropertyDescriptor(object);
+			addConstraintPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -91,33 +92,25 @@ public class ValueSpecItemProvider
 	}
 
 	/**
-	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
-	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+	 * This adds a property descriptor for the Constraint feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-		if (childrenFeatures == null) {
-			super.getChildrenFeatures(object);
-			childrenFeatures.add(ResultsPackage.Literals.VALUE_SPEC__CONSTRAINT);
-		}
-		return childrenFeatures;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EStructuralFeature getChildFeature(Object object, Object child) {
-		// Check the type of the specified child object and return the proper feature to use for
-		// adding (see {@link AddCommand}) it as a child.
-
-		return super.getChildFeature(object, child);
+	protected void addConstraintPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ValueSpec_constraint_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ValueSpec_constraint_feature", "_UI_ValueSpec_type"),
+				 ResultsPackage.Literals.VALUE_SPEC__CONSTRAINT,
+				 true,
+				 false,
+				 false,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**
@@ -147,10 +140,8 @@ public class ValueSpecItemProvider
 
 		switch (notification.getFeatureID(ValueSpec.class)) {
 			case ResultsPackage.VALUE_SPEC__COLUMN:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
 			case ResultsPackage.VALUE_SPEC__CONSTRAINT:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}
 		super.notifyChanged(notification);
@@ -166,16 +157,6 @@ public class ValueSpecItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ResultsPackage.Literals.VALUE_SPEC__CONSTRAINT,
-				 ResultsFactory.eINSTANCE.createEqualsConstraint()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ResultsPackage.Literals.VALUE_SPEC__CONSTRAINT,
-				 ResultsFactory.eINSTANCE.createOr()));
 	}
 
 }

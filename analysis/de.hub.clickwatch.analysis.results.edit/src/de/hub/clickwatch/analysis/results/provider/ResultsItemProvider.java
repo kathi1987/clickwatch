@@ -37,7 +37,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * @generated
  */
 public class ResultsItemProvider
-	extends ItemProviderAdapter
+	extends ChartItemProvider
 	implements
 		IEditingDomainItemProvider,
 		IStructuredItemContentProvider,
@@ -82,6 +82,7 @@ public class ResultsItemProvider
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(ResultsPackage.Literals.RESULTS__RESULTS);
+			childrenFeatures.add(ResultsPackage.Literals.RESULTS__GROUPS);
 		}
 		return childrenFeatures;
 	}
@@ -118,7 +119,10 @@ public class ResultsItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_Results_type");
+		String label = ((Results)object).getName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_Results_type") :
+			getString("_UI_Results_type") + " " + label;
 	}
 
 	/**
@@ -134,6 +138,7 @@ public class ResultsItemProvider
 
 		switch (notification.getFeatureID(Results.class)) {
 			case ResultsPackage.RESULTS__RESULTS:
+			case ResultsPackage.RESULTS__GROUPS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -155,17 +160,11 @@ public class ResultsItemProvider
 			(createChildParameter
 				(ResultsPackage.Literals.RESULTS__RESULTS,
 				 ResultsFactory.eINSTANCE.createResult()));
-	}
 
-	/**
-	 * Return the resource locator for this item provider's resources.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public ResourceLocator getResourceLocator() {
-		return ResultsEditPlugin.INSTANCE;
+		newChildDescriptors.add
+			(createChildParameter
+				(ResultsPackage.Literals.RESULTS__GROUPS,
+				 ResultsFactory.eINSTANCE.createResults()));
 	}
 
 }

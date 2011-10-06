@@ -15,6 +15,7 @@ public class CWRecorderModule extends AbstractModule {
 	public static final String I_HANDLER_PER_RECORD_PROPERTY 			= "CWRecorderModule.handlerPerRecord";
 	public static final String B_RECORD_CHANGES_ONLY_PROPERTY	 		= "CWRecorderModule.recordChangesOnly";
 	public static final String DB_VALUE_ADAPTER_PROPERTY 				= "CWRecorderModule.dbValueAdapter";
+	public static final String B_SAVE_RECORD_FILE						= "CWRecorderModule.saveRecordFile";
 	
 	@Override
 	protected void configure() {
@@ -24,9 +25,16 @@ public class CWRecorderModule extends AbstractModule {
 		configureHandlerPerRecord();
 		configureRecordChangesOnly();
 		configureDBValueAdapter();		
-		configureAdditionalBindings();		
+		configureAdditionalBindings();	
+		configureSaveRecordFile();
 	}
 	
+	
+	protected void configureSaveRecordFile() {
+		bind(boolean.class).annotatedWith(Names.named(B_SAVE_RECORD_FILE)).toInstance(Boolean.TRUE);
+	}
+
+
 	protected void configureDefaultUpdateInterval() {
 		bind(long.class).annotatedWith(Names.named(L_DEFAULT_UPDATE_INTERVAL_PROPERTY)).toInstance(new Long(2000));
 	}

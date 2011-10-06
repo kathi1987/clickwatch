@@ -7,7 +7,7 @@ import org.junit.Test;
 import de.hub.clickwatch.model.util.builder.ElementBuilder;
 import de.hub.clickwatch.model.util.builder.HandlerBuilder;
 import de.hub.clickwatch.model.util.builder.NodeBuilder;
-import de.hub.clickwatch.recoder.cwdatabase.HBaseRowMap;
+import de.hub.clickwatch.recorder.database.cwdatabase.HBaseRowMap;
 
 public class HBaseRowMapTest {
 

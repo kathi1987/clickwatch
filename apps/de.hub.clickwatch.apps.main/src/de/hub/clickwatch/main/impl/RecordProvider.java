@@ -11,13 +11,15 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import de.hub.clickwatch.main.IClickWatchContextAdapter;
 import de.hub.clickwatch.main.IRecordProvider;
 import de.hub.clickwatch.model.Node;
-import de.hub.clickwatch.recoder.cwdatabase.DataBase;
-import de.hub.clickwatch.recoder.cwdatabase.Record;
+import de.hub.clickwatch.recorder.database.cwdatabase.DataBase;
+import de.hub.clickwatch.recorder.database.cwdatabase.Record;
 import de.hub.emfxml.XmlModelRepository;
 
 public class RecordProvider implements IClickWatchContextAdapter, IRecordProvider {
@@ -54,9 +56,13 @@ public class RecordProvider implements IClickWatchContextAdapter, IRecordProvide
 					record = database.getRecords().get(0);
 				}
 			} else {			
-				for (Record recordInDB: database.getRecords()) {
-					if (recordId.equals(recordInDB.getName())) {
-						record = recordInDB;
+				if (recordId.startsWith("//@")) {
+					record = (Record)getDataBase().eResource().getEObject(recordId);
+				} else {
+					for (Record recordInDB: database.getRecords()) {
+						if (recordId.equals(recordInDB.getName())) {
+							record = recordInDB;
+						}
 					}
 				}
 			}
@@ -106,7 +112,7 @@ public class RecordProvider implements IClickWatchContextAdapter, IRecordProvide
 
 	public Node[] getSelectedNodes() {
 		if (selectedNodes == null) {
-			return record.getConfiguration().getNodes().toArray(new Node[]{});
+			return getRecord().getConfiguration().getNodes().toArray(new Node[]{});
 		}
 		return selectedNodes;
 	}

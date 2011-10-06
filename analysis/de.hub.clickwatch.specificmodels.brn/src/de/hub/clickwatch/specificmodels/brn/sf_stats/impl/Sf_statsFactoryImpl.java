@@ -6,6 +6,7 @@
  */
 package de.hub.clickwatch.specificmodels.brn.sf_stats.impl;
 
+import de.hub.clickwatch.specificmodels.brn.sf_stats.*;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;

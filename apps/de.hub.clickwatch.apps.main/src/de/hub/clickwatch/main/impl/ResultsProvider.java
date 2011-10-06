@@ -65,6 +65,16 @@ public class ResultsProvider implements IClickWatchContextAdapter, IResultsProvi
 	}
 
 	@Override
+	public Result getResult(String name) {
+		for (Result result: results.getResults()) {
+			if (result.getName().equals(name)) {
+				return result;
+			}
+		}
+		return createNewResult(name);
+	}
+
+	@Override
 	public void saveResults() {
 		if (outputFileName != null) {
 			for (Result result: results.getResults()) {

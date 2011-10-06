@@ -1,68 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <genmodel:GenModel xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
-    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/de.hub.clickwatch.recorder.model/src"
-    modelPluginID="de.hub.clickwatch.recorder.model" modelName="CWDataBase" importerID="org.eclipse.emf.importer.ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/de.hub.clickwatch.recorder/src"
+    modelPluginID="de.hub.clickwatch.recorder" modelName="CWDataBase" importerID="org.eclipse.emf.importer.ecore"
     complianceLevel="6.0" copyrightFields="false" usedGenPackages="../../../../../../../de.hub.clickwatch.core/src/de/hub/clickwatch/model/ClickWatchModel.genmodel#//model">
   <foreignModel>CWDataBase.ecore</foreignModel>
-  <genPackages prefix="CWDataBase" basePackage="de.hub.clickwatch.recoder" resource="XML"
-      disposableProviderFactory="true" ecorePackage="CWDataBase.ecore#/">
+  <genPackages prefix="CWDataBase" basePackage="de.hub.clickwatch.recorder.database"
+      resource="XML" disposableProviderFactory="true" ecorePackage="CWDataBase.ecore#/">
     <genDataTypes ecoreDataType="CWDataBase.ecore#//ESummaryStatistics"/>
-    <genClasses ecoreClass="CWDataBase.ecore#//ExperimentDescr">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CWDataBase.ecore#//ExperimentDescr/network"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CWDataBase.ecore#//ExperimentDescr/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CWDataBase.ecore#//ExperimentDescr/description"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CWDataBase.ecore#//ExperimentDescr/start"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CWDataBase.ecore#//ExperimentDescr/record"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CWDataBase.ecore#//ExperimentDescr/networkTimeCopy"/>
-      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference CWDataBase.ecore#//ExperimentDescr/dataBase"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CWDataBase.ecore#//ExperimentDescr/duration"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CWDataBase.ecore#//ExperimentDescr/end"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CWDataBase.ecore#//ExperimentDescr/statistics"/>
-    </genClasses>
-    <genClasses ecoreClass="CWDataBase.ecore#//NodeRecord">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CWDataBase.ecore#//NodeRecord/records"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CWDataBase.ecore#//NodeRecord/start"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CWDataBase.ecore#//NodeRecord/end"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CWDataBase.ecore#//NodeRecord/node"/>
+    <genDataTypes ecoreDataType="CWDataBase.ecore#//HBaseRowMap"/>
+    <genDataTypes ecoreDataType="CWDataBase.ecore#//NetworkRecorder"/>
+    <genClasses ecoreClass="CWDataBase.ecore#//Record">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CWDataBase.ecore#//Record/configuration"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CWDataBase.ecore#//Record/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CWDataBase.ecore#//Record/start"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CWDataBase.ecore#//Record/networkTimeCopy"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference CWDataBase.ecore#//Record/dataBase"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CWDataBase.ecore#//Record/duration"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CWDataBase.ecore#//Record/end"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CWDataBase.ecore#//Record/statistics"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CWDataBase.ecore#//Record/hBaseRowMap"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CWDataBase.ecore#//Record/metaData"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CWDataBase.ecore#//Record/networkRecorder"/>
     </genClasses>
     <genClasses ecoreClass="CWDataBase.ecore#//DataBase">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CWDataBase.ecore#//DataBase/experiments"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CWDataBase.ecore#//DataBase/storageBaseFileString"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CWDataBase.ecore#//DataBase/inMemory"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CWDataBase.ecore#//DataBase/records"/>
     </genClasses>
-    <genClasses ecoreClass="CWDataBase.ecore#//ExperimentRecord">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CWDataBase.ecore#//ExperimentRecord/metaData"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CWDataBase.ecore#//ExperimentRecord/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CWDataBase.ecore#//ExperimentRecord/nodeMap"/>
-    </genClasses>
-    <genClasses ecoreClass="CWDataBase.ecore#//ExperimentNodeRecordTimeTable">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CWDataBase.ecore#//ExperimentNodeRecordTimeTable/nodeMap"/>
-    </genClasses>
-    <genClasses ecoreClass="CWDataBase.ecore#//EStringToExperimentNodeRecordTimeTableMap">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CWDataBase.ecore#//EStringToExperimentNodeRecordTimeTableMap/key"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CWDataBase.ecore#//EStringToExperimentNodeRecordTimeTableMap/value"/>
-    </genClasses>
-    <genClasses ecoreClass="CWDataBase.ecore#//ELongObjectToNodeRecordDescrMap">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CWDataBase.ecore#//ELongObjectToNodeRecordDescrMap/key"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CWDataBase.ecore#//ELongObjectToNodeRecordDescrMap/value"/>
-    </genClasses>
-    <genClasses ecoreClass="CWDataBase.ecore#//ExperimentStatistics">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CWDataBase.ecore#//ExperimentStatistics/nodesA"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CWDataBase.ecore#//ExperimentStatistics/samplesN"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CWDataBase.ecore#//ExperimentStatistics/handlersN"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CWDataBase.ecore#//ExperimentStatistics/handlersPulledS"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CWDataBase.ecore#//ExperimentStatistics/handlersR"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CWDataBase.ecore#//ExperimentStatistics/timeA"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CWDataBase.ecore#//ExperimentStatistics/timeN"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CWDataBase.ecore#//ExperimentStatistics/timeS"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CWDataBase.ecore#//ExperimentStatistics/samplesPerSecond"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CWDataBase.ecore#//ExperimentStatistics/recordSize"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CWDataBase.ecore#//ExperimentStatistics/samplesR"/>
-      <genOperations ecoreOperation="CWDataBase.ecore#//ExperimentStatistics/reset"/>
-    </genClasses>
-    <genClasses ecoreClass="CWDataBase.ecore#//NodeRecordDescr">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CWDataBase.ecore#//NodeRecordDescr/record"/>
+    <genClasses ecoreClass="CWDataBase.ecore#//RecordStatistics">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CWDataBase.ecore#//RecordStatistics/nodesA"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CWDataBase.ecore#//RecordStatistics/samplesN"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CWDataBase.ecore#//RecordStatistics/handlersN"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CWDataBase.ecore#//RecordStatistics/handlersPulledS"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CWDataBase.ecore#//RecordStatistics/handlersR"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CWDataBase.ecore#//RecordStatistics/timeA"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CWDataBase.ecore#//RecordStatistics/timeN"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CWDataBase.ecore#//RecordStatistics/timeS"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CWDataBase.ecore#//RecordStatistics/samplesPerSecond"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CWDataBase.ecore#//RecordStatistics/recordSize"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CWDataBase.ecore#//RecordStatistics/samplesR"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CWDataBase.ecore#//RecordStatistics/bytesRequestS"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CWDataBase.ecore#//RecordStatistics/timeRequestS"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CWDataBase.ecore#//RecordStatistics/cpuLoadS"/>
+      <genOperations ecoreOperation="CWDataBase.ecore#//RecordStatistics/reset"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

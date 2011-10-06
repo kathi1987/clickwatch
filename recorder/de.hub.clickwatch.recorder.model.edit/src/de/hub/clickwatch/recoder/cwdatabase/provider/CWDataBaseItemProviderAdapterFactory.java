@@ -24,7 +24,7 @@ import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
-import de.hub.clickwatch.recoder.cwdatabase.util.CWDataBaseAdapterFactory;
+import de.hub.clickwatch.recorder.database.cwdatabase.util.CWDataBaseAdapterFactory;
 
 /**
  * This is the factory that is used to provide the interfaces needed to support Viewers.

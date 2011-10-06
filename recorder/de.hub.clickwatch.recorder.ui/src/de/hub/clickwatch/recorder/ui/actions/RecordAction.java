@@ -23,19 +23,14 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
-import com.google.inject.Inject;
-
-import de.hub.clickwatch.recoder.cwdatabase.Record;
-import de.hub.clickwatch.recorder.INetworkRecorderStatusProvider;
+import de.hub.clickwatch.recorder.INetworkRecorderStatusListener;
 import de.hub.clickwatch.recorder.NetworkRecorder;
-import de.hub.clickwatch.ui.modelactions.AbstractAction;
+import de.hub.clickwatch.recorder.database.cwdatabase.Record;
 
-public class RecordAction extends AbstractAction<Record> {
-	
-	@Inject private NetworkRecorder networkRecorder;
-	
+public class RecordAction extends AbstractRecordAction {
+		
 	public class InputDialog extends Dialog {
-	
+		
 		private Text durationText = null;
 		private long value;
 		private final long defaultValue;
@@ -131,6 +126,8 @@ public class RecordAction extends AbstractAction<Record> {
 	
 	@Override
 	public void run(IAction action) {
+		final NetworkRecorder networkRecorder = createInjector().getInstance(NetworkRecorder.class);
+		
 		final Record record = selectedObjects.get(0);
 		InputDialog dialog = new InputDialog(shell, record.getDuration());
 		dialog.open();
@@ -145,19 +142,18 @@ public class RecordAction extends AbstractAction<Record> {
 				@Override
 				public void run(final IProgressMonitor monitor) throws InvocationTargetException,
 						InterruptedException {
-					networkRecorder.record(record, duration, new INetworkRecorderStatusProvider() {
-						@Override
-						public void setExpectedNumberOfReports(
-								long expectedReports) {
-							monitor.beginTask("recording ...", (int)expectedReports);
-						}
-
+					int tasks = (int)duration / 1000;
+					monitor.beginTask("initialize recording", tasks + 3);
+					monitor.worked(1);
+					networkRecorder.addStatusListener(new INetworkRecorderStatusListener() {
 						@Override
 						public void report(String message) {
 							monitor.setTaskName(message);
 							monitor.worked(1);
 						}						
 					});
+					networkRecorder.record(record, duration);
+					monitor.done();
 				}
 			});
 		} catch (Exception e) {

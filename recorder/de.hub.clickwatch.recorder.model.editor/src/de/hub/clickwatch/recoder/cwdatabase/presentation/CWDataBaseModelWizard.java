@@ -60,9 +60,9 @@ import org.eclipse.ui.dialogs.WizardNewFileCreationPage;
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.ISetSelectionTarget;
 
-import de.hub.clickwatch.recoder.cwdatabase.CWDataBaseFactory;
-import de.hub.clickwatch.recoder.cwdatabase.CWDataBasePackage;
 import de.hub.clickwatch.recoder.cwdatabase.provider.CWDataBaseEditPlugin;
+import de.hub.clickwatch.recorder.database.cwdatabase.CWDataBaseFactory;
+import de.hub.clickwatch.recorder.database.cwdatabase.CWDataBasePackage;
 
 
 /**

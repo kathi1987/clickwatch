@@ -43,6 +43,12 @@ public class GuiceAwareExecutableExtensionFactory implements IExecutableExtensio
 			return result;
 		}
 		catch (Exception e) {
+			try {
+				Thread.currentThread().getContextClassLoader().loadClass(clazzName);
+			} catch (ClassNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			throw new CoreException(new Status(IStatus.ERROR, getBundle().getSymbolicName(), e.getMessage(),e));
 		}
 	}

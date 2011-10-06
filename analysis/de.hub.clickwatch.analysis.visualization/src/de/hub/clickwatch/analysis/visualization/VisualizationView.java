@@ -13,28 +13,44 @@ import org.eclipse.swt.widgets.Composite;
 
 import de.hub.clickwatch.util.Throwables;
 
-public class VisualizationView extends AbstractDataView {
+public class VisualizationView extends AbstractDataView implements IVisualizationInputChangeListener {
 	
 	private static final String visualizationExtensionId = "de.hub.clickwatch.analysis.Visualization";
 	private static List<IVisualization> providersCache = null;
 	
-	public static final String ID = "edu.hu.clickwatch.analysis.composition.VisualizationView";
-	
+	public static final String ID = "edu.hu.clickwatch.analysis.composition.VisualizationView";	
 	private Frame frame = null;
+	private IVisualizationInput currentInput = null;
 	
-	protected void setInput(Object input) {
+	protected void setInput(final IVisualizationInput input) {
+		if (input == null) {
+			return;
+		}
+		if (currentInput != null) {
+			currentInput.removeInputChangeListener(this);
+		}
+		
+		currentInput = input;
+		currentInput.addInputChangeListener(this);
 		for (IVisualization visualization: getVisualizations()) {
-			if (visualization.isEnabledForInput(input)) {
+			if (visualization.isEnabledForInput(input.getInputData())) {
 				frame.removeAll();
 				frame.setVisible(false);
 				
-				frame.add(visualization.createVisualization(input));
+				frame.add(visualization.createVisualization(input.getInputData()));
 				frame.setVisible(true);
 				return;
 			}
 		}
 	}
-
+	
+	public void inputDataHasChanged() {
+		for (IVisualization visualization: getVisualizations()) {
+			if (visualization.isEnabledForInput(currentInput.getInputData())) {
+				visualization.updateVisualization(currentInput.getInputData());
+			}
+		}
+	}
 
 	public void createPartControl(Composite parent) {
 		super.createPartControl(parent);
