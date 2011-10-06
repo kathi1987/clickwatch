@@ -57,10 +57,14 @@ public class MainParametersTab extends AbstractLaunchConfigurationTab {
 	public static final String ATTR_DATABASE_TYPE = "attr_database_type";
 	public static final String ATTR_RECORD_URI = "attr_record_uri";
 	public static final String ATTR_HANDLER_PER_RECORD = "attr_handler_per_record";
+	public static final String ATTR_REMOTE_UPDATE_INTERVAL = "attr_remote_update_interval";
+	public static final String ATTR_LOCAL_UPDATE_INTERVAL = "attr_local_update_interval";
 
 	private Text transformationFile;
 	private Text handlerPerRecord;
 	private Text recordURI;
+	private Text remoteInterval;
+	private Text localInterval;
 
 	private Combo valueType;
 	private Combo debugLevel;
@@ -91,12 +95,44 @@ public class MainParametersTab extends AbstractLaunchConfigurationTab {
 		createVerticalSpacer(comp, 1);
 		createHandlerPerRecordGroup(comp);
 		createVerticalSpacer(comp, 1);
-		createRecordURIGroup(comp);
+		createRecordURIGroup(comp);		
+		createVerticalSpacer(comp, 1);
+		createLocalUpdateIntervalGroup(comp);		
+		createVerticalSpacer(comp, 1);
+		createRemoteUpdateIntervalGroup(comp);
 
 		setControl(comp);
 
 		// schedule an update job so every change is noticed
 		scheduleUpdateJob();
+	}
+
+	/**
+	 * a verify listener for text fields, that only allows numbers to be entered
+	 * 
+	 * @author Lars George
+	 * 
+	 */
+	private class NumberVerifyListener implements VerifyListener {
+		@Override
+		public void verifyText(VerifyEvent e) {
+			switch (e.keyCode) {
+			case SWT.BS: // Backspace
+			case SWT.DEL: // Delete
+			case SWT.HOME: // Home
+			case SWT.END: // End
+			case SWT.ARROW_LEFT: // Left arrow
+			case SWT.ARROW_RIGHT: // Right arrow
+				return;
+			}
+
+			// only numbers are allowed
+			try {
+				Integer.parseInt(e.text);
+			} catch (NumberFormatException nfe) {
+				e.doit = false;
+			}
+		}
 	}
 
 	/**
@@ -112,30 +148,57 @@ public class MainParametersTab extends AbstractLaunchConfigurationTab {
 		Group group = SWTFactory.createGroup(parent, "Handler per record", 1,
 				1, GridData.FILL_HORIZONTAL);
 		handlerPerRecord = SWTFactory.createSingleText(group, 1);
-		handlerPerRecord.addVerifyListener(new VerifyListener() {
-
-			@Override
-			public void verifyText(VerifyEvent e) {
-				switch (e.keyCode) {
-				case SWT.BS: // Backspace
-				case SWT.DEL: // Delete
-				case SWT.HOME: // Home
-				case SWT.END: // End
-				case SWT.ARROW_LEFT: // Left arrow
-				case SWT.ARROW_RIGHT: // Right arrow
-					return;
-				}
-
-				// only numbers are allowed
-				try {
-					Integer.parseInt(e.text);
-				} catch (NumberFormatException nfe) {
-					e.doit = false;
-				}
-			}
-		});
+		handlerPerRecord.addVerifyListener(new NumberVerifyListener());
 
 		handlerPerRecord.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				setDirty(true);
+				updateLaunchConfigurationDialog();
+			}
+		});
+	}
+
+	/**
+	 * creates the visual components for the local update interval group
+	 * 
+	 * @param parent
+	 *            the component within this group should be created
+	 */
+	private void createLocalUpdateIntervalGroup(Composite parent) {
+
+		final Shell shell = parent.getShell();
+
+		Group group = SWTFactory.createGroup(parent, "Local update interval",
+				1, 1, GridData.FILL_HORIZONTAL);
+		localInterval = SWTFactory.createSingleText(group, 1);
+		localInterval.addVerifyListener(new NumberVerifyListener());
+
+		localInterval.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				setDirty(true);
+				updateLaunchConfigurationDialog();
+			}
+		});
+	}
+
+	/**
+	 * creates the visual components for the local update interval group
+	 * 
+	 * @param parent
+	 *            the component within this group should be created
+	 */
+	private void createRemoteUpdateIntervalGroup(Composite parent) {
+
+		final Shell shell = parent.getShell();
+
+		Group group = SWTFactory.createGroup(parent, "Remote update interval",
+				1, 1, GridData.FILL_HORIZONTAL);
+		remoteInterval = SWTFactory.createSingleText(group, 1);
+		remoteInterval.addVerifyListener(new NumberVerifyListener());
+
+		remoteInterval.addModifyListener(new ModifyListener() {
 			@Override
 			public void modifyText(ModifyEvent e) {
 				setDirty(true);
@@ -402,6 +465,12 @@ public class MainParametersTab extends AbstractLaunchConfigurationTab {
 				"2000");
 
 		configuration.setAttribute(MainParametersTab.ATTR_RECORD_URI, "");
+
+		configuration.setAttribute(
+				MainParametersTab.ATTR_LOCAL_UPDATE_INTERVAL, "2000");
+
+		configuration.setAttribute(
+				MainParametersTab.ATTR_REMOTE_UPDATE_INTERVAL, "500");
 	}
 
 	/*
@@ -425,6 +494,14 @@ public class MainParametersTab extends AbstractLaunchConfigurationTab {
 			// handler per record
 			handlerPerRecord.setText(configuration.getAttribute(
 					MainParametersTab.ATTR_HANDLER_PER_RECORD, ""));
+
+			// locla update interval
+			localInterval.setText(configuration.getAttribute(
+					MainParametersTab.ATTR_LOCAL_UPDATE_INTERVAL, ""));
+
+			// remote update interval
+			remoteInterval.setText(configuration.getAttribute(
+					MainParametersTab.ATTR_REMOTE_UPDATE_INTERVAL, ""));
 
 			// value type
 			int i = 0;
@@ -484,6 +561,8 @@ public class MainParametersTab extends AbstractLaunchConfigurationTab {
 			debugLevel.select(1);
 			databaseType.select(0);
 			handlerPerRecord.setText("2000");
+			localInterval.setText("2000");
+			remoteInterval.setText("500");
 		}
 
 	}
@@ -527,6 +606,14 @@ public class MainParametersTab extends AbstractLaunchConfigurationTab {
 
 		configuration.setAttribute(MainParametersTab.ATTR_RECORD_URI,
 				recordURI.getText());
+
+		configuration.setAttribute(
+				MainParametersTab.ATTR_LOCAL_UPDATE_INTERVAL,
+				localInterval.getText());
+
+		configuration.setAttribute(
+				MainParametersTab.ATTR_REMOTE_UPDATE_INTERVAL,
+				remoteInterval.getText());
 	}
 
 	/*

@@ -12,5 +12,7 @@ public enum ELaunchConfigurationParameters {
 	RecordURI,
 	DataBaseURI,
 	RecordId,
-	TransformationArguments
+	TransformationArguments,
+	LocalUpdateInterval,
+	RemoteUpdateInterval
 }

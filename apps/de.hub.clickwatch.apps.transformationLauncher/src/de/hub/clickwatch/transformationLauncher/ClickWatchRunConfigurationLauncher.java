@@ -3,8 +3,11 @@ package de.hub.clickwatch.transformationLauncher;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.ui.statushandlers.StatusManager;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
@@ -45,7 +48,7 @@ public class ClickWatchRunConfigurationLauncher {
 	private final RecordProvider expProv;
 	private final ResultsProvider resultProv;
 	private final ArgumentsProvider argProv;
-	private final ProgressMonitorProvider progressProv;
+	private final ProgressMonitorProvider monitorProv;
 
 	private Map<Class<?>, IClickWatchContextAdapter> adapters = new HashMap<Class<?>, IClickWatchContextAdapter>();
 
@@ -76,7 +79,7 @@ public class ClickWatchRunConfigurationLauncher {
 			launcher.doLaunch();
 		}
 	}
-	
+
 	/**
 	 * 
 	 * @param configuration
@@ -84,6 +87,7 @@ public class ClickWatchRunConfigurationLauncher {
 	 */
 	private boolean initalizeProgressMonitorProvider(
 			HashMap<ELaunchConfigurationParameters, Object> configuration) {
+		monitorProv.initialize(null, null);
 		return true;
 	}
 
@@ -154,6 +158,18 @@ public class ClickWatchRunConfigurationLauncher {
 			handlerPerRec = (Integer) configuration
 					.get(ELaunchConfigurationParameters.HandlerPerRecord);
 
+		Integer localUpdateInterval = 2000;
+		if (configuration
+				.get(ELaunchConfigurationParameters.LocalUpdateInterval) != null)
+			localUpdateInterval = (Integer) configuration
+					.get(ELaunchConfigurationParameters.LocalUpdateInterval);
+
+		Integer remoteUpdateInterval = 2000;
+		if (configuration
+				.get(ELaunchConfigurationParameters.RemoteUpdateInterval) != null)
+			remoteUpdateInterval = (Integer) configuration
+					.get(ELaunchConfigurationParameters.RemoteUpdateInterval);
+
 		URI recUri = null;
 		if (configuration.get(ELaunchConfigurationParameters.RecordURI) != null
 				&& configuration.get(ELaunchConfigurationParameters.RecordURI) != "")
@@ -162,7 +178,7 @@ public class ClickWatchRunConfigurationLauncher {
 
 		// call the init method
 		injProv.initialize(hBehav, valType, debugLev, dbType, handlerPerRec,
-				recUri);
+				recUri, localUpdateInterval, remoteUpdateInterval);
 
 		return true;
 	}
@@ -219,7 +235,15 @@ public class ClickWatchRunConfigurationLauncher {
 		IClickWatchContext ctx = createContext();
 		IClickWatchMain main = ctx.getAdapter(IInjectorProvider.class)
 				.getInjector().getInstance(mainClass);
-		main.main(ctx);
+		try {
+			main.main(ctx);
+		} catch (Exception e) {
+			Status s = new Status(IStatus.ERROR, "not_used",
+					"The following error occcured while executing the transformation: "
+							+ e.toString(), null);
+			StatusManager.getManager().handle(s, StatusManager.SHOW);
+		}
+
 	}
 
 	/**
@@ -254,12 +278,13 @@ public class ClickWatchRunConfigurationLauncher {
 				.getInstance(ResultsUIResultsProvider.class);
 		adapters.put(IResultsProvider.class, resultProv);
 
+		monitorProv = (ProgressMonitorProvider) adapterInjector
+				.getInstance(IProgressMonitorProvider.class);
+		adapters.put(IProgressMonitorProvider.class, monitorProv);
+
 		argProv = (ArgumentsProvider) adapterInjector
 				.getInstance(IArgumentsProvider.class);
 		adapters.put(IArgumentsProvider.class, argProv);
-		
-		progressProv = (ProgressMonitorProvider)adapterInjector.getInstance(IProgressMonitorProvider.class);
-		adapters.put(IProgressMonitorProvider.class, progressProv);
 	
 	}
 

@@ -61,6 +61,10 @@ public class TransformationLaunchConfigurationDelegate implements
 				MainParametersTab.ATTR_HANDLER_PER_RECORD, "");
 		String recordURI = configuration.getAttribute(
 				MainParametersTab.ATTR_RECORD_URI, "");
+		String localUpdateInterval = configuration.getAttribute(
+				MainParametersTab.ATTR_LOCAL_UPDATE_INTERVAL, "");
+		String remoteUpdateInterval = configuration.getAttribute(
+				MainParametersTab.ATTR_REMOTE_UPDATE_INTERVAL, "");
 
 		String sourceModelFile = configuration.getAttribute(
 				ClickwatchParametersTab.ATTR_SOURCE_MODEL_FILE, "");
@@ -140,6 +144,14 @@ public class TransformationLaunchConfigurationDelegate implements
 				config.put(ELaunchConfigurationParameters.HandlerPerRecord,
 						Integer.parseInt(handlerPerRecord));
 
+				// local update interval
+				config.put(ELaunchConfigurationParameters.LocalUpdateInterval,
+						Integer.parseInt(localUpdateInterval));
+				
+				// remote update interval
+				config.put(ELaunchConfigurationParameters.RemoteUpdateInterval,
+						Integer.parseInt(remoteUpdateInterval));
+
 				// database type
 				config.put(ELaunchConfigurationParameters.DataBaseType,
 						DataBaseType.valueOf(databaseType));
@@ -165,9 +177,11 @@ public class TransformationLaunchConfigurationDelegate implements
 
 				// *************
 				// Arguments tab
-				if(transformationArguments != null)
-					config.put(ELaunchConfigurationParameters.TransformationArguments, transformationArguments.split(" "));
-				
+				if (transformationArguments != null)
+					config.put(
+							ELaunchConfigurationParameters.TransformationArguments,
+							transformationArguments.split(" "));
+
 				// *************
 				// Record tab
 
@@ -197,8 +211,6 @@ public class TransformationLaunchConfigurationDelegate implements
 				} else
 					config.put(ELaunchConfigurationParameters.ClickWatchObject,
 							null);
-				
-				
 
 				ClickWatchRunConfigurationLauncher.launch(config, mainClass);
 			} catch (Exception e) {

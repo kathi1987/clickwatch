@@ -103,12 +103,12 @@ public class FlowValidator implements Validator {
 	public void startValidation() {
 		int flowNum = 1;
 		for (String flow : validatingFlows.keySet()) {
-			System.out.print((flowNum++) + ". flow (of " + validatingFlows.size() + "):\t" + flow + " -->");
-			
+			System.out.print((flowNum++) + ".flow (of " + validatingFlows.size() + "):\t" + flow + " -->");
+			/*
 			for (String participant : allParticipatingAPs) {
 				Server.getInstance().handleSetter(participant, 7777, "lt", "fix_linktable", "false");
 			}
-			
+			*/
 			try {
 				String[] data = validatingFlows.get(flow);
 				int routeCheckCounter = 0;
@@ -130,7 +130,7 @@ public class FlowValidator implements Validator {
 				//1. reset all participant's flowstats and fix their linktables
 				System.out.print("\tresetting, ");
 				for (String participant : allParticipatingAPs) {
-					Server.getInstance().handleSetter(participant, 7777, "lt", "fix_linktable", "true");
+					//Server.getInstance().handleSetter(participant, 7777, "lt", "fix_linktable", "true");
 					Server.getInstance().handleSetter(participant, 7777, "routing/dsr_stats", "reset", "");
 				}
 				Thread.sleep(500);
@@ -196,15 +196,29 @@ public class FlowValidator implements Validator {
 								break;
 							}
 						}
+						
+						if (!validationDiff.containsKey(flow)) {
+							System.out.print("[no flow], ");
+							String stats = "real," + data[0] + "," + data[1] + ",NOT_FOUND";
+							stats += "\ngod," + data[0] + "," + data[1] + "," +
+									GlobalRoutingtable.getShortestLength(data[0], data[1]) + "," +
+									GlobalRoutingtable.getShortestHopCount(data[0], data[1]) + "," +
+									GlobalRoutingtable.getShortestPath(data[0], data[1]);
+							validationDiff.put(flow, stats);
+						}
+						
 					}
 					Thread.sleep(250);
 				}
 				
 				//5. reactivate linktable of all participants
 				System.out.print("finishing flow run ... ");
+				/*
 				for (String participant : allParticipatingAPs) {
 					Server.getInstance().handleSetter(participant, 7777, "lt", "fix_linktable", "false");
 				}
+				*/
+				Thread.sleep(2000);
 				System.out.println("done");
 			} catch (InterruptedException int_exc) {
 				//nothing to do
