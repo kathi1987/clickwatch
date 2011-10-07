@@ -67,7 +67,7 @@ public class LogFileVsHbaseExperiment implements IClickWatchMain {
 	private Result measureHBase(IClickWatchContext ctx) {
 		Record record = ctx.getAdapter(IRecordProvider.class).getRecord();
 		numberOfDataPoints = Integer.parseInt(ctx.getAdapter(IArgumentsProvider.class).getArguments()[1]);
-		Result result = ctx.getAdapter(IResultsProvider.class).createNewResult("hbaseresults");
+		Result result = ctx.getAdapter(IResultsProvider.class).getResults().createNewResult("hbaseresults");
 	
 		long durations[] = getDurations(record);
 		long hbaseSizes[] = getHBaseSizes(record, durations);
@@ -92,7 +92,7 @@ public class LogFileVsHbaseExperiment implements IClickWatchMain {
 		File sourceLogFile = new File(ctx.getAdapter(IArgumentsProvider.class).getArguments()[0]);
 		String grepCommand = ctx.getAdapter(IArgumentsProvider.class).getArguments()[2];
 		numberOfDataPoints = Integer.parseInt(ctx.getAdapter(IArgumentsProvider.class).getArguments()[1]);
-		Result result = ctx.getAdapter(IResultsProvider.class).createNewResult("logresults");
+		Result result = ctx.getAdapter(IResultsProvider.class).getResults().createNewResult("logresults");
 		
 		long durations[] = getDurations(record);
   		

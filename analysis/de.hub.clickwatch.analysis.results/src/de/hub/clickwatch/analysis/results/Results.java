@@ -60,4 +60,44 @@ public interface Results extends Chart {
 	 */
 	EList<Results> getGroups();
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	Result createNewResult(String name);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	Results createNewGroup(String name);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	Result getResult(String name);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	Results getGroup(String name);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void exportCSV(String fileName);
+
 } // Results

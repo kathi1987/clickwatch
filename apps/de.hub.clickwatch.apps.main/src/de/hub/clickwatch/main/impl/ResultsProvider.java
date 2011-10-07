@@ -2,7 +2,6 @@ package de.hub.clickwatch.main.impl;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.cli.CommandLine;
@@ -11,7 +10,6 @@ import org.apache.commons.cli.ParseException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.emf.ecore.EObject;
 
-import de.hub.clickwatch.analysis.results.Result;
 import de.hub.clickwatch.analysis.results.Results;
 import de.hub.clickwatch.analysis.results.ResultsFactory;
 import de.hub.clickwatch.main.IClickWatchContextAdapter;
@@ -56,30 +54,14 @@ public class ResultsProvider implements IClickWatchContextAdapter, IResultsProvi
 	}
 
 	@Override
-	public Result createNewResult(String name) {
-		Result result = ResultsFactory.eINSTANCE.createResult();
-		result.setName(name);
-		result.setTimestamp(new Date());
-		results.getResults().add(result);
-		return result;
-	}
-
-	@Override
-	public Result getResult(String name) {
-		for (Result result: results.getResults()) {
-			if (result.getName().equals(name)) {
-				return result;
-			}
-		}
-		return createNewResult(name);
+	public Results getResults() {
+		return results;
 	}
 
 	@Override
 	public void saveResults() {
 		if (outputFileName != null) {
-			for (Result result: results.getResults()) {
-				result.exportCSV(outputFileName);
-			}
+			results.exportCSV(outputFileName);
 		}
 	}
 

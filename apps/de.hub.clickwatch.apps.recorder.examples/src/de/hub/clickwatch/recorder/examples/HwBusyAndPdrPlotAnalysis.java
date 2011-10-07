@@ -42,7 +42,7 @@ public class HwBusyAndPdrPlotAnalysis implements IClickWatchMain {
 	public void main(IClickWatchContext ctx) {
 		logger.log(ILogger.INFO, "Start analysis on record " , null);
 		this.record = ctx.getAdapter(IRecordProvider.class).getRecord();
-		final Result result = ctx.getAdapter(IResultsProvider.class).createNewResult("HwBusyPlotAnalysis");
+		final Result result = ctx.getAdapter(IResultsProvider.class).getResults().createNewResult("HwBusyPlotAnalysis");
 
 		IProgressMonitor monitor = ctx.getAdapter(IProgressMonitorProvider.class).getProgressMonitor();
 		EList<Node> nodes = record.getConfiguration().getNodes();

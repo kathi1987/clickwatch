@@ -32,7 +32,7 @@ public class HwBusyPlotAnalysis implements IClickWatchMain {
 	public void main(IClickWatchContext ctx) {
 		Record record = ctx.getAdapter(IRecordProvider.class).getRecord();
 		Node[] nodes = ctx.getAdapter(IRecordProvider.class).getSelectedNodes();
-		Result result = ctx.getAdapter(IResultsProvider.class).createNewResult("HwBusyPlotAnalysis");
+		Result result = ctx.getAdapter(IResultsProvider.class).getResults().createNewResult("HwBusyPlotAnalysis");
 		IProgressMonitor monitor = ctx.getAdapter(IProgressMonitorProvider.class).getProgressMonitor();
 		
 		monitor.beginTask("Performing analysis on all nodes", nodes.length*100);

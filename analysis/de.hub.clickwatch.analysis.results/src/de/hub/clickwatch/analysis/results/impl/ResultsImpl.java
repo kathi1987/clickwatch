@@ -6,18 +6,23 @@
  */
 package de.hub.clickwatch.analysis.results.impl;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintStream;
 import java.util.Collection;
+import java.util.Date;
 
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import de.hub.clickwatch.analysis.results.DataEntry;
 import de.hub.clickwatch.analysis.results.Result;
 import de.hub.clickwatch.analysis.results.Results;
+import de.hub.clickwatch.analysis.results.ResultsFactory;
 import de.hub.clickwatch.analysis.results.ResultsPackage;
 
 /**
@@ -96,6 +101,87 @@ public class ResultsImpl extends ChartImpl implements Results {
 			groups = new EObjectContainmentEList<Results>(Results.class, this, ResultsPackage.RESULTS__GROUPS);
 		}
 		return groups;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public Result createNewResult(String name) {
+		Result result = ResultsFactory.eINSTANCE.createResult();
+		result.setName(name);
+		result.setTimestamp(new Date());
+		getResults().add(result);
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public Results createNewGroup(String name) {
+		Results results = ResultsFactory.eINSTANCE.createResults();
+		results.setName(name);
+		getGroups().add(results);
+		return results;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public Result getResult(String name) {
+		for (Result result: getResults()) {
+			if (result.getName().equals(name)) {
+				return result;
+			}
+		}
+		return createNewResult(name);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public Results getGroup(String name) {
+		for (Results group: getGroups()) {
+			if (group.getName().equals(name)) {
+				return group;
+			}
+		}
+		return createNewGroup(name);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public void exportCSV(String fileName) {
+		PrintStream out = null;
+		try {
+			out = new PrintStream(new File(fileName));
+		} catch (FileNotFoundException e) {
+			throw new RuntimeException(e);
+		}
+		for (Result result: getResults()) {
+			if (result.getDataSet() != null) {
+				for (DataEntry entry: result.getDataSet().getEntries()) {
+					out.print(result.getName());
+					out.print(" ");
+					for (Object value: entry.getValues()) {
+						out.print(value);
+						out.print(" ");
+					}
+					out.print("\n");
+				}
+			}
+		}
+		out.close();
 	}
 
 	/**

@@ -103,6 +103,6 @@ public interface Result extends NamedElement {
 	 * @model
 	 * @generated
 	 */
-	void exportCSV(String fileName);
+	void exportCSV(String name);
 
 } // Result

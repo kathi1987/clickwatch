@@ -35,7 +35,7 @@ public class RuntimeHwBusyAnalysis extends AbstractRuntimeAnalysis {
 	@Override
 	protected Result[] createResults() {
 		return new Result[] {
-				getContext().getAdapter(IResultsProvider.class).createNewResult("HwBusyPlotAnalysis")		
+				getContext().getAdapter(IResultsProvider.class).getResults().getResult("HwBusyPlotAnalysis")		
 		};
 	}
 

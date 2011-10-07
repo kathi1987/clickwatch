@@ -20,9 +20,12 @@ import de.hub.clickwatch.connection.adapter.StringValueAdapter;
 import de.hub.clickwatch.main.IResultsProvider;
 import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.model.Node;
+import de.hub.clickwatch.recorder.examples.lib.RemoveOffset;
 import de.hub.clickwatch.specificmodels.brn.BrnValueAdapter;
 import de.hub.clickwatch.specificmodels.brn.seismo_latestchannelinfos.Channel_info;
 import de.hub.clickwatch.specificmodels.brn.seismo_latestchannelinfos.Latestchannelinfos;
+import de.hub.clickwatch.specificmodels.brn.seismo_small.Small;
+import de.hub.clickwatch.specificmodels.brn.seismo_small.V;
 
 public class RuntimeSeismoAnalysis extends AbstractRuntimeAnalysis {
 	
@@ -41,17 +44,23 @@ public class RuntimeSeismoAnalysis extends AbstractRuntimeAnalysis {
 		fftResult.getDataSet().getEntries().clear();
 		FFTSet ffts = new FFTSet(100);
 		
-		Mean mean1 = new Mean();
-		Mean mean2 = new Mean();
-		Mean mean3 = new Mean();
+		RemoveOffset ro0 = new RemoveOffset(500);
+		RemoveOffset ro1 = new RemoveOffset(500);
+		RemoveOffset ro2 = new RemoveOffset(500);	
  		
 		for (Handler unspecificHandler: data) {
-			Latestchannelinfos handler = (Latestchannelinfos)unspecificHandler;
-			for (Channel_info channel_info: handler.getChannel_infos().getChannel_info()) {
-				int value0 = channel_info.getChannel_0() - mean1.filter(channel_info.getChannel_0());
-				int value1 = channel_info.getChannel_1() - mean2.filter(channel_info.getChannel_1());
-				int value2 = channel_info.getChannel_2() - mean3.filter(channel_info.getChannel_2());
-				long time = channel_info.getTime();
+			Small handler = (Small)unspecificHandler;
+			for (V info: handler.getC().getV()) {
+				
+				double value0 = info.getC0();
+				double value1 = info.getC1();
+				double value2 = info.getC2();
+				
+				double rov0 = ro0.filter(info.getC0());
+				double rov1 = ro1.filter(info.getC1());
+				double rov2 = ro2.filter(info.getC2());
+				
+				long time = info.getT();
 				if (this.time == 0) {
 					this.time = time;
 				}
@@ -62,9 +71,9 @@ public class RuntimeSeismoAnalysis extends AbstractRuntimeAnalysis {
 				ampResult.getDataSet().add(1, dtime, value1);
 				ampResult.getDataSet().add(2, dtime, value2);
 				
-				ffts.add(0, value0);
-				ffts.add(1, value1);
-				ffts.add(2, value2);				
+				ffts.add(0, rov0);
+				ffts.add(1, rov1);
+				ffts.add(2, rov2);				
 			}
 			ffts.getResults(fftResult);
 		}		
@@ -74,8 +83,8 @@ public class RuntimeSeismoAnalysis extends AbstractRuntimeAnalysis {
 	protected Result[] createResults() {
 		this.time = 0;
 		return new Result[] {
-				getContext().getAdapter(IResultsProvider.class).createNewResult("SeismoAmpl"),
-				getContext().getAdapter(IResultsProvider.class).createNewResult("SeismoFFT")
+				getContext().getAdapter(IResultsProvider.class).getResults().getResult("SeismoAmpl"),
+				getContext().getAdapter(IResultsProvider.class).getResults().getResult("SeismoFFT")
 		};
 	}
 
@@ -95,7 +104,7 @@ public class RuntimeSeismoAnalysis extends AbstractRuntimeAnalysis {
 
 	@Override
 	protected Handler getData(Node node, Handler handler) {
-		if (handler.getQualifiedName().equals("seismo/latestchannelinfos")) {
+		if (handler.getQualifiedName().equals("seismo/small")) {
 			return brnValueAdapter.create(handler, stringValueAdapter);
 		} else {
 			return null;

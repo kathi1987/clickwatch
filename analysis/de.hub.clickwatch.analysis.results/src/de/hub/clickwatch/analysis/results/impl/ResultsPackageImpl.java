@@ -675,7 +675,7 @@ public class ResultsPackageImpl extends EPackageImpl implements ResultsPackage {
 		initEReference(getResult_DataSet(), this.getDataSet(), null, "dataSet", null, 0, 1, Result.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		op = addEOperation(resultEClass, null, "exportCSV", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "fileName", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "name", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(xyEClass, de.hub.clickwatch.analysis.results.XY.class, "XY", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -686,6 +686,21 @@ public class ResultsPackageImpl extends EPackageImpl implements ResultsPackage {
 		initEClass(resultsEClass, Results.class, "Results", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getResults_Results(), this.getResult(), null, "results", null, 0, -1, Results.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getResults_Groups(), this.getResults(), null, "groups", null, 0, -1, Results.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		op = addEOperation(resultsEClass, this.getResult(), "createNewResult", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "name", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(resultsEClass, this.getResults(), "createNewGroup", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "name", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(resultsEClass, this.getResult(), "getResult", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "name", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(resultsEClass, this.getResults(), "getGroup", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "name", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(resultsEClass, null, "exportCSV", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "fileName", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(equalsConstraintEClass, EqualsConstraint.class, "EqualsConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getEqualsConstraint_Constraint(), ecorePackage.getEJavaObject(), "constraint", null, 0, 1, EqualsConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

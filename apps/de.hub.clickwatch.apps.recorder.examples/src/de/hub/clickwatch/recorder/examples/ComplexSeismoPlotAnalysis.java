@@ -165,7 +165,7 @@ public class ComplexSeismoPlotAnalysis implements IClickWatchMain {
 	public void main(IClickWatchContext ctx) {
 		final Record record = ctx.getAdapter(IRecordProvider.class).getRecord();
 		Node[] nodes = ctx.getAdapter(IRecordProvider.class).getSelectedNodes();
-		final Result result = ctx.getAdapter(IResultsProvider.class).createNewResult("SeismoPlotAnalysis");
+		final Result result = ctx.getAdapter(IResultsProvider.class).getResults().createNewResult("SeismoPlotAnalysis");
 		final IProgressMonitor monitor = ctx.getAdapter(IProgressMonitorProvider.class).getProgressMonitor();
 		
 		PrintStream out = null;
@@ -227,7 +227,7 @@ public class ComplexSeismoPlotAnalysis implements IClickWatchMain {
 		waitForAllRunnersFinished(nodes.length);
 		
 		result.getCharts().add(ChartUtil.createXYChart("Plot over time", "channel", "time", "acc"));		
-		result.exportCSV("seismo_out.csv");
+		//result.exportCSV("seismo_out.csv");
 		
 		ctx.getAdapter(IResultsProvider.class).saveResults();
 		monitor.done();

@@ -7,6 +7,9 @@ Bundle-Activator: de.hub.clickwatch.analysis.functions.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  de.hub.clickwatch.core;bundle-version="2.0.0",
- de.hub.clickwatch.specificmodels.brn;bundle-version="2.1.0"
+ de.hub.clickwatch.specificmodels.brn;bundle-version="2.1.0",
+ de.hub.clickwatch.recorder;bundle-version="2.0.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: de.hub.clickwatch.analysis.functions,
+ de.hub.clickwatch.analysis.functions2

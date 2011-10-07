@@ -45,6 +45,28 @@
              menubarPath="clickwatch/analysis">
        </action>
     </objectContribution>
+    <objectContribution
+          adaptable="false"
+          id="de.hub.clickwatch.analysis.results.ui.ResultContribution"
+          objectClass="de.hub.clickwatch.analysis.results.Result">
+       <action
+             class="de.hub.clickwatch.analysis.results.ui.ExportCSVAction"
+             id="de.hub.clickwatch.analysis.results.ui.ResultExport"
+             label="export ..."
+             menubarPath="clickwatch/basic">
+       </action>
+    </objectContribution>
+    <objectContribution
+          adaptable="false"
+          id="de.hub.clickwatch.analysis.results.ui.ResultsContribution"
+          objectClass="de.hub.clickwatch.analysis.results.Results">
+       <action
+             class="de.hub.clickwatch.analysis.results.ui.ExportCSVAction"
+             id="de.hub.clickwatch.analysis.results.ui.ResultsExport"
+             label="export ..."
+             menubarPath="clickwatch/basic">
+       </action>
+    </objectContribution>
  </extension>
  <extension
        point="org.eclipse.ui.commands">

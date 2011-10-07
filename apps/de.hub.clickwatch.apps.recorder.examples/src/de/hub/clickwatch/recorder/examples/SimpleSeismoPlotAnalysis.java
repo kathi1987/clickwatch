@@ -8,8 +8,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import javax.swing.text.StyleContext.SmallAttributeSet;
-
 import org.apache.commons.math.complex.Complex;
 import org.apache.commons.math.transform.FastFourierTransformer;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -19,6 +17,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import com.google.inject.Inject;
 
 import de.hub.clickwatch.analysis.results.Result;
+import de.hub.clickwatch.analysis.results.Results;
 import de.hub.clickwatch.analysis.results.util.ChartUtil;
 import de.hub.clickwatch.main.ClickWatchExternalLauncher;
 import de.hub.clickwatch.main.IClickWatchContext;
@@ -30,11 +29,7 @@ import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.model.Node;
 import de.hub.clickwatch.recorder.database.DataBaseUtil;
 import de.hub.clickwatch.recorder.database.cwdatabase.Record;
-import de.hub.clickwatch.recorder.examples.lib.MovingAvg;
 import de.hub.clickwatch.recorder.examples.lib.RemoveOffset;
-import de.hub.clickwatch.specificmodels.brn.seismo_latestchannelinfos.Channel_info;
-import de.hub.clickwatch.specificmodels.brn.seismo_latestchannelinfos.Latestchannelinfos;
-import de.hub.clickwatch.specificmodels.brn.seismo_small.C;
 import de.hub.clickwatch.specificmodels.brn.seismo_small.Small;
 import de.hub.clickwatch.specificmodels.brn.seismo_small.V;
 
@@ -97,21 +92,30 @@ public class SimpleSeismoPlotAnalysis implements IClickWatchMain {
 		}
 	}
 	
-	private double nodeId(Node node) {
+	private String nodeId(Node node) {
 		String ip = node.getINetAddress();
-		return new Double(ip.substring(ip.lastIndexOf(".")+1));
+		return ip.substring(ip.lastIndexOf(".")+1);
 	}
 	
 	@Override
 	public void main(IClickWatchContext ctx) {
 		Record record = ctx.getAdapter(IRecordProvider.class).getRecord();
 		Node[] nodes = ctx.getAdapter(IRecordProvider.class).getSelectedNodes();
-		Result result = ctx.getAdapter(IResultsProvider.class).getResult("SeismoPlotAnalysis");
 		IProgressMonitor monitor = ctx.getAdapter(IProgressMonitorProvider.class).getProgressMonitor();
+		Results plaintResults = ctx.getAdapter(IResultsProvider.class).getResults().createNewGroup("PlainSeismoPlot");
+		Results cleanResults = ctx.getAdapter(IResultsProvider.class).getResults().createNewGroup("CleanSeismoPlot");
 		
 		monitor.beginTask("Performing analysis on all nodes", nodes.length*100);
 		FFTSet ffts = new FFTSet(100);
 		for (Node node: nodes) {
+			Result plainResult = plaintResults.getResult(nodeId(node));
+			plainResult.getCharts().add(ChartUtil.createXYChart("Plot over time", "channel", "time", "acc"));
+			plainResult.getDataSet().getEntries().clear();
+			
+			Result cleanResult = cleanResults.getResult(nodeId(node));
+			cleanResult.getCharts().add(ChartUtil.createXYChart("Plot over time", "channel", "time", "acc"));
+			cleanResult.getDataSet().getEntries().clear();
+			
 			long time = 0;
 			long duration = (long)((record.getEnd() - record.getStart())/ 1e6);
 			RemoveOffset ro0 = new RemoveOffset(500);
@@ -119,44 +123,46 @@ public class SimpleSeismoPlotAnalysis implements IClickWatchMain {
 			RemoveOffset ro2 = new RemoveOffset(500);	
 			
 			Iterator<Handler> iterator = dbUtil.getHandlerIterator(
-					createHandle(record, node.getINetAddress(), "seismo/latestchannelinfos"),
+					createHandle(record, node.getINetAddress(), "seismo/small"),
 					new SubProgressMonitor(monitor, 100));
-			double nodeId = nodeId(node);
 			while(iterator.hasNext()) {
-				Latestchannelinfos handler = (Latestchannelinfos)iterator.next();
-				for (Channel_info info: handler.getChannel_infos().getChannel_info()) {
+				Small handler = (Small)iterator.next();
+				for (V info: handler.getC().getV()) {
 					time += 10;
 					if (time < 5000) {
 						continue;
 					}
 					
-					double value0 = ro0.filter(info.getChannel_0());
-					double value1 = ro1.filter(info.getChannel_1());
-					double value2 = ro2.filter(info.getChannel_2());
+					double value0 = info.getC0();
+					double value1 = info.getC1();
+					double value2 = info.getC2();
 					
-					double abs = Math.sqrt(value0*value0+value1*value1+value2*value2);
-										
-					result.getDataSet().add(0, time, value0);
-					result.getDataSet().add(1, time, value1);
-					result.getDataSet().add(2, time, value2);
+					double rov0 = ro0.filter(info.getC0());
+					double rov1 = ro1.filter(info.getC1());
+					double rov2 = ro2.filter(info.getC2());
+			
+					plainResult.getDataSet().add(0, time, value0);
+					plainResult.getDataSet().add(1, time, value1);
+					plainResult.getDataSet().add(2, time, value2);
 					
-					result.getDataSet().add(4, time, abs);
+					plainResult.getDataSet().add(4, time, Math.sqrt(Math.pow(value0, 2)+Math.pow(value1, 2)+Math.pow(value2, 2)));
 					
-					ffts.add(0, value0);
-					ffts.add(1, value1);
-					ffts.add(2, value2);
+					cleanResult.getDataSet().add(0, time, rov0);
+					cleanResult.getDataSet().add(1, time, rov1);
+					cleanResult.getDataSet().add(2, time, rov2);
+					
+//					ffts.add(0, value0);
+//					ffts.add(1, value1);
+//					ffts.add(2, value2);
 				}
 				
 				EcoreUtil.delete(handler);
 			}
 		}
 		
-		result.getCharts().add(ChartUtil.createXYChart("Plot over time", "channel", "time", "acc"));		
-		result.exportCSV("seismo_out.csv");
-		
-		Result fftResult = ctx.getAdapter(IResultsProvider.class).getResult("FFT");
-		ffts.getResults(fftResult);	
-		fftResult.getCharts().add(ChartUtil.createXYChart("fft", "Channel", "Hz", "Y"));
+//		Result fftResult = ctx.getAdapter(IResultsProvider.class).getResult("FFT");
+//		ffts.getResults(fftResult);	
+//		fftResult.getCharts().add(ChartUtil.createXYChart("fft", "Channel", "Hz", "Y"));
 		
 		
 		ctx.getAdapter(IResultsProvider.class).saveResults();

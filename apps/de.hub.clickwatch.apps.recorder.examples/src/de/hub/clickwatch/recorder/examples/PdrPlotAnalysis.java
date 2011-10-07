@@ -34,7 +34,7 @@ public class PdrPlotAnalysis implements IClickWatchMain {
 	public void main(IClickWatchContext ctx) {
 		Record record = ctx.getAdapter(IRecordProvider.class).getRecord();
 		Node[] nodes = ctx.getAdapter(IRecordProvider.class).getSelectedNodes();
-		Result result = ctx.getAdapter(IResultsProvider.class).createNewResult("PDR Analysis");
+		Result result = ctx.getAdapter(IResultsProvider.class).getResults().createNewResult("PDR Analysis");
 		IProgressMonitor monitor = ctx.getAdapter(IProgressMonitorProvider.class).getProgressMonitor();
 		
 		monitor.beginTask("Performing analysis on all nodes", nodes.length*100);
