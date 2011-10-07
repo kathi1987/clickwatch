@@ -7,7 +7,7 @@ public class RemoveOffset {
 		mavg = new MovingAvg(windowSize);
 	}
 	
-	public int filter(int value) {
+	public double filter(double value) {
 		return value - mavg.filter(value);
 	}
 }

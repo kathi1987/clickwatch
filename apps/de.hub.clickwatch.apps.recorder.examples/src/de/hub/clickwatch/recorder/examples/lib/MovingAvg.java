@@ -1,23 +1,23 @@
 package de.hub.clickwatch.recorder.examples.lib;
 
-public class MovingAvg extends Window<Integer> {
+public class MovingAvg extends Window<Double> {
 	double sum = 0;
 	
 	public MovingAvg(int size) {
 		super(size);
 	}
 	
-	public Integer add(Integer value) {
+	public Double add(Double value) {
 		sum += value;
-		Integer polled = super.add(value);
+		Double polled = super.add(value);
 		if (polled != null) {
 			sum -= polled;
 		}
 		return polled;
 	}
 	
-	public int filter(int value) {
+	public double filter(double value) {
 		add(value);
-		return (int)sum/getCurrentSize();
+		return (double)sum/getCurrentSize();
 	}
 }
