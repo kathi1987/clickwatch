@@ -18,10 +18,12 @@ import de.hub.clickwatch.connection.adapter.INodeAdapter;
 import de.hub.clickwatch.connection.adapter.IValueAdapter;
 import de.hub.clickwatch.connection.adapter.SocketStatisticsAdapter;
 import de.hub.clickwatch.model.Node;
+import de.hub.clickwatch.util.ILogger;
 import de.hub.clickwatch.util.Throwables;
 
 public class NodeConnection implements INodeConnection {
-
+	
+	@Inject private ILogger logger;
 	@Inject private Provider<IClickSocket> clickSocketProvider;
 	private IClickSocket clickSocket = null;
 	
@@ -61,6 +63,7 @@ public class NodeConnection implements INodeConnection {
 			clickSocket.connect(host, new Integer(port), timeout);
 			isConnected = true;
 		} catch (IOException e) {
+			logger.log(ILogger.ERROR, "could not connect to " + host + " on port " + port, e);
 			Throwables.propagate(e);
 		}
 		

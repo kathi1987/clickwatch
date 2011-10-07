@@ -293,7 +293,7 @@ public class InjectorProvider implements IClickWatchContextAdapter,
 							if (exception != null) {
 								out.println(": "
 										+ exception.getMessage());
-								exception.printStackTrace();
+								exception.printStackTrace(out);
 							}
 							out.println("");
 							out.flush();
@@ -424,7 +424,9 @@ public class InjectorProvider implements IClickWatchContextAdapter,
 			}
 
 		};
-		return Guice.createInjector(clickWatchModule, cwRecorderModule);
+		Injector result = Guice.createInjector(clickWatchModule, cwRecorderModule);
+		Throwables.logger = result.getInstance(ILogger.class);
+		return result;
 	}
 
 	@Override
