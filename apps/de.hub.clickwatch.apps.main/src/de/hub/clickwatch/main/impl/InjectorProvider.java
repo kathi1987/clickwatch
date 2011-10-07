@@ -1,5 +1,8 @@
 package de.hub.clickwatch.main.impl;
 
+import java.io.FileNotFoundException;
+import java.io.PrintStream;
+import java.io.File;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -36,6 +39,7 @@ import de.hub.clickwatch.recorder.database.hbase.HBaseDataBaseAdapter;
 import de.hub.clickwatch.recorder.database.logfile.LogFileDataBaseAdapter;
 import de.hub.clickwatch.specificmodels.brn.BrnValueAdapter;
 import de.hub.clickwatch.util.ILogger;
+import de.hub.clickwatch.util.Throwables;
 
 public class InjectorProvider implements IClickWatchContextAdapter,
 		IInjectorProvider {
@@ -57,6 +61,7 @@ public class InjectorProvider implements IClickWatchContextAdapter,
 	private long localUpdateInterval;
 	private ValueType valueType;
 	private int debugLevel; // 1,2,3,4
+	private String logFile = null;
 
 	private DataBaseType dataBaseType;
 	private int handlerPerRecord;
@@ -69,6 +74,7 @@ public class InjectorProvider implements IClickWatchContextAdapter,
 	public List<Option> getCommandLineOptions() {
 		List<Option> options = new ArrayList<Option>();
 		options.add(new Option("d", "debug", false, "recorder logs extensive"));
+		options.add(new Option("lf", "log-file", true, "name of a logfile"));
 
 		options.add(new Option("c", "compound-handler", false,
 				"use the compound handler of nodes instead of reading each handler seperated"));
@@ -130,6 +136,9 @@ public class InjectorProvider implements IClickWatchContextAdapter,
 			}
 
 			debugLevel = commandLine.hasOption("d") ? 4 : 2;
+			if (commandLine.hasOption("log-file")) {
+				logFile = commandLine.getOptionValue("log-file");
+			}
 
 			boolean useXml = commandLine.hasOption("x");
 			boolean useSpecificValues = commandLine.hasOption("s");
@@ -248,6 +257,8 @@ public class InjectorProvider implements IClickWatchContextAdapter,
 		}
 		return injector;
 	}
+	
+	private static PrintStream out = System.out;
 
 	private Injector createInjector() {
 		ClickWatchModule clickWatchModule = new ClickWatchModule() {
@@ -257,27 +268,35 @@ public class InjectorProvider implements IClickWatchContextAdapter,
 					@Override
 					public synchronized void log(int status, String message,
 							Throwable exception) {
+						if (logFile != null && out == System.out) {
+							try {
+								out = new PrintStream(new File(logFile));
+							} catch (FileNotFoundException e) {
+								Throwables.propagate(e);
+							}
+						}
 						if ((debugLevel) >= status) {
-							System.out.print(DateFormat.getDateTimeInstance()
+							out.print(DateFormat.getDateTimeInstance()
 									.format(new Date()) + " ");
 
 							if (status == ILogger.DEBUG) {
-								System.out.print("[DEBUG] ");
+								out.print("[DEBUG] ");
 							} else if (status == ILogger.INFO) {
-								System.out.print("[INFO] ");
+								out.print("[INFO] ");
 							} else if (status == ILogger.WARNING) {
-								System.out.print("[WARNING] ");
+								out.print("[WARNING] ");
 							} else if (status == ILogger.ERROR) {
-								System.out.print("[ERROR] ");
+								out.print("[ERROR] ");
 							}
 
-							System.out.print(message);
+							out.print(message);
 							if (exception != null) {
-								System.out.println(": "
+								out.println(": "
 										+ exception.getMessage());
 								exception.printStackTrace();
 							}
-							System.out.println("");
+							out.println("");
+							out.flush();
 						}
 					}
 				};
