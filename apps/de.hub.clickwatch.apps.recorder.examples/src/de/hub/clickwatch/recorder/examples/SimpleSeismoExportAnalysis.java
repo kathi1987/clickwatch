@@ -32,6 +32,9 @@ public class SimpleSeismoExportAnalysis implements IClickWatchMain {
 	@Inject private DataBaseUtil dbUtil;
 	int finishedRunner = 0;
 	
+	private long start = 0; //(long)(13*3600*1e9);
+	private long end = 0; // (long)(14*3600*1e9);
+	
 	private static class Avg {
 		Queue<Integer> values = new ConcurrentLinkedQueue<Integer>();
 		final int size;
@@ -84,7 +87,10 @@ public class SimpleSeismoExportAnalysis implements IClickWatchMain {
 					Avg mean1 = new Avg(1000);
 					Avg mean2 = new Avg(1000);
 					Avg mean3 = new Avg(1000);
-								
+					
+					long start = record.getStart() + (SimpleSeismoExportAnalysis.this.start > 0 ? SimpleSeismoExportAnalysis.this.start : 0);
+					long end = record.getStart() + (SimpleSeismoExportAnalysis.this.end > 0 ? SimpleSeismoExportAnalysis.this.end : record.getEnd() - record.getStart());
+					
 					Iterator<Handler> iterator = dbUtil.getHandlerIterator(
 							createHandle(record, node.getINetAddress(), "seismo/small"),
 							new SubProgressMonitor(monitor, 100));

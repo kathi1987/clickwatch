@@ -149,7 +149,7 @@ public class ResultsImpl extends ChartImpl implements Results {
 	 */
 	public Results getGroup(String name) {
 		for (Results group: getGroups()) {
-			if (group.getName().equals(name)) {
+			if (name.equals(group.getName())) {
 				return group;
 			}
 		}

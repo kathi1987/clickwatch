@@ -150,7 +150,5 @@ public abstract class AbstractRuntimeAnalysis implements IClickWatchMain, INetwo
 				data.add(dataItem);
 			}								
 		}
-	}
-	
-			
+	}		
 }

@@ -1,21 +1,10 @@
 package de.hub.clickwatch.recorder.examples;
 
-import static de.hub.clickwatch.recorder.database.DataBaseUtil.createHandle;
-
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.PrintStream;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Queue;
-import java.util.concurrent.ConcurrentLinkedQueue;
 
 import org.apache.commons.math.complex.Complex;
 import org.apache.commons.math.transform.FastFourierTransformer;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.SubProgressMonitor;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import com.google.inject.Inject;
 
@@ -27,45 +16,18 @@ import de.hub.clickwatch.main.IClickWatchMain;
 import de.hub.clickwatch.main.IProgressMonitorProvider;
 import de.hub.clickwatch.main.IRecordProvider;
 import de.hub.clickwatch.main.IResultsProvider;
-import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.model.Node;
 import de.hub.clickwatch.recorder.database.DataBaseUtil;
 import de.hub.clickwatch.recorder.database.cwdatabase.Record;
+import de.hub.clickwatch.recorder.examples.lib.AvgBinning;
 import de.hub.clickwatch.recorder.examples.lib.MovingAvg;
-import de.hub.clickwatch.recorder.examples.lib.Window;
-import de.hub.clickwatch.specificmodels.brn.seismo_small.Small;
-import de.hub.clickwatch.specificmodels.brn.seismo_small.V;
+import de.hub.clickwatch.recorder.examples.lib.MovingFFT;
+import de.hub.clickwatch.recorder.examples.lib.RemoveOffset;
 
 public class TestAnalysis implements IClickWatchMain {
 
 	@Inject private DataBaseUtil dbUtil;
 	int finishedRunner = 0;
-	
-	private static abstract class MovingFFT<Result> extends Window<Double> {
-		private final double sampleRate;
-		public MovingFFT(int size, double sampleRate) {
-			super(Integer.highestOneBit(size)*2);
-			this.sampleRate = sampleRate;
-		}
-		public Result add(double value) {
-			super.add(value);		
-			
-			double[] valuesArray = new double[size] ;
-			int i = 0;
-			for (Double v: values) {
-				valuesArray[i++] = v;
-			}
-						
-			Complex[] complexFFTResult = new FastFourierTransformer().transform(valuesArray);
-			for (i = 0; i < complexFFTResult.length; i++) {
-//				double x = ((double)i)*sampleRate/(double)valuesArray.length; 
-				addResult(complexFFTResult[i].abs()/size, complexFFTResult.length);
-			}
-			return getResult();
-		}
-		protected abstract void addResult(double value, int resultSize);
-		protected abstract Result getResult();
-	}
 	
 	private double[] fft(double[] values, double sampleRate) {
 		int size = Integer.highestOneBit(values.length)*2;
@@ -77,66 +39,19 @@ public class TestAnalysis implements IClickWatchMain {
 		double[] result = new double[complexFFTResult.length];
 		for (int i = 0; i < complexFFTResult.length; i++) {
 			double x = ((double)i)*sampleRate/(double)ivalues.length;
-			result[i] = complexFFTResult[i].abs();
-//			addResult(complexFFTResult[i].abs()/size, complexFFTResult.length);
+			result[i] = complexFFTResult[i].abs() / values.length;
 		}
 		return result;
 	}
 	
-	private static abstract class Binning<T> {
-		protected final int size;
-		protected final List<T> bins = new ArrayList<T>();
-		private int currentSize = 0;
-		public Binning(int size) {
-			super();
-			this.size = size;
-		}
-		public void add(T value) {
-			addToBin(value);
-			currentSize++;
-			if (currentSize >= size) {
-				bins.add(closeBin());
-			}
-		}
-		public List<T> getBins() {
-			return bins;
-		}
-		protected abstract void addToBin(T value);
-		protected abstract T closeBin();
-	}
-	
-	private static class AvgBinning extends Binning<Double> {
-		private double sum = 0;
-
-		public AvgBinning(int size) {
-			super(size);
-		}
-		
-		public AvgBinning(int numberOfBins, int expectedNumberOfValue) {
-			this(expectedNumberOfValue / numberOfBins);
-		}
-
-		@Override
-		protected void addToBin(Double value) {
-			sum += value;
-		}
-
-		@Override
-		protected Double closeBin() {
-			double result = sum / size;
-			sum = 0;
-			return result;
-		}	
-	}
-	
 	private static class BinnedMovingFFTsOverTime {
 		protected final int numberOfBins;
-		private MovingFFT<AvgBinning> fft = null;	
-		private MovingAvg movingAvg = null;
+		private MovingFFT<AvgBinning> movingFFTReturnsBins = null;	
+		private RemoveOffset cleanAvg = null;
 		public BinnedMovingFFTsOverTime(int numberOfBins, int sampleRate, int movingFFTSize, int movingAvgSize) {
 			super();
 			this.numberOfBins = numberOfBins;
-			this.fft = new MovingFFT<AvgBinning>(movingFFTSize, sampleRate) {
+			this.movingFFTReturnsBins = new MovingFFT<AvgBinning>(movingFFTSize, sampleRate) {
 				AvgBinning binning = null;
 				@Override
 				protected void addResult(double value, int resultSize) {
@@ -153,17 +68,17 @@ public class TestAnalysis implements IClickWatchMain {
 					return result;
 				}
 			};
-			this.movingAvg = new MovingAvg(movingAvgSize);
+			this.cleanAvg = new RemoveOffset(movingAvgSize);
 		}
 		
-		public void add(long time, int value) {
-			AvgBinning binning = fft.add(movingAvg.filter(value));
+		public void add(double time, double value) {
+			AvgBinning binning = movingFFTReturnsBins.add(cleanAvg.filter(value));
 			int i = 0;
-			for(double bin: binning.bins) {
+			for(double bin: binning.getBins()) {
 				add(i++, time, bin);
 			}
 		}
-		protected void add(int bin, long time, double value) {
+		protected void add(int bin, double time, double value) {
 			// empty
 		}
 	}
@@ -183,11 +98,13 @@ public class TestAnalysis implements IClickWatchMain {
 		final Record record = ctx.getAdapter(IRecordProvider.class).getRecord();
 		Node[] nodes = ctx.getAdapter(IRecordProvider.class).getSelectedNodes();
 		final Result result = ctx.getAdapter(IResultsProvider.class).getResults().getResult("TestResult");
+		final Result bmfftResult = ctx.getAdapter(IResultsProvider.class).getResults().getResult("TestBmfft");
 		result.getDataSet().getEntries().clear();
+		bmfftResult.getDataSet().getEntries().clear();
 		final IProgressMonitor monitor = ctx.getAdapter(IProgressMonitorProvider.class).getProgressMonitor();
 		
 		double sampleRate = 2000;
-		double duration = 1;
+		double duration = 10;
 		int numberOfValues = (int)(duration * sampleRate);
 		
 		double a1 = 10;
@@ -197,6 +114,15 @@ public class TestAnalysis implements IClickWatchMain {
 		
 		
 		monitor.beginTask("Performing analysis", numberOfValues);
+		
+		BinnedMovingFFTsOverTime bmfft = new BinnedMovingFFTsOverTime(5, (int)sampleRate, 500, 10) {
+
+			@Override
+			protected void add(int bin, double time, double value) {
+				bmfftResult.getDataSet().add(bin, time, value);
+			}
+		};
+		
 		MovingAvg mavg = new MovingAvg((int)(sampleRate/10));
 		
 		double[] fftInput = new double[numberOfValues];
@@ -210,15 +136,18 @@ public class TestAnalysis implements IClickWatchMain {
 			double t = i / sampleRate;
 			result.getDataSet().add(0, t, y);
 			result.getDataSet().add(1, t, mavg.filter(y));
+			bmfft.add(t,y);
 			monitor.worked(1);
 		}
 		
 		final Result fftResultResult = ctx.getAdapter(IResultsProvider.class).getResults().getResult("TestFFTResult");
 		fftResultResult.getDataSet().getEntries().clear();
 		
-		AvgBinning avgBinning = new AvgBinning(5, (int)sampleRate);
+		
 		double fftResult[] = fft(fftInput, sampleRate);
-		for(int i = 0; i < fftResult.length; i++) {
+		AvgBinning avgBinning = new AvgBinning(5, (fftResult.length / 2)+1);
+		int i;
+		for(i = 0; i < fftResult.length; i++) {
 			double x = ((double)i)*sampleRate/(double)fftResult.length;
 			avgBinning.add(fftResult[i]);
 			if (x > sampleRate/2) {
@@ -228,11 +157,8 @@ public class TestAnalysis implements IClickWatchMain {
 		}
 		fftResultResult.getCharts().add(ChartUtil.createXYChart("FFT", "s", "x", "y"));
 		
-		for(double b: avgBinning.getBins()) {
-			System.out.println("#" + b);
-		}
-		
 		result.getCharts().add(ChartUtil.createXYChart("Plot", "s", "x", "y"));
+		bmfftResult.getCharts().add(ChartUtil.createXYChart("Plot", "bin", "t", "ampl"));
 		monitor.done();
 		
 //		monitor.beginTask("Performing analysis on all nodes", nodes.length*100);
