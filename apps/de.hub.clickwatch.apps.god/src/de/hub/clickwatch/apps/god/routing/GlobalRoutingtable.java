@@ -7,6 +7,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.StringTokenizer;
 
+import de.hub.clickwatch.apps.god.SzenarioHWL;
+
 public class GlobalRoutingtable implements Serializable {
 	private static final long serialVersionUID = -6046518405036658052L;
 	private static Set<String> nodes = new HashSet<String>();
@@ -41,13 +43,29 @@ public class GlobalRoutingtable implements Serializable {
 	}
 	
 	public static Integer getShortestHopCount(String from, String to) {
-		if (routingtable.containsKey(from)) {
-			String route = routingtable.get(from).getBestRoutePath(to);
-			StringTokenizer tok = new StringTokenizer(route, ",");
+		String route = getShortestPath(from, to);
+		if (route != null) {
+			StringTokenizer tok = new StringTokenizer(route, ""+SzenarioHWL.LINKTABLE_SEPARATOR);
 			return tok.countTokens();
 		}
 		
 		return null;
+	}
+	
+	public static void setAutoDijkstra(boolean autoDijk) {
+		synchronized (routingtable) {
+			for (String s : routingtable.keySet()) {
+				routingtable.get(s).setAutoDikstra(autoDijk);
+			}		
+		}
+	}
+	
+	public static void runManualDijkstra() {
+		synchronized (routingtable) {
+			for (String s : routingtable.keySet()) {
+				routingtable.get(s).runDijkstra(true);
+			}
+		}
 	}
 	
 	public static void removeUsedLink(String from, String to) {
@@ -89,7 +107,7 @@ public class GlobalRoutingtable implements Serializable {
 			}
 			
 			for (String s : routingtable.keySet()) {
-				routingtable.get(s).runDijkstra();
+				routingtable.get(s).runDijkstra(true);
 			}
 		}
 	}

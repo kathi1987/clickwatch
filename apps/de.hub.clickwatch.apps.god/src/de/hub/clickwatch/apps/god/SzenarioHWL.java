@@ -25,9 +25,9 @@ public class SzenarioHWL implements Szenario {
 	private static final int COMPUTE_POSITION_TIMER = 3000;
 	private static final int WAIT_AFTER_COMPUTE_POSITION_ERROR = 10000;
 	public static final char LINKTABLE_SEPARATOR = ';';
-	public static final float LINK_UPDATE_MIN_THRESHOLD = 0.15f;
+	public static float LINK_UPDATE_MIN_THRESHOLD = 0.15f;
 	public static final int LINK_ADD_MIN_THRESHOLD = 5000;
-	public static final int LINK_USE_IN_DIJKSTRA_MAX_VALUE = 900;
+	public static final int LINK_USE_IN_DIJKSTRA_MAX_VALUE = 150;
 	public static final int MODEL_SIZE_FACTOR = 8;
 	
 	
@@ -42,21 +42,21 @@ public class SzenarioHWL implements Szenario {
 		{"192.168.3.111", "7777", "sk111"},
 		{"192.168.3.112", "7777", "sk112"}
 		*/
-	
+		
 		{"192.168.3.110", "7777", "sk110"},
 		{"192.168.3.111", "7777", "sk111"},
 		{"192.168.3.112", "7777", "sk112"},
-		{"192.168.3.23", "7777", "wgt23"},
+		//{"192.168.3.23", "7777", "wgt23"},
 		{"192.168.3.24", "7777", "wgt24"},
 		{"192.168.3.25", "7777", "wgt25"},
 		{"192.168.3.28", "7777", "wgt28"},
-		{"192.168.3.29", "7777", "wgt29"},
+		//{"192.168.3.29", "7777", "wgt29"},
 		{"192.168.3.31", "7777", "wgt31"},
 		{"192.168.3.32", "7777", "wgt32"},
 		{"192.168.3.33", "7777", "wgt33"},
 		{"192.168.3.34", "7777", "wgt34"},
 		{"192.168.3.35", "7777", "wgt35"},
-		{"192.168.3.37", "7777", "wgt37"},
+		//{"192.168.3.37", "7777", "wgt37"},
 		{"192.168.3.38", "7777", "wgt38"},
 		{"192.168.3.39", "7777", "wgt39"},
 		{"192.168.3.40", "7777", "wgt40"},
@@ -64,7 +64,7 @@ public class SzenarioHWL implements Szenario {
 		{"192.168.3.43", "7777", "wgt43"},
 		{"192.168.3.44", "7777", "wgt44"},
 		{"192.168.3.45", "7777", "wgt45"},
-		{"192.168.3.46", "7777", "wgt46"},
+		//{"192.168.3.46", "7777", "wgt46"},
 		{"192.168.3.47", "7777", "wgt47"},
 		{"192.168.3.49", "7777", "wgt49"},
 		{"192.168.3.51", "7777", "wgt51"},
@@ -80,11 +80,10 @@ public class SzenarioHWL implements Szenario {
 		{"192.168.3.74", "7777", "wgt74"},
 		{"192.168.3.77", "7777", "wgt77"},
 		{"192.168.3.78", "7777", "wgt78"},
-		{"192.168.3.80", "7777", "wgt80"},
+		//{"192.168.3.80", "7777", "wgt80"},
 		{"192.168.3.82", "7777", "wgt82"},
-		{"192.168.3.201", "7777", "wgt201"},
-		{"192.168.3.162", "7777", "seismo162"},
-		{"192.168.3.151", "7777", "seismo151"}
+		//{"192.168.3.201", "7777", "wgt201"},
+		{"192.168.3.118", "7777", "pc118"},
 	};
 	
 	private static final String[] POWER = new String[] {"device_wifi/data_power", "systempower"};

@@ -13,10 +13,15 @@ public class DijkstraContainer {
 	private String startNode = null;
 	private Map<String, String> bestRoute = new HashMap<String, String>();
 	private Map<String, Integer> bestRouteLength = new HashMap<String, Integer>();
+	private boolean autoDikstra = true;
 	
 	@SuppressWarnings("unused")
 	private DijkstraContainer() {
 		//nothing, just set the default constructor private, so that it cannot be used
+	}
+	
+	public void setAutoDikstra(boolean val) {
+		autoDikstra = val;
 	}
 	
 	public Set<String> getPossibleRoutes() {
@@ -56,7 +61,7 @@ public class DijkstraContainer {
 		}
 		
 		if (linkIsInBestRoute) {
-			runDijkstra();
+			runDijkstra(false);
 		}
 	}
 	
@@ -84,7 +89,7 @@ public class DijkstraContainer {
 			}
 		}
 		*/
-		runDijkstra();
+		runDijkstra(false);
 	}
 	
 	public void degradeLink(String from, String to) {
@@ -99,60 +104,62 @@ public class DijkstraContainer {
 		}
 		
 		if (linkIsInBestRoute) {
-			runDijkstra();
+			runDijkstra(false);
 		}
 	}
 	
-	public void runDijkstra() {
-		bestRoute = new HashMap<String, String>();
-		bestRoute.put(startNode, startNode);
-		bestRouteLength = new HashMap<String, Integer>();
-		bestRouteLength.put(startNode, new Integer(0));
-		
-		Set<String> untakenNodes = GlobalRoutingtable.getNodes();
-		if (untakenNodes.size() == 0) {
-			return;
-		}
-		untakenNodes.remove(startNode);
-		
-		Set<String> currentNodes = new HashSet<String>();
-		currentNodes.add(startNode);
-		
-		while (currentNodes.size() > 0) {
-			//take the currentNode with smallest distance
-			int smallestValue = Integer.MAX_VALUE;
-			String takeNode = null;
-			for (String node : currentNodes) {
-				if ((bestRouteLength.containsKey(node) && (bestRouteLength.get(node).intValue() <= smallestValue))) {
-					takeNode = node;
-					smallestValue = bestRouteLength.get(node).intValue();
-				}
-			}
+	public void runDijkstra(boolean forceRun) {
+		if ((forceRun) || (autoDikstra)) {
+			bestRoute = new HashMap<String, String>();
+			bestRoute.put(startNode, startNode);
+			bestRouteLength = new HashMap<String, Integer>();
+			bestRouteLength.put(startNode, new Integer(0));
 			
-			if (takeNode != null) {
-				untakenNodes.remove(takeNode);
-				
-				Set<String> neighbors = GlobalLinktable.getNeighbors(takeNode);
-				for (String nei : neighbors) {
-					if (untakenNodes.contains(nei)) {
-						currentNodes.add(nei);
+			Set<String> untakenNodes = GlobalRoutingtable.getNodes();
+			if (untakenNodes.size() == 0) {
+				return;
+			}
+			untakenNodes.remove(startNode);
+			
+			Set<String> currentNodes = new HashSet<String>();
+			currentNodes.add(startNode);
+			
+			while (currentNodes.size() > 0) {
+				//take the currentNode with smallest distance
+				int smallestValue = Integer.MAX_VALUE;
+				String takeNode = null;
+				for (String node : currentNodes) {
+					if ((bestRouteLength.containsKey(node) && (bestRouteLength.get(node).intValue() <= smallestValue))) {
+						takeNode = node;
+						smallestValue = bestRouteLength.get(node).intValue();
 					}
 				}
-				currentNodes.remove(takeNode);
 				
-				for (String neigh : neighbors) {
-					LinktableLinkInformation inf = GlobalLinktable.getLinkInfos(takeNode, neigh);
+				if (takeNode != null) {
+					untakenNodes.remove(takeNode);
 					
-					if ((inf != null) && 
-						((!bestRouteLength.containsKey(neigh)) || 
-						(bestRouteLength.get(neigh).intValue() > bestRouteLength.get(takeNode).intValue() + inf.getMetric()))) {
-						
-						bestRouteLength.put(neigh, bestRouteLength.get(takeNode).intValue() + inf.getMetric());
-						bestRoute.put(neigh, bestRoute.get(takeNode) + SzenarioHWL.LINKTABLE_SEPARATOR + neigh);					
+					Set<String> neighbors = GlobalLinktable.getNeighbors(takeNode);
+					for (String nei : neighbors) {
+						if (untakenNodes.contains(nei)) {
+							currentNodes.add(nei);
+						}
 					}
+					currentNodes.remove(takeNode);
+					
+					for (String neigh : neighbors) {
+						LinktableLinkInformation inf = GlobalLinktable.getLinkInfos(takeNode, neigh);
+						
+						if ((inf != null) && 
+							((!bestRouteLength.containsKey(neigh)) || 
+							(bestRouteLength.get(neigh).intValue() > bestRouteLength.get(takeNode).intValue() + inf.getMetric()))) {
+							
+							bestRouteLength.put(neigh, bestRouteLength.get(takeNode).intValue() + inf.getMetric());
+							bestRoute.put(neigh, bestRoute.get(takeNode) + SzenarioHWL.LINKTABLE_SEPARATOR + neigh);					
+						}
+					}
+				} else {
+					break;
 				}
-			} else {
-				break;
 			}
 		}
 	}

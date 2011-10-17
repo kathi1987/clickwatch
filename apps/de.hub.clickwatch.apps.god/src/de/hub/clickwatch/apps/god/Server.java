@@ -79,7 +79,7 @@ public class Server implements IClickWatchMain {
 		try {
 			storageMgr = new StorageManager();
 			init_szenario();
-			Thread.sleep(2000);
+			Thread.sleep(12000);
 		} catch (UnknownHostException e) {
 			System.err.println("\nERROR: Given Host not known");
 			return;
@@ -89,9 +89,10 @@ public class Server implements IClickWatchMain {
 		System.out.println("done");
 		
 		if (startTheValidator) {
-			System.out.println("starting validation ... ");
+			System.out.print("init validation ... ");
 			Validator validator = new FlowValidator();
 			validator.init();
+			System.out.println("done\nstarting validation ... ");
 			validator.startValidation();
 			System.out.println("\nvalidation done");
 			System.exit(0);
@@ -167,12 +168,12 @@ public class Server implements IClickWatchMain {
 	
 	private NodeProcessor startAskingAp(String hostname, int port) throws UnknownHostException {
 		NodeInformations nodeInf = new NodeInformations(hostname, port);
-		nodeInf.addFilter(getSzenario().get_STATS_HANDLER()[0], getSzenario().get_STATS_HANDLER()[1], getSzenario().get_STATS_PROCESSOR());
+		//nodeInf.addFilter(getSzenario().get_STATS_HANDLER()[0], getSzenario().get_STATS_HANDLER()[1], getSzenario().get_STATS_PROCESSOR());
 		nodeInf.addFilter(getSzenario().get_GPS_HANDLER()[0], getSzenario().get_GPS_HANDLER()[1], getSzenario().get_GPS_PROCESSOR());
-		nodeInf.addFilter(getSzenario().get_GET_CHANNEL_HANDLER()[0], getSzenario().get_GET_CHANNEL_HANDLER()[1], getSzenario().get_CHANNEL_PROCESSOR());
-		nodeInf.addFilter(getSzenario().get_GET_POWER_HANDLER()[0], getSzenario().get_GET_POWER_HANDLER()[1], getSzenario().get_POWER_PROCESSOR());
-		nodeInf.addFilter(getSzenario().get_LINK_HANDLER()[0], getSzenario().get_LINK_HANDLER()[1], getSzenario().get_LINK_PROCESSOR());
-		nodeInf.addFilter(getSzenario().get_CHANNELSTAT_HANDLER()[0], getSzenario().get_CHANNELSTAT_HANDLER()[1], getSzenario().get_CHANNELSTAT_PROCESSOR());
+		//nodeInf.addFilter(getSzenario().get_GET_CHANNEL_HANDLER()[0], getSzenario().get_GET_CHANNEL_HANDLER()[1], getSzenario().get_CHANNEL_PROCESSOR());
+		//nodeInf.addFilter(getSzenario().get_GET_POWER_HANDLER()[0], getSzenario().get_GET_POWER_HANDLER()[1], getSzenario().get_POWER_PROCESSOR());
+		//nodeInf.addFilter(getSzenario().get_LINK_HANDLER()[0], getSzenario().get_LINK_HANDLER()[1], getSzenario().get_LINK_PROCESSOR());
+		//nodeInf.addFilter(getSzenario().get_CHANNELSTAT_HANDLER()[0], getSzenario().get_CHANNELSTAT_HANDLER()[1], getSzenario().get_CHANNELSTAT_PROCESSOR());
 		if (!szenario.get_USE_FILE_FOR_NODE_PROCESSOR()) {
 			nodeInf.addFilter(getSzenario().get_GET_LINKTABLE_HANDLER()[0], getSzenario().get_GET_LINKTABLE_HANDLER()[1], getSzenario().get_LINKTABLE_PROCESSOR());
 			nodeInf.addFilter(getSzenario().get_GET_ROUTINGTABLE_HANDLER()[0], getSzenario().get_GET_ROUTINGTABLE_HANDLER()[1], getSzenario().get_ROUTINGTABLE_PROCESSOR());
