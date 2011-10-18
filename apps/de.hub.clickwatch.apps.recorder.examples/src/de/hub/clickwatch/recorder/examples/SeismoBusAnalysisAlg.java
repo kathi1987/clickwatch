@@ -13,8 +13,8 @@ import de.hub.clickwatch.model.Node;
 import de.hub.clickwatch.recorder.examples.lib.AvgBinning;
 import de.hub.clickwatch.recorder.examples.lib.MovingFFT;
 import de.hub.clickwatch.recorder.examples.lib.RemoveOffset;
-import de.hub.clickwatch.specificmodels.brn.seismo_small.Small;
-import de.hub.clickwatch.specificmodels.brn.seismo_small.V;
+import de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.Localchannelinfo;
+import de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.V;
 
 public class SeismoBusAnalysisAlg implements IAnalysisAlgorithm {
 
@@ -70,7 +70,7 @@ public class SeismoBusAnalysisAlg implements IAnalysisAlgorithm {
 	@Override
 	public void initialize(IAnalysisContainer container) {
 //		setWindowInMS(13*3600*1000, 10*60*1000);
-		container.addObservedHandler("seismo/small");
+		container.addObservedHandler("seismo/localchannelinfo");
 	}
 
 	@Override
@@ -88,7 +88,7 @@ public class SeismoBusAnalysisAlg implements IAnalysisAlgorithm {
 			result.getCharts().get(0).getValueSpecs().get(0).setConstraint(constraint);
 		}		
 		
-		for (Small small: container.createIterator(node, "seismo/small", Small.class, monitor)) {
+		for (Localchannelinfo small: container.createIterator(node, "seismo/localchannelinfo", Localchannelinfo.class, monitor)) {
 			for (V value: small.getC().getV()) {
 
 				if (start == -1) {

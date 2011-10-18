@@ -7,6 +7,7 @@
 package de.hub.clickwatch.specificmodels.brn.gps_cart_coord.util;
 
 import org.eclipse.emf.common.util.URI;
+
 import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
 
 /**

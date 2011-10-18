@@ -7,6 +7,7 @@
 package de.hub.clickwatch.specificmodels.brn.routing_dsr_stats_stats;
 
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**

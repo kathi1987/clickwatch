@@ -4,48 +4,72 @@
  *
  * $Id$
  */
-package de.hub.clickwatch.specificmodels.brn.seismo_latestchannelinfos.impl;
+package de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.impl;
+
+import de.hub.clickwatch.model.ClickWatchModelPackage;
+
+import de.hub.clickwatch.specificmodels.brn.BrnPackage;
+
+import de.hub.clickwatch.specificmodels.brn.device_wifi_data_power_systempower.Device_wifi_data_power_systempowerPackage;
+
+import de.hub.clickwatch.specificmodels.brn.device_wifi_data_power_systempower.impl.Device_wifi_data_power_systempowerPackageImpl;
+
+import de.hub.clickwatch.specificmodels.brn.device_wifi_link_stat_bcast_stats.Device_wifi_link_stat_bcast_statsPackage;
+
+import de.hub.clickwatch.specificmodels.brn.device_wifi_link_stat_bcast_stats.impl.Device_wifi_link_stat_bcast_statsPackageImpl;
+
+import de.hub.clickwatch.specificmodels.brn.device_wifi_wifidevice_cst_stats.Device_wifi_wifidevice_cst_statsPackage;
+
+import de.hub.clickwatch.specificmodels.brn.device_wifi_wifidevice_cst_stats.impl.Device_wifi_wifidevice_cst_statsPackageImpl;
+
+import de.hub.clickwatch.specificmodels.brn.device_wifi_wifidevice_sc_systemchannel.Device_wifi_wifidevice_sc_systemchannelPackage;
+
+import de.hub.clickwatch.specificmodels.brn.device_wifi_wifidevice_sc_systemchannel.impl.Device_wifi_wifidevice_sc_systemchannelPackageImpl;
+
+import de.hub.clickwatch.specificmodels.brn.gps_cart_coord.Gps_cart_coordPackage;
+
+import de.hub.clickwatch.specificmodels.brn.gps_cart_coord.impl.Gps_cart_coordPackageImpl;
+
+import de.hub.clickwatch.specificmodels.brn.gps_gps_coord.Gps_gps_coordPackage;
+
+import de.hub.clickwatch.specificmodels.brn.gps_gps_coord.impl.Gps_gps_coordPackageImpl;
+
+import de.hub.clickwatch.specificmodels.brn.impl.BrnPackageImpl;
+
+import de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Lease_tab_leasesPackage;
+
+import de.hub.clickwatch.specificmodels.brn.lease_tab_leases.impl.Lease_tab_leasesPackageImpl;
+
+import de.hub.clickwatch.specificmodels.brn.lt_links.Lt_linksPackage;
+
+import de.hub.clickwatch.specificmodels.brn.lt_links.impl.Lt_linksPackageImpl;
+
+import de.hub.clickwatch.specificmodels.brn.lt_routes.Lt_routesPackage;
+
+import de.hub.clickwatch.specificmodels.brn.lt_routes.impl.Lt_routesPackageImpl;
+
+import de.hub.clickwatch.specificmodels.brn.routing_dsr_stats_stats.Routing_dsr_stats_statsPackage;
+
+import de.hub.clickwatch.specificmodels.brn.routing_dsr_stats_stats.impl.Routing_dsr_stats_statsPackageImpl;
+
+import de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.Localchannelinfo;
+import de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.Seismo_localchannelinfoFactory;
+import de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.Seismo_localchannelinfoPackage;
+
+import de.hub.clickwatch.specificmodels.brn.sf_stats.Sf_statsPackage;
+
+import de.hub.clickwatch.specificmodels.brn.sf_stats.impl.Sf_statsPackageImpl;
+
+import de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.Sys_info_systeminfoPackage;
+
+import de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.impl.Sys_info_systeminfoPackageImpl;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.impl.EPackageImpl;
 
-import de.hub.clickwatch.model.ClickWatchModelPackage;
-import de.hub.clickwatch.specificmodels.brn.BrnPackage;
-import de.hub.clickwatch.specificmodels.brn.device_wifi_data_power_systempower.Device_wifi_data_power_systempowerPackage;
-import de.hub.clickwatch.specificmodels.brn.device_wifi_data_power_systempower.impl.Device_wifi_data_power_systempowerPackageImpl;
-import de.hub.clickwatch.specificmodels.brn.device_wifi_link_stat_bcast_stats.Device_wifi_link_stat_bcast_statsPackage;
-import de.hub.clickwatch.specificmodels.brn.device_wifi_link_stat_bcast_stats.impl.Device_wifi_link_stat_bcast_statsPackageImpl;
-import de.hub.clickwatch.specificmodels.brn.device_wifi_wifidevice_cst_stats.Device_wifi_wifidevice_cst_statsPackage;
-import de.hub.clickwatch.specificmodels.brn.device_wifi_wifidevice_cst_stats.impl.Device_wifi_wifidevice_cst_statsPackageImpl;
-import de.hub.clickwatch.specificmodels.brn.device_wifi_wifidevice_sc_systemchannel.Device_wifi_wifidevice_sc_systemchannelPackage;
-import de.hub.clickwatch.specificmodels.brn.device_wifi_wifidevice_sc_systemchannel.impl.Device_wifi_wifidevice_sc_systemchannelPackageImpl;
-import de.hub.clickwatch.specificmodels.brn.gps_cart_coord.Gps_cart_coordPackage;
-import de.hub.clickwatch.specificmodels.brn.gps_cart_coord.impl.Gps_cart_coordPackageImpl;
-import de.hub.clickwatch.specificmodels.brn.gps_gps_coord.Gps_gps_coordPackage;
-import de.hub.clickwatch.specificmodels.brn.gps_gps_coord.impl.Gps_gps_coordPackageImpl;
-import de.hub.clickwatch.specificmodels.brn.impl.BrnPackageImpl;
-import de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Lease_tab_leasesPackage;
-import de.hub.clickwatch.specificmodels.brn.lease_tab_leases.impl.Lease_tab_leasesPackageImpl;
-import de.hub.clickwatch.specificmodels.brn.lt_links.Lt_linksPackage;
-import de.hub.clickwatch.specificmodels.brn.lt_links.impl.Lt_linksPackageImpl;
-import de.hub.clickwatch.specificmodels.brn.lt_routes.Lt_routesPackage;
-import de.hub.clickwatch.specificmodels.brn.lt_routes.impl.Lt_routesPackageImpl;
-import de.hub.clickwatch.specificmodels.brn.routing_dsr_stats_stats.Routing_dsr_stats_statsPackage;
-import de.hub.clickwatch.specificmodels.brn.routing_dsr_stats_stats.impl.Routing_dsr_stats_statsPackageImpl;
-import de.hub.clickwatch.specificmodels.brn.seismo_latestchannelinfos.Channel_info;
-import de.hub.clickwatch.specificmodels.brn.seismo_latestchannelinfos.Channel_infos;
-import de.hub.clickwatch.specificmodels.brn.seismo_latestchannelinfos.Latestchannelinfos;
-import de.hub.clickwatch.specificmodels.brn.seismo_latestchannelinfos.Seismo_latestchannelinfosFactory;
-import de.hub.clickwatch.specificmodels.brn.seismo_latestchannelinfos.Seismo_latestchannelinfosPackage;
-import de.hub.clickwatch.specificmodels.brn.seismo_small.Seismo_smallPackage;
-import de.hub.clickwatch.specificmodels.brn.seismo_small.impl.Seismo_smallPackageImpl;
-import de.hub.clickwatch.specificmodels.brn.sf_stats.Sf_statsPackage;
-import de.hub.clickwatch.specificmodels.brn.sf_stats.impl.Sf_statsPackageImpl;
-import de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.Sys_info_systeminfoPackage;
-import de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.impl.Sys_info_systeminfoPackageImpl;
+import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -53,27 +77,27 @@ import de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.impl.Sys_info_sy
  * <!-- end-user-doc -->
  * @generated
  */
-public class Seismo_latestchannelinfosPackageImpl extends EPackageImpl implements Seismo_latestchannelinfosPackage {
+public class Seismo_localchannelinfoPackageImpl extends EPackageImpl implements Seismo_localchannelinfoPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass channel_infoEClass = null;
+	private EClass cEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass channel_infosEClass = null;
+	private EClass localchannelinfoEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass latestchannelinfosEClass = null;
+	private EClass vEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -86,12 +110,12 @@ public class Seismo_latestchannelinfosPackageImpl extends EPackageImpl implement
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
-	 * @see de.hub.clickwatch.specificmodels.brn.seismo_latestchannelinfos.Seismo_latestchannelinfosPackage#eNS_URI
+	 * @see de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.Seismo_localchannelinfoPackage#eNS_URI
 	 * @see #init()
 	 * @generated
 	 */
-	private Seismo_latestchannelinfosPackageImpl() {
-		super(eNS_URI, Seismo_latestchannelinfosFactory.eINSTANCE);
+	private Seismo_localchannelinfoPackageImpl() {
+		super(eNS_URI, Seismo_localchannelinfoFactory.eINSTANCE);
 	}
 
 	/**
@@ -104,7 +128,7 @@ public class Seismo_latestchannelinfosPackageImpl extends EPackageImpl implement
 	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
 	 * 
-	 * <p>This method is used to initialize {@link Seismo_latestchannelinfosPackage#eINSTANCE} when that field is accessed.
+	 * <p>This method is used to initialize {@link Seismo_localchannelinfoPackage#eINSTANCE} when that field is accessed.
 	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -113,11 +137,11 @@ public class Seismo_latestchannelinfosPackageImpl extends EPackageImpl implement
 	 * @see #initializePackageContents()
 	 * @generated
 	 */
-	public static Seismo_latestchannelinfosPackage init() {
-		if (isInited) return (Seismo_latestchannelinfosPackage)EPackage.Registry.INSTANCE.getEPackage(Seismo_latestchannelinfosPackage.eNS_URI);
+	public static Seismo_localchannelinfoPackage init() {
+		if (isInited) return (Seismo_localchannelinfoPackage)EPackage.Registry.INSTANCE.getEPackage(Seismo_localchannelinfoPackage.eNS_URI);
 
 		// Obtain or create and register package
-		Seismo_latestchannelinfosPackageImpl theSeismo_latestchannelinfosPackage = (Seismo_latestchannelinfosPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof Seismo_latestchannelinfosPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new Seismo_latestchannelinfosPackageImpl());
+		Seismo_localchannelinfoPackageImpl theSeismo_localchannelinfoPackage = (Seismo_localchannelinfoPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof Seismo_localchannelinfoPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new Seismo_localchannelinfoPackageImpl());
 
 		isInited = true;
 
@@ -138,10 +162,9 @@ public class Seismo_latestchannelinfosPackageImpl extends EPackageImpl implement
 		Device_wifi_wifidevice_cst_statsPackageImpl theDevice_wifi_wifidevice_cst_statsPackage = (Device_wifi_wifidevice_cst_statsPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Device_wifi_wifidevice_cst_statsPackage.eNS_URI) instanceof Device_wifi_wifidevice_cst_statsPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Device_wifi_wifidevice_cst_statsPackage.eNS_URI) : Device_wifi_wifidevice_cst_statsPackage.eINSTANCE);
 		Sf_statsPackageImpl theSf_statsPackage = (Sf_statsPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Sf_statsPackage.eNS_URI) instanceof Sf_statsPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Sf_statsPackage.eNS_URI) : Sf_statsPackage.eINSTANCE);
 		Routing_dsr_stats_statsPackageImpl theRouting_dsr_stats_statsPackage = (Routing_dsr_stats_statsPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Routing_dsr_stats_statsPackage.eNS_URI) instanceof Routing_dsr_stats_statsPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Routing_dsr_stats_statsPackage.eNS_URI) : Routing_dsr_stats_statsPackage.eINSTANCE);
-		Seismo_smallPackageImpl theSeismo_smallPackage = (Seismo_smallPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Seismo_smallPackage.eNS_URI) instanceof Seismo_smallPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Seismo_smallPackage.eNS_URI) : Seismo_smallPackage.eINSTANCE);
 
 		// Create package meta-data objects
-		theSeismo_latestchannelinfosPackage.createPackageContents();
+		theSeismo_localchannelinfoPackage.createPackageContents();
 		theBrnPackage.createPackageContents();
 		theSys_info_systeminfoPackage.createPackageContents();
 		theDevice_wifi_data_power_systempowerPackage.createPackageContents();
@@ -155,10 +178,9 @@ public class Seismo_latestchannelinfosPackageImpl extends EPackageImpl implement
 		theDevice_wifi_wifidevice_cst_statsPackage.createPackageContents();
 		theSf_statsPackage.createPackageContents();
 		theRouting_dsr_stats_statsPackage.createPackageContents();
-		theSeismo_smallPackage.createPackageContents();
 
 		// Initialize created meta-data
-		theSeismo_latestchannelinfosPackage.initializePackageContents();
+		theSeismo_localchannelinfoPackage.initializePackageContents();
 		theBrnPackage.initializePackageContents();
 		theSys_info_systeminfoPackage.initializePackageContents();
 		theDevice_wifi_data_power_systempowerPackage.initializePackageContents();
@@ -172,15 +194,14 @@ public class Seismo_latestchannelinfosPackageImpl extends EPackageImpl implement
 		theDevice_wifi_wifidevice_cst_statsPackage.initializePackageContents();
 		theSf_statsPackage.initializePackageContents();
 		theRouting_dsr_stats_statsPackage.initializePackageContents();
-		theSeismo_smallPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
-		theSeismo_latestchannelinfosPackage.freeze();
+		theSeismo_localchannelinfoPackage.freeze();
 
   
 		// Update the registry and return the package
-		EPackage.Registry.INSTANCE.put(Seismo_latestchannelinfosPackage.eNS_URI, theSeismo_latestchannelinfosPackage);
-		return theSeismo_latestchannelinfosPackage;
+		EPackage.Registry.INSTANCE.put(Seismo_localchannelinfoPackage.eNS_URI, theSeismo_localchannelinfoPackage);
+		return theSeismo_localchannelinfoPackage;
 	}
 
 	/**
@@ -188,8 +209,8 @@ public class Seismo_latestchannelinfosPackageImpl extends EPackageImpl implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getChannel_info() {
-		return channel_infoEClass;
+	public EClass getC() {
+		return cEClass;
 	}
 
 	/**
@@ -197,8 +218,8 @@ public class Seismo_latestchannelinfosPackageImpl extends EPackageImpl implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getChannel_info_EContainer_channel_info() {
-		return (EReference)channel_infoEClass.getEStructuralFeatures().get(0);
+	public EReference getC_EContainer_c() {
+		return (EReference)cEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -206,8 +227,8 @@ public class Seismo_latestchannelinfosPackageImpl extends EPackageImpl implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getChannel_info_Time() {
-		return (EAttribute)channel_infoEClass.getEStructuralFeatures().get(1);
+	public EReference getC_V() {
+		return (EReference)cEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -215,8 +236,8 @@ public class Seismo_latestchannelinfosPackageImpl extends EPackageImpl implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getChannel_info_Channel_0() {
-		return (EAttribute)channel_infoEClass.getEStructuralFeatures().get(2);
+	public EClass getLocalchannelinfo() {
+		return localchannelinfoEClass;
 	}
 
 	/**
@@ -224,8 +245,8 @@ public class Seismo_latestchannelinfosPackageImpl extends EPackageImpl implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getChannel_info_Channel_1() {
-		return (EAttribute)channel_infoEClass.getEStructuralFeatures().get(3);
+	public EReference getLocalchannelinfo_C() {
+		return (EReference)localchannelinfoEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -233,8 +254,8 @@ public class Seismo_latestchannelinfosPackageImpl extends EPackageImpl implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getChannel_info_Channel_2() {
-		return (EAttribute)channel_infoEClass.getEStructuralFeatures().get(4);
+	public EClass getV() {
+		return vEClass;
 	}
 
 	/**
@@ -242,8 +263,8 @@ public class Seismo_latestchannelinfosPackageImpl extends EPackageImpl implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getChannel_info_Channel_3() {
-		return (EAttribute)channel_infoEClass.getEStructuralFeatures().get(5);
+	public EReference getV_EContainer_v() {
+		return (EReference)vEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -251,8 +272,8 @@ public class Seismo_latestchannelinfosPackageImpl extends EPackageImpl implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getChannel_infos() {
-		return channel_infosEClass;
+	public EAttribute getV_T() {
+		return (EAttribute)vEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -260,8 +281,8 @@ public class Seismo_latestchannelinfosPackageImpl extends EPackageImpl implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getChannel_infos_EContainer_channel_infos() {
-		return (EReference)channel_infosEClass.getEStructuralFeatures().get(0);
+	public EAttribute getV_C0() {
+		return (EAttribute)vEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -269,8 +290,8 @@ public class Seismo_latestchannelinfosPackageImpl extends EPackageImpl implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getChannel_infos_Text() {
-		return (EAttribute)channel_infosEClass.getEStructuralFeatures().get(1);
+	public EAttribute getV_C1() {
+		return (EAttribute)vEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -278,8 +299,8 @@ public class Seismo_latestchannelinfosPackageImpl extends EPackageImpl implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getChannel_infos_Channel_info() {
-		return (EReference)channel_infosEClass.getEStructuralFeatures().get(2);
+	public EAttribute getV_C2() {
+		return (EAttribute)vEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -287,26 +308,8 @@ public class Seismo_latestchannelinfosPackageImpl extends EPackageImpl implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getLatestchannelinfos() {
-		return latestchannelinfosEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getLatestchannelinfos_Channel_infos() {
-		return (EReference)latestchannelinfosEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Seismo_latestchannelinfosFactory getSeismo_latestchannelinfosFactory() {
-		return (Seismo_latestchannelinfosFactory)getEFactoryInstance();
+	public Seismo_localchannelinfoFactory getSeismo_localchannelinfoFactory() {
+		return (Seismo_localchannelinfoFactory)getEFactoryInstance();
 	}
 
 	/**
@@ -328,21 +331,19 @@ public class Seismo_latestchannelinfosPackageImpl extends EPackageImpl implement
 		isCreated = true;
 
 		// Create classes and their features
-		channel_infoEClass = createEClass(CHANNEL_INFO);
-		createEReference(channel_infoEClass, CHANNEL_INFO__ECONTAINER_CHANNEL_INFO);
-		createEAttribute(channel_infoEClass, CHANNEL_INFO__TIME);
-		createEAttribute(channel_infoEClass, CHANNEL_INFO__CHANNEL_0);
-		createEAttribute(channel_infoEClass, CHANNEL_INFO__CHANNEL_1);
-		createEAttribute(channel_infoEClass, CHANNEL_INFO__CHANNEL_2);
-		createEAttribute(channel_infoEClass, CHANNEL_INFO__CHANNEL_3);
+		cEClass = createEClass(C);
+		createEReference(cEClass, C__ECONTAINER_C);
+		createEReference(cEClass, C__V);
 
-		channel_infosEClass = createEClass(CHANNEL_INFOS);
-		createEReference(channel_infosEClass, CHANNEL_INFOS__ECONTAINER_CHANNEL_INFOS);
-		createEAttribute(channel_infosEClass, CHANNEL_INFOS__TEXT);
-		createEReference(channel_infosEClass, CHANNEL_INFOS__CHANNEL_INFO);
+		localchannelinfoEClass = createEClass(LOCALCHANNELINFO);
+		createEReference(localchannelinfoEClass, LOCALCHANNELINFO__C);
 
-		latestchannelinfosEClass = createEClass(LATESTCHANNELINFOS);
-		createEReference(latestchannelinfosEClass, LATESTCHANNELINFOS__CHANNEL_INFOS);
+		vEClass = createEClass(V);
+		createEReference(vEClass, V__ECONTAINER_V);
+		createEAttribute(vEClass, V__T);
+		createEAttribute(vEClass, V__C0);
+		createEAttribute(vEClass, V__C1);
+		createEAttribute(vEClass, V__C2);
 	}
 
 	/**
@@ -376,24 +377,22 @@ public class Seismo_latestchannelinfosPackageImpl extends EPackageImpl implement
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		latestchannelinfosEClass.getESuperTypes().add(theClickWatchModelPackage.getHandler());
+		localchannelinfoEClass.getESuperTypes().add(theClickWatchModelPackage.getHandler());
 
 		// Initialize classes and features; add operations and parameters
-		initEClass(channel_infoEClass, Channel_info.class, "Channel_info", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getChannel_info_EContainer_channel_info(), this.getChannel_infos(), this.getChannel_infos_Channel_info(), "eContainer_channel_info", null, 0, 1, Channel_info.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getChannel_info_Time(), ecorePackage.getELong(), "time", null, 0, 1, Channel_info.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getChannel_info_Channel_0(), ecorePackage.getEInt(), "channel_0", null, 0, 1, Channel_info.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getChannel_info_Channel_1(), ecorePackage.getEInt(), "channel_1", null, 0, 1, Channel_info.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getChannel_info_Channel_2(), ecorePackage.getEInt(), "channel_2", null, 0, 1, Channel_info.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getChannel_info_Channel_3(), ecorePackage.getEInt(), "channel_3", null, 0, 1, Channel_info.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(cEClass, de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.C.class, "C", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getC_EContainer_c(), this.getLocalchannelinfo(), this.getLocalchannelinfo_C(), "eContainer_c", null, 0, 1, de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.C.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getC_V(), this.getV(), this.getV_EContainer_v(), "v", null, 0, -1, de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.C.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(channel_infosEClass, Channel_infos.class, "Channel_infos", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getChannel_infos_EContainer_channel_infos(), this.getLatestchannelinfos(), this.getLatestchannelinfos_Channel_infos(), "eContainer_channel_infos", null, 0, 1, Channel_infos.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getChannel_infos_Text(), ecorePackage.getEString(), "text", null, 0, -1, Channel_infos.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getChannel_infos_Channel_info(), this.getChannel_info(), this.getChannel_info_EContainer_channel_info(), "channel_info", null, 0, -1, Channel_infos.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(localchannelinfoEClass, Localchannelinfo.class, "Localchannelinfo", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getLocalchannelinfo_C(), this.getC(), this.getC_EContainer_c(), "c", null, 0, 1, Localchannelinfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(latestchannelinfosEClass, Latestchannelinfos.class, "Latestchannelinfos", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getLatestchannelinfos_Channel_infos(), this.getChannel_infos(), this.getChannel_infos_EContainer_channel_infos(), "channel_infos", null, 0, 1, Latestchannelinfos.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(vEClass, de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.V.class, "V", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getV_EContainer_v(), this.getC(), this.getC_V(), "eContainer_v", null, 0, 1, de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.V.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getV_T(), ecorePackage.getELong(), "t", null, 0, 1, de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.V.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getV_C0(), ecorePackage.getEInt(), "c0", null, 0, 1, de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.V.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getV_C1(), ecorePackage.getEInt(), "c1", null, 0, 1, de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.V.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getV_C2(), ecorePackage.getEInt(), "c2", null, 0, 1, de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.V.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create annotations
 		// http://de.hub.clickwatch.specificmodels
@@ -412,77 +411,65 @@ public class Seismo_latestchannelinfosPackageImpl extends EPackageImpl implement
 		  (this, 
 		   source, 
 		   new String[] {
-			 "handler_class", "Latestchannelinfos",
-			 "handler_name", "seismo/latestchannelinfos"
+			 "handler_class", "Localchannelinfo",
+			 "handler_name", "seismo/localchannelinfo"
 		   });		
 		addAnnotation
-		  (channel_infoEClass, 
+		  (cEClass, 
 		   source, 
 		   new String[] {
-			 "target_id", "Latestchannelinfos|Handler/channel_infos|channel_infos:Channel_infos|EObject/channel_info|channel_info:Channel_info|EObject"
+			 "target_id", "Localchannelinfo|Handler/c|c:C|EObject"
 		   });		
 		addAnnotation
-		  (getChannel_info_Time(), 
+		  (getC_V(), 
 		   source, 
 		   new String[] {
-			 "target_id", "Latestchannelinfos|Handler/channel_infos|channel_infos:Channel_infos|EObject/channel_info|channel_info:Channel_info|EObject/time|time:"
-		   });		
-		addAnnotation
-		  (getChannel_info_Channel_0(), 
-		   source, 
-		   new String[] {
-			 "target_id", "Latestchannelinfos|Handler/channel_infos|channel_infos:Channel_infos|EObject/channel_info|channel_info:Channel_info|EObject/channel_0|channel_0:"
-		   });		
-		addAnnotation
-		  (getChannel_info_Channel_1(), 
-		   source, 
-		   new String[] {
-			 "target_id", "Latestchannelinfos|Handler/channel_infos|channel_infos:Channel_infos|EObject/channel_info|channel_info:Channel_info|EObject/channel_1|channel_1:"
-		   });		
-		addAnnotation
-		  (getChannel_info_Channel_2(), 
-		   source, 
-		   new String[] {
-			 "target_id", "Latestchannelinfos|Handler/channel_infos|channel_infos:Channel_infos|EObject/channel_info|channel_info:Channel_info|EObject/channel_2|channel_2:"
-		   });		
-		addAnnotation
-		  (getChannel_info_Channel_3(), 
-		   source, 
-		   new String[] {
-			 "target_id", "Latestchannelinfos|Handler/channel_infos|channel_infos:Channel_infos|EObject/channel_info|channel_info:Channel_info|EObject/channel_3|channel_3:"
-		   });		
-		addAnnotation
-		  (channel_infosEClass, 
-		   source, 
-		   new String[] {
-			 "target_id", "Latestchannelinfos|Handler/channel_infos|channel_infos:Channel_infos|EObject"
-		   });		
-		addAnnotation
-		  (getChannel_infos_Text(), 
-		   source, 
-		   new String[] {
-			 "target_id", "Latestchannelinfos|Handler/channel_infos|channel_infos:Channel_infos|EObject/text|text:"
-		   });		
-		addAnnotation
-		  (getChannel_infos_Channel_info(), 
-		   source, 
-		   new String[] {
-			 "target_id", "Latestchannelinfos|Handler/channel_infos|channel_infos:Channel_infos|EObject/channel_info|channel_info:Channel_info|EObject",
+			 "target_id", "Localchannelinfo|Handler/c|c:C|EObject/v|v:V|EObject",
 			 "IsCopy", "false"
 		   });		
 		addAnnotation
-		  (latestchannelinfosEClass, 
+		  (localchannelinfoEClass, 
 		   source, 
 		   new String[] {
-			 "target_id", "Latestchannelinfos|Handler"
+			 "target_id", "Localchannelinfo|Handler"
 		   });		
 		addAnnotation
-		  (getLatestchannelinfos_Channel_infos(), 
+		  (getLocalchannelinfo_C(), 
 		   source, 
 		   new String[] {
-			 "target_id", "Latestchannelinfos|Handler/channel_infos|channel_infos:Channel_infos|EObject",
+			 "target_id", "Localchannelinfo|Handler/c|c:C|EObject",
 			 "IsCopy", "false"
+		   });		
+		addAnnotation
+		  (vEClass, 
+		   source, 
+		   new String[] {
+			 "target_id", "Localchannelinfo|Handler/c|c:C|EObject/v|v:V|EObject"
+		   });		
+		addAnnotation
+		  (getV_T(), 
+		   source, 
+		   new String[] {
+			 "target_id", "Localchannelinfo|Handler/c|c:C|EObject/v|v:V|EObject/t|t:"
+		   });		
+		addAnnotation
+		  (getV_C0(), 
+		   source, 
+		   new String[] {
+			 "target_id", "Localchannelinfo|Handler/c|c:C|EObject/v|v:V|EObject/c0|c0:"
+		   });		
+		addAnnotation
+		  (getV_C1(), 
+		   source, 
+		   new String[] {
+			 "target_id", "Localchannelinfo|Handler/c|c:C|EObject/v|v:V|EObject/c1|c1:"
+		   });		
+		addAnnotation
+		  (getV_C2(), 
+		   source, 
+		   new String[] {
+			 "target_id", "Localchannelinfo|Handler/c|c:C|EObject/v|v:V|EObject/c2|c2:"
 		   });
 	}
 
-} //Seismo_latestchannelinfosPackageImpl
+} //Seismo_localchannelinfoPackageImpl

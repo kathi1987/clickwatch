@@ -7,6 +7,7 @@
 package de.hub.clickwatch.specificmodels.brn.device_wifi_wifidevice_sc_systemchannel.util;
 
 import org.eclipse.emf.common.util.URI;
+
 import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
 
 /**

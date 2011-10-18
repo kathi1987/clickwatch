@@ -4,11 +4,11 @@
  *
  * $Id$
  */
-package de.hub.clickwatch.specificmodels.brn.seismo_small.util;
+package de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.util;
 
 import de.hub.clickwatch.model.Handler;
 
-import de.hub.clickwatch.specificmodels.brn.seismo_small.*;
+import de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.*;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -25,17 +25,17 @@ import org.eclipse.emf.ecore.util.Switch;
  * until a non-null result is returned,
  * which is the result of the switch.
  * <!-- end-user-doc -->
- * @see de.hub.clickwatch.specificmodels.brn.seismo_small.Seismo_smallPackage
+ * @see de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.Seismo_localchannelinfoPackage
  * @generated
  */
-public class Seismo_smallSwitch<T> extends Switch<T> {
+public class Seismo_localchannelinfoSwitch<T> extends Switch<T> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static Seismo_smallPackage modelPackage;
+	protected static Seismo_localchannelinfoPackage modelPackage;
 
 	/**
 	 * Creates an instance of the switch.
@@ -43,9 +43,9 @@ public class Seismo_smallSwitch<T> extends Switch<T> {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Seismo_smallSwitch() {
+	public Seismo_localchannelinfoSwitch() {
 		if (modelPackage == null) {
-			modelPackage = Seismo_smallPackage.eINSTANCE;
+			modelPackage = Seismo_localchannelinfoPackage.eINSTANCE;
 		}
 	}
 
@@ -72,20 +72,20 @@ public class Seismo_smallSwitch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-			case Seismo_smallPackage.C: {
+			case Seismo_localchannelinfoPackage.C: {
 				C c = (C)theEObject;
 				T result = caseC(c);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case Seismo_smallPackage.SMALL: {
-				Small small = (Small)theEObject;
-				T result = caseSmall(small);
-				if (result == null) result = caseHandler(small);
+			case Seismo_localchannelinfoPackage.LOCALCHANNELINFO: {
+				Localchannelinfo localchannelinfo = (Localchannelinfo)theEObject;
+				T result = caseLocalchannelinfo(localchannelinfo);
+				if (result == null) result = caseHandler(localchannelinfo);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case Seismo_smallPackage.V: {
+			case Seismo_localchannelinfoPackage.V: {
 				V v = (V)theEObject;
 				T result = caseV(v);
 				if (result == null) result = defaultCase(theEObject);
@@ -111,17 +111,17 @@ public class Seismo_smallSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Small</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Localchannelinfo</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Small</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Localchannelinfo</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseSmall(Small object) {
+	public T caseLocalchannelinfo(Localchannelinfo object) {
 		return null;
 	}
 
@@ -171,4 +171,4 @@ public class Seismo_smallSwitch<T> extends Switch<T> {
 		return null;
 	}
 
-} //Seismo_smallSwitch
+} //Seismo_localchannelinfoSwitch

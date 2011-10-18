@@ -10,14 +10,14 @@ import de.hub.clickwatch.main.IClickWatchContext;
 import de.hub.clickwatch.main.IResultsProvider;
 import de.hub.clickwatch.model.Node;
 import de.hub.clickwatch.recorder.examples.lib.RemoveOffset;
-import de.hub.clickwatch.specificmodels.brn.seismo_small.Small;
-import de.hub.clickwatch.specificmodels.brn.seismo_small.V;
+import de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.Localchannelinfo;
+import de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.V;
 
 public class SeismoAmplAnalysisAlg implements IAnalysisAlgorithm {
 
-	private RemoveOffset ro0 = new RemoveOffset(500);
-	private RemoveOffset ro1 = new RemoveOffset(500);
-	private RemoveOffset ro2 = new RemoveOffset(500);
+	private RemoveOffset ro0 = new RemoveOffset(5000);
+	private RemoveOffset ro1 = new RemoveOffset(5000);
+	private RemoveOffset ro2 = new RemoveOffset(5000);
 	
 	private long start = -1;
 	
@@ -42,7 +42,7 @@ public class SeismoAmplAnalysisAlg implements IAnalysisAlgorithm {
 		
 		container.shiftResultWindow(amplResult, 5, 1);
 		
-		for(Small handler: container.createIterator(node, "seismo/small", Small.class, monitor)) {
+		for(Localchannelinfo handler: container.createIterator(node, "seismo/localchannelinfo", Localchannelinfo.class, monitor)) {
 			for (V info: handler.getC().getV()) {				
 				double rov0 = ro0.filter(info.getC0());
 				double rov1 = ro1.filter(info.getC1());
@@ -71,7 +71,7 @@ public class SeismoAmplAnalysisAlg implements IAnalysisAlgorithm {
 
 	@Override
 	public void initialize(IAnalysisContainer container) {
-		container.addObservedHandler("seismo/small");
+		container.addObservedHandler("seismo/localchannelinfo");
 	}
 
 }

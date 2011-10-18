@@ -4,13 +4,13 @@
  *
  * $Id$
  */
-package de.hub.clickwatch.specificmodels.brn.seismo_small.impl;
+package de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.impl;
 
 import de.hub.clickwatch.model.impl.HandlerImpl;
 
-import de.hub.clickwatch.specificmodels.brn.seismo_small.C;
-import de.hub.clickwatch.specificmodels.brn.seismo_small.Seismo_smallPackage;
-import de.hub.clickwatch.specificmodels.brn.seismo_small.Small;
+import de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.C;
+import de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.Localchannelinfo;
+import de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.Seismo_localchannelinfoPackage;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -22,18 +22,18 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Small</b></em>'.
+ * An implementation of the model object '<em><b>Localchannelinfo</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link de.hub.clickwatch.specificmodels.brn.seismo_small.impl.SmallImpl#getC <em>C</em>}</li>
+ *   <li>{@link de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.impl.LocalchannelinfoImpl#getC <em>C</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class SmallImpl extends HandlerImpl implements Small {
+public class LocalchannelinfoImpl extends HandlerImpl implements Localchannelinfo {
 	/**
 	 * The cached value of the '{@link #getC() <em>C</em>}' containment reference.
 	 * <!-- begin-user-doc -->
@@ -49,7 +49,7 @@ public class SmallImpl extends HandlerImpl implements Small {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected SmallImpl() {
+	protected LocalchannelinfoImpl() {
 		super();
 	}
 
@@ -60,7 +60,7 @@ public class SmallImpl extends HandlerImpl implements Small {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return Seismo_smallPackage.Literals.SMALL;
+		return Seismo_localchannelinfoPackage.Literals.LOCALCHANNELINFO;
 	}
 
 	/**
@@ -81,7 +81,7 @@ public class SmallImpl extends HandlerImpl implements Small {
 		C oldC = c;
 		c = newC;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, Seismo_smallPackage.SMALL__C, oldC, newC);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, Seismo_localchannelinfoPackage.LOCALCHANNELINFO__C, oldC, newC);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -96,14 +96,14 @@ public class SmallImpl extends HandlerImpl implements Small {
 		if (newC != c) {
 			NotificationChain msgs = null;
 			if (c != null)
-				msgs = ((InternalEObject)c).eInverseRemove(this, Seismo_smallPackage.C__ECONTAINER_C, C.class, msgs);
+				msgs = ((InternalEObject)c).eInverseRemove(this, Seismo_localchannelinfoPackage.C__ECONTAINER_C, C.class, msgs);
 			if (newC != null)
-				msgs = ((InternalEObject)newC).eInverseAdd(this, Seismo_smallPackage.C__ECONTAINER_C, C.class, msgs);
+				msgs = ((InternalEObject)newC).eInverseAdd(this, Seismo_localchannelinfoPackage.C__ECONTAINER_C, C.class, msgs);
 			msgs = basicSetC(newC, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, Seismo_smallPackage.SMALL__C, newC, newC));
+			eNotify(new ENotificationImpl(this, Notification.SET, Seismo_localchannelinfoPackage.LOCALCHANNELINFO__C, newC, newC));
 	}
 
 	/**
@@ -114,9 +114,9 @@ public class SmallImpl extends HandlerImpl implements Small {
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case Seismo_smallPackage.SMALL__C:
+			case Seismo_localchannelinfoPackage.LOCALCHANNELINFO__C:
 				if (c != null)
-					msgs = ((InternalEObject)c).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - Seismo_smallPackage.SMALL__C, null, msgs);
+					msgs = ((InternalEObject)c).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - Seismo_localchannelinfoPackage.LOCALCHANNELINFO__C, null, msgs);
 				return basicSetC((C)otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
@@ -130,7 +130,7 @@ public class SmallImpl extends HandlerImpl implements Small {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case Seismo_smallPackage.SMALL__C:
+			case Seismo_localchannelinfoPackage.LOCALCHANNELINFO__C:
 				return basicSetC(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -144,7 +144,7 @@ public class SmallImpl extends HandlerImpl implements Small {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case Seismo_smallPackage.SMALL__C:
+			case Seismo_localchannelinfoPackage.LOCALCHANNELINFO__C:
 				return getC();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -158,7 +158,7 @@ public class SmallImpl extends HandlerImpl implements Small {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case Seismo_smallPackage.SMALL__C:
+			case Seismo_localchannelinfoPackage.LOCALCHANNELINFO__C:
 				setC((C)newValue);
 				return;
 		}
@@ -173,7 +173,7 @@ public class SmallImpl extends HandlerImpl implements Small {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case Seismo_smallPackage.SMALL__C:
+			case Seismo_localchannelinfoPackage.LOCALCHANNELINFO__C:
 				setC((C)null);
 				return;
 		}
@@ -188,10 +188,10 @@ public class SmallImpl extends HandlerImpl implements Small {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case Seismo_smallPackage.SMALL__C:
+			case Seismo_localchannelinfoPackage.LOCALCHANNELINFO__C:
 				return c != null;
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //SmallImpl
+} //LocalchannelinfoImpl

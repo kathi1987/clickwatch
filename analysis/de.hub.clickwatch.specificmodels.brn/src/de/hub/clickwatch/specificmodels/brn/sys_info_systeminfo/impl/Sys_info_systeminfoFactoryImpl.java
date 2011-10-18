@@ -6,12 +6,6 @@
  */
 package de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.impl;
 
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.impl.EFactoryImpl;
-import org.eclipse.emf.ecore.plugin.EcorePlugin;
-
 import de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.Cpu_usage;
 import de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.Linux;
 import de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.Loadavg;
@@ -20,6 +14,14 @@ import de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.Sys_info_systemi
 import de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.Sys_info_systeminfoPackage;
 import de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.Systeminfo;
 import de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.Uptime;
+
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
+
+import org.eclipse.emf.ecore.impl.EFactoryImpl;
+
+import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 /**
  * <!-- begin-user-doc -->

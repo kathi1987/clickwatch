@@ -4,8 +4,8 @@ import java.util.Iterator;
 
 import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.model.Node;
-import de.hub.clickwatch.specificmodels.brn.seismo_latestchannelinfos.Channel_info;
-import de.hub.clickwatch.specificmodels.brn.seismo_latestchannelinfos.Latestchannelinfos;
+import de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.Localchannelinfo;
+import de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.V;
 
 public class Test {
 	
@@ -45,15 +45,15 @@ public class Test {
 				@Override
 				protected ValuePairIterator<Long, Function<Integer, Integer>> valuePairs() {	
 					return new ValuePairIterator<Long, Function<Integer,Integer>>() {
-						Iterator<Channel_info> current_it = null;
+						Iterator<V> current_it = null;
 						Iterator<Object> handler_it = input.domain().iterator();
 						@Override
 						public boolean hasNext() {
 							if (current_it == null) {
 								while (handler_it.hasNext()) {
 									Handler handler = input.value(handler_it.next());
-									Latestchannelinfos latestchannelinfos = (Latestchannelinfos)handler;
-									current_it = latestchannelinfos.getChannel_infos().getChannel_info().iterator();
+									Localchannelinfo latestchannelinfos = (Localchannelinfo)handler;
+									current_it = latestchannelinfos.getC().getV().iterator();
 									if (current_it.hasNext()) {
 										return true;
 									}
@@ -72,18 +72,18 @@ public class Test {
 						@SuppressWarnings({ "unchecked", "rawtypes" })
 						@Override
 						public Pair<Long, Function<Integer, Integer>> next() {
-							final Channel_info next = current_it.next();
-							return new Pair(next.getTime(), new HashedFunction<Integer, Integer>() {
+							final V next = current_it.next();
+							return new Pair(next.getT(), new HashedFunction<Integer, Integer>() {
 								@Override
 								protected Integer computeValue(Integer x) {
 									if (x == 0) {
-										return next.getChannel_0();
+										return next.getC0();
 									} else if (x == 1) {
-										return next.getChannel_0();
+										return next.getC0();
 									} else if (x == 2) {
-										return next.getChannel_0();
+										return next.getC0();
 									} else if (x == 3) {
-										return next.getChannel_0();
+										return next.getC0();
 									} else {
 										throw new IllegalArgumentException();
 									}

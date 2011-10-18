@@ -34,12 +34,14 @@ import de.hub.clickwatch.recorder.database.cwdatabase.CWDataBasePackage;
 import de.hub.clickwatch.recorder.database.cwdatabase.Record;
 import de.hub.clickwatch.recorder.examples.AbstractAnalysis;
 import de.hub.clickwatch.specificmodels.brn.BrnValueAdapter;
+import de.hub.clickwatch.util.ILogger;
 import de.hub.clickwatch.util.Throwables;
 
 public abstract class AbstractRuntimeAnalysis extends AbstractAnalysis implements INetworkRecorderDataListener {
 
 	@Inject private StringValueAdapter stringValueAdapter;
 	@Inject private BrnValueAdapter brnValueAdapter;
+	@Inject private ILogger logger;
 	
 	private boolean isStopped = false;
 	private long currentAnalysisTime = 0;
@@ -87,7 +89,7 @@ public abstract class AbstractRuntimeAnalysis extends AbstractAnalysis implement
 			if (node == null) {
 				if (other.node != null)
 					return false;
-			} else if (!node.equals(other.node))
+			} else if (!node.getINetAddress().equals(other.node.getINetAddress()))
 				return false;
 			return true;
 		}
@@ -192,7 +194,11 @@ public abstract class AbstractRuntimeAnalysis extends AbstractAnalysis implement
 				currentAnalysisTime = currentTime;
 				for(Node node: nodes) {
 					// TODO run different nodes in different threads
-					analyse(ctx, node, new NullProgressMonitor());
+					try {
+						analyse(ctx, node, new NullProgressMonitor());
+					} catch (Exception e) {
+						logger.log(ILogger.ERROR, "exception during analysis", e);
+					}
 				}								
 			} else {
 				try {

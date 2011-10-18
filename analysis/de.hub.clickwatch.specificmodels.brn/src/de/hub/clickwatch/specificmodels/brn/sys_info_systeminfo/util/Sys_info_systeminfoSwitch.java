@@ -6,11 +6,8 @@
  */
 package de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.util;
 
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.util.Switch;
-
 import de.hub.clickwatch.model.Handler;
+
 import de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.Cpu_usage;
 import de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.Linux;
 import de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.Loadavg;
@@ -18,6 +15,11 @@ import de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.Mem;
 import de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.Sys_info_systeminfoPackage;
 import de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.Systeminfo;
 import de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.Uptime;
+
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
+
+import org.eclipse.emf.ecore.util.Switch;
 
 /**
  * <!-- begin-user-doc -->

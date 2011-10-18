@@ -4,28 +4,31 @@
  *
  * $Id$
  */
-package de.hub.clickwatch.specificmodels.brn.seismo_latestchannelinfos.util;
+package de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.util;
 
 import org.eclipse.emf.common.util.URI;
+
 import org.eclipse.emf.ecore.resource.Resource;
+
 import org.eclipse.emf.ecore.resource.impl.ResourceFactoryImpl;
+
 import org.eclipse.emf.ecore.xmi.XMLResource;
 
 /**
  * <!-- begin-user-doc -->
  * The <b>Resource Factory</b> associated with the package.
  * <!-- end-user-doc -->
- * @see de.hub.clickwatch.specificmodels.brn.seismo_latestchannelinfos.util.Seismo_latestchannelinfosResourceImpl
+ * @see de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.util.Seismo_localchannelinfoResourceImpl
  * @generated
  */
-public class Seismo_latestchannelinfosResourceFactoryImpl extends ResourceFactoryImpl {
+public class Seismo_localchannelinfoResourceFactoryImpl extends ResourceFactoryImpl {
 	/**
 	 * Creates an instance of the resource factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Seismo_latestchannelinfosResourceFactoryImpl() {
+	public Seismo_localchannelinfoResourceFactoryImpl() {
 		super();
 	}
 
@@ -37,7 +40,7 @@ public class Seismo_latestchannelinfosResourceFactoryImpl extends ResourceFactor
 	 */
 	@Override
 	public Resource createResource(URI uri) {
-		XMLResource result = new Seismo_latestchannelinfosResourceImpl(uri);
+		XMLResource result = new Seismo_localchannelinfoResourceImpl(uri);
 		result.getDefaultSaveOptions().put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);
 		result.getDefaultLoadOptions().put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);
 
@@ -50,4 +53,4 @@ public class Seismo_latestchannelinfosResourceFactoryImpl extends ResourceFactor
 		return result;
 	}
 
-} //Seismo_latestchannelinfosResourceFactoryImpl
+} //Seismo_localchannelinfoResourceFactoryImpl

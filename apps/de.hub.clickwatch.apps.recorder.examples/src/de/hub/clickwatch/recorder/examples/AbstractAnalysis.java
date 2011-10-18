@@ -19,9 +19,11 @@ import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.model.Node;
 import de.hub.clickwatch.recorder.database.DataBaseUtil;
 import de.hub.clickwatch.recorder.database.cwdatabase.Record;
+import de.hub.clickwatch.util.ILogger;
 
 public abstract class AbstractAnalysis implements IClickWatchMain {
 
+	@Inject private ILogger logger;
 	@Inject private DataBaseUtil dbUtil;
 	private IClickWatchContext ctx;
 	private Record record;
@@ -95,7 +97,11 @@ public abstract class AbstractAnalysis implements IClickWatchMain {
 			Thread nodeRunner = new Thread(new Runnable() {
 				@Override
 				public void run() {
-					analyse(ctx, node, new SubProgressMonitor(monitor, 100));
+					try {
+						analyse(ctx, node, new SubProgressMonitor(monitor, 100));
+					} catch (Exception e) {
+						logger.log(ILogger.ERROR, "exception during analysis", e);
+					}
 					finishedRunner++;
 				}
 			});

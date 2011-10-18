@@ -7,15 +7,14 @@
 package de.hub.clickwatch.specificmodels.brn.impl;
 
 import de.hub.clickwatch.specificmodels.brn.*;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.impl.EFactoryImpl;
-import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
-import de.hub.clickwatch.specificmodels.brn.BrnFactory;
-import de.hub.clickwatch.specificmodels.brn.BrnPackage;
-import de.hub.clickwatch.specificmodels.brn.HandlerSubClass;
+import org.eclipse.emf.ecore.impl.EFactoryImpl;
+
+import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 /**
  * <!-- begin-user-doc -->

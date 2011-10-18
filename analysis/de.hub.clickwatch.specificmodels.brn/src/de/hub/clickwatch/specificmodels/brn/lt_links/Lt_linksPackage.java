@@ -6,12 +6,12 @@
  */
 package de.hub.clickwatch.specificmodels.brn.lt_links;
 
+import de.hub.clickwatch.model.ClickWatchModelPackage;
+
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
-import de.hub.clickwatch.model.ClickWatchModelPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -243,7 +243,6 @@ public interface Lt_linksPackage extends EPackage {
 	 * @ordered
 	 */
 	int LINKS_FEATURE_COUNT = ClickWatchModelPackage.HANDLER_FEATURE_COUNT + 1;
-
 
 	/**
 	 * The meta object id for the '{@link de.hub.clickwatch.specificmodels.brn.lt_links.impl.LinktableImpl <em>Linktable</em>}' class.

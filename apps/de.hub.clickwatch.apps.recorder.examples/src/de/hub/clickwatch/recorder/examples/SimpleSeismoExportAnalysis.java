@@ -24,8 +24,8 @@ import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.model.Node;
 import de.hub.clickwatch.recorder.database.DataBaseUtil;
 import de.hub.clickwatch.recorder.database.cwdatabase.Record;
-import de.hub.clickwatch.specificmodels.brn.seismo_small.Small;
-import de.hub.clickwatch.specificmodels.brn.seismo_small.V;
+import de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.Localchannelinfo;
+import de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.V;
 
 public class SimpleSeismoExportAnalysis implements IClickWatchMain {
 
@@ -33,7 +33,7 @@ public class SimpleSeismoExportAnalysis implements IClickWatchMain {
 	int finishedRunner = 0;
 	
 	private long start = 0; //(long)(13*3600*1e9);
-	private long end = 0; // (long)(14*3600*1e9);
+	private long end = (long)(2*3600*1e9); // (long)(14*3600*1e9);
 	
 	private static class Avg {
 		Queue<Integer> values = new ConcurrentLinkedQueue<Integer>();
@@ -84,32 +84,32 @@ public class SimpleSeismoExportAnalysis implements IClickWatchMain {
 				public void run() {
 					long time = 0;
 					
-					Avg mean1 = new Avg(1000);
-					Avg mean2 = new Avg(1000);
-					Avg mean3 = new Avg(1000);
+					Avg mean1 = new Avg(3000);
+//					Avg mean2 = new Avg(3000);
+//					Avg mean3 = new Avg(3000);
 					
 					long start = record.getStart() + (SimpleSeismoExportAnalysis.this.start > 0 ? SimpleSeismoExportAnalysis.this.start : 0);
 					long end = record.getStart() + (SimpleSeismoExportAnalysis.this.end > 0 ? SimpleSeismoExportAnalysis.this.end : record.getEnd() - record.getStart());
 					
 					Iterator<Handler> iterator = dbUtil.getHandlerIterator(
-							createHandle(record, node.getINetAddress(), "seismo/small"),
+							createHandle(record, node.getINetAddress(), "seismo/localchannelinfo", start, end),
 							new SubProgressMonitor(monitor, 100));
 					String nodeId = nodeId(node).toString();
 					while(iterator.hasNext()) {
-						Small handler = (Small)iterator.next();
+						Localchannelinfo handler = (Localchannelinfo)iterator.next();
 						for (V info: handler.getC().getV()) {		
 							
 							int value0 = info.getC0() - mean1.filter(info.getC0());					
-							int value1 = info.getC1() - mean2.filter(info.getC1());
-							int value2 = info.getC2() - mean3.filter(info.getC2());
+//							int value1 = info.getC1() - mean2.filter(info.getC1());
+//							int value2 = info.getC2() - mean3.filter(info.getC2());
 							
 //							result.getDataSet().add(nodeId, 1, time, value1);					
 //							result.getDataSet().add(nodeId, 2, time, value2);	
 //							result.getDataSet().add(nodeId, 0, time, value0);
 				
-							print(fout, nodeId, 0, time, value0);
-							print(fout, nodeId, 1, time, value1);
-							print(fout, nodeId, 2, time, value2);			
+							print(fout, nodeId, 0, time, value0, info.getT());
+//							print(fout, nodeId, 1, time, value1, info.getT());
+//							print(fout, nodeId, 2, time, value2, info.getT());			
 							
 							time += 10;
 						}
@@ -142,7 +142,7 @@ public class SimpleSeismoExportAnalysis implements IClickWatchMain {
 		}
 	}
 	
-	private synchronized void print(PrintStream out, String nodeId, int channel, long time, int value) {
+	private synchronized void print(PrintStream out, String nodeId, int channel, long time, int value, long nt) {
 		out.print(nodeId);
 		out.print(" ");
 		out.print(channel);
@@ -150,6 +150,8 @@ public class SimpleSeismoExportAnalysis implements IClickWatchMain {
 		out.print(time);
 		out.print(" ");
 		out.print(value);
+		out.print(" ");
+		out.print(nt);
 		out.print("\n");
 	}
 

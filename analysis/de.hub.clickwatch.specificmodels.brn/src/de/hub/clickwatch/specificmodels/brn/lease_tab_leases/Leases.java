@@ -30,7 +30,7 @@ public interface Leases extends Handler {
 	 * It is bidirectional and its opposite is '{@link de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Dhcpleases#getEContainer_dhcpleases <em>EContainer dhcpleases</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Dhcpleases</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Dhcpleases</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->

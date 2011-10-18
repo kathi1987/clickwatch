@@ -6,11 +6,11 @@
  */
 package de.hub.clickwatch.specificmodels.brn.gps_cart_coord;
 
+import de.hub.clickwatch.model.ClickWatchModelPackage;
+
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
-
-import de.hub.clickwatch.model.ClickWatchModelPackage;
 
 /**
  * <!-- begin-user-doc -->

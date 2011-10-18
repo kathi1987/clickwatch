@@ -7,18 +7,14 @@
 package de.hub.clickwatch.specificmodels.brn.sf_stats.impl;
 
 import de.hub.clickwatch.specificmodels.brn.sf_stats.*;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.impl.EFactoryImpl;
-import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
-import de.hub.clickwatch.specificmodels.brn.sf_stats.Flowstats;
-import de.hub.clickwatch.specificmodels.brn.sf_stats.Rxflow;
-import de.hub.clickwatch.specificmodels.brn.sf_stats.Sf_statsFactory;
-import de.hub.clickwatch.specificmodels.brn.sf_stats.Sf_statsPackage;
-import de.hub.clickwatch.specificmodels.brn.sf_stats.Stats;
-import de.hub.clickwatch.specificmodels.brn.sf_stats.Txflow;
+import org.eclipse.emf.ecore.impl.EFactoryImpl;
+
+import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 /**
  * <!-- begin-user-doc -->

@@ -6,12 +6,8 @@
  */
 package de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.util;
 
-import org.eclipse.emf.common.notify.Adapter;
-import org.eclipse.emf.common.notify.Notifier;
-import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
-import org.eclipse.emf.ecore.EObject;
-
 import de.hub.clickwatch.model.Handler;
+
 import de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.Cpu_usage;
 import de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.Linux;
 import de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.Loadavg;
@@ -19,6 +15,13 @@ import de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.Mem;
 import de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.Sys_info_systeminfoPackage;
 import de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.Systeminfo;
 import de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.Uptime;
+
+import org.eclipse.emf.common.notify.Adapter;
+import org.eclipse.emf.common.notify.Notifier;
+
+import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
+
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->

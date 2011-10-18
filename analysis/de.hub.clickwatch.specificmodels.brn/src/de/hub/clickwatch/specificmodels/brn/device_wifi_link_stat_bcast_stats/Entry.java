@@ -7,6 +7,7 @@
 package de.hub.clickwatch.specificmodels.brn.device_wifi_link_stat_bcast_stats;
 
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**

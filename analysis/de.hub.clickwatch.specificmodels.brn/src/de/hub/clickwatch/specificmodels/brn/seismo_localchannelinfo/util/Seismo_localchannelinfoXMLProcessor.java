@@ -4,9 +4,9 @@
  *
  * $Id$
  */
-package de.hub.clickwatch.specificmodels.brn.seismo_small.util;
+package de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.util;
 
-import de.hub.clickwatch.specificmodels.brn.seismo_small.Seismo_smallPackage;
+import de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.Seismo_localchannelinfoPackage;
 
 import java.util.Map;
 
@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.xmi.util.XMLProcessor;
  * <!-- end-user-doc -->
  * @generated
  */
-public class Seismo_smallXMLProcessor extends XMLProcessor {
+public class Seismo_localchannelinfoXMLProcessor extends XMLProcessor {
 
 	/**
 	 * Public constructor to instantiate the helper.
@@ -30,13 +30,13 @@ public class Seismo_smallXMLProcessor extends XMLProcessor {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Seismo_smallXMLProcessor() {
+	public Seismo_localchannelinfoXMLProcessor() {
 		super((EPackage.Registry.INSTANCE));
-		Seismo_smallPackage.eINSTANCE.eClass();
+		Seismo_localchannelinfoPackage.eINSTANCE.eClass();
 	}
 	
 	/**
-	 * Register for "*" and "xml" file extensions the Seismo_smallResourceFactoryImpl factory.
+	 * Register for "*" and "xml" file extensions the Seismo_localchannelinfoResourceFactoryImpl factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -45,10 +45,10 @@ public class Seismo_smallXMLProcessor extends XMLProcessor {
 	protected Map<String, Resource.Factory> getRegistrations() {
 		if (registrations == null) {
 			super.getRegistrations();
-			registrations.put(XML_EXTENSION, new Seismo_smallResourceFactoryImpl());
-			registrations.put(STAR_EXTENSION, new Seismo_smallResourceFactoryImpl());
+			registrations.put(XML_EXTENSION, new Seismo_localchannelinfoResourceFactoryImpl());
+			registrations.put(STAR_EXTENSION, new Seismo_localchannelinfoResourceFactoryImpl());
 		}
 		return registrations;
 	}
 
-} //Seismo_smallXMLProcessor
+} //Seismo_localchannelinfoXMLProcessor

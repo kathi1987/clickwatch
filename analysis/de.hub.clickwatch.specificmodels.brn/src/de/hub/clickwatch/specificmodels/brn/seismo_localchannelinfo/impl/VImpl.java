@@ -4,11 +4,11 @@
  *
  * $Id$
  */
-package de.hub.clickwatch.specificmodels.brn.seismo_small.impl;
+package de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.impl;
 
-import de.hub.clickwatch.specificmodels.brn.seismo_small.C;
-import de.hub.clickwatch.specificmodels.brn.seismo_small.Seismo_smallPackage;
-import de.hub.clickwatch.specificmodels.brn.seismo_small.V;
+import de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.C;
+import de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.Seismo_localchannelinfoPackage;
+import de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.V;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -28,11 +28,11 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link de.hub.clickwatch.specificmodels.brn.seismo_small.impl.VImpl#getEContainer_v <em>EContainer v</em>}</li>
- *   <li>{@link de.hub.clickwatch.specificmodels.brn.seismo_small.impl.VImpl#getT <em>T</em>}</li>
- *   <li>{@link de.hub.clickwatch.specificmodels.brn.seismo_small.impl.VImpl#getC0 <em>C0</em>}</li>
- *   <li>{@link de.hub.clickwatch.specificmodels.brn.seismo_small.impl.VImpl#getC1 <em>C1</em>}</li>
- *   <li>{@link de.hub.clickwatch.specificmodels.brn.seismo_small.impl.VImpl#getC2 <em>C2</em>}</li>
+ *   <li>{@link de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.impl.VImpl#getEContainer_v <em>EContainer v</em>}</li>
+ *   <li>{@link de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.impl.VImpl#getT <em>T</em>}</li>
+ *   <li>{@link de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.impl.VImpl#getC0 <em>C0</em>}</li>
+ *   <li>{@link de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.impl.VImpl#getC1 <em>C1</em>}</li>
+ *   <li>{@link de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.impl.VImpl#getC2 <em>C2</em>}</li>
  * </ul>
  * </p>
  *
@@ -135,7 +135,7 @@ public class VImpl extends EObjectImpl implements V {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return Seismo_smallPackage.Literals.V;
+		return Seismo_localchannelinfoPackage.Literals.V;
 	}
 
 	/**
@@ -144,7 +144,7 @@ public class VImpl extends EObjectImpl implements V {
 	 * @generated
 	 */
 	public C getEContainer_v() {
-		if (eContainerFeatureID() != Seismo_smallPackage.V__ECONTAINER_V) return null;
+		if (eContainerFeatureID() != Seismo_localchannelinfoPackage.V__ECONTAINER_V) return null;
 		return (C)eContainer();
 	}
 
@@ -154,7 +154,7 @@ public class VImpl extends EObjectImpl implements V {
 	 * @generated
 	 */
 	public NotificationChain basicSetEContainer_v(C newEContainer_v, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject)newEContainer_v, Seismo_smallPackage.V__ECONTAINER_V, msgs);
+		msgs = eBasicSetContainer((InternalEObject)newEContainer_v, Seismo_localchannelinfoPackage.V__ECONTAINER_V, msgs);
 		return msgs;
 	}
 
@@ -164,19 +164,19 @@ public class VImpl extends EObjectImpl implements V {
 	 * @generated
 	 */
 	public void setEContainer_v(C newEContainer_v) {
-		if (newEContainer_v != eInternalContainer() || (eContainerFeatureID() != Seismo_smallPackage.V__ECONTAINER_V && newEContainer_v != null)) {
+		if (newEContainer_v != eInternalContainer() || (eContainerFeatureID() != Seismo_localchannelinfoPackage.V__ECONTAINER_V && newEContainer_v != null)) {
 			if (EcoreUtil.isAncestor(this, newEContainer_v))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
 			NotificationChain msgs = null;
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newEContainer_v != null)
-				msgs = ((InternalEObject)newEContainer_v).eInverseAdd(this, Seismo_smallPackage.C__V, C.class, msgs);
+				msgs = ((InternalEObject)newEContainer_v).eInverseAdd(this, Seismo_localchannelinfoPackage.C__V, C.class, msgs);
 			msgs = basicSetEContainer_v(newEContainer_v, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, Seismo_smallPackage.V__ECONTAINER_V, newEContainer_v, newEContainer_v));
+			eNotify(new ENotificationImpl(this, Notification.SET, Seismo_localchannelinfoPackage.V__ECONTAINER_V, newEContainer_v, newEContainer_v));
 	}
 
 	/**
@@ -197,7 +197,7 @@ public class VImpl extends EObjectImpl implements V {
 		long oldT = t;
 		t = newT;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, Seismo_smallPackage.V__T, oldT, t));
+			eNotify(new ENotificationImpl(this, Notification.SET, Seismo_localchannelinfoPackage.V__T, oldT, t));
 	}
 
 	/**
@@ -218,7 +218,7 @@ public class VImpl extends EObjectImpl implements V {
 		int oldC0 = c0;
 		c0 = newC0;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, Seismo_smallPackage.V__C0, oldC0, c0));
+			eNotify(new ENotificationImpl(this, Notification.SET, Seismo_localchannelinfoPackage.V__C0, oldC0, c0));
 	}
 
 	/**
@@ -239,7 +239,7 @@ public class VImpl extends EObjectImpl implements V {
 		int oldC1 = c1;
 		c1 = newC1;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, Seismo_smallPackage.V__C1, oldC1, c1));
+			eNotify(new ENotificationImpl(this, Notification.SET, Seismo_localchannelinfoPackage.V__C1, oldC1, c1));
 	}
 
 	/**
@@ -260,7 +260,7 @@ public class VImpl extends EObjectImpl implements V {
 		int oldC2 = c2;
 		c2 = newC2;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, Seismo_smallPackage.V__C2, oldC2, c2));
+			eNotify(new ENotificationImpl(this, Notification.SET, Seismo_localchannelinfoPackage.V__C2, oldC2, c2));
 	}
 
 	/**
@@ -271,7 +271,7 @@ public class VImpl extends EObjectImpl implements V {
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case Seismo_smallPackage.V__ECONTAINER_V:
+			case Seismo_localchannelinfoPackage.V__ECONTAINER_V:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
 				return basicSetEContainer_v((C)otherEnd, msgs);
@@ -287,7 +287,7 @@ public class VImpl extends EObjectImpl implements V {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case Seismo_smallPackage.V__ECONTAINER_V:
+			case Seismo_localchannelinfoPackage.V__ECONTAINER_V:
 				return basicSetEContainer_v(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -301,8 +301,8 @@ public class VImpl extends EObjectImpl implements V {
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
 		switch (eContainerFeatureID()) {
-			case Seismo_smallPackage.V__ECONTAINER_V:
-				return eInternalContainer().eInverseRemove(this, Seismo_smallPackage.C__V, C.class, msgs);
+			case Seismo_localchannelinfoPackage.V__ECONTAINER_V:
+				return eInternalContainer().eInverseRemove(this, Seismo_localchannelinfoPackage.C__V, C.class, msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
@@ -315,15 +315,15 @@ public class VImpl extends EObjectImpl implements V {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case Seismo_smallPackage.V__ECONTAINER_V:
+			case Seismo_localchannelinfoPackage.V__ECONTAINER_V:
 				return getEContainer_v();
-			case Seismo_smallPackage.V__T:
+			case Seismo_localchannelinfoPackage.V__T:
 				return getT();
-			case Seismo_smallPackage.V__C0:
+			case Seismo_localchannelinfoPackage.V__C0:
 				return getC0();
-			case Seismo_smallPackage.V__C1:
+			case Seismo_localchannelinfoPackage.V__C1:
 				return getC1();
-			case Seismo_smallPackage.V__C2:
+			case Seismo_localchannelinfoPackage.V__C2:
 				return getC2();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -337,19 +337,19 @@ public class VImpl extends EObjectImpl implements V {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case Seismo_smallPackage.V__ECONTAINER_V:
+			case Seismo_localchannelinfoPackage.V__ECONTAINER_V:
 				setEContainer_v((C)newValue);
 				return;
-			case Seismo_smallPackage.V__T:
+			case Seismo_localchannelinfoPackage.V__T:
 				setT((Long)newValue);
 				return;
-			case Seismo_smallPackage.V__C0:
+			case Seismo_localchannelinfoPackage.V__C0:
 				setC0((Integer)newValue);
 				return;
-			case Seismo_smallPackage.V__C1:
+			case Seismo_localchannelinfoPackage.V__C1:
 				setC1((Integer)newValue);
 				return;
-			case Seismo_smallPackage.V__C2:
+			case Seismo_localchannelinfoPackage.V__C2:
 				setC2((Integer)newValue);
 				return;
 		}
@@ -364,19 +364,19 @@ public class VImpl extends EObjectImpl implements V {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case Seismo_smallPackage.V__ECONTAINER_V:
+			case Seismo_localchannelinfoPackage.V__ECONTAINER_V:
 				setEContainer_v((C)null);
 				return;
-			case Seismo_smallPackage.V__T:
+			case Seismo_localchannelinfoPackage.V__T:
 				setT(T_EDEFAULT);
 				return;
-			case Seismo_smallPackage.V__C0:
+			case Seismo_localchannelinfoPackage.V__C0:
 				setC0(C0_EDEFAULT);
 				return;
-			case Seismo_smallPackage.V__C1:
+			case Seismo_localchannelinfoPackage.V__C1:
 				setC1(C1_EDEFAULT);
 				return;
-			case Seismo_smallPackage.V__C2:
+			case Seismo_localchannelinfoPackage.V__C2:
 				setC2(C2_EDEFAULT);
 				return;
 		}
@@ -391,15 +391,15 @@ public class VImpl extends EObjectImpl implements V {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case Seismo_smallPackage.V__ECONTAINER_V:
+			case Seismo_localchannelinfoPackage.V__ECONTAINER_V:
 				return getEContainer_v() != null;
-			case Seismo_smallPackage.V__T:
+			case Seismo_localchannelinfoPackage.V__T:
 				return t != T_EDEFAULT;
-			case Seismo_smallPackage.V__C0:
+			case Seismo_localchannelinfoPackage.V__C0:
 				return c0 != C0_EDEFAULT;
-			case Seismo_smallPackage.V__C1:
+			case Seismo_localchannelinfoPackage.V__C1:
 				return c1 != C1_EDEFAULT;
-			case Seismo_smallPackage.V__C2:
+			case Seismo_localchannelinfoPackage.V__C2:
 				return c2 != C2_EDEFAULT;
 		}
 		return super.eIsSet(featureID);

@@ -6,13 +6,15 @@
  */
 package de.hub.clickwatch.specificmodels.brn.lt_links.util;
 
+import de.hub.clickwatch.specificmodels.brn.lt_links.Lt_linksPackage;
+
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.xmi.util.XMLProcessor;
 
-import de.hub.clickwatch.specificmodels.brn.lt_links.Lt_linksPackage;
+import org.eclipse.emf.ecore.resource.Resource;
+
+import org.eclipse.emf.ecore.xmi.util.XMLProcessor;
 
 /**
  * This class contains helper methods to serialize and deserialize XML documents

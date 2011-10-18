@@ -7,6 +7,7 @@
 package de.hub.clickwatch.specificmodels.brn.lt_links;
 
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**

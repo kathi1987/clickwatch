@@ -6,15 +6,14 @@
  */
 package de.hub.clickwatch.specificmodels.brn.gps_gps_coord.util;
 
+import de.hub.clickwatch.model.Handler;
+
+import de.hub.clickwatch.specificmodels.brn.gps_gps_coord.*;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.util.Switch;
 
-import de.hub.clickwatch.model.Handler;
-import de.hub.clickwatch.specificmodels.brn.gps_gps_coord.*;
-import de.hub.clickwatch.specificmodels.brn.gps_gps_coord.Gps;
-import de.hub.clickwatch.specificmodels.brn.gps_gps_coord.Gps_coord;
-import de.hub.clickwatch.specificmodels.brn.gps_gps_coord.Gps_gps_coordPackage;
+import org.eclipse.emf.ecore.util.Switch;
 
 /**
  * <!-- begin-user-doc -->

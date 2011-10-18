@@ -4,9 +4,9 @@
  *
  * $Id$
  */
-package de.hub.clickwatch.specificmodels.brn.seismo_small.impl;
+package de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.impl;
 
-import de.hub.clickwatch.specificmodels.brn.seismo_small.*;
+import de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.*;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -22,24 +22,24 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
  * <!-- end-user-doc -->
  * @generated
  */
-public class Seismo_smallFactoryImpl extends EFactoryImpl implements Seismo_smallFactory {
+public class Seismo_localchannelinfoFactoryImpl extends EFactoryImpl implements Seismo_localchannelinfoFactory {
 	/**
 	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static Seismo_smallFactory init() {
+	public static Seismo_localchannelinfoFactory init() {
 		try {
-			Seismo_smallFactory theSeismo_smallFactory = (Seismo_smallFactory)EPackage.Registry.INSTANCE.getEFactory("http://de.hub.clickwatch.specificmodels.brn/seismo/small"); 
-			if (theSeismo_smallFactory != null) {
-				return theSeismo_smallFactory;
+			Seismo_localchannelinfoFactory theSeismo_localchannelinfoFactory = (Seismo_localchannelinfoFactory)EPackage.Registry.INSTANCE.getEFactory("http://de.hub.clickwatch.specificmodels.brn/seismo/localchannelinfo"); 
+			if (theSeismo_localchannelinfoFactory != null) {
+				return theSeismo_localchannelinfoFactory;
 			}
 		}
 		catch (Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
 		}
-		return new Seismo_smallFactoryImpl();
+		return new Seismo_localchannelinfoFactoryImpl();
 	}
 
 	/**
@@ -48,7 +48,7 @@ public class Seismo_smallFactoryImpl extends EFactoryImpl implements Seismo_smal
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Seismo_smallFactoryImpl() {
+	public Seismo_localchannelinfoFactoryImpl() {
 		super();
 	}
 
@@ -60,9 +60,9 @@ public class Seismo_smallFactoryImpl extends EFactoryImpl implements Seismo_smal
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case Seismo_smallPackage.C: return createC();
-			case Seismo_smallPackage.SMALL: return createSmall();
-			case Seismo_smallPackage.V: return createV();
+			case Seismo_localchannelinfoPackage.C: return createC();
+			case Seismo_localchannelinfoPackage.LOCALCHANNELINFO: return createLocalchannelinfo();
+			case Seismo_localchannelinfoPackage.V: return createV();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -83,9 +83,9 @@ public class Seismo_smallFactoryImpl extends EFactoryImpl implements Seismo_smal
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Small createSmall() {
-		SmallImpl small = new SmallImpl();
-		return small;
+	public Localchannelinfo createLocalchannelinfo() {
+		LocalchannelinfoImpl localchannelinfo = new LocalchannelinfoImpl();
+		return localchannelinfo;
 	}
 
 	/**
@@ -103,8 +103,8 @@ public class Seismo_smallFactoryImpl extends EFactoryImpl implements Seismo_smal
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Seismo_smallPackage getSeismo_smallPackage() {
-		return (Seismo_smallPackage)getEPackage();
+	public Seismo_localchannelinfoPackage getSeismo_localchannelinfoPackage() {
+		return (Seismo_localchannelinfoPackage)getEPackage();
 	}
 
 	/**
@@ -114,8 +114,8 @@ public class Seismo_smallFactoryImpl extends EFactoryImpl implements Seismo_smal
 	 * @generated
 	 */
 	@Deprecated
-	public static Seismo_smallPackage getPackage() {
-		return Seismo_smallPackage.eINSTANCE;
+	public static Seismo_localchannelinfoPackage getPackage() {
+		return Seismo_localchannelinfoPackage.eINSTANCE;
 	}
 
-} //Seismo_smallFactoryImpl
+} //Seismo_localchannelinfoFactoryImpl

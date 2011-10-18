@@ -7,6 +7,7 @@
 package de.hub.clickwatch.specificmodels.brn.lease_tab_leases;
 
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -63,7 +64,7 @@ public interface Dhcpleases extends EObject {
 	 * The list contents are of type {@link java.lang.String}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Text</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Text</em>' attribute list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->

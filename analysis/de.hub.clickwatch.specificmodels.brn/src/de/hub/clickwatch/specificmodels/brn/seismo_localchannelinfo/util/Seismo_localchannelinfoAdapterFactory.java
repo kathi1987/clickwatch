@@ -4,36 +4,35 @@
  *
  * $Id$
  */
-package de.hub.clickwatch.specificmodels.brn.seismo_latestchannelinfos.util;
+package de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.util;
+
+import de.hub.clickwatch.model.Handler;
+
+import de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.*;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
-import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
-import org.eclipse.emf.ecore.EObject;
 
-import de.hub.clickwatch.model.Handler;
-import de.hub.clickwatch.specificmodels.brn.seismo_latestchannelinfos.*;
-import de.hub.clickwatch.specificmodels.brn.seismo_latestchannelinfos.Channel_info;
-import de.hub.clickwatch.specificmodels.brn.seismo_latestchannelinfos.Channel_infos;
-import de.hub.clickwatch.specificmodels.brn.seismo_latestchannelinfos.Latestchannelinfos;
-import de.hub.clickwatch.specificmodels.brn.seismo_latestchannelinfos.Seismo_latestchannelinfosPackage;
+import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
+
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
  * The <b>Adapter Factory</b> for the model.
  * It provides an adapter <code>createXXX</code> method for each class of the model.
  * <!-- end-user-doc -->
- * @see de.hub.clickwatch.specificmodels.brn.seismo_latestchannelinfos.Seismo_latestchannelinfosPackage
+ * @see de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.Seismo_localchannelinfoPackage
  * @generated
  */
-public class Seismo_latestchannelinfosAdapterFactory extends AdapterFactoryImpl {
+public class Seismo_localchannelinfoAdapterFactory extends AdapterFactoryImpl {
 	/**
 	 * The cached model package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static Seismo_latestchannelinfosPackage modelPackage;
+	protected static Seismo_localchannelinfoPackage modelPackage;
 
 	/**
 	 * Creates an instance of the adapter factory.
@@ -41,9 +40,9 @@ public class Seismo_latestchannelinfosAdapterFactory extends AdapterFactoryImpl 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Seismo_latestchannelinfosAdapterFactory() {
+	public Seismo_localchannelinfoAdapterFactory() {
 		if (modelPackage == null) {
-			modelPackage = Seismo_latestchannelinfosPackage.eINSTANCE;
+			modelPackage = Seismo_localchannelinfoPackage.eINSTANCE;
 		}
 	}
 
@@ -72,19 +71,19 @@ public class Seismo_latestchannelinfosAdapterFactory extends AdapterFactoryImpl 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected Seismo_latestchannelinfosSwitch<Adapter> modelSwitch =
-		new Seismo_latestchannelinfosSwitch<Adapter>() {
+	protected Seismo_localchannelinfoSwitch<Adapter> modelSwitch =
+		new Seismo_localchannelinfoSwitch<Adapter>() {
 			@Override
-			public Adapter caseChannel_info(Channel_info object) {
-				return createChannel_infoAdapter();
+			public Adapter caseC(C object) {
+				return createCAdapter();
 			}
 			@Override
-			public Adapter caseChannel_infos(Channel_infos object) {
-				return createChannel_infosAdapter();
+			public Adapter caseLocalchannelinfo(Localchannelinfo object) {
+				return createLocalchannelinfoAdapter();
 			}
 			@Override
-			public Adapter caseLatestchannelinfos(Latestchannelinfos object) {
-				return createLatestchannelinfosAdapter();
+			public Adapter caseV(V object) {
+				return createVAdapter();
 			}
 			@Override
 			public Adapter caseHandler(Handler object) {
@@ -111,44 +110,44 @@ public class Seismo_latestchannelinfosAdapterFactory extends AdapterFactoryImpl 
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.hub.clickwatch.specificmodels.brn.seismo_latestchannelinfos.Channel_info <em>Channel info</em>}'.
+	 * Creates a new adapter for an object of class '{@link de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.C <em>C</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.hub.clickwatch.specificmodels.brn.seismo_latestchannelinfos.Channel_info
+	 * @see de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.C
 	 * @generated
 	 */
-	public Adapter createChannel_infoAdapter() {
+	public Adapter createCAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.hub.clickwatch.specificmodels.brn.seismo_latestchannelinfos.Channel_infos <em>Channel infos</em>}'.
+	 * Creates a new adapter for an object of class '{@link de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.Localchannelinfo <em>Localchannelinfo</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.hub.clickwatch.specificmodels.brn.seismo_latestchannelinfos.Channel_infos
+	 * @see de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.Localchannelinfo
 	 * @generated
 	 */
-	public Adapter createChannel_infosAdapter() {
+	public Adapter createLocalchannelinfoAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.hub.clickwatch.specificmodels.brn.seismo_latestchannelinfos.Latestchannelinfos <em>Latestchannelinfos</em>}'.
+	 * Creates a new adapter for an object of class '{@link de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.V <em>V</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.hub.clickwatch.specificmodels.brn.seismo_latestchannelinfos.Latestchannelinfos
+	 * @see de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.V
 	 * @generated
 	 */
-	public Adapter createLatestchannelinfosAdapter() {
+	public Adapter createVAdapter() {
 		return null;
 	}
 
@@ -178,4 +177,4 @@ public class Seismo_latestchannelinfosAdapterFactory extends AdapterFactoryImpl 
 		return null;
 	}
 
-} //Seismo_latestchannelinfosAdapterFactory
+} //Seismo_localchannelinfoAdapterFactory

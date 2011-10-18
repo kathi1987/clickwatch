@@ -6,12 +6,12 @@
  */
 package de.hub.clickwatch.specificmodels.brn.lt_routes;
 
+import de.hub.clickwatch.model.ClickWatchModelPackage;
+
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
-import de.hub.clickwatch.model.ClickWatchModelPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -307,7 +307,6 @@ public interface Lt_routesPackage extends EPackage {
 	 * @ordered
 	 */
 	int ROUTES_FEATURE_COUNT = ClickWatchModelPackage.HANDLER_FEATURE_COUNT + 1;
-
 
 	/**
 	 * The meta object id for the '{@link de.hub.clickwatch.specificmodels.brn.lt_routes.impl.RoutetableImpl <em>Routetable</em>}' class.

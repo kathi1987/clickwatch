@@ -7,17 +7,14 @@
 package de.hub.clickwatch.specificmodels.brn.lease_tab_leases.impl;
 
 import de.hub.clickwatch.specificmodels.brn.lease_tab_leases.*;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.impl.EFactoryImpl;
-import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
-import de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Client;
-import de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Dhcpleases;
-import de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Lease_tab_leasesFactory;
-import de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Lease_tab_leasesPackage;
-import de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Leases;
+import org.eclipse.emf.ecore.impl.EFactoryImpl;
+
+import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 /**
  * <!-- begin-user-doc -->

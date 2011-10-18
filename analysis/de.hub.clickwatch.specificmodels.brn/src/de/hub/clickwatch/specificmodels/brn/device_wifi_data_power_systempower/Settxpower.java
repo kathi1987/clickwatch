@@ -7,6 +7,7 @@
 package de.hub.clickwatch.specificmodels.brn.device_wifi_data_power_systempower;
 
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**

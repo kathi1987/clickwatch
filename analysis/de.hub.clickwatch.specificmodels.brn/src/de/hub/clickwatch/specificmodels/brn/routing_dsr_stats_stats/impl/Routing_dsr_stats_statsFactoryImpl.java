@@ -7,18 +7,14 @@
 package de.hub.clickwatch.specificmodels.brn.routing_dsr_stats_stats.impl;
 
 import de.hub.clickwatch.specificmodels.brn.routing_dsr_stats_stats.*;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.impl.EFactoryImpl;
-import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
-import de.hub.clickwatch.specificmodels.brn.routing_dsr_stats_stats.Dsr_route_stats;
-import de.hub.clickwatch.specificmodels.brn.routing_dsr_stats_stats.Route;
-import de.hub.clickwatch.specificmodels.brn.routing_dsr_stats_stats.Route_info;
-import de.hub.clickwatch.specificmodels.brn.routing_dsr_stats_stats.Routing_dsr_stats_statsFactory;
-import de.hub.clickwatch.specificmodels.brn.routing_dsr_stats_stats.Routing_dsr_stats_statsPackage;
-import de.hub.clickwatch.specificmodels.brn.routing_dsr_stats_stats.Stats;
+import org.eclipse.emf.ecore.impl.EFactoryImpl;
+
+import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 /**
  * <!-- begin-user-doc -->

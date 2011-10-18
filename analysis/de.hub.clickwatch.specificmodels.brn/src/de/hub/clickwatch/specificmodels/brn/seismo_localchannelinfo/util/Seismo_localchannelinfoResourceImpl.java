@@ -4,19 +4,20 @@
  *
  * $Id$
  */
-package de.hub.clickwatch.specificmodels.brn.seismo_latestchannelinfos.util;
+package de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.util;
 
 import org.eclipse.emf.common.util.URI;
+
 import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
 
 /**
  * <!-- begin-user-doc -->
  * The <b>Resource </b> associated with the package.
  * <!-- end-user-doc -->
- * @see de.hub.clickwatch.specificmodels.brn.seismo_latestchannelinfos.util.Seismo_latestchannelinfosResourceFactoryImpl
+ * @see de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.util.Seismo_localchannelinfoResourceFactoryImpl
  * @generated
  */
-public class Seismo_latestchannelinfosResourceImpl extends XMLResourceImpl {
+public class Seismo_localchannelinfoResourceImpl extends XMLResourceImpl {
 	/**
 	 * Creates an instance of the resource.
 	 * <!-- begin-user-doc -->
@@ -24,8 +25,8 @@ public class Seismo_latestchannelinfosResourceImpl extends XMLResourceImpl {
 	 * @param uri the URI of the new resource.
 	 * @generated
 	 */
-	public Seismo_latestchannelinfosResourceImpl(URI uri) {
+	public Seismo_localchannelinfoResourceImpl(URI uri) {
 		super(uri);
 	}
 
-} //Seismo_latestchannelinfosResourceImpl
+} //Seismo_localchannelinfoResourceImpl

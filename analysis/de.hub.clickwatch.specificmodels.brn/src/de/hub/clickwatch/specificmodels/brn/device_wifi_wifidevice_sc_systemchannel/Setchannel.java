@@ -7,6 +7,7 @@
 package de.hub.clickwatch.specificmodels.brn.device_wifi_wifidevice_sc_systemchannel;
 
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
