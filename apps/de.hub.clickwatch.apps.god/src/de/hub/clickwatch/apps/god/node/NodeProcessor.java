@@ -16,6 +16,7 @@ import de.hub.clickwatch.connection.adapter.IHandlerAdapter;
 import de.hub.clickwatch.model.Handler;
 
 
+@SuppressWarnings("unused")
 public class NodeProcessor extends Thread {
 	private Server server = null;
 	private int maxCounter = 0;
@@ -126,18 +127,21 @@ public class NodeProcessor extends Thread {
 							askingFor = "\"write: " + handler[0] + " " + handler[1] + " --> " + handler[2] + "\"";
 							
 							ClickConnection cc = new ClickConnection(nodeInfos.getHost(), nodeInfos.getPort());
-							cc.openClickConnection();
-							int res = cc.writeHandler(handler[0], handler[1], handler[2]);
-							cc.closeClickConnection();
-							
+							int res = -1;
+							if (cc != null) {
+								cc.openClickConnection();
+								res = cc.writeHandler(handler[0], handler[1], handler[2]);
+								cc.closeClickConnection();
+							}
+								
 							if (res == -1) {
 								System.err.println("ERROR while calling writeHandler " + handler[0] + "/" + handler[1] + " with args '" + handler[2] + "' on node " + nodeInfos.getHost().getHostAddress() + ":" + nodeInfos.getPort());
 							}
 						} else if ((nodeConnection != null) && (nodeConnection.isConnected())) {
 							//ask the node, and process result
+							askingFor = "\"read: " + handler[0] + " " + handler[1] + "\"";
 							IHandlerAdapter handlerAdapter = nodeConnection.getAdapter(IHandlerAdapter.class);
 							Handler resultHandler = handlerAdapter.getHandler(handler[0] + "/" + handler[1]);
-							askingFor = "\"read: " + handler[0] + " " + handler[1] + "\"";
 							//process results
 							NodeInformationProcessor proc = nodeInfos.getElementFilter().get(handler).newInstance();
 							List<ClientInformations> clInfo = proc.handleInformations(resultHandler);
@@ -169,13 +173,13 @@ public class NodeProcessor extends Thread {
 				
 			} catch (Exception exc) {
 				
-				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd @ HH:mm:ss");
-				System.err.println(dateFormat.format(new Date()) + " -> node '" + nodeInfos.getHost().getHostAddress() + ":" + nodeInfos.getPort() + "' throwed Exception: " + exc.getMessage() +
-						" while asking for: " + askingFor + "\t...waiting " + Server.getSzenario().get_WAIT_AFTER_ASKING_ERROR()/1000 + "sec, and starting to ask the node again");
+				//SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd @ HH:mm:ss");
+				//System.err.println(dateFormat.format(new Date()) + " -> node '" + nodeInfos.getHost().getHostAddress() + ":" + nodeInfos.getPort() + "' throwed Exception: " + exc.getMessage() +
+				//		" while asking for: " + askingFor + "\t...waiting " + Server.getSzenario().get_WAIT_AFTER_ASKING_ERROR()/1000 + "sec, and starting to ask the node again");
 				
 				//exc.printStackTrace();
 				
-				if (nodeConnection.isConnected()) {
+				if ((nodeConnection != null) && (nodeConnection.isConnected())) {
 					nodeConnection.disconnect();
 				}
 				
