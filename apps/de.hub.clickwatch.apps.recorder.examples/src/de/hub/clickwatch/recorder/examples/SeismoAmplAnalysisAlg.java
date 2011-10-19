@@ -44,9 +44,9 @@ public class SeismoAmplAnalysisAlg implements IAnalysisAlgorithm {
 		
 		for(Localchannelinfo handler: container.createIterator(node, "seismo/localchannelinfo", Localchannelinfo.class, monitor)) {
 			for (V info: handler.getC().getV()) {				
-				double rov0 = ro0.filter(info.getC0());
-				double rov1 = ro1.filter(info.getC1());
-				double rov2 = ro2.filter(info.getC2());
+				double rov0 = ro0.transform((double)info.getC0());
+				double rov1 = ro1.transform((double)info.getC1());
+				double rov2 = ro2.transform((double)info.getC2());
 				
 				if (start == -1) {
 					start = info.getT();

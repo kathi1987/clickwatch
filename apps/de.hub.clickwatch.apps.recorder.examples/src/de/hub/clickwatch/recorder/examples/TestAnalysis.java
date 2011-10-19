@@ -20,6 +20,7 @@ import de.hub.clickwatch.model.Node;
 import de.hub.clickwatch.recorder.database.DataBaseUtil;
 import de.hub.clickwatch.recorder.database.cwdatabase.Record;
 import de.hub.clickwatch.recorder.examples.lib.AvgBinning;
+import de.hub.clickwatch.recorder.examples.lib.MathTransformation;
 import de.hub.clickwatch.recorder.examples.lib.MovingAvg;
 import de.hub.clickwatch.recorder.examples.lib.MovingFFT;
 import de.hub.clickwatch.recorder.examples.lib.RemoveOffset;
@@ -44,43 +45,23 @@ public class TestAnalysis implements IClickWatchMain {
 		return result;
 	}
 	
-	private static class BinnedMovingFFTsOverTime {
-		protected final int numberOfBins;
-		private MovingFFT<AvgBinning> movingFFTReturnsBins = null;	
-		private RemoveOffset cleanAvg = null;
-		public BinnedMovingFFTsOverTime(int numberOfBins, int sampleRate, int movingFFTSize, int movingAvgSize) {
-			super();
-			this.numberOfBins = numberOfBins;
-			this.movingFFTReturnsBins = new MovingFFT<AvgBinning>(movingFFTSize, sampleRate) {
-				AvgBinning binning = null;
-				@Override
-				protected void addResult(double value, int resultSize) {
-					if (binning == null) {
-						binning = new AvgBinning(10, resultSize);
-					}
-					binning.add(value);
-				}
-
-				@Override
-				protected AvgBinning getResult() {
-					AvgBinning result = binning;
-					binning = null;
-					return result;
-				}
-			};
-			this.cleanAvg = new RemoveOffset(movingAvgSize);
+	private static class SeismoFrequenceTransformation implements MathTransformation<Double, Double> {
+		private final MovingFFT movingFFT;
+		private final int bins;
+		private final int bin;
+		
+		public SeismoFrequenceTransformation(int fftWindowSize, int bins, int bin) {
+			movingFFT = new MovingFFT(fftWindowSize);
+			this.bins = bins;
+			this.bin = bin;
 		}
 		
-		public void add(double time, double value) {
-			AvgBinning binning = movingFFTReturnsBins.add(cleanAvg.filter(value));
-			int i = 0;
-			for(double bin: binning.getBins()) {
-				add(i++, time, bin);
-			}
-		}
-		protected void add(int bin, double time, double value) {
-			// empty
-		}
+		@Override
+		public Double transform(Double value) {
+			Double[] fft = movingFFT.transform(value);
+			Double[] binnings = new AvgBinning(fft.length / bins).transform(fft);
+			return binnings[bin];
+		}		
 	}
 	
 	private Integer nodeId(Node node) {
@@ -115,13 +96,8 @@ public class TestAnalysis implements IClickWatchMain {
 		
 		monitor.beginTask("Performing analysis", numberOfValues);
 		
-		BinnedMovingFFTsOverTime bmfft = new BinnedMovingFFTsOverTime(5, (int)sampleRate, 500, 10) {
-
-			@Override
-			protected void add(int bin, double time, double value) {
-				bmfftResult.getDataSet().add(bin, time, value);
-			}
-		};
+		SeismoFrequenceTransformation bmfft = 
+				new SeismoFrequenceTransformation(2000, 10, 2);
 		
 		MovingAvg mavg = new MovingAvg((int)(sampleRate/10));
 		
@@ -135,27 +111,13 @@ public class TestAnalysis implements IClickWatchMain {
 			fftInput[(int)i] = y;
 			double t = i / sampleRate;
 			result.getDataSet().add(0, t, y);
-			result.getDataSet().add(1, t, mavg.filter(y));
-			bmfft.add(t,y);
+			result.getDataSet().add(1, t, mavg.transform(y));
+			bmfftResult.getDataSet().add(0, t, bmfft.transform(y));
 			monitor.worked(1);
 		}
 		
 		final Result fftResultResult = ctx.getAdapter(IResultsProvider.class).getResults().getResult("TestFFTResult");
 		fftResultResult.getDataSet().getEntries().clear();
-		
-		
-		double fftResult[] = fft(fftInput, sampleRate);
-		AvgBinning avgBinning = new AvgBinning(5, (fftResult.length / 2)+1);
-		int i;
-		for(i = 0; i < fftResult.length; i++) {
-			double x = ((double)i)*sampleRate/(double)fftResult.length;
-			avgBinning.add(fftResult[i]);
-			if (x > sampleRate/2) {
-				break;
-			}
-			fftResultResult.getDataSet().add(2, x, fftResult[i]);			
-		}
-		fftResultResult.getCharts().add(ChartUtil.createXYChart("FFT", "s", "x", "y"));
 		
 		result.getCharts().add(ChartUtil.createXYChart("Plot", "s", "x", "y"));
 		bmfftResult.getCharts().add(ChartUtil.createXYChart("Plot", "bin", "t", "ampl"));

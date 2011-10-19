@@ -85,7 +85,7 @@
          </InjectorProvider>
       </main>
       <main
-            class="de.hub.clickwatch.ui.GuiceAwareExecutableExtensionFactory:de.hub.clickwatch.recorder.examples.SimpleSeismoExportAnalysis"
+            class="de.hub.clickwatch.ui.GuiceAwareExecutableExtensionFactory:de.hub.clickwatch.recorder.examples.SeismoCloudExport"
             name="SeismoExport">
          <InjectorProvider
                debug="true"

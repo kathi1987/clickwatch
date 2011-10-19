@@ -1,27 +1,21 @@
 package de.hub.clickwatch.recorder.examples.lib;
 
-
-public class AvgBinning extends Binning<Double> {
-	private double sum = 0;
+public class AvgBinning extends Binning {
 
 	public AvgBinning(int size) {
-		super(size);
+		super(size, new MathTransformation<Double[], Double>() {
+			@Override
+			public Double transform(Double[] values) {
+				if (values.length == 0) {
+					return .0;
+				}
+				double sum = 0;				
+				for(double value: values) {
+					sum += value;
+				}
+				return sum / values.length;
+			}
+		});
 	}
-	
-	public AvgBinning(int numberOfBins, int expectedNumberOfValues) {
-		this(expectedNumberOfValues / numberOfBins);
-	}
-
-	@Override
-	protected void addToBin(Double value) {
-		sum += value;
-	}
-
-	@Override
-	protected Double closeBin() {
-		double result = sum / size;
-		sum = 0;
-		return result;
-	}	
 }
 

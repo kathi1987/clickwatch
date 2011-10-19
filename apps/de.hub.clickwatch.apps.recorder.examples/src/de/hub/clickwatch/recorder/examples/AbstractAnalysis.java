@@ -10,7 +10,6 @@ import org.eclipse.core.runtime.SubProgressMonitor;
 import com.google.common.base.Preconditions;
 import com.google.inject.Inject;
 
-import de.hub.clickwatch.main.ClickWatchExternalLauncher;
 import de.hub.clickwatch.main.IClickWatchContext;
 import de.hub.clickwatch.main.IClickWatchMain;
 import de.hub.clickwatch.main.IProgressMonitorProvider;

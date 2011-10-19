@@ -32,8 +32,8 @@ public class SimpleSeismoExportAnalysis implements IClickWatchMain {
 	@Inject private DataBaseUtil dbUtil;
 	int finishedRunner = 0;
 	
-	private long start = 0; //(long)(13*3600*1e9);
-	private long end = (long)(2*3600*1e9); // (long)(14*3600*1e9);
+	private long start = 0; //(long)(357*1e6);
+	private long end = 0; //(long)(644*1e6); // (long)(14*3600*1e9);
 	
 	private static class Avg {
 		Queue<Integer> values = new ConcurrentLinkedQueue<Integer>();
@@ -84,7 +84,7 @@ public class SimpleSeismoExportAnalysis implements IClickWatchMain {
 				public void run() {
 					long time = 0;
 					
-					Avg mean1 = new Avg(3000);
+					Avg mean1 = new Avg(1000);
 //					Avg mean2 = new Avg(3000);
 //					Avg mean3 = new Avg(3000);
 					

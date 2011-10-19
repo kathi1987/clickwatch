@@ -3,29 +3,32 @@ package de.hub.clickwatch.recorder.examples.lib;
 import org.apache.commons.math.complex.Complex;
 import org.apache.commons.math.transform.FastFourierTransformer;
 
-public abstract class MovingFFT<Result> extends Window<Double> {
-	private final double sampleRate;
+public class MovingFFT implements MathTransformation<Double, Double[]> {
 	private final int origSize;
-	public MovingFFT(int size, double sampleRate) {
-		super(Integer.highestOneBit(size)*2);
+	
+	private final Window<Double> window;
+	
+	public MovingFFT(int size) {
+		window = new Window<Double>(Integer.highestOneBit(size)*2);
 		this.origSize = size;
-		this.sampleRate = sampleRate;
 	}
-	public Result add(double value) {
-		super.add(value);		
-		
-		double[] valuesArray = new double[size] ;
+	
+	@Override
+	public Double[] transform(Double value) {
+		window.transform(value);		
+		double[] valuesArray = new double[window.size()] ;
 		int i = 0;
-		for (Double v: values) {
+		for (Double v: window.values()) {
 			valuesArray[i++] = v;
 		}
 					
 		Complex[] complexFFTResult = new FastFourierTransformer().transform(valuesArray);
-		for (i = 0; i < complexFFTResult.length; i++) {
-			addResult(complexFFTResult[i].abs()/origSize, complexFFTResult.length);
+		// only the first half of the FFT is reasonable, the other half is just a mirror of the first
+		int resultLength = (complexFFTResult.length / 2) + 1;
+		Double[] fftResult = new Double[resultLength];		
+		for (i = 0; i < resultLength; i++) {
+			fftResult[i] = complexFFTResult[i].abs()/origSize;
 		}
-		return getResult();
-	}
-	protected abstract void addResult(double value, int resultSize);
-	protected abstract Result getResult();
+		return fftResult;
+	}	
 }

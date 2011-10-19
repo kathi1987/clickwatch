@@ -3,26 +3,30 @@ package de.hub.clickwatch.recorder.examples.lib;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Binning<T> {
-	protected final int size;
-	protected final List<T> bins = new ArrayList<T>();
-	private int currentSize = 0;
-	public Binning(int size) {
+public abstract class Binning implements MathTransformation<Double[], Double[]>{
+	private final int size;
+	private final MathTransformation<Double[], Double> binTrans;
+	
+	public Binning(int size, MathTransformation<Double[], Double> binTrans) {
 		super();
 		this.size = size;
+		this.binTrans = binTrans;
 	}
-	public void add(T value) {
-		addToBin(value);
-		currentSize++;
-		if (currentSize >= size) {
-			bins.add(closeBin());
-			currentSize = 0;
+	
+	public Double[] transform(Double[] values) {
+		List<Double> result = new ArrayList<Double>();
+		List<Double> currentBin = null;
+		for(Double value: values) {
+			if (currentBin == null) {
+				currentBin = new ArrayList<Double>();
+			}
+			currentBin.add(value);
+			if (currentBin.size() == size) {
+				result.add(binTrans.transform(currentBin.toArray(new Double[]{})));
+				currentBin = null;
+			}
 		}
+		return result.toArray(new Double[]{});
 	}
-	public List<T> getBins() {
-		return bins;
-	}
-	protected abstract void addToBin(T value);
-	protected abstract T closeBin();
 }
 

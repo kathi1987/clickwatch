@@ -3,14 +3,13 @@ package de.hub.clickwatch.recorder.examples;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
-import de.hub.clickwatch.analysis.results.EqualsConstraint;
 import de.hub.clickwatch.analysis.results.Result;
-import de.hub.clickwatch.analysis.results.ResultsFactory;
 import de.hub.clickwatch.analysis.results.util.ChartUtil;
 import de.hub.clickwatch.main.IClickWatchContext;
 import de.hub.clickwatch.main.IResultsProvider;
 import de.hub.clickwatch.model.Node;
 import de.hub.clickwatch.recorder.examples.lib.AvgBinning;
+import de.hub.clickwatch.recorder.examples.lib.MathTransformation;
 import de.hub.clickwatch.recorder.examples.lib.MovingFFT;
 import de.hub.clickwatch.recorder.examples.lib.RemoveOffset;
 import de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.Localchannelinfo;
@@ -18,55 +17,41 @@ import de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.V;
 
 public class SeismoBusAnalysisAlg implements IAnalysisAlgorithm {
 
-	private static class BinnedMovingFFTsOverTime {
-		protected final int numberOfBins;
-		private MovingFFT<AvgBinning> movingFFTReturnsBins = null;	
-		private RemoveOffset cleanAvg = null;
-		public BinnedMovingFFTsOverTime(int numberOfBins, int sampleRate, int movingFFTSize, int movingAvgSize) {
-			super();
-			this.numberOfBins = numberOfBins;
-			this.movingFFTReturnsBins = new MovingFFT<AvgBinning>(movingFFTSize, sampleRate) {
-				AvgBinning binning = null;
-				@Override
-				protected void addResult(double value, int resultSize) {
-					if (binning == null) {
-						binning = new AvgBinning(BinnedMovingFFTsOverTime.this.numberOfBins, resultSize);
-					}
-					binning.add(value);
-				}
-
-				@Override
-				protected AvgBinning getResult() {
-					AvgBinning result = binning;
-					binning = null;
-					return result;
-				}
-			};
-			this.cleanAvg = new RemoveOffset(movingAvgSize);
+	/**
+	 * This mathematical transformation transforms a time signal into a time
+	 * signal that plots the average of amplitudes in a specific band of frequencies
+	 * in the source signal.
+	 */
+	private static class SeismoFrequenceTransformation implements MathTransformation<Double, Double> {
+		private final MovingFFT movingFFT;
+		private final RemoveOffset removeOffset;
+		private final int bins;
+		private final int bin;
+		
+		public SeismoFrequenceTransformation(int removeOffsetWindowSize, int fftWindowSize, int bins, int bin) {
+			removeOffset = new RemoveOffset(removeOffsetWindowSize);
+			movingFFT = new MovingFFT(fftWindowSize);
+			this.bins = bins;
+			this.bin = bin;
 		}
 		
-		public void add(double time, double value) {
-			AvgBinning binning = movingFFTReturnsBins.add(cleanAvg.filter(value));
-			int i = 0;
-			for(double bin: binning.getBins()) {
-				add(i++, time, bin);
-			}
-		}
-		protected void add(int bin, double time, double value) {
-			// empty
-		}
+		@Override
+		public Double transform(Double value) {
+			// first step, we remove the offset from the time signal
+			Double valueWithoutOffset = removeOffset.transform(value);
+			// second step, we compute the FFT of a window behind the current value
+			Double[] fft = movingFFT.transform(valueWithoutOffset);
+			// third step, we bin the FFT result into equal bins and calculate
+			// the average of all the values in each bin
+			Double[] binnings = new AvgBinning(fft.length / bins).transform(fft);
+			// forth step, we select the bin that represents the wanted frequencies
+			return binnings[bin];
+		}		
 	}
-
+	
 	private Result result = null;
 	private long start = -1;
 	
-	private BinnedMovingFFTsOverTime bmffChannel0 = new BinnedMovingFFTsOverTime(10, 100, 100, 5000) {
-		@Override
-		protected void add(int bin, double time, double value) {
-			result.getDataSet().add(bin, time, value);
-		}
-	};
-
 	@Override
 	public void initialize(IAnalysisContainer container) {
 //		setWindowInMS(13*3600*1000, 10*60*1000);
@@ -77,32 +62,57 @@ public class SeismoBusAnalysisAlg implements IAnalysisAlgorithm {
 	public void analyse(IAnalysisContainer container, Node node,
 			IProgressMonitor monitor) {
 		
+		// initialization and GUI-stuff
 		IClickWatchContext ctx = container.getContext();
 		if (result == null) {
 			result = ctx.getAdapter(IResultsProvider.class).getResults().getGroup("SeismoBusAnalysis").getResult(node.getINetAddress());
 			result.getDataSet().getEntries().clear();
 			result.getCharts().clear();
 			result.getCharts().add(ChartUtil.createXYChart("SeismoBus " + node.getINetAddress(), "bin", "t", "ampl"));
-			EqualsConstraint constraint = ResultsFactory.eINSTANCE.createEqualsConstraint();
-			constraint.setConstraint(new Integer(1));
-			result.getCharts().get(0).getValueSpecs().get(0).setConstraint(constraint);
-		}		
+		}
 		
-		for (Localchannelinfo small: container.createIterator(node, "seismo/localchannelinfo", Localchannelinfo.class, monitor)) {
-			for (V value: small.getC().getV()) {
+		// parameter definition
+		int sampleRateInHz = 100; // we sample the seismo sensors in all three channels at 100 Hz
+		int removeOffsetWindowInSeconds = 10; // this is the window size for the moving average used to null the seismo time signal
+		int fftWindowInSeconds = 1; // this is the window size used for continuous FFTing the last x seconds 
+		// an FFT of an 100 Hz sample, gives us the spectrum from 0 to 50 Hz (1/2 of the sample rate)
+		// we further bin each FFT result
+		int bins = 10; // use x bins to bin each FFT result
+		int bin = 2; // select the xth bin as the transformation result
+		
+		// create three transformations, one for each channel
+		SeismoFrequenceTransformation[] seismoTrans = new SeismoFrequenceTransformation[] {
+			new SeismoFrequenceTransformation(removeOffsetWindowInSeconds*sampleRateInHz, fftWindowInSeconds*sampleRateInHz, bins, bin),
+			new SeismoFrequenceTransformation(removeOffsetWindowInSeconds*sampleRateInHz, fftWindowInSeconds*sampleRateInHz, bins, bin),
+			new SeismoFrequenceTransformation(removeOffsetWindowInSeconds*sampleRateInHz, fftWindowInSeconds*sampleRateInHz, bins, bin)			
+		};
+		
+		// create a data base iterator that iterates through seismo data sets in the order they were recorded
+		Iterable<Localchannelinfo> dataBaseIterator = container.createIterator(node, "seismo/localchannelinfo", Localchannelinfo.class, monitor);
+		// use the iterator to actually go through the data base
+		for (Localchannelinfo latestChannelInfo: dataBaseIterator) {
+			// iterate to each seismo data set
+			for (V value: latestChannelInfo.getC().getV()) {
 
+				// each datum has a timestamp attached, we store the first time as "point 0" on the time scale
 				if (start == -1) {
 					start = value.getT();
 				}
 				
+				// norm the time based on "point 0"
 				long time = value.getT() - start;
 				double dtime = time / 1e6;
 				
-				bmffChannel0.add(dtime, value.getC0());
+				// apply the seismo transformation on the value from each channel and store the results with the current time
+				result.getDataSet().add(0, dtime, seismoTrans[0].transform((double)value.getC0()));
+				result.getDataSet().add(1, dtime, seismoTrans[1].transform((double)value.getC1()));
+				result.getDataSet().add(2, dtime, seismoTrans[2].transform((double)value.getC2()));
 			}
-			EcoreUtil.delete(small);
+			// this removes the data set read from the db from memory (there might be cycles in the data structure)
+			EcoreUtil.delete(latestChannelInfo);
 		}
 		
+		// some more GUI-stuff
 		container.shiftResultWindow(result, 60, 1);
 		container.updateResult(result);
 	}

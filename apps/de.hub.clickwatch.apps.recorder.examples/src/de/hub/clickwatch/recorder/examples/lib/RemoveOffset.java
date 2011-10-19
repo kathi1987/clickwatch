@@ -1,13 +1,15 @@
 package de.hub.clickwatch.recorder.examples.lib;
 
-public class RemoveOffset {
+public class RemoveOffset implements MathTransformation<Double, Double> {
 
 	private final MovingAvg mavg;
+	
 	public RemoveOffset(int windowSize) {
 		mavg = new MovingAvg(windowSize);
 	}
-	
-	public double filter(double value) {
-		return value - mavg.filter(value);
+
+	@Override
+	public Double transform(Double value) {
+		return value - mavg.transform(value);
 	}
 }
