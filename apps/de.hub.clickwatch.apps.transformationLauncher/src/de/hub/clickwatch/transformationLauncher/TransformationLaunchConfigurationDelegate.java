@@ -141,27 +141,33 @@ public class TransformationLaunchConfigurationDelegate implements
 							URI.createURI(recordURI));
 
 				// handler per record
-				config.put(ELaunchConfigurationParameters.HandlerPerRecord,
+				if (handlerPerRecord != null && handlerPerRecord != "")
+					config.put(ELaunchConfigurationParameters.HandlerPerRecord,
 						Integer.parseInt(handlerPerRecord));
 
 				// local update interval
-				config.put(ELaunchConfigurationParameters.LocalUpdateInterval,
+				if (localUpdateInterval != null && localUpdateInterval != "")
+					config.put(ELaunchConfigurationParameters.LocalUpdateInterval,
 						Integer.parseInt(localUpdateInterval));
-				
+
 				// remote update interval
-				config.put(ELaunchConfigurationParameters.RemoteUpdateInterval,
+				if (remoteUpdateInterval != null && remoteUpdateInterval != "")
+					config.put(ELaunchConfigurationParameters.RemoteUpdateInterval,
 						Integer.parseInt(remoteUpdateInterval));
 
 				// database type
-				config.put(ELaunchConfigurationParameters.DataBaseType,
+				if (databaseType != null && databaseType != "")
+					config.put(ELaunchConfigurationParameters.DataBaseType,
 						DataBaseType.valueOf(databaseType));
 
 				// handler behaviour
-				config.put(ELaunchConfigurationParameters.HandlerBehaviour,
+				if (handlerBehaviour != null && handlerBehaviour != "")
+					config.put(ELaunchConfigurationParameters.HandlerBehaviour,
 						HandlerBehaviour.valueOf(handlerBehaviour));
 
 				// value type
-				config.put(ELaunchConfigurationParameters.ValueType, valueType);
+				if (valueType != null && valueType != "")
+					config.put(ELaunchConfigurationParameters.ValueType, valueType);
 
 				// debug level
 				Integer debugLvl = 2;
