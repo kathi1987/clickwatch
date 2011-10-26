@@ -53,5 +53,36 @@
             name="Activity Composition Diagram">
       </wizard>
    </extension>
+   <extension
+         point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
+      <propertyContributor
+            contributorId="activity_cwc.PropertyContributor">
+         <propertyCategory
+               category="ClickWatchDiagram"></propertyCategory>
+      </propertyContributor>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
+      <propertyTabs
+            contributorId="activity_cwc.PropertyContributor">
+         <propertyTab
+               category="ClickWatchDiagram"
+               id="de.hub.clickwatch.analysis.activity_composition.MainTab"
+               label="Main">
+         </propertyTab>
+      </propertyTabs>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views.properties.tabbed.propertySections">
+      <propertySections
+            contributorId="activity_cwc.PropertyContributor">
+         <propertySection
+               class="de.hub.clickwatch.analysis.activity_composition.property.StartNodeSection"
+               filter="de.hub.clickwatch.analysis.activity_composition.property.StartNodeFilter"
+               id="de.hub.clickwatch.analysis.activity_composition.StartNode"
+               tab="de.hub.clickwatch.analysis.activity_composition.MainTab">
+         </propertySection>
+      </propertySections>
+   </extension>
 
 </plugin>

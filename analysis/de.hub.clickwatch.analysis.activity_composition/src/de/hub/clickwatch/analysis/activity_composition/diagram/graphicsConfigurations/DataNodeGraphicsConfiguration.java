@@ -8,8 +8,8 @@ import org.eclipse.graphiti.features.context.IAddContext;
 import org.eclipse.graphiti.features.context.ILayoutContext;
 import org.eclipse.graphiti.features.context.IUpdateContext;
 import org.eclipse.graphiti.features.impl.Reason;
-import org.eclipse.graphiti.mm.algorithms.Ellipse;
 import org.eclipse.graphiti.mm.algorithms.GraphicsAlgorithm;
+import org.eclipse.graphiti.mm.algorithms.RoundedRectangle;
 import org.eclipse.graphiti.mm.algorithms.Text;
 import org.eclipse.graphiti.mm.algorithms.styles.Color;
 import org.eclipse.graphiti.mm.algorithms.styles.Orientation;
@@ -30,64 +30,68 @@ import de.hub.xveg.configuration.ILabelConfiguration;
 import de.hub.xveg.xvegfeaturemodel.StyleInfo;
 import de.hub.xveg.xvegfeaturemodel.VertexFeature;
 
-public class StartNodeGraphicsConfiguration extends
+public class DataNodeGraphicsConfiguration extends
 		DefaultVertexGraphicsConfiguration {
-	
+
 	private AddGraphicsHelper helper = null;
 	private VertexFeature feature = null;
-	
+
 	protected int width = -1;
 	protected int height = -1;
-	
+
 	protected EObject dslObject = null;
 	protected IGaService gaService;
 	protected IPeCreateService peCreateService;
-	
+
 	private void init() {
 		peCreateService = Graphiti.getPeCreateService();
-        gaService = Graphiti.getGaService();
+		gaService = Graphiti.getGaService();
 	}
-	
+
 	private void init(IAddContext context) {
 		init();
-        dslObject = (EObject)context.getNewObject();
-        this.width = getWidth(context.getWidth());
+		dslObject = (EObject) context.getNewObject();
+		this.width = getWidth(context.getWidth());
 		this.height = getHeight(context.getHeight());
 	}
-	
+
 	private void init(ILayoutContext context) {
 		init();
-		ContainerShape containerShape = (ContainerShape) context.getPictogramElement();
+		ContainerShape containerShape = (ContainerShape) context
+				.getPictogramElement();
 		GraphicsAlgorithm containerGa = containerShape.getGraphicsAlgorithm();
-        if (!context.getPictogramElement().getLink().getBusinessObjects().isEmpty()) {
-        	dslObject = context.getPictogramElement().getLink().getBusinessObjects().get(0);
-        } else {
-        	dslObject = null;
-        }
+		if (!context.getPictogramElement().getLink().getBusinessObjects()
+				.isEmpty()) {
+			dslObject = context.getPictogramElement().getLink()
+					.getBusinessObjects().get(0);
+		} else {
+			dslObject = null;
+		}
 		width = getWidth(containerGa.getWidth());
 		height = getHeight(containerGa.getHeight());
 	}
-	
+
 	private void init(IUpdateContext context) {
 		init();
-		dslObject = context.getPictogramElement().getLink().getBusinessObjects().get(0);
+		dslObject = context.getPictogramElement().getLink()
+				.getBusinessObjects().get(0);
 	}
-	
+
 	protected void layoutContent(EObject next) {
 		IGaService gaService = Graphiti.getGaService();
 		if (next instanceof GraphicsAlgorithm) {
-			GraphicsAlgorithm ga = (GraphicsAlgorithm)next;
+			GraphicsAlgorithm ga = (GraphicsAlgorithm) next;
 			gaService.setWidth(ga, width);
 			gaService.setHeight(ga, height);
 		}
 	}
-	
+
 	@Override
-	public boolean layoutGraphics(VertexFeature feature,
-			ILayoutContext context) {	
+	public boolean layoutGraphics(VertexFeature feature, ILayoutContext context) {
 		init(context);
-		
-		ContainerShape containerShape = (ContainerShape) context.getPictogramElement();
+
+		ContainerShape containerShape = (ContainerShape) context
+				.getPictogramElement();
 		Iterator<EObject> i = containerShape.eAllContents();
 		while (i.hasNext()) {
 			EObject next = i.next();
@@ -95,85 +99,91 @@ public class StartNodeGraphicsConfiguration extends
 		}
 		return sizeHasChanges(width, height);
 	}
-	
-    
-    protected GraphicsAlgorithm addSpecificShape(IAddContext context, ContainerShape containerShape) {
-    	IGaService gaService = Graphiti.getGaService();
-        Ellipse ellipse = gaService.createEllipse(containerShape);
-        ellipse.setWidth(3);
-        ellipse.setHeight(3);
-        stylize(ellipse);
-        return ellipse;
-    }
-    
-    protected void addAdditionalShapes(IAddContext context, ContainerShape containerShape) {
-    	// emtpy
-    }
-    
-    protected void stylize(GraphicsAlgorithm shape) {
-    	StyleInfo style = feature.getStyle() == null ? DefaultStyle.INSTANCE : feature.getStyle();
-    	shape.setForeground(helper.manageColor(Style.STARTNODE_FOREGROUND));
-    	shape.setBackground(helper.manageColor(Style.STARTNODE_BACKGROUND));
-    	shape.setLineWidth(2);
-    }
-	
+
+	protected GraphicsAlgorithm addSpecificShape(IAddContext context,
+			ContainerShape containerShape) {
+		IGaService gaService = Graphiti.getGaService();
+		RoundedRectangle roundedRectangle = gaService.createRoundedRectangle(
+				containerShape, 2, 2);
+		stylize(roundedRectangle);
+		return roundedRectangle;
+	}
+
+	protected void addAdditionalShapes(IAddContext context,
+			ContainerShape containerShape) {
+		// emtpy
+	}
+
+	protected void stylize(GraphicsAlgorithm shape) {
+		StyleInfo style = feature.getStyle() == null ? DefaultStyle.INSTANCE
+				: feature.getStyle();
+		shape.setForeground(helper.manageColor(Style.SHAPE_FOREGROUND));
+		shape.setBackground(helper.manageColor(Style.SHAPE_BACKGROUND));
+		shape.setLineWidth(2);
+	}
+
 	protected Color manageColor(IColorConstant color) {
 		return helper.manageColor(color);
 	}
-	
+
 	@Override
 	public PictogramElement addGraphics(VertexFeature feature,
 			IAddContext context, AddGraphicsHelper helper) {
 		init(context);
 		this.feature = feature;
 		this.helper = helper;
-		
-        Diagram targetDiagram = (Diagram) context.getTargetContainer();
-		StyleInfo style = feature.getStyle() == null ? DefaultStyle.INSTANCE : feature.getStyle();
-        
-        ContainerShape containerShape = peCreateService.createContainerShape(targetDiagram, true);
-        helper.link(containerShape);  
-        
-        GraphicsAlgorithm specificShape = addSpecificShape(context, containerShape);
-        addAdditionalShapes(context, containerShape);
 
-        gaService.setLocationAndSize(specificShape, context.getX(), context.getY(), width, height);
-        
-        if (dslObject.eResource() == null) {
-        	targetDiagram.eResource().getContents().add(dslObject);
-        }
+		Diagram targetDiagram = (Diagram) context.getTargetContainer();
+		StyleInfo style = feature.getStyle() == null ? DefaultStyle.INSTANCE
+				: feature.getStyle();
 
-        helper.link(containerShape);                
-        Shape shape = peCreateService.createShape(containerShape, false);
-    
+		ContainerShape containerShape = peCreateService.createContainerShape(
+				targetDiagram, true);
+		helper.link(containerShape);
+
+		GraphicsAlgorithm specificShape = addSpecificShape(context,
+				containerShape);
+		addAdditionalShapes(context, containerShape);
+
+		gaService.setLocationAndSize(specificShape, context.getX(),
+				context.getY(), width, height);
+
+		if (dslObject.eResource() == null) {
+			targetDiagram.eResource().getContents().add(dslObject);
+		}
+
+		helper.link(containerShape);
+		Shape shape = peCreateService.createShape(containerShape, false);
+
 		String label = DefaultFeatureConfigurtationProvider.INSTANCE
-				.getLabelConfiguration(feature, dslObject).getLabel(feature, dslObject);
-        
-        Text text = gaService.createDefaultText(targetDiagram, shape, label);
-        text.setForeground(helper.manageColor(Style.STARTNODE_FOREGROUND));
-        text.setBackground(helper.manageColor(Style.STARTNODE_BACKGROUND));
-        text.setHorizontalAlignment(Orientation.ALIGNMENT_CENTER);
-        text.setVerticalAlignment(Orientation.ALIGNMENT_CENTER);
+				.getLabelConfiguration(feature, dslObject).getLabel(feature,
+						dslObject);
 
-        text.getFont().setBold(style.isBoldFont());
-        text.getFont().setSize(style.getFontSize());
-        gaService.setLocationAndSize(text, 0, 0, width, height);
- 
-        helper.link(shape);
-        
+		Text text = gaService.createDefaultText(targetDiagram, shape, label);
+		text.setForeground(helper.manageColor(Style.SHAPE_FOREGROUND));
+		text.setBackground(helper.manageColor(Style.SHAPE_BACKGROUND));
+		text.setHorizontalAlignment(Orientation.ALIGNMENT_CENTER);
+		text.setVerticalAlignment(Orientation.ALIGNMENT_CENTER);
+
+		text.getFont().setBold(style.isBoldFont());
+		text.getFont().setSize(style.getFontSize());
+		gaService.setLocationAndSize(text, 0, 0, width, height);
+
+		helper.link(shape);
+
 		helper.configureDirectEditing(containerShape, shape, text);
-		peCreateService.createChopboxAnchor(containerShape);	
- 
-        return containerShape;
+		peCreateService.createChopboxAnchor(containerShape);
+
+		return containerShape;
 	}
-	
+
 	public static int MIN_HEIGHT = 40;
 	public static int MIN_WIDTH = 40;
 
 	public int getWidth(int width) {
 		return width < MIN_WIDTH ? MIN_WIDTH : width;
 	}
-	
+
 	public int getHeight(int height) {
 		return height < MIN_HEIGHT ? MIN_HEIGHT : height;
 	}
@@ -181,16 +191,17 @@ public class StartNodeGraphicsConfiguration extends
 	public boolean sizeHasChanges(int width, int height) {
 		return width != MIN_WIDTH || height != MIN_HEIGHT;
 	}
-	
+
 	protected IReason updateContentIsNeeded(EObject content) {
 		if (content instanceof Text) {
 			Text text = (Text) content;
 			String pictogramName = text.getValue();
-			ILabelConfiguration<EObject> configuration = DefaultFeatureConfigurtationProvider.INSTANCE.getLabelConfiguration(feature, dslObject);
+			ILabelConfiguration<EObject> configuration = DefaultFeatureConfigurtationProvider.INSTANCE
+					.getLabelConfiguration(feature, dslObject);
 			String dslName = configuration.getLabel(feature, dslObject);
 			boolean updateNameNeeded = ((pictogramName == null && dslName != null) || (pictogramName != null && !pictogramName
 					.equals(dslName)));
-			
+
 			if (updateNameNeeded) {
 				return Reason.createTrueReason("Name is out of date"); //$NON-NLS-1$
 			} else {
@@ -200,14 +211,15 @@ public class StartNodeGraphicsConfiguration extends
 			return null;
 		}
 	}
-	
+
 	protected boolean updateContent(EObject content) {
 		if (content instanceof Text) {
 			Text text = (Text) content;
-			
-			ILabelConfiguration<EObject> configuration = DefaultFeatureConfigurtationProvider.INSTANCE.getLabelConfiguration(feature, dslObject);
+
+			ILabelConfiguration<EObject> configuration = DefaultFeatureConfigurtationProvider.INSTANCE
+					.getLabelConfiguration(feature, dslObject);
 			String businessName = configuration.getLabel(feature, dslObject);
-			
+
 			text.setValue(businessName);
 			return true;
 		} else {
@@ -216,19 +228,21 @@ public class StartNodeGraphicsConfiguration extends
 	}
 
 	@Override
-	public IReason updateGraphicsNeeded(VertexFeature feature, IUpdateContext context) {
+	public IReason updateGraphicsNeeded(VertexFeature feature,
+			IUpdateContext context) {
 		this.feature = feature;
 		init(context);
 		PictogramElement pictogramElement = context.getPictogramElement();
 		if (pictogramElement instanceof ContainerShape) {
 			ContainerShape cs = (ContainerShape) pictogramElement;
 			for (Shape shape : cs.getChildren()) {
-				IReason reason = updateContentIsNeeded(shape.getGraphicsAlgorithm());
+				IReason reason = updateContentIsNeeded(shape
+						.getGraphicsAlgorithm());
 				if (reason != null) {
 					return reason;
 				}
 			}
-		} 
+		}
 
 		return Reason.createFalseReason();
 	}
@@ -241,16 +255,15 @@ public class StartNodeGraphicsConfiguration extends
 
 		boolean hasChanged = false;
 		if (pictogramElement instanceof ContainerShape) {
-			ContainerShape cs = (ContainerShape) pictogramElement;			
-			for (Shape shape : cs.getChildren()) {				
+			ContainerShape cs = (ContainerShape) pictogramElement;
+			for (Shape shape : cs.getChildren()) {
 				if (updateContent(shape.getGraphicsAlgorithm())) {
 					hasChanged = true;
 				}
 			}
 			return hasChanged;
-		} 
+		}
 		return hasChanged;
 	}
-	
 
 }

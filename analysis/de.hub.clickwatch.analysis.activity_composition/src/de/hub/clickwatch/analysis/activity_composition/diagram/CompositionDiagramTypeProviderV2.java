@@ -2,11 +2,15 @@ package de.hub.clickwatch.analysis.activity_composition.diagram;
 
 import org.eclipse.emf.ecore.EObject;
 
+import de.hub.clickwatch.analysis.activity_composition.diagram.graphicsConfigurations.DataNodeGraphicsConfiguration;
 import de.hub.clickwatch.analysis.activity_composition.diagram.graphicsConfigurations.StartNodeGraphicsConfiguration;
 import de.hub.clickwatch.analysis.activity_composition.model.ActionNode;
+import de.hub.clickwatch.analysis.activity_composition.model.DataNode;
 import de.hub.clickwatch.analysis.activity_composition.model.Element;
+import de.hub.clickwatch.analysis.activity_composition.model.InputEdge;
 import de.hub.clickwatch.analysis.activity_composition.model.ModelFactory;
 import de.hub.clickwatch.analysis.activity_composition.model.ModelPackage;
+import de.hub.clickwatch.analysis.activity_composition.model.OutputEdge;
 import de.hub.clickwatch.analysis.activity_composition.model.ProgressEdge;
 import de.hub.clickwatch.analysis.activity_composition.model.StartNode;
 import de.hub.clickwatch.analysis.activity_composition.model.Transformation;
@@ -87,20 +91,23 @@ public class CompositionDiagramTypeProviderV2 extends XvegDiagramTypeProvider {
 
 		VertexFeature startNodeFeature = startNodeFeatBuilder.but()
 				.withName("Start")
-				.withElementClass(modelPackage.getStartNode())
-				// .withConfiguration(
-				// new MyDefaultVertexConfigurationProvider<StartNode>() {
-				// public IVertexGraphicConfiguration
-				// getVertixGraphicsConfiguration(
-				// VertexFeature feature, StartNode object) {
-				// return new DefaultVertexGraphicsConfiguration() {
-				// protected void layoutContent(EObject next) {
-				// super.layoutContent(next);
-				// };
-				// };
-				// };
-				// })
-				.build();
+				.withElementClass(modelPackage.getStartNode()).build();
+
+		// data node
+		VertexFeatureBuilder dataNodeFeatBuilder = VertexFeatureBuilder
+				.newVertexFeatureBuilder()
+				.withConfiguration(
+						new MyDefaultVertexConfigurationProvider<DataNode>() {
+							@Override
+							public IVertexGraphicConfiguration getVertixGraphicsConfiguration(
+									VertexFeature feature, DataNode object) {
+								return new DataNodeGraphicsConfiguration();
+							}
+						}).withStyle(styleInfoBuilder);
+
+		VertexFeature modelNodeFeature = dataNodeFeatBuilder.but()
+				.withName("Model Node")
+				.withElementClass(modelPackage.getModelNode()).build();
 
 		// transformation node
 		VertexFeatureBuilder transformationNodeFeatBuilder = VertexFeatureBuilder
@@ -123,6 +130,7 @@ public class CompositionDiagramTypeProviderV2 extends XvegDiagramTypeProvider {
 				.newXvegDiagramTypeBuilder()
 				.withDslFactory(ModelFactory.eINSTANCE)
 				.withFeatures(startNodeFeature)
+				.withFeatures(modelNodeFeature)
 				.withFeatures(transformationNodeFeature)
 				.withFeatures(
 						EdgeFeatureBuilder
@@ -146,6 +154,53 @@ public class CompositionDiagramTypeProviderV2 extends XvegDiagramTypeProvider {
 										modelPackage.getProgressEdge_Source())
 								.withTargetReference(
 										modelPackage.getProgressEdge_Target())
-								.build()).build();
+								.build())
+
+				.withFeatures(
+						EdgeFeatureBuilder
+								.newEdgeFeatureBuilder()
+								.withConfiguration(
+										new InputDataEdgeConfigurationProvider() {
+											@Override
+											public ILabelConfiguration<InputEdge> getLabelConfiguration(
+													XvegFeature feature,
+													InputEdge object) {
+												return (ILabelConfiguration) labelConfiguration;
+											}
+										})
+								.withName("Input")
+								.withElementClass(modelPackage.getInputEdge())
+								.withPossibleSourceFeatures(modelNodeFeature)
+								.withPossibleTargetFeatures(
+										transformationNodeFeature)
+								.withSourceReference(
+										modelPackage.getInputEdge_Source())
+								.withTargetReference(
+										modelPackage.getInputEdge_Target())
+								.build())
+				.withFeatures(
+						EdgeFeatureBuilder
+								.newEdgeFeatureBuilder()
+								.withConfiguration(
+										new OutputDataEdgeConfigurationProvider() {
+											@Override
+											public ILabelConfiguration<OutputEdge> getLabelConfiguration(
+													XvegFeature feature,
+													OutputEdge object) {
+												return (ILabelConfiguration) labelConfiguration;
+											}
+										})
+								.withName("Output")
+								.withElementClass(modelPackage.getOutputEdge())
+								.withPossibleSourceFeatures(
+										transformationNodeFeature)
+								.withPossibleTargetFeatures(modelNodeFeature)
+								.withSourceReference(
+										modelPackage.getOutputEdge_Source())
+								.withTargetReference(
+										modelPackage.getOutputEdge_Target())
+								.build())
+
+				.build();
 	}
 }
