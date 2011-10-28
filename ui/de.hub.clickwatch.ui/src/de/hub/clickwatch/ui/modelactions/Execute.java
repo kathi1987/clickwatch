@@ -25,14 +25,13 @@ import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IViewReference;
 import org.eclipse.ui.IWorkbenchPart;
 
-import com.google.inject.Inject;
 import com.jcraft.jsch.Session;
 
 import de.hub.clickwatch.connection.INodeConnection;
 import de.hub.clickwatch.model.Node;
 import de.hub.clickwatch.ui.util.SshConnectionFactory;
 import de.hub.clickwatch.ui.views.ResultView;
-import de.hub.emfxml.XmlModelRepository;
+import de.hub.emfxml.util.EmfXmlUtil;
 
 /**
  * Executes shell commands in parallel on each node using SSH.
@@ -90,9 +89,6 @@ class ExecWorkerThread extends Thread {
  * @author zubow
  */
 public class Execute extends AbstractNodeAction {
-	
-	@Inject
-	private XmlModelRepository xmlModelRepository;
 
 	private EObject currentResult = null;
 
@@ -262,7 +258,7 @@ public class Execute extends AbstractNodeAction {
 			if (node.getConnection() != null) {
 				INodeConnection oldConnection = (INodeConnection)node.getConnection();
 				node.setConnection(null);
-				oldConnection.disconnect();
+				oldConnection.close();
 			}
 
 			workerThreads[idx] = new ExecWorkerThread(node.getINetAddress(), cmd);
@@ -313,7 +309,7 @@ public class Execute extends AbstractNodeAction {
 		
 		System.out.println("XMl results to display: " + xmlResults.toString());
 		
-		EObject result = xmlModelRepository.deserializeXml(xmlResults.toString());
+		EObject result = EmfXmlUtil.deserializeXml(xmlResults.toString());
 
 		for(IViewReference viewRef: editor.getEditorSite().getPage().getViewReferences()) {
 			IViewPart view = viewRef.getView(false);

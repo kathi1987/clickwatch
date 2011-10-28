@@ -3,8 +3,8 @@ package de.hub.clickwatch.recorder;
 import com.google.inject.AbstractModule;
 import com.google.inject.name.Names;
 
-import de.hub.clickwatch.connection.adapter.IValueAdapter;
-import de.hub.clickwatch.connection.adapter.StringValueAdapter;
+import de.hub.clickwatch.connection.adapter.values.IValueAdapter;
+import de.hub.clickwatch.connection.adapter.values.StringValueAdapter;
 import de.hub.clickwatch.recorder.database.IDataBaseRecordAdapter;
 import de.hub.clickwatch.recorder.database.IDataBaseRetrieveAdapter;
 import de.hub.clickwatch.recorder.database.hbase.HBaseDataBaseAdapter;

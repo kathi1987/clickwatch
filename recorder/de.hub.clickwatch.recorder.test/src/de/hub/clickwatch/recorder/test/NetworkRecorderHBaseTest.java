@@ -3,8 +3,8 @@ package de.hub.clickwatch.recorder.test;
 import org.junit.Test;
 
 import click.ControlSocket.HandlerInfo;
-import de.hub.clickwatch.connection.adapter.IValueAdapter;
-import de.hub.clickwatch.connection.adapter.StringValueAdapter;
+import de.hub.clickwatch.connection.adapter.values.IValueAdapter;
+import de.hub.clickwatch.connection.adapter.values.StringValueAdapter;
 import de.hub.clickwatch.recorder.database.IDataBaseRecordAdapter;
 import de.hub.clickwatch.recorder.database.IDataBaseRetrieveAdapter;
 import de.hub.clickwatch.recorder.database.hbase.HBaseDataBaseAdapter;

@@ -19,6 +19,16 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IMarker;
+import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.IResourceChangeEvent;
+import org.eclipse.core.resources.IResourceChangeListener;
+import org.eclipse.core.resources.IResourceDelta;
+import org.eclipse.core.resources.IResourceDeltaVisitor;
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.command.BasicCommandStack;
@@ -28,7 +38,7 @@ import org.eclipse.emf.common.command.CommandStackListener;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.NotificationImpl;
-import org.eclipse.emf.common.ui.URIEditorInput;
+import org.eclipse.emf.common.ui.MarkerHelper;
 import org.eclipse.emf.common.ui.ViewerPane;
 import org.eclipse.emf.common.ui.editor.ProblemEditorPart;
 import org.eclipse.emf.common.ui.viewer.IViewerProvider;
@@ -37,9 +47,11 @@ import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.XMLResource;
@@ -57,6 +69,7 @@ import org.eclipse.emf.edit.ui.dnd.ViewerDragAdapter;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.edit.ui.provider.UnwrappingSelectionProvider;
+import org.eclipse.emf.edit.ui.util.EditUIMarkerHelper;
 import org.eclipse.emf.edit.ui.util.EditUIUtil;
 import org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage;
 import org.eclipse.jface.action.IMenuListener;
@@ -97,6 +110,9 @@ import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.IPartListener;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PartInitException;
+import org.eclipse.ui.dialogs.SaveAsDialog;
+import org.eclipse.ui.ide.IGotoMarker;
+import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.MultiPageEditorPart;
 import org.eclipse.ui.views.contentoutline.ContentOutline;
 import org.eclipse.ui.views.contentoutline.ContentOutlinePage;
@@ -121,29 +137,7 @@ import de.hub.clickwatch.model.provider.NodeItemProvider;
  */
 public class ClickWatchModelEditor
 	extends MultiPageEditorPart
-	implements IEditingDomainProvider, ISelectionProvider, IMenuListener, IViewerProvider {
-	/**
-	 * The filters for file extensions supported by the editor.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final List<String> FILE_EXTENSION_FILTERS = prefixExtensions(ClickWatchModelModelWizard.FILE_EXTENSIONS, "*.");
-	
-	/**
-	 * Returns a new unmodifiable list containing prefixed versions of the extensions in the given list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private static List<String> prefixExtensions(List<String> extensions, String prefix) {
-		List<String> result = new ArrayList<String>();
-		for (String extension : extensions) {
-			result.add(prefix + extension);
-		}
-		return Collections.unmodifiableList(result);
-	}
-
+	implements IEditingDomainProvider, ISelectionProvider, IMenuListener, IViewerProvider, IGotoMarker {
 	/**
 	 * This keeps track of the editing domain that is used to track all changes to the model.
 	 * <!-- begin-user-doc -->
@@ -284,6 +278,15 @@ public class ClickWatchModelEditor
 	protected ISelection editorSelection = StructuredSelection.EMPTY;
 
 	/**
+	 * The MarkerHelper is responsible for creating workspace resource markers presented
+	 * in Eclipse's Problems View.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected MarkerHelper markerHelper = new EditUIMarkerHelper();
+
+	/**
 	 * This listens for when the outline becomes active
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -416,6 +419,83 @@ public class ClickWatchModelEditor
 		};
 
 	/**
+	 * This listens for workspace changes.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected IResourceChangeListener resourceChangeListener =
+		new IResourceChangeListener() {
+			public void resourceChanged(IResourceChangeEvent event) {
+				IResourceDelta delta = event.getDelta();
+				try {
+					class ResourceDeltaVisitor implements IResourceDeltaVisitor {
+						protected ResourceSet resourceSet = editingDomain.getResourceSet();
+						protected Collection<Resource> changedResources = new ArrayList<Resource>();
+						protected Collection<Resource> removedResources = new ArrayList<Resource>();
+
+						public boolean visit(IResourceDelta delta) {
+							if (delta.getResource().getType() == IResource.FILE) {
+								if (delta.getKind() == IResourceDelta.REMOVED ||
+								    delta.getKind() == IResourceDelta.CHANGED && delta.getFlags() != IResourceDelta.MARKERS) {
+									Resource resource = resourceSet.getResource(URI.createPlatformResourceURI(delta.getFullPath().toString(), true), false);
+									if (resource != null) {
+										if (delta.getKind() == IResourceDelta.REMOVED) {
+											removedResources.add(resource);
+										}
+										else if (!savedResources.remove(resource)) {
+											changedResources.add(resource);
+										}
+									}
+								}
+							}
+
+							return true;
+						}
+
+						public Collection<Resource> getChangedResources() {
+							return changedResources;
+						}
+
+						public Collection<Resource> getRemovedResources() {
+							return removedResources;
+						}
+					}
+
+					final ResourceDeltaVisitor visitor = new ResourceDeltaVisitor();
+					delta.accept(visitor);
+
+					if (!visitor.getRemovedResources().isEmpty()) {
+						getSite().getShell().getDisplay().asyncExec
+							(new Runnable() {
+								 public void run() {
+									 removedResources.addAll(visitor.getRemovedResources());
+									 if (!isDirty()) {
+										 getSite().getPage().closeEditor(ClickWatchModelEditor.this, false);
+									 }
+								 }
+							 });
+					}
+
+					if (!visitor.getChangedResources().isEmpty()) {
+						getSite().getShell().getDisplay().asyncExec
+							(new Runnable() {
+								 public void run() {
+									 changedResources.addAll(visitor.getChangedResources());
+									 if (getSite().getPage().getActiveEditor() == ClickWatchModelEditor.this) {
+										 handleActivate();
+									 }
+								 }
+							 });
+					}
+				}
+				catch (CoreException exception) {
+					ClickWatchModelEditorPlugin.INSTANCE.log(exception);
+				}
+			}
+		};
+
+	/**
 	 * Handles activation of the editor or it's associated views.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -498,7 +578,7 @@ public class ClickWatchModelEditor
 			BasicDiagnostic diagnostic =
 				new BasicDiagnostic
 					(Diagnostic.OK,
-					 "edu.hu.clickwatch.model.editor",
+					 "de.hub.clickwatch.model.editor",
 					 0,
 					 null,
 					 new Object [] { editingDomain.getResourceSet() });
@@ -518,6 +598,7 @@ public class ClickWatchModelEditor
 			else if (diagnostic.getSeverity() != Diagnostic.OK) {
 				ProblemEditorPart problemEditorPart = new ProblemEditorPart();
 				problemEditorPart.setDiagnostic(diagnostic);
+				problemEditorPart.setMarkerHelper(markerHelper);
 				try {
 					addPage(++lastEditorPage, problemEditorPart, getEditorInput());
 					setPageText(lastEditorPage, problemEditorPart.getPartName());
@@ -525,7 +606,19 @@ public class ClickWatchModelEditor
 					showTabs();
 				}
 				catch (PartInitException exception) {
-					NewEditorPlugin.INSTANCE.log(exception);
+					ClickWatchModelEditorPlugin.INSTANCE.log(exception);
+				}
+			}
+
+			if (markerHelper.hasMarkers(editingDomain.getResourceSet())) {
+				markerHelper.deleteMarkers(editingDomain.getResourceSet());
+				if (diagnostic.getSeverity() != Diagnostic.OK) {
+					try {
+						markerHelper.createMarkers(diagnostic);
+					}
+					catch (CoreException exception) {
+						ClickWatchModelEditorPlugin.INSTANCE.log(exception);
+					}
 				}
 			}
 		}
@@ -863,7 +956,7 @@ public class ClickWatchModelEditor
 			BasicDiagnostic basicDiagnostic =
 				new BasicDiagnostic
 					(Diagnostic.ERROR,
-					 "edu.hu.clickwatch.model.editor",
+					 "de.hub.clickwatch.model.editor",
 					 0,
 					 getString("_UI_CreateModelError_message", resource.getURI()),
 					 new Object [] { exception == null ? (Object)resource : exception });
@@ -874,7 +967,7 @@ public class ClickWatchModelEditor
 			return
 				new BasicDiagnostic
 					(Diagnostic.ERROR,
-					 "edu.hu.clickwatch.model.editor",
+					 "de.hub.clickwatch.model.editor",
 					 0,
 					 getString("_UI_CreateModelError_message", resource.getURI()),
 					 new Object[] { exception });
@@ -1198,6 +1291,9 @@ public class ClickWatchModelEditor
 		else if (key.equals(IPropertySheetPage.class)) {
 			return getPropertySheetPage();
 		}
+		else if (key.equals(IGotoMarker.class)) {
+			return this;
+		}
 		else {
 			return super.getAdapter(key);
 		}
@@ -1449,11 +1545,14 @@ public class ClickWatchModelEditor
 	 */
 	@Override
 	public void doSaveAs() {
-		String[] filters = FILE_EXTENSION_FILTERS.toArray(new String[FILE_EXTENSION_FILTERS.size()]);
-		String[] files = NewEditorAdvisor.openFilePathDialog(getSite().getShell(), SWT.SAVE, filters);
-		if (files.length > 0) {
-			URI uri = URI.createFileURI(files[0]);
-			doSaveAs(uri, new URIEditorInput(uri));
+		SaveAsDialog saveAsDialog = new SaveAsDialog(getSite().getShell());
+		saveAsDialog.open();
+		IPath path = saveAsDialog.getResult();
+		if (path != null) {
+			IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(path);
+			if (file != null) {
+				doSaveAs(URI.createPlatformResourceURI(file.getFullPath().toString(), true), new FileEditorInput(file));
+			}
 		}
 	}
 
@@ -1474,6 +1573,29 @@ public class ClickWatchModelEditor
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void gotoMarker(IMarker marker) {
+		try {
+			if (marker.getType().equals(EValidator.MARKER)) {
+				String uriAttribute = marker.getAttribute(EValidator.URI_ATTRIBUTE, null);
+				if (uriAttribute != null) {
+					URI uri = URI.createURI(uriAttribute);
+					EObject eObject = editingDomain.getResourceSet().getEObject(uri, true);
+					if (eObject != null) {
+					  setSelectionToViewer(Collections.singleton(editingDomain.getWrapper(eObject)));
+					}
+				}
+			}
+		}
+		catch (CoreException exception) {
+			ClickWatchModelEditorPlugin.INSTANCE.log(exception);
+		}
+	}
+
+	/**
 	 * This is called during startup.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1486,6 +1608,7 @@ public class ClickWatchModelEditor
 		setPartName(editorInput.getName());
 		site.setSelectionProvider(this);
 		site.getPage().addPartListener(partListener);
+		ResourcesPlugin.getWorkspace().addResourceChangeListener(resourceChangeListener, IResourceChangeEvent.POST_CHANGE);
 	}
 
 	/**
@@ -1590,7 +1713,7 @@ public class ClickWatchModelEditor
 	 * @generated
 	 */
 	private static String getString(String key) {
-		return NewEditorPlugin.INSTANCE.getString(key);
+		return ClickWatchModelEditorPlugin.INSTANCE.getString(key);
 	}
 
 	/**
@@ -1600,7 +1723,7 @@ public class ClickWatchModelEditor
 	 * @generated
 	 */
 	private static String getString(String key, Object s1) {
-		return NewEditorPlugin.INSTANCE.getString(key, new Object [] { s1 });
+		return ClickWatchModelEditorPlugin.INSTANCE.getString(key, new Object [] { s1 });
 	}
 
 	/**
@@ -1648,6 +1771,8 @@ public class ClickWatchModelEditor
 	@Override
 	public void dispose() {
 		updateProblemIndication = false;
+
+		ResourcesPlugin.getWorkspace().removeResourceChangeListener(resourceChangeListener);
 
 		getSite().getPage().removePartListener(partListener);
 

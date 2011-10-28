@@ -1,6 +1,5 @@
 package de.hub.clickwatch.ui;
 
-import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -8,7 +7,6 @@ import java.util.List;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.Platform;
-import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
@@ -17,29 +15,21 @@ import org.osgi.framework.BundleContext;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.Module;
-import com.google.inject.name.Names;
 
-import de.hub.clickcontrol.ClickSocketImpl;
-import de.hub.clickcontrol.IClickSocket;
 import de.hub.clickwatch.ClickWatchModule;
-import de.hub.clickwatch.connection.adapter.CompoundHandlerAdapter;
-import de.hub.clickwatch.connection.adapter.IPullHandlerAdapter;
-import de.hub.clickwatch.connection.adapter.IValueAdapter;
-import de.hub.clickwatch.connection.adapter.PullHandlerAdapter;
-import de.hub.clickwatch.connection.adapter.XmlValueAdapter;
-import de.hub.clickwatch.main.impl.InjectorProvider.HandlerBehaviour;
+import de.hub.clickwatch.ClickWatchModuleUtil;
+import de.hub.clickwatch.ClickWatchModuleUtil.ClickWatchModuleBuilder;
+import de.hub.clickwatch.ClickWatchModuleUtil.HandlerBehaviour;
+import de.hub.clickwatch.connection.adapter.values.StringValueAdapter;
+import de.hub.clickwatch.connection.adapter.values.XmlValueAdapter;
 import de.hub.clickwatch.main.impl.InjectorProvider.ValueType;
 import de.hub.clickwatch.preferences.PreferenceConstants;
-import de.hub.clickwatch.recorder.ClickSocketPlayer;
-import de.hub.clickwatch.recorder.ClickSocketPlayerSocketImpl;
 import de.hub.clickwatch.specificmodels.brn.BrnValueAdapter;
-import de.hub.clickwatch.util.ILogger;
 import de.hub.clickwatch.util.Throwables;
 
 public class PluginActivator extends AbstractUIPlugin {
 
 	private static PluginActivator INSTANCE;
-	private ClickSocketPlayer player = null;
 	private Injector injectorCache = null;
 	private boolean bindToPlayerCache = false;
 
@@ -66,115 +56,31 @@ public class PluginActivator extends AbstractUIPlugin {
 
 		if (bindToPlayerCache != bindToPlayer || injectorCache == null) {
 			bindToPlayerCache = bindToPlayer;
-			ClickWatchModule clickWatchModule = new ClickWatchUIModule() {
-				@Override
-				protected void bindClickSocket() {
-					if (bindToPlayer) {
-						bindToPlayer();
-					} else {
-						bind(IClickSocket.class).to(ClickSocketImpl.class);
-					}
+			
+			ClickWatchModuleBuilder builder = ClickWatchModuleUtil.newBuilder()
+					.wDebugLvl(debugLvl)
+					.wHandlerBhvr(handlerBehav, 1000, 2000);
+			if (valType == ValueType.XML) {
+				builder.wValueAdapterClass(XmlValueAdapter.class);
+			} else if (valType == ValueType.STRING) {
+				builder.wValueAdapterClass(StringValueAdapter.class);
+			} else if (valType == ValueType.SPECIFIC) {
+				builder.wValueAdapterClass(BrnValueAdapter.class);
+			} else {
+				builder.wValueAdapterClass(XmlValueAdapter.class);
+			}
+			if (bindToPlayer) {
+				try {
+					URI uri = URI.createURI(de.hub.clickwatch.ui.PluginActivator.getInstance()
+							.getBundle().getEntry("resources/records/record_11-06-23.clickwatchmodel")
+							.toURI().toString());
+					builder.wRecord(uri);
+				} catch (Exception e) {
+					Throwables.propagate(e);
 				}
-
-				private void bindToPlayer() {
-					if (player == null) {
-						java.net.URI uri = null;
-						try {
-							uri = de.hub.clickwatch.ui.PluginActivator
-									.getInstance()
-									.getBundle()
-									.getEntry(
-											"resources/records/record_11-06-23.clickwatchmodel")
-									.toURI();
-						} catch (URISyntaxException e) {
-							e.printStackTrace();
-						}
-
-						player = new ClickSocketPlayer();
-						player.initialize(URI.createURI(uri.toString()));
-					}
-
-					bind(ClickSocketPlayer.class).toInstance(player);
-					bind(IClickSocket.class).to(
-							ClickSocketPlayerSocketImpl.class);
-				}
-
-				@Override
-				protected void bindValueAdapter() {
-					if (valType == ValueType.SPECIFIC) {
-						bind(IValueAdapter.class).to(BrnValueAdapter.class);
-					} else if (valType == ValueType.XML) {
-						bind(IValueAdapter.class).to(XmlValueAdapter.class);
-					} else {
-						super.bindValueAdapter();
-					}
-				}
-
-				@Override
-				protected void bindHandlerAdapter() {
-					if (handlerBehav.ordinal() >= HandlerBehaviour.COMPOUND
-							.ordinal()) {
-						bind(IPullHandlerAdapter.class).to(
-								CompoundHandlerAdapter.class);
-					} else {
-						bind(IPullHandlerAdapter.class).to(
-								PullHandlerAdapter.class);
-					}
-					if (handlerBehav.ordinal() >= HandlerBehaviour.COMPOUND_RECORDING
-							.ordinal()) {
-						bind(Boolean.class)
-								.annotatedWith(
-										Names.named(ClickWatchModule.B_COMPOUND_HANDLER_RECORDS))
-								.toInstance(true);
-					} else {
-						bind(Boolean.class)
-								.annotatedWith(
-										Names.named(ClickWatchModule.B_COMPOUND_HANDLER_RECORDS))
-								.toInstance(false);
-					}
-					if (handlerBehav == HandlerBehaviour.COMPOUND_RECORDING_DIFFERENCES) {
-						bind(Boolean.class)
-								.annotatedWith(
-										Names.named(ClickWatchModule.B_COMPOUND_HANDLER_CHANGES_ONLY))
-								.toInstance(true);
-					} else {
-						bind(Boolean.class)
-								.annotatedWith(
-										Names.named(ClickWatchModule.B_COMPOUND_HANDLER_CHANGES_ONLY))
-								.toInstance(false);
-					}
-
-					bind(Integer.class)
-							.annotatedWith(
-									Names.named(ClickWatchModule.I_COMPOUND_HANDLER_SAMPLE_TIME))
-							.toInstance(500); // TODO: READ A USER VALUE FOR
-												// REMOTE UPDATE INTERVAL
-					bind(Boolean.class)
-							.annotatedWith(
-									Names.named(ClickWatchModule.B_COMPOUND_HANDLER_COMPRESSION))
-							.toInstance(false);
-				}
-
-			};
-			clickWatchModule.setLogger(new ILogger() {
-				@Override
-				public void log(int status, String message, Throwable exception) {
-					if ((debugLvl) >= status) {
-						getLog().log(
-								new Status(status, "de.hub.clickwatch.ui",
-										message, exception));
-						if (exception == null) {
-							System.out.println(message);
-						} else {
-							System.out.println(message + ": "
-									+ exception.getLocalizedMessage());
-							exception.printStackTrace();
-						}
-					}
-
-				}
-			});
-
+			}
+			ClickWatchModule clickWatchModule = builder.build();
+			
 			List<Module> modules = new ArrayList<Module>();
 			modules.add(clickWatchModule);
 			modules.addAll(getAdditionalModules());

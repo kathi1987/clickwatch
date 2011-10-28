@@ -47,7 +47,7 @@ public class MergingNodeAdapterMergeConfiguration extends DefaultMergeConfigurat
 					feature == valueFeature ||
 					feature == timestampFeature;
 		} else {
-			return super.consider(context);
+			return false;
 		}
 	}
 

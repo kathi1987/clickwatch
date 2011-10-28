@@ -6,10 +6,10 @@ import com.google.inject.Injector;
 import com.google.inject.name.Names;
 
 import de.hub.clickwatch.ClickWatchModule;
-import de.hub.clickwatch.connection.adapter.CompoundHandlerAdapter;
 import de.hub.clickwatch.connection.adapter.IPullHandlerAdapter;
-import de.hub.clickwatch.connection.adapter.IValueAdapter;
-import de.hub.clickwatch.connection.adapter.StringValueAdapter;
+import de.hub.clickwatch.connection.adapter.internal.CompoundHandlerEventAdapter;
+import de.hub.clickwatch.connection.adapter.values.IValueAdapter;
+import de.hub.clickwatch.connection.adapter.values.StringValueAdapter;
 import de.hub.clickwatch.recorder.CWRecorderModule;
 import de.hub.clickwatch.recorder.database.cwdatabase.Record;
 import de.hub.clickwatch.ui.modelactions.AbstractAction;
@@ -28,8 +28,8 @@ public abstract class AbstractRecordAction extends AbstractAction<Record> {
 			}
 
 			@Override
-			protected void bindHandlerAdapter() {
-				bind(IPullHandlerAdapter.class).to(CompoundHandlerAdapter.class);
+			protected void bindHandlerEventAdapter() {
+				bind(IPullHandlerAdapter.class).to(CompoundHandlerEventAdapter.class);
 				bind(Boolean.class).annotatedWith(Names.named(ClickWatchModule.B_COMPOUND_HANDLER_RECORDS)).toInstance(true);
 				bind(Boolean.class).annotatedWith(Names.named(ClickWatchModule.B_COMPOUND_HANDLER_CHANGES_ONLY)).toInstance(true);
 				bind(Integer.class).annotatedWith(Names.named(ClickWatchModule.I_COMPOUND_HANDLER_SAMPLE_TIME)).toInstance(200);

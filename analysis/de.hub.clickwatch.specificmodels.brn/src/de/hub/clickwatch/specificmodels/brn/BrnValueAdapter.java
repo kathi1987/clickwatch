@@ -7,7 +7,7 @@ import org.eclipse.emf.ecore.EPackage;
 
 import com.google.inject.Inject;
 
-import de.hub.clickwatch.connection.adapter.XmlValueAdapter;
+import de.hub.clickwatch.connection.adapter.values.XmlValueAdapter;
 import de.hub.clickwatch.model.ClickWatchModelPackage;
 import de.hub.clickwatch.model.Handler;
 import de.hub.emfxml.XmlModelRepository;
@@ -91,7 +91,7 @@ public class BrnValueAdapter extends XmlValueAdapter {
 	}
 
 	@Override
-	public void clearCaches() {
+	public void reset() {
 		metaModelCache.clear();
 	}
 }

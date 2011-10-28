@@ -19,8 +19,8 @@ import de.hub.clickwatch.ClickWatchStandaloneSetup;
 import de.hub.clickwatch.connection.INodeConnection;
 import de.hub.clickwatch.connection.INodeConnectionProvider;
 import de.hub.clickwatch.connection.adapter.INodeAdapter;
-import de.hub.clickwatch.connection.adapter.IValueAdapter;
-import de.hub.clickwatch.connection.adapter.StringValueAdapter;
+import de.hub.clickwatch.connection.adapter.values.IValueAdapter;
+import de.hub.clickwatch.connection.adapter.values.StringValueAdapter;
 import de.hub.clickwatch.model.ClickWatchModelFactory;
 import de.hub.clickwatch.model.Network;
 import de.hub.clickwatch.model.Node;
@@ -102,10 +102,9 @@ public class ClickSocketRecorder {
 	public Node retrieve(String host, String port) {
 		INodeConnectionProvider ncp = injector.getInstance(INodeConnectionProvider.class);
 		INodeConnection connection = ncp.createConnection(host, port);
-		connection.connect();
 		INodeAdapter nodeAdapter =connection.getAdapter(INodeAdapter.class);
 		Node result = nodeAdapter.pullNode();
-		connection.disconnect();
+		connection.close();
 		return EcoreUtil.copy(result);
 	}
 

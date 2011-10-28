@@ -1,11 +1,7 @@
 package de.hub.clickwatch.main.impl;
 
-import java.io.FileNotFoundException;
 import java.io.PrintStream;
-import java.io.File;
-import java.text.DateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.cli.CommandLine;
@@ -19,19 +15,15 @@ import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.name.Names;
 
-import de.hub.clickcontrol.ClickSocketImpl;
-import de.hub.clickcontrol.IClickSocket;
 import de.hub.clickwatch.ClickWatchModule;
-import de.hub.clickwatch.connection.adapter.CompoundHandlerAdapter;
-import de.hub.clickwatch.connection.adapter.IPullHandlerAdapter;
-import de.hub.clickwatch.connection.adapter.IValueAdapter;
-import de.hub.clickwatch.connection.adapter.PullHandlerAdapter;
-import de.hub.clickwatch.connection.adapter.XmlValueAdapter;
+import de.hub.clickwatch.ClickWatchModuleUtil;
+import de.hub.clickwatch.ClickWatchModuleUtil.ClickWatchModuleBuilder;
+import de.hub.clickwatch.ClickWatchModuleUtil.HandlerBehaviour;
+import de.hub.clickwatch.connection.adapter.values.StringValueAdapter;
+import de.hub.clickwatch.connection.adapter.values.XmlValueAdapter;
 import de.hub.clickwatch.main.IClickWatchContextAdapter;
 import de.hub.clickwatch.main.IInjectorProvider;
 import de.hub.clickwatch.recorder.CWRecorderModule;
-import de.hub.clickwatch.recorder.ClickSocketPlayer;
-import de.hub.clickwatch.recorder.ClickSocketPlayerSocketImpl;
 import de.hub.clickwatch.recorder.database.DummyDataBaseAdapter;
 import de.hub.clickwatch.recorder.database.IDataBaseRecordAdapter;
 import de.hub.clickwatch.recorder.database.IDataBaseRetrieveAdapter;
@@ -44,12 +36,8 @@ import de.hub.clickwatch.util.Throwables;
 public class InjectorProvider implements IClickWatchContextAdapter,
 		IInjectorProvider {
 
-	public enum HandlerBehaviour {
-		DEFAULT, COMPOUND, COMPOUND_RECORDING, COMPOUND_RECORDING_DIFFERENCES
-	};
-
 	public enum ValueType {
-		STRING, XML, SPECIFIC
+		STRING, XML, SPECIFIC;
 	};
 
 	public enum DataBaseType {
@@ -58,7 +46,7 @@ public class InjectorProvider implements IClickWatchContextAdapter,
 
 	private HandlerBehaviour handlerBehaviour;
 	private int remoteUpdateInterval;
-	private long localUpdateInterval;
+	private int localUpdateInterval;
 	private ValueType valueType;
 	private int debugLevel; // 1,2,3,4
 	private String logFile = null;
@@ -261,124 +249,22 @@ public class InjectorProvider implements IClickWatchContextAdapter,
 	private static PrintStream out = System.out;
 
 	private Injector createInjector() {
-		ClickWatchModule clickWatchModule = new ClickWatchModule() {
-			@Override
-			protected ILogger getLogger() {
-				return new ILogger() {
-					@Override
-					public synchronized void log(int status, String message,
-							Throwable exception) {
-						if (logFile != null && out == System.out) {
-							try {
-								out = new PrintStream(new File(logFile));
-							} catch (FileNotFoundException e) {
-								Throwables.propagate(e);
-							}
-						}
-						if ((debugLevel) >= status) {
-							out.print(DateFormat.getDateTimeInstance()
-									.format(new Date()) + " ");
-
-							if (status == ILogger.DEBUG) {
-								out.print("[DEBUG] ");
-							} else if (status == ILogger.INFO) {
-								out.print("[INFO] ");
-							} else if (status == ILogger.WARNING) {
-								out.print("[WARNING] ");
-							} else if (status == ILogger.ERROR) {
-								out.print("[ERROR] ");
-							}
-
-							out.print(message);
-							if (exception != null) {
-								out.println(": "
-										+ exception.getMessage());
-								exception.printStackTrace(out);
-							}
-							out.println("");
-							out.flush();
-						}
-					}
-				};
-			}
-
-			@Override
-			protected void bindHandlerAdapter() {
-				if (handlerBehaviour.ordinal() >= HandlerBehaviour.COMPOUND
-						.ordinal()) {
-					bind(IPullHandlerAdapter.class).to(
-							CompoundHandlerAdapter.class);
-				} else {
-					bind(IPullHandlerAdapter.class)
-							.to(PullHandlerAdapter.class);
-				}
-				if (handlerBehaviour.ordinal() >= HandlerBehaviour.COMPOUND_RECORDING
-						.ordinal()) {
-					bind(Boolean.class)
-							.annotatedWith(
-									Names.named(ClickWatchModule.B_COMPOUND_HANDLER_RECORDS))
-							.toInstance(true);
-				} else {
-					bind(Boolean.class)
-							.annotatedWith(
-									Names.named(ClickWatchModule.B_COMPOUND_HANDLER_RECORDS))
-							.toInstance(false);
-				}
-				if (handlerBehaviour == HandlerBehaviour.COMPOUND_RECORDING_DIFFERENCES) {
-					bind(Boolean.class)
-							.annotatedWith(
-									Names.named(ClickWatchModule.B_COMPOUND_HANDLER_CHANGES_ONLY))
-							.toInstance(true);
-				} else {
-					bind(Boolean.class)
-							.annotatedWith(
-									Names.named(ClickWatchModule.B_COMPOUND_HANDLER_CHANGES_ONLY))
-							.toInstance(false);
-				}
-
-				bind(Integer.class)
-						.annotatedWith(
-								Names.named(ClickWatchModule.I_COMPOUND_HANDLER_SAMPLE_TIME))
-						.toInstance(remoteUpdateInterval);
-				bind(Boolean.class)
-						.annotatedWith(
-								Names.named(ClickWatchModule.B_COMPOUND_HANDLER_COMPRESSION))
-						.toInstance(false);
-			}
-
-			@Override
-			protected void bindValueAdapter() {
-				if (valueType == ValueType.SPECIFIC) {
-					bind(IValueAdapter.class).to(BrnValueAdapter.class);
-				} else if (valueType == ValueType.XML) {
-					bind(IValueAdapter.class).to(XmlValueAdapter.class);
-				} else {
-					super.bindValueAdapter();
-				}
-			}
-
-			@Override
-			protected void bindClickSocket() {
-				if (recordURI != null) {
-					bindToPlayer();
-				} else {
-					bind(IClickSocket.class).to(ClickSocketImpl.class);
-				}
-			}
-
-			private ClickSocketPlayer player = null;
-
-			private void bindToPlayer() {
-				if (player == null) {
-					player = new ClickSocketPlayer();
-					player.initialize(recordURI);
-				}
-
-				bind(ClickSocketPlayer.class).toInstance(player);
-				bind(IClickSocket.class).to(ClickSocketPlayerSocketImpl.class);
-			}
-
-		};
+		
+		ClickWatchModuleBuilder builder = ClickWatchModuleUtil.newBuilder()
+				.wDebug(debugLevel, logFile)
+				.wHandlerBhvr(handlerBehaviour, localUpdateInterval, remoteUpdateInterval);
+		if (valueType == ValueType.XML) {
+			builder.wValueAdapterClass(XmlValueAdapter.class);
+		} else if (valueType == ValueType.STRING) {
+			builder.wValueAdapterClass(StringValueAdapter.class);
+		} else if (valueType == ValueType.SPECIFIC) {
+			builder.wValueAdapterClass(BrnValueAdapter.class);
+		} else {
+			builder.wValueAdapterClass(XmlValueAdapter.class);
+		}
+		builder.wRecord(recordURI);
+		
+		ClickWatchModule clickWatchModule = builder.build();
 		CWRecorderModule cwRecorderModule = new CWRecorderModule() {
 
 			@Override
@@ -420,7 +306,7 @@ public class InjectorProvider implements IClickWatchContextAdapter,
 			protected void configureDefaultUpdateInterval() {
 				bind(long.class).annotatedWith(
 						Names.named(L_DEFAULT_UPDATE_INTERVAL_PROPERTY))
-						.toInstance(localUpdateInterval);
+						.toInstance((long)localUpdateInterval);
 			}
 
 		};

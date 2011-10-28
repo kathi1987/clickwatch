@@ -15,9 +15,9 @@ import com.google.inject.Injector;
 import com.google.inject.name.Names;
 
 import de.hub.clickwatch.ClickWatchModule;
-import de.hub.clickwatch.connection.adapter.CompoundHandlerAdapter;
 import de.hub.clickwatch.connection.adapter.IPullHandlerAdapter;
-import de.hub.clickwatch.connection.adapter.PullHandlerAdapter;
+import de.hub.clickwatch.connection.adapter.internal.CompoundHandlerEventAdapter;
+import de.hub.clickwatch.connection.adapter.internal.HandlerEventAdapter;
 import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.recorder.CWRecorderModule;
 import de.hub.clickwatch.recorder.NetworkRecorder;
@@ -81,28 +81,28 @@ public class PerformanceGauge {
 			}
 
 			@Override
-			protected void bindHandlerAdapter() {
+			protected void bindHandlerEventAdapter() {
 				switch (retrievalType) {
 				case BASE_LINE:
-					bind(IPullHandlerAdapter.class).to(PullHandlerAdapter.class);
+					bind(IPullHandlerAdapter.class).to(HandlerEventAdapter.class);
 					bind(Boolean.class).annotatedWith(Names.named(ClickWatchModule.B_COMPOUND_HANDLER_RECORDS)).toInstance(false);
 					bind(Boolean.class).annotatedWith(Names.named(ClickWatchModule.B_COMPOUND_HANDLER_CHANGES_ONLY)).toInstance(false);
 					bind(Boolean.class).annotatedWith(Names.named(ClickWatchModule.B_COMPOUND_HANDLER_COMPRESSION)).toInstance(false);
 					break;
 				case ON_DEMAND:
-					bind(IPullHandlerAdapter.class).to(CompoundHandlerAdapter.class);
+					bind(IPullHandlerAdapter.class).to(CompoundHandlerEventAdapter.class);
 					bind(Boolean.class).annotatedWith(Names.named(ClickWatchModule.B_COMPOUND_HANDLER_RECORDS)).toInstance(false);
 					bind(Boolean.class).annotatedWith(Names.named(ClickWatchModule.B_COMPOUND_HANDLER_CHANGES_ONLY)).toInstance(false);
 					bind(Boolean.class).annotatedWith(Names.named(ClickWatchModule.B_COMPOUND_HANDLER_COMPRESSION)).toInstance(false);
 					break;
 				case COMPOUND_HANDLER:
-					bind(IPullHandlerAdapter.class).to(CompoundHandlerAdapter.class);
+					bind(IPullHandlerAdapter.class).to(CompoundHandlerEventAdapter.class);
 					bind(Boolean.class).annotatedWith(Names.named(ClickWatchModule.B_COMPOUND_HANDLER_RECORDS)).toInstance(true);
 					bind(Boolean.class).annotatedWith(Names.named(ClickWatchModule.B_COMPOUND_HANDLER_CHANGES_ONLY)).toInstance(false);
 					bind(Boolean.class).annotatedWith(Names.named(ClickWatchModule.B_COMPOUND_HANDLER_COMPRESSION)).toInstance(false);
 					break;
 				case DELTA_COMPOUND_HANDLER:
-					bind(IPullHandlerAdapter.class).to(CompoundHandlerAdapter.class);
+					bind(IPullHandlerAdapter.class).to(CompoundHandlerEventAdapter.class);
 					bind(Boolean.class).annotatedWith(Names.named(ClickWatchModule.B_COMPOUND_HANDLER_RECORDS)).toInstance(true);
 					bind(Boolean.class).annotatedWith(Names.named(ClickWatchModule.B_COMPOUND_HANDLER_CHANGES_ONLY)).toInstance(true);
 					bind(Boolean.class).annotatedWith(Names.named(ClickWatchModule.B_COMPOUND_HANDLER_COMPRESSION)).toInstance(false);					
@@ -143,7 +143,7 @@ public class PerformanceGauge {
 				result = new BasicEList<Handler>();
 				int i = 0;
 				for (Handler handler: allHandlers) {
-					if (!PullHandlerAdapter.commonHandler.contains(handler.getName())) {
+					if (!HandlerEventAdapter.commonHandler.contains(handler.getName())) {
 						if (i++ < count) {
 							result.add(handler);
 						} else if (handler.getQualifiedName().equals("sys_info/systeminfo")) {

@@ -3,7 +3,7 @@ package de.hub.clickwatch.preferences;
 import org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer;
 import org.eclipse.jface.preference.IPreferenceStore;
 
-import de.hub.clickwatch.main.impl.InjectorProvider.HandlerBehaviour;
+import de.hub.clickwatch.ClickWatchModuleUtil.HandlerBehaviour;
 import de.hub.clickwatch.main.impl.InjectorProvider.ValueType;
 import de.hub.clickwatch.ui.PluginActivator;
 

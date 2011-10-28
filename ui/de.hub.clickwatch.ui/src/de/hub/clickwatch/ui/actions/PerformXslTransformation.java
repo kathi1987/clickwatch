@@ -35,19 +35,14 @@ import org.eclipse.ui.editors.text.TextEditor;
 import org.eclipse.ui.texteditor.IDocumentProvider;
 import org.eclipse.ui.texteditor.ITextEditor;
 
-import com.google.inject.Inject;
-
 import de.hub.clickwatch.model.SpecificMetaModelGenerator;
 import de.hub.clickwatch.model.SpecificModelGenerator;
 import de.hub.clickwatch.model.presentation.ClickWatchModelEditor;
 import de.hub.clickwatch.ui.views.ResultView;
-import de.hub.emfxml.XmlModelRepository;
+import de.hub.emfxml.util.EmfXmlUtil;
 
 
 public class PerformXslTransformation extends org.eclipse.core.commands.AbstractHandler {
-
-	@Inject
-	private XmlModelRepository xmlModelRepository;
 	
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {		
@@ -117,7 +112,7 @@ public class PerformXslTransformation extends org.eclipse.core.commands.Abstract
 					monitor.worked(25);
 					
 					// serialize specific model
-					String inputAsString = xmlModelRepository.serializeXml(smInput);
+					String inputAsString = EmfXmlUtil.serializeXml(smInput);
 					monitor.worked(20);
 					
 					// run XSLT

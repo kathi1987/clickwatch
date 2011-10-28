@@ -2,6 +2,7 @@ package de.hub.clickwatch.connection.adapter;
 
 import com.google.inject.ImplementedBy;
 
+import de.hub.clickwatch.connection.adapter.internal.MetaDataAdapter;
 import de.hub.clickwatch.model.Node;
 
 @ImplementedBy(MetaDataAdapter.class)

@@ -20,15 +20,15 @@ import de.hub.clickcontrol.IClickSocket;
 import de.hub.clickwatch.connection.INodeConnection;
 import de.hub.clickwatch.connection.INodeConnectionProvider;
 import de.hub.clickwatch.connection.adapter.INodeAdapter;
-import de.hub.clickwatch.connection.adapter.IValueAdapter;
-import de.hub.clickwatch.connection.adapter.XmlValueAdapter;
+import de.hub.clickwatch.connection.adapter.values.IValueAdapter;
+import de.hub.clickwatch.connection.adapter.values.XmlValueAdapter;
 import de.hub.clickwatch.model.ClickWatchModelFactory;
 import de.hub.clickwatch.model.Network;
 import de.hub.clickwatch.model.Node;
 import de.hub.clickwatch.recorder.ClickSocketPlayer;
 import de.hub.clickwatch.recorder.ClickSocketPlayerSocketImpl;
 import de.hub.clickwatch.specificmodels.ClickWatchSpecificModelsModule;
-import de.hub.clickwatch.tests.AbstractTest;
+import de.hub.clickwatch.test.AbstractTest;
 import de.hub.specificmodels.metamodelgenerator.MetaModelGenerator;
 
 public class MetaModelFromRecordTest extends AbstractTest {

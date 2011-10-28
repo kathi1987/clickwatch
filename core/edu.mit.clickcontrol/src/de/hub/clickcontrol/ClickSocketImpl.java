@@ -23,7 +23,18 @@ public class ClickSocketImpl implements IClickSocket {
 
 	@Override
 	public void close() {
-		cs.close();
+		if (cs != null) {
+			cs.close();
+		}
+	}
+
+	@Override
+	public boolean isConnected() {
+		if (cs != null) {
+			return cs.isConnected();
+		} else {
+			return false;
+		}
 	}
 
 	@SuppressWarnings("unchecked")

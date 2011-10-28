@@ -28,10 +28,9 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.ViewPart;
 
 import com.google.common.base.Preconditions;
-import com.google.inject.Inject;
 
 import de.hub.clickwatch.model.provider.ClickWatchReflectiveItemProviderAdapterFactory;
-import de.hub.emfxml.XmlModelRepository;
+import de.hub.emfxml.util.EmfXmlUtil;
 
 
 public class ResultView extends ViewPart {
@@ -45,9 +44,6 @@ public class ResultView extends ViewPart {
 	private ComposedAdapterFactory adapterFactory;
 	
 	private String input = null;
-	
-	@Inject
-	private XmlModelRepository xmlModelRepository; 
 	
 	public void setInput(Object input) {
 		Preconditions.checkArgument(input != null && input instanceof String);
@@ -63,7 +59,7 @@ public class ResultView extends ViewPart {
 				xml = false;
 			}
 			if (xml) {
-				result = xmlModelRepository.deserializeXml(evalResult);
+				result = EmfXmlUtil.deserializeXml(evalResult);
 			}
 		} catch (Throwable e) {
 			// we will display the text result instead.

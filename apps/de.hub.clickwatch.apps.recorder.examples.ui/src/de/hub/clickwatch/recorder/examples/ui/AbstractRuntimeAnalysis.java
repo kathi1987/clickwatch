@@ -23,7 +23,7 @@ import com.google.inject.Inject;
 
 import de.hub.clickwatch.analysis.results.DataEntry;
 import de.hub.clickwatch.analysis.results.Result;
-import de.hub.clickwatch.connection.adapter.StringValueAdapter;
+import de.hub.clickwatch.connection.adapter.values.StringValueAdapter;
 import de.hub.clickwatch.main.IClickWatchContext;
 import de.hub.clickwatch.main.IRecordProvider;
 import de.hub.clickwatch.model.Handler;

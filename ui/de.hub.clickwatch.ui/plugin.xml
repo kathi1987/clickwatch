@@ -209,4 +209,10 @@
             commandId="de.hub.clickwatch.ui.PerformXsl">
       </handler>
    </extension>
+   <extension
+         point="de.hub.clickwatch.ui.AdditionalModules">
+      <moduleProvider
+            class="de.hub.clickwatch.ui.MergeModuleProvider">
+      </moduleProvider>
+   </extension>
 </plugin>

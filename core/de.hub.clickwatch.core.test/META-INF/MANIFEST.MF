@@ -7,6 +7,6 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Require-Bundle: de.hub.clickwatch.core;visibility:=reexport,
  org.junit;bundle-version="4.8.2";visibility:=reexport,
  com.google.collect;bundle-version="1.0.0";visibility:=reexport,
- org.eclipse.xsd;bundle-version="2.7.0"
-Export-Package: de.hub.clickwatch.tests,
- de.hub.clickwatch.tests.clicksockets
+ org.eclipse.xsd;bundle-version="2.7.0",
+ edu.mit.clickcontrol;bundle-version="2.0.0"
+Export-Package: de.hub.clickwatch.test

@@ -1,23 +1,39 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: edu.hu.clickwatch
+Bundle-Name: Clickwatch Core
 Bundle-SymbolicName: de.hub.clickwatch.core;singleton:=true
-Bundle-Version: 2.0.0.qualifier
-Require-Bundle: de.hub.emfxml;bundle-version="2.0.0";visibility:=reexport,
- de.hub.clickwatch.model;visibility:=reexport,
- edu.mit.clickcontrol;visibility:=reexport,
- org.eclipse.emf.ecore;bundle-version="2.7.0";visibility:=reexport,
- org.eclipse.emf.ecore.xmi;bundle-version="2.5.0";visibility:=reexport,
- org.eclipse.core.runtime;bundle-version="3.6.0";visibility:=reexport,
- org.eclipse.core.resources;bundle-version="3.6.0";visibility:=reexport,
- com.google.guice;bundle-version="3.0.0";visibility:=reexport,
- com.google.collect;bundle-version="1.0.0";visibility:=reexport
+Bundle-Version: 2.2.0.qualifier
+Bundle-ClassPath: .,
+ lib/commons-collections-3.2.1.jar
+Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: de.hub.clickwatch,
  de.hub.clickwatch.connection,
  de.hub.clickwatch.connection.adapter,
+ de.hub.clickwatch.connection.adapter.values,
  de.hub.clickwatch.merge,
  de.hub.clickwatch.model,
+ de.hub.clickwatch.model.util,
+ de.hub.clickwatch.model.util.builder,
  de.hub.clickwatch.recorder,
- de.hub.clickwatch.util
+ de.hub.clickwatch.util,
+ org.apache.commons.collections,
+ org.apache.commons.collections.bag,
+ org.apache.commons.collections.bidimap,
+ org.apache.commons.collections.buffer,
+ org.apache.commons.collections.collection,
+ org.apache.commons.collections.comparators,
+ org.apache.commons.collections.functors,
+ org.apache.commons.collections.iterators,
+ org.apache.commons.collections.keyvalue,
+ org.apache.commons.collections.list,
+ org.apache.commons.collections.map,
+ org.apache.commons.collections.set
+Require-Bundle: org.eclipse.core.runtime;visibility:=reexport,
+ org.eclipse.emf.ecore;visibility:=reexport,
+ org.eclipse.emf.ecore.xmi;visibility:=reexport,
+ com.google.guice;bundle-version="3.0.0";visibility:=reexport,
+ com.google.collect;bundle-version="1.0.0";visibility:=reexport,
+ edu.mit.clickcontrol;bundle-version="2.0.0",
+ de.hub.emfxml;bundle-version="2.0.0";visibility:=reexport
 Bundle-ActivationPolicy: lazy

@@ -30,6 +30,8 @@ public interface IClickSocket {
 	 * @throws IOException
 	 */
 	void connect(String host, int port, int socketTimeOut) throws IOException;
+	
+	boolean isConnected();
 
 	/**
 	 * Closes the connection to the remote node. It works under the assumption

@@ -9,7 +9,6 @@ package de.hub.clickwatch.model.presentation;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import org.eclipse.emf.common.ui.action.WorkbenchWindowActionDelegate;
 import org.eclipse.emf.common.ui.viewer.IViewerProvider;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
@@ -35,9 +34,7 @@ import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
-import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.Viewer;
-import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PartInitException;
 
@@ -50,27 +47,6 @@ import org.eclipse.ui.PartInitException;
 public class ClickWatchModelActionBarContributor
 	extends EditingDomainActionBarContributor
 	implements ISelectionChangedListener {
-	/**
-	 * Action to create objects from the ClickWatchModel model.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static class NewAction extends WorkbenchWindowActionDelegate {
-		/**
-		 * @see org.eclipse.ui.IActionDelegate#run(org.eclipse.jface.action.IAction)
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		public void run(IAction action) {
-			ClickWatchModelModelWizard wizard = new ClickWatchModelModelWizard();
-			wizard.init(getWindow().getWorkbench(), StructuredSelection.EMPTY);
-			WizardDialog wizardDialog = new WizardDialog(getWindow().getShell(), wizard);
-			wizardDialog.open();
-		}
-	}
-
 	/**
 	 * This keeps track of the active editor.
 	 * <!-- begin-user-doc -->
@@ -94,14 +70,14 @@ public class ClickWatchModelActionBarContributor
 	 * @generated
 	 */
 	protected IAction showPropertiesViewAction =
-		new Action(NewEditorPlugin.INSTANCE.getString("_UI_ShowPropertiesView_menu_item")) {
+		new Action(ClickWatchModelEditorPlugin.INSTANCE.getString("_UI_ShowPropertiesView_menu_item")) {
 			@Override
 			public void run() {
 				try {
 					getPage().showView("org.eclipse.ui.views.PropertySheet");
 				}
 				catch (PartInitException exception) {
-					NewEditorPlugin.INSTANCE.log(exception);
+					ClickWatchModelEditorPlugin.INSTANCE.log(exception);
 				}
 			}
 		};
@@ -114,7 +90,7 @@ public class ClickWatchModelActionBarContributor
 	 * @generated
 	 */
 	protected IAction refreshViewerAction =
-		new Action(NewEditorPlugin.INSTANCE.getString("_UI_RefreshViewer_menu_item")) {
+		new Action(ClickWatchModelEditorPlugin.INSTANCE.getString("_UI_RefreshViewer_menu_item")) {
 			@Override
 			public boolean isEnabled() {
 				return activeEditorPart instanceof IViewerProvider;
@@ -201,7 +177,7 @@ public class ClickWatchModelActionBarContributor
 	public void contributeToMenu(IMenuManager menuManager) {
 		super.contributeToMenu(menuManager);
 
-		IMenuManager submenuManager = new MenuManager(NewEditorPlugin.INSTANCE.getString("_UI_ClickWatchModelEditor_menu"), "edu.hu.clickwatch.modelMenuID");
+		IMenuManager submenuManager = new MenuManager(ClickWatchModelEditorPlugin.INSTANCE.getString("_UI_ClickWatchModelEditor_menu"), "de.hub.clickwatch.modelMenuID");
 		menuManager.insertAfter("additions", submenuManager);
 		submenuManager.add(new Separator("settings"));
 		submenuManager.add(new Separator("actions"));
@@ -210,12 +186,12 @@ public class ClickWatchModelActionBarContributor
 
 		// Prepare for CreateChild item addition or removal.
 		//
-		createChildMenuManager = new MenuManager(NewEditorPlugin.INSTANCE.getString("_UI_CreateChild_menu_item"));
+		createChildMenuManager = new MenuManager(ClickWatchModelEditorPlugin.INSTANCE.getString("_UI_CreateChild_menu_item"));
 		submenuManager.insertBefore("additions", createChildMenuManager);
 
 		// Prepare for CreateSibling item addition or removal.
 		//
-		createSiblingMenuManager = new MenuManager(NewEditorPlugin.INSTANCE.getString("_UI_CreateSibling_menu_item"));
+		createSiblingMenuManager = new MenuManager(ClickWatchModelEditorPlugin.INSTANCE.getString("_UI_CreateSibling_menu_item"));
 		submenuManager.insertBefore("additions", createSiblingMenuManager);
 
 		// Force an update because Eclipse hides empty menus now.
@@ -406,11 +382,11 @@ public class ClickWatchModelActionBarContributor
 		super.menuAboutToShow(menuManager);
 		MenuManager submenuManager = null;
 
-		submenuManager = new MenuManager(NewEditorPlugin.INSTANCE.getString("_UI_CreateChild_menu_item"));
+		submenuManager = new MenuManager(ClickWatchModelEditorPlugin.INSTANCE.getString("_UI_CreateChild_menu_item"));
 		populateManager(submenuManager, createChildActions, null);
 		menuManager.insertBefore("edit", submenuManager);
 
-		submenuManager = new MenuManager(NewEditorPlugin.INSTANCE.getString("_UI_CreateSibling_menu_item"));
+		submenuManager = new MenuManager(ClickWatchModelEditorPlugin.INSTANCE.getString("_UI_CreateSibling_menu_item"));
 		populateManager(submenuManager, createSiblingActions, null);
 		menuManager.insertBefore("edit", submenuManager);
 	}

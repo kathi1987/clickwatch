@@ -22,21 +22,15 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
 
-import com.google.inject.Inject;
-
 import de.hub.clickwatch.model.SpecificMetaModelGenerator;
 import de.hub.clickwatch.model.SpecificModelGenerator;
-import de.hub.emfxml.XmlModelRepository;
-
+import de.hub.emfxml.util.EmfXmlUtil;
 
 public class ShowXml implements IObjectActionDelegate {
 
 	private Shell shell;
 	private Resource resource;
 	private String xml;
-
-	@Inject
-	XmlModelRepository xmlModelRepository;
 
 	public ShowXml() {
 		super();
@@ -112,7 +106,7 @@ public class ShowXml implements IObjectActionDelegate {
 					EObject smInput = smg.generateModel(smm, input);
 					monitor.worked(40);
 
-					xml = xmlModelRepository.serializeXml(smInput);
+					xml = EmfXmlUtil.serializeXml(smInput);
 					monitor.worked(40);
 			        monitor.done(); 
 			    } 

@@ -718,6 +718,10 @@ public class ControlSocket {
 		} catch (IOException ex) {
 		}
 	}
+	
+	public boolean isConnected() {
+		return _sock.isConnected();
+	}
 
 	private int getResponseCode(String s) {
 		String code_str = s.substring(0, 3);

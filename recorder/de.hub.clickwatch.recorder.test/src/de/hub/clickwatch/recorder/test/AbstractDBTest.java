@@ -9,9 +9,9 @@ import com.google.inject.Binder;
 import com.google.inject.Module;
 import com.google.inject.name.Names;
 
-import de.hub.clickwatch.connection.adapter.IValueAdapter;
-import de.hub.clickwatch.connection.adapter.PullHandlerAdapter;
-import de.hub.clickwatch.connection.adapter.StringValueAdapter;
+import de.hub.clickwatch.connection.adapter.internal.HandlerEventAdapter;
+import de.hub.clickwatch.connection.adapter.values.IValueAdapter;
+import de.hub.clickwatch.connection.adapter.values.StringValueAdapter;
 import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.model.Node;
 import de.hub.clickwatch.recorder.CWRecorderModule;
@@ -23,7 +23,7 @@ import de.hub.clickwatch.recorder.database.IDataBaseRetrieveAdapter;
 import de.hub.clickwatch.recorder.database.cwdatabase.Record;
 import de.hub.clickwatch.recorder.database.cwdatabase.util.RecordUtil;
 import de.hub.clickwatch.recorder.database.hbase.HBaseDataBaseAdapter;
-import de.hub.clickwatch.tests.AbstractAdapterTest;
+import de.hub.clickwatch.test.AbstractAdapterTest;
 
 public class AbstractDBTest extends AbstractAdapterTest {
 	
@@ -171,7 +171,7 @@ public class AbstractDBTest extends AbstractAdapterTest {
 
 	private void assertHandler(Node node, String handler, long time, boolean emptyHandlerAllowed) {
 		Handler nodeHandler = node.getHandler(handler);
-		if (!PullHandlerAdapter.commonHandler.contains(handler.substring(handler.lastIndexOf("/")+1))) {
+		if (!HandlerEventAdapter.commonHandler.contains(handler.substring(handler.lastIndexOf("/")+1))) {
 			if (nodeHandler.getTimestamp() == 0) {
 				Assert.assertTrue(emptyHandlerAllowed);
 				Assert.assertTrue(nodeHandler.getValue() == null || nodeHandler.getValue().equals(""));

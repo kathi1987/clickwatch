@@ -19,14 +19,13 @@ import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IViewReference;
 
-import com.google.inject.Inject;
 import com.jcraft.jsch.Session;
 
 import de.hub.clickwatch.connection.INodeConnection;
 import de.hub.clickwatch.model.Node;
 import de.hub.clickwatch.ui.util.SshConnectionFactory;
 import de.hub.clickwatch.ui.views.ResultView;
-import de.hub.emfxml.XmlModelRepository;
+import de.hub.emfxml.util.EmfXmlUtil;
 
 /**
  * Hot deployment: do not reconfigure wireless device; restart click
@@ -75,9 +74,6 @@ class FullDeploy extends Deploy {
  * @author zubow
  */
 public abstract class Deploy extends AbstractNodeAction implements SSHParams {
-	
-	@Inject
-	private XmlModelRepository xmlModelRepository;
 
 	private EObject currentResult = null;
 	
@@ -400,7 +396,7 @@ public abstract class Deploy extends AbstractNodeAction implements SSHParams {
 							if (node.getConnection() != null) {
 								INodeConnection oldConnection = (INodeConnection)node.getConnection();
 								node.setConnection(null);
-								oldConnection.disconnect();
+								oldConnection.close();
 							}
 							
 							// do it in parallel
@@ -578,7 +574,7 @@ public abstract class Deploy extends AbstractNodeAction implements SSHParams {
 		
 		System.out.println("XMl results to display: " + xmlResults.toString());
 		
-		EObject result = xmlModelRepository.deserializeXml(xmlResults.toString());
+		EObject result = EmfXmlUtil.deserializeXml(xmlResults.toString());
 
 		for(IViewReference viewRef: editor.getEditorSite().getPage().getViewReferences()) {
 			IViewPart view = viewRef.getView(false);

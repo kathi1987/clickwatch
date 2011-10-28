@@ -30,7 +30,7 @@ public class Reboot extends AbstractNodeAction {
 			if (node.getConnection() != null) {
 				INodeConnection oldConnection = (INodeConnection)node.getConnection();
 				node.setConnection(null);
-				oldConnection.disconnect();
+				oldConnection.close();
 			}
 
 			workerThreads[idx] = new ExecWorkerThread(node.getINetAddress(), cmd);

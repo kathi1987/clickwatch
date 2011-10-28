@@ -10,8 +10,8 @@ import org.junit.Test;
 import com.google.inject.Module;
 
 import de.hub.clickcontrol.IClickSocket;
-import de.hub.clickwatch.connection.adapter.IValueAdapter;
-import de.hub.clickwatch.connection.adapter.StringValueAdapter;
+import de.hub.clickwatch.connection.adapter.values.IValueAdapter;
+import de.hub.clickwatch.connection.adapter.values.StringValueAdapter;
 import de.hub.clickwatch.recorder.CWRecorderModule;
 import de.hub.clickwatch.recorder.ClickSocketPlayer;
 import de.hub.clickwatch.recorder.ClickSocketPlayerSocketImpl;
@@ -21,7 +21,7 @@ import de.hub.clickwatch.recorder.database.IDataBaseRecordAdapter;
 import de.hub.clickwatch.recorder.database.IDataBaseRetrieveAdapter;
 import de.hub.clickwatch.recorder.database.cwdatabase.DataBase;
 import de.hub.clickwatch.recorder.database.hbase.HBaseDataBaseAdapter;
-import de.hub.clickwatch.tests.AbstractTest;
+import de.hub.clickwatch.test.AbstractTest;
 import de.hub.emfxml.XmlModelRepository;
 
 public class NetworkRecorderHBaseTestNA extends AbstractTest {

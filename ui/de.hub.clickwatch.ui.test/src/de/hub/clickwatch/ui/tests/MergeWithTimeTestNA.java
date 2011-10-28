@@ -14,20 +14,18 @@ import de.hub.clickwatch.merge.Merger;
 import de.hub.clickwatch.model.ClickWatchModelFactory;
 import de.hub.clickwatch.model.Element;
 import de.hub.clickwatch.model.Node;
-import de.hub.clickwatch.tests.AbstractTest;
+import de.hub.clickwatch.test.AbstractTest;
 import de.hub.clickwatch.ui.connection.MergingNodeAdapterMergeConfiguration;
-import de.hub.emfxml.XmlModelRepository;
+import de.hub.emfxml.util.EmfXmlUtil;
 
 @Deprecated
 public class MergeWithTimeTestNA extends AbstractTest {
-	
-	private XmlModelRepository xmlModelRepository;
+
 	private Merger merger;
 	
 	@Override
 	protected void additionalSetUp() {
 		merger = injector.getInstance(Merger.class);
-		xmlModelRepository = injector.getInstance(XmlModelRepository.class);
 	}
 
 	@Override
@@ -42,15 +40,15 @@ public class MergeWithTimeTestNA extends AbstractTest {
 		
 		Node mergedNode = ClickWatchModelFactory.eINSTANCE.createNode();
 		mergedNode.setRecording(true);		
-		EObject mergedValue = xmlModelRepository.deserializeXml(mergedValueStr);
+		EObject mergedValue = EmfXmlUtil.deserializeXml(mergedValueStr);
 		mergedNode.getElements().add((Element)mergedValue);
 		EObject orig = mergedValue;
 		
 		Node newNode = ClickWatchModelFactory.eINSTANCE.createNode();
-		EObject newValue = xmlModelRepository.deserializeXml(newValueStr);
+		EObject newValue = EmfXmlUtil.deserializeXml(newValueStr);
 		newNode.getElements().add((Element)newValue);
 		
-		EObject cmpValue = xmlModelRepository.deserializeXml(cmpStr);
+		EObject cmpValue = EmfXmlUtil.deserializeXml(cmpStr);
 		
 //		((MergingNodeAdapterMergeConfiguration)merger.getConfiguration()).setNode(mergedNode);
 		boolean result = merger.merge(mergedNode, newNode);
@@ -60,7 +58,7 @@ public class MergeWithTimeTestNA extends AbstractTest {
 		assertEquals(orig, mergedValue);
 		boolean eEquals = merger.eEquals(mergedValue, cmpValue);
 		if (!eEquals) {
-			assertEquals(cmpStr, xmlModelRepository.serializeXml(mergedValue));
+			assertEquals(cmpStr, EmfXmlUtil.serializeXml(mergedValue));
 		} 
 		assertTrue(eEquals);
 		return mergedValue;

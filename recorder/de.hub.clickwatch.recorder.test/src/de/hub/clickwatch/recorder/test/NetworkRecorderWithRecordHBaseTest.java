@@ -15,8 +15,8 @@ import com.google.inject.AbstractModule;
 import com.google.inject.Module;
 
 import de.hub.clickcontrol.IClickSocket;
-import de.hub.clickwatch.connection.adapter.IValueAdapter;
-import de.hub.clickwatch.connection.adapter.StringValueAdapter;
+import de.hub.clickwatch.connection.adapter.values.IValueAdapter;
+import de.hub.clickwatch.connection.adapter.values.StringValueAdapter;
 import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.model.Node;
 import de.hub.clickwatch.recorder.ClickSocketPlayer;

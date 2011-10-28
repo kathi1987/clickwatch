@@ -14,10 +14,11 @@ import com.google.inject.Binder;
 
 import de.hub.clickwatch.merge.IMergeConfiguration;
 import de.hub.clickwatch.merge.Merger;
-import de.hub.clickwatch.tests.AbstractTest;
-import de.hub.clickwatch.tests.TestUtil;
+import de.hub.clickwatch.test.AbstractTest;
+import de.hub.clickwatch.test.TestUtil;
 import de.hub.clickwatch.ui.connection.MergingNodeAdapterMergeConfiguration;
 import de.hub.emfxml.XmlModelRepository;
+import de.hub.emfxml.util.EmfXmlUtil;
 
 public class MergeTests extends AbstractTest {
 
@@ -52,9 +53,9 @@ public class MergeTests extends AbstractTest {
 	}
 	
 	private EObject performMergeXML(String mergedValueStr, String newValueStr, boolean changedModel) {
-		EObject mergedValue = xmlModelRepository.deserializeXml(mergedValueStr);
+		EObject mergedValue = EmfXmlUtil.deserializeXml(mergedValueStr);
 		EObject orig = mergedValue;
-		EObject newValue = xmlModelRepository.deserializeXml(newValueStr);
+		EObject newValue = EmfXmlUtil.deserializeXml(newValueStr);
 		
 		((RegisterChangesConfiguration)merger.getConfiguration()).changed = false;
 		boolean result = merger.merge(mergedValue, newValue);
@@ -64,7 +65,7 @@ public class MergeTests extends AbstractTest {
 		assertEquals(orig, mergedValue);
 		boolean eEquals = merger.eEquals(mergedValue, newValue);
 		if (!eEquals) {
-			assertEquals(xmlModelRepository.serializeXml(newValue), xmlModelRepository.serializeXml(mergedValue));
+			assertEquals(EmfXmlUtil.serializeXml(newValue), EmfXmlUtil.serializeXml(mergedValue));
 		}
 		assertTrue(eEquals);
 		return mergedValue;
@@ -79,9 +80,9 @@ public class MergeTests extends AbstractTest {
 			e.printStackTrace();
 		}
 		
-		EObject mergedValue = xmlModelRepository.deserializeModel(metaModel, mergedValueStr);
+		EObject mergedValue = EmfXmlUtil.deserializeModel(metaModel, mergedValueStr);
 		EObject orig = mergedValue;
-		EObject newValue = xmlModelRepository.deserializeModel(metaModel, newValueStr);
+		EObject newValue = EmfXmlUtil.deserializeModel(metaModel, newValueStr);
 		
 		((RegisterChangesConfiguration)merger.getConfiguration()).changed = false;
 		boolean result = merger.merge(mergedValue, newValue);
@@ -91,7 +92,7 @@ public class MergeTests extends AbstractTest {
 		assertEquals(orig, mergedValue);
 		boolean eEquals = merger.eEquals(mergedValue, newValue);
 		if (!eEquals) {
-			assertEquals(xmlModelRepository.serializeXml(newValue), xmlModelRepository.serializeXml(mergedValue));
+			assertEquals(EmfXmlUtil.serializeXml(newValue), EmfXmlUtil.serializeXml(mergedValue));
 		}
 		assertTrue(eEquals);
 		return mergedValue;
@@ -101,9 +102,9 @@ public class MergeTests extends AbstractTest {
 		mergedValueStr = "<edu.hu.clickwatch.model:Element xmlns:edu.hu.clickwatch.model='edu.hu.clickwatch.model'>" + mergedValueStr + "</edu.hu.clickwatch.model:Element>";
 		newValueStr = "<edu.hu.clickwatch.model:Element xmlns:edu.hu.clickwatch.model='edu.hu.clickwatch.model'>" + newValueStr + "</edu.hu.clickwatch.model:Element>";
 		
-		EObject mergedValue = xmlModelRepository.deserializeXml(mergedValueStr);
+		EObject mergedValue = EmfXmlUtil.deserializeXml(mergedValueStr);
 		EObject orig = mergedValue;
-		EObject newValue = xmlModelRepository.deserializeXml(newValueStr);
+		EObject newValue = EmfXmlUtil.deserializeXml(newValueStr);
 		
 		((RegisterChangesConfiguration)merger.getConfiguration()).changed = false;
 		boolean result = merger.merge(mergedValue, newValue);
@@ -113,7 +114,7 @@ public class MergeTests extends AbstractTest {
 		assertEquals(orig, mergedValue);
 		boolean eEquals = merger.eEquals(mergedValue, newValue);
 		if (!eEquals) {
-			assertEquals(xmlModelRepository.serializeXml(newValue), xmlModelRepository.serializeXml(mergedValue));
+			assertEquals(EmfXmlUtil.serializeXml(newValue), EmfXmlUtil.serializeXml(mergedValue));
 		}
 		assertTrue(eEquals);
 		return mergedValue;

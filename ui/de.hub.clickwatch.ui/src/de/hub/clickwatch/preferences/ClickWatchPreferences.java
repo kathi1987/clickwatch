@@ -6,7 +6,7 @@ import org.eclipse.jface.preference.RadioGroupFieldEditor;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 
-import de.hub.clickwatch.main.impl.InjectorProvider.HandlerBehaviour;
+import de.hub.clickwatch.ClickWatchModuleUtil.HandlerBehaviour;
 import de.hub.clickwatch.main.impl.InjectorProvider.ValueType;
 import de.hub.clickwatch.ui.PluginActivator;
 

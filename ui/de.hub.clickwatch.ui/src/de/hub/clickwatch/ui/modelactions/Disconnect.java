@@ -3,6 +3,7 @@ package de.hub.clickwatch.ui.modelactions;
 import org.eclipse.jface.action.IAction;
 
 import de.hub.clickwatch.connection.INodeConnection;
+import de.hub.clickwatch.connection.adapter.IHandlerEventAdapter;
 import de.hub.clickwatch.model.Node;
 
 
@@ -23,9 +24,11 @@ public class Disconnect extends AbstractNodeAction {
 			Node node = selectedObjectsIterator.next();
 			
 			if (node.getConnection() != null) {
-				INodeConnection oldConnection = (INodeConnection)node.getConnection();
+				INodeConnection oldConnection = node.getConnection();				
+				oldConnection.getAdapter(IHandlerEventAdapter.class).stop();
+				oldConnection.close();
 				node.setConnection(null);
-				oldConnection.disconnect();
+				node.setConnected(false);
 			}
 		}
 	}

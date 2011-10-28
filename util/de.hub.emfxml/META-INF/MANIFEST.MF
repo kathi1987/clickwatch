@@ -9,4 +9,5 @@ Require-Bundle: org.eclipse.emf.ecore;bundle-version="2.7.0";visibility:=reexpor
  com.google.guice;bundle-version="3.0.0",
  org.eclipse.emf.mapping.xsd2ecore;bundle-version="2.5.0";visibility:=reexport,
  com.google.collect;bundle-version="1.0.0"
-Export-Package: de.hub.emfxml
+Export-Package: de.hub.emfxml,
+ de.hub.emfxml.util

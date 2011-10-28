@@ -170,29 +170,6 @@ public class ClickWatchModelItemProviderAdapterFactory extends ClickWatchModelAd
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link de.hub.clickwatch.model.MultiNode} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected MultiNodeItemProvider multiNodeItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link de.hub.clickwatch.model.MultiNode}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createMultiNodeAdapter() {
-		if (multiNodeItemProvider == null) {
-			multiNodeItemProvider = new MultiNodeItemProvider(this);
-		}
-
-		return multiNodeItemProvider;
-	}
-
-	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -295,7 +272,6 @@ public class ClickWatchModelItemProviderAdapterFactory extends ClickWatchModelAd
 		if (elementItemProvider != null) elementItemProvider.dispose();
 		if (handlerItemProvider != null) handlerItemProvider.dispose();
 		if (networkItemProvider != null) networkItemProvider.dispose();
-		if (multiNodeItemProvider != null) multiNodeItemProvider.dispose();
 	}
 
 }

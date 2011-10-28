@@ -2,6 +2,7 @@ package de.hub.clickwatch.connection;
 
 import com.google.inject.ImplementedBy;
 
+import de.hub.clickwatch.connection.internal.NodeConnectionProvider;
 import de.hub.clickwatch.model.Node;
 
 /**

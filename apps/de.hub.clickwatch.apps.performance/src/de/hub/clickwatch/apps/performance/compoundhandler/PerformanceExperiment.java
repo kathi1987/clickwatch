@@ -21,7 +21,7 @@ import de.hub.clickwatch.apps.performance.compoundhandler.PerformanceGauge.Retri
 import de.hub.clickwatch.connection.INodeConnection;
 import de.hub.clickwatch.connection.INodeConnectionProvider;
 import de.hub.clickwatch.connection.adapter.IHandlerAdapter;
-import de.hub.clickwatch.connection.adapter.IValueAdapter;
+import de.hub.clickwatch.connection.adapter.values.IValueAdapter;
 import de.hub.clickwatch.recorder.database.CWRecorderStandaloneSetup;
 import de.hub.clickwatch.recorder.database.cwdatabase.RecordStatistics;
 import de.hub.clickwatch.specificmodels.brn.BrnValueAdapter;

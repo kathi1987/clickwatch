@@ -7,7 +7,7 @@ import com.google.inject.Inject;
 import de.hub.clickwatch.analysis.results.Result;
 import de.hub.clickwatch.analysis.results.ui.AbstractRuntimeAnalysis;
 import de.hub.clickwatch.analysis.results.util.ChartUtil;
-import de.hub.clickwatch.connection.adapter.StringValueAdapter;
+import de.hub.clickwatch.connection.adapter.values.StringValueAdapter;
 import de.hub.clickwatch.main.IResultsProvider;
 import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.model.Node;
