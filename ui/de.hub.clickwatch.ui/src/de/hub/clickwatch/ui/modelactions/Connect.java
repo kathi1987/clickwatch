@@ -8,10 +8,11 @@ import com.google.inject.Provider;
 import de.hub.clickwatch.connection.INodeConnection;
 import de.hub.clickwatch.connection.INodeConnectionProvider;
 import de.hub.clickwatch.connection.adapter.IHandlerEventAdapter;
-import de.hub.clickwatch.model.Network;
+import de.hub.clickwatch.connection.adapter.IMergeAdapter;
+import de.hub.clickwatch.connection.adapter.IMetaDataAdapter;
 import de.hub.clickwatch.model.Node;
-import de.hub.clickwatch.ui.PluginActivator;
 import de.hub.clickwatch.ui.connection.UiHandlerEventListener;
+import de.hub.clickwatch.util.TaskQueues;
 
 /**
  * Establish a connection to the remote node via the click control element.
@@ -20,6 +21,7 @@ public class Connect extends AbstractNodeAction {
 	
 	@Inject INodeConnectionProvider ncp;
 	@Inject Provider<UiHandlerEventListener> handlerProvider;
+    @Inject private TaskQueues taskDispatcher;
 
 	@Override
 	public void run(IAction action) {
@@ -28,29 +30,34 @@ public class Connect extends AbstractNodeAction {
 		}
 		
 		while (selectedObjectsIterator.hasNext()) {
-			Node node = selectedObjectsIterator.next();
-			INodeConnection nodeConnection = node.getConnection();
-			if (nodeConnection == null) {
-				INodeConnectionProvider ncp = PluginActivator.getInstance().getInjector().getInstance(INodeConnectionProvider.class);
-				nodeConnection = ncp.createConnection(node);
-				node.setConnection(nodeConnection);							
-			}
-			
-			IHandlerEventAdapter hea = nodeConnection.getAdapter(IHandlerEventAdapter.class);
-			UiHandlerEventListener handler = handlerProvider.get();
-			handler.init(shell, node);
-			hea.addEventListener(handler);
-			
-			if (node.eContainer() != null && node.eContainer() instanceof Network) {
-				Network network = (Network) node.eContainer();					
-				String elementFilter = network.getElementFilter() == null? "" : network.getElementFilter();
-				String handlerFilter = network.getHandlerFilter() == null ? "" : network.getHandlerFilter();
-				hea.start(elementFilter, handlerFilter);	
-			} else {
-				hea.start();
-			}
-			
-			node.setConnected(true);
+		    final Node node = selectedObjectsIterator.next();
+			taskDispatcher.dispatchTask(null, new Runnable() {                
+                @Override
+                public void run() {                    
+                    ncp.createConnection(node);
+                    INodeConnection nodeConnection = node.getConnection();        
+                    
+                    IHandlerEventAdapter hea = nodeConnection.getAdapter(IHandlerEventAdapter.class);
+                    UiHandlerEventListener handler = handlerProvider.get();
+                    handler.init(shell, node);
+                    hea.addEventListener(handler);
+                    
+                    final Node metaData = nodeConnection.getAdapter(IMetaDataAdapter.class).pullAllMetaData();
+                    shell.getDisplay().syncExec(new Runnable() {                        
+                        @Override
+                        public void run() {
+                            try {
+                                node.getConnection().getAdapter(IMergeAdapter.class).merge(metaData);
+                                node.filter();
+                            } catch (Exception e) {
+                                // TODO   
+                                System.out.println("EXXXXX");
+                            }
+                        }
+                    });
+                    hea.start();
+                }                
+            });
 		}
 	}
 }

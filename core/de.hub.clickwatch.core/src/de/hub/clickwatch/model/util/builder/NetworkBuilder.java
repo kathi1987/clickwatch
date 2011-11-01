@@ -12,9 +12,6 @@ public class NetworkBuilder implements de.hub.clickwatch.model.util.builder.IMod
   private java.lang.String m_ElementFilter;
   private java.lang.String m_HandlerFilter;
   private java.lang.String m_name;
-  private long m_time;
-  private Integer m_timeout;
-  private Integer m_updateIntervall;
   private java.util.Collection<de.hub.clickwatch.model.Node> m_nodes = new java.util.LinkedList<de.hub.clickwatch.model.Node>();
   private java.util.Collection<de.hub.clickwatch.model.util.builder.IModelBuilder<? extends de.hub.clickwatch.model.Node>> m_featureNodesBuilder = new java.util.LinkedList<de.hub.clickwatch.model.util.builder.IModelBuilder<? extends de.hub.clickwatch.model.Node>>();
   private java.util.Collection<de.hub.clickwatch.model.Network> m_subnetworks = new java.util.LinkedList<de.hub.clickwatch.model.Network>();
@@ -25,9 +22,6 @@ public class NetworkBuilder implements de.hub.clickwatch.model.util.builder.IMod
   private boolean m_featureNameSet = false;
   private boolean m_featureNodesSet = false;
   private boolean m_featureSubnetworksSet = false;
-  private boolean m_featureTimeSet = false;
-  private boolean m_featureTimeoutSet = false;
-  private boolean m_featureUpdateIntervallSet = false;
 
   /**
    * Builder is not instantiated with a constructor.
@@ -61,12 +55,6 @@ public class NetworkBuilder implements de.hub.clickwatch.model.util.builder.IMod
     _builder.m_featureSubnetworksSet = m_featureSubnetworksSet;
     _builder.m_subnetworks = m_subnetworks;
     _builder.m_featureSubnetworksBuilder = m_featureSubnetworksBuilder;
-    _builder.m_featureTimeSet = m_featureTimeSet;
-    _builder.m_time = m_time;
-    _builder.m_featureTimeoutSet = m_featureTimeoutSet;
-    _builder.m_timeout = m_timeout;
-    _builder.m_featureUpdateIntervallSet = m_featureUpdateIntervallSet;
-    _builder.m_updateIntervall = m_updateIntervall;
     return _builder;
   }
 
@@ -84,15 +72,6 @@ public class NetworkBuilder implements de.hub.clickwatch.model.util.builder.IMod
     }
     if (m_featureNameSet) {
       _newInstance.setName(m_name);
-    }
-    if (m_featureTimeSet) {
-      _newInstance.setTime(m_time);
-    }
-    if (m_featureTimeoutSet) {
-      _newInstance.setTimeout(m_timeout);
-    }
-    if (m_featureUpdateIntervallSet) {
-      _newInstance.setUpdateIntervall(m_updateIntervall);
     }
     if (m_featureNodesSet) {
       _newInstance.getNodes().addAll(m_nodes);
@@ -130,24 +109,6 @@ public class NetworkBuilder implements de.hub.clickwatch.model.util.builder.IMod
   public NetworkBuilder withName(java.lang.String p_name) {
     m_name = p_name;
     m_featureNameSet = true;
-    return this;
-  }
-
-  public NetworkBuilder withTime(long p_time) {
-    m_time = p_time;
-    m_featureTimeSet = true;
-    return this;
-  }
-
-  public NetworkBuilder withTimeout(Integer p_timeout) {
-    m_timeout = p_timeout;
-    m_featureTimeoutSet = true;
-    return this;
-  }
-
-  public NetworkBuilder withUpdateIntervall(Integer p_updateIntervall) {
-    m_updateIntervall = p_updateIntervall;
-    m_featureUpdateIntervallSet = true;
     return this;
   }
 

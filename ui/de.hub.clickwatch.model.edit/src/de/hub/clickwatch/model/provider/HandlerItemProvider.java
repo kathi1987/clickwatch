@@ -16,6 +16,9 @@ import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.util.FeatureMapUtil;
+import org.eclipse.emf.ecore.xml.type.XMLTypeFactory;
+import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.FeatureMapEntryWrapperItemProvider;
@@ -54,146 +57,123 @@ public class HandlerItemProvider
 	}
 
 	/**
-	 * This constructs an instance from a factory and a notifier.
-	 * <!-- begin-user-doc -->
+     * This constructs an instance from a factory and a notifier.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public HandlerItemProvider(AdapterFactory adapterFactory) {
-		super(adapterFactory);
-	}
+        super(adapterFactory);
+    }
 
 	/**
-	 * This returns the property descriptors for the adapted class.
-	 * <!-- begin-user-doc -->
+     * This returns the property descriptors for the adapted class.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null) {
-			super.getPropertyDescriptors(object);
+        if (itemPropertyDescriptors == null) {
+            super.getPropertyDescriptors(object);
 
-			addNamePropertyDescriptor(object);
-			addCanReadPropertyDescriptor(object);
-			addCanWritePropertyDescriptor(object);
-			addChangedPropertyDescriptor(object);
-			addWatchPropertyDescriptor(object);
-			addValuePropertyDescriptor(object);
-			addTimestampPropertyDescriptor(object);
-		}
-		return itemPropertyDescriptors;
-	}
+            addNamePropertyDescriptor(object);
+            addCanReadPropertyDescriptor(object);
+            addCanWritePropertyDescriptor(object);
+            addChangedPropertyDescriptor(object);
+            addValuePropertyDescriptor(object);
+            addTimestampPropertyDescriptor(object);
+        }
+        return itemPropertyDescriptors;
+    }
 
 	/**
-	 * This adds a property descriptor for the Name feature.
-	 * <!-- begin-user-doc -->
+     * This adds a property descriptor for the Name feature.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected void addNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Handler_name_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Handler_name_feature", "_UI_Handler_type"),
-				 ClickWatchModelPackage.Literals.HANDLER__NAME,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_Handler_name_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_Handler_name_feature", "_UI_Handler_type"),
+                 ClickWatchModelPackage.Literals.HANDLER__NAME,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
 
 	/**
-	 * This adds a property descriptor for the Can Read feature.
-	 * <!-- begin-user-doc -->
+     * This adds a property descriptor for the Can Read feature.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected void addCanReadPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Handler_canRead_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Handler_canRead_feature", "_UI_Handler_type"),
-				 ClickWatchModelPackage.Literals.HANDLER__CAN_READ,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
-				 null));
-	}
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_Handler_canRead_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_Handler_canRead_feature", "_UI_Handler_type"),
+                 ClickWatchModelPackage.Literals.HANDLER__CAN_READ,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+                 null,
+                 null));
+    }
 
 	/**
-	 * This adds a property descriptor for the Can Write feature.
-	 * <!-- begin-user-doc -->
+     * This adds a property descriptor for the Can Write feature.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected void addCanWritePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Handler_canWrite_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Handler_canWrite_feature", "_UI_Handler_type"),
-				 ClickWatchModelPackage.Literals.HANDLER__CAN_WRITE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
-				 null));
-	}
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_Handler_canWrite_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_Handler_canWrite_feature", "_UI_Handler_type"),
+                 ClickWatchModelPackage.Literals.HANDLER__CAN_WRITE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+                 null,
+                 null));
+    }
 
 	/**
-	 * This adds a property descriptor for the Watch feature.
-	 * <!-- begin-user-doc -->
+     * This adds a property descriptor for the Value feature.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addWatchPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Handler_watch_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Handler_watch_feature", "_UI_Handler_type"),
-				 ClickWatchModelPackage.Literals.HANDLER__WATCH,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Value feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected void addValuePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Handler_value_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Handler_value_feature", "_UI_Handler_type"),
-				 ClickWatchModelPackage.Literals.HANDLER__VALUE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_Handler_value_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_Handler_value_feature", "_UI_Handler_type"),
+                 ClickWatchModelPackage.Literals.HANDLER__VALUE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
 
 	/**
 	 * This adds a property descriptor for the Timestamp feature.
@@ -241,50 +221,50 @@ public class HandlerItemProvider
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	protected EStructuralFeature getChildFeature(Object object, Object child) {
-		// Check the type of the specified child object and return the proper feature to use for
-		// adding (see {@link AddCommand}) it as a child.
+        // Check the type of the specified child object and return the proper feature to use for
+        // adding (see {@link AddCommand}) it as a child.
 
-		return super.getChildFeature(object, child);
-	}
+        return super.getChildFeature(object, child);
+    }
 
 	/**
-	 * This adds a property descriptor for the Changed feature.
-	 * <!-- begin-user-doc -->
+     * This adds a property descriptor for the Changed feature.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected void addChangedPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Handler_changed_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Handler_changed_feature", "_UI_Handler_type"),
-				 ClickWatchModelPackage.Literals.HANDLER__CHANGED,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
-				 null));
-	}
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_Handler_changed_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_Handler_changed_feature", "_UI_Handler_type"),
+                 ClickWatchModelPackage.Literals.HANDLER__CHANGED,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+                 null,
+                 null));
+    }
 
 	/**
-	 * This returns Handler.gif.
-	 * <!-- begin-user-doc -->
+     * This returns Handler.gif.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Handler"));
-	}
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/Handler"));
+    }
 
 	/**
 	 * This returns the label text for the adapted class.
@@ -296,14 +276,7 @@ public class HandlerItemProvider
 	public String getText(Object object) {
 		Handler handler = (Handler)object;
 		String result = handler.getName();
-		if (handler.isWatch()) {
-			result += " (watched)";
-		}
-		if (handler.isChanged()) {
-			return "!!! " + result + " !!!";
-		} else {
-			return result;
-		}
+		return result;
 	}
 
 	/**
@@ -322,9 +295,6 @@ public class HandlerItemProvider
 			case ClickWatchModelPackage.HANDLER__CAN_READ:
 			case ClickWatchModelPackage.HANDLER__CAN_WRITE:
 			case ClickWatchModelPackage.HANDLER__CHANGED:
-			case ClickWatchModelPackage.HANDLER__WATCH:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
 			case ClickWatchModelPackage.HANDLER__MIXED:
 			case ClickWatchModelPackage.HANDLER__ANY:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
@@ -346,15 +316,15 @@ public class HandlerItemProvider
 	}
 
 	/**
-	 * Return the resource locator for this item provider's resources.
-	 * <!-- begin-user-doc -->
+     * Return the resource locator for this item provider's resources.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public ResourceLocator getResourceLocator() {
-		return ClickWatchModelEditPlugin.INSTANCE;
-	}
+        return ClickWatchModelEditPlugin.INSTANCE;
+    }
 
 	/**
 	 * @generated NOT

@@ -23,6 +23,7 @@ import de.hub.clickwatch.ClickWatchModuleUtil.HandlerBehaviour;
 import de.hub.clickwatch.connection.adapter.values.StringValueAdapter;
 import de.hub.clickwatch.connection.adapter.values.XmlValueAdapter;
 import de.hub.clickwatch.main.impl.InjectorProvider.ValueType;
+import de.hub.clickwatch.model.ClickWatchModelFactory;
 import de.hub.clickwatch.preferences.PreferenceConstants;
 import de.hub.clickwatch.specificmodels.brn.BrnValueAdapter;
 import de.hub.clickwatch.util.Throwables;
@@ -37,13 +38,14 @@ public class PluginActivator extends AbstractUIPlugin {
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		INSTANCE = this;
+		ClickWatchModelFactory.eINSTANCE.registerInjector(getInjector());
 	}
 
 	public static PluginActivator getInstance() {
 		return INSTANCE;
 	}
 
-	public Injector getInjector() {
+	public Injector getInjector() {	    
 		IPreferenceStore store = getPreferenceStore();
 		final boolean bindToPlayer = store
 				.getBoolean(PreferenceConstants.BIND_TO_PLAYER);
@@ -71,7 +73,7 @@ public class PluginActivator extends AbstractUIPlugin {
 			}
 			if (bindToPlayer) {
 				try {
-					URI uri = URI.createURI(de.hub.clickwatch.ui.PluginActivator.getInstance()
+					URI uri = URI.createURI(getInstance()
 							.getBundle().getEntry("resources/records/record_11-06-23.clickwatchmodel")
 							.toURI().toString());
 					builder.wRecord(uri);

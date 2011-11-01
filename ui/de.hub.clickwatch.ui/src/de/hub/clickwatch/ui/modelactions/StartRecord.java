@@ -16,7 +16,7 @@ public class StartRecord extends AbstractNodeAction {
 		
 		while (selectedObjectsIterator.hasNext()) {
 			Node node = selectedObjectsIterator.next();
-			if (node.getConnection() == null || !node.isConnected()) {
+			if (node.getConnection() == null || !node.isListening()) {
 				MessageDialog.openError(editor.getSite().getShell(), "Not connected", "You can only record an connected node");
 			} else {
 				node.setRecording(true);

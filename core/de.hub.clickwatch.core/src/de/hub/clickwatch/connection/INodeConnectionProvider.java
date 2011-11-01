@@ -14,10 +14,20 @@ import de.hub.clickwatch.model.Node;
 @ImplementedBy(NodeConnectionProvider.class)
 public interface INodeConnectionProvider {
 
-	public INodeConnection createConnection(String host, String port);
-	
-	public INodeConnection createConnection(Node node);
-	
-	public INodeConnection createSimpleConnection(Node node);
+    /**
+     * Creates a {@link INodeConnection} for the given node. The connection is
+     * automatically registered with the node (accessible through
+     * {@link Node#getConnection()}). If the given node already has a
+     * {@link INodeConnection} associated with it, the method returns that
+     * already existing connection.
+     */
+    public INodeConnection createConnection(Node node);
+
+    /**
+     * Creates an implicit {@link Node} with the given host and port. Further,
+     * creates a {@link INodeConnection} for that node (see
+     * {@link #createConnection(Node)}.
+     */
+    public INodeConnection createConnection(String host, String port);
 
 }

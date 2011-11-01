@@ -1,4 +1,4 @@
-package de.hub.clickwatch.ui.tests;
+package de.hub.clickwatch.test.internal;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -8,24 +8,26 @@ import java.io.IOException;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+import org.junit.Before;
 import org.junit.Test;
 
-import com.google.inject.Binder;
+import com.google.inject.Guice;
+import com.google.inject.Injector;
 
-import de.hub.clickwatch.merge.IMergeConfiguration;
+import de.hub.clickwatch.ClickWatchModuleUtil;
+import de.hub.clickwatch.merge.ClickWatchNodeMergeConfiguration;
 import de.hub.clickwatch.merge.Merger;
-import de.hub.clickwatch.test.AbstractTest;
+import de.hub.clickwatch.test.AbstractClickwatchTest;
 import de.hub.clickwatch.test.TestUtil;
-import de.hub.clickwatch.ui.connection.MergingNodeAdapterMergeConfiguration;
 import de.hub.emfxml.XmlModelRepository;
 import de.hub.emfxml.util.EmfXmlUtil;
 
-public class MergeTests extends AbstractTest {
+public class MergeTests extends AbstractClickwatchTest {
 
 	private XmlModelRepository xmlModelRepository;
 	private Merger merger;
 	
-	private static class RegisterChangesConfiguration extends MergingNodeAdapterMergeConfiguration {
+	private static class RegisterChangesConfiguration extends ClickWatchNodeMergeConfiguration {
 		boolean changed = false;
 
 		@Override
@@ -40,16 +42,13 @@ public class MergeTests extends AbstractTest {
 			return false;
 		}		
 	}
-
-	@Override
-	protected void configureAnAdditionalModule(Binder binder) {
-		binder.bind(IMergeConfiguration.class).to(RegisterChangesConfiguration.class);
-	}
-
-	@Override
-	protected void additionalSetUp() {
-		merger = injector.getInstance(Merger.class);
-		xmlModelRepository = injector.getInstance(XmlModelRepository.class);
+	
+	@Before
+	public void setUp() {
+	    Injector injector = Guice.createInjector(ClickWatchModuleUtil
+                .newBuilder().wMergeConfiguration(new RegisterChangesConfiguration()).build());
+        xmlModelRepository = injector.getInstance(XmlModelRepository.class);
+        merger = injector.getInstance(Merger.class);
 	}
 	
 	private EObject performMergeXML(String mergedValueStr, String newValueStr, boolean changedModel) {

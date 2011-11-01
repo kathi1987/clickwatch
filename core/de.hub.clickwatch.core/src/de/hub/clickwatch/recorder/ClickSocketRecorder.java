@@ -42,14 +42,20 @@ public class ClickSocketRecorder {
 			protected void bindValueAdapter() {
 				bind(IValueAdapter.class).to(StringValueAdapter.class);
 			}
+
+            @Override
+            protected ILogger createLogger() {
+                return new ILogger() {                    
+                    @Override
+                    public void log(int level, String message, Throwable exception) {
+                        System.out.println(message + ":\n");
+                        exception.printStackTrace();        
+                    }
+                };
+            }
+			
+			
 		};
-		clickWatchModule.setLogger(new ILogger() {			
-			@Override
-			public void log(int status, String message, Throwable exception) {
-				System.out.println(message + ":\n");
-				exception.printStackTrace();
-			}
-		});
 		injector = Guice.createInjector(clickWatchModule);
 	}
 

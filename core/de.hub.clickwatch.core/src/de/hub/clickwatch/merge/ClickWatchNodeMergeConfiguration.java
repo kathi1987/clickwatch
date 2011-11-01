@@ -1,22 +1,20 @@
-package de.hub.clickwatch.ui.connection;
+package de.hub.clickwatch.merge;
 
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
-import de.hub.clickwatch.merge.DefaultMergeConfiguration;
 import de.hub.clickwatch.model.ChangeMark;
 import de.hub.clickwatch.model.ClickWatchModelPackage;
 import de.hub.clickwatch.model.Element;
 import de.hub.clickwatch.model.Handler;
+import de.hub.clickwatch.model.Node;
 
-public class MergingNodeAdapterMergeConfiguration extends DefaultMergeConfiguration {
+public class ClickWatchNodeMergeConfiguration extends DefaultMergeConfiguration {
 
 	private static final EAttribute anyFeature = ClickWatchModelPackage.eINSTANCE.getHandler_Any();
 	private static final EAttribute mixedFeature = ClickWatchModelPackage.eINSTANCE.getHandler_Mixed();
@@ -28,10 +26,6 @@ public class MergingNodeAdapterMergeConfiguration extends DefaultMergeConfigurat
 	private static final EReference elementsFeature = ClickWatchModelPackage.eINSTANCE.getNode_Elements();
 	private static final EReference childrenFeature = ClickWatchModelPackage.eINSTANCE.getElement_Children();
 	private static final EClass nodeClass = ClickWatchModelPackage.eINSTANCE.getNode();
-	
-	private Collection<ChangeMark> changes = new HashSet<ChangeMark>();
-	private Map<String, Handler> newHandlerMap = new HashMap<String, Handler>();
-	
 
 	@Override
 	public boolean consider(IContext context) {
@@ -47,7 +41,7 @@ public class MergingNodeAdapterMergeConfiguration extends DefaultMergeConfigurat
 					feature == valueFeature ||
 					feature == timestampFeature;
 		} else {
-			return false;
+			return true;
 		}
 	}
 
@@ -72,27 +66,21 @@ public class MergingNodeAdapterMergeConfiguration extends DefaultMergeConfigurat
 	@Override
 	public void handleDiffernce(IContext context, Object oldValue,
 			Object newValue, int index) {
-		changes.add(new ChangeMark(context.getContainer(), context.getFeature(), newValue));
-	}
-	
-	public Collection<ChangeMark> getChanges() {
-		return changes;
-	}
-	
-	public Map<String, Handler> getNewHandlerMap() {
-		return newHandlerMap;
-	}
-
-	@Override
-	public Object create(IContext context, Object newValue) {
-		Object result = super.create(context, newValue);
-		if (newValue instanceof Handler) {
-			newHandlerMap.put(((Handler) newValue).getQualifiedName(), (Handler)result);
-		} else if (result instanceof Element) {
-			for (Handler handler: ((Element)result).getAllHandlers()) {
-				newHandlerMap.put(((Handler)handler).getQualifiedName(), handler);	
-			}
+		Collection<ChangeMark> changes = getChanges(context);
+		if (changes != null) {
+		    changes.add(new ChangeMark(context.getContainer(), context.getFeature(), newValue));
 		}
-		return result;
+	}
+	
+	private Collection<ChangeMark> getChanges(IContext context) {
+	    EObject container = context.getContainer();
+        while (container != null && !(container instanceof Node)) {
+	        container = container.eContainer();
+	    }
+        if (container != null) {
+            return ((Node)container).getChanges();
+        } else {
+            return null;
+        }
 	}
 }

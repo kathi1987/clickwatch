@@ -1,4 +1,4 @@
-package de.hub.clickwatch.connection.adapter.internal;
+package de.hub.clickwatch.util;
 
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;

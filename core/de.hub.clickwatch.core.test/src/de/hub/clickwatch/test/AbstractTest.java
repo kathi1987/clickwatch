@@ -44,7 +44,7 @@ public class AbstractTest {
 
 	protected class TestModule extends ClickWatchModule {
 		@Override
-		protected ILogger getLogger() {
+		protected ILogger createLogger() {
 			return AbstractTest.this.getLogger();
 		}
 

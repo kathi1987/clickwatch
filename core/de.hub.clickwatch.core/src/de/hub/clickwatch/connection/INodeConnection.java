@@ -4,6 +4,7 @@ import com.google.inject.ImplementedBy;
 
 import de.hub.clickcontrol.IClickSocket;
 import de.hub.clickwatch.connection.internal.NodeConnectionImpl;
+import de.hub.clickwatch.model.Node;
 
 /**
  * INodeConnection represents a connection to a node. {@link INodeConnection}s
@@ -13,13 +14,15 @@ import de.hub.clickwatch.connection.internal.NodeConnectionImpl;
  * with this connection.
  * 
  * {@link INodeConnection} allows all adapters to acquire and use one
- * {@link IClickSocket}. Connecting and disconnecting the socket is handles
+ * {@link IClickSocket}. Connecting and disconnecting the socket is handled
  * implicitly. 
  */
 @ImplementedBy(NodeConnectionImpl.class)
 public interface INodeConnection {
 
 	public <T> T getAdapter(Class<T> adapterClass);
+	
+	public Node getNode();
 	
 	public void close();
 

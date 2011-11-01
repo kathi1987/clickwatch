@@ -19,25 +19,25 @@ import org.eclipse.emf.ecore.resource.impl.ResourceFactoryImpl;
  */
 public class ClickWatchModelResourceFactoryImpl extends ResourceFactoryImpl {
 	/**
-	 * Creates an instance of the resource factory.
-	 * <!-- begin-user-doc -->
+     * Creates an instance of the resource factory.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public ClickWatchModelResourceFactoryImpl() {
-		super();
-	}
+        super();
+    }
 
 	/**
-	 * Creates an instance of the resource.
-	 * <!-- begin-user-doc -->
+     * Creates an instance of the resource.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public Resource createResource(URI uri) {
-		Resource result = new ClickWatchModelResourceImpl(uri);
-		return result;
-	}
+        Resource result = new ClickWatchModelResourceImpl(uri);
+        return result;
+    }
 
 } //ModelResourceFactoryImpl

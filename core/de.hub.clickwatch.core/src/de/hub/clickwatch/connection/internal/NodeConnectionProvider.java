@@ -13,33 +13,23 @@ import de.hub.clickwatch.model.util.builder.NodeBuilder;
 public class NodeConnectionProvider implements INodeConnectionProvider {
 
 	@Inject Provider<INodeConnection> ncp;
-	@Inject Provider<NodeConnectionImpl> simpleNcp;
 
 	@Override
 	public INodeConnection createConnection(String host, String port) {
-		INodeConnection connection = ncp.get();
-		if (connection instanceof NodeConnectionImpl) {
-			((NodeConnectionImpl)connection).init(NodeBuilder.newNodeBuilder().withINetAddress(host).withPort(port).build());
-		}
-		return connection;
+	    Node node = NodeBuilder.newNodeBuilder().withINetAddress(host).withPort(port).build();
+	    return createConnection(node);		
 	}
 	
 	@Override
 	public INodeConnection createConnection(Node node) {
-		INodeConnection connection = ncp.get();
-		if (connection instanceof NodeConnectionImpl) {
-			((NodeConnectionImpl)connection).init(node);
+		INodeConnection connection = node.getConnection();
+		if (connection == null) {		
+		    connection = ncp.get();
+    		if (connection instanceof NodeConnectionImpl) {
+    			((NodeConnectionImpl)connection).init(node);
+    		}
+    		node.setConnection(connection);
 		}
 		return connection;
 	}
-
-	@Override
-	public INodeConnection createSimpleConnection(Node node) {
-		INodeConnection connection = simpleNcp.get();
-		if (connection instanceof NodeConnectionImpl) {
-			((NodeConnectionImpl)connection).init(node);
-		}
-		return connection;
-	}
-	
 }

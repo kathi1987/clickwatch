@@ -10,7 +10,6 @@ package de.hub.clickwatch.model.util.builder;
 public class ElementBuilder implements de.hub.clickwatch.model.util.builder.IModelBuilder<de.hub.clickwatch.model.Element> {
   // features and builders
   private java.lang.String m_name;
-  private Boolean m_watch;
   private java.util.Collection<de.hub.clickwatch.model.Element> m_children = new java.util.LinkedList<de.hub.clickwatch.model.Element>();
   private java.util.Collection<de.hub.clickwatch.model.util.builder.IModelBuilder<? extends de.hub.clickwatch.model.Element>> m_featureChildrenBuilder = new java.util.LinkedList<de.hub.clickwatch.model.util.builder.IModelBuilder<? extends de.hub.clickwatch.model.Element>>();
   private java.util.Collection<de.hub.clickwatch.model.Handler> m_handlers = new java.util.LinkedList<de.hub.clickwatch.model.Handler>();
@@ -19,7 +18,6 @@ public class ElementBuilder implements de.hub.clickwatch.model.util.builder.IMod
   private boolean m_featureChildrenSet = false;
   private boolean m_featureHandlersSet = false;
   private boolean m_featureNameSet = false;
-  private boolean m_featureWatchSet = false;
 
   /**
    * Builder is not instantiated with a constructor.
@@ -49,8 +47,6 @@ public class ElementBuilder implements de.hub.clickwatch.model.util.builder.IMod
     _builder.m_featureHandlersBuilder = m_featureHandlersBuilder;
     _builder.m_featureNameSet = m_featureNameSet;
     _builder.m_name = m_name;
-    _builder.m_featureWatchSet = m_featureWatchSet;
-    _builder.m_watch = m_watch;
     return _builder;
   }
 
@@ -62,9 +58,6 @@ public class ElementBuilder implements de.hub.clickwatch.model.util.builder.IMod
     final de.hub.clickwatch.model.Element _newInstance = de.hub.clickwatch.model.ClickWatchModelFactory.eINSTANCE.createElement();
     if (m_featureNameSet) {
       _newInstance.setName(m_name);
-    }
-    if (m_featureWatchSet) {
-      _newInstance.setWatch(m_watch);
     }
     if (m_featureChildrenSet) {
       _newInstance.getChildren().addAll(m_children);
@@ -90,12 +83,6 @@ public class ElementBuilder implements de.hub.clickwatch.model.util.builder.IMod
   public ElementBuilder withName(java.lang.String p_name) {
     m_name = p_name;
     m_featureNameSet = true;
-    return this;
-  }
-
-  public ElementBuilder withWatch(Boolean p_watch) {
-    m_watch = p_watch;
-    m_featureWatchSet = true;
     return this;
   }
 

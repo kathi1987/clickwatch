@@ -16,6 +16,7 @@ import de.hub.clickwatch.connection.adapter.IErrorAdapter;
 import de.hub.clickwatch.connection.adapter.IErrorAdapter.IErrorListener;
 import de.hub.clickwatch.connection.adapter.IHandlerAdapter;
 import de.hub.clickwatch.connection.adapter.values.IValueAdapter;
+import de.hub.clickwatch.model.ClickWatchError;
 import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.test.AbstractClickwatchTest;
 import de.hub.clickwatch.util.ClickSocketTestImpl;
@@ -23,6 +24,7 @@ import de.hub.clickwatch.util.ClickSocketTestImpl;
 public class ErrorAdapterTest extends AbstractClickwatchTest {
 	
 	private int errorCount = 0;
+	private boolean wrongErrorMessage = false;
 	
 	private class ErrorClickSocket extends ClickSocketTestImpl {
 		
@@ -63,31 +65,33 @@ public class ErrorAdapterTest extends AbstractClickwatchTest {
 		}
 	};
 	
-	private final IErrorListener errorListener = new IErrorListener() {		
-		@Override
-		public void handlerError(String message, Throwable e) {
-			if (errorCount == 0) {
-				Assert.assertEquals("test error", e.getMessage());
-			}
-			errorCount++;
-		}
-	};
+    private final IErrorListener errorListener = new IErrorListener() {
+        @Override
+        public void handlerError(ClickWatchError error) {
+            if (errorCount == 0) {
+                boolean equalsMessage = "test error".equals(error.getMessage());
+                boolean equalsExceptionMessage = "test error".equals(error.getException().getMessage());
+                wrongErrorMessage |= !(equalsMessage || equalsExceptionMessage);
+            }
+            errorCount++;
+        }
+    };
 
-	@Test
-	public void testErrorDuringConnect() throws Exception {
-		Injector injector = Guice.createInjector(ClickWatchModuleUtil.newBuilder()
-				.wClickSocketImpl(new ErrorClickSocket(true, false, false))
-				.wDebug(4, getNullPrintStream()).build());
-		
-		INodeConnectionProvider ncp = injector.getInstance(INodeConnectionProvider.class);
-		INodeConnection connection = ncp.createConnection(null, "0");
-		IErrorAdapter errorAdapter = connection.getAdapter(IErrorAdapter.class);
-		errorAdapter.addErrorListener(errorListener);		
-		Assert.assertEquals(0, errorCount);
-		connection.getAdapter(IHandlerAdapter.class).getHandler("test/test");
-		Thread.sleep(100);
-		Assert.assertTrue(errorCount >= 1);
-	}
+    @Test
+    public void testErrorDuringConnect() throws Exception {
+        Injector injector = Guice.createInjector(ClickWatchModuleUtil.newBuilder()
+                .wClickSocketImpl(new ErrorClickSocket(true, false, false)).wDebug(4, getNullPrintStream()).build());
+
+        INodeConnectionProvider ncp = injector.getInstance(INodeConnectionProvider.class);
+        INodeConnection connection = ncp.createConnection(null, "0");
+        IErrorAdapter errorAdapter = connection.getAdapter(IErrorAdapter.class);
+        errorAdapter.addErrorListener(errorListener);
+        Assert.assertEquals(0, errorCount);
+        connection.getAdapter(IHandlerAdapter.class).getHandler("test/test");
+        Thread.sleep(100);
+        Assert.assertTrue(errorCount >= 1);
+        Assert.assertFalse(wrongErrorMessage);
+    }
 	
 	@Test
 	public void testErrorDuringRead() throws Exception {
@@ -103,6 +107,7 @@ public class ErrorAdapterTest extends AbstractClickwatchTest {
 		connection.getAdapter(IHandlerAdapter.class).getHandler("test/test");
 		Thread.sleep(100);
 		Assert.assertEquals(1, errorCount);
+		Assert.assertFalse(wrongErrorMessage);
 	}
 	
 	@Test
@@ -122,5 +127,6 @@ public class ErrorAdapterTest extends AbstractClickwatchTest {
 		connection.getAdapter(IHandlerAdapter.class).setHandler(handlerToWrite);
 		Thread.sleep(100);
 		Assert.assertEquals(1, errorCount);
+		Assert.assertFalse(wrongErrorMessage);
 	}
 }

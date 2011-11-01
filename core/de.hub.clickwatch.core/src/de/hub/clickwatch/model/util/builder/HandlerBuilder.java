@@ -15,7 +15,6 @@ public class HandlerBuilder implements de.hub.clickwatch.model.util.builder.IMod
   private java.lang.String m_name;
   private long m_timestamp;
   private java.lang.String m_value;
-  private Boolean m_watch;
   private java.util.Collection<org.eclipse.emf.ecore.util.FeatureMap.Entry> m_any = new java.util.LinkedList<org.eclipse.emf.ecore.util.FeatureMap.Entry>();
   private java.util.Collection<org.eclipse.emf.ecore.util.FeatureMap.Entry> m_mixed = new java.util.LinkedList<org.eclipse.emf.ecore.util.FeatureMap.Entry>();
   // helper attributes
@@ -27,7 +26,6 @@ public class HandlerBuilder implements de.hub.clickwatch.model.util.builder.IMod
   private boolean m_featureNameSet = false;
   private boolean m_featureTimestampSet = false;
   private boolean m_featureValueSet = false;
-  private boolean m_featureWatchSet = false;
 
   /**
    * Builder is not instantiated with a constructor.
@@ -65,8 +63,6 @@ public class HandlerBuilder implements de.hub.clickwatch.model.util.builder.IMod
     _builder.m_timestamp = m_timestamp;
     _builder.m_featureValueSet = m_featureValueSet;
     _builder.m_value = m_value;
-    _builder.m_featureWatchSet = m_featureWatchSet;
-    _builder.m_watch = m_watch;
     return _builder;
   }
 
@@ -93,9 +89,6 @@ public class HandlerBuilder implements de.hub.clickwatch.model.util.builder.IMod
     }
     if (m_featureValueSet) {
       _newInstance.setValue(m_value);
-    }
-    if (m_featureWatchSet) {
-      _newInstance.setWatch(m_watch);
     }
     if (m_featureAnySet) {
       _newInstance.getAny().addAll(m_any);
@@ -139,12 +132,6 @@ public class HandlerBuilder implements de.hub.clickwatch.model.util.builder.IMod
   public HandlerBuilder withValue(java.lang.String p_value) {
     m_value = p_value;
     m_featureValueSet = true;
-    return this;
-  }
-
-  public HandlerBuilder withWatch(Boolean p_watch) {
-    m_watch = p_watch;
-    m_featureWatchSet = true;
     return this;
   }
 

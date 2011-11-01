@@ -10,6 +10,8 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 import de.hub.clickwatch.connection.INodeConnection;
+import de.hub.clickwatch.connection.INodeConnectionProvider;
+import de.hub.clickwatch.connection.adapter.IHandlerEventListener;
 
 /**
  * <!-- begin-user-doc -->
@@ -22,11 +24,13 @@ import de.hub.clickwatch.connection.INodeConnection;
  *   <li>{@link de.hub.clickwatch.model.Node#getINetAddress <em>INet Address</em>}</li>
  *   <li>{@link de.hub.clickwatch.model.Node#getPort <em>Port</em>}</li>
  *   <li>{@link de.hub.clickwatch.model.Node#getElements <em>Elements</em>}</li>
- *   <li>{@link de.hub.clickwatch.model.Node#isConnected <em>Connected</em>}</li>
- *   <li>{@link de.hub.clickwatch.model.Node#getConnection <em>Connection</em>}</li>
  *   <li>{@link de.hub.clickwatch.model.Node#getBackbone <em>Backbone</em>}</li>
+ *   <li>{@link de.hub.clickwatch.model.Node#getActiveListeners <em>Active Listeners</em>}</li>
+ *   <li>{@link de.hub.clickwatch.model.Node#getChanges <em>Changes</em>}</li>
+ *   <li>{@link de.hub.clickwatch.model.Node#getErrors <em>Errors</em>}</li>
+ *   <li>{@link de.hub.clickwatch.model.Node#getConnection <em>Connection</em>}</li>
  *   <li>{@link de.hub.clickwatch.model.Node#isRetrieving <em>Retrieving</em>}</li>
- *   <li>{@link de.hub.clickwatch.model.Node#isHasRecord <em>Has Record</em>}</li>
+ *   <li>{@link de.hub.clickwatch.model.Node#isListening <em>Listening</em>}</li>
  *   <li>{@link de.hub.clickwatch.model.Node#isRecording <em>Recording</em>}</li>
  * </ul>
  * </p>
@@ -37,278 +41,296 @@ import de.hub.clickwatch.connection.INodeConnection;
  */
 public interface Node extends EObject {
 	/**
-	 * Returns the value of the '<em><b>INet Address</b></em>' attribute.
-	 * The default value is <code>"localhost"</code>.
-	 * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>INet Address</b></em>' attribute.
+     * The default value is <code>"localhost"</code>.
+     * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>INet Address</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>INet Address</em>' attribute.
-	 * @see #setINetAddress(String)
-	 * @see de.hub.clickwatch.model.ClickWatchModelPackage#getNode_INetAddress()
-	 * @model default="localhost"
-	 * @generated
-	 */
+     * @return the value of the '<em>INet Address</em>' attribute.
+     * @see #setINetAddress(String)
+     * @see de.hub.clickwatch.model.ClickWatchModelPackage#getNode_INetAddress()
+     * @model default="localhost"
+     * @generated
+     */
 	String getINetAddress();
 
 	/**
-	 * Sets the value of the '{@link de.hub.clickwatch.model.Node#getINetAddress <em>INet Address</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * Sets the value of the '{@link de.hub.clickwatch.model.Node#getINetAddress <em>INet Address</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>INet Address</em>' attribute.
-	 * @see #getINetAddress()
-	 * @generated
-	 */
+     * @param value the new value of the '<em>INet Address</em>' attribute.
+     * @see #getINetAddress()
+     * @generated
+     */
 	void setINetAddress(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Port</b></em>' attribute.
-	 * The default value is <code>"7777"</code>.
-	 * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Port</b></em>' attribute.
+     * The default value is <code>"7777"</code>.
+     * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Port</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Port</em>' attribute.
-	 * @see #setPort(String)
-	 * @see de.hub.clickwatch.model.ClickWatchModelPackage#getNode_Port()
-	 * @model default="7777"
-	 * @generated
-	 */
+     * @return the value of the '<em>Port</em>' attribute.
+     * @see #setPort(String)
+     * @see de.hub.clickwatch.model.ClickWatchModelPackage#getNode_Port()
+     * @model default="7777"
+     * @generated
+     */
 	String getPort();
 
 	/**
-	 * Sets the value of the '{@link de.hub.clickwatch.model.Node#getPort <em>Port</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * Sets the value of the '{@link de.hub.clickwatch.model.Node#getPort <em>Port</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Port</em>' attribute.
-	 * @see #getPort()
-	 * @generated
-	 */
+     * @param value the new value of the '<em>Port</em>' attribute.
+     * @see #getPort()
+     * @generated
+     */
 	void setPort(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Elements</b></em>' containment reference list.
-	 * The list contents are of type {@link de.hub.clickwatch.model.Element}.
-	 * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Elements</b></em>' containment reference list.
+     * The list contents are of type {@link de.hub.clickwatch.model.Element}.
+     * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Elements</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Elements</em>' containment reference list.
-	 * @see de.hub.clickwatch.model.ClickWatchModelPackage#getNode_Elements()
-	 * @model containment="true"
-	 *        extendedMetaData="name='element' kind='element'"
-	 * @generated
-	 */
+     * @return the value of the '<em>Elements</em>' containment reference list.
+     * @see de.hub.clickwatch.model.ClickWatchModelPackage#getNode_Elements()
+     * @model containment="true"
+     *        extendedMetaData="name='element' kind='element'"
+     * @generated
+     */
 	EList<Element> getElements();
 
 	/**
-	 * Returns the value of the '<em><b>Connected</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Connected</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Connected</em>' attribute.
-	 * @see #setConnected(boolean)
-	 * @see de.hub.clickwatch.model.ClickWatchModelPackage#getNode_Connected()
-	 * @model default="false" transient="true"
-	 * @generated
-	 */
-	boolean isConnected();
-
-	/**
-	 * Sets the value of the '{@link de.hub.clickwatch.model.Node#isConnected <em>Connected</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Connected</em>' attribute.
-	 * @see #isConnected()
-	 * @generated
-	 */
-	void setConnected(boolean value);
-
-	/**
-	 * Returns the value of the '<em><b>Connection</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Connection</b></em>' attribute.
+     * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Connection</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Connection</em>' attribute.
-	 * @see #setConnection(INodeConnection)
-	 * @see de.hub.clickwatch.model.ClickWatchModelPackage#getNode_Connection()
-	 * @model dataType="de.hub.clickwatch.model.INodeConnection" transient="true"
-	 * @generated
-	 */
+     * @return the value of the '<em>Connection</em>' attribute.
+     * @see #setConnection(INodeConnection)
+     * @see de.hub.clickwatch.model.ClickWatchModelPackage#getNode_Connection()
+     * @model dataType="de.hub.clickwatch.model.INodeConnection" transient="true"
+     * @generated
+     */
 	INodeConnection getConnection();
 
 	/**
-	 * Sets the value of the '{@link de.hub.clickwatch.model.Node#getConnection <em>Connection</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Connection</em>' attribute.
-	 * @see #getConnection()
-	 * @generated
-	 */
-	void setConnection(INodeConnection value);
+     * Sets the value of the '{@link de.hub.clickwatch.model.Node#getConnection <em>Connection</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Connection</em>' attribute.
+     * @see #getConnection()
+     * @generated
+     */
+    void setConnection(INodeConnection value);
 
-	/**
-	 * Returns the value of the '<em><b>Backbone</b></em>' attribute.
-	 * The default value is <code>"unknown"</code>.
-	 * The literals are from the enumeration {@link de.hub.clickwatch.model.BackboneType}.
-	 * <!-- begin-user-doc -->
+    /**
+     * Returns the value of the '<em><b>Retrieving</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Retrieving</em>' attribute isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Retrieving</em>' attribute.
+     * @see #setRetrieving(boolean)
+     * @see de.hub.clickwatch.model.ClickWatchModelPackage#getNode_Retrieving()
+     * @model transient="true"
+     * @generated
+     */
+    boolean isRetrieving();
+
+    /**
+     * Sets the value of the '{@link de.hub.clickwatch.model.Node#isRetrieving <em>Retrieving</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Retrieving</em>' attribute.
+     * @see #isRetrieving()
+     * @generated
+     */
+    void setRetrieving(boolean value);
+
+    /**
+     * Returns the value of the '<em><b>Listening</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Listening</em>' attribute isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Listening</em>' attribute.
+     * @see #setListening(boolean)
+     * @see de.hub.clickwatch.model.ClickWatchModelPackage#getNode_Listening()
+     * @model transient="true"
+     * @generated
+     */
+    boolean isListening();
+
+    /**
+     * Sets the value of the '{@link de.hub.clickwatch.model.Node#isListening <em>Listening</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Listening</em>' attribute.
+     * @see #isListening()
+     * @generated
+     */
+    void setListening(boolean value);
+
+    /**
+     * Returns the value of the '<em><b>Recording</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Recording</em>' attribute isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Recording</em>' attribute.
+     * @see #setRecording(boolean)
+     * @see de.hub.clickwatch.model.ClickWatchModelPackage#getNode_Recording()
+     * @model transient="true"
+     * @generated
+     */
+    boolean isRecording();
+
+    /**
+     * Sets the value of the '{@link de.hub.clickwatch.model.Node#isRecording <em>Recording</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Recording</em>' attribute.
+     * @see #isRecording()
+     * @generated
+     */
+    void setRecording(boolean value);
+
+    /**
+     * Returns the value of the '<em><b>Backbone</b></em>' attribute.
+     * The default value is <code>"unknown"</code>.
+     * The literals are from the enumeration {@link de.hub.clickwatch.model.BackboneType}.
+     * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Backbone</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Backbone</em>' attribute.
-	 * @see de.hub.clickwatch.model.BackboneType
-	 * @see #setBackbone(BackboneType)
-	 * @see de.hub.clickwatch.model.ClickWatchModelPackage#getNode_Backbone()
-	 * @model default="unknown"
-	 * @generated
-	 */
+     * @return the value of the '<em>Backbone</em>' attribute.
+     * @see de.hub.clickwatch.model.BackboneType
+     * @see #setBackbone(BackboneType)
+     * @see de.hub.clickwatch.model.ClickWatchModelPackage#getNode_Backbone()
+     * @model default="unknown"
+     * @generated
+     */
 	BackboneType getBackbone();
 
 	/**
-	 * Sets the value of the '{@link de.hub.clickwatch.model.Node#getBackbone <em>Backbone</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * Sets the value of the '{@link de.hub.clickwatch.model.Node#getBackbone <em>Backbone</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Backbone</em>' attribute.
-	 * @see de.hub.clickwatch.model.BackboneType
-	 * @see #getBackbone()
-	 * @generated
-	 */
+     * @param value the new value of the '<em>Backbone</em>' attribute.
+     * @see de.hub.clickwatch.model.BackboneType
+     * @see #getBackbone()
+     * @generated
+     */
 	void setBackbone(BackboneType value);
 
 	/**
-	 * Returns the value of the '<em><b>Retrieving</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Retrieving</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Retrieving</em>' attribute.
-	 * @see #setRetrieving(boolean)
-	 * @see de.hub.clickwatch.model.ClickWatchModelPackage#getNode_Retrieving()
-	 * @model default="false" transient="true"
-	 * @generated
-	 */
-	boolean isRetrieving();
+     * Returns the value of the '<em><b>Active Listeners</b></em>' attribute list.
+     * The list contents are of type {@link de.hub.clickwatch.connection.adapter.IHandlerEventListener}.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Active Listeners</em>' attribute list isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Active Listeners</em>' attribute list.
+     * @see de.hub.clickwatch.model.ClickWatchModelPackage#getNode_ActiveListeners()
+     * @model default="" dataType="de.hub.clickwatch.model.IHandlerEventListener" transient="true" changeable="false" derived="true"
+     * @generated
+     */
+    EList<IHandlerEventListener> getActiveListeners();
 
-	/**
-	 * Sets the value of the '{@link de.hub.clickwatch.model.Node#isRetrieving <em>Retrieving</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Retrieving</em>' attribute.
-	 * @see #isRetrieving()
-	 * @generated
-	 */
-	void setRetrieving(boolean value);
+    /**
+     * Returns the value of the '<em><b>Changes</b></em>' attribute list.
+     * The list contents are of type {@link de.hub.clickwatch.model.ChangeMark}.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Changes</em>' attribute list isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Changes</em>' attribute list.
+     * @see de.hub.clickwatch.model.ClickWatchModelPackage#getNode_Changes()
+     * @model default="" dataType="de.hub.clickwatch.model.Change" transient="true"
+     * @generated
+     */
+    EList<ChangeMark> getChanges();
 
-	/**
-	 * Returns the value of the '<em><b>Has Record</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Has Record</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Has Record</em>' attribute.
-	 * @see #setHasRecord(boolean)
-	 * @see de.hub.clickwatch.model.ClickWatchModelPackage#getNode_HasRecord()
-	 * @model default="false"
-	 * @generated
-	 */
-	boolean isHasRecord();
+    /**
+     * Returns the value of the '<em><b>Errors</b></em>' attribute list.
+     * The list contents are of type {@link de.hub.clickwatch.model.ClickWatchError}.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Errors</em>' attribute list isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Errors</em>' attribute list.
+     * @see de.hub.clickwatch.model.ClickWatchModelPackage#getNode_Errors()
+     * @model default="" dataType="de.hub.clickwatch.model.Error" transient="true" changeable="false" derived="true"
+     * @generated
+     */
+    EList<ClickWatchError> getErrors();
 
-	/**
-	 * Sets the value of the '{@link de.hub.clickwatch.model.Node#isHasRecord <em>Has Record</em>}' attribute.
-	 * <!-- begin-user-doc -->
+    /**
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Has Record</em>' attribute.
-	 * @see #isHasRecord()
-	 * @generated
-	 */
-	void setHasRecord(boolean value);
-
-	/**
-	 * Returns the value of the '<em><b>Recording</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Recording</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Recording</em>' attribute.
-	 * @see #setRecording(boolean)
-	 * @see de.hub.clickwatch.model.ClickWatchModelPackage#getNode_Recording()
-	 * @model default="false" transient="true"
-	 * @generated
-	 */
-	boolean isRecording();
-
-	/**
-	 * Sets the value of the '{@link de.hub.clickwatch.model.Node#isRecording <em>Recording</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Recording</em>' attribute.
-	 * @see #isRecording()
-	 * @generated
-	 */
-	void setRecording(boolean value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
+     * @model
+     * @generated
+     */
 	void filter(String elementFilter, String handlerFilter);
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
+     * @model
+     * @generated
+     */
 	Handler getHandler(String qualifiedName);
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
+     * @model
+     * @generated
+     */
 	Element getElement(String name);
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model kind="operation"
-	 * @generated
-	 */
+     * @model kind="operation"
+     * @generated
+     */
 	EList<Handler> getAllHandlers();
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
+     * @model
+     * @generated
+     */
 	void filter();
 
 } // Node

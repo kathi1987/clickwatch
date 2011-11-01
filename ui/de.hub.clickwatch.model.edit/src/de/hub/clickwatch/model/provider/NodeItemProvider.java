@@ -50,59 +50,61 @@ public class NodeItemProvider
 		IItemLabelProvider,
 		IItemPropertySource {
 	/**
-	 * This constructs an instance from a factory and a notifier.
-	 * <!-- begin-user-doc -->
+     * This constructs an instance from a factory and a notifier.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public NodeItemProvider(AdapterFactory adapterFactory) {
-		super(adapterFactory);
-	}
+        super(adapterFactory);
+    }
 
 	/**
-	 * This returns the property descriptors for the adapted class.
-	 * <!-- begin-user-doc -->
+     * This returns the property descriptors for the adapted class.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null) {
-			super.getPropertyDescriptors(object);
+        if (itemPropertyDescriptors == null) {
+            super.getPropertyDescriptors(object);
 
-			addINetAddressPropertyDescriptor(object);
-			addPortPropertyDescriptor(object);
-			addConnectedPropertyDescriptor(object);
-			addConnectionPropertyDescriptor(object);
-			addBackbonePropertyDescriptor(object);
-			addRetrievingPropertyDescriptor(object);
-			addHasRecordPropertyDescriptor(object);
-			addRecordingPropertyDescriptor(object);
-		}
-		return itemPropertyDescriptors;
-	}
+            addINetAddressPropertyDescriptor(object);
+            addPortPropertyDescriptor(object);
+            addBackbonePropertyDescriptor(object);
+            addActiveListenersPropertyDescriptor(object);
+            addChangesPropertyDescriptor(object);
+            addErrorsPropertyDescriptor(object);
+            addConnectionPropertyDescriptor(object);
+            addRetrievingPropertyDescriptor(object);
+            addListeningPropertyDescriptor(object);
+            addRecordingPropertyDescriptor(object);
+        }
+        return itemPropertyDescriptors;
+    }
 
 	/**
-	 * This adds a property descriptor for the INet Address feature.
-	 * <!-- begin-user-doc -->
+     * This adds a property descriptor for the INet Address feature.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected void addINetAddressPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Node_iNetAddress_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Node_iNetAddress_feature", "_UI_Node_type"),
-				 ClickWatchModelPackage.Literals.NODE__INET_ADDRESS,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_Node_iNetAddress_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_Node_iNetAddress_feature", "_UI_Node_type"),
+                 ClickWatchModelPackage.Literals.NODE__INET_ADDRESS,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
 
 	/**
 	 * This adds a property descriptor for the Port feature.
@@ -140,166 +142,210 @@ public class NodeItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Connected feature.
-	 * <!-- begin-user-doc -->
+     * This adds a property descriptor for the Connection feature.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addConnectedPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Node_connected_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Node_connected_feature", "_UI_Node_type"),
-				 ClickWatchModelPackage.Literals.NODE__CONNECTED,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Connection feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected void addConnectionPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Node_connection_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Node_connection_feature", "_UI_Node_type"),
-				 ClickWatchModelPackage.Literals.NODE__CONNECTION,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_Node_connection_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_Node_connection_feature", "_UI_Node_type"),
+                 ClickWatchModelPackage.Literals.NODE__CONNECTION,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
 
 	/**
-	 * This adds a property descriptor for the Backbone feature.
-	 * <!-- begin-user-doc -->
+     * This adds a property descriptor for the Retrieving feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addRetrievingPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_Node_retrieving_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_Node_retrieving_feature", "_UI_Node_type"),
+                 ClickWatchModelPackage.Literals.NODE__RETRIEVING,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the Listening feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addListeningPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_Node_listening_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_Node_listening_feature", "_UI_Node_type"),
+                 ClickWatchModelPackage.Literals.NODE__LISTENING,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the Recording feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addRecordingPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_Node_recording_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_Node_recording_feature", "_UI_Node_type"),
+                 ClickWatchModelPackage.Literals.NODE__RECORDING,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the Backbone feature.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected void addBackbonePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Node_backbone_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Node_backbone_feature", "_UI_Node_type"),
-				 ClickWatchModelPackage.Literals.NODE__BACKBONE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_Node_backbone_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_Node_backbone_feature", "_UI_Node_type"),
+                 ClickWatchModelPackage.Literals.NODE__BACKBONE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
 
 	/**
-	 * This adds a property descriptor for the Retrieving feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addRetrievingPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Node_retrieving_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Node_retrieving_feature", "_UI_Node_type"),
-				 ClickWatchModelPackage.Literals.NODE__RETRIEVING,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
-				 null));
-	}
+     * This adds a property descriptor for the Active Listeners feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addActiveListenersPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_Node_activeListeners_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_Node_activeListeners_feature", "_UI_Node_type"),
+                 ClickWatchModelPackage.Literals.NODE__ACTIVE_LISTENERS,
+                 false,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
 
-	/**
-	 * This adds a property descriptor for the Has Record feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addHasRecordPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Node_hasRecord_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Node_hasRecord_feature", "_UI_Node_type"),
-				 ClickWatchModelPackage.Literals.NODE__HAS_RECORD,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
-				 null));
-	}
+    /**
+     * This adds a property descriptor for the Changes feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addChangesPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_Node_changes_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_Node_changes_feature", "_UI_Node_type"),
+                 ClickWatchModelPackage.Literals.NODE__CHANGES,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
 
-	/**
-	 * This adds a property descriptor for the Recording feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addRecordingPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Node_recording_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Node_recording_feature", "_UI_Node_type"),
-				 ClickWatchModelPackage.Literals.NODE__RECORDING,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
-				 null));
-	}
+    /**
+     * This adds a property descriptor for the Errors feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addErrorsPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_Node_errors_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_Node_errors_feature", "_UI_Node_type"),
+                 ClickWatchModelPackage.Literals.NODE__ERRORS,
+                 false,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
 
-	/**
-	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
-	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
-	 * <!-- begin-user-doc -->
+    /**
+     * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+     * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
+     * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-		if (childrenFeatures == null) {
-			super.getChildrenFeatures(object);
-			childrenFeatures.add(ClickWatchModelPackage.Literals.NODE__ELEMENTS);
-		}
-		return childrenFeatures;
-	}
+        if (childrenFeatures == null) {
+            super.getChildrenFeatures(object);
+            childrenFeatures.add(ClickWatchModelPackage.Literals.NODE__ELEMENTS);
+        }
+        return childrenFeatures;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	protected EStructuralFeature getChildFeature(Object object, Object child) {
-		// Check the type of the specified child object and return the proper feature to use for
-		// adding (see {@link AddCommand}) it as a child.
+        // Check the type of the specified child object and return the proper feature to use for
+        // adding (see {@link AddCommand}) it as a child.
 
-		return super.getChildFeature(object, child);
-	}
+        return super.getChildFeature(object, child);
+    }
 	
 	/**
 	 * @generated NOT
@@ -356,16 +402,17 @@ public class NodeItemProvider
 		if (node.getBackbone() == BackboneType.WIRELESS) {
 			imageMap.put(getResourceLocator().getImage("full/ovr16/wireless"), NodeImage.BACKBONE);
 		}
-		if (node.isConnected() && !node.isRetrieving()) {
+		if (node.isListening() && !node.isRetrieving()) {
 			imageMap.put(getResourceLocator().getImage("full/ovr16/connected"), NodeImage.CONNECTED);
 		} else if (node.isRetrieving()) {
 			imageMap.put(getResourceLocator().getImage("full/ovr16/retrieving"), NodeImage.CONNECTED);
 		}
 		if (node.isRecording()) {
 			imageMap.put(getResourceLocator().getImage("full/ovr16/recording"), NodeImage.RECORD);
-		} else if (node.isHasRecord()) {
-			imageMap.put(getResourceLocator().getImage("full/ovr16/hasrecord"), NodeImage.RECORD);
-		}
+		} 
+//		else if (node.isHasRecord()) {
+//			imageMap.put(getResourceLocator().getImage("full/ovr16/hasrecord"), NodeImage.RECORD);
+//		}
 		images.add(getResourceLocator().getImage("full/obj16/Node"));
 		images.addAll(imageMap.keySet());
 		imageMap.put(getResourceLocator().getImage("full/obj16/Node"), NodeImage.NODE);
@@ -391,14 +438,14 @@ public class NodeItemProvider
 		}
 		
 		StringBuffer result = new StringBuffer(address + " (");
-		if (node.isConnected()) {
+		if (node.isListening()) {
 			result.append("connected");
 		} else {
 			result.append("not connected");
 		}
-		if (node.isHasRecord()) {
-			result.append(", has record");
-		}
+//		if (node.isHasRecord()) {
+//			result.append(", has record");
+//		}
 		if (node.isRecording()) {
 			result.append(", is recording");
 		}
@@ -408,60 +455,62 @@ public class NodeItemProvider
 	}
 
 	/**
-	 * This handles model notifications by calling {@link #updateChildren} to update any cached
-	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-	 * <!-- begin-user-doc -->
+     * This handles model notifications by calling {@link #updateChildren} to update any cached
+     * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public void notifyChanged(Notification notification) {
-		updateChildren(notification);
+        updateChildren(notification);
 
-		switch (notification.getFeatureID(Node.class)) {
-			case ClickWatchModelPackage.NODE__INET_ADDRESS:
-			case ClickWatchModelPackage.NODE__PORT:
-			case ClickWatchModelPackage.NODE__CONNECTED:
-			case ClickWatchModelPackage.NODE__CONNECTION:
-			case ClickWatchModelPackage.NODE__BACKBONE:
-			case ClickWatchModelPackage.NODE__RETRIEVING:
-			case ClickWatchModelPackage.NODE__HAS_RECORD:
-			case ClickWatchModelPackage.NODE__RECORDING:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
-			case ClickWatchModelPackage.NODE__ELEMENTS:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-				return;
-		}
-		super.notifyChanged(notification);
-	}
+        switch (notification.getFeatureID(Node.class)) {
+            case ClickWatchModelPackage.NODE__INET_ADDRESS:
+            case ClickWatchModelPackage.NODE__PORT:
+            case ClickWatchModelPackage.NODE__BACKBONE:
+            case ClickWatchModelPackage.NODE__ACTIVE_LISTENERS:
+            case ClickWatchModelPackage.NODE__CHANGES:
+            case ClickWatchModelPackage.NODE__ERRORS:
+            case ClickWatchModelPackage.NODE__CONNECTION:
+            case ClickWatchModelPackage.NODE__RETRIEVING:
+            case ClickWatchModelPackage.NODE__LISTENING:
+            case ClickWatchModelPackage.NODE__RECORDING:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+                return;
+            case ClickWatchModelPackage.NODE__ELEMENTS:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+                return;
+        }
+        super.notifyChanged(notification);
+    }
 
 	/**
-	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
-	 * that can be created under this object.
-	 * <!-- begin-user-doc -->
+     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+     * that can be created under this object.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
-		super.collectNewChildDescriptors(newChildDescriptors, object);
+        super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add
-			(createChildParameter
-				(ClickWatchModelPackage.Literals.NODE__ELEMENTS,
-				 ClickWatchModelFactory.eINSTANCE.createElement()));
-	}
+        newChildDescriptors.add
+            (createChildParameter
+                (ClickWatchModelPackage.Literals.NODE__ELEMENTS,
+                 ClickWatchModelFactory.eINSTANCE.createElement()));
+    }
 
 	/**
-	 * Return the resource locator for this item provider's resources.
-	 * <!-- begin-user-doc -->
+     * Return the resource locator for this item provider's resources.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public ResourceLocator getResourceLocator() {
-		return ClickWatchModelEditPlugin.INSTANCE;
-	}
+        return ClickWatchModelEditPlugin.INSTANCE;
+    }
 
 }

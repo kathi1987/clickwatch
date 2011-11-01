@@ -1,4 +1,4 @@
-package de.hub.clickwatch.ui.tests;
+package de.hub.clickwatch.test.internal;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;

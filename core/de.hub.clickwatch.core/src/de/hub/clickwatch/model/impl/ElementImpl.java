@@ -33,7 +33,6 @@ import de.hub.clickwatch.model.Handler;
  * <ul>
  *   <li>{@link de.hub.clickwatch.model.impl.ElementImpl#getName <em>Name</em>}</li>
  *   <li>{@link de.hub.clickwatch.model.impl.ElementImpl#getHandlers <em>Handlers</em>}</li>
- *   <li>{@link de.hub.clickwatch.model.impl.ElementImpl#isWatch <em>Watch</em>}</li>
  *   <li>{@link de.hub.clickwatch.model.impl.ElementImpl#getChildren <em>Children</em>}</li>
  * </ul>
  * </p>
@@ -42,144 +41,105 @@ import de.hub.clickwatch.model.Handler;
  */
 public class ElementImpl extends EObjectImpl implements Element {
 	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getName()
+     * @generated
+     * @ordered
+     */
 	protected static final String NAME_EDEFAULT = null;
 	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getName()
+     * @generated
+     * @ordered
+     */
 	protected String name = NAME_EDEFAULT;
 	/**
-	 * The cached value of the '{@link #getHandlers() <em>Handlers</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getHandlers() <em>Handlers</em>}' containment reference list.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getHandlers()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getHandlers()
+     * @generated
+     * @ordered
+     */
 	protected EList<Handler> handlers;
 	/**
-	 * The default value of the '{@link #isWatch() <em>Watch</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getChildren() <em>Children</em>}' containment reference list.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isWatch()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean WATCH_EDEFAULT = false;
-	/**
-	 * The cached value of the '{@link #isWatch() <em>Watch</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isWatch()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean watch = WATCH_EDEFAULT;
-	/**
-	 * The cached value of the '{@link #getChildren() <em>Children</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getChildren()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getChildren()
+     * @generated
+     * @ordered
+     */
 	protected EList<Element> children;
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected ElementImpl() {
-		super();
-	}
+        super();
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	protected EClass eStaticClass() {
-		return ClickWatchModelPackage.Literals.ELEMENT;
-	}
+        return ClickWatchModelPackage.Literals.ELEMENT;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public String getName() {
-		return name;
-	}
+        return name;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public void setName(String newName) {
-		String oldName = name;
-		name = newName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ClickWatchModelPackage.ELEMENT__NAME, oldName, name));
-	}
+        String oldName = name;
+        name = newName;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, ClickWatchModelPackage.ELEMENT__NAME, oldName, name));
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public EList<Handler> getHandlers() {
-		if (handlers == null) {
-			handlers = new EObjectContainmentEList<Handler>(Handler.class, this, ClickWatchModelPackage.ELEMENT__HANDLERS);
-		}
-		return handlers;
-	}
+        if (handlers == null) {
+            handlers = new EObjectContainmentEList<Handler>(Handler.class, this, ClickWatchModelPackage.ELEMENT__HANDLERS);
+        }
+        return handlers;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isWatch() {
-		return watch;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setWatch(boolean newWatch) {
-		boolean oldWatch = watch;
-		watch = newWatch;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ClickWatchModelPackage.ELEMENT__WATCH, oldWatch, watch));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public EList<Element> getChildren() {
-		if (children == null) {
-			children = new EObjectContainmentEList<Element>(Element.class, this, ClickWatchModelPackage.ELEMENT__CHILDREN);
-		}
-		return children;
-	}
+        if (children == null) {
+            children = new EObjectContainmentEList<Element>(Element.class, this, ClickWatchModelPackage.ELEMENT__CHILDREN);
+        }
+        return children;
+    }
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -224,111 +184,101 @@ public class ElementImpl extends EObjectImpl implements Element {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case ClickWatchModelPackage.ELEMENT__HANDLERS:
-				return ((InternalEList<?>)getHandlers()).basicRemove(otherEnd, msgs);
-			case ClickWatchModelPackage.ELEMENT__CHILDREN:
-				return ((InternalEList<?>)getChildren()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+        switch (featureID) {
+            case ClickWatchModelPackage.ELEMENT__HANDLERS:
+                return ((InternalEList<?>)getHandlers()).basicRemove(otherEnd, msgs);
+            case ClickWatchModelPackage.ELEMENT__CHILDREN:
+                return ((InternalEList<?>)getChildren()).basicRemove(otherEnd, msgs);
+        }
+        return super.eInverseRemove(otherEnd, featureID, msgs);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case ClickWatchModelPackage.ELEMENT__NAME:
-				return getName();
-			case ClickWatchModelPackage.ELEMENT__HANDLERS:
-				return getHandlers();
-			case ClickWatchModelPackage.ELEMENT__WATCH:
-				return isWatch();
-			case ClickWatchModelPackage.ELEMENT__CHILDREN:
-				return getChildren();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+        switch (featureID) {
+            case ClickWatchModelPackage.ELEMENT__NAME:
+                return getName();
+            case ClickWatchModelPackage.ELEMENT__HANDLERS:
+                return getHandlers();
+            case ClickWatchModelPackage.ELEMENT__CHILDREN:
+                return getChildren();
+        }
+        return super.eGet(featureID, resolve, coreType);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case ClickWatchModelPackage.ELEMENT__NAME:
-				setName((String)newValue);
-				return;
-			case ClickWatchModelPackage.ELEMENT__HANDLERS:
-				getHandlers().clear();
-				getHandlers().addAll((Collection<? extends Handler>)newValue);
-				return;
-			case ClickWatchModelPackage.ELEMENT__WATCH:
-				setWatch((Boolean)newValue);
-				return;
-			case ClickWatchModelPackage.ELEMENT__CHILDREN:
-				getChildren().clear();
-				getChildren().addAll((Collection<? extends Element>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+        switch (featureID) {
+            case ClickWatchModelPackage.ELEMENT__NAME:
+                setName((String)newValue);
+                return;
+            case ClickWatchModelPackage.ELEMENT__HANDLERS:
+                getHandlers().clear();
+                getHandlers().addAll((Collection<? extends Handler>)newValue);
+                return;
+            case ClickWatchModelPackage.ELEMENT__CHILDREN:
+                getChildren().clear();
+                getChildren().addAll((Collection<? extends Element>)newValue);
+                return;
+        }
+        super.eSet(featureID, newValue);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case ClickWatchModelPackage.ELEMENT__NAME:
-				setName(NAME_EDEFAULT);
-				return;
-			case ClickWatchModelPackage.ELEMENT__HANDLERS:
-				getHandlers().clear();
-				return;
-			case ClickWatchModelPackage.ELEMENT__WATCH:
-				setWatch(WATCH_EDEFAULT);
-				return;
-			case ClickWatchModelPackage.ELEMENT__CHILDREN:
-				getChildren().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+        switch (featureID) {
+            case ClickWatchModelPackage.ELEMENT__NAME:
+                setName(NAME_EDEFAULT);
+                return;
+            case ClickWatchModelPackage.ELEMENT__HANDLERS:
+                getHandlers().clear();
+                return;
+            case ClickWatchModelPackage.ELEMENT__CHILDREN:
+                getChildren().clear();
+                return;
+        }
+        super.eUnset(featureID);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case ClickWatchModelPackage.ELEMENT__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case ClickWatchModelPackage.ELEMENT__HANDLERS:
-				return handlers != null && !handlers.isEmpty();
-			case ClickWatchModelPackage.ELEMENT__WATCH:
-				return watch != WATCH_EDEFAULT;
-			case ClickWatchModelPackage.ELEMENT__CHILDREN:
-				return children != null && !children.isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+        switch (featureID) {
+            case ClickWatchModelPackage.ELEMENT__NAME:
+                return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+            case ClickWatchModelPackage.ELEMENT__HANDLERS:
+                return handlers != null && !handlers.isEmpty();
+            case ClickWatchModelPackage.ELEMENT__CHILDREN:
+                return children != null && !children.isEmpty();
+        }
+        return super.eIsSet(featureID);
+    }
 
 	/**
 	 * <!-- begin-user-doc -->

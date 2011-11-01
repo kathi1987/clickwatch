@@ -2,7 +2,6 @@ package de.hub.clickwatch.test.internal;
 
 import junit.framework.Assert;
 
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -19,9 +18,12 @@ import de.hub.clickwatch.connection.adapter.IErrorAdapter;
 import de.hub.clickwatch.connection.adapter.IErrorAdapter.IErrorListener;
 import de.hub.clickwatch.connection.adapter.IHandlerEventAdapter;
 import de.hub.clickwatch.connection.adapter.IHandlerEventListener;
+import de.hub.clickwatch.connection.adapter.IMergeAdapter;
 import de.hub.clickwatch.connection.adapter.IMetaDataAdapter;
 import de.hub.clickwatch.connection.adapter.values.IValueAdapter;
 import de.hub.clickwatch.connection.adapter.values.XmlValueAdapter;
+import de.hub.clickwatch.model.ClickWatchError;
+import de.hub.clickwatch.model.ClickWatchModelFactory;
 import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.model.Node;
 import de.hub.clickwatch.test.AbstractClickwatchTest;
@@ -58,6 +60,7 @@ public class HandlerEventAdapterTest extends AbstractClickwatchTest {
 				.wDebugLvl(ILogger.DEBUG).wIgnoredHandlers()
 				.wHandlerBhvr(HandlerBehaviour.DEFAULT, 0, 1000)
 				.wValueAdapterClass(XmlValueAdapter.class).build());
+		ClickWatchModelFactory.eINSTANCE.registerInjector(injector);
 
 		INodeConnectionProvider ncp = injector
 				.getInstance(INodeConnectionProvider.class);
@@ -67,14 +70,15 @@ public class HandlerEventAdapterTest extends AbstractClickwatchTest {
 		connection.getAdapter(IErrorAdapter.class).addErrorListener(
 				new IErrorListener() {
 					@Override
-					public void handlerError(String message, Throwable e) {
+					public void handlerError(ClickWatchError error) {
 						Assert.assertTrue(false);
 					}
 				});
 		Node metaData = connection.getAdapter(IMetaDataAdapter.class)
 				.pullAllMetaData();
+		connection.getAdapter(IMergeAdapter.class).merge(metaData);
 		handlerEventAdapter.addEventListener(handlerEventListener);
-		handlerEventAdapter.start(metaData.getAllHandlers());
+		handlerEventAdapter.start();
 
 		for (int i = 0; i < 50; i++) {
 			try {
@@ -92,6 +96,7 @@ public class HandlerEventAdapterTest extends AbstractClickwatchTest {
 				.wDebugLvl(ILogger.DEBUG).wIgnoredHandlers()
 				.wHandlerBhvr(HandlerBehaviour.DEFAULT, 0, 1000)
 				.wValueAdapterClass(XmlValueAdapter.class).build());
+		ClickWatchModelFactory.eINSTANCE.registerInjector(injector);
 
 		INodeConnectionProvider ncp = injector
 				.getInstance(INodeConnectionProvider.class);
@@ -101,14 +106,14 @@ public class HandlerEventAdapterTest extends AbstractClickwatchTest {
 		connection.getAdapter(IErrorAdapter.class).addErrorListener(
 				new IErrorListener() {
 					@Override
-					public void handlerError(String message, Throwable e) {
+					public void handlerError(ClickWatchError error) {
 						Assert.assertTrue(false);
 					}
 				});
-		Node metaData = connection.getAdapter(IMetaDataAdapter.class)
-				.pullAllMetaData();
+		Node metaData = connection.getAdapter(IMetaDataAdapter.class).pullAllMetaData();
+		connection.getAdapter(IMergeAdapter.class).merge(metaData);
 		handlerEventAdapter.addEventListener(handlerEventListener);
-		handlerEventAdapter.start(metaData.getAllHandlers());
+		handlerEventAdapter.start();
 
 		try {
 			Thread.sleep(1900);
@@ -156,6 +161,7 @@ public class HandlerEventAdapterTest extends AbstractClickwatchTest {
 				.wHandlerBhvr(HandlerBehaviour.DEFAULT, 0, 3000)
 				.wThreads(2, 2)
 				.wValueAdapterClass(XmlValueAdapter.class).build());
+		ClickWatchModelFactory.eINSTANCE.registerInjector(injector);
 
 		INodeConnectionProvider ncp = injector.getInstance(INodeConnectionProvider.class);
 		
@@ -167,15 +173,15 @@ public class HandlerEventAdapterTest extends AbstractClickwatchTest {
 			connection.getAdapter(IErrorAdapter.class).addErrorListener(
 					new IErrorListener() {
 						@Override
-						public void handlerError(String message, Throwable e) {
+						public void handlerError(ClickWatchError error) {
 							Assert.assertTrue(false);
 						}
 					});
 			Node metaData = connection.getAdapter(IMetaDataAdapter.class).pullAllMetaData();
 			handlerEventAdapter.addEventListener(handlerEventListener);
-			EList<Handler> allHandlers = metaData.getAllHandlers();
-			handlerCount += allHandlers.size();
-			handlerEventAdapter.start(allHandlers);	
+			connection.getAdapter(IMergeAdapter.class).merge(metaData);
+			handlerCount += metaData.getAllHandlers().size();
+			handlerEventAdapter.start();	
 		}
 		
 		try {

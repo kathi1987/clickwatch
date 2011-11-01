@@ -4,7 +4,7 @@ import org.eclipse.jface.action.IAction;
 
 import de.hub.clickwatch.model.Node;
 
-
+@Deprecated
 public class ClearRecord extends AbstractNodeAction {
 
 	@Override
@@ -18,7 +18,7 @@ public class ClearRecord extends AbstractNodeAction {
 			if (node.isRecording()) {
 				continue;
 			}
-			node.setHasRecord(false);
+//			node.setHasRecord(false);
 		}
 	}
 }

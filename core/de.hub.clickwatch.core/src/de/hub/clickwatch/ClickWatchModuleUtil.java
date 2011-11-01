@@ -24,6 +24,8 @@ import de.hub.clickwatch.connection.adapter.internal.CompoundHandlerEventAdapter
 import de.hub.clickwatch.connection.adapter.internal.HandlerEventAdapter;
 import de.hub.clickwatch.connection.adapter.values.IValueAdapter;
 import de.hub.clickwatch.connection.adapter.values.StringValueAdapter;
+import de.hub.clickwatch.merge.ClickWatchNodeMergeConfiguration;
+import de.hub.clickwatch.merge.IMergeConfiguration;
 import de.hub.clickwatch.recorder.ClickSocketPlayer;
 import de.hub.clickwatch.recorder.ClickSocketPlayerSocketImpl;
 import de.hub.clickwatch.util.ILogger;
@@ -51,7 +53,7 @@ public class ClickWatchModuleUtil {
 		
 		private String[] ignoredHandlerNames = new String[] { "debug", "handlers", "ports", "name", "links" }; // config, class
 		private HandlerBehaviour handlerBehaviour = HandlerBehaviour.DEFAULT;
-		private int remoteUpdatePeriod = 3000;
+		private int remoteUpdatePeriod = 1000;
 		private int compoundHanlderLocalUpdateDelay = 1000;
 		
 		private Class<? extends IValueAdapter> valueAdapterClass = StringValueAdapter.class;
@@ -62,6 +64,8 @@ public class ClickWatchModuleUtil {
 		
 		private int connectionThreads = 5;
 		private int eventHandlerThreads = 5;
+		
+        private IMergeConfiguration mergeConfiguration = new ClickWatchNodeMergeConfiguration();
 		
 		public ClickWatchModuleBuilder wDebugLvl(int debugLevel) {
 			wDebug(debugLevel, System.out);
@@ -122,10 +126,16 @@ public class ClickWatchModuleUtil {
 			return this;
 		}
 		
+
+        public ClickWatchModuleBuilder wMergeConfiguration(IMergeConfiguration mergeConfiguration) {
+            this.mergeConfiguration  = mergeConfiguration;
+            return this;
+        }
+		
 		public ClickWatchModule build() {
-			return new ClickWatchModule() {
+			return new ClickWatchModule() {			    
 				@Override
-				protected ILogger getLogger() {
+				protected ILogger createLogger() {
 					return new ILogger() {
 						@Override
 						public synchronized void log(int status, String message,
@@ -248,6 +258,11 @@ public class ClickWatchModuleUtil {
 					bind(ScheduledExecutorService.class).toInstance(Executors.newScheduledThreadPool(connectionThreads));
 					bind(ExecutorService.class).toInstance(Executors.newFixedThreadPool(eventHandlerThreads));
 				}
+
+                @Override
+                protected void bindMergeConfiguration() {
+                    bind(IMergeConfiguration.class).toInstance(mergeConfiguration);
+                }
 			};
 		}
 	}

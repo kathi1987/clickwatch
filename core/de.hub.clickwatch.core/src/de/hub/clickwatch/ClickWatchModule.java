@@ -21,6 +21,8 @@ import de.hub.clickwatch.connection.adapter.internal.MetaDataAdapter;
 import de.hub.clickwatch.connection.adapter.values.IValueAdapter;
 import de.hub.clickwatch.connection.adapter.values.StringValueAdapter;
 import de.hub.clickwatch.connection.internal.NodeConnectionProvider;
+import de.hub.clickwatch.merge.IMergeConfiguration;
+import de.hub.clickwatch.merge.ClickWatchNodeMergeConfiguration;
 import de.hub.clickwatch.util.ILogger;
 
 public class ClickWatchModule extends AbstractModule {
@@ -36,16 +38,21 @@ public class ClickWatchModule extends AbstractModule {
 	private ILogger logger = null;
 	
 	@Provides
-	protected ILogger getLogger() {
+	protected final ILogger getLogger() {
+	    if (logger == null) {
+	        logger = createLogger();
+	    }
 		return logger;
 	}
 	
-	public void setLogger(ILogger logger) {
-		this.logger = logger;
+	protected ILogger createLogger() {
+	    return null;
 	}
 
 	@Override
 	protected void configure() {
+	    bindMergeConfiguration();
+	    
 		bind(INodeConnectionProvider.class).to(NodeConnectionProvider.class);
 		bind(int.class).annotatedWith(Names.named(I_DEFAULT_TIMEOUT)).toInstance(10000);
 		
@@ -57,6 +64,10 @@ public class ClickWatchModule extends AbstractModule {
 		bindHandlerEventAdapter();
 		
 		bindClickSocket();
+	}
+	
+	protected void bindMergeConfiguration() {
+	    bind(IMergeConfiguration.class).to(ClickWatchNodeMergeConfiguration.class);
 	}
 	
 	protected void bindExecutorServices() {

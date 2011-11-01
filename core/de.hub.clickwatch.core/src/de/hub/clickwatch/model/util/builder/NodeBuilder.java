@@ -10,22 +10,22 @@ package de.hub.clickwatch.model.util.builder;
 public class NodeBuilder implements de.hub.clickwatch.model.util.builder.IModelBuilder<de.hub.clickwatch.model.Node> {
   // features and builders
   private de.hub.clickwatch.model.BackboneType m_backbone;
-  private Boolean m_connected;
   private de.hub.clickwatch.connection.INodeConnection m_connection;
-  private Boolean m_hasRecord;
   private java.lang.String m_iNetAddress;
+  private Boolean m_listening;
   private java.lang.String m_port;
   private Boolean m_recording;
   private Boolean m_retrieving;
+  private java.util.Collection<de.hub.clickwatch.model.ChangeMark> m_changes = new java.util.LinkedList<de.hub.clickwatch.model.ChangeMark>();
   private java.util.Collection<de.hub.clickwatch.model.Element> m_elements = new java.util.LinkedList<de.hub.clickwatch.model.Element>();
   private java.util.Collection<de.hub.clickwatch.model.util.builder.IModelBuilder<? extends de.hub.clickwatch.model.Element>> m_featureElementsBuilder = new java.util.LinkedList<de.hub.clickwatch.model.util.builder.IModelBuilder<? extends de.hub.clickwatch.model.Element>>();
   // helper attributes
   private boolean m_featureBackboneSet = false;
-  private boolean m_featureConnectedSet = false;
+  private boolean m_featureChangesSet = false;
   private boolean m_featureConnectionSet = false;
   private boolean m_featureElementsSet = false;
-  private boolean m_featureHasRecordSet = false;
   private boolean m_featureINetAddressSet = false;
+  private boolean m_featureListeningSet = false;
   private boolean m_featurePortSet = false;
   private boolean m_featureRecordingSet = false;
   private boolean m_featureRetrievingSet = false;
@@ -52,17 +52,17 @@ public class NodeBuilder implements de.hub.clickwatch.model.util.builder.IModelB
     NodeBuilder _builder = newNodeBuilder();
     _builder.m_featureBackboneSet = m_featureBackboneSet;
     _builder.m_backbone = m_backbone;
-    _builder.m_featureConnectedSet = m_featureConnectedSet;
-    _builder.m_connected = m_connected;
+    _builder.m_featureChangesSet = m_featureChangesSet;
+    _builder.m_changes = m_changes;
     _builder.m_featureConnectionSet = m_featureConnectionSet;
     _builder.m_connection = m_connection;
     _builder.m_featureElementsSet = m_featureElementsSet;
     _builder.m_elements = m_elements;
     _builder.m_featureElementsBuilder = m_featureElementsBuilder;
-    _builder.m_featureHasRecordSet = m_featureHasRecordSet;
-    _builder.m_hasRecord = m_hasRecord;
     _builder.m_featureINetAddressSet = m_featureINetAddressSet;
     _builder.m_iNetAddress = m_iNetAddress;
+    _builder.m_featureListeningSet = m_featureListeningSet;
+    _builder.m_listening = m_listening;
     _builder.m_featurePortSet = m_featurePortSet;
     _builder.m_port = m_port;
     _builder.m_featureRecordingSet = m_featureRecordingSet;
@@ -81,17 +81,14 @@ public class NodeBuilder implements de.hub.clickwatch.model.util.builder.IModelB
     if (m_featureBackboneSet) {
       _newInstance.setBackbone(m_backbone);
     }
-    if (m_featureConnectedSet) {
-      _newInstance.setConnected(m_connected);
-    }
     if (m_featureConnectionSet) {
       _newInstance.setConnection(m_connection);
     }
-    if (m_featureHasRecordSet) {
-      _newInstance.setHasRecord(m_hasRecord);
-    }
     if (m_featureINetAddressSet) {
       _newInstance.setINetAddress(m_iNetAddress);
+    }
+    if (m_featureListeningSet) {
+      _newInstance.setListening(m_listening);
     }
     if (m_featurePortSet) {
       _newInstance.setPort(m_port);
@@ -101,6 +98,9 @@ public class NodeBuilder implements de.hub.clickwatch.model.util.builder.IModelB
     }
     if (m_featureRetrievingSet) {
       _newInstance.setRetrieving(m_retrieving);
+    }
+    if (m_featureChangesSet) {
+      _newInstance.getChanges().addAll(m_changes);
     }
     if (m_featureElementsSet) {
       _newInstance.getElements().addAll(m_elements);
@@ -120,27 +120,21 @@ public class NodeBuilder implements de.hub.clickwatch.model.util.builder.IModelB
     return this;
   }
 
-  public NodeBuilder withConnected(Boolean p_connected) {
-    m_connected = p_connected;
-    m_featureConnectedSet = true;
-    return this;
-  }
-
   public NodeBuilder withConnection(de.hub.clickwatch.connection.INodeConnection p_connection) {
     m_connection = p_connection;
     m_featureConnectionSet = true;
     return this;
   }
 
-  public NodeBuilder withHasRecord(Boolean p_hasRecord) {
-    m_hasRecord = p_hasRecord;
-    m_featureHasRecordSet = true;
-    return this;
-  }
-
   public NodeBuilder withINetAddress(java.lang.String p_iNetAddress) {
     m_iNetAddress = p_iNetAddress;
     m_featureINetAddressSet = true;
+    return this;
+  }
+
+  public NodeBuilder withListening(Boolean p_listening) {
+    m_listening = p_listening;
+    m_featureListeningSet = true;
     return this;
   }
 
@@ -159,6 +153,18 @@ public class NodeBuilder implements de.hub.clickwatch.model.util.builder.IModelB
   public NodeBuilder withRetrieving(Boolean p_retrieving) {
     m_retrieving = p_retrieving;
     m_featureRetrievingSet = true;
+    return this;
+  }
+
+  public NodeBuilder withChanges(de.hub.clickwatch.model.ChangeMark p_changes) {
+    m_changes.add(p_changes);
+    m_featureChangesSet = true;
+    return this;
+  }
+
+  public NodeBuilder withChanges(java.util.Collection<? extends de.hub.clickwatch.model.ChangeMark> p_changes) {
+    m_changes.addAll(p_changes);
+    m_featureChangesSet = true;
     return this;
   }
 
