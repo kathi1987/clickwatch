@@ -117,22 +117,13 @@ public interface ClickWatchModelPackage extends EPackage {
     int NODE__ACTIVE_LISTENERS = 4;
 
     /**
-     * The feature id for the '<em><b>Changes</b></em>' attribute list.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int NODE__CHANGES = 5;
-
-    /**
      * The feature id for the '<em><b>Errors</b></em>' attribute list.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int NODE__ERRORS = 6;
+    int NODE__ERRORS = 5;
 
     /**
      * The feature id for the '<em><b>Connection</b></em>' attribute.
@@ -141,7 +132,7 @@ public interface ClickWatchModelPackage extends EPackage {
      * @generated
      * @ordered
      */
-	int NODE__CONNECTION = 7;
+	int NODE__CONNECTION = 6;
 
     /**
      * The feature id for the '<em><b>Retrieving</b></em>' attribute.
@@ -150,7 +141,7 @@ public interface ClickWatchModelPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE__RETRIEVING = 8;
+    int NODE__RETRIEVING = 7;
 
     /**
      * The feature id for the '<em><b>Listening</b></em>' attribute.
@@ -159,7 +150,7 @@ public interface ClickWatchModelPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE__LISTENING = 9;
+    int NODE__LISTENING = 8;
 
     /**
      * The feature id for the '<em><b>Recording</b></em>' attribute.
@@ -168,7 +159,7 @@ public interface ClickWatchModelPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE__RECORDING = 10;
+    int NODE__RECORDING = 9;
 
     /**
      * The number of structural features of the '<em>Node</em>' class.
@@ -177,7 +168,7 @@ public interface ClickWatchModelPackage extends EPackage {
      * @generated
      * @ordered
      */
-	int NODE_FEATURE_COUNT = 11;
+	int NODE_FEATURE_COUNT = 10;
 
 	/**
      * The meta object id for the '{@link de.hub.clickwatch.model.impl.ElementImpl <em>Element</em>}' class.
@@ -423,16 +414,6 @@ public interface ClickWatchModelPackage extends EPackage {
     int IHANDLER_EVENT_LISTENER = 7;
 
     /**
-     * The meta object id for the '<em>Change</em>' data type.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see de.hub.clickwatch.model.ChangeMark
-     * @see de.hub.clickwatch.model.impl.ClickWatchModelPackageImpl#getChange()
-     * @generated
-     */
-    int CHANGE = 8;
-
-    /**
      * The meta object id for the '<em>Error</em>' data type.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -440,7 +421,7 @@ public interface ClickWatchModelPackage extends EPackage {
      * @see de.hub.clickwatch.model.impl.ClickWatchModelPackageImpl#getError()
      * @generated
      */
-    int ERROR = 9;
+    int ERROR = 8;
 
 
     /**
@@ -551,17 +532,6 @@ public interface ClickWatchModelPackage extends EPackage {
      * @generated
      */
     EAttribute getNode_ActiveListeners();
-
-    /**
-     * Returns the meta object for the attribute list '{@link de.hub.clickwatch.model.Node#getChanges <em>Changes</em>}'.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @return the meta object for the attribute list '<em>Changes</em>'.
-     * @see de.hub.clickwatch.model.Node#getChanges()
-     * @see #getNode()
-     * @generated
-     */
-    EAttribute getNode_Changes();
 
     /**
      * Returns the meta object for the attribute list '{@link de.hub.clickwatch.model.Node#getErrors <em>Errors</em>}'.
@@ -824,17 +794,6 @@ public interface ClickWatchModelPackage extends EPackage {
     EDataType getIHandlerEventListener();
 
     /**
-     * Returns the meta object for data type '{@link de.hub.clickwatch.model.ChangeMark <em>Change</em>}'.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @return the meta object for data type '<em>Change</em>'.
-     * @see de.hub.clickwatch.model.ChangeMark
-     * @model instanceClass="de.hub.clickwatch.model.ChangeMark"
-     * @generated
-     */
-    EDataType getChange();
-
-    /**
      * Returns the meta object for data type '{@link de.hub.clickwatch.model.ClickWatchError <em>Error</em>}'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -948,14 +907,6 @@ public interface ClickWatchModelPackage extends EPackage {
          * @generated
          */
         EAttribute NODE__ACTIVE_LISTENERS = eINSTANCE.getNode_ActiveListeners();
-
-        /**
-         * The meta object literal for the '<em><b>Changes</b></em>' attribute list feature.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        EAttribute NODE__CHANGES = eINSTANCE.getNode_Changes();
 
         /**
          * The meta object literal for the '<em><b>Errors</b></em>' attribute list feature.
@@ -1162,16 +1113,6 @@ public interface ClickWatchModelPackage extends EPackage {
          * @generated
          */
         EDataType IHANDLER_EVENT_LISTENER = eINSTANCE.getIHandlerEventListener();
-
-        /**
-         * The meta object literal for the '<em>Change</em>' data type.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @see de.hub.clickwatch.model.ChangeMark
-         * @see de.hub.clickwatch.model.impl.ClickWatchModelPackageImpl#getChange()
-         * @generated
-         */
-        EDataType CHANGE = eINSTANCE.getChange();
 
         /**
          * The meta object literal for the '<em>Error</em>' data type.

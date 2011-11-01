@@ -32,11 +32,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="activeListeners" upperBound="-1"
         eType="#//IHandlerEventListener" changeable="false" transient="true" defaultValueLiteral=""
         derived="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="changes" upperBound="-1"
-        eType="#//Change" transient="true" defaultValueLiteral=""/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="errors" upperBound="-1"
-        eType="#//Error" changeable="false" transient="true" defaultValueLiteral=""
-        derived="true"/>
+        eType="#//Error" transient="true" defaultValueLiteral=""/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="connection" eType="#//INodeConnection"
         transient="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="retrieving" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
@@ -126,6 +123,5 @@
       serializable="false"/>
   <eClassifiers xsi:type="ecore:EDataType" name="IHandlerEventListener" instanceClassName="de.hub.clickwatch.connection.adapter.IHandlerEventListener"
       serializable="false"/>
-  <eClassifiers xsi:type="ecore:EDataType" name="Change" instanceClassName="de.hub.clickwatch.model.ChangeMark"/>
   <eClassifiers xsi:type="ecore:EDataType" name="Error" instanceClassName="de.hub.clickwatch.model.ClickWatchError"/>
 </ecore:EPackage>

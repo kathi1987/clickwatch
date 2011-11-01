@@ -102,8 +102,6 @@ public class ClickWatchModelFactoryImpl extends EFactoryImpl implements ClickWat
         switch (eDataType.getClassifierID()) {
             case ClickWatchModelPackage.BACKBONE_TYPE:
                 return createBackboneTypeFromString(eDataType, initialValue);
-            case ClickWatchModelPackage.CHANGE:
-                return createChangeFromString(eDataType, initialValue);
             case ClickWatchModelPackage.ERROR:
                 return createErrorFromString(eDataType, initialValue);
             default:
@@ -121,8 +119,6 @@ public class ClickWatchModelFactoryImpl extends EFactoryImpl implements ClickWat
         switch (eDataType.getClassifierID()) {
             case ClickWatchModelPackage.BACKBONE_TYPE:
                 return convertBackboneTypeToString(eDataType, instanceValue);
-            case ClickWatchModelPackage.CHANGE:
-                return convertChangeToString(eDataType, instanceValue);
             case ClickWatchModelPackage.ERROR:
                 return convertErrorToString(eDataType, instanceValue);
             default:
@@ -196,24 +192,6 @@ public class ClickWatchModelFactoryImpl extends EFactoryImpl implements ClickWat
     }
 
 	/**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    public ChangeMark createChangeFromString(EDataType eDataType, String initialValue) {
-        return (ChangeMark)super.createFromString(eDataType, initialValue);
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    public String convertChangeToString(EDataType eDataType, Object instanceValue) {
-        return super.convertToString(eDataType, instanceValue);
-    }
-
-    /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated

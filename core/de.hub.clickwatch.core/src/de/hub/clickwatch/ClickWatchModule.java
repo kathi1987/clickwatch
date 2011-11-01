@@ -71,8 +71,8 @@ public class ClickWatchModule extends AbstractModule {
 	}
 	
 	protected void bindExecutorServices() {
-		bind(ScheduledExecutorService.class).toInstance(Executors.newScheduledThreadPool(1));
-		bind(ExecutorService.class).toInstance(Executors.newFixedThreadPool(2));
+		bind(ScheduledExecutorService.class).toInstance(Executors.newScheduledThreadPool(8));
+		bind(ExecutorService.class).toInstance(Executors.newFixedThreadPool(8));
 	}
 	
 	protected void bindValueAdapter() {

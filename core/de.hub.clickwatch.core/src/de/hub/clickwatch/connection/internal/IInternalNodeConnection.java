@@ -25,7 +25,5 @@ public interface IInternalNodeConnection extends INodeConnection {
 	 * operation until the actual socket is available.
 	 */
 	public IClickSocket getBlockingSocket();
-	
-	public void createError(String message, Throwable e);
 
 }

@@ -3,6 +3,7 @@ package de.hub.clickwatch.connection;
 import com.google.inject.ImplementedBy;
 
 import de.hub.clickcontrol.IClickSocket;
+import de.hub.clickwatch.connection.adapter.IHandlerEventAdapter;
 import de.hub.clickwatch.connection.internal.NodeConnectionImpl;
 import de.hub.clickwatch.model.Node;
 
@@ -15,15 +16,24 @@ import de.hub.clickwatch.model.Node;
  * 
  * {@link INodeConnection} allows all adapters to acquire and use one
  * {@link IClickSocket}. Connecting and disconnecting the socket is handled
- * implicitly. 
+ * implicitly.
  */
 @ImplementedBy(NodeConnectionImpl.class)
 public interface INodeConnection {
 
-	public <T> T getAdapter(Class<T> adapterClass);
-	
-	public Node getNode();
-	
-	public void close();
+    public <T> T getAdapter(Class<T> adapterClass);
+
+    public Node getNode();
+
+    /**
+     * Stops all listeners (see {@link IHandlerEventAdapter}) and closes the
+     * connection. The connections stays in the {@link Node} and can be reused.
+     */
+    public void close();
+    
+    /**
+     * Disposes all adapters.
+     */
+    public void dispose();
 
 }

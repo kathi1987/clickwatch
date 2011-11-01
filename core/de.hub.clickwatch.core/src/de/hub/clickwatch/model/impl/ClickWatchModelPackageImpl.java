@@ -20,7 +20,6 @@ import de.hub.clickwatch.connection.INodeConnection;
 import de.hub.clickwatch.connection.INodeConnectionProvider;
 import de.hub.clickwatch.connection.adapter.IHandlerEventListener;
 import de.hub.clickwatch.model.BackboneType;
-import de.hub.clickwatch.model.ChangeMark;
 import de.hub.clickwatch.model.ClickWatchError;
 import de.hub.clickwatch.model.ClickWatchModelFactory;
 import de.hub.clickwatch.model.ClickWatchModelPackage;
@@ -93,13 +92,6 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
      * @generated
      */
     private EDataType iHandlerEventListenerEDataType = null;
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    private EDataType changeEDataType = null;
 
     /**
      * <!-- begin-user-doc -->
@@ -214,7 +206,7 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
      * @generated
      */
 	public EAttribute getNode_Connection() {
-        return (EAttribute)nodeEClass.getEStructuralFeatures().get(7);
+        return (EAttribute)nodeEClass.getEStructuralFeatures().get(6);
     }
 
 	/**
@@ -223,7 +215,7 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
      * @generated
      */
     public EAttribute getNode_Retrieving() {
-        return (EAttribute)nodeEClass.getEStructuralFeatures().get(8);
+        return (EAttribute)nodeEClass.getEStructuralFeatures().get(7);
     }
 
     /**
@@ -232,7 +224,7 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
      * @generated
      */
     public EAttribute getNode_Listening() {
-        return (EAttribute)nodeEClass.getEStructuralFeatures().get(9);
+        return (EAttribute)nodeEClass.getEStructuralFeatures().get(8);
     }
 
     /**
@@ -241,7 +233,7 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
      * @generated
      */
     public EAttribute getNode_Recording() {
-        return (EAttribute)nodeEClass.getEStructuralFeatures().get(10);
+        return (EAttribute)nodeEClass.getEStructuralFeatures().get(9);
     }
 
     /**
@@ -267,17 +259,8 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
      * <!-- end-user-doc -->
      * @generated
      */
-    public EAttribute getNode_Changes() {
-        return (EAttribute)nodeEClass.getEStructuralFeatures().get(5);
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
     public EAttribute getNode_Errors() {
-        return (EAttribute)nodeEClass.getEStructuralFeatures().get(6);
+        return (EAttribute)nodeEClass.getEStructuralFeatures().get(5);
     }
 
     /**
@@ -492,15 +475,6 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
      * <!-- end-user-doc -->
      * @generated
      */
-    public EDataType getChange() {
-        return changeEDataType;
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
     public EDataType getError() {
         return errorEDataType;
     }
@@ -530,7 +504,6 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
         createEReference(nodeEClass, NODE__ELEMENTS);
         createEAttribute(nodeEClass, NODE__BACKBONE);
         createEAttribute(nodeEClass, NODE__ACTIVE_LISTENERS);
-        createEAttribute(nodeEClass, NODE__CHANGES);
         createEAttribute(nodeEClass, NODE__ERRORS);
         createEAttribute(nodeEClass, NODE__CONNECTION);
         createEAttribute(nodeEClass, NODE__RETRIEVING);
@@ -566,7 +539,6 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
         iNodeConnectionEDataType = createEDataType(INODE_CONNECTION);
         iNodeConnectionProviderEDataType = createEDataType(INODE_CONNECTION_PROVIDER);
         iHandlerEventListenerEDataType = createEDataType(IHANDLER_EVENT_LISTENER);
-        changeEDataType = createEDataType(CHANGE);
         errorEDataType = createEDataType(ERROR);
     }
 
@@ -606,8 +578,7 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
         initEReference(getNode_Elements(), this.getElement(), null, "elements", null, 0, -1, Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getNode_Backbone(), this.getBackboneType(), "backbone", "unknown", 0, 1, Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getNode_ActiveListeners(), this.getIHandlerEventListener(), "activeListeners", "", 0, -1, Node.class, IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-        initEAttribute(getNode_Changes(), this.getChange(), "changes", "", 0, -1, Node.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getNode_Errors(), this.getError(), "errors", "", 0, -1, Node.class, IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+        initEAttribute(getNode_Errors(), this.getError(), "errors", "", 0, -1, Node.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getNode_Connection(), this.getINodeConnection(), "connection", null, 0, 1, Node.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getNode_Retrieving(), ecorePackage.getEBoolean(), "retrieving", null, 0, 1, Node.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getNode_Listening(), ecorePackage.getEBoolean(), "listening", null, 0, 1, Node.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -671,7 +642,6 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
         initEDataType(iNodeConnectionEDataType, INodeConnection.class, "INodeConnection", !IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
         initEDataType(iNodeConnectionProviderEDataType, INodeConnectionProvider.class, "INodeConnectionProvider", !IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
         initEDataType(iHandlerEventListenerEDataType, IHandlerEventListener.class, "IHandlerEventListener", !IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
-        initEDataType(changeEDataType, ChangeMark.class, "Change", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
         initEDataType(errorEDataType, ClickWatchError.class, "Error", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
         // Create resource

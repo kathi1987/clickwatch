@@ -22,7 +22,7 @@ public class Disconnect extends AbstractNodeAction {
 			
 			INodeConnection nodeConnection = node.getConnection();
             if (nodeConnection != null) {
-                nodeConnection.close();
+                nodeConnection.dispose();
 			}
 		}
 	}

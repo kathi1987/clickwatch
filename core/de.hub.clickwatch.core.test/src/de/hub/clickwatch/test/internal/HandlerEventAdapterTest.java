@@ -23,7 +23,6 @@ import de.hub.clickwatch.connection.adapter.IMetaDataAdapter;
 import de.hub.clickwatch.connection.adapter.values.IValueAdapter;
 import de.hub.clickwatch.connection.adapter.values.XmlValueAdapter;
 import de.hub.clickwatch.model.ClickWatchError;
-import de.hub.clickwatch.model.ClickWatchModelFactory;
 import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.model.Node;
 import de.hub.clickwatch.test.AbstractClickwatchTest;
@@ -32,164 +31,148 @@ import de.hub.clickwatch.util.ILogger;
 
 public class HandlerEventAdapterTest extends AbstractClickwatchTest {
 
-	private IValueAdapter valueAdapter = null;
-	private int handlerCount = 0;
+    protected IValueAdapter valueAdapter = null;
+    protected int handlerCount = 0;
 
-	private INodeConnection connection;
-	private IHandlerEventAdapter handlerEventAdapter;
+    protected INodeConnection connection;
+    protected IHandlerEventAdapter handlerEventAdapter;
 
-	public void setUp() {
-		handlerCount = 0;
-	}
+    public void setUp() {
+        handlerCount = 0;
+    }
 
-	private IHandlerEventListener handlerEventListener = new AbstractHandlerEventListener() {
-		@Override
-		public synchronized void handlerReceived(Handler handler) {
-			Assert.assertNotNull(handler.getQualifiedName());
-			Assert.assertNotNull(valueAdapter.getPlainValue(handler));
-			EcoreUtil.delete(handler);
-			handlerCount++;
-		}
-	};
+    protected IHandlerEventListener handlerEventListener = new AbstractHandlerEventListener() {
+        @Override
+        public synchronized void handlerReceived(Handler handler) {
+            Assert.assertNotNull(handler.getQualifiedName());
+            Assert.assertNotNull(valueAdapter.getPlainValue(handler));
+            EcoreUtil.delete(handler);
+            handlerCount++;
+        }
+    };
 
-	@Ignore("memory leak test, only run when indicated")
-	@Test
-	public void runPerformanceTest() {
-		Injector injector = Guice.createInjector(ClickWatchModuleUtil
-				.newBuilder().wRecord(getTestRecordURI())
-				.wDebugLvl(ILogger.DEBUG).wIgnoredHandlers()
-				.wHandlerBhvr(HandlerBehaviour.DEFAULT, 0, 1000)
-				.wValueAdapterClass(XmlValueAdapter.class).build());
-		ClickWatchModelFactory.eINSTANCE.registerInjector(injector);
+    @Ignore("memory leak test, only run when indicated")
+    @Test
+    public void runPerformanceTest() {
+        Injector injector = Guice.createInjector(ClickWatchModuleUtil.newBuilder().wRecord(getTestRecordURI())
+                .wDebugLvl(ILogger.DEBUG).wIgnoredHandlers().wHandlerBhvr(HandlerBehaviour.DEFAULT, 0, 1000)
+                .wValueAdapterClass(XmlValueAdapter.class).build());
 
-		INodeConnectionProvider ncp = injector
-				.getInstance(INodeConnectionProvider.class);
-		connection = ncp.createConnection("192.168.3.152", "7777");
-		handlerEventAdapter = connection.getAdapter(IHandlerEventAdapter.class);
-		valueAdapter = connection.getAdapter(IValueAdapter.class);
-		connection.getAdapter(IErrorAdapter.class).addErrorListener(
-				new IErrorListener() {
-					@Override
-					public void handlerError(ClickWatchError error) {
-						Assert.assertTrue(false);
-					}
-				});
-		Node metaData = connection.getAdapter(IMetaDataAdapter.class)
-				.pullAllMetaData();
-		connection.getAdapter(IMergeAdapter.class).merge(metaData);
-		handlerEventAdapter.addEventListener(handlerEventListener);
-		handlerEventAdapter.start();
+        INodeConnectionProvider ncp = injector.getInstance(INodeConnectionProvider.class);
+        connection = ncp.createConnection("192.168.3.152", "7777");
+        handlerEventAdapter = connection.getAdapter(IHandlerEventAdapter.class);
+        valueAdapter = connection.getAdapter(IValueAdapter.class);
+        connection.getAdapter(IErrorAdapter.class).addErrorListener(new IErrorListener() {
+            @Override
+            public void handlerError(ClickWatchError error) {
+                Assert.assertTrue(false);
+            }
+        });
+        Node metaData = connection.getAdapter(IMetaDataAdapter.class).pullAllMetaData();
+        connection.getAdapter(IMergeAdapter.class).merge(metaData);
+        handlerEventAdapter.addEventListener(handlerEventListener);
+        handlerEventAdapter.start();
 
-		for (int i = 0; i < 50; i++) {
-			try {
-				Thread.sleep(2000);
-				TestUtil.report("mem-leak?", i, 1);
-			} catch (InterruptedException e) {
-				Assert.assertTrue(false);
-			}
-		}
-	}
+        for (int i = 0; i < 50; i++) {
+            try {
+                Thread.sleep(2000);
+                TestUtil.report("mem-leak?", i, 1);
+            } catch (InterruptedException e) {
+                Assert.assertTrue(false);
+            }
+        }
+    }
 
-	private void runTest(Runnable runnable) {
-		Injector injector = Guice.createInjector(ClickWatchModuleUtil
-				.newBuilder().wRecord(getTestRecordURI())
-				.wDebugLvl(ILogger.DEBUG).wIgnoredHandlers()
-				.wHandlerBhvr(HandlerBehaviour.DEFAULT, 0, 1000)
-				.wValueAdapterClass(XmlValueAdapter.class).build());
-		ClickWatchModelFactory.eINSTANCE.registerInjector(injector);
+    private void runTest(Runnable runnable) {
+        Injector injector = Guice.createInjector(ClickWatchModuleUtil.newBuilder().wRecord(getTestRecordURI())
+                .wDebugLvl(ILogger.DEBUG).wIgnoredHandlers().wHandlerBhvr(HandlerBehaviour.DEFAULT, 0, 1000)
+                .wValueAdapterClass(XmlValueAdapter.class).build());
 
-		INodeConnectionProvider ncp = injector
-				.getInstance(INodeConnectionProvider.class);
-		connection = ncp.createConnection("192.168.3.152", "7777");
-		handlerEventAdapter = connection.getAdapter(IHandlerEventAdapter.class);
-		valueAdapter = connection.getAdapter(IValueAdapter.class);
-		connection.getAdapter(IErrorAdapter.class).addErrorListener(
-				new IErrorListener() {
-					@Override
-					public void handlerError(ClickWatchError error) {
-						Assert.assertTrue(false);
-					}
-				});
-		Node metaData = connection.getAdapter(IMetaDataAdapter.class).pullAllMetaData();
-		connection.getAdapter(IMergeAdapter.class).merge(metaData);
-		handlerEventAdapter.addEventListener(handlerEventListener);
-		handlerEventAdapter.start();
+        INodeConnectionProvider ncp = injector.getInstance(INodeConnectionProvider.class);
+        connection = ncp.createConnection("192.168.3.152", "7777");
+        handlerEventAdapter = connection.getAdapter(IHandlerEventAdapter.class);
+        valueAdapter = connection.getAdapter(IValueAdapter.class);
+        connection.getAdapter(IErrorAdapter.class).addErrorListener(new IErrorListener() {
+            @Override
+            public void handlerError(ClickWatchError error) {
+                Assert.assertTrue(false);
+            }
+        });
+        Node metaData = connection.getAdapter(IMetaDataAdapter.class).pullAllMetaData();
+        connection.getAdapter(IMergeAdapter.class).merge(metaData);
+        handlerEventAdapter.addEventListener(handlerEventListener);
+        handlerEventAdapter.start();
 
-		try {
-			Thread.sleep(1900);
-		} catch (InterruptedException e) {
-			Assert.assertTrue(false);
-		}
+        try {
+            Thread.sleep(1900);
+        } catch (InterruptedException e) {
+            Assert.assertTrue(false);
+        }
 
-		Assert.assertEquals(metaData.getAllHandlers().size() * 2, handlerCount);
-		runnable.run();
+        Assert.assertEquals(metaData.getAllHandlers().size() * 2, handlerCount);
+        runnable.run();
 
-		try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			Assert.assertTrue(false);
-		}
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            Assert.assertTrue(false);
+        }
 
-		Assert.assertEquals(metaData.getAllHandlers().size() * 2, handlerCount);
-	}
+        Assert.assertEquals(metaData.getAllHandlers().size() * 2, handlerCount);
+    }
 
-	@Test
-	public void testDeconfigure() {
-		runTest(new Runnable() {
-			@Override
-			public void run() {
-				handlerEventAdapter.stop();
-			}
-		});
-	}
+    @Test
+    public void testDeconfigure() {
+        runTest(new Runnable() {
+            @Override
+            public void run() {
+                handlerEventAdapter.stop();
+            }
+        });
+    }
 
-	@Test
-	public void testListenerRemove() {
-		runTest(new Runnable() {
-			@Override
-			public void run() {
-				handlerEventAdapter.removeEventListener(handlerEventListener);
-			}
-		});
-	}
+    @Test
+    public void testListenerRemove() {
+        runTest(new Runnable() {
+            @Override
+            public void run() {
+                handlerEventAdapter.removeEventListener(handlerEventListener);
+            }
+        });
+    }
 
-	@Test
-	public void testConcurrent() {
-		Injector injector = Guice.createInjector(ClickWatchModuleUtil
-				.newBuilder().wRecord(getTestRecordURI())
-				.wDebugLvl(ILogger.DEBUG).wIgnoredHandlers()
-				.wHandlerBhvr(HandlerBehaviour.DEFAULT, 0, 3000)
-				.wThreads(2, 2)
-				.wValueAdapterClass(XmlValueAdapter.class).build());
-		ClickWatchModelFactory.eINSTANCE.registerInjector(injector);
+    @Test
+    public void testConcurrent() {
+        Injector injector = Guice.createInjector(ClickWatchModuleUtil.newBuilder().wRecord(getTestRecordURI())
+                .wDebugLvl(ILogger.DEBUG).wIgnoredHandlers().wHandlerBhvr(HandlerBehaviour.DEFAULT, 0, 3000).wThreads(2, 2)
+                .wValueAdapterClass(XmlValueAdapter.class).build());
 
-		INodeConnectionProvider ncp = injector.getInstance(INodeConnectionProvider.class);
-		
-		int handlerCount = 0;
-		for (int i = 0; i < 5; i++) {
-			connection = ncp.createConnection("192.168.3.152", "7777");
-			handlerEventAdapter = connection.getAdapter(IHandlerEventAdapter.class);
-			valueAdapter = connection.getAdapter(IValueAdapter.class);
-			connection.getAdapter(IErrorAdapter.class).addErrorListener(
-					new IErrorListener() {
-						@Override
-						public void handlerError(ClickWatchError error) {
-							Assert.assertTrue(false);
-						}
-					});
-			Node metaData = connection.getAdapter(IMetaDataAdapter.class).pullAllMetaData();
-			handlerEventAdapter.addEventListener(handlerEventListener);
-			connection.getAdapter(IMergeAdapter.class).merge(metaData);
-			handlerCount += metaData.getAllHandlers().size();
-			handlerEventAdapter.start();	
-		}
-		
-		try {
-			Thread.sleep(2900);
-		} catch (InterruptedException e) {
-			Assert.assertTrue(false);
-		}
-		
-		Assert.assertEquals(handlerCount, this.handlerCount);
-	}
+        INodeConnectionProvider ncp = injector.getInstance(INodeConnectionProvider.class);
+
+        int handlerCount = 0;
+        for (int i = 0; i < 5; i++) {
+            connection = ncp.createConnection("192.168.3.152", "7777");
+            handlerEventAdapter = connection.getAdapter(IHandlerEventAdapter.class);
+            valueAdapter = connection.getAdapter(IValueAdapter.class);
+            connection.getAdapter(IErrorAdapter.class).addErrorListener(new IErrorListener() {
+                @Override
+                public void handlerError(ClickWatchError error) {
+                    Assert.assertTrue(false);
+                }
+            });
+            Node metaData = connection.getAdapter(IMetaDataAdapter.class).pullAllMetaData();
+            handlerEventAdapter.addEventListener(handlerEventListener);
+            connection.getAdapter(IMergeAdapter.class).merge(metaData);
+            handlerCount += metaData.getAllHandlers().size();
+            handlerEventAdapter.start();
+        }
+
+        try {
+            Thread.sleep(2900);
+        } catch (InterruptedException e) {
+            Assert.assertTrue(false);
+        }
+
+        Assert.assertEquals(handlerCount, this.handlerCount);
+    }
 }

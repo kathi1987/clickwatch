@@ -21,7 +21,6 @@ import de.hub.clickwatch.connection.adapter.IMergeAdapter;
 import de.hub.clickwatch.connection.adapter.IMetaDataAdapter;
 import de.hub.clickwatch.connection.adapter.INodeAdapter;
 import de.hub.clickwatch.connection.adapter.internal.AbstractAdapter;
-import de.hub.clickwatch.connection.adapter.internal.ErrorAdapter;
 import de.hub.clickwatch.connection.adapter.values.IValueAdapter;
 import de.hub.clickwatch.model.Node;
 import de.hub.clickwatch.util.ILogger;
@@ -47,23 +46,6 @@ public class NodeConnectionImpl implements IInternalNodeConnection {
     @Inject private TaskQueues taskQueues;
 
     private Node node;
-    private boolean hasError = false;
-
-    @Override
-    public void createError(String message, Throwable e) {
-        logger.log(ILogger.ERROR, "error in connection " + toString(), e);
-        // mark this connection has erroneous
-        hasError = true;
-        // try to close and remove a possible clickSocket
-        if (clickSocket != null) {
-            clickSocket.close();
-        }
-        clickSocket = null;
-        // try to release a possible permit for the removed socket
-        releaseSocket();
-        // distribute the error event to all handlers
-        ((ErrorAdapter) getAdapter(IErrorAdapter.class)).createErrorEvent(message, e);
-    }
 
     protected void init(Node node) {
         this.node = node;
@@ -76,7 +58,7 @@ public class NodeConnectionImpl implements IInternalNodeConnection {
 
     @Override
     public IClickSocket acquireSocket() {
-        if (hasError) {
+        if (!node.getErrors().isEmpty()) {
             return null;
         }
         try {
@@ -97,9 +79,9 @@ public class NodeConnectionImpl implements IInternalNodeConnection {
                 } catch (Exception followException) {
                 }
                 clickSocket = null;
-                createError(
-                        "exception during connect: could not connect to " + node.getINetAddress() + " on port "
-                                + node.getPort(), e);
+                String errorMessage = "exception during connect: could not connect to " + node.getINetAddress() + " on port "
+                        + node.getPort();
+                getAdapter(IErrorAdapter.class).createError(errorMessage, e);
             }
         }
         return clickSocket;
@@ -114,6 +96,7 @@ public class NodeConnectionImpl implements IInternalNodeConnection {
 
     @Override
     public void close() {
+        logger.log(ILogger.DEBUG, "close connection for " + node.getINetAddress(), null);
         getAdapter(IHandlerEventAdapter.class).stop();
         taskQueues.dispatchTask(null, new Runnable() {            
             @Override
@@ -122,10 +105,25 @@ public class NodeConnectionImpl implements IInternalNodeConnection {
                 if (clickSocket != null) {
                     clickSocket.close();
                 }
-                releaseSocket();     
-                node.setConnection(null);
+                releaseSocket();
             }
         });        
+    }
+    
+    @Override
+    public void dispose() {
+        logger.log(ILogger.DEBUG, "dispose connection for " + node.getINetAddress(), null);
+        close();        
+        ((AbstractAdapter)metaDataAdapter).dispose();
+        ((AbstractAdapter)valueAdapter).dispose();
+        ((AbstractAdapter)handlerAdapter).dispose();
+        ((AbstractAdapter)handlerEventAdapter).dispose();
+        ((AbstractAdapter)nodeAdapter).dispose();
+        ((AbstractAdapter)errorAdapter).dispose();
+        ((AbstractAdapter)mergeAdapter).dispose();
+        node.getErrors().clear();
+        node.setConnection(null);
+        node = null;
     }
 
     @Override

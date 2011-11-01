@@ -2,6 +2,7 @@ package de.hub.clickwatch.connection.adapter.internal;
 
 import com.google.inject.Inject;
 
+import de.hub.clickwatch.connection.adapter.IErrorAdapter;
 import de.hub.clickwatch.connection.adapter.IHandlerAdapter;
 import de.hub.clickwatch.connection.adapter.values.IValueAdapter;
 import de.hub.clickwatch.model.Handler;
@@ -26,7 +27,7 @@ public class HandlerAdapter extends AbstractAdapter implements IHandlerAdapter {
 		try {
 			plainValue = new String(connection.getBlockingSocket().read(elementName, handlerName));
 		} catch (Exception e) {
-			connection.createError("exception while reading handler " + qualifiedName, e);
+			connection.getAdapter(IErrorAdapter.class).createError("exception while reading handler " + qualifiedName, e);
 		}
 		
 		return connection.getAdapter(IValueAdapter.class)
@@ -42,7 +43,7 @@ public class HandlerAdapter extends AbstractAdapter implements IHandlerAdapter {
 		try {
 			connection.getBlockingSocket().write(elementName, handlerName, plainValue.toCharArray());
 		} catch (Exception e) {
-			connection.createError("exception while writing handler " + handler.getQualifiedName(), e);
+			connection.getAdapter(IErrorAdapter.class).createError("exception while writing handler " + handler.getQualifiedName(), e);
 		}
 	}
 

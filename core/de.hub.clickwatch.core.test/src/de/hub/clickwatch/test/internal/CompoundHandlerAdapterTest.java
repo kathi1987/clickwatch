@@ -1,5 +1,7 @@
 package de.hub.clickwatch.test.internal;
 
+import junit.framework.Assert;
+
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -8,44 +10,50 @@ import com.google.inject.Injector;
 
 import de.hub.clickwatch.ClickWatchModuleUtil;
 import de.hub.clickwatch.ClickWatchModuleUtil.HandlerBehaviour;
-import de.hub.clickwatch.connection.INodeConnection;
 import de.hub.clickwatch.connection.INodeConnectionProvider;
+import de.hub.clickwatch.connection.adapter.IErrorAdapter;
+import de.hub.clickwatch.connection.adapter.IErrorAdapter.IErrorListener;
 import de.hub.clickwatch.connection.adapter.IHandlerEventAdapter;
+import de.hub.clickwatch.connection.adapter.IMergeAdapter;
 import de.hub.clickwatch.connection.adapter.IMetaDataAdapter;
+import de.hub.clickwatch.connection.adapter.values.IValueAdapter;
 import de.hub.clickwatch.connection.adapter.values.StringValueAdapter;
-import de.hub.clickwatch.test.AbstractClickwatchTest;
+import de.hub.clickwatch.model.ClickWatchError;
+import de.hub.clickwatch.model.Node;
+import de.hub.clickwatch.test.TestUtil;
 
-public class CompoundHandlerAdapterTest extends AbstractClickwatchTest {
+public class CompoundHandlerAdapterTest extends HandlerEventAdapterTest {
 
-	@Ignore("requires a click setup on localhost")
+//	@Ignore("requires a click setup on localhost")
 	@Test
 	public void test() throws Exception {
 		Injector injector = Guice.createInjector(ClickWatchModuleUtil.newBuilder()
-				.wHandlerBhvr(HandlerBehaviour.COMPOUND_RECORDING_DIFFERENCES, 2000, 500)
+				.wHandlerBhvr(HandlerBehaviour.COMPOUND_RECORDING_DIFFERENCES, 500, 2000)
 				.wDebugLvl(4)
 				.wValueAdapterClass(StringValueAdapter.class).build());
-		
-		INodeConnectionProvider ncp = injector.getInstance(INodeConnectionProvider.class);
-		INodeConnection nodeConnection = ncp.createConnection("localhost", "7777");
-		IHandlerEventAdapter handlerEventAdapter = nodeConnection.getAdapter(IHandlerEventAdapter.class);
-//		nodeConnection.connect();
 
-//		handlerEventAdapter.configure(metaData)
-		// TODO ....
-		IMetaDataAdapter metaDataAdapter = nodeConnection.getAdapter(IMetaDataAdapter.class);
-//		handlerEventAdapter.configure(metaDataAdapter.pullAllMetaData().getAllHandlers());
-		
-		for (int i = 0; i < 10; i++) {
-			Thread.sleep(300);		
-//			Collection<Handler> handlers = handlerAdapter.pullHandler();
-//			Assert.assertTrue(handlers.size() >= 6);
-//			boolean hasValue = false;
-//			for (Handler handler: handlers) {
-//				if (handler.getValue() != null && !handler.getValue().trim().equals("")) {
-//					hasValue = true;
-//				}
-//			}
-//			Assert.assertTrue(hasValue);
-		}
+        INodeConnectionProvider ncp = injector.getInstance(INodeConnectionProvider.class);
+        connection = ncp.createConnection("localhost", "7777");
+        handlerEventAdapter = connection.getAdapter(IHandlerEventAdapter.class);
+        valueAdapter = connection.getAdapter(IValueAdapter.class);
+        connection.getAdapter(IErrorAdapter.class).addErrorListener(new IErrorListener() {
+            @Override
+            public void handlerError(ClickWatchError error) {
+                Assert.assertTrue(false);
+            }
+        });
+        Node metaData = connection.getAdapter(IMetaDataAdapter.class).pullAllMetaData();
+        connection.getAdapter(IMergeAdapter.class).merge(metaData);
+        handlerEventAdapter.addEventListener(handlerEventListener);
+        handlerEventAdapter.start();
+
+        for (int i = 0; i < 50; i++) {
+            try {
+                Thread.sleep(2000);
+                TestUtil.report("mem-leak?", i, 1);
+            } catch (InterruptedException e) {
+                Assert.assertTrue(false);
+            }
+        }
 	}
 }

@@ -19,4 +19,10 @@ public class AbstractHandlerEventListener implements IHandlerEventListener {
 		// empty
 	}
 
+    @Override
+    public void dispose() {
+        // empty
+        
+    }
+
 }

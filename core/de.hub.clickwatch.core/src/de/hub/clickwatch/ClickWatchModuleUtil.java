@@ -65,7 +65,8 @@ public class ClickWatchModuleUtil {
 		private int connectionThreads = 5;
 		private int eventHandlerThreads = 5;
 		
-        private IMergeConfiguration mergeConfiguration = new ClickWatchNodeMergeConfiguration();
+        private IMergeConfiguration mergeConfiguration = null;
+        private Class<? extends IMergeConfiguration> mergeConfigurationClass = ClickWatchNodeMergeConfiguration.class;
 		
 		public ClickWatchModuleBuilder wDebugLvl(int debugLevel) {
 			wDebug(debugLevel, System.out);
@@ -129,6 +130,11 @@ public class ClickWatchModuleUtil {
 
         public ClickWatchModuleBuilder wMergeConfiguration(IMergeConfiguration mergeConfiguration) {
             this.mergeConfiguration  = mergeConfiguration;
+            return this;
+        }
+        
+        public ClickWatchModuleBuilder wMergeConfigurationClass(Class<? extends IMergeConfiguration> mergeConfigurationClass) {
+            this.mergeConfigurationClass  = mergeConfigurationClass;
             return this;
         }
 		
@@ -261,7 +267,11 @@ public class ClickWatchModuleUtil {
 
                 @Override
                 protected void bindMergeConfiguration() {
-                    bind(IMergeConfiguration.class).toInstance(mergeConfiguration);
+                    if (mergeConfiguration == null) {
+                        bind(IMergeConfiguration.class).to(mergeConfigurationClass);
+                    } else {
+                        bind(IMergeConfiguration.class).toInstance(mergeConfiguration);
+                    }
                 }
 			};
 		}

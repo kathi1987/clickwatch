@@ -10,7 +10,6 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 import de.hub.clickwatch.connection.INodeConnection;
-import de.hub.clickwatch.connection.INodeConnectionProvider;
 import de.hub.clickwatch.connection.adapter.IHandlerEventListener;
 
 /**
@@ -26,7 +25,6 @@ import de.hub.clickwatch.connection.adapter.IHandlerEventListener;
  *   <li>{@link de.hub.clickwatch.model.Node#getElements <em>Elements</em>}</li>
  *   <li>{@link de.hub.clickwatch.model.Node#getBackbone <em>Backbone</em>}</li>
  *   <li>{@link de.hub.clickwatch.model.Node#getActiveListeners <em>Active Listeners</em>}</li>
- *   <li>{@link de.hub.clickwatch.model.Node#getChanges <em>Changes</em>}</li>
  *   <li>{@link de.hub.clickwatch.model.Node#getErrors <em>Errors</em>}</li>
  *   <li>{@link de.hub.clickwatch.model.Node#getConnection <em>Connection</em>}</li>
  *   <li>{@link de.hub.clickwatch.model.Node#isRetrieving <em>Retrieving</em>}</li>
@@ -262,22 +260,6 @@ public interface Node extends EObject {
     EList<IHandlerEventListener> getActiveListeners();
 
     /**
-     * Returns the value of the '<em><b>Changes</b></em>' attribute list.
-     * The list contents are of type {@link de.hub.clickwatch.model.ChangeMark}.
-     * <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Changes</em>' attribute list isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc -->
-     * @return the value of the '<em>Changes</em>' attribute list.
-     * @see de.hub.clickwatch.model.ClickWatchModelPackage#getNode_Changes()
-     * @model default="" dataType="de.hub.clickwatch.model.Change" transient="true"
-     * @generated
-     */
-    EList<ChangeMark> getChanges();
-
-    /**
      * Returns the value of the '<em><b>Errors</b></em>' attribute list.
      * The list contents are of type {@link de.hub.clickwatch.model.ClickWatchError}.
      * <!-- begin-user-doc -->
@@ -288,7 +270,7 @@ public interface Node extends EObject {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Errors</em>' attribute list.
      * @see de.hub.clickwatch.model.ClickWatchModelPackage#getNode_Errors()
-     * @model default="" dataType="de.hub.clickwatch.model.Error" transient="true" changeable="false" derived="true"
+     * @model default="" dataType="de.hub.clickwatch.model.Error" transient="true"
      * @generated
      */
     EList<ClickWatchError> getErrors();

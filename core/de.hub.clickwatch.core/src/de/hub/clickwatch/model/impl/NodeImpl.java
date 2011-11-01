@@ -25,15 +25,11 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import com.google.common.base.Preconditions;
-import com.google.inject.Inject;
 
 import de.hub.clickwatch.connection.INodeConnection;
-import de.hub.clickwatch.connection.adapter.IErrorAdapter;
 import de.hub.clickwatch.connection.adapter.IHandlerEventAdapter;
 import de.hub.clickwatch.connection.adapter.IHandlerEventListener;
-import de.hub.clickwatch.merge.Merger;
 import de.hub.clickwatch.model.BackboneType;
-import de.hub.clickwatch.model.ChangeMark;
 import de.hub.clickwatch.model.ClickWatchError;
 import de.hub.clickwatch.model.ClickWatchModelPackage;
 import de.hub.clickwatch.model.Element;
@@ -52,7 +48,6 @@ import de.hub.clickwatch.model.Node;
  *   <li>{@link de.hub.clickwatch.model.impl.NodeImpl#getElements <em>Elements</em>}</li>
  *   <li>{@link de.hub.clickwatch.model.impl.NodeImpl#getBackbone <em>Backbone</em>}</li>
  *   <li>{@link de.hub.clickwatch.model.impl.NodeImpl#getActiveListeners <em>Active Listeners</em>}</li>
- *   <li>{@link de.hub.clickwatch.model.impl.NodeImpl#getChanges <em>Changes</em>}</li>
  *   <li>{@link de.hub.clickwatch.model.impl.NodeImpl#getErrors <em>Errors</em>}</li>
  *   <li>{@link de.hub.clickwatch.model.impl.NodeImpl#getConnection <em>Connection</em>}</li>
  *   <li>{@link de.hub.clickwatch.model.impl.NodeImpl#isRetrieving <em>Retrieving</em>}</li>
@@ -130,14 +125,6 @@ public class NodeImpl extends EObjectImpl implements Node {
      * @ordered
      */
     protected EList<IHandlerEventListener> activeListeners;
-    /**
-     * The cached value of the '{@link #getChanges() <em>Changes</em>}' attribute list.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * @see #getChanges()
-     * @generated
-     * @ordered
-     */
-    protected EList<ChangeMark> changes;
     /**
      * The cached value of the '{@link #getErrors() <em>Errors</em>}' attribute list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -403,30 +390,15 @@ public class NodeImpl extends EObjectImpl implements Node {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-    public EList<ChangeMark> getChanges() {
-        if (changes == null) {
-            changes = new EDataTypeUniqueEList<ChangeMark>(ChangeMark.class, this, ClickWatchModelPackage.NODE__CHANGES);
-        }
-        return changes;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated NOT
-     */
-    @SuppressWarnings("unchecked")
     public EList<ClickWatchError> getErrors() {
-        INodeConnection nodeConnection = getConnection();
-        if (nodeConnection != null) {
-            IErrorAdapter errorAdapter = nodeConnection.getAdapter(IErrorAdapter.class);
-            return new DelegatingEList.UnmodifiableEList<ClickWatchError>(errorAdapter.getErrors());
-        } else {
-            return (EList<ClickWatchError>)ECollections.EMPTY_ELIST;
+        if (errors == null) {
+            errors = new EDataTypeUniqueEList<ClickWatchError>(ClickWatchError.class, this, ClickWatchModelPackage.NODE__ERRORS);
         }
+        return errors;
     }
 
     /**
@@ -614,8 +586,6 @@ public class NodeImpl extends EObjectImpl implements Node {
                 return getBackbone();
             case ClickWatchModelPackage.NODE__ACTIVE_LISTENERS:
                 return getActiveListeners();
-            case ClickWatchModelPackage.NODE__CHANGES:
-                return getChanges();
             case ClickWatchModelPackage.NODE__ERRORS:
                 return getErrors();
             case ClickWatchModelPackage.NODE__CONNECTION:
@@ -651,9 +621,9 @@ public class NodeImpl extends EObjectImpl implements Node {
             case ClickWatchModelPackage.NODE__BACKBONE:
                 setBackbone((BackboneType)newValue);
                 return;
-            case ClickWatchModelPackage.NODE__CHANGES:
-                getChanges().clear();
-                getChanges().addAll((Collection<? extends ChangeMark>)newValue);
+            case ClickWatchModelPackage.NODE__ERRORS:
+                getErrors().clear();
+                getErrors().addAll((Collection<? extends ClickWatchError>)newValue);
                 return;
             case ClickWatchModelPackage.NODE__CONNECTION:
                 setConnection((INodeConnection)newValue);
@@ -690,8 +660,8 @@ public class NodeImpl extends EObjectImpl implements Node {
             case ClickWatchModelPackage.NODE__BACKBONE:
                 setBackbone(BACKBONE_EDEFAULT);
                 return;
-            case ClickWatchModelPackage.NODE__CHANGES:
-                getChanges().clear();
+            case ClickWatchModelPackage.NODE__ERRORS:
+                getErrors().clear();
                 return;
             case ClickWatchModelPackage.NODE__CONNECTION:
                 setConnection(CONNECTION_EDEFAULT);
@@ -726,8 +696,6 @@ public class NodeImpl extends EObjectImpl implements Node {
                 return backbone != BACKBONE_EDEFAULT;
             case ClickWatchModelPackage.NODE__ACTIVE_LISTENERS:
                 return activeListeners != null && !activeListeners.isEmpty();
-            case ClickWatchModelPackage.NODE__CHANGES:
-                return changes != null && !changes.isEmpty();
             case ClickWatchModelPackage.NODE__ERRORS:
                 return errors != null && !errors.isEmpty();
             case ClickWatchModelPackage.NODE__CONNECTION:
@@ -759,8 +727,6 @@ public class NodeImpl extends EObjectImpl implements Node {
         result.append(backbone);
         result.append(", activeListeners: ");
         result.append(activeListeners);
-        result.append(", changes: ");
-        result.append(changes);
         result.append(", errors: ");
         result.append(errors);
         result.append(", connection: ");

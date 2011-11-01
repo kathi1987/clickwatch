@@ -8,8 +8,6 @@ import com.google.inject.Provider;
 import de.hub.clickwatch.connection.INodeConnection;
 import de.hub.clickwatch.connection.INodeConnectionProvider;
 import de.hub.clickwatch.connection.adapter.IHandlerEventAdapter;
-import de.hub.clickwatch.connection.adapter.IMergeAdapter;
-import de.hub.clickwatch.connection.adapter.IMetaDataAdapter;
 import de.hub.clickwatch.model.Node;
 import de.hub.clickwatch.ui.connection.UiHandlerEventListener;
 import de.hub.clickwatch.util.TaskQueues;
@@ -33,29 +31,26 @@ public class Connect extends AbstractNodeAction {
 		    final Node node = selectedObjectsIterator.next();
 			taskDispatcher.dispatchTask(null, new Runnable() {                
                 @Override
-                public void run() {                    
-                    ncp.createConnection(node);
-                    INodeConnection nodeConnection = node.getConnection();        
-                    
-                    IHandlerEventAdapter hea = nodeConnection.getAdapter(IHandlerEventAdapter.class);
-                    UiHandlerEventListener handler = handlerProvider.get();
-                    handler.init(shell, node);
-                    hea.addEventListener(handler);
-                    
-                    final Node metaData = nodeConnection.getAdapter(IMetaDataAdapter.class).pullAllMetaData();
-                    shell.getDisplay().syncExec(new Runnable() {                        
-                        @Override
-                        public void run() {
-                            try {
-                                node.getConnection().getAdapter(IMergeAdapter.class).merge(metaData);
-                                node.filter();
-                            } catch (Exception e) {
-                                // TODO   
-                                System.out.println("EXXXXX");
-                            }
+                public void run() {     
+                    INodeConnection connection = node.getConnection();
+                    if (connection != null) {
+                        if (!node.getErrors().isEmpty()) {
+                            connection.dispose();
+                            connection = null;
                         }
-                    });
-                    hea.start();
+                    } 
+                    
+                    if (connection == null) {
+                        connection = ncp.createConnection(node);
+                        
+                        IHandlerEventAdapter hea = connection.getAdapter(IHandlerEventAdapter.class);
+                        UiHandlerEventListener handler = handlerProvider.get();
+                        handler.init(shell, node, editor);
+                        hea.addEventListener(handler);
+                        handler.scheduleUpdateMetaData();                                            
+                    }
+                    
+                    connection.getAdapter(IHandlerEventAdapter.class).start();
                 }                
             });
 		}

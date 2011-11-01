@@ -14,6 +14,7 @@ import com.google.inject.name.Named;
 
 import de.hub.clickcontrol.IClickSocket;
 import de.hub.clickwatch.ClickWatchModule;
+import de.hub.clickwatch.connection.adapter.IErrorAdapter;
 import de.hub.clickwatch.connection.adapter.values.IValueAdapter;
 import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.model.util.HandlerUtil;
@@ -25,7 +26,6 @@ public class CompoundHandlerEventAdapter extends HandlerEventAdapter {
 
 	private static final int driftMavrSize = 20;	
 	@Inject private ILogger logger;
-	@Inject @Named(ClickWatchModule.CS_IGNORED_HANDLER_NAMES) private Collection<String> commonHandler;
 	@Inject @Named(ClickWatchModule.B_COMPOUND_HANDLER_RECORDS) private boolean records;
 	@Inject @Named(ClickWatchModule.B_COMPOUND_HANDLER_CHANGES_ONLY) private boolean changesOnly;
 	@Inject @Named(ClickWatchModule.I_COMPOUND_HANDLER_LOCAL_UPDATE_DELAY) private int chLocalUpdateDelay;
@@ -65,7 +65,9 @@ public class CompoundHandlerEventAdapter extends HandlerEventAdapter {
 				clickSocket.write(COMPOUND_HANDLER_ELEMENT, "updatemode", "0".toCharArray());
 			}
 		} catch (Exception e) {
-			connection.createError("exception while configuring compound handler", e);
+			connection.getAdapter(IErrorAdapter.class).createError("exception while configuring compound handler", e);
+		} finally {
+		    connection.releaseSocket();
 		}
 		logger.log(ILogger.DEBUG, "configured click compound handler of " + connection + " with " + record + ", " + changesOnly + ", " + chLocalUpdateDelay, null);
 	}
@@ -77,7 +79,7 @@ public class CompoundHandlerEventAdapter extends HandlerEventAdapter {
 
 	private class Listen implements Runnable {
 		public void run() {
-			createReceivingStartedEvent();
+			onReceivingStart();
 			if (valueAdapter == null) {
 				valueAdapter = connection.getAdapter(IValueAdapter.class);
 			}
@@ -89,13 +91,13 @@ public class CompoundHandlerEventAdapter extends HandlerEventAdapter {
 				pullTime = clock.currentTimeNanos();
 				compundHandlerRawValue = connection.getBlockingSocket().read(COMPOUND_HANDLER_ELEMENT, COMPOUND_HANDLER_READ_HANDLER);
 			} catch (Exception e) {
-				connection.createError("exception while reading compound handler", e);
+				connection.getAdapter(IErrorAdapter.class).createError("exception while reading compound handler", e);
 			}
 		
 			String rawXml = new String(compundHandlerRawValue);
 			XMLTypeDocumentRoot xml = (XMLTypeDocumentRoot)EmfXmlUtil.deserializeXml(rawXml);
 			traverse(xml.getMixed());
-			createReceivingStoppedEvent();
+			onReceivingStop();
 		}
 	}
 	
@@ -185,7 +187,7 @@ public class CompoundHandlerEventAdapter extends HandlerEventAdapter {
 			newHandler = valueAdapter.create(currentHandlerName, timestamp, "");
 		}
 		
-		createHandlerReceivedEvent(newHandler);
+		onHandlerReceived(newHandler);
 	}
 
 	private long time(String timestampStr) {
@@ -225,7 +227,7 @@ public class CompoundHandlerEventAdapter extends HandlerEventAdapter {
 			connection.getBlockingSocket().write(COMPOUND_HANDLER_ELEMENT, COMPOUND_HANDLER_INSERT_HANDLER, configurationString.toString().trim().toCharArray());
 			logger.log(ILogger.DEBUG, "Setting compound handler of " + connection + " with " + configurationString.toString(), null);
 		} catch (Exception e) {
-			connection.createError("exception while (re)setting the compound handler", e);
+			connection.getAdapter(IErrorAdapter.class).createError("exception while (re)setting the compound handler", e);
 		}
 		super.configureRemoteNode(configuredHandler);
 	}	
@@ -235,7 +237,7 @@ public class CompoundHandlerEventAdapter extends HandlerEventAdapter {
 			connection.getBlockingSocket().write(COMPOUND_HANDLER_ELEMENT, COMPOUND_HANDLER_RESET_HANDLER, "".toCharArray());
 			logger.log(ILogger.DEBUG, "Reseting compound handler of " + connection, null);
 		} catch (Exception e) {
-			connection.createError("exception while emptying compound handler", e);
+			connection.getAdapter(IErrorAdapter.class).createError("exception while emptying compound handler", e);
 		}
 	}
 }

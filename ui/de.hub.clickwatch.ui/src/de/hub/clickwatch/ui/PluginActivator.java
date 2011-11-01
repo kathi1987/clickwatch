@@ -23,9 +23,9 @@ import de.hub.clickwatch.ClickWatchModuleUtil.HandlerBehaviour;
 import de.hub.clickwatch.connection.adapter.values.StringValueAdapter;
 import de.hub.clickwatch.connection.adapter.values.XmlValueAdapter;
 import de.hub.clickwatch.main.impl.InjectorProvider.ValueType;
-import de.hub.clickwatch.model.ClickWatchModelFactory;
 import de.hub.clickwatch.preferences.PreferenceConstants;
 import de.hub.clickwatch.specificmodels.brn.BrnValueAdapter;
+import de.hub.clickwatch.ui.connection.UiClickWatchNodeMergeConfiguration;
 import de.hub.clickwatch.util.Throwables;
 
 public class PluginActivator extends AbstractUIPlugin {
@@ -38,7 +38,6 @@ public class PluginActivator extends AbstractUIPlugin {
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		INSTANCE = this;
-		ClickWatchModelFactory.eINSTANCE.registerInjector(getInjector());
 	}
 
 	public static PluginActivator getInstance() {
@@ -61,7 +60,8 @@ public class PluginActivator extends AbstractUIPlugin {
 			
 			ClickWatchModuleBuilder builder = ClickWatchModuleUtil.newBuilder()
 					.wDebugLvl(debugLvl)
-					.wHandlerBhvr(handlerBehav, 1000, 2000);
+					.wMergeConfigurationClass(UiClickWatchNodeMergeConfiguration.class)
+					.wHandlerBhvr(handlerBehav, 500, 3000);
 			if (valType == ValueType.XML) {
 				builder.wValueAdapterClass(XmlValueAdapter.class);
 			} else if (valType == ValueType.STRING) {

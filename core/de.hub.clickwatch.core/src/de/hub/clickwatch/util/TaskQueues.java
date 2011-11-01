@@ -16,11 +16,11 @@ public class TaskQueues {
 		if (taskQueueKey == null) {
 			taskQueueKey = this;
 		}
-		TaskQueue taksQueue = taskQueues.get(taskQueueKey);
-		if (taksQueue == null) {
-			taksQueue = taskQueueProvider.get();
-			taskQueues.put(taskQueueKey, taksQueue);
+		TaskQueue taskQueue = taskQueues.get(taskQueueKey);
+		if (taskQueue == null) {
+			taskQueue = taskQueueProvider.get();
+			taskQueues.put(taskQueueKey, taskQueue);
 		}
-		taksQueue.addTask(task);
+		taskQueue.addTask(task);
 	}
 }

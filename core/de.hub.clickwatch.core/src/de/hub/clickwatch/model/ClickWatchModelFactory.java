@@ -26,11 +26,6 @@ public interface ClickWatchModelFactory extends EFactory {
      * @generated
      */
 	ClickWatchModelFactory eINSTANCE = de.hub.clickwatch.model.impl.ClickWatchModelFactoryImpl.init();
-	
-	/**
-	 * @generated NOT
-	 */
-	void registerInjector(Injector injector);
 
 	/**
      * Returns a new object of class '<em>Node</em>'.

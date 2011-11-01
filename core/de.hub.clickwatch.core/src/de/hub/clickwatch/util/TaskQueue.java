@@ -9,12 +9,16 @@ import com.google.inject.Inject;
 
 public class TaskQueue implements Runnable {
 
+    @Inject private ILogger logger;
 	@Inject private ExecutorService es;
 	private Queue<Runnable> tasks = new ConcurrentLinkedQueue<Runnable>();
 	private Future<?> future = null;
 	
 	public synchronized void addTask(Runnable task) {
 		tasks.add(task);
+		if (tasks.size() > 500) {
+		    logger.log(ILogger.WARNING, "large taksQueue detected, size=" + tasks.size(), null);
+		}
 		if (future == null || future.isDone()) {
 			future = es.submit(this);
 		}

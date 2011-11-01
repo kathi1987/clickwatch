@@ -41,7 +41,7 @@ public class ClickSocketPlayerSocketImpl extends ClickSocketTestImpl {
 		
 		if (node == null) {
 			node = player.getNode(host, port);
-		} else if (count++ % 700 == 0) {
+		} else { //if (count++ % 700 == 0) {
 			node = player.getNode(host, port);
 		}
 		Preconditions.checkState(node != null, "Node with iNetAddress " + host + " does not exist in record.");

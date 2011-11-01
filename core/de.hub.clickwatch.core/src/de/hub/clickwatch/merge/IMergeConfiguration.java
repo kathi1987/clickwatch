@@ -1,5 +1,7 @@
 package de.hub.clickwatch.merge;
 
+import java.util.List;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.FeatureMap;
@@ -8,10 +10,7 @@ import com.google.inject.ImplementedBy;
 
 /**
  * {@link Merge} uses instances of implementations of this interface to fulfill
- * different tasks, thus allowing to customize the merge behavior.
- * 
- * @author Markus Scheidgen
- * 
+ * different tasks, thus allowing to customize the merge behavior. 
  */
 @ImplementedBy(DefaultMergeConfiguration.class)
 public interface IMergeConfiguration {
@@ -93,4 +92,10 @@ public interface IMergeConfiguration {
 	 * simply add new value to exisiting value.
 	 */
 	public boolean isToAdd(IContext context, Object oldValue, Object newValue);
+	
+	public void add(IContext context, List<?> list, Object value);
+	public void add(IContext context, List<?> list, int index, Object value);
+	public void remove(IContext context, List<?> list, int index);
+	public void set(IContext context, List<?> list, int index, Object value);
+	public void set(IContext context, Object value);
 }

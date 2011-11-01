@@ -1,18 +1,16 @@
 package de.hub.clickwatch.merge;
 
-import java.util.Collection;
-
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
-import de.hub.clickwatch.model.ChangeMark;
+import de.hub.clickwatch.connection.INodeConnection;
+import de.hub.clickwatch.connection.adapter.IMergeAdapter;
 import de.hub.clickwatch.model.ClickWatchModelPackage;
 import de.hub.clickwatch.model.Element;
 import de.hub.clickwatch.model.Handler;
-import de.hub.clickwatch.model.Node;
+import de.hub.clickwatch.model.util.ClickWatchModelUtil;
 
 public class ClickWatchNodeMergeConfiguration extends DefaultMergeConfiguration {
 
@@ -66,21 +64,9 @@ public class ClickWatchNodeMergeConfiguration extends DefaultMergeConfiguration 
 	@Override
 	public void handleDiffernce(IContext context, Object oldValue,
 			Object newValue, int index) {
-		Collection<ChangeMark> changes = getChanges(context);
-		if (changes != null) {
-		    changes.add(new ChangeMark(context.getContainer(), context.getFeature(), newValue));
-		}
-	}
-	
-	private Collection<ChangeMark> getChanges(IContext context) {
-	    EObject container = context.getContainer();
-        while (container != null && !(container instanceof Node)) {
-	        container = container.eContainer();
+	    INodeConnection connection = ClickWatchModelUtil.getContainingNode(context.getContainer()).getConnection();
+	    if (connection != null) {
+	        connection.getAdapter(IMergeAdapter.class).addChange(context.getContainer(), context.getFeature());
 	    }
-        if (container != null) {
-            return ((Node)container).getChanges();
-        } else {
-            return null;
-        }
 	}
 }

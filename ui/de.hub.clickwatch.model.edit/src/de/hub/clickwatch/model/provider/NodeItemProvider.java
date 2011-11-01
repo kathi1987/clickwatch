@@ -74,7 +74,6 @@ public class NodeItemProvider
             addPortPropertyDescriptor(object);
             addBackbonePropertyDescriptor(object);
             addActiveListenersPropertyDescriptor(object);
-            addChangesPropertyDescriptor(object);
             addErrorsPropertyDescriptor(object);
             addConnectionPropertyDescriptor(object);
             addRetrievingPropertyDescriptor(object);
@@ -274,28 +273,6 @@ public class NodeItemProvider
     }
 
     /**
-     * This adds a property descriptor for the Changes feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    protected void addChangesPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add
-            (createItemPropertyDescriptor
-                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                 getResourceLocator(),
-                 getString("_UI_Node_changes_feature"),
-                 getString("_UI_PropertyDescriptor_description", "_UI_Node_changes_feature", "_UI_Node_type"),
-                 ClickWatchModelPackage.Literals.NODE__CHANGES,
-                 true,
-                 false,
-                 false,
-                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                 null,
-                 null));
-    }
-
-    /**
      * This adds a property descriptor for the Errors feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -309,7 +286,7 @@ public class NodeItemProvider
                  getString("_UI_Node_errors_feature"),
                  getString("_UI_PropertyDescriptor_description", "_UI_Node_errors_feature", "_UI_Node_type"),
                  ClickWatchModelPackage.Literals.NODE__ERRORS,
-                 false,
+                 true,
                  false,
                  false,
                  ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
@@ -470,7 +447,6 @@ public class NodeItemProvider
             case ClickWatchModelPackage.NODE__PORT:
             case ClickWatchModelPackage.NODE__BACKBONE:
             case ClickWatchModelPackage.NODE__ACTIVE_LISTENERS:
-            case ClickWatchModelPackage.NODE__CHANGES:
             case ClickWatchModelPackage.NODE__ERRORS:
             case ClickWatchModelPackage.NODE__CONNECTION:
             case ClickWatchModelPackage.NODE__RETRIEVING:

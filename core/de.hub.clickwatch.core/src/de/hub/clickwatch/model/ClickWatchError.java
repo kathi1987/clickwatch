@@ -27,4 +27,8 @@ public class ClickWatchError {
         return timestamp;
     }
   
+    @Override
+    public String toString() {
+        return message + "(" + exception.getClass().getSimpleName() + ")";
+    }
 }

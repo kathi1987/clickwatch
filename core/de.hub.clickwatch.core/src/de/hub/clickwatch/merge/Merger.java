@@ -103,8 +103,8 @@ public class Merger {
 				boolean equals = merge(context, oldItem.object, newItem.object);
 				if (!equals) {
 					Object newCreatedValue = configuration.create(context, newItem.object);
-					lOldValue.set(oldItem.index, newCreatedValue);
 					configuration.handleDiffernce(context, oldItem.object, newCreatedValue, oldItem.index);
+					configuration.set(context, lOldValue, oldItem.index, newCreatedValue);					
 					configuration.dispose(context, oldItem.object);					
 				}
 			}
@@ -113,8 +113,8 @@ public class Merger {
 		for (int i = toRemove.length - 1; i >= 0; i--) {
 			Item item = toRemove[i];
 			if (item != null) {
-				lOldValue.remove(item.index);
-				configuration.handleDiffernce(context, item.object, null, item.index);
+			    configuration.handleDiffernce(context, item.object, null, item.index);
+			    configuration.remove(context, lOldValue, item.index);				
 				configuration.dispose(context, item.object);
 			}
 		}
@@ -133,15 +133,15 @@ public class Merger {
 				int oldIndex = oldItem.index;
 				for (Object newCreatedValue: newValues) {
 					int newIndex = oldIndex + addedValues++;
-					lOldValue.add(newIndex, newCreatedValue);
 					configuration.handleDiffernce(context, null, newCreatedValue, newIndex);
+					configuration.add(context, lOldValue, newIndex, newCreatedValue);					
 				}				
 				newValues.clear();
 			}
 		}
 		for (Object newCreatedValue: newValues) {
-			lOldValue.add(newCreatedValue);
-			configuration.handleDiffernce(context, null, newCreatedValue, lOldValue.size() - 1);
+		    configuration.handleDiffernce(context, null, newCreatedValue, lOldValue.size() - 1);
+		    configuration.add(context, lOldValue, newCreatedValue);			
 		}	
 	}
 	
@@ -164,8 +164,8 @@ public class Merger {
 				boolean equals = merge(context, oldValue, newValue);
 				if (!equals) {
 					Object newCreatedValue = configuration.create(context, newValue);
-					lOldValue.set(i, newCreatedValue);
 					configuration.handleDiffernce(context, oldValue, newCreatedValue, i);
+					configuration.set(context, lOldValue, i, newCreatedValue);					
 					configuration.dispose(context, oldValue);				
 				}
 			}
@@ -174,22 +174,23 @@ public class Merger {
 		if (i < oldValueSize) {			
 			for (; i < oldValueSize; i++) {
 				if (!configuration.isToAdd(context, lOldValue.get(lastIndex), null)) {
-					Object oldValue = lOldValue.remove(lastIndex);					
-					configuration.handleDiffernce(context, oldValue, null, lastIndex);
+				    Object oldValue = lOldValue.get(lastIndex);
+				    configuration.handleDiffernce(context, oldValue, null, lastIndex);
+				    configuration.remove(context, lOldValue, lastIndex);					
 					configuration.dispose(context, oldValue);
 				}
 			}
 		} else if (i < newValueSize) {
 			for (; i < newValueSize; i++) {
 				Object newCreatedValue = configuration.create(context, lNewValue.get(i));
-				lOldValue.add(newCreatedValue);
 				configuration.handleDiffernce(context, null, newCreatedValue, lOldValue.size() - 1);
+				configuration.add(context, lOldValue, newCreatedValue);			
 			}
 		}
 		for (Object value: toAdd) {
 			Object newCreatedValue = configuration.create(context, value);
-			lOldValue.add(newCreatedValue);
 			configuration.handleDiffernce(context, null, newCreatedValue, lOldValue.size() - 1);
+			configuration.add(context, lOldValue, newCreatedValue);			
 		}
 	}
 	
@@ -233,12 +234,11 @@ public class Merger {
 				boolean equals = merge(childContext, oldFeatureValue, newFeatureValue);
 				if (!equals) {
 					configuration.handleDiffernce(childContext, oldFeatureValue, newFeatureValue, 
-							IMergeConfiguration.NO_INDEX);
+							IMergeConfiguration.NO_INDEX);					
 					if (newFeatureValue == null) {
-						eOldValue.eUnset(feature);							
+					    configuration.set(childContext, null);
 					} else {
-						eOldValue.eSet(feature, configuration.create(childContext, 
-								newFeatureValue));
+					    configuration.set(childContext, configuration.create(childContext, newFeatureValue));
 					}
 					configuration.dispose(childContext, oldFeatureValue);
 				}
@@ -267,8 +267,7 @@ public class Merger {
 				MergeContext childContext = context.createChildContext(fOldValue);
 				boolean equals = merge(childContext, oldEntryValue, newEntryValue);
 				if (!equals) {
-					configuration.handleDiffernce(childContext, oldEntryValue, newEntryValue, 
-							IMergeConfiguration.NO_INDEX);
+					configuration.handleDiffernce(childContext, oldEntryValue, newEntryValue, IMergeConfiguration.NO_INDEX);
 				}
 				return equals;
 			}

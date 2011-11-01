@@ -1,7 +1,5 @@
 package de.hub.clickwatch.connection.adapter;
 
-import java.util.List;
-
 import com.google.inject.ImplementedBy;
 
 import de.hub.clickwatch.connection.adapter.internal.ErrorAdapter;
@@ -18,6 +16,10 @@ public interface IErrorAdapter {
 	
 	public void removeErrorListener(IErrorListener errorListener);
 	
-	public List<ClickWatchError> getErrors();
+    /**
+     * Creates an error, informs all {@link IErrorListener} (see
+     * {@link IErrorAdapter}) and closes the connection (see {@link #close()}).
+     */
+    public void createError(String message, Throwable e);
 	
 }

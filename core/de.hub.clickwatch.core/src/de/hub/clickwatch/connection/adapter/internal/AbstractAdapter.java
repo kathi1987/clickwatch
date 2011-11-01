@@ -10,4 +10,8 @@ public abstract class AbstractAdapter {
 		this.connection = connection;
 	}
 	
+	public void dispose() {
+	    // empty
+	}
+	
 }

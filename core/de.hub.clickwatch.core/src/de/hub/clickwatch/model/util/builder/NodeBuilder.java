@@ -16,14 +16,14 @@ public class NodeBuilder implements de.hub.clickwatch.model.util.builder.IModelB
   private java.lang.String m_port;
   private Boolean m_recording;
   private Boolean m_retrieving;
-  private java.util.Collection<de.hub.clickwatch.model.ChangeMark> m_changes = new java.util.LinkedList<de.hub.clickwatch.model.ChangeMark>();
   private java.util.Collection<de.hub.clickwatch.model.Element> m_elements = new java.util.LinkedList<de.hub.clickwatch.model.Element>();
   private java.util.Collection<de.hub.clickwatch.model.util.builder.IModelBuilder<? extends de.hub.clickwatch.model.Element>> m_featureElementsBuilder = new java.util.LinkedList<de.hub.clickwatch.model.util.builder.IModelBuilder<? extends de.hub.clickwatch.model.Element>>();
+  private java.util.Collection<de.hub.clickwatch.model.ClickWatchError> m_errors = new java.util.LinkedList<de.hub.clickwatch.model.ClickWatchError>();
   // helper attributes
   private boolean m_featureBackboneSet = false;
-  private boolean m_featureChangesSet = false;
   private boolean m_featureConnectionSet = false;
   private boolean m_featureElementsSet = false;
+  private boolean m_featureErrorsSet = false;
   private boolean m_featureINetAddressSet = false;
   private boolean m_featureListeningSet = false;
   private boolean m_featurePortSet = false;
@@ -52,13 +52,13 @@ public class NodeBuilder implements de.hub.clickwatch.model.util.builder.IModelB
     NodeBuilder _builder = newNodeBuilder();
     _builder.m_featureBackboneSet = m_featureBackboneSet;
     _builder.m_backbone = m_backbone;
-    _builder.m_featureChangesSet = m_featureChangesSet;
-    _builder.m_changes = m_changes;
     _builder.m_featureConnectionSet = m_featureConnectionSet;
     _builder.m_connection = m_connection;
     _builder.m_featureElementsSet = m_featureElementsSet;
     _builder.m_elements = m_elements;
     _builder.m_featureElementsBuilder = m_featureElementsBuilder;
+    _builder.m_featureErrorsSet = m_featureErrorsSet;
+    _builder.m_errors = m_errors;
     _builder.m_featureINetAddressSet = m_featureINetAddressSet;
     _builder.m_iNetAddress = m_iNetAddress;
     _builder.m_featureListeningSet = m_featureListeningSet;
@@ -99,9 +99,6 @@ public class NodeBuilder implements de.hub.clickwatch.model.util.builder.IModelB
     if (m_featureRetrievingSet) {
       _newInstance.setRetrieving(m_retrieving);
     }
-    if (m_featureChangesSet) {
-      _newInstance.getChanges().addAll(m_changes);
-    }
     if (m_featureElementsSet) {
       _newInstance.getElements().addAll(m_elements);
     } else {
@@ -110,6 +107,9 @@ public class NodeBuilder implements de.hub.clickwatch.model.util.builder.IModelB
           _newInstance.getElements().add(builder.build());
         }
       }
+    }
+    if (m_featureErrorsSet) {
+      _newInstance.getErrors().addAll(m_errors);
     }
     return _newInstance;
   }
@@ -156,18 +156,6 @@ public class NodeBuilder implements de.hub.clickwatch.model.util.builder.IModelB
     return this;
   }
 
-  public NodeBuilder withChanges(de.hub.clickwatch.model.ChangeMark p_changes) {
-    m_changes.add(p_changes);
-    m_featureChangesSet = true;
-    return this;
-  }
-
-  public NodeBuilder withChanges(java.util.Collection<? extends de.hub.clickwatch.model.ChangeMark> p_changes) {
-    m_changes.addAll(p_changes);
-    m_featureChangesSet = true;
-    return this;
-  }
-
   public NodeBuilder withElements(de.hub.clickwatch.model.Element p_elements) {
     m_elements.add(p_elements);
     m_featureElementsSet = true;
@@ -182,6 +170,18 @@ public class NodeBuilder implements de.hub.clickwatch.model.util.builder.IModelB
 
   public NodeBuilder withElements(de.hub.clickwatch.model.util.builder.IModelBuilder<? extends de.hub.clickwatch.model.Element> p_elementBuilder) {
     m_featureElementsBuilder.add(p_elementBuilder);
+    return this;
+  }
+
+  public NodeBuilder withErrors(de.hub.clickwatch.model.ClickWatchError p_errors) {
+    m_errors.add(p_errors);
+    m_featureErrorsSet = true;
+    return this;
+  }
+
+  public NodeBuilder withErrors(java.util.Collection<? extends de.hub.clickwatch.model.ClickWatchError> p_errors) {
+    m_errors.addAll(p_errors);
+    m_featureErrorsSet = true;
     return this;
   }
 }

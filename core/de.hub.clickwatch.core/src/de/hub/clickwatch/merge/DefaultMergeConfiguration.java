@@ -1,5 +1,7 @@
 package de.hub.clickwatch.merge;
 
+import java.util.List;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.FeatureMap;
@@ -52,4 +54,34 @@ public class DefaultMergeConfiguration implements IMergeConfiguration {
 	public boolean isToAdd(IContext context, Object oldValue, Object newValue) {
 		return false;
 	}
+
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+    @Override
+    public void add(IContext context, List list, Object value) {
+        list.add(value);
+    }
+
+    @SuppressWarnings({ "rawtypes", "unchecked" })
+    @Override
+    public void add(IContext context, List list, int index, Object value) {
+        list.add(index, value);
+    }
+
+    @Override
+    public void remove(IContext context, List<?> list, int index) {
+        list.remove(index);
+    }
+
+    @SuppressWarnings({ "rawtypes", "unchecked" })
+    @Override
+    public void set(IContext context, List list, int index, Object value) {
+        list.set(index, value);
+    }
+
+    @Override
+    public void set(IContext context, Object value) {
+        context.getContainer().eSet(context.getFeature(), value);
+    }
+	
+	
 }
