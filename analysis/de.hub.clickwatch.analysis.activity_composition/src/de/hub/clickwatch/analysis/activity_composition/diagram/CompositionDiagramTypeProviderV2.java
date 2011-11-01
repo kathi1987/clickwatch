@@ -1,10 +1,10 @@
 package de.hub.clickwatch.analysis.activity_composition.diagram;
 
-import org.eclipse.emf.ecore.EObject;
+import org.eclipse.graphiti.tb.IToolBehaviorProvider;
 
+import de.hub.clickwatch.analysis.activity_composition.contextmenu.ClickwatchToolBehaviourProvider;
 import de.hub.clickwatch.analysis.activity_composition.diagram.graphicsConfigurations.DataNodeGraphicsConfiguration;
 import de.hub.clickwatch.analysis.activity_composition.diagram.graphicsConfigurations.StartNodeGraphicsConfiguration;
-import de.hub.clickwatch.analysis.activity_composition.model.ActionNode;
 import de.hub.clickwatch.analysis.activity_composition.model.DataNode;
 import de.hub.clickwatch.analysis.activity_composition.model.Element;
 import de.hub.clickwatch.analysis.activity_composition.model.InputEdge;
@@ -30,6 +30,12 @@ import de.hub.xveg.xvegfeaturemodel.builder.XvegDiagramTypeBuilder;
 
 public class CompositionDiagramTypeProviderV2 extends XvegDiagramTypeProvider {
 
+	private IToolBehaviorProvider[] toolBehaviorProviders;
+
+	public CompositionDiagramTypeProviderV2() {
+		super();
+	}
+	
 	private final ILabelConfiguration<Element> labelConfiguration = new ILabelConfiguration<Element>() {
 		@Override
 		public String getLabel(XvegFeature feature, Element object) {
@@ -57,6 +63,19 @@ public class CompositionDiagramTypeProviderV2 extends XvegDiagramTypeProvider {
 				VertexFeature feature, T object) {
 			return new DefaultVertexGraphicsConfiguration();
 		}
+	}
+
+	@Override
+	public IToolBehaviorProvider[] getAvailableToolBehaviorProviders() {
+
+		if (toolBehaviorProviders == null) {
+			toolBehaviorProviders = super.getAvailableToolBehaviorProviders();
+
+			toolBehaviorProviders = new IToolBehaviorProvider[] {					
+					new ClickwatchToolBehaviourProvider(this),
+					toolBehaviorProviders[0]};
+		}
+		return toolBehaviorProviders;
 	}
 
 	@Override

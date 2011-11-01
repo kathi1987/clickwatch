@@ -20,7 +20,7 @@ public class StartNodeSection extends GFPropertySection implements
 	public void createControls(Composite parent,
 			TabbedPropertySheetPage aTabbedPropertySheetPage) {
 		super.createControls(parent, aTabbedPropertySheetPage);
-		
+		// http://help.eclipse.org/indigo/index.jsp?topic=%2Forg.eclipse.graphiti.doc%2Fresources%2Fdocu%2Fgfw%2Fproperty-sheet.htm
 		TabbedPropertySheetWidgetFactory factory = getWidgetFactory();
 		Composite composite = factory.createFlatFormComposite(parent);
 		final Shell shell = composite.getShell();
