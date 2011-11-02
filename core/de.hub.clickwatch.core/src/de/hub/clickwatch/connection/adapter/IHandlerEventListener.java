@@ -15,6 +15,10 @@ public interface IHandlerEventListener {
     public void receivingStarted();
 
     public void receivingStopped();
+    
+    public void listeningStarted();
+    
+    public void listeningStopped();
 
     /**
      * This is disposed when the {@link IHandlerEventAdapter} is disposed, which

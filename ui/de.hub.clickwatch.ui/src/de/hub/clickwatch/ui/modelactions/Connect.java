@@ -46,8 +46,7 @@ public class Connect extends AbstractNodeAction {
                         IHandlerEventAdapter hea = connection.getAdapter(IHandlerEventAdapter.class);
                         UiHandlerEventListener handler = handlerProvider.get();
                         handler.init(shell, node, editor);
-                        hea.addEventListener(handler);
-                        handler.scheduleUpdateMetaData();                                            
+                        hea.addEventListener(handler);                                            
                     }
                     
                     connection.getAdapter(IHandlerEventAdapter.class).start();

@@ -284,7 +284,7 @@ public class NodeImpl extends EObjectImpl implements Node {
      * <!-- end-user-doc -->
      * @generated
      */
-    public void setConnection(INodeConnection newConnection) {
+    public void setConnection(INodeConnection newConnection) {        
         INodeConnection oldConnection = connection;
         connection = newConnection;
         if (eNotificationRequired())

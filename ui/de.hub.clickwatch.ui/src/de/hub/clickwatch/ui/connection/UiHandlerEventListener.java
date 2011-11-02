@@ -1,5 +1,8 @@
 package de.hub.clickwatch.ui.connection;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
@@ -33,6 +36,7 @@ public class UiHandlerEventListener implements IHandlerEventListener {
     private boolean updateMetaData = false;
 
     private @Inject ILogger logger;
+    private Map<String, Handler> receivedHandler = new HashMap<String, Handler>();
 
     private boolean haveReceivedInCurrentCycle = false;
     private final AdapterImpl filterAdapter = new AdapterImpl() {
@@ -57,7 +61,9 @@ public class UiHandlerEventListener implements IHandlerEventListener {
         @Override
         public void partClosed(IWorkbenchPart part) {
             if (part == editor) {
-                node.getConnection().dispose();
+                if (ensureConnected()) {
+                    node.getConnection().dispose();
+                }
             }
         }
         
@@ -101,14 +107,19 @@ public class UiHandlerEventListener implements IHandlerEventListener {
         if (network != null) {
             newMetaData.filter(network.getElementFilter(), network.getHandlerFilter());
         }
+        if (newMetaData == null) {
+            return;
+        }
         getDisplay().syncExec(new Runnable() {
             @Override
             public void run() {
-                try {
-                    node.getConnection().getAdapter(IMergeAdapter.class).merge(newMetaData);
-                } catch (Exception e) {
-                    node.getConnection().getAdapter(IErrorAdapter.class)
-                            .createError("Exception during update command execution", e);
+                if (ensureConnected()) {
+                    try {
+                        node.getConnection().getAdapter(IMergeAdapter.class).merge(newMetaData);
+                    } catch (Exception e) {
+                        node.getConnection().getAdapter(IErrorAdapter.class)
+                                .createError("Exception during update command execution", e);
+                    }
                 }
             }
         });
@@ -117,24 +128,11 @@ public class UiHandlerEventListener implements IHandlerEventListener {
 
     @Override
     public void handlerReceived(final Handler handler) {
-        final Handler guiHandler = node.getHandler(handler.getQualifiedName());
-        if (!haveReceivedInCurrentCycle) {
-            logger.log(ILogger.DEBUG, "handler received handler in GUI", null);
-            haveReceivedInCurrentCycle = true;
-        }
-
-        if (guiHandler == null) {
-            logger.log(ILogger.WARNING, "GUI received handler " + handler.getQualifiedName()
-                    + " that is not in the current node meta-data", null);
-        } else {
-            getDisplay().syncExec(new Runnable() {
-                @Override
-                public void run() {
-                    node.getConnection().getAdapter(IMergeAdapter.class).merge(handler);
-                }
-            });
-
-        }
+        receivedHandler.put(handler.getQualifiedName(), handler);        
+    }
+    
+    private boolean ensureConnected() {
+        return node != null && node.getConnection() != null;
     }
 
     @Override
@@ -144,11 +142,14 @@ public class UiHandlerEventListener implements IHandlerEventListener {
             updateMetaData();
             updateMetaData = false;
         }
+        receivedHandler.clear();
         getDisplay().syncExec(new Runnable() {
             @Override
             public void run() {
-                node.getConnection().getAdapter(IMergeAdapter.class).clearChanges();
-                node.setRetrieving(true);
+                if (ensureConnected()) {
+                    node.getConnection().getAdapter(IMergeAdapter.class).clearChanges();
+                    node.setRetrieving(true);
+                }
             }
         });
     }
@@ -158,16 +159,45 @@ public class UiHandlerEventListener implements IHandlerEventListener {
         getDisplay().syncExec(new Runnable() {
             @Override
             public void run() {
-                try {
-                    node.setRetrieving(false);
-                } catch (Exception e) {
-                    node.getConnection().getAdapter(IErrorAdapter.class)
-                            .createError("Exception during update command execution", e);
+                if (ensureConnected()) {
+                    try {
+                        IMergeAdapter mergeAdapter = node.getConnection().getAdapter(IMergeAdapter.class);
+                        for (String handlerName: receivedHandler.keySet()) {
+                            final Handler guiHandler = node.getHandler(handlerName);
+                            if (!haveReceivedInCurrentCycle) {
+                                logger.log(ILogger.DEBUG, "handler received handler in GUI", null);
+                                haveReceivedInCurrentCycle = true;
+                            }
+    
+                            if (guiHandler == null) {
+                                logger.log(ILogger.WARNING, "GUI received handler " + handlerName
+                                        + " that is not in the current node meta-data", null);
+                            } else {                                
+                                mergeAdapter.merge(receivedHandler.get(handlerName));                             
+                            }
+                        }                        
+                        node.setRetrieving(false);
+                    } catch (Exception e) {
+                        node.getConnection().getAdapter(IErrorAdapter.class)
+                                .createError("Exception during update command execution", e);
+                    } finally {
+                        receivedHandler.clear();
+                    }
                 }
             }
         });
     }
     
+    @Override
+    public void listeningStarted() {
+        scheduleUpdateMetaData();
+    }
+
+    @Override
+    public void listeningStopped() {
+        // empty
+    }
+
     private Network getNetwork() {
         if (node.eContainer() != null && node.eContainer() instanceof Network) {
             return (Network)node.eContainer();         

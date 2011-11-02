@@ -25,4 +25,15 @@ public class AbstractHandlerEventListener implements IHandlerEventListener {
         
     }
 
+    @Override
+    public void listeningStarted() {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void listeningStopped() {
+        // TODO Auto-generated method stub
+        
+    }
 }

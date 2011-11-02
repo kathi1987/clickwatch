@@ -5,6 +5,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
 
+import com.google.common.base.Preconditions;
 import com.google.inject.Inject;
 
 public class TaskQueue implements Runnable {
@@ -14,7 +15,14 @@ public class TaskQueue implements Runnable {
 	private Queue<Runnable> tasks = new ConcurrentLinkedQueue<Runnable>();
 	private Future<?> future = null;
 	
-	public synchronized void addTask(Runnable task) {
+	private Object key = null;
+
+    public synchronized void addTask(Object key, Runnable task) {
+        if (this.key == null) {
+            this.key = key;
+        }
+        Preconditions.checkArgument(this.key == key);
+            
 		tasks.add(task);
 		if (tasks.size() > 500) {
 		    logger.log(ILogger.WARNING, "large taksQueue detected, size=" + tasks.size(), null);
@@ -32,10 +40,20 @@ public class TaskQueue implements Runnable {
 	public void run() {
 		if (!tasks.isEmpty()) {
 			Runnable task = (Runnable)tasks.poll();
-			task.run();
+			try {
+			    task.run();
+			} catch(Exception e) {
+			    logger.log(ILogger.WARNING, "task on " + toString() + " ended with exception", e);
+			}
 		}
 		if (!tasks.isEmpty()) {
 			submit();			
 		}
 	}
+
+    @Override
+    public String toString() {
+        return "TaskQueue [key=" + key.toString() + "]";
+    }
+	
 }

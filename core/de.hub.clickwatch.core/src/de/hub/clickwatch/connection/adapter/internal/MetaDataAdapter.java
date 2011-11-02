@@ -29,7 +29,7 @@ public class MetaDataAdapter extends AbstractAdapter implements IMetaDataAdapter
     @Override
     public Node pullAllMetaData() {
         IClickSocket clickSocket = connection.acquireSocket();
-        if (clickSocket == null) {
+        if (clickSocket == null || !clickSocket.isConnected()) {
             return null;
         }
         ClickWatchModelFactory modelFactory = ClickWatchModelFactory.eINSTANCE;

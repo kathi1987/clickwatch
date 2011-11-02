@@ -96,7 +96,7 @@ public class NodeConnectionImpl implements IInternalNodeConnection {
 
     @Override
     public void close() {
-        logger.log(ILogger.DEBUG, "close connection for " + node.getINetAddress(), null);
+        logger.log(ILogger.DEBUG, "try to close connection for " + node.getINetAddress(), null);
         getAdapter(IHandlerEventAdapter.class).stop();
         taskQueues.dispatchTask(null, new Runnable() {            
             @Override
@@ -104,26 +104,36 @@ public class NodeConnectionImpl implements IInternalNodeConnection {
                 acquireSocket();
                 if (clickSocket != null) {
                     clickSocket.close();
-                }
+                    clickSocket = null;
+                }                
                 releaseSocket();
+                logger.log(ILogger.DEBUG, "closed connection for " + node.getINetAddress(), null);
             }
         });        
     }
     
     @Override
     public void dispose() {
-        logger.log(ILogger.DEBUG, "dispose connection for " + node.getINetAddress(), null);
-        close();        
-        ((AbstractAdapter)metaDataAdapter).dispose();
-        ((AbstractAdapter)valueAdapter).dispose();
-        ((AbstractAdapter)handlerAdapter).dispose();
-        ((AbstractAdapter)handlerEventAdapter).dispose();
-        ((AbstractAdapter)nodeAdapter).dispose();
-        ((AbstractAdapter)errorAdapter).dispose();
-        ((AbstractAdapter)mergeAdapter).dispose();
-        node.getErrors().clear();
-        node.setConnection(null);
-        node = null;
+        logger.log(ILogger.DEBUG, "try to dispose connection for " + node.getINetAddress(), null);
+        close();     
+        taskQueues.dispatchTask(null,  new Runnable() {            
+            @Override
+            public void run() {
+                String iNetAddress = node.getINetAddress();
+                ((AbstractAdapter)metaDataAdapter).dispose();
+                ((AbstractAdapter)valueAdapter).dispose();
+                ((AbstractAdapter)handlerAdapter).dispose();
+                ((AbstractAdapter)handlerEventAdapter).dispose();
+                ((AbstractAdapter)nodeAdapter).dispose();
+                ((AbstractAdapter)errorAdapter).dispose();
+                ((AbstractAdapter)mergeAdapter).dispose();
+                node.getErrors().clear();
+                node.setConnection(null);
+                node = null;
+                logger.log(ILogger.DEBUG, "disposed connection for " + iNetAddress, null);
+            }
+        });
+        
     }
 
     @Override
@@ -193,7 +203,10 @@ public class NodeConnectionImpl implements IInternalNodeConnection {
 
         @Override
         public boolean isConnected() {
-            throw new UnsupportedOperationException();
+            IClickSocket socket = acquireSocket();
+            boolean result = socket != null && socket.isConnected();
+            releaseSocket();
+            return result;
         }
 
         @Override

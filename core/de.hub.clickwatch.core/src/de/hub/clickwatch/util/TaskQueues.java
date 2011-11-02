@@ -21,6 +21,6 @@ public class TaskQueues {
 			taskQueue = taskQueueProvider.get();
 			taskQueues.put(taskQueueKey, taskQueue);
 		}
-		taskQueue.addTask(task);
+		taskQueue.addTask(taskQueueKey, task);
 	}
 }

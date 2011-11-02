@@ -31,8 +31,6 @@ public class MergeAdapter extends AbstractAdapter implements IMergeAdapter {
         Handler oldHandler = connection.getNode().getHandler(handler.getQualifiedName());
         if (oldHandler != null) {
             merger.merge(oldHandler, handler);
-        } else {
-            // TODO
         }
     }
     

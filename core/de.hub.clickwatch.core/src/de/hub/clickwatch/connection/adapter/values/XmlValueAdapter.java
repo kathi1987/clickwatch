@@ -11,17 +11,27 @@ import org.eclipse.emf.ecore.xml.type.XMLTypeFactory;
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 
 import com.google.common.base.Preconditions;
+import com.google.inject.Inject;
 
 import de.hub.clickwatch.connection.adapter.internal.AbstractValueAdapter;
 import de.hub.clickwatch.model.Handler;
+import de.hub.clickwatch.util.ILogger;
 import de.hub.emfxml.util.EmfXmlUtil;
 
 public class XmlValueAdapter extends AbstractValueAdapter implements IValueAdapter {
 
+    @Inject ILogger logger;
+    
 	@Override
 	protected void setValue(Handler handler, String plainRealValue) {
 		plainRealValue = EmfXmlUtil.stripProcessingInstructions(plainRealValue);
-		XMLTypeDocumentRoot xml = (XMLTypeDocumentRoot)EmfXmlUtil.deserializeXml("<xml>" + plainRealValue + "</xml>");
+		XMLTypeDocumentRoot xml = null;
+		try {
+		    xml = (XMLTypeDocumentRoot)EmfXmlUtil.deserializeXml("<xml>" + plainRealValue + "</xml>");
+		} catch (Exception e) {
+		    logger.log(ILogger.WARNING, "could not parse handler value xml of handler " + handler.getQualifiedName() + ": " + plainRealValue, e);
+		    return;
+		}
 		FeatureMap xmlRootMixed = ((AnyType)xml.getMixed().getValue(0)).getMixed();
 		if (xmlRootMixed.size() > 0) {
 			for(FeatureMap.Entry entry: xmlRootMixed) {
