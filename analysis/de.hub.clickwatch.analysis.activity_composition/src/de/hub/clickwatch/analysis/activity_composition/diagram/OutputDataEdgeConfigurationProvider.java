@@ -35,6 +35,8 @@ public class OutputDataEdgeConfigurationProvider extends
 				outputEdge.setSource((Transformation) source);
 				outputEdge.setTarget((DataNode) target);
 
+				((DataNode) target).getOutput().add(outputEdge);
+				
 				return outputEdge;
 			}
 

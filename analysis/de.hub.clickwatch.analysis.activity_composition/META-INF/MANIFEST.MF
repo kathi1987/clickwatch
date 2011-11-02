@@ -14,5 +14,10 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.graphiti.examples.common;bundle-version="0.8.0",
  org.eclipse.graphiti.ui;bundle-version="0.8.0",
  de.hub.xveg;bundle-version="1.0.0",
- org.eclipse.ui.views.properties.tabbed;bundle-version="3.5.200"
+ org.eclipse.ui.views.properties.tabbed;bundle-version="3.5.200",
+ org.eclipse.core.resources;bundle-version="3.7.100",
+ org.eclipse.emf.common.ui;bundle-version="2.7.0",
+ org.eclipse.emf.transaction;bundle-version="1.4.0",
+ org.eclipse.emf.ecore.xmi;bundle-version="2.7.0",
+ de.hub.clickwatch.apps.transformationLauncher;bundle-version="2.0.0"
 Bundle-ActivationPolicy: lazy

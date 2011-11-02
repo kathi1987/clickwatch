@@ -115,8 +115,6 @@ public class DataNodeGraphicsConfiguration extends
 	}
 
 	protected void stylize(GraphicsAlgorithm shape) {
-		StyleInfo style = feature.getStyle() == null ? DefaultStyle.INSTANCE
-				: feature.getStyle();
 		shape.setForeground(helper.manageColor(Style.SHAPE_FOREGROUND));
 		shape.setBackground(helper.manageColor(Style.SHAPE_BACKGROUND));
 		shape.setLineWidth(2);

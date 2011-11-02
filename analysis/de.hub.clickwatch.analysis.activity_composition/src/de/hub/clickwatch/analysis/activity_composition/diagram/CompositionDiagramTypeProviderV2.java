@@ -73,8 +73,12 @@ public class CompositionDiagramTypeProviderV2 extends XvegDiagramTypeProvider {
 
 			toolBehaviorProviders = new IToolBehaviorProvider[] {					
 					new ClickwatchToolBehaviourProvider(this),
-					toolBehaviorProviders[0]};
+					toolBehaviorProviders[0]					
+					};
 		}
+		// TODO: cant use two behaviour provider?
+		//setCurrentToolBahaviorIndex(1);
+		
 		return toolBehaviorProviders;
 	}
 
@@ -156,6 +160,7 @@ public class CompositionDiagramTypeProviderV2 extends XvegDiagramTypeProvider {
 								.newEdgeFeatureBuilder()
 								.withConfiguration(
 										new ProgressEdgeConfigurationProvider() {
+											@SuppressWarnings({ "rawtypes", "unchecked" })
 											@Override
 											public ILabelConfiguration<ProgressEdge> getLabelConfiguration(
 													XvegFeature feature,
@@ -180,6 +185,7 @@ public class CompositionDiagramTypeProviderV2 extends XvegDiagramTypeProvider {
 								.newEdgeFeatureBuilder()
 								.withConfiguration(
 										new InputDataEdgeConfigurationProvider() {
+											@SuppressWarnings({ "rawtypes", "unchecked" })
 											@Override
 											public ILabelConfiguration<InputEdge> getLabelConfiguration(
 													XvegFeature feature,
@@ -202,6 +208,7 @@ public class CompositionDiagramTypeProviderV2 extends XvegDiagramTypeProvider {
 								.newEdgeFeatureBuilder()
 								.withConfiguration(
 										new OutputDataEdgeConfigurationProvider() {
+											@SuppressWarnings({ "rawtypes", "unchecked" })
 											@Override
 											public ILabelConfiguration<OutputEdge> getLabelConfiguration(
 													XvegFeature feature,

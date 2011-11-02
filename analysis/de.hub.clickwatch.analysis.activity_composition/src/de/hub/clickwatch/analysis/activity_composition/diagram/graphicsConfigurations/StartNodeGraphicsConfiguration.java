@@ -111,7 +111,6 @@ public class StartNodeGraphicsConfiguration extends
     }
     
     protected void stylize(GraphicsAlgorithm shape) {
-    	StyleInfo style = feature.getStyle() == null ? DefaultStyle.INSTANCE : feature.getStyle();
     	shape.setForeground(helper.manageColor(Style.STARTNODE_FOREGROUND));
     	shape.setBackground(helper.manageColor(Style.STARTNODE_BACKGROUND));
     	shape.setLineWidth(2);

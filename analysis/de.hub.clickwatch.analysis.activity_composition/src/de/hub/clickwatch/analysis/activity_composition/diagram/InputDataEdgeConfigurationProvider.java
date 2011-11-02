@@ -35,6 +35,8 @@ public class InputDataEdgeConfigurationProvider extends
 				inputEdge.setSource((DataNode) source);
 				inputEdge.setTarget((Transformation) target);
 
+				((Transformation)target).getInput().add(inputEdge);
+				
 				return inputEdge;
 			}
 

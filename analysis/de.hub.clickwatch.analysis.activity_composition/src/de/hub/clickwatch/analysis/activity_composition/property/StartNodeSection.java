@@ -26,7 +26,7 @@ public class StartNodeSection extends GFPropertySection implements
 		final Shell shell = composite.getShell();
 		FormData data;
 		
-		label = factory.createCLabel(composite, "Test");		
+		label = factory.createCLabel(composite, "Start the transformation");		
 	}
 	
 	@Override

@@ -163,13 +163,22 @@ public interface ModelPackage extends EPackage {
 	int DATA_NODE__LABEL = NODE__LABEL;
 
 	/**
+	 * The feature id for the '<em><b>Output</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_NODE__OUTPUT = NODE_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Data Node</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_NODE_FEATURE_COUNT = NODE_FEATURE_COUNT + 0;
+	int DATA_NODE_FEATURE_COUNT = NODE_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link de.hub.clickwatch.analysis.activity_composition.model.impl.ModelNodeImpl <em>Node</em>}' class.
@@ -189,6 +198,15 @@ public interface ModelPackage extends EPackage {
 	 * @ordered
 	 */
 	int MODEL_NODE__LABEL = DATA_NODE__LABEL;
+
+	/**
+	 * The feature id for the '<em><b>Output</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL_NODE__OUTPUT = DATA_NODE__OUTPUT;
 
 	/**
 	 * The feature id for the '<em><b>Meta Model Resource</b></em>' attribute.
@@ -292,13 +310,22 @@ public interface ModelPackage extends EPackage {
 	int TRANSFORMATION__PROGRESS_CONNECTION = ACTION_NODE__PROGRESS_CONNECTION;
 
 	/**
-	 * The feature id for the '<em><b>Transformation Uri</b></em>' attribute.
+	 * The feature id for the '<em><b>Transformation File</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSFORMATION__TRANSFORMATION_URI = ACTION_NODE_FEATURE_COUNT + 0;
+	int TRANSFORMATION__TRANSFORMATION_FILE = ACTION_NODE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Input</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSFORMATION__INPUT = ACTION_NODE_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Transformation</em>' class.
@@ -307,7 +334,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSFORMATION_FEATURE_COUNT = ACTION_NODE_FEATURE_COUNT + 1;
+	int TRANSFORMATION_FEATURE_COUNT = ACTION_NODE_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link de.hub.clickwatch.analysis.activity_composition.model.impl.StartNodeImpl <em>Start Node</em>}' class.
@@ -593,6 +620,17 @@ public interface ModelPackage extends EPackage {
 	EClass getDataNode();
 
 	/**
+	 * Returns the meta object for the reference list '{@link de.hub.clickwatch.analysis.activity_composition.model.DataNode#getOutput <em>Output</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Output</em>'.
+	 * @see de.hub.clickwatch.analysis.activity_composition.model.DataNode#getOutput()
+	 * @see #getDataNode()
+	 * @generated
+	 */
+	EReference getDataNode_Output();
+
+	/**
 	 * Returns the meta object for class '{@link de.hub.clickwatch.analysis.activity_composition.model.ModelNode <em>Node</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -646,15 +684,26 @@ public interface ModelPackage extends EPackage {
 	EClass getTransformation();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.analysis.activity_composition.model.Transformation#getTransformationUri <em>Transformation Uri</em>}'.
+	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.analysis.activity_composition.model.Transformation#getTransformationFile <em>Transformation File</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Transformation Uri</em>'.
-	 * @see de.hub.clickwatch.analysis.activity_composition.model.Transformation#getTransformationUri()
+	 * @return the meta object for the attribute '<em>Transformation File</em>'.
+	 * @see de.hub.clickwatch.analysis.activity_composition.model.Transformation#getTransformationFile()
 	 * @see #getTransformation()
 	 * @generated
 	 */
-	EAttribute getTransformation_TransformationUri();
+	EAttribute getTransformation_TransformationFile();
+
+	/**
+	 * Returns the meta object for the reference list '{@link de.hub.clickwatch.analysis.activity_composition.model.Transformation#getInput <em>Input</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Input</em>'.
+	 * @see de.hub.clickwatch.analysis.activity_composition.model.Transformation#getInput()
+	 * @see #getTransformation()
+	 * @generated
+	 */
+	EReference getTransformation_Input();
 
 	/**
 	 * Returns the meta object for class '{@link de.hub.clickwatch.analysis.activity_composition.model.StartNode <em>Start Node</em>}'.
@@ -885,6 +934,14 @@ public interface ModelPackage extends EPackage {
 		EClass DATA_NODE = eINSTANCE.getDataNode();
 
 		/**
+		 * The meta object literal for the '<em><b>Output</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DATA_NODE__OUTPUT = eINSTANCE.getDataNode_Output();
+
+		/**
 		 * The meta object literal for the '{@link de.hub.clickwatch.analysis.activity_composition.model.impl.ModelNodeImpl <em>Node</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -929,12 +986,20 @@ public interface ModelPackage extends EPackage {
 		EClass TRANSFORMATION = eINSTANCE.getTransformation();
 
 		/**
-		 * The meta object literal for the '<em><b>Transformation Uri</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Transformation File</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute TRANSFORMATION__TRANSFORMATION_URI = eINSTANCE.getTransformation_TransformationUri();
+		EAttribute TRANSFORMATION__TRANSFORMATION_FILE = eINSTANCE.getTransformation_TransformationFile();
+
+		/**
+		 * The meta object literal for the '<em><b>Input</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TRANSFORMATION__INPUT = eINSTANCE.getTransformation_Input();
 
 		/**
 		 * The meta object literal for the '{@link de.hub.clickwatch.analysis.activity_composition.model.impl.StartNodeImpl <em>Start Node</em>}' class.

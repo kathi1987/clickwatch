@@ -8,14 +8,19 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="label" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Edge" eSuperTypes="#//Element"/>
-  <eClassifiers xsi:type="ecore:EClass" name="DataNode" eSuperTypes="#//Node"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DataNode" eSuperTypes="#//Node">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="output" upperBound="-1"
+        eType="#//OutputEdge"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ModelNode" eSuperTypes="#//DataNode">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="metaModelResource" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="metaModelClass" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="modelResource" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Transformation" eSuperTypes="#//ActionNode">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="transformationUri" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="transformationFile" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="input" upperBound="-1"
+        eType="#//InputEdge"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="StartNode" eSuperTypes="#//ActionNode"/>
   <eClassifiers xsi:type="ecore:EClass" name="ProgressEdge" eSuperTypes="#//Edge">

@@ -79,7 +79,19 @@
          <propertySection
                class="de.hub.clickwatch.analysis.activity_composition.property.StartNodeSection"
                filter="de.hub.clickwatch.analysis.activity_composition.property.StartNodeFilter"
-               id="de.hub.clickwatch.analysis.activity_composition.StartNode"
+               id="de.hub.clickwatch.analysis.activity_composition.StartNodeSection"
+               tab="de.hub.clickwatch.analysis.activity_composition.MainTab">
+         </propertySection>
+         <propertySection
+               class="de.hub.clickwatch.analysis.activity_composition.property.ModelNodeSection"
+               filter="de.hub.clickwatch.analysis.activity_composition.property.ModelNodeFilter"
+               id="de.hub.clickwatch.analysis.activity_composition.ModelNodeSection"
+               tab="de.hub.clickwatch.analysis.activity_composition.MainTab">
+         </propertySection>
+         <propertySection
+               class="de.hub.clickwatch.analysis.activity_composition.property.InputEdgeSection"
+               filter="de.hub.clickwatch.analysis.activity_composition.property.InputEdgeFilter"
+               id="de.hub.clickwatch.analysis.activity_composition.InputEdgeSection"
                tab="de.hub.clickwatch.analysis.activity_composition.MainTab">
          </propertySection>
       </propertySections>

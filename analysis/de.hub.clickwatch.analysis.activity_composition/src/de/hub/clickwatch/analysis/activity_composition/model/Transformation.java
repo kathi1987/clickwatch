@@ -6,6 +6,8 @@
  */
 package de.hub.clickwatch.analysis.activity_composition.model;
 
+import org.eclipse.emf.common.util.EList;
+
 
 /**
  * <!-- begin-user-doc -->
@@ -15,7 +17,8 @@ package de.hub.clickwatch.analysis.activity_composition.model;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link de.hub.clickwatch.analysis.activity_composition.model.Transformation#getTransformationUri <em>Transformation Uri</em>}</li>
+ *   <li>{@link de.hub.clickwatch.analysis.activity_composition.model.Transformation#getTransformationFile <em>Transformation File</em>}</li>
+ *   <li>{@link de.hub.clickwatch.analysis.activity_composition.model.Transformation#getInput <em>Input</em>}</li>
  * </ul>
  * </p>
  *
@@ -25,29 +28,45 @@ package de.hub.clickwatch.analysis.activity_composition.model;
  */
 public interface Transformation extends ActionNode {
 	/**
-	 * Returns the value of the '<em><b>Transformation Uri</b></em>' attribute.
+	 * Returns the value of the '<em><b>Transformation File</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Transformation Uri</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Transformation File</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Transformation Uri</em>' attribute.
-	 * @see #setTransformationUri(String)
-	 * @see de.hub.clickwatch.analysis.activity_composition.model.ModelPackage#getTransformation_TransformationUri()
+	 * @return the value of the '<em>Transformation File</em>' attribute.
+	 * @see #setTransformationFile(String)
+	 * @see de.hub.clickwatch.analysis.activity_composition.model.ModelPackage#getTransformation_TransformationFile()
 	 * @model
 	 * @generated
 	 */
-	String getTransformationUri();
+	String getTransformationFile();
 
 	/**
-	 * Sets the value of the '{@link de.hub.clickwatch.analysis.activity_composition.model.Transformation#getTransformationUri <em>Transformation Uri</em>}' attribute.
+	 * Sets the value of the '{@link de.hub.clickwatch.analysis.activity_composition.model.Transformation#getTransformationFile <em>Transformation File</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Transformation Uri</em>' attribute.
-	 * @see #getTransformationUri()
+	 * @param value the new value of the '<em>Transformation File</em>' attribute.
+	 * @see #getTransformationFile()
 	 * @generated
 	 */
-	void setTransformationUri(String value);
+	void setTransformationFile(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Input</b></em>' reference list.
+	 * The list contents are of type {@link de.hub.clickwatch.analysis.activity_composition.model.InputEdge}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Input</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Input</em>' reference list.
+	 * @see de.hub.clickwatch.analysis.activity_composition.model.ModelPackage#getTransformation_Input()
+	 * @model
+	 * @generated
+	 */
+	EList<InputEdge> getInput();
 
 } // Transformation

@@ -238,6 +238,15 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getDataNode_Output() {
+		return (EReference)dataNodeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getModelNode() {
 		return modelNodeEClass;
 	}
@@ -283,8 +292,17 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getTransformation_TransformationUri() {
+	public EAttribute getTransformation_TransformationFile() {
 		return (EAttribute)transformationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getTransformation_Input() {
+		return (EReference)transformationEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -458,6 +476,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		edgeEClass = createEClass(EDGE);
 
 		dataNodeEClass = createEClass(DATA_NODE);
+		createEReference(dataNodeEClass, DATA_NODE__OUTPUT);
 
 		modelNodeEClass = createEClass(MODEL_NODE);
 		createEAttribute(modelNodeEClass, MODEL_NODE__META_MODEL_RESOURCE);
@@ -465,7 +484,8 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		createEAttribute(modelNodeEClass, MODEL_NODE__MODEL_RESOURCE);
 
 		transformationEClass = createEClass(TRANSFORMATION);
-		createEAttribute(transformationEClass, TRANSFORMATION__TRANSFORMATION_URI);
+		createEAttribute(transformationEClass, TRANSFORMATION__TRANSFORMATION_FILE);
+		createEReference(transformationEClass, TRANSFORMATION__INPUT);
 
 		startNodeEClass = createEClass(START_NODE);
 
@@ -539,6 +559,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		initEClass(edgeEClass, Edge.class, "Edge", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(dataNodeEClass, DataNode.class, "DataNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getDataNode_Output(), this.getOutputEdge(), null, "output", null, 0, -1, DataNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(modelNodeEClass, ModelNode.class, "ModelNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getModelNode_MetaModelResource(), ecorePackage.getEString(), "metaModelResource", null, 0, 1, ModelNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -546,7 +567,8 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		initEAttribute(getModelNode_ModelResource(), ecorePackage.getEString(), "modelResource", null, 0, 1, ModelNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(transformationEClass, Transformation.class, "Transformation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getTransformation_TransformationUri(), ecorePackage.getEString(), "transformationUri", null, 0, 1, Transformation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTransformation_TransformationFile(), ecorePackage.getEString(), "transformationFile", null, 0, 1, Transformation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTransformation_Input(), this.getInputEdge(), null, "input", null, 0, -1, Transformation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(startNodeEClass, StartNode.class, "StartNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
