@@ -24,7 +24,7 @@ import de.hub.clickwatch.test.TestUtil;
 
 public class CompoundHandlerAdapterTest extends HandlerEventAdapterTest {
 
-//	@Ignore("requires a click setup on localhost")
+	@Ignore("requires a click setup on localhost")
 	@Test
 	public void test() throws Exception {
 		Injector injector = Guice.createInjector(ClickWatchModuleUtil.newBuilder()
@@ -45,6 +45,12 @@ public class CompoundHandlerAdapterTest extends HandlerEventAdapterTest {
         Node metaData = connection.getAdapter(IMetaDataAdapter.class).pullAllMetaData();
         connection.getAdapter(IMergeAdapter.class).merge(metaData);
         handlerEventAdapter.addEventListener(handlerEventListener);
+        connection.getAdapter(IErrorAdapter.class).addErrorListener(new IErrorListener() {           
+            @Override
+            public void handlerError(ClickWatchError error) {
+                Assert.assertTrue(false);
+            }
+        });
         handlerEventAdapter.start();
 
         for (int i = 0; i < 50; i++) {

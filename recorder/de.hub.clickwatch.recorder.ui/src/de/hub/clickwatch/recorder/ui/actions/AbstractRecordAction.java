@@ -10,7 +10,7 @@ import de.hub.clickwatch.connection.adapter.IPullHandlerAdapter;
 import de.hub.clickwatch.connection.adapter.internal.CompoundHandlerEventAdapter;
 import de.hub.clickwatch.connection.adapter.values.IValueAdapter;
 import de.hub.clickwatch.connection.adapter.values.StringValueAdapter;
-import de.hub.clickwatch.recorder.CWRecorderModule;
+import de.hub.clickwatch.recorder.ClickWatchRecorderModule;
 import de.hub.clickwatch.recorder.database.cwdatabase.Record;
 import de.hub.clickwatch.ui.modelactions.AbstractAction;
 import de.hub.clickwatch.util.ILogger;
@@ -38,10 +38,10 @@ public abstract class AbstractRecordAction extends AbstractAction<Record> {
 			
 		};
 		cwModule.setLogger(logger);
-		CWRecorderModule cwRecoderModule = new CWRecorderModule() {
+		ClickWatchRecorderModule cwRecoderModule = new ClickWatchRecorderModule() {
 
 			@Override
-			protected void configureSaveRecordFile() {
+			protected void configureSaveRecordFileDuringRecord() {
 				bind(boolean.class).annotatedWith(Names.named(B_SAVE_RECORD_FILE)).toInstance(Boolean.FALSE);	
 			}
 			

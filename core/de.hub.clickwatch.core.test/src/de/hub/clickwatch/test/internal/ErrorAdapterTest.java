@@ -18,10 +18,10 @@ import de.hub.clickwatch.connection.adapter.IHandlerAdapter;
 import de.hub.clickwatch.connection.adapter.values.IValueAdapter;
 import de.hub.clickwatch.model.ClickWatchError;
 import de.hub.clickwatch.model.Handler;
-import de.hub.clickwatch.test.AbstractClickwatchTest;
+import de.hub.clickwatch.test.ClickwatchTest;
 import de.hub.clickwatch.util.ClickSocketTestImpl;
 
-public class ErrorAdapterTest extends AbstractClickwatchTest {
+public class ErrorAdapterTest extends ClickwatchTest {
 	
 	private int errorCount = 0;
 	private boolean wrongErrorMessage = false;

@@ -4,8 +4,7 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-import de.hub.clickwatch.model.Handler;
-import de.hub.clickwatch.model.Node;
+import com.google.common.base.Preconditions;
 
 public class HBaseRowMap implements Serializable {
 	
@@ -20,10 +19,22 @@ public class HBaseRowMap implements Serializable {
 	private Map<String, byte[]> nodeKeys = new HashMap<String, byte[]>();
 	private Map<String, byte[]> handlerKeys = new HashMap<String, byte[]>();
 	
-	public byte[] createRow(String nodeId, String handlerId, long time) {
+	public byte[] createRow(String nodeId, String handlerId, long time, boolean isNew) {
 		byte[] nodeKey = nodeKeys.get(nodeId);
 		byte[] handlerKey = handlerKeys.get(handlerId);
 		byte[] timeKey = createTimeKey(time);  
+		
+		if (isNew && nodeKey == null) {
+		    nodeKey = toByteArray(nodeUnique++, NODE_KEY_LENGTH);
+            nodeKeys.put(nodeId, nodeKey); 
+		}
+		if (isNew && handlerKey == null) {
+		    handlerKey = toByteArray(handlerUnique++, HANDLER_KEY_LENGTH);
+		    handlerKeys.put(handlerId, handlerKey);
+		}
+		
+		Preconditions.checkArgument(nodeKey != null);
+		Preconditions.checkArgument(handlerKey != null);
 		
 		byte[] row = new byte[nodeKey.length + handlerKey.length + timeKey.length];
 		for (int i = 0; i < nodeKey.length; i++) row[i] = nodeKey[i];
@@ -52,17 +63,6 @@ public class HBaseRowMap implements Serializable {
 		return ("" + (int)((Math.pow(10, length) - 1) - value)).getBytes();
 	}
 	
-	public synchronized void addNode(Node metaData) {
-		nodeKeys.put(metaData.getINetAddress(), toByteArray(nodeUnique++, NODE_KEY_LENGTH));
-		for (Handler handler: metaData.getAllHandlers()) {
-			String qualifiedName = handler.getQualifiedName();
-			byte[] key = handlerKeys.get(qualifiedName);
-			if (key == null) {
-				handlerKeys.put(qualifiedName, toByteArray(handlerUnique++, HANDLER_KEY_LENGTH));
-			}
-		}
-	}
-
 	public void reset() {
 		nodeUnique = 0;
 		handlerUnique = 0;
@@ -89,7 +89,5 @@ public class HBaseRowMap implements Serializable {
 			}
 		}
 		return true;
-	}
-
-	
+	}	
 }

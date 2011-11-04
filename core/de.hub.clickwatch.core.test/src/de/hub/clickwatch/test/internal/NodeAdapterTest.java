@@ -17,10 +17,10 @@ import de.hub.clickwatch.connection.adapter.values.StringValueAdapter;
 import de.hub.clickwatch.connection.adapter.values.XSDValueAdapter;
 import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.model.Node;
-import de.hub.clickwatch.test.AbstractClickwatchTest;
+import de.hub.clickwatch.test.ClickwatchTest;
 import de.hub.clickwatch.test.TestUtil;
 
-public class NodeAdapterTest extends AbstractClickwatchTest {
+public class NodeAdapterTest extends ClickwatchTest {
 	
 	@Override
 	protected HandlerDescr[] handlers() {

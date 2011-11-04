@@ -15,10 +15,10 @@ import de.hub.clickwatch.connection.INodeConnectionProvider;
 import de.hub.clickwatch.connection.adapter.INodeAdapter;
 import de.hub.clickwatch.connection.adapter.values.XmlValueAdapter;
 import de.hub.clickwatch.model.Handler;
-import de.hub.clickwatch.test.AbstractClickwatchTest;
+import de.hub.clickwatch.test.ClickwatchTest;
 import de.hub.clickwatch.test.TestUtil;
 
-public class XmlValueAdapterTest extends AbstractClickwatchTest {
+public class XmlValueAdapterTest extends ClickwatchTest {
 		
 	@Override
 	protected HandlerDescr[] handlers() {

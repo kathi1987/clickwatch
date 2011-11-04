@@ -20,7 +20,7 @@ import de.hub.clickwatch.main.IArgumentsProvider;
 import de.hub.clickwatch.main.IClickWatchContext;
 import de.hub.clickwatch.main.IClickWatchMain;
 import de.hub.clickwatch.main.IRecordProvider;
-import de.hub.clickwatch.recorder.CWRecorderModule;
+import de.hub.clickwatch.recorder.ClickWatchRecorderModule;
 import de.hub.clickwatch.recorder.database.cwdatabase.HBaseRowMap;
 import de.hub.clickwatch.recorder.database.cwdatabase.Record;
 import de.hub.clickwatch.recorder.database.hbase.HBaseUtil;
@@ -30,7 +30,7 @@ import de.hub.emfxml.XmlModelRepository;
 
 public class ExtrapolateDataBase implements IClickWatchMain, IApplication {
 	
-	@Inject @Named(CWRecorderModule.I_HANDLER_PER_RECORD_PROPERTY) int handlerPerRecord;
+	@Inject @Named(ClickWatchRecorderModule.I_PUTS_BUFFER_SIZE) int handlerPerRecord;
 	@Inject HBaseUtil hbaseUtil;
 	@Inject ILogger logger;
 	

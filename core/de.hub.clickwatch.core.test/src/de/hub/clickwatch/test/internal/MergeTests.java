@@ -17,12 +17,12 @@ import com.google.inject.Injector;
 import de.hub.clickwatch.ClickWatchModuleUtil;
 import de.hub.clickwatch.merge.ClickWatchNodeMergeConfiguration;
 import de.hub.clickwatch.merge.Merger;
-import de.hub.clickwatch.test.AbstractClickwatchTest;
+import de.hub.clickwatch.test.ClickwatchTest;
 import de.hub.clickwatch.test.TestUtil;
 import de.hub.emfxml.XmlModelRepository;
 import de.hub.emfxml.util.EmfXmlUtil;
 
-public class MergeTests extends AbstractClickwatchTest {
+public class MergeTests extends ClickwatchTest {
 
 	private XmlModelRepository xmlModelRepository;
 	private Merger merger;

@@ -20,7 +20,6 @@ import com.google.inject.Singleton;
 
 import de.hub.emfxml.util.EmfXmlUtil;
 
-
 @Singleton
 public class XmlModelRepository {
 	
@@ -68,9 +67,7 @@ public class XmlModelRepository {
 			
 			result.setNsURI(xsdUri.toString());
 			metaModels.put(xsdUri, result);
-		} else {
-			System.out.println("metamodel is reused");
-		}
+		} 
 		return result;		
 	}
 }

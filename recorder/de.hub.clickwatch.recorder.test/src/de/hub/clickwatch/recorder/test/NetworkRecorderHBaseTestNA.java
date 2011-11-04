@@ -12,7 +12,7 @@ import com.google.inject.Module;
 import de.hub.clickcontrol.IClickSocket;
 import de.hub.clickwatch.connection.adapter.values.IValueAdapter;
 import de.hub.clickwatch.connection.adapter.values.StringValueAdapter;
-import de.hub.clickwatch.recorder.CWRecorderModule;
+import de.hub.clickwatch.recorder.ClickWatchRecorderModule;
 import de.hub.clickwatch.recorder.ClickSocketPlayer;
 import de.hub.clickwatch.recorder.ClickSocketPlayerSocketImpl;
 import de.hub.clickwatch.recorder.NetworkRecorder;
@@ -33,10 +33,10 @@ public class NetworkRecorderHBaseTestNA extends AbstractTest {
 		String record = "../../ui/de.hub.clickwatch.ui/resources/records/record_11-06-23.clickwatchmodel";
 		return new Module[] {
 			new ClickSocketPlayer.PlayerModule(record, false),
-			new CWRecorderModule() {
+			new ClickWatchRecorderModule() {
 
 				@Override
-				protected void configureDataBaseRecordAdapter() {
+				protected void configureDataBaseAdapter() {
 					bind(IDataBaseRecordAdapter.class).to(HBaseDataBaseAdapter.class);
 				}
 

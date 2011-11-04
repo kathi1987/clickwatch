@@ -15,9 +15,9 @@ import de.hub.clickwatch.connection.INodeConnectionProvider;
 import de.hub.clickwatch.connection.adapter.IMetaDataAdapter;
 import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.model.Node;
-import de.hub.clickwatch.test.AbstractClickwatchTest;
+import de.hub.clickwatch.test.ClickwatchTest;
 
-public class MetaDataAdapterTest extends AbstractClickwatchTest {
+public class MetaDataAdapterTest extends ClickwatchTest {
 
 	@Override
 	protected HandlerDescr[] handlers() {

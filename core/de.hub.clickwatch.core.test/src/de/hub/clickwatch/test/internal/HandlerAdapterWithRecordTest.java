@@ -11,10 +11,10 @@ import de.hub.clickwatch.connection.INodeConnection;
 import de.hub.clickwatch.connection.INodeConnectionProvider;
 import de.hub.clickwatch.connection.adapter.INodeAdapter;
 import de.hub.clickwatch.connection.adapter.values.StringValueAdapter;
-import de.hub.clickwatch.test.AbstractClickwatchTest;
+import de.hub.clickwatch.test.ClickwatchTest;
 import de.hub.clickwatch.test.TestUtil;
 
-public class HandlerAdapterWithRecordTest extends AbstractClickwatchTest {
+public class HandlerAdapterWithRecordTest extends ClickwatchTest {
 
 	@Ignore("memoryleak test, only perform when indicated")
 	@Test

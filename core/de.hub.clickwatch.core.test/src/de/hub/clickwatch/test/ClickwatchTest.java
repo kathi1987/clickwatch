@@ -4,15 +4,19 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintStream;
 
+import junit.framework.Assert;
+
 import org.eclipse.emf.common.util.URI;
 import org.junit.BeforeClass;
 
 import click.ControlSocket.HandlerInfo;
 import de.hub.clickcontrol.IClickSocket;
+import de.hub.clickwatch.ClickWatchModuleUtil;
 import de.hub.clickwatch.ClickWatchStandaloneSetup;
 import de.hub.clickwatch.util.ClickSocketTestImpl;
+import de.hub.clickwatch.util.ILogger;
 
-public abstract class AbstractClickwatchTest {
+public abstract class ClickwatchTest {
 	
 	@BeforeClass
 	public static void setupClass() {
@@ -29,7 +33,7 @@ public abstract class AbstractClickwatchTest {
 	}
 	
 	protected final URI getTestRecordURI() {
-		return URI.createFileURI("resources/test_record.clickwatchmodel");
+		return URI.createFileURI("../../core/de.hub.clickwatch.core.test/resources/test_record.clickwatchmodel");
 	}
 	
 	protected final class HandlerDescr extends HandlerInfo {
@@ -59,7 +63,7 @@ public abstract class AbstractClickwatchTest {
 
 		@Override
 		public void handleWrite(String element, String handler, String value) {
-			AbstractClickwatchTest.this.handlerWrite(element, handler, value);
+			ClickwatchTest.this.handlerWrite(element, handler, value);
 		}
 	}
 	
@@ -82,4 +86,14 @@ public abstract class AbstractClickwatchTest {
 	protected HandlerDescr[] handlers() {
 		return new HandlerDescr[] { };
 	}
+
+    protected ILogger getTestLogger() {
+        return new ILogger() {            
+            @Override
+            public void log(int level, String message, Throwable exception) {
+                Assert.assertFalse(level == ILogger.ERROR || level == ILogger.WARNING);
+                ClickWatchModuleUtil.log(System.out, level, message, exception);
+            }
+        };
+    }
 }

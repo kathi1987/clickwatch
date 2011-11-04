@@ -34,6 +34,6 @@ Require-Bundle: org.eclipse.core.runtime;visibility:=reexport,
  org.eclipse.emf.ecore.xmi;visibility:=reexport,
  com.google.guice;bundle-version="3.0.0";visibility:=reexport,
  com.google.collect;bundle-version="1.0.0";visibility:=reexport,
- edu.mit.clickcontrol;bundle-version="2.0.0",
+ edu.mit.clickcontrol;bundle-version="2.0.0";visibility:=reexport,
  de.hub.emfxml;bundle-version="2.0.0";visibility:=reexport
 Bundle-ActivationPolicy: lazy

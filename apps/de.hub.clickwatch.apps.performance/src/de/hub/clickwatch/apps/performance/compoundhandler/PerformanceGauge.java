@@ -19,7 +19,7 @@ import de.hub.clickwatch.connection.adapter.IPullHandlerAdapter;
 import de.hub.clickwatch.connection.adapter.internal.CompoundHandlerEventAdapter;
 import de.hub.clickwatch.connection.adapter.internal.HandlerEventAdapter;
 import de.hub.clickwatch.model.Handler;
-import de.hub.clickwatch.recorder.CWRecorderModule;
+import de.hub.clickwatch.recorder.ClickWatchRecorderModule;
 import de.hub.clickwatch.recorder.NetworkRecorder;
 import de.hub.clickwatch.recorder.NodeRecorder;
 import de.hub.clickwatch.recorder.database.DummyDataBaseAdapter;
@@ -114,10 +114,10 @@ public class PerformanceGauge {
 			}
 			
 		};
-		CWRecorderModule cwRecorderModule = new CWRecorderModule() {
+		ClickWatchRecorderModule cwRecorderModule = new ClickWatchRecorderModule() {
 
 			@Override
-			protected void configureDataBaseRecordAdapter() {
+			protected void configureDataBaseAdapter() {
 				bind(IDataBaseRecordAdapter.class).to(DummyDataBaseAdapter.class);
 			}
 

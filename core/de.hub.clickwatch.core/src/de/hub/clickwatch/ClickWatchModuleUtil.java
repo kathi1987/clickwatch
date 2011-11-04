@@ -47,6 +47,7 @@ public class ClickWatchModuleUtil {
 			// empty
 		}
 		
+		private ILogger logger = null;
 		private int debugLevel = 2; // 1,2,3,4
 		private String logFile = null;
 		private PrintStream logOut = System.out;
@@ -71,6 +72,11 @@ public class ClickWatchModuleUtil {
 		public ClickWatchModuleBuilder wDebugLvl(int debugLevel) {
 			wDebug(debugLevel, System.out);
 			return this;
+		}
+		
+		public ClickWatchModuleBuilder wLogger(ILogger logger) {
+		    this.logger = logger;
+		    return this;
 		}
 		
 		public ClickWatchModuleBuilder wDebug(int debugLevel, String logFile) {
@@ -142,42 +148,27 @@ public class ClickWatchModuleUtil {
 			return new ClickWatchModule() {			    
 				@Override
 				protected ILogger createLogger() {
-					return new ILogger() {
-						@Override
-						public synchronized void log(int status, String message,
-								Throwable exception) {
-							if (logFile != null) {
-								try {
-									logOut = new PrintStream(new File(logFile));
-								} catch (FileNotFoundException e) {
-									Throwables.propagate(e);
-								}
-							}
-							if ((debugLevel) >= status) {
-								logOut.print(DateFormat.getDateTimeInstance()
-										.format(new Date()) + " ");
-
-								if (status == ILogger.DEBUG) {
-									logOut.print("[DEBUG] ");
-								} else if (status == ILogger.INFO) {
-									logOut.print("[INFO] ");
-								} else if (status == ILogger.WARNING) {
-									logOut.print("[WARNING] ");
-								} else if (status == ILogger.ERROR) {
-									logOut.print("[ERROR] ");
-								}
-
-								logOut.print(message);
-								if (exception != null) {
-									logOut.println(": "
-											+ exception.getMessage());
-									exception.printStackTrace(logOut);
-								}
-								logOut.println("");
-								logOut.flush();
-							}
-						}
-					};
+				    if (logger != null) {
+                        return logger;
+                    } else {
+    					return new ILogger() {
+    						@Override
+    						public synchronized void log(int status, String message,
+    								Throwable exception) {
+    						
+    							if (logFile != null) {
+    								try {
+    									logOut = new PrintStream(new File(logFile));
+    								} catch (FileNotFoundException e) {
+    									Throwables.propagate(e);
+    								}
+    							}
+    							if ((debugLevel) >= status) {
+    								ClickWatchModuleUtil.log(logOut, status, message, exception);
+    							}
+    						}                        
+    					};
+                    }
 				}
 
 				@Override
@@ -276,4 +267,28 @@ public class ClickWatchModuleUtil {
 			};
 		}
 	}
+	
+    public static void log(PrintStream logOut, int status, String message, Throwable exception) {
+        logOut.print(DateFormat.getDateTimeInstance()
+                .format(new Date()) + " ");
+
+        if (status == ILogger.DEBUG) {
+            logOut.print("[DEBUG] ");
+        } else if (status == ILogger.INFO) {
+            logOut.print("[INFO] ");
+        } else if (status == ILogger.WARNING) {
+            logOut.print("[WARNING] ");
+        } else if (status == ILogger.ERROR) {
+            logOut.print("[ERROR] ");
+        }
+
+        logOut.print(message);
+        if (exception != null) {
+            logOut.println(": "
+                    + exception.getMessage());
+            exception.printStackTrace(logOut);
+        }
+        logOut.println("");
+        logOut.flush();
+    }
 }

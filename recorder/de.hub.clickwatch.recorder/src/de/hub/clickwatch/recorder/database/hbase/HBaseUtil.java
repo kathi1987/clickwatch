@@ -9,17 +9,23 @@ import org.apache.hadoop.hbase.HColumnDescriptor;
 import org.apache.hadoop.hbase.HTableDescriptor;
 import org.apache.hadoop.hbase.client.HBaseAdmin;
 import org.apache.hadoop.hbase.client.HTable;
+import org.apache.hadoop.hbase.client.Put;
 
 import com.google.common.base.Throwables;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
+import de.hub.clickwatch.connection.adapter.values.IValueAdapter;
+import de.hub.clickwatch.model.Handler;
+import de.hub.clickwatch.model.Node;
+import de.hub.clickwatch.recorder.database.cwdatabase.HBaseRowMap;
 import de.hub.clickwatch.util.ILogger;
 
 @Singleton
 public class HBaseUtil {
 	
-	private @Inject ILogger logger;
+	@Inject private ILogger logger;
+	@Inject private IValueAdapter valueAdapter;
 	private Configuration config = null;
 	
 	public static final byte[] colFamily = "value".getBytes();
@@ -54,6 +60,13 @@ public class HBaseUtil {
 		}
 		return config;
 	}
+	
+	public Put createPut(HBaseRowMap rowMap, Node node, Handler handler) {
+	    byte[] row = rowMap.createRow(node.getINetAddress(), handler.getQualifiedName(), handler.getTimestamp(), true);
+        Put put = new Put(row);
+        put.add(HBaseUtil.colFamily, HBaseUtil.col, valueAdapter.getPlainValue(handler).getBytes());
+        return put;
+	}
 
 	public HTable getHBaseTable(String tableName, boolean overwrite) {
 		HTable table = null;
@@ -66,7 +79,7 @@ public class HBaseUtil {
 				
 				boolean tableExists = admin.tableExists(tableName);
 				if (tableExists && overwrite) {
-					logger.log(ILogger.WARNING, "table for record already exists, i am dropping the existing table", null);
+					logger.log(ILogger.INFO, "table for record already exists, i am dropping the existing table", null);
 					admin.disableTable(tableName);
 					admin.deleteTable(tableName);
 					tableExists = false;

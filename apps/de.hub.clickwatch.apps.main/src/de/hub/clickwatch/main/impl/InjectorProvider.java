@@ -23,7 +23,7 @@ import de.hub.clickwatch.connection.adapter.values.StringValueAdapter;
 import de.hub.clickwatch.connection.adapter.values.XmlValueAdapter;
 import de.hub.clickwatch.main.IClickWatchContextAdapter;
 import de.hub.clickwatch.main.IInjectorProvider;
-import de.hub.clickwatch.recorder.CWRecorderModule;
+import de.hub.clickwatch.recorder.ClickWatchRecorderModule;
 import de.hub.clickwatch.recorder.database.DummyDataBaseAdapter;
 import de.hub.clickwatch.recorder.database.IDataBaseRecordAdapter;
 import de.hub.clickwatch.recorder.database.IDataBaseRetrieveAdapter;
@@ -265,10 +265,10 @@ public class InjectorProvider implements IClickWatchContextAdapter,
 		builder.wRecord(recordURI);
 		
 		ClickWatchModule clickWatchModule = builder.build();
-		CWRecorderModule cwRecorderModule = new CWRecorderModule() {
+		ClickWatchRecorderModule cwRecorderModule = new ClickWatchRecorderModule() {
 
 			@Override
-			protected void configureDataBaseRecordAdapter() {
+			protected void configureDataBaseAdapter() {
 				if (dataBaseType == DataBaseType.HBASE) {
 					bind(IDataBaseRecordAdapter.class).to(
 							HBaseDataBaseAdapter.class);
@@ -296,9 +296,9 @@ public class InjectorProvider implements IClickWatchContextAdapter,
 			}
 
 			@Override
-			protected void configureHandlerPerRecord() {
+			protected void configurePutsBufferSize() {
 				bind(int.class).annotatedWith(
-						Names.named(I_HANDLER_PER_RECORD_PROPERTY)).toInstance(
+						Names.named(I_PUTS_BUFFER_SIZE)).toInstance(
 						handlerPerRecord);
 			}
 

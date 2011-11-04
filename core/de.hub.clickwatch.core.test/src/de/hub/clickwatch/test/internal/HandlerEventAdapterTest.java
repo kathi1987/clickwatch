@@ -25,11 +25,11 @@ import de.hub.clickwatch.connection.adapter.values.XmlValueAdapter;
 import de.hub.clickwatch.model.ClickWatchError;
 import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.model.Node;
-import de.hub.clickwatch.test.AbstractClickwatchTest;
+import de.hub.clickwatch.test.ClickwatchTest;
 import de.hub.clickwatch.test.TestUtil;
 import de.hub.clickwatch.util.ILogger;
 
-public class HandlerEventAdapterTest extends AbstractClickwatchTest {
+public class HandlerEventAdapterTest extends ClickwatchTest {
 
     protected IValueAdapter valueAdapter = null;
     protected int handlerCount = 0;

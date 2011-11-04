@@ -15,9 +15,9 @@ import de.hub.clickwatch.connection.INodeConnectionProvider;
 import de.hub.clickwatch.connection.adapter.INodeAdapter;
 import de.hub.clickwatch.connection.adapter.values.StringValueAdapter;
 import de.hub.clickwatch.model.Handler;
-import de.hub.clickwatch.test.AbstractClickwatchTest;
+import de.hub.clickwatch.test.ClickwatchTest;
 
-public class StringValueAdapterTest extends AbstractClickwatchTest {
+public class StringValueAdapterTest extends ClickwatchTest {
 	
 	@Override
 	protected HandlerDescr[] handlers() {

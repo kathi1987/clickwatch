@@ -14,7 +14,7 @@ import de.hub.clickwatch.connection.adapter.values.IValueAdapter;
 import de.hub.clickwatch.connection.adapter.values.StringValueAdapter;
 import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.model.Node;
-import de.hub.clickwatch.recorder.CWRecorderModule;
+import de.hub.clickwatch.recorder.ClickWatchRecorderModule;
 import de.hub.clickwatch.recorder.NetworkRecorder;
 import de.hub.clickwatch.recorder.database.CWRecorderStandaloneSetup;
 import de.hub.clickwatch.recorder.database.DataBaseUtil;
@@ -31,7 +31,7 @@ public class AbstractDBTest extends AbstractAdapterTest {
 
 	@Override
 	protected Module[] getAdditionalModules() {
-		return new Module[] { new CWRecorderModule() {
+		return new Module[] { new ClickWatchRecorderModule() {
 
 			@Override
 			protected void configureRecordChangesOnly() {
@@ -44,7 +44,7 @@ public class AbstractDBTest extends AbstractAdapterTest {
 			}
 
 			@Override
-			protected void configureDataBaseRecordAdapter() {
+			protected void configureDataBaseAdapter() {
 				bind(IDataBaseRecordAdapter.class).to(getDataBaseRecordAdapterClass());
 			}
 

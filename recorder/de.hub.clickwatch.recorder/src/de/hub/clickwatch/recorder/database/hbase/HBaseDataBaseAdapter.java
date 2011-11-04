@@ -17,7 +17,7 @@ import com.google.inject.name.Named;
 import de.hub.clickwatch.connection.adapter.values.IValueAdapter;
 import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.model.Node;
-import de.hub.clickwatch.recorder.CWRecorderModule;
+import de.hub.clickwatch.recorder.ClickWatchRecorderModule;
 import de.hub.clickwatch.recorder.database.AbstractDataBaseRecordAdapter;
 import de.hub.clickwatch.recorder.database.IDataBaseRetrieveAdapter;
 import de.hub.clickwatch.recorder.database.cwdatabase.HBaseRowMap;
@@ -28,9 +28,9 @@ import de.hub.emfxml.XmlModelRepository;
 
 public class HBaseDataBaseAdapter extends AbstractDataBaseRecordAdapter implements IDataBaseRetrieveAdapter {
 	
-	@Inject @Named(CWRecorderModule.DB_VALUE_ADAPTER_PROPERTY) private IValueAdapter dbValueAdapter;
-	@Inject @Named(CWRecorderModule.I_HANDLER_PER_RECORD_PROPERTY) private int handlerPerRecord;
-	@Inject @Named(CWRecorderModule.B_SAVE_RECORD_FILE) private boolean saveRecordFile;
+	@Inject @Named(ClickWatchRecorderModule.DB_VALUE_ADAPTER_PROPERTY) private IValueAdapter dbValueAdapter;
+	@Inject @Named(ClickWatchRecorderModule.I_PUTS_BUFFER_SIZE) private int handlerPerRecord;
+	@Inject @Named(ClickWatchRecorderModule.B_SAVE_RECORD_FILE) private boolean saveRecordFile;
 	@Inject private ILogger logger;
 	@Inject HBaseUtil hbaseUtil;
 	@Inject private IValueAdapter valueAdapter;

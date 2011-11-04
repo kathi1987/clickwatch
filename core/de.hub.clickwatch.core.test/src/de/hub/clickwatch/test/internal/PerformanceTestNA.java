@@ -22,11 +22,11 @@ import de.hub.clickwatch.connection.adapter.values.XmlValueAdapter;
 import de.hub.clickwatch.model.ClickWatchModelFactory;
 import de.hub.clickwatch.model.Network;
 import de.hub.clickwatch.model.Node;
-import de.hub.clickwatch.test.AbstractClickwatchTest;
+import de.hub.clickwatch.test.ClickwatchTest;
 import de.hub.clickwatch.test.TestUtil;
 import de.hub.emfxml.util.EmfXmlUtil;
 
-public class PerformanceTestNA extends AbstractClickwatchTest {
+public class PerformanceTestNA extends ClickwatchTest {
 
 	private static NumberFormat milliesFormat = new DecimalFormat("#00:000");
 	

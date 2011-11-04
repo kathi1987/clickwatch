@@ -6,13 +6,13 @@ import com.google.inject.name.Named;
 
 import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.model.Node;
-import de.hub.clickwatch.recorder.CWRecorderModule;
+import de.hub.clickwatch.recorder.ClickWatchRecorderModule;
 import de.hub.clickwatch.recorder.database.cwdatabase.Record;
 import de.hub.clickwatch.util.ILogger;
 
 public abstract class AbstractDataBaseRecordAdapter implements IDataBaseRecordAdapter {
 	
-	@Inject @Named(CWRecorderModule.I_HANDLER_PER_RECORD_PROPERTY) private int handlerPerRecord;
+	@Inject @Named(ClickWatchRecorderModule.I_PUTS_BUFFER_SIZE) private int handlerPerRecord;
 	
 	@Inject protected ILogger logger;
 	

@@ -56,8 +56,8 @@ public class NodeRecorder implements Runnable {
 	@Inject private ILogger logger;
 	@Inject private INodeConnectionProvider ncp;
 	
-	@Inject @Named(CWRecorderModule.L_DEFAULT_UPDATE_INTERVAL_PROPERTY) private long defaultUpdateInterval;
-	@Inject @Named(CWRecorderModule.B_RECORD_CHANGES_ONLY_PROPERTY) private boolean recordChangesOnly;
+	@Inject @Named(ClickWatchRecorderModule.L_DEFAULT_UPDATE_INTERVAL_PROPERTY) private long defaultUpdateInterval;
+	@Inject @Named(ClickWatchRecorderModule.B_RECORD_CHANGES_ONLY_PROPERTY) private boolean recordChangesOnly;
 	@Inject private IValueAdapter valueAdapter;
 	
 	private List<Double> handlerPulledSValues = new ArrayList<Double>();
