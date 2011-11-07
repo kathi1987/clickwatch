@@ -170,6 +170,98 @@ public class ClickWatchModelItemProviderAdapterFactory extends ClickWatchModelAd
     }
 
 	/**
+     * This keeps track of the one adapter used for all {@link de.hub.clickwatch.model.StatisticsContainer} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected StatisticsContainerItemProvider statisticsContainerItemProvider;
+
+    /**
+     * This creates an adapter for a {@link de.hub.clickwatch.model.StatisticsContainer}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createStatisticsContainerAdapter() {
+        if (statisticsContainerItemProvider == null) {
+            statisticsContainerItemProvider = new StatisticsContainerItemProvider(this);
+        }
+
+        return statisticsContainerItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all {@link java.util.Map.Entry} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected EStringToStatisticMapItemProvider eStringToStatisticMapItemProvider;
+
+    /**
+     * This creates an adapter for a {@link java.util.Map.Entry}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createEStringToStatisticMapAdapter() {
+        if (eStringToStatisticMapItemProvider == null) {
+            eStringToStatisticMapItemProvider = new EStringToStatisticMapItemProvider(this);
+        }
+
+        return eStringToStatisticMapItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all {@link de.hub.clickwatch.model.Statistic} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected StatisticItemProvider statisticItemProvider;
+
+    /**
+     * This creates an adapter for a {@link de.hub.clickwatch.model.Statistic}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createStatisticAdapter() {
+        if (statisticItemProvider == null) {
+            statisticItemProvider = new StatisticItemProvider(this);
+        }
+
+        return statisticItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all {@link de.hub.clickwatch.model.Error} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected ErrorItemProvider errorItemProvider;
+
+    /**
+     * This creates an adapter for a {@link de.hub.clickwatch.model.Error}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createErrorAdapter() {
+        if (errorItemProvider == null) {
+            errorItemProvider = new ErrorItemProvider(this);
+        }
+
+        return errorItemProvider;
+    }
+
+    /**
      * This returns the root adapter factory that contains this factory.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -272,6 +364,10 @@ public class ClickWatchModelItemProviderAdapterFactory extends ClickWatchModelAd
         if (elementItemProvider != null) elementItemProvider.dispose();
         if (handlerItemProvider != null) handlerItemProvider.dispose();
         if (networkItemProvider != null) networkItemProvider.dispose();
+        if (statisticsContainerItemProvider != null) statisticsContainerItemProvider.dispose();
+        if (eStringToStatisticMapItemProvider != null) eStringToStatisticMapItemProvider.dispose();
+        if (statisticItemProvider != null) statisticItemProvider.dispose();
+        if (errorItemProvider != null) errorItemProvider.dispose();
     }
 
 }

@@ -15,7 +15,6 @@ import java.util.Map;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.ComposedImage;
@@ -26,7 +25,6 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import de.hub.clickwatch.model.BackboneType;
@@ -42,7 +40,7 @@ import de.hub.clickwatch.model.Node;
  * @generated
  */
 public class NodeItemProvider
-	extends ItemProviderAdapter
+	extends ModelElementWithStatisticsItemProvider
 	implements
 		IEditingDomainItemProvider,
 		IStructuredItemContentProvider,
@@ -73,12 +71,7 @@ public class NodeItemProvider
             addINetAddressPropertyDescriptor(object);
             addPortPropertyDescriptor(object);
             addBackbonePropertyDescriptor(object);
-            addActiveListenersPropertyDescriptor(object);
-            addErrorsPropertyDescriptor(object);
-            addConnectionPropertyDescriptor(object);
             addRetrievingPropertyDescriptor(object);
-            addListeningPropertyDescriptor(object);
-            addRecordingPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
@@ -141,28 +134,6 @@ public class NodeItemProvider
 	}
 
 	/**
-     * This adds a property descriptor for the Connection feature.
-     * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-     * @generated
-     */
-	protected void addConnectionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add
-            (createItemPropertyDescriptor
-                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                 getResourceLocator(),
-                 getString("_UI_Node_connection_feature"),
-                 getString("_UI_PropertyDescriptor_description", "_UI_Node_connection_feature", "_UI_Node_type"),
-                 ClickWatchModelPackage.Literals.NODE__CONNECTION,
-                 true,
-                 false,
-                 false,
-                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                 null,
-                 null));
-    }
-
-	/**
      * This adds a property descriptor for the Retrieving feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -176,50 +147,6 @@ public class NodeItemProvider
                  getString("_UI_Node_retrieving_feature"),
                  getString("_UI_PropertyDescriptor_description", "_UI_Node_retrieving_feature", "_UI_Node_type"),
                  ClickWatchModelPackage.Literals.NODE__RETRIEVING,
-                 true,
-                 false,
-                 false,
-                 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-                 null,
-                 null));
-    }
-
-    /**
-     * This adds a property descriptor for the Listening feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    protected void addListeningPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add
-            (createItemPropertyDescriptor
-                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                 getResourceLocator(),
-                 getString("_UI_Node_listening_feature"),
-                 getString("_UI_PropertyDescriptor_description", "_UI_Node_listening_feature", "_UI_Node_type"),
-                 ClickWatchModelPackage.Literals.NODE__LISTENING,
-                 true,
-                 false,
-                 false,
-                 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-                 null,
-                 null));
-    }
-
-    /**
-     * This adds a property descriptor for the Recording feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    protected void addRecordingPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add
-            (createItemPropertyDescriptor
-                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                 getResourceLocator(),
-                 getString("_UI_Node_recording_feature"),
-                 getString("_UI_PropertyDescriptor_description", "_UI_Node_recording_feature", "_UI_Node_type"),
-                 ClickWatchModelPackage.Literals.NODE__RECORDING,
                  true,
                  false,
                  false,
@@ -251,50 +178,6 @@ public class NodeItemProvider
     }
 
 	/**
-     * This adds a property descriptor for the Active Listeners feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    protected void addActiveListenersPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add
-            (createItemPropertyDescriptor
-                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                 getResourceLocator(),
-                 getString("_UI_Node_activeListeners_feature"),
-                 getString("_UI_PropertyDescriptor_description", "_UI_Node_activeListeners_feature", "_UI_Node_type"),
-                 ClickWatchModelPackage.Literals.NODE__ACTIVE_LISTENERS,
-                 false,
-                 false,
-                 false,
-                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                 null,
-                 null));
-    }
-
-    /**
-     * This adds a property descriptor for the Errors feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    protected void addErrorsPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add
-            (createItemPropertyDescriptor
-                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                 getResourceLocator(),
-                 getString("_UI_Node_errors_feature"),
-                 getString("_UI_PropertyDescriptor_description", "_UI_Node_errors_feature", "_UI_Node_type"),
-                 ClickWatchModelPackage.Literals.NODE__ERRORS,
-                 true,
-                 false,
-                 false,
-                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                 null,
-                 null));
-    }
-
-    /**
      * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
      * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -306,6 +189,7 @@ public class NodeItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
         if (childrenFeatures == null) {
             super.getChildrenFeatures(object);
+            childrenFeatures.add(ClickWatchModelPackage.Literals.NODE__ERRORS);
             childrenFeatures.add(ClickWatchModelPackage.Literals.NODE__ELEMENTS);
         }
         return childrenFeatures;
@@ -447,13 +331,13 @@ public class NodeItemProvider
             case ClickWatchModelPackage.NODE__PORT:
             case ClickWatchModelPackage.NODE__BACKBONE:
             case ClickWatchModelPackage.NODE__ACTIVE_LISTENERS:
-            case ClickWatchModelPackage.NODE__ERRORS:
             case ClickWatchModelPackage.NODE__CONNECTION:
             case ClickWatchModelPackage.NODE__RETRIEVING:
             case ClickWatchModelPackage.NODE__LISTENING:
             case ClickWatchModelPackage.NODE__RECORDING:
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
                 return;
+            case ClickWatchModelPackage.NODE__ERRORS:
             case ClickWatchModelPackage.NODE__ELEMENTS:
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
                 return;
@@ -476,17 +360,6 @@ public class NodeItemProvider
             (createChildParameter
                 (ClickWatchModelPackage.Literals.NODE__ELEMENTS,
                  ClickWatchModelFactory.eINSTANCE.createElement()));
-    }
-
-	/**
-     * Return the resource locator for this item provider's resources.
-     * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-     * @generated
-     */
-	@Override
-	public ResourceLocator getResourceLocator() {
-        return ClickWatchModelEditPlugin.INSTANCE;
     }
 
 }

@@ -7,7 +7,6 @@
 package de.hub.clickwatch.model;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
 
 import de.hub.clickwatch.connection.INodeConnection;
 import de.hub.clickwatch.connection.adapter.IHandlerEventListener;
@@ -22,14 +21,14 @@ import de.hub.clickwatch.connection.adapter.IHandlerEventListener;
  * <ul>
  *   <li>{@link de.hub.clickwatch.model.Node#getINetAddress <em>INet Address</em>}</li>
  *   <li>{@link de.hub.clickwatch.model.Node#getPort <em>Port</em>}</li>
- *   <li>{@link de.hub.clickwatch.model.Node#getElements <em>Elements</em>}</li>
  *   <li>{@link de.hub.clickwatch.model.Node#getBackbone <em>Backbone</em>}</li>
  *   <li>{@link de.hub.clickwatch.model.Node#getActiveListeners <em>Active Listeners</em>}</li>
- *   <li>{@link de.hub.clickwatch.model.Node#getErrors <em>Errors</em>}</li>
  *   <li>{@link de.hub.clickwatch.model.Node#getConnection <em>Connection</em>}</li>
  *   <li>{@link de.hub.clickwatch.model.Node#isRetrieving <em>Retrieving</em>}</li>
  *   <li>{@link de.hub.clickwatch.model.Node#isListening <em>Listening</em>}</li>
  *   <li>{@link de.hub.clickwatch.model.Node#isRecording <em>Recording</em>}</li>
+ *   <li>{@link de.hub.clickwatch.model.Node#getErrors <em>Errors</em>}</li>
+ *   <li>{@link de.hub.clickwatch.model.Node#getElements <em>Elements</em>}</li>
  * </ul>
  * </p>
  *
@@ -37,7 +36,7 @@ import de.hub.clickwatch.connection.adapter.IHandlerEventListener;
  * @model
  * @generated
  */
-public interface Node extends EObject {
+public interface Node extends ModelElementWithStatistics {
 	/**
      * Returns the value of the '<em><b>INet Address</b></em>' attribute.
      * The default value is <code>"localhost"</code>.
@@ -260,20 +259,20 @@ public interface Node extends EObject {
     EList<IHandlerEventListener> getActiveListeners();
 
     /**
-     * Returns the value of the '<em><b>Errors</b></em>' attribute list.
-     * The list contents are of type {@link de.hub.clickwatch.model.ClickWatchError}.
+     * Returns the value of the '<em><b>Errors</b></em>' containment reference list.
+     * The list contents are of type {@link de.hub.clickwatch.model.Error}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Errors</em>' attribute list isn't clear,
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * @return the value of the '<em>Errors</em>' attribute list.
+     * @return the value of the '<em>Errors</em>' containment reference list.
      * @see de.hub.clickwatch.model.ClickWatchModelPackage#getNode_Errors()
-     * @model default="" dataType="de.hub.clickwatch.model.Error" transient="true"
+     * @model containment="true" transient="true"
      * @generated
      */
-    EList<ClickWatchError> getErrors();
+    EList<de.hub.clickwatch.model.Error> getErrors();
 
     /**
      * <!-- begin-user-doc -->

@@ -80,8 +80,6 @@ public class HandlerItemProvider
             addNamePropertyDescriptor(object);
             addCanReadPropertyDescriptor(object);
             addCanWritePropertyDescriptor(object);
-            addChangedPropertyDescriptor(object);
-            addValuePropertyDescriptor(object);
             addTimestampPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
@@ -101,7 +99,7 @@ public class HandlerItemProvider
                  getString("_UI_Handler_name_feature"),
                  getString("_UI_PropertyDescriptor_description", "_UI_Handler_name_feature", "_UI_Handler_type"),
                  ClickWatchModelPackage.Literals.HANDLER__NAME,
-                 true,
+                 false,
                  false,
                  false,
                  ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
@@ -123,7 +121,7 @@ public class HandlerItemProvider
                  getString("_UI_Handler_canRead_feature"),
                  getString("_UI_PropertyDescriptor_description", "_UI_Handler_canRead_feature", "_UI_Handler_type"),
                  ClickWatchModelPackage.Literals.HANDLER__CAN_READ,
-                 true,
+                 false,
                  false,
                  false,
                  ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
@@ -145,32 +143,10 @@ public class HandlerItemProvider
                  getString("_UI_Handler_canWrite_feature"),
                  getString("_UI_PropertyDescriptor_description", "_UI_Handler_canWrite_feature", "_UI_Handler_type"),
                  ClickWatchModelPackage.Literals.HANDLER__CAN_WRITE,
-                 true,
+                 false,
                  false,
                  false,
                  ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-                 null,
-                 null));
-    }
-
-	/**
-     * This adds a property descriptor for the Value feature.
-     * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-     * @generated
-     */
-	protected void addValuePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add
-            (createItemPropertyDescriptor
-                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                 getResourceLocator(),
-                 getString("_UI_Handler_value_feature"),
-                 getString("_UI_PropertyDescriptor_description", "_UI_Handler_value_feature", "_UI_Handler_type"),
-                 ClickWatchModelPackage.Literals.HANDLER__VALUE,
-                 true,
-                 false,
-                 false,
-                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
                  null,
                  null));
     }
@@ -231,28 +207,6 @@ public class HandlerItemProvider
         // adding (see {@link AddCommand}) it as a child.
 
         return super.getChildFeature(object, child);
-    }
-
-	/**
-     * This adds a property descriptor for the Changed feature.
-     * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-     * @generated
-     */
-	protected void addChangedPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add
-            (createItemPropertyDescriptor
-                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                 getResourceLocator(),
-                 getString("_UI_Handler_changed_feature"),
-                 getString("_UI_PropertyDescriptor_description", "_UI_Handler_changed_feature", "_UI_Handler_type"),
-                 ClickWatchModelPackage.Literals.HANDLER__CHANGED,
-                 true,
-                 false,
-                 false,
-                 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-                 null,
-                 null));
     }
 
 	/**

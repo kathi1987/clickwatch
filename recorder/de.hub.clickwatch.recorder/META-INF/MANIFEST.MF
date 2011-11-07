@@ -47,8 +47,7 @@ Bundle-ClassPath: .,
  lib/stax-api-1.0.1.jar,
  lib/thrift-0.2.0.jar,
  lib/xmlenc-0.52.jar,
- lib/zookeeper-3.3.2.jar,
- lib/commons-math-2.2.jar
+ lib/zookeeper-3.3.2.jar
 Export-Package: de.hub.clickwatch.recorder,
  de.hub.clickwatch.recorder.database,
  de.hub.clickwatch.recorder.database.cwdatabase,

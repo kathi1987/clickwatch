@@ -6,6 +6,8 @@
  */
 package de.hub.clickwatch.model.impl;
 
+import java.util.Map;
+
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
@@ -20,13 +22,15 @@ import de.hub.clickwatch.connection.INodeConnection;
 import de.hub.clickwatch.connection.INodeConnectionProvider;
 import de.hub.clickwatch.connection.adapter.IHandlerEventListener;
 import de.hub.clickwatch.model.BackboneType;
-import de.hub.clickwatch.model.ClickWatchError;
 import de.hub.clickwatch.model.ClickWatchModelFactory;
 import de.hub.clickwatch.model.ClickWatchModelPackage;
 import de.hub.clickwatch.model.Element;
 import de.hub.clickwatch.model.Handler;
+import de.hub.clickwatch.model.ModelElementWithStatistics;
 import de.hub.clickwatch.model.Network;
 import de.hub.clickwatch.model.Node;
+import de.hub.clickwatch.model.Statistic;
+import de.hub.clickwatch.model.StatisticsContainer;
 
 
 
@@ -67,6 +71,41 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
 
 	/**
      * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EClass statisticsContainerEClass = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EClass eStringToStatisticMapEClass = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EClass statisticEClass = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EClass errorEClass = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EClass modelElementWithStatisticsEClass = null;
+
+    /**
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
      */
@@ -98,7 +137,7 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
      * <!-- end-user-doc -->
      * @generated
      */
-    private EDataType errorEDataType = null;
+    private EDataType exceptionEDataType = null;
 
     /**
      * Creates an instance of the model <b>Package</b>, registered with
@@ -197,7 +236,7 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
      * @generated
      */
 	public EReference getNode_Elements() {
-        return (EReference)nodeEClass.getEStructuralFeatures().get(2);
+        return (EReference)nodeEClass.getEStructuralFeatures().get(9);
     }
 
 	/**
@@ -206,7 +245,7 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
      * @generated
      */
 	public EAttribute getNode_Connection() {
-        return (EAttribute)nodeEClass.getEStructuralFeatures().get(6);
+        return (EAttribute)nodeEClass.getEStructuralFeatures().get(4);
     }
 
 	/**
@@ -215,7 +254,7 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
      * @generated
      */
     public EAttribute getNode_Retrieving() {
-        return (EAttribute)nodeEClass.getEStructuralFeatures().get(7);
+        return (EAttribute)nodeEClass.getEStructuralFeatures().get(5);
     }
 
     /**
@@ -224,7 +263,7 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
      * @generated
      */
     public EAttribute getNode_Listening() {
-        return (EAttribute)nodeEClass.getEStructuralFeatures().get(8);
+        return (EAttribute)nodeEClass.getEStructuralFeatures().get(6);
     }
 
     /**
@@ -233,7 +272,7 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
      * @generated
      */
     public EAttribute getNode_Recording() {
-        return (EAttribute)nodeEClass.getEStructuralFeatures().get(9);
+        return (EAttribute)nodeEClass.getEStructuralFeatures().get(7);
     }
 
     /**
@@ -242,7 +281,7 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
      * @generated
      */
 	public EAttribute getNode_Backbone() {
-        return (EAttribute)nodeEClass.getEStructuralFeatures().get(3);
+        return (EAttribute)nodeEClass.getEStructuralFeatures().get(2);
     }
 
 	/**
@@ -251,7 +290,7 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
      * @generated
      */
     public EAttribute getNode_ActiveListeners() {
-        return (EAttribute)nodeEClass.getEStructuralFeatures().get(4);
+        return (EAttribute)nodeEClass.getEStructuralFeatures().get(3);
     }
 
     /**
@@ -259,8 +298,8 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
      * <!-- end-user-doc -->
      * @generated
      */
-    public EAttribute getNode_Errors() {
-        return (EAttribute)nodeEClass.getEStructuralFeatures().get(5);
+    public EReference getNode_Errors() {
+        return (EReference)nodeEClass.getEStructuralFeatures().get(8);
     }
 
     /**
@@ -436,6 +475,105 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
 
 	/**
      * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EClass getStatisticsContainer() {
+        return statisticsContainerEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getStatisticsContainer_Statistics() {
+        return (EReference)statisticsContainerEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EClass getEStringToStatisticMap() {
+        return eStringToStatisticMapEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getEStringToStatisticMap_Key() {
+        return (EAttribute)eStringToStatisticMapEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getEStringToStatisticMap_Value() {
+        return (EReference)eStringToStatisticMapEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EClass getStatistic() {
+        return statisticEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getStatistic_Sum() {
+        return (EAttribute)statisticEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getStatistic_Count() {
+        return (EAttribute)statisticEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getStatistic_Mean() {
+        return (EAttribute)statisticEClass.getEStructuralFeatures().get(2);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EClass getModelElementWithStatistics() {
+        return modelElementWithStatisticsEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getModelElementWithStatistics_Statistics() {
+        return (EReference)modelElementWithStatisticsEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
      */
@@ -475,8 +613,35 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
      * <!-- end-user-doc -->
      * @generated
      */
-    public EDataType getError() {
-        return errorEDataType;
+    public EDataType getException() {
+        return exceptionEDataType;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EClass getError() {
+        return errorEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getError_Message() {
+        return (EAttribute)errorEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getError_Exception() {
+        return (EAttribute)errorEClass.getEStructuralFeatures().get(1);
     }
 
     /**
@@ -501,14 +666,14 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
         nodeEClass = createEClass(NODE);
         createEAttribute(nodeEClass, NODE__INET_ADDRESS);
         createEAttribute(nodeEClass, NODE__PORT);
-        createEReference(nodeEClass, NODE__ELEMENTS);
         createEAttribute(nodeEClass, NODE__BACKBONE);
         createEAttribute(nodeEClass, NODE__ACTIVE_LISTENERS);
-        createEAttribute(nodeEClass, NODE__ERRORS);
         createEAttribute(nodeEClass, NODE__CONNECTION);
         createEAttribute(nodeEClass, NODE__RETRIEVING);
         createEAttribute(nodeEClass, NODE__LISTENING);
         createEAttribute(nodeEClass, NODE__RECORDING);
+        createEReference(nodeEClass, NODE__ERRORS);
+        createEReference(nodeEClass, NODE__ELEMENTS);
 
         elementEClass = createEClass(ELEMENT);
         createEAttribute(elementEClass, ELEMENT__NAME);
@@ -532,6 +697,25 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
         createEAttribute(networkEClass, NETWORK__HANDLER_FILTER);
         createEReference(networkEClass, NETWORK__SUBNETWORKS);
 
+        modelElementWithStatisticsEClass = createEClass(MODEL_ELEMENT_WITH_STATISTICS);
+        createEReference(modelElementWithStatisticsEClass, MODEL_ELEMENT_WITH_STATISTICS__STATISTICS);
+
+        statisticsContainerEClass = createEClass(STATISTICS_CONTAINER);
+        createEReference(statisticsContainerEClass, STATISTICS_CONTAINER__STATISTICS);
+
+        eStringToStatisticMapEClass = createEClass(ESTRING_TO_STATISTIC_MAP);
+        createEAttribute(eStringToStatisticMapEClass, ESTRING_TO_STATISTIC_MAP__KEY);
+        createEReference(eStringToStatisticMapEClass, ESTRING_TO_STATISTIC_MAP__VALUE);
+
+        statisticEClass = createEClass(STATISTIC);
+        createEAttribute(statisticEClass, STATISTIC__SUM);
+        createEAttribute(statisticEClass, STATISTIC__COUNT);
+        createEAttribute(statisticEClass, STATISTIC__MEAN);
+
+        errorEClass = createEClass(ERROR);
+        createEAttribute(errorEClass, ERROR__MESSAGE);
+        createEAttribute(errorEClass, ERROR__EXCEPTION);
+
         // Create enums
         backboneTypeEEnum = createEEnum(BACKBONE_TYPE);
 
@@ -539,7 +723,7 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
         iNodeConnectionEDataType = createEDataType(INODE_CONNECTION);
         iNodeConnectionProviderEDataType = createEDataType(INODE_CONNECTION_PROVIDER);
         iHandlerEventListenerEDataType = createEDataType(IHANDLER_EVENT_LISTENER);
-        errorEDataType = createEDataType(ERROR);
+        exceptionEDataType = createEDataType(EXCEPTION);
     }
 
 	/**
@@ -570,19 +754,21 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
         // Set bounds for type parameters
 
         // Add supertypes to classes
+        nodeEClass.getESuperTypes().add(this.getModelElementWithStatistics());
+        networkEClass.getESuperTypes().add(this.getModelElementWithStatistics());
 
         // Initialize classes and features; add operations and parameters
         initEClass(nodeEClass, Node.class, "Node", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getNode_INetAddress(), ecorePackage.getEString(), "iNetAddress", "localhost", 0, 1, Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getNode_Port(), ecorePackage.getEString(), "port", "7777", 0, 1, Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getNode_Elements(), this.getElement(), null, "elements", null, 0, -1, Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getNode_Backbone(), this.getBackboneType(), "backbone", "unknown", 0, 1, Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getNode_ActiveListeners(), this.getIHandlerEventListener(), "activeListeners", "", 0, -1, Node.class, IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-        initEAttribute(getNode_Errors(), this.getError(), "errors", "", 0, -1, Node.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getNode_Connection(), this.getINodeConnection(), "connection", null, 0, 1, Node.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getNode_Retrieving(), ecorePackage.getEBoolean(), "retrieving", null, 0, 1, Node.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getNode_Listening(), ecorePackage.getEBoolean(), "listening", null, 0, 1, Node.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getNode_Recording(), ecorePackage.getEBoolean(), "recording", null, 0, 1, Node.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getNode_Errors(), this.getError(), null, "errors", null, 0, -1, Node.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getNode_Elements(), this.getElement(), null, "elements", null, 0, -1, Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         EOperation op = addEOperation(nodeEClass, this.getHandler(), "getHandler", 0, 1, IS_UNIQUE, IS_ORDERED);
         addEParameter(op, ecorePackage.getEString(), "qualifiedName", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -632,6 +818,31 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
         initEAttribute(getNetwork_HandlerFilter(), ecorePackage.getEString(), "HandlerFilter", null, 0, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getNetwork_Subnetworks(), this.getNetwork(), null, "subnetworks", null, 0, -1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+        initEClass(modelElementWithStatisticsEClass, ModelElementWithStatistics.class, "ModelElementWithStatistics", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getModelElementWithStatistics_Statistics(), this.getStatisticsContainer(), null, "statistics", null, 0, 1, ModelElementWithStatistics.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+        op = addEOperation(modelElementWithStatisticsEClass, this.getStatistic(), "getStatistics", 0, 1, IS_UNIQUE, IS_ORDERED);
+        addEParameter(op, ecorePackage.getEString(), "name", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+        initEClass(statisticsContainerEClass, StatisticsContainer.class, "StatisticsContainer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getStatisticsContainer_Statistics(), this.getEStringToStatisticMap(), null, "statistics", null, 0, -1, StatisticsContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+        initEClass(eStringToStatisticMapEClass, Map.Entry.class, "EStringToStatisticMap", !IS_ABSTRACT, !IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getEStringToStatisticMap_Key(), ecorePackage.getEString(), "key", null, 0, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getEStringToStatisticMap_Value(), this.getStatistic(), null, "value", null, 0, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+        initEClass(statisticEClass, Statistic.class, "Statistic", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getStatistic_Sum(), ecorePackage.getEDouble(), "sum", null, 0, 1, Statistic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getStatistic_Count(), ecorePackage.getEDouble(), "count", null, 0, 1, Statistic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getStatistic_Mean(), ecorePackage.getEDouble(), "mean", null, 0, 1, Statistic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+        op = addEOperation(statisticEClass, null, "addValue", 0, 1, IS_UNIQUE, IS_ORDERED);
+        addEParameter(op, ecorePackage.getEDouble(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+        initEClass(errorEClass, de.hub.clickwatch.model.Error.class, "Error", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getError_Message(), ecorePackage.getEString(), "message", null, 0, 1, de.hub.clickwatch.model.Error.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getError_Exception(), this.getException(), "exception", null, 0, 1, de.hub.clickwatch.model.Error.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
         // Initialize enums and add enum literals
         initEEnum(backboneTypeEEnum, BackboneType.class, "BackboneType");
         addEEnumLiteral(backboneTypeEEnum, BackboneType.WIRED);
@@ -642,7 +853,7 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
         initEDataType(iNodeConnectionEDataType, INodeConnection.class, "INodeConnection", !IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
         initEDataType(iNodeConnectionProviderEDataType, INodeConnectionProvider.class, "INodeConnectionProvider", !IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
         initEDataType(iHandlerEventListenerEDataType, IHandlerEventListener.class, "IHandlerEventListener", !IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
-        initEDataType(errorEDataType, ClickWatchError.class, "Error", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+        initEDataType(exceptionEDataType, Exception.class, "Exception", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
         // Create resource
         createResource(eNS_URI);

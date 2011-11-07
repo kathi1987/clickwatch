@@ -6,7 +6,8 @@ import java.util.HashSet;
 import com.google.inject.Inject;
 
 import de.hub.clickwatch.connection.adapter.IErrorAdapter;
-import de.hub.clickwatch.model.ClickWatchError;
+import de.hub.clickwatch.model.Error;
+import de.hub.clickwatch.model.util.ErrorUtil;
 import de.hub.clickwatch.util.ILogger;
 import de.hub.clickwatch.util.TaskQueues;
 
@@ -27,7 +28,7 @@ public class ErrorAdapter extends AbstractAdapter implements IErrorAdapter {
     }
 
     private void createErrorEvent(final String message, final Throwable e) {
-        final ClickWatchError error = new ClickWatchError(message, e);
+        final Error error = ErrorUtil.createError(message, (Exception)e);
         connection.getNode().getErrors().add(error);
 
         // Dispatch a task to all error listeners.

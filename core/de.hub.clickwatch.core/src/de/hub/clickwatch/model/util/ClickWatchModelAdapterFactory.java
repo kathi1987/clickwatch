@@ -9,6 +9,7 @@ package de.hub.clickwatch.model.util;
 
 
 import de.hub.clickwatch.model.*;
+import java.util.Map;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
@@ -17,8 +18,11 @@ import org.eclipse.emf.ecore.EObject;
 import de.hub.clickwatch.model.ClickWatchModelPackage;
 import de.hub.clickwatch.model.Element;
 import de.hub.clickwatch.model.Handler;
+import de.hub.clickwatch.model.ModelElementWithStatistics;
 import de.hub.clickwatch.model.Network;
 import de.hub.clickwatch.model.Node;
+import de.hub.clickwatch.model.Statistic;
+import de.hub.clickwatch.model.StatisticsContainer;
 
 
 /**
@@ -92,6 +96,26 @@ public class ClickWatchModelAdapterFactory extends AdapterFactoryImpl {
             @Override
             public Adapter caseNetwork(Network object) {
                 return createNetworkAdapter();
+            }
+            @Override
+            public Adapter caseModelElementWithStatistics(ModelElementWithStatistics object) {
+                return createModelElementWithStatisticsAdapter();
+            }
+            @Override
+            public Adapter caseStatisticsContainer(StatisticsContainer object) {
+                return createStatisticsContainerAdapter();
+            }
+            @Override
+            public Adapter caseEStringToStatisticMap(Map.Entry<String, Statistic> object) {
+                return createEStringToStatisticMapAdapter();
+            }
+            @Override
+            public Adapter caseStatistic(Statistic object) {
+                return createStatisticAdapter();
+            }
+            @Override
+            public Adapter caseError(de.hub.clickwatch.model.Error object) {
+                return createErrorAdapter();
             }
             @Override
             public Adapter defaultCase(EObject object) {
@@ -170,6 +194,76 @@ public class ClickWatchModelAdapterFactory extends AdapterFactoryImpl {
     }
 
 	/**
+     * Creates a new adapter for an object of class '{@link de.hub.clickwatch.model.StatisticsContainer <em>Statistics Container</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see de.hub.clickwatch.model.StatisticsContainer
+     * @generated
+     */
+    public Adapter createStatisticsContainerAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link java.util.Map.Entry <em>EString To Statistic Map</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see java.util.Map.Entry
+     * @generated
+     */
+    public Adapter createEStringToStatisticMapAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link de.hub.clickwatch.model.Statistic <em>Statistic</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see de.hub.clickwatch.model.Statistic
+     * @generated
+     */
+    public Adapter createStatisticAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link de.hub.clickwatch.model.Error <em>Error</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see de.hub.clickwatch.model.Error
+     * @generated
+     */
+    public Adapter createErrorAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link de.hub.clickwatch.model.ModelElementWithStatistics <em>Model Element With Statistics</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see de.hub.clickwatch.model.ModelElementWithStatistics
+     * @generated
+     */
+    public Adapter createModelElementWithStatisticsAdapter() {
+        return null;
+    }
+
+    /**
      * Creates a new adapter for the default case.
      * <!-- begin-user-doc -->
 	 * This default implementation returns null.

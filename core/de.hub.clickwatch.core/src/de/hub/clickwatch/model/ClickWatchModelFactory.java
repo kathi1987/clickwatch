@@ -8,8 +8,6 @@ package de.hub.clickwatch.model;
 
 import org.eclipse.emf.ecore.EFactory;
 
-import com.google.inject.Injector;
-
 /**
  * <!-- begin-user-doc -->
  * The <b>Factory</b> for the model.
@@ -64,6 +62,33 @@ public interface ClickWatchModelFactory extends EFactory {
 	Network createNetwork();
 
 	/**
+     * Returns a new object of class '<em>Statistics Container</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>Statistics Container</em>'.
+     * @generated
+     */
+    StatisticsContainer createStatisticsContainer();
+
+    /**
+     * Returns a new object of class '<em>Statistic</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>Statistic</em>'.
+     * @generated
+     */
+    Statistic createStatistic();
+
+    /**
+     * Returns a new object of class '<em>Error</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>Error</em>'.
+     * @generated
+     */
+    Error createError();
+
+    /**
      * Returns the package supported by this factory.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

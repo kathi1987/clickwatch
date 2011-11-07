@@ -16,9 +16,12 @@ public class NodeBuilder implements de.hub.clickwatch.model.util.builder.IModelB
   private java.lang.String m_port;
   private Boolean m_recording;
   private Boolean m_retrieving;
+  private de.hub.clickwatch.model.StatisticsContainer m_statistics;
+  private de.hub.clickwatch.model.util.builder.IModelBuilder<? extends de.hub.clickwatch.model.StatisticsContainer> m_featureStatisticsBuilder;
   private java.util.Collection<de.hub.clickwatch.model.Element> m_elements = new java.util.LinkedList<de.hub.clickwatch.model.Element>();
   private java.util.Collection<de.hub.clickwatch.model.util.builder.IModelBuilder<? extends de.hub.clickwatch.model.Element>> m_featureElementsBuilder = new java.util.LinkedList<de.hub.clickwatch.model.util.builder.IModelBuilder<? extends de.hub.clickwatch.model.Element>>();
-  private java.util.Collection<de.hub.clickwatch.model.ClickWatchError> m_errors = new java.util.LinkedList<de.hub.clickwatch.model.ClickWatchError>();
+  private java.util.Collection<de.hub.clickwatch.model.Error> m_errors = new java.util.LinkedList<de.hub.clickwatch.model.Error>();
+  private java.util.Collection<de.hub.clickwatch.model.util.builder.IModelBuilder<? extends de.hub.clickwatch.model.Error>> m_featureErrorsBuilder = new java.util.LinkedList<de.hub.clickwatch.model.util.builder.IModelBuilder<? extends de.hub.clickwatch.model.Error>>();
   // helper attributes
   private boolean m_featureBackboneSet = false;
   private boolean m_featureConnectionSet = false;
@@ -29,6 +32,7 @@ public class NodeBuilder implements de.hub.clickwatch.model.util.builder.IModelB
   private boolean m_featurePortSet = false;
   private boolean m_featureRecordingSet = false;
   private boolean m_featureRetrievingSet = false;
+  private boolean m_featureStatisticsSet = false;
 
   /**
    * Builder is not instantiated with a constructor.
@@ -59,6 +63,7 @@ public class NodeBuilder implements de.hub.clickwatch.model.util.builder.IModelB
     _builder.m_featureElementsBuilder = m_featureElementsBuilder;
     _builder.m_featureErrorsSet = m_featureErrorsSet;
     _builder.m_errors = m_errors;
+    _builder.m_featureErrorsBuilder = m_featureErrorsBuilder;
     _builder.m_featureINetAddressSet = m_featureINetAddressSet;
     _builder.m_iNetAddress = m_iNetAddress;
     _builder.m_featureListeningSet = m_featureListeningSet;
@@ -69,6 +74,9 @@ public class NodeBuilder implements de.hub.clickwatch.model.util.builder.IModelB
     _builder.m_recording = m_recording;
     _builder.m_featureRetrievingSet = m_featureRetrievingSet;
     _builder.m_retrieving = m_retrieving;
+    _builder.m_featureStatisticsSet = m_featureStatisticsSet;
+    _builder.m_statistics = m_statistics;
+    _builder.m_featureStatisticsBuilder = m_featureStatisticsBuilder;
     return _builder;
   }
 
@@ -99,6 +107,13 @@ public class NodeBuilder implements de.hub.clickwatch.model.util.builder.IModelB
     if (m_featureRetrievingSet) {
       _newInstance.setRetrieving(m_retrieving);
     }
+    if (m_featureStatisticsSet) {
+      _newInstance.setStatistics(m_statistics);
+    } else {
+      if (m_featureStatisticsBuilder != null) {
+        _newInstance.setStatistics(m_featureStatisticsBuilder.build());
+      }
+    }
     if (m_featureElementsSet) {
       _newInstance.getElements().addAll(m_elements);
     } else {
@@ -110,6 +125,12 @@ public class NodeBuilder implements de.hub.clickwatch.model.util.builder.IModelB
     }
     if (m_featureErrorsSet) {
       _newInstance.getErrors().addAll(m_errors);
+    } else {
+      if (!m_featureErrorsBuilder.isEmpty()) {
+        for (de.hub.clickwatch.model.util.builder.IModelBuilder<? extends de.hub.clickwatch.model.Error> builder : m_featureErrorsBuilder) {
+          _newInstance.getErrors().add(builder.build());
+        }
+      }
     }
     return _newInstance;
   }
@@ -156,6 +177,17 @@ public class NodeBuilder implements de.hub.clickwatch.model.util.builder.IModelB
     return this;
   }
 
+  public NodeBuilder withStatistics(de.hub.clickwatch.model.StatisticsContainer p_statistics) {
+    m_statistics = p_statistics;
+    m_featureStatisticsSet = true;
+    return this;
+  }
+
+  public NodeBuilder withStatistics(de.hub.clickwatch.model.util.builder.IModelBuilder<? extends de.hub.clickwatch.model.StatisticsContainer> p_statisticsContainerBuilder) {
+    m_featureStatisticsBuilder = p_statisticsContainerBuilder;
+    return this;
+  }
+
   public NodeBuilder withElements(de.hub.clickwatch.model.Element p_elements) {
     m_elements.add(p_elements);
     m_featureElementsSet = true;
@@ -173,15 +205,20 @@ public class NodeBuilder implements de.hub.clickwatch.model.util.builder.IModelB
     return this;
   }
 
-  public NodeBuilder withErrors(de.hub.clickwatch.model.ClickWatchError p_errors) {
+  public NodeBuilder withErrors(de.hub.clickwatch.model.Error p_errors) {
     m_errors.add(p_errors);
     m_featureErrorsSet = true;
     return this;
   }
 
-  public NodeBuilder withErrors(java.util.Collection<? extends de.hub.clickwatch.model.ClickWatchError> p_errors) {
+  public NodeBuilder withErrors(java.util.Collection<? extends de.hub.clickwatch.model.Error> p_errors) {
     m_errors.addAll(p_errors);
     m_featureErrorsSet = true;
+    return this;
+  }
+
+  public NodeBuilder withErrors(de.hub.clickwatch.model.util.builder.IModelBuilder<? extends de.hub.clickwatch.model.Error> p_errorBuilder) {
+    m_featureErrorsBuilder.add(p_errorBuilder);
     return this;
   }
 }

@@ -12,6 +12,8 @@ public class NetworkBuilder implements de.hub.clickwatch.model.util.builder.IMod
   private java.lang.String m_ElementFilter;
   private java.lang.String m_HandlerFilter;
   private java.lang.String m_name;
+  private de.hub.clickwatch.model.StatisticsContainer m_statistics;
+  private de.hub.clickwatch.model.util.builder.IModelBuilder<? extends de.hub.clickwatch.model.StatisticsContainer> m_featureStatisticsBuilder;
   private java.util.Collection<de.hub.clickwatch.model.Node> m_nodes = new java.util.LinkedList<de.hub.clickwatch.model.Node>();
   private java.util.Collection<de.hub.clickwatch.model.util.builder.IModelBuilder<? extends de.hub.clickwatch.model.Node>> m_featureNodesBuilder = new java.util.LinkedList<de.hub.clickwatch.model.util.builder.IModelBuilder<? extends de.hub.clickwatch.model.Node>>();
   private java.util.Collection<de.hub.clickwatch.model.Network> m_subnetworks = new java.util.LinkedList<de.hub.clickwatch.model.Network>();
@@ -21,6 +23,7 @@ public class NetworkBuilder implements de.hub.clickwatch.model.util.builder.IMod
   private boolean m_featureHandlerFilterSet = false;
   private boolean m_featureNameSet = false;
   private boolean m_featureNodesSet = false;
+  private boolean m_featureStatisticsSet = false;
   private boolean m_featureSubnetworksSet = false;
 
   /**
@@ -52,6 +55,9 @@ public class NetworkBuilder implements de.hub.clickwatch.model.util.builder.IMod
     _builder.m_featureNodesSet = m_featureNodesSet;
     _builder.m_nodes = m_nodes;
     _builder.m_featureNodesBuilder = m_featureNodesBuilder;
+    _builder.m_featureStatisticsSet = m_featureStatisticsSet;
+    _builder.m_statistics = m_statistics;
+    _builder.m_featureStatisticsBuilder = m_featureStatisticsBuilder;
     _builder.m_featureSubnetworksSet = m_featureSubnetworksSet;
     _builder.m_subnetworks = m_subnetworks;
     _builder.m_featureSubnetworksBuilder = m_featureSubnetworksBuilder;
@@ -72,6 +78,13 @@ public class NetworkBuilder implements de.hub.clickwatch.model.util.builder.IMod
     }
     if (m_featureNameSet) {
       _newInstance.setName(m_name);
+    }
+    if (m_featureStatisticsSet) {
+      _newInstance.setStatistics(m_statistics);
+    } else {
+      if (m_featureStatisticsBuilder != null) {
+        _newInstance.setStatistics(m_featureStatisticsBuilder.build());
+      }
     }
     if (m_featureNodesSet) {
       _newInstance.getNodes().addAll(m_nodes);
@@ -109,6 +122,17 @@ public class NetworkBuilder implements de.hub.clickwatch.model.util.builder.IMod
   public NetworkBuilder withName(java.lang.String p_name) {
     m_name = p_name;
     m_featureNameSet = true;
+    return this;
+  }
+
+  public NetworkBuilder withStatistics(de.hub.clickwatch.model.StatisticsContainer p_statistics) {
+    m_statistics = p_statistics;
+    m_featureStatisticsSet = true;
+    return this;
+  }
+
+  public NetworkBuilder withStatistics(de.hub.clickwatch.model.util.builder.IModelBuilder<? extends de.hub.clickwatch.model.StatisticsContainer> p_statisticsContainerBuilder) {
+    m_featureStatisticsBuilder = p_statisticsContainerBuilder;
     return this;
   }
 

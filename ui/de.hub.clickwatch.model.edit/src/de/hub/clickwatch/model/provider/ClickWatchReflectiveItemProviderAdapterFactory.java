@@ -181,23 +181,6 @@ public class ClickWatchReflectiveItemProviderAdapterFactory extends ReflectiveIt
 				return super.getText(object);
 			}
 		}
-		
-		// recording is not a feature any more, but maybe this piece of code can
-		// be used when we record with a DB		
-//		@Override
-//		public Object getImage(Object object) {
-//			if (object instanceof EObject) {
-//				for (Adapter adapter: ((EObject)object).eAdapters()) {
-//					if (adapter.equals(new IsRecordedAdapter())) {
-//						List<Object> images = new ArrayList<Object>();
-//						images.add(super.getImage(object));
-//						images.add(NewEditPlugin.INSTANCE.getImage("full/ovr16/recording"));
-//						return new ComposedImage(images);
-//					}
-//				}
-//			}
-//			return super.getImage(object);
-//		}
 
 		@Override
 		public Collection<?> getChildren(Object object) {

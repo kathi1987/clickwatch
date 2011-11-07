@@ -7,6 +7,7 @@
 package de.hub.clickwatch.model.util;
 
 import de.hub.clickwatch.model.*;
+import java.util.Map;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
@@ -14,8 +15,11 @@ import org.eclipse.emf.ecore.util.Switch;
 import de.hub.clickwatch.model.ClickWatchModelPackage;
 import de.hub.clickwatch.model.Element;
 import de.hub.clickwatch.model.Handler;
+import de.hub.clickwatch.model.ModelElementWithStatistics;
 import de.hub.clickwatch.model.Network;
 import de.hub.clickwatch.model.Node;
+import de.hub.clickwatch.model.Statistic;
+import de.hub.clickwatch.model.StatisticsContainer;
 
 
 /**
@@ -78,6 +82,7 @@ public class ClickWatchModelSwitch<T> extends Switch<T> {
             case ClickWatchModelPackage.NODE: {
                 Node node = (Node)theEObject;
                 T result = caseNode(node);
+                if (result == null) result = caseModelElementWithStatistics(node);
                 if (result == null) result = defaultCase(theEObject);
                 return result;
             }
@@ -96,6 +101,37 @@ public class ClickWatchModelSwitch<T> extends Switch<T> {
             case ClickWatchModelPackage.NETWORK: {
                 Network network = (Network)theEObject;
                 T result = caseNetwork(network);
+                if (result == null) result = caseModelElementWithStatistics(network);
+                if (result == null) result = defaultCase(theEObject);
+                return result;
+            }
+            case ClickWatchModelPackage.MODEL_ELEMENT_WITH_STATISTICS: {
+                ModelElementWithStatistics modelElementWithStatistics = (ModelElementWithStatistics)theEObject;
+                T result = caseModelElementWithStatistics(modelElementWithStatistics);
+                if (result == null) result = defaultCase(theEObject);
+                return result;
+            }
+            case ClickWatchModelPackage.STATISTICS_CONTAINER: {
+                StatisticsContainer statisticsContainer = (StatisticsContainer)theEObject;
+                T result = caseStatisticsContainer(statisticsContainer);
+                if (result == null) result = defaultCase(theEObject);
+                return result;
+            }
+            case ClickWatchModelPackage.ESTRING_TO_STATISTIC_MAP: {
+                @SuppressWarnings("unchecked") Map.Entry<String, Statistic> eStringToStatisticMap = (Map.Entry<String, Statistic>)theEObject;
+                T result = caseEStringToStatisticMap(eStringToStatisticMap);
+                if (result == null) result = defaultCase(theEObject);
+                return result;
+            }
+            case ClickWatchModelPackage.STATISTIC: {
+                Statistic statistic = (Statistic)theEObject;
+                T result = caseStatistic(statistic);
+                if (result == null) result = defaultCase(theEObject);
+                return result;
+            }
+            case ClickWatchModelPackage.ERROR: {
+                de.hub.clickwatch.model.Error error = (de.hub.clickwatch.model.Error)theEObject;
+                T result = caseError(error);
                 if (result == null) result = defaultCase(theEObject);
                 return result;
             }
@@ -164,6 +200,81 @@ public class ClickWatchModelSwitch<T> extends Switch<T> {
     }
 
 	/**
+     * Returns the result of interpreting the object as an instance of '<em>Statistics Container</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Statistics Container</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseStatisticsContainer(StatisticsContainer object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>EString To Statistic Map</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>EString To Statistic Map</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseEStringToStatisticMap(Map.Entry<String, Statistic> object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Statistic</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Statistic</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseStatistic(Statistic object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Error</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Error</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseError(de.hub.clickwatch.model.Error object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Model Element With Statistics</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Model Element With Statistics</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseModelElementWithStatistics(ModelElementWithStatistics object) {
+        return null;
+    }
+
+    /**
      * Returns the result of interpreting the object as an instance of '<em>EObject</em>'.
      * <!-- begin-user-doc -->
 	 * This implementation returns null;

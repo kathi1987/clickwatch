@@ -161,6 +161,7 @@ public class UiHandlerEventListener implements IHandlerEventListener {
             public void run() {
                 if (ensureConnected()) {
                     try {
+                        long start = System.currentTimeMillis();
                         IMergeAdapter mergeAdapter = node.getConnection().getAdapter(IMergeAdapter.class);
                         for (String handlerName: receivedHandler.keySet()) {
                             final Handler guiHandler = node.getHandler(handlerName);
@@ -176,6 +177,7 @@ public class UiHandlerEventListener implements IHandlerEventListener {
                                 mergeAdapter.merge(receivedHandler.get(handlerName));                             
                             }
                         }                        
+                        node.getStatistics("merge time").addValue(System.currentTimeMillis() - start);
                         node.setRetrieving(false);
                     } catch (Exception e) {
                         node.getConnection().getAdapter(IErrorAdapter.class)

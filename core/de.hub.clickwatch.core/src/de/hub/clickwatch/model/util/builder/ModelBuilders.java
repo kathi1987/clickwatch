@@ -23,4 +23,16 @@ public class ModelBuilders {
   public static final NetworkBuilder newNetworkBuilder() {
     return NetworkBuilder.newNetworkBuilder();
   }
+
+  public static final StatisticsContainerBuilder newStatisticsContainerBuilder() {
+    return StatisticsContainerBuilder.newStatisticsContainerBuilder();
+  }
+
+  public static final StatisticBuilder newStatisticBuilder() {
+    return StatisticBuilder.newStatisticBuilder();
+  }
+
+  public static final ErrorBuilder newErrorBuilder() {
+    return ErrorBuilder.newErrorBuilder();
+  }
 }

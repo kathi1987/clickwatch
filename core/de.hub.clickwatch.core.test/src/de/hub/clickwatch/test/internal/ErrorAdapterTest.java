@@ -16,7 +16,6 @@ import de.hub.clickwatch.connection.adapter.IErrorAdapter;
 import de.hub.clickwatch.connection.adapter.IErrorAdapter.IErrorListener;
 import de.hub.clickwatch.connection.adapter.IHandlerAdapter;
 import de.hub.clickwatch.connection.adapter.values.IValueAdapter;
-import de.hub.clickwatch.model.ClickWatchError;
 import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.test.ClickwatchTest;
 import de.hub.clickwatch.util.ClickSocketTestImpl;
@@ -67,7 +66,7 @@ public class ErrorAdapterTest extends ClickwatchTest {
 	
     private final IErrorListener errorListener = new IErrorListener() {
         @Override
-        public void handlerError(ClickWatchError error) {
+        public void handlerError(de.hub.clickwatch.model.Error error) {
             if (errorCount == 0) {
                 boolean equalsMessage = "test error".equals(error.getMessage());
                 boolean equalsExceptionMessage = "test error".equals(error.getException().getMessage());

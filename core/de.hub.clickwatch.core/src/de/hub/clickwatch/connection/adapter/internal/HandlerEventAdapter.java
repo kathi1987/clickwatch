@@ -113,6 +113,7 @@ public class HandlerEventAdapter extends AbstractAdapter implements IHandlerEven
 
     private class Listen implements Runnable {
         public void run() {
+            long start = System.currentTimeMillis();
             onReceivingStart();
             Collection<Handler> configuredHandlers = connection.getNode().getAllHandlers();
 
@@ -145,6 +146,7 @@ public class HandlerEventAdapter extends AbstractAdapter implements IHandlerEven
             }
             connection.releaseSocket();
             onReceivingStop();
+            connection.getNode().getStatistics("default handler receive time").addValue(System.currentTimeMillis() - start);
         }
     }
 

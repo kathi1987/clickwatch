@@ -19,8 +19,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
-import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -30,7 +28,6 @@ import de.hub.clickwatch.connection.INodeConnection;
 import de.hub.clickwatch.connection.adapter.IHandlerEventAdapter;
 import de.hub.clickwatch.connection.adapter.IHandlerEventListener;
 import de.hub.clickwatch.model.BackboneType;
-import de.hub.clickwatch.model.ClickWatchError;
 import de.hub.clickwatch.model.ClickWatchModelPackage;
 import de.hub.clickwatch.model.Element;
 import de.hub.clickwatch.model.Handler;
@@ -45,20 +42,20 @@ import de.hub.clickwatch.model.Node;
  * <ul>
  *   <li>{@link de.hub.clickwatch.model.impl.NodeImpl#getINetAddress <em>INet Address</em>}</li>
  *   <li>{@link de.hub.clickwatch.model.impl.NodeImpl#getPort <em>Port</em>}</li>
- *   <li>{@link de.hub.clickwatch.model.impl.NodeImpl#getElements <em>Elements</em>}</li>
  *   <li>{@link de.hub.clickwatch.model.impl.NodeImpl#getBackbone <em>Backbone</em>}</li>
  *   <li>{@link de.hub.clickwatch.model.impl.NodeImpl#getActiveListeners <em>Active Listeners</em>}</li>
- *   <li>{@link de.hub.clickwatch.model.impl.NodeImpl#getErrors <em>Errors</em>}</li>
  *   <li>{@link de.hub.clickwatch.model.impl.NodeImpl#getConnection <em>Connection</em>}</li>
  *   <li>{@link de.hub.clickwatch.model.impl.NodeImpl#isRetrieving <em>Retrieving</em>}</li>
  *   <li>{@link de.hub.clickwatch.model.impl.NodeImpl#isListening <em>Listening</em>}</li>
  *   <li>{@link de.hub.clickwatch.model.impl.NodeImpl#isRecording <em>Recording</em>}</li>
+ *   <li>{@link de.hub.clickwatch.model.impl.NodeImpl#getErrors <em>Errors</em>}</li>
+ *   <li>{@link de.hub.clickwatch.model.impl.NodeImpl#getElements <em>Elements</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class NodeImpl extends EObjectImpl implements Node {
+public class NodeImpl extends ModelElementWithStatisticsImpl implements Node {
     /**
      * The default value of the '{@link #getINetAddress() <em>INet Address</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -92,14 +89,6 @@ public class NodeImpl extends EObjectImpl implements Node {
      */
     protected String port = PORT_EDEFAULT;
     /**
-     * The cached value of the '{@link #getElements() <em>Elements</em>}' containment reference list.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * @see #getElements()
-     * @generated
-     * @ordered
-     */
-    protected EList<Element> elements;
-    /**
      * The default value of the '{@link #getBackbone() <em>Backbone</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @see #getBackbone()
@@ -125,14 +114,6 @@ public class NodeImpl extends EObjectImpl implements Node {
      * @ordered
      */
     protected EList<IHandlerEventListener> activeListeners;
-    /**
-     * The cached value of the '{@link #getErrors() <em>Errors</em>}' attribute list.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * @see #getErrors()
-     * @generated
-     * @ordered
-     */
-    protected EList<ClickWatchError> errors;
     /**
      * The default value of the '{@link #getConnection() <em>Connection</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -204,6 +185,22 @@ public class NodeImpl extends EObjectImpl implements Node {
      * @ordered
      */
     protected boolean recording = RECORDING_EDEFAULT;
+    /**
+     * The cached value of the '{@link #getErrors() <em>Errors</em>}' containment reference list.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * @see #getErrors()
+     * @generated
+     * @ordered
+     */
+    protected EList<de.hub.clickwatch.model.Error> errors;
+    /**
+     * The cached value of the '{@link #getElements() <em>Elements</em>}' containment reference list.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * @see #getElements()
+     * @generated
+     * @ordered
+     */
+    protected EList<Element> elements;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -284,7 +281,7 @@ public class NodeImpl extends EObjectImpl implements Node {
      * <!-- end-user-doc -->
      * @generated
      */
-    public void setConnection(INodeConnection newConnection) {        
+    public void setConnection(INodeConnection newConnection) {
         INodeConnection oldConnection = connection;
         connection = newConnection;
         if (eNotificationRequired())
@@ -394,9 +391,9 @@ public class NodeImpl extends EObjectImpl implements Node {
      * <!-- end-user-doc -->
      * @generated
      */
-    public EList<ClickWatchError> getErrors() {
+    public EList<de.hub.clickwatch.model.Error> getErrors() {
         if (errors == null) {
-            errors = new EDataTypeUniqueEList<ClickWatchError>(ClickWatchError.class, this, ClickWatchModelPackage.NODE__ERRORS);
+            errors = new EObjectContainmentEList<de.hub.clickwatch.model.Error>(de.hub.clickwatch.model.Error.class, this, ClickWatchModelPackage.NODE__ERRORS);
         }
         return errors;
     }
@@ -563,6 +560,8 @@ public class NodeImpl extends EObjectImpl implements Node {
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
+            case ClickWatchModelPackage.NODE__ERRORS:
+                return ((InternalEList<?>)getErrors()).basicRemove(otherEnd, msgs);
             case ClickWatchModelPackage.NODE__ELEMENTS:
                 return ((InternalEList<?>)getElements()).basicRemove(otherEnd, msgs);
         }
@@ -580,14 +579,10 @@ public class NodeImpl extends EObjectImpl implements Node {
                 return getINetAddress();
             case ClickWatchModelPackage.NODE__PORT:
                 return getPort();
-            case ClickWatchModelPackage.NODE__ELEMENTS:
-                return getElements();
             case ClickWatchModelPackage.NODE__BACKBONE:
                 return getBackbone();
             case ClickWatchModelPackage.NODE__ACTIVE_LISTENERS:
                 return getActiveListeners();
-            case ClickWatchModelPackage.NODE__ERRORS:
-                return getErrors();
             case ClickWatchModelPackage.NODE__CONNECTION:
                 return getConnection();
             case ClickWatchModelPackage.NODE__RETRIEVING:
@@ -596,6 +591,10 @@ public class NodeImpl extends EObjectImpl implements Node {
                 return isListening();
             case ClickWatchModelPackage.NODE__RECORDING:
                 return isRecording();
+            case ClickWatchModelPackage.NODE__ERRORS:
+                return getErrors();
+            case ClickWatchModelPackage.NODE__ELEMENTS:
+                return getElements();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -614,16 +613,8 @@ public class NodeImpl extends EObjectImpl implements Node {
             case ClickWatchModelPackage.NODE__PORT:
                 setPort((String)newValue);
                 return;
-            case ClickWatchModelPackage.NODE__ELEMENTS:
-                getElements().clear();
-                getElements().addAll((Collection<? extends Element>)newValue);
-                return;
             case ClickWatchModelPackage.NODE__BACKBONE:
                 setBackbone((BackboneType)newValue);
-                return;
-            case ClickWatchModelPackage.NODE__ERRORS:
-                getErrors().clear();
-                getErrors().addAll((Collection<? extends ClickWatchError>)newValue);
                 return;
             case ClickWatchModelPackage.NODE__CONNECTION:
                 setConnection((INodeConnection)newValue);
@@ -636,6 +627,14 @@ public class NodeImpl extends EObjectImpl implements Node {
                 return;
             case ClickWatchModelPackage.NODE__RECORDING:
                 setRecording((Boolean)newValue);
+                return;
+            case ClickWatchModelPackage.NODE__ERRORS:
+                getErrors().clear();
+                getErrors().addAll((Collection<? extends de.hub.clickwatch.model.Error>)newValue);
+                return;
+            case ClickWatchModelPackage.NODE__ELEMENTS:
+                getElements().clear();
+                getElements().addAll((Collection<? extends Element>)newValue);
                 return;
         }
         super.eSet(featureID, newValue);
@@ -654,14 +653,8 @@ public class NodeImpl extends EObjectImpl implements Node {
             case ClickWatchModelPackage.NODE__PORT:
                 setPort(PORT_EDEFAULT);
                 return;
-            case ClickWatchModelPackage.NODE__ELEMENTS:
-                getElements().clear();
-                return;
             case ClickWatchModelPackage.NODE__BACKBONE:
                 setBackbone(BACKBONE_EDEFAULT);
-                return;
-            case ClickWatchModelPackage.NODE__ERRORS:
-                getErrors().clear();
                 return;
             case ClickWatchModelPackage.NODE__CONNECTION:
                 setConnection(CONNECTION_EDEFAULT);
@@ -674,6 +667,12 @@ public class NodeImpl extends EObjectImpl implements Node {
                 return;
             case ClickWatchModelPackage.NODE__RECORDING:
                 setRecording(RECORDING_EDEFAULT);
+                return;
+            case ClickWatchModelPackage.NODE__ERRORS:
+                getErrors().clear();
+                return;
+            case ClickWatchModelPackage.NODE__ELEMENTS:
+                getElements().clear();
                 return;
         }
         super.eUnset(featureID);
@@ -690,14 +689,10 @@ public class NodeImpl extends EObjectImpl implements Node {
                 return INET_ADDRESS_EDEFAULT == null ? iNetAddress != null : !INET_ADDRESS_EDEFAULT.equals(iNetAddress);
             case ClickWatchModelPackage.NODE__PORT:
                 return PORT_EDEFAULT == null ? port != null : !PORT_EDEFAULT.equals(port);
-            case ClickWatchModelPackage.NODE__ELEMENTS:
-                return elements != null && !elements.isEmpty();
             case ClickWatchModelPackage.NODE__BACKBONE:
                 return backbone != BACKBONE_EDEFAULT;
             case ClickWatchModelPackage.NODE__ACTIVE_LISTENERS:
                 return activeListeners != null && !activeListeners.isEmpty();
-            case ClickWatchModelPackage.NODE__ERRORS:
-                return errors != null && !errors.isEmpty();
             case ClickWatchModelPackage.NODE__CONNECTION:
                 return CONNECTION_EDEFAULT == null ? connection != null : !CONNECTION_EDEFAULT.equals(connection);
             case ClickWatchModelPackage.NODE__RETRIEVING:
@@ -706,6 +701,10 @@ public class NodeImpl extends EObjectImpl implements Node {
                 return listening != LISTENING_EDEFAULT;
             case ClickWatchModelPackage.NODE__RECORDING:
                 return recording != RECORDING_EDEFAULT;
+            case ClickWatchModelPackage.NODE__ERRORS:
+                return errors != null && !errors.isEmpty();
+            case ClickWatchModelPackage.NODE__ELEMENTS:
+                return elements != null && !elements.isEmpty();
         }
         return super.eIsSet(featureID);
     }
@@ -727,8 +726,6 @@ public class NodeImpl extends EObjectImpl implements Node {
         result.append(backbone);
         result.append(", activeListeners: ");
         result.append(activeListeners);
-        result.append(", errors: ");
-        result.append(errors);
         result.append(", connection: ");
         result.append(connection);
         result.append(", retrieving: ");

@@ -7,7 +7,8 @@
 package de.hub.clickwatch.model.impl;
 
 
-import de.hub.clickwatch.model.*;
+import java.util.Map;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
@@ -24,6 +25,8 @@ import de.hub.clickwatch.model.Element;
 import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.model.Network;
 import de.hub.clickwatch.model.Node;
+import de.hub.clickwatch.model.Statistic;
+import de.hub.clickwatch.model.StatisticsContainer;
 
 
 /**
@@ -87,6 +90,10 @@ public class ClickWatchModelFactoryImpl extends EFactoryImpl implements ClickWat
             case ClickWatchModelPackage.ELEMENT: return createElement();
             case ClickWatchModelPackage.HANDLER: return createHandler();
             case ClickWatchModelPackage.NETWORK: return createNetwork();
+            case ClickWatchModelPackage.STATISTICS_CONTAINER: return createStatisticsContainer();
+            case ClickWatchModelPackage.ESTRING_TO_STATISTIC_MAP: return (EObject)createEStringToStatisticMap();
+            case ClickWatchModelPackage.STATISTIC: return createStatistic();
+            case ClickWatchModelPackage.ERROR: return createError();
             default:
                 throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
         }
@@ -102,8 +109,8 @@ public class ClickWatchModelFactoryImpl extends EFactoryImpl implements ClickWat
         switch (eDataType.getClassifierID()) {
             case ClickWatchModelPackage.BACKBONE_TYPE:
                 return createBackboneTypeFromString(eDataType, initialValue);
-            case ClickWatchModelPackage.ERROR:
-                return createErrorFromString(eDataType, initialValue);
+            case ClickWatchModelPackage.EXCEPTION:
+                return createExceptionFromString(eDataType, initialValue);
             default:
                 throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
         }
@@ -119,8 +126,8 @@ public class ClickWatchModelFactoryImpl extends EFactoryImpl implements ClickWat
         switch (eDataType.getClassifierID()) {
             case ClickWatchModelPackage.BACKBONE_TYPE:
                 return convertBackboneTypeToString(eDataType, instanceValue);
-            case ClickWatchModelPackage.ERROR:
-                return convertErrorToString(eDataType, instanceValue);
+            case ClickWatchModelPackage.EXCEPTION:
+                return convertExceptionToString(eDataType, instanceValue);
             default:
                 throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
         }
@@ -173,6 +180,46 @@ public class ClickWatchModelFactoryImpl extends EFactoryImpl implements ClickWat
 
 	/**
      * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public StatisticsContainer createStatisticsContainer() {
+        StatisticsContainerImpl statisticsContainer = new StatisticsContainerImpl();
+        return statisticsContainer;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public Map.Entry<String, Statistic> createEStringToStatisticMap() {
+        EStringToStatisticMapImpl eStringToStatisticMap = new EStringToStatisticMapImpl();
+        return eStringToStatisticMap;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public Statistic createStatistic() {
+        StatisticImpl statistic = new StatisticImpl();
+        return statistic;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public de.hub.clickwatch.model.Error createError() {
+        ErrorImpl error = new ErrorImpl();
+        return error;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
      */
@@ -196,8 +243,8 @@ public class ClickWatchModelFactoryImpl extends EFactoryImpl implements ClickWat
      * <!-- end-user-doc -->
      * @generated
      */
-    public ClickWatchError createErrorFromString(EDataType eDataType, String initialValue) {
-        return (ClickWatchError)super.createFromString(eDataType, initialValue);
+    public Exception createExceptionFromString(EDataType eDataType, String initialValue) {
+        return (Exception)super.createFromString(eDataType, initialValue);
     }
 
     /**
@@ -205,7 +252,7 @@ public class ClickWatchModelFactoryImpl extends EFactoryImpl implements ClickWat
      * <!-- end-user-doc -->
      * @generated
      */
-    public String convertErrorToString(EDataType eDataType, Object instanceValue) {
+    public String convertExceptionToString(EDataType eDataType, Object instanceValue) {
         return super.convertToString(eDataType, instanceValue);
     }
 

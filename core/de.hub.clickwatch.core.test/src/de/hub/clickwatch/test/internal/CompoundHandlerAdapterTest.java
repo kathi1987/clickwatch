@@ -18,7 +18,6 @@ import de.hub.clickwatch.connection.adapter.IMergeAdapter;
 import de.hub.clickwatch.connection.adapter.IMetaDataAdapter;
 import de.hub.clickwatch.connection.adapter.values.IValueAdapter;
 import de.hub.clickwatch.connection.adapter.values.StringValueAdapter;
-import de.hub.clickwatch.model.ClickWatchError;
 import de.hub.clickwatch.model.Node;
 import de.hub.clickwatch.test.TestUtil;
 
@@ -38,7 +37,7 @@ public class CompoundHandlerAdapterTest extends HandlerEventAdapterTest {
         valueAdapter = connection.getAdapter(IValueAdapter.class);
         connection.getAdapter(IErrorAdapter.class).addErrorListener(new IErrorListener() {
             @Override
-            public void handlerError(ClickWatchError error) {
+            public void handlerError(de.hub.clickwatch.model.Error error) {
                 Assert.assertTrue(false);
             }
         });
@@ -47,7 +46,7 @@ public class CompoundHandlerAdapterTest extends HandlerEventAdapterTest {
         handlerEventAdapter.addEventListener(handlerEventListener);
         connection.getAdapter(IErrorAdapter.class).addErrorListener(new IErrorListener() {           
             @Override
-            public void handlerError(ClickWatchError error) {
+            public void handlerError(de.hub.clickwatch.model.Error error) {
                 Assert.assertTrue(false);
             }
         });

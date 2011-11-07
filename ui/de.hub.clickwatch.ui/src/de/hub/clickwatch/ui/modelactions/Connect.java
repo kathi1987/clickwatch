@@ -29,17 +29,18 @@ public class Connect extends AbstractNodeAction {
 		
 		while (selectedObjectsIterator.hasNext()) {
 		    final Node node = selectedObjectsIterator.next();
-			taskDispatcher.dispatchTask(null, new Runnable() {                
-                @Override
-                public void run() {     
-                    INodeConnection connection = node.getConnection();
-                    if (connection != null) {
-                        if (!node.getErrors().isEmpty()) {
-                            connection.dispose();
-                            connection = null;
-                        }
-                    } 
-                    
+		    // dispose existing connection if necessary
+		    INodeConnection connection = node.getConnection();
+            if (connection != null) {
+                if (!node.getErrors().isEmpty()) {
+                    connection.dispose();                            
+                }
+            }
+			taskDispatcher.dispatchTask(null, new Runnable() {                            
+			    @Override
+                public void run() {     			  
+			        // connect or reconnect
+			        INodeConnection connection = node.getConnection();
                     if (connection == null) {
                         connection = ncp.createConnection(node);
                         
@@ -47,11 +48,10 @@ public class Connect extends AbstractNodeAction {
                         UiHandlerEventListener handler = handlerProvider.get();
                         handler.init(shell, node, editor);
                         hea.addEventListener(handler);                                            
-                    }
-                    
+                    }                    
                     connection.getAdapter(IHandlerEventAdapter.class).start();
-                }                
-            });
+			    }
+			});
 		}
 	}
 }
