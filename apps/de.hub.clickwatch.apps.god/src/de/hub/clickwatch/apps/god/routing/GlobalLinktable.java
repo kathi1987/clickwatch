@@ -13,6 +13,27 @@ import de.hub.clickwatch.apps.god.information.LinktableLinkInformation;
 public class GlobalLinktable implements Serializable {
 	private static final long serialVersionUID = 6406600578300311068L;
 	private static Map<String, LinktableLinkInformation> linktable = new HashMap<String, LinktableLinkInformation>();
+	private static boolean acceptChangesOnLinktable = true;
+	
+	public static String getLinktableAsString() {
+		String linktableAsString = "";
+		synchronized (linktable) {
+			for (String link : linktable.keySet()) {
+				LinktableLinkInformation linkInf = linktable.get(link); 
+				
+				if (linktableAsString.equals("")) {
+					linktableAsString += link + SzenarioHWL.LINKTABLE_SEPARATOR + linkInf.getMetric();
+				} else {
+					linktableAsString += SzenarioHWL.LINKTABLE_SEPARATOR + link + SzenarioHWL.LINKTABLE_SEPARATOR + linkInf.getMetric();
+				}
+			}
+		}
+		return linktableAsString.replaceAll(",", ";");
+	}
+	
+	public static void acceptChanges(boolean val) {
+		acceptChangesOnLinktable = val;
+	}
 	
 	public static LinktableLinkInformation getLinkInfos(String from, String to) {
 		if (linktable.containsKey(from + SzenarioHWL.LINKTABLE_SEPARATOR + to)) {
@@ -47,38 +68,42 @@ public class GlobalLinktable implements Serializable {
 	}
 	
 	public static void removeFromGlobalLinktableIfExistent(String fromTo) {
-		if ((fromTo != null) && (linktable.containsKey(fromTo))) {
-			StringTokenizer strTok = new StringTokenizer(fromTo, "" + SzenarioHWL.LINKTABLE_SEPARATOR);
-			if (strTok.countTokens() == 2) {
-				String from = strTok.nextToken();
-				String to = strTok.nextToken();
-				
-				synchronized (linktable) {
-					if (linktable.containsKey(fromTo)) {
-						linktable.remove(fromTo);
-						GlobalRoutingtable.removeUsedLink(from, to);
+		if (acceptChangesOnLinktable) {
+			if ((fromTo != null) && (linktable.containsKey(fromTo))) {
+				StringTokenizer strTok = new StringTokenizer(fromTo, "" + SzenarioHWL.LINKTABLE_SEPARATOR);
+				if (strTok.countTokens() == 2) {
+					String from = strTok.nextToken();
+					String to = strTok.nextToken();
+					
+					synchronized (linktable) {
+						if (linktable.containsKey(fromTo)) {
+							linktable.remove(fromTo);
+							GlobalRoutingtable.removeUsedLink(from, to);
+						}
 					}
+				} else {
+					System.err.println("WARNING: someone tries to remove a link, but does not provide exactly 2 node mac-addresses, but: " + strTok.countTokens());
 				}
-			} else {
-				System.err.println("WARNING: someone tries to remove a link, but does not provide exactly 2 node mac-addresses, but: " + strTok.countTokens());
 			}
 		}
 	}
 	
 	public static void updateOrAddToGlobalLinktable(String fromTo, LinktableLinkInformation infos) {
-		if ((fromTo != null) && (infos != null)) {
-			StringTokenizer strTok = new StringTokenizer(fromTo, "" + SzenarioHWL.LINKTABLE_SEPARATOR);
-			if (strTok.countTokens() == 2) {
-				String from = strTok.nextToken();
-				String to = strTok.nextToken();
-				
-				if (linktable.containsKey(fromTo)) {
-					updateLinktable(from, to, infos);
+		if (acceptChangesOnLinktable) {
+			if ((fromTo != null) && (infos != null)) {
+				StringTokenizer strTok = new StringTokenizer(fromTo, "" + SzenarioHWL.LINKTABLE_SEPARATOR);
+				if (strTok.countTokens() == 2) {
+					String from = strTok.nextToken();
+					String to = strTok.nextToken();
+					
+					if (linktable.containsKey(fromTo)) {
+						updateLinktable(from, to, infos);
+					} else {
+						addToLinktable(from, to, infos);
+					}
 				} else {
-					addToLinktable(from, to, infos);
+					System.err.println("WARNING: someone tries to update a link, but does not provide exactly 2 node mac-addresses, but: " + strTok.countTokens());
 				}
-			} else {
-				System.err.println("WARNING: someone tries to update a link, but does not provide exactly 2 node mac-addresses, but: " + strTok.countTokens());
 			}
 		}
 	}

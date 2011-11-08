@@ -7,8 +7,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.StringTokenizer;
 
-import de.hub.clickwatch.apps.god.SzenarioHWL;
-
 public class GlobalRoutingtable implements Serializable {
 	private static final long serialVersionUID = -6046518405036658052L;
 	private static Set<String> nodes = new HashSet<String>();
@@ -45,8 +43,9 @@ public class GlobalRoutingtable implements Serializable {
 	public static Integer getShortestHopCount(String from, String to) {
 		String route = getShortestPath(from, to);
 		if (route != null) {
-			StringTokenizer tok = new StringTokenizer(route, ""+SzenarioHWL.LINKTABLE_SEPARATOR);
-			return tok.countTokens();
+			StringTokenizer tok = new StringTokenizer(route.replaceAll(",", ";"), ";");
+			
+			return (tok.countTokens() - 1);
 		}
 		
 		return null;
