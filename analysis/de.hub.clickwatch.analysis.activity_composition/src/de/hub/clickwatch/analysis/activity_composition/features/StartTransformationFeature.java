@@ -4,9 +4,6 @@ import org.eclipse.graphiti.features.IFeatureProvider;
 import org.eclipse.graphiti.features.context.ICustomContext;
 import org.eclipse.graphiti.features.custom.AbstractCustomFeature;
 import org.eclipse.graphiti.mm.pictograms.PictogramElement;
-import org.eclipse.graphiti.services.Graphiti;
-import org.eclipse.graphiti.services.IGaService;
-import org.eclipse.graphiti.services.IPeService;
 
 import de.hub.clickwatch.analysis.activity_composition.model.ActionNode;
 import de.hub.clickwatch.analysis.activity_composition.model.StartNode;
@@ -54,9 +51,7 @@ public class StartTransformationFeature extends AbstractCustomFeature {
 	public void execute(ICustomContext context) {
 		for (PictogramElement pe : context.getPictogramElements()) {
 			Object o = getBusinessObjectForPictogramElement(pe);
-			if (o instanceof StartNode) {
-
-				System.out.println("starting the transformation now");
+			if (o instanceof StartNode) {				
 
 				StartNode startNode = (StartNode) o;
 				traverseNodes(startNode);

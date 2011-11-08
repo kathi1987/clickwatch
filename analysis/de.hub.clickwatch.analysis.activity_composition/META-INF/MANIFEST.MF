@@ -21,3 +21,6 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore.xmi;bundle-version="2.7.0",
  de.hub.clickwatch.apps.transformationLauncher;bundle-version="2.0.0"
 Bundle-ActivationPolicy: lazy
+Export-Package: de.hub.clickwatch.analysis.activity_composition,
+ de.hub.clickwatch.analysis.activity_composition.transformation,
+ de.hub.clickwatch.analysis.activity_composition.transformation.impl

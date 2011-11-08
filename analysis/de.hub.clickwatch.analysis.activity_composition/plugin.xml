@@ -94,6 +94,12 @@
                id="de.hub.clickwatch.analysis.activity_composition.InputEdgeSection"
                tab="de.hub.clickwatch.analysis.activity_composition.MainTab">
          </propertySection>
+         <propertySection
+               class="de.hub.clickwatch.analysis.activity_composition.property.TransformationNodeSection"
+               filter="de.hub.clickwatch.analysis.activity_composition.property.TransformationNodeFilter"
+               id="de.hub.clickwatch.analysis.activity_composition.TransformationNodeSection"
+               tab="de.hub.clickwatch.analysis.activity_composition.MainTab">
+         </propertySection>
       </propertySections>
    </extension>
 

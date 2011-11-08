@@ -209,31 +209,13 @@ public interface ModelPackage extends EPackage {
 	int MODEL_NODE__OUTPUT = DATA_NODE__OUTPUT;
 
 	/**
-	 * The feature id for the '<em><b>Meta Model Resource</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODEL_NODE__META_MODEL_RESOURCE = DATA_NODE_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Meta Model Class</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODEL_NODE__META_MODEL_CLASS = DATA_NODE_FEATURE_COUNT + 1;
-
-	/**
 	 * The feature id for the '<em><b>Model Resource</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_NODE__MODEL_RESOURCE = DATA_NODE_FEATURE_COUNT + 2;
+	int MODEL_NODE__MODEL_RESOURCE = DATA_NODE_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Node</em>' class.
@@ -242,7 +224,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_NODE_FEATURE_COUNT = DATA_NODE_FEATURE_COUNT + 3;
+	int MODEL_NODE_FEATURE_COUNT = DATA_NODE_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link de.hub.clickwatch.analysis.activity_composition.model.impl.ActionNodeImpl <em>Action Node</em>}' class.
@@ -513,13 +495,22 @@ public interface ModelPackage extends EPackage {
 	int INPUT_EDGE__TARGET = DATA_EDGE_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Clickwatch Model Element</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_EDGE__CLICKWATCH_MODEL_ELEMENT = DATA_EDGE_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Input Edge</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INPUT_EDGE_FEATURE_COUNT = DATA_EDGE_FEATURE_COUNT + 2;
+	int INPUT_EDGE_FEATURE_COUNT = DATA_EDGE_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link de.hub.clickwatch.analysis.activity_composition.model.impl.OutputEdgeImpl <em>Output Edge</em>}' class.
@@ -639,28 +630,6 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getModelNode();
-
-	/**
-	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.analysis.activity_composition.model.ModelNode#getMetaModelResource <em>Meta Model Resource</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Meta Model Resource</em>'.
-	 * @see de.hub.clickwatch.analysis.activity_composition.model.ModelNode#getMetaModelResource()
-	 * @see #getModelNode()
-	 * @generated
-	 */
-	EAttribute getModelNode_MetaModelResource();
-
-	/**
-	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.analysis.activity_composition.model.ModelNode#getMetaModelClass <em>Meta Model Class</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Meta Model Class</em>'.
-	 * @see de.hub.clickwatch.analysis.activity_composition.model.ModelNode#getMetaModelClass()
-	 * @see #getModelNode()
-	 * @generated
-	 */
-	EAttribute getModelNode_MetaModelClass();
 
 	/**
 	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.analysis.activity_composition.model.ModelNode#getModelResource <em>Model Resource</em>}'.
@@ -832,6 +801,17 @@ public interface ModelPackage extends EPackage {
 	EReference getInputEdge_Target();
 
 	/**
+	 * Returns the meta object for the attribute '{@link de.hub.clickwatch.analysis.activity_composition.model.InputEdge#getClickwatchModelElement <em>Clickwatch Model Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Clickwatch Model Element</em>'.
+	 * @see de.hub.clickwatch.analysis.activity_composition.model.InputEdge#getClickwatchModelElement()
+	 * @see #getInputEdge()
+	 * @generated
+	 */
+	EAttribute getInputEdge_ClickwatchModelElement();
+
+	/**
 	 * Returns the meta object for class '{@link de.hub.clickwatch.analysis.activity_composition.model.OutputEdge <em>Output Edge</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -950,22 +930,6 @@ public interface ModelPackage extends EPackage {
 		 * @generated
 		 */
 		EClass MODEL_NODE = eINSTANCE.getModelNode();
-
-		/**
-		 * The meta object literal for the '<em><b>Meta Model Resource</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute MODEL_NODE__META_MODEL_RESOURCE = eINSTANCE.getModelNode_MetaModelResource();
-
-		/**
-		 * The meta object literal for the '<em><b>Meta Model Class</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute MODEL_NODE__META_MODEL_CLASS = eINSTANCE.getModelNode_MetaModelClass();
 
 		/**
 		 * The meta object literal for the '<em><b>Model Resource</b></em>' attribute feature.
@@ -1108,6 +1072,14 @@ public interface ModelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference INPUT_EDGE__TARGET = eINSTANCE.getInputEdge_Target();
+
+		/**
+		 * The meta object literal for the '<em><b>Clickwatch Model Element</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INPUT_EDGE__CLICKWATCH_MODEL_ELEMENT = eINSTANCE.getInputEdge_ClickwatchModelElement();
 
 		/**
 		 * The meta object literal for the '{@link de.hub.clickwatch.analysis.activity_composition.model.impl.OutputEdgeImpl <em>Output Edge</em>}' class.

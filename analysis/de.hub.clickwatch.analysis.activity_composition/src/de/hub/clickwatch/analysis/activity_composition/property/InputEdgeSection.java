@@ -64,14 +64,17 @@ public class InputEdgeSection extends GFPropertySection implements
 			@Override
 			public void widgetSelected(SelectionEvent selectionEvent) {
 				InputEdge inputEdge = getSelectedInputEdge();
-				
+
 				// is the source a model node with a set clickwatch resource?
-				if(inputEdge.getSource() instanceof ModelNode && ((ModelNode)inputEdge.getSource()).getModelResource().endsWith("clickwatchmodel") )
-				{
-					String modelPath = ((ModelNode)inputEdge.getSource()).getModelResource();
+				if (inputEdge.getSource() instanceof ModelNode
+						&& ((ModelNode) inputEdge.getSource())
+								.getModelResource().endsWith("clickwatchmodel")) {
+					String modelPath = ((ModelNode) inputEdge.getSource())
+							.getModelResource();
 					ResourceSet resourceSet = new ResourceSetImpl();
-					resourceSet.getLoadOptions().put(
-							XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);
+					resourceSet.getLoadOptions()
+							.put(XMLResource.OPTION_EXTENDED_META_DATA,
+									Boolean.TRUE);
 
 					Resource modelResource = null;
 
@@ -82,7 +85,8 @@ public class InputEdgeSection extends GFPropertySection implements
 						Status s = new Status(IStatus.ERROR, "not_used",
 								"The given source model file is not valid: "
 										+ modelPath, null);
-						StatusManager.getManager().handle(s, StatusManager.SHOW);
+						StatusManager.getManager()
+								.handle(s, StatusManager.SHOW);
 					}
 					if (modelResource != null) {
 						ClickWatchModelObjectChooser dialog = new ClickWatchModelObjectChooser(
@@ -91,12 +95,10 @@ public class InputEdgeSection extends GFPropertySection implements
 							setModelUri(dialog.getSelecteID());
 						}
 					}
-					
+
+				} else {
+
 				}
-				else
-				{
-					
-				}								
 			}
 		});
 
@@ -117,8 +119,7 @@ public class InputEdgeSection extends GFPropertySection implements
 	private void setModelUri(String uri) {
 		this.modelElement.setText(uri);
 
-		// getSelectedModelNode().setModelResource(uri);
-
+		getSelectedInputEdge().setClickwatchModelElement(uri);
 	}
 
 	/**
@@ -148,8 +149,19 @@ public class InputEdgeSection extends GFPropertySection implements
 			if (bo == null)
 				return;
 
-			// String modelResUri = ((InputEdge) bo).get;
-			// modelSourceUri.setText(modelResUri == null ? "" : modelResUri);
+			InputEdge inputEdge = (InputEdge) bo;
+
+			// if the input object for this edge has a clickwatchmodel resource, the user can choose the element in it
+			if (!(inputEdge.getSource() instanceof ModelNode) || ((ModelNode) inputEdge.getSource()).getModelResource() == null
+					|| !(((ModelNode) inputEdge.getSource()).getModelResource()
+							.endsWith("clickwatchmodel")))
+				modelElement.setEnabled(false);
+
+			else
+				modelElement.setEnabled(true);
+
+			String modelResUri = inputEdge.getClickwatchModelElement();
+			modelElement.setText(modelResUri == null ? "" : modelResUri);
 		}
 	}
 

@@ -71,14 +71,6 @@
   <children xmi:type="notation:Node" xmi:id="_pj-6YOtFEeCTYbVmFm5sQQ" type="1001">
     <children xmi:type="notation:Node" xmi:id="_pj_hcOtFEeCTYbVmFm5sQQ" type="4001"/>
     <children xmi:type="notation:Node" xmi:id="_pkAIgOtFEeCTYbVmFm5sQQ" type="5001">
-      <children xmi:type="notation:Node" xmi:id="_vKRbMOtKEeCTYbVmFm5sQQ" type="2001">
-        <element xmi:type="ecore:EAttribute" href="CompositeModelV2.ecore#//ModelNode/metaModelResource"/>
-        <layoutConstraint xmi:type="notation:Location" xmi:id="_vKRbMetKEeCTYbVmFm5sQQ"/>
-      </children>
-      <children xmi:type="notation:Node" xmi:id="_1kBykOtKEeCTYbVmFm5sQQ" type="2001">
-        <element xmi:type="ecore:EAttribute" href="CompositeModelV2.ecore#//ModelNode/metaModelClass"/>
-        <layoutConstraint xmi:type="notation:Location" xmi:id="_1kByketKEeCTYbVmFm5sQQ"/>
-      </children>
       <children xmi:type="notation:Node" xmi:id="_4GuY0OtKEeCTYbVmFm5sQQ" type="2001">
         <element xmi:type="ecore:EAttribute" href="CompositeModelV2.ecore#//ModelNode/modelResource"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_4GuY0etKEeCTYbVmFm5sQQ"/>
@@ -203,6 +195,10 @@
   <children xmi:type="notation:Node" xmi:id="_ZWCn8OtMEeCTYbVmFm5sQQ" type="1001">
     <children xmi:type="notation:Node" xmi:id="_ZWDPAOtMEeCTYbVmFm5sQQ" type="4001"/>
     <children xmi:type="notation:Node" xmi:id="_ZWD2EOtMEeCTYbVmFm5sQQ" type="5001">
+      <children xmi:type="notation:Node" xmi:id="_60cIgQnkEeGBp8L-WKxK0A" type="2001">
+        <element xmi:type="ecore:EAttribute" href="CompositeModelV2.ecore#//InputEdge/clickwatchModelElement"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_60cIggnkEeGBp8L-WKxK0A"/>
+      </children>
       <styles xmi:type="notation:DrawerStyle" xmi:id="_ZWD2EetMEeCTYbVmFm5sQQ"/>
       <styles xmi:type="notation:SortingStyle" xmi:id="_ZWD2EutMEeCTYbVmFm5sQQ"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_ZWD2E-tMEeCTYbVmFm5sQQ"/>
@@ -324,6 +320,7 @@
     <styles xmi:type="notation:FontStyle" xmi:id="_CPne8utMEeCTYbVmFm5sQQ" fontColor="4210752" fontName="Segoe UI" fontHeight="10"/>
     <element xmi:type="ecore:EReference" href="CompositeModelV2.ecore#//InputEdge/target"/>
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_CPne8-tMEeCTYbVmFm5sQQ" points="[-15, -3, 300, 63]$[-313, -51, 2, 15]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_BIQP8AnlEeGBp8L-WKxK0A" id="(0.46987951807228917,0.09803921568627451)"/>
     <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_CPrwYetMEeCTYbVmFm5sQQ" id="(0.978494623655914,0.7843137254901961)"/>
   </edges>
   <edges xmi:type="notation:Edge" xmi:id="_IJ8IUOtMEeCTYbVmFm5sQQ" type="3002" source="_ZWCn8OtMEeCTYbVmFm5sQQ" target="_iCWU8OtFEeCTYbVmFm5sQQ">
@@ -429,6 +426,7 @@
     <styles xmi:type="notation:FontStyle" xmi:id="_keIWoQR6EeGMc7B0SYiY_w" fontColor="4210752" fontName="Segoe UI" fontHeight="10"/>
     <element xmi:type="ecore:EReference" href="CompositeModelV2.ecore#//Transformation/input"/>
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_keIWogR6EeGMc7B0SYiY_w" points="[41, 25, -202, -106]$[193, 134, -50, 3]"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_BiG6YAnlEeGBp8L-WKxK0A" id="(0.0963855421686747,0.19607843137254902)"/>
   </edges>
   <edges xmi:type="notation:Edge" xmi:id="_nArL4AR6EeGMc7B0SYiY_w" type="3002" source="_iCWU8OtFEeCTYbVmFm5sQQ" target="_agbXcOtMEeCTYbVmFm5sQQ">
     <children xmi:type="notation:Node" xmi:id="_nAry8AR6EeGMc7B0SYiY_w" type="4011">

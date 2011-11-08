@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <ul>
  *   <li>{@link de.hub.clickwatch.analysis.activity_composition.model.impl.InputEdgeImpl#getSource <em>Source</em>}</li>
  *   <li>{@link de.hub.clickwatch.analysis.activity_composition.model.impl.InputEdgeImpl#getTarget <em>Target</em>}</li>
+ *   <li>{@link de.hub.clickwatch.analysis.activity_composition.model.impl.InputEdgeImpl#getClickwatchModelElement <em>Clickwatch Model Element</em>}</li>
  * </ul>
  * </p>
  *
@@ -52,6 +53,26 @@ public class InputEdgeImpl extends DataEdgeImpl implements InputEdge {
 	 * @ordered
 	 */
 	protected Transformation target;
+
+	/**
+	 * The default value of the '{@link #getClickwatchModelElement() <em>Clickwatch Model Element</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getClickwatchModelElement()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String CLICKWATCH_MODEL_ELEMENT_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getClickwatchModelElement() <em>Clickwatch Model Element</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getClickwatchModelElement()
+	 * @generated
+	 * @ordered
+	 */
+	protected String clickwatchModelElement = CLICKWATCH_MODEL_ELEMENT_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -153,6 +174,27 @@ public class InputEdgeImpl extends DataEdgeImpl implements InputEdge {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getClickwatchModelElement() {
+		return clickwatchModelElement;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setClickwatchModelElement(String newClickwatchModelElement) {
+		String oldClickwatchModelElement = clickwatchModelElement;
+		clickwatchModelElement = newClickwatchModelElement;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.INPUT_EDGE__CLICKWATCH_MODEL_ELEMENT, oldClickwatchModelElement, clickwatchModelElement));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -162,6 +204,8 @@ public class InputEdgeImpl extends DataEdgeImpl implements InputEdge {
 			case ModelPackage.INPUT_EDGE__TARGET:
 				if (resolve) return getTarget();
 				return basicGetTarget();
+			case ModelPackage.INPUT_EDGE__CLICKWATCH_MODEL_ELEMENT:
+				return getClickwatchModelElement();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -179,6 +223,9 @@ public class InputEdgeImpl extends DataEdgeImpl implements InputEdge {
 				return;
 			case ModelPackage.INPUT_EDGE__TARGET:
 				setTarget((Transformation)newValue);
+				return;
+			case ModelPackage.INPUT_EDGE__CLICKWATCH_MODEL_ELEMENT:
+				setClickwatchModelElement((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -198,6 +245,9 @@ public class InputEdgeImpl extends DataEdgeImpl implements InputEdge {
 			case ModelPackage.INPUT_EDGE__TARGET:
 				setTarget((Transformation)null);
 				return;
+			case ModelPackage.INPUT_EDGE__CLICKWATCH_MODEL_ELEMENT:
+				setClickwatchModelElement(CLICKWATCH_MODEL_ELEMENT_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -214,8 +264,26 @@ public class InputEdgeImpl extends DataEdgeImpl implements InputEdge {
 				return source != null;
 			case ModelPackage.INPUT_EDGE__TARGET:
 				return target != null;
+			case ModelPackage.INPUT_EDGE__CLICKWATCH_MODEL_ELEMENT:
+				return CLICKWATCH_MODEL_ELEMENT_EDEFAULT == null ? clickwatchModelElement != null : !CLICKWATCH_MODEL_ELEMENT_EDEFAULT.equals(clickwatchModelElement);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (clickwatchModelElement: ");
+		result.append(clickwatchModelElement);
+		result.append(')');
+		return result.toString();
 	}
 
 } //InputEdgeImpl

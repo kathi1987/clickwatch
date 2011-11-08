@@ -256,26 +256,8 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getModelNode_MetaModelResource() {
-		return (EAttribute)modelNodeEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getModelNode_MetaModelClass() {
-		return (EAttribute)modelNodeEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EAttribute getModelNode_ModelResource() {
-		return (EAttribute)modelNodeEClass.getEStructuralFeatures().get(2);
+		return (EAttribute)modelNodeEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -418,6 +400,15 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getInputEdge_ClickwatchModelElement() {
+		return (EAttribute)inputEdgeEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getOutputEdge() {
 		return outputEdgeEClass;
 	}
@@ -479,8 +470,6 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		createEReference(dataNodeEClass, DATA_NODE__OUTPUT);
 
 		modelNodeEClass = createEClass(MODEL_NODE);
-		createEAttribute(modelNodeEClass, MODEL_NODE__META_MODEL_RESOURCE);
-		createEAttribute(modelNodeEClass, MODEL_NODE__META_MODEL_CLASS);
 		createEAttribute(modelNodeEClass, MODEL_NODE__MODEL_RESOURCE);
 
 		transformationEClass = createEClass(TRANSFORMATION);
@@ -504,6 +493,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		inputEdgeEClass = createEClass(INPUT_EDGE);
 		createEReference(inputEdgeEClass, INPUT_EDGE__SOURCE);
 		createEReference(inputEdgeEClass, INPUT_EDGE__TARGET);
+		createEAttribute(inputEdgeEClass, INPUT_EDGE__CLICKWATCH_MODEL_ELEMENT);
 
 		outputEdgeEClass = createEClass(OUTPUT_EDGE);
 		createEReference(outputEdgeEClass, OUTPUT_EDGE__SOURCE);
@@ -562,8 +552,6 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		initEReference(getDataNode_Output(), this.getOutputEdge(), null, "output", null, 0, -1, DataNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(modelNodeEClass, ModelNode.class, "ModelNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getModelNode_MetaModelResource(), ecorePackage.getEString(), "metaModelResource", null, 0, 1, ModelNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getModelNode_MetaModelClass(), ecorePackage.getEString(), "metaModelClass", null, 0, 1, ModelNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getModelNode_ModelResource(), ecorePackage.getEString(), "modelResource", null, 0, 1, ModelNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(transformationEClass, Transformation.class, "Transformation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -587,6 +575,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		initEClass(inputEdgeEClass, InputEdge.class, "InputEdge", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getInputEdge_Source(), this.getDataNode(), null, "source", null, 0, 1, InputEdge.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getInputEdge_Target(), this.getTransformation(), null, "target", null, 0, 1, InputEdge.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInputEdge_ClickwatchModelElement(), ecorePackage.getEString(), "clickwatchModelElement", null, 0, 1, InputEdge.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(outputEdgeEClass, OutputEdge.class, "OutputEdge", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getOutputEdge_Source(), this.getTransformation(), null, "source", null, 0, 1, OutputEdge.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

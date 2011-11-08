@@ -13,8 +13,6 @@
         eType="#//OutputEdge"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ModelNode" eSuperTypes="#//DataNode">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="metaModelResource" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="metaModelClass" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="modelResource" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Transformation" eSuperTypes="#//ActionNode">
@@ -38,6 +36,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="InputEdge" eSuperTypes="#//DataEdge">
     <eStructuralFeatures xsi:type="ecore:EReference" name="source" eType="#//DataNode"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//Transformation"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="clickwatchModelElement"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="OutputEdge" eSuperTypes="#//DataEdge">
     <eStructuralFeatures xsi:type="ecore:EReference" name="source" eType="#//Transformation"/>

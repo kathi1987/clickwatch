@@ -17,6 +17,7 @@ package de.hub.clickwatch.analysis.activity_composition.model;
  * <ul>
  *   <li>{@link de.hub.clickwatch.analysis.activity_composition.model.InputEdge#getSource <em>Source</em>}</li>
  *   <li>{@link de.hub.clickwatch.analysis.activity_composition.model.InputEdge#getTarget <em>Target</em>}</li>
+ *   <li>{@link de.hub.clickwatch.analysis.activity_composition.model.InputEdge#getClickwatchModelElement <em>Clickwatch Model Element</em>}</li>
  * </ul>
  * </p>
  *
@@ -76,5 +77,31 @@ public interface InputEdge extends DataEdge {
 	 * @generated
 	 */
 	void setTarget(Transformation value);
+
+	/**
+	 * Returns the value of the '<em><b>Clickwatch Model Element</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Clickwatch Model Element</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Clickwatch Model Element</em>' attribute.
+	 * @see #setClickwatchModelElement(String)
+	 * @see de.hub.clickwatch.analysis.activity_composition.model.ModelPackage#getInputEdge_ClickwatchModelElement()
+	 * @model
+	 * @generated
+	 */
+	String getClickwatchModelElement();
+
+	/**
+	 * Sets the value of the '{@link de.hub.clickwatch.analysis.activity_composition.model.InputEdge#getClickwatchModelElement <em>Clickwatch Model Element</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Clickwatch Model Element</em>' attribute.
+	 * @see #getClickwatchModelElement()
+	 * @generated
+	 */
+	void setClickwatchModelElement(String value);
 
 } // InputEdge
