@@ -470,6 +470,15 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
      * <!-- end-user-doc -->
      * @generated
      */
+    public EAttribute getNetwork_Timestamp() {
+        return (EAttribute)networkEClass.getEStructuralFeatures().get(5);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     public EClass getStatisticsContainer() {
         return statisticsContainerEClass;
     }
@@ -714,6 +723,7 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
         createEAttribute(networkEClass, NETWORK__ELEMENT_FILTER);
         createEAttribute(networkEClass, NETWORK__HANDLER_FILTER);
         createEReference(networkEClass, NETWORK__SUBNETWORKS);
+        createEAttribute(networkEClass, NETWORK__TIMESTAMP);
 
         modelElementWithStatisticsEClass = createEClass(MODEL_ELEMENT_WITH_STATISTICS);
         createEReference(modelElementWithStatisticsEClass, MODEL_ELEMENT_WITH_STATISTICS__STATISTICS);
@@ -837,6 +847,7 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
         initEAttribute(getNetwork_ElementFilter(), ecorePackage.getEString(), "ElementFilter", null, 0, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getNetwork_HandlerFilter(), ecorePackage.getEString(), "HandlerFilter", null, 0, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getNetwork_Subnetworks(), this.getNetwork(), null, "subnetworks", null, 0, -1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getNetwork_Timestamp(), ecorePackage.getELong(), "timestamp", null, 0, 1, Network.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(modelElementWithStatisticsEClass, ModelElementWithStatistics.class, "ModelElementWithStatistics", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEReference(getModelElementWithStatistics_Statistics(), this.getStatisticsContainer(), null, "statistics", null, 0, 1, ModelElementWithStatistics.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

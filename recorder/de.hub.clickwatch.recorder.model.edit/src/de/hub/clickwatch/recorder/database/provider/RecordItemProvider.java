@@ -163,7 +163,6 @@ public class RecordItemProvider
         if (childrenFeatures == null) {
             super.getChildrenFeatures(object);
             childrenFeatures.add(CWDataBasePackage.Literals.RECORD__CONFIGURATION);
-            childrenFeatures.add(CWDataBasePackage.Literals.RECORD__NETWORK_TIME_COPY);
         }
         return childrenFeatures;
     }
@@ -240,7 +239,6 @@ public class RecordItemProvider
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
                 return;
             case CWDataBasePackage.RECORD__CONFIGURATION:
-            case CWDataBasePackage.RECORD__NETWORK_TIME_COPY:
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
                 return;
         }
@@ -262,34 +260,6 @@ public class RecordItemProvider
             (createChildParameter
                 (CWDataBasePackage.Literals.RECORD__CONFIGURATION,
                  ClickWatchModelFactory.eINSTANCE.createNetwork()));
-
-        newChildDescriptors.add
-            (createChildParameter
-                (CWDataBasePackage.Literals.RECORD__NETWORK_TIME_COPY,
-                 ClickWatchModelFactory.eINSTANCE.createNetwork()));
-    }
-
-	/**
-     * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
-     * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-     * @generated
-     */
-	@Override
-	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
-        Object childFeature = feature;
-        Object childObject = child;
-
-        boolean qualify =
-            childFeature == CWDataBasePackage.Literals.RECORD__CONFIGURATION ||
-            childFeature == CWDataBasePackage.Literals.RECORD__NETWORK_TIME_COPY;
-
-        if (qualify) {
-            return getString
-                ("_UI_CreateChild_text2",
-                 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
-        }
-        return super.getCreateChildText(owner, feature, child, selection);
     }
 
 	/**

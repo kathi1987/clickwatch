@@ -109,22 +109,13 @@ public interface CWDataBasePackage extends EPackage {
 	int RECORD__START = ClickWatchModelPackage.MODEL_ELEMENT_WITH_STATISTICS_FEATURE_COUNT + 2;
 
     /**
-     * The feature id for the '<em><b>Network Time Copy</b></em>' containment reference.
-     * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-	int RECORD__NETWORK_TIME_COPY = ClickWatchModelPackage.MODEL_ELEMENT_WITH_STATISTICS_FEATURE_COUNT + 3;
-
-    /**
      * The feature id for the '<em><b>End</b></em>' attribute.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-	int RECORD__END = ClickWatchModelPackage.MODEL_ELEMENT_WITH_STATISTICS_FEATURE_COUNT + 4;
+	int RECORD__END = ClickWatchModelPackage.MODEL_ELEMENT_WITH_STATISTICS_FEATURE_COUNT + 3;
 
 	/**
      * The feature id for the '<em><b>HBase Row Map</b></em>' attribute.
@@ -133,7 +124,7 @@ public interface CWDataBasePackage extends EPackage {
      * @generated
      * @ordered
      */
-	int RECORD__HBASE_ROW_MAP = ClickWatchModelPackage.MODEL_ELEMENT_WITH_STATISTICS_FEATURE_COUNT + 5;
+	int RECORD__HBASE_ROW_MAP = ClickWatchModelPackage.MODEL_ELEMENT_WITH_STATISTICS_FEATURE_COUNT + 4;
 
 	/**
      * The number of structural features of the '<em>Record</em>' class.
@@ -142,7 +133,7 @@ public interface CWDataBasePackage extends EPackage {
      * @generated
      * @ordered
      */
-	int RECORD_FEATURE_COUNT = ClickWatchModelPackage.MODEL_ELEMENT_WITH_STATISTICS_FEATURE_COUNT + 6;
+	int RECORD_FEATURE_COUNT = ClickWatchModelPackage.MODEL_ELEMENT_WITH_STATISTICS_FEATURE_COUNT + 5;
 
 	/**
      * The meta object id for the '{@link de.hub.clickwatch.recorder.database.impl.DataBaseImpl <em>Data Base</em>}' class.
@@ -234,17 +225,6 @@ public interface CWDataBasePackage extends EPackage {
      * @generated
      */
 	EAttribute getRecord_Start();
-
-	/**
-     * Returns the meta object for the containment reference '{@link de.hub.clickwatch.recorder.database.Record#getNetworkTimeCopy <em>Network Time Copy</em>}'.
-     * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-     * @return the meta object for the containment reference '<em>Network Time Copy</em>'.
-     * @see de.hub.clickwatch.recorder.database.Record#getNetworkTimeCopy()
-     * @see #getRecord()
-     * @generated
-     */
-	EReference getRecord_NetworkTimeCopy();
 
 	/**
      * Returns the meta object for the attribute '{@link de.hub.clickwatch.recorder.database.Record#getEnd <em>End</em>}'.
@@ -355,14 +335,6 @@ public interface CWDataBasePackage extends EPackage {
          * @generated
          */
 		EAttribute RECORD__START = eINSTANCE.getRecord_Start();
-
-		/**
-         * The meta object literal for the '<em><b>Network Time Copy</b></em>' containment reference feature.
-         * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-         * @generated
-         */
-		EReference RECORD__NETWORK_TIME_COPY = eINSTANCE.getRecord_NetworkTimeCopy();
 
 		/**
          * The meta object literal for the '<em><b>End</b></em>' attribute feature.

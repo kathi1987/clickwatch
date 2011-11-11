@@ -25,7 +25,9 @@ import org.eclipse.swt.widgets.Text;
 
 import com.google.inject.Inject;
 
+import de.hub.clickwatch.connection.INodeConnection;
 import de.hub.clickwatch.connection.INodeConnectionProvider;
+import de.hub.clickwatch.connection.adapter.IEditingDomainAdapter;
 import de.hub.clickwatch.connection.adapter.IMergeAdapter;
 import de.hub.clickwatch.model.Network;
 import de.hub.clickwatch.model.Node;
@@ -178,10 +180,9 @@ public class JumpToTime extends AbstractAction<Record> {
 				
 				@Override
 				public void run(IProgressMonitor monitor) {					
-					Network networkTimeCopy = experimimentDescr.getNetworkTimeCopy();
+					Network networkTimeCopy = experimimentDescr.getConfiguration();
 					if (networkTimeCopy == null) {
 						networkTimeCopy = EcoreUtil.copy(experimimentDescr.getConfiguration());
-						experimimentDescr.setNetworkTimeCopy(networkTimeCopy);
 					}
 					
 					monitor.beginTask("resetting nodes to new time", networkTimeCopy.getNodes().size() + 1);
@@ -190,8 +191,11 @@ public class JumpToTime extends AbstractAction<Record> {
 					networkTimeCopy.setName("NTC at " + new TimeStampLabelProvider().getText(time));
 										
 					for (Node currentNode: networkTimeCopy.getNodes()) {
-					    IMergeAdapter mergeAdapter = ncp.createConnection(currentNode).getAdapter(IMergeAdapter.class);
-					    ((UiClickWatchNodeMergeConfiguration)mergeAdapter.getMerger().getConfiguration()).setEditingDomain(((IEditingDomainProvider)editor).getEditingDomain());
+					    INodeConnection connection = ncp.createConnection(currentNode);
+                        IMergeAdapter mergeAdapter = connection.getAdapter(IMergeAdapter.class);
+					    IEditingDomainAdapter eda = connection.getAdapter(IEditingDomainAdapter.class);
+					    eda.setEditingDomain(((IEditingDomainProvider)editor).getEditingDomain());
+                        ((UiClickWatchNodeMergeConfiguration)mergeAdapter.getMerger().getConfiguration()).setEditingDomainAdapter(eda);
 					    mergeAdapter.clearChanges();
 					    
 						Node nodeTimeCopy = dataBaseUtil.getNode(DataBaseUtil.createHandle(experimimentDescr, currentNode, time));

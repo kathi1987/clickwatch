@@ -35,6 +35,7 @@ import de.hub.clickwatch.model.Node;
  *   <li>{@link de.hub.clickwatch.model.impl.NetworkImpl#getElementFilter <em>Element Filter</em>}</li>
  *   <li>{@link de.hub.clickwatch.model.impl.NetworkImpl#getHandlerFilter <em>Handler Filter</em>}</li>
  *   <li>{@link de.hub.clickwatch.model.impl.NetworkImpl#getSubnetworks <em>Subnetworks</em>}</li>
+ *   <li>{@link de.hub.clickwatch.model.impl.NetworkImpl#getTimestamp <em>Timestamp</em>}</li>
  * </ul>
  * </p>
  *
@@ -114,6 +115,24 @@ public class NetworkImpl extends ModelElementWithStatisticsImpl implements Netwo
      */
 	protected EList<Network> subnetworks;
 	/**
+     * The default value of the '{@link #getTimestamp() <em>Timestamp</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getTimestamp()
+     * @generated
+     * @ordered
+     */
+    protected static final long TIMESTAMP_EDEFAULT = 0L;
+    /**
+     * The cached value of the '{@link #getTimestamp() <em>Timestamp</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getTimestamp()
+     * @generated
+     * @ordered
+     */
+    protected long timestamp = TIMESTAMP_EDEFAULT;
+    /**
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
@@ -221,6 +240,27 @@ public class NetworkImpl extends ModelElementWithStatisticsImpl implements Netwo
 
 	/**
      * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public long getTimestamp() {
+        return timestamp;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setTimestamp(long newTimestamp) {
+        long oldTimestamp = timestamp;
+        timestamp = newTimestamp;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, ClickWatchModelPackage.NETWORK__TIMESTAMP, oldTimestamp, timestamp));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
      */
@@ -253,6 +293,8 @@ public class NetworkImpl extends ModelElementWithStatisticsImpl implements Netwo
                 return getHandlerFilter();
             case ClickWatchModelPackage.NETWORK__SUBNETWORKS:
                 return getSubnetworks();
+            case ClickWatchModelPackage.NETWORK__TIMESTAMP:
+                return getTimestamp();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -283,6 +325,9 @@ public class NetworkImpl extends ModelElementWithStatisticsImpl implements Netwo
                 getSubnetworks().clear();
                 getSubnetworks().addAll((Collection<? extends Network>)newValue);
                 return;
+            case ClickWatchModelPackage.NETWORK__TIMESTAMP:
+                setTimestamp((Long)newValue);
+                return;
         }
         super.eSet(featureID, newValue);
     }
@@ -310,6 +355,9 @@ public class NetworkImpl extends ModelElementWithStatisticsImpl implements Netwo
             case ClickWatchModelPackage.NETWORK__SUBNETWORKS:
                 getSubnetworks().clear();
                 return;
+            case ClickWatchModelPackage.NETWORK__TIMESTAMP:
+                setTimestamp(TIMESTAMP_EDEFAULT);
+                return;
         }
         super.eUnset(featureID);
     }
@@ -332,6 +380,8 @@ public class NetworkImpl extends ModelElementWithStatisticsImpl implements Netwo
                 return HANDLER_FILTER_EDEFAULT == null ? handlerFilter != null : !HANDLER_FILTER_EDEFAULT.equals(handlerFilter);
             case ClickWatchModelPackage.NETWORK__SUBNETWORKS:
                 return subnetworks != null && !subnetworks.isEmpty();
+            case ClickWatchModelPackage.NETWORK__TIMESTAMP:
+                return timestamp != TIMESTAMP_EDEFAULT;
         }
         return super.eIsSet(featureID);
     }
@@ -352,6 +402,8 @@ public class NetworkImpl extends ModelElementWithStatisticsImpl implements Netwo
         result.append(elementFilter);
         result.append(", HandlerFilter: ");
         result.append(handlerFilter);
+        result.append(", timestamp: ");
+        result.append(timestamp);
         result.append(')');
         return result.toString();
     }

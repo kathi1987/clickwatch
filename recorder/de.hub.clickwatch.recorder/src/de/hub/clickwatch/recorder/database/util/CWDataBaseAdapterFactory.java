@@ -12,6 +12,7 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
 
 import de.hub.clickwatch.model.ModelElementWithStatistics;
+import de.hub.clickwatch.recorder.database.*;
 import de.hub.clickwatch.recorder.database.CWDataBasePackage;
 import de.hub.clickwatch.recorder.database.DataBase;
 import de.hub.clickwatch.recorder.database.Record;

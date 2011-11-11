@@ -26,8 +26,6 @@ public class ClickSocketPlayerSocketImpl extends ClickSocketTestImpl {
 	private Node node = null;
 	private String host;
 	private int port;
-	
-	private static int count = 0;
 
 	@Override
 	public void connect(String host, int port, int timeout) throws IOException {
@@ -41,7 +39,7 @@ public class ClickSocketPlayerSocketImpl extends ClickSocketTestImpl {
 		
 		if (node == null) {
 			node = player.getNode(host, port);
-		} else { //if (count++ % 700 == 0) {
+		} else {
 			node = player.getNode(host, port);
 		}
 		Preconditions.checkState(node != null, "Node with iNetAddress " + host + " does not exist in record.");

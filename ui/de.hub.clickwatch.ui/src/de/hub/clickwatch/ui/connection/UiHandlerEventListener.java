@@ -7,7 +7,6 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.edit.domain.IEditingDomainProvider;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IEditorPart;
@@ -17,6 +16,8 @@ import org.eclipse.ui.IWorkbenchPart;
 import com.google.common.base.Preconditions;
 import com.google.inject.Inject;
 
+import de.hub.clickwatch.connection.INodeConnection;
+import de.hub.clickwatch.connection.adapter.IEditingDomainAdapter;
 import de.hub.clickwatch.connection.adapter.IErrorAdapter;
 import de.hub.clickwatch.connection.adapter.IHandlerEventListener;
 import de.hub.clickwatch.connection.adapter.IMergeAdapter;
@@ -90,8 +91,9 @@ public class UiHandlerEventListener implements IHandlerEventListener {
         }
         
         Preconditions.checkState(editor != null, "No editor");
-        IMergeConfiguration configuration = node.getConnection().getAdapter(IMergeAdapter.class).getMerger().getConfiguration();
-        ((UiClickWatchNodeMergeConfiguration)configuration).setEditingDomain(((IEditingDomainProvider)editor).getEditingDomain());
+        INodeConnection connection = node.getConnection();
+        IMergeConfiguration configuration = connection.getAdapter(IMergeAdapter.class).getMerger().getConfiguration();
+        ((UiClickWatchNodeMergeConfiguration)configuration).setEditingDomainAdapter(connection.getAdapter(IEditingDomainAdapter.class));
         
         editor.getSite().getWorkbenchWindow().getPartService().addPartListener(partListener);
     }

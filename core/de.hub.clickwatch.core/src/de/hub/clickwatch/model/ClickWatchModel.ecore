@@ -108,6 +108,7 @@
         <details key="kind" value="element"/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="timestamp" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="BackboneType">
     <eLiterals name="wired"/>

@@ -8,8 +8,6 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="start" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="networkTimeCopy" eType="ecore:EClass ../../../../../../../de.hub.clickwatch.core/src/de/hub/clickwatch/model/ClickWatchModel.ecore#//Network"
-        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="end" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="hBaseRowMap" eType="#//HBaseRowMap"/>
   </eClassifiers>

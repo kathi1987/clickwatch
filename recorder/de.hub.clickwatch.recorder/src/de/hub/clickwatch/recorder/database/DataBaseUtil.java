@@ -41,7 +41,7 @@ public class DataBaseUtil {
     }
 
     public static DataBaseHandle createHandle(Record record, Node node, Handler handler) {
-        return createHandle(record, node, handler);
+        return createHandle(record, node, handler, record.getStart(), record.getEnd());
     }
 
     public static DataBaseHandle createHandle(Record record, Node node, String handlerName) {

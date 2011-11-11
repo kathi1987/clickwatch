@@ -21,7 +21,6 @@ import de.hub.clickwatch.model.Network;
  *   <li>{@link de.hub.clickwatch.recorder.database.Record#getConfiguration <em>Configuration</em>}</li>
  *   <li>{@link de.hub.clickwatch.recorder.database.Record#getName <em>Name</em>}</li>
  *   <li>{@link de.hub.clickwatch.recorder.database.Record#getStart <em>Start</em>}</li>
- *   <li>{@link de.hub.clickwatch.recorder.database.Record#getNetworkTimeCopy <em>Network Time Copy</em>}</li>
  *   <li>{@link de.hub.clickwatch.recorder.database.Record#getEnd <em>End</em>}</li>
  *   <li>{@link de.hub.clickwatch.recorder.database.Record#getHBaseRowMap <em>HBase Row Map</em>}</li>
  * </ul>
@@ -109,32 +108,6 @@ public interface Record extends ModelElementWithStatistics {
      * @generated
      */
 	void setStart(long value);
-
-	/**
-     * Returns the value of the '<em><b>Network Time Copy</b></em>' containment reference.
-     * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Network Time Copy</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-     * @return the value of the '<em>Network Time Copy</em>' containment reference.
-     * @see #setNetworkTimeCopy(Network)
-     * @see de.hub.clickwatch.recorder.database.CWDataBasePackage#getRecord_NetworkTimeCopy()
-     * @model containment="true"
-     * @generated
-     */
-	Network getNetworkTimeCopy();
-
-	/**
-     * Sets the value of the '{@link de.hub.clickwatch.recorder.database.Record#getNetworkTimeCopy <em>Network Time Copy</em>}' containment reference.
-     * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-     * @param value the new value of the '<em>Network Time Copy</em>' containment reference.
-     * @see #getNetworkTimeCopy()
-     * @generated
-     */
-	void setNetworkTimeCopy(Network value);
 
 	/**
      * Returns the value of the '<em><b>End</b></em>' attribute.

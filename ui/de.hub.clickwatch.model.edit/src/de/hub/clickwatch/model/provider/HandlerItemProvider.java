@@ -16,6 +16,8 @@ import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.EcoreFactory;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.util.FeatureMapUtil;
 import org.eclipse.emf.ecore.xml.type.XMLTypeFactory;
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
@@ -45,16 +47,6 @@ public class HandlerItemProvider
 	extends ItemProviderAdapter
 	implements
 		IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
-	
-	/**
-	 * @generated NOT
-	 */
-	@Override
-	public Object getCreateChildImage(Object owner, Object feature,
-			Object child, Collection<?> selection) {
-		// TODO not only forbid images
-		return null;
-	}
 
 	/**
      * This constructs an instance from a factory and a notifier.
@@ -77,34 +69,10 @@ public class HandlerItemProvider
         if (itemPropertyDescriptors == null) {
             super.getPropertyDescriptors(object);
 
-            addNamePropertyDescriptor(object);
             addCanReadPropertyDescriptor(object);
             addCanWritePropertyDescriptor(object);
-            addTimestampPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
-    }
-
-	/**
-     * This adds a property descriptor for the Name feature.
-     * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-     * @generated
-     */
-	protected void addNamePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add
-            (createItemPropertyDescriptor
-                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                 getResourceLocator(),
-                 getString("_UI_Handler_name_feature"),
-                 getString("_UI_PropertyDescriptor_description", "_UI_Handler_name_feature", "_UI_Handler_type"),
-                 ClickWatchModelPackage.Literals.HANDLER__NAME,
-                 false,
-                 false,
-                 false,
-                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                 null,
-                 null));
     }
 
 	/**
@@ -150,53 +118,26 @@ public class HandlerItemProvider
                  null,
                  null));
     }
-
-	/**
-	 * This adds a property descriptor for the Timestamp feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	protected void addTimestampPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(new ItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Handler_timestamp_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Handler_timestamp_feature", "_UI_Handler_type"),
-				 ClickWatchModelPackage.Literals.HANDLER__TIMESTAMP,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null) {
-					@Override
-					public IItemLabelProvider getLabelProvider(Object object) {
-						return new TimeStampLabelProvider();
-					}
-		});
-	}
 	
 	/**
-	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
-	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-		if (childrenFeatures == null) {
-			super.getChildrenFeatures(object);
-			childrenFeatures.add(ClickWatchModelPackage.Literals.HANDLER__MIXED);
-			childrenFeatures.add(ClickWatchModelPackage.Literals.HANDLER__ANY);
-		}
-		return childrenFeatures;
-	}
+     * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+     * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
+     * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
+        if (childrenFeatures == null) {
+            super.getChildrenFeatures(object);
+            childrenFeatures.add(ClickWatchModelPackage.Literals.HANDLER__MIXED);
+            childrenFeatures.add(ClickWatchModelPackage.Literals.HANDLER__ANY);
+        }
+        return childrenFeatures;
+    }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
@@ -230,46 +171,54 @@ public class HandlerItemProvider
 	public String getText(Object object) {
 		Handler handler = (Handler)object;
 		String result = handler.getName();
-		return result;
-	}
-
-	/**
-	 * This handles model notifications by calling {@link #updateChildren} to update any cached
-	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	@Override
-	public void notifyChanged(Notification notification) {
-		updateChildren(notification);
-
-		switch (notification.getFeatureID(Handler.class)) {
-			case ClickWatchModelPackage.HANDLER__NAME:
-			case ClickWatchModelPackage.HANDLER__CAN_READ:
-			case ClickWatchModelPackage.HANDLER__CAN_WRITE:
-			case ClickWatchModelPackage.HANDLER__CHANGED:
-			case ClickWatchModelPackage.HANDLER__MIXED:
-			case ClickWatchModelPackage.HANDLER__ANY:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-				return;
+		if (handler.getTimestamp() > 0) {
+		    return result + " " + new TimeStampLabelProvider().getText(handler.getTimestamp());
+		} else {
+		    return result;
 		}
-		super.notifyChanged(notification);
 	}
 
 	/**
-	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
-	 * that can be created under this object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+     * This handles model notifications by calling {@link #updateChildren} to update any cached
+     * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public void notifyChanged(Notification notification) {
+        updateChildren(notification);
 
-	}
+        switch (notification.getFeatureID(Handler.class)) {
+            case ClickWatchModelPackage.HANDLER__NAME:
+            case ClickWatchModelPackage.HANDLER__CAN_READ:
+            case ClickWatchModelPackage.HANDLER__CAN_WRITE:
+            case ClickWatchModelPackage.HANDLER__CHANGED:
+            case ClickWatchModelPackage.HANDLER__VALUE:
+            case ClickWatchModelPackage.HANDLER__TIMESTAMP:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+                return;
+            case ClickWatchModelPackage.HANDLER__MIXED:
+            case ClickWatchModelPackage.HANDLER__ANY:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+                return;
+        }
+        super.notifyChanged(notification);
+    }
 
-	/**
+    /**
+     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+     * that can be created under this object.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+        super.collectNewChildDescriptors(newChildDescriptors, object);
+    }
+
+    /**
      * Return the resource locator for this item provider's resources.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -298,30 +247,4 @@ public class HandlerItemProvider
 			return super.createWrapper(object, feature, value, index);
 		}
 	}
-
-//	@Override
-//	public Collection<?> getChildren(Object object) {
-//		IsRecordedAdapter isRecordedAdapter = new IsRecordedAdapter();
-//		Collection<Object> children = new ArrayList<Object>();
-//		for(Object child: super.getChildren(object)) {
-//			boolean isRecorded = false;
-//			Object value = ((FeatureMapEntryWrapperItemProvider)child).getValue();
-//			if (value instanceof FeatureMap.Entry) {
-//				Object fmeValue = ((FeatureMap.Entry)value).getValue();
-//				if (fmeValue instanceof EObject) {
-//					AdapterLoop: for(Object adapter: ((EObject)fmeValue).eAdapters()) {
-//						if (adapter.equals(isRecordedAdapter)) {
-//							isRecorded = true;
-//							break AdapterLoop;
-//						}
-//					}
-//				}
-//			}
-//				
-//			if (!isRecorded) {
-//				children.add(child);
-//			}
-//		}
-//		return children;
-//	}
 }

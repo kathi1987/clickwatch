@@ -14,6 +14,7 @@ public class NetworkBuilder implements de.hub.clickwatch.model.util.builder.IMod
   private java.lang.String m_name;
   private de.hub.clickwatch.model.StatisticsContainer m_statistics;
   private de.hub.clickwatch.model.util.builder.IModelBuilder<? extends de.hub.clickwatch.model.StatisticsContainer> m_featureStatisticsBuilder;
+  private long m_timestamp;
   private java.util.Collection<de.hub.clickwatch.model.Node> m_nodes = new java.util.LinkedList<de.hub.clickwatch.model.Node>();
   private java.util.Collection<de.hub.clickwatch.model.util.builder.IModelBuilder<? extends de.hub.clickwatch.model.Node>> m_featureNodesBuilder = new java.util.LinkedList<de.hub.clickwatch.model.util.builder.IModelBuilder<? extends de.hub.clickwatch.model.Node>>();
   private java.util.Collection<de.hub.clickwatch.model.Network> m_subnetworks = new java.util.LinkedList<de.hub.clickwatch.model.Network>();
@@ -25,6 +26,7 @@ public class NetworkBuilder implements de.hub.clickwatch.model.util.builder.IMod
   private boolean m_featureNodesSet = false;
   private boolean m_featureStatisticsSet = false;
   private boolean m_featureSubnetworksSet = false;
+  private boolean m_featureTimestampSet = false;
 
   /**
    * Builder is not instantiated with a constructor.
@@ -61,6 +63,8 @@ public class NetworkBuilder implements de.hub.clickwatch.model.util.builder.IMod
     _builder.m_featureSubnetworksSet = m_featureSubnetworksSet;
     _builder.m_subnetworks = m_subnetworks;
     _builder.m_featureSubnetworksBuilder = m_featureSubnetworksBuilder;
+    _builder.m_featureTimestampSet = m_featureTimestampSet;
+    _builder.m_timestamp = m_timestamp;
     return _builder;
   }
 
@@ -85,6 +89,9 @@ public class NetworkBuilder implements de.hub.clickwatch.model.util.builder.IMod
       if (m_featureStatisticsBuilder != null) {
         _newInstance.setStatistics(m_featureStatisticsBuilder.build());
       }
+    }
+    if (m_featureTimestampSet) {
+      _newInstance.setTimestamp(m_timestamp);
     }
     if (m_featureNodesSet) {
       _newInstance.getNodes().addAll(m_nodes);
@@ -133,6 +140,12 @@ public class NetworkBuilder implements de.hub.clickwatch.model.util.builder.IMod
 
   public NetworkBuilder withStatistics(de.hub.clickwatch.model.util.builder.IModelBuilder<? extends de.hub.clickwatch.model.StatisticsContainer> p_statisticsContainerBuilder) {
     m_featureStatisticsBuilder = p_statisticsContainerBuilder;
+    return this;
+  }
+
+  public NetworkBuilder withTimestamp(long p_timestamp) {
+    m_timestamp = p_timestamp;
+    m_featureTimestampSet = true;
     return this;
   }
 

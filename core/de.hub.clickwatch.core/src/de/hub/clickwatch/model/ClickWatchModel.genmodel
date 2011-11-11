@@ -57,14 +57,14 @@
       <genOperations ecoreOperation="ClickWatchModel.ecore#//Element/getAllHandlers"/>
     </genClasses>
     <genClasses ecoreClass="ClickWatchModel.ecore#//Handler">
-      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute ClickWatchModel.ecore#//Handler/name"/>
+      <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute ClickWatchModel.ecore#//Handler/name"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute ClickWatchModel.ecore#//Handler/canRead"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute ClickWatchModel.ecore#//Handler/canWrite"/>
       <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute ClickWatchModel.ecore#//Handler/changed"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute ClickWatchModel.ecore#//Handler/mixed"/>
-      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute ClickWatchModel.ecore#//Handler/any"/>
+      <genFeatures property="None" children="true" createChild="false" ecoreFeature="ecore:EAttribute ClickWatchModel.ecore#//Handler/mixed"/>
+      <genFeatures property="None" children="true" createChild="false" ecoreFeature="ecore:EAttribute ClickWatchModel.ecore#//Handler/any"/>
       <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute ClickWatchModel.ecore#//Handler/value"/>
-      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute ClickWatchModel.ecore#//Handler/timestamp"/>
+      <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute ClickWatchModel.ecore#//Handler/timestamp"/>
       <genOperations ecoreOperation="ClickWatchModel.ecore#//Handler/getQualifiedName"/>
     </genClasses>
     <genClasses ecoreClass="ClickWatchModel.ecore#//Network">
@@ -73,6 +73,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClickWatchModel.ecore#//Network/ElementFilter"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClickWatchModel.ecore#//Network/HandlerFilter"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ClickWatchModel.ecore#//Network/subnetworks"/>
+      <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute ClickWatchModel.ecore#//Network/timestamp"/>
     </genClasses>
     <genClasses image="false" ecoreClass="ClickWatchModel.ecore#//ModelElementWithStatistics">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ClickWatchModel.ecore#//ModelElementWithStatistics/statistics"/>

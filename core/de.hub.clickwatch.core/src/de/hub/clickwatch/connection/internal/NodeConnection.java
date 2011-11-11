@@ -14,6 +14,7 @@ import com.google.inject.name.Named;
 
 import de.hub.clickcontrol.IClickSocket;
 import de.hub.clickwatch.ClickWatchModule;
+import de.hub.clickwatch.connection.adapter.IEditingDomainAdapter;
 import de.hub.clickwatch.connection.adapter.IErrorAdapter;
 import de.hub.clickwatch.connection.adapter.IHandlerAdapter;
 import de.hub.clickwatch.connection.adapter.IHandlerEventAdapter;
@@ -41,6 +42,7 @@ public class NodeConnection implements IInternalNodeConnection {
     @Inject private INodeAdapter nodeAdapter;
     @Inject private IErrorAdapter errorAdapter;
     @Inject private IMergeAdapter mergeAdapter;
+    @Inject private IEditingDomainAdapter editingDomainAdapter;
     
     @Inject private Tasks tasks;
 
@@ -114,6 +116,7 @@ public class NodeConnection implements IInternalNodeConnection {
                 ((AbstractAdapter)nodeAdapter).dispose();
                 ((AbstractAdapter)errorAdapter).dispose();
                 ((AbstractAdapter)mergeAdapter).dispose();
+                ((AbstractAdapter)editingDomainAdapter).dispose();
                 node.getErrors().clear();
                 node.setConnection(null);
                 node = null;
@@ -153,6 +156,9 @@ public class NodeConnection implements IInternalNodeConnection {
         } else if (adapterClass == IMergeAdapter.class) {
             init((AbstractAdapter) mergeAdapter);
             return (T) mergeAdapter;
+        } else if (adapterClass == IEditingDomainAdapter.class) {
+            init((AbstractAdapter)editingDomainAdapter);
+            return (T) editingDomainAdapter;
         } else if (adapterClass == IHandlerAdapter.class) {
             init((AbstractAdapter) handlerAdapter);
             return (T) handlerAdapter;

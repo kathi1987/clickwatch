@@ -28,7 +28,6 @@ import de.hub.clickwatch.recorder.database.Record;
  *   <li>{@link de.hub.clickwatch.recorder.database.impl.RecordImpl#getConfiguration <em>Configuration</em>}</li>
  *   <li>{@link de.hub.clickwatch.recorder.database.impl.RecordImpl#getName <em>Name</em>}</li>
  *   <li>{@link de.hub.clickwatch.recorder.database.impl.RecordImpl#getStart <em>Start</em>}</li>
- *   <li>{@link de.hub.clickwatch.recorder.database.impl.RecordImpl#getNetworkTimeCopy <em>Network Time Copy</em>}</li>
  *   <li>{@link de.hub.clickwatch.recorder.database.impl.RecordImpl#getEnd <em>End</em>}</li>
  *   <li>{@link de.hub.clickwatch.recorder.database.impl.RecordImpl#getHBaseRowMap <em>HBase Row Map</em>}</li>
  * </ul>
@@ -86,16 +85,6 @@ public class RecordImpl extends ModelElementWithStatisticsImpl implements Record
      * @ordered
      */
 	protected long start = START_EDEFAULT;
-
-	/**
-     * The cached value of the '{@link #getNetworkTimeCopy() <em>Network Time Copy</em>}' containment reference.
-     * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-     * @see #getNetworkTimeCopy()
-     * @generated
-     * @ordered
-     */
-	protected Network networkTimeCopy;
 
 	/**
      * The default value of the '{@link #getEnd() <em>End</em>}' attribute.
@@ -246,49 +235,6 @@ public class RecordImpl extends ModelElementWithStatisticsImpl implements Record
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public Network getNetworkTimeCopy() {
-        return networkTimeCopy;
-    }
-
-	/**
-     * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-     * @generated
-     */
-	public NotificationChain basicSetNetworkTimeCopy(Network newNetworkTimeCopy, NotificationChain msgs) {
-        Network oldNetworkTimeCopy = networkTimeCopy;
-        networkTimeCopy = newNetworkTimeCopy;
-        if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CWDataBasePackage.RECORD__NETWORK_TIME_COPY, oldNetworkTimeCopy, newNetworkTimeCopy);
-            if (msgs == null) msgs = notification; else msgs.add(notification);
-        }
-        return msgs;
-    }
-
-	/**
-     * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-     * @generated
-     */
-	public void setNetworkTimeCopy(Network newNetworkTimeCopy) {
-        if (newNetworkTimeCopy != networkTimeCopy) {
-            NotificationChain msgs = null;
-            if (networkTimeCopy != null)
-                msgs = ((InternalEObject)networkTimeCopy).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CWDataBasePackage.RECORD__NETWORK_TIME_COPY, null, msgs);
-            if (newNetworkTimeCopy != null)
-                msgs = ((InternalEObject)newNetworkTimeCopy).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CWDataBasePackage.RECORD__NETWORK_TIME_COPY, null, msgs);
-            msgs = basicSetNetworkTimeCopy(newNetworkTimeCopy, msgs);
-            if (msgs != null) msgs.dispatch();
-        }
-        else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, CWDataBasePackage.RECORD__NETWORK_TIME_COPY, newNetworkTimeCopy, newNetworkTimeCopy));
-    }
-
-	/**
-     * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-     * @generated
-     */
 	public long getEnd() {
         return end;
     }
@@ -336,8 +282,6 @@ public class RecordImpl extends ModelElementWithStatisticsImpl implements Record
         switch (featureID) {
             case CWDataBasePackage.RECORD__CONFIGURATION:
                 return basicSetConfiguration(null, msgs);
-            case CWDataBasePackage.RECORD__NETWORK_TIME_COPY:
-                return basicSetNetworkTimeCopy(null, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -356,8 +300,6 @@ public class RecordImpl extends ModelElementWithStatisticsImpl implements Record
                 return getName();
             case CWDataBasePackage.RECORD__START:
                 return getStart();
-            case CWDataBasePackage.RECORD__NETWORK_TIME_COPY:
-                return getNetworkTimeCopy();
             case CWDataBasePackage.RECORD__END:
                 return getEnd();
             case CWDataBasePackage.RECORD__HBASE_ROW_MAP:
@@ -382,9 +324,6 @@ public class RecordImpl extends ModelElementWithStatisticsImpl implements Record
                 return;
             case CWDataBasePackage.RECORD__START:
                 setStart((Long)newValue);
-                return;
-            case CWDataBasePackage.RECORD__NETWORK_TIME_COPY:
-                setNetworkTimeCopy((Network)newValue);
                 return;
             case CWDataBasePackage.RECORD__END:
                 setEnd((Long)newValue);
@@ -413,9 +352,6 @@ public class RecordImpl extends ModelElementWithStatisticsImpl implements Record
             case CWDataBasePackage.RECORD__START:
                 setStart(START_EDEFAULT);
                 return;
-            case CWDataBasePackage.RECORD__NETWORK_TIME_COPY:
-                setNetworkTimeCopy((Network)null);
-                return;
             case CWDataBasePackage.RECORD__END:
                 setEnd(END_EDEFAULT);
                 return;
@@ -440,8 +376,6 @@ public class RecordImpl extends ModelElementWithStatisticsImpl implements Record
                 return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
             case CWDataBasePackage.RECORD__START:
                 return start != START_EDEFAULT;
-            case CWDataBasePackage.RECORD__NETWORK_TIME_COPY:
-                return networkTimeCopy != null;
             case CWDataBasePackage.RECORD__END:
                 return end != END_EDEFAULT;
             case CWDataBasePackage.RECORD__HBASE_ROW_MAP:

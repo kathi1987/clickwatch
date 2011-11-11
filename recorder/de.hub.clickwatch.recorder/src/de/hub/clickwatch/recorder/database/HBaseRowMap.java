@@ -19,6 +19,12 @@ public class HBaseRowMap implements Serializable {
 	private Map<String, byte[]> nodeKeys = new HashMap<String, byte[]>();
 	private Map<String, byte[]> handlerKeys = new HashMap<String, byte[]>();
 	
+	/**
+	 * Creates an HBase row based on keys stored in this map.
+	 * 
+	 * @param isNew determines whether new keys shall be generated for given ids.
+	 * @return the HBase row, or null of the handlerId is unknown to this map.
+	 */
 	public byte[] createRow(String nodeId, String handlerId, long time, boolean isNew) {
 		byte[] nodeKey = nodeKeys.get(nodeId);
 		byte[] handlerKey = handlerKeys.get(handlerId);
@@ -34,7 +40,9 @@ public class HBaseRowMap implements Serializable {
 		}
 		
 		Preconditions.checkArgument(nodeKey != null);
-		Preconditions.checkArgument(handlerKey != null);
+		if (handlerKey == null) {
+		    return null;
+		}
 		
 		byte[] row = new byte[nodeKey.length + handlerKey.length + timeKey.length];
 		for (int i = 0; i < nodeKey.length; i++) row[i] = nodeKey[i];

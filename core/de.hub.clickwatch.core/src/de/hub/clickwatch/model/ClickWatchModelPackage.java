@@ -400,13 +400,22 @@ public interface ClickWatchModelPackage extends EPackage {
 	int NETWORK__SUBNETWORKS = MODEL_ELEMENT_WITH_STATISTICS_FEATURE_COUNT + 4;
 
 	/**
+     * The feature id for the '<em><b>Timestamp</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int NETWORK__TIMESTAMP = MODEL_ELEMENT_WITH_STATISTICS_FEATURE_COUNT + 5;
+
+    /**
      * The number of structural features of the '<em>Network</em>' class.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-	int NETWORK_FEATURE_COUNT = MODEL_ELEMENT_WITH_STATISTICS_FEATURE_COUNT + 5;
+	int NETWORK_FEATURE_COUNT = MODEL_ELEMENT_WITH_STATISTICS_FEATURE_COUNT + 6;
 
 	/**
      * The meta object id for the '{@link de.hub.clickwatch.model.impl.StatisticsContainerImpl <em>Statistics Container</em>}' class.
@@ -951,6 +960,17 @@ public interface ClickWatchModelPackage extends EPackage {
 	EReference getNetwork_Subnetworks();
 
 	/**
+     * Returns the meta object for the attribute '{@link de.hub.clickwatch.model.Network#getTimestamp <em>Timestamp</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Timestamp</em>'.
+     * @see de.hub.clickwatch.model.Network#getTimestamp()
+     * @see #getNetwork()
+     * @generated
+     */
+    EAttribute getNetwork_Timestamp();
+
+    /**
      * Returns the meta object for class '{@link de.hub.clickwatch.model.StatisticsContainer <em>Statistics Container</em>}'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1451,6 +1471,14 @@ public interface ClickWatchModelPackage extends EPackage {
 		EReference NETWORK__SUBNETWORKS = eINSTANCE.getNetwork_Subnetworks();
 
 		/**
+         * The meta object literal for the '<em><b>Timestamp</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute NETWORK__TIMESTAMP = eINSTANCE.getNetwork_Timestamp();
+
+        /**
          * The meta object literal for the '{@link de.hub.clickwatch.model.impl.StatisticsContainerImpl <em>Statistics Container</em>}' class.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->

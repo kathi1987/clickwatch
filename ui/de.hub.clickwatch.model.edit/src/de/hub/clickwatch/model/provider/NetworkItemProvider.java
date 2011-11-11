@@ -186,7 +186,13 @@ public class NetworkItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		return ((Network)object).getName();
+		Network network = (Network)object;
+        String result = network.getName();
+        if (network.getTimestamp() > 0) {
+            return result + " " + new TimeStampLabelProvider().getText(network.getTimestamp());
+        } else {
+            return result;
+        }	      
 	}
 
 	/**
@@ -204,6 +210,7 @@ public class NetworkItemProvider
             case ClickWatchModelPackage.NETWORK__NAME:
             case ClickWatchModelPackage.NETWORK__ELEMENT_FILTER:
             case ClickWatchModelPackage.NETWORK__HANDLER_FILTER:
+            case ClickWatchModelPackage.NETWORK__TIMESTAMP:
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
                 return;
             case ClickWatchModelPackage.NETWORK__NODES:

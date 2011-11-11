@@ -13,10 +13,12 @@ import org.apache.hadoop.hbase.client.Scan;
 
 import com.google.common.base.Preconditions;
 import com.google.inject.Inject;
+import com.google.inject.name.Named;
 
 import de.hub.clickwatch.connection.adapter.values.IValueAdapter;
 import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.model.Node;
+import de.hub.clickwatch.recorder.ClickWatchRecorderModule;
 import de.hub.clickwatch.recorder.database.HBaseRowMap;
 import de.hub.clickwatch.recorder.database.Record;
 import de.hub.clickwatch.util.ILogger;
@@ -28,7 +30,7 @@ public class HBaseDataBaseAdapter implements IDataBaseAdapter {
     @Inject private HBaseUtil hbaseUtil;
     @Inject private Tasks taskQueues;
     @Inject private ILogger logger;
-    @Inject private IValueAdapter valueAdapter;
+    @Inject @Named(ClickWatchRecorderModule.DB_VALUE_ADAPTER_PROPERTY) private IValueAdapter valueAdapter;
     
     private HBaseRowMap rowMap = null;
     private HTable table = null;
@@ -123,6 +125,9 @@ public class HBaseDataBaseAdapter implements IDataBaseAdapter {
         String qualifiedHandlerName = handler.getQualifiedName();
         String nodeAddress = node.getINetAddress();
         byte[] row = rowMap.createRow(nodeAddress, qualifiedHandlerName, time, false);
+        if (row == null) {
+            return null;
+        }
         Result result = null;
         try {
             result = table.getRowOrBefore(row, HBaseUtil.colFamily);

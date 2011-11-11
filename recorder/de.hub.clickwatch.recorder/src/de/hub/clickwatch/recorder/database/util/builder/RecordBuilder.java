@@ -14,8 +14,6 @@ public class RecordBuilder implements de.hub.clickwatch.recorder.database.util.b
   private long m_end;
   private de.hub.clickwatch.recorder.database.HBaseRowMap m_hBaseRowMap;
   private java.lang.String m_name;
-  private de.hub.clickwatch.model.Network m_networkTimeCopy;
-  private de.hub.clickwatch.model.util.builder.IModelBuilder<? extends de.hub.clickwatch.model.Network> m_featureNetworkTimeCopyBuilder;
   private long m_start;
   private de.hub.clickwatch.model.StatisticsContainer m_statistics;
   private de.hub.clickwatch.model.util.builder.IModelBuilder<? extends de.hub.clickwatch.model.StatisticsContainer> m_featureStatisticsBuilder;
@@ -24,7 +22,6 @@ public class RecordBuilder implements de.hub.clickwatch.recorder.database.util.b
   private boolean m_featureEndSet = false;
   private boolean m_featureHBaseRowMapSet = false;
   private boolean m_featureNameSet = false;
-  private boolean m_featureNetworkTimeCopySet = false;
   private boolean m_featureStartSet = false;
   private boolean m_featureStatisticsSet = false;
 
@@ -57,9 +54,6 @@ public class RecordBuilder implements de.hub.clickwatch.recorder.database.util.b
     _builder.m_hBaseRowMap = m_hBaseRowMap;
     _builder.m_featureNameSet = m_featureNameSet;
     _builder.m_name = m_name;
-    _builder.m_featureNetworkTimeCopySet = m_featureNetworkTimeCopySet;
-    _builder.m_networkTimeCopy = m_networkTimeCopy;
-    _builder.m_featureNetworkTimeCopyBuilder = m_featureNetworkTimeCopyBuilder;
     _builder.m_featureStartSet = m_featureStartSet;
     _builder.m_start = m_start;
     _builder.m_featureStatisticsSet = m_featureStatisticsSet;
@@ -89,13 +83,6 @@ public class RecordBuilder implements de.hub.clickwatch.recorder.database.util.b
     }
     if (m_featureNameSet) {
       _newInstance.setName(m_name);
-    }
-    if (m_featureNetworkTimeCopySet) {
-      _newInstance.setNetworkTimeCopy(m_networkTimeCopy);
-    } else {
-      if (m_featureNetworkTimeCopyBuilder != null) {
-        _newInstance.setNetworkTimeCopy(m_featureNetworkTimeCopyBuilder.build());
-      }
     }
     if (m_featureStartSet) {
       _newInstance.setStart(m_start);
@@ -136,17 +123,6 @@ public class RecordBuilder implements de.hub.clickwatch.recorder.database.util.b
   public RecordBuilder withName(java.lang.String p_name) {
     m_name = p_name;
     m_featureNameSet = true;
-    return this;
-  }
-
-  public RecordBuilder withNetworkTimeCopy(de.hub.clickwatch.model.Network p_networkTimeCopy) {
-    m_networkTimeCopy = p_networkTimeCopy;
-    m_featureNetworkTimeCopySet = true;
-    return this;
-  }
-
-  public RecordBuilder withNetworkTimeCopy(de.hub.clickwatch.model.util.builder.IModelBuilder<? extends de.hub.clickwatch.model.Network> p_networkBuilder) {
-    m_featureNetworkTimeCopyBuilder = p_networkBuilder;
     return this;
   }
 

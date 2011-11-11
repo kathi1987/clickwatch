@@ -153,17 +153,8 @@ public class CWDataBasePackageImpl extends EPackageImpl implements CWDataBasePac
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public EReference getRecord_NetworkTimeCopy() {
-        return (EReference)recordEClass.getEStructuralFeatures().get(3);
-    }
-
-	/**
-     * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-     * @generated
-     */
 	public EAttribute getRecord_End() {
-        return (EAttribute)recordEClass.getEStructuralFeatures().get(4);
+        return (EAttribute)recordEClass.getEStructuralFeatures().get(3);
     }
 
 	/**
@@ -172,7 +163,7 @@ public class CWDataBasePackageImpl extends EPackageImpl implements CWDataBasePac
      * @generated
      */
 	public EAttribute getRecord_HBaseRowMap() {
-        return (EAttribute)recordEClass.getEStructuralFeatures().get(5);
+        return (EAttribute)recordEClass.getEStructuralFeatures().get(4);
     }
 
 	/**
@@ -234,7 +225,6 @@ public class CWDataBasePackageImpl extends EPackageImpl implements CWDataBasePac
         createEReference(recordEClass, RECORD__CONFIGURATION);
         createEAttribute(recordEClass, RECORD__NAME);
         createEAttribute(recordEClass, RECORD__START);
-        createEReference(recordEClass, RECORD__NETWORK_TIME_COPY);
         createEAttribute(recordEClass, RECORD__END);
         createEAttribute(recordEClass, RECORD__HBASE_ROW_MAP);
 
@@ -284,7 +274,6 @@ public class CWDataBasePackageImpl extends EPackageImpl implements CWDataBasePac
         initEReference(getRecord_Configuration(), theClickWatchModelPackage.getNetwork(), null, "configuration", null, 0, 1, Record.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getRecord_Name(), ecorePackage.getEString(), "name", null, 0, 1, Record.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getRecord_Start(), ecorePackage.getELong(), "start", null, 0, 1, Record.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getRecord_NetworkTimeCopy(), theClickWatchModelPackage.getNetwork(), null, "networkTimeCopy", null, 0, 1, Record.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getRecord_End(), ecorePackage.getELong(), "end", null, 0, 1, Record.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getRecord_HBaseRowMap(), this.getHBaseRowMap(), "hBaseRowMap", null, 0, 1, Record.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

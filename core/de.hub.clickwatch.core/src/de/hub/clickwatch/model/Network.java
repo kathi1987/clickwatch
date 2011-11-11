@@ -21,6 +21,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link de.hub.clickwatch.model.Network#getElementFilter <em>Element Filter</em>}</li>
  *   <li>{@link de.hub.clickwatch.model.Network#getHandlerFilter <em>Handler Filter</em>}</li>
  *   <li>{@link de.hub.clickwatch.model.Network#getSubnetworks <em>Subnetworks</em>}</li>
+ *   <li>{@link de.hub.clickwatch.model.Network#getTimestamp <em>Timestamp</em>}</li>
  * </ul>
  * </p>
  *
@@ -141,5 +142,31 @@ public interface Network extends ModelElementWithStatistics {
      * @generated
      */
 	EList<Network> getSubnetworks();
+
+    /**
+     * Returns the value of the '<em><b>Timestamp</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Timestamp</em>' attribute isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Timestamp</em>' attribute.
+     * @see #setTimestamp(long)
+     * @see de.hub.clickwatch.model.ClickWatchModelPackage#getNetwork_Timestamp()
+     * @model
+     * @generated
+     */
+    long getTimestamp();
+
+    /**
+     * Sets the value of the '{@link de.hub.clickwatch.model.Network#getTimestamp <em>Timestamp</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Timestamp</em>' attribute.
+     * @see #getTimestamp()
+     * @generated
+     */
+    void setTimestamp(long value);
 
 } // Network
