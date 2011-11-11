@@ -42,7 +42,6 @@ import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -96,7 +95,6 @@ import org.eclipse.swt.events.ControlEvent;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
@@ -121,12 +119,7 @@ import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.PropertySheet;
 import org.eclipse.ui.views.properties.PropertySheetPage;
 
-import de.hub.clickwatch.connection.INodeConnection;
-import de.hub.clickwatch.connection.adapter.IMergeAdapter;
-import de.hub.clickwatch.model.Node;
 import de.hub.clickwatch.model.provider.ClickWatchModelItemProviderAdapterFactory;
-import de.hub.clickwatch.model.provider.ClickWatchReflectiveItemProviderAdapterFactory;
-import de.hub.clickwatch.model.util.ClickWatchModelUtil;
 import de.hub.emfxml.util.EmfXmlUtil;
 
 /**
@@ -626,38 +619,6 @@ public class ClickWatchModelEditor extends MultiPageEditorPart implements IEditi
         initializeEditingDomain();
     }
 
-    /**
-     * This specialization of
-     * {@link ClickWatchReflectiveItemProviderAdapterFactory} colors objects
-     * when they got recently changes. The change information is obtained form
-     * the containing {@link Node}s {@link INodeConnection} and its
-     * {@link IMergeAdapter}.
-     * 
-     * @generated NOT
-     */
-    private static class ColoredReflectiveItemProviderAdapterFactory extends ClickWatchReflectiveItemProviderAdapterFactory {
-
-        private static final Object black = Display.getCurrent().getSystemColor(SWT.COLOR_BLACK);
-        private static final Object red = Display.getCurrent().getSystemColor(SWT.COLOR_DARK_RED);
-
-        @Override
-        public Object getForeground(EObject object, EStructuralFeature feature, Object value) {
-            Node containingNode = ClickWatchModelUtil.getContainingNode(object);
-            if (containingNode == null) {
-                return black;
-            }
-            INodeConnection connection = containingNode.getConnection();
-            if (connection == null) {
-                return black;
-            }
-            if (connection.getAdapter(IMergeAdapter.class).hasChanged(object, feature)) {
-                return red;
-            } else {
-                return black;
-            }
-        }
-
-    }
 
     /**
      * This sets up the editing domain for the model editor.
@@ -971,7 +932,7 @@ public class ClickWatchModelEditor extends MultiPageEditorPart implements IEditi
     /**
      * This is the method used by the framework to install your own controls.
      * 
-     * <!-- begin-user-doc --> There is a small change regarding the <!--
+     * <!-- begin-user-doc --> There is a small change regarding the label provider.<!--
      * end-user-doc -->
      * 
      * @generated NOT

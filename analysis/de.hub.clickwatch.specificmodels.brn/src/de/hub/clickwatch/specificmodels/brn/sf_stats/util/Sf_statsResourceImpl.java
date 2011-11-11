@@ -19,14 +19,14 @@ import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
  */
 public class Sf_statsResourceImpl extends XMLResourceImpl {
 	/**
-	 * Creates an instance of the resource.
-	 * <!-- begin-user-doc -->
+     * Creates an instance of the resource.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param uri the URI of the new resource.
-	 * @generated
-	 */
+     * @param uri the URI of the new resource.
+     * @generated
+     */
 	public Sf_statsResourceImpl(URI uri) {
-		super(uri);
-	}
+        super(uri);
+    }
 
 } //Sf_statsResourceImpl

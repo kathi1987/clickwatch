@@ -18,47 +18,47 @@ import org.eclipse.emf.ecore.EFactory;
  */
 public interface Lt_linksFactory extends EFactory {
 	/**
-	 * The singleton instance of the factory.
-	 * <!-- begin-user-doc -->
+     * The singleton instance of the factory.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	Lt_linksFactory eINSTANCE = de.hub.clickwatch.specificmodels.brn.lt_links.impl.Lt_linksFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>Link</em>'.
-	 * <!-- begin-user-doc -->
+     * Returns a new object of class '<em>Link</em>'.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Link</em>'.
-	 * @generated
-	 */
+     * @return a new object of class '<em>Link</em>'.
+     * @generated
+     */
 	Link createLink();
 
 	/**
-	 * Returns a new object of class '<em>Links</em>'.
-	 * <!-- begin-user-doc -->
+     * Returns a new object of class '<em>Links</em>'.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Links</em>'.
-	 * @generated
-	 */
+     * @return a new object of class '<em>Links</em>'.
+     * @generated
+     */
 	Links createLinks();
 
 	/**
-	 * Returns a new object of class '<em>Linktable</em>'.
-	 * <!-- begin-user-doc -->
+     * Returns a new object of class '<em>Linktable</em>'.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Linktable</em>'.
-	 * @generated
-	 */
+     * @return a new object of class '<em>Linktable</em>'.
+     * @generated
+     */
 	Linktable createLinktable();
 
 	/**
-	 * Returns the package supported by this factory.
-	 * <!-- begin-user-doc -->
+     * Returns the package supported by this factory.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the package supported by this factory.
-	 * @generated
-	 */
+     * @return the package supported by this factory.
+     * @generated
+     */
 	Lt_linksPackage getLt_linksPackage();
 
 } //Lt_linksFactory

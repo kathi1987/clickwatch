@@ -4,8 +4,8 @@ import com.google.inject.name.Names;
 
 import de.hub.clickwatch.connection.adapter.values.IValueAdapter;
 import de.hub.clickwatch.connection.adapter.values.StringValueAdapter;
-import de.hub.clickwatch.recorder.v2.HBaseDataBaseAdapter;
-import de.hub.clickwatch.recorder.v2.IDataBaseAdapter;
+import de.hub.clickwatch.recorder.recorder.HBaseDataBaseAdapter;
+import de.hub.clickwatch.recorder.recorder.IDataBaseAdapter;
 
 public class ClickWatchRecorderModuleUtil {
 

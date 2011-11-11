@@ -4,14 +4,14 @@ Bundle-Name: %pluginName
 Bundle-SymbolicName: de.hub.clickwatch.recorder.model.edit;singleton:=true
 Bundle-Version: 2.0.0.qualifier
 Bundle-ClassPath: .
-Bundle-Activator: de.hub.clickwatch.recoder.cwdatabase.provider.CWDataBaseEditPlugin$Implementation
+Bundle-Activator: de.hub.clickwatch.recorder.database.provider.CWDataBaseEditPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Export-Package: de.hub.clickwatch.recoder.cwdatabase.provider
+Export-Package: de.hub.clickwatch.recorder.database.provider
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.edit;visibility:=reexport,
- de.hub.clickwatch.model;visibility:=reexport,
+ de.hub.clickwatch.core;visibility:=reexport,
  de.hub.clickwatch.model.edit;visibility:=reexport,
  de.hub.clickwatch.recorder;bundle-version="2.0.0"
 Bundle-ActivationPolicy: lazy

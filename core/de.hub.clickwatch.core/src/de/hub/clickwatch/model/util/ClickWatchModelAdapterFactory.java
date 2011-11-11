@@ -114,8 +114,8 @@ public class ClickWatchModelAdapterFactory extends AdapterFactoryImpl {
                 return createStatisticAdapter();
             }
             @Override
-            public Adapter caseError(de.hub.clickwatch.model.Error object) {
-                return createErrorAdapter();
+            public Adapter caseClickWatchError(ClickWatchError object) {
+                return createClickWatchErrorAdapter();
             }
             @Override
             public Adapter defaultCase(EObject object) {
@@ -236,16 +236,16 @@ public class ClickWatchModelAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '{@link de.hub.clickwatch.model.Error <em>Error</em>}'.
+     * Creates a new adapter for an object of class '{@link de.hub.clickwatch.model.ClickWatchError <em>Click Watch Error</em>}'.
      * <!-- begin-user-doc -->
      * This default implementation returns null so that we can easily ignore cases;
      * it's useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
      * @return the new adapter.
-     * @see de.hub.clickwatch.model.Error
+     * @see de.hub.clickwatch.model.ClickWatchError
      * @generated
      */
-    public Adapter createErrorAdapter() {
+    public Adapter createClickWatchErrorAdapter() {
         return null;
     }
 

@@ -46,253 +46,253 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class NeighbourstatsImpl extends EObjectImpl implements Neighbourstats {
 	/**
-	 * The cached value of the '{@link #getText() <em>Text</em>}' attribute list.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getText() <em>Text</em>}' attribute list.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getText()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getText()
+     * @generated
+     * @ordered
+     */
 	protected EList<String> text;
 
 	/**
-	 * The cached value of the '{@link #getNb() <em>Nb</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getNb() <em>Nb</em>}' containment reference list.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getNb()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getNb()
+     * @generated
+     * @ordered
+     */
 	protected EList<Nb> nb;
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected NeighbourstatsImpl() {
-		super();
-	}
+        super();
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	protected EClass eStaticClass() {
-		return Device_wifi_wifidevice_cst_statsPackage.Literals.NEIGHBOURSTATS;
-	}
+        return Device_wifi_wifidevice_cst_statsPackage.Literals.NEIGHBOURSTATS;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public Channelstats getEContainer_neighbourstats() {
-		if (eContainerFeatureID() != Device_wifi_wifidevice_cst_statsPackage.NEIGHBOURSTATS__ECONTAINER_NEIGHBOURSTATS) return null;
-		return (Channelstats)eContainer();
-	}
+        if (eContainerFeatureID() != Device_wifi_wifidevice_cst_statsPackage.NEIGHBOURSTATS__ECONTAINER_NEIGHBOURSTATS) return null;
+        return (Channelstats)eContainer();
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public NotificationChain basicSetEContainer_neighbourstats(Channelstats newEContainer_neighbourstats, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject)newEContainer_neighbourstats, Device_wifi_wifidevice_cst_statsPackage.NEIGHBOURSTATS__ECONTAINER_NEIGHBOURSTATS, msgs);
-		return msgs;
-	}
+        msgs = eBasicSetContainer((InternalEObject)newEContainer_neighbourstats, Device_wifi_wifidevice_cst_statsPackage.NEIGHBOURSTATS__ECONTAINER_NEIGHBOURSTATS, msgs);
+        return msgs;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public void setEContainer_neighbourstats(Channelstats newEContainer_neighbourstats) {
-		if (newEContainer_neighbourstats != eInternalContainer() || (eContainerFeatureID() != Device_wifi_wifidevice_cst_statsPackage.NEIGHBOURSTATS__ECONTAINER_NEIGHBOURSTATS && newEContainer_neighbourstats != null)) {
-			if (EcoreUtil.isAncestor(this, newEContainer_neighbourstats))
-				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
-			NotificationChain msgs = null;
-			if (eInternalContainer() != null)
-				msgs = eBasicRemoveFromContainer(msgs);
-			if (newEContainer_neighbourstats != null)
-				msgs = ((InternalEObject)newEContainer_neighbourstats).eInverseAdd(this, Device_wifi_wifidevice_cst_statsPackage.CHANNELSTATS__NEIGHBOURSTATS, Channelstats.class, msgs);
-			msgs = basicSetEContainer_neighbourstats(newEContainer_neighbourstats, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, Device_wifi_wifidevice_cst_statsPackage.NEIGHBOURSTATS__ECONTAINER_NEIGHBOURSTATS, newEContainer_neighbourstats, newEContainer_neighbourstats));
-	}
+        if (newEContainer_neighbourstats != eInternalContainer() || (eContainerFeatureID() != Device_wifi_wifidevice_cst_statsPackage.NEIGHBOURSTATS__ECONTAINER_NEIGHBOURSTATS && newEContainer_neighbourstats != null)) {
+            if (EcoreUtil.isAncestor(this, newEContainer_neighbourstats))
+                throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+            NotificationChain msgs = null;
+            if (eInternalContainer() != null)
+                msgs = eBasicRemoveFromContainer(msgs);
+            if (newEContainer_neighbourstats != null)
+                msgs = ((InternalEObject)newEContainer_neighbourstats).eInverseAdd(this, Device_wifi_wifidevice_cst_statsPackage.CHANNELSTATS__NEIGHBOURSTATS, Channelstats.class, msgs);
+            msgs = basicSetEContainer_neighbourstats(newEContainer_neighbourstats, msgs);
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, Device_wifi_wifidevice_cst_statsPackage.NEIGHBOURSTATS__ECONTAINER_NEIGHBOURSTATS, newEContainer_neighbourstats, newEContainer_neighbourstats));
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public EList<String> getText() {
-		if (text == null) {
-			text = new EDataTypeEList<String>(String.class, this, Device_wifi_wifidevice_cst_statsPackage.NEIGHBOURSTATS__TEXT);
-		}
-		return text;
-	}
+        if (text == null) {
+            text = new EDataTypeEList<String>(String.class, this, Device_wifi_wifidevice_cst_statsPackage.NEIGHBOURSTATS__TEXT);
+        }
+        return text;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public EList<Nb> getNb() {
-		if (nb == null) {
-			nb = new EObjectContainmentWithInverseEList<Nb>(Nb.class, this, Device_wifi_wifidevice_cst_statsPackage.NEIGHBOURSTATS__NB, Device_wifi_wifidevice_cst_statsPackage.NB__ECONTAINER_NB);
-		}
-		return nb;
-	}
+        if (nb == null) {
+            nb = new EObjectContainmentWithInverseEList<Nb>(Nb.class, this, Device_wifi_wifidevice_cst_statsPackage.NEIGHBOURSTATS__NB, Device_wifi_wifidevice_cst_statsPackage.NB__ECONTAINER_NB);
+        }
+        return nb;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case Device_wifi_wifidevice_cst_statsPackage.NEIGHBOURSTATS__ECONTAINER_NEIGHBOURSTATS:
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetEContainer_neighbourstats((Channelstats)otherEnd, msgs);
-			case Device_wifi_wifidevice_cst_statsPackage.NEIGHBOURSTATS__NB:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getNb()).basicAdd(otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
-	}
+        switch (featureID) {
+            case Device_wifi_wifidevice_cst_statsPackage.NEIGHBOURSTATS__ECONTAINER_NEIGHBOURSTATS:
+                if (eInternalContainer() != null)
+                    msgs = eBasicRemoveFromContainer(msgs);
+                return basicSetEContainer_neighbourstats((Channelstats)otherEnd, msgs);
+            case Device_wifi_wifidevice_cst_statsPackage.NEIGHBOURSTATS__NB:
+                return ((InternalEList<InternalEObject>)(InternalEList<?>)getNb()).basicAdd(otherEnd, msgs);
+        }
+        return super.eInverseAdd(otherEnd, featureID, msgs);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case Device_wifi_wifidevice_cst_statsPackage.NEIGHBOURSTATS__ECONTAINER_NEIGHBOURSTATS:
-				return basicSetEContainer_neighbourstats(null, msgs);
-			case Device_wifi_wifidevice_cst_statsPackage.NEIGHBOURSTATS__NB:
-				return ((InternalEList<?>)getNb()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+        switch (featureID) {
+            case Device_wifi_wifidevice_cst_statsPackage.NEIGHBOURSTATS__ECONTAINER_NEIGHBOURSTATS:
+                return basicSetEContainer_neighbourstats(null, msgs);
+            case Device_wifi_wifidevice_cst_statsPackage.NEIGHBOURSTATS__NB:
+                return ((InternalEList<?>)getNb()).basicRemove(otherEnd, msgs);
+        }
+        return super.eInverseRemove(otherEnd, featureID, msgs);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
-		switch (eContainerFeatureID()) {
-			case Device_wifi_wifidevice_cst_statsPackage.NEIGHBOURSTATS__ECONTAINER_NEIGHBOURSTATS:
-				return eInternalContainer().eInverseRemove(this, Device_wifi_wifidevice_cst_statsPackage.CHANNELSTATS__NEIGHBOURSTATS, Channelstats.class, msgs);
-		}
-		return super.eBasicRemoveFromContainerFeature(msgs);
-	}
+        switch (eContainerFeatureID()) {
+            case Device_wifi_wifidevice_cst_statsPackage.NEIGHBOURSTATS__ECONTAINER_NEIGHBOURSTATS:
+                return eInternalContainer().eInverseRemove(this, Device_wifi_wifidevice_cst_statsPackage.CHANNELSTATS__NEIGHBOURSTATS, Channelstats.class, msgs);
+        }
+        return super.eBasicRemoveFromContainerFeature(msgs);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case Device_wifi_wifidevice_cst_statsPackage.NEIGHBOURSTATS__ECONTAINER_NEIGHBOURSTATS:
-				return getEContainer_neighbourstats();
-			case Device_wifi_wifidevice_cst_statsPackage.NEIGHBOURSTATS__TEXT:
-				return getText();
-			case Device_wifi_wifidevice_cst_statsPackage.NEIGHBOURSTATS__NB:
-				return getNb();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+        switch (featureID) {
+            case Device_wifi_wifidevice_cst_statsPackage.NEIGHBOURSTATS__ECONTAINER_NEIGHBOURSTATS:
+                return getEContainer_neighbourstats();
+            case Device_wifi_wifidevice_cst_statsPackage.NEIGHBOURSTATS__TEXT:
+                return getText();
+            case Device_wifi_wifidevice_cst_statsPackage.NEIGHBOURSTATS__NB:
+                return getNb();
+        }
+        return super.eGet(featureID, resolve, coreType);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case Device_wifi_wifidevice_cst_statsPackage.NEIGHBOURSTATS__ECONTAINER_NEIGHBOURSTATS:
-				setEContainer_neighbourstats((Channelstats)newValue);
-				return;
-			case Device_wifi_wifidevice_cst_statsPackage.NEIGHBOURSTATS__TEXT:
-				getText().clear();
-				getText().addAll((Collection<? extends String>)newValue);
-				return;
-			case Device_wifi_wifidevice_cst_statsPackage.NEIGHBOURSTATS__NB:
-				getNb().clear();
-				getNb().addAll((Collection<? extends Nb>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+        switch (featureID) {
+            case Device_wifi_wifidevice_cst_statsPackage.NEIGHBOURSTATS__ECONTAINER_NEIGHBOURSTATS:
+                setEContainer_neighbourstats((Channelstats)newValue);
+                return;
+            case Device_wifi_wifidevice_cst_statsPackage.NEIGHBOURSTATS__TEXT:
+                getText().clear();
+                getText().addAll((Collection<? extends String>)newValue);
+                return;
+            case Device_wifi_wifidevice_cst_statsPackage.NEIGHBOURSTATS__NB:
+                getNb().clear();
+                getNb().addAll((Collection<? extends Nb>)newValue);
+                return;
+        }
+        super.eSet(featureID, newValue);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case Device_wifi_wifidevice_cst_statsPackage.NEIGHBOURSTATS__ECONTAINER_NEIGHBOURSTATS:
-				setEContainer_neighbourstats((Channelstats)null);
-				return;
-			case Device_wifi_wifidevice_cst_statsPackage.NEIGHBOURSTATS__TEXT:
-				getText().clear();
-				return;
-			case Device_wifi_wifidevice_cst_statsPackage.NEIGHBOURSTATS__NB:
-				getNb().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+        switch (featureID) {
+            case Device_wifi_wifidevice_cst_statsPackage.NEIGHBOURSTATS__ECONTAINER_NEIGHBOURSTATS:
+                setEContainer_neighbourstats((Channelstats)null);
+                return;
+            case Device_wifi_wifidevice_cst_statsPackage.NEIGHBOURSTATS__TEXT:
+                getText().clear();
+                return;
+            case Device_wifi_wifidevice_cst_statsPackage.NEIGHBOURSTATS__NB:
+                getNb().clear();
+                return;
+        }
+        super.eUnset(featureID);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case Device_wifi_wifidevice_cst_statsPackage.NEIGHBOURSTATS__ECONTAINER_NEIGHBOURSTATS:
-				return getEContainer_neighbourstats() != null;
-			case Device_wifi_wifidevice_cst_statsPackage.NEIGHBOURSTATS__TEXT:
-				return text != null && !text.isEmpty();
-			case Device_wifi_wifidevice_cst_statsPackage.NEIGHBOURSTATS__NB:
-				return nb != null && !nb.isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+        switch (featureID) {
+            case Device_wifi_wifidevice_cst_statsPackage.NEIGHBOURSTATS__ECONTAINER_NEIGHBOURSTATS:
+                return getEContainer_neighbourstats() != null;
+            case Device_wifi_wifidevice_cst_statsPackage.NEIGHBOURSTATS__TEXT:
+                return text != null && !text.isEmpty();
+            case Device_wifi_wifidevice_cst_statsPackage.NEIGHBOURSTATS__NB:
+                return nb != null && !nb.isEmpty();
+        }
+        return super.eIsSet(featureID);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+        if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (text: ");
-		result.append(text);
-		result.append(')');
-		return result.toString();
-	}
+        StringBuffer result = new StringBuffer(super.toString());
+        result.append(" (text: ");
+        result.append(text);
+        result.append(')');
+        return result.toString();
+    }
 
 } //NeighbourstatsImpl

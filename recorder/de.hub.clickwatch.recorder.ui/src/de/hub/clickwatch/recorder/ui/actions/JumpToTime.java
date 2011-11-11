@@ -1,9 +1,8 @@
 package de.hub.clickwatch.recorder.ui.actions;
 
-import java.util.Collection;
-
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.edit.domain.IEditingDomainProvider;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
@@ -26,21 +25,20 @@ import org.eclipse.swt.widgets.Text;
 
 import com.google.inject.Inject;
 
-import de.hub.clickwatch.merge.Merger;
-import de.hub.clickwatch.model.ChangeMark;
+import de.hub.clickwatch.connection.INodeConnectionProvider;
+import de.hub.clickwatch.connection.adapter.IMergeAdapter;
 import de.hub.clickwatch.model.Network;
 import de.hub.clickwatch.model.Node;
 import de.hub.clickwatch.model.util.TimeStampLabelProvider;
-import de.hub.clickwatch.recoder.cwdatabase.presentation.CWDataBaseEditor;
 import de.hub.clickwatch.recorder.database.DataBaseUtil;
-import de.hub.clickwatch.recorder.database.cwdatabase.Record;
-import de.hub.clickwatch.ui.connection.MergingNodeAdapterMergeConfiguration;
+import de.hub.clickwatch.recorder.database.Record;
+import de.hub.clickwatch.ui.connection.UiClickWatchNodeMergeConfiguration;
 import de.hub.clickwatch.ui.modelactions.AbstractAction;
 
 public class JumpToTime extends AbstractAction<Record> {
 	
 	@Inject private DataBaseUtil dataBaseUtil;
-	@Inject private Merger merger;
+	@Inject private INodeConnectionProvider ncp;
 	
 	public class InputDialog extends Dialog {
 		
@@ -191,29 +189,23 @@ public class JumpToTime extends AbstractAction<Record> {
 					
 					networkTimeCopy.setName("NTC at " + new TimeStampLabelProvider().getText(time));
 										
-					Collection<ChangeMark> changes = getMergeConfiguration().getChanges();
-					changes.clear();
-					getMergeConfiguration().getNewHandlerMap().clear();
 					for (Node currentNode: networkTimeCopy.getNodes()) {
+					    IMergeAdapter mergeAdapter = ncp.createConnection(currentNode).getAdapter(IMergeAdapter.class);
+					    ((UiClickWatchNodeMergeConfiguration)mergeAdapter.getMerger().getConfiguration()).setEditingDomain(((IEditingDomainProvider)editor).getEditingDomain());
+					    mergeAdapter.clearChanges();
+					    
 						Node nodeTimeCopy = dataBaseUtil.getNode(DataBaseUtil.createHandle(experimimentDescr, currentNode, time));
 						
-						merger.merge(currentNode, nodeTimeCopy);
+						mergeAdapter.merge(nodeTimeCopy);
 						EcoreUtil.delete(nodeTimeCopy);						
 						
 						monitor.worked(1);
-					}
-					if (editor != null) {
-						((CWDataBaseEditor)editor).markChanges(networkTimeCopy, changes);
-					}
+					}					
 					monitor.done();
 				}
 			});
 		} catch (Exception e) {
 			MessageDialog.openError(shell, "Exception", "Exception during jumping in time: " + e.getMessage());
 		} 
-	}
-	
-	private MergingNodeAdapterMergeConfiguration getMergeConfiguration() {
-		return (MergingNodeAdapterMergeConfiguration)merger.getConfiguration();
 	}
 }

@@ -22,7 +22,7 @@ import de.hub.clickwatch.connection.adapter.IMergeAdapter;
 import de.hub.clickwatch.connection.adapter.IMetaDataAdapter;
 import de.hub.clickwatch.connection.adapter.values.IValueAdapter;
 import de.hub.clickwatch.connection.adapter.values.XmlValueAdapter;
-import de.hub.clickwatch.model.Error;
+import de.hub.clickwatch.model.ClickWatchError;
 import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.model.Node;
 import de.hub.clickwatch.test.ClickwatchTest;
@@ -64,13 +64,13 @@ public class HandlerEventAdapterTest extends ClickwatchTest {
         valueAdapter = connection.getAdapter(IValueAdapter.class);
         connection.getAdapter(IErrorAdapter.class).addErrorListener(new IErrorListener() {
             @Override
-            public void handlerError(de.hub.clickwatch.model.Error error) {
+            public void handlerError(de.hub.clickwatch.model.ClickWatchError error) {
                 Assert.assertTrue(false);
             }
         });
         Node metaData = connection.getAdapter(IMetaDataAdapter.class).pullAllMetaData();
         connection.getAdapter(IMergeAdapter.class).merge(metaData);
-        handlerEventAdapter.addEventListener(handlerEventListener);
+        handlerEventAdapter.addEventListener(HandlerEventAdapterTest.class, handlerEventListener);
         handlerEventAdapter.start();
 
         for (int i = 0; i < 50; i++) {
@@ -94,13 +94,13 @@ public class HandlerEventAdapterTest extends ClickwatchTest {
         valueAdapter = connection.getAdapter(IValueAdapter.class);
         connection.getAdapter(IErrorAdapter.class).addErrorListener(new IErrorListener() {
             @Override
-            public void handlerError(Error error) {
+            public void handlerError(ClickWatchError error) {
                 Assert.assertTrue(false);
             }
         });
         Node metaData = connection.getAdapter(IMetaDataAdapter.class).pullAllMetaData();
         connection.getAdapter(IMergeAdapter.class).merge(metaData);
-        handlerEventAdapter.addEventListener(handlerEventListener);
+        handlerEventAdapter.addEventListener(HandlerEventAdapterTest.class, handlerEventListener);
         handlerEventAdapter.start();
 
         try {
@@ -136,7 +136,7 @@ public class HandlerEventAdapterTest extends ClickwatchTest {
         runTest(new Runnable() {
             @Override
             public void run() {
-                handlerEventAdapter.removeEventListener(handlerEventListener);
+                handlerEventAdapter.removeEventListener(HandlerEventAdapterTest.class);
             }
         });
     }
@@ -156,12 +156,12 @@ public class HandlerEventAdapterTest extends ClickwatchTest {
             valueAdapter = connection.getAdapter(IValueAdapter.class);
             connection.getAdapter(IErrorAdapter.class).addErrorListener(new IErrorListener() {
                 @Override
-                public void handlerError(Error error) {
+                public void handlerError(ClickWatchError error) {
                     Assert.assertTrue(false);
                 }
             });
             Node metaData = connection.getAdapter(IMetaDataAdapter.class).pullAllMetaData();
-            handlerEventAdapter.addEventListener(handlerEventListener);
+            handlerEventAdapter.addEventListener(HandlerEventAdapterTest.class, handlerEventListener);
             connection.getAdapter(IMergeAdapter.class).merge(metaData);
             handlerCount += metaData.getAllHandlers().size();
             handlerEventAdapter.start();

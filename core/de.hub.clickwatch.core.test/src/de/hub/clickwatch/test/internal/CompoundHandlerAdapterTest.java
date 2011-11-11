@@ -37,16 +37,16 @@ public class CompoundHandlerAdapterTest extends HandlerEventAdapterTest {
         valueAdapter = connection.getAdapter(IValueAdapter.class);
         connection.getAdapter(IErrorAdapter.class).addErrorListener(new IErrorListener() {
             @Override
-            public void handlerError(de.hub.clickwatch.model.Error error) {
+            public void handlerError(de.hub.clickwatch.model.ClickWatchError error) {
                 Assert.assertTrue(false);
             }
         });
         Node metaData = connection.getAdapter(IMetaDataAdapter.class).pullAllMetaData();
         connection.getAdapter(IMergeAdapter.class).merge(metaData);
-        handlerEventAdapter.addEventListener(handlerEventListener);
+        handlerEventAdapter.addEventListener(CompoundHandlerAdapterTest.class, handlerEventListener);
         connection.getAdapter(IErrorAdapter.class).addErrorListener(new IErrorListener() {           
             @Override
-            public void handlerError(de.hub.clickwatch.model.Error error) {
+            public void handlerError(de.hub.clickwatch.model.ClickWatchError error) {
                 Assert.assertTrue(false);
             }
         });

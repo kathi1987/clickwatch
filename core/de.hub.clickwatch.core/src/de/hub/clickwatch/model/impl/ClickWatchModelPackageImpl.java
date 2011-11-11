@@ -22,6 +22,7 @@ import de.hub.clickwatch.connection.INodeConnection;
 import de.hub.clickwatch.connection.INodeConnectionProvider;
 import de.hub.clickwatch.connection.adapter.IHandlerEventListener;
 import de.hub.clickwatch.model.BackboneType;
+import de.hub.clickwatch.model.ClickWatchError;
 import de.hub.clickwatch.model.ClickWatchModelFactory;
 import de.hub.clickwatch.model.ClickWatchModelPackage;
 import de.hub.clickwatch.model.Element;
@@ -95,7 +96,7 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
      * <!-- end-user-doc -->
      * @generated
      */
-    private EClass errorEClass = null;
+    private EClass clickWatchErrorEClass = null;
 
     /**
      * <!-- begin-user-doc -->
@@ -236,7 +237,7 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
      * @generated
      */
 	public EReference getNode_Elements() {
-        return (EReference)nodeEClass.getEStructuralFeatures().get(9);
+        return (EReference)nodeEClass.getEStructuralFeatures().get(8);
     }
 
 	/**
@@ -245,7 +246,7 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
      * @generated
      */
 	public EAttribute getNode_Connection() {
-        return (EAttribute)nodeEClass.getEStructuralFeatures().get(4);
+        return (EAttribute)nodeEClass.getEStructuralFeatures().get(3);
     }
 
 	/**
@@ -254,7 +255,7 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
      * @generated
      */
     public EAttribute getNode_Retrieving() {
-        return (EAttribute)nodeEClass.getEStructuralFeatures().get(5);
+        return (EAttribute)nodeEClass.getEStructuralFeatures().get(4);
     }
 
     /**
@@ -263,7 +264,7 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
      * @generated
      */
     public EAttribute getNode_Listening() {
-        return (EAttribute)nodeEClass.getEStructuralFeatures().get(6);
+        return (EAttribute)nodeEClass.getEStructuralFeatures().get(5);
     }
 
     /**
@@ -272,7 +273,7 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
      * @generated
      */
     public EAttribute getNode_Recording() {
-        return (EAttribute)nodeEClass.getEStructuralFeatures().get(7);
+        return (EAttribute)nodeEClass.getEStructuralFeatures().get(6);
     }
 
     /**
@@ -289,17 +290,8 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
      * <!-- end-user-doc -->
      * @generated
      */
-    public EAttribute getNode_ActiveListeners() {
-        return (EAttribute)nodeEClass.getEStructuralFeatures().get(3);
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
     public EReference getNode_Errors() {
-        return (EReference)nodeEClass.getEStructuralFeatures().get(8);
+        return (EReference)nodeEClass.getEStructuralFeatures().get(7);
     }
 
     /**
@@ -559,6 +551,60 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
      * <!-- end-user-doc -->
      * @generated
      */
+    public EAttribute getStatistic_Smallest() {
+        return (EAttribute)statisticEClass.getEStructuralFeatures().get(3);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getStatistic_Largest() {
+        return (EAttribute)statisticEClass.getEStructuralFeatures().get(4);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getStatistic_Latest() {
+        return (EAttribute)statisticEClass.getEStructuralFeatures().get(5);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EClass getClickWatchError() {
+        return clickWatchErrorEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getClickWatchError_Message() {
+        return (EAttribute)clickWatchErrorEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getClickWatchError_Exception() {
+        return (EAttribute)clickWatchErrorEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     public EClass getModelElementWithStatistics() {
         return modelElementWithStatisticsEClass;
     }
@@ -619,33 +665,6 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    public EClass getError() {
-        return errorEClass;
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    public EAttribute getError_Message() {
-        return (EAttribute)errorEClass.getEStructuralFeatures().get(0);
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    public EAttribute getError_Exception() {
-        return (EAttribute)errorEClass.getEStructuralFeatures().get(1);
-    }
-
-    /**
-     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
      */
@@ -667,7 +686,6 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
         createEAttribute(nodeEClass, NODE__INET_ADDRESS);
         createEAttribute(nodeEClass, NODE__PORT);
         createEAttribute(nodeEClass, NODE__BACKBONE);
-        createEAttribute(nodeEClass, NODE__ACTIVE_LISTENERS);
         createEAttribute(nodeEClass, NODE__CONNECTION);
         createEAttribute(nodeEClass, NODE__RETRIEVING);
         createEAttribute(nodeEClass, NODE__LISTENING);
@@ -711,10 +729,13 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
         createEAttribute(statisticEClass, STATISTIC__SUM);
         createEAttribute(statisticEClass, STATISTIC__COUNT);
         createEAttribute(statisticEClass, STATISTIC__MEAN);
+        createEAttribute(statisticEClass, STATISTIC__SMALLEST);
+        createEAttribute(statisticEClass, STATISTIC__LARGEST);
+        createEAttribute(statisticEClass, STATISTIC__LATEST);
 
-        errorEClass = createEClass(ERROR);
-        createEAttribute(errorEClass, ERROR__MESSAGE);
-        createEAttribute(errorEClass, ERROR__EXCEPTION);
+        clickWatchErrorEClass = createEClass(CLICK_WATCH_ERROR);
+        createEAttribute(clickWatchErrorEClass, CLICK_WATCH_ERROR__MESSAGE);
+        createEAttribute(clickWatchErrorEClass, CLICK_WATCH_ERROR__EXCEPTION);
 
         // Create enums
         backboneTypeEEnum = createEEnum(BACKBONE_TYPE);
@@ -762,12 +783,11 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
         initEAttribute(getNode_INetAddress(), ecorePackage.getEString(), "iNetAddress", "localhost", 0, 1, Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getNode_Port(), ecorePackage.getEString(), "port", "7777", 0, 1, Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getNode_Backbone(), this.getBackboneType(), "backbone", "unknown", 0, 1, Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getNode_ActiveListeners(), this.getIHandlerEventListener(), "activeListeners", "", 0, -1, Node.class, IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
         initEAttribute(getNode_Connection(), this.getINodeConnection(), "connection", null, 0, 1, Node.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getNode_Retrieving(), ecorePackage.getEBoolean(), "retrieving", null, 0, 1, Node.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getNode_Listening(), ecorePackage.getEBoolean(), "listening", null, 0, 1, Node.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getNode_Recording(), ecorePackage.getEBoolean(), "recording", null, 0, 1, Node.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getNode_Errors(), this.getError(), null, "errors", null, 0, -1, Node.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getNode_Errors(), this.getClickWatchError(), null, "errors", null, 0, -1, Node.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getNode_Elements(), this.getElement(), null, "elements", null, 0, -1, Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         EOperation op = addEOperation(nodeEClass, this.getHandler(), "getHandler", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -835,13 +855,16 @@ public class ClickWatchModelPackageImpl extends EPackageImpl implements ClickWat
         initEAttribute(getStatistic_Sum(), ecorePackage.getEDouble(), "sum", null, 0, 1, Statistic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getStatistic_Count(), ecorePackage.getEDouble(), "count", null, 0, 1, Statistic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getStatistic_Mean(), ecorePackage.getEDouble(), "mean", null, 0, 1, Statistic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getStatistic_Smallest(), ecorePackage.getEDouble(), "smallest", null, 0, 1, Statistic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getStatistic_Largest(), ecorePackage.getEDouble(), "largest", null, 0, 1, Statistic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getStatistic_Latest(), ecorePackage.getEDouble(), "latest", null, 0, 1, Statistic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         op = addEOperation(statisticEClass, null, "addValue", 0, 1, IS_UNIQUE, IS_ORDERED);
         addEParameter(op, ecorePackage.getEDouble(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-        initEClass(errorEClass, de.hub.clickwatch.model.Error.class, "Error", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getError_Message(), ecorePackage.getEString(), "message", null, 0, 1, de.hub.clickwatch.model.Error.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getError_Exception(), this.getException(), "exception", null, 0, 1, de.hub.clickwatch.model.Error.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(clickWatchErrorEClass, ClickWatchError.class, "ClickWatchError", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getClickWatchError_Message(), ecorePackage.getEString(), "message", null, 0, 1, ClickWatchError.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getClickWatchError_Exception(), this.getException(), "exception", null, 0, 1, ClickWatchError.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         // Initialize enums and add enum literals
         initEEnum(backboneTypeEEnum, BackboneType.class, "BackboneType");

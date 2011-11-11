@@ -31,9 +31,9 @@ import com.google.inject.Inject;
 import de.hub.clickwatch.model.ClickWatchModelFactory;
 import de.hub.clickwatch.model.Network;
 import de.hub.clickwatch.model.Node;
-import de.hub.clickwatch.recorder.database.cwdatabase.DataBase;
-import de.hub.clickwatch.recorder.database.cwdatabase.util.RecordUtil;
-import de.hub.emfxml.XmlModelRepository;
+import de.hub.clickwatch.recorder.database.DataBase;
+import de.hub.clickwatch.recorder.database.util.RecordUtil;
+import de.hub.emfxml.util.EmfXmlUtil;
 import de.hub.specificmodels.metamodelgenerator.MetaModelGenerator;
 import de.hub.specificmodels.modelgenerator.ModelGenerator;
 
@@ -132,15 +132,15 @@ public class ClickWatchProjectCreator extends WorkspaceModifyOperation {
 		node.setINetAddress("localhost");
 		network.getNodes().add(node);
 		resource.getContents().add(network);
-		resource.save(XmlModelRepository.defaultLoadSaveOptions());
+		resource.save(EmfXmlUtil.defaultLoadSaveOptions());
 	}
 	
 	private void generateExampleClickWatchDataBase(IProject project) throws IOException {
-		DataBase dataBase = RecordUtil.buildDataBase("ExampleRecord", 1800000, 1000, "localhost");
+		DataBase dataBase = RecordUtil.buildDataBase("ExampleRecord", "localhost");
 		ResourceSet rs = new ResourceSetImpl();
 		Resource resource = rs.createResource(info.getClickWatchDataBase());
 		resource.getContents().add(dataBase);
-		resource.save(XmlModelRepository.defaultLoadSaveOptions());		
+		resource.save(EmfXmlUtil.defaultLoadSaveOptions());		
 	}
 
 	/**

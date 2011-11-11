@@ -28,6 +28,7 @@ import de.hub.clickwatch.model.util.HandlerUtil;
 import de.hub.clickwatch.specificmodels.brn.BrnValueAdapter;
 import de.hub.clickwatch.util.Throwables;
 import de.hub.emfxml.XmlModelRepository;
+import de.hub.emfxml.util.EmfXmlUtil;
 import de.hub.specificmodels.common.ITargetIdProvider;
 import de.hub.specificmodels.common.targetidprovider.TargetIdProviderFactoryProvider;
 import de.hub.specificmodels.metamodelgenerator.DefaultTargetObjectCreator;
@@ -43,10 +44,9 @@ public class HandlerMetaModelGenerator implements IClickWatchMain {
 		String nodeId = args[0];
 		
 		INodeConnection nc = ncp.createConnection(nodeId, "7777");
-		nc.connect();
 		
 		ResourceSet resourseSet = new ResourceSetImpl();
-		resourseSet.getLoadOptions().putAll(XmlModelRepository.defaultLoadSaveOptions());
+		resourseSet.getLoadOptions().putAll(EmfXmlUtil.defaultLoadSaveOptions());
 		Resource resource = resourseSet.getResource(
 				URI.createFileURI("src/" + getClass().getPackage().getName().replace(".", "/") 
 						+ "/brn/BrnHandlers.ecore"), true);
@@ -95,7 +95,7 @@ public class HandlerMetaModelGenerator implements IClickWatchMain {
 		}
 				
 		try {
-			resource.save(XmlModelRepository.defaultLoadSaveOptions());
+			resource.save(EmfXmlUtil.defaultLoadSaveOptions());
 		} catch (IOException e) {
 			Throwables.propagate(e);
 		}

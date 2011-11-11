@@ -48,7 +48,7 @@ import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.statushandlers.StatusManager;
 
 import de.hub.clickwatch.model.presentation.ClickWatchModelEditor;
-import de.hub.clickwatch.recoder.cwdatabase.presentation.CWDataBaseEditor;
+import de.hub.clickwatch.recorder.database.presentation.CWDataBaseEditor;
 import de.hub.clickwatch.transformationLauncher.dialog.ClickWatchModelObjectChooser;
 
 /**

@@ -1,52 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="cwdatabase"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="database"
     nsURI="http://de.hub.clickwatch/cwdatabase" nsPrefix="cwdb">
-  <eClassifiers xsi:type="ecore:EClass" name="Record">
+  <eClassifiers xsi:type="ecore:EClass" name="Record" eSuperTypes="../../../../../../../de.hub.clickwatch.core/src/de/hub/clickwatch/model/ClickWatchModel.ecore#//ModelElementWithStatistics">
     <eStructuralFeatures xsi:type="ecore:EReference" name="configuration" eType="ecore:EClass ../../../../../../../de.hub.clickwatch.core/src/de/hub/clickwatch/model/ClickWatchModel.ecore#//Network"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="start" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="networkTimeCopy" eType="ecore:EClass ../../../../../../../de.hub.clickwatch.core/src/de/hub/clickwatch/model/ClickWatchModel.ecore#//Network"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="dataBase" eType="#//DataBase"
-        eOpposite="#//DataBase/records"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="duration" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="end" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="statistics" eType="#//RecordStatistics"
-        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="hBaseRowMap" eType="#//HBaseRowMap"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="metaData" upperBound="-1"
-        eType="ecore:EClass ../../../../../../../de.hub.clickwatch.core/src/de/hub/clickwatch/model/ClickWatchModel.ecore#//Node"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="networkRecorder" eType="#//NetworkRecorder"
-        transient="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DataBase">
+  <eClassifiers xsi:type="ecore:EClass" name="DataBase" eSuperTypes="../../../../../../../de.hub.clickwatch.core/src/de/hub/clickwatch/model/ClickWatchModel.ecore#//ModelElementWithStatistics">
     <eStructuralFeatures xsi:type="ecore:EReference" name="records" upperBound="-1"
-        eType="#//Record" containment="true" eOpposite="#//Record/dataBase"/>
+        eType="#//Record" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="RecordStatistics">
-    <eOperations name="reset"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nodesA" eType="#//ESummaryStatistics"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="samplesN" eType="#//ESummaryStatistics"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="handlersN" eType="#//ESummaryStatistics"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="handlersPulledS" eType="#//ESummaryStatistics"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="handlersR" eType="#//ESummaryStatistics"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="timeA" eType="#//ESummaryStatistics"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="timeN" eType="#//ESummaryStatistics"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="timeS" eType="#//ESummaryStatistics"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="samplesPerSecond" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
-        unsettable="true" derived="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="recordSize" eType="#//ESummaryStatistics"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="samplesR" eType="#//ESummaryStatistics"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="bytesRequestS" eType="#//ESummaryStatistics"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="timeRequestS" eType="#//ESummaryStatistics"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cpuLoadS" eType="#//ESummaryStatistics"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EDataType" name="ESummaryStatistics" instanceClassName="org.apache.commons.math.stat.descriptive.SummaryStatistics"/>
-  <eClassifiers xsi:type="ecore:EDataType" name="HBaseRowMap" instanceClassName="de.hub.clickwatch.recorder.database.cwdatabase.HBaseRowMap"/>
-  <eClassifiers xsi:type="ecore:EDataType" name="NetworkRecorder" instanceClassName="de.hub.clickwatch.recorder.NetworkRecorder"
-      serializable="false"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="HBaseRowMap" instanceClassName="de.hub.clickwatch.recorder.database.HBaseRowMap"/>
 </ecore:EPackage>

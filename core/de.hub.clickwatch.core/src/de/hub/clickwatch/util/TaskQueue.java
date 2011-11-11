@@ -8,7 +8,7 @@ import java.util.concurrent.Future;
 import com.google.common.base.Preconditions;
 import com.google.inject.Inject;
 
-public class TaskQueue implements Runnable {
+public final class TaskQueue implements Runnable {
 
     @Inject private ILogger logger;
 	@Inject private ExecutorService es;
@@ -17,7 +17,7 @@ public class TaskQueue implements Runnable {
 	
 	private Object key = null;
 
-    public synchronized void addTask(Object key, Runnable task) {
+    protected synchronized void addTask(Object key, Runnable task) {
         if (this.key == null) {
             this.key = key;
         }
@@ -50,6 +50,31 @@ public class TaskQueue implements Runnable {
 			submit();			
 		}
 	}
+	
+    /**
+     * Blocks until all tasks in this queue are completed. This recognized
+     * only tasks that are already in the queue, thus after this method returns
+     * the queue might have been filled by other tasks again.
+     */
+	protected synchronized void waitForCompletion() {
+	    addTask(key, new Runnable() {
+            @Override
+            public void run() {
+                notifyForCompletion();
+            }
+        });
+        try {
+            wait();
+        } catch (InterruptedException e) {
+            Throwables.propagate(e);
+        }
+        return;
+	}
+	
+	private synchronized void notifyForCompletion() {
+	    this.notifyAll();
+	}
+	
 
     @Override
     public String toString() {

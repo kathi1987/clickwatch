@@ -129,9 +129,9 @@ public class ClickWatchModelSwitch<T> extends Switch<T> {
                 if (result == null) result = defaultCase(theEObject);
                 return result;
             }
-            case ClickWatchModelPackage.ERROR: {
-                de.hub.clickwatch.model.Error error = (de.hub.clickwatch.model.Error)theEObject;
-                T result = caseError(error);
+            case ClickWatchModelPackage.CLICK_WATCH_ERROR: {
+                ClickWatchError clickWatchError = (ClickWatchError)theEObject;
+                T result = caseClickWatchError(clickWatchError);
                 if (result == null) result = defaultCase(theEObject);
                 return result;
             }
@@ -245,17 +245,17 @@ public class ClickWatchModelSwitch<T> extends Switch<T> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '<em>Error</em>'.
+     * Returns the result of interpreting the object as an instance of '<em>Click Watch Error</em>'.
      * <!-- begin-user-doc -->
      * This implementation returns null;
      * returning a non-null result will terminate the switch.
      * <!-- end-user-doc -->
      * @param object the target of the switch.
-     * @return the result of interpreting the object as an instance of '<em>Error</em>'.
+     * @return the result of interpreting the object as an instance of '<em>Click Watch Error</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
-    public T caseError(de.hub.clickwatch.model.Error object) {
+    public T caseClickWatchError(ClickWatchError object) {
         return null;
     }
 

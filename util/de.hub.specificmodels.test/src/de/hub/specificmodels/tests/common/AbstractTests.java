@@ -33,7 +33,7 @@ import com.google.inject.Injector;
 import com.google.inject.Module;
 import com.google.inject.name.Names;
 
-import de.hub.emfxml.XmlModelRepository;
+import de.hub.emfxml.util.EmfXmlUtil;
 import de.hub.specificmodels.common.ITargetIdProvider;
 import de.hub.specificmodels.common.targetidprovider.TargetIdProviderFactoryProvider;
 import de.hub.specificmodels.metamodelgenerator.MetaModelGenerator;
@@ -80,9 +80,8 @@ public class AbstractTests {
 	}
 	
 	protected void deserialize(String xmlStr, FeatureMap map) {
-		XmlModelRepository xmlModelRepository = new XmlModelRepository();
-		xmlStr = XmlModelRepository.stripProcessingInstructions(xmlStr);
-		XMLTypeDocumentRoot xml = (XMLTypeDocumentRoot)xmlModelRepository.deserializeXml("<xml>" + xmlStr + "</xml>");
+		xmlStr = EmfXmlUtil.stripProcessingInstructions(xmlStr);
+		XMLTypeDocumentRoot xml = (XMLTypeDocumentRoot)EmfXmlUtil.deserializeXml("<xml>" + xmlStr + "</xml>");
 		
 		FeatureMap xmlRootMixed = ((AnyType)xml.getMixed().getValue(0)).getMixed();
 		if (xmlRootMixed.size() > 0) {

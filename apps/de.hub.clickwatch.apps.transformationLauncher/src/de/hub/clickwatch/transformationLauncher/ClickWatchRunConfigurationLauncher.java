@@ -12,6 +12,8 @@ import org.eclipse.ui.statushandlers.StatusManager;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 
+import de.hub.clickwatch.ClickWatchModuleUtil.HandlerBehaviour;
+import de.hub.clickwatch.ClickWatchModuleUtil.ValueType;
 import de.hub.clickwatch.ClickWatchStandaloneSetup;
 import de.hub.clickwatch.analysis.results.ui.ResultsUIResultsProvider;
 import de.hub.clickwatch.main.IArgumentsProvider;
@@ -27,8 +29,6 @@ import de.hub.clickwatch.main.impl.ArgumentsProvider;
 import de.hub.clickwatch.main.impl.ClickWatchModelProvider;
 import de.hub.clickwatch.main.impl.InjectorProvider;
 import de.hub.clickwatch.main.impl.InjectorProvider.DataBaseType;
-import de.hub.clickwatch.main.impl.InjectorProvider.HandlerBehaviour;
-import de.hub.clickwatch.main.impl.InjectorProvider.ValueType;
 import de.hub.clickwatch.main.impl.ProgressMonitorProvider;
 import de.hub.clickwatch.main.impl.RecordProvider;
 import de.hub.clickwatch.main.impl.ResultsProvider;

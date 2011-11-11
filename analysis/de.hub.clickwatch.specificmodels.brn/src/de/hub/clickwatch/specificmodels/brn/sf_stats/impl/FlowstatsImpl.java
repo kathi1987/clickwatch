@@ -49,343 +49,343 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class FlowstatsImpl extends EObjectImpl implements Flowstats {
 	/**
-	 * The cached value of the '{@link #getText() <em>Text</em>}' attribute list.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getText() <em>Text</em>}' attribute list.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getText()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getText()
+     * @generated
+     * @ordered
+     */
 	protected EList<String> text;
 
 	/**
-	 * The cached value of the '{@link #getTxflow() <em>Txflow</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getTxflow() <em>Txflow</em>}' containment reference list.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTxflow()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getTxflow()
+     * @generated
+     * @ordered
+     */
 	protected EList<Txflow> txflow;
 
 	/**
-	 * The cached value of the '{@link #getRxflow() <em>Rxflow</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getRxflow() <em>Rxflow</em>}' containment reference list.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getRxflow()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getRxflow()
+     * @generated
+     * @ordered
+     */
 	protected EList<Rxflow> rxflow;
 
 	/**
-	 * The default value of the '{@link #getNode() <em>Node</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The default value of the '{@link #getNode() <em>Node</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getNode()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getNode()
+     * @generated
+     * @ordered
+     */
 	protected static final String NODE_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getNode() <em>Node</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getNode() <em>Node</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getNode()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getNode()
+     * @generated
+     * @ordered
+     */
 	protected String node = NODE_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected FlowstatsImpl() {
-		super();
-	}
+        super();
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	protected EClass eStaticClass() {
-		return Sf_statsPackage.Literals.FLOWSTATS;
-	}
+        return Sf_statsPackage.Literals.FLOWSTATS;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public Stats getEContainer_flowstats() {
-		if (eContainerFeatureID() != Sf_statsPackage.FLOWSTATS__ECONTAINER_FLOWSTATS) return null;
-		return (Stats)eContainer();
-	}
+        if (eContainerFeatureID() != Sf_statsPackage.FLOWSTATS__ECONTAINER_FLOWSTATS) return null;
+        return (Stats)eContainer();
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public NotificationChain basicSetEContainer_flowstats(Stats newEContainer_flowstats, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject)newEContainer_flowstats, Sf_statsPackage.FLOWSTATS__ECONTAINER_FLOWSTATS, msgs);
-		return msgs;
-	}
+        msgs = eBasicSetContainer((InternalEObject)newEContainer_flowstats, Sf_statsPackage.FLOWSTATS__ECONTAINER_FLOWSTATS, msgs);
+        return msgs;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public void setEContainer_flowstats(Stats newEContainer_flowstats) {
-		if (newEContainer_flowstats != eInternalContainer() || (eContainerFeatureID() != Sf_statsPackage.FLOWSTATS__ECONTAINER_FLOWSTATS && newEContainer_flowstats != null)) {
-			if (EcoreUtil.isAncestor(this, newEContainer_flowstats))
-				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
-			NotificationChain msgs = null;
-			if (eInternalContainer() != null)
-				msgs = eBasicRemoveFromContainer(msgs);
-			if (newEContainer_flowstats != null)
-				msgs = ((InternalEObject)newEContainer_flowstats).eInverseAdd(this, Sf_statsPackage.STATS__FLOWSTATS, Stats.class, msgs);
-			msgs = basicSetEContainer_flowstats(newEContainer_flowstats, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, Sf_statsPackage.FLOWSTATS__ECONTAINER_FLOWSTATS, newEContainer_flowstats, newEContainer_flowstats));
-	}
+        if (newEContainer_flowstats != eInternalContainer() || (eContainerFeatureID() != Sf_statsPackage.FLOWSTATS__ECONTAINER_FLOWSTATS && newEContainer_flowstats != null)) {
+            if (EcoreUtil.isAncestor(this, newEContainer_flowstats))
+                throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+            NotificationChain msgs = null;
+            if (eInternalContainer() != null)
+                msgs = eBasicRemoveFromContainer(msgs);
+            if (newEContainer_flowstats != null)
+                msgs = ((InternalEObject)newEContainer_flowstats).eInverseAdd(this, Sf_statsPackage.STATS__FLOWSTATS, Stats.class, msgs);
+            msgs = basicSetEContainer_flowstats(newEContainer_flowstats, msgs);
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, Sf_statsPackage.FLOWSTATS__ECONTAINER_FLOWSTATS, newEContainer_flowstats, newEContainer_flowstats));
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public EList<String> getText() {
-		if (text == null) {
-			text = new EDataTypeEList<String>(String.class, this, Sf_statsPackage.FLOWSTATS__TEXT);
-		}
-		return text;
-	}
+        if (text == null) {
+            text = new EDataTypeEList<String>(String.class, this, Sf_statsPackage.FLOWSTATS__TEXT);
+        }
+        return text;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public EList<Txflow> getTxflow() {
-		if (txflow == null) {
-			txflow = new EObjectContainmentWithInverseEList<Txflow>(Txflow.class, this, Sf_statsPackage.FLOWSTATS__TXFLOW, Sf_statsPackage.TXFLOW__ECONTAINER_TXFLOW);
-		}
-		return txflow;
-	}
+        if (txflow == null) {
+            txflow = new EObjectContainmentWithInverseEList<Txflow>(Txflow.class, this, Sf_statsPackage.FLOWSTATS__TXFLOW, Sf_statsPackage.TXFLOW__ECONTAINER_TXFLOW);
+        }
+        return txflow;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public EList<Rxflow> getRxflow() {
-		if (rxflow == null) {
-			rxflow = new EObjectContainmentWithInverseEList<Rxflow>(Rxflow.class, this, Sf_statsPackage.FLOWSTATS__RXFLOW, Sf_statsPackage.RXFLOW__ECONTAINER_RXFLOW);
-		}
-		return rxflow;
-	}
+        if (rxflow == null) {
+            rxflow = new EObjectContainmentWithInverseEList<Rxflow>(Rxflow.class, this, Sf_statsPackage.FLOWSTATS__RXFLOW, Sf_statsPackage.RXFLOW__ECONTAINER_RXFLOW);
+        }
+        return rxflow;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public String getNode() {
-		return node;
-	}
+        return node;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public void setNode(String newNode) {
-		String oldNode = node;
-		node = newNode;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, Sf_statsPackage.FLOWSTATS__NODE, oldNode, node));
-	}
+        String oldNode = node;
+        node = newNode;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, Sf_statsPackage.FLOWSTATS__NODE, oldNode, node));
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case Sf_statsPackage.FLOWSTATS__ECONTAINER_FLOWSTATS:
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetEContainer_flowstats((Stats)otherEnd, msgs);
-			case Sf_statsPackage.FLOWSTATS__TXFLOW:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getTxflow()).basicAdd(otherEnd, msgs);
-			case Sf_statsPackage.FLOWSTATS__RXFLOW:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getRxflow()).basicAdd(otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
-	}
+        switch (featureID) {
+            case Sf_statsPackage.FLOWSTATS__ECONTAINER_FLOWSTATS:
+                if (eInternalContainer() != null)
+                    msgs = eBasicRemoveFromContainer(msgs);
+                return basicSetEContainer_flowstats((Stats)otherEnd, msgs);
+            case Sf_statsPackage.FLOWSTATS__TXFLOW:
+                return ((InternalEList<InternalEObject>)(InternalEList<?>)getTxflow()).basicAdd(otherEnd, msgs);
+            case Sf_statsPackage.FLOWSTATS__RXFLOW:
+                return ((InternalEList<InternalEObject>)(InternalEList<?>)getRxflow()).basicAdd(otherEnd, msgs);
+        }
+        return super.eInverseAdd(otherEnd, featureID, msgs);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case Sf_statsPackage.FLOWSTATS__ECONTAINER_FLOWSTATS:
-				return basicSetEContainer_flowstats(null, msgs);
-			case Sf_statsPackage.FLOWSTATS__TXFLOW:
-				return ((InternalEList<?>)getTxflow()).basicRemove(otherEnd, msgs);
-			case Sf_statsPackage.FLOWSTATS__RXFLOW:
-				return ((InternalEList<?>)getRxflow()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+        switch (featureID) {
+            case Sf_statsPackage.FLOWSTATS__ECONTAINER_FLOWSTATS:
+                return basicSetEContainer_flowstats(null, msgs);
+            case Sf_statsPackage.FLOWSTATS__TXFLOW:
+                return ((InternalEList<?>)getTxflow()).basicRemove(otherEnd, msgs);
+            case Sf_statsPackage.FLOWSTATS__RXFLOW:
+                return ((InternalEList<?>)getRxflow()).basicRemove(otherEnd, msgs);
+        }
+        return super.eInverseRemove(otherEnd, featureID, msgs);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
-		switch (eContainerFeatureID()) {
-			case Sf_statsPackage.FLOWSTATS__ECONTAINER_FLOWSTATS:
-				return eInternalContainer().eInverseRemove(this, Sf_statsPackage.STATS__FLOWSTATS, Stats.class, msgs);
-		}
-		return super.eBasicRemoveFromContainerFeature(msgs);
-	}
+        switch (eContainerFeatureID()) {
+            case Sf_statsPackage.FLOWSTATS__ECONTAINER_FLOWSTATS:
+                return eInternalContainer().eInverseRemove(this, Sf_statsPackage.STATS__FLOWSTATS, Stats.class, msgs);
+        }
+        return super.eBasicRemoveFromContainerFeature(msgs);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case Sf_statsPackage.FLOWSTATS__ECONTAINER_FLOWSTATS:
-				return getEContainer_flowstats();
-			case Sf_statsPackage.FLOWSTATS__TEXT:
-				return getText();
-			case Sf_statsPackage.FLOWSTATS__TXFLOW:
-				return getTxflow();
-			case Sf_statsPackage.FLOWSTATS__RXFLOW:
-				return getRxflow();
-			case Sf_statsPackage.FLOWSTATS__NODE:
-				return getNode();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+        switch (featureID) {
+            case Sf_statsPackage.FLOWSTATS__ECONTAINER_FLOWSTATS:
+                return getEContainer_flowstats();
+            case Sf_statsPackage.FLOWSTATS__TEXT:
+                return getText();
+            case Sf_statsPackage.FLOWSTATS__TXFLOW:
+                return getTxflow();
+            case Sf_statsPackage.FLOWSTATS__RXFLOW:
+                return getRxflow();
+            case Sf_statsPackage.FLOWSTATS__NODE:
+                return getNode();
+        }
+        return super.eGet(featureID, resolve, coreType);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case Sf_statsPackage.FLOWSTATS__ECONTAINER_FLOWSTATS:
-				setEContainer_flowstats((Stats)newValue);
-				return;
-			case Sf_statsPackage.FLOWSTATS__TEXT:
-				getText().clear();
-				getText().addAll((Collection<? extends String>)newValue);
-				return;
-			case Sf_statsPackage.FLOWSTATS__TXFLOW:
-				getTxflow().clear();
-				getTxflow().addAll((Collection<? extends Txflow>)newValue);
-				return;
-			case Sf_statsPackage.FLOWSTATS__RXFLOW:
-				getRxflow().clear();
-				getRxflow().addAll((Collection<? extends Rxflow>)newValue);
-				return;
-			case Sf_statsPackage.FLOWSTATS__NODE:
-				setNode((String)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+        switch (featureID) {
+            case Sf_statsPackage.FLOWSTATS__ECONTAINER_FLOWSTATS:
+                setEContainer_flowstats((Stats)newValue);
+                return;
+            case Sf_statsPackage.FLOWSTATS__TEXT:
+                getText().clear();
+                getText().addAll((Collection<? extends String>)newValue);
+                return;
+            case Sf_statsPackage.FLOWSTATS__TXFLOW:
+                getTxflow().clear();
+                getTxflow().addAll((Collection<? extends Txflow>)newValue);
+                return;
+            case Sf_statsPackage.FLOWSTATS__RXFLOW:
+                getRxflow().clear();
+                getRxflow().addAll((Collection<? extends Rxflow>)newValue);
+                return;
+            case Sf_statsPackage.FLOWSTATS__NODE:
+                setNode((String)newValue);
+                return;
+        }
+        super.eSet(featureID, newValue);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case Sf_statsPackage.FLOWSTATS__ECONTAINER_FLOWSTATS:
-				setEContainer_flowstats((Stats)null);
-				return;
-			case Sf_statsPackage.FLOWSTATS__TEXT:
-				getText().clear();
-				return;
-			case Sf_statsPackage.FLOWSTATS__TXFLOW:
-				getTxflow().clear();
-				return;
-			case Sf_statsPackage.FLOWSTATS__RXFLOW:
-				getRxflow().clear();
-				return;
-			case Sf_statsPackage.FLOWSTATS__NODE:
-				setNode(NODE_EDEFAULT);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+        switch (featureID) {
+            case Sf_statsPackage.FLOWSTATS__ECONTAINER_FLOWSTATS:
+                setEContainer_flowstats((Stats)null);
+                return;
+            case Sf_statsPackage.FLOWSTATS__TEXT:
+                getText().clear();
+                return;
+            case Sf_statsPackage.FLOWSTATS__TXFLOW:
+                getTxflow().clear();
+                return;
+            case Sf_statsPackage.FLOWSTATS__RXFLOW:
+                getRxflow().clear();
+                return;
+            case Sf_statsPackage.FLOWSTATS__NODE:
+                setNode(NODE_EDEFAULT);
+                return;
+        }
+        super.eUnset(featureID);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case Sf_statsPackage.FLOWSTATS__ECONTAINER_FLOWSTATS:
-				return getEContainer_flowstats() != null;
-			case Sf_statsPackage.FLOWSTATS__TEXT:
-				return text != null && !text.isEmpty();
-			case Sf_statsPackage.FLOWSTATS__TXFLOW:
-				return txflow != null && !txflow.isEmpty();
-			case Sf_statsPackage.FLOWSTATS__RXFLOW:
-				return rxflow != null && !rxflow.isEmpty();
-			case Sf_statsPackage.FLOWSTATS__NODE:
-				return NODE_EDEFAULT == null ? node != null : !NODE_EDEFAULT.equals(node);
-		}
-		return super.eIsSet(featureID);
-	}
+        switch (featureID) {
+            case Sf_statsPackage.FLOWSTATS__ECONTAINER_FLOWSTATS:
+                return getEContainer_flowstats() != null;
+            case Sf_statsPackage.FLOWSTATS__TEXT:
+                return text != null && !text.isEmpty();
+            case Sf_statsPackage.FLOWSTATS__TXFLOW:
+                return txflow != null && !txflow.isEmpty();
+            case Sf_statsPackage.FLOWSTATS__RXFLOW:
+                return rxflow != null && !rxflow.isEmpty();
+            case Sf_statsPackage.FLOWSTATS__NODE:
+                return NODE_EDEFAULT == null ? node != null : !NODE_EDEFAULT.equals(node);
+        }
+        return super.eIsSet(featureID);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+        if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (text: ");
-		result.append(text);
-		result.append(", node: ");
-		result.append(node);
-		result.append(')');
-		return result.toString();
-	}
+        StringBuffer result = new StringBuffer(super.toString());
+        result.append(" (text: ");
+        result.append(text);
+        result.append(", node: ");
+        result.append(node);
+        result.append(')');
+        return result.toString();
+    }
 
 } //FlowstatsImpl

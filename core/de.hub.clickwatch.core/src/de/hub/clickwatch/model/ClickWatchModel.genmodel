@@ -24,7 +24,6 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClickWatchModel.ecore#//Node/iNetAddress"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClickWatchModel.ecore#//Node/port"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClickWatchModel.ecore#//Node/backbone"/>
-      <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute ClickWatchModel.ecore#//Node/activeListeners"/>
       <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute ClickWatchModel.ecore#//Node/connection"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClickWatchModel.ecore#//Node/retrieving"/>
       <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute ClickWatchModel.ecore#//Node/listening"/>
@@ -86,19 +85,22 @@
     </genClasses>
     <genClasses ecoreClass="ClickWatchModel.ecore#//EStringToStatisticMap">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClickWatchModel.ecore#//EStringToStatisticMap/key"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ClickWatchModel.ecore#//EStringToStatisticMap/value"/>
+      <genFeatures property="Readonly" children="true" createChild="true" ecoreFeature="ecore:EReference ClickWatchModel.ecore#//EStringToStatisticMap/value"/>
     </genClasses>
     <genClasses ecoreClass="ClickWatchModel.ecore#//Statistic">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClickWatchModel.ecore#//Statistic/sum"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClickWatchModel.ecore#//Statistic/count"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClickWatchModel.ecore#//Statistic/mean"/>
+      <genFeatures property="Readonly" createChild="true" ecoreFeature="ecore:EAttribute ClickWatchModel.ecore#//Statistic/sum"/>
+      <genFeatures property="Readonly" createChild="true" ecoreFeature="ecore:EAttribute ClickWatchModel.ecore#//Statistic/count"/>
+      <genFeatures property="Readonly" createChild="true" ecoreFeature="ecore:EAttribute ClickWatchModel.ecore#//Statistic/mean"/>
+      <genFeatures property="Readonly" createChild="true" ecoreFeature="ecore:EAttribute ClickWatchModel.ecore#//Statistic/smallest"/>
+      <genFeatures property="Readonly" createChild="true" ecoreFeature="ecore:EAttribute ClickWatchModel.ecore#//Statistic/largest"/>
+      <genFeatures property="Readonly" createChild="true" ecoreFeature="ecore:EAttribute ClickWatchModel.ecore#//Statistic/latest"/>
       <genOperations ecoreOperation="ClickWatchModel.ecore#//Statistic/addValue">
         <genParameters ecoreParameter="ClickWatchModel.ecore#//Statistic/addValue/value"/>
       </genOperations>
     </genClasses>
-    <genClasses ecoreClass="ClickWatchModel.ecore#//Error">
-      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute ClickWatchModel.ecore#//Error/message"/>
-      <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute ClickWatchModel.ecore#//Error/exception"/>
+    <genClasses ecoreClass="ClickWatchModel.ecore#//ClickWatchError">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClickWatchModel.ecore#//ClickWatchError/message"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClickWatchModel.ecore#//ClickWatchError/exception"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

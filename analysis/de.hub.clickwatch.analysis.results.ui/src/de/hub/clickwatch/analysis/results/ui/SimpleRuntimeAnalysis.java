@@ -34,7 +34,7 @@ import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.model.Node;
 import de.hub.clickwatch.model.provider.XmlAttributeValue;
 import de.hub.clickwatch.recorder.database.DataBaseUtil;
-import de.hub.clickwatch.recorder.database.cwdatabase.Record;
+import de.hub.clickwatch.recorder.database.Record;
 import de.hub.clickwatch.ui.PluginActivator;
 import de.hub.clickwatch.util.Throwables;
 
@@ -118,7 +118,7 @@ public class SimpleRuntimeAnalysis implements IObjectActionDelegate {
 				.withValueSpecs(AxisBuilder.newAxisBuilder().withColumn(1).withName(value.getEntry().getEStructuralFeature().getName())).build());
 		
 		Iterator<Handler> iterator = dbUtil.getHandlerIterator(
-				DataBaseUtil.createHandle(record, node.getINetAddress(), handler.getQualifiedName()),
+				DataBaseUtil.createHandle(record, node, handler),
 				monitor);
 		while (iterator.hasNext()) {			
 			Handler newHandler = iterator.next();

@@ -18,38 +18,38 @@ import org.eclipse.emf.ecore.EFactory;
  */
 public interface Gps_gps_coordFactory extends EFactory {
 	/**
-	 * The singleton instance of the factory.
-	 * <!-- begin-user-doc -->
+     * The singleton instance of the factory.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	Gps_gps_coordFactory eINSTANCE = de.hub.clickwatch.specificmodels.brn.gps_gps_coord.impl.Gps_gps_coordFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>Gps</em>'.
-	 * <!-- begin-user-doc -->
+     * Returns a new object of class '<em>Gps</em>'.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Gps</em>'.
-	 * @generated
-	 */
+     * @return a new object of class '<em>Gps</em>'.
+     * @generated
+     */
 	Gps createGps();
 
 	/**
-	 * Returns a new object of class '<em>Gps coord</em>'.
-	 * <!-- begin-user-doc -->
+     * Returns a new object of class '<em>Gps coord</em>'.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Gps coord</em>'.
-	 * @generated
-	 */
+     * @return a new object of class '<em>Gps coord</em>'.
+     * @generated
+     */
 	Gps_coord createGps_coord();
 
 	/**
-	 * Returns the package supported by this factory.
-	 * <!-- begin-user-doc -->
+     * Returns the package supported by this factory.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the package supported by this factory.
-	 * @generated
-	 */
+     * @return the package supported by this factory.
+     * @generated
+     */
 	Gps_gps_coordPackage getGps_gps_coordPackage();
 
 } //Gps_gps_coordFactory

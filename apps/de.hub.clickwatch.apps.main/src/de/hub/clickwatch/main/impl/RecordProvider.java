@@ -11,16 +11,14 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import de.hub.clickwatch.main.IClickWatchContextAdapter;
 import de.hub.clickwatch.main.IRecordProvider;
 import de.hub.clickwatch.model.Node;
-import de.hub.clickwatch.recorder.database.cwdatabase.DataBase;
-import de.hub.clickwatch.recorder.database.cwdatabase.Record;
-import de.hub.emfxml.XmlModelRepository;
+import de.hub.clickwatch.recorder.database.DataBase;
+import de.hub.clickwatch.recorder.database.Record;
+import de.hub.emfxml.util.EmfXmlUtil;
 
 public class RecordProvider implements IClickWatchContextAdapter, IRecordProvider {
 	
@@ -39,7 +37,7 @@ public class RecordProvider implements IClickWatchContextAdapter, IRecordProvide
 			}
 			
 			ResourceSet rs = new ResourceSetImpl();
-			rs.getLoadOptions().putAll(XmlModelRepository.defaultLoadSaveOptions());
+			rs.getLoadOptions().putAll(EmfXmlUtil.defaultLoadSaveOptions());
 			Resource resource = rs.getResource(dataBaseURI, true);
 			dataBase = (DataBase)resource.getContents().get(0);
 		}

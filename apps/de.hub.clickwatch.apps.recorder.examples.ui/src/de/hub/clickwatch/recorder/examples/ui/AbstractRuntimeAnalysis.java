@@ -9,13 +9,13 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PlatformUI;
 
@@ -23,31 +23,32 @@ import com.google.inject.Inject;
 
 import de.hub.clickwatch.analysis.results.DataEntry;
 import de.hub.clickwatch.analysis.results.Result;
+import de.hub.clickwatch.connection.INodeConnection;
+import de.hub.clickwatch.connection.INodeConnectionProvider;
+import de.hub.clickwatch.connection.adapter.IHandlerEventAdapter;
+import de.hub.clickwatch.connection.adapter.IHandlerEventListener;
 import de.hub.clickwatch.connection.adapter.values.StringValueAdapter;
 import de.hub.clickwatch.main.IClickWatchContext;
 import de.hub.clickwatch.main.IRecordProvider;
 import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.model.Node;
-import de.hub.clickwatch.recorder.INetworkRecorderDataListener;
-import de.hub.clickwatch.recorder.NetworkRecorder;
-import de.hub.clickwatch.recorder.database.cwdatabase.CWDataBasePackage;
-import de.hub.clickwatch.recorder.database.cwdatabase.Record;
 import de.hub.clickwatch.recorder.examples.AbstractAnalysis;
 import de.hub.clickwatch.specificmodels.brn.BrnValueAdapter;
 import de.hub.clickwatch.util.ILogger;
 import de.hub.clickwatch.util.Throwables;
 
-public abstract class AbstractRuntimeAnalysis extends AbstractAnalysis implements INetworkRecorderDataListener {
+public abstract class AbstractRuntimeAnalysis extends AbstractAnalysis {
 
+    @Inject private INodeConnectionProvider ncp;
 	@Inject private StringValueAdapter stringValueAdapter;
 	@Inject private BrnValueAdapter brnValueAdapter;
 	@Inject private ILogger logger;
+	@Inject private ScheduledExecutorService ses;
+	private ScheduledFuture<?> analysisFuture = null;
 	
-	private boolean isStopped = false;
 	private long currentAnalysisTime = 0;
 	
 	private IClickWatchContext ctx = null;
-	private Record record = null;
 	private Collection<Node> nodes = null;
 	private Collection<DataHandle> handles = new HashSet<DataHandle>();
 	private Map<DataHandle, Queue<Handler>> dataQueues = new HashMap<DataHandle, Queue<Handler>>();
@@ -102,8 +103,7 @@ public abstract class AbstractRuntimeAnalysis extends AbstractAnalysis implement
 		return PlatformUI.getWorkbench().getDisplay();
 	}
 	
-	@Override
-	public void handlerRecorded(Node node, Handler handler) {
+	private void handlerReceived(Node node, Handler handler) {
 		DataHandle handle = new DataHandle(node, handler.getName());
 		if (handles.contains(handle)) {
 			Queue<Handler> dataQueue = getDataQueue(handle);
@@ -187,71 +187,87 @@ public abstract class AbstractRuntimeAnalysis extends AbstractAnalysis implement
 		}
 	}
 	
-	private synchronized void runContiniouslyAnalysis(final AdapterImpl stopAdapter) {
-		while(!isStopped) {
-			long currentTime = System.currentTimeMillis();
-			if (currentTime - currentAnalysisTime > 25) {
-				currentAnalysisTime = currentTime;
-				for(Node node: nodes) {
-					// TODO run different nodes in different threads
-					try {
-						analyse(ctx, node, new NullProgressMonitor());
-					} catch (Exception e) {
-						logger.log(ILogger.ERROR, "exception during analysis", e);
-					}
-				}								
-			} else {
-				try {
-					wait(10);
-				} catch (InterruptedException e) {
-					Throwables.propagate(e);
-				}
-			}
-		}
-		record.eAdapters().remove(stopAdapter);
-	}
-
 	@Override
-	public void main(IClickWatchContext ctx) {
+	public void main(final IClickWatchContext ctx) {
 		this.ctx = ctx;
-		record = ctx.getAdapter(IRecordProvider.class).getRecord();
 		nodes = Arrays.asList(ctx.getAdapter(IRecordProvider.class).getSelectedNodes());
 		
-		initialize();
-		
-		NetworkRecorder recorder = record.getNetworkRecorder();
-		if (recorder == null) {
-			getDisplay().syncExec(new Runnable() {				
-				@Override
-				public void run() {
-					MessageDialog.openInformation(getDisplay().getActiveShell(),
-							"Not recording",
-							"This analysis is only available during recording.");		
-				}
-			});			
-			return;
+		initialize();						
+				
+		for(Node node: nodes) {
+		    INodeConnection connection = ncp.createConnection(node);
+		    IHandlerEventAdapter hea = connection.getAdapter(IHandlerEventAdapter.class);
+		    hea.addEventListener(node, new HandlerEventListener(node));
 		}	
 		
-		isStopped = false;
-		final AdapterImpl stopAdapter = new AdapterImpl() {
-			@Override
-			public void notifyChanged(Notification msg) {
-				if (msg.getFeature() == CWDataBasePackage.eINSTANCE.getRecord_NetworkRecorder()) {
-					if (msg.getNewValue() == null) {
-						isStopped = true;
-					}
-				}
-			}
-		};
-		record.eAdapters().add(stopAdapter);
-		recorder.addDataListener(this);
-		
-		new Thread(new Runnable() {			
-			@Override
-			public void run() {
-				runContiniouslyAnalysis(stopAdapter);
-			}			
-		}, "continious analysis").start();		
+		analysisFuture = ses.scheduleWithFixedDelay(new Runnable() {            
+            @Override
+            public void run() {
+                long currentTime = System.currentTimeMillis();
+                if (currentTime - currentAnalysisTime > 25) {
+                    currentAnalysisTime = currentTime;
+                    for(Node node: nodes) {
+                        try {
+                            analyse(ctx, node, new NullProgressMonitor());
+                        } catch (Exception e) {
+                            logger.log(ILogger.ERROR, "exception during analysis", e);
+                        }
+                    }                               
+                } else {
+                    try {
+                        wait(10);
+                    } catch (InterruptedException e) {
+                        Throwables.propagate(e);
+                    }
+                }
+            }
+        }, 0, 1000, TimeUnit.MILLISECONDS);
+	}
+	
+	private class HandlerEventListener implements IHandlerEventListener {
+
+	    private final Node node;
+	    
+        public HandlerEventListener(Node node) {
+            super();
+            this.node = node;
+        }
+
+        @Override
+        public void handlerReceived(Handler handler) {
+            AbstractRuntimeAnalysis.this.handlerReceived(node, handler);
+        }
+
+        @Override
+        public void receivingStarted() {
+            
+        }
+
+        @Override
+        public void receivingStopped() {
+            
+        }
+
+        @Override
+        public void listeningStarted() {
+
+        }
+
+        @Override
+        public void listeningStopped() {
+            stop();
+        }
+
+        @Override
+        public void dispose() {
+            stop();
+        }	    
+	}
+	
+	private void stop() {
+	    if (analysisFuture != null) {
+	        analysisFuture.cancel(false);
+	    }
 	}
 	
 	public IClickWatchContext getContext() {

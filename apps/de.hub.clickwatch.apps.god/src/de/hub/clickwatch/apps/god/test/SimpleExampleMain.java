@@ -1,6 +1,7 @@
 package de.hub.clickwatch.apps.god.test;
 
 import com.google.inject.Inject;
+
 import de.hub.clickwatch.connection.INodeConnection;
 import de.hub.clickwatch.connection.INodeConnectionProvider;
 import de.hub.clickwatch.connection.adapter.IHandlerAdapter;
@@ -20,7 +21,6 @@ public class SimpleExampleMain implements IClickWatchMain {
 	@Override
 	public void main(IClickWatchContext ctx) {
 		INodeConnection nodeConnection = nodeConnectionProvider.createConnection("localhost", "7777");
-		nodeConnection.connect();
 		
 		IHandlerAdapter handlerAdapter = nodeConnection.getAdapter(IHandlerAdapter.class);
 		Bcast_stats bcastStats = (Bcast_stats)handlerAdapter.getHandler("device_wifi/link_stat/bcast_stats");
@@ -34,7 +34,7 @@ public class SimpleExampleMain implements IClickWatchMain {
 			}
 		}
 		
-		nodeConnection.disconnect();
+		nodeConnection.close();
 	}
 
 	public static final void main(String args[]) {

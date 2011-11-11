@@ -330,7 +330,6 @@ public class NodeItemProvider
             case ClickWatchModelPackage.NODE__INET_ADDRESS:
             case ClickWatchModelPackage.NODE__PORT:
             case ClickWatchModelPackage.NODE__BACKBONE:
-            case ClickWatchModelPackage.NODE__ACTIVE_LISTENERS:
             case ClickWatchModelPackage.NODE__CONNECTION:
             case ClickWatchModelPackage.NODE__RETRIEVING:
             case ClickWatchModelPackage.NODE__LISTENING:

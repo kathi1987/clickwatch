@@ -35,163 +35,163 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public class LeasesImpl extends HandlerImpl implements Leases {
 	/**
-	 * The cached value of the '{@link #getDhcpleases() <em>Dhcpleases</em>}' containment reference.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getDhcpleases() <em>Dhcpleases</em>}' containment reference.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getDhcpleases()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getDhcpleases()
+     * @generated
+     * @ordered
+     */
 	protected Dhcpleases dhcpleases;
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected LeasesImpl() {
-		super();
-	}
+        super();
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	protected EClass eStaticClass() {
-		return Lease_tab_leasesPackage.Literals.LEASES;
-	}
+        return Lease_tab_leasesPackage.Literals.LEASES;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public Dhcpleases getDhcpleases() {
-		return dhcpleases;
-	}
+        return dhcpleases;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public NotificationChain basicSetDhcpleases(Dhcpleases newDhcpleases, NotificationChain msgs) {
-		Dhcpleases oldDhcpleases = dhcpleases;
-		dhcpleases = newDhcpleases;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, Lease_tab_leasesPackage.LEASES__DHCPLEASES, oldDhcpleases, newDhcpleases);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
+        Dhcpleases oldDhcpleases = dhcpleases;
+        dhcpleases = newDhcpleases;
+        if (eNotificationRequired()) {
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, Lease_tab_leasesPackage.LEASES__DHCPLEASES, oldDhcpleases, newDhcpleases);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
+        }
+        return msgs;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public void setDhcpleases(Dhcpleases newDhcpleases) {
-		if (newDhcpleases != dhcpleases) {
-			NotificationChain msgs = null;
-			if (dhcpleases != null)
-				msgs = ((InternalEObject)dhcpleases).eInverseRemove(this, Lease_tab_leasesPackage.DHCPLEASES__ECONTAINER_DHCPLEASES, Dhcpleases.class, msgs);
-			if (newDhcpleases != null)
-				msgs = ((InternalEObject)newDhcpleases).eInverseAdd(this, Lease_tab_leasesPackage.DHCPLEASES__ECONTAINER_DHCPLEASES, Dhcpleases.class, msgs);
-			msgs = basicSetDhcpleases(newDhcpleases, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, Lease_tab_leasesPackage.LEASES__DHCPLEASES, newDhcpleases, newDhcpleases));
-	}
+        if (newDhcpleases != dhcpleases) {
+            NotificationChain msgs = null;
+            if (dhcpleases != null)
+                msgs = ((InternalEObject)dhcpleases).eInverseRemove(this, Lease_tab_leasesPackage.DHCPLEASES__ECONTAINER_DHCPLEASES, Dhcpleases.class, msgs);
+            if (newDhcpleases != null)
+                msgs = ((InternalEObject)newDhcpleases).eInverseAdd(this, Lease_tab_leasesPackage.DHCPLEASES__ECONTAINER_DHCPLEASES, Dhcpleases.class, msgs);
+            msgs = basicSetDhcpleases(newDhcpleases, msgs);
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, Lease_tab_leasesPackage.LEASES__DHCPLEASES, newDhcpleases, newDhcpleases));
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case Lease_tab_leasesPackage.LEASES__DHCPLEASES:
-				if (dhcpleases != null)
-					msgs = ((InternalEObject)dhcpleases).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - Lease_tab_leasesPackage.LEASES__DHCPLEASES, null, msgs);
-				return basicSetDhcpleases((Dhcpleases)otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
-	}
+        switch (featureID) {
+            case Lease_tab_leasesPackage.LEASES__DHCPLEASES:
+                if (dhcpleases != null)
+                    msgs = ((InternalEObject)dhcpleases).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - Lease_tab_leasesPackage.LEASES__DHCPLEASES, null, msgs);
+                return basicSetDhcpleases((Dhcpleases)otherEnd, msgs);
+        }
+        return super.eInverseAdd(otherEnd, featureID, msgs);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case Lease_tab_leasesPackage.LEASES__DHCPLEASES:
-				return basicSetDhcpleases(null, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+        switch (featureID) {
+            case Lease_tab_leasesPackage.LEASES__DHCPLEASES:
+                return basicSetDhcpleases(null, msgs);
+        }
+        return super.eInverseRemove(otherEnd, featureID, msgs);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case Lease_tab_leasesPackage.LEASES__DHCPLEASES:
-				return getDhcpleases();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+        switch (featureID) {
+            case Lease_tab_leasesPackage.LEASES__DHCPLEASES:
+                return getDhcpleases();
+        }
+        return super.eGet(featureID, resolve, coreType);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case Lease_tab_leasesPackage.LEASES__DHCPLEASES:
-				setDhcpleases((Dhcpleases)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+        switch (featureID) {
+            case Lease_tab_leasesPackage.LEASES__DHCPLEASES:
+                setDhcpleases((Dhcpleases)newValue);
+                return;
+        }
+        super.eSet(featureID, newValue);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case Lease_tab_leasesPackage.LEASES__DHCPLEASES:
-				setDhcpleases((Dhcpleases)null);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+        switch (featureID) {
+            case Lease_tab_leasesPackage.LEASES__DHCPLEASES:
+                setDhcpleases((Dhcpleases)null);
+                return;
+        }
+        super.eUnset(featureID);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case Lease_tab_leasesPackage.LEASES__DHCPLEASES:
-				return dhcpleases != null;
-		}
-		return super.eIsSet(featureID);
-	}
+        switch (featureID) {
+            case Lease_tab_leasesPackage.LEASES__DHCPLEASES:
+                return dhcpleases != null;
+        }
+        return super.eIsSet(featureID);
+    }
 
 } //LeasesImpl

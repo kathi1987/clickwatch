@@ -1,6 +1,5 @@
 package de.hub.clickwatch.connection.adapter.values;
 
-import de.hub.clickwatch.connection.adapter.internal.AbstractValueAdapter;
 import de.hub.clickwatch.model.Handler;
 
 public class StringValueAdapter extends AbstractValueAdapter implements IValueAdapter {

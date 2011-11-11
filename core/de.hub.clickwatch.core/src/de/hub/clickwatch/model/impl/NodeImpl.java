@@ -28,6 +28,7 @@ import de.hub.clickwatch.connection.INodeConnection;
 import de.hub.clickwatch.connection.adapter.IHandlerEventAdapter;
 import de.hub.clickwatch.connection.adapter.IHandlerEventListener;
 import de.hub.clickwatch.model.BackboneType;
+import de.hub.clickwatch.model.ClickWatchError;
 import de.hub.clickwatch.model.ClickWatchModelPackage;
 import de.hub.clickwatch.model.Element;
 import de.hub.clickwatch.model.Handler;
@@ -43,7 +44,6 @@ import de.hub.clickwatch.model.Node;
  *   <li>{@link de.hub.clickwatch.model.impl.NodeImpl#getINetAddress <em>INet Address</em>}</li>
  *   <li>{@link de.hub.clickwatch.model.impl.NodeImpl#getPort <em>Port</em>}</li>
  *   <li>{@link de.hub.clickwatch.model.impl.NodeImpl#getBackbone <em>Backbone</em>}</li>
- *   <li>{@link de.hub.clickwatch.model.impl.NodeImpl#getActiveListeners <em>Active Listeners</em>}</li>
  *   <li>{@link de.hub.clickwatch.model.impl.NodeImpl#getConnection <em>Connection</em>}</li>
  *   <li>{@link de.hub.clickwatch.model.impl.NodeImpl#isRetrieving <em>Retrieving</em>}</li>
  *   <li>{@link de.hub.clickwatch.model.impl.NodeImpl#isListening <em>Listening</em>}</li>
@@ -104,16 +104,7 @@ public class NodeImpl extends ModelElementWithStatisticsImpl implements Node {
      * @ordered
      */
     protected BackboneType backbone = BACKBONE_EDEFAULT;
-    /**
-     * The cached value of the '{@link #getActiveListeners()
-     * <em>Active Listeners</em>}' attribute list. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
-     * @see #getActiveListeners()
-     * @generated NOT
-     * @ordered
-     */
-    protected EList<IHandlerEventListener> activeListeners;
+   
     /**
      * The default value of the '{@link #getConnection() <em>Connection</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -192,7 +183,7 @@ public class NodeImpl extends ModelElementWithStatisticsImpl implements Node {
      * @generated
      * @ordered
      */
-    protected EList<de.hub.clickwatch.model.Error> errors;
+    protected EList<ClickWatchError> errors;
     /**
      * The cached value of the '{@link #getElements() <em>Elements</em>}' containment reference list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -371,29 +362,13 @@ public class NodeImpl extends ModelElementWithStatisticsImpl implements Node {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated NOT
-     */
-    @SuppressWarnings("unchecked")
-    public EList<IHandlerEventListener> getActiveListeners() {
-        INodeConnection nodeConnection = getConnection();
-        if (nodeConnection != null) {
-            IHandlerEventAdapter handlerEventAdapter = nodeConnection.getAdapter(IHandlerEventAdapter.class);
-            return new DelegatingEList.UnmodifiableEList<IHandlerEventListener>(handlerEventAdapter.getListeners());
-        } else {
-            return (EList<IHandlerEventListener>)ECollections.EMPTY_ELIST;
-        }
-    }
-
-    /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    public EList<de.hub.clickwatch.model.Error> getErrors() {
+    public EList<ClickWatchError> getErrors() {
         if (errors == null) {
-            errors = new EObjectContainmentEList<de.hub.clickwatch.model.Error>(de.hub.clickwatch.model.Error.class, this, ClickWatchModelPackage.NODE__ERRORS);
+            errors = new EObjectContainmentEList<ClickWatchError>(ClickWatchError.class, this, ClickWatchModelPackage.NODE__ERRORS);
         }
         return errors;
     }
@@ -581,8 +556,6 @@ public class NodeImpl extends ModelElementWithStatisticsImpl implements Node {
                 return getPort();
             case ClickWatchModelPackage.NODE__BACKBONE:
                 return getBackbone();
-            case ClickWatchModelPackage.NODE__ACTIVE_LISTENERS:
-                return getActiveListeners();
             case ClickWatchModelPackage.NODE__CONNECTION:
                 return getConnection();
             case ClickWatchModelPackage.NODE__RETRIEVING:
@@ -630,7 +603,7 @@ public class NodeImpl extends ModelElementWithStatisticsImpl implements Node {
                 return;
             case ClickWatchModelPackage.NODE__ERRORS:
                 getErrors().clear();
-                getErrors().addAll((Collection<? extends de.hub.clickwatch.model.Error>)newValue);
+                getErrors().addAll((Collection<? extends ClickWatchError>)newValue);
                 return;
             case ClickWatchModelPackage.NODE__ELEMENTS:
                 getElements().clear();
@@ -691,8 +664,6 @@ public class NodeImpl extends ModelElementWithStatisticsImpl implements Node {
                 return PORT_EDEFAULT == null ? port != null : !PORT_EDEFAULT.equals(port);
             case ClickWatchModelPackage.NODE__BACKBONE:
                 return backbone != BACKBONE_EDEFAULT;
-            case ClickWatchModelPackage.NODE__ACTIVE_LISTENERS:
-                return activeListeners != null && !activeListeners.isEmpty();
             case ClickWatchModelPackage.NODE__CONNECTION:
                 return CONNECTION_EDEFAULT == null ? connection != null : !CONNECTION_EDEFAULT.equals(connection);
             case ClickWatchModelPackage.NODE__RETRIEVING:
@@ -724,8 +695,6 @@ public class NodeImpl extends ModelElementWithStatisticsImpl implements Node {
         result.append(port);
         result.append(", backbone: ");
         result.append(backbone);
-        result.append(", activeListeners: ");
-        result.append(activeListeners);
         result.append(", connection: ");
         result.append(connection);
         result.append(", retrieving: ");

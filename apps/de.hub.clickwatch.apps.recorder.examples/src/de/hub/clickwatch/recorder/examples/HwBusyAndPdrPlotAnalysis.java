@@ -17,8 +17,9 @@ import de.hub.clickwatch.main.IProgressMonitorProvider;
 import de.hub.clickwatch.main.IResultsProvider;
 import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.model.Node;
+import de.hub.clickwatch.model.util.builder.ModelBuilders;
 import de.hub.clickwatch.recorder.database.DataBaseUtil;
-import de.hub.clickwatch.recorder.database.cwdatabase.Record;
+import de.hub.clickwatch.recorder.database.Record;
 import de.hub.clickwatch.specificmodels.brn.device_wifi_link_stat_bcast_stats.Bcast_stats;
 import de.hub.clickwatch.specificmodels.brn.device_wifi_link_stat_bcast_stats.Link;
 import de.hub.clickwatch.specificmodels.brn.device_wifi_link_stat_bcast_stats.Link_info;
@@ -82,7 +83,9 @@ public class HwBusyAndPdrPlotAnalysis implements IClickWatchMain {
 	
 	@SuppressWarnings("unchecked")
 	private <HC> void plot(String nodeId, String handlerId, IPlotConfig<HC> config) {
-		Iterator<Handler> iterator = dbUtil.getHandlerIterator(DataBaseUtil.createHandle(record, nodeId, handlerId));
+		Iterator<Handler> iterator = dbUtil.getHandlerIterator(DataBaseUtil.createHandle(record, 
+		        ModelBuilders.newNodeBuilder().withINetAddress(nodeId).build(),
+		        ModelBuilders.newHandlerBuilder().withName(handlerId).build()));
 		
 		while(iterator.hasNext()) {
 			Handler handler = iterator.next();

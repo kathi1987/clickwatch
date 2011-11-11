@@ -36,7 +36,7 @@ public class UiHandlerEventListener implements IHandlerEventListener {
     private boolean updateMetaData = false;
 
     private @Inject ILogger logger;
-    private Map<String, Handler> receivedHandler = new HashMap<String, Handler>();
+    private Map<String, Handler> receivedHandlers = new HashMap<String, Handler>();
 
     private boolean haveReceivedInCurrentCycle = false;
     private final AdapterImpl filterAdapter = new AdapterImpl() {
@@ -128,7 +128,7 @@ public class UiHandlerEventListener implements IHandlerEventListener {
 
     @Override
     public void handlerReceived(final Handler handler) {
-        receivedHandler.put(handler.getQualifiedName(), handler);        
+        receivedHandlers.put(handler.getQualifiedName(), handler);        
     }
     
     private boolean ensureConnected() {
@@ -142,7 +142,7 @@ public class UiHandlerEventListener implements IHandlerEventListener {
             updateMetaData();
             updateMetaData = false;
         }
-        receivedHandler.clear();
+        receivedHandlers.clear();
         getDisplay().syncExec(new Runnable() {
             @Override
             public void run() {
@@ -163,7 +163,8 @@ public class UiHandlerEventListener implements IHandlerEventListener {
                     try {
                         long start = System.currentTimeMillis();
                         IMergeAdapter mergeAdapter = node.getConnection().getAdapter(IMergeAdapter.class);
-                        for (String handlerName: receivedHandler.keySet()) {
+                        mergeAdapter.clearChanges();
+                        for (String handlerName: receivedHandlers.keySet()) {
                             final Handler guiHandler = node.getHandler(handlerName);
                             if (!haveReceivedInCurrentCycle) {
                                 logger.log(ILogger.DEBUG, "handler received handler in GUI", null);
@@ -173,8 +174,9 @@ public class UiHandlerEventListener implements IHandlerEventListener {
                             if (guiHandler == null) {
                                 logger.log(ILogger.WARNING, "GUI received handler " + handlerName
                                         + " that is not in the current node meta-data", null);
-                            } else {                                
-                                mergeAdapter.merge(receivedHandler.get(handlerName));                             
+                            } else {                               
+                                Handler receivedHandler = receivedHandlers.get(handlerName);
+                                mergeAdapter.merge(receivedHandler);                             
                             }
                         }                        
                         node.getStatistics("merge time").addValue(System.currentTimeMillis() - start);
@@ -183,7 +185,7 @@ public class UiHandlerEventListener implements IHandlerEventListener {
                         node.getConnection().getAdapter(IErrorAdapter.class)
                                 .createError("Exception during update command execution", e);
                     } finally {
-                        receivedHandler.clear();
+                        receivedHandlers.clear();
                     }
                 }
             }
@@ -219,5 +221,6 @@ public class UiHandlerEventListener implements IHandlerEventListener {
             network.eAdapters().remove(filterAdapter);
         }
         editor.getSite().getWorkbenchWindow().getPartService().removePartListener(partListener);
+        logger.log(ILogger.DEBUG, "disposed a GUI handler event listener", null);
     }
 }

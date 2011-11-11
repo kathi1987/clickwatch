@@ -36,6 +36,10 @@ public class ClickWatchModuleUtil {
 	public enum HandlerBehaviour {
 		DEFAULT, COMPOUND, COMPOUND_RECORDING, COMPOUND_RECORDING_DIFFERENCES
 	};
+
+    public enum ValueType {
+        STRING, XML, SPECIFIC;
+    };
 	
 	public static ClickWatchModuleBuilder newBuilder() {
 		return new ClickWatchModuleBuilder();

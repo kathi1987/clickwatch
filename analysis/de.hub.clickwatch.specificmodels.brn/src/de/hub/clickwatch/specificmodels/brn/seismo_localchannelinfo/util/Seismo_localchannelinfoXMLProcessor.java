@@ -25,30 +25,30 @@ import org.eclipse.emf.ecore.xmi.util.XMLProcessor;
 public class Seismo_localchannelinfoXMLProcessor extends XMLProcessor {
 
 	/**
-	 * Public constructor to instantiate the helper.
-	 * <!-- begin-user-doc -->
+     * Public constructor to instantiate the helper.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public Seismo_localchannelinfoXMLProcessor() {
-		super((EPackage.Registry.INSTANCE));
-		Seismo_localchannelinfoPackage.eINSTANCE.eClass();
-	}
+        super((EPackage.Registry.INSTANCE));
+        Seismo_localchannelinfoPackage.eINSTANCE.eClass();
+    }
 	
 	/**
-	 * Register for "*" and "xml" file extensions the Seismo_localchannelinfoResourceFactoryImpl factory.
-	 * <!-- begin-user-doc -->
+     * Register for "*" and "xml" file extensions the Seismo_localchannelinfoResourceFactoryImpl factory.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	protected Map<String, Resource.Factory> getRegistrations() {
-		if (registrations == null) {
-			super.getRegistrations();
-			registrations.put(XML_EXTENSION, new Seismo_localchannelinfoResourceFactoryImpl());
-			registrations.put(STAR_EXTENSION, new Seismo_localchannelinfoResourceFactoryImpl());
-		}
-		return registrations;
-	}
+        if (registrations == null) {
+            super.getRegistrations();
+            registrations.put(XML_EXTENSION, new Seismo_localchannelinfoResourceFactoryImpl());
+            registrations.put(STAR_EXTENSION, new Seismo_localchannelinfoResourceFactoryImpl());
+        }
+        return registrations;
+    }
 
 } //Seismo_localchannelinfoXMLProcessor

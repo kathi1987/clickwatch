@@ -58,7 +58,7 @@ import de.hub.clickwatch.analysis.composition.model.ModelNode;
 import de.hub.clickwatch.analysis.composition.model.ModelUtil;
 import de.hub.clickwatch.analysis.composition.model.Node;
 import de.hub.clickwatch.analysis.ui.PluginActivator;
-import de.hub.emfxml.XmlModelRepository;
+import de.hub.emfxml.util.EmfXmlUtil;
 
 
 public class ModelNodeSection extends GFPropertySection implements ITabbedPropertyConstants {
@@ -399,13 +399,13 @@ public class ModelNodeSection extends GFPropertySection implements ITabbedProper
 					
 					if (!hasInferedTypeButton.getSelection()) {
 						Resource metaModelResource = rs.createResource(URI.createURI(metaModelResourceText.getText()));
-						metaModelResource.load(XmlModelRepository.defaultLoadSaveOptions());
+						metaModelResource.load(EmfXmlUtil.defaultLoadSaveOptions());
 						EPackage metaModel = (EPackage)metaModelResource.getContents().get(0);
 						EPackage.Registry.INSTANCE.put(metaModel.getNsURI(), metaModel);
 					}
 					
 					final Resource modelResource = rs.createResource(uri);
-					modelResource.load(XmlModelRepository.defaultLoadSaveOptions());
+					modelResource.load(EmfXmlUtil.defaultLoadSaveOptions());
 					final ModelNode node = (ModelNode)bo;
 					TransactionUtil.runSafely(new Runnable() {						
 						@Override

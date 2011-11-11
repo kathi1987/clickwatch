@@ -35,163 +35,163 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public class SystemchannelImpl extends HandlerImpl implements Systemchannel {
 	/**
-	 * The cached value of the '{@link #getSetchannel() <em>Setchannel</em>}' containment reference.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getSetchannel() <em>Setchannel</em>}' containment reference.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSetchannel()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getSetchannel()
+     * @generated
+     * @ordered
+     */
 	protected Setchannel setchannel;
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected SystemchannelImpl() {
-		super();
-	}
+        super();
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	protected EClass eStaticClass() {
-		return Device_wifi_wifidevice_sc_systemchannelPackage.Literals.SYSTEMCHANNEL;
-	}
+        return Device_wifi_wifidevice_sc_systemchannelPackage.Literals.SYSTEMCHANNEL;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public Setchannel getSetchannel() {
-		return setchannel;
-	}
+        return setchannel;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public NotificationChain basicSetSetchannel(Setchannel newSetchannel, NotificationChain msgs) {
-		Setchannel oldSetchannel = setchannel;
-		setchannel = newSetchannel;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, Device_wifi_wifidevice_sc_systemchannelPackage.SYSTEMCHANNEL__SETCHANNEL, oldSetchannel, newSetchannel);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
+        Setchannel oldSetchannel = setchannel;
+        setchannel = newSetchannel;
+        if (eNotificationRequired()) {
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, Device_wifi_wifidevice_sc_systemchannelPackage.SYSTEMCHANNEL__SETCHANNEL, oldSetchannel, newSetchannel);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
+        }
+        return msgs;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public void setSetchannel(Setchannel newSetchannel) {
-		if (newSetchannel != setchannel) {
-			NotificationChain msgs = null;
-			if (setchannel != null)
-				msgs = ((InternalEObject)setchannel).eInverseRemove(this, Device_wifi_wifidevice_sc_systemchannelPackage.SETCHANNEL__ECONTAINER_SETCHANNEL, Setchannel.class, msgs);
-			if (newSetchannel != null)
-				msgs = ((InternalEObject)newSetchannel).eInverseAdd(this, Device_wifi_wifidevice_sc_systemchannelPackage.SETCHANNEL__ECONTAINER_SETCHANNEL, Setchannel.class, msgs);
-			msgs = basicSetSetchannel(newSetchannel, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, Device_wifi_wifidevice_sc_systemchannelPackage.SYSTEMCHANNEL__SETCHANNEL, newSetchannel, newSetchannel));
-	}
+        if (newSetchannel != setchannel) {
+            NotificationChain msgs = null;
+            if (setchannel != null)
+                msgs = ((InternalEObject)setchannel).eInverseRemove(this, Device_wifi_wifidevice_sc_systemchannelPackage.SETCHANNEL__ECONTAINER_SETCHANNEL, Setchannel.class, msgs);
+            if (newSetchannel != null)
+                msgs = ((InternalEObject)newSetchannel).eInverseAdd(this, Device_wifi_wifidevice_sc_systemchannelPackage.SETCHANNEL__ECONTAINER_SETCHANNEL, Setchannel.class, msgs);
+            msgs = basicSetSetchannel(newSetchannel, msgs);
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, Device_wifi_wifidevice_sc_systemchannelPackage.SYSTEMCHANNEL__SETCHANNEL, newSetchannel, newSetchannel));
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case Device_wifi_wifidevice_sc_systemchannelPackage.SYSTEMCHANNEL__SETCHANNEL:
-				if (setchannel != null)
-					msgs = ((InternalEObject)setchannel).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - Device_wifi_wifidevice_sc_systemchannelPackage.SYSTEMCHANNEL__SETCHANNEL, null, msgs);
-				return basicSetSetchannel((Setchannel)otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
-	}
+        switch (featureID) {
+            case Device_wifi_wifidevice_sc_systemchannelPackage.SYSTEMCHANNEL__SETCHANNEL:
+                if (setchannel != null)
+                    msgs = ((InternalEObject)setchannel).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - Device_wifi_wifidevice_sc_systemchannelPackage.SYSTEMCHANNEL__SETCHANNEL, null, msgs);
+                return basicSetSetchannel((Setchannel)otherEnd, msgs);
+        }
+        return super.eInverseAdd(otherEnd, featureID, msgs);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case Device_wifi_wifidevice_sc_systemchannelPackage.SYSTEMCHANNEL__SETCHANNEL:
-				return basicSetSetchannel(null, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+        switch (featureID) {
+            case Device_wifi_wifidevice_sc_systemchannelPackage.SYSTEMCHANNEL__SETCHANNEL:
+                return basicSetSetchannel(null, msgs);
+        }
+        return super.eInverseRemove(otherEnd, featureID, msgs);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case Device_wifi_wifidevice_sc_systemchannelPackage.SYSTEMCHANNEL__SETCHANNEL:
-				return getSetchannel();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+        switch (featureID) {
+            case Device_wifi_wifidevice_sc_systemchannelPackage.SYSTEMCHANNEL__SETCHANNEL:
+                return getSetchannel();
+        }
+        return super.eGet(featureID, resolve, coreType);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case Device_wifi_wifidevice_sc_systemchannelPackage.SYSTEMCHANNEL__SETCHANNEL:
-				setSetchannel((Setchannel)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+        switch (featureID) {
+            case Device_wifi_wifidevice_sc_systemchannelPackage.SYSTEMCHANNEL__SETCHANNEL:
+                setSetchannel((Setchannel)newValue);
+                return;
+        }
+        super.eSet(featureID, newValue);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case Device_wifi_wifidevice_sc_systemchannelPackage.SYSTEMCHANNEL__SETCHANNEL:
-				setSetchannel((Setchannel)null);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+        switch (featureID) {
+            case Device_wifi_wifidevice_sc_systemchannelPackage.SYSTEMCHANNEL__SETCHANNEL:
+                setSetchannel((Setchannel)null);
+                return;
+        }
+        super.eUnset(featureID);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case Device_wifi_wifidevice_sc_systemchannelPackage.SYSTEMCHANNEL__SETCHANNEL:
-				return setchannel != null;
-		}
-		return super.eIsSet(featureID);
-	}
+        switch (featureID) {
+            case Device_wifi_wifidevice_sc_systemchannelPackage.SYSTEMCHANNEL__SETCHANNEL:
+                return setchannel != null;
+        }
+        return super.eIsSet(featureID);
+    }
 
 } //SystemchannelImpl

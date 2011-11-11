@@ -11,6 +11,7 @@ import de.hub.clickwatch.connection.adapter.values.XmlValueAdapter;
 import de.hub.clickwatch.model.ClickWatchModelPackage;
 import de.hub.clickwatch.model.Handler;
 import de.hub.emfxml.XmlModelRepository;
+import de.hub.emfxml.util.EmfXmlUtil;
 import de.hub.specificmodels.metamodelgenerator.DefaultTargetObjectCreator;
 
 public class BrnValueAdapter extends XmlValueAdapter {
@@ -69,7 +70,7 @@ public class BrnValueAdapter extends XmlValueAdapter {
 			xml.append(className);
 			xml.append(">");
 			
-			return (Handler)xmlModelRepository.deserializeModel(metaModel, 
+			return (Handler)EmfXmlUtil.deserializeModel(metaModel, 
 					xml.toString());
 		} else {
 			return super.createNewHandler(qualifiedName, plainValue);
@@ -88,10 +89,5 @@ public class BrnValueAdapter extends XmlValueAdapter {
 			}
 		}
 		return result;
-	}
-
-	@Override
-	public void reset() {
-		metaModelCache.clear();
 	}
 }

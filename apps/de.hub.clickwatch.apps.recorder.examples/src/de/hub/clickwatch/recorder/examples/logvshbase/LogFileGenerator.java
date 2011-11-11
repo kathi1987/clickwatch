@@ -30,7 +30,7 @@ import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.model.Node;
 import de.hub.clickwatch.model.util.TimeStampLabelProvider;
 import de.hub.clickwatch.recorder.database.DataBaseUtil;
-import de.hub.clickwatch.recorder.database.cwdatabase.Record;
+import de.hub.clickwatch.recorder.database.Record;
 import de.hub.clickwatch.util.ILogger;
 import de.hub.clickwatch.util.Throwables;
 
@@ -69,7 +69,7 @@ public class LogFileGenerator implements IClickWatchMain, IApplication {
 		Map<CurrentIterator, String> nodeIds = new HashMap<LogFileGenerator.CurrentIterator, String>();
 		
 		logger.log(ILogger.INFO, "Creating database scanners for all handers for all nodes", null);
-		for (Node node: record.getMetaData()) {
+		for (Node node: record.getConfiguration().getNodes()) {
 			for(Handler handler: node.getAllHandlers()) {
 				CurrentIterator iterator = new CurrentIterator(dbUtil.getHandlerIterator(DataBaseUtil.createHandle(record, node, handler)));
 				insert(iterator, handlers);

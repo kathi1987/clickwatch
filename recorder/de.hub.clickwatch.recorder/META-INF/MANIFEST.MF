@@ -6,8 +6,6 @@ Bundle-Version: 2.0.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Require-Bundle: de.hub.clickwatch.core;bundle-version="2.0.0";visibility:=reexport
 Bundle-ClassPath: .,
- lib/commons-cli-1.2-sources.jar,
- lib/commons-cli-1.2.jar,
  lib/activation-1.1.jar,
  lib/asm-3.1.jar,
  lib/avro-1.3.3.jar,
@@ -50,15 +48,9 @@ Bundle-ClassPath: .,
  lib/zookeeper-3.3.2.jar
 Export-Package: de.hub.clickwatch.recorder,
  de.hub.clickwatch.recorder.database,
- de.hub.clickwatch.recorder.database.cwdatabase,
- de.hub.clickwatch.recorder.database.cwdatabase.impl,
- de.hub.clickwatch.recorder.database.cwdatabase.util,
- de.hub.clickwatch.recorder.database.cwdatabase.util.builder,
- de.hub.clickwatch.recorder.database.hbase,
- de.hub.clickwatch.recorder.database.logfile,
- de.hub.clickwatch.recorder.v2,
- org.apache.commons.cli,
- org.apache.commons.math.stat.descriptive,
- org.apache.commons.math.stat.descriptive.summary,
+ de.hub.clickwatch.recorder.database.impl,
+ de.hub.clickwatch.recorder.database.util,
+ de.hub.clickwatch.recorder.database.util.builder,
+ de.hub.clickwatch.recorder.recorder,
  org.apache.hadoop.hbase.client
 Bundle-ActivationPolicy: lazy

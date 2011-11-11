@@ -19,14 +19,14 @@ import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
  */
 public class Lease_tab_leasesResourceImpl extends XMLResourceImpl {
 	/**
-	 * Creates an instance of the resource.
-	 * <!-- begin-user-doc -->
+     * Creates an instance of the resource.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param uri the URI of the new resource.
-	 * @generated
-	 */
+     * @param uri the URI of the new resource.
+     * @generated
+     */
 	public Lease_tab_leasesResourceImpl(URI uri) {
-		super(uri);
-	}
+        super(uri);
+    }
 
 } //Lease_tab_leasesResourceImpl

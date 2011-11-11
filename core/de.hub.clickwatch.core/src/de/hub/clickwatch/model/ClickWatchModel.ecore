@@ -22,9 +22,6 @@
         defaultValueLiteral="7777"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="backbone" eType="#//BackboneType"
         defaultValueLiteral="unknown"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="activeListeners" upperBound="-1"
-        eType="#//IHandlerEventListener" changeable="false" transient="true" defaultValueLiteral=""
-        derived="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="connection" eType="#//INodeConnection"
         transient="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="retrieving" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
@@ -34,7 +31,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="recording" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         transient="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="errors" upperBound="-1"
-        eType="#//Error" transient="true" containment="true"/>
+        eType="#//ClickWatchError" transient="true" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
         eType="#//Element" containment="true">
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
@@ -147,8 +144,11 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="sum" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="count" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="mean" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="smallest" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="largest" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="latest" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Error">
+  <eClassifiers xsi:type="ecore:EClass" name="ClickWatchError">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="message" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="exception" eType="#//Exception"/>
   </eClassifiers>

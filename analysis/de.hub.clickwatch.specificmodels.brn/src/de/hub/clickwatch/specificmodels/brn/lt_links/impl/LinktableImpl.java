@@ -47,306 +47,306 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class LinktableImpl extends EObjectImpl implements Linktable {
 	/**
-	 * The cached value of the '{@link #getText() <em>Text</em>}' attribute list.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getText() <em>Text</em>}' attribute list.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getText()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getText()
+     * @generated
+     * @ordered
+     */
 	protected EList<String> text;
 
 	/**
-	 * The cached value of the '{@link #getLink() <em>Link</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getLink() <em>Link</em>}' containment reference list.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getLink()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getLink()
+     * @generated
+     * @ordered
+     */
 	protected EList<Link> link;
 
 	/**
-	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The default value of the '{@link #getId() <em>Id</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getId()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getId()
+     * @generated
+     * @ordered
+     */
 	protected static final String ID_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getId()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getId()
+     * @generated
+     * @ordered
+     */
 	protected String id = ID_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected LinktableImpl() {
-		super();
-	}
+        super();
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	protected EClass eStaticClass() {
-		return Lt_linksPackage.Literals.LINKTABLE;
-	}
+        return Lt_linksPackage.Literals.LINKTABLE;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public Links getEContainer_linktable() {
-		if (eContainerFeatureID() != Lt_linksPackage.LINKTABLE__ECONTAINER_LINKTABLE) return null;
-		return (Links)eContainer();
-	}
+        if (eContainerFeatureID() != Lt_linksPackage.LINKTABLE__ECONTAINER_LINKTABLE) return null;
+        return (Links)eContainer();
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public NotificationChain basicSetEContainer_linktable(Links newEContainer_linktable, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject)newEContainer_linktable, Lt_linksPackage.LINKTABLE__ECONTAINER_LINKTABLE, msgs);
-		return msgs;
-	}
+        msgs = eBasicSetContainer((InternalEObject)newEContainer_linktable, Lt_linksPackage.LINKTABLE__ECONTAINER_LINKTABLE, msgs);
+        return msgs;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public void setEContainer_linktable(Links newEContainer_linktable) {
-		if (newEContainer_linktable != eInternalContainer() || (eContainerFeatureID() != Lt_linksPackage.LINKTABLE__ECONTAINER_LINKTABLE && newEContainer_linktable != null)) {
-			if (EcoreUtil.isAncestor(this, newEContainer_linktable))
-				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
-			NotificationChain msgs = null;
-			if (eInternalContainer() != null)
-				msgs = eBasicRemoveFromContainer(msgs);
-			if (newEContainer_linktable != null)
-				msgs = ((InternalEObject)newEContainer_linktable).eInverseAdd(this, Lt_linksPackage.LINKS__LINKTABLE, Links.class, msgs);
-			msgs = basicSetEContainer_linktable(newEContainer_linktable, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, Lt_linksPackage.LINKTABLE__ECONTAINER_LINKTABLE, newEContainer_linktable, newEContainer_linktable));
-	}
+        if (newEContainer_linktable != eInternalContainer() || (eContainerFeatureID() != Lt_linksPackage.LINKTABLE__ECONTAINER_LINKTABLE && newEContainer_linktable != null)) {
+            if (EcoreUtil.isAncestor(this, newEContainer_linktable))
+                throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+            NotificationChain msgs = null;
+            if (eInternalContainer() != null)
+                msgs = eBasicRemoveFromContainer(msgs);
+            if (newEContainer_linktable != null)
+                msgs = ((InternalEObject)newEContainer_linktable).eInverseAdd(this, Lt_linksPackage.LINKS__LINKTABLE, Links.class, msgs);
+            msgs = basicSetEContainer_linktable(newEContainer_linktable, msgs);
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, Lt_linksPackage.LINKTABLE__ECONTAINER_LINKTABLE, newEContainer_linktable, newEContainer_linktable));
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public EList<String> getText() {
-		if (text == null) {
-			text = new EDataTypeEList<String>(String.class, this, Lt_linksPackage.LINKTABLE__TEXT);
-		}
-		return text;
-	}
+        if (text == null) {
+            text = new EDataTypeEList<String>(String.class, this, Lt_linksPackage.LINKTABLE__TEXT);
+        }
+        return text;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public EList<Link> getLink() {
-		if (link == null) {
-			link = new EObjectContainmentWithInverseEList<Link>(Link.class, this, Lt_linksPackage.LINKTABLE__LINK, Lt_linksPackage.LINK__ECONTAINER_LINK);
-		}
-		return link;
-	}
+        if (link == null) {
+            link = new EObjectContainmentWithInverseEList<Link>(Link.class, this, Lt_linksPackage.LINKTABLE__LINK, Lt_linksPackage.LINK__ECONTAINER_LINK);
+        }
+        return link;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public String getId() {
-		return id;
-	}
+        return id;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public void setId(String newId) {
-		String oldId = id;
-		id = newId;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, Lt_linksPackage.LINKTABLE__ID, oldId, id));
-	}
+        String oldId = id;
+        id = newId;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, Lt_linksPackage.LINKTABLE__ID, oldId, id));
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case Lt_linksPackage.LINKTABLE__ECONTAINER_LINKTABLE:
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetEContainer_linktable((Links)otherEnd, msgs);
-			case Lt_linksPackage.LINKTABLE__LINK:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getLink()).basicAdd(otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
-	}
+        switch (featureID) {
+            case Lt_linksPackage.LINKTABLE__ECONTAINER_LINKTABLE:
+                if (eInternalContainer() != null)
+                    msgs = eBasicRemoveFromContainer(msgs);
+                return basicSetEContainer_linktable((Links)otherEnd, msgs);
+            case Lt_linksPackage.LINKTABLE__LINK:
+                return ((InternalEList<InternalEObject>)(InternalEList<?>)getLink()).basicAdd(otherEnd, msgs);
+        }
+        return super.eInverseAdd(otherEnd, featureID, msgs);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case Lt_linksPackage.LINKTABLE__ECONTAINER_LINKTABLE:
-				return basicSetEContainer_linktable(null, msgs);
-			case Lt_linksPackage.LINKTABLE__LINK:
-				return ((InternalEList<?>)getLink()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+        switch (featureID) {
+            case Lt_linksPackage.LINKTABLE__ECONTAINER_LINKTABLE:
+                return basicSetEContainer_linktable(null, msgs);
+            case Lt_linksPackage.LINKTABLE__LINK:
+                return ((InternalEList<?>)getLink()).basicRemove(otherEnd, msgs);
+        }
+        return super.eInverseRemove(otherEnd, featureID, msgs);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
-		switch (eContainerFeatureID()) {
-			case Lt_linksPackage.LINKTABLE__ECONTAINER_LINKTABLE:
-				return eInternalContainer().eInverseRemove(this, Lt_linksPackage.LINKS__LINKTABLE, Links.class, msgs);
-		}
-		return super.eBasicRemoveFromContainerFeature(msgs);
-	}
+        switch (eContainerFeatureID()) {
+            case Lt_linksPackage.LINKTABLE__ECONTAINER_LINKTABLE:
+                return eInternalContainer().eInverseRemove(this, Lt_linksPackage.LINKS__LINKTABLE, Links.class, msgs);
+        }
+        return super.eBasicRemoveFromContainerFeature(msgs);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case Lt_linksPackage.LINKTABLE__ECONTAINER_LINKTABLE:
-				return getEContainer_linktable();
-			case Lt_linksPackage.LINKTABLE__TEXT:
-				return getText();
-			case Lt_linksPackage.LINKTABLE__LINK:
-				return getLink();
-			case Lt_linksPackage.LINKTABLE__ID:
-				return getId();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+        switch (featureID) {
+            case Lt_linksPackage.LINKTABLE__ECONTAINER_LINKTABLE:
+                return getEContainer_linktable();
+            case Lt_linksPackage.LINKTABLE__TEXT:
+                return getText();
+            case Lt_linksPackage.LINKTABLE__LINK:
+                return getLink();
+            case Lt_linksPackage.LINKTABLE__ID:
+                return getId();
+        }
+        return super.eGet(featureID, resolve, coreType);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case Lt_linksPackage.LINKTABLE__ECONTAINER_LINKTABLE:
-				setEContainer_linktable((Links)newValue);
-				return;
-			case Lt_linksPackage.LINKTABLE__TEXT:
-				getText().clear();
-				getText().addAll((Collection<? extends String>)newValue);
-				return;
-			case Lt_linksPackage.LINKTABLE__LINK:
-				getLink().clear();
-				getLink().addAll((Collection<? extends Link>)newValue);
-				return;
-			case Lt_linksPackage.LINKTABLE__ID:
-				setId((String)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+        switch (featureID) {
+            case Lt_linksPackage.LINKTABLE__ECONTAINER_LINKTABLE:
+                setEContainer_linktable((Links)newValue);
+                return;
+            case Lt_linksPackage.LINKTABLE__TEXT:
+                getText().clear();
+                getText().addAll((Collection<? extends String>)newValue);
+                return;
+            case Lt_linksPackage.LINKTABLE__LINK:
+                getLink().clear();
+                getLink().addAll((Collection<? extends Link>)newValue);
+                return;
+            case Lt_linksPackage.LINKTABLE__ID:
+                setId((String)newValue);
+                return;
+        }
+        super.eSet(featureID, newValue);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case Lt_linksPackage.LINKTABLE__ECONTAINER_LINKTABLE:
-				setEContainer_linktable((Links)null);
-				return;
-			case Lt_linksPackage.LINKTABLE__TEXT:
-				getText().clear();
-				return;
-			case Lt_linksPackage.LINKTABLE__LINK:
-				getLink().clear();
-				return;
-			case Lt_linksPackage.LINKTABLE__ID:
-				setId(ID_EDEFAULT);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+        switch (featureID) {
+            case Lt_linksPackage.LINKTABLE__ECONTAINER_LINKTABLE:
+                setEContainer_linktable((Links)null);
+                return;
+            case Lt_linksPackage.LINKTABLE__TEXT:
+                getText().clear();
+                return;
+            case Lt_linksPackage.LINKTABLE__LINK:
+                getLink().clear();
+                return;
+            case Lt_linksPackage.LINKTABLE__ID:
+                setId(ID_EDEFAULT);
+                return;
+        }
+        super.eUnset(featureID);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case Lt_linksPackage.LINKTABLE__ECONTAINER_LINKTABLE:
-				return getEContainer_linktable() != null;
-			case Lt_linksPackage.LINKTABLE__TEXT:
-				return text != null && !text.isEmpty();
-			case Lt_linksPackage.LINKTABLE__LINK:
-				return link != null && !link.isEmpty();
-			case Lt_linksPackage.LINKTABLE__ID:
-				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
-		}
-		return super.eIsSet(featureID);
-	}
+        switch (featureID) {
+            case Lt_linksPackage.LINKTABLE__ECONTAINER_LINKTABLE:
+                return getEContainer_linktable() != null;
+            case Lt_linksPackage.LINKTABLE__TEXT:
+                return text != null && !text.isEmpty();
+            case Lt_linksPackage.LINKTABLE__LINK:
+                return link != null && !link.isEmpty();
+            case Lt_linksPackage.LINKTABLE__ID:
+                return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
+        }
+        return super.eIsSet(featureID);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+        if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (text: ");
-		result.append(text);
-		result.append(", id: ");
-		result.append(id);
-		result.append(')');
-		return result.toString();
-	}
+        StringBuffer result = new StringBuffer(super.toString());
+        result.append(" (text: ");
+        result.append(text);
+        result.append(", id: ");
+        result.append(id);
+        result.append(')');
+        return result.toString();
+    }
 
 } //LinktableImpl

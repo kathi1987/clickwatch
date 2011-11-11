@@ -25,30 +25,30 @@ import org.eclipse.emf.ecore.xmi.util.XMLProcessor;
 public class Lt_linksXMLProcessor extends XMLProcessor {
 
 	/**
-	 * Public constructor to instantiate the helper.
-	 * <!-- begin-user-doc -->
+     * Public constructor to instantiate the helper.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public Lt_linksXMLProcessor() {
-		super((EPackage.Registry.INSTANCE));
-		Lt_linksPackage.eINSTANCE.eClass();
-	}
+        super((EPackage.Registry.INSTANCE));
+        Lt_linksPackage.eINSTANCE.eClass();
+    }
 	
 	/**
-	 * Register for "*" and "xml" file extensions the Lt_linksResourceFactoryImpl factory.
-	 * <!-- begin-user-doc -->
+     * Register for "*" and "xml" file extensions the Lt_linksResourceFactoryImpl factory.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	protected Map<String, Resource.Factory> getRegistrations() {
-		if (registrations == null) {
-			super.getRegistrations();
-			registrations.put(XML_EXTENSION, new Lt_linksResourceFactoryImpl());
-			registrations.put(STAR_EXTENSION, new Lt_linksResourceFactoryImpl());
-		}
-		return registrations;
-	}
+        if (registrations == null) {
+            super.getRegistrations();
+            registrations.put(XML_EXTENSION, new Lt_linksResourceFactoryImpl());
+            registrations.put(STAR_EXTENSION, new Lt_linksResourceFactoryImpl());
+        }
+        return registrations;
+    }
 
 } //Lt_linksXMLProcessor

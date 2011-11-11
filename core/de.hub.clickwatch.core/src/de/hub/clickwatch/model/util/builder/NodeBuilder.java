@@ -20,8 +20,8 @@ public class NodeBuilder implements de.hub.clickwatch.model.util.builder.IModelB
   private de.hub.clickwatch.model.util.builder.IModelBuilder<? extends de.hub.clickwatch.model.StatisticsContainer> m_featureStatisticsBuilder;
   private java.util.Collection<de.hub.clickwatch.model.Element> m_elements = new java.util.LinkedList<de.hub.clickwatch.model.Element>();
   private java.util.Collection<de.hub.clickwatch.model.util.builder.IModelBuilder<? extends de.hub.clickwatch.model.Element>> m_featureElementsBuilder = new java.util.LinkedList<de.hub.clickwatch.model.util.builder.IModelBuilder<? extends de.hub.clickwatch.model.Element>>();
-  private java.util.Collection<de.hub.clickwatch.model.Error> m_errors = new java.util.LinkedList<de.hub.clickwatch.model.Error>();
-  private java.util.Collection<de.hub.clickwatch.model.util.builder.IModelBuilder<? extends de.hub.clickwatch.model.Error>> m_featureErrorsBuilder = new java.util.LinkedList<de.hub.clickwatch.model.util.builder.IModelBuilder<? extends de.hub.clickwatch.model.Error>>();
+  private java.util.Collection<de.hub.clickwatch.model.ClickWatchError> m_errors = new java.util.LinkedList<de.hub.clickwatch.model.ClickWatchError>();
+  private java.util.Collection<de.hub.clickwatch.model.util.builder.IModelBuilder<? extends de.hub.clickwatch.model.ClickWatchError>> m_featureErrorsBuilder = new java.util.LinkedList<de.hub.clickwatch.model.util.builder.IModelBuilder<? extends de.hub.clickwatch.model.ClickWatchError>>();
   // helper attributes
   private boolean m_featureBackboneSet = false;
   private boolean m_featureConnectionSet = false;
@@ -127,7 +127,7 @@ public class NodeBuilder implements de.hub.clickwatch.model.util.builder.IModelB
       _newInstance.getErrors().addAll(m_errors);
     } else {
       if (!m_featureErrorsBuilder.isEmpty()) {
-        for (de.hub.clickwatch.model.util.builder.IModelBuilder<? extends de.hub.clickwatch.model.Error> builder : m_featureErrorsBuilder) {
+        for (de.hub.clickwatch.model.util.builder.IModelBuilder<? extends de.hub.clickwatch.model.ClickWatchError> builder : m_featureErrorsBuilder) {
           _newInstance.getErrors().add(builder.build());
         }
       }
@@ -205,20 +205,20 @@ public class NodeBuilder implements de.hub.clickwatch.model.util.builder.IModelB
     return this;
   }
 
-  public NodeBuilder withErrors(de.hub.clickwatch.model.Error p_errors) {
+  public NodeBuilder withErrors(de.hub.clickwatch.model.ClickWatchError p_errors) {
     m_errors.add(p_errors);
     m_featureErrorsSet = true;
     return this;
   }
 
-  public NodeBuilder withErrors(java.util.Collection<? extends de.hub.clickwatch.model.Error> p_errors) {
+  public NodeBuilder withErrors(java.util.Collection<? extends de.hub.clickwatch.model.ClickWatchError> p_errors) {
     m_errors.addAll(p_errors);
     m_featureErrorsSet = true;
     return this;
   }
 
-  public NodeBuilder withErrors(de.hub.clickwatch.model.util.builder.IModelBuilder<? extends de.hub.clickwatch.model.Error> p_errorBuilder) {
-    m_featureErrorsBuilder.add(p_errorBuilder);
+  public NodeBuilder withErrors(de.hub.clickwatch.model.util.builder.IModelBuilder<? extends de.hub.clickwatch.model.ClickWatchError> p_clickWatchErrorBuilder) {
+    m_featureErrorsBuilder.add(p_clickWatchErrorBuilder);
     return this;
   }
 }

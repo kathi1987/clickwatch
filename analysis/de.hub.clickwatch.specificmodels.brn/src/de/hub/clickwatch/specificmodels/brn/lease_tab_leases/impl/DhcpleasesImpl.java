@@ -48,359 +48,359 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class DhcpleasesImpl extends EObjectImpl implements Dhcpleases {
 	/**
-	 * The cached value of the '{@link #getText() <em>Text</em>}' attribute list.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getText() <em>Text</em>}' attribute list.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getText()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getText()
+     * @generated
+     * @ordered
+     */
 	protected EList<String> text;
 
 	/**
-	 * The cached value of the '{@link #getClient() <em>Client</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getClient() <em>Client</em>}' containment reference list.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getClient()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getClient()
+     * @generated
+     * @ordered
+     */
 	protected EList<Client> client;
 
 	/**
-	 * The default value of the '{@link #getCount() <em>Count</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The default value of the '{@link #getCount() <em>Count</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getCount()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getCount()
+     * @generated
+     * @ordered
+     */
 	protected static final int COUNT_EDEFAULT = 0;
 
 	/**
-	 * The cached value of the '{@link #getCount() <em>Count</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getCount() <em>Count</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getCount()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getCount()
+     * @generated
+     * @ordered
+     */
 	protected int count = COUNT_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getTime() <em>Time</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The default value of the '{@link #getTime() <em>Time</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTime()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getTime()
+     * @generated
+     * @ordered
+     */
 	protected static final double TIME_EDEFAULT = 0.0;
 
 	/**
-	 * The cached value of the '{@link #getTime() <em>Time</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getTime() <em>Time</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTime()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getTime()
+     * @generated
+     * @ordered
+     */
 	protected double time = TIME_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected DhcpleasesImpl() {
-		super();
-	}
+        super();
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	protected EClass eStaticClass() {
-		return Lease_tab_leasesPackage.Literals.DHCPLEASES;
-	}
+        return Lease_tab_leasesPackage.Literals.DHCPLEASES;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public Leases getEContainer_dhcpleases() {
-		if (eContainerFeatureID() != Lease_tab_leasesPackage.DHCPLEASES__ECONTAINER_DHCPLEASES) return null;
-		return (Leases)eContainer();
-	}
+        if (eContainerFeatureID() != Lease_tab_leasesPackage.DHCPLEASES__ECONTAINER_DHCPLEASES) return null;
+        return (Leases)eContainer();
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public NotificationChain basicSetEContainer_dhcpleases(Leases newEContainer_dhcpleases, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject)newEContainer_dhcpleases, Lease_tab_leasesPackage.DHCPLEASES__ECONTAINER_DHCPLEASES, msgs);
-		return msgs;
-	}
+        msgs = eBasicSetContainer((InternalEObject)newEContainer_dhcpleases, Lease_tab_leasesPackage.DHCPLEASES__ECONTAINER_DHCPLEASES, msgs);
+        return msgs;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public void setEContainer_dhcpleases(Leases newEContainer_dhcpleases) {
-		if (newEContainer_dhcpleases != eInternalContainer() || (eContainerFeatureID() != Lease_tab_leasesPackage.DHCPLEASES__ECONTAINER_DHCPLEASES && newEContainer_dhcpleases != null)) {
-			if (EcoreUtil.isAncestor(this, newEContainer_dhcpleases))
-				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
-			NotificationChain msgs = null;
-			if (eInternalContainer() != null)
-				msgs = eBasicRemoveFromContainer(msgs);
-			if (newEContainer_dhcpleases != null)
-				msgs = ((InternalEObject)newEContainer_dhcpleases).eInverseAdd(this, Lease_tab_leasesPackage.LEASES__DHCPLEASES, Leases.class, msgs);
-			msgs = basicSetEContainer_dhcpleases(newEContainer_dhcpleases, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, Lease_tab_leasesPackage.DHCPLEASES__ECONTAINER_DHCPLEASES, newEContainer_dhcpleases, newEContainer_dhcpleases));
-	}
+        if (newEContainer_dhcpleases != eInternalContainer() || (eContainerFeatureID() != Lease_tab_leasesPackage.DHCPLEASES__ECONTAINER_DHCPLEASES && newEContainer_dhcpleases != null)) {
+            if (EcoreUtil.isAncestor(this, newEContainer_dhcpleases))
+                throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+            NotificationChain msgs = null;
+            if (eInternalContainer() != null)
+                msgs = eBasicRemoveFromContainer(msgs);
+            if (newEContainer_dhcpleases != null)
+                msgs = ((InternalEObject)newEContainer_dhcpleases).eInverseAdd(this, Lease_tab_leasesPackage.LEASES__DHCPLEASES, Leases.class, msgs);
+            msgs = basicSetEContainer_dhcpleases(newEContainer_dhcpleases, msgs);
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, Lease_tab_leasesPackage.DHCPLEASES__ECONTAINER_DHCPLEASES, newEContainer_dhcpleases, newEContainer_dhcpleases));
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public EList<String> getText() {
-		if (text == null) {
-			text = new EDataTypeEList<String>(String.class, this, Lease_tab_leasesPackage.DHCPLEASES__TEXT);
-		}
-		return text;
-	}
+        if (text == null) {
+            text = new EDataTypeEList<String>(String.class, this, Lease_tab_leasesPackage.DHCPLEASES__TEXT);
+        }
+        return text;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public EList<Client> getClient() {
-		if (client == null) {
-			client = new EObjectContainmentWithInverseEList<Client>(Client.class, this, Lease_tab_leasesPackage.DHCPLEASES__CLIENT, Lease_tab_leasesPackage.CLIENT__ECONTAINER_CLIENT);
-		}
-		return client;
-	}
+        if (client == null) {
+            client = new EObjectContainmentWithInverseEList<Client>(Client.class, this, Lease_tab_leasesPackage.DHCPLEASES__CLIENT, Lease_tab_leasesPackage.CLIENT__ECONTAINER_CLIENT);
+        }
+        return client;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public int getCount() {
-		return count;
-	}
+        return count;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public void setCount(int newCount) {
-		int oldCount = count;
-		count = newCount;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, Lease_tab_leasesPackage.DHCPLEASES__COUNT, oldCount, count));
-	}
+        int oldCount = count;
+        count = newCount;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, Lease_tab_leasesPackage.DHCPLEASES__COUNT, oldCount, count));
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public double getTime() {
-		return time;
-	}
+        return time;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public void setTime(double newTime) {
-		double oldTime = time;
-		time = newTime;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, Lease_tab_leasesPackage.DHCPLEASES__TIME, oldTime, time));
-	}
+        double oldTime = time;
+        time = newTime;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, Lease_tab_leasesPackage.DHCPLEASES__TIME, oldTime, time));
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case Lease_tab_leasesPackage.DHCPLEASES__ECONTAINER_DHCPLEASES:
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetEContainer_dhcpleases((Leases)otherEnd, msgs);
-			case Lease_tab_leasesPackage.DHCPLEASES__CLIENT:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getClient()).basicAdd(otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
-	}
+        switch (featureID) {
+            case Lease_tab_leasesPackage.DHCPLEASES__ECONTAINER_DHCPLEASES:
+                if (eInternalContainer() != null)
+                    msgs = eBasicRemoveFromContainer(msgs);
+                return basicSetEContainer_dhcpleases((Leases)otherEnd, msgs);
+            case Lease_tab_leasesPackage.DHCPLEASES__CLIENT:
+                return ((InternalEList<InternalEObject>)(InternalEList<?>)getClient()).basicAdd(otherEnd, msgs);
+        }
+        return super.eInverseAdd(otherEnd, featureID, msgs);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case Lease_tab_leasesPackage.DHCPLEASES__ECONTAINER_DHCPLEASES:
-				return basicSetEContainer_dhcpleases(null, msgs);
-			case Lease_tab_leasesPackage.DHCPLEASES__CLIENT:
-				return ((InternalEList<?>)getClient()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+        switch (featureID) {
+            case Lease_tab_leasesPackage.DHCPLEASES__ECONTAINER_DHCPLEASES:
+                return basicSetEContainer_dhcpleases(null, msgs);
+            case Lease_tab_leasesPackage.DHCPLEASES__CLIENT:
+                return ((InternalEList<?>)getClient()).basicRemove(otherEnd, msgs);
+        }
+        return super.eInverseRemove(otherEnd, featureID, msgs);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
-		switch (eContainerFeatureID()) {
-			case Lease_tab_leasesPackage.DHCPLEASES__ECONTAINER_DHCPLEASES:
-				return eInternalContainer().eInverseRemove(this, Lease_tab_leasesPackage.LEASES__DHCPLEASES, Leases.class, msgs);
-		}
-		return super.eBasicRemoveFromContainerFeature(msgs);
-	}
+        switch (eContainerFeatureID()) {
+            case Lease_tab_leasesPackage.DHCPLEASES__ECONTAINER_DHCPLEASES:
+                return eInternalContainer().eInverseRemove(this, Lease_tab_leasesPackage.LEASES__DHCPLEASES, Leases.class, msgs);
+        }
+        return super.eBasicRemoveFromContainerFeature(msgs);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case Lease_tab_leasesPackage.DHCPLEASES__ECONTAINER_DHCPLEASES:
-				return getEContainer_dhcpleases();
-			case Lease_tab_leasesPackage.DHCPLEASES__TEXT:
-				return getText();
-			case Lease_tab_leasesPackage.DHCPLEASES__CLIENT:
-				return getClient();
-			case Lease_tab_leasesPackage.DHCPLEASES__COUNT:
-				return getCount();
-			case Lease_tab_leasesPackage.DHCPLEASES__TIME:
-				return getTime();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+        switch (featureID) {
+            case Lease_tab_leasesPackage.DHCPLEASES__ECONTAINER_DHCPLEASES:
+                return getEContainer_dhcpleases();
+            case Lease_tab_leasesPackage.DHCPLEASES__TEXT:
+                return getText();
+            case Lease_tab_leasesPackage.DHCPLEASES__CLIENT:
+                return getClient();
+            case Lease_tab_leasesPackage.DHCPLEASES__COUNT:
+                return getCount();
+            case Lease_tab_leasesPackage.DHCPLEASES__TIME:
+                return getTime();
+        }
+        return super.eGet(featureID, resolve, coreType);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case Lease_tab_leasesPackage.DHCPLEASES__ECONTAINER_DHCPLEASES:
-				setEContainer_dhcpleases((Leases)newValue);
-				return;
-			case Lease_tab_leasesPackage.DHCPLEASES__TEXT:
-				getText().clear();
-				getText().addAll((Collection<? extends String>)newValue);
-				return;
-			case Lease_tab_leasesPackage.DHCPLEASES__CLIENT:
-				getClient().clear();
-				getClient().addAll((Collection<? extends Client>)newValue);
-				return;
-			case Lease_tab_leasesPackage.DHCPLEASES__COUNT:
-				setCount((Integer)newValue);
-				return;
-			case Lease_tab_leasesPackage.DHCPLEASES__TIME:
-				setTime((Double)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+        switch (featureID) {
+            case Lease_tab_leasesPackage.DHCPLEASES__ECONTAINER_DHCPLEASES:
+                setEContainer_dhcpleases((Leases)newValue);
+                return;
+            case Lease_tab_leasesPackage.DHCPLEASES__TEXT:
+                getText().clear();
+                getText().addAll((Collection<? extends String>)newValue);
+                return;
+            case Lease_tab_leasesPackage.DHCPLEASES__CLIENT:
+                getClient().clear();
+                getClient().addAll((Collection<? extends Client>)newValue);
+                return;
+            case Lease_tab_leasesPackage.DHCPLEASES__COUNT:
+                setCount((Integer)newValue);
+                return;
+            case Lease_tab_leasesPackage.DHCPLEASES__TIME:
+                setTime((Double)newValue);
+                return;
+        }
+        super.eSet(featureID, newValue);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case Lease_tab_leasesPackage.DHCPLEASES__ECONTAINER_DHCPLEASES:
-				setEContainer_dhcpleases((Leases)null);
-				return;
-			case Lease_tab_leasesPackage.DHCPLEASES__TEXT:
-				getText().clear();
-				return;
-			case Lease_tab_leasesPackage.DHCPLEASES__CLIENT:
-				getClient().clear();
-				return;
-			case Lease_tab_leasesPackage.DHCPLEASES__COUNT:
-				setCount(COUNT_EDEFAULT);
-				return;
-			case Lease_tab_leasesPackage.DHCPLEASES__TIME:
-				setTime(TIME_EDEFAULT);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+        switch (featureID) {
+            case Lease_tab_leasesPackage.DHCPLEASES__ECONTAINER_DHCPLEASES:
+                setEContainer_dhcpleases((Leases)null);
+                return;
+            case Lease_tab_leasesPackage.DHCPLEASES__TEXT:
+                getText().clear();
+                return;
+            case Lease_tab_leasesPackage.DHCPLEASES__CLIENT:
+                getClient().clear();
+                return;
+            case Lease_tab_leasesPackage.DHCPLEASES__COUNT:
+                setCount(COUNT_EDEFAULT);
+                return;
+            case Lease_tab_leasesPackage.DHCPLEASES__TIME:
+                setTime(TIME_EDEFAULT);
+                return;
+        }
+        super.eUnset(featureID);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case Lease_tab_leasesPackage.DHCPLEASES__ECONTAINER_DHCPLEASES:
-				return getEContainer_dhcpleases() != null;
-			case Lease_tab_leasesPackage.DHCPLEASES__TEXT:
-				return text != null && !text.isEmpty();
-			case Lease_tab_leasesPackage.DHCPLEASES__CLIENT:
-				return client != null && !client.isEmpty();
-			case Lease_tab_leasesPackage.DHCPLEASES__COUNT:
-				return count != COUNT_EDEFAULT;
-			case Lease_tab_leasesPackage.DHCPLEASES__TIME:
-				return time != TIME_EDEFAULT;
-		}
-		return super.eIsSet(featureID);
-	}
+        switch (featureID) {
+            case Lease_tab_leasesPackage.DHCPLEASES__ECONTAINER_DHCPLEASES:
+                return getEContainer_dhcpleases() != null;
+            case Lease_tab_leasesPackage.DHCPLEASES__TEXT:
+                return text != null && !text.isEmpty();
+            case Lease_tab_leasesPackage.DHCPLEASES__CLIENT:
+                return client != null && !client.isEmpty();
+            case Lease_tab_leasesPackage.DHCPLEASES__COUNT:
+                return count != COUNT_EDEFAULT;
+            case Lease_tab_leasesPackage.DHCPLEASES__TIME:
+                return time != TIME_EDEFAULT;
+        }
+        return super.eIsSet(featureID);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+        if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (text: ");
-		result.append(text);
-		result.append(", count: ");
-		result.append(count);
-		result.append(", time: ");
-		result.append(time);
-		result.append(')');
-		return result.toString();
-	}
+        StringBuffer result = new StringBuffer(super.toString());
+        result.append(" (text: ");
+        result.append(text);
+        result.append(", count: ");
+        result.append(count);
+        result.append(", time: ");
+        result.append(time);
+        result.append(')');
+        return result.toString();
+    }
 
 } //DhcpleasesImpl

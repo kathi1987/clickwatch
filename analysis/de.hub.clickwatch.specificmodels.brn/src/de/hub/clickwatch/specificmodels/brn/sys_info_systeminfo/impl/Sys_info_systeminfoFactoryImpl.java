@@ -31,142 +31,142 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
  */
 public class Sys_info_systeminfoFactoryImpl extends EFactoryImpl implements Sys_info_systeminfoFactory {
 	/**
-	 * Creates the default factory implementation.
-	 * <!-- begin-user-doc -->
+     * Creates the default factory implementation.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public static Sys_info_systeminfoFactory init() {
-		try {
-			Sys_info_systeminfoFactory theSys_info_systeminfoFactory = (Sys_info_systeminfoFactory)EPackage.Registry.INSTANCE.getEFactory("http://de.hub.clickwatch.specificmodels.brn/sys_info/systeminfo"); 
-			if (theSys_info_systeminfoFactory != null) {
-				return theSys_info_systeminfoFactory;
-			}
-		}
-		catch (Exception exception) {
-			EcorePlugin.INSTANCE.log(exception);
-		}
-		return new Sys_info_systeminfoFactoryImpl();
-	}
+        try {
+            Sys_info_systeminfoFactory theSys_info_systeminfoFactory = (Sys_info_systeminfoFactory)EPackage.Registry.INSTANCE.getEFactory("http://de.hub.clickwatch.specificmodels.brn/sys_info/systeminfo"); 
+            if (theSys_info_systeminfoFactory != null) {
+                return theSys_info_systeminfoFactory;
+            }
+        }
+        catch (Exception exception) {
+            EcorePlugin.INSTANCE.log(exception);
+        }
+        return new Sys_info_systeminfoFactoryImpl();
+    }
 
 	/**
-	 * Creates an instance of the factory.
-	 * <!-- begin-user-doc -->
+     * Creates an instance of the factory.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public Sys_info_systeminfoFactoryImpl() {
-		super();
-	}
+        super();
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public EObject create(EClass eClass) {
-		switch (eClass.getClassifierID()) {
-			case Sys_info_systeminfoPackage.CPU_USAGE: return createCpu_usage();
-			case Sys_info_systeminfoPackage.LINUX: return createLinux();
-			case Sys_info_systeminfoPackage.LOADAVG: return createLoadavg();
-			case Sys_info_systeminfoPackage.MEM: return createMem();
-			case Sys_info_systeminfoPackage.SYSTEM: return createSystem();
-			case Sys_info_systeminfoPackage.SYSTEMINFO: return createSysteminfo();
-			case Sys_info_systeminfoPackage.UPTIME: return createUptime();
-			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
-		}
-	}
+        switch (eClass.getClassifierID()) {
+            case Sys_info_systeminfoPackage.CPU_USAGE: return createCpu_usage();
+            case Sys_info_systeminfoPackage.LINUX: return createLinux();
+            case Sys_info_systeminfoPackage.LOADAVG: return createLoadavg();
+            case Sys_info_systeminfoPackage.MEM: return createMem();
+            case Sys_info_systeminfoPackage.SYSTEM: return createSystem();
+            case Sys_info_systeminfoPackage.SYSTEMINFO: return createSysteminfo();
+            case Sys_info_systeminfoPackage.UPTIME: return createUptime();
+            default:
+                throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+        }
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public Cpu_usage createCpu_usage() {
-		Cpu_usageImpl cpu_usage = new Cpu_usageImpl();
-		return cpu_usage;
-	}
+        Cpu_usageImpl cpu_usage = new Cpu_usageImpl();
+        return cpu_usage;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public Linux createLinux() {
-		LinuxImpl linux = new LinuxImpl();
-		return linux;
-	}
+        LinuxImpl linux = new LinuxImpl();
+        return linux;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public Loadavg createLoadavg() {
-		LoadavgImpl loadavg = new LoadavgImpl();
-		return loadavg;
-	}
+        LoadavgImpl loadavg = new LoadavgImpl();
+        return loadavg;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public Mem createMem() {
-		MemImpl mem = new MemImpl();
-		return mem;
-	}
+        MemImpl mem = new MemImpl();
+        return mem;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.System createSystem() {
-		SystemImpl system = new SystemImpl();
-		return system;
-	}
+        SystemImpl system = new SystemImpl();
+        return system;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public Systeminfo createSysteminfo() {
-		SysteminfoImpl systeminfo = new SysteminfoImpl();
-		return systeminfo;
-	}
+        SysteminfoImpl systeminfo = new SysteminfoImpl();
+        return systeminfo;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public Uptime createUptime() {
-		UptimeImpl uptime = new UptimeImpl();
-		return uptime;
-	}
+        UptimeImpl uptime = new UptimeImpl();
+        return uptime;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public Sys_info_systeminfoPackage getSys_info_systeminfoPackage() {
-		return (Sys_info_systeminfoPackage)getEPackage();
-	}
+        return (Sys_info_systeminfoPackage)getEPackage();
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @deprecated
-	 * @generated
-	 */
+     * @deprecated
+     * @generated
+     */
 	@Deprecated
 	public static Sys_info_systeminfoPackage getPackage() {
-		return Sys_info_systeminfoPackage.eINSTANCE;
-	}
+        return Sys_info_systeminfoPackage.eINSTANCE;
+    }
 
 } //Sys_info_systeminfoFactoryImpl

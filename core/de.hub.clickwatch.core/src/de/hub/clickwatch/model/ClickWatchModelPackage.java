@@ -136,22 +136,13 @@ public interface ClickWatchModelPackage extends EPackage {
 	int NODE__BACKBONE = MODEL_ELEMENT_WITH_STATISTICS_FEATURE_COUNT + 2;
 
 	/**
-     * The feature id for the '<em><b>Active Listeners</b></em>' attribute list.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int NODE__ACTIVE_LISTENERS = MODEL_ELEMENT_WITH_STATISTICS_FEATURE_COUNT + 3;
-
-    /**
      * The feature id for the '<em><b>Connection</b></em>' attribute.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-	int NODE__CONNECTION = MODEL_ELEMENT_WITH_STATISTICS_FEATURE_COUNT + 4;
+	int NODE__CONNECTION = MODEL_ELEMENT_WITH_STATISTICS_FEATURE_COUNT + 3;
 
     /**
      * The feature id for the '<em><b>Retrieving</b></em>' attribute.
@@ -160,7 +151,7 @@ public interface ClickWatchModelPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE__RETRIEVING = MODEL_ELEMENT_WITH_STATISTICS_FEATURE_COUNT + 5;
+    int NODE__RETRIEVING = MODEL_ELEMENT_WITH_STATISTICS_FEATURE_COUNT + 4;
 
     /**
      * The feature id for the '<em><b>Listening</b></em>' attribute.
@@ -169,7 +160,7 @@ public interface ClickWatchModelPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE__LISTENING = MODEL_ELEMENT_WITH_STATISTICS_FEATURE_COUNT + 6;
+    int NODE__LISTENING = MODEL_ELEMENT_WITH_STATISTICS_FEATURE_COUNT + 5;
 
     /**
      * The feature id for the '<em><b>Recording</b></em>' attribute.
@@ -178,7 +169,7 @@ public interface ClickWatchModelPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE__RECORDING = MODEL_ELEMENT_WITH_STATISTICS_FEATURE_COUNT + 7;
+    int NODE__RECORDING = MODEL_ELEMENT_WITH_STATISTICS_FEATURE_COUNT + 6;
 
     /**
      * The feature id for the '<em><b>Errors</b></em>' containment reference list.
@@ -187,7 +178,7 @@ public interface ClickWatchModelPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE__ERRORS = MODEL_ELEMENT_WITH_STATISTICS_FEATURE_COUNT + 8;
+    int NODE__ERRORS = MODEL_ELEMENT_WITH_STATISTICS_FEATURE_COUNT + 7;
 
     /**
      * The feature id for the '<em><b>Elements</b></em>' containment reference list.
@@ -196,7 +187,7 @@ public interface ClickWatchModelPackage extends EPackage {
      * @generated
      * @ordered
      */
-	int NODE__ELEMENTS = MODEL_ELEMENT_WITH_STATISTICS_FEATURE_COUNT + 9;
+	int NODE__ELEMENTS = MODEL_ELEMENT_WITH_STATISTICS_FEATURE_COUNT + 8;
 
     /**
      * The number of structural features of the '<em>Node</em>' class.
@@ -205,7 +196,7 @@ public interface ClickWatchModelPackage extends EPackage {
      * @generated
      * @ordered
      */
-	int NODE_FEATURE_COUNT = MODEL_ELEMENT_WITH_STATISTICS_FEATURE_COUNT + 10;
+	int NODE_FEATURE_COUNT = MODEL_ELEMENT_WITH_STATISTICS_FEATURE_COUNT + 9;
 
 	/**
      * The meta object id for the '{@link de.hub.clickwatch.model.impl.ElementImpl <em>Element</em>}' class.
@@ -520,13 +511,77 @@ public interface ClickWatchModelPackage extends EPackage {
     int STATISTIC__MEAN = 2;
 
     /**
+     * The feature id for the '<em><b>Smallest</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int STATISTIC__SMALLEST = 3;
+
+    /**
+     * The feature id for the '<em><b>Largest</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int STATISTIC__LARGEST = 4;
+
+    /**
+     * The feature id for the '<em><b>Latest</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int STATISTIC__LATEST = 5;
+
+    /**
      * The number of structural features of the '<em>Statistic</em>' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int STATISTIC_FEATURE_COUNT = 3;
+    int STATISTIC_FEATURE_COUNT = 6;
+
+    /**
+     * The meta object id for the '{@link de.hub.clickwatch.model.impl.ClickWatchErrorImpl <em>Click Watch Error</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.hub.clickwatch.model.impl.ClickWatchErrorImpl
+     * @see de.hub.clickwatch.model.impl.ClickWatchModelPackageImpl#getClickWatchError()
+     * @generated
+     */
+    int CLICK_WATCH_ERROR = 8;
+
+    /**
+     * The feature id for the '<em><b>Message</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int CLICK_WATCH_ERROR__MESSAGE = 0;
+
+    /**
+     * The feature id for the '<em><b>Exception</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int CLICK_WATCH_ERROR__EXCEPTION = 1;
+
+    /**
+     * The number of structural features of the '<em>Click Watch Error</em>' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int CLICK_WATCH_ERROR_FEATURE_COUNT = 2;
 
     /**
      * The meta object id for the '{@link de.hub.clickwatch.model.BackboneType <em>Backbone Type</em>}' enum.
@@ -579,45 +634,6 @@ public interface ClickWatchModelPackage extends EPackage {
      * @generated
      */
     int EXCEPTION = 13;
-
-    /**
-     * The meta object id for the '{@link de.hub.clickwatch.model.impl.ErrorImpl <em>Error</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see de.hub.clickwatch.model.impl.ErrorImpl
-     * @see de.hub.clickwatch.model.impl.ClickWatchModelPackageImpl#getError()
-     * @generated
-     */
-    int ERROR = 8;
-
-
-    /**
-     * The feature id for the '<em><b>Message</b></em>' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int ERROR__MESSAGE = 0;
-
-    /**
-     * The feature id for the '<em><b>Exception</b></em>' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int ERROR__EXCEPTION = 1;
-
-    /**
-     * The number of structural features of the '<em>Error</em>' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int ERROR_FEATURE_COUNT = 2;
-
 
     /**
      * Returns the meta object for class '{@link de.hub.clickwatch.model.Node <em>Node</em>}'.
@@ -718,17 +734,6 @@ public interface ClickWatchModelPackage extends EPackage {
 	EAttribute getNode_Backbone();
 
 	/**
-     * Returns the meta object for the attribute list '{@link de.hub.clickwatch.model.Node#getActiveListeners <em>Active Listeners</em>}'.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @return the meta object for the attribute list '<em>Active Listeners</em>'.
-     * @see de.hub.clickwatch.model.Node#getActiveListeners()
-     * @see #getNode()
-     * @generated
-     */
-    EAttribute getNode_ActiveListeners();
-
-    /**
      * Returns the meta object for the containment reference list '{@link de.hub.clickwatch.model.Node#getErrors <em>Errors</em>}'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1044,6 +1049,71 @@ public interface ClickWatchModelPackage extends EPackage {
     EAttribute getStatistic_Mean();
 
     /**
+     * Returns the meta object for the attribute '{@link de.hub.clickwatch.model.Statistic#getSmallest <em>Smallest</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Smallest</em>'.
+     * @see de.hub.clickwatch.model.Statistic#getSmallest()
+     * @see #getStatistic()
+     * @generated
+     */
+    EAttribute getStatistic_Smallest();
+
+    /**
+     * Returns the meta object for the attribute '{@link de.hub.clickwatch.model.Statistic#getLargest <em>Largest</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Largest</em>'.
+     * @see de.hub.clickwatch.model.Statistic#getLargest()
+     * @see #getStatistic()
+     * @generated
+     */
+    EAttribute getStatistic_Largest();
+
+    /**
+     * Returns the meta object for the attribute '{@link de.hub.clickwatch.model.Statistic#getLatest <em>Latest</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Latest</em>'.
+     * @see de.hub.clickwatch.model.Statistic#getLatest()
+     * @see #getStatistic()
+     * @generated
+     */
+    EAttribute getStatistic_Latest();
+
+    /**
+     * Returns the meta object for class '{@link de.hub.clickwatch.model.ClickWatchError <em>Click Watch Error</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for class '<em>Click Watch Error</em>'.
+     * @see de.hub.clickwatch.model.ClickWatchError
+     * @generated
+     */
+    EClass getClickWatchError();
+
+    /**
+     * Returns the meta object for the attribute '{@link de.hub.clickwatch.model.ClickWatchError#getMessage <em>Message</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Message</em>'.
+     * @see de.hub.clickwatch.model.ClickWatchError#getMessage()
+     * @see #getClickWatchError()
+     * @generated
+     */
+    EAttribute getClickWatchError_Message();
+
+    /**
+     * Returns the meta object for the attribute '{@link de.hub.clickwatch.model.ClickWatchError#getException <em>Exception</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Exception</em>'.
+     * @see de.hub.clickwatch.model.ClickWatchError#getException()
+     * @see #getClickWatchError()
+     * @generated
+     */
+    EAttribute getClickWatchError_Exception();
+
+    /**
      * Returns the meta object for class '{@link de.hub.clickwatch.model.ModelElementWithStatistics <em>Model Element With Statistics</em>}'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1117,38 +1187,6 @@ public interface ClickWatchModelPackage extends EPackage {
      * @generated
      */
     EDataType getException();
-
-    /**
-     * Returns the meta object for class '{@link de.hub.clickwatch.model.Error <em>Error</em>}'.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @return the meta object for class '<em>Error</em>'.
-     * @see de.hub.clickwatch.model.Error
-     * @generated
-     */
-    EClass getError();
-
-    /**
-     * Returns the meta object for the attribute '{@link de.hub.clickwatch.model.Error#getMessage <em>Message</em>}'.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @return the meta object for the attribute '<em>Message</em>'.
-     * @see de.hub.clickwatch.model.Error#getMessage()
-     * @see #getError()
-     * @generated
-     */
-    EAttribute getError_Message();
-
-    /**
-     * Returns the meta object for the attribute '{@link de.hub.clickwatch.model.Error#getException <em>Exception</em>}'.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @return the meta object for the attribute '<em>Exception</em>'.
-     * @see de.hub.clickwatch.model.Error#getException()
-     * @see #getError()
-     * @generated
-     */
-    EAttribute getError_Exception();
 
     /**
      * Returns the factory that creates the instances of the model.
@@ -1247,14 +1285,6 @@ public interface ClickWatchModelPackage extends EPackage {
 		EAttribute NODE__BACKBONE = eINSTANCE.getNode_Backbone();
 
 		/**
-         * The meta object literal for the '<em><b>Active Listeners</b></em>' attribute list feature.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        EAttribute NODE__ACTIVE_LISTENERS = eINSTANCE.getNode_ActiveListeners();
-
-        /**
          * The meta object literal for the '<em><b>Errors</b></em>' containment reference list feature.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
@@ -1499,6 +1529,56 @@ public interface ClickWatchModelPackage extends EPackage {
         EAttribute STATISTIC__MEAN = eINSTANCE.getStatistic_Mean();
 
         /**
+         * The meta object literal for the '<em><b>Smallest</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute STATISTIC__SMALLEST = eINSTANCE.getStatistic_Smallest();
+
+        /**
+         * The meta object literal for the '<em><b>Largest</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute STATISTIC__LARGEST = eINSTANCE.getStatistic_Largest();
+
+        /**
+         * The meta object literal for the '<em><b>Latest</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute STATISTIC__LATEST = eINSTANCE.getStatistic_Latest();
+
+        /**
+         * The meta object literal for the '{@link de.hub.clickwatch.model.impl.ClickWatchErrorImpl <em>Click Watch Error</em>}' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see de.hub.clickwatch.model.impl.ClickWatchErrorImpl
+         * @see de.hub.clickwatch.model.impl.ClickWatchModelPackageImpl#getClickWatchError()
+         * @generated
+         */
+        EClass CLICK_WATCH_ERROR = eINSTANCE.getClickWatchError();
+
+        /**
+         * The meta object literal for the '<em><b>Message</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute CLICK_WATCH_ERROR__MESSAGE = eINSTANCE.getClickWatchError_Message();
+
+        /**
+         * The meta object literal for the '<em><b>Exception</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute CLICK_WATCH_ERROR__EXCEPTION = eINSTANCE.getClickWatchError_Exception();
+
+        /**
          * The meta object literal for the '{@link de.hub.clickwatch.model.impl.ModelElementWithStatisticsImpl <em>Model Element With Statistics</em>}' class.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
@@ -1565,32 +1645,6 @@ public interface ClickWatchModelPackage extends EPackage {
          * @generated
          */
         EDataType EXCEPTION = eINSTANCE.getException();
-
-        /**
-         * The meta object literal for the '{@link de.hub.clickwatch.model.impl.ErrorImpl <em>Error</em>}' class.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @see de.hub.clickwatch.model.impl.ErrorImpl
-         * @see de.hub.clickwatch.model.impl.ClickWatchModelPackageImpl#getError()
-         * @generated
-         */
-        EClass ERROR = eINSTANCE.getError();
-
-        /**
-         * The meta object literal for the '<em><b>Message</b></em>' attribute feature.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        EAttribute ERROR__MESSAGE = eINSTANCE.getError_Message();
-
-        /**
-         * The meta object literal for the '<em><b>Exception</b></em>' attribute feature.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        EAttribute ERROR__EXCEPTION = eINSTANCE.getError_Exception();
 
 	}
 

@@ -19,7 +19,7 @@ public interface INodeConnectionProvider {
      * automatically registered with the node (accessible through
      * {@link Node#getConnection()}). If the given node already has a
      * {@link INodeConnection} associated with it, the method returns that
-     * already existing connection.
+     * already existing connection and no new connection is created.
      */
     public INodeConnection createConnection(Node node);
 

@@ -21,7 +21,7 @@ import de.hub.clickwatch.main.IResultsProvider;
 import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.model.Node;
 import de.hub.clickwatch.recorder.database.DataBaseUtil;
-import de.hub.clickwatch.recorder.database.cwdatabase.Record;
+import de.hub.clickwatch.recorder.database.Record;
 import de.hub.clickwatch.specificmodels.brn.device_wifi_link_stat_bcast_stats.Bcast_stats;
 import de.hub.clickwatch.specificmodels.brn.device_wifi_link_stat_bcast_stats.Link;
 import de.hub.clickwatch.specificmodels.brn.device_wifi_link_stat_bcast_stats.Link_info;
@@ -40,7 +40,7 @@ public class PdrPlotAnalysis implements IClickWatchMain {
 		monitor.beginTask("Performing analysis on all nodes", nodes.length*100);
 		for (Node node: nodes) {
 			Iterator<Handler> iterator = dbUtil.getHandlerIterator(
-					createHandle(record, node.getINetAddress(), "device_wifi/link_stat/bcast_stats"),
+					createHandle(record, node, "device_wifi/link_stat/bcast_stats"),
 					new SubProgressMonitor(monitor, 100));
 			while(iterator.hasNext()) {
 				Bcast_stats handler = (Bcast_stats)iterator.next();

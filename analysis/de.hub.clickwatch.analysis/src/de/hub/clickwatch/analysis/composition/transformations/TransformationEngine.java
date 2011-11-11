@@ -35,7 +35,7 @@ import de.hub.clickwatch.analysis.composition.model.TransformationKind;
 import de.hub.clickwatch.analysis.composition.property.TransactionUtil;
 import de.hub.clickwatch.analysis.ui.PluginActivator;
 import de.hub.clickwatch.transformationLauncher.BundleHelper;
-import de.hub.emfxml.XmlModelRepository;
+import de.hub.emfxml.util.EmfXmlUtil;
 
 public class TransformationEngine {
 	
@@ -427,7 +427,7 @@ public class TransformationEngine {
 				metaModelResource = rs.createResource(uri);
 			}
 			if (!metaModelResource.isLoaded()) {
-				metaModelResource.load(XmlModelRepository.defaultLoadSaveOptions());
+				metaModelResource.load(EmfXmlUtil.defaultLoadSaveOptions());
 			}
 			EPackage metaModel = (EPackage)metaModelResource.getContents().get(0);
 			EPackage.Registry.INSTANCE.put(metaModel.getNsURI(), metaModel);

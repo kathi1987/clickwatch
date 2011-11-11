@@ -24,76 +24,76 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
  */
 public class Gps_cart_coordFactoryImpl extends EFactoryImpl implements Gps_cart_coordFactory {
 	/**
-	 * Creates the default factory implementation.
-	 * <!-- begin-user-doc -->
+     * Creates the default factory implementation.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public static Gps_cart_coordFactory init() {
-		try {
-			Gps_cart_coordFactory theGps_cart_coordFactory = (Gps_cart_coordFactory)EPackage.Registry.INSTANCE.getEFactory("http://de.hub.clickwatch.specificmodels.brn/gps/cart_coord"); 
-			if (theGps_cart_coordFactory != null) {
-				return theGps_cart_coordFactory;
-			}
-		}
-		catch (Exception exception) {
-			EcorePlugin.INSTANCE.log(exception);
-		}
-		return new Gps_cart_coordFactoryImpl();
-	}
+        try {
+            Gps_cart_coordFactory theGps_cart_coordFactory = (Gps_cart_coordFactory)EPackage.Registry.INSTANCE.getEFactory("http://de.hub.clickwatch.specificmodels.brn/gps/cart_coord"); 
+            if (theGps_cart_coordFactory != null) {
+                return theGps_cart_coordFactory;
+            }
+        }
+        catch (Exception exception) {
+            EcorePlugin.INSTANCE.log(exception);
+        }
+        return new Gps_cart_coordFactoryImpl();
+    }
 
 	/**
-	 * Creates an instance of the factory.
-	 * <!-- begin-user-doc -->
+     * Creates an instance of the factory.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public Gps_cart_coordFactoryImpl() {
-		super();
-	}
+        super();
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public EObject create(EClass eClass) {
-		switch (eClass.getClassifierID()) {
-			case Gps_cart_coordPackage.CART_COORD: return createCart_coord();
-			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
-		}
-	}
+        switch (eClass.getClassifierID()) {
+            case Gps_cart_coordPackage.CART_COORD: return createCart_coord();
+            default:
+                throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+        }
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public Cart_coord createCart_coord() {
-		Cart_coordImpl cart_coord = new Cart_coordImpl();
-		return cart_coord;
-	}
+        Cart_coordImpl cart_coord = new Cart_coordImpl();
+        return cart_coord;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public Gps_cart_coordPackage getGps_cart_coordPackage() {
-		return (Gps_cart_coordPackage)getEPackage();
-	}
+        return (Gps_cart_coordPackage)getEPackage();
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @deprecated
-	 * @generated
-	 */
+     * @deprecated
+     * @generated
+     */
 	@Deprecated
 	public static Gps_cart_coordPackage getPackage() {
-		return Gps_cart_coordPackage.eINSTANCE;
-	}
+        return Gps_cart_coordPackage.eINSTANCE;
+    }
 
 } //Gps_cart_coordFactoryImpl

@@ -42,7 +42,7 @@ public class SpecificModelsValueAdapterTest extends AbstractTest {
 	public void test() throws IOException {
 		INodeConnectionProvider ncp = injector.getInstance(INodeConnectionProvider.class);
 		INodeConnection connection = ncp.createConnection("192.168.3.152", "7777");
-		connection.connect();
+
 		Handler handler = connection.getAdapter(IHandlerAdapter.class)
 				.getHandler("device_wifi/link_stat/bcast_stats");
 		

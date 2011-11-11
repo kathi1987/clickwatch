@@ -21,7 +21,7 @@ import de.hub.clickwatch.main.IRecordProvider;
 import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.model.Node;
 import de.hub.clickwatch.recorder.database.DataBaseUtil;
-import de.hub.clickwatch.recorder.database.cwdatabase.Record;
+import de.hub.clickwatch.recorder.database.Record;
 import de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.Localchannelinfo;
 import de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.V;
 
@@ -59,7 +59,7 @@ public class SeismoCloudExport implements IClickWatchMain {
 					long end = record.getStart() + (SeismoCloudExport.this.end > 0 ? SeismoCloudExport.this.end : record.getEnd() - record.getStart());
 					
 					Iterator<Handler> iterator = dbUtil.getHandlerIterator(
-							createHandle(record, node.getINetAddress(), "seismo/localchannelinfo", start, end),
+							createHandle(record, node, "seismo/localchannelinfo", start, end),
 							new SubProgressMonitor(monitor, 100));
 					while(iterator.hasNext()) {
 						Localchannelinfo handler = (Localchannelinfo)iterator.next();

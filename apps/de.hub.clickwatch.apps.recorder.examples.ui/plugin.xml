@@ -31,15 +31,6 @@
          </InjectorProvider>
       </main>
       <main
-            class="de.hub.clickwatch.ui.GuiceAwareExecutableExtensionFactory:de.hub.clickwatch.recorder.examples.ui.RuntimeHwBusyAnalysis"
-            name="RuntimeHwBusyAnalysis">
-         <InjectorProvider
-               debug="true"
-               specific_models="true"
-               xml_values="true">
-         </InjectorProvider>
-      </main>
-      <main
             class="de.hub.clickwatch.ui.GuiceAwareExecutableExtensionFactory:de.hub.clickwatch.recorder.examples.ui.RuntimeSeismoAnalysis"
             name="RuntimeSeismoAnalysis">
          <InjectorProvider
@@ -51,15 +42,6 @@
       <main
             class="de.hub.clickwatch.ui.GuiceAwareExecutableExtensionFactory:de.hub.clickwatch.recorder.examples.ComplexSeismoPlotAnalysis"
             name="ComplexSeismoAnalysis">
-         <InjectorProvider
-               debug="true"
-               specific_models="true"
-               xml_values="true">
-         </InjectorProvider>
-      </main>
-      <main
-            class="de.hub.clickwatch.ui.GuiceAwareExecutableExtensionFactory:de.hub.clickwatch.recorder.examples.TestAnalysis"
-            name="TestAnalysis">
          <InjectorProvider
                debug="true"
                specific_models="true"

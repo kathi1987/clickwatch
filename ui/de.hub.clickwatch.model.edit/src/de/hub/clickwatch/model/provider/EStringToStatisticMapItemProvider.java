@@ -65,6 +65,7 @@ public class EStringToStatisticMapItemProvider
             super.getPropertyDescriptors(object);
 
             addKeyPropertyDescriptor(object);
+            addValuePropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
@@ -87,6 +88,28 @@ public class EStringToStatisticMapItemProvider
                  false,
                  false,
                  ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the Value feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addValuePropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_EStringToStatisticMap_value_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_EStringToStatisticMap_value_feature", "_UI_EStringToStatisticMap_type"),
+                 ClickWatchModelPackage.Literals.ESTRING_TO_STATISTIC_MAP__VALUE,
+                 false,
+                 false,
+                 false,
+                 null,
                  null,
                  null));
     }

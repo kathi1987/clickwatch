@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import de.hub.clickwatch.main.IClickWatchContextAdapter;
 import de.hub.clickwatch.main.IClickWatchModelProvider;
 import de.hub.clickwatch.model.Network;
-import de.hub.emfxml.XmlModelRepository;
+import de.hub.emfxml.util.EmfXmlUtil;
 
 public class ClickWatchModelProvider implements IClickWatchContextAdapter,
 		IClickWatchModelProvider {
@@ -48,7 +48,7 @@ public class ClickWatchModelProvider implements IClickWatchContextAdapter,
 		
 		if (clickWatchModel != null) {
 			ResourceSet resourceSet = new ResourceSetImpl();
-			resourceSet.getLoadOptions().putAll(XmlModelRepository.defaultLoadSaveOptions());
+			resourceSet.getLoadOptions().putAll(EmfXmlUtil.defaultLoadSaveOptions());
 			Resource modelResource = resourceSet.getResource(clickWatchModel, true);
 			
 			if (objectURIFragment != null) {

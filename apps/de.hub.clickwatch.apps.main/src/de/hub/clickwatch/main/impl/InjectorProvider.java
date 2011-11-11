@@ -1,6 +1,5 @@
 package de.hub.clickwatch.main.impl;
 
-import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,16 +18,14 @@ import de.hub.clickwatch.ClickWatchModule;
 import de.hub.clickwatch.ClickWatchModuleUtil;
 import de.hub.clickwatch.ClickWatchModuleUtil.ClickWatchModuleBuilder;
 import de.hub.clickwatch.ClickWatchModuleUtil.HandlerBehaviour;
+import de.hub.clickwatch.ClickWatchModuleUtil.ValueType;
 import de.hub.clickwatch.connection.adapter.values.StringValueAdapter;
 import de.hub.clickwatch.connection.adapter.values.XmlValueAdapter;
 import de.hub.clickwatch.main.IClickWatchContextAdapter;
 import de.hub.clickwatch.main.IInjectorProvider;
 import de.hub.clickwatch.recorder.ClickWatchRecorderModule;
-import de.hub.clickwatch.recorder.database.DummyDataBaseAdapter;
-import de.hub.clickwatch.recorder.database.IDataBaseRecordAdapter;
-import de.hub.clickwatch.recorder.database.IDataBaseRetrieveAdapter;
-import de.hub.clickwatch.recorder.database.hbase.HBaseDataBaseAdapter;
-import de.hub.clickwatch.recorder.database.logfile.LogFileDataBaseAdapter;
+import de.hub.clickwatch.recorder.recorder.HBaseDataBaseAdapter;
+import de.hub.clickwatch.recorder.recorder.IDataBaseAdapter;
 import de.hub.clickwatch.specificmodels.brn.BrnValueAdapter;
 import de.hub.clickwatch.util.ILogger;
 import de.hub.clickwatch.util.Throwables;
@@ -36,12 +33,8 @@ import de.hub.clickwatch.util.Throwables;
 public class InjectorProvider implements IClickWatchContextAdapter,
 		IInjectorProvider {
 
-	public enum ValueType {
-		STRING, XML, SPECIFIC;
-	};
-
 	public enum DataBaseType {
-		HBASE, EMF, LOGFILE, DUMMY
+		HBASE
 	};
 
 	private HandlerBehaviour handlerBehaviour;
@@ -146,12 +139,6 @@ public class InjectorProvider implements IClickWatchContextAdapter,
 			}
 			if (db.equals("hbase")) {
 				dataBaseType = DataBaseType.HBASE;
-			} else if (db.equals("emf")) {
-				dataBaseType = DataBaseType.EMF;
-			} else if (db.equals("logfile")) {
-				dataBaseType = DataBaseType.LOGFILE;
-			} else if (db.equals("dummy")) {
-				dataBaseType = DataBaseType.DUMMY;
 			} else {
 				throw new IllegalArgumentException();
 			}
@@ -245,8 +232,6 @@ public class InjectorProvider implements IClickWatchContextAdapter,
 		}
 		return injector;
 	}
-	
-	private static PrintStream out = System.out;
 
 	private Injector createInjector() {
 		
@@ -270,28 +255,11 @@ public class InjectorProvider implements IClickWatchContextAdapter,
 			@Override
 			protected void configureDataBaseAdapter() {
 				if (dataBaseType == DataBaseType.HBASE) {
-					bind(IDataBaseRecordAdapter.class).to(
+					bind(IDataBaseAdapter.class).to(
 							HBaseDataBaseAdapter.class);
-				} else if (dataBaseType == DataBaseType.LOGFILE) {
-					bind(IDataBaseRecordAdapter.class).to(
-							LogFileDataBaseAdapter.class);
-				} else if (dataBaseType == DataBaseType.DUMMY) {
-					bind(IDataBaseRecordAdapter.class).to(
-							DummyDataBaseAdapter.class);
 				} else {
 					throw new IllegalArgumentException(
 							"unknown database-adatper");
-				}
-			}
-
-			@Override
-			protected void configureDataBaseRetrieveAdapter() {
-				if (dataBaseType == DataBaseType.HBASE) {
-					bind(IDataBaseRetrieveAdapter.class).to(
-							HBaseDataBaseAdapter.class);
-				} else {
-					bind(IDataBaseRetrieveAdapter.class).to(
-							HBaseDataBaseAdapter.class);
 				}
 			}
 
@@ -301,14 +269,6 @@ public class InjectorProvider implements IClickWatchContextAdapter,
 						Names.named(I_PUTS_BUFFER_SIZE)).toInstance(
 						handlerPerRecord);
 			}
-
-			@Override
-			protected void configureDefaultUpdateInterval() {
-				bind(long.class).annotatedWith(
-						Names.named(L_DEFAULT_UPDATE_INTERVAL_PROPERTY))
-						.toInstance((long)localUpdateInterval);
-			}
-
 		};
 		Injector result = Guice.createInjector(clickWatchModule, cwRecorderModule);
 		Throwables.logger = result.getInstance(ILogger.class);

@@ -37,285 +37,285 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  */
 public class UptimeImpl extends EObjectImpl implements Uptime {
 	/**
-	 * The default value of the '{@link #getTotal() <em>Total</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The default value of the '{@link #getTotal() <em>Total</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTotal()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getTotal()
+     * @generated
+     * @ordered
+     */
 	protected static final double TOTAL_EDEFAULT = 0.0;
 
 	/**
-	 * The cached value of the '{@link #getTotal() <em>Total</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getTotal() <em>Total</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTotal()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getTotal()
+     * @generated
+     * @ordered
+     */
 	protected double total = TOTAL_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getIdle() <em>Idle</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The default value of the '{@link #getIdle() <em>Idle</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getIdle()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getIdle()
+     * @generated
+     * @ordered
+     */
 	protected static final double IDLE_EDEFAULT = 0.0;
 
 	/**
-	 * The cached value of the '{@link #getIdle() <em>Idle</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getIdle() <em>Idle</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getIdle()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getIdle()
+     * @generated
+     * @ordered
+     */
 	protected double idle = IDLE_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected UptimeImpl() {
-		super();
-	}
+        super();
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	protected EClass eStaticClass() {
-		return Sys_info_systeminfoPackage.Literals.UPTIME;
-	}
+        return Sys_info_systeminfoPackage.Literals.UPTIME;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.System getEContainer_uptime() {
-		if (eContainerFeatureID() != Sys_info_systeminfoPackage.UPTIME__ECONTAINER_UPTIME) return null;
-		return (de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.System)eContainer();
-	}
+        if (eContainerFeatureID() != Sys_info_systeminfoPackage.UPTIME__ECONTAINER_UPTIME) return null;
+        return (de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.System)eContainer();
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public NotificationChain basicSetEContainer_uptime(de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.System newEContainer_uptime, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject)newEContainer_uptime, Sys_info_systeminfoPackage.UPTIME__ECONTAINER_UPTIME, msgs);
-		return msgs;
-	}
+        msgs = eBasicSetContainer((InternalEObject)newEContainer_uptime, Sys_info_systeminfoPackage.UPTIME__ECONTAINER_UPTIME, msgs);
+        return msgs;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public void setEContainer_uptime(de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.System newEContainer_uptime) {
-		if (newEContainer_uptime != eInternalContainer() || (eContainerFeatureID() != Sys_info_systeminfoPackage.UPTIME__ECONTAINER_UPTIME && newEContainer_uptime != null)) {
-			if (EcoreUtil.isAncestor(this, newEContainer_uptime))
-				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
-			NotificationChain msgs = null;
-			if (eInternalContainer() != null)
-				msgs = eBasicRemoveFromContainer(msgs);
-			if (newEContainer_uptime != null)
-				msgs = ((InternalEObject)newEContainer_uptime).eInverseAdd(this, Sys_info_systeminfoPackage.SYSTEM__UPTIME, de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.System.class, msgs);
-			msgs = basicSetEContainer_uptime(newEContainer_uptime, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, Sys_info_systeminfoPackage.UPTIME__ECONTAINER_UPTIME, newEContainer_uptime, newEContainer_uptime));
-	}
+        if (newEContainer_uptime != eInternalContainer() || (eContainerFeatureID() != Sys_info_systeminfoPackage.UPTIME__ECONTAINER_UPTIME && newEContainer_uptime != null)) {
+            if (EcoreUtil.isAncestor(this, newEContainer_uptime))
+                throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+            NotificationChain msgs = null;
+            if (eInternalContainer() != null)
+                msgs = eBasicRemoveFromContainer(msgs);
+            if (newEContainer_uptime != null)
+                msgs = ((InternalEObject)newEContainer_uptime).eInverseAdd(this, Sys_info_systeminfoPackage.SYSTEM__UPTIME, de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.System.class, msgs);
+            msgs = basicSetEContainer_uptime(newEContainer_uptime, msgs);
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, Sys_info_systeminfoPackage.UPTIME__ECONTAINER_UPTIME, newEContainer_uptime, newEContainer_uptime));
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public double getTotal() {
-		return total;
-	}
+        return total;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public void setTotal(double newTotal) {
-		double oldTotal = total;
-		total = newTotal;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, Sys_info_systeminfoPackage.UPTIME__TOTAL, oldTotal, total));
-	}
+        double oldTotal = total;
+        total = newTotal;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, Sys_info_systeminfoPackage.UPTIME__TOTAL, oldTotal, total));
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public double getIdle() {
-		return idle;
-	}
+        return idle;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public void setIdle(double newIdle) {
-		double oldIdle = idle;
-		idle = newIdle;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, Sys_info_systeminfoPackage.UPTIME__IDLE, oldIdle, idle));
-	}
+        double oldIdle = idle;
+        idle = newIdle;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, Sys_info_systeminfoPackage.UPTIME__IDLE, oldIdle, idle));
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case Sys_info_systeminfoPackage.UPTIME__ECONTAINER_UPTIME:
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetEContainer_uptime((de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.System)otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
-	}
+        switch (featureID) {
+            case Sys_info_systeminfoPackage.UPTIME__ECONTAINER_UPTIME:
+                if (eInternalContainer() != null)
+                    msgs = eBasicRemoveFromContainer(msgs);
+                return basicSetEContainer_uptime((de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.System)otherEnd, msgs);
+        }
+        return super.eInverseAdd(otherEnd, featureID, msgs);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case Sys_info_systeminfoPackage.UPTIME__ECONTAINER_UPTIME:
-				return basicSetEContainer_uptime(null, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+        switch (featureID) {
+            case Sys_info_systeminfoPackage.UPTIME__ECONTAINER_UPTIME:
+                return basicSetEContainer_uptime(null, msgs);
+        }
+        return super.eInverseRemove(otherEnd, featureID, msgs);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
-		switch (eContainerFeatureID()) {
-			case Sys_info_systeminfoPackage.UPTIME__ECONTAINER_UPTIME:
-				return eInternalContainer().eInverseRemove(this, Sys_info_systeminfoPackage.SYSTEM__UPTIME, de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.System.class, msgs);
-		}
-		return super.eBasicRemoveFromContainerFeature(msgs);
-	}
+        switch (eContainerFeatureID()) {
+            case Sys_info_systeminfoPackage.UPTIME__ECONTAINER_UPTIME:
+                return eInternalContainer().eInverseRemove(this, Sys_info_systeminfoPackage.SYSTEM__UPTIME, de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.System.class, msgs);
+        }
+        return super.eBasicRemoveFromContainerFeature(msgs);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case Sys_info_systeminfoPackage.UPTIME__ECONTAINER_UPTIME:
-				return getEContainer_uptime();
-			case Sys_info_systeminfoPackage.UPTIME__TOTAL:
-				return getTotal();
-			case Sys_info_systeminfoPackage.UPTIME__IDLE:
-				return getIdle();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+        switch (featureID) {
+            case Sys_info_systeminfoPackage.UPTIME__ECONTAINER_UPTIME:
+                return getEContainer_uptime();
+            case Sys_info_systeminfoPackage.UPTIME__TOTAL:
+                return getTotal();
+            case Sys_info_systeminfoPackage.UPTIME__IDLE:
+                return getIdle();
+        }
+        return super.eGet(featureID, resolve, coreType);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case Sys_info_systeminfoPackage.UPTIME__ECONTAINER_UPTIME:
-				setEContainer_uptime((de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.System)newValue);
-				return;
-			case Sys_info_systeminfoPackage.UPTIME__TOTAL:
-				setTotal((Double)newValue);
-				return;
-			case Sys_info_systeminfoPackage.UPTIME__IDLE:
-				setIdle((Double)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+        switch (featureID) {
+            case Sys_info_systeminfoPackage.UPTIME__ECONTAINER_UPTIME:
+                setEContainer_uptime((de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.System)newValue);
+                return;
+            case Sys_info_systeminfoPackage.UPTIME__TOTAL:
+                setTotal((Double)newValue);
+                return;
+            case Sys_info_systeminfoPackage.UPTIME__IDLE:
+                setIdle((Double)newValue);
+                return;
+        }
+        super.eSet(featureID, newValue);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case Sys_info_systeminfoPackage.UPTIME__ECONTAINER_UPTIME:
-				setEContainer_uptime((de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.System)null);
-				return;
-			case Sys_info_systeminfoPackage.UPTIME__TOTAL:
-				setTotal(TOTAL_EDEFAULT);
-				return;
-			case Sys_info_systeminfoPackage.UPTIME__IDLE:
-				setIdle(IDLE_EDEFAULT);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+        switch (featureID) {
+            case Sys_info_systeminfoPackage.UPTIME__ECONTAINER_UPTIME:
+                setEContainer_uptime((de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.System)null);
+                return;
+            case Sys_info_systeminfoPackage.UPTIME__TOTAL:
+                setTotal(TOTAL_EDEFAULT);
+                return;
+            case Sys_info_systeminfoPackage.UPTIME__IDLE:
+                setIdle(IDLE_EDEFAULT);
+                return;
+        }
+        super.eUnset(featureID);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case Sys_info_systeminfoPackage.UPTIME__ECONTAINER_UPTIME:
-				return getEContainer_uptime() != null;
-			case Sys_info_systeminfoPackage.UPTIME__TOTAL:
-				return total != TOTAL_EDEFAULT;
-			case Sys_info_systeminfoPackage.UPTIME__IDLE:
-				return idle != IDLE_EDEFAULT;
-		}
-		return super.eIsSet(featureID);
-	}
+        switch (featureID) {
+            case Sys_info_systeminfoPackage.UPTIME__ECONTAINER_UPTIME:
+                return getEContainer_uptime() != null;
+            case Sys_info_systeminfoPackage.UPTIME__TOTAL:
+                return total != TOTAL_EDEFAULT;
+            case Sys_info_systeminfoPackage.UPTIME__IDLE:
+                return idle != IDLE_EDEFAULT;
+        }
+        return super.eIsSet(featureID);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+        if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (total: ");
-		result.append(total);
-		result.append(", idle: ");
-		result.append(idle);
-		result.append(')');
-		return result.toString();
-	}
+        StringBuffer result = new StringBuffer(super.toString());
+        result.append(" (total: ");
+        result.append(total);
+        result.append(", idle: ");
+        result.append(idle);
+        result.append(')');
+        return result.toString();
+    }
 
 } //UptimeImpl

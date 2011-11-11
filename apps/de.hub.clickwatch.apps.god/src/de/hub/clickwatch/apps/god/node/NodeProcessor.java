@@ -117,11 +117,7 @@ public class NodeProcessor extends Thread {
 						}
 					}
 					
-				} else {
-					if (nodeConnection != null) {
-						nodeConnection.connect();
-					}
-					
+				} else {					
 					for (String[] handler : nodeInfos.getElementFilter().keySet()) {
 						if (callsSetter) {
 							askingFor = "\"write: " + handler[0] + " " + handler[1] + " --> " + handler[2] + "\"";
@@ -137,7 +133,7 @@ public class NodeProcessor extends Thread {
 							if (res == -1) {
 								System.err.println("ERROR while calling writeHandler " + handler[0] + "/" + handler[1] + " with args '" + handler[2] + "' on node " + nodeInfos.getHost().getHostAddress() + ":" + nodeInfos.getPort());
 							}
-						} else if ((nodeConnection != null) && (nodeConnection.isConnected())) {
+						} else if (nodeConnection != null) {
 							//ask the node, and process result
 							askingFor = "\"read: " + handler[0] + " " + handler[1] + "\"";
 							IHandlerAdapter handlerAdapter = nodeConnection.getAdapter(IHandlerAdapter.class);
@@ -152,8 +148,8 @@ public class NodeProcessor extends Thread {
 						}
 					}
 					
-					if ((nodeConnection != null) && (nodeConnection.isConnected())) {
-						nodeConnection.disconnect();
+					if (nodeConnection != null) {
+						nodeConnection.close();
 					}
 				}
 				
@@ -179,8 +175,8 @@ public class NodeProcessor extends Thread {
 				
 				//exc.printStackTrace();
 				
-				if ((nodeConnection != null) && (nodeConnection.isConnected())) {
-					nodeConnection.disconnect();
+				if (nodeConnection != null) {
+					nodeConnection.close();
 				}
 				
 				try { sleep(Server.getSzenario().get_WAIT_AFTER_ASKING_ERROR()); } catch (InterruptedException int_exc) {/*nothing to do*/}

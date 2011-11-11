@@ -18,29 +18,29 @@ import org.eclipse.emf.ecore.EFactory;
  */
 public interface Gps_cart_coordFactory extends EFactory {
 	/**
-	 * The singleton instance of the factory.
-	 * <!-- begin-user-doc -->
+     * The singleton instance of the factory.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	Gps_cart_coordFactory eINSTANCE = de.hub.clickwatch.specificmodels.brn.gps_cart_coord.impl.Gps_cart_coordFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>Cart coord</em>'.
-	 * <!-- begin-user-doc -->
+     * Returns a new object of class '<em>Cart coord</em>'.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Cart coord</em>'.
-	 * @generated
-	 */
+     * @return a new object of class '<em>Cart coord</em>'.
+     * @generated
+     */
 	Cart_coord createCart_coord();
 
 	/**
-	 * Returns the package supported by this factory.
-	 * <!-- begin-user-doc -->
+     * Returns the package supported by this factory.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the package supported by this factory.
-	 * @generated
-	 */
+     * @return the package supported by this factory.
+     * @generated
+     */
 	Gps_cart_coordPackage getGps_cart_coordPackage();
 
 } //Gps_cart_coordFactory

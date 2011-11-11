@@ -24,109 +24,109 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
  */
 public class Sf_statsFactoryImpl extends EFactoryImpl implements Sf_statsFactory {
 	/**
-	 * Creates the default factory implementation.
-	 * <!-- begin-user-doc -->
+     * Creates the default factory implementation.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public static Sf_statsFactory init() {
-		try {
-			Sf_statsFactory theSf_statsFactory = (Sf_statsFactory)EPackage.Registry.INSTANCE.getEFactory("http://de.hub.clickwatch.specificmodels.brn/sf/stats"); 
-			if (theSf_statsFactory != null) {
-				return theSf_statsFactory;
-			}
-		}
-		catch (Exception exception) {
-			EcorePlugin.INSTANCE.log(exception);
-		}
-		return new Sf_statsFactoryImpl();
-	}
+        try {
+            Sf_statsFactory theSf_statsFactory = (Sf_statsFactory)EPackage.Registry.INSTANCE.getEFactory("http://de.hub.clickwatch.specificmodels.brn/sf/stats"); 
+            if (theSf_statsFactory != null) {
+                return theSf_statsFactory;
+            }
+        }
+        catch (Exception exception) {
+            EcorePlugin.INSTANCE.log(exception);
+        }
+        return new Sf_statsFactoryImpl();
+    }
 
 	/**
-	 * Creates an instance of the factory.
-	 * <!-- begin-user-doc -->
+     * Creates an instance of the factory.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public Sf_statsFactoryImpl() {
-		super();
-	}
+        super();
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public EObject create(EClass eClass) {
-		switch (eClass.getClassifierID()) {
-			case Sf_statsPackage.FLOWSTATS: return createFlowstats();
-			case Sf_statsPackage.RXFLOW: return createRxflow();
-			case Sf_statsPackage.STATS: return createStats();
-			case Sf_statsPackage.TXFLOW: return createTxflow();
-			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
-		}
-	}
+        switch (eClass.getClassifierID()) {
+            case Sf_statsPackage.FLOWSTATS: return createFlowstats();
+            case Sf_statsPackage.RXFLOW: return createRxflow();
+            case Sf_statsPackage.STATS: return createStats();
+            case Sf_statsPackage.TXFLOW: return createTxflow();
+            default:
+                throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+        }
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public Flowstats createFlowstats() {
-		FlowstatsImpl flowstats = new FlowstatsImpl();
-		return flowstats;
-	}
+        FlowstatsImpl flowstats = new FlowstatsImpl();
+        return flowstats;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public Rxflow createRxflow() {
-		RxflowImpl rxflow = new RxflowImpl();
-		return rxflow;
-	}
+        RxflowImpl rxflow = new RxflowImpl();
+        return rxflow;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public Stats createStats() {
-		StatsImpl stats = new StatsImpl();
-		return stats;
-	}
+        StatsImpl stats = new StatsImpl();
+        return stats;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public Txflow createTxflow() {
-		TxflowImpl txflow = new TxflowImpl();
-		return txflow;
-	}
+        TxflowImpl txflow = new TxflowImpl();
+        return txflow;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public Sf_statsPackage getSf_statsPackage() {
-		return (Sf_statsPackage)getEPackage();
-	}
+        return (Sf_statsPackage)getEPackage();
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @deprecated
-	 * @generated
-	 */
+     * @deprecated
+     * @generated
+     */
 	@Deprecated
 	public static Sf_statsPackage getPackage() {
-		return Sf_statsPackage.eINSTANCE;
-	}
+        return Sf_statsPackage.eINSTANCE;
+    }
 
 } //Sf_statsFactoryImpl

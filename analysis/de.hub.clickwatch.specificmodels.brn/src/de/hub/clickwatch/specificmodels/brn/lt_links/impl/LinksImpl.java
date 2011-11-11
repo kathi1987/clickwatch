@@ -35,163 +35,163 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public class LinksImpl extends HandlerImpl implements Links {
 	/**
-	 * The cached value of the '{@link #getLinktable() <em>Linktable</em>}' containment reference.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getLinktable() <em>Linktable</em>}' containment reference.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getLinktable()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getLinktable()
+     * @generated
+     * @ordered
+     */
 	protected Linktable linktable;
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected LinksImpl() {
-		super();
-	}
+        super();
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	protected EClass eStaticClass() {
-		return Lt_linksPackage.Literals.LINKS;
-	}
+        return Lt_linksPackage.Literals.LINKS;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public Linktable getLinktable() {
-		return linktable;
-	}
+        return linktable;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public NotificationChain basicSetLinktable(Linktable newLinktable, NotificationChain msgs) {
-		Linktable oldLinktable = linktable;
-		linktable = newLinktable;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, Lt_linksPackage.LINKS__LINKTABLE, oldLinktable, newLinktable);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
+        Linktable oldLinktable = linktable;
+        linktable = newLinktable;
+        if (eNotificationRequired()) {
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, Lt_linksPackage.LINKS__LINKTABLE, oldLinktable, newLinktable);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
+        }
+        return msgs;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public void setLinktable(Linktable newLinktable) {
-		if (newLinktable != linktable) {
-			NotificationChain msgs = null;
-			if (linktable != null)
-				msgs = ((InternalEObject)linktable).eInverseRemove(this, Lt_linksPackage.LINKTABLE__ECONTAINER_LINKTABLE, Linktable.class, msgs);
-			if (newLinktable != null)
-				msgs = ((InternalEObject)newLinktable).eInverseAdd(this, Lt_linksPackage.LINKTABLE__ECONTAINER_LINKTABLE, Linktable.class, msgs);
-			msgs = basicSetLinktable(newLinktable, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, Lt_linksPackage.LINKS__LINKTABLE, newLinktable, newLinktable));
-	}
+        if (newLinktable != linktable) {
+            NotificationChain msgs = null;
+            if (linktable != null)
+                msgs = ((InternalEObject)linktable).eInverseRemove(this, Lt_linksPackage.LINKTABLE__ECONTAINER_LINKTABLE, Linktable.class, msgs);
+            if (newLinktable != null)
+                msgs = ((InternalEObject)newLinktable).eInverseAdd(this, Lt_linksPackage.LINKTABLE__ECONTAINER_LINKTABLE, Linktable.class, msgs);
+            msgs = basicSetLinktable(newLinktable, msgs);
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, Lt_linksPackage.LINKS__LINKTABLE, newLinktable, newLinktable));
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case Lt_linksPackage.LINKS__LINKTABLE:
-				if (linktable != null)
-					msgs = ((InternalEObject)linktable).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - Lt_linksPackage.LINKS__LINKTABLE, null, msgs);
-				return basicSetLinktable((Linktable)otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
-	}
+        switch (featureID) {
+            case Lt_linksPackage.LINKS__LINKTABLE:
+                if (linktable != null)
+                    msgs = ((InternalEObject)linktable).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - Lt_linksPackage.LINKS__LINKTABLE, null, msgs);
+                return basicSetLinktable((Linktable)otherEnd, msgs);
+        }
+        return super.eInverseAdd(otherEnd, featureID, msgs);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case Lt_linksPackage.LINKS__LINKTABLE:
-				return basicSetLinktable(null, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+        switch (featureID) {
+            case Lt_linksPackage.LINKS__LINKTABLE:
+                return basicSetLinktable(null, msgs);
+        }
+        return super.eInverseRemove(otherEnd, featureID, msgs);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case Lt_linksPackage.LINKS__LINKTABLE:
-				return getLinktable();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+        switch (featureID) {
+            case Lt_linksPackage.LINKS__LINKTABLE:
+                return getLinktable();
+        }
+        return super.eGet(featureID, resolve, coreType);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case Lt_linksPackage.LINKS__LINKTABLE:
-				setLinktable((Linktable)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+        switch (featureID) {
+            case Lt_linksPackage.LINKS__LINKTABLE:
+                setLinktable((Linktable)newValue);
+                return;
+        }
+        super.eSet(featureID, newValue);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case Lt_linksPackage.LINKS__LINKTABLE:
-				setLinktable((Linktable)null);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+        switch (featureID) {
+            case Lt_linksPackage.LINKS__LINKTABLE:
+                setLinktable((Linktable)null);
+                return;
+        }
+        super.eUnset(featureID);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case Lt_linksPackage.LINKS__LINKTABLE:
-				return linktable != null;
-		}
-		return super.eIsSet(featureID);
-	}
+        switch (featureID) {
+            case Lt_linksPackage.LINKS__LINKTABLE:
+                return linktable != null;
+        }
+        return super.eIsSet(featureID);
+    }
 
 } //LinksImpl

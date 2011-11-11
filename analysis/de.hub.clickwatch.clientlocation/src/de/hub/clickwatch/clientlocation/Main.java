@@ -15,6 +15,7 @@ import com.google.inject.Guice;
 import com.google.inject.Injector;
 
 import de.hub.clickwatch.ClickWatchModule;
+import de.hub.clickwatch.ClickWatchModuleUtil;
 import de.hub.clickwatch.ClickWatchStandaloneSetup;
 import de.hub.clickwatch.analysis.AbstractAnalysis;
 import de.hub.clickwatch.clientlocation.clientstats.ClientStats;
@@ -45,19 +46,14 @@ public class Main extends AbstractAnalysis {
 		}
 		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("clientstats", new XMIResourceFactoryImpl());
 		
-		ClickWatchModule clickWatchModule = new ClickWatchModule() {
-			@Override
-			protected void bindValueAdapter() {
-				bind(IValueAdapter.class).to(XmlValueAdapter.class);
-			}
-		};
-		clickWatchModule.setLogger(new ILogger() {			
-			@Override
-			public void log(int status, String message, Throwable exception) {
-				System.out.println(message + ": " + exception.getMessage());
-			}
-		});
-		injector = Guice.createInjector(clickWatchModule);
+        ClickWatchModule module = ClickWatchModuleUtil.newBuilder().wValueAdapterClass(XmlValueAdapter.class).wLogger(new ILogger() {
+            @Override
+            public void log(int status, String message, Throwable exception) {
+                System.out.println(message + ": " + exception.getMessage());
+            }
+        }).build();
+		
+		injector = Guice.createInjector(module);
 		
 		rs = new ResourceSetImpl();
 		cwResource = rs.createResource(URI.createURI("fake.clickwatchmodel"));
@@ -74,9 +70,9 @@ public class Main extends AbstractAnalysis {
 		for (final String nodeAddress: nodeAddresses) { // TODO
 			INodeConnectionProvider ncp = injector.getInstance(INodeConnectionProvider.class);
 			INodeConnection nodeConnection = ncp.createConnection(nodeAddress, "7777");
-			nodeConnection.connect();
+			
 			Node node = nodeConnection.getAdapter(de.hub.clickwatch.connection.adapter.INodeAdapter.class).pullNode(network.getElementFilter(), network.getHandlerFilter());
-			nodeConnection.disconnect();
+			nodeConnection.close();
 			addNode(network, node);
 		}
 		

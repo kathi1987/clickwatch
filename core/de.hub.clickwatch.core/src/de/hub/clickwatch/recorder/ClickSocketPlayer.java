@@ -24,7 +24,7 @@ public class ClickSocketPlayer implements IClickSocketPlayer {
 	}
 	
 	public ClickSocketPlayer() {
-		this(false);
+		this(true);
 	}
 	
 	public static class PlayerModule extends AbstractModule {

@@ -25,30 +25,30 @@ import org.eclipse.emf.ecore.xmi.util.XMLProcessor;
 public class Gps_gps_coordXMLProcessor extends XMLProcessor {
 
 	/**
-	 * Public constructor to instantiate the helper.
-	 * <!-- begin-user-doc -->
+     * Public constructor to instantiate the helper.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public Gps_gps_coordXMLProcessor() {
-		super((EPackage.Registry.INSTANCE));
-		Gps_gps_coordPackage.eINSTANCE.eClass();
-	}
+        super((EPackage.Registry.INSTANCE));
+        Gps_gps_coordPackage.eINSTANCE.eClass();
+    }
 	
 	/**
-	 * Register for "*" and "xml" file extensions the Gps_gps_coordResourceFactoryImpl factory.
-	 * <!-- begin-user-doc -->
+     * Register for "*" and "xml" file extensions the Gps_gps_coordResourceFactoryImpl factory.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	protected Map<String, Resource.Factory> getRegistrations() {
-		if (registrations == null) {
-			super.getRegistrations();
-			registrations.put(XML_EXTENSION, new Gps_gps_coordResourceFactoryImpl());
-			registrations.put(STAR_EXTENSION, new Gps_gps_coordResourceFactoryImpl());
-		}
-		return registrations;
-	}
+        if (registrations == null) {
+            super.getRegistrations();
+            registrations.put(XML_EXTENSION, new Gps_gps_coordResourceFactoryImpl());
+            registrations.put(STAR_EXTENSION, new Gps_gps_coordResourceFactoryImpl());
+        }
+        return registrations;
+    }
 
 } //Gps_gps_coordXMLProcessor

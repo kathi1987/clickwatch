@@ -68,7 +68,7 @@ public class ModelFromRecordTest extends AbstractTest {
 	public void testWithSingleHandlerFromOneNode() throws IOException {
 		INodeConnectionProvider ncp = injector.getInstance(INodeConnectionProvider.class);
 		INodeConnection connection = ncp.createConnection(ipAddresses[0], "7777");
-		connection.connect();
+
 		Node node = connection.getAdapter(INodeAdapter.class).pullNode("device_wifi/link_stat", "bcast_stats");
 		Network network = ClickWatchModelFactory.eINSTANCE.createNetwork();
 		network.getNodes().add(node);
@@ -86,7 +86,7 @@ public class ModelFromRecordTest extends AbstractTest {
 		Network network = ClickWatchModelFactory.eINSTANCE.createNetwork();
 		for (String ipAddress: ipAddresses) {
 			INodeConnection connection = ncp.createConnection(ipAddress, "7777");
-			connection.connect();
+
 			Node node = connection.getAdapter(INodeAdapter.class).pullNode("device_wifi/link_stat", "bcast_stats");			
 			network.getNodes().add(node);
 		}
@@ -104,7 +104,7 @@ public class ModelFromRecordTest extends AbstractTest {
 		Network network = ClickWatchModelFactory.eINSTANCE.createNetwork();
 		for (String ipAddress: ipAddresses) {
 			INodeConnection connection = ncp.createConnection(ipAddress, "7777");
-			connection.connect();
+
 			Node node = connection.getAdapter(INodeAdapter.class).pullNode("device_wifi/link_stat", "");			
 			network.getNodes().add(node);
 		}
@@ -122,7 +122,7 @@ public class ModelFromRecordTest extends AbstractTest {
 		Network network = ClickWatchModelFactory.eINSTANCE.createNetwork();
 		for (String ipAddress: ipAddresses) {
 			INodeConnection connection = ncp.createConnection(ipAddress, "7777");
-			connection.connect();
+
 			Node node = connection.getAdapter(INodeAdapter.class).pullNode("", "");			
 			network.getNodes().add(node);
 		}

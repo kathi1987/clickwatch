@@ -22,7 +22,6 @@ import de.hub.clickwatch.connection.adapter.IHandlerEventListener;
  *   <li>{@link de.hub.clickwatch.model.Node#getINetAddress <em>INet Address</em>}</li>
  *   <li>{@link de.hub.clickwatch.model.Node#getPort <em>Port</em>}</li>
  *   <li>{@link de.hub.clickwatch.model.Node#getBackbone <em>Backbone</em>}</li>
- *   <li>{@link de.hub.clickwatch.model.Node#getActiveListeners <em>Active Listeners</em>}</li>
  *   <li>{@link de.hub.clickwatch.model.Node#getConnection <em>Connection</em>}</li>
  *   <li>{@link de.hub.clickwatch.model.Node#isRetrieving <em>Retrieving</em>}</li>
  *   <li>{@link de.hub.clickwatch.model.Node#isListening <em>Listening</em>}</li>
@@ -243,24 +242,8 @@ public interface Node extends ModelElementWithStatistics {
 	void setBackbone(BackboneType value);
 
 	/**
-     * Returns the value of the '<em><b>Active Listeners</b></em>' attribute list.
-     * The list contents are of type {@link de.hub.clickwatch.connection.adapter.IHandlerEventListener}.
-     * <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Active Listeners</em>' attribute list isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc -->
-     * @return the value of the '<em>Active Listeners</em>' attribute list.
-     * @see de.hub.clickwatch.model.ClickWatchModelPackage#getNode_ActiveListeners()
-     * @model default="" dataType="de.hub.clickwatch.model.IHandlerEventListener" transient="true" changeable="false" derived="true"
-     * @generated
-     */
-    EList<IHandlerEventListener> getActiveListeners();
-
-    /**
      * Returns the value of the '<em><b>Errors</b></em>' containment reference list.
-     * The list contents are of type {@link de.hub.clickwatch.model.Error}.
+     * The list contents are of type {@link de.hub.clickwatch.model.ClickWatchError}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Errors</em>' attribute list isn't clear,
@@ -272,7 +255,7 @@ public interface Node extends ModelElementWithStatistics {
      * @model containment="true" transient="true"
      * @generated
      */
-    EList<de.hub.clickwatch.model.Error> getErrors();
+    EList<ClickWatchError> getErrors();
 
     /**
      * <!-- begin-user-doc -->

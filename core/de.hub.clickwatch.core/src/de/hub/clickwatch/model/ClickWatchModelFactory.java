@@ -80,13 +80,13 @@ public interface ClickWatchModelFactory extends EFactory {
     Statistic createStatistic();
 
     /**
-     * Returns a new object of class '<em>Error</em>'.
+     * Returns a new object of class '<em>Click Watch Error</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @return a new object of class '<em>Error</em>'.
+     * @return a new object of class '<em>Click Watch Error</em>'.
      * @generated
      */
-    Error createError();
+    ClickWatchError createClickWatchError();
 
     /**
      * Returns the package supported by this factory.

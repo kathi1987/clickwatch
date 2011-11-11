@@ -13,6 +13,8 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
+import org.eclipse.emf.ecore.EcoreFactory;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -65,6 +67,9 @@ public class StatisticItemProvider
             addSumPropertyDescriptor(object);
             addCountPropertyDescriptor(object);
             addMeanPropertyDescriptor(object);
+            addSmallestPropertyDescriptor(object);
+            addLargestPropertyDescriptor(object);
+            addLatestPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
@@ -83,7 +88,7 @@ public class StatisticItemProvider
                  getString("_UI_Statistic_sum_feature"),
                  getString("_UI_PropertyDescriptor_description", "_UI_Statistic_sum_feature", "_UI_Statistic_type"),
                  ClickWatchModelPackage.Literals.STATISTIC__SUM,
-                 true,
+                 false,
                  false,
                  false,
                  ItemPropertyDescriptor.REAL_VALUE_IMAGE,
@@ -105,7 +110,7 @@ public class StatisticItemProvider
                  getString("_UI_Statistic_count_feature"),
                  getString("_UI_PropertyDescriptor_description", "_UI_Statistic_count_feature", "_UI_Statistic_type"),
                  ClickWatchModelPackage.Literals.STATISTIC__COUNT,
-                 true,
+                 false,
                  false,
                  false,
                  ItemPropertyDescriptor.REAL_VALUE_IMAGE,
@@ -127,7 +132,73 @@ public class StatisticItemProvider
                  getString("_UI_Statistic_mean_feature"),
                  getString("_UI_PropertyDescriptor_description", "_UI_Statistic_mean_feature", "_UI_Statistic_type"),
                  ClickWatchModelPackage.Literals.STATISTIC__MEAN,
-                 true,
+                 false,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the Smallest feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addSmallestPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_Statistic_smallest_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_Statistic_smallest_feature", "_UI_Statistic_type"),
+                 ClickWatchModelPackage.Literals.STATISTIC__SMALLEST,
+                 false,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the Largest feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addLargestPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_Statistic_largest_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_Statistic_largest_feature", "_UI_Statistic_type"),
+                 ClickWatchModelPackage.Literals.STATISTIC__LARGEST,
+                 false,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the Latest feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addLatestPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_Statistic_latest_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_Statistic_latest_feature", "_UI_Statistic_type"),
+                 ClickWatchModelPackage.Literals.STATISTIC__LATEST,
+                 false,
                  false,
                  false,
                  ItemPropertyDescriptor.REAL_VALUE_IMAGE,
@@ -173,6 +244,9 @@ public class StatisticItemProvider
             case ClickWatchModelPackage.STATISTIC__SUM:
             case ClickWatchModelPackage.STATISTIC__COUNT:
             case ClickWatchModelPackage.STATISTIC__MEAN:
+            case ClickWatchModelPackage.STATISTIC__SMALLEST:
+            case ClickWatchModelPackage.STATISTIC__LARGEST:
+            case ClickWatchModelPackage.STATISTIC__LATEST:
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
                 return;
         }
@@ -189,6 +263,36 @@ public class StatisticItemProvider
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
+
+        newChildDescriptors.add
+            (createChildParameter
+                (ClickWatchModelPackage.Literals.STATISTIC__SUM,
+                 EcoreFactory.eINSTANCE.createFromString(EcorePackage.Literals.EDOUBLE, "0")));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (ClickWatchModelPackage.Literals.STATISTIC__COUNT,
+                 EcoreFactory.eINSTANCE.createFromString(EcorePackage.Literals.EDOUBLE, "0")));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (ClickWatchModelPackage.Literals.STATISTIC__MEAN,
+                 EcoreFactory.eINSTANCE.createFromString(EcorePackage.Literals.EDOUBLE, "0")));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (ClickWatchModelPackage.Literals.STATISTIC__SMALLEST,
+                 EcoreFactory.eINSTANCE.createFromString(EcorePackage.Literals.EDOUBLE, "0")));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (ClickWatchModelPackage.Literals.STATISTIC__LARGEST,
+                 EcoreFactory.eINSTANCE.createFromString(EcorePackage.Literals.EDOUBLE, "0")));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (ClickWatchModelPackage.Literals.STATISTIC__LATEST,
+                 EcoreFactory.eINSTANCE.createFromString(EcorePackage.Literals.EDOUBLE, "0")));
     }
 
     /**

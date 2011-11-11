@@ -21,12 +21,13 @@ import de.hub.clickwatch.main.IClickWatchContext;
 import de.hub.clickwatch.main.IClickWatchMain;
 import de.hub.clickwatch.main.IRecordProvider;
 import de.hub.clickwatch.recorder.ClickWatchRecorderModule;
-import de.hub.clickwatch.recorder.database.cwdatabase.HBaseRowMap;
-import de.hub.clickwatch.recorder.database.cwdatabase.Record;
-import de.hub.clickwatch.recorder.database.hbase.HBaseUtil;
+import de.hub.clickwatch.recorder.database.DataBase;
+import de.hub.clickwatch.recorder.database.HBaseRowMap;
+import de.hub.clickwatch.recorder.database.Record;
+import de.hub.clickwatch.recorder.recorder.HBaseUtil;
 import de.hub.clickwatch.util.ILogger;
 import de.hub.clickwatch.util.Throwables;
-import de.hub.emfxml.XmlModelRepository;
+import de.hub.emfxml.util.EmfXmlUtil;
 
 public class ExtrapolateDataBase implements IClickWatchMain, IApplication {
 	
@@ -82,9 +83,9 @@ public class ExtrapolateDataBase implements IClickWatchMain, IApplication {
 		}
 		
 		targetRecord.setEnd(sourceRecord.getStart() + (factor*offset));		
-		sourceRecord.getDataBase().getRecords().add(targetRecord);
+		((DataBase)sourceRecord.eContainer()).getRecords().add(targetRecord);
 		try {
-			targetRecord.eResource().save(XmlModelRepository.defaultLoadSaveOptions());
+			targetRecord.eResource().save(EmfXmlUtil.defaultLoadSaveOptions());
 		} catch (IOException e) {
 			Throwables.propagate(e);
 		}

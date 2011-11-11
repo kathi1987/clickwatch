@@ -239,26 +239,26 @@ public class ClickWatchModelItemProviderAdapterFactory extends ClickWatchModelAd
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link de.hub.clickwatch.model.Error} instances.
+     * This keeps track of the one adapter used for all {@link de.hub.clickwatch.model.ClickWatchError} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    protected ErrorItemProvider errorItemProvider;
+    protected ClickWatchErrorItemProvider clickWatchErrorItemProvider;
 
     /**
-     * This creates an adapter for a {@link de.hub.clickwatch.model.Error}.
+     * This creates an adapter for a {@link de.hub.clickwatch.model.ClickWatchError}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
     @Override
-    public Adapter createErrorAdapter() {
-        if (errorItemProvider == null) {
-            errorItemProvider = new ErrorItemProvider(this);
+    public Adapter createClickWatchErrorAdapter() {
+        if (clickWatchErrorItemProvider == null) {
+            clickWatchErrorItemProvider = new ClickWatchErrorItemProvider(this);
         }
 
-        return errorItemProvider;
+        return clickWatchErrorItemProvider;
     }
 
     /**
@@ -367,7 +367,7 @@ public class ClickWatchModelItemProviderAdapterFactory extends ClickWatchModelAd
         if (statisticsContainerItemProvider != null) statisticsContainerItemProvider.dispose();
         if (eStringToStatisticMapItemProvider != null) eStringToStatisticMapItemProvider.dispose();
         if (statisticItemProvider != null) statisticItemProvider.dispose();
-        if (errorItemProvider != null) errorItemProvider.dispose();
+        if (clickWatchErrorItemProvider != null) clickWatchErrorItemProvider.dispose();
     }
 
 }

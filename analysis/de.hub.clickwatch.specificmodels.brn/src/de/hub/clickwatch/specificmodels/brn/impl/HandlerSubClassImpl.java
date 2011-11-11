@@ -24,22 +24,22 @@ import org.eclipse.emf.ecore.EClass;
  */
 public class HandlerSubClassImpl extends HandlerImpl implements HandlerSubClass {
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected HandlerSubClassImpl() {
-		super();
-	}
+        super();
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	protected EClass eStaticClass() {
-		return BrnPackage.Literals.HANDLER_SUB_CLASS;
-	}
+        return BrnPackage.Literals.HANDLER_SUB_CLASS;
+    }
 
 } //HandlerSubClassImpl

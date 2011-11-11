@@ -28,7 +28,7 @@ public class MetaDataAdapter extends AbstractAdapter implements IMetaDataAdapter
 
     @Override
     public Node pullAllMetaData() {
-        IClickSocket clickSocket = connection.acquireSocket();
+        IClickSocket clickSocket = connection.getBlockingSocket();
         if (clickSocket == null || !clickSocket.isConnected()) {
             return null;
         }
@@ -96,9 +96,7 @@ public class MetaDataAdapter extends AbstractAdapter implements IMetaDataAdapter
                     }
                 }
             }
-            connection.releaseSocket();
         } catch (Exception e) {
-            connection.releaseSocket();
             connection.getAdapter(IErrorAdapter.class).createError("Exception while retrieving meta data", e);
         }
 

@@ -16,8 +16,9 @@ import de.hub.clickwatch.main.IProgressMonitorProvider;
 import de.hub.clickwatch.main.IRecordProvider;
 import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.model.Node;
+import de.hub.clickwatch.model.util.builder.ModelBuilders;
 import de.hub.clickwatch.recorder.database.DataBaseUtil;
-import de.hub.clickwatch.recorder.database.cwdatabase.Record;
+import de.hub.clickwatch.recorder.database.Record;
 import de.hub.clickwatch.util.ILogger;
 
 public abstract class AbstractAnalysis implements IClickWatchMain {
@@ -33,7 +34,7 @@ public abstract class AbstractAnalysis implements IClickWatchMain {
 	
 	public <T> Iterable<T> createIterator(Node node, String handlerName, Class<T> handlerClass, IProgressMonitor monitor) {
 		final Iterator<Handler> iterator = dbUtil.getHandlerIterator(
-				createHandle(record, node.getINetAddress(), handlerName, start, end), monitor);
+				createHandle(record, node, ModelBuilders.newHandlerBuilder().withName(handlerName).build(), start, end), monitor);
 		return new Iterable<T>() {
 			@Override
 			public Iterator<T> iterator() {

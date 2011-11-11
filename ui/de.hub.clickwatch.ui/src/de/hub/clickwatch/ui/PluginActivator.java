@@ -20,9 +20,9 @@ import de.hub.clickwatch.ClickWatchModule;
 import de.hub.clickwatch.ClickWatchModuleUtil;
 import de.hub.clickwatch.ClickWatchModuleUtil.ClickWatchModuleBuilder;
 import de.hub.clickwatch.ClickWatchModuleUtil.HandlerBehaviour;
+import de.hub.clickwatch.ClickWatchModuleUtil.ValueType;
 import de.hub.clickwatch.connection.adapter.values.StringValueAdapter;
 import de.hub.clickwatch.connection.adapter.values.XmlValueAdapter;
-import de.hub.clickwatch.main.impl.InjectorProvider.ValueType;
 import de.hub.clickwatch.preferences.PreferenceConstants;
 import de.hub.clickwatch.specificmodels.brn.BrnValueAdapter;
 import de.hub.clickwatch.ui.connection.UiClickWatchNodeMergeConfiguration;
@@ -30,85 +30,79 @@ import de.hub.clickwatch.util.Throwables;
 
 public class PluginActivator extends AbstractUIPlugin {
 
-	private static PluginActivator INSTANCE;
-	private Injector injectorCache = null;
-	private boolean bindToPlayerCache = false;
+    private static PluginActivator INSTANCE;
+    private Injector injectorCache = null;
+    private boolean bindToPlayerCache = false;
 
-	@Override
-	public void start(BundleContext context) throws Exception {
-		super.start(context);
-		INSTANCE = this;
-	}
+    @Override
+    public void start(BundleContext context) throws Exception {
+        super.start(context);
+        INSTANCE = this;
+    }
 
-	public static PluginActivator getInstance() {
-		return INSTANCE;
-	}
+    public static PluginActivator getInstance() {
+        return INSTANCE;
+    }
 
-	public Injector getInjector() {	    
-		IPreferenceStore store = getPreferenceStore();
-		final boolean bindToPlayer = store
-				.getBoolean(PreferenceConstants.BIND_TO_PLAYER);
-		final Integer debugLvl = Integer.parseInt(store
-				.getString(PreferenceConstants.DEBUG_LEVEL));
-		final HandlerBehaviour handlerBehav = HandlerBehaviour.valueOf(store
-				.getString(PreferenceConstants.HANDLER_BEHAVIOUR));
-		final ValueType valType = ValueType.valueOf(store
-				.getString(PreferenceConstants.VALUE_TYPE));
+    public Injector getInjector() {
+        IPreferenceStore store = getPreferenceStore();
+        final boolean bindToPlayer = store.getBoolean(PreferenceConstants.BIND_TO_PLAYER);
+        final Integer debugLvl = Integer.parseInt(store.getString(PreferenceConstants.DEBUG_LEVEL));
+        final HandlerBehaviour handlerBehav = HandlerBehaviour.valueOf(store.getString(PreferenceConstants.HANDLER_BEHAVIOUR));
+        final ValueType valType = ValueType.valueOf(store.getString(PreferenceConstants.VALUE_TYPE));
 
-		if (bindToPlayerCache != bindToPlayer || injectorCache == null) {
-			bindToPlayerCache = bindToPlayer;
-			
+        if (bindToPlayerCache != bindToPlayer || injectorCache == null) {
+            bindToPlayerCache = bindToPlayer;
+
+            //@formatter:off
 			ClickWatchModuleBuilder builder = ClickWatchModuleUtil.newBuilder()
 					.wDebugLvl(debugLvl)
 					.wMergeConfigurationClass(UiClickWatchNodeMergeConfiguration.class)
 					.wHandlerBhvr(handlerBehav, 500, 3000);
-			if (valType == ValueType.XML) {
-				builder.wValueAdapterClass(XmlValueAdapter.class);
-			} else if (valType == ValueType.STRING) {
-				builder.wValueAdapterClass(StringValueAdapter.class);
-			} else if (valType == ValueType.SPECIFIC) {
-				builder.wValueAdapterClass(BrnValueAdapter.class);
-			} else {
-				builder.wValueAdapterClass(XmlValueAdapter.class);
-			}
-			if (bindToPlayer) {
-				try {
-					URI uri = URI.createURI(getInstance()
-							.getBundle().getEntry("resources/records/record_11-06-23.clickwatchmodel")
-							.toURI().toString());
-					builder.wRecord(uri);
-				} catch (Exception e) {
-					Throwables.propagate(e);
-				}
-			}
-			ClickWatchModule clickWatchModule = builder.build();
-			
-			List<Module> modules = new ArrayList<Module>();
-			modules.add(clickWatchModule);
-			modules.addAll(getAdditionalModules());
-			injectorCache = Guice.createInjector(modules
-					.toArray(new Module[] {}));
-		}
-		return injectorCache;
-	}
+	         //@formatter:on
+            if (valType == ValueType.XML) {
+                builder.wValueAdapterClass(XmlValueAdapter.class);
+            } else if (valType == ValueType.STRING) {
+                builder.wValueAdapterClass(StringValueAdapter.class);
+            } else if (valType == ValueType.SPECIFIC) {
+                builder.wValueAdapterClass(BrnValueAdapter.class);
+            } else {
+                builder.wValueAdapterClass(XmlValueAdapter.class);
+            }
+            if (bindToPlayer) {
+                try {
+                    URI uri = URI.createURI(getInstance().getBundle()
+                            .getEntry("resources/records/record_11-06-23.clickwatchmodel").toURI().toString());
+                    builder.wRecord(uri);
+                } catch (Exception e) {
+                    Throwables.propagate(e);
+                }
+            }
+            ClickWatchModule clickWatchModule = builder.build();
 
-	private List<Module> getAdditionalModules() {
-		List<Module> result = new ArrayList<Module>();
-		IConfigurationElement[] config = Platform.getExtensionRegistry()
-				.getConfigurationElementsFor(
-						"de.hub.clickwatch.ui.AdditionalModules");
-		try {
-			for (IConfigurationElement e : config) {
-				final Object o = e.createExecutableExtension("class");
-				if (o instanceof IAdditionalModulesProvider) {
-					IAdditionalModulesProvider additionalModulesProvider = (IAdditionalModulesProvider) o;
-					result.addAll(Arrays.asList(additionalModulesProvider
-							.getAdditionalModules()));
-				}
-			}
-		} catch (CoreException e) {
-			Throwables.propagate(e);
-		}
-		return result;
-	}
+            List<Module> modules = new ArrayList<Module>();
+            modules.add(clickWatchModule);
+            modules.addAll(getAdditionalModules());
+            injectorCache = Guice.createInjector(modules.toArray(new Module[] {}));
+        }
+        return injectorCache;
+    }
+
+    private List<Module> getAdditionalModules() {
+        List<Module> result = new ArrayList<Module>();
+        IConfigurationElement[] config = Platform.getExtensionRegistry().getConfigurationElementsFor(
+                "de.hub.clickwatch.ui.AdditionalModules");
+        try {
+            for (IConfigurationElement e : config) {
+                final Object o = e.createExecutableExtension("class");
+                if (o instanceof IAdditionalModulesProvider) {
+                    IAdditionalModulesProvider additionalModulesProvider = (IAdditionalModulesProvider)o;
+                    result.addAll(Arrays.asList(additionalModulesProvider.getAdditionalModules()));
+                }
+            }
+        } catch (CoreException e) {
+            Throwables.propagate(e);
+        }
+        return result;
+    }
 }

@@ -47,7 +47,7 @@ public class CompoundHandlerEventAdapter extends HandlerEventAdapter {
 	private boolean inRecordMode = false;
 	
 	private void configureCompoundHandler(boolean record, int chLocalUpdateDelay) {
-		IClickSocket clickSocket = connection.acquireSocket();
+		IClickSocket clickSocket = connection.getBlockingSocket();
 		if (clickSocket == null) {
 			return;
 		}
@@ -66,8 +66,6 @@ public class CompoundHandlerEventAdapter extends HandlerEventAdapter {
 			}
 		} catch (Exception e) {
 			connection.getAdapter(IErrorAdapter.class).createError("exception while configuring compound handler", e);
-		} finally {
-		    connection.releaseSocket();
 		}
 		logger.log(ILogger.DEBUG, "configured click compound handler of " + connection + " with " + record + ", " + changesOnly + ", " + chLocalUpdateDelay, null);
 	}

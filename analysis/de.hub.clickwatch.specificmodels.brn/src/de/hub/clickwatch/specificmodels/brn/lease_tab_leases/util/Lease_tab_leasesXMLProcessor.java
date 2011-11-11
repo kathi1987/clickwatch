@@ -25,30 +25,30 @@ import org.eclipse.emf.ecore.xmi.util.XMLProcessor;
 public class Lease_tab_leasesXMLProcessor extends XMLProcessor {
 
 	/**
-	 * Public constructor to instantiate the helper.
-	 * <!-- begin-user-doc -->
+     * Public constructor to instantiate the helper.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public Lease_tab_leasesXMLProcessor() {
-		super((EPackage.Registry.INSTANCE));
-		Lease_tab_leasesPackage.eINSTANCE.eClass();
-	}
+        super((EPackage.Registry.INSTANCE));
+        Lease_tab_leasesPackage.eINSTANCE.eClass();
+    }
 	
 	/**
-	 * Register for "*" and "xml" file extensions the Lease_tab_leasesResourceFactoryImpl factory.
-	 * <!-- begin-user-doc -->
+     * Register for "*" and "xml" file extensions the Lease_tab_leasesResourceFactoryImpl factory.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	protected Map<String, Resource.Factory> getRegistrations() {
-		if (registrations == null) {
-			super.getRegistrations();
-			registrations.put(XML_EXTENSION, new Lease_tab_leasesResourceFactoryImpl());
-			registrations.put(STAR_EXTENSION, new Lease_tab_leasesResourceFactoryImpl());
-		}
-		return registrations;
-	}
+        if (registrations == null) {
+            super.getRegistrations();
+            registrations.put(XML_EXTENSION, new Lease_tab_leasesResourceFactoryImpl());
+            registrations.put(STAR_EXTENSION, new Lease_tab_leasesResourceFactoryImpl());
+        }
+        return registrations;
+    }
 
 } //Lease_tab_leasesXMLProcessor

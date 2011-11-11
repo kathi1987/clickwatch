@@ -14,7 +14,7 @@
       <wizard
             id="de.hub.clickwatch.recoder.cwdatabase.presentation.CWDataBaseModelWizardID"
             name="ClickWatch data base"
-            class="de.hub.clickwatch.recoder.cwdatabase.presentation.CWDataBaseModelWizard"
+            class="de.hub.clickwatch.recorder.database.presentation.CWDataBaseModelWizard"
             category="edu.hu.clickwatch.analysis.WizardCategory"
             icon="icons/full/obj16/CWDataBaseModelFile.gif">
          <description>%_UI_CWDataBaseModelWizard_description</description>
@@ -28,8 +28,8 @@
             name="%_UI_CWDataBaseEditor_label"
             icon="icons/full/obj16/CWDataBaseModelFile.gif"
             extensions="cwdatabase"
-            class="de.hub.clickwatch.recoder.cwdatabase.presentation.CWDataBaseEditor"
-            contributorClass="de.hub.clickwatch.recoder.cwdatabase.presentation.CWDataBaseActionBarContributor">
+            class="de.hub.clickwatch.recorder.database.presentation.CWDataBaseEditor"
+            contributorClass="de.hub.clickwatch.recorder.database.presentation.CWDataBaseActionBarContributor">
       </editor>
    </extension>
 

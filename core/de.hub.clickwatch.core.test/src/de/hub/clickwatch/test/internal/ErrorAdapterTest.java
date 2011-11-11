@@ -66,7 +66,7 @@ public class ErrorAdapterTest extends ClickwatchTest {
 	
     private final IErrorListener errorListener = new IErrorListener() {
         @Override
-        public void handlerError(de.hub.clickwatch.model.Error error) {
+        public void handlerError(de.hub.clickwatch.model.ClickWatchError error) {
             if (errorCount == 0) {
                 boolean equalsMessage = "test error".equals(error.getMessage());
                 boolean equalsExceptionMessage = "test error".equals(error.getException().getMessage());

@@ -5,14 +5,14 @@ import com.google.inject.name.Names;
 
 import de.hub.clickwatch.connection.adapter.values.IValueAdapter;
 import de.hub.clickwatch.connection.adapter.values.StringValueAdapter;
-import de.hub.clickwatch.recorder.v2.HBaseDataBaseAdapter;
-import de.hub.clickwatch.recorder.v2.IDataBaseAdapter;
+import de.hub.clickwatch.recorder.recorder.HBaseDataBaseAdapter;
+import de.hub.clickwatch.recorder.recorder.IDataBaseAdapter;
 
 public class ClickWatchRecorderModule extends AbstractModule {
 
-	public static final String I_PUTS_BUFFER_SIZE 			= "CWRecorderModule.handlerPerRecord";
-	public static final String DB_VALUE_ADAPTER_PROPERTY 				= "CWRecorderModule.dbValueAdapter";
-	public static final String B_SAVE_RECORD_FILE						= "CWRecorderModule.saveRecordFile";
+    public static final String I_PUTS_BUFFER_SIZE = "CWRecorderModule.handlerPerRecord";
+    public static final String DB_VALUE_ADAPTER_PROPERTY = "CWRecorderModule.dbValueAdapter";
+    public static final String B_SAVE_RECORD_FILE = "CWRecorderModule.saveRecordFile";
 	
 	@Override
 	protected void configure() {

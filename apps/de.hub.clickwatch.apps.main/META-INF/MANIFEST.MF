@@ -4,9 +4,13 @@ Bundle-Name: ClickWatch Main
 Bundle-SymbolicName: de.hub.clickwatch.apps.main;singleton:=true
 Bundle-Version: 2.0.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Require-Bundle: de.hub.clickwatch.core;bundle-version="2.0.0";visibility:=reexport,
+Require-Bundle: de.hub.clickwatch.core;bundle-version="2.2.0";visibility:=reexport,
  de.hub.clickwatch.recorder;bundle-version="2.0.0";visibility:=reexport,
  de.hub.clickwatch.specificmodels.brn;bundle-version="2.0.0";visibility:=reexport,
  de.hub.clickwatch.analysis.results;bundle-version="2.0.0";visibility:=reexport
 Export-Package: de.hub.clickwatch.main,
- de.hub.clickwatch.main.impl
+ de.hub.clickwatch.main.impl,
+ org.apache.commons.cli
+Bundle-ClassPath: ., 
+ lib/commons-cli-1.2.jar
+Eclipse-RegisterBuddy: de.hub.clickwatch.ui

@@ -22,6 +22,7 @@ public class Disconnect extends AbstractNodeAction {
 			
 			INodeConnection nodeConnection = node.getConnection();
             if (nodeConnection != null) {
+                nodeConnection.waitForOpenTasks();
                 nodeConnection.close();
 			}
 		}

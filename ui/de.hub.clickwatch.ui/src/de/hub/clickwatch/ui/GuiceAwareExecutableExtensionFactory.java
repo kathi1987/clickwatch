@@ -12,8 +12,6 @@ import org.osgi.framework.Bundle;
 
 import com.google.inject.Injector;
 
-
-
 public class GuiceAwareExecutableExtensionFactory implements IExecutableExtensionFactory, IExecutableExtension {
 	
 	public static final String GUICEKEY = "guicekey";
@@ -40,18 +38,16 @@ public class GuiceAwareExecutableExtensionFactory implements IExecutableExtensio
 			final Injector injector = getInjector();
 			final Object result = injector.getInstance(clazz);
 			if (result instanceof IExecutableExtension)
-				((IExecutableExtension) result).setInitializationData(config, null, null);
-			return result;
-		}
-		catch (Exception e) {
-			try {
-				Thread.currentThread().getContextClassLoader().loadClass(clazzName);
-			} catch (ClassNotFoundException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-			throw new CoreException(new Status(IStatus.ERROR, getBundle().getSymbolicName(), e.getMessage(),e));
-		}
+                ((IExecutableExtension)result).setInitializationData(config, null, null);
+            return result;
+        } catch (Throwable e) {
+            try {
+                Thread.currentThread().getContextClassLoader().loadClass(clazzName);
+            } catch (ClassNotFoundException e1) {
+                e1.printStackTrace();
+            }
+            throw new CoreException(new Status(IStatus.ERROR, getBundle().getSymbolicName(), e.getMessage(), e));
+        }
 	}
 	
 	protected Bundle getBundle() {

@@ -4,7 +4,7 @@ import com.google.inject.ImplementedBy;
 
 import de.hub.clickcontrol.IClickSocket;
 import de.hub.clickwatch.connection.adapter.IHandlerEventAdapter;
-import de.hub.clickwatch.connection.internal.NodeConnectionImpl;
+import de.hub.clickwatch.connection.internal.NodeConnection;
 import de.hub.clickwatch.model.Node;
 
 /**
@@ -18,7 +18,7 @@ import de.hub.clickwatch.model.Node;
  * {@link IClickSocket}. Connecting and disconnecting the socket is handled
  * implicitly.
  */
-@ImplementedBy(NodeConnectionImpl.class)
+@ImplementedBy(NodeConnection.class)
 public interface INodeConnection {
 
     public <T> T getAdapter(Class<T> adapterClass);
@@ -26,14 +26,26 @@ public interface INodeConnection {
     public Node getNode();
 
     /**
-     * Stops all listeners (see {@link IHandlerEventAdapter}) and closes the
-     * connection. The connections stays in the {@link Node} and can be reused.
+     * Stops listening (see {@link IHandlerEventAdapter#stop()}) and closes the
+     * connection. The connections object stays within the {@link Node} (see
+     * {@link Node#getConnection()}, and {@link #getNode()}) and can be reused.
+     * 
+     * Runs asynchronous within the connections thread.
      */
     public void close();
-    
+
     /**
-     * Disposes all adapters.
+     * Calls {@link #close()} and disposes all adapters afterwards, after that
+     * is removes the connection from the associated node.
+     * 
+     * Runs asynchronous within the connections thread.
      */
     public void dispose();
+
+    /**
+     * Many operations on this connection are asynchronous. This method blocks
+     * until all registered tasks are completed.
+     */
+    public void waitForOpenTasks();
 
 }

@@ -32,7 +32,7 @@ public class ModelBuilders {
     return StatisticBuilder.newStatisticBuilder();
   }
 
-  public static final ErrorBuilder newErrorBuilder() {
-    return ErrorBuilder.newErrorBuilder();
+  public static final ClickWatchErrorBuilder newClickWatchErrorBuilder() {
+    return ClickWatchErrorBuilder.newClickWatchErrorBuilder();
   }
 }

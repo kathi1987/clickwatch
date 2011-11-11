@@ -13,14 +13,14 @@
    <extension point="org.eclipse.emf.ecore.generated_package">
       <package
             uri="http://de.hub.clickwatch/cwdatabase"
-            class="de.hub.clickwatch.recorder.database.cwdatabase.CWDataBasePackage"
+            class="de.hub.clickwatch.recorder.database.CWDataBasePackage"
             genModel="src/de/hub/clickwatch/recorder/database/CWDataBase.genmodel"/>
    </extension>
 
    <extension point="org.eclipse.emf.ecore.extension_parser">
       <parser
             type="cwdatabase"
-            class="de.hub.clickwatch.recorder.database.cwdatabase.util.CWDataBaseResourceFactoryImpl"/>
+            class="de.hub.clickwatch.recorder.database.util.CWDataBaseResourceFactoryImpl"/>
    </extension>
 
 </plugin>

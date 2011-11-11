@@ -22,9 +22,9 @@ import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.ui.statushandlers.StatusManager;
 import org.osgi.framework.Bundle;
 
+import de.hub.clickwatch.ClickWatchModuleUtil.HandlerBehaviour;
 import de.hub.clickwatch.main.IClickWatchMain;
 import de.hub.clickwatch.main.impl.InjectorProvider.DataBaseType;
-import de.hub.clickwatch.main.impl.InjectorProvider.HandlerBehaviour;
 import de.hub.clickwatch.transformationLauncher.tabs.ArgumentsParametersTab;
 import de.hub.clickwatch.transformationLauncher.tabs.ClickwatchParametersTab;
 import de.hub.clickwatch.transformationLauncher.tabs.MainParametersTab;

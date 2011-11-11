@@ -21,7 +21,7 @@ import de.hub.clickwatch.main.IResultsProvider;
 import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.model.Node;
 import de.hub.clickwatch.recorder.database.DataBaseUtil;
-import de.hub.clickwatch.recorder.database.cwdatabase.Record;
+import de.hub.clickwatch.recorder.database.Record;
 import de.hub.clickwatch.specificmodels.brn.device_wifi_wifidevice_cst_stats.Stats;
 
 public class HwBusyPlotAnalysis implements IClickWatchMain {
@@ -38,7 +38,7 @@ public class HwBusyPlotAnalysis implements IClickWatchMain {
 		monitor.beginTask("Performing analysis on all nodes", nodes.length*100);
 		for (Node node: nodes) {
 			Iterator<Handler> iterator = dbUtil.getHandlerIterator(
-					createHandle(record, node.getINetAddress(), "device_wifi/wifidevice/cst/stats"),
+					createHandle(record, node, "device_wifi/wifidevice/cst/stats"),
 					new SubProgressMonitor(monitor, 100));
 			while(iterator.hasNext()) {
 				Stats handler = (Stats)iterator.next();

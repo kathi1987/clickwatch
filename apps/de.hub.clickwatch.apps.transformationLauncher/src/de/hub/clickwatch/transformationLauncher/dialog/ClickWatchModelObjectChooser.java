@@ -1,6 +1,5 @@
 package de.hub.clickwatch.transformationLauncher.dialog;
 
-import org.eclipse.debug.internal.ui.SWTFactory;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;

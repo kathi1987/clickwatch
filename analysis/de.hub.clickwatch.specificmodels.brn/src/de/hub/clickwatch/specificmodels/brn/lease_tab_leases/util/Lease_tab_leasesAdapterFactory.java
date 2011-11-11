@@ -27,154 +27,154 @@ import org.eclipse.emf.ecore.EObject;
  */
 public class Lease_tab_leasesAdapterFactory extends AdapterFactoryImpl {
 	/**
-	 * The cached model package.
-	 * <!-- begin-user-doc -->
+     * The cached model package.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected static Lease_tab_leasesPackage modelPackage;
 
 	/**
-	 * Creates an instance of the adapter factory.
-	 * <!-- begin-user-doc -->
+     * Creates an instance of the adapter factory.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public Lease_tab_leasesAdapterFactory() {
-		if (modelPackage == null) {
-			modelPackage = Lease_tab_leasesPackage.eINSTANCE;
-		}
-	}
+        if (modelPackage == null) {
+            modelPackage = Lease_tab_leasesPackage.eINSTANCE;
+        }
+    }
 
 	/**
-	 * Returns whether this factory is applicable for the type of the object.
-	 * <!-- begin-user-doc -->
+     * Returns whether this factory is applicable for the type of the object.
+     * <!-- begin-user-doc -->
 	 * This implementation returns <code>true</code> if the object is either the model's package or is an instance object of the model.
 	 * <!-- end-user-doc -->
-	 * @return whether this factory is applicable for the type of the object.
-	 * @generated
-	 */
+     * @return whether this factory is applicable for the type of the object.
+     * @generated
+     */
 	@Override
 	public boolean isFactoryForType(Object object) {
-		if (object == modelPackage) {
-			return true;
-		}
-		if (object instanceof EObject) {
-			return ((EObject)object).eClass().getEPackage() == modelPackage;
-		}
-		return false;
-	}
+        if (object == modelPackage) {
+            return true;
+        }
+        if (object instanceof EObject) {
+            return ((EObject)object).eClass().getEPackage() == modelPackage;
+        }
+        return false;
+    }
 
 	/**
-	 * The switch that delegates to the <code>createXXX</code> methods.
-	 * <!-- begin-user-doc -->
+     * The switch that delegates to the <code>createXXX</code> methods.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected Lease_tab_leasesSwitch<Adapter> modelSwitch =
 		new Lease_tab_leasesSwitch<Adapter>() {
-			@Override
-			public Adapter caseClient(Client object) {
-				return createClientAdapter();
-			}
-			@Override
-			public Adapter caseDhcpleases(Dhcpleases object) {
-				return createDhcpleasesAdapter();
-			}
-			@Override
-			public Adapter caseLeases(Leases object) {
-				return createLeasesAdapter();
-			}
-			@Override
-			public Adapter caseHandler(Handler object) {
-				return createHandlerAdapter();
-			}
-			@Override
-			public Adapter defaultCase(EObject object) {
-				return createEObjectAdapter();
-			}
-		};
+            @Override
+            public Adapter caseClient(Client object) {
+                return createClientAdapter();
+            }
+            @Override
+            public Adapter caseDhcpleases(Dhcpleases object) {
+                return createDhcpleasesAdapter();
+            }
+            @Override
+            public Adapter caseLeases(Leases object) {
+                return createLeasesAdapter();
+            }
+            @Override
+            public Adapter caseHandler(Handler object) {
+                return createHandlerAdapter();
+            }
+            @Override
+            public Adapter defaultCase(EObject object) {
+                return createEObjectAdapter();
+            }
+        };
 
 	/**
-	 * Creates an adapter for the <code>target</code>.
-	 * <!-- begin-user-doc -->
+     * Creates an adapter for the <code>target</code>.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param target the object to adapt.
-	 * @return the adapter for the <code>target</code>.
-	 * @generated
-	 */
+     * @param target the object to adapt.
+     * @return the adapter for the <code>target</code>.
+     * @generated
+     */
 	@Override
 	public Adapter createAdapter(Notifier target) {
-		return modelSwitch.doSwitch((EObject)target);
-	}
+        return modelSwitch.doSwitch((EObject)target);
+    }
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Client <em>Client</em>}'.
-	 * <!-- begin-user-doc -->
+     * Creates a new adapter for an object of class '{@link de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Client <em>Client</em>}'.
+     * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Client
-	 * @generated
-	 */
+     * @return the new adapter.
+     * @see de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Client
+     * @generated
+     */
 	public Adapter createClientAdapter() {
-		return null;
-	}
+        return null;
+    }
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Dhcpleases <em>Dhcpleases</em>}'.
-	 * <!-- begin-user-doc -->
+     * Creates a new adapter for an object of class '{@link de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Dhcpleases <em>Dhcpleases</em>}'.
+     * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Dhcpleases
-	 * @generated
-	 */
+     * @return the new adapter.
+     * @see de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Dhcpleases
+     * @generated
+     */
 	public Adapter createDhcpleasesAdapter() {
-		return null;
-	}
+        return null;
+    }
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Leases <em>Leases</em>}'.
-	 * <!-- begin-user-doc -->
+     * Creates a new adapter for an object of class '{@link de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Leases <em>Leases</em>}'.
+     * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Leases
-	 * @generated
-	 */
+     * @return the new adapter.
+     * @see de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Leases
+     * @generated
+     */
 	public Adapter createLeasesAdapter() {
-		return null;
-	}
+        return null;
+    }
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.hub.clickwatch.model.Handler <em>Handler</em>}'.
-	 * <!-- begin-user-doc -->
+     * Creates a new adapter for an object of class '{@link de.hub.clickwatch.model.Handler <em>Handler</em>}'.
+     * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see de.hub.clickwatch.model.Handler
-	 * @generated
-	 */
+     * @return the new adapter.
+     * @see de.hub.clickwatch.model.Handler
+     * @generated
+     */
 	public Adapter createHandlerAdapter() {
-		return null;
-	}
+        return null;
+    }
 
 	/**
-	 * Creates a new adapter for the default case.
-	 * <!-- begin-user-doc -->
+     * Creates a new adapter for the default case.
+     * <!-- begin-user-doc -->
 	 * This default implementation returns null.
 	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @generated
-	 */
+     * @return the new adapter.
+     * @generated
+     */
 	public Adapter createEObjectAdapter() {
-		return null;
-	}
+        return null;
+    }
 
 } //Lease_tab_leasesAdapterFactory
