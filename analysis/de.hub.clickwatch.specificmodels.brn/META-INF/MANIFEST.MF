@@ -21,6 +21,7 @@ Export-Package: de.hub.clickwatch.specificmodels.brn,
  de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo,
  de.hub.clickwatch.specificmodels.brn.sf_stats,
  de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo,
+ de.hub.clickwatch.specificmodels.brn.tsi_syncinfo,
  de.hub.clickwatch.specificmodels.brn.util
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,

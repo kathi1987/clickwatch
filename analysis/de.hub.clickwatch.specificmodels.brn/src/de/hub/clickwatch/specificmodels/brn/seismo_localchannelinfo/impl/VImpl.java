@@ -30,6 +30,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * <ul>
  *   <li>{@link de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.impl.VImpl#getEContainer_v <em>EContainer v</em>}</li>
  *   <li>{@link de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.impl.VImpl#getT <em>T</em>}</li>
+ *   <li>{@link de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.impl.VImpl#getS <em>S</em>}</li>
  *   <li>{@link de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.impl.VImpl#getC0 <em>C0</em>}</li>
  *   <li>{@link de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.impl.VImpl#getC1 <em>C1</em>}</li>
  *   <li>{@link de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.impl.VImpl#getC2 <em>C2</em>}</li>
@@ -58,6 +59,26 @@ public class VImpl extends EObjectImpl implements V {
 	 * @ordered
 	 */
 	protected long t = T_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getS() <em>S</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getS()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final long S_EDEFAULT = 0L;
+
+	/**
+	 * The cached value of the '{@link #getS() <em>S</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getS()
+	 * @generated
+	 * @ordered
+	 */
+	protected long s = S_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getC0() <em>C0</em>}' attribute.
@@ -205,6 +226,27 @@ public class VImpl extends EObjectImpl implements V {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public long getS() {
+		return s;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setS(long newS) {
+		long oldS = s;
+		s = newS;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, Seismo_localchannelinfoPackage.V__S, oldS, s));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public int getC0() {
 		return c0;
 	}
@@ -319,6 +361,8 @@ public class VImpl extends EObjectImpl implements V {
 				return getEContainer_v();
 			case Seismo_localchannelinfoPackage.V__T:
 				return getT();
+			case Seismo_localchannelinfoPackage.V__S:
+				return getS();
 			case Seismo_localchannelinfoPackage.V__C0:
 				return getC0();
 			case Seismo_localchannelinfoPackage.V__C1:
@@ -342,6 +386,9 @@ public class VImpl extends EObjectImpl implements V {
 				return;
 			case Seismo_localchannelinfoPackage.V__T:
 				setT((Long)newValue);
+				return;
+			case Seismo_localchannelinfoPackage.V__S:
+				setS((Long)newValue);
 				return;
 			case Seismo_localchannelinfoPackage.V__C0:
 				setC0((Integer)newValue);
@@ -370,6 +417,9 @@ public class VImpl extends EObjectImpl implements V {
 			case Seismo_localchannelinfoPackage.V__T:
 				setT(T_EDEFAULT);
 				return;
+			case Seismo_localchannelinfoPackage.V__S:
+				setS(S_EDEFAULT);
+				return;
 			case Seismo_localchannelinfoPackage.V__C0:
 				setC0(C0_EDEFAULT);
 				return;
@@ -395,6 +445,8 @@ public class VImpl extends EObjectImpl implements V {
 				return getEContainer_v() != null;
 			case Seismo_localchannelinfoPackage.V__T:
 				return t != T_EDEFAULT;
+			case Seismo_localchannelinfoPackage.V__S:
+				return s != S_EDEFAULT;
 			case Seismo_localchannelinfoPackage.V__C0:
 				return c0 != C0_EDEFAULT;
 			case Seismo_localchannelinfoPackage.V__C1:
@@ -417,6 +469,8 @@ public class VImpl extends EObjectImpl implements V {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (t: ");
 		result.append(t);
+		result.append(", s: ");
+		result.append(s);
 		result.append(", c0: ");
 		result.append(c0);
 		result.append(", c1: ");

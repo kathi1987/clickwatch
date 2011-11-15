@@ -105,7 +105,13 @@ public class DataBaseUtil {
 						monitor.worked(newProgress - progress);
 						progress = newProgress;
 					}
-					return valueAdapter.create(dbHandler, dbValueAdapter);
+
+					try {
+						return valueAdapter.create(dbHandler, dbValueAdapter);
+					} catch (Exception e) {
+						// catch possible errors in value conversion
+						return null;
+					}
 				}
 			}
 

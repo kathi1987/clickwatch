@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.V#getEContainer_v <em>EContainer v</em>}</li>
  *   <li>{@link de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.V#getT <em>T</em>}</li>
+ *   <li>{@link de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.V#getS <em>S</em>}</li>
  *   <li>{@link de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.V#getC0 <em>C0</em>}</li>
  *   <li>{@link de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.V#getC1 <em>C1</em>}</li>
  *   <li>{@link de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.V#getC2 <em>C2</em>}</li>
@@ -82,6 +83,32 @@ public interface V extends EObject {
 	 * @generated
 	 */
 	void setT(long value);
+
+	/**
+	 * Returns the value of the '<em><b>S</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>S</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>S</em>' attribute.
+	 * @see #setS(long)
+	 * @see de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.Seismo_localchannelinfoPackage#getV_S()
+	 * @model annotation="http://de.hub.clickwatch.specificmodels target_id='Localchannelinfo|Handler/c|c:C|EObject/v|v:V|EObject/s|s:'"
+	 * @generated
+	 */
+	long getS();
+
+	/**
+	 * Sets the value of the '{@link de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.V#getS <em>S</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>S</em>' attribute.
+	 * @see #getS()
+	 * @generated
+	 */
+	void setS(long value);
 
 	/**
 	 * Returns the value of the '<em><b>C0</b></em>' attribute.

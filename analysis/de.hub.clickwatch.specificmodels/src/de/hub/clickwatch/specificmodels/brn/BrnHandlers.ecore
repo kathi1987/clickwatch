@@ -1793,6 +1793,12 @@
         </eAnnotations>
         <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
       </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="s">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Localchannelinfo|Handler/c|c:C|EObject/v|v:V|EObject/s|s:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+      </eStructuralFeatures>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="c0">
         <eAnnotations source="http://de.hub.clickwatch.specificmodels">
           <details key="target_id" value="Localchannelinfo|Handler/c|c:C|EObject/v|v:V|EObject/c0|c0:"/>
@@ -1810,6 +1816,84 @@
           <details key="target_id" value="Localchannelinfo|Handler/c|c:C|EObject/v|v:V|EObject/c2|c2:"/>
         </eAnnotations>
         <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </eStructuralFeatures>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="tsi_syncinfo" nsURI="http://de.hub.clickwatch.specificmodels.brn/tsi/syncinfo" nsPrefix="tsi_syncinfo">
+    <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+      <details key="handler_class" value="Syncinfo"/>
+      <details key="handler_name" value="tsi/syncinfo"/>
+    </eAnnotations>
+    <eClassifiers xsi:type="ecore:EClass" name="Syncinfo">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Syncinfo|Handler"/>
+      </eAnnotations>
+      <eSuperTypes href="../../../../../../../de.hub.clickwatch.core/src/de/hub/clickwatch/model/ClickWatchModel.ecore#//Handler"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="timesyncinfo" eType="//tsi_syncinfo/Timesyncinfo" containment="true" resolveProxies="false" eOpposite="//tsi_syncinfo/Timesyncinfo/eContainer_timesyncinfo">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Syncinfo|Handler/timesyncinfo|timesyncinfo:Timesyncinfo|EObject"/>
+          <details key="IsCopy" value="false"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Syncpacket">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Syncinfo|Handler/timesyncinfo|timesyncinfo:Timesyncinfo|EObject/syncpacket|syncpacket:Syncpacket|EObject"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_syncpacket" eType="//tsi_syncinfo/Timesyncinfo" eOpposite="//tsi_syncinfo/Timesyncinfo/syncpacket"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="time">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Syncinfo|Handler/timesyncinfo|timesyncinfo:Timesyncinfo|EObject/syncpacket|syncpacket:Syncpacket|EObject/time|time:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="unit">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Syncinfo|Handler/timesyncinfo|timesyncinfo:Timesyncinfo|EObject/syncpacket|syncpacket:Syncpacket|EObject/unit|unit:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="id">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Syncinfo|Handler/timesyncinfo|timesyncinfo:Timesyncinfo|EObject/syncpacket|syncpacket:Syncpacket|EObject/id|id:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Timesyncinfo">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Syncinfo|Handler/timesyncinfo|timesyncinfo:Timesyncinfo|EObject"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_timesyncinfo" eType="//tsi_syncinfo/Syncinfo" eOpposite="//tsi_syncinfo/Syncinfo/timesyncinfo"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false" upperBound="-1">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Syncinfo|Handler/timesyncinfo|timesyncinfo:Timesyncinfo|EObject/text|text:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="syncpacket" upperBound="-1" eType="//tsi_syncinfo/Syncpacket" containment="true" resolveProxies="false" eOpposite="//tsi_syncinfo/Syncpacket/eContainer_syncpacket">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Syncinfo|Handler/timesyncinfo|timesyncinfo:Timesyncinfo|EObject/syncpacket|syncpacket:Syncpacket|EObject"/>
+          <details key="IsCopy" value="false"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="id">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Syncinfo|Handler/timesyncinfo|timesyncinfo:Timesyncinfo|EObject/id|id:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Syncinfo|Handler/timesyncinfo|timesyncinfo:Timesyncinfo|EObject/name|name:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="time">
+        <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+          <details key="target_id" value="Syncinfo|Handler/timesyncinfo|timesyncinfo:Timesyncinfo|EObject/time|time:"/>
+        </eAnnotations>
+        <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
       </eStructuralFeatures>
     </eClassifiers>
   </eSubpackages>

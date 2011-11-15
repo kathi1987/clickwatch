@@ -64,6 +64,8 @@ import de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.Sys_info_systemi
 
 import de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.impl.Sys_info_systeminfoPackageImpl;
 
+import de.hub.clickwatch.specificmodels.brn.tsi_syncinfo.Tsi_syncinfoPackage;
+import de.hub.clickwatch.specificmodels.brn.tsi_syncinfo.impl.Tsi_syncinfoPackageImpl;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
@@ -162,6 +164,7 @@ public class Seismo_localchannelinfoPackageImpl extends EPackageImpl implements 
 		Device_wifi_wifidevice_cst_statsPackageImpl theDevice_wifi_wifidevice_cst_statsPackage = (Device_wifi_wifidevice_cst_statsPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Device_wifi_wifidevice_cst_statsPackage.eNS_URI) instanceof Device_wifi_wifidevice_cst_statsPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Device_wifi_wifidevice_cst_statsPackage.eNS_URI) : Device_wifi_wifidevice_cst_statsPackage.eINSTANCE);
 		Sf_statsPackageImpl theSf_statsPackage = (Sf_statsPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Sf_statsPackage.eNS_URI) instanceof Sf_statsPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Sf_statsPackage.eNS_URI) : Sf_statsPackage.eINSTANCE);
 		Routing_dsr_stats_statsPackageImpl theRouting_dsr_stats_statsPackage = (Routing_dsr_stats_statsPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Routing_dsr_stats_statsPackage.eNS_URI) instanceof Routing_dsr_stats_statsPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Routing_dsr_stats_statsPackage.eNS_URI) : Routing_dsr_stats_statsPackage.eINSTANCE);
+		Tsi_syncinfoPackageImpl theTsi_syncinfoPackage = (Tsi_syncinfoPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Tsi_syncinfoPackage.eNS_URI) instanceof Tsi_syncinfoPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Tsi_syncinfoPackage.eNS_URI) : Tsi_syncinfoPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theSeismo_localchannelinfoPackage.createPackageContents();
@@ -178,6 +181,7 @@ public class Seismo_localchannelinfoPackageImpl extends EPackageImpl implements 
 		theDevice_wifi_wifidevice_cst_statsPackage.createPackageContents();
 		theSf_statsPackage.createPackageContents();
 		theRouting_dsr_stats_statsPackage.createPackageContents();
+		theTsi_syncinfoPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theSeismo_localchannelinfoPackage.initializePackageContents();
@@ -194,6 +198,7 @@ public class Seismo_localchannelinfoPackageImpl extends EPackageImpl implements 
 		theDevice_wifi_wifidevice_cst_statsPackage.initializePackageContents();
 		theSf_statsPackage.initializePackageContents();
 		theRouting_dsr_stats_statsPackage.initializePackageContents();
+		theTsi_syncinfoPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theSeismo_localchannelinfoPackage.freeze();
@@ -281,7 +286,7 @@ public class Seismo_localchannelinfoPackageImpl extends EPackageImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getV_C0() {
+	public EAttribute getV_S() {
 		return (EAttribute)vEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -290,7 +295,7 @@ public class Seismo_localchannelinfoPackageImpl extends EPackageImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getV_C1() {
+	public EAttribute getV_C0() {
 		return (EAttribute)vEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -299,8 +304,17 @@ public class Seismo_localchannelinfoPackageImpl extends EPackageImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getV_C2() {
+	public EAttribute getV_C1() {
 		return (EAttribute)vEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getV_C2() {
+		return (EAttribute)vEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -341,6 +355,7 @@ public class Seismo_localchannelinfoPackageImpl extends EPackageImpl implements 
 		vEClass = createEClass(V);
 		createEReference(vEClass, V__ECONTAINER_V);
 		createEAttribute(vEClass, V__T);
+		createEAttribute(vEClass, V__S);
 		createEAttribute(vEClass, V__C0);
 		createEAttribute(vEClass, V__C1);
 		createEAttribute(vEClass, V__C2);
@@ -390,6 +405,7 @@ public class Seismo_localchannelinfoPackageImpl extends EPackageImpl implements 
 		initEClass(vEClass, de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.V.class, "V", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getV_EContainer_v(), this.getC(), this.getC_V(), "eContainer_v", null, 0, 1, de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.V.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getV_T(), ecorePackage.getELong(), "t", null, 0, 1, de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.V.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getV_S(), ecorePackage.getELong(), "s", null, 0, 1, de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.V.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getV_C0(), ecorePackage.getEInt(), "c0", null, 0, 1, de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.V.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getV_C1(), ecorePackage.getEInt(), "c1", null, 0, 1, de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.V.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getV_C2(), ecorePackage.getEInt(), "c2", null, 0, 1, de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.V.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -451,6 +467,12 @@ public class Seismo_localchannelinfoPackageImpl extends EPackageImpl implements 
 		   source, 
 		   new String[] {
 			 "target_id", "Localchannelinfo|Handler/c|c:C|EObject/v|v:V|EObject/t|t:"
+		   });		
+		addAnnotation
+		  (getV_S(), 
+		   source, 
+		   new String[] {
+			 "target_id", "Localchannelinfo|Handler/c|c:C|EObject/v|v:V|EObject/s|s:"
 		   });		
 		addAnnotation
 		  (getV_C0(), 
