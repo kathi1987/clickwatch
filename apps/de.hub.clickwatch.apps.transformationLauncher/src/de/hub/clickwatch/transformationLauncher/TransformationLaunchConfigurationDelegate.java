@@ -141,7 +141,8 @@ public class TransformationLaunchConfigurationDelegate implements
 							URI.createURI(recordURI));
 
 				// handler per record
-				config.put(ELaunchConfigurationParameters.HandlerPerRecord,
+				if (handlerPerRecord != null && handlerPerRecord != "")
+					config.put(ELaunchConfigurationParameters.HandlerPerRecord,
 						Integer.parseInt(handlerPerRecord));
 
 				// local update interval
@@ -165,15 +166,18 @@ public class TransformationLaunchConfigurationDelegate implements
 						remoteUpdateIntervalParsed);
 
 				// database type
-				config.put(ELaunchConfigurationParameters.DataBaseType,
+				if (databaseType != null && databaseType != "")
+					config.put(ELaunchConfigurationParameters.DataBaseType,
 						DataBaseType.valueOf(databaseType));
 
 				// handler behaviour
-				config.put(ELaunchConfigurationParameters.HandlerBehaviour,
+				if (handlerBehaviour != null && handlerBehaviour != "")
+					config.put(ELaunchConfigurationParameters.HandlerBehaviour,
 						HandlerBehaviour.valueOf(handlerBehaviour));
 
 				// value type
-				config.put(ELaunchConfigurationParameters.ValueType, valueType);
+				if (valueType != null && valueType != "")
+					config.put(ELaunchConfigurationParameters.ValueType, valueType);
 
 				// debug level
 				Integer debugLvl = 2;
