@@ -12,6 +12,7 @@ import de.hub.clickwatch.recorder.examples.lib.AvgBinning;
 import de.hub.clickwatch.recorder.examples.lib.MathTransformation;
 import de.hub.clickwatch.recorder.examples.lib.MovingFFT;
 import de.hub.clickwatch.recorder.examples.lib.RemoveOffset;
+import de.hub.clickwatch.recorder.examples.lib.TimeSync;
 import de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.Localchannelinfo;
 import de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.V;
 
@@ -87,6 +88,9 @@ public class SeismoBusAnalysisAlg implements IAnalysisAlgorithm {
 			new SeismoFrequenceTransformation(removeOffsetWindowInSeconds*sampleRateInHz, fftWindowInSeconds*sampleRateInHz, bins, bin)			
 		};
 		
+		// initialize time sync
+		TimeSync timeSync = new TimeSync("/media/samba/experiments/SeismoPlot20111027-1/sync.data");
+		
 		// create a data base iterator that iterates through seismo data sets in the order they were recorded
 		Iterable<Localchannelinfo> dataBaseIterator = container.createIterator(node, "seismo/localchannelinfo", Localchannelinfo.class, monitor);
 		// use the iterator to actually go through the data base
@@ -102,6 +106,8 @@ public class SeismoBusAnalysisAlg implements IAnalysisAlgorithm {
 				// norm the time based on "point 0"
 				long time = value.getT() - start;
 				double dtime = time / 1e6;
+				
+				long syncTime = timeSync.correctTime(node.getINetAddress(), value.getS());
 				
 				// apply the seismo transformation on the value from each channel and store the results with the current time
 				result.getDataSet().add(0, dtime, seismoTrans[0].transform((double)value.getC0()));

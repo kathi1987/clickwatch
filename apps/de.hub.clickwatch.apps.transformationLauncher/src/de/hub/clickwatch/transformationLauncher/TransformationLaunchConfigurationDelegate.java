@@ -146,14 +146,24 @@ public class TransformationLaunchConfigurationDelegate implements
 						Integer.parseInt(handlerPerRecord));
 
 				// local update interval
-				if (localUpdateInterval != null && localUpdateInterval != "")
-					config.put(ELaunchConfigurationParameters.LocalUpdateInterval,
-						Integer.parseInt(localUpdateInterval));
-
+				int localUpdateIntervalParsed = 1000;
+				try {
+					localUpdateIntervalParsed = Integer.parseInt(localUpdateInterval);
+				} catch (NumberFormatException e) {
+					// TODO log error
+				}
+				config.put(ELaunchConfigurationParameters.LocalUpdateInterval,
+						localUpdateIntervalParsed);
+				
 				// remote update interval
-				if (remoteUpdateInterval != null && remoteUpdateInterval != "")
-					config.put(ELaunchConfigurationParameters.RemoteUpdateInterval,
-						Integer.parseInt(remoteUpdateInterval));
+				int remoteUpdateIntervalParsed = 3000;
+				try {
+					Integer.parseInt(remoteUpdateInterval);
+				} catch (Exception e) {
+					// TODO logError
+				}				
+				config.put(ELaunchConfigurationParameters.RemoteUpdateInterval,
+						remoteUpdateIntervalParsed);
 
 				// database type
 				if (databaseType != null && databaseType != "")
