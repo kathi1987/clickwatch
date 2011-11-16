@@ -16,7 +16,6 @@ import org.eclipse.emf.ecore.resource.URIConverter;
 import org.eclipse.ui.statushandlers.StatusManager;
 import org.osgi.framework.Bundle;
 
-import com.google.inject.Guice;
 import com.google.inject.Injector;
 
 import de.hub.clickwatch.analysis.activity_composition.Activator;
@@ -24,7 +23,12 @@ import de.hub.clickwatch.analysis.activity_composition.model.DataNode;
 import de.hub.clickwatch.analysis.activity_composition.model.InputEdge;
 import de.hub.clickwatch.analysis.activity_composition.model.ModelNode;
 import de.hub.clickwatch.analysis.activity_composition.model.Transformation;
+import de.hub.clickwatch.model.Handler;
+import de.hub.clickwatch.recorder.database.DataBaseUtil;
+import de.hub.clickwatch.recorder.database.cwdatabase.Record;
+import de.hub.clickwatch.recorder.database.cwdatabase.util.RecordUtil;
 import de.hub.clickwatch.transformationLauncher.BundleHelper;
+import de.hub.clickwatch.ui.PluginActivator;
 import de.hub.emfxml.XmlModelRepository;
 
 /**
@@ -37,6 +41,7 @@ import de.hub.emfxml.XmlModelRepository;
 public class TransformationEngine {
 
 	private Transformation transformation;
+	protected Injector injector;
 
 	/**
 	 * ctor with needed transformation
@@ -47,6 +52,7 @@ public class TransformationEngine {
 	 */
 	public TransformationEngine(Transformation transformation) {
 		this.transformation = transformation;
+		injector = PluginActivator.getInstance().getInjector();
 	}
 
 	/**
@@ -65,7 +71,8 @@ public class TransformationEngine {
 				return;
 			}
 
-			ArrayList<Resource> inputResources = new ArrayList<Resource>();
+			ArrayList<Handler> inputHandler = new ArrayList<Handler>();
+			DataBaseUtil util = injector.getInstance(DataBaseUtil.class);
 
 			for (InputEdge inEdge : transformation.getInput()) {
 				DataNode dataNode = inEdge.getSource();
@@ -75,28 +82,32 @@ public class TransformationEngine {
 
 					if (mNode.getModelResource() != null
 							&& mNode.getModelResource().endsWith(
-									"clickwatchmodel")) {
-						ResourceSet rs = mNode.eResource().getResourceSet();
+									"cwdatabase")) {
+						
+						String nodeID = "localhost:7777";
+						Record rec = RecordUtil.buildRecord(
+								"TestNodeName",  
+								200, 
+								100, 
+								nodeID);
 
-						Resource modelResource = rs.getResource(
-								URI.createURI(mNode.getModelResource()), true);
-						modelResource.load(XmlModelRepository
-								.defaultLoadSaveOptions());
-
-						inputResources.add(modelResource);
-
+						String handlerID = "gps";
+						long start = 0;
+						long end = 0;
+						
+						inputHandler.add(util.getHandler(DataBaseUtil.createHandle(rec, nodeID, handlerID, start, end)));																
 					} else
-						raiseWarning("Oh a non clickwatchmodel input, sry not yet supported ("
+						raiseWarning("Oh a non clickwatch database input, sry not yet supported ("
 								+ mNode.getLabel() + ")");
 				} else
 					raiseWarning("Input data other then ModelNodes are not yet supported");
 			}
+			//inputHandler.get(0).
 
-			// get the servcice classes
-			Injector guiceInjector = de.hub.clickwatch.ui.PluginActivator.getInstance().getInjector();
-			IInputService inService = guiceInjector
+			// get the servcice classes			
+			IInputService inService = injector
 					.getInstance(IInputService.class);
-			IOutputService outService = guiceInjector
+			IOutputService outService = injector
 					.getInstance(IOutputService.class);
 
 			
@@ -148,7 +159,7 @@ public class TransformationEngine {
 			}
 			
 			Class<ICompositionTransformation> mainClass = (Class<ICompositionTransformation>) transformationClass;
-			ICompositionTransformation transformationInstance =  guiceInjector.getInstance(mainClass);
+			ICompositionTransformation transformationInstance =  injector.getInstance(mainClass);
 			transformationInstance.main(inService, outService);						
 		
 		} catch (Exception e) {
