@@ -56,6 +56,8 @@ public class TransformationEngine {
 	public void executeTransformation() {
 
 		try {
+			System.out.println("Transformation ["+ transformation.getLabel()  +"]");
+			
 			// is there a transformation given to be executed?
 			String transformationFile = transformation.getTransformationFile();			
 			if(transformationFile == null || transformationFile == "") {
@@ -91,7 +93,7 @@ public class TransformationEngine {
 			}
 
 			// get the servcice classes
-			Injector guiceInjector = Guice.createInjector();
+			Injector guiceInjector = de.hub.clickwatch.ui.PluginActivator.getInstance().getInjector();
 			IInputService inService = guiceInjector
 					.getInstance(IInputService.class);
 			IOutputService outService = guiceInjector
@@ -109,8 +111,14 @@ public class TransformationEngine {
 			Class<?> transformationClass = null;
 			String transformationClassName = getFullClassName(u);
 
-			// get the class for the transformation execution
-			transformationClass = bundle.loadClass(transformationClassName);
+			try {
+				// get the class for the transformation execution
+				transformationClass = bundle.loadClass(transformationClassName);				
+			} catch(ClassNotFoundException e) {
+				raiseError("Transformation could not be execute. Transformationfile is not valid: "+ u.path());
+				return;
+			}
+
 
 			// if the class is not already loaded, try it with the default
 			// class loader
@@ -141,8 +149,7 @@ public class TransformationEngine {
 			
 			Class<ICompositionTransformation> mainClass = (Class<ICompositionTransformation>) transformationClass;
 			ICompositionTransformation transformationInstance =  guiceInjector.getInstance(mainClass);
-			transformationInstance.main(inService, outService);
-						
+			transformationInstance.main(inService, outService);						
 		
 		} catch (Exception e) {
 			raiseError("An error occurred in the transformation process: "

@@ -51,7 +51,7 @@ public class StartTransformationFeature extends AbstractCustomFeature {
 	public void execute(ICustomContext context) {
 		for (PictogramElement pe : context.getPictogramElements()) {
 			Object o = getBusinessObjectForPictogramElement(pe);
-			if (o instanceof StartNode) {				
+			if (o instanceof StartNode) {
 
 				StartNode startNode = (StartNode) o;
 				traverseNodes(startNode);
@@ -71,17 +71,18 @@ public class StartTransformationFeature extends AbstractCustomFeature {
 	 */
 	private void traverseNodes(ActionNode node) {
 
+		// perform the transformation
+		if (node instanceof Transformation) {
+
+			// create a new transformation engine object and perform the
+			// transformation
+			TransformationEngine transEngine = new TransformationEngine(
+					(Transformation) node);
+			transEngine.executeTransformation();
+		}
+
 		if (node.getProgressConnection() != null
 				&& node.getProgressConnection().getTarget() != null) {
-			// perform the transformation
-			if (node instanceof Transformation) {
-
-				// create a new transformation engine object and perform the
-				// transformation
-				TransformationEngine transEngine = new TransformationEngine(
-						(Transformation) node);
-				transEngine.executeTransformation();
-			}
 
 			// recursive call to traverse all nodes
 			traverseNodes(node.getProgressConnection().getTarget());

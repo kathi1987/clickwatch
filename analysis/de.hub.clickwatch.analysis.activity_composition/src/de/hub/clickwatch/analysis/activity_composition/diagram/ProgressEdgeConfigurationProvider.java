@@ -19,7 +19,7 @@ import de.hub.xveg.xvegfeaturemodel.EdgeFeature;
  */
 public class ProgressEdgeConfigurationProvider extends
 		AbstractEdgeFeatureConfigurationProvider<ProgressEdge> {
-
+	
 	@Override
 	public ICreateEdgeConfiguration<ProgressEdge> getCreateEdgeConfiguration(
 			EdgeFeature feature) {
@@ -29,7 +29,7 @@ public class ProgressEdgeConfigurationProvider extends
 				ProgressEdge edge = ModelFactory.eINSTANCE.createProgressEdge();
 				edge.setLabel("progress");
 				return edge;
-			}
+			}						
 
 			@Override
 			public ProgressEdge createEdge(EdgeFeature feature, EObject source,
