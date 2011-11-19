@@ -26,7 +26,7 @@ public class FlowValidator implements Validator {
 	private List<String> allParticipatingAPs = new ArrayList<String>();
 	private Map<String, Integer> validatedFlows = new HashMap<String, Integer>();
 	private static String srcDstFiller = " -> ";
-	private static String notFoundToken = "NOT_FOUND";
+	//private static String notFoundToken = "NOT_FOUND";
 	//private static String notTakenToken = "NOT_TAKEN";
 	//private static String noControlToken = "NO_CONTROL";
 	private static String resultFilename = "resultsFlowRun.csv";
@@ -94,14 +94,10 @@ public class FlowValidator implements Validator {
 			while ((curr = fRead.readLine()) != null)   {
 				StringTokenizer tok = new StringTokenizer(curr, ",");
 				
-				String type = tok.nextToken();
-				String src = tok.nextToken();
-				String dst = tok.nextToken();
-				String metr = tok.nextToken();
+				String from = tok.nextToken();
+				String to = tok.nextToken();
 				
-				if ((type.equals("real")) && (!metr.equals(notFoundToken)))  {
-					noticeFlowRun(src, dst);
-				}
+				noticeFlowRun(from, to);
 			}
 		} catch (IOException ioExc) {
 			//nothing
@@ -386,7 +382,6 @@ public class FlowValidator implements Validator {
 		FileWriter fw = null;
 		try {
 			fw = new FileWriter(resultFilename, true);
-			
 			//fw.write("real,"+ src + "," + dst + "," + real_metric + "," + real_hop_count + "," + real_route  + "\n");
 			//fw.write("god,"+ src + "," + dst + "," + god_metric + "," + god_hop_count + "," + god_route.replaceAll(";", ",")  + "\n");
 			fw.write(src + "," + dst + "," + real_metric + "," + real_usage + "," + real_hop_count + "," + real_route.replaceAll(",", ";") + "," + GlobalRoutingtable.getShortestLength(src, dst) + "," + GlobalRoutingtable.getShortestHopCount(src, dst) + "," + GlobalRoutingtable.getShortestPath(src, dst).replaceAll(",", ";") + "," + GlobalLinktable.getLinktableAsString() + "\n");
