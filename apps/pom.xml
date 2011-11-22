@@ -5,21 +5,18 @@
   <parent>
     <artifactId>central</artifactId>
     <groupId>de.hub.clickwatch</groupId>
-    <version>2.0.0-SNAPSHOT</version>
+    <version>2.2.0-SNAPSHOT</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
 
   <groupId>de.hub.clickwatch</groupId>
   <artifactId>apps</artifactId>
-  <version>2.0.0-SNAPSHOT</version>
+  <version>2.2.0-SNAPSHOT</version>
   <packaging>pom</packaging>
   
   <modules>
    <module>de.hub.clickwatch.apps.main</module>
-   <module>de.hub.clickwatch.apps.performance</module>
    <module>de.hub.clickwatch.apps.recorder</module>
-   <module>de.hub.clickwatch.apps.recorder.examples</module>
-   <module>de.hub.clickwatch.apps.recorder.examples.ui</module>
    <module>de.hub.clickwatch.apps.transformationLauncher</module>
   </modules>
 </project>

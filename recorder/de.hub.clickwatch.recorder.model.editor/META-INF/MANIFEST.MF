@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: de.hub.clickwatch.recorder.model.editor;singleton:=true
-Bundle-Version: 2.0.0.qualifier
+Bundle-Version: 2.2.0.qualifier
 Bundle-ClassPath: .
 Bundle-Activator: de.hub.clickwatch.recorder.database.presentation.CWDataBaseEditorPlugin$Implementation
 Bundle-Vendor: %providerName
@@ -15,8 +15,8 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore.xmi;visibility:=reexport,
  org.eclipse.emf.edit.ui;visibility:=reexport,
  org.eclipse.ui.ide;visibility:=reexport,
- de.hub.clickwatch.core;bundle-version="2.0.0",
- de.hub.clickwatch.ui;bundle-version="2.0.0",
- de.hub.clickwatch.recorder;bundle-version="2.0.0",
- de.hub.clickwatch.analysis.results.edit;bundle-version="2.0.0"
+ de.hub.clickwatch.core;bundle-version="2.2.0",
+ de.hub.clickwatch.ui;bundle-version="2.2.0",
+ de.hub.clickwatch.recorder,
+ de.hub.clickwatch.analysis.results.edit
 Bundle-ActivationPolicy: lazy

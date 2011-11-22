@@ -69,6 +69,8 @@ public class DataBaseAdapterTest extends ClickwatchTest {
         }
         dataBaseAdapter.close();
         
+        Thread.sleep(200);
+        
         // test retrieve one
         dataBaseAdapter.initialize(record, false);            
         Handler currentHandler = dataBaseAdapter.retrieve(node, handler, latest);

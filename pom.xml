@@ -10,15 +10,15 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>de.hub.clickwatch</groupId>
 	<artifactId>central</artifactId>
-	<version>2.0.0-SNAPSHOT</version>
+	<version>2.2.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	
 	<modules>
-        <module>external</module>
-        <module>util</module>
+        	<module>external</module>
+        	<module>util</module>
 		<module>core</module>
 		<module>ui</module>
-        <module>recorder</module>
+	     	<module>recorder</module>
 		<module>analysis</module>
 		<module>apps</module>
 		<module>build</module>
@@ -57,7 +57,7 @@
 						<artifact>
 							<groupId>de.hub.clickwatch</groupId>
 							<artifactId>target-platform</artifactId>
-							<version>2.0.0-SNAPSHOT</version>
+							<version>2.2.0-SNAPSHOT</version>
 							<classifier>clickwatch</classifier>
 						</artifact>
 					</target>

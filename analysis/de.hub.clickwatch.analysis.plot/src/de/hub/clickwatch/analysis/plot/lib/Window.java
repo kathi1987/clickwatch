@@ -1,4 +1,4 @@
-package de.hub.clickwatch.recorder.examples.lib;
+package de.hub.clickwatch.analysis.plot.lib;
 
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;

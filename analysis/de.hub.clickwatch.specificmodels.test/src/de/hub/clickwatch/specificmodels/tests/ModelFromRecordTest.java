@@ -3,45 +3,36 @@ package de.hub.clickwatch.specificmodels.tests;
 import java.io.IOException;
 import java.util.List;
 
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
-import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 
-import de.hub.clickcontrol.IClickSocket;
+import de.hub.clickwatch.ClickWatchModuleUtil;
 import de.hub.clickwatch.connection.INodeConnection;
 import de.hub.clickwatch.connection.INodeConnectionProvider;
 import de.hub.clickwatch.connection.adapter.INodeAdapter;
-import de.hub.clickwatch.connection.adapter.values.IValueAdapter;
 import de.hub.clickwatch.connection.adapter.values.XmlValueAdapter;
 import de.hub.clickwatch.model.ClickWatchModelFactory;
 import de.hub.clickwatch.model.Network;
 import de.hub.clickwatch.model.Node;
-import de.hub.clickwatch.recorder.ClickSocketPlayer;
-import de.hub.clickwatch.recorder.ClickSocketPlayerSocketImpl;
 import de.hub.clickwatch.specificmodels.ClickWatchSpecificModelsModule;
-import de.hub.clickwatch.test.AbstractTest;
+import de.hub.clickwatch.test.ClickwatchTest;
 import de.hub.specificmodels.metamodelgenerator.MetaModelGenerator;
 import de.hub.specificmodels.modelgenerator.ModelGenerator;
 
-public class ModelFromRecordTest extends AbstractTest {
+public class ModelFromRecordTest extends ClickwatchTest {
 	
 	private static final String[] ipAddresses = new String[] {"192.168.3.152", "10.5.70.54", "192.168.3.167", "192.168.3.184"};
 	private Injector specificModelsInjector = null;
 	
-	@Override
-	protected AbstractModule[] getAdditionalModules() {
-		String record = "resources/TestRecord.clickwatchmodel";
-		
-		return new AbstractModule[] { new ClickSocketPlayer.PlayerModule(record, false) };
-	}
-	
-	@Override
-	protected void additionalSetUp() {
+	@Before
+	public void additionalSetUp() {
 		specificModelsInjector = Guice.createInjector(new ClickWatchSpecificModelsModule());
 	}
 
@@ -53,19 +44,14 @@ public class ModelFromRecordTest extends AbstractTest {
 		ModelGenerator modelGenerator = specificModelsInjector.getInstance(ModelGenerator.class);
 		return modelGenerator.generate(metaModel, source);
 	}
-	
-	@Override
-	protected Class<? extends IValueAdapter> getValueAdapterClass() {
-		return XmlValueAdapter.class;
-	}
-
-	@Override
-	protected Class<? extends IClickSocket> getClickSocketClass() {
-		return ClickSocketPlayerSocketImpl.class;
-	}
 
 	@Test
-	public void testWithSingleHandlerFromOneNode() throws IOException {
+    public void testWithSingleHandlerFromOneNode() throws IOException {
+        URI recordURI = URI.createFileURI("resources/TestRecord.clickwatchmodel");
+        Injector injector = Guice.createInjector(ClickWatchModuleUtil.newBuilder()
+                .wRecord(recordURI).wDebugLvl(4)
+                .wValueAdapterClass(XmlValueAdapter.class).build());
+	    
 		INodeConnectionProvider ncp = injector.getInstance(INodeConnectionProvider.class);
 		INodeConnection connection = ncp.createConnection(ipAddresses[0], "7777");
 
@@ -82,6 +68,11 @@ public class ModelFromRecordTest extends AbstractTest {
 	
 	@Test
 	public void testWithSingleHandlerFromMultipleNodes() throws IOException {
+        URI recordURI = URI.createFileURI("resources/TestRecord.clickwatchmodel");
+        Injector injector = Guice.createInjector(ClickWatchModuleUtil.newBuilder()
+                .wRecord(recordURI).wDebugLvl(4)
+                .wValueAdapterClass(XmlValueAdapter.class).build());
+	    
 		INodeConnectionProvider ncp = injector.getInstance(INodeConnectionProvider.class);
 		Network network = ClickWatchModelFactory.eINSTANCE.createNetwork();
 		for (String ipAddress: ipAddresses) {
@@ -100,6 +91,11 @@ public class ModelFromRecordTest extends AbstractTest {
 	
 	@Test
 	public void testSingleElementFromMultipleNodes() throws IOException {
+        URI recordURI = URI.createFileURI("resources/TestRecord.clickwatchmodel");
+        Injector injector = Guice.createInjector(ClickWatchModuleUtil.newBuilder()
+                .wRecord(recordURI).wDebugLvl(4)
+                .wValueAdapterClass(XmlValueAdapter.class).build());
+	    
 		INodeConnectionProvider ncp = injector.getInstance(INodeConnectionProvider.class);
 		Network network = ClickWatchModelFactory.eINSTANCE.createNetwork();
 		for (String ipAddress: ipAddresses) {
@@ -118,6 +114,11 @@ public class ModelFromRecordTest extends AbstractTest {
 	
 	@Test
 	public void testFromMultipleNodes() throws IOException {
+        URI recordURI = URI.createFileURI("resources/TestRecord.clickwatchmodel");
+        Injector injector = Guice.createInjector(ClickWatchModuleUtil.newBuilder()
+                .wRecord(recordURI).wDebugLvl(4)
+                .wValueAdapterClass(XmlValueAdapter.class).build());
+	    
 		INodeConnectionProvider ncp = injector.getInstance(INodeConnectionProvider.class);
 		Network network = ClickWatchModelFactory.eINSTANCE.createNetwork();
 		for (String ipAddress: ipAddresses) {

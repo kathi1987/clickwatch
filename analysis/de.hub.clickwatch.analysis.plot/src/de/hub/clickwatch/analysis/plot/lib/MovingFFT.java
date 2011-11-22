@@ -1,4 +1,4 @@
-package de.hub.clickwatch.recorder.examples.lib;
+package de.hub.clickwatch.analysis.plot.lib;
 
 import org.apache.commons.math.complex.Complex;
 import org.apache.commons.math.transform.FastFourierTransformer;

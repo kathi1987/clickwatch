@@ -623,6 +623,12 @@
       <details key="target_id" value="Network/nodes:Node/elements:Element/debug|handlers:Debug|Handler"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_debug" eType="//Element" eOpposite="//Element/debug"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/elements:Element/debug|handlers:Debug|Handler/text|text:"/>
+      </eAnnotations>
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Dev_decap" eSuperTypes="//Element">
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
@@ -2561,12 +2567,6 @@
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="watch" defaultValueLiteral="false">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/elements:Element/watch:"/>
-      </eAnnotations>
-      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_children" eType="//Element" eOpposite="//Element/children"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1" eType="//Element" resolveProxies="false" eOpposite="//Element/eContainer_children">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
@@ -2928,12 +2928,6 @@
       </eAnnotations>
       <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="watch" defaultValueLiteral="false">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/elements:Element/handlers:Handler/watch:"/>
-      </eAnnotations>
-      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" defaultValueLiteral="">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Network/nodes:Node/elements:Element/handlers:Handler/value:"/>
@@ -2952,6 +2946,12 @@
       <details key="target_id" value="Network/nodes:Node/elements:Element/handlers|handlers:Handlers|Handler"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_handlersHandlers" eType="//Element" eOpposite="//Element/handlersHandlers"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/elements:Element/handlers|handlers:Handlers|Handler/text|text:"/>
+      </eAnnotations>
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Hosts" eSuperTypes="//Handler">
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
@@ -3180,6 +3180,12 @@
       <details key="target_id" value="Network/nodes:Node/lt|elements:Lt|Element/links|handlers:Links|Handler"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_links" eType="//Lt" eOpposite="//Lt/links"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/lt|elements:Lt|Element/links|handlers:Links|Handler/text|text:"/>
+      </eAnnotations>
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Linux">
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
@@ -3502,6 +3508,12 @@
       <details key="target_id" value="Network/nodes:Node/elements:Element/name|handlers:Name|Handler"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_handlersName" eType="//Element" eOpposite="//Element/handlersName"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/elements:Element/name|handlers:Name|Handler/text|text:"/>
+      </eAnnotations>
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Network">
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
@@ -3519,21 +3531,9 @@
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="updateIntervall">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="timestamp">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/updateIntervall:"/>
-      </eAnnotations>
-      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="timeout" defaultValueLiteral="6000">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/timeout:"/>
-      </eAnnotations>
-      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="time" defaultValueLiteral="-1">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/time:"/>
+        <details key="target_id" value="Network/timestamp:"/>
       </eAnnotations>
       <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
     </eStructuralFeatures>
@@ -3554,6 +3554,30 @@
         <details key="target_id" value="Network/nodes:Node/port:"/>
       </eAnnotations>
       <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="backbone" defaultValueLiteral="unknown">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/backbone:"/>
+      </eAnnotations>
+      <eType xsi:type="ecore:EEnum" href="http://de.hub.clickwatch.model#//BackboneType"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="retrieving" transient="true">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/retrieving:"/>
+      </eAnnotations>
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="listening" transient="true">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/listening:"/>
+      </eAnnotations>
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="recording" transient="true">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/recording:"/>
+      </eAnnotations>
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1" eType="//Element" resolveProxies="false" eOpposite="//Element/eContainer_elements">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
@@ -3639,36 +3663,6 @@
         <details key="IsCopy" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="connected" transient="true" defaultValueLiteral="false">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/connected:"/>
-      </eAnnotations>
-      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="backbone" defaultValueLiteral="unknown">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/backbone:"/>
-      </eAnnotations>
-      <eType xsi:type="ecore:EEnum" href="http://de.hub.clickwatch.model#//BackboneType"/>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="retrieving" transient="true" defaultValueLiteral="false">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/retrieving:"/>
-      </eAnnotations>
-      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hasRecord" defaultValueLiteral="false">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/hasRecord:"/>
-      </eAnnotations>
-      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="recording" transient="true" defaultValueLiteral="false">
-      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
-        <details key="target_id" value="Network/nodes:Node/recording:"/>
-      </eAnnotations>
-      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Nodeidentity">
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">
@@ -3747,6 +3741,12 @@
       <details key="target_id" value="Network/nodes:Node/elements:Element/ports|handlers:Ports|Handler"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="eContainer_ports" eType="//Element" eOpposite="//Element/ports"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" unique="false">
+      <eAnnotations source="http://de.hub.clickwatch.specificmodels">
+        <details key="target_id" value="Network/nodes:Node/elements:Element/ports|handlers:Ports|Handler/text|text:"/>
+      </eAnnotations>
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Probe">
     <eAnnotations source="http://de.hub.clickwatch.specificmodels">

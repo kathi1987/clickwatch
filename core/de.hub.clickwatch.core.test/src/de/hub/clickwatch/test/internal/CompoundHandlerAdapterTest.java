@@ -21,6 +21,7 @@ import de.hub.clickwatch.connection.adapter.values.StringValueAdapter;
 import de.hub.clickwatch.model.Node;
 import de.hub.clickwatch.test.TestUtil;
 
+@Ignore("requires a click setup on localhost")
 public class CompoundHandlerAdapterTest extends HandlerEventAdapterTest {
 
 	@Ignore("requires a click setup on localhost")

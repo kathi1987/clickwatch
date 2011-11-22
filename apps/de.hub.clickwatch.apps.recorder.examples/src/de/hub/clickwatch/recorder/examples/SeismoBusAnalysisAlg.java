@@ -3,15 +3,15 @@ package de.hub.clickwatch.recorder.examples;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
+import de.hub.clickwatch.analysis.plot.lib.AvgBinning;
+import de.hub.clickwatch.analysis.plot.lib.MathTransformation;
+import de.hub.clickwatch.analysis.plot.lib.MovingFFT;
+import de.hub.clickwatch.analysis.plot.lib.RemoveOffset;
 import de.hub.clickwatch.analysis.results.Result;
 import de.hub.clickwatch.analysis.results.util.ChartUtil;
 import de.hub.clickwatch.main.IClickWatchContext;
 import de.hub.clickwatch.main.IResultsProvider;
 import de.hub.clickwatch.model.Node;
-import de.hub.clickwatch.recorder.examples.lib.AvgBinning;
-import de.hub.clickwatch.recorder.examples.lib.MathTransformation;
-import de.hub.clickwatch.recorder.examples.lib.MovingFFT;
-import de.hub.clickwatch.recorder.examples.lib.RemoveOffset;
 import de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.Localchannelinfo;
 import de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.V;
 

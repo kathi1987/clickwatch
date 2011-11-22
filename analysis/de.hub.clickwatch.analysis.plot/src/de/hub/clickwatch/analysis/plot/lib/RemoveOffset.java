@@ -1,4 +1,4 @@
-package de.hub.clickwatch.recorder.examples.lib;
+package de.hub.clickwatch.analysis.plot.lib;
 
 public class RemoveOffset implements MathTransformation<Double, Double> {
 

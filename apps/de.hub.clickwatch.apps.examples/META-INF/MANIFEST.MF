@@ -4,4 +4,4 @@ Bundle-Name: Examples
 Bundle-SymbolicName: de.hub.clickwatch.apps.examples
 Bundle-Version: 2.0.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Require-Bundle: de.hub.clickwatch.apps.main;bundle-version="2.0.0"
+Require-Bundle: de.hub.clickwatch.apps.main

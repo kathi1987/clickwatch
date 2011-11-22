@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension-point id="de.hub.clickwatch.analysis.Plot" name="Plot" schema="schema/de.hub.clickwatch.analysis.Plot.exsd"/>
+   <extension
+         point="de.hub.clickwatch.analysis.Plot">
+      <plot
+            class="de.hub.clickwatch.ui.GuiceAwareExecutableExtensionFactory:de.hub.clickwatch.analysis.plot.HWBusyPlot"
+            handler="device_wifi/wifidevice/cst/stats"
+            name="Example plot (HW busy)">
+         <valuespec
+               is_axis="true"
+               name="time (ms)"
+               window_size="1000">
+         </valuespec>
+         <valuespec
+               is_axis="true"
+               name="hw_busy">
+         </valuespec>
+      </plot>
+      <plot
+            class="de.hub.clickwatch.ui.GuiceAwareExecutableExtensionFactory:de.hub.clickwatch.analysis.plot.SeismoPlot"
+            handler="seismo/localchannelinfo"
+            name="seismo amplitude">
+         <valuespec
+               is_axis="false"
+               name="axis">
+         </valuespec>
+         <valuespec
+               is_axis="true"
+               name="time (ms)"
+               window_size="1000">
+         </valuespec>
+         <valuespec
+               is_axis="true"
+               name="ampl (mg)">
+         </valuespec>
+      </plot>
+      <plot
+            class="de.hub.clickwatch.ui.GuiceAwareExecutableExtensionFactory:de.hub.clickwatch.analysis.plot.AvgSeismoPlot"
+            handler="seismo/localchannelinfo"
+            name="seismo amplitude (normalized)">
+         <valuespec
+               is_axis="false"
+               name="axis">
+         </valuespec>
+         <valuespec
+               is_axis="true"
+               name="time (ms)"
+               window_size="1000">
+         </valuespec>
+         <valuespec
+               is_axis="true"
+               name="ampl (mg)">
+         </valuespec>
+      </plot>
+      <plot
+            class="de.hub.clickwatch.ui.GuiceAwareExecutableExtensionFactory:de.hub.clickwatch.analysis.plot.SeismoFFT"
+            handler="seismo/localchannelinfo"
+            name="seismo FFT">
+         <valuespec
+               is_axis="false"
+               name="axis">
+         </valuespec>
+         <valuespec
+               is_axis="true"
+               name="frequency (Hu)">
+         </valuespec>
+         <valuespec
+               is_axis="true"
+               name="FFT">
+         </valuespec>
+      </plot>
+      <plot
+            class="de.hub.clickwatch.ui.GuiceAwareExecutableExtensionFactory:de.hub.clickwatch.analysis.plot.SeismoBus"
+            handler="seismo/localchannelinfo"
+            name="seismo bus">
+         <valuespec
+               is_axis="false"
+               name="axis">
+         </valuespec>
+         <valuespec
+               is_axis="true"
+               name="time (ms)"
+               window_size="1000">
+         </valuespec>
+         <valuespec
+               is_axis="true"
+               name="FFT ampl">
+         </valuespec>
+      </plot>
+   </extension>
+   <extension
+       point="org.eclipse.ui.commands">
+    <command
+          defaultHandler="de.hub.clickwatch.ui.GuiceAwareExecutableExtensionFactory:de.hub.clickwatch.analysis.plot.internal.ExecutePlotHandler"
+          description="Execute Plot"
+          id="de.hub.clickwatch.analysis.plot.ExecutePlot"
+          name="de.hub.clickwatch.analysis.plot.ExecutePlot">
+       <commandParameter
+             id="handler"
+             name="handler"
+             optional="true">
+       </commandParameter>
+       <commandParameter
+             id="name"
+             name="name"
+             optional="true">
+       </commandParameter>
+    </command>
+ </extension>
+ <extension
+       point="org.eclipse.ui.menus">
+    <menuContribution
+          allPopups="false"
+          class="de.hub.clickwatch.ui.GuiceAwareExecutableExtensionFactory:de.hub.clickwatch.analysis.plot.internal.PlotContributionFactory"
+          locationURI="popup:clickwatch?after=analysis">
+       <menu
+             label="Plot">
+          <command
+                commandId="de.hub.clickwatch.analysis.plot.ExecutePlot"
+                label="Execute Plot"
+                style="push">
+          </command>
+       </menu>
+    </menuContribution>
+ </extension>
+
+</plugin>

@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Clickcontrol
 Bundle-SymbolicName: edu.mit.clickcontrol
-Bundle-Version: 2.0.0.qualifier
+Bundle-Version: 2.2.0.qualifier
 Export-Package: click,
  de.hub.clickcontrol
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
