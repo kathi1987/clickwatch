@@ -7,7 +7,6 @@
 package de.hub.clickwatch.specificmodels.brn.lease_tab_leases;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**

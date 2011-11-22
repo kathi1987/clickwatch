@@ -6,12 +6,16 @@
  */
 package de.hub.specificmodels.tests.testsourcemodel.util;
 
-import de.hub.specificmodels.tests.testsourcemodel.*;
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.util.Switch;
+
+import de.hub.specificmodels.tests.testsourcemodel.ClassWithListFeatures;
+import de.hub.specificmodels.tests.testsourcemodel.ListFeatureElementClass1;
+import de.hub.specificmodels.tests.testsourcemodel.ListFeatureElementClass2;
+import de.hub.specificmodels.tests.testsourcemodel.ListFeatureElementClass3;
+import de.hub.specificmodels.tests.testsourcemodel.RootClass;
+import de.hub.specificmodels.tests.testsourcemodel.TestSourceModelPackage;
 
 /**
  * <!-- begin-user-doc -->

@@ -1,7 +1,7 @@
 package de.hub.clickwatch.model.util;
 
-import de.hub.clickwatch.model.ClickWatchModelFactory;
 import de.hub.clickwatch.model.ClickWatchError;
+import de.hub.clickwatch.model.ClickWatchModelFactory;
 
 public class ClickWatchErrorUtil {
 

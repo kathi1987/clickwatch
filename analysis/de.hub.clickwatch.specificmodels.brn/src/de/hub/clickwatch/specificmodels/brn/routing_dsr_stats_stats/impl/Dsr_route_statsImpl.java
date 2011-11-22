@@ -6,28 +6,24 @@
  */
 package de.hub.clickwatch.specificmodels.brn.routing_dsr_stats_stats.impl;
 
-import de.hub.clickwatch.specificmodels.brn.routing_dsr_stats_stats.Dsr_route_stats;
-import de.hub.clickwatch.specificmodels.brn.routing_dsr_stats_stats.Route_info;
-import de.hub.clickwatch.specificmodels.brn.routing_dsr_stats_stats.Routing_dsr_stats_statsPackage;
-import de.hub.clickwatch.specificmodels.brn.routing_dsr_stats_stats.Stats;
-
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.eclipse.emf.ecore.util.EDataTypeEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
+
+import de.hub.clickwatch.specificmodels.brn.routing_dsr_stats_stats.Dsr_route_stats;
+import de.hub.clickwatch.specificmodels.brn.routing_dsr_stats_stats.Route_info;
+import de.hub.clickwatch.specificmodels.brn.routing_dsr_stats_stats.Routing_dsr_stats_statsPackage;
+import de.hub.clickwatch.specificmodels.brn.routing_dsr_stats_stats.Stats;
 
 /**
  * <!-- begin-user-doc -->

@@ -12,8 +12,6 @@ import java.util.Iterator;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.BasicEList;
-import org.eclipse.emf.common.util.DelegatingEList;
-import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -25,8 +23,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import com.google.common.base.Preconditions;
 
 import de.hub.clickwatch.connection.INodeConnection;
-import de.hub.clickwatch.connection.adapter.IHandlerEventAdapter;
-import de.hub.clickwatch.connection.adapter.IHandlerEventListener;
 import de.hub.clickwatch.model.BackboneType;
 import de.hub.clickwatch.model.ClickWatchError;
 import de.hub.clickwatch.model.ClickWatchModelPackage;

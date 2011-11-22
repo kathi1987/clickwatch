@@ -6,7 +6,6 @@
  */
 package de.hub.clickwatch.recorder.database.impl;
 
-import de.hub.clickwatch.analysis.results.ResultsPackage;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
@@ -14,6 +13,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
+import de.hub.clickwatch.analysis.results.ResultsPackage;
 import de.hub.clickwatch.model.ClickWatchModelPackage;
 import de.hub.clickwatch.recorder.database.CWDataBaseFactory;
 import de.hub.clickwatch.recorder.database.CWDataBasePackage;

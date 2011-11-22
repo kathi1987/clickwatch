@@ -6,6 +6,12 @@
  */
 package de.hub.specificmodels.tests.testsourcemodel.impl;
 
+import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.impl.EPackageImpl;
+
 import de.hub.specificmodels.tests.testsourcemodel.ClassWithListFeatures;
 import de.hub.specificmodels.tests.testsourcemodel.ListFeatureElementClass1;
 import de.hub.specificmodels.tests.testsourcemodel.ListFeatureElementClass2;
@@ -13,13 +19,6 @@ import de.hub.specificmodels.tests.testsourcemodel.ListFeatureElementClass3;
 import de.hub.specificmodels.tests.testsourcemodel.RootClass;
 import de.hub.specificmodels.tests.testsourcemodel.TestSourceModelFactory;
 import de.hub.specificmodels.tests.testsourcemodel.TestSourceModelPackage;
-
-import org.eclipse.emf.ecore.EAttribute;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EReference;
-
-import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 /**
  * <!-- begin-user-doc -->

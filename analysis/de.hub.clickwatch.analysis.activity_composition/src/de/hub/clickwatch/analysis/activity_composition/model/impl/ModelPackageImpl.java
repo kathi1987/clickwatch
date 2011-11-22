@@ -6,6 +6,12 @@
  */
 package de.hub.clickwatch.analysis.activity_composition.model.impl;
 
+import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.impl.EPackageImpl;
+
 import de.hub.clickwatch.analysis.activity_composition.model.ActionNode;
 import de.hub.clickwatch.analysis.activity_composition.model.Composition;
 import de.hub.clickwatch.analysis.activity_composition.model.DataEdge;
@@ -21,13 +27,6 @@ import de.hub.clickwatch.analysis.activity_composition.model.OutputEdge;
 import de.hub.clickwatch.analysis.activity_composition.model.ProgressEdge;
 import de.hub.clickwatch.analysis.activity_composition.model.StartNode;
 import de.hub.clickwatch.analysis.activity_composition.model.Transformation;
-
-import org.eclipse.emf.ecore.EAttribute;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EReference;
-
-import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 /**
  * <!-- begin-user-doc -->

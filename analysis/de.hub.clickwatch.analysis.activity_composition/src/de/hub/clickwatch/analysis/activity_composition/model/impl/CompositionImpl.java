@@ -6,23 +6,19 @@
  */
 package de.hub.clickwatch.analysis.activity_composition.model.impl;
 
-import de.hub.clickwatch.analysis.activity_composition.model.Composition;
-import de.hub.clickwatch.analysis.activity_composition.model.Element;
-import de.hub.clickwatch.analysis.activity_composition.model.ModelPackage;
-
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
+import de.hub.clickwatch.analysis.activity_composition.model.Composition;
+import de.hub.clickwatch.analysis.activity_composition.model.Element;
+import de.hub.clickwatch.analysis.activity_composition.model.ModelPackage;
 
 /**
  * <!-- begin-user-doc -->

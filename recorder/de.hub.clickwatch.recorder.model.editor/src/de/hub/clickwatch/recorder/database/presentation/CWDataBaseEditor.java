@@ -123,7 +123,6 @@ import org.eclipse.ui.views.properties.PropertySheet;
 import org.eclipse.ui.views.properties.PropertySheetPage;
 
 import de.hub.clickwatch.analysis.results.provider.ResultsItemProviderAdapterFactory;
-import de.hub.clickwatch.analysis.results.util.ResultsAdapterFactory;
 import de.hub.clickwatch.model.presentation.ColoredReflectiveItemProviderAdapterFactory;
 import de.hub.clickwatch.model.provider.ClickWatchModelItemProviderAdapterFactory;
 import de.hub.clickwatch.recorder.database.CWDataBaseTimeScaleController;

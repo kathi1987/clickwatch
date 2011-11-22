@@ -21,8 +21,8 @@ import de.hub.clickwatch.connection.adapter.internal.MetaDataAdapter;
 import de.hub.clickwatch.connection.adapter.values.IValueAdapter;
 import de.hub.clickwatch.connection.adapter.values.StringValueAdapter;
 import de.hub.clickwatch.connection.internal.NodeConnectionProvider;
-import de.hub.clickwatch.merge.IMergeConfiguration;
 import de.hub.clickwatch.merge.ClickWatchNodeMergeConfiguration;
+import de.hub.clickwatch.merge.IMergeConfiguration;
 import de.hub.clickwatch.util.ILogger;
 
 public class ClickWatchModule extends AbstractModule {

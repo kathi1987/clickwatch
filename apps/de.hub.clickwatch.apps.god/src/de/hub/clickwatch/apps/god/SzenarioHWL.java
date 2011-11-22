@@ -4,18 +4,18 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import de.hub.clickwatch.apps.god.node.NodeInformationProcessor;
-import de.hub.clickwatch.apps.god.node.PowerProcessor;
 import de.hub.clickwatch.apps.god.node.ChannelProcessor;
-import de.hub.clickwatch.apps.god.node.StatsProcessor;
 import de.hub.clickwatch.apps.god.node.ChannelStatsProcessor;
-import de.hub.clickwatch.apps.god.node.GpsProcessor;
 import de.hub.clickwatch.apps.god.node.FlowInfoProcessor;
 import de.hub.clickwatch.apps.god.node.FlowStatProcessor;
+import de.hub.clickwatch.apps.god.node.GpsProcessor;
 import de.hub.clickwatch.apps.god.node.LinkProcessor;
 import de.hub.clickwatch.apps.god.node.LinktableProcessor;
-import de.hub.clickwatch.apps.god.node.RoutingtableProcessor;
 import de.hub.clickwatch.apps.god.node.MacIpProcessor;
+import de.hub.clickwatch.apps.god.node.NodeInformationProcessor;
+import de.hub.clickwatch.apps.god.node.PowerProcessor;
+import de.hub.clickwatch.apps.god.node.RoutingtableProcessor;
+import de.hub.clickwatch.apps.god.node.StatsProcessor;
 
 public class SzenarioHWL implements Szenario {
 	private static final int NODE_POCESSING_TIMER = 1000;

@@ -5,16 +5,15 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
+import peasy.PeasyCam;
+import processing.core.PApplet;
+import processing.core.PFont;
 import controlP5.Button;
 import controlP5.ControlFont;
 import controlP5.ControlP5;
 import controlP5.ControlWindow;
 import controlP5.ListBox;
 import controlP5.Textarea;
-
-import peasy.PeasyCam;
-import processing.core.PApplet;
-import processing.core.PFont;
 
 public class GodNetwork extends PApplet {
 	private static final long serialVersionUID = 1256103591115689424L;

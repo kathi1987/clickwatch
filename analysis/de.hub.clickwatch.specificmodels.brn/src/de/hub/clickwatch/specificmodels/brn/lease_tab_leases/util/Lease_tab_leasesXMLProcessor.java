@@ -6,15 +6,13 @@
  */
 package de.hub.clickwatch.specificmodels.brn.lease_tab_leases.util;
 
-import de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Lease_tab_leasesPackage;
-
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.resource.Resource;
-
 import org.eclipse.emf.ecore.xmi.util.XMLProcessor;
+
+import de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Lease_tab_leasesPackage;
 
 /**
  * This class contains helper methods to serialize and deserialize XML documents

@@ -1,8 +1,0 @@
-dotf(String macAddr):
-	"MAC_" + macAddr.replaceAll("-","_");
-	
-Real lon(String lon):
-	 JAVA de.hub.clickwatch.examples.linkdist.GeoUtil.lon(java.lang.String);
-	 
-Real lat(String lat):
-	 JAVA de.hub.clickwatch.examples.linkdist.GeoUtil.lat(java.lang.String);

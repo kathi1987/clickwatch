@@ -6,15 +6,13 @@
  */
 package de.hub.clickwatch.analysis.activity_composition.model.impl;
 
-import de.hub.clickwatch.analysis.activity_composition.model.Element;
-import de.hub.clickwatch.analysis.activity_composition.model.ModelPackage;
-
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+
+import de.hub.clickwatch.analysis.activity_composition.model.Element;
+import de.hub.clickwatch.analysis.activity_composition.model.ModelPackage;
 
 /**
  * <!-- begin-user-doc -->

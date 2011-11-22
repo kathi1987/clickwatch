@@ -7,7 +7,6 @@
 package de.hub.clickwatch.analysis.activity_composition.model;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**

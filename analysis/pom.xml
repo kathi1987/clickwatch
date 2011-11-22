@@ -15,6 +15,7 @@
   <packaging>pom</packaging>
   
   <modules>
+   <module>de.hub.clickwatch.analysis.activity_composition</module>
    <module>de.hub.clickwatch.analysis.visualization</module>
    <module>de.hub.clickwatch.analysis.plot</module>
    <module>de.hub.clickwatch.analysis.results</module>

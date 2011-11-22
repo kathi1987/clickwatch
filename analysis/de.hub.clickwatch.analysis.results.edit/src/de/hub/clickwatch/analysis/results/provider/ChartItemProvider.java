@@ -7,18 +7,12 @@
 package de.hub.clickwatch.analysis.results.provider;
 
 
-import de.hub.clickwatch.analysis.results.Chart;
-import de.hub.clickwatch.analysis.results.ResultsFactory;
-import de.hub.clickwatch.analysis.results.ResultsPackage;
-
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
@@ -26,6 +20,10 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+
+import de.hub.clickwatch.analysis.results.Chart;
+import de.hub.clickwatch.analysis.results.ResultsFactory;
+import de.hub.clickwatch.analysis.results.ResultsPackage;
 
 /**
  * This is the item provider adapter for a {@link de.hub.clickwatch.analysis.results.Chart} object.

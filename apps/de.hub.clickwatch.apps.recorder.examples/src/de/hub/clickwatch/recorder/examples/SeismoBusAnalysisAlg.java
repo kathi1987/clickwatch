@@ -12,7 +12,6 @@ import de.hub.clickwatch.analysis.results.util.ChartUtil;
 import de.hub.clickwatch.main.IClickWatchContext;
 import de.hub.clickwatch.main.IResultsProvider;
 import de.hub.clickwatch.model.Node;
-import de.hub.clickwatch.recorder.examples.lib.TimeSync;
 import de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.Localchannelinfo;
 import de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.V;
 
@@ -89,7 +88,7 @@ public class SeismoBusAnalysisAlg implements IAnalysisAlgorithm {
 		};
 		
 		// initialize time sync
-		TimeSync timeSync = new TimeSync("/media/samba/experiments/SeismoPlot20111027-1/sync.data");
+//		TimeSync timeSync = new TimeSync("/media/samba/experiments/SeismoPlot20111027-1/sync.data");
 		
 		// create a data base iterator that iterates through seismo data sets in the order they were recorded
 		Iterable<Localchannelinfo> dataBaseIterator = container.createIterator(node, "seismo/localchannelinfo", Localchannelinfo.class, monitor);
@@ -107,7 +106,7 @@ public class SeismoBusAnalysisAlg implements IAnalysisAlgorithm {
 				long time = value.getT() - start;
 				double dtime = time / 1e6;
 				
-				long syncTime = timeSync.correctTime(node.getINetAddress(), value.getS());
+				// long syncTime = timeSync.correctTime(node.getINetAddress(), value.getS());
 				
 				// apply the seismo transformation on the value from each channel and store the results with the current time
 				result.getData().add(0, dtime, seismoTrans[0].transform((double)value.getC0()));

@@ -6,12 +6,11 @@
  */
 package de.hub.clickwatch.specificmodels.brn.impl;
 
-import de.hub.clickwatch.model.impl.HandlerImpl;
+import org.eclipse.emf.ecore.EClass;
 
+import de.hub.clickwatch.model.impl.HandlerImpl;
 import de.hub.clickwatch.specificmodels.brn.BrnPackage;
 import de.hub.clickwatch.specificmodels.brn.HandlerSubClass;
-
-import org.eclipse.emf.ecore.EClass;
 
 /**
  * <!-- begin-user-doc -->

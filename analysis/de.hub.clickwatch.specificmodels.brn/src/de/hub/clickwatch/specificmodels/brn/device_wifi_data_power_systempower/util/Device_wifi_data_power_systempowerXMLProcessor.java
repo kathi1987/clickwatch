@@ -6,15 +6,13 @@
  */
 package de.hub.clickwatch.specificmodels.brn.device_wifi_data_power_systempower.util;
 
-import de.hub.clickwatch.specificmodels.brn.device_wifi_data_power_systempower.Device_wifi_data_power_systempowerPackage;
-
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.resource.Resource;
-
 import org.eclipse.emf.ecore.xmi.util.XMLProcessor;
+
+import de.hub.clickwatch.specificmodels.brn.device_wifi_data_power_systempower.Device_wifi_data_power_systempowerPackage;
 
 /**
  * This class contains helper methods to serialize and deserialize XML documents

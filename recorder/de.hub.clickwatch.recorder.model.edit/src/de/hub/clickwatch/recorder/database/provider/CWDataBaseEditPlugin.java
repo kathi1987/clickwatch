@@ -6,10 +6,10 @@
  */
 package de.hub.clickwatch.recorder.database.provider;
 
-import de.hub.clickwatch.analysis.results.provider.ResultsEditPlugin;
 import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.util.ResourceLocator;
 
+import de.hub.clickwatch.analysis.results.provider.ResultsEditPlugin;
 import de.hub.clickwatch.model.provider.ClickWatchModelEditPlugin;
 
 /**

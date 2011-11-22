@@ -6,16 +6,16 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.jdom.Document;
+import org.jdom.Element;
+import org.jdom.JDOMException;
+import org.jdom.input.SAXBuilder;
+
 import de.hub.clickwatch.apps.god.information.ClientInformations;
 import de.hub.clickwatch.apps.god.information.MacIpInformation;
 import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Client;
 import de.hub.clickwatch.specificmodels.brn.lease_tab_leases.Leases;
-
-import org.jdom.Document;
-import org.jdom.Element;
-import org.jdom.JDOMException;
-import org.jdom.input.SAXBuilder;
 
 public class MacIpProcessor implements NodeInformationProcessor {
 

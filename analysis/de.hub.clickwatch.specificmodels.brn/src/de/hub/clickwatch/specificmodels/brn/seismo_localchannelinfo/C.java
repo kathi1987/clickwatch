@@ -7,7 +7,6 @@
 package de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**

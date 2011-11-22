@@ -6,17 +6,17 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.jdom.Document;
+import org.jdom.Element;
+import org.jdom.JDOMException;
+import org.jdom.input.SAXBuilder;
+
 import de.hub.clickwatch.apps.god.information.APInformations;
 import de.hub.clickwatch.apps.god.information.ClientInformations;
 import de.hub.clickwatch.apps.god.information.StatsInformation;
 import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.specificmodels.brn.device_wifi_wifidevice_cst_stats.Nb;
 import de.hub.clickwatch.specificmodels.brn.device_wifi_wifidevice_cst_stats.Stats;
-
-import org.jdom.Document;
-import org.jdom.Element;
-import org.jdom.JDOMException;
-import org.jdom.input.SAXBuilder;
 
 public class StatsProcessor implements NodeInformationProcessor {
 

@@ -6,10 +6,10 @@
  */
 package de.hub.clickwatch.analysis.activity_composition.model.impl;
 
+import org.eclipse.emf.ecore.EClass;
+
 import de.hub.clickwatch.analysis.activity_composition.model.ModelPackage;
 import de.hub.clickwatch.analysis.activity_composition.model.Node;
-
-import org.eclipse.emf.ecore.EClass;
 
 /**
  * <!-- begin-user-doc -->

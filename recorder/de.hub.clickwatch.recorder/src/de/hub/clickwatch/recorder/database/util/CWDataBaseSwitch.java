@@ -11,7 +11,6 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
 
 import de.hub.clickwatch.model.ModelElementWithStatistics;
-import de.hub.clickwatch.recorder.database.*;
 import de.hub.clickwatch.recorder.database.CWDataBasePackage;
 import de.hub.clickwatch.recorder.database.DataBase;
 import de.hub.clickwatch.recorder.database.Record;

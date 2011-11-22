@@ -6,15 +6,13 @@
  */
 package de.hub.specificmodels.tests.testsourcemodel.impl;
 
-import de.hub.specificmodels.tests.testsourcemodel.ListFeatureElementClass3;
-import de.hub.specificmodels.tests.testsourcemodel.TestSourceModelPackage;
-
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+
+import de.hub.specificmodels.tests.testsourcemodel.ListFeatureElementClass3;
+import de.hub.specificmodels.tests.testsourcemodel.TestSourceModelPackage;
 
 /**
  * <!-- begin-user-doc -->

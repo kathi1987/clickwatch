@@ -6,15 +6,17 @@
  */
 package de.hub.clickwatch.specificmodels.brn.tsi_syncinfo.impl;
 
-import de.hub.clickwatch.specificmodels.brn.tsi_syncinfo.*;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+
+import de.hub.clickwatch.specificmodels.brn.tsi_syncinfo.Syncinfo;
+import de.hub.clickwatch.specificmodels.brn.tsi_syncinfo.Syncpacket;
+import de.hub.clickwatch.specificmodels.brn.tsi_syncinfo.Timesyncinfo;
+import de.hub.clickwatch.specificmodels.brn.tsi_syncinfo.Tsi_syncinfoFactory;
+import de.hub.clickwatch.specificmodels.brn.tsi_syncinfo.Tsi_syncinfoPackage;
 
 /**
  * <!-- begin-user-doc -->

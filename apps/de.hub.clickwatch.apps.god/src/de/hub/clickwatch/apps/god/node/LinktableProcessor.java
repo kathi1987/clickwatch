@@ -8,8 +8,8 @@ import de.hub.clickwatch.apps.god.information.ClientInformations;
 import de.hub.clickwatch.apps.god.information.LinktableInformation;
 import de.hub.clickwatch.apps.god.information.LinktableLinkInformation;
 import de.hub.clickwatch.model.Handler;
-import de.hub.clickwatch.specificmodels.brn.lt_links.Links;
 import de.hub.clickwatch.specificmodels.brn.lt_links.Link;
+import de.hub.clickwatch.specificmodels.brn.lt_links.Links;
 
 public class LinktableProcessor implements NodeInformationProcessor {
 	

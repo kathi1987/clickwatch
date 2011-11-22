@@ -9,7 +9,6 @@ package de.hub.clickwatch.model;
 import org.eclipse.emf.common.util.EList;
 
 import de.hub.clickwatch.connection.INodeConnection;
-import de.hub.clickwatch.connection.adapter.IHandlerEventListener;
 
 /**
  * <!-- begin-user-doc -->

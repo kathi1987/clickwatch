@@ -6,15 +6,15 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.hub.clickwatch.apps.god.information.ClientInformations;
-import de.hub.clickwatch.apps.god.information.PowerInformation;
-import de.hub.clickwatch.model.Handler;
-import de.hub.clickwatch.specificmodels.brn.device_wifi_data_power_systempower.Systempower;
-
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.JDOMException;
 import org.jdom.input.SAXBuilder;
+
+import de.hub.clickwatch.apps.god.information.ClientInformations;
+import de.hub.clickwatch.apps.god.information.PowerInformation;
+import de.hub.clickwatch.model.Handler;
+import de.hub.clickwatch.specificmodels.brn.device_wifi_data_power_systempower.Systempower;
 
 public class PowerProcessor implements NodeInformationProcessor {
 

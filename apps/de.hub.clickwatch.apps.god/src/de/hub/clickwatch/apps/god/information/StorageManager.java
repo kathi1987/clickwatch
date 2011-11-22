@@ -14,9 +14,9 @@ import de.hub.clickwatch.apps.god.node.FlowStatProcessor;
 import de.hub.clickwatch.apps.god.node.GpsProcessor;
 import de.hub.clickwatch.apps.god.node.LinkProcessor;
 import de.hub.clickwatch.apps.god.node.LinktableProcessor;
-import de.hub.clickwatch.apps.god.node.RoutingtableProcessor;
 import de.hub.clickwatch.apps.god.node.MacIpProcessor;
 import de.hub.clickwatch.apps.god.node.PowerProcessor;
+import de.hub.clickwatch.apps.god.node.RoutingtableProcessor;
 import de.hub.clickwatch.apps.god.node.StatsProcessor;
 
 public class StorageManager {

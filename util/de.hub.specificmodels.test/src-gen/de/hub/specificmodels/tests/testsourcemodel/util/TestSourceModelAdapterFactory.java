@@ -6,14 +6,17 @@
  */
 package de.hub.specificmodels.tests.testsourcemodel.util;
 
-import de.hub.specificmodels.tests.testsourcemodel.*;
-
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
-
 import org.eclipse.emf.ecore.EObject;
+
+import de.hub.specificmodels.tests.testsourcemodel.ClassWithListFeatures;
+import de.hub.specificmodels.tests.testsourcemodel.ListFeatureElementClass1;
+import de.hub.specificmodels.tests.testsourcemodel.ListFeatureElementClass2;
+import de.hub.specificmodels.tests.testsourcemodel.ListFeatureElementClass3;
+import de.hub.specificmodels.tests.testsourcemodel.RootClass;
+import de.hub.specificmodels.tests.testsourcemodel.TestSourceModelPackage;
 
 /**
  * <!-- begin-user-doc -->

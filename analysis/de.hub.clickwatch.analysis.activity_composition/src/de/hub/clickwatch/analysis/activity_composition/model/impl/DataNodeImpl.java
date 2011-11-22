@@ -6,14 +6,15 @@
  */
 package de.hub.clickwatch.analysis.activity_composition.model.impl;
 
-import de.hub.clickwatch.analysis.activity_composition.model.DataNode;
-import de.hub.clickwatch.analysis.activity_composition.model.ModelPackage;
-
-import de.hub.clickwatch.analysis.activity_composition.model.OutputEdge;
 import java.util.Collection;
+
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+
+import de.hub.clickwatch.analysis.activity_composition.model.DataNode;
+import de.hub.clickwatch.analysis.activity_composition.model.ModelPackage;
+import de.hub.clickwatch.analysis.activity_composition.model.OutputEdge;
 
 /**
  * <!-- begin-user-doc -->

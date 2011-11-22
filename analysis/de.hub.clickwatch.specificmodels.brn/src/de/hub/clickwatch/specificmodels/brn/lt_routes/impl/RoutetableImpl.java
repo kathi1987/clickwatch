@@ -6,28 +6,24 @@
  */
 package de.hub.clickwatch.specificmodels.brn.lt_routes.impl;
 
-import de.hub.clickwatch.specificmodels.brn.lt_routes.Lt_routesPackage;
-import de.hub.clickwatch.specificmodels.brn.lt_routes.Route;
-import de.hub.clickwatch.specificmodels.brn.lt_routes.Routes;
-import de.hub.clickwatch.specificmodels.brn.lt_routes.Routetable;
-
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.eclipse.emf.ecore.util.EDataTypeEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
+
+import de.hub.clickwatch.specificmodels.brn.lt_routes.Lt_routesPackage;
+import de.hub.clickwatch.specificmodels.brn.lt_routes.Route;
+import de.hub.clickwatch.specificmodels.brn.lt_routes.Routes;
+import de.hub.clickwatch.specificmodels.brn.lt_routes.Routetable;
 
 /**
  * <!-- begin-user-doc -->

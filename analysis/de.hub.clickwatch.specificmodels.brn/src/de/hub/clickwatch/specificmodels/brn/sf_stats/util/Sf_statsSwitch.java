@@ -6,14 +6,16 @@
  */
 package de.hub.clickwatch.specificmodels.brn.sf_stats.util;
 
-import de.hub.clickwatch.model.Handler;
-
-import de.hub.clickwatch.specificmodels.brn.sf_stats.*;
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.util.Switch;
+
+import de.hub.clickwatch.model.Handler;
+import de.hub.clickwatch.specificmodels.brn.sf_stats.Flowstats;
+import de.hub.clickwatch.specificmodels.brn.sf_stats.Rxflow;
+import de.hub.clickwatch.specificmodels.brn.sf_stats.Sf_statsPackage;
+import de.hub.clickwatch.specificmodels.brn.sf_stats.Stats;
+import de.hub.clickwatch.specificmodels.brn.sf_stats.Txflow;
 
 /**
  * <!-- begin-user-doc -->

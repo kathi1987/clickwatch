@@ -8,6 +8,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.jdom.Document;
+import org.jdom.Element;
+import org.jdom.JDOMException;
+import org.jdom.input.SAXBuilder;
+
 import de.hub.clickwatch.apps.god.information.ClientInformations;
 import de.hub.clickwatch.apps.god.information.LinkInformation;
 import de.hub.clickwatch.apps.god.information.RateLinkInformation;
@@ -16,11 +21,6 @@ import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.specificmodels.brn.device_wifi_link_stat_bcast_stats.Bcast_stats;
 import de.hub.clickwatch.specificmodels.brn.device_wifi_link_stat_bcast_stats.Link;
 import de.hub.clickwatch.specificmodels.brn.device_wifi_link_stat_bcast_stats.Link_info;
-
-import org.jdom.Document;
-import org.jdom.Element;
-import org.jdom.JDOMException;
-import org.jdom.input.SAXBuilder;
 
 public class LinkProcessor implements NodeInformationProcessor {
 

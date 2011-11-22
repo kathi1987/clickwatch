@@ -6,19 +6,16 @@
  */
 package de.hub.clickwatch.specificmodels.brn.device_wifi_data_power_systempower.impl;
 
-import de.hub.clickwatch.model.impl.HandlerImpl;
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import de.hub.clickwatch.model.impl.HandlerImpl;
 import de.hub.clickwatch.specificmodels.brn.device_wifi_data_power_systempower.Device_wifi_data_power_systempowerPackage;
 import de.hub.clickwatch.specificmodels.brn.device_wifi_data_power_systempower.Settxpower;
 import de.hub.clickwatch.specificmodels.brn.device_wifi_data_power_systempower.Systempower;
-
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->

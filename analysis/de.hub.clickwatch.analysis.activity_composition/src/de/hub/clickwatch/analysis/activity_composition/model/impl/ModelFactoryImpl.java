@@ -6,15 +6,27 @@
  */
 package de.hub.clickwatch.analysis.activity_composition.model.impl;
 
-import de.hub.clickwatch.analysis.activity_composition.model.*;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+
+import de.hub.clickwatch.analysis.activity_composition.model.ActionNode;
+import de.hub.clickwatch.analysis.activity_composition.model.Composition;
+import de.hub.clickwatch.analysis.activity_composition.model.DataEdge;
+import de.hub.clickwatch.analysis.activity_composition.model.DataNode;
+import de.hub.clickwatch.analysis.activity_composition.model.Edge;
+import de.hub.clickwatch.analysis.activity_composition.model.Element;
+import de.hub.clickwatch.analysis.activity_composition.model.InputEdge;
+import de.hub.clickwatch.analysis.activity_composition.model.ModelFactory;
+import de.hub.clickwatch.analysis.activity_composition.model.ModelNode;
+import de.hub.clickwatch.analysis.activity_composition.model.ModelPackage;
+import de.hub.clickwatch.analysis.activity_composition.model.Node;
+import de.hub.clickwatch.analysis.activity_composition.model.OutputEdge;
+import de.hub.clickwatch.analysis.activity_composition.model.ProgressEdge;
+import de.hub.clickwatch.analysis.activity_composition.model.StartNode;
+import de.hub.clickwatch.analysis.activity_composition.model.Transformation;
 
 /**
  * <!-- begin-user-doc -->

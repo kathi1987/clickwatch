@@ -6,16 +6,17 @@
  */
 package de.hub.clickwatch.specificmodels.brn.sf_stats.util;
 
-import de.hub.clickwatch.model.Handler;
-
-import de.hub.clickwatch.specificmodels.brn.sf_stats.*;
-
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
-
 import org.eclipse.emf.ecore.EObject;
+
+import de.hub.clickwatch.model.Handler;
+import de.hub.clickwatch.specificmodels.brn.sf_stats.Flowstats;
+import de.hub.clickwatch.specificmodels.brn.sf_stats.Rxflow;
+import de.hub.clickwatch.specificmodels.brn.sf_stats.Sf_statsPackage;
+import de.hub.clickwatch.specificmodels.brn.sf_stats.Stats;
+import de.hub.clickwatch.specificmodels.brn.sf_stats.Txflow;
 
 /**
  * <!-- begin-user-doc -->

@@ -7,7 +7,6 @@
 package de.hub.clickwatch.model.impl;
 
 
-import de.hub.clickwatch.model.*;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EClass;
@@ -20,6 +19,7 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import com.google.inject.Injector;
 
 import de.hub.clickwatch.model.BackboneType;
+import de.hub.clickwatch.model.ClickWatchError;
 import de.hub.clickwatch.model.ClickWatchModelFactory;
 import de.hub.clickwatch.model.ClickWatchModelPackage;
 import de.hub.clickwatch.model.Element;

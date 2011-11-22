@@ -14,7 +14,6 @@ import de.hub.clickwatch.ClickWatchModuleUtil.HandlerBehaviour;
 import de.hub.clickwatch.connection.INodeConnection;
 import de.hub.clickwatch.connection.INodeConnectionProvider;
 import de.hub.clickwatch.connection.adapter.IHandlerEventAdapter;
-import de.hub.clickwatch.connection.adapter.IHandlerEventListener;
 import de.hub.clickwatch.connection.adapter.IMergeAdapter;
 import de.hub.clickwatch.connection.adapter.IMetaDataAdapter;
 import de.hub.clickwatch.model.Handler;

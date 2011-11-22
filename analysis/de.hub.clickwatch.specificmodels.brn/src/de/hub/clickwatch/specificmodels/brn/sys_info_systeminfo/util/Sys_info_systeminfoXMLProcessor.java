@@ -6,15 +6,13 @@
  */
 package de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.util;
 
-import de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.Sys_info_systeminfoPackage;
-
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.resource.Resource;
-
 import org.eclipse.emf.ecore.xmi.util.XMLProcessor;
+
+import de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.Sys_info_systeminfoPackage;
 
 /**
  * This class contains helper methods to serialize and deserialize XML documents

@@ -6,19 +6,16 @@
  */
 package de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.impl;
 
-import de.hub.clickwatch.model.impl.HandlerImpl;
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import de.hub.clickwatch.model.impl.HandlerImpl;
 import de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.C;
 import de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.Localchannelinfo;
 import de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.Seismo_localchannelinfoPackage;
-
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->

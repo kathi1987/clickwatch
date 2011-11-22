@@ -7,7 +7,6 @@ import java.util.Date;
 import java.util.List;
 
 import click.ClickConnection;
-
 import de.hub.clickwatch.apps.god.Server;
 import de.hub.clickwatch.apps.god.information.ClientInformations;
 import de.hub.clickwatch.connection.INodeConnection;

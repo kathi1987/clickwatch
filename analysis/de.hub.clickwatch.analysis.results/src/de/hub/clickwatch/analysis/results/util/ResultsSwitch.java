@@ -6,12 +6,26 @@
  */
 package de.hub.clickwatch.analysis.results.util;
 
-import de.hub.clickwatch.analysis.results.*;
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.util.Switch;
+
+import de.hub.clickwatch.analysis.results.Axis;
+import de.hub.clickwatch.analysis.results.Bar;
+import de.hub.clickwatch.analysis.results.BoxAndWhiskers;
+import de.hub.clickwatch.analysis.results.Category;
+import de.hub.clickwatch.analysis.results.Chart;
+import de.hub.clickwatch.analysis.results.ChartType;
+import de.hub.clickwatch.analysis.results.Constraint;
+import de.hub.clickwatch.analysis.results.EqualsConstraint;
+import de.hub.clickwatch.analysis.results.NamedElement;
+import de.hub.clickwatch.analysis.results.Or;
+import de.hub.clickwatch.analysis.results.Result;
+import de.hub.clickwatch.analysis.results.Results;
+import de.hub.clickwatch.analysis.results.ResultsPackage;
+import de.hub.clickwatch.analysis.results.Series;
+import de.hub.clickwatch.analysis.results.ValueSpec;
+import de.hub.clickwatch.analysis.results.XY;
 
 /**
  * <!-- begin-user-doc -->

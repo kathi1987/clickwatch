@@ -1,6 +1,7 @@
 package de.hub.clickwatch.apps.god.test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.net.UnknownHostException;
 import java.util.HashMap;
@@ -12,8 +13,8 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import de.hub.clickwatch.apps.god.Server;
-import de.hub.clickwatch.apps.god.node.FlowInfoProcessor;
 import de.hub.clickwatch.apps.god.information.FlowInformation;
+import de.hub.clickwatch.apps.god.node.FlowInfoProcessor;
 
 public class FlowTests {
 	

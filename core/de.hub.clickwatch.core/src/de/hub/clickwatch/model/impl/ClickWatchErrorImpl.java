@@ -6,15 +6,13 @@
  */
 package de.hub.clickwatch.model.impl;
 
-import de.hub.clickwatch.model.ClickWatchError;
-import de.hub.clickwatch.model.ClickWatchModelPackage;
-
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+
+import de.hub.clickwatch.model.ClickWatchError;
+import de.hub.clickwatch.model.ClickWatchModelPackage;
 
 /**
  * <!-- begin-user-doc -->

@@ -6,15 +6,17 @@
  */
 package de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.impl;
 
-import de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.*;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+
+import de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.C;
+import de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.Localchannelinfo;
+import de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.Seismo_localchannelinfoFactory;
+import de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.Seismo_localchannelinfoPackage;
+import de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.V;
 
 /**
  * <!-- begin-user-doc -->

@@ -27,7 +27,6 @@ import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.model.util.HandlerUtil;
 import de.hub.clickwatch.specificmodels.brn.BrnValueAdapter;
 import de.hub.clickwatch.util.Throwables;
-import de.hub.emfxml.XmlModelRepository;
 import de.hub.emfxml.util.EmfXmlUtil;
 import de.hub.specificmodels.common.ITargetIdProvider;
 import de.hub.specificmodels.common.targetidprovider.TargetIdProviderFactoryProvider;

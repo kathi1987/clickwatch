@@ -6,15 +6,19 @@
  */
 package de.hub.specificmodels.tests.testsourcemodel.impl;
 
-import de.hub.specificmodels.tests.testsourcemodel.*;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+
+import de.hub.specificmodels.tests.testsourcemodel.ClassWithListFeatures;
+import de.hub.specificmodels.tests.testsourcemodel.ListFeatureElementClass1;
+import de.hub.specificmodels.tests.testsourcemodel.ListFeatureElementClass2;
+import de.hub.specificmodels.tests.testsourcemodel.ListFeatureElementClass3;
+import de.hub.specificmodels.tests.testsourcemodel.RootClass;
+import de.hub.specificmodels.tests.testsourcemodel.TestSourceModelFactory;
+import de.hub.specificmodels.tests.testsourcemodel.TestSourceModelPackage;
 
 /**
  * <!-- begin-user-doc -->

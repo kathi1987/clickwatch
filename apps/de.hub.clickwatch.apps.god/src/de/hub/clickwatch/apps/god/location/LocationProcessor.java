@@ -13,10 +13,10 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import de.hub.clickwatch.apps.god.Server;
 import de.hub.clickwatch.apps.god.information.APInformations;
-import de.hub.clickwatch.apps.god.information.StatsInformation;
-import de.hub.clickwatch.apps.god.information.MacIpInformation;
 import de.hub.clickwatch.apps.god.information.ClientInformations;
 import de.hub.clickwatch.apps.god.information.GpsInformation;
+import de.hub.clickwatch.apps.god.information.MacIpInformation;
+import de.hub.clickwatch.apps.god.information.StatsInformation;
 import de.hub.clickwatch.apps.god.information.StorageManager;
 import de.hub.clickwatch.apps.god.node.GpsProcessor;
 import de.hub.clickwatch.apps.god.node.MacIpProcessor;

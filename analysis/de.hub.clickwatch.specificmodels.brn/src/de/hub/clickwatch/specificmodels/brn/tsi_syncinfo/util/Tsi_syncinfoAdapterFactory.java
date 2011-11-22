@@ -6,16 +6,16 @@
  */
 package de.hub.clickwatch.specificmodels.brn.tsi_syncinfo.util;
 
-import de.hub.clickwatch.model.Handler;
-
-import de.hub.clickwatch.specificmodels.brn.tsi_syncinfo.*;
-
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
-
 import org.eclipse.emf.ecore.EObject;
+
+import de.hub.clickwatch.model.Handler;
+import de.hub.clickwatch.specificmodels.brn.tsi_syncinfo.Syncinfo;
+import de.hub.clickwatch.specificmodels.brn.tsi_syncinfo.Syncpacket;
+import de.hub.clickwatch.specificmodels.brn.tsi_syncinfo.Timesyncinfo;
+import de.hub.clickwatch.specificmodels.brn.tsi_syncinfo.Tsi_syncinfoPackage;
 
 /**
  * <!-- begin-user-doc -->

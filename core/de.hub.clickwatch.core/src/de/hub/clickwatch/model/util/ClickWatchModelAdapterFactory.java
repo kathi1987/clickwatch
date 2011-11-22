@@ -8,13 +8,14 @@ package de.hub.clickwatch.model.util;
 
 
 
-import de.hub.clickwatch.model.*;
 import java.util.Map;
+
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
 
+import de.hub.clickwatch.model.ClickWatchError;
 import de.hub.clickwatch.model.ClickWatchModelPackage;
 import de.hub.clickwatch.model.Element;
 import de.hub.clickwatch.model.Handler;
