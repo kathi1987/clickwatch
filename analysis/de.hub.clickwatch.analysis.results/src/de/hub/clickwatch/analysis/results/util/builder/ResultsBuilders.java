@@ -8,14 +8,6 @@ package de.hub.clickwatch.analysis.results.util.builder;
  * @generated
  */
 public class ResultsBuilders {
-  public static final DataSetBuilder newDataSetBuilder() {
-    return DataSetBuilder.newDataSetBuilder();
-  }
-
-  public static final DataEntryBuilder newDataEntryBuilder() {
-    return DataEntryBuilder.newDataEntryBuilder();
-  }
-
   public static final ChartBuilder newChartBuilder() {
     return ChartBuilder.newChartBuilder();
   }

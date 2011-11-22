@@ -5,8 +5,10 @@ import java.util.HashSet;
 
 import com.google.inject.Inject;
 
+import de.hub.clickwatch.connection.adapter.IEditingDomainAdapter;
 import de.hub.clickwatch.connection.adapter.IErrorAdapter;
 import de.hub.clickwatch.model.ClickWatchError;
+import de.hub.clickwatch.model.ClickWatchModelPackage;
 import de.hub.clickwatch.model.util.ClickWatchErrorUtil;
 import de.hub.clickwatch.util.ILogger;
 import de.hub.clickwatch.util.Tasks;
@@ -33,7 +35,7 @@ public class ErrorAdapter extends AbstractAdapter implements IErrorAdapter {
             public void run() {
                 logger.log(ILogger.ERROR, "error in connection " + connection.toString() + ", connection was closed.", e);
                 final ClickWatchError error = ClickWatchErrorUtil.createError(message, (Exception)e);
-                connection.getNode().getErrors().add(error);
+                connection.getAdapter(IEditingDomainAdapter.class).add(connection.getNode(), ClickWatchModelPackage.eINSTANCE.getNode_Errors(), error);
 
                 // Dispatch a task to all error listeners.
                 logger.log(ILogger.ERROR, "In connection " + connection.toString() + ": " + message, e);

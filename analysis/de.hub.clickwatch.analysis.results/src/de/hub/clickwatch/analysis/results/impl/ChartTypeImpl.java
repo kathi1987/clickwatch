@@ -22,22 +22,22 @@ import de.hub.clickwatch.analysis.results.ResultsPackage;
  */
 public abstract class ChartTypeImpl extends NamedElementImpl implements ChartType {
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected ChartTypeImpl() {
-		super();
-	}
+        super();
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	protected EClass eStaticClass() {
-		return ResultsPackage.Literals.CHART_TYPE;
-	}
+        return ResultsPackage.Literals.CHART_TYPE;
+    }
 
 } //ChartTypeImpl

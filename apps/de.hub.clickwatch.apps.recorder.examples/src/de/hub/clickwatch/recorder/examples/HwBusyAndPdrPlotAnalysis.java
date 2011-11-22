@@ -58,7 +58,7 @@ public class HwBusyAndPdrPlotAnalysis implements IClickWatchMain {
 						long to = getMac(link.getTo());
 						for(Link_info linkInfo: link.getLink_info()) {
 							if (linkInfo.getRate() == 2) {
-								result.getDataSet().add(1, from, to, time, linkInfo.getRev());
+								result.getData().add(1, from, to, time, linkInfo.getRev());
 							}
 						}
 					}
@@ -68,7 +68,7 @@ public class HwBusyAndPdrPlotAnalysis implements IClickWatchMain {
 			plot(nodeConfig.getINetAddress(), "device_wifi/wifidevice/cst/stats", new IPlotConfig<Stats>() {
 				@Override
 				public void doPlot(Stats handler, double time) {
-					result.getDataSet().add(2, getMac(handler.getChannelstats().getNode()), time, handler.getChannelstats().getPhy().getHwbusy());
+					result.getData().add(2, getMac(handler.getChannelstats().getNode()), time, handler.getChannelstats().getPhy().getHwbusy());
 				}
 			});			
 			monitor.worked(1);

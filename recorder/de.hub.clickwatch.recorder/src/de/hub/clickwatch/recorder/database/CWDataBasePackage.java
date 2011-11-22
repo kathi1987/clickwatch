@@ -127,13 +127,22 @@ public interface CWDataBasePackage extends EPackage {
 	int RECORD__HBASE_ROW_MAP = ClickWatchModelPackage.MODEL_ELEMENT_WITH_STATISTICS_FEATURE_COUNT + 4;
 
 	/**
+     * The feature id for the '<em><b>Results</b></em>' containment reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int RECORD__RESULTS = ClickWatchModelPackage.MODEL_ELEMENT_WITH_STATISTICS_FEATURE_COUNT + 5;
+
+    /**
      * The number of structural features of the '<em>Record</em>' class.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-	int RECORD_FEATURE_COUNT = ClickWatchModelPackage.MODEL_ELEMENT_WITH_STATISTICS_FEATURE_COUNT + 5;
+	int RECORD_FEATURE_COUNT = ClickWatchModelPackage.MODEL_ELEMENT_WITH_STATISTICS_FEATURE_COUNT + 6;
 
 	/**
      * The meta object id for the '{@link de.hub.clickwatch.recorder.database.impl.DataBaseImpl <em>Data Base</em>}' class.
@@ -249,6 +258,17 @@ public interface CWDataBasePackage extends EPackage {
 	EAttribute getRecord_HBaseRowMap();
 
 	/**
+     * Returns the meta object for the containment reference '{@link de.hub.clickwatch.recorder.database.Record#getResults <em>Results</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the containment reference '<em>Results</em>'.
+     * @see de.hub.clickwatch.recorder.database.Record#getResults()
+     * @see #getRecord()
+     * @generated
+     */
+    EReference getRecord_Results();
+
+    /**
      * Returns the meta object for class '{@link de.hub.clickwatch.recorder.database.DataBase <em>Data Base</em>}'.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -353,6 +373,14 @@ public interface CWDataBasePackage extends EPackage {
 		EAttribute RECORD__HBASE_ROW_MAP = eINSTANCE.getRecord_HBaseRowMap();
 
 		/**
+         * The meta object literal for the '<em><b>Results</b></em>' containment reference feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EReference RECORD__RESULTS = eINSTANCE.getRecord_Results();
+
+        /**
          * The meta object literal for the '{@link de.hub.clickwatch.recorder.database.impl.DataBaseImpl <em>Data Base</em>}' class.
          * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->

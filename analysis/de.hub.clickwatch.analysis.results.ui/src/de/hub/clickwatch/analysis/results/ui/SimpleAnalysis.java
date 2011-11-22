@@ -25,8 +25,6 @@ import com.google.inject.Inject;
 
 import de.hub.clickwatch.analysis.results.Result;
 import de.hub.clickwatch.analysis.results.Results;
-import de.hub.clickwatch.analysis.results.ResultsFactory;
-import de.hub.clickwatch.analysis.results.ResultsPlugin;
 import de.hub.clickwatch.analysis.results.util.builder.AxisBuilder;
 import de.hub.clickwatch.analysis.results.util.builder.ChartBuilder;
 import de.hub.clickwatch.analysis.results.util.builder.XYBuilder;
@@ -105,17 +103,16 @@ public class SimpleAnalysis implements IObjectActionDelegate {
 			object = object.eContainer();
 		}
 		
-		Results results = ResultsPlugin.getInstance().getResults();
-		Result result = ResultsFactory.eINSTANCE.createResult();
-		result.setName(value.getEntry().getEStructuralFeature().getName());
+		Results results = record.getResults();
+		String resultName = value.getEntry().getEStructuralFeature().getName();
+		Result result = results.getResult(resultName);
 		result.setTimestamp(new Date());
-		results.getResults().add(result);
 		
 		result.getCharts().add(ChartBuilder.newChartBuilder()
 				.withName(result.getName() + " over time")
 				.withType(XYBuilder.newXYBuilder())
 				.withValueSpecs(AxisBuilder.newAxisBuilder().withColumn(0).withName("time"))
-				.withValueSpecs(AxisBuilder.newAxisBuilder().withColumn(1).withName(value.getEntry().getEStructuralFeature().getName())).build());
+				.withValueSpecs(AxisBuilder.newAxisBuilder().withColumn(1).withName(resultName)).build());
 		
 		Iterator<Handler> iterator = dbUtil.getHandlerIterator(
 				DataBaseUtil.createHandle(record, node, handler),
@@ -138,10 +135,10 @@ public class SimpleAnalysis implements IObjectActionDelegate {
 				return;
 			}
 			loop: for (FeatureMap.Entry fme: container.getAnyAttribute()) {
-				if (fme.getEStructuralFeature().getName().equals(value.getEntry().getEStructuralFeature().getName())) {
+				if (fme.getEStructuralFeature().getName().equals(resultName)) {
 					String stringValue = (String)fme.getValue();
 					
-					result.getDataSet().add(time, Double.parseDouble(stringValue));
+					result.getData().add(time, Double.parseDouble(stringValue));
 					break loop;
 				}
 			}

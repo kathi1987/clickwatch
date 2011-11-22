@@ -6,6 +6,9 @@
  */
 package de.hub.clickwatch.recorder.database.impl;
 
+import de.hub.clickwatch.analysis.results.Results;
+import de.hub.clickwatch.analysis.results.ResultsFactory;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
@@ -30,6 +33,7 @@ import de.hub.clickwatch.recorder.database.Record;
  *   <li>{@link de.hub.clickwatch.recorder.database.impl.RecordImpl#getStart <em>Start</em>}</li>
  *   <li>{@link de.hub.clickwatch.recorder.database.impl.RecordImpl#getEnd <em>End</em>}</li>
  *   <li>{@link de.hub.clickwatch.recorder.database.impl.RecordImpl#getHBaseRowMap <em>HBase Row Map</em>}</li>
+ *   <li>{@link de.hub.clickwatch.recorder.database.impl.RecordImpl#getResults <em>Results</em>}</li>
  * </ul>
  * </p>
  *
@@ -127,6 +131,16 @@ public class RecordImpl extends ModelElementWithStatisticsImpl implements Record
 	protected HBaseRowMap hBaseRowMap = HBASE_ROW_MAP_EDEFAULT;
 
 	/**
+     * The cached value of the '{@link #getResults() <em>Results</em>}' containment reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getResults()
+     * @generated
+     * @ordered
+     */
+    protected Results results;
+
+    /**
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
@@ -274,6 +288,60 @@ public class RecordImpl extends ModelElementWithStatisticsImpl implements Record
 
 	/**
      * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated NOT
+     */
+    public Results getResults() {
+        if (results == null) {
+            setResults(ResultsFactory.eINSTANCE.createResults());
+        } 
+        if (results != null && results.eIsProxy()) {
+            InternalEObject oldResults = (InternalEObject)results;
+            results = (Results)eResolveProxy(oldResults);
+            if (results != oldResults) {
+                if (eNotificationRequired())
+                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, CWDataBasePackage.RECORD__RESULTS, oldResults, results));
+            }
+        }
+        return results;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public NotificationChain basicSetResults(Results newResults, NotificationChain msgs) {
+        Results oldResults = results;
+        results = newResults;
+        if (eNotificationRequired()) {
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CWDataBasePackage.RECORD__RESULTS, oldResults, newResults);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
+        }
+        return msgs;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setResults(Results newResults) {
+        if (newResults != results) {
+            NotificationChain msgs = null;
+            if (results != null)
+                msgs = ((InternalEObject)results).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CWDataBasePackage.RECORD__RESULTS, null, msgs);
+            if (newResults != null)
+                msgs = ((InternalEObject)newResults).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CWDataBasePackage.RECORD__RESULTS, null, msgs);
+            msgs = basicSetResults(newResults, msgs);
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, CWDataBasePackage.RECORD__RESULTS, newResults, newResults));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
      */
@@ -282,6 +350,8 @@ public class RecordImpl extends ModelElementWithStatisticsImpl implements Record
         switch (featureID) {
             case CWDataBasePackage.RECORD__CONFIGURATION:
                 return basicSetConfiguration(null, msgs);
+            case CWDataBasePackage.RECORD__RESULTS:
+                return basicSetResults(null, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -304,6 +374,8 @@ public class RecordImpl extends ModelElementWithStatisticsImpl implements Record
                 return getEnd();
             case CWDataBasePackage.RECORD__HBASE_ROW_MAP:
                 return getHBaseRowMap();
+            case CWDataBasePackage.RECORD__RESULTS:
+                return getResults();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -330,6 +402,9 @@ public class RecordImpl extends ModelElementWithStatisticsImpl implements Record
                 return;
             case CWDataBasePackage.RECORD__HBASE_ROW_MAP:
                 setHBaseRowMap((HBaseRowMap)newValue);
+                return;
+            case CWDataBasePackage.RECORD__RESULTS:
+                setResults((Results)newValue);
                 return;
         }
         super.eSet(featureID, newValue);
@@ -358,6 +433,9 @@ public class RecordImpl extends ModelElementWithStatisticsImpl implements Record
             case CWDataBasePackage.RECORD__HBASE_ROW_MAP:
                 setHBaseRowMap(HBASE_ROW_MAP_EDEFAULT);
                 return;
+            case CWDataBasePackage.RECORD__RESULTS:
+                setResults((Results)null);
+                return;
         }
         super.eUnset(featureID);
     }
@@ -380,6 +458,8 @@ public class RecordImpl extends ModelElementWithStatisticsImpl implements Record
                 return end != END_EDEFAULT;
             case CWDataBasePackage.RECORD__HBASE_ROW_MAP:
                 return HBASE_ROW_MAP_EDEFAULT == null ? hBaseRowMap != null : !HBASE_ROW_MAP_EDEFAULT.equals(hBaseRowMap);
+            case CWDataBasePackage.RECORD__RESULTS:
+                return results != null;
         }
         return super.eIsSet(featureID);
     }

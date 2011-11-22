@@ -12,11 +12,15 @@ public class AxisBuilder implements de.hub.clickwatch.analysis.results.util.buil
   private Integer m_column;
   private de.hub.clickwatch.analysis.results.Constraint m_constraint;
   private de.hub.clickwatch.analysis.results.util.builder.IResultsBuilder<? extends de.hub.clickwatch.analysis.results.Constraint> m_featureConstraintBuilder;
+  private double m_from;
   private java.lang.String m_name;
+  private double m_to;
   // helper attributes
   private boolean m_featureColumnSet = false;
   private boolean m_featureConstraintSet = false;
+  private boolean m_featureFromSet = false;
   private boolean m_featureNameSet = false;
+  private boolean m_featureToSet = false;
 
   /**
    * Builder is not instantiated with a constructor.
@@ -43,8 +47,12 @@ public class AxisBuilder implements de.hub.clickwatch.analysis.results.util.buil
     _builder.m_featureConstraintSet = m_featureConstraintSet;
     _builder.m_constraint = m_constraint;
     _builder.m_featureConstraintBuilder = m_featureConstraintBuilder;
+    _builder.m_featureFromSet = m_featureFromSet;
+    _builder.m_from = m_from;
     _builder.m_featureNameSet = m_featureNameSet;
     _builder.m_name = m_name;
+    _builder.m_featureToSet = m_featureToSet;
+    _builder.m_to = m_to;
     return _builder;
   }
 
@@ -64,8 +72,14 @@ public class AxisBuilder implements de.hub.clickwatch.analysis.results.util.buil
         _newInstance.setConstraint(m_featureConstraintBuilder.build());
       }
     }
+    if (m_featureFromSet) {
+      _newInstance.setFrom(m_from);
+    }
     if (m_featureNameSet) {
       _newInstance.setName(m_name);
+    }
+    if (m_featureToSet) {
+      _newInstance.setTo(m_to);
     }
     return _newInstance;
   }
@@ -87,9 +101,21 @@ public class AxisBuilder implements de.hub.clickwatch.analysis.results.util.buil
     return this;
   }
 
+  public AxisBuilder withFrom(double p_from) {
+    m_from = p_from;
+    m_featureFromSet = true;
+    return this;
+  }
+
   public AxisBuilder withName(java.lang.String p_name) {
     m_name = p_name;
     m_featureNameSet = true;
+    return this;
+  }
+
+  public AxisBuilder withTo(double p_to) {
+    m_to = p_to;
+    m_featureToSet = true;
     return this;
   }
 }

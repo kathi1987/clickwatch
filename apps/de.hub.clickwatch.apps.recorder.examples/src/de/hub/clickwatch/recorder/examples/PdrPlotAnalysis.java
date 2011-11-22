@@ -47,7 +47,7 @@ public class PdrPlotAnalysis implements IClickWatchMain {
 				for(Link link: handler.getEntry().getLink()) {
 					for(Link_info linkInfo: link.getLink_info()) {
 						if (linkInfo.getRate() == 2) {
-							result.getDataSet().add(
+							result.getData().add(
 									handler.getEntry().getFrom() + "->" + link.getTo(), 
 									handler.getTimestamp() - record.getStart(), 
 									linkInfo.getRev());

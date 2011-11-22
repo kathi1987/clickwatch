@@ -7,37 +7,67 @@
   <foreignModel>Results.ecore</foreignModel>
   <genPackages prefix="Results" basePackage="de.hub.clickwatch.analysis" disposableProviderFactory="true"
       ecorePackage="Results.ecore#/">
-    <genClasses ecoreClass="Results.ecore#//DataSet">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Results.ecore#//DataSet/entries"/>
-    </genClasses>
-    <genClasses ecoreClass="Results.ecore#//DataEntry">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Results.ecore#//DataEntry/values"/>
-    </genClasses>
+    <genDataTypes ecoreDataType="Results.ecore#//DataSet"/>
+    <genDataTypes ecoreDataType="Results.ecore#//DataEntry"/>
     <genClasses ecoreClass="Results.ecore#//Chart">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Results.ecore#//Chart/type"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Results.ecore#//Chart/valueSpecs"/>
     </genClasses>
     <genClasses ecoreClass="Results.ecore#//ChartType"/>
     <genClasses image="false" ecoreClass="Results.ecore#//ValueSpec">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Results.ecore#//ValueSpec/constraint"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Results.ecore#//ValueSpec/column"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference Results.ecore#//ValueSpec/constraint"/>
     </genClasses>
     <genClasses image="false" ecoreClass="Results.ecore#//NamedElement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Results.ecore#//NamedElement/name"/>
     </genClasses>
-    <genClasses ecoreClass="Results.ecore#//Axis"/>
+    <genClasses ecoreClass="Results.ecore#//Axis">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Results.ecore#//Axis/to"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Results.ecore#//Axis/from"/>
+    </genClasses>
     <genClasses ecoreClass="Results.ecore#//Series"/>
     <genClasses ecoreClass="Results.ecore#//Category"/>
     <genClasses ecoreClass="Results.ecore#//Result">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Results.ecore#//Result/timestamp"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Results.ecore#//Result/diagrams"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Results.ecore#//Result/dataSet"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Results.ecore#//Result/charts"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute Results.ecore#//Result/data"/>
+      <genOperations ecoreOperation="Results.ecore#//Result/exportCSV">
+        <genParameters ecoreParameter="Results.ecore#//Result/exportCSV/name"/>
+      </genOperations>
     </genClasses>
     <genClasses ecoreClass="Results.ecore#//XY"/>
     <genClasses ecoreClass="Results.ecore#//BoxAndWhiskers"/>
     <genClasses ecoreClass="Results.ecore#//Bar"/>
     <genClasses ecoreClass="Results.ecore#//Results">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Results.ecore#//Results/results"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Results.ecore#//Results/groups"/>
+      <genOperations ecoreOperation="Results.ecore#//Results/createNewResult">
+        <genParameters ecoreParameter="Results.ecore#//Results/createNewResult/name"/>
+      </genOperations>
+      <genOperations ecoreOperation="Results.ecore#//Results/createNewGroup">
+        <genParameters ecoreParameter="Results.ecore#//Results/createNewGroup/name"/>
+      </genOperations>
+      <genOperations ecoreOperation="Results.ecore#//Results/getResult">
+        <genParameters ecoreParameter="Results.ecore#//Results/getResult/name"/>
+      </genOperations>
+      <genOperations ecoreOperation="Results.ecore#//Results/getGroup">
+        <genParameters ecoreParameter="Results.ecore#//Results/getGroup/name"/>
+      </genOperations>
+      <genOperations ecoreOperation="Results.ecore#//Results/exportCSV">
+        <genParameters ecoreParameter="Results.ecore#//Results/exportCSV/fileName"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="Results.ecore#//EqualsConstraint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Results.ecore#//EqualsConstraint/constraint"/>
+      <genOperations ecoreOperation="Results.ecore#//EqualsConstraint/getValues"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Results.ecore#//Constraint">
+      <genOperations ecoreOperation="Results.ecore#//Constraint/evaluate">
+        <genParameters ecoreParameter="Results.ecore#//Constraint/evaluate/entry"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="Results.ecore#//Or">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Results.ecore#//Or/ops"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

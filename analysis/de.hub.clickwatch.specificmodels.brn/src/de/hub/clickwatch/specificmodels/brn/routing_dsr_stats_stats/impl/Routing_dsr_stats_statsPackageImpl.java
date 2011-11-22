@@ -67,6 +67,8 @@ import de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.Sys_info_systemi
 
 import de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.impl.Sys_info_systeminfoPackageImpl;
 
+import de.hub.clickwatch.specificmodels.brn.tsi_syncinfo.Tsi_syncinfoPackage;
+import de.hub.clickwatch.specificmodels.brn.tsi_syncinfo.impl.Tsi_syncinfoPackageImpl;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
@@ -172,6 +174,7 @@ public class Routing_dsr_stats_statsPackageImpl extends EPackageImpl implements 
         Device_wifi_wifidevice_cst_statsPackageImpl theDevice_wifi_wifidevice_cst_statsPackage = (Device_wifi_wifidevice_cst_statsPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Device_wifi_wifidevice_cst_statsPackage.eNS_URI) instanceof Device_wifi_wifidevice_cst_statsPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Device_wifi_wifidevice_cst_statsPackage.eNS_URI) : Device_wifi_wifidevice_cst_statsPackage.eINSTANCE);
         Sf_statsPackageImpl theSf_statsPackage = (Sf_statsPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Sf_statsPackage.eNS_URI) instanceof Sf_statsPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Sf_statsPackage.eNS_URI) : Sf_statsPackage.eINSTANCE);
         Seismo_localchannelinfoPackageImpl theSeismo_localchannelinfoPackage = (Seismo_localchannelinfoPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Seismo_localchannelinfoPackage.eNS_URI) instanceof Seismo_localchannelinfoPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Seismo_localchannelinfoPackage.eNS_URI) : Seismo_localchannelinfoPackage.eINSTANCE);
+        Tsi_syncinfoPackageImpl theTsi_syncinfoPackage = (Tsi_syncinfoPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Tsi_syncinfoPackage.eNS_URI) instanceof Tsi_syncinfoPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Tsi_syncinfoPackage.eNS_URI) : Tsi_syncinfoPackage.eINSTANCE);
 
         // Create package meta-data objects
         theRouting_dsr_stats_statsPackage.createPackageContents();
@@ -188,6 +191,7 @@ public class Routing_dsr_stats_statsPackageImpl extends EPackageImpl implements 
         theDevice_wifi_wifidevice_cst_statsPackage.createPackageContents();
         theSf_statsPackage.createPackageContents();
         theSeismo_localchannelinfoPackage.createPackageContents();
+        theTsi_syncinfoPackage.createPackageContents();
 
         // Initialize created meta-data
         theRouting_dsr_stats_statsPackage.initializePackageContents();
@@ -204,6 +208,7 @@ public class Routing_dsr_stats_statsPackageImpl extends EPackageImpl implements 
         theDevice_wifi_wifidevice_cst_statsPackage.initializePackageContents();
         theSf_statsPackage.initializePackageContents();
         theSeismo_localchannelinfoPackage.initializePackageContents();
+        theTsi_syncinfoPackage.initializePackageContents();
 
         // Mark meta-data to indicate it can't be changed
         theRouting_dsr_stats_statsPackage.freeze();

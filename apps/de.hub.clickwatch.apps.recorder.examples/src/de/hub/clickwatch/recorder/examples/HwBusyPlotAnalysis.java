@@ -42,7 +42,7 @@ public class HwBusyPlotAnalysis implements IClickWatchMain {
 					new SubProgressMonitor(monitor, 100));
 			while(iterator.hasNext()) {
 				Stats handler = (Stats)iterator.next();
-				result.getDataSet().add(
+				result.getData().add(
 						handler.getChannelstats().getNode() + "/" + node.getINetAddress(), 
 						handler.getTimestamp() - record.getStart(), 
 						handler.getChannelstats().getPhy().getHwbusy());

@@ -64,6 +64,8 @@ import de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.Sys_info_systemi
 
 import de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.impl.Sys_info_systeminfoPackageImpl;
 
+import de.hub.clickwatch.specificmodels.brn.tsi_syncinfo.Tsi_syncinfoPackage;
+import de.hub.clickwatch.specificmodels.brn.tsi_syncinfo.impl.Tsi_syncinfoPackageImpl;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
@@ -147,6 +149,7 @@ public class Gps_cart_coordPackageImpl extends EPackageImpl implements Gps_cart_
         Sf_statsPackageImpl theSf_statsPackage = (Sf_statsPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Sf_statsPackage.eNS_URI) instanceof Sf_statsPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Sf_statsPackage.eNS_URI) : Sf_statsPackage.eINSTANCE);
         Routing_dsr_stats_statsPackageImpl theRouting_dsr_stats_statsPackage = (Routing_dsr_stats_statsPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Routing_dsr_stats_statsPackage.eNS_URI) instanceof Routing_dsr_stats_statsPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Routing_dsr_stats_statsPackage.eNS_URI) : Routing_dsr_stats_statsPackage.eINSTANCE);
         Seismo_localchannelinfoPackageImpl theSeismo_localchannelinfoPackage = (Seismo_localchannelinfoPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Seismo_localchannelinfoPackage.eNS_URI) instanceof Seismo_localchannelinfoPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Seismo_localchannelinfoPackage.eNS_URI) : Seismo_localchannelinfoPackage.eINSTANCE);
+        Tsi_syncinfoPackageImpl theTsi_syncinfoPackage = (Tsi_syncinfoPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(Tsi_syncinfoPackage.eNS_URI) instanceof Tsi_syncinfoPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(Tsi_syncinfoPackage.eNS_URI) : Tsi_syncinfoPackage.eINSTANCE);
 
         // Create package meta-data objects
         theGps_cart_coordPackage.createPackageContents();
@@ -163,6 +166,7 @@ public class Gps_cart_coordPackageImpl extends EPackageImpl implements Gps_cart_
         theSf_statsPackage.createPackageContents();
         theRouting_dsr_stats_statsPackage.createPackageContents();
         theSeismo_localchannelinfoPackage.createPackageContents();
+        theTsi_syncinfoPackage.createPackageContents();
 
         // Initialize created meta-data
         theGps_cart_coordPackage.initializePackageContents();
@@ -179,6 +183,7 @@ public class Gps_cart_coordPackageImpl extends EPackageImpl implements Gps_cart_
         theSf_statsPackage.initializePackageContents();
         theRouting_dsr_stats_statsPackage.initializePackageContents();
         theSeismo_localchannelinfoPackage.initializePackageContents();
+        theTsi_syncinfoPackage.initializePackageContents();
 
         // Mark meta-data to indicate it can't be changed
         theGps_cart_coordPackage.freeze();

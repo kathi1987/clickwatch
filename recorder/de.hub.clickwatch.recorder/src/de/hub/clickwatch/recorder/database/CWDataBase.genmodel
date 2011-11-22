@@ -7,7 +7,7 @@
     editorPluginClass="de.hub.clickwatch.recorder.database.presentation.CWDataBaseEditorPlugin"
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0" copyrightFields="false"
     editPluginID="de.hub.clickwatch.recorder.model.edit" editorPluginID="de.hub.clickwatch.recorder.model.editor"
-    usedGenPackages="../../../../../../../de.hub.clickwatch.core/src/de/hub/clickwatch/model/ClickWatchModel.genmodel#//model">
+    usedGenPackages="../../../../../../../de.hub.clickwatch.core/src/de/hub/clickwatch/model/ClickWatchModel.genmodel#//model ../../../../../../../de.hub.clickwatch.analysis.results/src/de/hub/clickwatch/analysis/results/Results.genmodel#//results">
   <foreignModel>CWDataBase.ecore</foreignModel>
   <genPackages prefix="CWDataBase" basePackage="de.hub.clickwatch.recorder" resource="XML"
       disposableProviderFactory="true" ecorePackage="CWDataBase.ecore#/">
@@ -16,9 +16,10 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CWDataBase.ecore#//Record/configuration"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CWDataBase.ecore#//Record/name"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute CWDataBase.ecore#//Record/start"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CWDataBase.ecore#//Record/networkTimeCopy"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute CWDataBase.ecore#//Record/end"/>
       <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute CWDataBase.ecore#//Record/hBaseRowMap"/>
+      <genFeatures property="None" children="true" createChild="false" propertySortChoices="true"
+          ecoreFeature="ecore:EReference CWDataBase.ecore#//Record/results"/>
     </genClasses>
     <genClasses ecoreClass="CWDataBase.ecore#//DataBase">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CWDataBase.ecore#//DataBase/records"/>

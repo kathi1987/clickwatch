@@ -66,7 +66,7 @@ public class SeismoBusAnalysisAlg implements IAnalysisAlgorithm {
 		IClickWatchContext ctx = container.getContext();
 		if (result == null) {
 			result = ctx.getAdapter(IResultsProvider.class).getResults().getGroup("SeismoBusAnalysis").getResult(node.getINetAddress());
-			result.getDataSet().getEntries().clear();
+			result.getData().getEntries().clear();
 			result.getCharts().clear();
 			result.getCharts().add(ChartUtil.createXYChart("SeismoBus " + node.getINetAddress(), "bin", "t", "ampl"));
 		}
@@ -104,9 +104,9 @@ public class SeismoBusAnalysisAlg implements IAnalysisAlgorithm {
 				double dtime = time / 1e6;
 				
 				// apply the seismo transformation on the value from each channel and store the results with the current time
-				result.getDataSet().add(0, dtime, seismoTrans[0].transform((double)value.getC0()));
-				result.getDataSet().add(1, dtime, seismoTrans[1].transform((double)value.getC1()));
-				result.getDataSet().add(2, dtime, seismoTrans[2].transform((double)value.getC2()));
+				result.getData().add(0, dtime, seismoTrans[0].transform((double)value.getC0()));
+				result.getData().add(1, dtime, seismoTrans[1].transform((double)value.getC1()));
+				result.getData().add(2, dtime, seismoTrans[2].transform((double)value.getC2()));
 			}
 			// this removes the data set read from the db from memory (there might be cycles in the data structure)
 			EcoreUtil.delete(latestChannelInfo);

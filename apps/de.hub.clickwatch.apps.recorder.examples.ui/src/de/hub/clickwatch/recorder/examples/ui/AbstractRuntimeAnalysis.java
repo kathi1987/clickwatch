@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
@@ -15,7 +16,6 @@ import java.util.concurrent.TimeUnit;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PlatformUI;
 
@@ -149,18 +149,18 @@ public abstract class AbstractRuntimeAnalysis extends AbstractAnalysis {
 	}
 	
 	public synchronized void shiftResultWindow(Result result, double size, int timeAxis) {
-		EList<DataEntry> entries = result.getDataSet().getEntries();
+		List<DataEntry> entries = result.getData().getEntries();
 		if (entries.isEmpty()) {
 			return;
 		}
-		double end= (Double)entries.get(entries.size() - 1).getValues().get(timeAxis);
+		double end= (Double)entries.get(entries.size() - 1).getValues()[timeAxis];
 		double start = end - size;
 		if (start <= 0) {
 			return;
 		}
 		int index = 0;
 		for(DataEntry entry: entries) {
-			if ((Double)(entry.getValues().get(timeAxis)) >= start) {
+			if ((Double)(entry.getValues()[timeAxis]) >= start) {
 				break;
 			}
 			index++;

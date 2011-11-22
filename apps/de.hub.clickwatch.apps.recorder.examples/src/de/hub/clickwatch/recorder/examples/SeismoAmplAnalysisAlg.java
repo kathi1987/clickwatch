@@ -55,13 +55,13 @@ public class SeismoAmplAnalysisAlg implements IAnalysisAlgorithm {
 				long time = info.getT() - start;
 				double dtime = time / 1e6;
 				
-				amplResult.getDataSet().add(0, dtime, rov0);
-				amplResult.getDataSet().add(1, dtime, rov1);
-				amplResult.getDataSet().add(2, dtime, rov2);
+				amplResult.getData().add(0, dtime, rov0);
+				amplResult.getData().add(1, dtime, rov1);
+				amplResult.getData().add(2, dtime, rov2);
 				
-				cleanResult.getDataSet().add(0, dtime, info.getC0());
-				cleanResult.getDataSet().add(1, dtime, info.getC1());
-				cleanResult.getDataSet().add(2, dtime, info.getC2());
+				cleanResult.getData().add(0, dtime, info.getC0());
+				cleanResult.getData().add(1, dtime, info.getC1());
+				cleanResult.getData().add(2, dtime, info.getC2());
 			}
 		}
 		

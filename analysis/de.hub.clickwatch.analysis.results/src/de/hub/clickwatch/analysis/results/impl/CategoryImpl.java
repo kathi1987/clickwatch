@@ -22,22 +22,22 @@ import de.hub.clickwatch.analysis.results.ResultsPackage;
  */
 public class CategoryImpl extends ValueSpecImpl implements Category {
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected CategoryImpl() {
-		super();
-	}
+        super();
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	protected EClass eStaticClass() {
-		return ResultsPackage.Literals.CATEGORY;
-	}
+        return ResultsPackage.Literals.CATEGORY;
+    }
 
 } //CategoryImpl

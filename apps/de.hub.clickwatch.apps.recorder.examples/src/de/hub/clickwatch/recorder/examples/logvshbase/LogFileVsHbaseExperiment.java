@@ -81,7 +81,7 @@ public class LogFileVsHbaseExperiment implements IClickWatchMain {
 			long stop = System.currentTimeMillis();
 			long hbaseTime = stop - start;
 			logger.log(ILogger.DEBUG, "performed hbase analysis for " + run, null);
-			result.getDataSet().add(duration / 1e6, hbaseSizes[run], hbaseTime);
+			result.getData().add(duration / 1e6, hbaseSizes[run], hbaseTime);
 		}
 		logger.log(ILogger.DEBUG, "finished hbase analysis", null);
 		return result;
@@ -152,7 +152,7 @@ public class LogFileVsHbaseExperiment implements IClickWatchMain {
 			long logtime = stop - start;
 			logger.log(ILogger.DEBUG, "performed grep analysis for " + run, null);
 			
-			result.getDataSet().add(duration / 1e6, logSize, logtime);			
+			result.getData().add(duration / 1e6, logSize, logtime);			
 		}
 		logger.log(ILogger.DEBUG, "finished log analysis", null);
 		return result;

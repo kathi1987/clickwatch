@@ -163,6 +163,7 @@ public class RecordItemProvider
         if (childrenFeatures == null) {
             super.getChildrenFeatures(object);
             childrenFeatures.add(CWDataBasePackage.Literals.RECORD__CONFIGURATION);
+            childrenFeatures.add(CWDataBasePackage.Literals.RECORD__RESULTS);
         }
         return childrenFeatures;
     }
@@ -239,6 +240,7 @@ public class RecordItemProvider
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
                 return;
             case CWDataBasePackage.RECORD__CONFIGURATION:
+            case CWDataBasePackage.RECORD__RESULTS:
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
                 return;
         }

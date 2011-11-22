@@ -39,64 +39,64 @@ import de.hub.clickwatch.analysis.results.ValueSpec;
  */
 public class EqualsConstraintImpl extends ConstraintImpl implements EqualsConstraint {
 	/**
-	 * The default value of the '{@link #getConstraint() <em>Constraint</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The default value of the '{@link #getConstraint() <em>Constraint</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getConstraint()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getConstraint()
+     * @generated
+     * @ordered
+     */
 	protected static final Object CONSTRAINT_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getConstraint() <em>Constraint</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getConstraint() <em>Constraint</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getConstraint()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getConstraint()
+     * @generated
+     * @ordered
+     */
 	protected Object constraint = CONSTRAINT_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected EqualsConstraintImpl() {
-		super();
-	}
+        super();
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	protected EClass eStaticClass() {
-		return ResultsPackage.Literals.EQUALS_CONSTRAINT;
-	}
+        return ResultsPackage.Literals.EQUALS_CONSTRAINT;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public Object getConstraint() {
-		return constraint;
-	}
+        return constraint;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public void setConstraint(Object newConstraint) {
-		Object oldConstraint = constraint;
-		constraint = newConstraint;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ResultsPackage.EQUALS_CONSTRAINT__CONSTRAINT, oldConstraint, constraint));
-	}
+        Object oldConstraint = constraint;
+        constraint = newConstraint;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, ResultsPackage.EQUALS_CONSTRAINT__CONSTRAINT, oldConstraint, constraint));
+    }
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -113,13 +113,13 @@ public class EqualsConstraintImpl extends ConstraintImpl implements EqualsConstr
 			if (container instanceof ValueSpec) {
 				column = ((ValueSpec)container).getColumn();
 			} else if (container instanceof Result) {
-				ds = ((Result)container).getDataSet();
+				ds = ((Result)container).getData();
 				break loop;
 			}
 			container = container.eContainer();
 		}
 		for (DataEntry entry: ds.getEntries()) {
-			values.add(entry.getValues().get(column));
+			values.add(entry.getValues()[column]);
 		}
 		EList<Object> theResult = new BasicEList<Object>();
 		for (Object value: values) {
@@ -135,78 +135,78 @@ public class EqualsConstraintImpl extends ConstraintImpl implements EqualsConstr
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case ResultsPackage.EQUALS_CONSTRAINT__CONSTRAINT:
-				return getConstraint();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+        switch (featureID) {
+            case ResultsPackage.EQUALS_CONSTRAINT__CONSTRAINT:
+                return getConstraint();
+        }
+        return super.eGet(featureID, resolve, coreType);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case ResultsPackage.EQUALS_CONSTRAINT__CONSTRAINT:
-				setConstraint(newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+        switch (featureID) {
+            case ResultsPackage.EQUALS_CONSTRAINT__CONSTRAINT:
+                setConstraint(newValue);
+                return;
+        }
+        super.eSet(featureID, newValue);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case ResultsPackage.EQUALS_CONSTRAINT__CONSTRAINT:
-				setConstraint(CONSTRAINT_EDEFAULT);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+        switch (featureID) {
+            case ResultsPackage.EQUALS_CONSTRAINT__CONSTRAINT:
+                setConstraint(CONSTRAINT_EDEFAULT);
+                return;
+        }
+        super.eUnset(featureID);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case ResultsPackage.EQUALS_CONSTRAINT__CONSTRAINT:
-				return CONSTRAINT_EDEFAULT == null ? constraint != null : !CONSTRAINT_EDEFAULT.equals(constraint);
-		}
-		return super.eIsSet(featureID);
-	}
+        switch (featureID) {
+            case ResultsPackage.EQUALS_CONSTRAINT__CONSTRAINT:
+                return CONSTRAINT_EDEFAULT == null ? constraint != null : !CONSTRAINT_EDEFAULT.equals(constraint);
+        }
+        return super.eIsSet(featureID);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+        if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (constraint: ");
-		result.append(constraint);
-		result.append(')');
-		return result.toString();
-	}
+        StringBuffer result = new StringBuffer(super.toString());
+        result.append(" (constraint: ");
+        result.append(constraint);
+        result.append(')');
+        return result.toString();
+    }
 	
 	/**
 	 * <!-- begin-user-doc -->
@@ -224,7 +224,7 @@ public class EqualsConstraintImpl extends ConstraintImpl implements EqualsConstr
 			}
 			container = container.eContainer();
 		}
-		return constraint.equals(entry.getValues().get(column));
+		return constraint.equals(entry.getValues()[column]);
 	}
 
 } //EqualsConstraintImpl

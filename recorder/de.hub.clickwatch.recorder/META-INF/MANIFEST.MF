@@ -4,7 +4,8 @@ Bundle-Name: ClickWatch Recorder
 Bundle-SymbolicName: de.hub.clickwatch.recorder;singleton:=true
 Bundle-Version: 2.0.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Require-Bundle: de.hub.clickwatch.core;bundle-version="2.0.0";visibility:=reexport
+Require-Bundle: de.hub.clickwatch.core;bundle-version="2.0.0";visibility:=reexport,
+ de.hub.clickwatch.analysis.results;bundle-version="2.0.0";visibility:=reexport
 Bundle-ClassPath: .,
  lib/activation-1.1.jar,
  lib/asm-3.1.jar,

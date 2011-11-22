@@ -6,6 +6,7 @@
  */
 package de.hub.clickwatch.recorder.database.impl;
 
+import de.hub.clickwatch.analysis.results.ResultsPackage;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
@@ -96,6 +97,7 @@ public class CWDataBasePackageImpl extends EPackageImpl implements CWDataBasePac
 
         // Initialize simple dependencies
         ClickWatchModelPackage.eINSTANCE.eClass();
+        ResultsPackage.eINSTANCE.eClass();
 
         // Create package meta-data objects
         theCWDataBasePackage.createPackageContents();
@@ -168,6 +170,15 @@ public class CWDataBasePackageImpl extends EPackageImpl implements CWDataBasePac
 
 	/**
      * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getRecord_Results() {
+        return (EReference)recordEClass.getEStructuralFeatures().get(5);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
      */
@@ -227,6 +238,7 @@ public class CWDataBasePackageImpl extends EPackageImpl implements CWDataBasePac
         createEAttribute(recordEClass, RECORD__START);
         createEAttribute(recordEClass, RECORD__END);
         createEAttribute(recordEClass, RECORD__HBASE_ROW_MAP);
+        createEReference(recordEClass, RECORD__RESULTS);
 
         dataBaseEClass = createEClass(DATA_BASE);
         createEReference(dataBaseEClass, DATA_BASE__RECORDS);
@@ -260,6 +272,7 @@ public class CWDataBasePackageImpl extends EPackageImpl implements CWDataBasePac
 
         // Obtain other dependent packages
         ClickWatchModelPackage theClickWatchModelPackage = (ClickWatchModelPackage)EPackage.Registry.INSTANCE.getEPackage(ClickWatchModelPackage.eNS_URI);
+        ResultsPackage theResultsPackage = (ResultsPackage)EPackage.Registry.INSTANCE.getEPackage(ResultsPackage.eNS_URI);
 
         // Create type parameters
 
@@ -276,6 +289,7 @@ public class CWDataBasePackageImpl extends EPackageImpl implements CWDataBasePac
         initEAttribute(getRecord_Start(), ecorePackage.getELong(), "start", null, 0, 1, Record.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getRecord_End(), ecorePackage.getELong(), "end", null, 0, 1, Record.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getRecord_HBaseRowMap(), this.getHBaseRowMap(), "hBaseRowMap", null, 0, 1, Record.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getRecord_Results(), theResultsPackage.getResults(), null, "results", null, 0, 1, Record.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(dataBaseEClass, DataBase.class, "DataBase", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEReference(getDataBase_Records(), this.getRecord(), null, "records", null, 0, -1, DataBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

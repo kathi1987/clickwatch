@@ -7,7 +7,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.eclipse.emf.common.util.EList;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -60,7 +59,7 @@ public class ResultsChartVisualization implements IVisualization {
 		Chart chart = getChart(result);
 		
 		if (chart.getType() instanceof XY) {
-			DataSet dataSet = result.getDataSet();
+			DataSet dataSet = result.getData();
 			
 			List<ValueSpec> columns = new ArrayList<ValueSpec>();
 			for (ValueSpec spec: chart.getValueSpecs()) {
@@ -78,8 +77,8 @@ public class ResultsChartVisualization implements IVisualization {
 			XYSeriesCollection jfDataSet = new XYSeriesCollection();
 			Map<Object, XYSeries> seriesMap = new HashMap<Object, XYSeries>();
 			for (DataEntry entry: dataSet.getEntries()) {
-				EList<Object> values = entry.getValues();
-				int size = values.size();
+				Object[] values = entry.getValues();
+				int size = values.length;
 				boolean skip = false;
 				double x = 0;
 				double y = 0;
@@ -91,18 +90,18 @@ public class ResultsChartVisualization implements IVisualization {
 						continue loop;
 					} else if (spec instanceof Axis) {						
 						if (first) {
-							x = convert(values.get(i));
+							x = convert(values[i]);
 							xAxisName = spec.getName();
 							first = false;
 						} else {
 							yAxisName = spec.getName();
-							y = convert(values.get(i));
+							y = convert(values[i]);
 							if (yAxis == null) {
 								yAxis = (Axis)spec;
 							}
 						}
 					} else if (spec instanceof Series) {						
-						s = values.get(i);
+						s = values[i];
 					} 
 					if (spec != null && spec.getConstraint() != null) {
 						skip |= !spec.getConstraint().evaluate(entry);

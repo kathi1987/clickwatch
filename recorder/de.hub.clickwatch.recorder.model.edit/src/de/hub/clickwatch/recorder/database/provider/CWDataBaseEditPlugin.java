@@ -6,6 +6,7 @@
  */
 package de.hub.clickwatch.recorder.database.provider;
 
+import de.hub.clickwatch.analysis.results.provider.ResultsEditPlugin;
 import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.util.ResourceLocator;
 
@@ -44,6 +45,7 @@ public final class CWDataBaseEditPlugin extends EMFPlugin {
         super
           (new ResourceLocator [] {
              ClickWatchModelEditPlugin.INSTANCE,
+             ResultsEditPlugin.INSTANCE,
            });
     }
 

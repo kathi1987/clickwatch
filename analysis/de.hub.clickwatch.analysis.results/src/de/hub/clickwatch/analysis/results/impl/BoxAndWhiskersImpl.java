@@ -22,22 +22,22 @@ import de.hub.clickwatch.analysis.results.ResultsPackage;
  */
 public class BoxAndWhiskersImpl extends ChartTypeImpl implements BoxAndWhiskers {
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected BoxAndWhiskersImpl() {
-		super();
-	}
+        super();
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	protected EClass eStaticClass() {
-		return ResultsPackage.Literals.BOX_AND_WHISKERS;
-	}
+        return ResultsPackage.Literals.BOX_AND_WHISKERS;
+    }
 
 } //BoxAndWhiskersImpl

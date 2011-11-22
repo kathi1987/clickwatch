@@ -228,13 +228,22 @@ public interface Seismo_localchannelinfoPackage extends EPackage {
 	int V__T = 1;
 
 	/**
+     * The feature id for the '<em><b>S</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int V__S = 2;
+
+    /**
      * The feature id for the '<em><b>C0</b></em>' attribute.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-	int V__C0 = 2;
+	int V__C0 = 3;
 
 	/**
      * The feature id for the '<em><b>C1</b></em>' attribute.
@@ -243,7 +252,7 @@ public interface Seismo_localchannelinfoPackage extends EPackage {
      * @generated
      * @ordered
      */
-	int V__C1 = 3;
+	int V__C1 = 4;
 
 	/**
      * The feature id for the '<em><b>C2</b></em>' attribute.
@@ -252,7 +261,7 @@ public interface Seismo_localchannelinfoPackage extends EPackage {
      * @generated
      * @ordered
      */
-	int V__C2 = 4;
+	int V__C2 = 5;
 
 	/**
      * The number of structural features of the '<em>V</em>' class.
@@ -261,7 +270,7 @@ public interface Seismo_localchannelinfoPackage extends EPackage {
      * @generated
      * @ordered
      */
-	int V_FEATURE_COUNT = 5;
+	int V_FEATURE_COUNT = 6;
 
 
 	/**
@@ -350,6 +359,17 @@ public interface Seismo_localchannelinfoPackage extends EPackage {
 	EAttribute getV_T();
 
 	/**
+     * Returns the meta object for the attribute '{@link de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.V#getS <em>S</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>S</em>'.
+     * @see de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.V#getS()
+     * @see #getV()
+     * @generated
+     */
+    EAttribute getV_S();
+
+    /**
      * Returns the meta object for the attribute '{@link de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.V#getC0 <em>C0</em>}'.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -475,6 +495,14 @@ public interface Seismo_localchannelinfoPackage extends EPackage {
 		EAttribute V__T = eINSTANCE.getV_T();
 
 		/**
+         * The meta object literal for the '<em><b>S</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute V__S = eINSTANCE.getV_S();
+
+        /**
          * The meta object literal for the '<em><b>C0</b></em>' attribute feature.
          * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->

@@ -22,22 +22,22 @@ import de.hub.clickwatch.analysis.results.XY;
  */
 public class XYImpl extends ChartTypeImpl implements XY {
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected XYImpl() {
-		super();
-	}
+        super();
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	protected EClass eStaticClass() {
-		return ResultsPackage.Literals.XY;
-	}
+        return ResultsPackage.Literals.XY;
+    }
 
 } //XYImpl

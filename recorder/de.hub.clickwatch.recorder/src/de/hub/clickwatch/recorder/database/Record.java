@@ -6,6 +6,7 @@
  */
 package de.hub.clickwatch.recorder.database;
 
+import de.hub.clickwatch.analysis.results.Results;
 import de.hub.clickwatch.model.ModelElementWithStatistics;
 import de.hub.clickwatch.model.Network;
 
@@ -23,6 +24,7 @@ import de.hub.clickwatch.model.Network;
  *   <li>{@link de.hub.clickwatch.recorder.database.Record#getStart <em>Start</em>}</li>
  *   <li>{@link de.hub.clickwatch.recorder.database.Record#getEnd <em>End</em>}</li>
  *   <li>{@link de.hub.clickwatch.recorder.database.Record#getHBaseRowMap <em>HBase Row Map</em>}</li>
+ *   <li>{@link de.hub.clickwatch.recorder.database.Record#getResults <em>Results</em>}</li>
  * </ul>
  * </p>
  *
@@ -160,5 +162,31 @@ public interface Record extends ModelElementWithStatistics {
      * @generated
      */
 	void setHBaseRowMap(HBaseRowMap value);
+
+    /**
+     * Returns the value of the '<em><b>Results</b></em>' containment reference.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Results</em>' reference isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Results</em>' containment reference.
+     * @see #setResults(Results)
+     * @see de.hub.clickwatch.recorder.database.CWDataBasePackage#getRecord_Results()
+     * @model containment="true"
+     * @generated
+     */
+    Results getResults();
+
+    /**
+     * Sets the value of the '{@link de.hub.clickwatch.recorder.database.Record#getResults <em>Results</em>}' containment reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Results</em>' containment reference.
+     * @see #getResults()
+     * @generated
+     */
+    void setResults(Results value);
 
 } // Record

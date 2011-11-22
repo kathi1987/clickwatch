@@ -14,6 +14,7 @@ import de.hub.clickwatch.analysis.results.Results;
 import de.hub.clickwatch.analysis.results.ResultsFactory;
 import de.hub.clickwatch.main.IClickWatchContextAdapter;
 import de.hub.clickwatch.main.IResultsProvider;
+import de.hub.clickwatch.recorder.database.Record;
 
 public class ResultsProvider implements IClickWatchContextAdapter, IResultsProvider {
 
@@ -46,15 +47,18 @@ public class ResultsProvider implements IClickWatchContextAdapter, IResultsProvi
 	
 	@Override
 	public void initialize(IConfigurationElement configurationElement, EObject selection) {
-		
-	}
-
-	public void initialize(Results results) {
-		this.results = results;
+		while (!(selection == null || selection instanceof Record)) {
+		    selection = selection.eContainer();
+		}
+		if (selection != null) {
+		    this.results = ((Record)selection).getResults();
+		} else {
+		    this.results = null;
+		}
 	}
 
 	@Override
-	public Results getResults() {
+	public Results getResults() {	    
 		return results;
 	}
 

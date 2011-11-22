@@ -14,6 +14,8 @@ public class RecordBuilder implements de.hub.clickwatch.recorder.database.util.b
   private long m_end;
   private de.hub.clickwatch.recorder.database.HBaseRowMap m_hBaseRowMap;
   private java.lang.String m_name;
+  private de.hub.clickwatch.analysis.results.Results m_results;
+  private de.hub.clickwatch.analysis.results.util.builder.IResultsBuilder<? extends de.hub.clickwatch.analysis.results.Results> m_featureResultsBuilder;
   private long m_start;
   private de.hub.clickwatch.model.StatisticsContainer m_statistics;
   private de.hub.clickwatch.model.util.builder.IModelBuilder<? extends de.hub.clickwatch.model.StatisticsContainer> m_featureStatisticsBuilder;
@@ -22,6 +24,7 @@ public class RecordBuilder implements de.hub.clickwatch.recorder.database.util.b
   private boolean m_featureEndSet = false;
   private boolean m_featureHBaseRowMapSet = false;
   private boolean m_featureNameSet = false;
+  private boolean m_featureResultsSet = false;
   private boolean m_featureStartSet = false;
   private boolean m_featureStatisticsSet = false;
 
@@ -54,6 +57,9 @@ public class RecordBuilder implements de.hub.clickwatch.recorder.database.util.b
     _builder.m_hBaseRowMap = m_hBaseRowMap;
     _builder.m_featureNameSet = m_featureNameSet;
     _builder.m_name = m_name;
+    _builder.m_featureResultsSet = m_featureResultsSet;
+    _builder.m_results = m_results;
+    _builder.m_featureResultsBuilder = m_featureResultsBuilder;
     _builder.m_featureStartSet = m_featureStartSet;
     _builder.m_start = m_start;
     _builder.m_featureStatisticsSet = m_featureStatisticsSet;
@@ -83,6 +89,13 @@ public class RecordBuilder implements de.hub.clickwatch.recorder.database.util.b
     }
     if (m_featureNameSet) {
       _newInstance.setName(m_name);
+    }
+    if (m_featureResultsSet) {
+      _newInstance.setResults(m_results);
+    } else {
+      if (m_featureResultsBuilder != null) {
+        _newInstance.setResults(m_featureResultsBuilder.build());
+      }
     }
     if (m_featureStartSet) {
       _newInstance.setStart(m_start);
@@ -123,6 +136,17 @@ public class RecordBuilder implements de.hub.clickwatch.recorder.database.util.b
   public RecordBuilder withName(java.lang.String p_name) {
     m_name = p_name;
     m_featureNameSet = true;
+    return this;
+  }
+
+  public RecordBuilder withResults(de.hub.clickwatch.analysis.results.Results p_results) {
+    m_results = p_results;
+    m_featureResultsSet = true;
+    return this;
+  }
+
+  public RecordBuilder withResults(de.hub.clickwatch.analysis.results.util.builder.IResultsBuilder<? extends de.hub.clickwatch.analysis.results.Results> p_resultsBuilder) {
+    m_featureResultsBuilder = p_resultsBuilder;
     return this;
   }
 

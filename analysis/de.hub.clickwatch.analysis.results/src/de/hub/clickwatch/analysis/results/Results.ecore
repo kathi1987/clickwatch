@@ -3,17 +3,6 @@
     xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="results"
     nsURI="http://de.hub.clickwatch.analysis.results" nsPrefix="results">
-  <eClassifiers xsi:type="ecore:EClass" name="DataSet">
-    <eOperations name="addEntry">
-      <eParameters name="values" upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
-    </eOperations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="entries" upperBound="-1"
-        eType="#//DataEntry" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DataEntry" eSuperTypes="#//NamedElement">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="values" unique="false"
-        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Chart" eSuperTypes="#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//ChartType"
         containment="true"/>
@@ -42,8 +31,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="timestamp" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="charts" upperBound="-1"
         eType="#//Chart" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="dataSet" eType="#//DataSet"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="data" eType="#//DataSet"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="XY" eSuperTypes="#//ChartType"/>
   <eClassifiers xsi:type="ecore:EClass" name="BoxAndWhiskers" eSuperTypes="#//ChartType"/>
@@ -82,4 +70,6 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="ops" upperBound="-1" eType="#//Constraint"
         containment="true"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="DataSet" instanceClassName="de.hub.clickwatch.analysis.results.DataSet"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="DataEntry" instanceClassName="de.hub.clickwatch.analysis.results.DataEntry"/>
 </ecore:EPackage>

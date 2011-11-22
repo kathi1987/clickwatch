@@ -31,8 +31,6 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.command.BasicCommandStack;
-import org.eclipse.emf.common.command.Command;
-import org.eclipse.emf.common.command.CommandStack;
 import org.eclipse.emf.common.command.CommandStackListener;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
@@ -124,6 +122,8 @@ import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.PropertySheet;
 import org.eclipse.ui.views.properties.PropertySheetPage;
 
+import de.hub.clickwatch.analysis.results.provider.ResultsItemProviderAdapterFactory;
+import de.hub.clickwatch.analysis.results.util.ResultsAdapterFactory;
 import de.hub.clickwatch.model.presentation.ColoredReflectiveItemProviderAdapterFactory;
 import de.hub.clickwatch.model.provider.ClickWatchModelItemProviderAdapterFactory;
 import de.hub.clickwatch.recorder.database.CWDataBaseTimeScaleController;
@@ -658,6 +658,7 @@ public class CWDataBaseEditor extends MultiPageEditorPart implements IEditingDom
         adapterFactory.addAdapterFactory(new ResourceItemProviderAdapterFactory());
         adapterFactory.addAdapterFactory(new CWDataBaseItemProviderAdapterFactory());
         adapterFactory.addAdapterFactory(new ClickWatchModelItemProviderAdapterFactory());
+        adapterFactory.addAdapterFactory(new ResultsItemProviderAdapterFactory());
         adapterFactory.addAdapterFactory(new ColoredReflectiveItemProviderAdapterFactory());
 
         // Create the command stack that will notify this editor as commands are

@@ -2,24 +2,6 @@
 <?eclipse version="3.4"?>
 <plugin>
  <extension
-       point="org.eclipse.ui.views">
-    <view
-          category="edu.hu.clickwatch.viewCategory"
-          class="de.hub.clickwatch.analysis.results.ui.ResultsView"
-          icon="icons/Analysis.gif"
-          id="de.hub.clickwatch.analysis.results.ResultsView"
-          name="Results View">
-    </view>
- </extension>
- <extension
-       point="de.hub.clickwatch.apps.main.ClickWatchContextAdapter">
-    <ContextAdapter
-          class="de.hub.clickwatch.analysis.results.ui.ResultsUIResultsProvider"
-          id="de.hub.clickwatch.analysis.results.ui.ResultsProvider"
-          replaces="de.hub.clickwatch.apps.main.ResultsProvider">
-    </ContextAdapter>
- </extension>
- <extension
        point="de.hub.clickwatch.analysis.VisualizationInputProvider">
     <InputProvider
           class="de.hub.clickwatch.analysis.results.ui.ResultsVisualizationInputProvider">

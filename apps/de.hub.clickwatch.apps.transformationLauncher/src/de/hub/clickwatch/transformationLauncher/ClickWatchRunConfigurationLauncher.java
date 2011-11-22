@@ -15,7 +15,6 @@ import com.google.inject.Injector;
 import de.hub.clickwatch.ClickWatchModuleUtil.HandlerBehaviour;
 import de.hub.clickwatch.ClickWatchModuleUtil.ValueType;
 import de.hub.clickwatch.ClickWatchStandaloneSetup;
-import de.hub.clickwatch.analysis.results.ui.ResultsUIResultsProvider;
 import de.hub.clickwatch.main.IArgumentsProvider;
 import de.hub.clickwatch.main.IClickWatchContext;
 import de.hub.clickwatch.main.IClickWatchContextAdapter;
@@ -275,7 +274,7 @@ public class ClickWatchRunConfigurationLauncher {
 		adapters.put(IClickWatchModelProvider.class, clickProv);
 
 		resultProv = (ResultsProvider) adapterInjector
-				.getInstance(ResultsUIResultsProvider.class);
+				.getInstance(IResultsProvider.class);
 		adapters.put(IResultsProvider.class, resultProv);
 
 		monitorProv = (ProgressMonitorProvider) adapterInjector

@@ -71,18 +71,20 @@ public class HBaseDataBaseAdapter implements IDataBaseAdapter {
     private void performPuts() {
         final List<Put> putsCopy = new ArrayList<Put>(puts);
         puts.clear();
-        taskQueues.dispatchTask(this, new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    table.put(putsCopy);
-                    logger.log(ILogger.DEBUG, "putted " + putsCopy.size() + " handler into HBase table", null);
-                    putsCopy.clear();
-                } catch (IOException e) {
-                    logger.log(ILogger.ERROR, "error on putting data into HBase table", e);
+        if (!putsCopy.isEmpty()) {
+            taskQueues.dispatchTask(this, new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        table.put(putsCopy);
+                        logger.log(ILogger.DEBUG, "putted " + putsCopy.size() + " handler into HBase table", null);
+                        putsCopy.clear();
+                    } catch (IOException e) {
+                        logger.log(ILogger.ERROR, "error on putting data into HBase table", e);
+                    }
                 }
-            }
-        });
+            });
+        }
     }
 
     @Override
@@ -92,8 +94,10 @@ public class HBaseDataBaseAdapter implements IDataBaseAdapter {
             @Override
             public void run() {
                 try {
-                    table.close();                    
-                    logger.log(ILogger.DEBUG, "HBaseDataBaseAdapter closed", null);
+                    if (table != null) {
+                        table.close();                    
+                        logger.log(ILogger.DEBUG, "HBaseDataBaseAdapter closed", null);
+                    }
                 } catch (IOException e) {
                     logger.log(ILogger.DEBUG, "error on closing HBase table", e);
                 } finally {

@@ -24,23 +24,23 @@ import de.hub.clickwatch.analysis.results.ResultsPackage;
  */
 public abstract class ConstraintImpl extends EObjectImpl implements Constraint {
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected ConstraintImpl() {
-		super();
-	}
+        super();
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	protected EClass eStaticClass() {
-		return ResultsPackage.Literals.CONSTRAINT;
-	}
+        return ResultsPackage.Literals.CONSTRAINT;
+    }
 
 	/**
 	 * <!-- begin-user-doc -->

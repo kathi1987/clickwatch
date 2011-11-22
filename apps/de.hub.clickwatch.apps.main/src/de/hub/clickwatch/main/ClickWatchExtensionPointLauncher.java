@@ -95,13 +95,18 @@ public class ClickWatchExtensionPointLauncher {
 		}
 		monitor.worked(1);
 		((ProgressMonitorProvider)adapterMap.get(IProgressMonitorProvider.class)).initialize(new SubProgressMonitor(monitor, 10));
-		injector.getInstance(mainClass).main(new IClickWatchContext() {			
-			@Override
-			public <T> T getAdapter(Class<T> adapterClass) {
-				return (T)adapterMap.get(adapterClass);
-			}
-		});
-		monitor.worked(2);
-		monitor.done();
+		try {
+    		injector.getInstance(mainClass).main(new IClickWatchContext() {			
+    			@Override
+    			public <T> T getAdapter(Class<T> adapterClass) {
+    				return (T)adapterMap.get(adapterClass);
+    			}
+    		});
+		} catch (Exception e) {
+		    Throwables.propagate(e);
+		} finally {
+    		monitor.worked(2);
+    		monitor.done();
+		}
 	}
 }

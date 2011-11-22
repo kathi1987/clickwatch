@@ -41,7 +41,6 @@ public class ExecuteMain extends AbstractHandler {
 					try {
 						clickWatchExtensionPointLauncher.launch(extension, object, ResultsUIPlugin.getInstance().getBundle(), monitor);
 					} catch (final Exception e) {
-						e.printStackTrace(System.out);
 						shell.getDisplay().syncExec(new Runnable() {
 							@Override
 							public void run() {

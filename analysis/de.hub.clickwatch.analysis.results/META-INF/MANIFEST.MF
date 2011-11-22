@@ -12,4 +12,3 @@ Export-Package: de.hub.clickwatch.analysis.results,
  de.hub.clickwatch.analysis.results.impl,
  de.hub.clickwatch.analysis.results.util,
  de.hub.clickwatch.analysis.results.util.builder
-Bundle-Activator: de.hub.clickwatch.analysis.results.ResultsPlugin

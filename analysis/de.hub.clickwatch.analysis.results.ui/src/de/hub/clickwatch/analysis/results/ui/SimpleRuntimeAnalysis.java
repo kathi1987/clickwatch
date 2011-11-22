@@ -25,8 +25,6 @@ import com.google.inject.Inject;
 
 import de.hub.clickwatch.analysis.results.Result;
 import de.hub.clickwatch.analysis.results.Results;
-import de.hub.clickwatch.analysis.results.ResultsFactory;
-import de.hub.clickwatch.analysis.results.ResultsPlugin;
 import de.hub.clickwatch.analysis.results.util.builder.AxisBuilder;
 import de.hub.clickwatch.analysis.results.util.builder.ChartBuilder;
 import de.hub.clickwatch.analysis.results.util.builder.XYBuilder;
@@ -105,11 +103,10 @@ public class SimpleRuntimeAnalysis implements IObjectActionDelegate {
 			object = object.eContainer();
 		}
 		
-		Results results = ResultsPlugin.getInstance().getResults();
-		Result result = ResultsFactory.eINSTANCE.createResult();
-		result.setName(value.getEntry().getEStructuralFeature().getName());
-		result.setTimestamp(new Date());
-		results.getResults().add(result);
+        Results results = record.getResults();
+        String resultName = value.getEntry().getEStructuralFeature().getName();
+        Result result = results.getResult(resultName);
+        result.setTimestamp(new Date());
 		
 		result.getCharts().add(ChartBuilder.newChartBuilder()
 				.withName(result.getName() + " over time")
@@ -141,7 +138,7 @@ public class SimpleRuntimeAnalysis implements IObjectActionDelegate {
 				if (fme.getEStructuralFeature().getName().equals(value.getEntry().getEStructuralFeature().getName())) {
 					String stringValue = (String)fme.getValue();
 					
-					result.getDataSet().add(time, Double.parseDouble(stringValue));
+					result.getData().add(time, Double.parseDouble(stringValue));
 					break loop;
 				}
 			}
