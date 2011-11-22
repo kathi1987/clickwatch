@@ -38,111 +38,111 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * @generated
  */
 public class CtlImpl extends EObjectImpl implements Ctl {
-	/**
+    /**
      * The default value of the '{@link #getRssi0() <em>Rssi0</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getRssi0()
      * @generated
      * @ordered
      */
-	protected static final int RSSI0_EDEFAULT = 0;
+    protected static final int RSSI0_EDEFAULT = 0;
 
-	/**
+    /**
      * The cached value of the '{@link #getRssi0() <em>Rssi0</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getRssi0()
      * @generated
      * @ordered
      */
-	protected int rssi0 = RSSI0_EDEFAULT;
+    protected int rssi0 = RSSI0_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getRssi1() <em>Rssi1</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getRssi1()
      * @generated
      * @ordered
      */
-	protected static final int RSSI1_EDEFAULT = 0;
+    protected static final int RSSI1_EDEFAULT = 0;
 
-	/**
+    /**
      * The cached value of the '{@link #getRssi1() <em>Rssi1</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getRssi1()
      * @generated
      * @ordered
      */
-	protected int rssi1 = RSSI1_EDEFAULT;
+    protected int rssi1 = RSSI1_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getRssi2() <em>Rssi2</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getRssi2()
      * @generated
      * @ordered
      */
-	protected static final int RSSI2_EDEFAULT = 0;
+    protected static final int RSSI2_EDEFAULT = 0;
 
-	/**
+    /**
      * The cached value of the '{@link #getRssi2() <em>Rssi2</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getRssi2()
      * @generated
      * @ordered
      */
-	protected int rssi2 = RSSI2_EDEFAULT;
+    protected int rssi2 = RSSI2_EDEFAULT;
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	protected CtlImpl() {
+    protected CtlImpl() {
         super();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	protected EClass eStaticClass() {
+    @Override
+    protected EClass eStaticClass() {
         return Device_wifi_wifidevice_cst_statsPackage.Literals.CTL;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Rssi_extended getEContainer_ctl() {
+    public Rssi_extended getEContainer_ctl() {
         if (eContainerFeatureID() != Device_wifi_wifidevice_cst_statsPackage.CTL__ECONTAINER_CTL) return null;
         return (Rssi_extended)eContainer();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public NotificationChain basicSetEContainer_ctl(Rssi_extended newEContainer_ctl, NotificationChain msgs) {
+    public NotificationChain basicSetEContainer_ctl(Rssi_extended newEContainer_ctl, NotificationChain msgs) {
         msgs = eBasicSetContainer((InternalEObject)newEContainer_ctl, Device_wifi_wifidevice_cst_statsPackage.CTL__ECONTAINER_CTL, msgs);
         return msgs;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setEContainer_ctl(Rssi_extended newEContainer_ctl) {
+    public void setEContainer_ctl(Rssi_extended newEContainer_ctl) {
         if (newEContainer_ctl != eInternalContainer() || (eContainerFeatureID() != Device_wifi_wifidevice_cst_statsPackage.CTL__ECONTAINER_CTL && newEContainer_ctl != null)) {
             if (EcoreUtil.isAncestor(this, newEContainer_ctl))
                 throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
@@ -158,76 +158,76 @@ public class CtlImpl extends EObjectImpl implements Ctl {
             eNotify(new ENotificationImpl(this, Notification.SET, Device_wifi_wifidevice_cst_statsPackage.CTL__ECONTAINER_CTL, newEContainer_ctl, newEContainer_ctl));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public int getRssi0() {
+    public int getRssi0() {
         return rssi0;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setRssi0(int newRssi0) {
+    public void setRssi0(int newRssi0) {
         int oldRssi0 = rssi0;
         rssi0 = newRssi0;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Device_wifi_wifidevice_cst_statsPackage.CTL__RSSI0, oldRssi0, rssi0));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public int getRssi1() {
+    public int getRssi1() {
         return rssi1;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setRssi1(int newRssi1) {
+    public void setRssi1(int newRssi1) {
         int oldRssi1 = rssi1;
         rssi1 = newRssi1;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Device_wifi_wifidevice_cst_statsPackage.CTL__RSSI1, oldRssi1, rssi1));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public int getRssi2() {
+    public int getRssi2() {
         return rssi2;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setRssi2(int newRssi2) {
+    public void setRssi2(int newRssi2) {
         int oldRssi2 = rssi2;
         rssi2 = newRssi2;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Device_wifi_wifidevice_cst_statsPackage.CTL__RSSI2, oldRssi2, rssi2));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    @Override
+    public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case Device_wifi_wifidevice_cst_statsPackage.CTL__ECONTAINER_CTL:
                 if (eInternalContainer() != null)
@@ -237,13 +237,13 @@ public class CtlImpl extends EObjectImpl implements Ctl {
         return super.eInverseAdd(otherEnd, featureID, msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    @Override
+    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case Device_wifi_wifidevice_cst_statsPackage.CTL__ECONTAINER_CTL:
                 return basicSetEContainer_ctl(null, msgs);
@@ -251,13 +251,13 @@ public class CtlImpl extends EObjectImpl implements Ctl {
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+    @Override
+    public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
         switch (eContainerFeatureID()) {
             case Device_wifi_wifidevice_cst_statsPackage.CTL__ECONTAINER_CTL:
                 return eInternalContainer().eInverseRemove(this, Device_wifi_wifidevice_cst_statsPackage.RSSI_EXTENDED__CTL, Rssi_extended.class, msgs);
@@ -265,13 +265,13 @@ public class CtlImpl extends EObjectImpl implements Ctl {
         return super.eBasicRemoveFromContainerFeature(msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+    @Override
+    public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
             case Device_wifi_wifidevice_cst_statsPackage.CTL__ECONTAINER_CTL:
                 return getEContainer_ctl();
@@ -285,13 +285,13 @@ public class CtlImpl extends EObjectImpl implements Ctl {
         return super.eGet(featureID, resolve, coreType);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public void eSet(int featureID, Object newValue) {
+    @Override
+    public void eSet(int featureID, Object newValue) {
         switch (featureID) {
             case Device_wifi_wifidevice_cst_statsPackage.CTL__ECONTAINER_CTL:
                 setEContainer_ctl((Rssi_extended)newValue);
@@ -309,13 +309,13 @@ public class CtlImpl extends EObjectImpl implements Ctl {
         super.eSet(featureID, newValue);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public void eUnset(int featureID) {
+    @Override
+    public void eUnset(int featureID) {
         switch (featureID) {
             case Device_wifi_wifidevice_cst_statsPackage.CTL__ECONTAINER_CTL:
                 setEContainer_ctl((Rssi_extended)null);
@@ -333,13 +333,13 @@ public class CtlImpl extends EObjectImpl implements Ctl {
         super.eUnset(featureID);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public boolean eIsSet(int featureID) {
+    @Override
+    public boolean eIsSet(int featureID) {
         switch (featureID) {
             case Device_wifi_wifidevice_cst_statsPackage.CTL__ECONTAINER_CTL:
                 return getEContainer_ctl() != null;
@@ -353,13 +353,13 @@ public class CtlImpl extends EObjectImpl implements Ctl {
         return super.eIsSet(featureID);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public String toString() {
+    @Override
+    public String toString() {
         if (eIsProxy()) return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());

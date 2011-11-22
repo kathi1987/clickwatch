@@ -23,13 +23,13 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
  * @generated
  */
 public class Lease_tab_leasesFactoryImpl extends EFactoryImpl implements Lease_tab_leasesFactory {
-	/**
+    /**
      * Creates the default factory implementation.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public static Lease_tab_leasesFactory init() {
+    public static Lease_tab_leasesFactory init() {
         try {
             Lease_tab_leasesFactory theLease_tab_leasesFactory = (Lease_tab_leasesFactory)EPackage.Registry.INSTANCE.getEFactory("http://de.hub.clickwatch.specificmodels.brn/lease_tab/leases"); 
             if (theLease_tab_leasesFactory != null) {
@@ -42,23 +42,23 @@ public class Lease_tab_leasesFactoryImpl extends EFactoryImpl implements Lease_t
         return new Lease_tab_leasesFactoryImpl();
     }
 
-	/**
+    /**
      * Creates an instance of the factory.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Lease_tab_leasesFactoryImpl() {
+    public Lease_tab_leasesFactoryImpl() {
         super();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public EObject create(EClass eClass) {
+    @Override
+    public EObject create(EClass eClass) {
         switch (eClass.getClassifierID()) {
             case Lease_tab_leasesPackage.CLIENT: return createClient();
             case Lease_tab_leasesPackage.DHCPLEASES: return createDhcpleases();
@@ -68,53 +68,53 @@ public class Lease_tab_leasesFactoryImpl extends EFactoryImpl implements Lease_t
         }
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Client createClient() {
+    public Client createClient() {
         ClientImpl client = new ClientImpl();
         return client;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Dhcpleases createDhcpleases() {
+    public Dhcpleases createDhcpleases() {
         DhcpleasesImpl dhcpleases = new DhcpleasesImpl();
         return dhcpleases;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Leases createLeases() {
+    public Leases createLeases() {
         LeasesImpl leases = new LeasesImpl();
         return leases;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Lease_tab_leasesPackage getLease_tab_leasesPackage() {
+    public Lease_tab_leasesPackage getLease_tab_leasesPackage() {
         return (Lease_tab_leasesPackage)getEPackage();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @deprecated
      * @generated
      */
-	@Deprecated
-	public static Lease_tab_leasesPackage getPackage() {
+    @Deprecated
+    public static Lease_tab_leasesPackage getPackage() {
         return Lease_tab_leasesPackage.eINSTANCE;
     }
 

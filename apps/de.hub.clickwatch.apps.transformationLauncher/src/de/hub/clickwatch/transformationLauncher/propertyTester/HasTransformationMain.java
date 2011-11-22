@@ -2,7 +2,6 @@ package de.hub.clickwatch.transformationLauncher.propertyTester;
 
 import org.eclipse.core.expressions.PropertyTester;
 import org.eclipse.core.resources.IFile;
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.jdt.core.IImportDeclaration;
 import org.eclipse.jdt.core.JavaModelException;
 import org.eclipse.jdt.internal.core.CompilationUnit;
@@ -46,8 +45,8 @@ public class HasTransformationMain extends PropertyTester {
 			if (receiver instanceof FileEditorInput) {
 				FileEditorInput fInput = (FileEditorInput) receiver;
 
-				String file = fInput.getFile().getFullPath().toString();
-				if (file.endsWith(".xtend") || file.endsWith(".java")) {
+				IFile file = fInput.getFile();
+				if (file.getFileExtension().equals("xtend") || file.getFileExtension().equals("java")) {
 					ret = true;
 				}
 			}

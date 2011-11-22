@@ -22,24 +22,24 @@ import org.eclipse.emf.ecore.xmi.XMLResource;
  * @generated
  */
 public class Sys_info_systeminfoResourceFactoryImpl extends ResourceFactoryImpl {
-	/**
+    /**
      * Creates an instance of the resource factory.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Sys_info_systeminfoResourceFactoryImpl() {
+    public Sys_info_systeminfoResourceFactoryImpl() {
         super();
     }
 
-	/**
+    /**
      * Creates an instance of the resource.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public Resource createResource(URI uri) {
+    @Override
+    public Resource createResource(URI uri) {
         XMLResource result = new Sys_info_systeminfoResourceImpl(uri);
         result.getDefaultSaveOptions().put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);
         result.getDefaultLoadOptions().put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);

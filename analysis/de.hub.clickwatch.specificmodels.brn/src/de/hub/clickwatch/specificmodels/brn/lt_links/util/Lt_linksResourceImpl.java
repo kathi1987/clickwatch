@@ -18,14 +18,14 @@ import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
  * @generated
  */
 public class Lt_linksResourceImpl extends XMLResourceImpl {
-	/**
+    /**
      * Creates an instance of the resource.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @param uri the URI of the new resource.
      * @generated
      */
-	public Lt_linksResourceImpl(URI uri) {
+    public Lt_linksResourceImpl(URI uri) {
         super(uri);
     }
 

@@ -43,61 +43,61 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * @generated
  */
 public class CImpl extends EObjectImpl implements C {
-	/**
+    /**
      * The cached value of the '{@link #getV() <em>V</em>}' containment reference list.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getV()
      * @generated
      * @ordered
      */
-	protected EList<V> v;
+    protected EList<V> v;
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	protected CImpl() {
+    protected CImpl() {
         super();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	protected EClass eStaticClass() {
+    @Override
+    protected EClass eStaticClass() {
         return Seismo_localchannelinfoPackage.Literals.C;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Localchannelinfo getEContainer_c() {
+    public Localchannelinfo getEContainer_c() {
         if (eContainerFeatureID() != Seismo_localchannelinfoPackage.C__ECONTAINER_C) return null;
         return (Localchannelinfo)eContainer();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public NotificationChain basicSetEContainer_c(Localchannelinfo newEContainer_c, NotificationChain msgs) {
+    public NotificationChain basicSetEContainer_c(Localchannelinfo newEContainer_c, NotificationChain msgs) {
         msgs = eBasicSetContainer((InternalEObject)newEContainer_c, Seismo_localchannelinfoPackage.C__ECONTAINER_C, msgs);
         return msgs;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setEContainer_c(Localchannelinfo newEContainer_c) {
+    public void setEContainer_c(Localchannelinfo newEContainer_c) {
         if (newEContainer_c != eInternalContainer() || (eContainerFeatureID() != Seismo_localchannelinfoPackage.C__ECONTAINER_C && newEContainer_c != null)) {
             if (EcoreUtil.isAncestor(this, newEContainer_c))
                 throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
@@ -113,26 +113,26 @@ public class CImpl extends EObjectImpl implements C {
             eNotify(new ENotificationImpl(this, Notification.SET, Seismo_localchannelinfoPackage.C__ECONTAINER_C, newEContainer_c, newEContainer_c));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EList<V> getV() {
+    public EList<V> getV() {
         if (v == null) {
             v = new EObjectContainmentWithInverseEList<V>(V.class, this, Seismo_localchannelinfoPackage.C__V, Seismo_localchannelinfoPackage.V__ECONTAINER_V);
         }
         return v;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@SuppressWarnings("unchecked")
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    @SuppressWarnings("unchecked")
+    @Override
+    public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case Seismo_localchannelinfoPackage.C__ECONTAINER_C:
                 if (eInternalContainer() != null)
@@ -144,13 +144,13 @@ public class CImpl extends EObjectImpl implements C {
         return super.eInverseAdd(otherEnd, featureID, msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    @Override
+    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case Seismo_localchannelinfoPackage.C__ECONTAINER_C:
                 return basicSetEContainer_c(null, msgs);
@@ -160,13 +160,13 @@ public class CImpl extends EObjectImpl implements C {
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+    @Override
+    public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
         switch (eContainerFeatureID()) {
             case Seismo_localchannelinfoPackage.C__ECONTAINER_C:
                 return eInternalContainer().eInverseRemove(this, Seismo_localchannelinfoPackage.LOCALCHANNELINFO__C, Localchannelinfo.class, msgs);
@@ -174,13 +174,13 @@ public class CImpl extends EObjectImpl implements C {
         return super.eBasicRemoveFromContainerFeature(msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+    @Override
+    public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
             case Seismo_localchannelinfoPackage.C__ECONTAINER_C:
                 return getEContainer_c();
@@ -190,14 +190,14 @@ public class CImpl extends EObjectImpl implements C {
         return super.eGet(featureID, resolve, coreType);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@SuppressWarnings("unchecked")
-	@Override
-	public void eSet(int featureID, Object newValue) {
+    @SuppressWarnings("unchecked")
+    @Override
+    public void eSet(int featureID, Object newValue) {
         switch (featureID) {
             case Seismo_localchannelinfoPackage.C__ECONTAINER_C:
                 setEContainer_c((Localchannelinfo)newValue);
@@ -210,13 +210,13 @@ public class CImpl extends EObjectImpl implements C {
         super.eSet(featureID, newValue);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public void eUnset(int featureID) {
+    @Override
+    public void eUnset(int featureID) {
         switch (featureID) {
             case Seismo_localchannelinfoPackage.C__ECONTAINER_C:
                 setEContainer_c((Localchannelinfo)null);
@@ -228,13 +228,13 @@ public class CImpl extends EObjectImpl implements C {
         super.eUnset(featureID);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public boolean eIsSet(int featureID) {
+    @Override
+    public boolean eIsSet(int featureID) {
         switch (featureID) {
             case Seismo_localchannelinfoPackage.C__ECONTAINER_C:
                 return getEContainer_c() != null;

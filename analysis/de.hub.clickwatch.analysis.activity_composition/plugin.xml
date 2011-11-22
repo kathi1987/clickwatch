@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id$
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <package
+            uri="http://de.hub.clickwatch.compositionmodel/2.0"
+            class="de.hub.clickwatch.analysis.activity_composition.model.ModelPackage"
+            genModel="src/de/hub/clickwatch/analysis/activity_composition/model/CompositeModelV2.genmodel"/>
+   </extension>
+   <extension
+         point="org.eclipse.graphiti.ui.diagramTypes">
+      <diagramType
+            description="This is the diagram type for the composition editor in its 2nd version (activity diagram style)"
+            id="de.hub.clickwatch.analysis.compositionv2.ActivityCompositionDiagramType"
+            name="Activity ClickWatch Composition Diagram Type"
+            type="activity_cwc">
+      </diagramType>
+   </extension>
+   <extension
+         point="org.eclipse.graphiti.ui.diagramTypeProviders">
+      <diagramTypeProvider
+            class="de.hub.clickwatch.analysis.activity_composition.diagram.CompositionDiagramTypeProviderV2"
+            description="This is the editor for ClickWatch analyis compositions V2"
+            id="de.hub.clickwatch.analysis.activity_composition.CompositionsDiagramTypeProviderV2"
+            name="ClickWatch Composition EditorV2">
+         <imageProvider
+               id="de.hub.xveg.ImageProvider">
+         </imageProvider>
+         <diagramType
+               id="de.hub.clickwatch.analysis.compositionv2.ActivityCompositionDiagramType">
+         </diagramType>
+         <imageProvider
+               id="org.eclipse.graphiti.examples.common.ExampleImageProvider">
+         </imageProvider>
+      </diagramTypeProvider>
+   </extension>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <wizard
+            category="edu.hu.clickwatch.analysis.WizardCategory"
+            class="de.hub.clickwatch.analysis.activity_composition.NewDiagramWizard"
+            icon="icons/ClickWatch.gif"
+            id="de.hub.clickwatch.analysis.compositionv2.wizard1"
+            name="Activity Composition Diagram">
+      </wizard>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
+      <propertyContributor
+            contributorId="activity_cwc.PropertyContributor">
+         <propertyCategory
+               category="ClickWatchDiagram"></propertyCategory>
+      </propertyContributor>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
+      <propertyTabs
+            contributorId="activity_cwc.PropertyContributor">
+         <propertyTab
+               category="ClickWatchDiagram"
+               id="de.hub.clickwatch.analysis.activity_composition.MainTab"
+               label="Main">
+         </propertyTab>
+      </propertyTabs>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views.properties.tabbed.propertySections">
+      <propertySections
+            contributorId="activity_cwc.PropertyContributor">
+         <propertySection
+               class="de.hub.clickwatch.analysis.activity_composition.property.StartNodeSection"
+               filter="de.hub.clickwatch.analysis.activity_composition.property.StartNodeFilter"
+               id="de.hub.clickwatch.analysis.activity_composition.StartNodeSection"
+               tab="de.hub.clickwatch.analysis.activity_composition.MainTab">
+         </propertySection>
+         <propertySection
+               class="de.hub.clickwatch.analysis.activity_composition.property.ModelNodeSection"
+               filter="de.hub.clickwatch.analysis.activity_composition.property.ModelNodeFilter"
+               id="de.hub.clickwatch.analysis.activity_composition.ModelNodeSection"
+               tab="de.hub.clickwatch.analysis.activity_composition.MainTab">
+         </propertySection>
+         <propertySection
+               class="de.hub.clickwatch.analysis.activity_composition.property.InputEdgeSection"
+               filter="de.hub.clickwatch.analysis.activity_composition.property.InputEdgeFilter"
+               id="de.hub.clickwatch.analysis.activity_composition.InputEdgeSection"
+               tab="de.hub.clickwatch.analysis.activity_composition.MainTab">
+         </propertySection>
+         <propertySection
+               class="de.hub.clickwatch.analysis.activity_composition.property.TransformationNodeSection"
+               filter="de.hub.clickwatch.analysis.activity_composition.property.TransformationNodeFilter"
+               id="de.hub.clickwatch.analysis.activity_composition.TransformationNodeSection"
+               tab="de.hub.clickwatch.analysis.activity_composition.MainTab">
+         </propertySection>
+      </propertySections>
+   </extension>
+
+</plugin>

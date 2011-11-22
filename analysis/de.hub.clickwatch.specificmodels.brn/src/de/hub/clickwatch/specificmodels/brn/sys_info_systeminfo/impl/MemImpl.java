@@ -39,151 +39,151 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * @generated
  */
 public class MemImpl extends EObjectImpl implements Mem {
-	/**
+    /**
      * The default value of the '{@link #getTotal() <em>Total</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getTotal()
      * @generated
      * @ordered
      */
-	protected static final int TOTAL_EDEFAULT = 0;
+    protected static final int TOTAL_EDEFAULT = 0;
 
-	/**
+    /**
      * The cached value of the '{@link #getTotal() <em>Total</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getTotal()
      * @generated
      * @ordered
      */
-	protected int total = TOTAL_EDEFAULT;
+    protected int total = TOTAL_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getUsed() <em>Used</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getUsed()
      * @generated
      * @ordered
      */
-	protected static final int USED_EDEFAULT = 0;
+    protected static final int USED_EDEFAULT = 0;
 
-	/**
+    /**
      * The cached value of the '{@link #getUsed() <em>Used</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getUsed()
      * @generated
      * @ordered
      */
-	protected int used = USED_EDEFAULT;
+    protected int used = USED_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getCached() <em>Cached</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getCached()
      * @generated
      * @ordered
      */
-	protected static final int CACHED_EDEFAULT = 0;
+    protected static final int CACHED_EDEFAULT = 0;
 
-	/**
+    /**
      * The cached value of the '{@link #getCached() <em>Cached</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getCached()
      * @generated
      * @ordered
      */
-	protected int cached = CACHED_EDEFAULT;
+    protected int cached = CACHED_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getBuffers() <em>Buffers</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getBuffers()
      * @generated
      * @ordered
      */
-	protected static final int BUFFERS_EDEFAULT = 0;
+    protected static final int BUFFERS_EDEFAULT = 0;
 
-	/**
+    /**
      * The cached value of the '{@link #getBuffers() <em>Buffers</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getBuffers()
      * @generated
      * @ordered
      */
-	protected int buffers = BUFFERS_EDEFAULT;
+    protected int buffers = BUFFERS_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getNFS_Unstable() <em>NFS Unstable</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getNFS_Unstable()
      * @generated
      * @ordered
      */
-	protected static final int NFS_UNSTABLE_EDEFAULT = 0;
+    protected static final int NFS_UNSTABLE_EDEFAULT = 0;
 
-	/**
+    /**
      * The cached value of the '{@link #getNFS_Unstable() <em>NFS Unstable</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getNFS_Unstable()
      * @generated
      * @ordered
      */
-	protected int nFS_Unstable = NFS_UNSTABLE_EDEFAULT;
+    protected int nFS_Unstable = NFS_UNSTABLE_EDEFAULT;
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	protected MemImpl() {
+    protected MemImpl() {
         super();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	protected EClass eStaticClass() {
+    @Override
+    protected EClass eStaticClass() {
         return Sys_info_systeminfoPackage.Literals.MEM;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.System getEContainer_mem() {
+    public de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.System getEContainer_mem() {
         if (eContainerFeatureID() != Sys_info_systeminfoPackage.MEM__ECONTAINER_MEM) return null;
         return (de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.System)eContainer();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public NotificationChain basicSetEContainer_mem(de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.System newEContainer_mem, NotificationChain msgs) {
+    public NotificationChain basicSetEContainer_mem(de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.System newEContainer_mem, NotificationChain msgs) {
         msgs = eBasicSetContainer((InternalEObject)newEContainer_mem, Sys_info_systeminfoPackage.MEM__ECONTAINER_MEM, msgs);
         return msgs;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setEContainer_mem(de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.System newEContainer_mem) {
+    public void setEContainer_mem(de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.System newEContainer_mem) {
         if (newEContainer_mem != eInternalContainer() || (eContainerFeatureID() != Sys_info_systeminfoPackage.MEM__ECONTAINER_MEM && newEContainer_mem != null)) {
             if (EcoreUtil.isAncestor(this, newEContainer_mem))
                 throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
@@ -199,118 +199,118 @@ public class MemImpl extends EObjectImpl implements Mem {
             eNotify(new ENotificationImpl(this, Notification.SET, Sys_info_systeminfoPackage.MEM__ECONTAINER_MEM, newEContainer_mem, newEContainer_mem));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public int getTotal() {
+    public int getTotal() {
         return total;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setTotal(int newTotal) {
+    public void setTotal(int newTotal) {
         int oldTotal = total;
         total = newTotal;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Sys_info_systeminfoPackage.MEM__TOTAL, oldTotal, total));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public int getUsed() {
+    public int getUsed() {
         return used;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setUsed(int newUsed) {
+    public void setUsed(int newUsed) {
         int oldUsed = used;
         used = newUsed;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Sys_info_systeminfoPackage.MEM__USED, oldUsed, used));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public int getCached() {
+    public int getCached() {
         return cached;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setCached(int newCached) {
+    public void setCached(int newCached) {
         int oldCached = cached;
         cached = newCached;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Sys_info_systeminfoPackage.MEM__CACHED, oldCached, cached));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public int getBuffers() {
+    public int getBuffers() {
         return buffers;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setBuffers(int newBuffers) {
+    public void setBuffers(int newBuffers) {
         int oldBuffers = buffers;
         buffers = newBuffers;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Sys_info_systeminfoPackage.MEM__BUFFERS, oldBuffers, buffers));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public int getNFS_Unstable() {
+    public int getNFS_Unstable() {
         return nFS_Unstable;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setNFS_Unstable(int newNFS_Unstable) {
+    public void setNFS_Unstable(int newNFS_Unstable) {
         int oldNFS_Unstable = nFS_Unstable;
         nFS_Unstable = newNFS_Unstable;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Sys_info_systeminfoPackage.MEM__NFS_UNSTABLE, oldNFS_Unstable, nFS_Unstable));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    @Override
+    public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case Sys_info_systeminfoPackage.MEM__ECONTAINER_MEM:
                 if (eInternalContainer() != null)
@@ -320,13 +320,13 @@ public class MemImpl extends EObjectImpl implements Mem {
         return super.eInverseAdd(otherEnd, featureID, msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    @Override
+    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case Sys_info_systeminfoPackage.MEM__ECONTAINER_MEM:
                 return basicSetEContainer_mem(null, msgs);
@@ -334,13 +334,13 @@ public class MemImpl extends EObjectImpl implements Mem {
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+    @Override
+    public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
         switch (eContainerFeatureID()) {
             case Sys_info_systeminfoPackage.MEM__ECONTAINER_MEM:
                 return eInternalContainer().eInverseRemove(this, Sys_info_systeminfoPackage.SYSTEM__MEM, de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.System.class, msgs);
@@ -348,13 +348,13 @@ public class MemImpl extends EObjectImpl implements Mem {
         return super.eBasicRemoveFromContainerFeature(msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+    @Override
+    public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
             case Sys_info_systeminfoPackage.MEM__ECONTAINER_MEM:
                 return getEContainer_mem();
@@ -372,13 +372,13 @@ public class MemImpl extends EObjectImpl implements Mem {
         return super.eGet(featureID, resolve, coreType);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public void eSet(int featureID, Object newValue) {
+    @Override
+    public void eSet(int featureID, Object newValue) {
         switch (featureID) {
             case Sys_info_systeminfoPackage.MEM__ECONTAINER_MEM:
                 setEContainer_mem((de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.System)newValue);
@@ -402,13 +402,13 @@ public class MemImpl extends EObjectImpl implements Mem {
         super.eSet(featureID, newValue);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public void eUnset(int featureID) {
+    @Override
+    public void eUnset(int featureID) {
         switch (featureID) {
             case Sys_info_systeminfoPackage.MEM__ECONTAINER_MEM:
                 setEContainer_mem((de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.System)null);
@@ -432,13 +432,13 @@ public class MemImpl extends EObjectImpl implements Mem {
         super.eUnset(featureID);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public boolean eIsSet(int featureID) {
+    @Override
+    public boolean eIsSet(int featureID) {
         switch (featureID) {
             case Sys_info_systeminfoPackage.MEM__ECONTAINER_MEM:
                 return getEContainer_mem() != null;
@@ -456,13 +456,13 @@ public class MemImpl extends EObjectImpl implements Mem {
         return super.eIsSet(featureID);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public String toString() {
+    @Override
+    public String toString() {
         if (eIsProxy()) return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());

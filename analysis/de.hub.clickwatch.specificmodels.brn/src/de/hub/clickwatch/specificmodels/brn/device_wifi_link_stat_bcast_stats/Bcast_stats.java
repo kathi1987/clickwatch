@@ -25,15 +25,15 @@ import de.hub.clickwatch.model.Handler;
  * @generated
  */
 public interface Bcast_stats extends Handler {
-	/**
+    /**
      * Returns the value of the '<em><b>Entry</b></em>' containment reference.
      * It is bidirectional and its opposite is '{@link de.hub.clickwatch.specificmodels.brn.device_wifi_link_stat_bcast_stats.Entry#getEContainer_entry <em>EContainer entry</em>}'.
      * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Entry</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Entry</em>' containment reference isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
      * @return the value of the '<em>Entry</em>' containment reference.
      * @see #setEntry(Entry)
      * @see de.hub.clickwatch.specificmodels.brn.device_wifi_link_stat_bcast_stats.Device_wifi_link_stat_bcast_statsPackage#getBcast_stats_Entry()
@@ -42,16 +42,16 @@ public interface Bcast_stats extends Handler {
      *        annotation="http://de.hub.clickwatch.specificmodels target_id='Bcast_stats|Handler/entry|entry:Entry|EObject' IsCopy='false'"
      * @generated
      */
-	Entry getEntry();
+    Entry getEntry();
 
-	/**
+    /**
      * Sets the value of the '{@link de.hub.clickwatch.specificmodels.brn.device_wifi_link_stat_bcast_stats.Bcast_stats#getEntry <em>Entry</em>}' containment reference.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @param value the new value of the '<em>Entry</em>' containment reference.
      * @see #getEntry()
      * @generated
      */
-	void setEntry(Entry value);
+    void setEntry(Entry value);
 
 } // Bcast_stats

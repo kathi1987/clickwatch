@@ -34,50 +34,50 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * @generated
  */
 public class Gps_coordImpl extends HandlerImpl implements Gps_coord {
-	/**
+    /**
      * The cached value of the '{@link #getGps() <em>Gps</em>}' containment reference.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getGps()
      * @generated
      * @ordered
      */
-	protected Gps gps;
+    protected Gps gps;
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	protected Gps_coordImpl() {
+    protected Gps_coordImpl() {
         super();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	protected EClass eStaticClass() {
+    @Override
+    protected EClass eStaticClass() {
         return Gps_gps_coordPackage.Literals.GPS_COORD;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Gps getGps() {
+    public Gps getGps() {
         return gps;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public NotificationChain basicSetGps(Gps newGps, NotificationChain msgs) {
+    public NotificationChain basicSetGps(Gps newGps, NotificationChain msgs) {
         Gps oldGps = gps;
         gps = newGps;
         if (eNotificationRequired()) {
@@ -87,12 +87,12 @@ public class Gps_coordImpl extends HandlerImpl implements Gps_coord {
         return msgs;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setGps(Gps newGps) {
+    public void setGps(Gps newGps) {
         if (newGps != gps) {
             NotificationChain msgs = null;
             if (gps != null)
@@ -106,13 +106,13 @@ public class Gps_coordImpl extends HandlerImpl implements Gps_coord {
             eNotify(new ENotificationImpl(this, Notification.SET, Gps_gps_coordPackage.GPS_COORD__GPS, newGps, newGps));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    @Override
+    public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case Gps_gps_coordPackage.GPS_COORD__GPS:
                 if (gps != null)
@@ -122,13 +122,13 @@ public class Gps_coordImpl extends HandlerImpl implements Gps_coord {
         return super.eInverseAdd(otherEnd, featureID, msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    @Override
+    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case Gps_gps_coordPackage.GPS_COORD__GPS:
                 return basicSetGps(null, msgs);
@@ -136,13 +136,13 @@ public class Gps_coordImpl extends HandlerImpl implements Gps_coord {
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+    @Override
+    public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
             case Gps_gps_coordPackage.GPS_COORD__GPS:
                 return getGps();
@@ -150,13 +150,13 @@ public class Gps_coordImpl extends HandlerImpl implements Gps_coord {
         return super.eGet(featureID, resolve, coreType);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public void eSet(int featureID, Object newValue) {
+    @Override
+    public void eSet(int featureID, Object newValue) {
         switch (featureID) {
             case Gps_gps_coordPackage.GPS_COORD__GPS:
                 setGps((Gps)newValue);
@@ -165,13 +165,13 @@ public class Gps_coordImpl extends HandlerImpl implements Gps_coord {
         super.eSet(featureID, newValue);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public void eUnset(int featureID) {
+    @Override
+    public void eUnset(int featureID) {
         switch (featureID) {
             case Gps_gps_coordPackage.GPS_COORD__GPS:
                 setGps((Gps)null);
@@ -180,13 +180,13 @@ public class Gps_coordImpl extends HandlerImpl implements Gps_coord {
         super.eUnset(featureID);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public boolean eIsSet(int featureID) {
+    @Override
+    public boolean eIsSet(int featureID) {
         switch (featureID) {
             case Gps_gps_coordPackage.GPS_COORD__GPS:
                 return gps != null;

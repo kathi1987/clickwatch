@@ -34,50 +34,50 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * @generated
  */
 public class LocalchannelinfoImpl extends HandlerImpl implements Localchannelinfo {
-	/**
+    /**
      * The cached value of the '{@link #getC() <em>C</em>}' containment reference.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getC()
      * @generated
      * @ordered
      */
-	protected C c;
+    protected C c;
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	protected LocalchannelinfoImpl() {
+    protected LocalchannelinfoImpl() {
         super();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	protected EClass eStaticClass() {
+    @Override
+    protected EClass eStaticClass() {
         return Seismo_localchannelinfoPackage.Literals.LOCALCHANNELINFO;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public C getC() {
+    public C getC() {
         return c;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public NotificationChain basicSetC(C newC, NotificationChain msgs) {
+    public NotificationChain basicSetC(C newC, NotificationChain msgs) {
         C oldC = c;
         c = newC;
         if (eNotificationRequired()) {
@@ -87,12 +87,12 @@ public class LocalchannelinfoImpl extends HandlerImpl implements Localchannelinf
         return msgs;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setC(C newC) {
+    public void setC(C newC) {
         if (newC != c) {
             NotificationChain msgs = null;
             if (c != null)
@@ -106,13 +106,13 @@ public class LocalchannelinfoImpl extends HandlerImpl implements Localchannelinf
             eNotify(new ENotificationImpl(this, Notification.SET, Seismo_localchannelinfoPackage.LOCALCHANNELINFO__C, newC, newC));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    @Override
+    public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case Seismo_localchannelinfoPackage.LOCALCHANNELINFO__C:
                 if (c != null)
@@ -122,13 +122,13 @@ public class LocalchannelinfoImpl extends HandlerImpl implements Localchannelinf
         return super.eInverseAdd(otherEnd, featureID, msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    @Override
+    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case Seismo_localchannelinfoPackage.LOCALCHANNELINFO__C:
                 return basicSetC(null, msgs);
@@ -136,13 +136,13 @@ public class LocalchannelinfoImpl extends HandlerImpl implements Localchannelinf
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+    @Override
+    public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
             case Seismo_localchannelinfoPackage.LOCALCHANNELINFO__C:
                 return getC();
@@ -150,13 +150,13 @@ public class LocalchannelinfoImpl extends HandlerImpl implements Localchannelinf
         return super.eGet(featureID, resolve, coreType);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public void eSet(int featureID, Object newValue) {
+    @Override
+    public void eSet(int featureID, Object newValue) {
         switch (featureID) {
             case Seismo_localchannelinfoPackage.LOCALCHANNELINFO__C:
                 setC((C)newValue);
@@ -165,13 +165,13 @@ public class LocalchannelinfoImpl extends HandlerImpl implements Localchannelinf
         super.eSet(featureID, newValue);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public void eUnset(int featureID) {
+    @Override
+    public void eUnset(int featureID) {
         switch (featureID) {
             case Seismo_localchannelinfoPackage.LOCALCHANNELINFO__C:
                 setC((C)null);
@@ -180,13 +180,13 @@ public class LocalchannelinfoImpl extends HandlerImpl implements Localchannelinf
         super.eUnset(featureID);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public boolean eIsSet(int featureID) {
+    @Override
+    public boolean eIsSet(int featureID) {
         switch (featureID) {
             case Seismo_localchannelinfoPackage.LOCALCHANNELINFO__C:
                 return c != null;

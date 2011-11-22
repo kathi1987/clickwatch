@@ -18,14 +18,14 @@ import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
  * @generated
  */
 public class Device_wifi_data_power_systempowerResourceImpl extends XMLResourceImpl {
-	/**
+    /**
      * Creates an instance of the resource.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @param uri the URI of the new resource.
      * @generated
      */
-	public Device_wifi_data_power_systempowerResourceImpl(URI uri) {
+    public Device_wifi_data_power_systempowerResourceImpl(URI uri) {
         super(uri);
     }
 

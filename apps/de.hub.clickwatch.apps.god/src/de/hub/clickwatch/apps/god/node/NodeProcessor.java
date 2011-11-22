@@ -16,7 +16,6 @@ import de.hub.clickwatch.connection.adapter.IHandlerAdapter;
 import de.hub.clickwatch.model.Handler;
 
 
-@SuppressWarnings("unused")
 public class NodeProcessor extends Thread {
 	private Server server = null;
 	private int maxCounter = 0;
@@ -169,9 +168,9 @@ public class NodeProcessor extends Thread {
 				
 			} catch (Exception exc) {
 				
-				//SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd @ HH:mm:ss");
-				//System.err.println(dateFormat.format(new Date()) + " -> node '" + nodeInfos.getHost().getHostAddress() + ":" + nodeInfos.getPort() + "' throwed Exception: " + exc.getMessage() +
-				//		" while asking for: " + askingFor + "\t...waiting " + Server.getSzenario().get_WAIT_AFTER_ASKING_ERROR()/1000 + "sec, and starting to ask the node again");
+				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd @ HH:mm:ss");
+				System.err.println(dateFormat.format(new Date()) + " -> node '" + nodeInfos.getHost().getHostAddress() + ":" + nodeInfos.getPort() + "' throwed Exception: " + exc.getMessage() +
+						" while asking for: " + askingFor + "\t...waiting " + Server.getSzenario().get_WAIT_AFTER_ASKING_ERROR()/1000 + "sec, and starting to ask the node again");
 				
 				//exc.printStackTrace();
 				

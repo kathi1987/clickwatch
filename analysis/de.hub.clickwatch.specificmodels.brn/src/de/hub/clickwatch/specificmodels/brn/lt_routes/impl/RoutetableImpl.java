@@ -46,91 +46,91 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * @generated
  */
 public class RoutetableImpl extends EObjectImpl implements Routetable {
-	/**
+    /**
      * The cached value of the '{@link #getText() <em>Text</em>}' attribute list.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getText()
      * @generated
      * @ordered
      */
-	protected EList<String> text;
+    protected EList<String> text;
 
-	/**
+    /**
      * The cached value of the '{@link #getRoute() <em>Route</em>}' containment reference list.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getRoute()
      * @generated
      * @ordered
      */
-	protected EList<Route> route;
+    protected EList<Route> route;
 
-	/**
+    /**
      * The default value of the '{@link #getId() <em>Id</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getId()
      * @generated
      * @ordered
      */
-	protected static final String ID_EDEFAULT = null;
+    protected static final String ID_EDEFAULT = null;
 
-	/**
+    /**
      * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getId()
      * @generated
      * @ordered
      */
-	protected String id = ID_EDEFAULT;
+    protected String id = ID_EDEFAULT;
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	protected RoutetableImpl() {
+    protected RoutetableImpl() {
         super();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	protected EClass eStaticClass() {
+    @Override
+    protected EClass eStaticClass() {
         return Lt_routesPackage.Literals.ROUTETABLE;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Routes getEContainer_routetable() {
+    public Routes getEContainer_routetable() {
         if (eContainerFeatureID() != Lt_routesPackage.ROUTETABLE__ECONTAINER_ROUTETABLE) return null;
         return (Routes)eContainer();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public NotificationChain basicSetEContainer_routetable(Routes newEContainer_routetable, NotificationChain msgs) {
+    public NotificationChain basicSetEContainer_routetable(Routes newEContainer_routetable, NotificationChain msgs) {
         msgs = eBasicSetContainer((InternalEObject)newEContainer_routetable, Lt_routesPackage.ROUTETABLE__ECONTAINER_ROUTETABLE, msgs);
         return msgs;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setEContainer_routetable(Routes newEContainer_routetable) {
+    public void setEContainer_routetable(Routes newEContainer_routetable) {
         if (newEContainer_routetable != eInternalContainer() || (eContainerFeatureID() != Lt_routesPackage.ROUTETABLE__ECONTAINER_ROUTETABLE && newEContainer_routetable != null)) {
             if (EcoreUtil.isAncestor(this, newEContainer_routetable))
                 throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
@@ -146,59 +146,59 @@ public class RoutetableImpl extends EObjectImpl implements Routetable {
             eNotify(new ENotificationImpl(this, Notification.SET, Lt_routesPackage.ROUTETABLE__ECONTAINER_ROUTETABLE, newEContainer_routetable, newEContainer_routetable));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EList<String> getText() {
+    public EList<String> getText() {
         if (text == null) {
             text = new EDataTypeEList<String>(String.class, this, Lt_routesPackage.ROUTETABLE__TEXT);
         }
         return text;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EList<Route> getRoute() {
+    public EList<Route> getRoute() {
         if (route == null) {
             route = new EObjectContainmentWithInverseEList<Route>(Route.class, this, Lt_routesPackage.ROUTETABLE__ROUTE, Lt_routesPackage.ROUTE__ECONTAINER_ROUTE);
         }
         return route;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public String getId() {
+    public String getId() {
         return id;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setId(String newId) {
+    public void setId(String newId) {
         String oldId = id;
         id = newId;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Lt_routesPackage.ROUTETABLE__ID, oldId, id));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@SuppressWarnings("unchecked")
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    @SuppressWarnings("unchecked")
+    @Override
+    public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case Lt_routesPackage.ROUTETABLE__ECONTAINER_ROUTETABLE:
                 if (eInternalContainer() != null)
@@ -210,13 +210,13 @@ public class RoutetableImpl extends EObjectImpl implements Routetable {
         return super.eInverseAdd(otherEnd, featureID, msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    @Override
+    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case Lt_routesPackage.ROUTETABLE__ECONTAINER_ROUTETABLE:
                 return basicSetEContainer_routetable(null, msgs);
@@ -226,13 +226,13 @@ public class RoutetableImpl extends EObjectImpl implements Routetable {
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+    @Override
+    public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
         switch (eContainerFeatureID()) {
             case Lt_routesPackage.ROUTETABLE__ECONTAINER_ROUTETABLE:
                 return eInternalContainer().eInverseRemove(this, Lt_routesPackage.ROUTES__ROUTETABLE, Routes.class, msgs);
@@ -240,13 +240,13 @@ public class RoutetableImpl extends EObjectImpl implements Routetable {
         return super.eBasicRemoveFromContainerFeature(msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+    @Override
+    public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
             case Lt_routesPackage.ROUTETABLE__ECONTAINER_ROUTETABLE:
                 return getEContainer_routetable();
@@ -260,14 +260,14 @@ public class RoutetableImpl extends EObjectImpl implements Routetable {
         return super.eGet(featureID, resolve, coreType);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@SuppressWarnings("unchecked")
-	@Override
-	public void eSet(int featureID, Object newValue) {
+    @SuppressWarnings("unchecked")
+    @Override
+    public void eSet(int featureID, Object newValue) {
         switch (featureID) {
             case Lt_routesPackage.ROUTETABLE__ECONTAINER_ROUTETABLE:
                 setEContainer_routetable((Routes)newValue);
@@ -287,13 +287,13 @@ public class RoutetableImpl extends EObjectImpl implements Routetable {
         super.eSet(featureID, newValue);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public void eUnset(int featureID) {
+    @Override
+    public void eUnset(int featureID) {
         switch (featureID) {
             case Lt_routesPackage.ROUTETABLE__ECONTAINER_ROUTETABLE:
                 setEContainer_routetable((Routes)null);
@@ -311,13 +311,13 @@ public class RoutetableImpl extends EObjectImpl implements Routetable {
         super.eUnset(featureID);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public boolean eIsSet(int featureID) {
+    @Override
+    public boolean eIsSet(int featureID) {
         switch (featureID) {
             case Lt_routesPackage.ROUTETABLE__ECONTAINER_ROUTETABLE:
                 return getEContainer_routetable() != null;
@@ -331,13 +331,13 @@ public class RoutetableImpl extends EObjectImpl implements Routetable {
         return super.eIsSet(featureID);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public String toString() {
+    @Override
+    public String toString() {
         if (eIsProxy()) return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());

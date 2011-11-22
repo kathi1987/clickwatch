@@ -34,50 +34,50 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * @generated
  */
 public class LeasesImpl extends HandlerImpl implements Leases {
-	/**
+    /**
      * The cached value of the '{@link #getDhcpleases() <em>Dhcpleases</em>}' containment reference.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getDhcpleases()
      * @generated
      * @ordered
      */
-	protected Dhcpleases dhcpleases;
+    protected Dhcpleases dhcpleases;
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	protected LeasesImpl() {
+    protected LeasesImpl() {
         super();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	protected EClass eStaticClass() {
+    @Override
+    protected EClass eStaticClass() {
         return Lease_tab_leasesPackage.Literals.LEASES;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Dhcpleases getDhcpleases() {
+    public Dhcpleases getDhcpleases() {
         return dhcpleases;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public NotificationChain basicSetDhcpleases(Dhcpleases newDhcpleases, NotificationChain msgs) {
+    public NotificationChain basicSetDhcpleases(Dhcpleases newDhcpleases, NotificationChain msgs) {
         Dhcpleases oldDhcpleases = dhcpleases;
         dhcpleases = newDhcpleases;
         if (eNotificationRequired()) {
@@ -87,12 +87,12 @@ public class LeasesImpl extends HandlerImpl implements Leases {
         return msgs;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setDhcpleases(Dhcpleases newDhcpleases) {
+    public void setDhcpleases(Dhcpleases newDhcpleases) {
         if (newDhcpleases != dhcpleases) {
             NotificationChain msgs = null;
             if (dhcpleases != null)
@@ -106,13 +106,13 @@ public class LeasesImpl extends HandlerImpl implements Leases {
             eNotify(new ENotificationImpl(this, Notification.SET, Lease_tab_leasesPackage.LEASES__DHCPLEASES, newDhcpleases, newDhcpleases));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    @Override
+    public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case Lease_tab_leasesPackage.LEASES__DHCPLEASES:
                 if (dhcpleases != null)
@@ -122,13 +122,13 @@ public class LeasesImpl extends HandlerImpl implements Leases {
         return super.eInverseAdd(otherEnd, featureID, msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    @Override
+    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case Lease_tab_leasesPackage.LEASES__DHCPLEASES:
                 return basicSetDhcpleases(null, msgs);
@@ -136,13 +136,13 @@ public class LeasesImpl extends HandlerImpl implements Leases {
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+    @Override
+    public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
             case Lease_tab_leasesPackage.LEASES__DHCPLEASES:
                 return getDhcpleases();
@@ -150,13 +150,13 @@ public class LeasesImpl extends HandlerImpl implements Leases {
         return super.eGet(featureID, resolve, coreType);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public void eSet(int featureID, Object newValue) {
+    @Override
+    public void eSet(int featureID, Object newValue) {
         switch (featureID) {
             case Lease_tab_leasesPackage.LEASES__DHCPLEASES:
                 setDhcpleases((Dhcpleases)newValue);
@@ -165,13 +165,13 @@ public class LeasesImpl extends HandlerImpl implements Leases {
         super.eSet(featureID, newValue);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public void eUnset(int featureID) {
+    @Override
+    public void eUnset(int featureID) {
         switch (featureID) {
             case Lease_tab_leasesPackage.LEASES__DHCPLEASES:
                 setDhcpleases((Dhcpleases)null);
@@ -180,13 +180,13 @@ public class LeasesImpl extends HandlerImpl implements Leases {
         super.eUnset(featureID);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public boolean eIsSet(int featureID) {
+    @Override
+    public boolean eIsSet(int featureID) {
         switch (featureID) {
             case Lease_tab_leasesPackage.LEASES__DHCPLEASES:
                 return dhcpleases != null;

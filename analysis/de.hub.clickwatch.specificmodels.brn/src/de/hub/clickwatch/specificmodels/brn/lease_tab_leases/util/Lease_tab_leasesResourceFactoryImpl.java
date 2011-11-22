@@ -22,24 +22,24 @@ import org.eclipse.emf.ecore.xmi.XMLResource;
  * @generated
  */
 public class Lease_tab_leasesResourceFactoryImpl extends ResourceFactoryImpl {
-	/**
+    /**
      * Creates an instance of the resource factory.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Lease_tab_leasesResourceFactoryImpl() {
+    public Lease_tab_leasesResourceFactoryImpl() {
         super();
     }
 
-	/**
+    /**
      * Creates an instance of the resource.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public Resource createResource(URI uri) {
+    @Override
+    public Resource createResource(URI uri) {
         XMLResource result = new Lease_tab_leasesResourceImpl(uri);
         result.getDefaultSaveOptions().put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);
         result.getDefaultLoadOptions().put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);

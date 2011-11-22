@@ -45,81 +45,81 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * @generated
  */
 public class Rssi_extendedImpl extends EObjectImpl implements Rssi_extended {
-	/**
+    /**
      * The cached value of the '{@link #getText() <em>Text</em>}' attribute list.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getText()
      * @generated
      * @ordered
      */
-	protected EList<String> text;
+    protected EList<String> text;
 
-	/**
+    /**
      * The cached value of the '{@link #getCtl() <em>Ctl</em>}' containment reference.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getCtl()
      * @generated
      * @ordered
      */
-	protected Ctl ctl;
+    protected Ctl ctl;
 
-	/**
+    /**
      * The cached value of the '{@link #getExt() <em>Ext</em>}' containment reference.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getExt()
      * @generated
      * @ordered
      */
-	protected Ext ext;
+    protected Ext ext;
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	protected Rssi_extendedImpl() {
+    protected Rssi_extendedImpl() {
         super();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	protected EClass eStaticClass() {
+    @Override
+    protected EClass eStaticClass() {
         return Device_wifi_wifidevice_cst_statsPackage.Literals.RSSI_EXTENDED;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Nb getEContainer_rssi_extended() {
+    public Nb getEContainer_rssi_extended() {
         if (eContainerFeatureID() != Device_wifi_wifidevice_cst_statsPackage.RSSI_EXTENDED__ECONTAINER_RSSI_EXTENDED) return null;
         return (Nb)eContainer();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public NotificationChain basicSetEContainer_rssi_extended(Nb newEContainer_rssi_extended, NotificationChain msgs) {
+    public NotificationChain basicSetEContainer_rssi_extended(Nb newEContainer_rssi_extended, NotificationChain msgs) {
         msgs = eBasicSetContainer((InternalEObject)newEContainer_rssi_extended, Device_wifi_wifidevice_cst_statsPackage.RSSI_EXTENDED__ECONTAINER_RSSI_EXTENDED, msgs);
         return msgs;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setEContainer_rssi_extended(Nb newEContainer_rssi_extended) {
+    public void setEContainer_rssi_extended(Nb newEContainer_rssi_extended) {
         if (newEContainer_rssi_extended != eInternalContainer() || (eContainerFeatureID() != Device_wifi_wifidevice_cst_statsPackage.RSSI_EXTENDED__ECONTAINER_RSSI_EXTENDED && newEContainer_rssi_extended != null)) {
             if (EcoreUtil.isAncestor(this, newEContainer_rssi_extended))
                 throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
@@ -135,33 +135,33 @@ public class Rssi_extendedImpl extends EObjectImpl implements Rssi_extended {
             eNotify(new ENotificationImpl(this, Notification.SET, Device_wifi_wifidevice_cst_statsPackage.RSSI_EXTENDED__ECONTAINER_RSSI_EXTENDED, newEContainer_rssi_extended, newEContainer_rssi_extended));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EList<String> getText() {
+    public EList<String> getText() {
         if (text == null) {
             text = new EDataTypeEList<String>(String.class, this, Device_wifi_wifidevice_cst_statsPackage.RSSI_EXTENDED__TEXT);
         }
         return text;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Ctl getCtl() {
+    public Ctl getCtl() {
         return ctl;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public NotificationChain basicSetCtl(Ctl newCtl, NotificationChain msgs) {
+    public NotificationChain basicSetCtl(Ctl newCtl, NotificationChain msgs) {
         Ctl oldCtl = ctl;
         ctl = newCtl;
         if (eNotificationRequired()) {
@@ -171,12 +171,12 @@ public class Rssi_extendedImpl extends EObjectImpl implements Rssi_extended {
         return msgs;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setCtl(Ctl newCtl) {
+    public void setCtl(Ctl newCtl) {
         if (newCtl != ctl) {
             NotificationChain msgs = null;
             if (ctl != null)
@@ -190,21 +190,21 @@ public class Rssi_extendedImpl extends EObjectImpl implements Rssi_extended {
             eNotify(new ENotificationImpl(this, Notification.SET, Device_wifi_wifidevice_cst_statsPackage.RSSI_EXTENDED__CTL, newCtl, newCtl));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Ext getExt() {
+    public Ext getExt() {
         return ext;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public NotificationChain basicSetExt(Ext newExt, NotificationChain msgs) {
+    public NotificationChain basicSetExt(Ext newExt, NotificationChain msgs) {
         Ext oldExt = ext;
         ext = newExt;
         if (eNotificationRequired()) {
@@ -214,12 +214,12 @@ public class Rssi_extendedImpl extends EObjectImpl implements Rssi_extended {
         return msgs;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setExt(Ext newExt) {
+    public void setExt(Ext newExt) {
         if (newExt != ext) {
             NotificationChain msgs = null;
             if (ext != null)
@@ -233,13 +233,13 @@ public class Rssi_extendedImpl extends EObjectImpl implements Rssi_extended {
             eNotify(new ENotificationImpl(this, Notification.SET, Device_wifi_wifidevice_cst_statsPackage.RSSI_EXTENDED__EXT, newExt, newExt));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    @Override
+    public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case Device_wifi_wifidevice_cst_statsPackage.RSSI_EXTENDED__ECONTAINER_RSSI_EXTENDED:
                 if (eInternalContainer() != null)
@@ -257,13 +257,13 @@ public class Rssi_extendedImpl extends EObjectImpl implements Rssi_extended {
         return super.eInverseAdd(otherEnd, featureID, msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    @Override
+    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case Device_wifi_wifidevice_cst_statsPackage.RSSI_EXTENDED__ECONTAINER_RSSI_EXTENDED:
                 return basicSetEContainer_rssi_extended(null, msgs);
@@ -275,13 +275,13 @@ public class Rssi_extendedImpl extends EObjectImpl implements Rssi_extended {
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+    @Override
+    public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
         switch (eContainerFeatureID()) {
             case Device_wifi_wifidevice_cst_statsPackage.RSSI_EXTENDED__ECONTAINER_RSSI_EXTENDED:
                 return eInternalContainer().eInverseRemove(this, Device_wifi_wifidevice_cst_statsPackage.NB__RSSI_EXTENDED, Nb.class, msgs);
@@ -289,13 +289,13 @@ public class Rssi_extendedImpl extends EObjectImpl implements Rssi_extended {
         return super.eBasicRemoveFromContainerFeature(msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+    @Override
+    public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
             case Device_wifi_wifidevice_cst_statsPackage.RSSI_EXTENDED__ECONTAINER_RSSI_EXTENDED:
                 return getEContainer_rssi_extended();
@@ -309,14 +309,14 @@ public class Rssi_extendedImpl extends EObjectImpl implements Rssi_extended {
         return super.eGet(featureID, resolve, coreType);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@SuppressWarnings("unchecked")
-	@Override
-	public void eSet(int featureID, Object newValue) {
+    @SuppressWarnings("unchecked")
+    @Override
+    public void eSet(int featureID, Object newValue) {
         switch (featureID) {
             case Device_wifi_wifidevice_cst_statsPackage.RSSI_EXTENDED__ECONTAINER_RSSI_EXTENDED:
                 setEContainer_rssi_extended((Nb)newValue);
@@ -335,13 +335,13 @@ public class Rssi_extendedImpl extends EObjectImpl implements Rssi_extended {
         super.eSet(featureID, newValue);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public void eUnset(int featureID) {
+    @Override
+    public void eUnset(int featureID) {
         switch (featureID) {
             case Device_wifi_wifidevice_cst_statsPackage.RSSI_EXTENDED__ECONTAINER_RSSI_EXTENDED:
                 setEContainer_rssi_extended((Nb)null);
@@ -359,13 +359,13 @@ public class Rssi_extendedImpl extends EObjectImpl implements Rssi_extended {
         super.eUnset(featureID);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public boolean eIsSet(int featureID) {
+    @Override
+    public boolean eIsSet(int featureID) {
         switch (featureID) {
             case Device_wifi_wifidevice_cst_statsPackage.RSSI_EXTENDED__ECONTAINER_RSSI_EXTENDED:
                 return getEContainer_rssi_extended() != null;
@@ -379,13 +379,13 @@ public class Rssi_extendedImpl extends EObjectImpl implements Rssi_extended {
         return super.eIsSet(featureID);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public String toString() {
+    @Override
+    public String toString() {
         if (eIsProxy()) return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());

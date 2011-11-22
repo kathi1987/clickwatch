@@ -17,48 +17,48 @@ import org.eclipse.emf.ecore.EFactory;
  * @generated
  */
 public interface Seismo_localchannelinfoFactory extends EFactory {
-	/**
+    /**
      * The singleton instance of the factory.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	Seismo_localchannelinfoFactory eINSTANCE = de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.impl.Seismo_localchannelinfoFactoryImpl.init();
+    Seismo_localchannelinfoFactory eINSTANCE = de.hub.clickwatch.specificmodels.brn.seismo_localchannelinfo.impl.Seismo_localchannelinfoFactoryImpl.init();
 
-	/**
+    /**
      * Returns a new object of class '<em>C</em>'.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @return a new object of class '<em>C</em>'.
      * @generated
      */
-	C createC();
+    C createC();
 
-	/**
+    /**
      * Returns a new object of class '<em>Localchannelinfo</em>'.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @return a new object of class '<em>Localchannelinfo</em>'.
      * @generated
      */
-	Localchannelinfo createLocalchannelinfo();
+    Localchannelinfo createLocalchannelinfo();
 
-	/**
+    /**
      * Returns a new object of class '<em>V</em>'.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @return a new object of class '<em>V</em>'.
      * @generated
      */
-	V createV();
+    V createV();
 
-	/**
+    /**
      * Returns the package supported by this factory.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @return the package supported by this factory.
      * @generated
      */
-	Seismo_localchannelinfoPackage getSeismo_localchannelinfoPackage();
+    Seismo_localchannelinfoPackage getSeismo_localchannelinfoPackage();
 
 } //Seismo_localchannelinfoFactory

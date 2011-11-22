@@ -34,50 +34,50 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * @generated
  */
 public class Bcast_statsImpl extends HandlerImpl implements Bcast_stats {
-	/**
+    /**
      * The cached value of the '{@link #getEntry() <em>Entry</em>}' containment reference.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getEntry()
      * @generated
      * @ordered
      */
-	protected Entry entry;
+    protected Entry entry;
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	protected Bcast_statsImpl() {
+    protected Bcast_statsImpl() {
         super();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	protected EClass eStaticClass() {
+    @Override
+    protected EClass eStaticClass() {
         return Device_wifi_link_stat_bcast_statsPackage.Literals.BCAST_STATS;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Entry getEntry() {
+    public Entry getEntry() {
         return entry;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public NotificationChain basicSetEntry(Entry newEntry, NotificationChain msgs) {
+    public NotificationChain basicSetEntry(Entry newEntry, NotificationChain msgs) {
         Entry oldEntry = entry;
         entry = newEntry;
         if (eNotificationRequired()) {
@@ -87,12 +87,12 @@ public class Bcast_statsImpl extends HandlerImpl implements Bcast_stats {
         return msgs;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setEntry(Entry newEntry) {
+    public void setEntry(Entry newEntry) {
         if (newEntry != entry) {
             NotificationChain msgs = null;
             if (entry != null)
@@ -106,13 +106,13 @@ public class Bcast_statsImpl extends HandlerImpl implements Bcast_stats {
             eNotify(new ENotificationImpl(this, Notification.SET, Device_wifi_link_stat_bcast_statsPackage.BCAST_STATS__ENTRY, newEntry, newEntry));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    @Override
+    public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case Device_wifi_link_stat_bcast_statsPackage.BCAST_STATS__ENTRY:
                 if (entry != null)
@@ -122,13 +122,13 @@ public class Bcast_statsImpl extends HandlerImpl implements Bcast_stats {
         return super.eInverseAdd(otherEnd, featureID, msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    @Override
+    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case Device_wifi_link_stat_bcast_statsPackage.BCAST_STATS__ENTRY:
                 return basicSetEntry(null, msgs);
@@ -136,13 +136,13 @@ public class Bcast_statsImpl extends HandlerImpl implements Bcast_stats {
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+    @Override
+    public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
             case Device_wifi_link_stat_bcast_statsPackage.BCAST_STATS__ENTRY:
                 return getEntry();
@@ -150,13 +150,13 @@ public class Bcast_statsImpl extends HandlerImpl implements Bcast_stats {
         return super.eGet(featureID, resolve, coreType);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public void eSet(int featureID, Object newValue) {
+    @Override
+    public void eSet(int featureID, Object newValue) {
         switch (featureID) {
             case Device_wifi_link_stat_bcast_statsPackage.BCAST_STATS__ENTRY:
                 setEntry((Entry)newValue);
@@ -165,13 +165,13 @@ public class Bcast_statsImpl extends HandlerImpl implements Bcast_stats {
         super.eSet(featureID, newValue);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public void eUnset(int featureID) {
+    @Override
+    public void eUnset(int featureID) {
         switch (featureID) {
             case Device_wifi_link_stat_bcast_statsPackage.BCAST_STATS__ENTRY:
                 setEntry((Entry)null);
@@ -180,13 +180,13 @@ public class Bcast_statsImpl extends HandlerImpl implements Bcast_stats {
         super.eUnset(featureID);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public boolean eIsSet(int featureID) {
+    @Override
+    public boolean eIsSet(int featureID) {
         switch (featureID) {
             case Device_wifi_link_stat_bcast_statsPackage.BCAST_STATS__ENTRY:
                 return entry != null;

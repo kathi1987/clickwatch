@@ -68,7 +68,9 @@ import de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.Sys_info_systemi
 import de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.impl.Sys_info_systeminfoPackageImpl;
 
 import de.hub.clickwatch.specificmodels.brn.tsi_syncinfo.Tsi_syncinfoPackage;
+
 import de.hub.clickwatch.specificmodels.brn.tsi_syncinfo.impl.Tsi_syncinfoPackageImpl;
+
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
@@ -83,35 +85,35 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
  * @generated
  */
 public class Device_wifi_link_stat_bcast_statsPackageImpl extends EPackageImpl implements Device_wifi_link_stat_bcast_statsPackage {
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	private EClass bcast_statsEClass = null;
+    private EClass bcast_statsEClass = null;
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	private EClass entryEClass = null;
+    private EClass entryEClass = null;
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	private EClass linkEClass = null;
+    private EClass linkEClass = null;
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	private EClass link_infoEClass = null;
+    private EClass link_infoEClass = null;
 
-	/**
+    /**
      * Creates an instance of the model <b>Package</b>, registered with
      * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
      * package URI value.
@@ -120,36 +122,36 @@ public class Device_wifi_link_stat_bcast_statsPackageImpl extends EPackageImpl i
      * initialization of the package, or returns the registered package,
      * if one already exists.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see org.eclipse.emf.ecore.EPackage.Registry
      * @see de.hub.clickwatch.specificmodels.brn.device_wifi_link_stat_bcast_stats.Device_wifi_link_stat_bcast_statsPackage#eNS_URI
      * @see #init()
      * @generated
      */
-	private Device_wifi_link_stat_bcast_statsPackageImpl() {
+    private Device_wifi_link_stat_bcast_statsPackageImpl() {
         super(eNS_URI, Device_wifi_link_stat_bcast_statsFactory.eINSTANCE);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	private static boolean isInited = false;
+    private static boolean isInited = false;
 
-	/**
+    /**
      * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
      * 
      * <p>This method is used to initialize {@link Device_wifi_link_stat_bcast_statsPackage#eINSTANCE} when that field is accessed.
      * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #eNS_URI
      * @see #createPackageContents()
      * @see #initializePackageContents()
      * @generated
      */
-	public static Device_wifi_link_stat_bcast_statsPackage init() {
+    public static Device_wifi_link_stat_bcast_statsPackage init() {
         if (isInited) return (Device_wifi_link_stat_bcast_statsPackage)EPackage.Registry.INSTANCE.getEPackage(Device_wifi_link_stat_bcast_statsPackage.eNS_URI);
 
         // Obtain or create and register package
@@ -219,264 +221,264 @@ public class Device_wifi_link_stat_bcast_statsPackageImpl extends EPackageImpl i
         return theDevice_wifi_link_stat_bcast_statsPackage;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EClass getBcast_stats() {
+    public EClass getBcast_stats() {
         return bcast_statsEClass;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EReference getBcast_stats_Entry() {
+    public EReference getBcast_stats_Entry() {
         return (EReference)bcast_statsEClass.getEStructuralFeatures().get(0);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EClass getEntry() {
+    public EClass getEntry() {
         return entryEClass;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EReference getEntry_EContainer_entry() {
+    public EReference getEntry_EContainer_entry() {
         return (EReference)entryEClass.getEStructuralFeatures().get(0);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getEntry_Text() {
+    public EAttribute getEntry_Text() {
         return (EAttribute)entryEClass.getEStructuralFeatures().get(1);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EReference getEntry_Link() {
+    public EReference getEntry_Link() {
         return (EReference)entryEClass.getEStructuralFeatures().get(2);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getEntry_From() {
+    public EAttribute getEntry_From() {
         return (EAttribute)entryEClass.getEStructuralFeatures().get(3);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getEntry_Time() {
+    public EAttribute getEntry_Time() {
         return (EAttribute)entryEClass.getEStructuralFeatures().get(4);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getEntry_Seq() {
+    public EAttribute getEntry_Seq() {
         return (EAttribute)entryEClass.getEStructuralFeatures().get(5);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getEntry_Period() {
+    public EAttribute getEntry_Period() {
         return (EAttribute)entryEClass.getEStructuralFeatures().get(6);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getEntry_Tau() {
+    public EAttribute getEntry_Tau() {
         return (EAttribute)entryEClass.getEStructuralFeatures().get(7);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EClass getLink() {
+    public EClass getLink() {
         return linkEClass;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EReference getLink_EContainer_link() {
+    public EReference getLink_EContainer_link() {
         return (EReference)linkEClass.getEStructuralFeatures().get(0);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getLink_Text() {
+    public EAttribute getLink_Text() {
         return (EAttribute)linkEClass.getEStructuralFeatures().get(1);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EReference getLink_Link_info() {
+    public EReference getLink_Link_info() {
         return (EReference)linkEClass.getEStructuralFeatures().get(2);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getLink_To() {
+    public EAttribute getLink_To() {
         return (EAttribute)linkEClass.getEStructuralFeatures().get(3);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getLink_Seq() {
+    public EAttribute getLink_Seq() {
         return (EAttribute)linkEClass.getEStructuralFeatures().get(4);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getLink_Period() {
+    public EAttribute getLink_Period() {
         return (EAttribute)linkEClass.getEStructuralFeatures().get(5);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getLink_Tau() {
+    public EAttribute getLink_Tau() {
         return (EAttribute)linkEClass.getEStructuralFeatures().get(6);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getLink_Last_rx() {
+    public EAttribute getLink_Last_rx() {
         return (EAttribute)linkEClass.getEStructuralFeatures().get(7);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EClass getLink_info() {
+    public EClass getLink_info() {
         return link_infoEClass;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EReference getLink_info_EContainer_link_info() {
+    public EReference getLink_info_EContainer_link_info() {
         return (EReference)link_infoEClass.getEStructuralFeatures().get(0);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getLink_info_Size() {
+    public EAttribute getLink_info_Size() {
         return (EAttribute)link_infoEClass.getEStructuralFeatures().get(1);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getLink_info_Rate() {
+    public EAttribute getLink_info_Rate() {
         return (EAttribute)link_infoEClass.getEStructuralFeatures().get(2);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getLink_info_Fwd() {
+    public EAttribute getLink_info_Fwd() {
         return (EAttribute)link_infoEClass.getEStructuralFeatures().get(3);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getLink_info_Rev() {
+    public EAttribute getLink_info_Rev() {
         return (EAttribute)link_infoEClass.getEStructuralFeatures().get(4);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Device_wifi_link_stat_bcast_statsFactory getDevice_wifi_link_stat_bcast_statsFactory() {
+    public Device_wifi_link_stat_bcast_statsFactory getDevice_wifi_link_stat_bcast_statsFactory() {
         return (Device_wifi_link_stat_bcast_statsFactory)getEFactoryInstance();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	private boolean isCreated = false;
+    private boolean isCreated = false;
 
-	/**
+    /**
      * Creates the meta-model objects for the package.  This method is
      * guarded to have no affect on any invocation but its first.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void createPackageContents() {
+    public void createPackageContents() {
         if (isCreated) return;
         isCreated = true;
 
@@ -512,21 +514,21 @@ public class Device_wifi_link_stat_bcast_statsPackageImpl extends EPackageImpl i
         createEAttribute(link_infoEClass, LINK_INFO__REV);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	private boolean isInitialized = false;
+    private boolean isInitialized = false;
 
-	/**
+    /**
      * Complete the initialization of the package and its meta-model.  This
      * method is guarded to have no affect on any invocation but its first.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void initializePackageContents() {
+    public void initializePackageContents() {
         if (isInitialized) return;
         isInitialized = true;
 
@@ -581,13 +583,13 @@ public class Device_wifi_link_stat_bcast_statsPackageImpl extends EPackageImpl i
         createDeAnnotations();
     }
 
-	/**
+    /**
      * Initializes the annotations for <b>http://de.hub.clickwatch.specificmodels</b>.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	protected void createDeAnnotations() {
+    protected void createDeAnnotations() {
         String source = "http://de.hub.clickwatch.specificmodels";		
         addAnnotation
           (this, 

@@ -34,50 +34,50 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * @generated
  */
 public class SystempowerImpl extends HandlerImpl implements Systempower {
-	/**
+    /**
      * The cached value of the '{@link #getSettxpower() <em>Settxpower</em>}' containment reference.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getSettxpower()
      * @generated
      * @ordered
      */
-	protected Settxpower settxpower;
+    protected Settxpower settxpower;
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	protected SystempowerImpl() {
+    protected SystempowerImpl() {
         super();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	protected EClass eStaticClass() {
+    @Override
+    protected EClass eStaticClass() {
         return Device_wifi_data_power_systempowerPackage.Literals.SYSTEMPOWER;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Settxpower getSettxpower() {
+    public Settxpower getSettxpower() {
         return settxpower;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public NotificationChain basicSetSettxpower(Settxpower newSettxpower, NotificationChain msgs) {
+    public NotificationChain basicSetSettxpower(Settxpower newSettxpower, NotificationChain msgs) {
         Settxpower oldSettxpower = settxpower;
         settxpower = newSettxpower;
         if (eNotificationRequired()) {
@@ -87,12 +87,12 @@ public class SystempowerImpl extends HandlerImpl implements Systempower {
         return msgs;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setSettxpower(Settxpower newSettxpower) {
+    public void setSettxpower(Settxpower newSettxpower) {
         if (newSettxpower != settxpower) {
             NotificationChain msgs = null;
             if (settxpower != null)
@@ -106,13 +106,13 @@ public class SystempowerImpl extends HandlerImpl implements Systempower {
             eNotify(new ENotificationImpl(this, Notification.SET, Device_wifi_data_power_systempowerPackage.SYSTEMPOWER__SETTXPOWER, newSettxpower, newSettxpower));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    @Override
+    public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case Device_wifi_data_power_systempowerPackage.SYSTEMPOWER__SETTXPOWER:
                 if (settxpower != null)
@@ -122,13 +122,13 @@ public class SystempowerImpl extends HandlerImpl implements Systempower {
         return super.eInverseAdd(otherEnd, featureID, msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    @Override
+    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case Device_wifi_data_power_systempowerPackage.SYSTEMPOWER__SETTXPOWER:
                 return basicSetSettxpower(null, msgs);
@@ -136,13 +136,13 @@ public class SystempowerImpl extends HandlerImpl implements Systempower {
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+    @Override
+    public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
             case Device_wifi_data_power_systempowerPackage.SYSTEMPOWER__SETTXPOWER:
                 return getSettxpower();
@@ -150,13 +150,13 @@ public class SystempowerImpl extends HandlerImpl implements Systempower {
         return super.eGet(featureID, resolve, coreType);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public void eSet(int featureID, Object newValue) {
+    @Override
+    public void eSet(int featureID, Object newValue) {
         switch (featureID) {
             case Device_wifi_data_power_systempowerPackage.SYSTEMPOWER__SETTXPOWER:
                 setSettxpower((Settxpower)newValue);
@@ -165,13 +165,13 @@ public class SystempowerImpl extends HandlerImpl implements Systempower {
         super.eSet(featureID, newValue);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public void eUnset(int featureID) {
+    @Override
+    public void eUnset(int featureID) {
         switch (featureID) {
             case Device_wifi_data_power_systempowerPackage.SYSTEMPOWER__SETTXPOWER:
                 setSettxpower((Settxpower)null);
@@ -180,13 +180,13 @@ public class SystempowerImpl extends HandlerImpl implements Systempower {
         super.eUnset(featureID);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public boolean eIsSet(int featureID) {
+    @Override
+    public boolean eIsSet(int featureID) {
         switch (featureID) {
             case Device_wifi_data_power_systempowerPackage.SYSTEMPOWER__SETTXPOWER:
                 return settxpower != null;

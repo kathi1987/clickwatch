@@ -26,36 +26,36 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public class Device_wifi_link_stat_bcast_statsAdapterFactory extends AdapterFactoryImpl {
-	/**
+    /**
      * The cached model package.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	protected static Device_wifi_link_stat_bcast_statsPackage modelPackage;
+    protected static Device_wifi_link_stat_bcast_statsPackage modelPackage;
 
-	/**
+    /**
      * Creates an instance of the adapter factory.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Device_wifi_link_stat_bcast_statsAdapterFactory() {
+    public Device_wifi_link_stat_bcast_statsAdapterFactory() {
         if (modelPackage == null) {
             modelPackage = Device_wifi_link_stat_bcast_statsPackage.eINSTANCE;
         }
     }
 
-	/**
+    /**
      * Returns whether this factory is applicable for the type of the object.
      * <!-- begin-user-doc -->
-	 * This implementation returns <code>true</code> if the object is either the model's package or is an instance object of the model.
-	 * <!-- end-user-doc -->
+     * This implementation returns <code>true</code> if the object is either the model's package or is an instance object of the model.
+     * <!-- end-user-doc -->
      * @return whether this factory is applicable for the type of the object.
      * @generated
      */
-	@Override
-	public boolean isFactoryForType(Object object) {
+    @Override
+    public boolean isFactoryForType(Object object) {
         if (object == modelPackage) {
             return true;
         }
@@ -65,14 +65,14 @@ public class Device_wifi_link_stat_bcast_statsAdapterFactory extends AdapterFact
         return false;
     }
 
-	/**
+    /**
      * The switch that delegates to the <code>createXXX</code> methods.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	protected Device_wifi_link_stat_bcast_statsSwitch<Adapter> modelSwitch =
-		new Device_wifi_link_stat_bcast_statsSwitch<Adapter>() {
+    protected Device_wifi_link_stat_bcast_statsSwitch<Adapter> modelSwitch =
+        new Device_wifi_link_stat_bcast_statsSwitch<Adapter>() {
             @Override
             public Adapter caseBcast_stats(Bcast_stats object) {
                 return createBcast_statsAdapter();
@@ -99,99 +99,99 @@ public class Device_wifi_link_stat_bcast_statsAdapterFactory extends AdapterFact
             }
         };
 
-	/**
+    /**
      * Creates an adapter for the <code>target</code>.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @param target the object to adapt.
      * @return the adapter for the <code>target</code>.
      * @generated
      */
-	@Override
-	public Adapter createAdapter(Notifier target) {
+    @Override
+    public Adapter createAdapter(Notifier target) {
         return modelSwitch.doSwitch((EObject)target);
     }
 
 
-	/**
+    /**
      * Creates a new adapter for an object of class '{@link de.hub.clickwatch.specificmodels.brn.device_wifi_link_stat_bcast_stats.Bcast_stats <em>Bcast stats</em>}'.
      * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
      * @return the new adapter.
      * @see de.hub.clickwatch.specificmodels.brn.device_wifi_link_stat_bcast_stats.Bcast_stats
      * @generated
      */
-	public Adapter createBcast_statsAdapter() {
+    public Adapter createBcast_statsAdapter() {
         return null;
     }
 
-	/**
+    /**
      * Creates a new adapter for an object of class '{@link de.hub.clickwatch.specificmodels.brn.device_wifi_link_stat_bcast_stats.Entry <em>Entry</em>}'.
      * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
      * @return the new adapter.
      * @see de.hub.clickwatch.specificmodels.brn.device_wifi_link_stat_bcast_stats.Entry
      * @generated
      */
-	public Adapter createEntryAdapter() {
+    public Adapter createEntryAdapter() {
         return null;
     }
 
-	/**
+    /**
      * Creates a new adapter for an object of class '{@link de.hub.clickwatch.specificmodels.brn.device_wifi_link_stat_bcast_stats.Link <em>Link</em>}'.
      * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
      * @return the new adapter.
      * @see de.hub.clickwatch.specificmodels.brn.device_wifi_link_stat_bcast_stats.Link
      * @generated
      */
-	public Adapter createLinkAdapter() {
+    public Adapter createLinkAdapter() {
         return null;
     }
 
-	/**
+    /**
      * Creates a new adapter for an object of class '{@link de.hub.clickwatch.specificmodels.brn.device_wifi_link_stat_bcast_stats.Link_info <em>Link info</em>}'.
      * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
      * @return the new adapter.
      * @see de.hub.clickwatch.specificmodels.brn.device_wifi_link_stat_bcast_stats.Link_info
      * @generated
      */
-	public Adapter createLink_infoAdapter() {
+    public Adapter createLink_infoAdapter() {
         return null;
     }
 
-	/**
+    /**
      * Creates a new adapter for an object of class '{@link de.hub.clickwatch.model.Handler <em>Handler</em>}'.
      * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
      * @return the new adapter.
      * @see de.hub.clickwatch.model.Handler
      * @generated
      */
-	public Adapter createHandlerAdapter() {
+    public Adapter createHandlerAdapter() {
         return null;
     }
 
-	/**
+    /**
      * Creates a new adapter for the default case.
      * <!-- begin-user-doc -->
-	 * This default implementation returns null.
-	 * <!-- end-user-doc -->
+     * This default implementation returns null.
+     * <!-- end-user-doc -->
      * @return the new adapter.
      * @generated
      */
-	public Adapter createEObjectAdapter() {
+    public Adapter createEObjectAdapter() {
         return null;
     }
 

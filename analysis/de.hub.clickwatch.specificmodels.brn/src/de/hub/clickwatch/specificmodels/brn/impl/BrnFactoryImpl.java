@@ -23,13 +23,13 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
  * @generated
  */
 public class BrnFactoryImpl extends EFactoryImpl implements BrnFactory {
-	/**
+    /**
      * Creates the default factory implementation.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public static BrnFactory init() {
+    public static BrnFactory init() {
         try {
             BrnFactory theBrnFactory = (BrnFactory)EPackage.Registry.INSTANCE.getEFactory("http://de.hub.clickwatch.specificmodels.brn"); 
             if (theBrnFactory != null) {
@@ -42,23 +42,23 @@ public class BrnFactoryImpl extends EFactoryImpl implements BrnFactory {
         return new BrnFactoryImpl();
     }
 
-	/**
+    /**
      * Creates an instance of the factory.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public BrnFactoryImpl() {
+    public BrnFactoryImpl() {
         super();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public EObject create(EClass eClass) {
+    @Override
+    public EObject create(EClass eClass) {
         switch (eClass.getClassifierID()) {
             case BrnPackage.HANDLER_SUB_CLASS: return createHandlerSubClass();
             default:
@@ -66,33 +66,33 @@ public class BrnFactoryImpl extends EFactoryImpl implements BrnFactory {
         }
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public HandlerSubClass createHandlerSubClass() {
+    public HandlerSubClass createHandlerSubClass() {
         HandlerSubClassImpl handlerSubClass = new HandlerSubClassImpl();
         return handlerSubClass;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public BrnPackage getBrnPackage() {
+    public BrnPackage getBrnPackage() {
         return (BrnPackage)getEPackage();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @deprecated
      * @generated
      */
-	@Deprecated
-	public static BrnPackage getPackage() {
+    @Deprecated
+    public static BrnPackage getPackage() {
         return BrnPackage.eINSTANCE;
     }
 

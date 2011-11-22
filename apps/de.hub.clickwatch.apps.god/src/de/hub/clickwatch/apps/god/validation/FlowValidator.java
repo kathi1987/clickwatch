@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,10 +26,11 @@ public class FlowValidator implements Validator {
 	private List<String> allParticipatingAPs = new ArrayList<String>();
 	private Map<String, Integer> validatedFlows = new HashMap<String, Integer>();
 	private static String srcDstFiller = " -> ";
-	private static String notFoundToken = "NOT_FOUND";
-	private static String notTakenToken = "NOT_TAKEN";
-	private static String noControlToken = "NO_CONTROL";
+	//private static String notFoundToken = "NOT_FOUND";
+	//private static String notTakenToken = "NOT_TAKEN";
+	//private static String noControlToken = "NO_CONTROL";
 	private static String resultFilename = "resultsFlowRun.csv";
+	private static String alternativeRoutesFilename = "alternativeRoutes.csv";
 	private static int flowTestCount = 25;
 	
 	private boolean routeIsAcceptable(String from, String to) {
@@ -92,14 +94,10 @@ public class FlowValidator implements Validator {
 			while ((curr = fRead.readLine()) != null)   {
 				StringTokenizer tok = new StringTokenizer(curr, ",");
 				
-				String type = tok.nextToken();
-				String src = tok.nextToken();
-				String dst = tok.nextToken();
-				String metr = tok.nextToken();
+				String from = tok.nextToken();
+				String to = tok.nextToken();
 				
-				if ((type.equals("real")) && (!metr.equals(notFoundToken)))  {
-					noticeFlowRun(src, dst);
-				}
+				noticeFlowRun(from, to);
 			}
 		} catch (IOException ioExc) {
 			//nothing
@@ -222,9 +220,10 @@ public class FlowValidator implements Validator {
 		}
 	}
 	
-	private void processStats(String src, String dst, int godLength, int godHopCount, String godPath) throws Exception {
+	private void processStats(String src, String dst) {
 		boolean gotInfos = false;
 		int tries = 0;
+		GlobalLinktable.acceptChanges(false);	//from now on no changes on linktable will be accepted
 		while (!gotInfos && (tries < 50)) {
 			tries++;
 			HashMap<String, ClientInformations> apInfos = Server.getInstance().getStorageManager().getClientInformations(src);
@@ -238,14 +237,20 @@ public class FlowValidator implements Validator {
 						double foundRouteHasTime = 0;
 						long foundRouteHasMetric = -1;
 						String foundRouteHasHops = "";
+						long foundRouteHasUsage = 0;
 						long foundRouteHasHopCount = -1;
 						boolean noControlProblem = false;
+						boolean noticeAlternativeRoutes = false;
 						
 						for (FlowRouteChildren child : route.getChildren()) {
 							StringTokenizer tok = new StringTokenizer(child.getHops(), ",");
 							String hop = ""; 
 							String nextHop = tok.nextToken();
 							int realMetric = 0;
+							
+							if (noticeAlternativeRoutes) {
+								writeAlternativeRouteToFile(src, dst, foundRouteHasTime, foundRouteHasUsage, foundRouteHasMetric, foundRouteHasHopCount, foundRouteHasHops);
+							}
 							
 							if (child.getLast_usage() > foundRouteHasTime) {
 								while (tok.hasMoreTokens()) {
@@ -263,16 +268,22 @@ public class FlowValidator implements Validator {
 								foundRouteHasMetric = realMetric;
 								foundRouteHasHops = child.getHops();
 								foundRouteHasHopCount = child.getHop_count();
+								foundRouteHasUsage = child.getUsage();
+								noticeAlternativeRoutes = true;
 							}
 						}
 						
 						if (!noControlProblem) {
-							writeToResultFile(src, dst, foundRouteHasMetric, godLength, foundRouteHasHopCount, godHopCount, foundRouteHasHops, godPath);
+							SzenarioHWL.LINK_USE_IN_DIJKSTRA_MAX_VALUE = Integer.MAX_VALUE;
+							GlobalRoutingtable.runManualDijkstra();
+							writeToResultFile(src, dst, foundRouteHasUsage, foundRouteHasMetric, foundRouteHasHopCount, foundRouteHasHops);
+							writeAlternativeRouteToFile(src, dst, foundRouteHasTime, foundRouteHasUsage, foundRouteHasMetric, foundRouteHasHopCount, foundRouteHasHops);
 							noticeFlowRun(src, dst);
+							SzenarioHWL.LINK_USE_IN_DIJKSTRA_MAX_VALUE = 200;
 							System.out.print("[added] ");
 							return;
 						} else {
-							writeToResultFile(src, dst, -1, godLength, -1, godHopCount, noControlToken, godPath);
+							//writeToResultFile(src, dst, -1, GlobalRoutingtable.getShortestLength(src, dst), -1, GlobalRoutingtable.getShortestHopCount(src, dst), noControlToken, GlobalRoutingtable.getShortestPath(src, dst));
 							noticeFlowRun(src, dst);
 							System.out.print("[flow over uncontrolled node problem] ");
 							return;
@@ -280,10 +291,15 @@ public class FlowValidator implements Validator {
 					}
 				}	
 			}
-			Thread.sleep(300);
+			try {
+				Thread.sleep(300);
+			} catch (InterruptedException inExc) {
+				//nothing to do
+			}
 		}
+		//writeToResultFile(src, dst, -1, GlobalRoutingtable.getShortestLength(src, dst), -1, GlobalRoutingtable.getShortestHopCount(src, dst), notFoundToken, GlobalRoutingtable.getShortestPath(src, dst));
 		
-		writeToResultFile(src, dst, -1, godLength, -1, godHopCount, notFoundToken, godPath);
+		GlobalLinktable.acceptChanges(true);	//turn acception for changes on linktable back on again
 		System.out.print("[NOT added] ");
 	}
 	
@@ -291,9 +307,6 @@ public class FlowValidator implements Validator {
 	public void startValidation() {
 		int flowNum = 1;
 		boolean waitAfterThisRun = false;
-		int godLength = -1;
-		int godHopCount = -1;
-		String godPath = "";
 		boolean godValuesFresh = false;
 		
 		for (String flow : validatingFlows.keySet()) {
@@ -305,7 +318,7 @@ public class FlowValidator implements Validator {
 				try {
 					if (waitAfterThisRun) {
 						//1. reset
-						System.out.print("\tresetting, ");
+						System.out.print("\tresetting and waiting 1min (@" + new Date() + "), ");
 						resetDsrStats();
 						resetRouteCache();
 						fixLinkTables(false);
@@ -323,15 +336,11 @@ public class FlowValidator implements Validator {
 						while (flowHasRunsLeft(data[0], data[1])) {
 							noticeFlowRun(data[0], data[1]);
 							waitAfterThisRun = false;
-							writeToResultFile(data[0], data[1], -1, -1, -1, -1, notTakenToken, notTakenToken);
+							//writeToResultFile(data[0], data[1], -1, -1, -1, -1, notTakenToken, notTakenToken);
 						}
 						continue;
 					} else {
-						godLength = GlobalRoutingtable.getShortestLength(data[0], data[1]);
-						godHopCount = GlobalRoutingtable.getShortestHopCount(data[0], data[1]);
-						godPath = GlobalRoutingtable.getShortestPath(data[0], data[1]);
-						
-						if (godPath != null) {
+						if (GlobalRoutingtable.getShortestPath(data[0], data[1]) != null) {
 							godValuesFresh = true;
 						}
 					}
@@ -354,7 +363,7 @@ public class FlowValidator implements Validator {
 					//4. process stats about the flow
 					System.out.print("processing results ... ");
 					if (godValuesFresh) {
-						processStats(data[0], data[1], godLength, godHopCount, godPath);
+						processStats(data[0], data[1]);
 					} else {
 						System.out.print("[failure while getting GlobalRoutingTable Values] ");
 					}
@@ -369,13 +378,13 @@ public class FlowValidator implements Validator {
 		}
 	}
 	
-	private void writeToResultFile(String src, String dst, long real_metric, long god_metric, long real_hop_count, long god_hop_count, String real_route, String god_route) {
+	private void writeToResultFile(String src, String dst, long real_usage, long real_metric, long real_hop_count, String real_route) {
 		FileWriter fw = null;
 		try {
 			fw = new FileWriter(resultFilename, true);
-			
-			fw.write("real,"+ src + "," + dst + "," + real_metric + "," + real_hop_count + "," + real_route  + "\n");
-			fw.write("god,"+ src + "," + dst + "," + god_metric + "," + god_hop_count + "," + god_route  + "\n");
+			//fw.write("real,"+ src + "," + dst + "," + real_metric + "," + real_hop_count + "," + real_route  + "\n");
+			//fw.write("god,"+ src + "," + dst + "," + god_metric + "," + god_hop_count + "," + god_route.replaceAll(";", ",")  + "\n");
+			fw.write(src + "," + dst + "," + real_metric + "," + real_usage + "," + real_hop_count + "," + real_route.replaceAll(",", ";") + "," + GlobalRoutingtable.getShortestLength(src, dst) + "," + GlobalRoutingtable.getShortestHopCount(src, dst) + "," + GlobalRoutingtable.getShortestPath(src, dst).replaceAll(",", ";") + "," + GlobalLinktable.getLinktableAsString() + "\n");
 			
 			fw.close();
 		} catch (Exception exc) {
@@ -391,4 +400,26 @@ public class FlowValidator implements Validator {
 		}
 	}
 	
+	private void writeAlternativeRouteToFile(String src, String dst, double time, long usage, long metric, long hop_count, String route) {
+		FileWriter fw = null;
+		try {
+			fw = new FileWriter(alternativeRoutesFilename, true);
+			
+			//fw.write("real,"+ src + "," + dst + "," + real_metric + "," + real_hop_count + "," + real_route  + "\n");
+			//fw.write("god,"+ src + "," + dst + "," + god_metric + "," + god_hop_count + "," + god_route.replaceAll(";", ",")  + "\n");
+			fw.write(src + "," + dst + "," + time + "," + usage + "," + metric + "," + hop_count + "," + route.replaceAll(",", ";") + "," + GlobalLinktable.getLinktableAsString() + "\n");
+			
+			fw.close();
+		} catch (Exception exc) {
+			//nothing
+		} finally { 
+			if (fw != null) {
+				try {
+					fw.close();
+				} catch (IOException e) {
+					//nothing
+				}
+			}
+		}
+	}
 }

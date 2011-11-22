@@ -53,171 +53,171 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * @generated
  */
 public class SystemImpl extends EObjectImpl implements de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.System {
-	/**
+    /**
      * The cached value of the '{@link #getText() <em>Text</em>}' attribute list.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getText()
      * @generated
      * @ordered
      */
-	protected EList<String> text;
+    protected EList<String> text;
 
-	/**
+    /**
      * The cached value of the '{@link #getMem() <em>Mem</em>}' containment reference.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getMem()
      * @generated
      * @ordered
      */
-	protected Mem mem;
+    protected Mem mem;
 
-	/**
+    /**
      * The cached value of the '{@link #getLoadavg() <em>Loadavg</em>}' containment reference.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getLoadavg()
      * @generated
      * @ordered
      */
-	protected Loadavg loadavg;
+    protected Loadavg loadavg;
 
-	/**
+    /**
      * The cached value of the '{@link #getCpu_usage() <em>Cpu usage</em>}' containment reference.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getCpu_usage()
      * @generated
      * @ordered
      */
-	protected Cpu_usage cpu_usage;
+    protected Cpu_usage cpu_usage;
 
-	/**
+    /**
      * The cached value of the '{@link #getUptime() <em>Uptime</em>}' containment reference.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getUptime()
      * @generated
      * @ordered
      */
-	protected Uptime uptime;
+    protected Uptime uptime;
 
-	/**
+    /**
      * The cached value of the '{@link #getLinux() <em>Linux</em>}' containment reference.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getLinux()
      * @generated
      * @ordered
      */
-	protected Linux linux;
+    protected Linux linux;
 
-	/**
+    /**
      * The default value of the '{@link #getId() <em>Id</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getId()
      * @generated
      * @ordered
      */
-	protected static final String ID_EDEFAULT = null;
+    protected static final String ID_EDEFAULT = null;
 
-	/**
+    /**
      * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getId()
      * @generated
      * @ordered
      */
-	protected String id = ID_EDEFAULT;
+    protected String id = ID_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getName()
      * @generated
      * @ordered
      */
-	protected static final String NAME_EDEFAULT = null;
+    protected static final String NAME_EDEFAULT = null;
 
-	/**
+    /**
      * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getName()
      * @generated
      * @ordered
      */
-	protected String name = NAME_EDEFAULT;
+    protected String name = NAME_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getTime() <em>Time</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getTime()
      * @generated
      * @ordered
      */
-	protected static final double TIME_EDEFAULT = 0.0;
+    protected static final double TIME_EDEFAULT = 0.0;
 
-	/**
+    /**
      * The cached value of the '{@link #getTime() <em>Time</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getTime()
      * @generated
      * @ordered
      */
-	protected double time = TIME_EDEFAULT;
+    protected double time = TIME_EDEFAULT;
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	protected SystemImpl() {
+    protected SystemImpl() {
         super();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	protected EClass eStaticClass() {
+    @Override
+    protected EClass eStaticClass() {
         return Sys_info_systeminfoPackage.Literals.SYSTEM;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Systeminfo getEContainer_system() {
+    public Systeminfo getEContainer_system() {
         if (eContainerFeatureID() != Sys_info_systeminfoPackage.SYSTEM__ECONTAINER_SYSTEM) return null;
         return (Systeminfo)eContainer();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public NotificationChain basicSetEContainer_system(Systeminfo newEContainer_system, NotificationChain msgs) {
+    public NotificationChain basicSetEContainer_system(Systeminfo newEContainer_system, NotificationChain msgs) {
         msgs = eBasicSetContainer((InternalEObject)newEContainer_system, Sys_info_systeminfoPackage.SYSTEM__ECONTAINER_SYSTEM, msgs);
         return msgs;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setEContainer_system(Systeminfo newEContainer_system) {
+    public void setEContainer_system(Systeminfo newEContainer_system) {
         if (newEContainer_system != eInternalContainer() || (eContainerFeatureID() != Sys_info_systeminfoPackage.SYSTEM__ECONTAINER_SYSTEM && newEContainer_system != null)) {
             if (EcoreUtil.isAncestor(this, newEContainer_system))
                 throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
@@ -233,33 +233,33 @@ public class SystemImpl extends EObjectImpl implements de.hub.clickwatch.specifi
             eNotify(new ENotificationImpl(this, Notification.SET, Sys_info_systeminfoPackage.SYSTEM__ECONTAINER_SYSTEM, newEContainer_system, newEContainer_system));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EList<String> getText() {
+    public EList<String> getText() {
         if (text == null) {
             text = new EDataTypeEList<String>(String.class, this, Sys_info_systeminfoPackage.SYSTEM__TEXT);
         }
         return text;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Mem getMem() {
+    public Mem getMem() {
         return mem;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public NotificationChain basicSetMem(Mem newMem, NotificationChain msgs) {
+    public NotificationChain basicSetMem(Mem newMem, NotificationChain msgs) {
         Mem oldMem = mem;
         mem = newMem;
         if (eNotificationRequired()) {
@@ -269,12 +269,12 @@ public class SystemImpl extends EObjectImpl implements de.hub.clickwatch.specifi
         return msgs;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setMem(Mem newMem) {
+    public void setMem(Mem newMem) {
         if (newMem != mem) {
             NotificationChain msgs = null;
             if (mem != null)
@@ -288,21 +288,21 @@ public class SystemImpl extends EObjectImpl implements de.hub.clickwatch.specifi
             eNotify(new ENotificationImpl(this, Notification.SET, Sys_info_systeminfoPackage.SYSTEM__MEM, newMem, newMem));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Loadavg getLoadavg() {
+    public Loadavg getLoadavg() {
         return loadavg;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public NotificationChain basicSetLoadavg(Loadavg newLoadavg, NotificationChain msgs) {
+    public NotificationChain basicSetLoadavg(Loadavg newLoadavg, NotificationChain msgs) {
         Loadavg oldLoadavg = loadavg;
         loadavg = newLoadavg;
         if (eNotificationRequired()) {
@@ -312,12 +312,12 @@ public class SystemImpl extends EObjectImpl implements de.hub.clickwatch.specifi
         return msgs;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setLoadavg(Loadavg newLoadavg) {
+    public void setLoadavg(Loadavg newLoadavg) {
         if (newLoadavg != loadavg) {
             NotificationChain msgs = null;
             if (loadavg != null)
@@ -331,21 +331,21 @@ public class SystemImpl extends EObjectImpl implements de.hub.clickwatch.specifi
             eNotify(new ENotificationImpl(this, Notification.SET, Sys_info_systeminfoPackage.SYSTEM__LOADAVG, newLoadavg, newLoadavg));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Cpu_usage getCpu_usage() {
+    public Cpu_usage getCpu_usage() {
         return cpu_usage;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public NotificationChain basicSetCpu_usage(Cpu_usage newCpu_usage, NotificationChain msgs) {
+    public NotificationChain basicSetCpu_usage(Cpu_usage newCpu_usage, NotificationChain msgs) {
         Cpu_usage oldCpu_usage = cpu_usage;
         cpu_usage = newCpu_usage;
         if (eNotificationRequired()) {
@@ -355,12 +355,12 @@ public class SystemImpl extends EObjectImpl implements de.hub.clickwatch.specifi
         return msgs;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setCpu_usage(Cpu_usage newCpu_usage) {
+    public void setCpu_usage(Cpu_usage newCpu_usage) {
         if (newCpu_usage != cpu_usage) {
             NotificationChain msgs = null;
             if (cpu_usage != null)
@@ -374,21 +374,21 @@ public class SystemImpl extends EObjectImpl implements de.hub.clickwatch.specifi
             eNotify(new ENotificationImpl(this, Notification.SET, Sys_info_systeminfoPackage.SYSTEM__CPU_USAGE, newCpu_usage, newCpu_usage));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Uptime getUptime() {
+    public Uptime getUptime() {
         return uptime;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public NotificationChain basicSetUptime(Uptime newUptime, NotificationChain msgs) {
+    public NotificationChain basicSetUptime(Uptime newUptime, NotificationChain msgs) {
         Uptime oldUptime = uptime;
         uptime = newUptime;
         if (eNotificationRequired()) {
@@ -398,12 +398,12 @@ public class SystemImpl extends EObjectImpl implements de.hub.clickwatch.specifi
         return msgs;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setUptime(Uptime newUptime) {
+    public void setUptime(Uptime newUptime) {
         if (newUptime != uptime) {
             NotificationChain msgs = null;
             if (uptime != null)
@@ -417,21 +417,21 @@ public class SystemImpl extends EObjectImpl implements de.hub.clickwatch.specifi
             eNotify(new ENotificationImpl(this, Notification.SET, Sys_info_systeminfoPackage.SYSTEM__UPTIME, newUptime, newUptime));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Linux getLinux() {
+    public Linux getLinux() {
         return linux;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public NotificationChain basicSetLinux(Linux newLinux, NotificationChain msgs) {
+    public NotificationChain basicSetLinux(Linux newLinux, NotificationChain msgs) {
         Linux oldLinux = linux;
         linux = newLinux;
         if (eNotificationRequired()) {
@@ -441,12 +441,12 @@ public class SystemImpl extends EObjectImpl implements de.hub.clickwatch.specifi
         return msgs;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setLinux(Linux newLinux) {
+    public void setLinux(Linux newLinux) {
         if (newLinux != linux) {
             NotificationChain msgs = null;
             if (linux != null)
@@ -460,76 +460,76 @@ public class SystemImpl extends EObjectImpl implements de.hub.clickwatch.specifi
             eNotify(new ENotificationImpl(this, Notification.SET, Sys_info_systeminfoPackage.SYSTEM__LINUX, newLinux, newLinux));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public String getId() {
+    public String getId() {
         return id;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setId(String newId) {
+    public void setId(String newId) {
         String oldId = id;
         id = newId;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Sys_info_systeminfoPackage.SYSTEM__ID, oldId, id));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public String getName() {
+    public String getName() {
         return name;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setName(String newName) {
+    public void setName(String newName) {
         String oldName = name;
         name = newName;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Sys_info_systeminfoPackage.SYSTEM__NAME, oldName, name));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public double getTime() {
+    public double getTime() {
         return time;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setTime(double newTime) {
+    public void setTime(double newTime) {
         double oldTime = time;
         time = newTime;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Sys_info_systeminfoPackage.SYSTEM__TIME, oldTime, time));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    @Override
+    public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case Sys_info_systeminfoPackage.SYSTEM__ECONTAINER_SYSTEM:
                 if (eInternalContainer() != null)
@@ -559,13 +559,13 @@ public class SystemImpl extends EObjectImpl implements de.hub.clickwatch.specifi
         return super.eInverseAdd(otherEnd, featureID, msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    @Override
+    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case Sys_info_systeminfoPackage.SYSTEM__ECONTAINER_SYSTEM:
                 return basicSetEContainer_system(null, msgs);
@@ -583,13 +583,13 @@ public class SystemImpl extends EObjectImpl implements de.hub.clickwatch.specifi
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+    @Override
+    public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
         switch (eContainerFeatureID()) {
             case Sys_info_systeminfoPackage.SYSTEM__ECONTAINER_SYSTEM:
                 return eInternalContainer().eInverseRemove(this, Sys_info_systeminfoPackage.SYSTEMINFO__SYSTEM, Systeminfo.class, msgs);
@@ -597,13 +597,13 @@ public class SystemImpl extends EObjectImpl implements de.hub.clickwatch.specifi
         return super.eBasicRemoveFromContainerFeature(msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+    @Override
+    public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
             case Sys_info_systeminfoPackage.SYSTEM__ECONTAINER_SYSTEM:
                 return getEContainer_system();
@@ -629,14 +629,14 @@ public class SystemImpl extends EObjectImpl implements de.hub.clickwatch.specifi
         return super.eGet(featureID, resolve, coreType);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@SuppressWarnings("unchecked")
-	@Override
-	public void eSet(int featureID, Object newValue) {
+    @SuppressWarnings("unchecked")
+    @Override
+    public void eSet(int featureID, Object newValue) {
         switch (featureID) {
             case Sys_info_systeminfoPackage.SYSTEM__ECONTAINER_SYSTEM:
                 setEContainer_system((Systeminfo)newValue);
@@ -673,13 +673,13 @@ public class SystemImpl extends EObjectImpl implements de.hub.clickwatch.specifi
         super.eSet(featureID, newValue);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public void eUnset(int featureID) {
+    @Override
+    public void eUnset(int featureID) {
         switch (featureID) {
             case Sys_info_systeminfoPackage.SYSTEM__ECONTAINER_SYSTEM:
                 setEContainer_system((Systeminfo)null);
@@ -715,13 +715,13 @@ public class SystemImpl extends EObjectImpl implements de.hub.clickwatch.specifi
         super.eUnset(featureID);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public boolean eIsSet(int featureID) {
+    @Override
+    public boolean eIsSet(int featureID) {
         switch (featureID) {
             case Sys_info_systeminfoPackage.SYSTEM__ECONTAINER_SYSTEM:
                 return getEContainer_system() != null;
@@ -747,13 +747,13 @@ public class SystemImpl extends EObjectImpl implements de.hub.clickwatch.specifi
         return super.eIsSet(featureID);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public String toString() {
+    @Override
+    public String toString() {
         if (eIsProxy()) return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());

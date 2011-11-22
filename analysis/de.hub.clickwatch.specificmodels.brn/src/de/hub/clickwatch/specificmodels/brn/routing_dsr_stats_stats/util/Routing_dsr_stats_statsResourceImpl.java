@@ -18,14 +18,14 @@ import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
  * @generated
  */
 public class Routing_dsr_stats_statsResourceImpl extends XMLResourceImpl {
-	/**
+    /**
      * Creates an instance of the resource.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @param uri the URI of the new resource.
      * @generated
      */
-	public Routing_dsr_stats_statsResourceImpl(URI uri) {
+    public Routing_dsr_stats_statsResourceImpl(URI uri) {
         super(uri);
     }
 

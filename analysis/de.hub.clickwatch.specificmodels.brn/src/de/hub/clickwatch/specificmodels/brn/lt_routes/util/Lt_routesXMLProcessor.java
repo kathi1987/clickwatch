@@ -24,25 +24,25 @@ import org.eclipse.emf.ecore.xmi.util.XMLProcessor;
  */
 public class Lt_routesXMLProcessor extends XMLProcessor {
 
-	/**
+    /**
      * Public constructor to instantiate the helper.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Lt_routesXMLProcessor() {
+    public Lt_routesXMLProcessor() {
         super((EPackage.Registry.INSTANCE));
         Lt_routesPackage.eINSTANCE.eClass();
     }
-	
-	/**
+    
+    /**
      * Register for "*" and "xml" file extensions the Lt_routesResourceFactoryImpl factory.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	protected Map<String, Resource.Factory> getRegistrations() {
+    @Override
+    protected Map<String, Resource.Factory> getRegistrations() {
         if (registrations == null) {
             super.getRegistrations();
             registrations.put(XML_EXTENSION, new Lt_routesResourceFactoryImpl());

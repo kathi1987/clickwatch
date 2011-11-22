@@ -17,57 +17,57 @@ import org.eclipse.emf.ecore.EFactory;
  * @generated
  */
 public interface Sf_statsFactory extends EFactory {
-	/**
+    /**
      * The singleton instance of the factory.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	Sf_statsFactory eINSTANCE = de.hub.clickwatch.specificmodels.brn.sf_stats.impl.Sf_statsFactoryImpl.init();
+    Sf_statsFactory eINSTANCE = de.hub.clickwatch.specificmodels.brn.sf_stats.impl.Sf_statsFactoryImpl.init();
 
-	/**
+    /**
      * Returns a new object of class '<em>Flowstats</em>'.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @return a new object of class '<em>Flowstats</em>'.
      * @generated
      */
-	Flowstats createFlowstats();
+    Flowstats createFlowstats();
 
-	/**
+    /**
      * Returns a new object of class '<em>Rxflow</em>'.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @return a new object of class '<em>Rxflow</em>'.
      * @generated
      */
-	Rxflow createRxflow();
+    Rxflow createRxflow();
 
-	/**
+    /**
      * Returns a new object of class '<em>Stats</em>'.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @return a new object of class '<em>Stats</em>'.
      * @generated
      */
-	Stats createStats();
+    Stats createStats();
 
-	/**
+    /**
      * Returns a new object of class '<em>Txflow</em>'.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @return a new object of class '<em>Txflow</em>'.
      * @generated
      */
-	Txflow createTxflow();
+    Txflow createTxflow();
 
-	/**
+    /**
      * Returns the package supported by this factory.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @return the package supported by this factory.
      * @generated
      */
-	Sf_statsPackage getSf_statsPackage();
+    Sf_statsPackage getSf_statsPackage();
 
 } //Sf_statsFactory

@@ -52,221 +52,221 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * @generated
  */
 public class NbImpl extends EObjectImpl implements Nb {
-	/**
+    /**
      * The cached value of the '{@link #getText() <em>Text</em>}' attribute list.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getText()
      * @generated
      * @ordered
      */
-	protected EList<String> text;
+    protected EList<String> text;
 
-	/**
+    /**
      * The cached value of the '{@link #getRssi_extended() <em>Rssi extended</em>}' containment reference.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getRssi_extended()
      * @generated
      * @ordered
      */
-	protected Rssi_extended rssi_extended;
+    protected Rssi_extended rssi_extended;
 
-	/**
+    /**
      * The cached value of the '{@link #getRssi_hist() <em>Rssi hist</em>}' containment reference.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getRssi_hist()
      * @generated
      * @ordered
      */
-	protected Rssi_hist rssi_hist;
+    protected Rssi_hist rssi_hist;
 
-	/**
+    /**
      * The default value of the '{@link #getAddr() <em>Addr</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getAddr()
      * @generated
      * @ordered
      */
-	protected static final String ADDR_EDEFAULT = null;
+    protected static final String ADDR_EDEFAULT = null;
 
-	/**
+    /**
      * The cached value of the '{@link #getAddr() <em>Addr</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getAddr()
      * @generated
      * @ordered
      */
-	protected String addr = ADDR_EDEFAULT;
+    protected String addr = ADDR_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getRssi() <em>Rssi</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getRssi()
      * @generated
      * @ordered
      */
-	protected static final int RSSI_EDEFAULT = 0;
+    protected static final int RSSI_EDEFAULT = 0;
 
-	/**
+    /**
      * The cached value of the '{@link #getRssi() <em>Rssi</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getRssi()
      * @generated
      * @ordered
      */
-	protected int rssi = RSSI_EDEFAULT;
+    protected int rssi = RSSI_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getStd_rssi() <em>Std rssi</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getStd_rssi()
      * @generated
      * @ordered
      */
-	protected static final int STD_RSSI_EDEFAULT = 0;
+    protected static final int STD_RSSI_EDEFAULT = 0;
 
-	/**
+    /**
      * The cached value of the '{@link #getStd_rssi() <em>Std rssi</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getStd_rssi()
      * @generated
      * @ordered
      */
-	protected int std_rssi = STD_RSSI_EDEFAULT;
+    protected int std_rssi = STD_RSSI_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getMin_rssi() <em>Min rssi</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getMin_rssi()
      * @generated
      * @ordered
      */
-	protected static final int MIN_RSSI_EDEFAULT = 0;
+    protected static final int MIN_RSSI_EDEFAULT = 0;
 
-	/**
+    /**
      * The cached value of the '{@link #getMin_rssi() <em>Min rssi</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getMin_rssi()
      * @generated
      * @ordered
      */
-	protected int min_rssi = MIN_RSSI_EDEFAULT;
+    protected int min_rssi = MIN_RSSI_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getMax_rssi() <em>Max rssi</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getMax_rssi()
      * @generated
      * @ordered
      */
-	protected static final int MAX_RSSI_EDEFAULT = 0;
+    protected static final int MAX_RSSI_EDEFAULT = 0;
 
-	/**
+    /**
      * The cached value of the '{@link #getMax_rssi() <em>Max rssi</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getMax_rssi()
      * @generated
      * @ordered
      */
-	protected int max_rssi = MAX_RSSI_EDEFAULT;
+    protected int max_rssi = MAX_RSSI_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getPkt_cnt() <em>Pkt cnt</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getPkt_cnt()
      * @generated
      * @ordered
      */
-	protected static final int PKT_CNT_EDEFAULT = 0;
+    protected static final int PKT_CNT_EDEFAULT = 0;
 
-	/**
+    /**
      * The cached value of the '{@link #getPkt_cnt() <em>Pkt cnt</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getPkt_cnt()
      * @generated
      * @ordered
      */
-	protected int pkt_cnt = PKT_CNT_EDEFAULT;
+    protected int pkt_cnt = PKT_CNT_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getRx_bytes() <em>Rx bytes</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getRx_bytes()
      * @generated
      * @ordered
      */
-	protected static final int RX_BYTES_EDEFAULT = 0;
+    protected static final int RX_BYTES_EDEFAULT = 0;
 
-	/**
+    /**
      * The cached value of the '{@link #getRx_bytes() <em>Rx bytes</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getRx_bytes()
      * @generated
      * @ordered
      */
-	protected int rx_bytes = RX_BYTES_EDEFAULT;
+    protected int rx_bytes = RX_BYTES_EDEFAULT;
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	protected NbImpl() {
+    protected NbImpl() {
         super();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	protected EClass eStaticClass() {
+    @Override
+    protected EClass eStaticClass() {
         return Device_wifi_wifidevice_cst_statsPackage.Literals.NB;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Neighbourstats getEContainer_nb() {
+    public Neighbourstats getEContainer_nb() {
         if (eContainerFeatureID() != Device_wifi_wifidevice_cst_statsPackage.NB__ECONTAINER_NB) return null;
         return (Neighbourstats)eContainer();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public NotificationChain basicSetEContainer_nb(Neighbourstats newEContainer_nb, NotificationChain msgs) {
+    public NotificationChain basicSetEContainer_nb(Neighbourstats newEContainer_nb, NotificationChain msgs) {
         msgs = eBasicSetContainer((InternalEObject)newEContainer_nb, Device_wifi_wifidevice_cst_statsPackage.NB__ECONTAINER_NB, msgs);
         return msgs;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setEContainer_nb(Neighbourstats newEContainer_nb) {
+    public void setEContainer_nb(Neighbourstats newEContainer_nb) {
         if (newEContainer_nb != eInternalContainer() || (eContainerFeatureID() != Device_wifi_wifidevice_cst_statsPackage.NB__ECONTAINER_NB && newEContainer_nb != null)) {
             if (EcoreUtil.isAncestor(this, newEContainer_nb))
                 throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
@@ -282,33 +282,33 @@ public class NbImpl extends EObjectImpl implements Nb {
             eNotify(new ENotificationImpl(this, Notification.SET, Device_wifi_wifidevice_cst_statsPackage.NB__ECONTAINER_NB, newEContainer_nb, newEContainer_nb));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EList<String> getText() {
+    public EList<String> getText() {
         if (text == null) {
             text = new EDataTypeEList<String>(String.class, this, Device_wifi_wifidevice_cst_statsPackage.NB__TEXT);
         }
         return text;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Rssi_extended getRssi_extended() {
+    public Rssi_extended getRssi_extended() {
         return rssi_extended;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public NotificationChain basicSetRssi_extended(Rssi_extended newRssi_extended, NotificationChain msgs) {
+    public NotificationChain basicSetRssi_extended(Rssi_extended newRssi_extended, NotificationChain msgs) {
         Rssi_extended oldRssi_extended = rssi_extended;
         rssi_extended = newRssi_extended;
         if (eNotificationRequired()) {
@@ -318,12 +318,12 @@ public class NbImpl extends EObjectImpl implements Nb {
         return msgs;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setRssi_extended(Rssi_extended newRssi_extended) {
+    public void setRssi_extended(Rssi_extended newRssi_extended) {
         if (newRssi_extended != rssi_extended) {
             NotificationChain msgs = null;
             if (rssi_extended != null)
@@ -337,21 +337,21 @@ public class NbImpl extends EObjectImpl implements Nb {
             eNotify(new ENotificationImpl(this, Notification.SET, Device_wifi_wifidevice_cst_statsPackage.NB__RSSI_EXTENDED, newRssi_extended, newRssi_extended));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Rssi_hist getRssi_hist() {
+    public Rssi_hist getRssi_hist() {
         return rssi_hist;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public NotificationChain basicSetRssi_hist(Rssi_hist newRssi_hist, NotificationChain msgs) {
+    public NotificationChain basicSetRssi_hist(Rssi_hist newRssi_hist, NotificationChain msgs) {
         Rssi_hist oldRssi_hist = rssi_hist;
         rssi_hist = newRssi_hist;
         if (eNotificationRequired()) {
@@ -361,12 +361,12 @@ public class NbImpl extends EObjectImpl implements Nb {
         return msgs;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setRssi_hist(Rssi_hist newRssi_hist) {
+    public void setRssi_hist(Rssi_hist newRssi_hist) {
         if (newRssi_hist != rssi_hist) {
             NotificationChain msgs = null;
             if (rssi_hist != null)
@@ -380,160 +380,160 @@ public class NbImpl extends EObjectImpl implements Nb {
             eNotify(new ENotificationImpl(this, Notification.SET, Device_wifi_wifidevice_cst_statsPackage.NB__RSSI_HIST, newRssi_hist, newRssi_hist));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public String getAddr() {
+    public String getAddr() {
         return addr;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setAddr(String newAddr) {
+    public void setAddr(String newAddr) {
         String oldAddr = addr;
         addr = newAddr;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Device_wifi_wifidevice_cst_statsPackage.NB__ADDR, oldAddr, addr));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public int getRssi() {
+    public int getRssi() {
         return rssi;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setRssi(int newRssi) {
+    public void setRssi(int newRssi) {
         int oldRssi = rssi;
         rssi = newRssi;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Device_wifi_wifidevice_cst_statsPackage.NB__RSSI, oldRssi, rssi));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public int getStd_rssi() {
+    public int getStd_rssi() {
         return std_rssi;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setStd_rssi(int newStd_rssi) {
+    public void setStd_rssi(int newStd_rssi) {
         int oldStd_rssi = std_rssi;
         std_rssi = newStd_rssi;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Device_wifi_wifidevice_cst_statsPackage.NB__STD_RSSI, oldStd_rssi, std_rssi));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public int getMin_rssi() {
+    public int getMin_rssi() {
         return min_rssi;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setMin_rssi(int newMin_rssi) {
+    public void setMin_rssi(int newMin_rssi) {
         int oldMin_rssi = min_rssi;
         min_rssi = newMin_rssi;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Device_wifi_wifidevice_cst_statsPackage.NB__MIN_RSSI, oldMin_rssi, min_rssi));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public int getMax_rssi() {
+    public int getMax_rssi() {
         return max_rssi;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setMax_rssi(int newMax_rssi) {
+    public void setMax_rssi(int newMax_rssi) {
         int oldMax_rssi = max_rssi;
         max_rssi = newMax_rssi;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Device_wifi_wifidevice_cst_statsPackage.NB__MAX_RSSI, oldMax_rssi, max_rssi));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public int getPkt_cnt() {
+    public int getPkt_cnt() {
         return pkt_cnt;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setPkt_cnt(int newPkt_cnt) {
+    public void setPkt_cnt(int newPkt_cnt) {
         int oldPkt_cnt = pkt_cnt;
         pkt_cnt = newPkt_cnt;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Device_wifi_wifidevice_cst_statsPackage.NB__PKT_CNT, oldPkt_cnt, pkt_cnt));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public int getRx_bytes() {
+    public int getRx_bytes() {
         return rx_bytes;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setRx_bytes(int newRx_bytes) {
+    public void setRx_bytes(int newRx_bytes) {
         int oldRx_bytes = rx_bytes;
         rx_bytes = newRx_bytes;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Device_wifi_wifidevice_cst_statsPackage.NB__RX_BYTES, oldRx_bytes, rx_bytes));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    @Override
+    public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case Device_wifi_wifidevice_cst_statsPackage.NB__ECONTAINER_NB:
                 if (eInternalContainer() != null)
@@ -551,13 +551,13 @@ public class NbImpl extends EObjectImpl implements Nb {
         return super.eInverseAdd(otherEnd, featureID, msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    @Override
+    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case Device_wifi_wifidevice_cst_statsPackage.NB__ECONTAINER_NB:
                 return basicSetEContainer_nb(null, msgs);
@@ -569,13 +569,13 @@ public class NbImpl extends EObjectImpl implements Nb {
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+    @Override
+    public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
         switch (eContainerFeatureID()) {
             case Device_wifi_wifidevice_cst_statsPackage.NB__ECONTAINER_NB:
                 return eInternalContainer().eInverseRemove(this, Device_wifi_wifidevice_cst_statsPackage.NEIGHBOURSTATS__NB, Neighbourstats.class, msgs);
@@ -583,13 +583,13 @@ public class NbImpl extends EObjectImpl implements Nb {
         return super.eBasicRemoveFromContainerFeature(msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+    @Override
+    public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
             case Device_wifi_wifidevice_cst_statsPackage.NB__ECONTAINER_NB:
                 return getEContainer_nb();
@@ -617,14 +617,14 @@ public class NbImpl extends EObjectImpl implements Nb {
         return super.eGet(featureID, resolve, coreType);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@SuppressWarnings("unchecked")
-	@Override
-	public void eSet(int featureID, Object newValue) {
+    @SuppressWarnings("unchecked")
+    @Override
+    public void eSet(int featureID, Object newValue) {
         switch (featureID) {
             case Device_wifi_wifidevice_cst_statsPackage.NB__ECONTAINER_NB:
                 setEContainer_nb((Neighbourstats)newValue);
@@ -664,13 +664,13 @@ public class NbImpl extends EObjectImpl implements Nb {
         super.eSet(featureID, newValue);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public void eUnset(int featureID) {
+    @Override
+    public void eUnset(int featureID) {
         switch (featureID) {
             case Device_wifi_wifidevice_cst_statsPackage.NB__ECONTAINER_NB:
                 setEContainer_nb((Neighbourstats)null);
@@ -709,13 +709,13 @@ public class NbImpl extends EObjectImpl implements Nb {
         super.eUnset(featureID);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public boolean eIsSet(int featureID) {
+    @Override
+    public boolean eIsSet(int featureID) {
         switch (featureID) {
             case Device_wifi_wifidevice_cst_statsPackage.NB__ECONTAINER_NB:
                 return getEContainer_nb() != null;
@@ -743,13 +743,13 @@ public class NbImpl extends EObjectImpl implements Nb {
         return super.eIsSet(featureID);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public String toString() {
+    @Override
+    public String toString() {
         if (eIsProxy()) return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());

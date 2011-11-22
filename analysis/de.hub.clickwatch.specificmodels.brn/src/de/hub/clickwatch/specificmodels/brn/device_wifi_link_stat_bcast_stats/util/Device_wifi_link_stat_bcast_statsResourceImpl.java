@@ -18,14 +18,14 @@ import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
  * @generated
  */
 public class Device_wifi_link_stat_bcast_statsResourceImpl extends XMLResourceImpl {
-	/**
+    /**
      * Creates an instance of the resource.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @param uri the URI of the new resource.
      * @generated
      */
-	public Device_wifi_link_stat_bcast_statsResourceImpl(URI uri) {
+    public Device_wifi_link_stat_bcast_statsResourceImpl(URI uri) {
         super(uri);
     }
 

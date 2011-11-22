@@ -46,131 +46,131 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * @generated
  */
 public class SettxpowerImpl extends EObjectImpl implements Settxpower {
-	/**
+    /**
      * The cached value of the '{@link #getText() <em>Text</em>}' attribute list.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getText()
      * @generated
      * @ordered
      */
-	protected EList<String> text;
+    protected EList<String> text;
 
-	/**
+    /**
      * The cached value of the '{@link #getDevice() <em>Device</em>}' containment reference.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getDevice()
      * @generated
      * @ordered
      */
-	protected Device device;
+    protected Device device;
 
-	/**
+    /**
      * The default value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getName()
      * @generated
      * @ordered
      */
-	protected static final String NAME_EDEFAULT = null;
+    protected static final String NAME_EDEFAULT = null;
 
-	/**
+    /**
      * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getName()
      * @generated
      * @ordered
      */
-	protected String name = NAME_EDEFAULT;
+    protected String name = NAME_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getId() <em>Id</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getId()
      * @generated
      * @ordered
      */
-	protected static final String ID_EDEFAULT = null;
+    protected static final String ID_EDEFAULT = null;
 
-	/**
+    /**
      * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getId()
      * @generated
      * @ordered
      */
-	protected String id = ID_EDEFAULT;
+    protected String id = ID_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getPower() <em>Power</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getPower()
      * @generated
      * @ordered
      */
-	protected static final int POWER_EDEFAULT = 0;
+    protected static final int POWER_EDEFAULT = 0;
 
-	/**
+    /**
      * The cached value of the '{@link #getPower() <em>Power</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getPower()
      * @generated
      * @ordered
      */
-	protected int power = POWER_EDEFAULT;
+    protected int power = POWER_EDEFAULT;
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	protected SettxpowerImpl() {
+    protected SettxpowerImpl() {
         super();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	protected EClass eStaticClass() {
+    @Override
+    protected EClass eStaticClass() {
         return Device_wifi_data_power_systempowerPackage.Literals.SETTXPOWER;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Systempower getEContainer_settxpower() {
+    public Systempower getEContainer_settxpower() {
         if (eContainerFeatureID() != Device_wifi_data_power_systempowerPackage.SETTXPOWER__ECONTAINER_SETTXPOWER) return null;
         return (Systempower)eContainer();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public NotificationChain basicSetEContainer_settxpower(Systempower newEContainer_settxpower, NotificationChain msgs) {
+    public NotificationChain basicSetEContainer_settxpower(Systempower newEContainer_settxpower, NotificationChain msgs) {
         msgs = eBasicSetContainer((InternalEObject)newEContainer_settxpower, Device_wifi_data_power_systempowerPackage.SETTXPOWER__ECONTAINER_SETTXPOWER, msgs);
         return msgs;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setEContainer_settxpower(Systempower newEContainer_settxpower) {
+    public void setEContainer_settxpower(Systempower newEContainer_settxpower) {
         if (newEContainer_settxpower != eInternalContainer() || (eContainerFeatureID() != Device_wifi_data_power_systempowerPackage.SETTXPOWER__ECONTAINER_SETTXPOWER && newEContainer_settxpower != null)) {
             if (EcoreUtil.isAncestor(this, newEContainer_settxpower))
                 throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
@@ -186,33 +186,33 @@ public class SettxpowerImpl extends EObjectImpl implements Settxpower {
             eNotify(new ENotificationImpl(this, Notification.SET, Device_wifi_data_power_systempowerPackage.SETTXPOWER__ECONTAINER_SETTXPOWER, newEContainer_settxpower, newEContainer_settxpower));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EList<String> getText() {
+    public EList<String> getText() {
         if (text == null) {
             text = new EDataTypeEList<String>(String.class, this, Device_wifi_data_power_systempowerPackage.SETTXPOWER__TEXT);
         }
         return text;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Device getDevice() {
+    public Device getDevice() {
         return device;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public NotificationChain basicSetDevice(Device newDevice, NotificationChain msgs) {
+    public NotificationChain basicSetDevice(Device newDevice, NotificationChain msgs) {
         Device oldDevice = device;
         device = newDevice;
         if (eNotificationRequired()) {
@@ -222,12 +222,12 @@ public class SettxpowerImpl extends EObjectImpl implements Settxpower {
         return msgs;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setDevice(Device newDevice) {
+    public void setDevice(Device newDevice) {
         if (newDevice != device) {
             NotificationChain msgs = null;
             if (device != null)
@@ -241,76 +241,76 @@ public class SettxpowerImpl extends EObjectImpl implements Settxpower {
             eNotify(new ENotificationImpl(this, Notification.SET, Device_wifi_data_power_systempowerPackage.SETTXPOWER__DEVICE, newDevice, newDevice));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public String getName() {
+    public String getName() {
         return name;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setName(String newName) {
+    public void setName(String newName) {
         String oldName = name;
         name = newName;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Device_wifi_data_power_systempowerPackage.SETTXPOWER__NAME, oldName, name));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public String getId() {
+    public String getId() {
         return id;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setId(String newId) {
+    public void setId(String newId) {
         String oldId = id;
         id = newId;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Device_wifi_data_power_systempowerPackage.SETTXPOWER__ID, oldId, id));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public int getPower() {
+    public int getPower() {
         return power;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setPower(int newPower) {
+    public void setPower(int newPower) {
         int oldPower = power;
         power = newPower;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Device_wifi_data_power_systempowerPackage.SETTXPOWER__POWER, oldPower, power));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    @Override
+    public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case Device_wifi_data_power_systempowerPackage.SETTXPOWER__ECONTAINER_SETTXPOWER:
                 if (eInternalContainer() != null)
@@ -324,13 +324,13 @@ public class SettxpowerImpl extends EObjectImpl implements Settxpower {
         return super.eInverseAdd(otherEnd, featureID, msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    @Override
+    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case Device_wifi_data_power_systempowerPackage.SETTXPOWER__ECONTAINER_SETTXPOWER:
                 return basicSetEContainer_settxpower(null, msgs);
@@ -340,13 +340,13 @@ public class SettxpowerImpl extends EObjectImpl implements Settxpower {
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+    @Override
+    public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
         switch (eContainerFeatureID()) {
             case Device_wifi_data_power_systempowerPackage.SETTXPOWER__ECONTAINER_SETTXPOWER:
                 return eInternalContainer().eInverseRemove(this, Device_wifi_data_power_systempowerPackage.SYSTEMPOWER__SETTXPOWER, Systempower.class, msgs);
@@ -354,13 +354,13 @@ public class SettxpowerImpl extends EObjectImpl implements Settxpower {
         return super.eBasicRemoveFromContainerFeature(msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+    @Override
+    public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
             case Device_wifi_data_power_systempowerPackage.SETTXPOWER__ECONTAINER_SETTXPOWER:
                 return getEContainer_settxpower();
@@ -378,14 +378,14 @@ public class SettxpowerImpl extends EObjectImpl implements Settxpower {
         return super.eGet(featureID, resolve, coreType);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@SuppressWarnings("unchecked")
-	@Override
-	public void eSet(int featureID, Object newValue) {
+    @SuppressWarnings("unchecked")
+    @Override
+    public void eSet(int featureID, Object newValue) {
         switch (featureID) {
             case Device_wifi_data_power_systempowerPackage.SETTXPOWER__ECONTAINER_SETTXPOWER:
                 setEContainer_settxpower((Systempower)newValue);
@@ -410,13 +410,13 @@ public class SettxpowerImpl extends EObjectImpl implements Settxpower {
         super.eSet(featureID, newValue);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public void eUnset(int featureID) {
+    @Override
+    public void eUnset(int featureID) {
         switch (featureID) {
             case Device_wifi_data_power_systempowerPackage.SETTXPOWER__ECONTAINER_SETTXPOWER:
                 setEContainer_settxpower((Systempower)null);
@@ -440,13 +440,13 @@ public class SettxpowerImpl extends EObjectImpl implements Settxpower {
         super.eUnset(featureID);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public boolean eIsSet(int featureID) {
+    @Override
+    public boolean eIsSet(int featureID) {
         switch (featureID) {
             case Device_wifi_data_power_systempowerPackage.SETTXPOWER__ECONTAINER_SETTXPOWER:
                 return getEContainer_settxpower() != null;
@@ -464,13 +464,13 @@ public class SettxpowerImpl extends EObjectImpl implements Settxpower {
         return super.eIsSet(featureID);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public String toString() {
+    @Override
+    public String toString() {
         if (eIsProxy()) return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());

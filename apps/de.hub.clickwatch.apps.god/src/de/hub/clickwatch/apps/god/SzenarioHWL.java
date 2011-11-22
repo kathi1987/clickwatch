@@ -27,7 +27,7 @@ public class SzenarioHWL implements Szenario {
 	public static final char LINKTABLE_SEPARATOR = ';';
 	public static float LINK_UPDATE_MIN_THRESHOLD = 0.15f;
 	public static final int LINK_ADD_MIN_THRESHOLD = 5000;
-	public static final int LINK_USE_IN_DIJKSTRA_MAX_VALUE = 150;
+	public static int LINK_USE_IN_DIJKSTRA_MAX_VALUE = 200;
 	public static final int MODEL_SIZE_FACTOR = 8;
 	
 	

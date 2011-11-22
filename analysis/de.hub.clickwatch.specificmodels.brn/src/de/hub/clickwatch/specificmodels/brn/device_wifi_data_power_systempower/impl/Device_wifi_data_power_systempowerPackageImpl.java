@@ -67,7 +67,9 @@ import de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.Sys_info_systemi
 import de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.impl.Sys_info_systeminfoPackageImpl;
 
 import de.hub.clickwatch.specificmodels.brn.tsi_syncinfo.Tsi_syncinfoPackage;
+
 import de.hub.clickwatch.specificmodels.brn.tsi_syncinfo.impl.Tsi_syncinfoPackageImpl;
+
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
@@ -82,28 +84,28 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
  * @generated
  */
 public class Device_wifi_data_power_systempowerPackageImpl extends EPackageImpl implements Device_wifi_data_power_systempowerPackage {
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	private EClass deviceEClass = null;
+    private EClass deviceEClass = null;
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	private EClass settxpowerEClass = null;
+    private EClass settxpowerEClass = null;
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	private EClass systempowerEClass = null;
+    private EClass systempowerEClass = null;
 
-	/**
+    /**
      * Creates an instance of the model <b>Package</b>, registered with
      * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
      * package URI value.
@@ -112,36 +114,36 @@ public class Device_wifi_data_power_systempowerPackageImpl extends EPackageImpl 
      * initialization of the package, or returns the registered package,
      * if one already exists.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see org.eclipse.emf.ecore.EPackage.Registry
      * @see de.hub.clickwatch.specificmodels.brn.device_wifi_data_power_systempower.Device_wifi_data_power_systempowerPackage#eNS_URI
      * @see #init()
      * @generated
      */
-	private Device_wifi_data_power_systempowerPackageImpl() {
+    private Device_wifi_data_power_systempowerPackageImpl() {
         super(eNS_URI, Device_wifi_data_power_systempowerFactory.eINSTANCE);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	private static boolean isInited = false;
+    private static boolean isInited = false;
 
-	/**
+    /**
      * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
      * 
      * <p>This method is used to initialize {@link Device_wifi_data_power_systempowerPackage#eINSTANCE} when that field is accessed.
      * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #eNS_URI
      * @see #createPackageContents()
      * @see #initializePackageContents()
      * @generated
      */
-	public static Device_wifi_data_power_systempowerPackage init() {
+    public static Device_wifi_data_power_systempowerPackage init() {
         if (isInited) return (Device_wifi_data_power_systempowerPackage)EPackage.Registry.INSTANCE.getEPackage(Device_wifi_data_power_systempowerPackage.eNS_URI);
 
         // Obtain or create and register package
@@ -211,147 +213,147 @@ public class Device_wifi_data_power_systempowerPackageImpl extends EPackageImpl 
         return theDevice_wifi_data_power_systempowerPackage;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EClass getDevice() {
+    public EClass getDevice() {
         return deviceEClass;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EReference getDevice_EContainer_device() {
+    public EReference getDevice_EContainer_device() {
         return (EReference)deviceEClass.getEStructuralFeatures().get(0);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getDevice_Name() {
+    public EAttribute getDevice_Name() {
         return (EAttribute)deviceEClass.getEStructuralFeatures().get(1);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getDevice_Device_addr() {
+    public EAttribute getDevice_Device_addr() {
         return (EAttribute)deviceEClass.getEStructuralFeatures().get(2);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EClass getSettxpower() {
+    public EClass getSettxpower() {
         return settxpowerEClass;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EReference getSettxpower_EContainer_settxpower() {
+    public EReference getSettxpower_EContainer_settxpower() {
         return (EReference)settxpowerEClass.getEStructuralFeatures().get(0);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getSettxpower_Text() {
+    public EAttribute getSettxpower_Text() {
         return (EAttribute)settxpowerEClass.getEStructuralFeatures().get(1);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EReference getSettxpower_Device() {
+    public EReference getSettxpower_Device() {
         return (EReference)settxpowerEClass.getEStructuralFeatures().get(2);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getSettxpower_Name() {
+    public EAttribute getSettxpower_Name() {
         return (EAttribute)settxpowerEClass.getEStructuralFeatures().get(3);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getSettxpower_Id() {
+    public EAttribute getSettxpower_Id() {
         return (EAttribute)settxpowerEClass.getEStructuralFeatures().get(4);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getSettxpower_Power() {
+    public EAttribute getSettxpower_Power() {
         return (EAttribute)settxpowerEClass.getEStructuralFeatures().get(5);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EClass getSystempower() {
+    public EClass getSystempower() {
         return systempowerEClass;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EReference getSystempower_Settxpower() {
+    public EReference getSystempower_Settxpower() {
         return (EReference)systempowerEClass.getEStructuralFeatures().get(0);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Device_wifi_data_power_systempowerFactory getDevice_wifi_data_power_systempowerFactory() {
+    public Device_wifi_data_power_systempowerFactory getDevice_wifi_data_power_systempowerFactory() {
         return (Device_wifi_data_power_systempowerFactory)getEFactoryInstance();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	private boolean isCreated = false;
+    private boolean isCreated = false;
 
-	/**
+    /**
      * Creates the meta-model objects for the package.  This method is
      * guarded to have no affect on any invocation but its first.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void createPackageContents() {
+    public void createPackageContents() {
         if (isCreated) return;
         isCreated = true;
 
@@ -373,21 +375,21 @@ public class Device_wifi_data_power_systempowerPackageImpl extends EPackageImpl 
         createEReference(systempowerEClass, SYSTEMPOWER__SETTXPOWER);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	private boolean isInitialized = false;
+    private boolean isInitialized = false;
 
-	/**
+    /**
      * Complete the initialization of the package and its meta-model.  This
      * method is guarded to have no affect on any invocation but its first.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void initializePackageContents() {
+    public void initializePackageContents() {
         if (isInitialized) return;
         isInitialized = true;
 
@@ -428,13 +430,13 @@ public class Device_wifi_data_power_systempowerPackageImpl extends EPackageImpl 
         createDeAnnotations();
     }
 
-	/**
+    /**
      * Initializes the annotations for <b>http://de.hub.clickwatch.specificmodels</b>.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	protected void createDeAnnotations() {
+    protected void createDeAnnotations() {
         String source = "http://de.hub.clickwatch.specificmodels";		
         addAnnotation
           (this, 

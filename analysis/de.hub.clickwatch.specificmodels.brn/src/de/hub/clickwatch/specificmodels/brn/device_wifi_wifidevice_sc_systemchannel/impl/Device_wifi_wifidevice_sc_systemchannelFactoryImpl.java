@@ -23,13 +23,13 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
  * @generated
  */
 public class Device_wifi_wifidevice_sc_systemchannelFactoryImpl extends EFactoryImpl implements Device_wifi_wifidevice_sc_systemchannelFactory {
-	/**
+    /**
      * Creates the default factory implementation.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public static Device_wifi_wifidevice_sc_systemchannelFactory init() {
+    public static Device_wifi_wifidevice_sc_systemchannelFactory init() {
         try {
             Device_wifi_wifidevice_sc_systemchannelFactory theDevice_wifi_wifidevice_sc_systemchannelFactory = (Device_wifi_wifidevice_sc_systemchannelFactory)EPackage.Registry.INSTANCE.getEFactory("http://de.hub.clickwatch.specificmodels.brn/device_wifi/wifidevice/sc/systemchannel"); 
             if (theDevice_wifi_wifidevice_sc_systemchannelFactory != null) {
@@ -42,23 +42,23 @@ public class Device_wifi_wifidevice_sc_systemchannelFactoryImpl extends EFactory
         return new Device_wifi_wifidevice_sc_systemchannelFactoryImpl();
     }
 
-	/**
+    /**
      * Creates an instance of the factory.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Device_wifi_wifidevice_sc_systemchannelFactoryImpl() {
+    public Device_wifi_wifidevice_sc_systemchannelFactoryImpl() {
         super();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public EObject create(EClass eClass) {
+    @Override
+    public EObject create(EClass eClass) {
         switch (eClass.getClassifierID()) {
             case Device_wifi_wifidevice_sc_systemchannelPackage.DEVICE: return createDevice();
             case Device_wifi_wifidevice_sc_systemchannelPackage.SETCHANNEL: return createSetchannel();
@@ -68,53 +68,53 @@ public class Device_wifi_wifidevice_sc_systemchannelFactoryImpl extends EFactory
         }
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Device createDevice() {
+    public Device createDevice() {
         DeviceImpl device = new DeviceImpl();
         return device;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Setchannel createSetchannel() {
+    public Setchannel createSetchannel() {
         SetchannelImpl setchannel = new SetchannelImpl();
         return setchannel;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Systemchannel createSystemchannel() {
+    public Systemchannel createSystemchannel() {
         SystemchannelImpl systemchannel = new SystemchannelImpl();
         return systemchannel;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Device_wifi_wifidevice_sc_systemchannelPackage getDevice_wifi_wifidevice_sc_systemchannelPackage() {
+    public Device_wifi_wifidevice_sc_systemchannelPackage getDevice_wifi_wifidevice_sc_systemchannelPackage() {
         return (Device_wifi_wifidevice_sc_systemchannelPackage)getEPackage();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @deprecated
      * @generated
      */
-	@Deprecated
-	public static Device_wifi_wifidevice_sc_systemchannelPackage getPackage() {
+    @Deprecated
+    public static Device_wifi_wifidevice_sc_systemchannelPackage getPackage() {
         return Device_wifi_wifidevice_sc_systemchannelPackage.eINSTANCE;
     }
 

@@ -39,131 +39,131 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * @generated
  */
 public class Rssi_histImpl extends EObjectImpl implements Rssi_hist {
-	/**
+    /**
      * The default value of the '{@link #getSize() <em>Size</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getSize()
      * @generated
      * @ordered
      */
-	protected static final int SIZE_EDEFAULT = 0;
+    protected static final int SIZE_EDEFAULT = 0;
 
-	/**
+    /**
      * The cached value of the '{@link #getSize() <em>Size</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getSize()
      * @generated
      * @ordered
      */
-	protected int size = SIZE_EDEFAULT;
+    protected int size = SIZE_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getMax_size() <em>Max size</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getMax_size()
      * @generated
      * @ordered
      */
-	protected static final int MAX_SIZE_EDEFAULT = 0;
+    protected static final int MAX_SIZE_EDEFAULT = 0;
 
-	/**
+    /**
      * The cached value of the '{@link #getMax_size() <em>Max size</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getMax_size()
      * @generated
      * @ordered
      */
-	protected int max_size = MAX_SIZE_EDEFAULT;
+    protected int max_size = MAX_SIZE_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getOverflow() <em>Overflow</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getOverflow()
      * @generated
      * @ordered
      */
-	protected static final String OVERFLOW_EDEFAULT = null;
+    protected static final String OVERFLOW_EDEFAULT = null;
 
-	/**
+    /**
      * The cached value of the '{@link #getOverflow() <em>Overflow</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getOverflow()
      * @generated
      * @ordered
      */
-	protected String overflow = OVERFLOW_EDEFAULT;
+    protected String overflow = OVERFLOW_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getValues() <em>Values</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getValues()
      * @generated
      * @ordered
      */
-	protected static final String VALUES_EDEFAULT = null;
+    protected static final String VALUES_EDEFAULT = null;
 
-	/**
+    /**
      * The cached value of the '{@link #getValues() <em>Values</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getValues()
      * @generated
      * @ordered
      */
-	protected String values = VALUES_EDEFAULT;
+    protected String values = VALUES_EDEFAULT;
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	protected Rssi_histImpl() {
+    protected Rssi_histImpl() {
         super();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	protected EClass eStaticClass() {
+    @Override
+    protected EClass eStaticClass() {
         return Device_wifi_wifidevice_cst_statsPackage.Literals.RSSI_HIST;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Nb getEContainer_rssi_hist() {
+    public Nb getEContainer_rssi_hist() {
         if (eContainerFeatureID() != Device_wifi_wifidevice_cst_statsPackage.RSSI_HIST__ECONTAINER_RSSI_HIST) return null;
         return (Nb)eContainer();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public NotificationChain basicSetEContainer_rssi_hist(Nb newEContainer_rssi_hist, NotificationChain msgs) {
+    public NotificationChain basicSetEContainer_rssi_hist(Nb newEContainer_rssi_hist, NotificationChain msgs) {
         msgs = eBasicSetContainer((InternalEObject)newEContainer_rssi_hist, Device_wifi_wifidevice_cst_statsPackage.RSSI_HIST__ECONTAINER_RSSI_HIST, msgs);
         return msgs;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setEContainer_rssi_hist(Nb newEContainer_rssi_hist) {
+    public void setEContainer_rssi_hist(Nb newEContainer_rssi_hist) {
         if (newEContainer_rssi_hist != eInternalContainer() || (eContainerFeatureID() != Device_wifi_wifidevice_cst_statsPackage.RSSI_HIST__ECONTAINER_RSSI_HIST && newEContainer_rssi_hist != null)) {
             if (EcoreUtil.isAncestor(this, newEContainer_rssi_hist))
                 throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
@@ -179,97 +179,97 @@ public class Rssi_histImpl extends EObjectImpl implements Rssi_hist {
             eNotify(new ENotificationImpl(this, Notification.SET, Device_wifi_wifidevice_cst_statsPackage.RSSI_HIST__ECONTAINER_RSSI_HIST, newEContainer_rssi_hist, newEContainer_rssi_hist));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public int getSize() {
+    public int getSize() {
         return size;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setSize(int newSize) {
+    public void setSize(int newSize) {
         int oldSize = size;
         size = newSize;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Device_wifi_wifidevice_cst_statsPackage.RSSI_HIST__SIZE, oldSize, size));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public int getMax_size() {
+    public int getMax_size() {
         return max_size;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setMax_size(int newMax_size) {
+    public void setMax_size(int newMax_size) {
         int oldMax_size = max_size;
         max_size = newMax_size;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Device_wifi_wifidevice_cst_statsPackage.RSSI_HIST__MAX_SIZE, oldMax_size, max_size));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public String getOverflow() {
+    public String getOverflow() {
         return overflow;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setOverflow(String newOverflow) {
+    public void setOverflow(String newOverflow) {
         String oldOverflow = overflow;
         overflow = newOverflow;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Device_wifi_wifidevice_cst_statsPackage.RSSI_HIST__OVERFLOW, oldOverflow, overflow));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public String getValues() {
+    public String getValues() {
         return values;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setValues(String newValues) {
+    public void setValues(String newValues) {
         String oldValues = values;
         values = newValues;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Device_wifi_wifidevice_cst_statsPackage.RSSI_HIST__VALUES, oldValues, values));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    @Override
+    public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case Device_wifi_wifidevice_cst_statsPackage.RSSI_HIST__ECONTAINER_RSSI_HIST:
                 if (eInternalContainer() != null)
@@ -279,13 +279,13 @@ public class Rssi_histImpl extends EObjectImpl implements Rssi_hist {
         return super.eInverseAdd(otherEnd, featureID, msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    @Override
+    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case Device_wifi_wifidevice_cst_statsPackage.RSSI_HIST__ECONTAINER_RSSI_HIST:
                 return basicSetEContainer_rssi_hist(null, msgs);
@@ -293,13 +293,13 @@ public class Rssi_histImpl extends EObjectImpl implements Rssi_hist {
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+    @Override
+    public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
         switch (eContainerFeatureID()) {
             case Device_wifi_wifidevice_cst_statsPackage.RSSI_HIST__ECONTAINER_RSSI_HIST:
                 return eInternalContainer().eInverseRemove(this, Device_wifi_wifidevice_cst_statsPackage.NB__RSSI_HIST, Nb.class, msgs);
@@ -307,13 +307,13 @@ public class Rssi_histImpl extends EObjectImpl implements Rssi_hist {
         return super.eBasicRemoveFromContainerFeature(msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+    @Override
+    public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
             case Device_wifi_wifidevice_cst_statsPackage.RSSI_HIST__ECONTAINER_RSSI_HIST:
                 return getEContainer_rssi_hist();
@@ -329,13 +329,13 @@ public class Rssi_histImpl extends EObjectImpl implements Rssi_hist {
         return super.eGet(featureID, resolve, coreType);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public void eSet(int featureID, Object newValue) {
+    @Override
+    public void eSet(int featureID, Object newValue) {
         switch (featureID) {
             case Device_wifi_wifidevice_cst_statsPackage.RSSI_HIST__ECONTAINER_RSSI_HIST:
                 setEContainer_rssi_hist((Nb)newValue);
@@ -356,13 +356,13 @@ public class Rssi_histImpl extends EObjectImpl implements Rssi_hist {
         super.eSet(featureID, newValue);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public void eUnset(int featureID) {
+    @Override
+    public void eUnset(int featureID) {
         switch (featureID) {
             case Device_wifi_wifidevice_cst_statsPackage.RSSI_HIST__ECONTAINER_RSSI_HIST:
                 setEContainer_rssi_hist((Nb)null);
@@ -383,13 +383,13 @@ public class Rssi_histImpl extends EObjectImpl implements Rssi_hist {
         super.eUnset(featureID);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public boolean eIsSet(int featureID) {
+    @Override
+    public boolean eIsSet(int featureID) {
         switch (featureID) {
             case Device_wifi_wifidevice_cst_statsPackage.RSSI_HIST__ECONTAINER_RSSI_HIST:
                 return getEContainer_rssi_hist() != null;
@@ -405,13 +405,13 @@ public class Rssi_histImpl extends EObjectImpl implements Rssi_hist {
         return super.eIsSet(featureID);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public String toString() {
+    @Override
+    public String toString() {
         if (eIsProxy()) return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());

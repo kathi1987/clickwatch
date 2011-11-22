@@ -40,151 +40,151 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * @generated
  */
 public class LinkImpl extends EObjectImpl implements Link {
-	/**
+    /**
      * The default value of the '{@link #getFrom() <em>From</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getFrom()
      * @generated
      * @ordered
      */
-	protected static final String FROM_EDEFAULT = null;
+    protected static final String FROM_EDEFAULT = null;
 
-	/**
+    /**
      * The cached value of the '{@link #getFrom() <em>From</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getFrom()
      * @generated
      * @ordered
      */
-	protected String from = FROM_EDEFAULT;
+    protected String from = FROM_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getTo() <em>To</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getTo()
      * @generated
      * @ordered
      */
-	protected static final String TO_EDEFAULT = null;
+    protected static final String TO_EDEFAULT = null;
 
-	/**
+    /**
      * The cached value of the '{@link #getTo() <em>To</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getTo()
      * @generated
      * @ordered
      */
-	protected String to = TO_EDEFAULT;
+    protected String to = TO_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getMetric() <em>Metric</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getMetric()
      * @generated
      * @ordered
      */
-	protected static final int METRIC_EDEFAULT = 0;
+    protected static final int METRIC_EDEFAULT = 0;
 
-	/**
+    /**
      * The cached value of the '{@link #getMetric() <em>Metric</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getMetric()
      * @generated
      * @ordered
      */
-	protected int metric = METRIC_EDEFAULT;
+    protected int metric = METRIC_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getSeq() <em>Seq</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getSeq()
      * @generated
      * @ordered
      */
-	protected static final int SEQ_EDEFAULT = 0;
+    protected static final int SEQ_EDEFAULT = 0;
 
-	/**
+    /**
      * The cached value of the '{@link #getSeq() <em>Seq</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getSeq()
      * @generated
      * @ordered
      */
-	protected int seq = SEQ_EDEFAULT;
+    protected int seq = SEQ_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getAge() <em>Age</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getAge()
      * @generated
      * @ordered
      */
-	protected static final int AGE_EDEFAULT = 0;
+    protected static final int AGE_EDEFAULT = 0;
 
-	/**
+    /**
      * The cached value of the '{@link #getAge() <em>Age</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getAge()
      * @generated
      * @ordered
      */
-	protected int age = AGE_EDEFAULT;
+    protected int age = AGE_EDEFAULT;
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	protected LinkImpl() {
+    protected LinkImpl() {
         super();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	protected EClass eStaticClass() {
+    @Override
+    protected EClass eStaticClass() {
         return Lt_linksPackage.Literals.LINK;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Linktable getEContainer_link() {
+    public Linktable getEContainer_link() {
         if (eContainerFeatureID() != Lt_linksPackage.LINK__ECONTAINER_LINK) return null;
         return (Linktable)eContainer();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public NotificationChain basicSetEContainer_link(Linktable newEContainer_link, NotificationChain msgs) {
+    public NotificationChain basicSetEContainer_link(Linktable newEContainer_link, NotificationChain msgs) {
         msgs = eBasicSetContainer((InternalEObject)newEContainer_link, Lt_linksPackage.LINK__ECONTAINER_LINK, msgs);
         return msgs;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setEContainer_link(Linktable newEContainer_link) {
+    public void setEContainer_link(Linktable newEContainer_link) {
         if (newEContainer_link != eInternalContainer() || (eContainerFeatureID() != Lt_linksPackage.LINK__ECONTAINER_LINK && newEContainer_link != null)) {
             if (EcoreUtil.isAncestor(this, newEContainer_link))
                 throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
@@ -200,118 +200,118 @@ public class LinkImpl extends EObjectImpl implements Link {
             eNotify(new ENotificationImpl(this, Notification.SET, Lt_linksPackage.LINK__ECONTAINER_LINK, newEContainer_link, newEContainer_link));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public String getFrom() {
+    public String getFrom() {
         return from;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setFrom(String newFrom) {
+    public void setFrom(String newFrom) {
         String oldFrom = from;
         from = newFrom;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Lt_linksPackage.LINK__FROM, oldFrom, from));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public String getTo() {
+    public String getTo() {
         return to;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setTo(String newTo) {
+    public void setTo(String newTo) {
         String oldTo = to;
         to = newTo;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Lt_linksPackage.LINK__TO, oldTo, to));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public int getMetric() {
+    public int getMetric() {
         return metric;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setMetric(int newMetric) {
+    public void setMetric(int newMetric) {
         int oldMetric = metric;
         metric = newMetric;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Lt_linksPackage.LINK__METRIC, oldMetric, metric));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public int getSeq() {
+    public int getSeq() {
         return seq;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setSeq(int newSeq) {
+    public void setSeq(int newSeq) {
         int oldSeq = seq;
         seq = newSeq;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Lt_linksPackage.LINK__SEQ, oldSeq, seq));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public int getAge() {
+    public int getAge() {
         return age;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setAge(int newAge) {
+    public void setAge(int newAge) {
         int oldAge = age;
         age = newAge;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Lt_linksPackage.LINK__AGE, oldAge, age));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    @Override
+    public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case Lt_linksPackage.LINK__ECONTAINER_LINK:
                 if (eInternalContainer() != null)
@@ -321,13 +321,13 @@ public class LinkImpl extends EObjectImpl implements Link {
         return super.eInverseAdd(otherEnd, featureID, msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    @Override
+    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case Lt_linksPackage.LINK__ECONTAINER_LINK:
                 return basicSetEContainer_link(null, msgs);
@@ -335,13 +335,13 @@ public class LinkImpl extends EObjectImpl implements Link {
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+    @Override
+    public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
         switch (eContainerFeatureID()) {
             case Lt_linksPackage.LINK__ECONTAINER_LINK:
                 return eInternalContainer().eInverseRemove(this, Lt_linksPackage.LINKTABLE__LINK, Linktable.class, msgs);
@@ -349,13 +349,13 @@ public class LinkImpl extends EObjectImpl implements Link {
         return super.eBasicRemoveFromContainerFeature(msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+    @Override
+    public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
             case Lt_linksPackage.LINK__ECONTAINER_LINK:
                 return getEContainer_link();
@@ -373,13 +373,13 @@ public class LinkImpl extends EObjectImpl implements Link {
         return super.eGet(featureID, resolve, coreType);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public void eSet(int featureID, Object newValue) {
+    @Override
+    public void eSet(int featureID, Object newValue) {
         switch (featureID) {
             case Lt_linksPackage.LINK__ECONTAINER_LINK:
                 setEContainer_link((Linktable)newValue);
@@ -403,13 +403,13 @@ public class LinkImpl extends EObjectImpl implements Link {
         super.eSet(featureID, newValue);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public void eUnset(int featureID) {
+    @Override
+    public void eUnset(int featureID) {
         switch (featureID) {
             case Lt_linksPackage.LINK__ECONTAINER_LINK:
                 setEContainer_link((Linktable)null);
@@ -433,13 +433,13 @@ public class LinkImpl extends EObjectImpl implements Link {
         super.eUnset(featureID);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public boolean eIsSet(int featureID) {
+    @Override
+    public boolean eIsSet(int featureID) {
         switch (featureID) {
             case Lt_linksPackage.LINK__ECONTAINER_LINK:
                 return getEContainer_link() != null;
@@ -457,13 +457,13 @@ public class LinkImpl extends EObjectImpl implements Link {
         return super.eIsSet(featureID);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public String toString() {
+    @Override
+    public String toString() {
         if (eIsProxy()) return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());

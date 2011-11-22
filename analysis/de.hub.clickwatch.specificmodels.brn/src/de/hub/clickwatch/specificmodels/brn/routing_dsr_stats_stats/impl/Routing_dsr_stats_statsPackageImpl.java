@@ -68,7 +68,9 @@ import de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.Sys_info_systemi
 import de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.impl.Sys_info_systeminfoPackageImpl;
 
 import de.hub.clickwatch.specificmodels.brn.tsi_syncinfo.Tsi_syncinfoPackage;
+
 import de.hub.clickwatch.specificmodels.brn.tsi_syncinfo.impl.Tsi_syncinfoPackageImpl;
+
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
@@ -83,35 +85,35 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
  * @generated
  */
 public class Routing_dsr_stats_statsPackageImpl extends EPackageImpl implements Routing_dsr_stats_statsPackage {
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	private EClass dsr_route_statsEClass = null;
+    private EClass dsr_route_statsEClass = null;
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	private EClass routeEClass = null;
+    private EClass routeEClass = null;
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	private EClass route_infoEClass = null;
+    private EClass route_infoEClass = null;
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	private EClass statsEClass = null;
+    private EClass statsEClass = null;
 
-	/**
+    /**
      * Creates an instance of the model <b>Package</b>, registered with
      * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
      * package URI value.
@@ -120,36 +122,36 @@ public class Routing_dsr_stats_statsPackageImpl extends EPackageImpl implements 
      * initialization of the package, or returns the registered package,
      * if one already exists.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see org.eclipse.emf.ecore.EPackage.Registry
      * @see de.hub.clickwatch.specificmodels.brn.routing_dsr_stats_stats.Routing_dsr_stats_statsPackage#eNS_URI
      * @see #init()
      * @generated
      */
-	private Routing_dsr_stats_statsPackageImpl() {
+    private Routing_dsr_stats_statsPackageImpl() {
         super(eNS_URI, Routing_dsr_stats_statsFactory.eINSTANCE);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	private static boolean isInited = false;
+    private static boolean isInited = false;
 
-	/**
+    /**
      * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
      * 
      * <p>This method is used to initialize {@link Routing_dsr_stats_statsPackage#eINSTANCE} when that field is accessed.
      * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #eNS_URI
      * @see #createPackageContents()
      * @see #initializePackageContents()
      * @generated
      */
-	public static Routing_dsr_stats_statsPackage init() {
+    public static Routing_dsr_stats_statsPackage init() {
         if (isInited) return (Routing_dsr_stats_statsPackage)EPackage.Registry.INSTANCE.getEPackage(Routing_dsr_stats_statsPackage.eNS_URI);
 
         // Obtain or create and register package
@@ -219,228 +221,228 @@ public class Routing_dsr_stats_statsPackageImpl extends EPackageImpl implements 
         return theRouting_dsr_stats_statsPackage;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EClass getDsr_route_stats() {
+    public EClass getDsr_route_stats() {
         return dsr_route_statsEClass;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EReference getDsr_route_stats_EContainer_dsr_route_stats() {
+    public EReference getDsr_route_stats_EContainer_dsr_route_stats() {
         return (EReference)dsr_route_statsEClass.getEStructuralFeatures().get(0);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getDsr_route_stats_Text() {
+    public EAttribute getDsr_route_stats_Text() {
         return (EAttribute)dsr_route_statsEClass.getEStructuralFeatures().get(1);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EReference getDsr_route_stats_Route_info() {
+    public EReference getDsr_route_stats_Route_info() {
         return (EReference)dsr_route_statsEClass.getEStructuralFeatures().get(2);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getDsr_route_stats_Id() {
+    public EAttribute getDsr_route_stats_Id() {
         return (EAttribute)dsr_route_statsEClass.getEStructuralFeatures().get(3);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getDsr_route_stats_Node_pairs() {
+    public EAttribute getDsr_route_stats_Node_pairs() {
         return (EAttribute)dsr_route_statsEClass.getEStructuralFeatures().get(4);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EClass getRoute() {
+    public EClass getRoute() {
         return routeEClass;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EReference getRoute_EContainer_route() {
+    public EReference getRoute_EContainer_route() {
         return (EReference)routeEClass.getEStructuralFeatures().get(0);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getRoute_Id() {
+    public EAttribute getRoute_Id() {
         return (EAttribute)routeEClass.getEStructuralFeatures().get(1);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getRoute_Metric() {
+    public EAttribute getRoute_Metric() {
         return (EAttribute)routeEClass.getEStructuralFeatures().get(2);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getRoute_Usage() {
+    public EAttribute getRoute_Usage() {
         return (EAttribute)routeEClass.getEStructuralFeatures().get(3);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getRoute_Last_usage() {
+    public EAttribute getRoute_Last_usage() {
         return (EAttribute)routeEClass.getEStructuralFeatures().get(4);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getRoute_Hop_count() {
+    public EAttribute getRoute_Hop_count() {
         return (EAttribute)routeEClass.getEStructuralFeatures().get(5);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getRoute_Hops() {
+    public EAttribute getRoute_Hops() {
         return (EAttribute)routeEClass.getEStructuralFeatures().get(6);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EClass getRoute_info() {
+    public EClass getRoute_info() {
         return route_infoEClass;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EReference getRoute_info_EContainer_route_info() {
+    public EReference getRoute_info_EContainer_route_info() {
         return (EReference)route_infoEClass.getEStructuralFeatures().get(0);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getRoute_info_Text() {
+    public EAttribute getRoute_info_Text() {
         return (EAttribute)route_infoEClass.getEStructuralFeatures().get(1);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EReference getRoute_info_Route() {
+    public EReference getRoute_info_Route() {
         return (EReference)route_infoEClass.getEStructuralFeatures().get(2);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getRoute_info_Src() {
+    public EAttribute getRoute_info_Src() {
         return (EAttribute)route_infoEClass.getEStructuralFeatures().get(3);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getRoute_info_Dst() {
+    public EAttribute getRoute_info_Dst() {
         return (EAttribute)route_infoEClass.getEStructuralFeatures().get(4);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EClass getStats() {
+    public EClass getStats() {
         return statsEClass;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EReference getStats_Dsr_route_stats() {
+    public EReference getStats_Dsr_route_stats() {
         return (EReference)statsEClass.getEStructuralFeatures().get(0);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Routing_dsr_stats_statsFactory getRouting_dsr_stats_statsFactory() {
+    public Routing_dsr_stats_statsFactory getRouting_dsr_stats_statsFactory() {
         return (Routing_dsr_stats_statsFactory)getEFactoryInstance();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	private boolean isCreated = false;
+    private boolean isCreated = false;
 
-	/**
+    /**
      * Creates the meta-model objects for the package.  This method is
      * guarded to have no affect on any invocation but its first.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void createPackageContents() {
+    public void createPackageContents() {
         if (isCreated) return;
         isCreated = true;
 
@@ -472,21 +474,21 @@ public class Routing_dsr_stats_statsPackageImpl extends EPackageImpl implements 
         createEReference(statsEClass, STATS__DSR_ROUTE_STATS);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	private boolean isInitialized = false;
+    private boolean isInitialized = false;
 
-	/**
+    /**
      * Complete the initialization of the package and its meta-model.  This
      * method is guarded to have no affect on any invocation but its first.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void initializePackageContents() {
+    public void initializePackageContents() {
         if (isInitialized) return;
         isInitialized = true;
 
@@ -537,13 +539,13 @@ public class Routing_dsr_stats_statsPackageImpl extends EPackageImpl implements 
         createDeAnnotations();
     }
 
-	/**
+    /**
      * Initializes the annotations for <b>http://de.hub.clickwatch.specificmodels</b>.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	protected void createDeAnnotations() {
+    protected void createDeAnnotations() {
         String source = "http://de.hub.clickwatch.specificmodels";		
         addAnnotation
           (this, 

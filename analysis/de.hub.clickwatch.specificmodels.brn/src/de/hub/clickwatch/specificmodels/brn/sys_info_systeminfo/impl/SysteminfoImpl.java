@@ -33,50 +33,50 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * @generated
  */
 public class SysteminfoImpl extends HandlerImpl implements Systeminfo {
-	/**
+    /**
      * The cached value of the '{@link #getSystem() <em>System</em>}' containment reference.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getSystem()
      * @generated
      * @ordered
      */
-	protected de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.System system;
+    protected de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.System system;
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	protected SysteminfoImpl() {
+    protected SysteminfoImpl() {
         super();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	protected EClass eStaticClass() {
+    @Override
+    protected EClass eStaticClass() {
         return Sys_info_systeminfoPackage.Literals.SYSTEMINFO;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.System getSystem() {
+    public de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.System getSystem() {
         return system;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public NotificationChain basicSetSystem(de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.System newSystem, NotificationChain msgs) {
+    public NotificationChain basicSetSystem(de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.System newSystem, NotificationChain msgs) {
         de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.System oldSystem = system;
         system = newSystem;
         if (eNotificationRequired()) {
@@ -86,12 +86,12 @@ public class SysteminfoImpl extends HandlerImpl implements Systeminfo {
         return msgs;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setSystem(de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.System newSystem) {
+    public void setSystem(de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.System newSystem) {
         if (newSystem != system) {
             NotificationChain msgs = null;
             if (system != null)
@@ -105,13 +105,13 @@ public class SysteminfoImpl extends HandlerImpl implements Systeminfo {
             eNotify(new ENotificationImpl(this, Notification.SET, Sys_info_systeminfoPackage.SYSTEMINFO__SYSTEM, newSystem, newSystem));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    @Override
+    public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case Sys_info_systeminfoPackage.SYSTEMINFO__SYSTEM:
                 if (system != null)
@@ -121,13 +121,13 @@ public class SysteminfoImpl extends HandlerImpl implements Systeminfo {
         return super.eInverseAdd(otherEnd, featureID, msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    @Override
+    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case Sys_info_systeminfoPackage.SYSTEMINFO__SYSTEM:
                 return basicSetSystem(null, msgs);
@@ -135,13 +135,13 @@ public class SysteminfoImpl extends HandlerImpl implements Systeminfo {
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+    @Override
+    public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
             case Sys_info_systeminfoPackage.SYSTEMINFO__SYSTEM:
                 return getSystem();
@@ -149,13 +149,13 @@ public class SysteminfoImpl extends HandlerImpl implements Systeminfo {
         return super.eGet(featureID, resolve, coreType);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public void eSet(int featureID, Object newValue) {
+    @Override
+    public void eSet(int featureID, Object newValue) {
         switch (featureID) {
             case Sys_info_systeminfoPackage.SYSTEMINFO__SYSTEM:
                 setSystem((de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.System)newValue);
@@ -164,13 +164,13 @@ public class SysteminfoImpl extends HandlerImpl implements Systeminfo {
         super.eSet(featureID, newValue);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public void eUnset(int featureID) {
+    @Override
+    public void eUnset(int featureID) {
         switch (featureID) {
             case Sys_info_systeminfoPackage.SYSTEMINFO__SYSTEM:
                 setSystem((de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.System)null);
@@ -179,13 +179,13 @@ public class SysteminfoImpl extends HandlerImpl implements Systeminfo {
         super.eUnset(featureID);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public boolean eIsSet(int featureID) {
+    @Override
+    public boolean eIsSet(int featureID) {
         switch (featureID) {
             case Sys_info_systeminfoPackage.SYSTEMINFO__SYSTEM:
                 return system != null;

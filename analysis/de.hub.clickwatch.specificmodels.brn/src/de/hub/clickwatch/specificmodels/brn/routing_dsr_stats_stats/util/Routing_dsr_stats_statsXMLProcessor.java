@@ -24,25 +24,25 @@ import org.eclipse.emf.ecore.xmi.util.XMLProcessor;
  */
 public class Routing_dsr_stats_statsXMLProcessor extends XMLProcessor {
 
-	/**
+    /**
      * Public constructor to instantiate the helper.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Routing_dsr_stats_statsXMLProcessor() {
+    public Routing_dsr_stats_statsXMLProcessor() {
         super((EPackage.Registry.INSTANCE));
         Routing_dsr_stats_statsPackage.eINSTANCE.eClass();
     }
-	
-	/**
+    
+    /**
      * Register for "*" and "xml" file extensions the Routing_dsr_stats_statsResourceFactoryImpl factory.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	protected Map<String, Resource.Factory> getRegistrations() {
+    @Override
+    protected Map<String, Resource.Factory> getRegistrations() {
         if (registrations == null) {
             super.getRegistrations();
             registrations.put(XML_EXTENSION, new Routing_dsr_stats_statsResourceFactoryImpl());

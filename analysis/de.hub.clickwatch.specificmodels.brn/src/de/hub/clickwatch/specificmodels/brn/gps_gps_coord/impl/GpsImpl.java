@@ -41,171 +41,171 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * @generated
  */
 public class GpsImpl extends EObjectImpl implements Gps {
-	/**
+    /**
      * The default value of the '{@link #getId() <em>Id</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getId()
      * @generated
      * @ordered
      */
-	protected static final String ID_EDEFAULT = null;
+    protected static final String ID_EDEFAULT = null;
 
-	/**
+    /**
      * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getId()
      * @generated
      * @ordered
      */
-	protected String id = ID_EDEFAULT;
+    protected String id = ID_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getTime() <em>Time</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getTime()
      * @generated
      * @ordered
      */
-	protected static final double TIME_EDEFAULT = 0.0;
+    protected static final double TIME_EDEFAULT = 0.0;
 
-	/**
+    /**
      * The cached value of the '{@link #getTime() <em>Time</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getTime()
      * @generated
      * @ordered
      */
-	protected double time = TIME_EDEFAULT;
+    protected double time = TIME_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getLat() <em>Lat</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getLat()
      * @generated
      * @ordered
      */
-	protected static final double LAT_EDEFAULT = 0.0;
+    protected static final double LAT_EDEFAULT = 0.0;
 
-	/**
+    /**
      * The cached value of the '{@link #getLat() <em>Lat</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getLat()
      * @generated
      * @ordered
      */
-	protected double lat = LAT_EDEFAULT;
+    protected double lat = LAT_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getLong() <em>Long</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getLong()
      * @generated
      * @ordered
      */
-	protected static final double LONG_EDEFAULT = 0.0;
+    protected static final double LONG_EDEFAULT = 0.0;
 
-	/**
+    /**
      * The cached value of the '{@link #getLong() <em>Long</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getLong()
      * @generated
      * @ordered
      */
-	protected double long_ = LONG_EDEFAULT;
+    protected double long_ = LONG_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getAlt() <em>Alt</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getAlt()
      * @generated
      * @ordered
      */
-	protected static final double ALT_EDEFAULT = 0.0;
+    protected static final double ALT_EDEFAULT = 0.0;
 
-	/**
+    /**
      * The cached value of the '{@link #getAlt() <em>Alt</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getAlt()
      * @generated
      * @ordered
      */
-	protected double alt = ALT_EDEFAULT;
+    protected double alt = ALT_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getSpeed() <em>Speed</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getSpeed()
      * @generated
      * @ordered
      */
-	protected static final double SPEED_EDEFAULT = 0.0;
+    protected static final double SPEED_EDEFAULT = 0.0;
 
-	/**
+    /**
      * The cached value of the '{@link #getSpeed() <em>Speed</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getSpeed()
      * @generated
      * @ordered
      */
-	protected double speed = SPEED_EDEFAULT;
+    protected double speed = SPEED_EDEFAULT;
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	protected GpsImpl() {
+    protected GpsImpl() {
         super();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	protected EClass eStaticClass() {
+    @Override
+    protected EClass eStaticClass() {
         return Gps_gps_coordPackage.Literals.GPS;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Gps_coord getEContainer_gps() {
+    public Gps_coord getEContainer_gps() {
         if (eContainerFeatureID() != Gps_gps_coordPackage.GPS__ECONTAINER_GPS) return null;
         return (Gps_coord)eContainer();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public NotificationChain basicSetEContainer_gps(Gps_coord newEContainer_gps, NotificationChain msgs) {
+    public NotificationChain basicSetEContainer_gps(Gps_coord newEContainer_gps, NotificationChain msgs) {
         msgs = eBasicSetContainer((InternalEObject)newEContainer_gps, Gps_gps_coordPackage.GPS__ECONTAINER_GPS, msgs);
         return msgs;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setEContainer_gps(Gps_coord newEContainer_gps) {
+    public void setEContainer_gps(Gps_coord newEContainer_gps) {
         if (newEContainer_gps != eInternalContainer() || (eContainerFeatureID() != Gps_gps_coordPackage.GPS__ECONTAINER_GPS && newEContainer_gps != null)) {
             if (EcoreUtil.isAncestor(this, newEContainer_gps))
                 throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
@@ -221,139 +221,139 @@ public class GpsImpl extends EObjectImpl implements Gps {
             eNotify(new ENotificationImpl(this, Notification.SET, Gps_gps_coordPackage.GPS__ECONTAINER_GPS, newEContainer_gps, newEContainer_gps));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public String getId() {
+    public String getId() {
         return id;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setId(String newId) {
+    public void setId(String newId) {
         String oldId = id;
         id = newId;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Gps_gps_coordPackage.GPS__ID, oldId, id));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public double getTime() {
+    public double getTime() {
         return time;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setTime(double newTime) {
+    public void setTime(double newTime) {
         double oldTime = time;
         time = newTime;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Gps_gps_coordPackage.GPS__TIME, oldTime, time));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public double getLat() {
+    public double getLat() {
         return lat;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setLat(double newLat) {
+    public void setLat(double newLat) {
         double oldLat = lat;
         lat = newLat;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Gps_gps_coordPackage.GPS__LAT, oldLat, lat));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public double getLong() {
+    public double getLong() {
         return long_;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setLong(double newLong) {
+    public void setLong(double newLong) {
         double oldLong = long_;
         long_ = newLong;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Gps_gps_coordPackage.GPS__LONG, oldLong, long_));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public double getAlt() {
+    public double getAlt() {
         return alt;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setAlt(double newAlt) {
+    public void setAlt(double newAlt) {
         double oldAlt = alt;
         alt = newAlt;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Gps_gps_coordPackage.GPS__ALT, oldAlt, alt));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public double getSpeed() {
+    public double getSpeed() {
         return speed;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setSpeed(double newSpeed) {
+    public void setSpeed(double newSpeed) {
         double oldSpeed = speed;
         speed = newSpeed;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Gps_gps_coordPackage.GPS__SPEED, oldSpeed, speed));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    @Override
+    public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case Gps_gps_coordPackage.GPS__ECONTAINER_GPS:
                 if (eInternalContainer() != null)
@@ -363,13 +363,13 @@ public class GpsImpl extends EObjectImpl implements Gps {
         return super.eInverseAdd(otherEnd, featureID, msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    @Override
+    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case Gps_gps_coordPackage.GPS__ECONTAINER_GPS:
                 return basicSetEContainer_gps(null, msgs);
@@ -377,13 +377,13 @@ public class GpsImpl extends EObjectImpl implements Gps {
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+    @Override
+    public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
         switch (eContainerFeatureID()) {
             case Gps_gps_coordPackage.GPS__ECONTAINER_GPS:
                 return eInternalContainer().eInverseRemove(this, Gps_gps_coordPackage.GPS_COORD__GPS, Gps_coord.class, msgs);
@@ -391,13 +391,13 @@ public class GpsImpl extends EObjectImpl implements Gps {
         return super.eBasicRemoveFromContainerFeature(msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+    @Override
+    public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
             case Gps_gps_coordPackage.GPS__ECONTAINER_GPS:
                 return getEContainer_gps();
@@ -417,13 +417,13 @@ public class GpsImpl extends EObjectImpl implements Gps {
         return super.eGet(featureID, resolve, coreType);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public void eSet(int featureID, Object newValue) {
+    @Override
+    public void eSet(int featureID, Object newValue) {
         switch (featureID) {
             case Gps_gps_coordPackage.GPS__ECONTAINER_GPS:
                 setEContainer_gps((Gps_coord)newValue);
@@ -450,13 +450,13 @@ public class GpsImpl extends EObjectImpl implements Gps {
         super.eSet(featureID, newValue);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public void eUnset(int featureID) {
+    @Override
+    public void eUnset(int featureID) {
         switch (featureID) {
             case Gps_gps_coordPackage.GPS__ECONTAINER_GPS:
                 setEContainer_gps((Gps_coord)null);
@@ -483,13 +483,13 @@ public class GpsImpl extends EObjectImpl implements Gps {
         super.eUnset(featureID);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public boolean eIsSet(int featureID) {
+    @Override
+    public boolean eIsSet(int featureID) {
         switch (featureID) {
             case Gps_gps_coordPackage.GPS__ECONTAINER_GPS:
                 return getEContainer_gps() != null;
@@ -509,13 +509,13 @@ public class GpsImpl extends EObjectImpl implements Gps {
         return super.eIsSet(featureID);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public String toString() {
+    @Override
+    public String toString() {
         if (eIsProxy()) return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());

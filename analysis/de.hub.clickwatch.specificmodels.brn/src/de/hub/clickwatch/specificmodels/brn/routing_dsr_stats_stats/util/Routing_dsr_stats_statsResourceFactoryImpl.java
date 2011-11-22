@@ -22,24 +22,24 @@ import org.eclipse.emf.ecore.xmi.XMLResource;
  * @generated
  */
 public class Routing_dsr_stats_statsResourceFactoryImpl extends ResourceFactoryImpl {
-	/**
+    /**
      * Creates an instance of the resource factory.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Routing_dsr_stats_statsResourceFactoryImpl() {
+    public Routing_dsr_stats_statsResourceFactoryImpl() {
         super();
     }
 
-	/**
+    /**
      * Creates an instance of the resource.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public Resource createResource(URI uri) {
+    @Override
+    public Resource createResource(URI uri) {
         XMLResource result = new Routing_dsr_stats_statsResourceImpl(uri);
         result.getDefaultSaveOptions().put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);
         result.getDefaultLoadOptions().put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);

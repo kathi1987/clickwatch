@@ -22,24 +22,24 @@ import org.eclipse.emf.ecore.xmi.XMLResource;
  * @generated
  */
 public class Gps_gps_coordResourceFactoryImpl extends ResourceFactoryImpl {
-	/**
+    /**
      * Creates an instance of the resource factory.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Gps_gps_coordResourceFactoryImpl() {
+    public Gps_gps_coordResourceFactoryImpl() {
         super();
     }
 
-	/**
+    /**
      * Creates an instance of the resource.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public Resource createResource(URI uri) {
+    @Override
+    public Resource createResource(URI uri) {
         XMLResource result = new Gps_gps_coordResourceImpl(uri);
         result.getDefaultSaveOptions().put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);
         result.getDefaultLoadOptions().put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);

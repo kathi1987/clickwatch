@@ -59,241 +59,241 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * @generated
  */
 public class ChannelstatsImpl extends EObjectImpl implements Channelstats {
-	/**
+    /**
      * The cached value of the '{@link #getText() <em>Text</em>}' attribute list.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getText()
      * @generated
      * @ordered
      */
-	protected EList<String> text;
+    protected EList<String> text;
 
-	/**
+    /**
      * The cached value of the '{@link #getMac() <em>Mac</em>}' containment reference.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getMac()
      * @generated
      * @ordered
      */
-	protected Mac mac;
+    protected Mac mac;
 
-	/**
+    /**
      * The cached value of the '{@link #getMac_percentage() <em>Mac percentage</em>}' containment reference.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getMac_percentage()
      * @generated
      * @ordered
      */
-	protected Mac_percentage mac_percentage;
+    protected Mac_percentage mac_percentage;
 
-	/**
+    /**
      * The cached value of the '{@link #getMac_duration() <em>Mac duration</em>}' containment reference.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getMac_duration()
      * @generated
      * @ordered
      */
-	protected Mac_duration mac_duration;
+    protected Mac_duration mac_duration;
 
-	/**
+    /**
      * The cached value of the '{@link #getPhy() <em>Phy</em>}' containment reference.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getPhy()
      * @generated
      * @ordered
      */
-	protected Phy phy;
+    protected Phy phy;
 
-	/**
+    /**
      * The cached value of the '{@link #getPerf_counter() <em>Perf counter</em>}' containment reference.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getPerf_counter()
      * @generated
      * @ordered
      */
-	protected Perf_counter perf_counter;
+    protected Perf_counter perf_counter;
 
-	/**
+    /**
      * The cached value of the '{@link #getNeighbourstats() <em>Neighbourstats</em>}' containment reference.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getNeighbourstats()
      * @generated
      * @ordered
      */
-	protected Neighbourstats neighbourstats;
+    protected Neighbourstats neighbourstats;
 
-	/**
+    /**
      * The default value of the '{@link #getNode() <em>Node</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getNode()
      * @generated
      * @ordered
      */
-	protected static final String NODE_EDEFAULT = null;
+    protected static final String NODE_EDEFAULT = null;
 
-	/**
+    /**
      * The cached value of the '{@link #getNode() <em>Node</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getNode()
      * @generated
      * @ordered
      */
-	protected String node = NODE_EDEFAULT;
+    protected String node = NODE_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getTime() <em>Time</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getTime()
      * @generated
      * @ordered
      */
-	protected static final double TIME_EDEFAULT = 0.0;
+    protected static final double TIME_EDEFAULT = 0.0;
 
-	/**
+    /**
      * The cached value of the '{@link #getTime() <em>Time</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getTime()
      * @generated
      * @ordered
      */
-	protected double time = TIME_EDEFAULT;
+    protected double time = TIME_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getId() <em>Id</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getId()
      * @generated
      * @ordered
      */
-	protected static final int ID_EDEFAULT = 0;
+    protected static final int ID_EDEFAULT = 0;
 
-	/**
+    /**
      * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getId()
      * @generated
      * @ordered
      */
-	protected int id = ID_EDEFAULT;
+    protected int id = ID_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getLength() <em>Length</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getLength()
      * @generated
      * @ordered
      */
-	protected static final int LENGTH_EDEFAULT = 0;
+    protected static final int LENGTH_EDEFAULT = 0;
 
-	/**
+    /**
      * The cached value of the '{@link #getLength() <em>Length</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getLength()
      * @generated
      * @ordered
      */
-	protected int length = LENGTH_EDEFAULT;
+    protected int length = LENGTH_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getHw_duration() <em>Hw duration</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getHw_duration()
      * @generated
      * @ordered
      */
-	protected static final int HW_DURATION_EDEFAULT = 0;
+    protected static final int HW_DURATION_EDEFAULT = 0;
 
-	/**
+    /**
      * The cached value of the '{@link #getHw_duration() <em>Hw duration</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getHw_duration()
      * @generated
      * @ordered
      */
-	protected int hw_duration = HW_DURATION_EDEFAULT;
+    protected int hw_duration = HW_DURATION_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getUnit() <em>Unit</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getUnit()
      * @generated
      * @ordered
      */
-	protected static final String UNIT_EDEFAULT = null;
+    protected static final String UNIT_EDEFAULT = null;
 
-	/**
+    /**
      * The cached value of the '{@link #getUnit() <em>Unit</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getUnit()
      * @generated
      * @ordered
      */
-	protected String unit = UNIT_EDEFAULT;
+    protected String unit = UNIT_EDEFAULT;
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	protected ChannelstatsImpl() {
+    protected ChannelstatsImpl() {
         super();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	protected EClass eStaticClass() {
+    @Override
+    protected EClass eStaticClass() {
         return Device_wifi_wifidevice_cst_statsPackage.Literals.CHANNELSTATS;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Stats getEContainer_channelstats() {
+    public Stats getEContainer_channelstats() {
         if (eContainerFeatureID() != Device_wifi_wifidevice_cst_statsPackage.CHANNELSTATS__ECONTAINER_CHANNELSTATS) return null;
         return (Stats)eContainer();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public NotificationChain basicSetEContainer_channelstats(Stats newEContainer_channelstats, NotificationChain msgs) {
+    public NotificationChain basicSetEContainer_channelstats(Stats newEContainer_channelstats, NotificationChain msgs) {
         msgs = eBasicSetContainer((InternalEObject)newEContainer_channelstats, Device_wifi_wifidevice_cst_statsPackage.CHANNELSTATS__ECONTAINER_CHANNELSTATS, msgs);
         return msgs;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setEContainer_channelstats(Stats newEContainer_channelstats) {
+    public void setEContainer_channelstats(Stats newEContainer_channelstats) {
         if (newEContainer_channelstats != eInternalContainer() || (eContainerFeatureID() != Device_wifi_wifidevice_cst_statsPackage.CHANNELSTATS__ECONTAINER_CHANNELSTATS && newEContainer_channelstats != null)) {
             if (EcoreUtil.isAncestor(this, newEContainer_channelstats))
                 throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
@@ -309,33 +309,33 @@ public class ChannelstatsImpl extends EObjectImpl implements Channelstats {
             eNotify(new ENotificationImpl(this, Notification.SET, Device_wifi_wifidevice_cst_statsPackage.CHANNELSTATS__ECONTAINER_CHANNELSTATS, newEContainer_channelstats, newEContainer_channelstats));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EList<String> getText() {
+    public EList<String> getText() {
         if (text == null) {
             text = new EDataTypeEList<String>(String.class, this, Device_wifi_wifidevice_cst_statsPackage.CHANNELSTATS__TEXT);
         }
         return text;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Mac getMac() {
+    public Mac getMac() {
         return mac;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public NotificationChain basicSetMac(Mac newMac, NotificationChain msgs) {
+    public NotificationChain basicSetMac(Mac newMac, NotificationChain msgs) {
         Mac oldMac = mac;
         mac = newMac;
         if (eNotificationRequired()) {
@@ -345,12 +345,12 @@ public class ChannelstatsImpl extends EObjectImpl implements Channelstats {
         return msgs;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setMac(Mac newMac) {
+    public void setMac(Mac newMac) {
         if (newMac != mac) {
             NotificationChain msgs = null;
             if (mac != null)
@@ -364,21 +364,21 @@ public class ChannelstatsImpl extends EObjectImpl implements Channelstats {
             eNotify(new ENotificationImpl(this, Notification.SET, Device_wifi_wifidevice_cst_statsPackage.CHANNELSTATS__MAC, newMac, newMac));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Mac_percentage getMac_percentage() {
+    public Mac_percentage getMac_percentage() {
         return mac_percentage;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public NotificationChain basicSetMac_percentage(Mac_percentage newMac_percentage, NotificationChain msgs) {
+    public NotificationChain basicSetMac_percentage(Mac_percentage newMac_percentage, NotificationChain msgs) {
         Mac_percentage oldMac_percentage = mac_percentage;
         mac_percentage = newMac_percentage;
         if (eNotificationRequired()) {
@@ -388,12 +388,12 @@ public class ChannelstatsImpl extends EObjectImpl implements Channelstats {
         return msgs;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setMac_percentage(Mac_percentage newMac_percentage) {
+    public void setMac_percentage(Mac_percentage newMac_percentage) {
         if (newMac_percentage != mac_percentage) {
             NotificationChain msgs = null;
             if (mac_percentage != null)
@@ -407,21 +407,21 @@ public class ChannelstatsImpl extends EObjectImpl implements Channelstats {
             eNotify(new ENotificationImpl(this, Notification.SET, Device_wifi_wifidevice_cst_statsPackage.CHANNELSTATS__MAC_PERCENTAGE, newMac_percentage, newMac_percentage));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Mac_duration getMac_duration() {
+    public Mac_duration getMac_duration() {
         return mac_duration;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public NotificationChain basicSetMac_duration(Mac_duration newMac_duration, NotificationChain msgs) {
+    public NotificationChain basicSetMac_duration(Mac_duration newMac_duration, NotificationChain msgs) {
         Mac_duration oldMac_duration = mac_duration;
         mac_duration = newMac_duration;
         if (eNotificationRequired()) {
@@ -431,12 +431,12 @@ public class ChannelstatsImpl extends EObjectImpl implements Channelstats {
         return msgs;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setMac_duration(Mac_duration newMac_duration) {
+    public void setMac_duration(Mac_duration newMac_duration) {
         if (newMac_duration != mac_duration) {
             NotificationChain msgs = null;
             if (mac_duration != null)
@@ -450,21 +450,21 @@ public class ChannelstatsImpl extends EObjectImpl implements Channelstats {
             eNotify(new ENotificationImpl(this, Notification.SET, Device_wifi_wifidevice_cst_statsPackage.CHANNELSTATS__MAC_DURATION, newMac_duration, newMac_duration));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Phy getPhy() {
+    public Phy getPhy() {
         return phy;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public NotificationChain basicSetPhy(Phy newPhy, NotificationChain msgs) {
+    public NotificationChain basicSetPhy(Phy newPhy, NotificationChain msgs) {
         Phy oldPhy = phy;
         phy = newPhy;
         if (eNotificationRequired()) {
@@ -474,12 +474,12 @@ public class ChannelstatsImpl extends EObjectImpl implements Channelstats {
         return msgs;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setPhy(Phy newPhy) {
+    public void setPhy(Phy newPhy) {
         if (newPhy != phy) {
             NotificationChain msgs = null;
             if (phy != null)
@@ -493,21 +493,21 @@ public class ChannelstatsImpl extends EObjectImpl implements Channelstats {
             eNotify(new ENotificationImpl(this, Notification.SET, Device_wifi_wifidevice_cst_statsPackage.CHANNELSTATS__PHY, newPhy, newPhy));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Perf_counter getPerf_counter() {
+    public Perf_counter getPerf_counter() {
         return perf_counter;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public NotificationChain basicSetPerf_counter(Perf_counter newPerf_counter, NotificationChain msgs) {
+    public NotificationChain basicSetPerf_counter(Perf_counter newPerf_counter, NotificationChain msgs) {
         Perf_counter oldPerf_counter = perf_counter;
         perf_counter = newPerf_counter;
         if (eNotificationRequired()) {
@@ -517,12 +517,12 @@ public class ChannelstatsImpl extends EObjectImpl implements Channelstats {
         return msgs;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setPerf_counter(Perf_counter newPerf_counter) {
+    public void setPerf_counter(Perf_counter newPerf_counter) {
         if (newPerf_counter != perf_counter) {
             NotificationChain msgs = null;
             if (perf_counter != null)
@@ -536,21 +536,21 @@ public class ChannelstatsImpl extends EObjectImpl implements Channelstats {
             eNotify(new ENotificationImpl(this, Notification.SET, Device_wifi_wifidevice_cst_statsPackage.CHANNELSTATS__PERF_COUNTER, newPerf_counter, newPerf_counter));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Neighbourstats getNeighbourstats() {
+    public Neighbourstats getNeighbourstats() {
         return neighbourstats;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public NotificationChain basicSetNeighbourstats(Neighbourstats newNeighbourstats, NotificationChain msgs) {
+    public NotificationChain basicSetNeighbourstats(Neighbourstats newNeighbourstats, NotificationChain msgs) {
         Neighbourstats oldNeighbourstats = neighbourstats;
         neighbourstats = newNeighbourstats;
         if (eNotificationRequired()) {
@@ -560,12 +560,12 @@ public class ChannelstatsImpl extends EObjectImpl implements Channelstats {
         return msgs;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setNeighbourstats(Neighbourstats newNeighbourstats) {
+    public void setNeighbourstats(Neighbourstats newNeighbourstats) {
         if (newNeighbourstats != neighbourstats) {
             NotificationChain msgs = null;
             if (neighbourstats != null)
@@ -579,139 +579,139 @@ public class ChannelstatsImpl extends EObjectImpl implements Channelstats {
             eNotify(new ENotificationImpl(this, Notification.SET, Device_wifi_wifidevice_cst_statsPackage.CHANNELSTATS__NEIGHBOURSTATS, newNeighbourstats, newNeighbourstats));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public String getNode() {
+    public String getNode() {
         return node;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setNode(String newNode) {
+    public void setNode(String newNode) {
         String oldNode = node;
         node = newNode;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Device_wifi_wifidevice_cst_statsPackage.CHANNELSTATS__NODE, oldNode, node));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public double getTime() {
+    public double getTime() {
         return time;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setTime(double newTime) {
+    public void setTime(double newTime) {
         double oldTime = time;
         time = newTime;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Device_wifi_wifidevice_cst_statsPackage.CHANNELSTATS__TIME, oldTime, time));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public int getId() {
+    public int getId() {
         return id;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setId(int newId) {
+    public void setId(int newId) {
         int oldId = id;
         id = newId;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Device_wifi_wifidevice_cst_statsPackage.CHANNELSTATS__ID, oldId, id));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public int getLength() {
+    public int getLength() {
         return length;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setLength(int newLength) {
+    public void setLength(int newLength) {
         int oldLength = length;
         length = newLength;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Device_wifi_wifidevice_cst_statsPackage.CHANNELSTATS__LENGTH, oldLength, length));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public int getHw_duration() {
+    public int getHw_duration() {
         return hw_duration;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setHw_duration(int newHw_duration) {
+    public void setHw_duration(int newHw_duration) {
         int oldHw_duration = hw_duration;
         hw_duration = newHw_duration;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Device_wifi_wifidevice_cst_statsPackage.CHANNELSTATS__HW_DURATION, oldHw_duration, hw_duration));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public String getUnit() {
+    public String getUnit() {
         return unit;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setUnit(String newUnit) {
+    public void setUnit(String newUnit) {
         String oldUnit = unit;
         unit = newUnit;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Device_wifi_wifidevice_cst_statsPackage.CHANNELSTATS__UNIT, oldUnit, unit));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    @Override
+    public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case Device_wifi_wifidevice_cst_statsPackage.CHANNELSTATS__ECONTAINER_CHANNELSTATS:
                 if (eInternalContainer() != null)
@@ -745,13 +745,13 @@ public class ChannelstatsImpl extends EObjectImpl implements Channelstats {
         return super.eInverseAdd(otherEnd, featureID, msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    @Override
+    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case Device_wifi_wifidevice_cst_statsPackage.CHANNELSTATS__ECONTAINER_CHANNELSTATS:
                 return basicSetEContainer_channelstats(null, msgs);
@@ -771,13 +771,13 @@ public class ChannelstatsImpl extends EObjectImpl implements Channelstats {
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+    @Override
+    public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
         switch (eContainerFeatureID()) {
             case Device_wifi_wifidevice_cst_statsPackage.CHANNELSTATS__ECONTAINER_CHANNELSTATS:
                 return eInternalContainer().eInverseRemove(this, Device_wifi_wifidevice_cst_statsPackage.STATS__CHANNELSTATS, Stats.class, msgs);
@@ -785,13 +785,13 @@ public class ChannelstatsImpl extends EObjectImpl implements Channelstats {
         return super.eBasicRemoveFromContainerFeature(msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+    @Override
+    public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
             case Device_wifi_wifidevice_cst_statsPackage.CHANNELSTATS__ECONTAINER_CHANNELSTATS:
                 return getEContainer_channelstats();
@@ -825,14 +825,14 @@ public class ChannelstatsImpl extends EObjectImpl implements Channelstats {
         return super.eGet(featureID, resolve, coreType);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@SuppressWarnings("unchecked")
-	@Override
-	public void eSet(int featureID, Object newValue) {
+    @SuppressWarnings("unchecked")
+    @Override
+    public void eSet(int featureID, Object newValue) {
         switch (featureID) {
             case Device_wifi_wifidevice_cst_statsPackage.CHANNELSTATS__ECONTAINER_CHANNELSTATS:
                 setEContainer_channelstats((Stats)newValue);
@@ -881,13 +881,13 @@ public class ChannelstatsImpl extends EObjectImpl implements Channelstats {
         super.eSet(featureID, newValue);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public void eUnset(int featureID) {
+    @Override
+    public void eUnset(int featureID) {
         switch (featureID) {
             case Device_wifi_wifidevice_cst_statsPackage.CHANNELSTATS__ECONTAINER_CHANNELSTATS:
                 setEContainer_channelstats((Stats)null);
@@ -935,13 +935,13 @@ public class ChannelstatsImpl extends EObjectImpl implements Channelstats {
         super.eUnset(featureID);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public boolean eIsSet(int featureID) {
+    @Override
+    public boolean eIsSet(int featureID) {
         switch (featureID) {
             case Device_wifi_wifidevice_cst_statsPackage.CHANNELSTATS__ECONTAINER_CHANNELSTATS:
                 return getEContainer_channelstats() != null;
@@ -975,13 +975,13 @@ public class ChannelstatsImpl extends EObjectImpl implements Channelstats {
         return super.eIsSet(featureID);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public String toString() {
+    @Override
+    public String toString() {
         if (eIsProxy()) return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());

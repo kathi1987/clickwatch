@@ -17,57 +17,57 @@ import org.eclipse.emf.ecore.EFactory;
  * @generated
  */
 public interface Lt_routesFactory extends EFactory {
-	/**
+    /**
      * The singleton instance of the factory.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	Lt_routesFactory eINSTANCE = de.hub.clickwatch.specificmodels.brn.lt_routes.impl.Lt_routesFactoryImpl.init();
+    Lt_routesFactory eINSTANCE = de.hub.clickwatch.specificmodels.brn.lt_routes.impl.Lt_routesFactoryImpl.init();
 
-	/**
+    /**
      * Returns a new object of class '<em>Link</em>'.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @return a new object of class '<em>Link</em>'.
      * @generated
      */
-	Link createLink();
+    Link createLink();
 
-	/**
+    /**
      * Returns a new object of class '<em>Route</em>'.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @return a new object of class '<em>Route</em>'.
      * @generated
      */
-	Route createRoute();
+    Route createRoute();
 
-	/**
+    /**
      * Returns a new object of class '<em>Routes</em>'.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @return a new object of class '<em>Routes</em>'.
      * @generated
      */
-	Routes createRoutes();
+    Routes createRoutes();
 
-	/**
+    /**
      * Returns a new object of class '<em>Routetable</em>'.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @return a new object of class '<em>Routetable</em>'.
      * @generated
      */
-	Routetable createRoutetable();
+    Routetable createRoutetable();
 
-	/**
+    /**
      * Returns the package supported by this factory.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @return the package supported by this factory.
      * @generated
      */
-	Lt_routesPackage getLt_routesPackage();
+    Lt_routesPackage getLt_routesPackage();
 
 } //Lt_routesFactory

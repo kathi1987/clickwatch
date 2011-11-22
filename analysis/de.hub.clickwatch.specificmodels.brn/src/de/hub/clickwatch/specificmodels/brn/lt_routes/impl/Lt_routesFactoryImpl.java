@@ -23,13 +23,13 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
  * @generated
  */
 public class Lt_routesFactoryImpl extends EFactoryImpl implements Lt_routesFactory {
-	/**
+    /**
      * Creates the default factory implementation.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public static Lt_routesFactory init() {
+    public static Lt_routesFactory init() {
         try {
             Lt_routesFactory theLt_routesFactory = (Lt_routesFactory)EPackage.Registry.INSTANCE.getEFactory("http://de.hub.clickwatch.specificmodels.brn/lt/routes"); 
             if (theLt_routesFactory != null) {
@@ -42,23 +42,23 @@ public class Lt_routesFactoryImpl extends EFactoryImpl implements Lt_routesFacto
         return new Lt_routesFactoryImpl();
     }
 
-	/**
+    /**
      * Creates an instance of the factory.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Lt_routesFactoryImpl() {
+    public Lt_routesFactoryImpl() {
         super();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public EObject create(EClass eClass) {
+    @Override
+    public EObject create(EClass eClass) {
         switch (eClass.getClassifierID()) {
             case Lt_routesPackage.LINK: return createLink();
             case Lt_routesPackage.ROUTE: return createRoute();
@@ -69,63 +69,63 @@ public class Lt_routesFactoryImpl extends EFactoryImpl implements Lt_routesFacto
         }
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Link createLink() {
+    public Link createLink() {
         LinkImpl link = new LinkImpl();
         return link;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Route createRoute() {
+    public Route createRoute() {
         RouteImpl route = new RouteImpl();
         return route;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Routes createRoutes() {
+    public Routes createRoutes() {
         RoutesImpl routes = new RoutesImpl();
         return routes;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Routetable createRoutetable() {
+    public Routetable createRoutetable() {
         RoutetableImpl routetable = new RoutetableImpl();
         return routetable;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Lt_routesPackage getLt_routesPackage() {
+    public Lt_routesPackage getLt_routesPackage() {
         return (Lt_routesPackage)getEPackage();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @deprecated
      * @generated
      */
-	@Deprecated
-	public static Lt_routesPackage getPackage() {
+    @Deprecated
+    public static Lt_routesPackage getPackage() {
         return Lt_routesPackage.eINSTANCE;
     }
 

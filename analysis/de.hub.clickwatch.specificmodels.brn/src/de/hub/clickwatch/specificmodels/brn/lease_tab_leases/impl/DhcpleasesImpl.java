@@ -47,111 +47,111 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * @generated
  */
 public class DhcpleasesImpl extends EObjectImpl implements Dhcpleases {
-	/**
+    /**
      * The cached value of the '{@link #getText() <em>Text</em>}' attribute list.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getText()
      * @generated
      * @ordered
      */
-	protected EList<String> text;
+    protected EList<String> text;
 
-	/**
+    /**
      * The cached value of the '{@link #getClient() <em>Client</em>}' containment reference list.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getClient()
      * @generated
      * @ordered
      */
-	protected EList<Client> client;
+    protected EList<Client> client;
 
-	/**
+    /**
      * The default value of the '{@link #getCount() <em>Count</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getCount()
      * @generated
      * @ordered
      */
-	protected static final int COUNT_EDEFAULT = 0;
+    protected static final int COUNT_EDEFAULT = 0;
 
-	/**
+    /**
      * The cached value of the '{@link #getCount() <em>Count</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getCount()
      * @generated
      * @ordered
      */
-	protected int count = COUNT_EDEFAULT;
+    protected int count = COUNT_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getTime() <em>Time</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getTime()
      * @generated
      * @ordered
      */
-	protected static final double TIME_EDEFAULT = 0.0;
+    protected static final double TIME_EDEFAULT = 0.0;
 
-	/**
+    /**
      * The cached value of the '{@link #getTime() <em>Time</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getTime()
      * @generated
      * @ordered
      */
-	protected double time = TIME_EDEFAULT;
+    protected double time = TIME_EDEFAULT;
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	protected DhcpleasesImpl() {
+    protected DhcpleasesImpl() {
         super();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	protected EClass eStaticClass() {
+    @Override
+    protected EClass eStaticClass() {
         return Lease_tab_leasesPackage.Literals.DHCPLEASES;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Leases getEContainer_dhcpleases() {
+    public Leases getEContainer_dhcpleases() {
         if (eContainerFeatureID() != Lease_tab_leasesPackage.DHCPLEASES__ECONTAINER_DHCPLEASES) return null;
         return (Leases)eContainer();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public NotificationChain basicSetEContainer_dhcpleases(Leases newEContainer_dhcpleases, NotificationChain msgs) {
+    public NotificationChain basicSetEContainer_dhcpleases(Leases newEContainer_dhcpleases, NotificationChain msgs) {
         msgs = eBasicSetContainer((InternalEObject)newEContainer_dhcpleases, Lease_tab_leasesPackage.DHCPLEASES__ECONTAINER_DHCPLEASES, msgs);
         return msgs;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setEContainer_dhcpleases(Leases newEContainer_dhcpleases) {
+    public void setEContainer_dhcpleases(Leases newEContainer_dhcpleases) {
         if (newEContainer_dhcpleases != eInternalContainer() || (eContainerFeatureID() != Lease_tab_leasesPackage.DHCPLEASES__ECONTAINER_DHCPLEASES && newEContainer_dhcpleases != null)) {
             if (EcoreUtil.isAncestor(this, newEContainer_dhcpleases))
                 throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
@@ -167,80 +167,80 @@ public class DhcpleasesImpl extends EObjectImpl implements Dhcpleases {
             eNotify(new ENotificationImpl(this, Notification.SET, Lease_tab_leasesPackage.DHCPLEASES__ECONTAINER_DHCPLEASES, newEContainer_dhcpleases, newEContainer_dhcpleases));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EList<String> getText() {
+    public EList<String> getText() {
         if (text == null) {
             text = new EDataTypeEList<String>(String.class, this, Lease_tab_leasesPackage.DHCPLEASES__TEXT);
         }
         return text;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EList<Client> getClient() {
+    public EList<Client> getClient() {
         if (client == null) {
             client = new EObjectContainmentWithInverseEList<Client>(Client.class, this, Lease_tab_leasesPackage.DHCPLEASES__CLIENT, Lease_tab_leasesPackage.CLIENT__ECONTAINER_CLIENT);
         }
         return client;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public int getCount() {
+    public int getCount() {
         return count;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setCount(int newCount) {
+    public void setCount(int newCount) {
         int oldCount = count;
         count = newCount;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Lease_tab_leasesPackage.DHCPLEASES__COUNT, oldCount, count));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public double getTime() {
+    public double getTime() {
         return time;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setTime(double newTime) {
+    public void setTime(double newTime) {
         double oldTime = time;
         time = newTime;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Lease_tab_leasesPackage.DHCPLEASES__TIME, oldTime, time));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@SuppressWarnings("unchecked")
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    @SuppressWarnings("unchecked")
+    @Override
+    public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case Lease_tab_leasesPackage.DHCPLEASES__ECONTAINER_DHCPLEASES:
                 if (eInternalContainer() != null)
@@ -252,13 +252,13 @@ public class DhcpleasesImpl extends EObjectImpl implements Dhcpleases {
         return super.eInverseAdd(otherEnd, featureID, msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    @Override
+    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case Lease_tab_leasesPackage.DHCPLEASES__ECONTAINER_DHCPLEASES:
                 return basicSetEContainer_dhcpleases(null, msgs);
@@ -268,13 +268,13 @@ public class DhcpleasesImpl extends EObjectImpl implements Dhcpleases {
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+    @Override
+    public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
         switch (eContainerFeatureID()) {
             case Lease_tab_leasesPackage.DHCPLEASES__ECONTAINER_DHCPLEASES:
                 return eInternalContainer().eInverseRemove(this, Lease_tab_leasesPackage.LEASES__DHCPLEASES, Leases.class, msgs);
@@ -282,13 +282,13 @@ public class DhcpleasesImpl extends EObjectImpl implements Dhcpleases {
         return super.eBasicRemoveFromContainerFeature(msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+    @Override
+    public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
             case Lease_tab_leasesPackage.DHCPLEASES__ECONTAINER_DHCPLEASES:
                 return getEContainer_dhcpleases();
@@ -304,14 +304,14 @@ public class DhcpleasesImpl extends EObjectImpl implements Dhcpleases {
         return super.eGet(featureID, resolve, coreType);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@SuppressWarnings("unchecked")
-	@Override
-	public void eSet(int featureID, Object newValue) {
+    @SuppressWarnings("unchecked")
+    @Override
+    public void eSet(int featureID, Object newValue) {
         switch (featureID) {
             case Lease_tab_leasesPackage.DHCPLEASES__ECONTAINER_DHCPLEASES:
                 setEContainer_dhcpleases((Leases)newValue);
@@ -334,13 +334,13 @@ public class DhcpleasesImpl extends EObjectImpl implements Dhcpleases {
         super.eSet(featureID, newValue);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public void eUnset(int featureID) {
+    @Override
+    public void eUnset(int featureID) {
         switch (featureID) {
             case Lease_tab_leasesPackage.DHCPLEASES__ECONTAINER_DHCPLEASES:
                 setEContainer_dhcpleases((Leases)null);
@@ -361,13 +361,13 @@ public class DhcpleasesImpl extends EObjectImpl implements Dhcpleases {
         super.eUnset(featureID);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public boolean eIsSet(int featureID) {
+    @Override
+    public boolean eIsSet(int featureID) {
         switch (featureID) {
             case Lease_tab_leasesPackage.DHCPLEASES__ECONTAINER_DHCPLEASES:
                 return getEContainer_dhcpleases() != null;
@@ -383,13 +383,13 @@ public class DhcpleasesImpl extends EObjectImpl implements Dhcpleases {
         return super.eIsSet(featureID);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public String toString() {
+    @Override
+    public String toString() {
         if (eIsProxy()) return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());

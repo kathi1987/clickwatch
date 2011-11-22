@@ -43,211 +43,211 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * @generated
  */
 public class TxflowImpl extends EObjectImpl implements Txflow {
-	/**
+    /**
      * The default value of the '{@link #getSrc() <em>Src</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getSrc()
      * @generated
      * @ordered
      */
-	protected static final String SRC_EDEFAULT = null;
+    protected static final String SRC_EDEFAULT = null;
 
-	/**
+    /**
      * The cached value of the '{@link #getSrc() <em>Src</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getSrc()
      * @generated
      * @ordered
      */
-	protected String src = SRC_EDEFAULT;
+    protected String src = SRC_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getDst() <em>Dst</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getDst()
      * @generated
      * @ordered
      */
-	protected static final String DST_EDEFAULT = null;
+    protected static final String DST_EDEFAULT = null;
 
-	/**
+    /**
      * The cached value of the '{@link #getDst() <em>Dst</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getDst()
      * @generated
      * @ordered
      */
-	protected String dst = DST_EDEFAULT;
+    protected String dst = DST_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getFlowid() <em>Flowid</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getFlowid()
      * @generated
      * @ordered
      */
-	protected static final int FLOWID_EDEFAULT = 0;
+    protected static final int FLOWID_EDEFAULT = 0;
 
-	/**
+    /**
      * The cached value of the '{@link #getFlowid() <em>Flowid</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getFlowid()
      * @generated
      * @ordered
      */
-	protected int flowid = FLOWID_EDEFAULT;
+    protected int flowid = FLOWID_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getPacket_count() <em>Packet count</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getPacket_count()
      * @generated
      * @ordered
      */
-	protected static final int PACKET_COUNT_EDEFAULT = 0;
+    protected static final int PACKET_COUNT_EDEFAULT = 0;
 
-	/**
+    /**
      * The cached value of the '{@link #getPacket_count() <em>Packet count</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getPacket_count()
      * @generated
      * @ordered
      */
-	protected int packet_count = PACKET_COUNT_EDEFAULT;
+    protected int packet_count = PACKET_COUNT_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getPacket_size() <em>Packet size</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getPacket_size()
      * @generated
      * @ordered
      */
-	protected static final int PACKET_SIZE_EDEFAULT = 0;
+    protected static final int PACKET_SIZE_EDEFAULT = 0;
 
-	/**
+    /**
      * The cached value of the '{@link #getPacket_size() <em>Packet size</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getPacket_size()
      * @generated
      * @ordered
      */
-	protected int packet_size = PACKET_SIZE_EDEFAULT;
+    protected int packet_size = PACKET_SIZE_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getReplies() <em>Replies</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getReplies()
      * @generated
      * @ordered
      */
-	protected static final int REPLIES_EDEFAULT = 0;
+    protected static final int REPLIES_EDEFAULT = 0;
 
-	/**
+    /**
      * The cached value of the '{@link #getReplies() <em>Replies</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getReplies()
      * @generated
      * @ordered
      */
-	protected int replies = REPLIES_EDEFAULT;
+    protected int replies = REPLIES_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getAvg_hops() <em>Avg hops</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getAvg_hops()
      * @generated
      * @ordered
      */
-	protected static final int AVG_HOPS_EDEFAULT = 0;
+    protected static final int AVG_HOPS_EDEFAULT = 0;
 
-	/**
+    /**
      * The cached value of the '{@link #getAvg_hops() <em>Avg hops</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getAvg_hops()
      * @generated
      * @ordered
      */
-	protected int avg_hops = AVG_HOPS_EDEFAULT;
+    protected int avg_hops = AVG_HOPS_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getTime() <em>Time</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getTime()
      * @generated
      * @ordered
      */
-	protected static final int TIME_EDEFAULT = 0;
+    protected static final int TIME_EDEFAULT = 0;
 
-	/**
+    /**
      * The cached value of the '{@link #getTime() <em>Time</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getTime()
      * @generated
      * @ordered
      */
-	protected int time = TIME_EDEFAULT;
+    protected int time = TIME_EDEFAULT;
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	protected TxflowImpl() {
+    protected TxflowImpl() {
         super();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	protected EClass eStaticClass() {
+    @Override
+    protected EClass eStaticClass() {
         return Sf_statsPackage.Literals.TXFLOW;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Flowstats getEContainer_txflow() {
+    public Flowstats getEContainer_txflow() {
         if (eContainerFeatureID() != Sf_statsPackage.TXFLOW__ECONTAINER_TXFLOW) return null;
         return (Flowstats)eContainer();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public NotificationChain basicSetEContainer_txflow(Flowstats newEContainer_txflow, NotificationChain msgs) {
+    public NotificationChain basicSetEContainer_txflow(Flowstats newEContainer_txflow, NotificationChain msgs) {
         msgs = eBasicSetContainer((InternalEObject)newEContainer_txflow, Sf_statsPackage.TXFLOW__ECONTAINER_TXFLOW, msgs);
         return msgs;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setEContainer_txflow(Flowstats newEContainer_txflow) {
+    public void setEContainer_txflow(Flowstats newEContainer_txflow) {
         if (newEContainer_txflow != eInternalContainer() || (eContainerFeatureID() != Sf_statsPackage.TXFLOW__ECONTAINER_TXFLOW && newEContainer_txflow != null)) {
             if (EcoreUtil.isAncestor(this, newEContainer_txflow))
                 throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
@@ -263,181 +263,181 @@ public class TxflowImpl extends EObjectImpl implements Txflow {
             eNotify(new ENotificationImpl(this, Notification.SET, Sf_statsPackage.TXFLOW__ECONTAINER_TXFLOW, newEContainer_txflow, newEContainer_txflow));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public String getSrc() {
+    public String getSrc() {
         return src;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setSrc(String newSrc) {
+    public void setSrc(String newSrc) {
         String oldSrc = src;
         src = newSrc;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Sf_statsPackage.TXFLOW__SRC, oldSrc, src));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public String getDst() {
+    public String getDst() {
         return dst;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setDst(String newDst) {
+    public void setDst(String newDst) {
         String oldDst = dst;
         dst = newDst;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Sf_statsPackage.TXFLOW__DST, oldDst, dst));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public int getFlowid() {
+    public int getFlowid() {
         return flowid;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setFlowid(int newFlowid) {
+    public void setFlowid(int newFlowid) {
         int oldFlowid = flowid;
         flowid = newFlowid;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Sf_statsPackage.TXFLOW__FLOWID, oldFlowid, flowid));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public int getPacket_count() {
+    public int getPacket_count() {
         return packet_count;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setPacket_count(int newPacket_count) {
+    public void setPacket_count(int newPacket_count) {
         int oldPacket_count = packet_count;
         packet_count = newPacket_count;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Sf_statsPackage.TXFLOW__PACKET_COUNT, oldPacket_count, packet_count));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public int getPacket_size() {
+    public int getPacket_size() {
         return packet_size;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setPacket_size(int newPacket_size) {
+    public void setPacket_size(int newPacket_size) {
         int oldPacket_size = packet_size;
         packet_size = newPacket_size;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Sf_statsPackage.TXFLOW__PACKET_SIZE, oldPacket_size, packet_size));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public int getReplies() {
+    public int getReplies() {
         return replies;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setReplies(int newReplies) {
+    public void setReplies(int newReplies) {
         int oldReplies = replies;
         replies = newReplies;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Sf_statsPackage.TXFLOW__REPLIES, oldReplies, replies));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public int getAvg_hops() {
+    public int getAvg_hops() {
         return avg_hops;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setAvg_hops(int newAvg_hops) {
+    public void setAvg_hops(int newAvg_hops) {
         int oldAvg_hops = avg_hops;
         avg_hops = newAvg_hops;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Sf_statsPackage.TXFLOW__AVG_HOPS, oldAvg_hops, avg_hops));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public int getTime() {
+    public int getTime() {
         return time;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setTime(int newTime) {
+    public void setTime(int newTime) {
         int oldTime = time;
         time = newTime;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Sf_statsPackage.TXFLOW__TIME, oldTime, time));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    @Override
+    public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case Sf_statsPackage.TXFLOW__ECONTAINER_TXFLOW:
                 if (eInternalContainer() != null)
@@ -447,13 +447,13 @@ public class TxflowImpl extends EObjectImpl implements Txflow {
         return super.eInverseAdd(otherEnd, featureID, msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    @Override
+    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case Sf_statsPackage.TXFLOW__ECONTAINER_TXFLOW:
                 return basicSetEContainer_txflow(null, msgs);
@@ -461,13 +461,13 @@ public class TxflowImpl extends EObjectImpl implements Txflow {
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+    @Override
+    public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
         switch (eContainerFeatureID()) {
             case Sf_statsPackage.TXFLOW__ECONTAINER_TXFLOW:
                 return eInternalContainer().eInverseRemove(this, Sf_statsPackage.FLOWSTATS__TXFLOW, Flowstats.class, msgs);
@@ -475,13 +475,13 @@ public class TxflowImpl extends EObjectImpl implements Txflow {
         return super.eBasicRemoveFromContainerFeature(msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+    @Override
+    public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
             case Sf_statsPackage.TXFLOW__ECONTAINER_TXFLOW:
                 return getEContainer_txflow();
@@ -505,13 +505,13 @@ public class TxflowImpl extends EObjectImpl implements Txflow {
         return super.eGet(featureID, resolve, coreType);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public void eSet(int featureID, Object newValue) {
+    @Override
+    public void eSet(int featureID, Object newValue) {
         switch (featureID) {
             case Sf_statsPackage.TXFLOW__ECONTAINER_TXFLOW:
                 setEContainer_txflow((Flowstats)newValue);
@@ -544,13 +544,13 @@ public class TxflowImpl extends EObjectImpl implements Txflow {
         super.eSet(featureID, newValue);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public void eUnset(int featureID) {
+    @Override
+    public void eUnset(int featureID) {
         switch (featureID) {
             case Sf_statsPackage.TXFLOW__ECONTAINER_TXFLOW:
                 setEContainer_txflow((Flowstats)null);
@@ -583,13 +583,13 @@ public class TxflowImpl extends EObjectImpl implements Txflow {
         super.eUnset(featureID);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public boolean eIsSet(int featureID) {
+    @Override
+    public boolean eIsSet(int featureID) {
         switch (featureID) {
             case Sf_statsPackage.TXFLOW__ECONTAINER_TXFLOW:
                 return getEContainer_txflow() != null;
@@ -613,13 +613,13 @@ public class TxflowImpl extends EObjectImpl implements Txflow {
         return super.eIsSet(featureID);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public String toString() {
+    @Override
+    public String toString() {
         if (eIsProxy()) return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());

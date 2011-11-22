@@ -34,50 +34,50 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * @generated
  */
 public class StatsImpl extends HandlerImpl implements Stats {
-	/**
+    /**
      * The cached value of the '{@link #getFlowstats() <em>Flowstats</em>}' containment reference.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getFlowstats()
      * @generated
      * @ordered
      */
-	protected Flowstats flowstats;
+    protected Flowstats flowstats;
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	protected StatsImpl() {
+    protected StatsImpl() {
         super();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	protected EClass eStaticClass() {
+    @Override
+    protected EClass eStaticClass() {
         return Sf_statsPackage.Literals.STATS;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Flowstats getFlowstats() {
+    public Flowstats getFlowstats() {
         return flowstats;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public NotificationChain basicSetFlowstats(Flowstats newFlowstats, NotificationChain msgs) {
+    public NotificationChain basicSetFlowstats(Flowstats newFlowstats, NotificationChain msgs) {
         Flowstats oldFlowstats = flowstats;
         flowstats = newFlowstats;
         if (eNotificationRequired()) {
@@ -87,12 +87,12 @@ public class StatsImpl extends HandlerImpl implements Stats {
         return msgs;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setFlowstats(Flowstats newFlowstats) {
+    public void setFlowstats(Flowstats newFlowstats) {
         if (newFlowstats != flowstats) {
             NotificationChain msgs = null;
             if (flowstats != null)
@@ -106,13 +106,13 @@ public class StatsImpl extends HandlerImpl implements Stats {
             eNotify(new ENotificationImpl(this, Notification.SET, Sf_statsPackage.STATS__FLOWSTATS, newFlowstats, newFlowstats));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    @Override
+    public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case Sf_statsPackage.STATS__FLOWSTATS:
                 if (flowstats != null)
@@ -122,13 +122,13 @@ public class StatsImpl extends HandlerImpl implements Stats {
         return super.eInverseAdd(otherEnd, featureID, msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    @Override
+    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case Sf_statsPackage.STATS__FLOWSTATS:
                 return basicSetFlowstats(null, msgs);
@@ -136,13 +136,13 @@ public class StatsImpl extends HandlerImpl implements Stats {
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+    @Override
+    public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
             case Sf_statsPackage.STATS__FLOWSTATS:
                 return getFlowstats();
@@ -150,13 +150,13 @@ public class StatsImpl extends HandlerImpl implements Stats {
         return super.eGet(featureID, resolve, coreType);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public void eSet(int featureID, Object newValue) {
+    @Override
+    public void eSet(int featureID, Object newValue) {
         switch (featureID) {
             case Sf_statsPackage.STATS__FLOWSTATS:
                 setFlowstats((Flowstats)newValue);
@@ -165,13 +165,13 @@ public class StatsImpl extends HandlerImpl implements Stats {
         super.eSet(featureID, newValue);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public void eUnset(int featureID) {
+    @Override
+    public void eUnset(int featureID) {
         switch (featureID) {
             case Sf_statsPackage.STATS__FLOWSTATS:
                 setFlowstats((Flowstats)null);
@@ -180,13 +180,13 @@ public class StatsImpl extends HandlerImpl implements Stats {
         super.eUnset(featureID);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public boolean eIsSet(int featureID) {
+    @Override
+    public boolean eIsSet(int featureID) {
         switch (featureID) {
             case Sf_statsPackage.STATS__FLOWSTATS:
                 return flowstats != null;

@@ -24,25 +24,25 @@ import org.eclipse.emf.ecore.xmi.util.XMLProcessor;
  */
 public class Device_wifi_link_stat_bcast_statsXMLProcessor extends XMLProcessor {
 
-	/**
+    /**
      * Public constructor to instantiate the helper.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Device_wifi_link_stat_bcast_statsXMLProcessor() {
+    public Device_wifi_link_stat_bcast_statsXMLProcessor() {
         super((EPackage.Registry.INSTANCE));
         Device_wifi_link_stat_bcast_statsPackage.eINSTANCE.eClass();
     }
-	
-	/**
+    
+    /**
      * Register for "*" and "xml" file extensions the Device_wifi_link_stat_bcast_statsResourceFactoryImpl factory.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	protected Map<String, Resource.Factory> getRegistrations() {
+    @Override
+    protected Map<String, Resource.Factory> getRegistrations() {
         if (registrations == null) {
             super.getRegistrations();
             registrations.put(XML_EXTENSION, new Device_wifi_link_stat_bcast_statsResourceFactoryImpl());

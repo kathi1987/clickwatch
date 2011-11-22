@@ -18,14 +18,14 @@ import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
  * @generated
  */
 public class Gps_cart_coordResourceImpl extends XMLResourceImpl {
-	/**
+    /**
      * Creates an instance of the resource.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @param uri the URI of the new resource.
      * @generated
      */
-	public Gps_cart_coordResourceImpl(URI uri) {
+    public Gps_cart_coordResourceImpl(URI uri) {
         super(uri);
     }
 

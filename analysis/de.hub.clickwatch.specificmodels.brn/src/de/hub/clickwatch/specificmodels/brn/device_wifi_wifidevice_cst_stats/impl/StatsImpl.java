@@ -34,50 +34,50 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * @generated
  */
 public class StatsImpl extends HandlerImpl implements Stats {
-	/**
+    /**
      * The cached value of the '{@link #getChannelstats() <em>Channelstats</em>}' containment reference.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getChannelstats()
      * @generated
      * @ordered
      */
-	protected Channelstats channelstats;
+    protected Channelstats channelstats;
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	protected StatsImpl() {
+    protected StatsImpl() {
         super();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	protected EClass eStaticClass() {
+    @Override
+    protected EClass eStaticClass() {
         return Device_wifi_wifidevice_cst_statsPackage.Literals.STATS;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Channelstats getChannelstats() {
+    public Channelstats getChannelstats() {
         return channelstats;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public NotificationChain basicSetChannelstats(Channelstats newChannelstats, NotificationChain msgs) {
+    public NotificationChain basicSetChannelstats(Channelstats newChannelstats, NotificationChain msgs) {
         Channelstats oldChannelstats = channelstats;
         channelstats = newChannelstats;
         if (eNotificationRequired()) {
@@ -87,12 +87,12 @@ public class StatsImpl extends HandlerImpl implements Stats {
         return msgs;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setChannelstats(Channelstats newChannelstats) {
+    public void setChannelstats(Channelstats newChannelstats) {
         if (newChannelstats != channelstats) {
             NotificationChain msgs = null;
             if (channelstats != null)
@@ -106,13 +106,13 @@ public class StatsImpl extends HandlerImpl implements Stats {
             eNotify(new ENotificationImpl(this, Notification.SET, Device_wifi_wifidevice_cst_statsPackage.STATS__CHANNELSTATS, newChannelstats, newChannelstats));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    @Override
+    public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case Device_wifi_wifidevice_cst_statsPackage.STATS__CHANNELSTATS:
                 if (channelstats != null)
@@ -122,13 +122,13 @@ public class StatsImpl extends HandlerImpl implements Stats {
         return super.eInverseAdd(otherEnd, featureID, msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    @Override
+    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case Device_wifi_wifidevice_cst_statsPackage.STATS__CHANNELSTATS:
                 return basicSetChannelstats(null, msgs);
@@ -136,13 +136,13 @@ public class StatsImpl extends HandlerImpl implements Stats {
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+    @Override
+    public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
             case Device_wifi_wifidevice_cst_statsPackage.STATS__CHANNELSTATS:
                 return getChannelstats();
@@ -150,13 +150,13 @@ public class StatsImpl extends HandlerImpl implements Stats {
         return super.eGet(featureID, resolve, coreType);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public void eSet(int featureID, Object newValue) {
+    @Override
+    public void eSet(int featureID, Object newValue) {
         switch (featureID) {
             case Device_wifi_wifidevice_cst_statsPackage.STATS__CHANNELSTATS:
                 setChannelstats((Channelstats)newValue);
@@ -165,13 +165,13 @@ public class StatsImpl extends HandlerImpl implements Stats {
         super.eSet(featureID, newValue);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public void eUnset(int featureID) {
+    @Override
+    public void eUnset(int featureID) {
         switch (featureID) {
             case Device_wifi_wifidevice_cst_statsPackage.STATS__CHANNELSTATS:
                 setChannelstats((Channelstats)null);
@@ -180,13 +180,13 @@ public class StatsImpl extends HandlerImpl implements Stats {
         super.eUnset(featureID);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public boolean eIsSet(int featureID) {
+    @Override
+    public boolean eIsSet(int featureID) {
         switch (featureID) {
             case Device_wifi_wifidevice_cst_statsPackage.STATS__CHANNELSTATS:
                 return channelstats != null;

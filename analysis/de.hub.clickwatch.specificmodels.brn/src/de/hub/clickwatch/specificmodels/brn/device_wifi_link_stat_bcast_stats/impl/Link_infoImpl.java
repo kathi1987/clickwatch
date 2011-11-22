@@ -39,131 +39,131 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * @generated
  */
 public class Link_infoImpl extends EObjectImpl implements Link_info {
-	/**
+    /**
      * The default value of the '{@link #getSize() <em>Size</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getSize()
      * @generated
      * @ordered
      */
-	protected static final int SIZE_EDEFAULT = 0;
+    protected static final int SIZE_EDEFAULT = 0;
 
-	/**
+    /**
      * The cached value of the '{@link #getSize() <em>Size</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getSize()
      * @generated
      * @ordered
      */
-	protected int size = SIZE_EDEFAULT;
+    protected int size = SIZE_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getRate() <em>Rate</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getRate()
      * @generated
      * @ordered
      */
-	protected static final int RATE_EDEFAULT = 0;
+    protected static final int RATE_EDEFAULT = 0;
 
-	/**
+    /**
      * The cached value of the '{@link #getRate() <em>Rate</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getRate()
      * @generated
      * @ordered
      */
-	protected int rate = RATE_EDEFAULT;
+    protected int rate = RATE_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getFwd() <em>Fwd</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getFwd()
      * @generated
      * @ordered
      */
-	protected static final int FWD_EDEFAULT = 0;
+    protected static final int FWD_EDEFAULT = 0;
 
-	/**
+    /**
      * The cached value of the '{@link #getFwd() <em>Fwd</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getFwd()
      * @generated
      * @ordered
      */
-	protected int fwd = FWD_EDEFAULT;
+    protected int fwd = FWD_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getRev() <em>Rev</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getRev()
      * @generated
      * @ordered
      */
-	protected static final int REV_EDEFAULT = 0;
+    protected static final int REV_EDEFAULT = 0;
 
-	/**
+    /**
      * The cached value of the '{@link #getRev() <em>Rev</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getRev()
      * @generated
      * @ordered
      */
-	protected int rev = REV_EDEFAULT;
+    protected int rev = REV_EDEFAULT;
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	protected Link_infoImpl() {
+    protected Link_infoImpl() {
         super();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	protected EClass eStaticClass() {
+    @Override
+    protected EClass eStaticClass() {
         return Device_wifi_link_stat_bcast_statsPackage.Literals.LINK_INFO;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Link getEContainer_link_info() {
+    public Link getEContainer_link_info() {
         if (eContainerFeatureID() != Device_wifi_link_stat_bcast_statsPackage.LINK_INFO__ECONTAINER_LINK_INFO) return null;
         return (Link)eContainer();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public NotificationChain basicSetEContainer_link_info(Link newEContainer_link_info, NotificationChain msgs) {
+    public NotificationChain basicSetEContainer_link_info(Link newEContainer_link_info, NotificationChain msgs) {
         msgs = eBasicSetContainer((InternalEObject)newEContainer_link_info, Device_wifi_link_stat_bcast_statsPackage.LINK_INFO__ECONTAINER_LINK_INFO, msgs);
         return msgs;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setEContainer_link_info(Link newEContainer_link_info) {
+    public void setEContainer_link_info(Link newEContainer_link_info) {
         if (newEContainer_link_info != eInternalContainer() || (eContainerFeatureID() != Device_wifi_link_stat_bcast_statsPackage.LINK_INFO__ECONTAINER_LINK_INFO && newEContainer_link_info != null)) {
             if (EcoreUtil.isAncestor(this, newEContainer_link_info))
                 throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
@@ -179,97 +179,97 @@ public class Link_infoImpl extends EObjectImpl implements Link_info {
             eNotify(new ENotificationImpl(this, Notification.SET, Device_wifi_link_stat_bcast_statsPackage.LINK_INFO__ECONTAINER_LINK_INFO, newEContainer_link_info, newEContainer_link_info));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public int getSize() {
+    public int getSize() {
         return size;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setSize(int newSize) {
+    public void setSize(int newSize) {
         int oldSize = size;
         size = newSize;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Device_wifi_link_stat_bcast_statsPackage.LINK_INFO__SIZE, oldSize, size));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public int getRate() {
+    public int getRate() {
         return rate;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setRate(int newRate) {
+    public void setRate(int newRate) {
         int oldRate = rate;
         rate = newRate;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Device_wifi_link_stat_bcast_statsPackage.LINK_INFO__RATE, oldRate, rate));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public int getFwd() {
+    public int getFwd() {
         return fwd;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setFwd(int newFwd) {
+    public void setFwd(int newFwd) {
         int oldFwd = fwd;
         fwd = newFwd;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Device_wifi_link_stat_bcast_statsPackage.LINK_INFO__FWD, oldFwd, fwd));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public int getRev() {
+    public int getRev() {
         return rev;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setRev(int newRev) {
+    public void setRev(int newRev) {
         int oldRev = rev;
         rev = newRev;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Device_wifi_link_stat_bcast_statsPackage.LINK_INFO__REV, oldRev, rev));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    @Override
+    public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case Device_wifi_link_stat_bcast_statsPackage.LINK_INFO__ECONTAINER_LINK_INFO:
                 if (eInternalContainer() != null)
@@ -279,13 +279,13 @@ public class Link_infoImpl extends EObjectImpl implements Link_info {
         return super.eInverseAdd(otherEnd, featureID, msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    @Override
+    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case Device_wifi_link_stat_bcast_statsPackage.LINK_INFO__ECONTAINER_LINK_INFO:
                 return basicSetEContainer_link_info(null, msgs);
@@ -293,13 +293,13 @@ public class Link_infoImpl extends EObjectImpl implements Link_info {
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+    @Override
+    public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
         switch (eContainerFeatureID()) {
             case Device_wifi_link_stat_bcast_statsPackage.LINK_INFO__ECONTAINER_LINK_INFO:
                 return eInternalContainer().eInverseRemove(this, Device_wifi_link_stat_bcast_statsPackage.LINK__LINK_INFO, Link.class, msgs);
@@ -307,13 +307,13 @@ public class Link_infoImpl extends EObjectImpl implements Link_info {
         return super.eBasicRemoveFromContainerFeature(msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+    @Override
+    public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
             case Device_wifi_link_stat_bcast_statsPackage.LINK_INFO__ECONTAINER_LINK_INFO:
                 return getEContainer_link_info();
@@ -329,13 +329,13 @@ public class Link_infoImpl extends EObjectImpl implements Link_info {
         return super.eGet(featureID, resolve, coreType);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public void eSet(int featureID, Object newValue) {
+    @Override
+    public void eSet(int featureID, Object newValue) {
         switch (featureID) {
             case Device_wifi_link_stat_bcast_statsPackage.LINK_INFO__ECONTAINER_LINK_INFO:
                 setEContainer_link_info((Link)newValue);
@@ -356,13 +356,13 @@ public class Link_infoImpl extends EObjectImpl implements Link_info {
         super.eSet(featureID, newValue);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public void eUnset(int featureID) {
+    @Override
+    public void eUnset(int featureID) {
         switch (featureID) {
             case Device_wifi_link_stat_bcast_statsPackage.LINK_INFO__ECONTAINER_LINK_INFO:
                 setEContainer_link_info((Link)null);
@@ -383,13 +383,13 @@ public class Link_infoImpl extends EObjectImpl implements Link_info {
         super.eUnset(featureID);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public boolean eIsSet(int featureID) {
+    @Override
+    public boolean eIsSet(int featureID) {
         switch (featureID) {
             case Device_wifi_link_stat_bcast_statsPackage.LINK_INFO__ECONTAINER_LINK_INFO:
                 return getEContainer_link_info() != null;
@@ -405,13 +405,13 @@ public class Link_infoImpl extends EObjectImpl implements Link_info {
         return super.eIsSet(featureID);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public String toString() {
+    @Override
+    public String toString() {
         if (eIsProxy()) return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());

@@ -22,24 +22,24 @@ import org.eclipse.emf.ecore.xmi.XMLResource;
  * @generated
  */
 public class Lt_routesResourceFactoryImpl extends ResourceFactoryImpl {
-	/**
+    /**
      * Creates an instance of the resource factory.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Lt_routesResourceFactoryImpl() {
+    public Lt_routesResourceFactoryImpl() {
         super();
     }
 
-	/**
+    /**
      * Creates an instance of the resource.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public Resource createResource(URI uri) {
+    @Override
+    public Resource createResource(URI uri) {
         XMLResource result = new Lt_routesResourceImpl(uri);
         result.getDefaultSaveOptions().put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);
         result.getDefaultLoadOptions().put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);

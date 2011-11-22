@@ -23,13 +23,13 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
  * @generated
  */
 public class Device_wifi_wifidevice_cst_statsFactoryImpl extends EFactoryImpl implements Device_wifi_wifidevice_cst_statsFactory {
-	/**
+    /**
      * Creates the default factory implementation.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public static Device_wifi_wifidevice_cst_statsFactory init() {
+    public static Device_wifi_wifidevice_cst_statsFactory init() {
         try {
             Device_wifi_wifidevice_cst_statsFactory theDevice_wifi_wifidevice_cst_statsFactory = (Device_wifi_wifidevice_cst_statsFactory)EPackage.Registry.INSTANCE.getEFactory("http://de.hub.clickwatch.specificmodels.brn/device_wifi/wifidevice/cst/stats"); 
             if (theDevice_wifi_wifidevice_cst_statsFactory != null) {
@@ -42,23 +42,23 @@ public class Device_wifi_wifidevice_cst_statsFactoryImpl extends EFactoryImpl im
         return new Device_wifi_wifidevice_cst_statsFactoryImpl();
     }
 
-	/**
+    /**
      * Creates an instance of the factory.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Device_wifi_wifidevice_cst_statsFactoryImpl() {
+    public Device_wifi_wifidevice_cst_statsFactoryImpl() {
         super();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public EObject create(EClass eClass) {
+    @Override
+    public EObject create(EClass eClass) {
         switch (eClass.getClassifierID()) {
             case Device_wifi_wifidevice_cst_statsPackage.CHANNELSTATS: return createChannelstats();
             case Device_wifi_wifidevice_cst_statsPackage.CTL: return createCtl();
@@ -78,153 +78,153 @@ public class Device_wifi_wifidevice_cst_statsFactoryImpl extends EFactoryImpl im
         }
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Channelstats createChannelstats() {
+    public Channelstats createChannelstats() {
         ChannelstatsImpl channelstats = new ChannelstatsImpl();
         return channelstats;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Ctl createCtl() {
+    public Ctl createCtl() {
         CtlImpl ctl = new CtlImpl();
         return ctl;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Ext createExt() {
+    public Ext createExt() {
         ExtImpl ext = new ExtImpl();
         return ext;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Mac createMac() {
+    public Mac createMac() {
         MacImpl mac = new MacImpl();
         return mac;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Mac_duration createMac_duration() {
+    public Mac_duration createMac_duration() {
         Mac_durationImpl mac_duration = new Mac_durationImpl();
         return mac_duration;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Mac_percentage createMac_percentage() {
+    public Mac_percentage createMac_percentage() {
         Mac_percentageImpl mac_percentage = new Mac_percentageImpl();
         return mac_percentage;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Nb createNb() {
+    public Nb createNb() {
         NbImpl nb = new NbImpl();
         return nb;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Neighbourstats createNeighbourstats() {
+    public Neighbourstats createNeighbourstats() {
         NeighbourstatsImpl neighbourstats = new NeighbourstatsImpl();
         return neighbourstats;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Perf_counter createPerf_counter() {
+    public Perf_counter createPerf_counter() {
         Perf_counterImpl perf_counter = new Perf_counterImpl();
         return perf_counter;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Phy createPhy() {
+    public Phy createPhy() {
         PhyImpl phy = new PhyImpl();
         return phy;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Rssi_extended createRssi_extended() {
+    public Rssi_extended createRssi_extended() {
         Rssi_extendedImpl rssi_extended = new Rssi_extendedImpl();
         return rssi_extended;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Rssi_hist createRssi_hist() {
+    public Rssi_hist createRssi_hist() {
         Rssi_histImpl rssi_hist = new Rssi_histImpl();
         return rssi_hist;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Stats createStats() {
+    public Stats createStats() {
         StatsImpl stats = new StatsImpl();
         return stats;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Device_wifi_wifidevice_cst_statsPackage getDevice_wifi_wifidevice_cst_statsPackage() {
+    public Device_wifi_wifidevice_cst_statsPackage getDevice_wifi_wifidevice_cst_statsPackage() {
         return (Device_wifi_wifidevice_cst_statsPackage)getEPackage();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @deprecated
      * @generated
      */
-	@Deprecated
-	public static Device_wifi_wifidevice_cst_statsPackage getPackage() {
+    @Deprecated
+    public static Device_wifi_wifidevice_cst_statsPackage getPackage() {
         return Device_wifi_wifidevice_cst_statsPackage.eINSTANCE;
     }
 

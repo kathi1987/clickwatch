@@ -30,13 +30,13 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
  * @generated
  */
 public class Sys_info_systeminfoFactoryImpl extends EFactoryImpl implements Sys_info_systeminfoFactory {
-	/**
+    /**
      * Creates the default factory implementation.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public static Sys_info_systeminfoFactory init() {
+    public static Sys_info_systeminfoFactory init() {
         try {
             Sys_info_systeminfoFactory theSys_info_systeminfoFactory = (Sys_info_systeminfoFactory)EPackage.Registry.INSTANCE.getEFactory("http://de.hub.clickwatch.specificmodels.brn/sys_info/systeminfo"); 
             if (theSys_info_systeminfoFactory != null) {
@@ -49,23 +49,23 @@ public class Sys_info_systeminfoFactoryImpl extends EFactoryImpl implements Sys_
         return new Sys_info_systeminfoFactoryImpl();
     }
 
-	/**
+    /**
      * Creates an instance of the factory.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Sys_info_systeminfoFactoryImpl() {
+    public Sys_info_systeminfoFactoryImpl() {
         super();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public EObject create(EClass eClass) {
+    @Override
+    public EObject create(EClass eClass) {
         switch (eClass.getClassifierID()) {
             case Sys_info_systeminfoPackage.CPU_USAGE: return createCpu_usage();
             case Sys_info_systeminfoPackage.LINUX: return createLinux();
@@ -79,93 +79,93 @@ public class Sys_info_systeminfoFactoryImpl extends EFactoryImpl implements Sys_
         }
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Cpu_usage createCpu_usage() {
+    public Cpu_usage createCpu_usage() {
         Cpu_usageImpl cpu_usage = new Cpu_usageImpl();
         return cpu_usage;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Linux createLinux() {
+    public Linux createLinux() {
         LinuxImpl linux = new LinuxImpl();
         return linux;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Loadavg createLoadavg() {
+    public Loadavg createLoadavg() {
         LoadavgImpl loadavg = new LoadavgImpl();
         return loadavg;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Mem createMem() {
+    public Mem createMem() {
         MemImpl mem = new MemImpl();
         return mem;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.System createSystem() {
+    public de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.System createSystem() {
         SystemImpl system = new SystemImpl();
         return system;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Systeminfo createSysteminfo() {
+    public Systeminfo createSysteminfo() {
         SysteminfoImpl systeminfo = new SysteminfoImpl();
         return systeminfo;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Uptime createUptime() {
+    public Uptime createUptime() {
         UptimeImpl uptime = new UptimeImpl();
         return uptime;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Sys_info_systeminfoPackage getSys_info_systeminfoPackage() {
+    public Sys_info_systeminfoPackage getSys_info_systeminfoPackage() {
         return (Sys_info_systeminfoPackage)getEPackage();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @deprecated
      * @generated
      */
-	@Deprecated
-	public static Sys_info_systeminfoPackage getPackage() {
+    @Deprecated
+    public static Sys_info_systeminfoPackage getPackage() {
         return Sys_info_systeminfoPackage.eINSTANCE;
     }
 

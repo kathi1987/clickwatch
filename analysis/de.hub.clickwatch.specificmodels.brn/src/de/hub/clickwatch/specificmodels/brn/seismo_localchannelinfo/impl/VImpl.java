@@ -40,27 +40,27 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * @generated
  */
 public class VImpl extends EObjectImpl implements V {
-	/**
+    /**
      * The default value of the '{@link #getT() <em>T</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getT()
      * @generated
      * @ordered
      */
-	protected static final long T_EDEFAULT = 0L;
+    protected static final long T_EDEFAULT = 0L;
 
-	/**
+    /**
      * The cached value of the '{@link #getT() <em>T</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getT()
      * @generated
      * @ordered
      */
-	protected long t = T_EDEFAULT;
+    protected long t = T_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getS() <em>S</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -83,108 +83,108 @@ public class VImpl extends EObjectImpl implements V {
     /**
      * The default value of the '{@link #getC0() <em>C0</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getC0()
      * @generated
      * @ordered
      */
-	protected static final int C0_EDEFAULT = 0;
+    protected static final int C0_EDEFAULT = 0;
 
-	/**
+    /**
      * The cached value of the '{@link #getC0() <em>C0</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getC0()
      * @generated
      * @ordered
      */
-	protected int c0 = C0_EDEFAULT;
+    protected int c0 = C0_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getC1() <em>C1</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getC1()
      * @generated
      * @ordered
      */
-	protected static final int C1_EDEFAULT = 0;
+    protected static final int C1_EDEFAULT = 0;
 
-	/**
+    /**
      * The cached value of the '{@link #getC1() <em>C1</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getC1()
      * @generated
      * @ordered
      */
-	protected int c1 = C1_EDEFAULT;
+    protected int c1 = C1_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getC2() <em>C2</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getC2()
      * @generated
      * @ordered
      */
-	protected static final int C2_EDEFAULT = 0;
+    protected static final int C2_EDEFAULT = 0;
 
-	/**
+    /**
      * The cached value of the '{@link #getC2() <em>C2</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getC2()
      * @generated
      * @ordered
      */
-	protected int c2 = C2_EDEFAULT;
+    protected int c2 = C2_EDEFAULT;
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	protected VImpl() {
+    protected VImpl() {
         super();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	protected EClass eStaticClass() {
+    @Override
+    protected EClass eStaticClass() {
         return Seismo_localchannelinfoPackage.Literals.V;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public C getEContainer_v() {
+    public C getEContainer_v() {
         if (eContainerFeatureID() != Seismo_localchannelinfoPackage.V__ECONTAINER_V) return null;
         return (C)eContainer();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public NotificationChain basicSetEContainer_v(C newEContainer_v, NotificationChain msgs) {
+    public NotificationChain basicSetEContainer_v(C newEContainer_v, NotificationChain msgs) {
         msgs = eBasicSetContainer((InternalEObject)newEContainer_v, Seismo_localchannelinfoPackage.V__ECONTAINER_V, msgs);
         return msgs;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setEContainer_v(C newEContainer_v) {
+    public void setEContainer_v(C newEContainer_v) {
         if (newEContainer_v != eInternalContainer() || (eContainerFeatureID() != Seismo_localchannelinfoPackage.V__ECONTAINER_V && newEContainer_v != null)) {
             if (EcoreUtil.isAncestor(this, newEContainer_v))
                 throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
@@ -200,28 +200,28 @@ public class VImpl extends EObjectImpl implements V {
             eNotify(new ENotificationImpl(this, Notification.SET, Seismo_localchannelinfoPackage.V__ECONTAINER_V, newEContainer_v, newEContainer_v));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public long getT() {
+    public long getT() {
         return t;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setT(long newT) {
+    public void setT(long newT) {
         long oldT = t;
         t = newT;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Seismo_localchannelinfoPackage.V__T, oldT, t));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -244,74 +244,74 @@ public class VImpl extends EObjectImpl implements V {
 
     /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public int getC0() {
+    public int getC0() {
         return c0;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setC0(int newC0) {
+    public void setC0(int newC0) {
         int oldC0 = c0;
         c0 = newC0;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Seismo_localchannelinfoPackage.V__C0, oldC0, c0));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public int getC1() {
+    public int getC1() {
         return c1;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setC1(int newC1) {
+    public void setC1(int newC1) {
         int oldC1 = c1;
         c1 = newC1;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Seismo_localchannelinfoPackage.V__C1, oldC1, c1));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public int getC2() {
+    public int getC2() {
         return c2;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setC2(int newC2) {
+    public void setC2(int newC2) {
         int oldC2 = c2;
         c2 = newC2;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Seismo_localchannelinfoPackage.V__C2, oldC2, c2));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    @Override
+    public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case Seismo_localchannelinfoPackage.V__ECONTAINER_V:
                 if (eInternalContainer() != null)
@@ -321,13 +321,13 @@ public class VImpl extends EObjectImpl implements V {
         return super.eInverseAdd(otherEnd, featureID, msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    @Override
+    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case Seismo_localchannelinfoPackage.V__ECONTAINER_V:
                 return basicSetEContainer_v(null, msgs);
@@ -335,13 +335,13 @@ public class VImpl extends EObjectImpl implements V {
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+    @Override
+    public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
         switch (eContainerFeatureID()) {
             case Seismo_localchannelinfoPackage.V__ECONTAINER_V:
                 return eInternalContainer().eInverseRemove(this, Seismo_localchannelinfoPackage.C__V, C.class, msgs);
@@ -349,13 +349,13 @@ public class VImpl extends EObjectImpl implements V {
         return super.eBasicRemoveFromContainerFeature(msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+    @Override
+    public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
             case Seismo_localchannelinfoPackage.V__ECONTAINER_V:
                 return getEContainer_v();
@@ -373,13 +373,13 @@ public class VImpl extends EObjectImpl implements V {
         return super.eGet(featureID, resolve, coreType);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public void eSet(int featureID, Object newValue) {
+    @Override
+    public void eSet(int featureID, Object newValue) {
         switch (featureID) {
             case Seismo_localchannelinfoPackage.V__ECONTAINER_V:
                 setEContainer_v((C)newValue);
@@ -403,13 +403,13 @@ public class VImpl extends EObjectImpl implements V {
         super.eSet(featureID, newValue);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public void eUnset(int featureID) {
+    @Override
+    public void eUnset(int featureID) {
         switch (featureID) {
             case Seismo_localchannelinfoPackage.V__ECONTAINER_V:
                 setEContainer_v((C)null);
@@ -433,13 +433,13 @@ public class VImpl extends EObjectImpl implements V {
         super.eUnset(featureID);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public boolean eIsSet(int featureID) {
+    @Override
+    public boolean eIsSet(int featureID) {
         switch (featureID) {
             case Seismo_localchannelinfoPackage.V__ECONTAINER_V:
                 return getEContainer_v() != null;
@@ -457,13 +457,13 @@ public class VImpl extends EObjectImpl implements V {
         return super.eIsSet(featureID);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public String toString() {
+    @Override
+    public String toString() {
         if (eIsProxy()) return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());

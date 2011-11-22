@@ -23,13 +23,13 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
  * @generated
  */
 public class Seismo_localchannelinfoFactoryImpl extends EFactoryImpl implements Seismo_localchannelinfoFactory {
-	/**
+    /**
      * Creates the default factory implementation.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public static Seismo_localchannelinfoFactory init() {
+    public static Seismo_localchannelinfoFactory init() {
         try {
             Seismo_localchannelinfoFactory theSeismo_localchannelinfoFactory = (Seismo_localchannelinfoFactory)EPackage.Registry.INSTANCE.getEFactory("http://de.hub.clickwatch.specificmodels.brn/seismo/localchannelinfo"); 
             if (theSeismo_localchannelinfoFactory != null) {
@@ -42,23 +42,23 @@ public class Seismo_localchannelinfoFactoryImpl extends EFactoryImpl implements 
         return new Seismo_localchannelinfoFactoryImpl();
     }
 
-	/**
+    /**
      * Creates an instance of the factory.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Seismo_localchannelinfoFactoryImpl() {
+    public Seismo_localchannelinfoFactoryImpl() {
         super();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public EObject create(EClass eClass) {
+    @Override
+    public EObject create(EClass eClass) {
         switch (eClass.getClassifierID()) {
             case Seismo_localchannelinfoPackage.C: return createC();
             case Seismo_localchannelinfoPackage.LOCALCHANNELINFO: return createLocalchannelinfo();
@@ -68,53 +68,53 @@ public class Seismo_localchannelinfoFactoryImpl extends EFactoryImpl implements 
         }
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public C createC() {
+    public C createC() {
         CImpl c = new CImpl();
         return c;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Localchannelinfo createLocalchannelinfo() {
+    public Localchannelinfo createLocalchannelinfo() {
         LocalchannelinfoImpl localchannelinfo = new LocalchannelinfoImpl();
         return localchannelinfo;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public V createV() {
+    public V createV() {
         VImpl v = new VImpl();
         return v;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Seismo_localchannelinfoPackage getSeismo_localchannelinfoPackage() {
+    public Seismo_localchannelinfoPackage getSeismo_localchannelinfoPackage() {
         return (Seismo_localchannelinfoPackage)getEPackage();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @deprecated
      * @generated
      */
-	@Deprecated
-	public static Seismo_localchannelinfoPackage getPackage() {
+    @Deprecated
+    public static Seismo_localchannelinfoPackage getPackage() {
         return Seismo_localchannelinfoPackage.eINSTANCE;
     }
 

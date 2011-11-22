@@ -34,50 +34,50 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * @generated
  */
 public class SystemchannelImpl extends HandlerImpl implements Systemchannel {
-	/**
+    /**
      * The cached value of the '{@link #getSetchannel() <em>Setchannel</em>}' containment reference.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getSetchannel()
      * @generated
      * @ordered
      */
-	protected Setchannel setchannel;
+    protected Setchannel setchannel;
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	protected SystemchannelImpl() {
+    protected SystemchannelImpl() {
         super();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	protected EClass eStaticClass() {
+    @Override
+    protected EClass eStaticClass() {
         return Device_wifi_wifidevice_sc_systemchannelPackage.Literals.SYSTEMCHANNEL;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Setchannel getSetchannel() {
+    public Setchannel getSetchannel() {
         return setchannel;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public NotificationChain basicSetSetchannel(Setchannel newSetchannel, NotificationChain msgs) {
+    public NotificationChain basicSetSetchannel(Setchannel newSetchannel, NotificationChain msgs) {
         Setchannel oldSetchannel = setchannel;
         setchannel = newSetchannel;
         if (eNotificationRequired()) {
@@ -87,12 +87,12 @@ public class SystemchannelImpl extends HandlerImpl implements Systemchannel {
         return msgs;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setSetchannel(Setchannel newSetchannel) {
+    public void setSetchannel(Setchannel newSetchannel) {
         if (newSetchannel != setchannel) {
             NotificationChain msgs = null;
             if (setchannel != null)
@@ -106,13 +106,13 @@ public class SystemchannelImpl extends HandlerImpl implements Systemchannel {
             eNotify(new ENotificationImpl(this, Notification.SET, Device_wifi_wifidevice_sc_systemchannelPackage.SYSTEMCHANNEL__SETCHANNEL, newSetchannel, newSetchannel));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    @Override
+    public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case Device_wifi_wifidevice_sc_systemchannelPackage.SYSTEMCHANNEL__SETCHANNEL:
                 if (setchannel != null)
@@ -122,13 +122,13 @@ public class SystemchannelImpl extends HandlerImpl implements Systemchannel {
         return super.eInverseAdd(otherEnd, featureID, msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    @Override
+    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case Device_wifi_wifidevice_sc_systemchannelPackage.SYSTEMCHANNEL__SETCHANNEL:
                 return basicSetSetchannel(null, msgs);
@@ -136,13 +136,13 @@ public class SystemchannelImpl extends HandlerImpl implements Systemchannel {
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+    @Override
+    public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
             case Device_wifi_wifidevice_sc_systemchannelPackage.SYSTEMCHANNEL__SETCHANNEL:
                 return getSetchannel();
@@ -150,13 +150,13 @@ public class SystemchannelImpl extends HandlerImpl implements Systemchannel {
         return super.eGet(featureID, resolve, coreType);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public void eSet(int featureID, Object newValue) {
+    @Override
+    public void eSet(int featureID, Object newValue) {
         switch (featureID) {
             case Device_wifi_wifidevice_sc_systemchannelPackage.SYSTEMCHANNEL__SETCHANNEL:
                 setSetchannel((Setchannel)newValue);
@@ -165,13 +165,13 @@ public class SystemchannelImpl extends HandlerImpl implements Systemchannel {
         super.eSet(featureID, newValue);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public void eUnset(int featureID) {
+    @Override
+    public void eUnset(int featureID) {
         switch (featureID) {
             case Device_wifi_wifidevice_sc_systemchannelPackage.SYSTEMCHANNEL__SETCHANNEL:
                 setSetchannel((Setchannel)null);
@@ -180,13 +180,13 @@ public class SystemchannelImpl extends HandlerImpl implements Systemchannel {
         super.eUnset(featureID);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public boolean eIsSet(int featureID) {
+    @Override
+    public boolean eIsSet(int featureID) {
         switch (featureID) {
             case Device_wifi_wifidevice_sc_systemchannelPackage.SYSTEMCHANNEL__SETCHANNEL:
                 return setchannel != null;

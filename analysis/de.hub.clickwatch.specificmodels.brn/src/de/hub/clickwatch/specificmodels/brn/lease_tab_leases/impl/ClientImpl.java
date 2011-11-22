@@ -41,171 +41,171 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * @generated
  */
 public class ClientImpl extends EObjectImpl implements Client {
-	/**
+    /**
      * The default value of the '{@link #getIp() <em>Ip</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getIp()
      * @generated
      * @ordered
      */
-	protected static final String IP_EDEFAULT = null;
+    protected static final String IP_EDEFAULT = null;
 
-	/**
+    /**
      * The cached value of the '{@link #getIp() <em>Ip</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getIp()
      * @generated
      * @ordered
      */
-	protected String ip = IP_EDEFAULT;
+    protected String ip = IP_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getMac() <em>Mac</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getMac()
      * @generated
      * @ordered
      */
-	protected static final String MAC_EDEFAULT = null;
+    protected static final String MAC_EDEFAULT = null;
 
-	/**
+    /**
      * The cached value of the '{@link #getMac() <em>Mac</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getMac()
      * @generated
      * @ordered
      */
-	protected String mac = MAC_EDEFAULT;
+    protected String mac = MAC_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getStart() <em>Start</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getStart()
      * @generated
      * @ordered
      */
-	protected static final int START_EDEFAULT = 0;
+    protected static final int START_EDEFAULT = 0;
 
-	/**
+    /**
      * The cached value of the '{@link #getStart() <em>Start</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getStart()
      * @generated
      * @ordered
      */
-	protected int start = START_EDEFAULT;
+    protected int start = START_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getEnd() <em>End</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getEnd()
      * @generated
      * @ordered
      */
-	protected static final int END_EDEFAULT = 0;
+    protected static final int END_EDEFAULT = 0;
 
-	/**
+    /**
      * The cached value of the '{@link #getEnd() <em>End</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getEnd()
      * @generated
      * @ordered
      */
-	protected int end = END_EDEFAULT;
+    protected int end = END_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getDuration() <em>Duration</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getDuration()
      * @generated
      * @ordered
      */
-	protected static final int DURATION_EDEFAULT = 0;
+    protected static final int DURATION_EDEFAULT = 0;
 
-	/**
+    /**
      * The cached value of the '{@link #getDuration() <em>Duration</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getDuration()
      * @generated
      * @ordered
      */
-	protected int duration = DURATION_EDEFAULT;
+    protected int duration = DURATION_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getTime_left() <em>Time left</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getTime_left()
      * @generated
      * @ordered
      */
-	protected static final int TIME_LEFT_EDEFAULT = 0;
+    protected static final int TIME_LEFT_EDEFAULT = 0;
 
-	/**
+    /**
      * The cached value of the '{@link #getTime_left() <em>Time left</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getTime_left()
      * @generated
      * @ordered
      */
-	protected int time_left = TIME_LEFT_EDEFAULT;
+    protected int time_left = TIME_LEFT_EDEFAULT;
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	protected ClientImpl() {
+    protected ClientImpl() {
         super();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	protected EClass eStaticClass() {
+    @Override
+    protected EClass eStaticClass() {
         return Lease_tab_leasesPackage.Literals.CLIENT;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Dhcpleases getEContainer_client() {
+    public Dhcpleases getEContainer_client() {
         if (eContainerFeatureID() != Lease_tab_leasesPackage.CLIENT__ECONTAINER_CLIENT) return null;
         return (Dhcpleases)eContainer();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public NotificationChain basicSetEContainer_client(Dhcpleases newEContainer_client, NotificationChain msgs) {
+    public NotificationChain basicSetEContainer_client(Dhcpleases newEContainer_client, NotificationChain msgs) {
         msgs = eBasicSetContainer((InternalEObject)newEContainer_client, Lease_tab_leasesPackage.CLIENT__ECONTAINER_CLIENT, msgs);
         return msgs;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setEContainer_client(Dhcpleases newEContainer_client) {
+    public void setEContainer_client(Dhcpleases newEContainer_client) {
         if (newEContainer_client != eInternalContainer() || (eContainerFeatureID() != Lease_tab_leasesPackage.CLIENT__ECONTAINER_CLIENT && newEContainer_client != null)) {
             if (EcoreUtil.isAncestor(this, newEContainer_client))
                 throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
@@ -221,139 +221,139 @@ public class ClientImpl extends EObjectImpl implements Client {
             eNotify(new ENotificationImpl(this, Notification.SET, Lease_tab_leasesPackage.CLIENT__ECONTAINER_CLIENT, newEContainer_client, newEContainer_client));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public String getIp() {
+    public String getIp() {
         return ip;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setIp(String newIp) {
+    public void setIp(String newIp) {
         String oldIp = ip;
         ip = newIp;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Lease_tab_leasesPackage.CLIENT__IP, oldIp, ip));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public String getMac() {
+    public String getMac() {
         return mac;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setMac(String newMac) {
+    public void setMac(String newMac) {
         String oldMac = mac;
         mac = newMac;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Lease_tab_leasesPackage.CLIENT__MAC, oldMac, mac));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public int getStart() {
+    public int getStart() {
         return start;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setStart(int newStart) {
+    public void setStart(int newStart) {
         int oldStart = start;
         start = newStart;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Lease_tab_leasesPackage.CLIENT__START, oldStart, start));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public int getEnd() {
+    public int getEnd() {
         return end;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setEnd(int newEnd) {
+    public void setEnd(int newEnd) {
         int oldEnd = end;
         end = newEnd;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Lease_tab_leasesPackage.CLIENT__END, oldEnd, end));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public int getDuration() {
+    public int getDuration() {
         return duration;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setDuration(int newDuration) {
+    public void setDuration(int newDuration) {
         int oldDuration = duration;
         duration = newDuration;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Lease_tab_leasesPackage.CLIENT__DURATION, oldDuration, duration));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public int getTime_left() {
+    public int getTime_left() {
         return time_left;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setTime_left(int newTime_left) {
+    public void setTime_left(int newTime_left) {
         int oldTime_left = time_left;
         time_left = newTime_left;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Lease_tab_leasesPackage.CLIENT__TIME_LEFT, oldTime_left, time_left));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    @Override
+    public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case Lease_tab_leasesPackage.CLIENT__ECONTAINER_CLIENT:
                 if (eInternalContainer() != null)
@@ -363,13 +363,13 @@ public class ClientImpl extends EObjectImpl implements Client {
         return super.eInverseAdd(otherEnd, featureID, msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    @Override
+    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case Lease_tab_leasesPackage.CLIENT__ECONTAINER_CLIENT:
                 return basicSetEContainer_client(null, msgs);
@@ -377,13 +377,13 @@ public class ClientImpl extends EObjectImpl implements Client {
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+    @Override
+    public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
         switch (eContainerFeatureID()) {
             case Lease_tab_leasesPackage.CLIENT__ECONTAINER_CLIENT:
                 return eInternalContainer().eInverseRemove(this, Lease_tab_leasesPackage.DHCPLEASES__CLIENT, Dhcpleases.class, msgs);
@@ -391,13 +391,13 @@ public class ClientImpl extends EObjectImpl implements Client {
         return super.eBasicRemoveFromContainerFeature(msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+    @Override
+    public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
             case Lease_tab_leasesPackage.CLIENT__ECONTAINER_CLIENT:
                 return getEContainer_client();
@@ -417,13 +417,13 @@ public class ClientImpl extends EObjectImpl implements Client {
         return super.eGet(featureID, resolve, coreType);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public void eSet(int featureID, Object newValue) {
+    @Override
+    public void eSet(int featureID, Object newValue) {
         switch (featureID) {
             case Lease_tab_leasesPackage.CLIENT__ECONTAINER_CLIENT:
                 setEContainer_client((Dhcpleases)newValue);
@@ -450,13 +450,13 @@ public class ClientImpl extends EObjectImpl implements Client {
         super.eSet(featureID, newValue);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public void eUnset(int featureID) {
+    @Override
+    public void eUnset(int featureID) {
         switch (featureID) {
             case Lease_tab_leasesPackage.CLIENT__ECONTAINER_CLIENT:
                 setEContainer_client((Dhcpleases)null);
@@ -483,13 +483,13 @@ public class ClientImpl extends EObjectImpl implements Client {
         super.eUnset(featureID);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public boolean eIsSet(int featureID) {
+    @Override
+    public boolean eIsSet(int featureID) {
         switch (featureID) {
             case Lease_tab_leasesPackage.CLIENT__ECONTAINER_CLIENT:
                 return getEContainer_client() != null;
@@ -509,13 +509,13 @@ public class ClientImpl extends EObjectImpl implements Client {
         return super.eIsSet(featureID);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public String toString() {
+    @Override
+    public String toString() {
         if (eIsProxy()) return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());

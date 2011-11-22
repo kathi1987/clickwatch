@@ -34,50 +34,50 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * @generated
  */
 public class RoutesImpl extends HandlerImpl implements Routes {
-	/**
+    /**
      * The cached value of the '{@link #getRoutetable() <em>Routetable</em>}' containment reference.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getRoutetable()
      * @generated
      * @ordered
      */
-	protected Routetable routetable;
+    protected Routetable routetable;
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	protected RoutesImpl() {
+    protected RoutesImpl() {
         super();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	protected EClass eStaticClass() {
+    @Override
+    protected EClass eStaticClass() {
         return Lt_routesPackage.Literals.ROUTES;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Routetable getRoutetable() {
+    public Routetable getRoutetable() {
         return routetable;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public NotificationChain basicSetRoutetable(Routetable newRoutetable, NotificationChain msgs) {
+    public NotificationChain basicSetRoutetable(Routetable newRoutetable, NotificationChain msgs) {
         Routetable oldRoutetable = routetable;
         routetable = newRoutetable;
         if (eNotificationRequired()) {
@@ -87,12 +87,12 @@ public class RoutesImpl extends HandlerImpl implements Routes {
         return msgs;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setRoutetable(Routetable newRoutetable) {
+    public void setRoutetable(Routetable newRoutetable) {
         if (newRoutetable != routetable) {
             NotificationChain msgs = null;
             if (routetable != null)
@@ -106,13 +106,13 @@ public class RoutesImpl extends HandlerImpl implements Routes {
             eNotify(new ENotificationImpl(this, Notification.SET, Lt_routesPackage.ROUTES__ROUTETABLE, newRoutetable, newRoutetable));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    @Override
+    public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case Lt_routesPackage.ROUTES__ROUTETABLE:
                 if (routetable != null)
@@ -122,13 +122,13 @@ public class RoutesImpl extends HandlerImpl implements Routes {
         return super.eInverseAdd(otherEnd, featureID, msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    @Override
+    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case Lt_routesPackage.ROUTES__ROUTETABLE:
                 return basicSetRoutetable(null, msgs);
@@ -136,13 +136,13 @@ public class RoutesImpl extends HandlerImpl implements Routes {
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+    @Override
+    public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
             case Lt_routesPackage.ROUTES__ROUTETABLE:
                 return getRoutetable();
@@ -150,13 +150,13 @@ public class RoutesImpl extends HandlerImpl implements Routes {
         return super.eGet(featureID, resolve, coreType);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public void eSet(int featureID, Object newValue) {
+    @Override
+    public void eSet(int featureID, Object newValue) {
         switch (featureID) {
             case Lt_routesPackage.ROUTES__ROUTETABLE:
                 setRoutetable((Routetable)newValue);
@@ -165,13 +165,13 @@ public class RoutesImpl extends HandlerImpl implements Routes {
         super.eSet(featureID, newValue);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public void eUnset(int featureID) {
+    @Override
+    public void eUnset(int featureID) {
         switch (featureID) {
             case Lt_routesPackage.ROUTES__ROUTETABLE:
                 setRoutetable((Routetable)null);
@@ -180,13 +180,13 @@ public class RoutesImpl extends HandlerImpl implements Routes {
         super.eUnset(featureID);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public boolean eIsSet(int featureID) {
+    @Override
+    public boolean eIsSet(int featureID) {
         switch (featureID) {
             case Lt_routesPackage.ROUTES__ROUTETABLE:
                 return routetable != null;

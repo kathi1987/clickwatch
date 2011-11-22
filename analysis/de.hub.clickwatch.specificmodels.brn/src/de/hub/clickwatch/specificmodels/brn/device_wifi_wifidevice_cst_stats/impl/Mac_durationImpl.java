@@ -43,211 +43,211 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * @generated
  */
 public class Mac_durationImpl extends EObjectImpl implements Mac_duration {
-	/**
+    /**
      * The default value of the '{@link #getBusy() <em>Busy</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getBusy()
      * @generated
      * @ordered
      */
-	protected static final int BUSY_EDEFAULT = 0;
+    protected static final int BUSY_EDEFAULT = 0;
 
-	/**
+    /**
      * The cached value of the '{@link #getBusy() <em>Busy</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getBusy()
      * @generated
      * @ordered
      */
-	protected int busy = BUSY_EDEFAULT;
+    protected int busy = BUSY_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getRx() <em>Rx</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getRx()
      * @generated
      * @ordered
      */
-	protected static final int RX_EDEFAULT = 0;
+    protected static final int RX_EDEFAULT = 0;
 
-	/**
+    /**
      * The cached value of the '{@link #getRx() <em>Rx</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getRx()
      * @generated
      * @ordered
      */
-	protected int rx = RX_EDEFAULT;
+    protected int rx = RX_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getTx() <em>Tx</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getTx()
      * @generated
      * @ordered
      */
-	protected static final int TX_EDEFAULT = 0;
+    protected static final int TX_EDEFAULT = 0;
 
-	/**
+    /**
      * The cached value of the '{@link #getTx() <em>Tx</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getTx()
      * @generated
      * @ordered
      */
-	protected int tx = TX_EDEFAULT;
+    protected int tx = TX_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getNoerr_rx() <em>Noerr rx</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getNoerr_rx()
      * @generated
      * @ordered
      */
-	protected static final int NOERR_RX_EDEFAULT = 0;
+    protected static final int NOERR_RX_EDEFAULT = 0;
 
-	/**
+    /**
      * The cached value of the '{@link #getNoerr_rx() <em>Noerr rx</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getNoerr_rx()
      * @generated
      * @ordered
      */
-	protected int noerr_rx = NOERR_RX_EDEFAULT;
+    protected int noerr_rx = NOERR_RX_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getCrc_rx() <em>Crc rx</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getCrc_rx()
      * @generated
      * @ordered
      */
-	protected static final int CRC_RX_EDEFAULT = 0;
+    protected static final int CRC_RX_EDEFAULT = 0;
 
-	/**
+    /**
      * The cached value of the '{@link #getCrc_rx() <em>Crc rx</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getCrc_rx()
      * @generated
      * @ordered
      */
-	protected int crc_rx = CRC_RX_EDEFAULT;
+    protected int crc_rx = CRC_RX_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getPhy_rx() <em>Phy rx</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getPhy_rx()
      * @generated
      * @ordered
      */
-	protected static final int PHY_RX_EDEFAULT = 0;
+    protected static final int PHY_RX_EDEFAULT = 0;
 
-	/**
+    /**
      * The cached value of the '{@link #getPhy_rx() <em>Phy rx</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getPhy_rx()
      * @generated
      * @ordered
      */
-	protected int phy_rx = PHY_RX_EDEFAULT;
+    protected int phy_rx = PHY_RX_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getUnknown_err_rx() <em>Unknown err rx</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getUnknown_err_rx()
      * @generated
      * @ordered
      */
-	protected static final int UNKNOWN_ERR_RX_EDEFAULT = 0;
+    protected static final int UNKNOWN_ERR_RX_EDEFAULT = 0;
 
-	/**
+    /**
      * The cached value of the '{@link #getUnknown_err_rx() <em>Unknown err rx</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getUnknown_err_rx()
      * @generated
      * @ordered
      */
-	protected int unknown_err_rx = UNKNOWN_ERR_RX_EDEFAULT;
+    protected int unknown_err_rx = UNKNOWN_ERR_RX_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getUnit() <em>Unit</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getUnit()
      * @generated
      * @ordered
      */
-	protected static final String UNIT_EDEFAULT = null;
+    protected static final String UNIT_EDEFAULT = null;
 
-	/**
+    /**
      * The cached value of the '{@link #getUnit() <em>Unit</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getUnit()
      * @generated
      * @ordered
      */
-	protected String unit = UNIT_EDEFAULT;
+    protected String unit = UNIT_EDEFAULT;
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	protected Mac_durationImpl() {
+    protected Mac_durationImpl() {
         super();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	protected EClass eStaticClass() {
+    @Override
+    protected EClass eStaticClass() {
         return Device_wifi_wifidevice_cst_statsPackage.Literals.MAC_DURATION;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Channelstats getEContainer_mac_duration() {
+    public Channelstats getEContainer_mac_duration() {
         if (eContainerFeatureID() != Device_wifi_wifidevice_cst_statsPackage.MAC_DURATION__ECONTAINER_MAC_DURATION) return null;
         return (Channelstats)eContainer();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public NotificationChain basicSetEContainer_mac_duration(Channelstats newEContainer_mac_duration, NotificationChain msgs) {
+    public NotificationChain basicSetEContainer_mac_duration(Channelstats newEContainer_mac_duration, NotificationChain msgs) {
         msgs = eBasicSetContainer((InternalEObject)newEContainer_mac_duration, Device_wifi_wifidevice_cst_statsPackage.MAC_DURATION__ECONTAINER_MAC_DURATION, msgs);
         return msgs;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setEContainer_mac_duration(Channelstats newEContainer_mac_duration) {
+    public void setEContainer_mac_duration(Channelstats newEContainer_mac_duration) {
         if (newEContainer_mac_duration != eInternalContainer() || (eContainerFeatureID() != Device_wifi_wifidevice_cst_statsPackage.MAC_DURATION__ECONTAINER_MAC_DURATION && newEContainer_mac_duration != null)) {
             if (EcoreUtil.isAncestor(this, newEContainer_mac_duration))
                 throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
@@ -263,181 +263,181 @@ public class Mac_durationImpl extends EObjectImpl implements Mac_duration {
             eNotify(new ENotificationImpl(this, Notification.SET, Device_wifi_wifidevice_cst_statsPackage.MAC_DURATION__ECONTAINER_MAC_DURATION, newEContainer_mac_duration, newEContainer_mac_duration));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public int getBusy() {
+    public int getBusy() {
         return busy;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setBusy(int newBusy) {
+    public void setBusy(int newBusy) {
         int oldBusy = busy;
         busy = newBusy;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Device_wifi_wifidevice_cst_statsPackage.MAC_DURATION__BUSY, oldBusy, busy));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public int getRx() {
+    public int getRx() {
         return rx;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setRx(int newRx) {
+    public void setRx(int newRx) {
         int oldRx = rx;
         rx = newRx;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Device_wifi_wifidevice_cst_statsPackage.MAC_DURATION__RX, oldRx, rx));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public int getTx() {
+    public int getTx() {
         return tx;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setTx(int newTx) {
+    public void setTx(int newTx) {
         int oldTx = tx;
         tx = newTx;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Device_wifi_wifidevice_cst_statsPackage.MAC_DURATION__TX, oldTx, tx));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public int getNoerr_rx() {
+    public int getNoerr_rx() {
         return noerr_rx;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setNoerr_rx(int newNoerr_rx) {
+    public void setNoerr_rx(int newNoerr_rx) {
         int oldNoerr_rx = noerr_rx;
         noerr_rx = newNoerr_rx;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Device_wifi_wifidevice_cst_statsPackage.MAC_DURATION__NOERR_RX, oldNoerr_rx, noerr_rx));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public int getCrc_rx() {
+    public int getCrc_rx() {
         return crc_rx;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setCrc_rx(int newCrc_rx) {
+    public void setCrc_rx(int newCrc_rx) {
         int oldCrc_rx = crc_rx;
         crc_rx = newCrc_rx;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Device_wifi_wifidevice_cst_statsPackage.MAC_DURATION__CRC_RX, oldCrc_rx, crc_rx));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public int getPhy_rx() {
+    public int getPhy_rx() {
         return phy_rx;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setPhy_rx(int newPhy_rx) {
+    public void setPhy_rx(int newPhy_rx) {
         int oldPhy_rx = phy_rx;
         phy_rx = newPhy_rx;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Device_wifi_wifidevice_cst_statsPackage.MAC_DURATION__PHY_RX, oldPhy_rx, phy_rx));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public int getUnknown_err_rx() {
+    public int getUnknown_err_rx() {
         return unknown_err_rx;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setUnknown_err_rx(int newUnknown_err_rx) {
+    public void setUnknown_err_rx(int newUnknown_err_rx) {
         int oldUnknown_err_rx = unknown_err_rx;
         unknown_err_rx = newUnknown_err_rx;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Device_wifi_wifidevice_cst_statsPackage.MAC_DURATION__UNKNOWN_ERR_RX, oldUnknown_err_rx, unknown_err_rx));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public String getUnit() {
+    public String getUnit() {
         return unit;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setUnit(String newUnit) {
+    public void setUnit(String newUnit) {
         String oldUnit = unit;
         unit = newUnit;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Device_wifi_wifidevice_cst_statsPackage.MAC_DURATION__UNIT, oldUnit, unit));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    @Override
+    public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case Device_wifi_wifidevice_cst_statsPackage.MAC_DURATION__ECONTAINER_MAC_DURATION:
                 if (eInternalContainer() != null)
@@ -447,13 +447,13 @@ public class Mac_durationImpl extends EObjectImpl implements Mac_duration {
         return super.eInverseAdd(otherEnd, featureID, msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    @Override
+    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case Device_wifi_wifidevice_cst_statsPackage.MAC_DURATION__ECONTAINER_MAC_DURATION:
                 return basicSetEContainer_mac_duration(null, msgs);
@@ -461,13 +461,13 @@ public class Mac_durationImpl extends EObjectImpl implements Mac_duration {
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+    @Override
+    public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
         switch (eContainerFeatureID()) {
             case Device_wifi_wifidevice_cst_statsPackage.MAC_DURATION__ECONTAINER_MAC_DURATION:
                 return eInternalContainer().eInverseRemove(this, Device_wifi_wifidevice_cst_statsPackage.CHANNELSTATS__MAC_DURATION, Channelstats.class, msgs);
@@ -475,13 +475,13 @@ public class Mac_durationImpl extends EObjectImpl implements Mac_duration {
         return super.eBasicRemoveFromContainerFeature(msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+    @Override
+    public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
             case Device_wifi_wifidevice_cst_statsPackage.MAC_DURATION__ECONTAINER_MAC_DURATION:
                 return getEContainer_mac_duration();
@@ -505,13 +505,13 @@ public class Mac_durationImpl extends EObjectImpl implements Mac_duration {
         return super.eGet(featureID, resolve, coreType);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public void eSet(int featureID, Object newValue) {
+    @Override
+    public void eSet(int featureID, Object newValue) {
         switch (featureID) {
             case Device_wifi_wifidevice_cst_statsPackage.MAC_DURATION__ECONTAINER_MAC_DURATION:
                 setEContainer_mac_duration((Channelstats)newValue);
@@ -544,13 +544,13 @@ public class Mac_durationImpl extends EObjectImpl implements Mac_duration {
         super.eSet(featureID, newValue);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public void eUnset(int featureID) {
+    @Override
+    public void eUnset(int featureID) {
         switch (featureID) {
             case Device_wifi_wifidevice_cst_statsPackage.MAC_DURATION__ECONTAINER_MAC_DURATION:
                 setEContainer_mac_duration((Channelstats)null);
@@ -583,13 +583,13 @@ public class Mac_durationImpl extends EObjectImpl implements Mac_duration {
         super.eUnset(featureID);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public boolean eIsSet(int featureID) {
+    @Override
+    public boolean eIsSet(int featureID) {
         switch (featureID) {
             case Device_wifi_wifidevice_cst_statsPackage.MAC_DURATION__ECONTAINER_MAC_DURATION:
                 return getEContainer_mac_duration() != null;
@@ -613,13 +613,13 @@ public class Mac_durationImpl extends EObjectImpl implements Mac_duration {
         return super.eIsSet(featureID);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public String toString() {
+    @Override
+    public String toString() {
         if (eIsProxy()) return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());

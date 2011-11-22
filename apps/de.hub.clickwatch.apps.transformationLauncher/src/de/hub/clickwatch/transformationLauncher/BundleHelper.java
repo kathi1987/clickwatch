@@ -58,10 +58,12 @@ public class BundleHelper {
 			// if its already installed, refresh it (maybe the code changed)
 			if (retBundle != null) {
 				retBundle.update();
-			} else
+			} else{
 				retBundle = PluginActivator.getInstance().getBundle()
 						.getBundleContext()
 						.installBundle(bundleLocation + bundleIdentifier);
+			}
+				
 
 			Dictionary<String, String> dict = retBundle.getHeaders();
 

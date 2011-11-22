@@ -77,7 +77,9 @@ import de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.Sys_info_systemi
 import de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.impl.Sys_info_systeminfoPackageImpl;
 
 import de.hub.clickwatch.specificmodels.brn.tsi_syncinfo.Tsi_syncinfoPackage;
+
 import de.hub.clickwatch.specificmodels.brn.tsi_syncinfo.impl.Tsi_syncinfoPackageImpl;
+
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
@@ -92,98 +94,98 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
  * @generated
  */
 public class Device_wifi_wifidevice_cst_statsPackageImpl extends EPackageImpl implements Device_wifi_wifidevice_cst_statsPackage {
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	private EClass channelstatsEClass = null;
+    private EClass channelstatsEClass = null;
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	private EClass ctlEClass = null;
+    private EClass ctlEClass = null;
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	private EClass extEClass = null;
+    private EClass extEClass = null;
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	private EClass macEClass = null;
+    private EClass macEClass = null;
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	private EClass mac_durationEClass = null;
+    private EClass mac_durationEClass = null;
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	private EClass mac_percentageEClass = null;
+    private EClass mac_percentageEClass = null;
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	private EClass nbEClass = null;
+    private EClass nbEClass = null;
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	private EClass neighbourstatsEClass = null;
+    private EClass neighbourstatsEClass = null;
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	private EClass perf_counterEClass = null;
+    private EClass perf_counterEClass = null;
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	private EClass phyEClass = null;
+    private EClass phyEClass = null;
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	private EClass rssi_extendedEClass = null;
+    private EClass rssi_extendedEClass = null;
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	private EClass rssi_histEClass = null;
+    private EClass rssi_histEClass = null;
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	private EClass statsEClass = null;
+    private EClass statsEClass = null;
 
-	/**
+    /**
      * Creates an instance of the model <b>Package</b>, registered with
      * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
      * package URI value.
@@ -192,36 +194,36 @@ public class Device_wifi_wifidevice_cst_statsPackageImpl extends EPackageImpl im
      * initialization of the package, or returns the registered package,
      * if one already exists.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see org.eclipse.emf.ecore.EPackage.Registry
      * @see de.hub.clickwatch.specificmodels.brn.device_wifi_wifidevice_cst_stats.Device_wifi_wifidevice_cst_statsPackage#eNS_URI
      * @see #init()
      * @generated
      */
-	private Device_wifi_wifidevice_cst_statsPackageImpl() {
+    private Device_wifi_wifidevice_cst_statsPackageImpl() {
         super(eNS_URI, Device_wifi_wifidevice_cst_statsFactory.eINSTANCE);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	private static boolean isInited = false;
+    private static boolean isInited = false;
 
-	/**
+    /**
      * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
      * 
      * <p>This method is used to initialize {@link Device_wifi_wifidevice_cst_statsPackage#eINSTANCE} when that field is accessed.
      * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #eNS_URI
      * @see #createPackageContents()
      * @see #initializePackageContents()
      * @generated
      */
-	public static Device_wifi_wifidevice_cst_statsPackage init() {
+    public static Device_wifi_wifidevice_cst_statsPackage init() {
         if (isInited) return (Device_wifi_wifidevice_cst_statsPackage)EPackage.Registry.INSTANCE.getEPackage(Device_wifi_wifidevice_cst_statsPackage.eNS_URI);
 
         // Obtain or create and register package
@@ -291,1092 +293,1092 @@ public class Device_wifi_wifidevice_cst_statsPackageImpl extends EPackageImpl im
         return theDevice_wifi_wifidevice_cst_statsPackage;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EClass getChannelstats() {
+    public EClass getChannelstats() {
         return channelstatsEClass;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EReference getChannelstats_EContainer_channelstats() {
+    public EReference getChannelstats_EContainer_channelstats() {
         return (EReference)channelstatsEClass.getEStructuralFeatures().get(0);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getChannelstats_Text() {
+    public EAttribute getChannelstats_Text() {
         return (EAttribute)channelstatsEClass.getEStructuralFeatures().get(1);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EReference getChannelstats_Mac() {
+    public EReference getChannelstats_Mac() {
         return (EReference)channelstatsEClass.getEStructuralFeatures().get(2);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EReference getChannelstats_Mac_percentage() {
+    public EReference getChannelstats_Mac_percentage() {
         return (EReference)channelstatsEClass.getEStructuralFeatures().get(3);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EReference getChannelstats_Mac_duration() {
+    public EReference getChannelstats_Mac_duration() {
         return (EReference)channelstatsEClass.getEStructuralFeatures().get(4);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EReference getChannelstats_Phy() {
+    public EReference getChannelstats_Phy() {
         return (EReference)channelstatsEClass.getEStructuralFeatures().get(5);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EReference getChannelstats_Perf_counter() {
+    public EReference getChannelstats_Perf_counter() {
         return (EReference)channelstatsEClass.getEStructuralFeatures().get(6);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EReference getChannelstats_Neighbourstats() {
+    public EReference getChannelstats_Neighbourstats() {
         return (EReference)channelstatsEClass.getEStructuralFeatures().get(7);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getChannelstats_Node() {
+    public EAttribute getChannelstats_Node() {
         return (EAttribute)channelstatsEClass.getEStructuralFeatures().get(8);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getChannelstats_Time() {
+    public EAttribute getChannelstats_Time() {
         return (EAttribute)channelstatsEClass.getEStructuralFeatures().get(9);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getChannelstats_Id() {
+    public EAttribute getChannelstats_Id() {
         return (EAttribute)channelstatsEClass.getEStructuralFeatures().get(10);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getChannelstats_Length() {
+    public EAttribute getChannelstats_Length() {
         return (EAttribute)channelstatsEClass.getEStructuralFeatures().get(11);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getChannelstats_Hw_duration() {
+    public EAttribute getChannelstats_Hw_duration() {
         return (EAttribute)channelstatsEClass.getEStructuralFeatures().get(12);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getChannelstats_Unit() {
+    public EAttribute getChannelstats_Unit() {
         return (EAttribute)channelstatsEClass.getEStructuralFeatures().get(13);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EClass getCtl() {
+    public EClass getCtl() {
         return ctlEClass;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EReference getCtl_EContainer_ctl() {
+    public EReference getCtl_EContainer_ctl() {
         return (EReference)ctlEClass.getEStructuralFeatures().get(0);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getCtl_Rssi0() {
+    public EAttribute getCtl_Rssi0() {
         return (EAttribute)ctlEClass.getEStructuralFeatures().get(1);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getCtl_Rssi1() {
+    public EAttribute getCtl_Rssi1() {
         return (EAttribute)ctlEClass.getEStructuralFeatures().get(2);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getCtl_Rssi2() {
+    public EAttribute getCtl_Rssi2() {
         return (EAttribute)ctlEClass.getEStructuralFeatures().get(3);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EClass getExt() {
+    public EClass getExt() {
         return extEClass;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EReference getExt_EContainer_ext() {
+    public EReference getExt_EContainer_ext() {
         return (EReference)extEClass.getEStructuralFeatures().get(0);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getExt_Rssi0() {
+    public EAttribute getExt_Rssi0() {
         return (EAttribute)extEClass.getEStructuralFeatures().get(1);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getExt_Rssi1() {
+    public EAttribute getExt_Rssi1() {
         return (EAttribute)extEClass.getEStructuralFeatures().get(2);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getExt_Rssi2() {
+    public EAttribute getExt_Rssi2() {
         return (EAttribute)extEClass.getEStructuralFeatures().get(3);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EClass getMac() {
+    public EClass getMac() {
         return macEClass;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EReference getMac_EContainer_mac() {
+    public EReference getMac_EContainer_mac() {
         return (EReference)macEClass.getEStructuralFeatures().get(0);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getMac_Packets() {
+    public EAttribute getMac_Packets() {
         return (EAttribute)macEClass.getEStructuralFeatures().get(1);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getMac_Rx_pkt() {
+    public EAttribute getMac_Rx_pkt() {
         return (EAttribute)macEClass.getEStructuralFeatures().get(2);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getMac_No_err_pkt() {
+    public EAttribute getMac_No_err_pkt() {
         return (EAttribute)macEClass.getEStructuralFeatures().get(3);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getMac_Crc_err_pkt() {
+    public EAttribute getMac_Crc_err_pkt() {
         return (EAttribute)macEClass.getEStructuralFeatures().get(4);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getMac_Phy_err_pkt() {
+    public EAttribute getMac_Phy_err_pkt() {
         return (EAttribute)macEClass.getEStructuralFeatures().get(5);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getMac_Unknown_err_pkt() {
+    public EAttribute getMac_Unknown_err_pkt() {
         return (EAttribute)macEClass.getEStructuralFeatures().get(6);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getMac_Tx_pkt() {
+    public EAttribute getMac_Tx_pkt() {
         return (EAttribute)macEClass.getEStructuralFeatures().get(7);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getMac_Rx_unicast_pkt() {
+    public EAttribute getMac_Rx_unicast_pkt() {
         return (EAttribute)macEClass.getEStructuralFeatures().get(8);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getMac_Rx_retry_pkt() {
+    public EAttribute getMac_Rx_retry_pkt() {
         return (EAttribute)macEClass.getEStructuralFeatures().get(9);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getMac_Rx_bcast_pkt() {
+    public EAttribute getMac_Rx_bcast_pkt() {
         return (EAttribute)macEClass.getEStructuralFeatures().get(10);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getMac_Rx_bytes() {
+    public EAttribute getMac_Rx_bytes() {
         return (EAttribute)macEClass.getEStructuralFeatures().get(11);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getMac_Tx_unicast_pkt() {
+    public EAttribute getMac_Tx_unicast_pkt() {
         return (EAttribute)macEClass.getEStructuralFeatures().get(12);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getMac_Tx_retry_pkt() {
+    public EAttribute getMac_Tx_retry_pkt() {
         return (EAttribute)macEClass.getEStructuralFeatures().get(13);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getMac_Tx_bcast_pkt() {
+    public EAttribute getMac_Tx_bcast_pkt() {
         return (EAttribute)macEClass.getEStructuralFeatures().get(14);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getMac_Tx_bytes() {
+    public EAttribute getMac_Tx_bytes() {
         return (EAttribute)macEClass.getEStructuralFeatures().get(15);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getMac_Zero_err_pkt() {
+    public EAttribute getMac_Zero_err_pkt() {
         return (EAttribute)macEClass.getEStructuralFeatures().get(16);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getMac_Last_packet_time() {
+    public EAttribute getMac_Last_packet_time() {
         return (EAttribute)macEClass.getEStructuralFeatures().get(17);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getMac_No_src() {
+    public EAttribute getMac_No_src() {
         return (EAttribute)macEClass.getEStructuralFeatures().get(18);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EClass getMac_duration() {
+    public EClass getMac_duration() {
         return mac_durationEClass;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EReference getMac_duration_EContainer_mac_duration() {
+    public EReference getMac_duration_EContainer_mac_duration() {
         return (EReference)mac_durationEClass.getEStructuralFeatures().get(0);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getMac_duration_Busy() {
+    public EAttribute getMac_duration_Busy() {
         return (EAttribute)mac_durationEClass.getEStructuralFeatures().get(1);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getMac_duration_Rx() {
+    public EAttribute getMac_duration_Rx() {
         return (EAttribute)mac_durationEClass.getEStructuralFeatures().get(2);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getMac_duration_Tx() {
+    public EAttribute getMac_duration_Tx() {
         return (EAttribute)mac_durationEClass.getEStructuralFeatures().get(3);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getMac_duration_Noerr_rx() {
+    public EAttribute getMac_duration_Noerr_rx() {
         return (EAttribute)mac_durationEClass.getEStructuralFeatures().get(4);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getMac_duration_Crc_rx() {
+    public EAttribute getMac_duration_Crc_rx() {
         return (EAttribute)mac_durationEClass.getEStructuralFeatures().get(5);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getMac_duration_Phy_rx() {
+    public EAttribute getMac_duration_Phy_rx() {
         return (EAttribute)mac_durationEClass.getEStructuralFeatures().get(6);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getMac_duration_Unknown_err_rx() {
+    public EAttribute getMac_duration_Unknown_err_rx() {
         return (EAttribute)mac_durationEClass.getEStructuralFeatures().get(7);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getMac_duration_Unit() {
+    public EAttribute getMac_duration_Unit() {
         return (EAttribute)mac_durationEClass.getEStructuralFeatures().get(8);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EClass getMac_percentage() {
+    public EClass getMac_percentage() {
         return mac_percentageEClass;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EReference getMac_percentage_EContainer_mac_percentage() {
+    public EReference getMac_percentage_EContainer_mac_percentage() {
         return (EReference)mac_percentageEClass.getEStructuralFeatures().get(0);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getMac_percentage_Busy() {
+    public EAttribute getMac_percentage_Busy() {
         return (EAttribute)mac_percentageEClass.getEStructuralFeatures().get(1);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getMac_percentage_Rx() {
+    public EAttribute getMac_percentage_Rx() {
         return (EAttribute)mac_percentageEClass.getEStructuralFeatures().get(2);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getMac_percentage_Tx() {
+    public EAttribute getMac_percentage_Tx() {
         return (EAttribute)mac_percentageEClass.getEStructuralFeatures().get(3);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getMac_percentage_Noerr_rx() {
+    public EAttribute getMac_percentage_Noerr_rx() {
         return (EAttribute)mac_percentageEClass.getEStructuralFeatures().get(4);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getMac_percentage_Crc_rx() {
+    public EAttribute getMac_percentage_Crc_rx() {
         return (EAttribute)mac_percentageEClass.getEStructuralFeatures().get(5);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getMac_percentage_Phy_rx() {
+    public EAttribute getMac_percentage_Phy_rx() {
         return (EAttribute)mac_percentageEClass.getEStructuralFeatures().get(6);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getMac_percentage_Unknown_err_rx() {
+    public EAttribute getMac_percentage_Unknown_err_rx() {
         return (EAttribute)mac_percentageEClass.getEStructuralFeatures().get(7);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getMac_percentage_Unit() {
+    public EAttribute getMac_percentage_Unit() {
         return (EAttribute)mac_percentageEClass.getEStructuralFeatures().get(8);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EClass getNb() {
+    public EClass getNb() {
         return nbEClass;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EReference getNb_EContainer_nb() {
+    public EReference getNb_EContainer_nb() {
         return (EReference)nbEClass.getEStructuralFeatures().get(0);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getNb_Text() {
+    public EAttribute getNb_Text() {
         return (EAttribute)nbEClass.getEStructuralFeatures().get(1);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EReference getNb_Rssi_extended() {
+    public EReference getNb_Rssi_extended() {
         return (EReference)nbEClass.getEStructuralFeatures().get(2);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EReference getNb_Rssi_hist() {
+    public EReference getNb_Rssi_hist() {
         return (EReference)nbEClass.getEStructuralFeatures().get(3);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getNb_Addr() {
+    public EAttribute getNb_Addr() {
         return (EAttribute)nbEClass.getEStructuralFeatures().get(4);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getNb_Rssi() {
+    public EAttribute getNb_Rssi() {
         return (EAttribute)nbEClass.getEStructuralFeatures().get(5);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getNb_Std_rssi() {
+    public EAttribute getNb_Std_rssi() {
         return (EAttribute)nbEClass.getEStructuralFeatures().get(6);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getNb_Min_rssi() {
+    public EAttribute getNb_Min_rssi() {
         return (EAttribute)nbEClass.getEStructuralFeatures().get(7);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getNb_Max_rssi() {
+    public EAttribute getNb_Max_rssi() {
         return (EAttribute)nbEClass.getEStructuralFeatures().get(8);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getNb_Pkt_cnt() {
+    public EAttribute getNb_Pkt_cnt() {
         return (EAttribute)nbEClass.getEStructuralFeatures().get(9);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getNb_Rx_bytes() {
+    public EAttribute getNb_Rx_bytes() {
         return (EAttribute)nbEClass.getEStructuralFeatures().get(10);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EClass getNeighbourstats() {
+    public EClass getNeighbourstats() {
         return neighbourstatsEClass;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EReference getNeighbourstats_EContainer_neighbourstats() {
+    public EReference getNeighbourstats_EContainer_neighbourstats() {
         return (EReference)neighbourstatsEClass.getEStructuralFeatures().get(0);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getNeighbourstats_Text() {
+    public EAttribute getNeighbourstats_Text() {
         return (EAttribute)neighbourstatsEClass.getEStructuralFeatures().get(1);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EReference getNeighbourstats_Nb() {
+    public EReference getNeighbourstats_Nb() {
         return (EReference)neighbourstatsEClass.getEStructuralFeatures().get(2);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EClass getPerf_counter() {
+    public EClass getPerf_counter() {
         return perf_counterEClass;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EReference getPerf_counter_EContainer_perf_counter() {
+    public EReference getPerf_counter_EContainer_perf_counter() {
         return (EReference)perf_counterEClass.getEStructuralFeatures().get(0);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getPerf_counter_Cycles() {
+    public EAttribute getPerf_counter_Cycles() {
         return (EAttribute)perf_counterEClass.getEStructuralFeatures().get(1);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getPerf_counter_Busy_cycles() {
+    public EAttribute getPerf_counter_Busy_cycles() {
         return (EAttribute)perf_counterEClass.getEStructuralFeatures().get(2);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getPerf_counter_Rx_cycles() {
+    public EAttribute getPerf_counter_Rx_cycles() {
         return (EAttribute)perf_counterEClass.getEStructuralFeatures().get(3);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getPerf_counter_Tx_cycles() {
+    public EAttribute getPerf_counter_Tx_cycles() {
         return (EAttribute)perf_counterEClass.getEStructuralFeatures().get(4);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EClass getPhy() {
+    public EClass getPhy() {
         return phyEClass;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EReference getPhy_EContainer_phy() {
+    public EReference getPhy_EContainer_phy() {
         return (EReference)phyEClass.getEStructuralFeatures().get(0);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getPhy_Hwbusy() {
+    public EAttribute getPhy_Hwbusy() {
         return (EAttribute)phyEClass.getEStructuralFeatures().get(1);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getPhy_Hwrx() {
+    public EAttribute getPhy_Hwrx() {
         return (EAttribute)phyEClass.getEStructuralFeatures().get(2);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getPhy_Hwtx() {
+    public EAttribute getPhy_Hwtx() {
         return (EAttribute)phyEClass.getEStructuralFeatures().get(3);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getPhy_Last_hw_stat_time() {
+    public EAttribute getPhy_Last_hw_stat_time() {
         return (EAttribute)phyEClass.getEStructuralFeatures().get(4);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getPhy_Hw_stats_count() {
+    public EAttribute getPhy_Hw_stats_count() {
         return (EAttribute)phyEClass.getEStructuralFeatures().get(5);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getPhy_Avg_noise() {
+    public EAttribute getPhy_Avg_noise() {
         return (EAttribute)phyEClass.getEStructuralFeatures().get(6);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getPhy_Std_noise() {
+    public EAttribute getPhy_Std_noise() {
         return (EAttribute)phyEClass.getEStructuralFeatures().get(7);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getPhy_Avg_rssi() {
+    public EAttribute getPhy_Avg_rssi() {
         return (EAttribute)phyEClass.getEStructuralFeatures().get(8);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getPhy_Std_rssi() {
+    public EAttribute getPhy_Std_rssi() {
         return (EAttribute)phyEClass.getEStructuralFeatures().get(9);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getPhy_Ctl_rssi0() {
+    public EAttribute getPhy_Ctl_rssi0() {
         return (EAttribute)phyEClass.getEStructuralFeatures().get(10);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getPhy_Ctl_rssi1() {
+    public EAttribute getPhy_Ctl_rssi1() {
         return (EAttribute)phyEClass.getEStructuralFeatures().get(11);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getPhy_Ctl_rssi2() {
+    public EAttribute getPhy_Ctl_rssi2() {
         return (EAttribute)phyEClass.getEStructuralFeatures().get(12);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getPhy_Ext_rssi0() {
+    public EAttribute getPhy_Ext_rssi0() {
         return (EAttribute)phyEClass.getEStructuralFeatures().get(13);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getPhy_Ext_rssi1() {
+    public EAttribute getPhy_Ext_rssi1() {
         return (EAttribute)phyEClass.getEStructuralFeatures().get(14);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getPhy_Ext_rssi2() {
+    public EAttribute getPhy_Ext_rssi2() {
         return (EAttribute)phyEClass.getEStructuralFeatures().get(15);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getPhy_Channel() {
+    public EAttribute getPhy_Channel() {
         return (EAttribute)phyEClass.getEStructuralFeatures().get(16);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EClass getRssi_extended() {
+    public EClass getRssi_extended() {
         return rssi_extendedEClass;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EReference getRssi_extended_EContainer_rssi_extended() {
+    public EReference getRssi_extended_EContainer_rssi_extended() {
         return (EReference)rssi_extendedEClass.getEStructuralFeatures().get(0);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getRssi_extended_Text() {
+    public EAttribute getRssi_extended_Text() {
         return (EAttribute)rssi_extendedEClass.getEStructuralFeatures().get(1);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EReference getRssi_extended_Ctl() {
+    public EReference getRssi_extended_Ctl() {
         return (EReference)rssi_extendedEClass.getEStructuralFeatures().get(2);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EReference getRssi_extended_Ext() {
+    public EReference getRssi_extended_Ext() {
         return (EReference)rssi_extendedEClass.getEStructuralFeatures().get(3);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EClass getRssi_hist() {
+    public EClass getRssi_hist() {
         return rssi_histEClass;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EReference getRssi_hist_EContainer_rssi_hist() {
+    public EReference getRssi_hist_EContainer_rssi_hist() {
         return (EReference)rssi_histEClass.getEStructuralFeatures().get(0);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getRssi_hist_Size() {
+    public EAttribute getRssi_hist_Size() {
         return (EAttribute)rssi_histEClass.getEStructuralFeatures().get(1);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getRssi_hist_Max_size() {
+    public EAttribute getRssi_hist_Max_size() {
         return (EAttribute)rssi_histEClass.getEStructuralFeatures().get(2);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getRssi_hist_Overflow() {
+    public EAttribute getRssi_hist_Overflow() {
         return (EAttribute)rssi_histEClass.getEStructuralFeatures().get(3);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EAttribute getRssi_hist_Values() {
+    public EAttribute getRssi_hist_Values() {
         return (EAttribute)rssi_histEClass.getEStructuralFeatures().get(4);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EClass getStats() {
+    public EClass getStats() {
         return statsEClass;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EReference getStats_Channelstats() {
+    public EReference getStats_Channelstats() {
         return (EReference)statsEClass.getEStructuralFeatures().get(0);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Device_wifi_wifidevice_cst_statsFactory getDevice_wifi_wifidevice_cst_statsFactory() {
+    public Device_wifi_wifidevice_cst_statsFactory getDevice_wifi_wifidevice_cst_statsFactory() {
         return (Device_wifi_wifidevice_cst_statsFactory)getEFactoryInstance();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	private boolean isCreated = false;
+    private boolean isCreated = false;
 
-	/**
+    /**
      * Creates the meta-model objects for the package.  This method is
      * guarded to have no affect on any invocation but its first.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void createPackageContents() {
+    public void createPackageContents() {
         if (isCreated) return;
         isCreated = true;
 
@@ -1513,21 +1515,21 @@ public class Device_wifi_wifidevice_cst_statsPackageImpl extends EPackageImpl im
         createEReference(statsEClass, STATS__CHANNELSTATS);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	private boolean isInitialized = false;
+    private boolean isInitialized = false;
 
-	/**
+    /**
      * Complete the initialization of the package and its meta-model.  This
      * method is guarded to have no affect on any invocation but its first.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void initializePackageContents() {
+    public void initializePackageContents() {
         if (isInitialized) return;
         isInitialized = true;
 
@@ -1683,13 +1685,13 @@ public class Device_wifi_wifidevice_cst_statsPackageImpl extends EPackageImpl im
         createDeAnnotations();
     }
 
-	/**
+    /**
      * Initializes the annotations for <b>http://de.hub.clickwatch.specificmodels</b>.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	protected void createDeAnnotations() {
+    protected void createDeAnnotations() {
         String source = "http://de.hub.clickwatch.specificmodels";		
         addAnnotation
           (this, 

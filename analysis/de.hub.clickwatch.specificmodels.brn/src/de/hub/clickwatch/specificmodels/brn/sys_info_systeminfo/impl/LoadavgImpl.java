@@ -37,111 +37,111 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * @generated
  */
 public class LoadavgImpl extends EObjectImpl implements Loadavg {
-	/**
+    /**
      * The default value of the '{@link #getOnemin() <em>Onemin</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getOnemin()
      * @generated
      * @ordered
      */
-	protected static final double ONEMIN_EDEFAULT = 0.0;
+    protected static final double ONEMIN_EDEFAULT = 0.0;
 
-	/**
+    /**
      * The cached value of the '{@link #getOnemin() <em>Onemin</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getOnemin()
      * @generated
      * @ordered
      */
-	protected double onemin = ONEMIN_EDEFAULT;
+    protected double onemin = ONEMIN_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getFivemin() <em>Fivemin</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getFivemin()
      * @generated
      * @ordered
      */
-	protected static final double FIVEMIN_EDEFAULT = 0.0;
+    protected static final double FIVEMIN_EDEFAULT = 0.0;
 
-	/**
+    /**
      * The cached value of the '{@link #getFivemin() <em>Fivemin</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getFivemin()
      * @generated
      * @ordered
      */
-	protected double fivemin = FIVEMIN_EDEFAULT;
+    protected double fivemin = FIVEMIN_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getFifteen() <em>Fifteen</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getFifteen()
      * @generated
      * @ordered
      */
-	protected static final double FIFTEEN_EDEFAULT = 0.0;
+    protected static final double FIFTEEN_EDEFAULT = 0.0;
 
-	/**
+    /**
      * The cached value of the '{@link #getFifteen() <em>Fifteen</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getFifteen()
      * @generated
      * @ordered
      */
-	protected double fifteen = FIFTEEN_EDEFAULT;
+    protected double fifteen = FIFTEEN_EDEFAULT;
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	protected LoadavgImpl() {
+    protected LoadavgImpl() {
         super();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	protected EClass eStaticClass() {
+    @Override
+    protected EClass eStaticClass() {
         return Sys_info_systeminfoPackage.Literals.LOADAVG;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.System getEContainer_loadavg() {
+    public de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.System getEContainer_loadavg() {
         if (eContainerFeatureID() != Sys_info_systeminfoPackage.LOADAVG__ECONTAINER_LOADAVG) return null;
         return (de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.System)eContainer();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public NotificationChain basicSetEContainer_loadavg(de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.System newEContainer_loadavg, NotificationChain msgs) {
+    public NotificationChain basicSetEContainer_loadavg(de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.System newEContainer_loadavg, NotificationChain msgs) {
         msgs = eBasicSetContainer((InternalEObject)newEContainer_loadavg, Sys_info_systeminfoPackage.LOADAVG__ECONTAINER_LOADAVG, msgs);
         return msgs;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setEContainer_loadavg(de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.System newEContainer_loadavg) {
+    public void setEContainer_loadavg(de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.System newEContainer_loadavg) {
         if (newEContainer_loadavg != eInternalContainer() || (eContainerFeatureID() != Sys_info_systeminfoPackage.LOADAVG__ECONTAINER_LOADAVG && newEContainer_loadavg != null)) {
             if (EcoreUtil.isAncestor(this, newEContainer_loadavg))
                 throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
@@ -157,76 +157,76 @@ public class LoadavgImpl extends EObjectImpl implements Loadavg {
             eNotify(new ENotificationImpl(this, Notification.SET, Sys_info_systeminfoPackage.LOADAVG__ECONTAINER_LOADAVG, newEContainer_loadavg, newEContainer_loadavg));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public double getOnemin() {
+    public double getOnemin() {
         return onemin;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setOnemin(double newOnemin) {
+    public void setOnemin(double newOnemin) {
         double oldOnemin = onemin;
         onemin = newOnemin;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Sys_info_systeminfoPackage.LOADAVG__ONEMIN, oldOnemin, onemin));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public double getFivemin() {
+    public double getFivemin() {
         return fivemin;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setFivemin(double newFivemin) {
+    public void setFivemin(double newFivemin) {
         double oldFivemin = fivemin;
         fivemin = newFivemin;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Sys_info_systeminfoPackage.LOADAVG__FIVEMIN, oldFivemin, fivemin));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public double getFifteen() {
+    public double getFifteen() {
         return fifteen;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setFifteen(double newFifteen) {
+    public void setFifteen(double newFifteen) {
         double oldFifteen = fifteen;
         fifteen = newFifteen;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Sys_info_systeminfoPackage.LOADAVG__FIFTEEN, oldFifteen, fifteen));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    @Override
+    public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case Sys_info_systeminfoPackage.LOADAVG__ECONTAINER_LOADAVG:
                 if (eInternalContainer() != null)
@@ -236,13 +236,13 @@ public class LoadavgImpl extends EObjectImpl implements Loadavg {
         return super.eInverseAdd(otherEnd, featureID, msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    @Override
+    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case Sys_info_systeminfoPackage.LOADAVG__ECONTAINER_LOADAVG:
                 return basicSetEContainer_loadavg(null, msgs);
@@ -250,13 +250,13 @@ public class LoadavgImpl extends EObjectImpl implements Loadavg {
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+    @Override
+    public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
         switch (eContainerFeatureID()) {
             case Sys_info_systeminfoPackage.LOADAVG__ECONTAINER_LOADAVG:
                 return eInternalContainer().eInverseRemove(this, Sys_info_systeminfoPackage.SYSTEM__LOADAVG, de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.System.class, msgs);
@@ -264,13 +264,13 @@ public class LoadavgImpl extends EObjectImpl implements Loadavg {
         return super.eBasicRemoveFromContainerFeature(msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+    @Override
+    public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
             case Sys_info_systeminfoPackage.LOADAVG__ECONTAINER_LOADAVG:
                 return getEContainer_loadavg();
@@ -284,13 +284,13 @@ public class LoadavgImpl extends EObjectImpl implements Loadavg {
         return super.eGet(featureID, resolve, coreType);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public void eSet(int featureID, Object newValue) {
+    @Override
+    public void eSet(int featureID, Object newValue) {
         switch (featureID) {
             case Sys_info_systeminfoPackage.LOADAVG__ECONTAINER_LOADAVG:
                 setEContainer_loadavg((de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.System)newValue);
@@ -308,13 +308,13 @@ public class LoadavgImpl extends EObjectImpl implements Loadavg {
         super.eSet(featureID, newValue);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public void eUnset(int featureID) {
+    @Override
+    public void eUnset(int featureID) {
         switch (featureID) {
             case Sys_info_systeminfoPackage.LOADAVG__ECONTAINER_LOADAVG:
                 setEContainer_loadavg((de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.System)null);
@@ -332,13 +332,13 @@ public class LoadavgImpl extends EObjectImpl implements Loadavg {
         super.eUnset(featureID);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public boolean eIsSet(int featureID) {
+    @Override
+    public boolean eIsSet(int featureID) {
         switch (featureID) {
             case Sys_info_systeminfoPackage.LOADAVG__ECONTAINER_LOADAVG:
                 return getEContainer_loadavg() != null;
@@ -352,13 +352,13 @@ public class LoadavgImpl extends EObjectImpl implements Loadavg {
         return super.eIsSet(featureID);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public String toString() {
+    @Override
+    public String toString() {
         if (eIsProxy()) return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());

@@ -36,91 +36,91 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * @generated
  */
 public class UptimeImpl extends EObjectImpl implements Uptime {
-	/**
+    /**
      * The default value of the '{@link #getTotal() <em>Total</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getTotal()
      * @generated
      * @ordered
      */
-	protected static final double TOTAL_EDEFAULT = 0.0;
+    protected static final double TOTAL_EDEFAULT = 0.0;
 
-	/**
+    /**
      * The cached value of the '{@link #getTotal() <em>Total</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getTotal()
      * @generated
      * @ordered
      */
-	protected double total = TOTAL_EDEFAULT;
+    protected double total = TOTAL_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getIdle() <em>Idle</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getIdle()
      * @generated
      * @ordered
      */
-	protected static final double IDLE_EDEFAULT = 0.0;
+    protected static final double IDLE_EDEFAULT = 0.0;
 
-	/**
+    /**
      * The cached value of the '{@link #getIdle() <em>Idle</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getIdle()
      * @generated
      * @ordered
      */
-	protected double idle = IDLE_EDEFAULT;
+    protected double idle = IDLE_EDEFAULT;
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	protected UptimeImpl() {
+    protected UptimeImpl() {
         super();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	protected EClass eStaticClass() {
+    @Override
+    protected EClass eStaticClass() {
         return Sys_info_systeminfoPackage.Literals.UPTIME;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.System getEContainer_uptime() {
+    public de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.System getEContainer_uptime() {
         if (eContainerFeatureID() != Sys_info_systeminfoPackage.UPTIME__ECONTAINER_UPTIME) return null;
         return (de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.System)eContainer();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public NotificationChain basicSetEContainer_uptime(de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.System newEContainer_uptime, NotificationChain msgs) {
+    public NotificationChain basicSetEContainer_uptime(de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.System newEContainer_uptime, NotificationChain msgs) {
         msgs = eBasicSetContainer((InternalEObject)newEContainer_uptime, Sys_info_systeminfoPackage.UPTIME__ECONTAINER_UPTIME, msgs);
         return msgs;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setEContainer_uptime(de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.System newEContainer_uptime) {
+    public void setEContainer_uptime(de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.System newEContainer_uptime) {
         if (newEContainer_uptime != eInternalContainer() || (eContainerFeatureID() != Sys_info_systeminfoPackage.UPTIME__ECONTAINER_UPTIME && newEContainer_uptime != null)) {
             if (EcoreUtil.isAncestor(this, newEContainer_uptime))
                 throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
@@ -136,55 +136,55 @@ public class UptimeImpl extends EObjectImpl implements Uptime {
             eNotify(new ENotificationImpl(this, Notification.SET, Sys_info_systeminfoPackage.UPTIME__ECONTAINER_UPTIME, newEContainer_uptime, newEContainer_uptime));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public double getTotal() {
+    public double getTotal() {
         return total;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setTotal(double newTotal) {
+    public void setTotal(double newTotal) {
         double oldTotal = total;
         total = newTotal;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Sys_info_systeminfoPackage.UPTIME__TOTAL, oldTotal, total));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public double getIdle() {
+    public double getIdle() {
         return idle;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setIdle(double newIdle) {
+    public void setIdle(double newIdle) {
         double oldIdle = idle;
         idle = newIdle;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Sys_info_systeminfoPackage.UPTIME__IDLE, oldIdle, idle));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    @Override
+    public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case Sys_info_systeminfoPackage.UPTIME__ECONTAINER_UPTIME:
                 if (eInternalContainer() != null)
@@ -194,13 +194,13 @@ public class UptimeImpl extends EObjectImpl implements Uptime {
         return super.eInverseAdd(otherEnd, featureID, msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    @Override
+    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case Sys_info_systeminfoPackage.UPTIME__ECONTAINER_UPTIME:
                 return basicSetEContainer_uptime(null, msgs);
@@ -208,13 +208,13 @@ public class UptimeImpl extends EObjectImpl implements Uptime {
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+    @Override
+    public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
         switch (eContainerFeatureID()) {
             case Sys_info_systeminfoPackage.UPTIME__ECONTAINER_UPTIME:
                 return eInternalContainer().eInverseRemove(this, Sys_info_systeminfoPackage.SYSTEM__UPTIME, de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.System.class, msgs);
@@ -222,13 +222,13 @@ public class UptimeImpl extends EObjectImpl implements Uptime {
         return super.eBasicRemoveFromContainerFeature(msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+    @Override
+    public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
             case Sys_info_systeminfoPackage.UPTIME__ECONTAINER_UPTIME:
                 return getEContainer_uptime();
@@ -240,13 +240,13 @@ public class UptimeImpl extends EObjectImpl implements Uptime {
         return super.eGet(featureID, resolve, coreType);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public void eSet(int featureID, Object newValue) {
+    @Override
+    public void eSet(int featureID, Object newValue) {
         switch (featureID) {
             case Sys_info_systeminfoPackage.UPTIME__ECONTAINER_UPTIME:
                 setEContainer_uptime((de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.System)newValue);
@@ -261,13 +261,13 @@ public class UptimeImpl extends EObjectImpl implements Uptime {
         super.eSet(featureID, newValue);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public void eUnset(int featureID) {
+    @Override
+    public void eUnset(int featureID) {
         switch (featureID) {
             case Sys_info_systeminfoPackage.UPTIME__ECONTAINER_UPTIME:
                 setEContainer_uptime((de.hub.clickwatch.specificmodels.brn.sys_info_systeminfo.System)null);
@@ -282,13 +282,13 @@ public class UptimeImpl extends EObjectImpl implements Uptime {
         super.eUnset(featureID);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public boolean eIsSet(int featureID) {
+    @Override
+    public boolean eIsSet(int featureID) {
         switch (featureID) {
             case Sys_info_systeminfoPackage.UPTIME__ECONTAINER_UPTIME:
                 return getEContainer_uptime() != null;
@@ -300,13 +300,13 @@ public class UptimeImpl extends EObjectImpl implements Uptime {
         return super.eIsSet(featureID);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public String toString() {
+    @Override
+    public String toString() {
         if (eIsProxy()) return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());

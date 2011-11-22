@@ -23,13 +23,13 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
  * @generated
  */
 public class Device_wifi_data_power_systempowerFactoryImpl extends EFactoryImpl implements Device_wifi_data_power_systempowerFactory {
-	/**
+    /**
      * Creates the default factory implementation.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public static Device_wifi_data_power_systempowerFactory init() {
+    public static Device_wifi_data_power_systempowerFactory init() {
         try {
             Device_wifi_data_power_systempowerFactory theDevice_wifi_data_power_systempowerFactory = (Device_wifi_data_power_systempowerFactory)EPackage.Registry.INSTANCE.getEFactory("http://de.hub.clickwatch.specificmodels.brn/device_wifi/data_power/systempower"); 
             if (theDevice_wifi_data_power_systempowerFactory != null) {
@@ -42,23 +42,23 @@ public class Device_wifi_data_power_systempowerFactoryImpl extends EFactoryImpl 
         return new Device_wifi_data_power_systempowerFactoryImpl();
     }
 
-	/**
+    /**
      * Creates an instance of the factory.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Device_wifi_data_power_systempowerFactoryImpl() {
+    public Device_wifi_data_power_systempowerFactoryImpl() {
         super();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public EObject create(EClass eClass) {
+    @Override
+    public EObject create(EClass eClass) {
         switch (eClass.getClassifierID()) {
             case Device_wifi_data_power_systempowerPackage.DEVICE: return createDevice();
             case Device_wifi_data_power_systempowerPackage.SETTXPOWER: return createSettxpower();
@@ -68,53 +68,53 @@ public class Device_wifi_data_power_systempowerFactoryImpl extends EFactoryImpl 
         }
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Device createDevice() {
+    public Device createDevice() {
         DeviceImpl device = new DeviceImpl();
         return device;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Settxpower createSettxpower() {
+    public Settxpower createSettxpower() {
         SettxpowerImpl settxpower = new SettxpowerImpl();
         return settxpower;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Systempower createSystempower() {
+    public Systempower createSystempower() {
         SystempowerImpl systempower = new SystempowerImpl();
         return systempower;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Device_wifi_data_power_systempowerPackage getDevice_wifi_data_power_systempowerPackage() {
+    public Device_wifi_data_power_systempowerPackage getDevice_wifi_data_power_systempowerPackage() {
         return (Device_wifi_data_power_systempowerPackage)getEPackage();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @deprecated
      * @generated
      */
-	@Deprecated
-	public static Device_wifi_data_power_systempowerPackage getPackage() {
+    @Deprecated
+    public static Device_wifi_data_power_systempowerPackage getPackage() {
         return Device_wifi_data_power_systempowerPackage.eINSTANCE;
     }
 

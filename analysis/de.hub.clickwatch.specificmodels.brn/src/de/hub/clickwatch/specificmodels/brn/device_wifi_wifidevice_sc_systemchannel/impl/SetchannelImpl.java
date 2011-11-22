@@ -46,131 +46,131 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * @generated
  */
 public class SetchannelImpl extends EObjectImpl implements Setchannel {
-	/**
+    /**
      * The cached value of the '{@link #getText() <em>Text</em>}' attribute list.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getText()
      * @generated
      * @ordered
      */
-	protected EList<String> text;
+    protected EList<String> text;
 
-	/**
+    /**
      * The cached value of the '{@link #getDevice() <em>Device</em>}' containment reference.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getDevice()
      * @generated
      * @ordered
      */
-	protected Device device;
+    protected Device device;
 
-	/**
+    /**
      * The default value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getName()
      * @generated
      * @ordered
      */
-	protected static final String NAME_EDEFAULT = null;
+    protected static final String NAME_EDEFAULT = null;
 
-	/**
+    /**
      * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getName()
      * @generated
      * @ordered
      */
-	protected String name = NAME_EDEFAULT;
+    protected String name = NAME_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getId() <em>Id</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getId()
      * @generated
      * @ordered
      */
-	protected static final String ID_EDEFAULT = null;
+    protected static final String ID_EDEFAULT = null;
 
-	/**
+    /**
      * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getId()
      * @generated
      * @ordered
      */
-	protected String id = ID_EDEFAULT;
+    protected String id = ID_EDEFAULT;
 
-	/**
+    /**
      * The default value of the '{@link #getChannel() <em>Channel</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getChannel()
      * @generated
      * @ordered
      */
-	protected static final int CHANNEL_EDEFAULT = 0;
+    protected static final int CHANNEL_EDEFAULT = 0;
 
-	/**
+    /**
      * The cached value of the '{@link #getChannel() <em>Channel</em>}' attribute.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getChannel()
      * @generated
      * @ordered
      */
-	protected int channel = CHANNEL_EDEFAULT;
+    protected int channel = CHANNEL_EDEFAULT;
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	protected SetchannelImpl() {
+    protected SetchannelImpl() {
         super();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	protected EClass eStaticClass() {
+    @Override
+    protected EClass eStaticClass() {
         return Device_wifi_wifidevice_sc_systemchannelPackage.Literals.SETCHANNEL;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Systemchannel getEContainer_setchannel() {
+    public Systemchannel getEContainer_setchannel() {
         if (eContainerFeatureID() != Device_wifi_wifidevice_sc_systemchannelPackage.SETCHANNEL__ECONTAINER_SETCHANNEL) return null;
         return (Systemchannel)eContainer();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public NotificationChain basicSetEContainer_setchannel(Systemchannel newEContainer_setchannel, NotificationChain msgs) {
+    public NotificationChain basicSetEContainer_setchannel(Systemchannel newEContainer_setchannel, NotificationChain msgs) {
         msgs = eBasicSetContainer((InternalEObject)newEContainer_setchannel, Device_wifi_wifidevice_sc_systemchannelPackage.SETCHANNEL__ECONTAINER_SETCHANNEL, msgs);
         return msgs;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setEContainer_setchannel(Systemchannel newEContainer_setchannel) {
+    public void setEContainer_setchannel(Systemchannel newEContainer_setchannel) {
         if (newEContainer_setchannel != eInternalContainer() || (eContainerFeatureID() != Device_wifi_wifidevice_sc_systemchannelPackage.SETCHANNEL__ECONTAINER_SETCHANNEL && newEContainer_setchannel != null)) {
             if (EcoreUtil.isAncestor(this, newEContainer_setchannel))
                 throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
@@ -186,33 +186,33 @@ public class SetchannelImpl extends EObjectImpl implements Setchannel {
             eNotify(new ENotificationImpl(this, Notification.SET, Device_wifi_wifidevice_sc_systemchannelPackage.SETCHANNEL__ECONTAINER_SETCHANNEL, newEContainer_setchannel, newEContainer_setchannel));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EList<String> getText() {
+    public EList<String> getText() {
         if (text == null) {
             text = new EDataTypeEList<String>(String.class, this, Device_wifi_wifidevice_sc_systemchannelPackage.SETCHANNEL__TEXT);
         }
         return text;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Device getDevice() {
+    public Device getDevice() {
         return device;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public NotificationChain basicSetDevice(Device newDevice, NotificationChain msgs) {
+    public NotificationChain basicSetDevice(Device newDevice, NotificationChain msgs) {
         Device oldDevice = device;
         device = newDevice;
         if (eNotificationRequired()) {
@@ -222,12 +222,12 @@ public class SetchannelImpl extends EObjectImpl implements Setchannel {
         return msgs;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setDevice(Device newDevice) {
+    public void setDevice(Device newDevice) {
         if (newDevice != device) {
             NotificationChain msgs = null;
             if (device != null)
@@ -241,76 +241,76 @@ public class SetchannelImpl extends EObjectImpl implements Setchannel {
             eNotify(new ENotificationImpl(this, Notification.SET, Device_wifi_wifidevice_sc_systemchannelPackage.SETCHANNEL__DEVICE, newDevice, newDevice));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public String getName() {
+    public String getName() {
         return name;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setName(String newName) {
+    public void setName(String newName) {
         String oldName = name;
         name = newName;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Device_wifi_wifidevice_sc_systemchannelPackage.SETCHANNEL__NAME, oldName, name));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public String getId() {
+    public String getId() {
         return id;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setId(String newId) {
+    public void setId(String newId) {
         String oldId = id;
         id = newId;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Device_wifi_wifidevice_sc_systemchannelPackage.SETCHANNEL__ID, oldId, id));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public int getChannel() {
+    public int getChannel() {
         return channel;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setChannel(int newChannel) {
+    public void setChannel(int newChannel) {
         int oldChannel = channel;
         channel = newChannel;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, Device_wifi_wifidevice_sc_systemchannelPackage.SETCHANNEL__CHANNEL, oldChannel, channel));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    @Override
+    public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case Device_wifi_wifidevice_sc_systemchannelPackage.SETCHANNEL__ECONTAINER_SETCHANNEL:
                 if (eInternalContainer() != null)
@@ -324,13 +324,13 @@ public class SetchannelImpl extends EObjectImpl implements Setchannel {
         return super.eInverseAdd(otherEnd, featureID, msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    @Override
+    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case Device_wifi_wifidevice_sc_systemchannelPackage.SETCHANNEL__ECONTAINER_SETCHANNEL:
                 return basicSetEContainer_setchannel(null, msgs);
@@ -340,13 +340,13 @@ public class SetchannelImpl extends EObjectImpl implements Setchannel {
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+    @Override
+    public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
         switch (eContainerFeatureID()) {
             case Device_wifi_wifidevice_sc_systemchannelPackage.SETCHANNEL__ECONTAINER_SETCHANNEL:
                 return eInternalContainer().eInverseRemove(this, Device_wifi_wifidevice_sc_systemchannelPackage.SYSTEMCHANNEL__SETCHANNEL, Systemchannel.class, msgs);
@@ -354,13 +354,13 @@ public class SetchannelImpl extends EObjectImpl implements Setchannel {
         return super.eBasicRemoveFromContainerFeature(msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+    @Override
+    public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
             case Device_wifi_wifidevice_sc_systemchannelPackage.SETCHANNEL__ECONTAINER_SETCHANNEL:
                 return getEContainer_setchannel();
@@ -378,14 +378,14 @@ public class SetchannelImpl extends EObjectImpl implements Setchannel {
         return super.eGet(featureID, resolve, coreType);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@SuppressWarnings("unchecked")
-	@Override
-	public void eSet(int featureID, Object newValue) {
+    @SuppressWarnings("unchecked")
+    @Override
+    public void eSet(int featureID, Object newValue) {
         switch (featureID) {
             case Device_wifi_wifidevice_sc_systemchannelPackage.SETCHANNEL__ECONTAINER_SETCHANNEL:
                 setEContainer_setchannel((Systemchannel)newValue);
@@ -410,13 +410,13 @@ public class SetchannelImpl extends EObjectImpl implements Setchannel {
         super.eSet(featureID, newValue);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public void eUnset(int featureID) {
+    @Override
+    public void eUnset(int featureID) {
         switch (featureID) {
             case Device_wifi_wifidevice_sc_systemchannelPackage.SETCHANNEL__ECONTAINER_SETCHANNEL:
                 setEContainer_setchannel((Systemchannel)null);
@@ -440,13 +440,13 @@ public class SetchannelImpl extends EObjectImpl implements Setchannel {
         super.eUnset(featureID);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public boolean eIsSet(int featureID) {
+    @Override
+    public boolean eIsSet(int featureID) {
         switch (featureID) {
             case Device_wifi_wifidevice_sc_systemchannelPackage.SETCHANNEL__ECONTAINER_SETCHANNEL:
                 return getEContainer_setchannel() != null;
@@ -464,13 +464,13 @@ public class SetchannelImpl extends EObjectImpl implements Setchannel {
         return super.eIsSet(featureID);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public String toString() {
+    @Override
+    public String toString() {
         if (eIsProxy()) return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());

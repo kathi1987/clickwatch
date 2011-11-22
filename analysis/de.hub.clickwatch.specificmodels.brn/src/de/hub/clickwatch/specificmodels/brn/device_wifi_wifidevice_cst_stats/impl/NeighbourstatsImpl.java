@@ -45,71 +45,71 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * @generated
  */
 public class NeighbourstatsImpl extends EObjectImpl implements Neighbourstats {
-	/**
+    /**
      * The cached value of the '{@link #getText() <em>Text</em>}' attribute list.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getText()
      * @generated
      * @ordered
      */
-	protected EList<String> text;
+    protected EList<String> text;
 
-	/**
+    /**
      * The cached value of the '{@link #getNb() <em>Nb</em>}' containment reference list.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getNb()
      * @generated
      * @ordered
      */
-	protected EList<Nb> nb;
+    protected EList<Nb> nb;
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	protected NeighbourstatsImpl() {
+    protected NeighbourstatsImpl() {
         super();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	protected EClass eStaticClass() {
+    @Override
+    protected EClass eStaticClass() {
         return Device_wifi_wifidevice_cst_statsPackage.Literals.NEIGHBOURSTATS;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Channelstats getEContainer_neighbourstats() {
+    public Channelstats getEContainer_neighbourstats() {
         if (eContainerFeatureID() != Device_wifi_wifidevice_cst_statsPackage.NEIGHBOURSTATS__ECONTAINER_NEIGHBOURSTATS) return null;
         return (Channelstats)eContainer();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public NotificationChain basicSetEContainer_neighbourstats(Channelstats newEContainer_neighbourstats, NotificationChain msgs) {
+    public NotificationChain basicSetEContainer_neighbourstats(Channelstats newEContainer_neighbourstats, NotificationChain msgs) {
         msgs = eBasicSetContainer((InternalEObject)newEContainer_neighbourstats, Device_wifi_wifidevice_cst_statsPackage.NEIGHBOURSTATS__ECONTAINER_NEIGHBOURSTATS, msgs);
         return msgs;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setEContainer_neighbourstats(Channelstats newEContainer_neighbourstats) {
+    public void setEContainer_neighbourstats(Channelstats newEContainer_neighbourstats) {
         if (newEContainer_neighbourstats != eInternalContainer() || (eContainerFeatureID() != Device_wifi_wifidevice_cst_statsPackage.NEIGHBOURSTATS__ECONTAINER_NEIGHBOURSTATS && newEContainer_neighbourstats != null)) {
             if (EcoreUtil.isAncestor(this, newEContainer_neighbourstats))
                 throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
@@ -125,38 +125,38 @@ public class NeighbourstatsImpl extends EObjectImpl implements Neighbourstats {
             eNotify(new ENotificationImpl(this, Notification.SET, Device_wifi_wifidevice_cst_statsPackage.NEIGHBOURSTATS__ECONTAINER_NEIGHBOURSTATS, newEContainer_neighbourstats, newEContainer_neighbourstats));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EList<String> getText() {
+    public EList<String> getText() {
         if (text == null) {
             text = new EDataTypeEList<String>(String.class, this, Device_wifi_wifidevice_cst_statsPackage.NEIGHBOURSTATS__TEXT);
         }
         return text;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public EList<Nb> getNb() {
+    public EList<Nb> getNb() {
         if (nb == null) {
             nb = new EObjectContainmentWithInverseEList<Nb>(Nb.class, this, Device_wifi_wifidevice_cst_statsPackage.NEIGHBOURSTATS__NB, Device_wifi_wifidevice_cst_statsPackage.NB__ECONTAINER_NB);
         }
         return nb;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@SuppressWarnings("unchecked")
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    @SuppressWarnings("unchecked")
+    @Override
+    public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case Device_wifi_wifidevice_cst_statsPackage.NEIGHBOURSTATS__ECONTAINER_NEIGHBOURSTATS:
                 if (eInternalContainer() != null)
@@ -168,13 +168,13 @@ public class NeighbourstatsImpl extends EObjectImpl implements Neighbourstats {
         return super.eInverseAdd(otherEnd, featureID, msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    @Override
+    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case Device_wifi_wifidevice_cst_statsPackage.NEIGHBOURSTATS__ECONTAINER_NEIGHBOURSTATS:
                 return basicSetEContainer_neighbourstats(null, msgs);
@@ -184,13 +184,13 @@ public class NeighbourstatsImpl extends EObjectImpl implements Neighbourstats {
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+    @Override
+    public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
         switch (eContainerFeatureID()) {
             case Device_wifi_wifidevice_cst_statsPackage.NEIGHBOURSTATS__ECONTAINER_NEIGHBOURSTATS:
                 return eInternalContainer().eInverseRemove(this, Device_wifi_wifidevice_cst_statsPackage.CHANNELSTATS__NEIGHBOURSTATS, Channelstats.class, msgs);
@@ -198,13 +198,13 @@ public class NeighbourstatsImpl extends EObjectImpl implements Neighbourstats {
         return super.eBasicRemoveFromContainerFeature(msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+    @Override
+    public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
             case Device_wifi_wifidevice_cst_statsPackage.NEIGHBOURSTATS__ECONTAINER_NEIGHBOURSTATS:
                 return getEContainer_neighbourstats();
@@ -216,14 +216,14 @@ public class NeighbourstatsImpl extends EObjectImpl implements Neighbourstats {
         return super.eGet(featureID, resolve, coreType);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@SuppressWarnings("unchecked")
-	@Override
-	public void eSet(int featureID, Object newValue) {
+    @SuppressWarnings("unchecked")
+    @Override
+    public void eSet(int featureID, Object newValue) {
         switch (featureID) {
             case Device_wifi_wifidevice_cst_statsPackage.NEIGHBOURSTATS__ECONTAINER_NEIGHBOURSTATS:
                 setEContainer_neighbourstats((Channelstats)newValue);
@@ -240,13 +240,13 @@ public class NeighbourstatsImpl extends EObjectImpl implements Neighbourstats {
         super.eSet(featureID, newValue);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public void eUnset(int featureID) {
+    @Override
+    public void eUnset(int featureID) {
         switch (featureID) {
             case Device_wifi_wifidevice_cst_statsPackage.NEIGHBOURSTATS__ECONTAINER_NEIGHBOURSTATS:
                 setEContainer_neighbourstats((Channelstats)null);
@@ -261,13 +261,13 @@ public class NeighbourstatsImpl extends EObjectImpl implements Neighbourstats {
         super.eUnset(featureID);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public boolean eIsSet(int featureID) {
+    @Override
+    public boolean eIsSet(int featureID) {
         switch (featureID) {
             case Device_wifi_wifidevice_cst_statsPackage.NEIGHBOURSTATS__ECONTAINER_NEIGHBOURSTATS:
                 return getEContainer_neighbourstats() != null;
@@ -279,13 +279,13 @@ public class NeighbourstatsImpl extends EObjectImpl implements Neighbourstats {
         return super.eIsSet(featureID);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public String toString() {
+    @Override
+    public String toString() {
         if (eIsProxy()) return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());

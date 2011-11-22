@@ -34,50 +34,50 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * @generated
  */
 public class StatsImpl extends HandlerImpl implements Stats {
-	/**
+    /**
      * The cached value of the '{@link #getDsr_route_stats() <em>Dsr route stats</em>}' containment reference.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getDsr_route_stats()
      * @generated
      * @ordered
      */
-	protected Dsr_route_stats dsr_route_stats;
+    protected Dsr_route_stats dsr_route_stats;
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	protected StatsImpl() {
+    protected StatsImpl() {
         super();
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	protected EClass eStaticClass() {
+    @Override
+    protected EClass eStaticClass() {
         return Routing_dsr_stats_statsPackage.Literals.STATS;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Dsr_route_stats getDsr_route_stats() {
+    public Dsr_route_stats getDsr_route_stats() {
         return dsr_route_stats;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public NotificationChain basicSetDsr_route_stats(Dsr_route_stats newDsr_route_stats, NotificationChain msgs) {
+    public NotificationChain basicSetDsr_route_stats(Dsr_route_stats newDsr_route_stats, NotificationChain msgs) {
         Dsr_route_stats oldDsr_route_stats = dsr_route_stats;
         dsr_route_stats = newDsr_route_stats;
         if (eNotificationRequired()) {
@@ -87,12 +87,12 @@ public class StatsImpl extends HandlerImpl implements Stats {
         return msgs;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setDsr_route_stats(Dsr_route_stats newDsr_route_stats) {
+    public void setDsr_route_stats(Dsr_route_stats newDsr_route_stats) {
         if (newDsr_route_stats != dsr_route_stats) {
             NotificationChain msgs = null;
             if (dsr_route_stats != null)
@@ -106,13 +106,13 @@ public class StatsImpl extends HandlerImpl implements Stats {
             eNotify(new ENotificationImpl(this, Notification.SET, Routing_dsr_stats_statsPackage.STATS__DSR_ROUTE_STATS, newDsr_route_stats, newDsr_route_stats));
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    @Override
+    public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case Routing_dsr_stats_statsPackage.STATS__DSR_ROUTE_STATS:
                 if (dsr_route_stats != null)
@@ -122,13 +122,13 @@ public class StatsImpl extends HandlerImpl implements Stats {
         return super.eInverseAdd(otherEnd, featureID, msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    @Override
+    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case Routing_dsr_stats_statsPackage.STATS__DSR_ROUTE_STATS:
                 return basicSetDsr_route_stats(null, msgs);
@@ -136,13 +136,13 @@ public class StatsImpl extends HandlerImpl implements Stats {
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+    @Override
+    public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
             case Routing_dsr_stats_statsPackage.STATS__DSR_ROUTE_STATS:
                 return getDsr_route_stats();
@@ -150,13 +150,13 @@ public class StatsImpl extends HandlerImpl implements Stats {
         return super.eGet(featureID, resolve, coreType);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public void eSet(int featureID, Object newValue) {
+    @Override
+    public void eSet(int featureID, Object newValue) {
         switch (featureID) {
             case Routing_dsr_stats_statsPackage.STATS__DSR_ROUTE_STATS:
                 setDsr_route_stats((Dsr_route_stats)newValue);
@@ -165,13 +165,13 @@ public class StatsImpl extends HandlerImpl implements Stats {
         super.eSet(featureID, newValue);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public void eUnset(int featureID) {
+    @Override
+    public void eUnset(int featureID) {
         switch (featureID) {
             case Routing_dsr_stats_statsPackage.STATS__DSR_ROUTE_STATS:
                 setDsr_route_stats((Dsr_route_stats)null);
@@ -180,13 +180,13 @@ public class StatsImpl extends HandlerImpl implements Stats {
         super.eUnset(featureID);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public boolean eIsSet(int featureID) {
+    @Override
+    public boolean eIsSet(int featureID) {
         switch (featureID) {
             case Routing_dsr_stats_statsPackage.STATS__DSR_ROUTE_STATS:
                 return dsr_route_stats != null;

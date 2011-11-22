@@ -26,36 +26,36 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public class Gps_gps_coordAdapterFactory extends AdapterFactoryImpl {
-	/**
+    /**
      * The cached model package.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	protected static Gps_gps_coordPackage modelPackage;
+    protected static Gps_gps_coordPackage modelPackage;
 
-	/**
+    /**
      * Creates an instance of the adapter factory.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public Gps_gps_coordAdapterFactory() {
+    public Gps_gps_coordAdapterFactory() {
         if (modelPackage == null) {
             modelPackage = Gps_gps_coordPackage.eINSTANCE;
         }
     }
 
-	/**
+    /**
      * Returns whether this factory is applicable for the type of the object.
      * <!-- begin-user-doc -->
-	 * This implementation returns <code>true</code> if the object is either the model's package or is an instance object of the model.
-	 * <!-- end-user-doc -->
+     * This implementation returns <code>true</code> if the object is either the model's package or is an instance object of the model.
+     * <!-- end-user-doc -->
      * @return whether this factory is applicable for the type of the object.
      * @generated
      */
-	@Override
-	public boolean isFactoryForType(Object object) {
+    @Override
+    public boolean isFactoryForType(Object object) {
         if (object == modelPackage) {
             return true;
         }
@@ -65,14 +65,14 @@ public class Gps_gps_coordAdapterFactory extends AdapterFactoryImpl {
         return false;
     }
 
-	/**
+    /**
      * The switch that delegates to the <code>createXXX</code> methods.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	protected Gps_gps_coordSwitch<Adapter> modelSwitch =
-		new Gps_gps_coordSwitch<Adapter>() {
+    protected Gps_gps_coordSwitch<Adapter> modelSwitch =
+        new Gps_gps_coordSwitch<Adapter>() {
             @Override
             public Adapter caseGps(Gps object) {
                 return createGpsAdapter();
@@ -91,71 +91,71 @@ public class Gps_gps_coordAdapterFactory extends AdapterFactoryImpl {
             }
         };
 
-	/**
+    /**
      * Creates an adapter for the <code>target</code>.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @param target the object to adapt.
      * @return the adapter for the <code>target</code>.
      * @generated
      */
-	@Override
-	public Adapter createAdapter(Notifier target) {
+    @Override
+    public Adapter createAdapter(Notifier target) {
         return modelSwitch.doSwitch((EObject)target);
     }
 
 
-	/**
+    /**
      * Creates a new adapter for an object of class '{@link de.hub.clickwatch.specificmodels.brn.gps_gps_coord.Gps <em>Gps</em>}'.
      * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
      * @return the new adapter.
      * @see de.hub.clickwatch.specificmodels.brn.gps_gps_coord.Gps
      * @generated
      */
-	public Adapter createGpsAdapter() {
+    public Adapter createGpsAdapter() {
         return null;
     }
 
-	/**
+    /**
      * Creates a new adapter for an object of class '{@link de.hub.clickwatch.specificmodels.brn.gps_gps_coord.Gps_coord <em>Gps coord</em>}'.
      * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
      * @return the new adapter.
      * @see de.hub.clickwatch.specificmodels.brn.gps_gps_coord.Gps_coord
      * @generated
      */
-	public Adapter createGps_coordAdapter() {
+    public Adapter createGps_coordAdapter() {
         return null;
     }
 
-	/**
+    /**
      * Creates a new adapter for an object of class '{@link de.hub.clickwatch.model.Handler <em>Handler</em>}'.
      * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
      * @return the new adapter.
      * @see de.hub.clickwatch.model.Handler
      * @generated
      */
-	public Adapter createHandlerAdapter() {
+    public Adapter createHandlerAdapter() {
         return null;
     }
 
-	/**
+    /**
      * Creates a new adapter for the default case.
      * <!-- begin-user-doc -->
-	 * This default implementation returns null.
-	 * <!-- end-user-doc -->
+     * This default implementation returns null.
+     * <!-- end-user-doc -->
      * @return the new adapter.
      * @generated
      */
-	public Adapter createEObjectAdapter() {
+    public Adapter createEObjectAdapter() {
         return null;
     }
 

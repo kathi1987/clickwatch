@@ -25,15 +25,15 @@ import de.hub.clickwatch.model.Handler;
  * @generated
  */
 public interface Stats extends Handler {
-	/**
+    /**
      * Returns the value of the '<em><b>Channelstats</b></em>' containment reference.
      * It is bidirectional and its opposite is '{@link de.hub.clickwatch.specificmodels.brn.device_wifi_wifidevice_cst_stats.Channelstats#getEContainer_channelstats <em>EContainer channelstats</em>}'.
      * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Channelstats</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Channelstats</em>' containment reference isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
      * @return the value of the '<em>Channelstats</em>' containment reference.
      * @see #setChannelstats(Channelstats)
      * @see de.hub.clickwatch.specificmodels.brn.device_wifi_wifidevice_cst_stats.Device_wifi_wifidevice_cst_statsPackage#getStats_Channelstats()
@@ -42,16 +42,16 @@ public interface Stats extends Handler {
      *        annotation="http://de.hub.clickwatch.specificmodels target_id='Stats|Handler/channelstats|channelstats:Channelstats|EObject' IsCopy='false'"
      * @generated
      */
-	Channelstats getChannelstats();
+    Channelstats getChannelstats();
 
-	/**
+    /**
      * Sets the value of the '{@link de.hub.clickwatch.specificmodels.brn.device_wifi_wifidevice_cst_stats.Stats#getChannelstats <em>Channelstats</em>}' containment reference.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @param value the new value of the '<em>Channelstats</em>' containment reference.
      * @see #getChannelstats()
      * @generated
      */
-	void setChannelstats(Channelstats value);
+    void setChannelstats(Channelstats value);
 
 } // Stats
