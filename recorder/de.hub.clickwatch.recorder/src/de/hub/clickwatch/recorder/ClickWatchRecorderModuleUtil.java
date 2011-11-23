@@ -2,8 +2,6 @@ package de.hub.clickwatch.recorder;
 
 import com.google.inject.name.Names;
 
-import de.hub.clickwatch.connection.adapter.values.IValueAdapter;
-import de.hub.clickwatch.connection.adapter.values.StringValueAdapter;
 import de.hub.clickwatch.recorder.recorder.HBaseDataBaseAdapter;
 import de.hub.clickwatch.recorder.recorder.IDataBaseAdapter;
 
@@ -12,7 +10,6 @@ public class ClickWatchRecorderModuleUtil {
     public static final class ClickWatchRecordModuleBuilder {        
         private Class<? extends IDataBaseAdapter> dataBaseAdapterClass = HBaseDataBaseAdapter.class;
         private int putBufferSize = 2000;
-        private Class<? extends IValueAdapter> dbValueAdapterClass = StringValueAdapter.class;
         private boolean saveRecordFileDuringRecord = true;
         
         private ClickWatchRecordModuleBuilder() {
@@ -26,11 +23,6 @@ public class ClickWatchRecorderModuleUtil {
 
         public ClickWatchRecordModuleBuilder wPutBufferSize(int putBufferSize) {
             this.putBufferSize = putBufferSize;
-            return this;
-        }
-
-        public ClickWatchRecordModuleBuilder wDbValueAdapterClass(Class<? extends IValueAdapter> dbValueAdapterClass) {
-            this.dbValueAdapterClass = dbValueAdapterClass;
             return this;
         }
 
@@ -49,11 +41,6 @@ public class ClickWatchRecorderModuleUtil {
                 @Override
                 protected void configureDataBaseAdapter() {
                     bind(IDataBaseAdapter.class).to(dataBaseAdapterClass);
-                }
-
-                @Override
-                protected void configureDBValueAdapter() {
-                    bind(IValueAdapter.class).annotatedWith(Names.named(DB_VALUE_ADAPTER_PROPERTY)).to(dbValueAdapterClass);
                 }
 
                 @Override

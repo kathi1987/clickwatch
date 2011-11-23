@@ -157,7 +157,11 @@ public class CWDataBaseTimeScaleController {
         Preconditions.checkArgument(currentRecord != null);
         long duration = currentRecord.getEnd() - currentRecord.getStart();
         long relativeTime = time - currentRecord.getStart();
-        scale.setSelection((int)(relativeTime * scale.getMaximum() / duration));
+        if (duration != 0) {
+            scale.setSelection((int)(relativeTime * scale.getMaximum() / duration));    
+        } else {
+            scale.setSelection(0);
+        }
     }
 
     private void sliding() {
@@ -194,7 +198,7 @@ public class CWDataBaseTimeScaleController {
                     time));
             if (dbHandler == null) {
                 dbHandler = ClickWatchModelFactory.eINSTANCE.createHandler();
-                dbHandler.setName(selectedHandler.getName());
+                dbHandler.setName(selectedHandler.getQualifiedName());
             }
             
             mergeAdapter.merge(dbHandler);

@@ -10,15 +10,14 @@ import org.apache.hadoop.hbase.client.Put;
 import org.apache.hadoop.hbase.client.Result;
 import org.apache.hadoop.hbase.client.ResultScanner;
 import org.apache.hadoop.hbase.client.Scan;
+import org.joda.time.format.DateTimeFormat;
 
 import com.google.common.base.Preconditions;
 import com.google.inject.Inject;
-import com.google.inject.name.Named;
 
 import de.hub.clickwatch.connection.adapter.values.IValueAdapter;
 import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.model.Node;
-import de.hub.clickwatch.recorder.ClickWatchRecorderModule;
 import de.hub.clickwatch.recorder.database.HBaseRowMap;
 import de.hub.clickwatch.recorder.database.Record;
 import de.hub.clickwatch.util.ILogger;
@@ -30,7 +29,7 @@ public class HBaseDataBaseAdapter implements IDataBaseAdapter {
     @Inject private HBaseUtil hbaseUtil;
     @Inject private Tasks taskQueues;
     @Inject private ILogger logger;
-    @Inject @Named(ClickWatchRecorderModule.DB_VALUE_ADAPTER_PROPERTY) private IValueAdapter valueAdapter;
+    @Inject private IValueAdapter valueAdapter;
     
     private HBaseRowMap rowMap = null;
     private HTable table = null;
@@ -233,6 +232,8 @@ public class HBaseDataBaseAdapter implements IDataBaseAdapter {
     
     private Handler getHandlerFromHBaseResult(String qualifiedHandlerName, Result result) {
         String value = new String(result.getValue(HBaseUtil.colFamily, HBaseUtil.col));
-        return valueAdapter.create(qualifiedHandlerName, rowMap.getTime(result.getRow()), value);
+        long time = rowMap.getTime(result.getRow());
+        DateTimeFormat.fullDateTime().print(time/1000000);
+        return valueAdapter.create(qualifiedHandlerName, time, value);
     }
 }

@@ -9,13 +9,11 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import com.google.common.base.Preconditions;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
-import com.google.inject.name.Named;
 
 import de.hub.clickwatch.connection.adapter.values.IValueAdapter;
 import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.model.Node;
 import de.hub.clickwatch.model.util.builder.ModelBuilders;
-import de.hub.clickwatch.recorder.ClickWatchRecorderModule;
 import de.hub.clickwatch.recorder.recorder.HBaseDataBaseAdapter;
 import de.hub.clickwatch.recorder.recorder.IDataBaseAdapter;
 import de.hub.clickwatch.util.ILogger;
@@ -25,7 +23,6 @@ public class DataBaseUtil {
 
     @Inject private IDataBaseAdapter dataBaseAdapter;
     @Inject private IValueAdapter valueAdapter;
-    @Inject @Named(ClickWatchRecorderModule.DB_VALUE_ADAPTER_PROPERTY) private IValueAdapter dbValueAdapter;
     @Inject private ILogger logger;
 
     private static class DataBaseHandle {
@@ -109,7 +106,7 @@ public class DataBaseUtil {
                         monitor.worked(newProgress - progress);
                         progress = newProgress;
                     }
-                    return valueAdapter.create(dbHandler, dbValueAdapter);
+                    return dbHandler;
                 }
             }
 
@@ -126,7 +123,7 @@ public class DataBaseUtil {
         if (dbHandler == null) {
             return null;
         }
-        return valueAdapter.create(dbHandler, dbValueAdapter);
+        return dbHandler;
     }
 
     public Node getNode(DataBaseHandle h) {
@@ -152,7 +149,7 @@ public class DataBaseUtil {
                 if (dbHandler.getTimestamp() == 0) {
                     logger.log(ILogger.WARNING, "empty timestamp", null);
                 }
-                valueAdapter.update(handlerTimeCopy, dbHandler, dbValueAdapter);
+                valueAdapter.update(handlerTimeCopy, dbHandler, valueAdapter);
             } else {
                 handlerTimeCopy.setTimestamp(0);
                 valueAdapter.clearValue(handlerTimeCopy);

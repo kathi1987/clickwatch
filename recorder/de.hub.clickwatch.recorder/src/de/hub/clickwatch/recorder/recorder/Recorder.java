@@ -1,6 +1,11 @@
 package de.hub.clickwatch.recorder.recorder;
 
+import java.io.IOException;
+
+import org.eclipse.emf.ecore.resource.Resource;
+
 import com.google.inject.Inject;
+import com.google.inject.name.Named;
 
 import de.hub.clickwatch.connection.INodeConnection;
 import de.hub.clickwatch.connection.INodeConnectionProvider;
@@ -11,9 +16,12 @@ import de.hub.clickwatch.connection.adapter.IHandlerEventListener;
 import de.hub.clickwatch.model.ClickWatchError;
 import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.model.Node;
+import de.hub.clickwatch.recorder.ClickWatchRecorderModule;
 import de.hub.clickwatch.recorder.database.Record;
 import de.hub.clickwatch.util.ILogger;
 import de.hub.clickwatch.util.Tasks;
+import de.hub.clickwatch.util.Throwables;
+import de.hub.emfxml.util.EmfXmlUtil;
 
 public class Recorder implements IErrorListener {
     
@@ -21,6 +29,7 @@ public class Recorder implements IErrorListener {
     @Inject IDataBaseAdapter dataBaseAdapter;
     @Inject INodeConnectionProvider ncp;
     @Inject ILogger logger;
+    @Inject @Named(ClickWatchRecorderModule.B_SAVE_RECORD_FILE) Boolean saveRecordFile; 
     
     private Record record = null;
     
@@ -77,19 +86,18 @@ public class Recorder implements IErrorListener {
         }
 
         @Override
-        public void receivingStarted() {
-            tasks.dispatchTask(Recorder.class, new Runnable() {               
-                @Override
-                public void run() {
-                    long start = record.getStart();
-                    if (start == 0 || latestTime < start) {
-                        record.setStart(latestTime);
-                    }
-                    if (record.getEnd() < latestTime) {
-                        record.setEnd(latestTime);
-                    }
+        public void receivingStarted() {    
+            if (latestTime != 0) {
+                long start = record.getStart();
+                if (start == 0 || latestTime < start) {
+                    record.setStart(latestTime);
                 }
-            });
+                if (record.getEnd() < latestTime) {
+                    record.setEnd(latestTime);
+                }
+                
+                save();
+            }
         }
 
         @Override
@@ -105,11 +113,25 @@ public class Recorder implements IErrorListener {
         @Override
         public void listeningStopped() {
             dataBaseAdapter.close();
+            save();            
         }
 
         @Override
         public void dispose() {
             
+        }
+    }
+    
+    private final void save() {
+        if (saveRecordFile) {
+            Resource resource = record.eResource();
+            if (resource != null) {
+                try {
+                    resource.save(EmfXmlUtil.defaultLoadSaveOptions());
+                } catch (IOException e) {
+                    Throwables.propagate(e);
+                }
+            }
         }
     }
 }

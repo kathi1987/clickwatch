@@ -2,6 +2,8 @@ package de.hub.clickwatch.util;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.ScheduledExecutorService;
 
 import com.google.inject.Inject;
 import com.google.inject.Provider;
@@ -10,6 +12,8 @@ import com.google.inject.Singleton;
 @Singleton
 public class Tasks {
     @Inject Provider<TaskQueue> taskQueueProvider;
+    @Inject ScheduledExecutorService ses;
+    @Inject ExecutorService es;
     private Map<Object, TaskQueue> taskQueues = new HashMap<Object, TaskQueue>();
 
     public void dispatchTask(Object taskQueueKey, final Runnable task) {
@@ -37,5 +41,10 @@ public class Tasks {
         for (TaskQueue taskQueue: taskQueues.values()) {
             taskQueue.waitForCompletion();
         }
+    }
+
+    public void shutdown() {
+        ses.shutdownNow();
+        es.shutdownNow();
     }
 }

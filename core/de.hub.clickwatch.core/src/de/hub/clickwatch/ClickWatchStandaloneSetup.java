@@ -7,6 +7,7 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 
 import de.hub.clickwatch.model.ClickWatchModelPackage;
+import de.hub.clickwatch.model.util.ClickWatchModelResourceFactoryImpl;
 
 public class ClickWatchStandaloneSetup {
 	
@@ -20,7 +21,7 @@ public class ClickWatchStandaloneSetup {
 		if (!EPackage.Registry.INSTANCE.containsKey(XMLTypePackage.eINSTANCE.getNsURI())) {
 			EPackage.Registry.INSTANCE.put(XMLTypePackage.eINSTANCE.getNsURI(), XMLTypePackage.eINSTANCE);
 		}
-		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("clickwatchmodel", new XMIResourceFactoryImpl());
+		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("clickwatchmodel", new ClickWatchModelResourceFactoryImpl());
 		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("ecore", new XMIResourceFactoryImpl());
 	}
 
