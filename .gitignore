@@ -7,3 +7,4 @@ out.*
 out-*.*
 log.*
 *.DS_Store
+!db/hbase-0.90.3/bin/
