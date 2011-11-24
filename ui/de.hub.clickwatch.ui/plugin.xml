@@ -77,6 +77,13 @@
                label="Disconnect"
                menubarPath="clickwatch/basic">
          </action>
+         <action
+               class="de.hub.clickwatch.ui.GuiceAwareExecutableExtensionFactory:de.hub.clickwatch.ui.modelactions.AquireMetaData"
+               enablesFor="+"
+               id="de.hub.clickwatch.aquireMetaDataAction"
+               label="Aquire Meta-Data"
+               menubarPath="clickwatch/basic">
+         </action>
       </objectContribution>
       <objectContribution
             id="edu.hu.clickwatch.NetworkContribution"
