@@ -167,29 +167,6 @@ public class ResultsItemProviderAdapterFactory extends ResultsAdapterFactory imp
     }
 
 	/**
-     * This keeps track of the one adapter used for all {@link de.hub.clickwatch.analysis.results.Result} instances.
-     * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-     * @generated
-     */
-	protected ResultItemProvider resultItemProvider;
-
-	/**
-     * This creates an adapter for a {@link de.hub.clickwatch.analysis.results.Result}.
-     * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-     * @generated
-     */
-	@Override
-	public Adapter createResultAdapter() {
-        if (resultItemProvider == null) {
-            resultItemProvider = new ResultItemProvider(this);
-        }
-
-        return resultItemProvider;
-    }
-
-	/**
      * This keeps track of the one adapter used for all {@link de.hub.clickwatch.analysis.results.XY} instances.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -328,6 +305,98 @@ public class ResultsItemProviderAdapterFactory extends ResultsAdapterFactory imp
     }
 
 	/**
+     * This keeps track of the one adapter used for all {@link de.hub.clickwatch.analysis.results.NumericalResult} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected NumericalResultItemProvider numericalResultItemProvider;
+
+    /**
+     * This creates an adapter for a {@link de.hub.clickwatch.analysis.results.NumericalResult}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createNumericalResultAdapter() {
+        if (numericalResultItemProvider == null) {
+            numericalResultItemProvider = new NumericalResultItemProvider(this);
+        }
+
+        return numericalResultItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all {@link de.hub.clickwatch.analysis.results.GraphResult} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected GraphResultItemProvider graphResultItemProvider;
+
+    /**
+     * This creates an adapter for a {@link de.hub.clickwatch.analysis.results.GraphResult}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createGraphResultAdapter() {
+        if (graphResultItemProvider == null) {
+            graphResultItemProvider = new GraphResultItemProvider(this);
+        }
+
+        return graphResultItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all {@link de.hub.clickwatch.analysis.results.GraphNode} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected GraphNodeItemProvider graphNodeItemProvider;
+
+    /**
+     * This creates an adapter for a {@link de.hub.clickwatch.analysis.results.GraphNode}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createGraphNodeAdapter() {
+        if (graphNodeItemProvider == null) {
+            graphNodeItemProvider = new GraphNodeItemProvider(this);
+        }
+
+        return graphNodeItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all {@link de.hub.clickwatch.analysis.results.GraphLink} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected GraphLinkItemProvider graphLinkItemProvider;
+
+    /**
+     * This creates an adapter for a {@link de.hub.clickwatch.analysis.results.GraphLink}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createGraphLinkAdapter() {
+        if (graphLinkItemProvider == null) {
+            graphLinkItemProvider = new GraphLinkItemProvider(this);
+        }
+
+        return graphLinkItemProvider;
+    }
+
+    /**
      * This returns the root adapter factory that contains this factory.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -430,13 +499,16 @@ public class ResultsItemProviderAdapterFactory extends ResultsAdapterFactory imp
         if (axisItemProvider != null) axisItemProvider.dispose();
         if (seriesItemProvider != null) seriesItemProvider.dispose();
         if (categoryItemProvider != null) categoryItemProvider.dispose();
-        if (resultItemProvider != null) resultItemProvider.dispose();
         if (xyItemProvider != null) xyItemProvider.dispose();
         if (boxAndWhiskersItemProvider != null) boxAndWhiskersItemProvider.dispose();
         if (barItemProvider != null) barItemProvider.dispose();
         if (resultsItemProvider != null) resultsItemProvider.dispose();
         if (equalsConstraintItemProvider != null) equalsConstraintItemProvider.dispose();
         if (orItemProvider != null) orItemProvider.dispose();
+        if (numericalResultItemProvider != null) numericalResultItemProvider.dispose();
+        if (graphResultItemProvider != null) graphResultItemProvider.dispose();
+        if (graphNodeItemProvider != null) graphNodeItemProvider.dispose();
+        if (graphLinkItemProvider != null) graphLinkItemProvider.dispose();
     }
 
 }

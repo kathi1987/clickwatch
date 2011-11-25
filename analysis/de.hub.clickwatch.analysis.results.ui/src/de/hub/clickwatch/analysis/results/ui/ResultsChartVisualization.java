@@ -20,6 +20,7 @@ import de.hub.clickwatch.analysis.results.Axis;
 import de.hub.clickwatch.analysis.results.Chart;
 import de.hub.clickwatch.analysis.results.DataEntry;
 import de.hub.clickwatch.analysis.results.DataSet;
+import de.hub.clickwatch.analysis.results.NumericalResult;
 import de.hub.clickwatch.analysis.results.Result;
 import de.hub.clickwatch.analysis.results.Series;
 import de.hub.clickwatch.analysis.results.ValueSpec;
@@ -43,8 +44,8 @@ public class ResultsChartVisualization implements IVisualization {
 	}
 	
 	private Chart getChart(Object input) {
-		if (input instanceof Result) {
-			Result result = (Result)input;
+		if (input instanceof NumericalResult) {
+		    NumericalResult result = (NumericalResult)input;
 			if (!result.getCharts().isEmpty()) {
 				Chart chart = result.getCharts().get(0);
 				if (chart.getType() != null) {
@@ -55,7 +56,7 @@ public class ResultsChartVisualization implements IVisualization {
 		return null;
 	}
 	
-	private JFreeChart createChart(Result result) {
+	private JFreeChart createChart(NumericalResult result) {
 		Chart chart = getChart(result);
 		
 		if (chart.getType() instanceof XY) {
@@ -139,7 +140,7 @@ public class ResultsChartVisualization implements IVisualization {
 		}
 	}
 	
-	private Component createChartPanel(Result result) {
+	private Component createChartPanel(NumericalResult result) {
 		JFreeChart jfChart = createChart(result);	
 		if (jfChart == null) {
 			return null;
@@ -156,10 +157,10 @@ public class ResultsChartVisualization implements IVisualization {
 	public Component createVisualization(Object input) {	
 		cache.clear();
 		if (input != null) {
-			List<Result> results = (List<Result>)input;
+			List<NumericalResult> results = (List<NumericalResult>)input;
 			if (results.size() > 1) {
 				Panel panel = new Panel();
-				for (Result result: results) {
+				for (NumericalResult result: results) {
 					panel.add(createChartPanel(result));
 				}	
 				return panel;
@@ -174,8 +175,8 @@ public class ResultsChartVisualization implements IVisualization {
 	@Override
 	public void updateVisualization(Object input) {
 		if (input != null) {
-			List<Result> results = (List<Result>)input;
-			for (Result result: results) {
+			List<NumericalResult> results = (List<NumericalResult>)input;
+			for (NumericalResult result: results) {
 				ChartPanel panel = cache.get(result);
 				if (panel != null) {
 					panel.setChart(createChart(result));

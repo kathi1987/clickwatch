@@ -24,20 +24,17 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Series" eSuperTypes="#//ValueSpec"/>
   <eClassifiers xsi:type="ecore:EClass" name="Category" eSuperTypes="#//ValueSpec"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Result" eSuperTypes="#//NamedElement">
+  <eClassifiers xsi:type="ecore:EClass" name="Result" abstract="true" eSuperTypes="#//NamedElement">
     <eOperations name="exportCSV">
       <eParameters name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="timestamp" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="charts" upperBound="-1"
-        eType="#//Chart" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="data" eType="#//DataSet"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="XY" eSuperTypes="#//ChartType"/>
   <eClassifiers xsi:type="ecore:EClass" name="BoxAndWhiskers" eSuperTypes="#//ChartType"/>
   <eClassifiers xsi:type="ecore:EClass" name="Bar" eSuperTypes="#//ChartType"/>
   <eClassifiers xsi:type="ecore:EClass" name="Results" eSuperTypes="#//Chart">
-    <eOperations name="createNewResult" eType="#//Result">
+    <eOperations name="createNewNumericalResult" eType="#//NumericalResult">
       <eParameters name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
     <eOperations name="createNewGroup" eType="#//Results">
@@ -51,6 +48,9 @@
     </eOperations>
     <eOperations name="exportCSV">
       <eParameters name="fileName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="createNewGraphResult" eType="#//GraphResult">
+      <eParameters name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="results" upperBound="-1"
         eType="#//Result" containment="true"/>
@@ -72,4 +72,27 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="DataSet" instanceClassName="de.hub.clickwatch.analysis.results.DataSet"/>
   <eClassifiers xsi:type="ecore:EDataType" name="DataEntry" instanceClassName="de.hub.clickwatch.analysis.results.DataEntry"/>
+  <eClassifiers xsi:type="ecore:EClass" name="NumericalResult" eSuperTypes="#//Result">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="charts" upperBound="-1"
+        eType="#//Chart" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="data" eType="#//DataSet"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GraphResult" eSuperTypes="#//Result">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="nodes" upperBound="-1"
+        eType="#//GraphNode" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="links" upperBound="-1"
+        eType="#//GraphLink" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GraphNode" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outgoing" upperBound="-1"
+        eType="#//GraphLink" eOpposite="#//GraphLink/source"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="incoming" upperBound="-1"
+        eType="#//GraphLink" eOpposite="#//GraphLink/target"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GraphLink" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="source" eType="#//GraphNode"
+        eOpposite="#//GraphNode/outgoing"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//GraphNode"
+        eOpposite="#//GraphNode/incoming"/>
+  </eClassifiers>
 </ecore:EPackage>

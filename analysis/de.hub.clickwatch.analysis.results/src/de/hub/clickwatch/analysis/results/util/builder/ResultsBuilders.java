@@ -24,10 +24,6 @@ public class ResultsBuilders {
     return CategoryBuilder.newCategoryBuilder();
   }
 
-  public static final ResultBuilder newResultBuilder() {
-    return ResultBuilder.newResultBuilder();
-  }
-
   public static final XYBuilder newXYBuilder() {
     return XYBuilder.newXYBuilder();
   }
@@ -50,5 +46,21 @@ public class ResultsBuilders {
 
   public static final OrBuilder newOrBuilder() {
     return OrBuilder.newOrBuilder();
+  }
+
+  public static final NumericalResultBuilder newNumericalResultBuilder() {
+    return NumericalResultBuilder.newNumericalResultBuilder();
+  }
+
+  public static final GraphResultBuilder newGraphResultBuilder() {
+    return GraphResultBuilder.newGraphResultBuilder();
+  }
+
+  public static final GraphNodeBuilder newGraphNodeBuilder() {
+    return GraphNodeBuilder.newGraphNodeBuilder();
+  }
+
+  public static final GraphLinkBuilder newGraphLinkBuilder() {
+    return GraphLinkBuilder.newGraphLinkBuilder();
   }
 }

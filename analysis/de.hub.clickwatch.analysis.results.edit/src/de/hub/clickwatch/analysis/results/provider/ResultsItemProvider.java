@@ -154,7 +154,12 @@ public class ResultsItemProvider
         newChildDescriptors.add
             (createChildParameter
                 (ResultsPackage.Literals.RESULTS__RESULTS,
-                 ResultsFactory.eINSTANCE.createResult()));
+                 ResultsFactory.eINSTANCE.createNumericalResult()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (ResultsPackage.Literals.RESULTS__RESULTS,
+                 ResultsFactory.eINSTANCE.createGraphResult()));
 
         newChildDescriptors.add
             (createChildParameter

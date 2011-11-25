@@ -60,13 +60,13 @@ public interface Results extends Chart {
 
 	/**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @model
      * @generated
      */
-	Result createNewResult(String name);
+    NumericalResult createNewNumericalResult(String name);
 
-	/**
+    /**
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @model
@@ -97,5 +97,13 @@ public interface Results extends Chart {
      * @generated
      */
 	void exportCSV(String fileName);
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @model
+     * @generated
+     */
+    GraphResult createNewGraphResult(String name);
 
 } // Results

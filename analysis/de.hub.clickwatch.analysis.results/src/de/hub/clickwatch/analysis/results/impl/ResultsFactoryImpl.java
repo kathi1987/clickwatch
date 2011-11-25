@@ -28,8 +28,11 @@ import de.hub.clickwatch.analysis.results.Chart;
 import de.hub.clickwatch.analysis.results.DataEntry;
 import de.hub.clickwatch.analysis.results.DataSet;
 import de.hub.clickwatch.analysis.results.EqualsConstraint;
+import de.hub.clickwatch.analysis.results.GraphLink;
+import de.hub.clickwatch.analysis.results.GraphNode;
+import de.hub.clickwatch.analysis.results.GraphResult;
+import de.hub.clickwatch.analysis.results.NumericalResult;
 import de.hub.clickwatch.analysis.results.Or;
-import de.hub.clickwatch.analysis.results.Result;
 import de.hub.clickwatch.analysis.results.Results;
 import de.hub.clickwatch.analysis.results.ResultsFactory;
 import de.hub.clickwatch.analysis.results.ResultsPackage;
@@ -84,13 +87,16 @@ public class ResultsFactoryImpl extends EFactoryImpl implements ResultsFactory {
             case ResultsPackage.AXIS: return createAxis();
             case ResultsPackage.SERIES: return createSeries();
             case ResultsPackage.CATEGORY: return createCategory();
-            case ResultsPackage.RESULT: return createResult();
             case ResultsPackage.XY: return createXY();
             case ResultsPackage.BOX_AND_WHISKERS: return createBoxAndWhiskers();
             case ResultsPackage.BAR: return createBar();
             case ResultsPackage.RESULTS: return createResults();
             case ResultsPackage.EQUALS_CONSTRAINT: return createEqualsConstraint();
             case ResultsPackage.OR: return createOr();
+            case ResultsPackage.NUMERICAL_RESULT: return createNumericalResult();
+            case ResultsPackage.GRAPH_RESULT: return createGraphResult();
+            case ResultsPackage.GRAPH_NODE: return createGraphNode();
+            case ResultsPackage.GRAPH_LINK: return createGraphLink();
             default:
                 throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
         }
@@ -175,16 +181,6 @@ public class ResultsFactoryImpl extends EFactoryImpl implements ResultsFactory {
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public Result createResult() {
-        ResultImpl result = new ResultImpl();
-        return result;
-    }
-
-	/**
-     * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-     * @generated
-     */
 	public XY createXY() {
         XYImpl xy = new XYImpl();
         return xy;
@@ -241,6 +237,46 @@ public class ResultsFactoryImpl extends EFactoryImpl implements ResultsFactory {
     }
 
 	/**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public NumericalResult createNumericalResult() {
+        NumericalResultImpl numericalResult = new NumericalResultImpl();
+        return numericalResult;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public GraphResult createGraphResult() {
+        GraphResultImpl graphResult = new GraphResultImpl();
+        return graphResult;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public GraphNode createGraphNode() {
+        GraphNodeImpl graphNode = new GraphNodeImpl();
+        return graphNode;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public GraphLink createGraphLink() {
+        GraphLinkImpl graphLink = new GraphLinkImpl();
+        return graphLink;
+    }
+
+    /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated NOT

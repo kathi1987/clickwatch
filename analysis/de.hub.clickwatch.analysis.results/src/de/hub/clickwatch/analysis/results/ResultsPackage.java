@@ -68,7 +68,7 @@ public interface ResultsPackage extends EPackage {
      * @see de.hub.clickwatch.analysis.results.impl.ResultsPackageImpl#getDataSet()
      * @generated
      */
-	int DATA_SET = 15;
+	int DATA_SET = 19;
 
 	/**
      * The meta object id for the '{@link de.hub.clickwatch.analysis.results.impl.NamedElementImpl <em>Named Element</em>}' class.
@@ -106,7 +106,7 @@ public interface ResultsPackage extends EPackage {
      * @see de.hub.clickwatch.analysis.results.impl.ResultsPackageImpl#getDataEntry()
      * @generated
      */
-	int DATA_ENTRY = 16;
+	int DATA_ENTRY = 20;
 
 	/**
      * The meta object id for the '{@link de.hub.clickwatch.analysis.results.impl.ChartImpl <em>Chart</em>}' class.
@@ -413,31 +413,13 @@ public interface ResultsPackage extends EPackage {
 	int RESULT__TIMESTAMP = NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-     * The feature id for the '<em><b>Charts</b></em>' containment reference list.
-     * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-	int RESULT__CHARTS = NAMED_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
-     * The feature id for the '<em><b>Data</b></em>' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int RESULT__DATA = NAMED_ELEMENT_FEATURE_COUNT + 2;
-
-    /**
      * The number of structural features of the '<em>Result</em>' class.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-	int RESULT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 3;
+	int RESULT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
      * The meta object id for the '{@link de.hub.clickwatch.analysis.results.impl.XYImpl <em>XY</em>}' class.
@@ -666,6 +648,209 @@ public interface ResultsPackage extends EPackage {
 
 
 	/**
+     * The meta object id for the '{@link de.hub.clickwatch.analysis.results.impl.NumericalResultImpl <em>Numerical Result</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.hub.clickwatch.analysis.results.impl.NumericalResultImpl
+     * @see de.hub.clickwatch.analysis.results.impl.ResultsPackageImpl#getNumericalResult()
+     * @generated
+     */
+    int NUMERICAL_RESULT = 15;
+
+    /**
+     * The feature id for the '<em><b>Name</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int NUMERICAL_RESULT__NAME = RESULT__NAME;
+
+    /**
+     * The feature id for the '<em><b>Timestamp</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int NUMERICAL_RESULT__TIMESTAMP = RESULT__TIMESTAMP;
+
+    /**
+     * The feature id for the '<em><b>Charts</b></em>' containment reference list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int NUMERICAL_RESULT__CHARTS = RESULT_FEATURE_COUNT + 0;
+
+    /**
+     * The feature id for the '<em><b>Data</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int NUMERICAL_RESULT__DATA = RESULT_FEATURE_COUNT + 1;
+
+    /**
+     * The number of structural features of the '<em>Numerical Result</em>' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int NUMERICAL_RESULT_FEATURE_COUNT = RESULT_FEATURE_COUNT + 2;
+
+    /**
+     * The meta object id for the '{@link de.hub.clickwatch.analysis.results.impl.GraphResultImpl <em>Graph Result</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.hub.clickwatch.analysis.results.impl.GraphResultImpl
+     * @see de.hub.clickwatch.analysis.results.impl.ResultsPackageImpl#getGraphResult()
+     * @generated
+     */
+    int GRAPH_RESULT = 16;
+
+    /**
+     * The feature id for the '<em><b>Name</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int GRAPH_RESULT__NAME = RESULT__NAME;
+
+    /**
+     * The feature id for the '<em><b>Timestamp</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int GRAPH_RESULT__TIMESTAMP = RESULT__TIMESTAMP;
+
+    /**
+     * The feature id for the '<em><b>Nodes</b></em>' containment reference list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int GRAPH_RESULT__NODES = RESULT_FEATURE_COUNT + 0;
+
+    /**
+     * The feature id for the '<em><b>Links</b></em>' containment reference list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int GRAPH_RESULT__LINKS = RESULT_FEATURE_COUNT + 1;
+
+    /**
+     * The number of structural features of the '<em>Graph Result</em>' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int GRAPH_RESULT_FEATURE_COUNT = RESULT_FEATURE_COUNT + 2;
+
+    /**
+     * The meta object id for the '{@link de.hub.clickwatch.analysis.results.impl.GraphNodeImpl <em>Graph Node</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.hub.clickwatch.analysis.results.impl.GraphNodeImpl
+     * @see de.hub.clickwatch.analysis.results.impl.ResultsPackageImpl#getGraphNode()
+     * @generated
+     */
+    int GRAPH_NODE = 17;
+
+    /**
+     * The feature id for the '<em><b>Name</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int GRAPH_NODE__NAME = NAMED_ELEMENT__NAME;
+
+    /**
+     * The feature id for the '<em><b>Outgoing</b></em>' reference list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int GRAPH_NODE__OUTGOING = NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+    /**
+     * The feature id for the '<em><b>Incoming</b></em>' reference list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int GRAPH_NODE__INCOMING = NAMED_ELEMENT_FEATURE_COUNT + 1;
+
+    /**
+     * The number of structural features of the '<em>Graph Node</em>' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int GRAPH_NODE_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 2;
+
+    /**
+     * The meta object id for the '{@link de.hub.clickwatch.analysis.results.impl.GraphLinkImpl <em>Graph Link</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.hub.clickwatch.analysis.results.impl.GraphLinkImpl
+     * @see de.hub.clickwatch.analysis.results.impl.ResultsPackageImpl#getGraphLink()
+     * @generated
+     */
+    int GRAPH_LINK = 18;
+
+    /**
+     * The feature id for the '<em><b>Name</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int GRAPH_LINK__NAME = NAMED_ELEMENT__NAME;
+
+    /**
+     * The feature id for the '<em><b>Source</b></em>' reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int GRAPH_LINK__SOURCE = NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+    /**
+     * The feature id for the '<em><b>Target</b></em>' reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int GRAPH_LINK__TARGET = NAMED_ELEMENT_FEATURE_COUNT + 1;
+
+    /**
+     * The number of structural features of the '<em>Graph Link</em>' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int GRAPH_LINK_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 2;
+
+
+    /**
      * Returns the meta object for data type '{@link de.hub.clickwatch.analysis.results.DataSet <em>Data Set</em>}'.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -856,28 +1041,6 @@ public interface ResultsPackage extends EPackage {
 	EAttribute getResult_Timestamp();
 
 	/**
-     * Returns the meta object for the containment reference list '{@link de.hub.clickwatch.analysis.results.Result#getCharts <em>Charts</em>}'.
-     * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-     * @return the meta object for the containment reference list '<em>Charts</em>'.
-     * @see de.hub.clickwatch.analysis.results.Result#getCharts()
-     * @see #getResult()
-     * @generated
-     */
-	EReference getResult_Charts();
-
-	/**
-     * Returns the meta object for the attribute '{@link de.hub.clickwatch.analysis.results.Result#getData <em>Data</em>}'.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @return the meta object for the attribute '<em>Data</em>'.
-     * @see de.hub.clickwatch.analysis.results.Result#getData()
-     * @see #getResult()
-     * @generated
-     */
-    EAttribute getResult_Data();
-
-    /**
      * Returns the meta object for class '{@link de.hub.clickwatch.analysis.results.XY <em>XY</em>}'.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -992,6 +1155,134 @@ public interface ResultsPackage extends EPackage {
 	EReference getOr_Ops();
 
 	/**
+     * Returns the meta object for class '{@link de.hub.clickwatch.analysis.results.NumericalResult <em>Numerical Result</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for class '<em>Numerical Result</em>'.
+     * @see de.hub.clickwatch.analysis.results.NumericalResult
+     * @generated
+     */
+    EClass getNumericalResult();
+
+    /**
+     * Returns the meta object for the containment reference list '{@link de.hub.clickwatch.analysis.results.NumericalResult#getCharts <em>Charts</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the containment reference list '<em>Charts</em>'.
+     * @see de.hub.clickwatch.analysis.results.NumericalResult#getCharts()
+     * @see #getNumericalResult()
+     * @generated
+     */
+    EReference getNumericalResult_Charts();
+
+    /**
+     * Returns the meta object for the attribute '{@link de.hub.clickwatch.analysis.results.NumericalResult#getData <em>Data</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Data</em>'.
+     * @see de.hub.clickwatch.analysis.results.NumericalResult#getData()
+     * @see #getNumericalResult()
+     * @generated
+     */
+    EAttribute getNumericalResult_Data();
+
+    /**
+     * Returns the meta object for class '{@link de.hub.clickwatch.analysis.results.GraphResult <em>Graph Result</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for class '<em>Graph Result</em>'.
+     * @see de.hub.clickwatch.analysis.results.GraphResult
+     * @generated
+     */
+    EClass getGraphResult();
+
+    /**
+     * Returns the meta object for the containment reference list '{@link de.hub.clickwatch.analysis.results.GraphResult#getNodes <em>Nodes</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the containment reference list '<em>Nodes</em>'.
+     * @see de.hub.clickwatch.analysis.results.GraphResult#getNodes()
+     * @see #getGraphResult()
+     * @generated
+     */
+    EReference getGraphResult_Nodes();
+
+    /**
+     * Returns the meta object for the containment reference list '{@link de.hub.clickwatch.analysis.results.GraphResult#getLinks <em>Links</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the containment reference list '<em>Links</em>'.
+     * @see de.hub.clickwatch.analysis.results.GraphResult#getLinks()
+     * @see #getGraphResult()
+     * @generated
+     */
+    EReference getGraphResult_Links();
+
+    /**
+     * Returns the meta object for class '{@link de.hub.clickwatch.analysis.results.GraphNode <em>Graph Node</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for class '<em>Graph Node</em>'.
+     * @see de.hub.clickwatch.analysis.results.GraphNode
+     * @generated
+     */
+    EClass getGraphNode();
+
+    /**
+     * Returns the meta object for the reference list '{@link de.hub.clickwatch.analysis.results.GraphNode#getOutgoing <em>Outgoing</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the reference list '<em>Outgoing</em>'.
+     * @see de.hub.clickwatch.analysis.results.GraphNode#getOutgoing()
+     * @see #getGraphNode()
+     * @generated
+     */
+    EReference getGraphNode_Outgoing();
+
+    /**
+     * Returns the meta object for the reference list '{@link de.hub.clickwatch.analysis.results.GraphNode#getIncoming <em>Incoming</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the reference list '<em>Incoming</em>'.
+     * @see de.hub.clickwatch.analysis.results.GraphNode#getIncoming()
+     * @see #getGraphNode()
+     * @generated
+     */
+    EReference getGraphNode_Incoming();
+
+    /**
+     * Returns the meta object for class '{@link de.hub.clickwatch.analysis.results.GraphLink <em>Graph Link</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for class '<em>Graph Link</em>'.
+     * @see de.hub.clickwatch.analysis.results.GraphLink
+     * @generated
+     */
+    EClass getGraphLink();
+
+    /**
+     * Returns the meta object for the reference '{@link de.hub.clickwatch.analysis.results.GraphLink#getSource <em>Source</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the reference '<em>Source</em>'.
+     * @see de.hub.clickwatch.analysis.results.GraphLink#getSource()
+     * @see #getGraphLink()
+     * @generated
+     */
+    EReference getGraphLink_Source();
+
+    /**
+     * Returns the meta object for the reference '{@link de.hub.clickwatch.analysis.results.GraphLink#getTarget <em>Target</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the reference '<em>Target</em>'.
+     * @see de.hub.clickwatch.analysis.results.GraphLink#getTarget()
+     * @see #getGraphLink()
+     * @generated
+     */
+    EReference getGraphLink_Target();
+
+    /**
      * Returns the factory that creates the instances of the model.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1178,22 +1469,6 @@ public interface ResultsPackage extends EPackage {
 		EAttribute RESULT__TIMESTAMP = eINSTANCE.getResult_Timestamp();
 
 		/**
-         * The meta object literal for the '<em><b>Charts</b></em>' containment reference list feature.
-         * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-         * @generated
-         */
-		EReference RESULT__CHARTS = eINSTANCE.getResult_Charts();
-
-		/**
-         * The meta object literal for the '<em><b>Data</b></em>' attribute feature.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        EAttribute RESULT__DATA = eINSTANCE.getResult_Data();
-
-        /**
          * The meta object literal for the '{@link de.hub.clickwatch.analysis.results.impl.XYImpl <em>XY</em>}' class.
          * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1294,6 +1569,110 @@ public interface ResultsPackage extends EPackage {
          * @generated
          */
 		EReference OR__OPS = eINSTANCE.getOr_Ops();
+
+        /**
+         * The meta object literal for the '{@link de.hub.clickwatch.analysis.results.impl.NumericalResultImpl <em>Numerical Result</em>}' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see de.hub.clickwatch.analysis.results.impl.NumericalResultImpl
+         * @see de.hub.clickwatch.analysis.results.impl.ResultsPackageImpl#getNumericalResult()
+         * @generated
+         */
+        EClass NUMERICAL_RESULT = eINSTANCE.getNumericalResult();
+
+        /**
+         * The meta object literal for the '<em><b>Charts</b></em>' containment reference list feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EReference NUMERICAL_RESULT__CHARTS = eINSTANCE.getNumericalResult_Charts();
+
+        /**
+         * The meta object literal for the '<em><b>Data</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute NUMERICAL_RESULT__DATA = eINSTANCE.getNumericalResult_Data();
+
+        /**
+         * The meta object literal for the '{@link de.hub.clickwatch.analysis.results.impl.GraphResultImpl <em>Graph Result</em>}' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see de.hub.clickwatch.analysis.results.impl.GraphResultImpl
+         * @see de.hub.clickwatch.analysis.results.impl.ResultsPackageImpl#getGraphResult()
+         * @generated
+         */
+        EClass GRAPH_RESULT = eINSTANCE.getGraphResult();
+
+        /**
+         * The meta object literal for the '<em><b>Nodes</b></em>' containment reference list feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EReference GRAPH_RESULT__NODES = eINSTANCE.getGraphResult_Nodes();
+
+        /**
+         * The meta object literal for the '<em><b>Links</b></em>' containment reference list feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EReference GRAPH_RESULT__LINKS = eINSTANCE.getGraphResult_Links();
+
+        /**
+         * The meta object literal for the '{@link de.hub.clickwatch.analysis.results.impl.GraphNodeImpl <em>Graph Node</em>}' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see de.hub.clickwatch.analysis.results.impl.GraphNodeImpl
+         * @see de.hub.clickwatch.analysis.results.impl.ResultsPackageImpl#getGraphNode()
+         * @generated
+         */
+        EClass GRAPH_NODE = eINSTANCE.getGraphNode();
+
+        /**
+         * The meta object literal for the '<em><b>Outgoing</b></em>' reference list feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EReference GRAPH_NODE__OUTGOING = eINSTANCE.getGraphNode_Outgoing();
+
+        /**
+         * The meta object literal for the '<em><b>Incoming</b></em>' reference list feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EReference GRAPH_NODE__INCOMING = eINSTANCE.getGraphNode_Incoming();
+
+        /**
+         * The meta object literal for the '{@link de.hub.clickwatch.analysis.results.impl.GraphLinkImpl <em>Graph Link</em>}' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see de.hub.clickwatch.analysis.results.impl.GraphLinkImpl
+         * @see de.hub.clickwatch.analysis.results.impl.ResultsPackageImpl#getGraphLink()
+         * @generated
+         */
+        EClass GRAPH_LINK = eINSTANCE.getGraphLink();
+
+        /**
+         * The meta object literal for the '<em><b>Source</b></em>' reference feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EReference GRAPH_LINK__SOURCE = eINSTANCE.getGraphLink_Source();
+
+        /**
+         * The meta object literal for the '<em><b>Target</b></em>' reference feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EReference GRAPH_LINK__TARGET = eINSTANCE.getGraphLink_Target();
 
 	}
 

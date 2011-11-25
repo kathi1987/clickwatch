@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import de.hub.clickwatch.analysis.results.DataEntry;
 import de.hub.clickwatch.analysis.results.DataSet;
 import de.hub.clickwatch.analysis.results.EqualsConstraint;
-import de.hub.clickwatch.analysis.results.Result;
+import de.hub.clickwatch.analysis.results.NumericalResult;
 import de.hub.clickwatch.analysis.results.ResultsPackage;
 import de.hub.clickwatch.analysis.results.ValueSpec;
 
@@ -112,8 +112,8 @@ public class EqualsConstraintImpl extends ConstraintImpl implements EqualsConstr
 		loop: while (container != null) {
 			if (container instanceof ValueSpec) {
 				column = ((ValueSpec)container).getColumn();
-			} else if (container instanceof Result) {
-				ds = ((Result)container).getData();
+			} else if (container instanceof NumericalResult) {
+				ds = ((NumericalResult)container).getData();
 				break loop;
 			}
 			container = container.eContainer();

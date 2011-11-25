@@ -6,6 +6,7 @@
  */
 package de.hub.clickwatch.analysis.results.util;
 
+import de.hub.clickwatch.analysis.results.*;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
@@ -191,6 +192,36 @@ public class ResultsSwitch<T> extends Switch<T> {
                 Or or = (Or)theEObject;
                 T result = caseOr(or);
                 if (result == null) result = caseConstraint(or);
+                if (result == null) result = defaultCase(theEObject);
+                return result;
+            }
+            case ResultsPackage.NUMERICAL_RESULT: {
+                NumericalResult numericalResult = (NumericalResult)theEObject;
+                T result = caseNumericalResult(numericalResult);
+                if (result == null) result = caseResult(numericalResult);
+                if (result == null) result = caseNamedElement(numericalResult);
+                if (result == null) result = defaultCase(theEObject);
+                return result;
+            }
+            case ResultsPackage.GRAPH_RESULT: {
+                GraphResult graphResult = (GraphResult)theEObject;
+                T result = caseGraphResult(graphResult);
+                if (result == null) result = caseResult(graphResult);
+                if (result == null) result = caseNamedElement(graphResult);
+                if (result == null) result = defaultCase(theEObject);
+                return result;
+            }
+            case ResultsPackage.GRAPH_NODE: {
+                GraphNode graphNode = (GraphNode)theEObject;
+                T result = caseGraphNode(graphNode);
+                if (result == null) result = caseNamedElement(graphNode);
+                if (result == null) result = defaultCase(theEObject);
+                return result;
+            }
+            case ResultsPackage.GRAPH_LINK: {
+                GraphLink graphLink = (GraphLink)theEObject;
+                T result = caseGraphLink(graphLink);
+                if (result == null) result = caseNamedElement(graphLink);
                 if (result == null) result = defaultCase(theEObject);
                 return result;
             }
@@ -424,6 +455,66 @@ public class ResultsSwitch<T> extends Switch<T> {
     }
 
 	/**
+     * Returns the result of interpreting the object as an instance of '<em>Numerical Result</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Numerical Result</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseNumericalResult(NumericalResult object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Graph Result</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Graph Result</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseGraphResult(GraphResult object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Graph Node</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Graph Node</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseGraphNode(GraphNode object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Graph Link</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Graph Link</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseGraphLink(GraphLink object) {
+        return null;
+    }
+
+    /**
      * Returns the result of interpreting the object as an instance of '<em>EObject</em>'.
      * <!-- begin-user-doc -->
 	 * This implementation returns null;

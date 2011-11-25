@@ -77,8 +77,11 @@ public class ClickWatchModelProvider implements IClickWatchContextAdapter,
 	}
 
 	@Override
-	public void initialize(IConfigurationElement configurationElement, EObject selection) {
+	public void initialize(IConfigurationElement configurationElement, EObject selection) {	    
 		this.clickWatchObject = selection;
+		if (selection instanceof Network) {
+		    this.network = (Network)selection;
+		}
 	}
 
 	@Override

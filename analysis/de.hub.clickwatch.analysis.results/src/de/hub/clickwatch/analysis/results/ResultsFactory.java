@@ -62,15 +62,6 @@ public interface ResultsFactory extends EFactory {
 	Category createCategory();
 
 	/**
-     * Returns a new object of class '<em>Result</em>'.
-     * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-     * @return a new object of class '<em>Result</em>'.
-     * @generated
-     */
-	Result createResult();
-
-	/**
      * Returns a new object of class '<em>XY</em>'.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -125,6 +116,42 @@ public interface ResultsFactory extends EFactory {
 	Or createOr();
 
 	/**
+     * Returns a new object of class '<em>Numerical Result</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>Numerical Result</em>'.
+     * @generated
+     */
+    NumericalResult createNumericalResult();
+
+    /**
+     * Returns a new object of class '<em>Graph Result</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>Graph Result</em>'.
+     * @generated
+     */
+    GraphResult createGraphResult();
+
+    /**
+     * Returns a new object of class '<em>Graph Node</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>Graph Node</em>'.
+     * @generated
+     */
+    GraphNode createGraphNode();
+
+    /**
+     * Returns a new object of class '<em>Graph Link</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>Graph Link</em>'.
+     * @generated
+     */
+    GraphLink createGraphLink();
+
+    /**
      * Returns the package supported by this factory.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

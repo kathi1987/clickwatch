@@ -21,8 +21,10 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
 
+import com.google.common.base.Preconditions;
 import com.google.inject.Inject;
 
+import de.hub.clickwatch.analysis.results.NumericalResult;
 import de.hub.clickwatch.analysis.results.Result;
 import de.hub.clickwatch.analysis.results.Results;
 import de.hub.clickwatch.analysis.results.util.builder.AxisBuilder;
@@ -105,7 +107,13 @@ public class SimpleRuntimeAnalysis implements IObjectActionDelegate {
 		
         Results results = record.getResults();
         String resultName = value.getEntry().getEStructuralFeature().getName();
-        Result result = results.getResult(resultName);
+        Result genResult = results.getResult(resultName);
+        if (genResult == null) {
+            genResult = results.createNewGraphResult(resultName);
+        } else {
+            Preconditions.checkArgument(genResult instanceof NumericalResult);
+        }
+        NumericalResult result = (NumericalResult)genResult;
         result.setTimestamp(new Date());
 		
 		result.getCharts().add(ChartBuilder.newChartBuilder()

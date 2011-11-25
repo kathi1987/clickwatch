@@ -47,7 +47,7 @@
          <valuespec
                is_axis="true"
                name="time (ms)"
-               window_size="1000">
+               window_size="10000">
          </valuespec>
          <valuespec
                is_axis="true"

@@ -12,6 +12,9 @@
     <visualization
           class="de.hub.clickwatch.analysis.results.ui.ResultsChartVisualization">
     </visualization>
+    <visualization
+          class="de.hub.clickwatch.analysis.results.ui.GraphVisualization">
+    </visualization>
  </extension>
  <extension
        point="org.eclipse.ui.popupMenus">

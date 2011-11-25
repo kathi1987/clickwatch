@@ -6,6 +6,8 @@
  */
 package de.hub.clickwatch.analysis.results.impl;
 
+import de.hub.clickwatch.analysis.results.GraphResult;
+import de.hub.clickwatch.analysis.results.NumericalResult;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
@@ -103,13 +105,13 @@ public class ResultsImpl extends ChartImpl implements Results {
         return groups;
     }
 
-	/**
+    /**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public Result createNewResult(String name) {
-		Result result = ResultsFactory.eINSTANCE.createResult();
+	public NumericalResult createNewNumericalResult(String name) {
+		NumericalResult result = ResultsFactory.eINSTANCE.createNumericalResult();
 		result.setName(name);
 		result.setTimestamp(new Date());
 		getResults().add(result);
@@ -139,7 +141,7 @@ public class ResultsImpl extends ChartImpl implements Results {
 				return result;
 			}
 		}
-		return createNewResult(name);
+		return null;
 	}
 
 	/**
@@ -169,22 +171,38 @@ public class ResultsImpl extends ChartImpl implements Results {
 			throw new RuntimeException(e);
 		}
 		for (Result result: getResults()) {
-			if (result.getData() != null) {
-				for (DataEntry entry: result.getData().getEntries()) {
-					out.print(result.getName());
-					out.print(" ");
-					for (Object value: entry.getValues()) {
-						out.print(value);
-						out.print(" ");
-					}
-					out.print("\n");
-				}
-			}
+		    if (result instanceof NumericalResult) {
+		        NumericalResult numResult = (NumericalResult)result;
+    			if (numResult.getData() != null) {
+    				for (DataEntry entry: numResult.getData().getEntries()) {
+    					out.print(result.getName());
+    					out.print(" ");
+    					for (Object value: entry.getValues()) {
+    						out.print(value);
+    						out.print(" ");
+    					}
+    					out.print("\n");
+    				}
+    			}
+		    }
 		}
 		out.close();
 	}
 
-	/**
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated NOT
+     */
+    public GraphResult createNewGraphResult(String name) {
+        GraphResult result = ResultsFactory.eINSTANCE.createGraphResult();
+        result.setName(name);
+        result.setTimestamp(new Date());
+        getResults().add(result);
+        return result;
+    }
+
+    /**
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated

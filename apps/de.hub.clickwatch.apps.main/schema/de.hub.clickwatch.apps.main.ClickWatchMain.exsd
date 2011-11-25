@@ -126,6 +126,16 @@
                </appinfo>
             </annotation>
          </attribute>
+         <attribute name="enableFor" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="java"/>
+               </appinfo>
+            </annotation>
+         </attribute>
       </complexType>
    </element>
 

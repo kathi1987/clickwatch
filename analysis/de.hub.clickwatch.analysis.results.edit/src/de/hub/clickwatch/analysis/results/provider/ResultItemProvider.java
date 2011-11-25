@@ -90,36 +90,6 @@ public class ResultItemProvider
     }
 
 	/**
-     * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
-     * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-     * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
-     * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-     * @generated
-     */
-	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-        if (childrenFeatures == null) {
-            super.getChildrenFeatures(object);
-            childrenFeatures.add(ResultsPackage.Literals.RESULT__CHARTS);
-        }
-        return childrenFeatures;
-    }
-
-	/**
-     * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-     * @generated
-     */
-	@Override
-	protected EStructuralFeature getChildFeature(Object object, Object child) {
-        // Check the type of the specified child object and return the proper feature to use for
-        // adding (see {@link AddCommand}) it as a child.
-
-        return super.getChildFeature(object, child);
-    }
-
-	/**
      * This returns Result.gif.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -159,9 +129,6 @@ public class ResultItemProvider
             case ResultsPackage.RESULT__TIMESTAMP:
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
                 return;
-            case ResultsPackage.RESULT__CHARTS:
-                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-                return;
         }
         super.notifyChanged(notification);
     }
@@ -176,16 +143,6 @@ public class ResultItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
-
-        newChildDescriptors.add
-            (createChildParameter
-                (ResultsPackage.Literals.RESULT__CHARTS,
-                 ResultsFactory.eINSTANCE.createChart()));
-
-        newChildDescriptors.add
-            (createChildParameter
-                (ResultsPackage.Literals.RESULT__CHARTS,
-                 ResultsFactory.eINSTANCE.createResults()));
     }
 
 }

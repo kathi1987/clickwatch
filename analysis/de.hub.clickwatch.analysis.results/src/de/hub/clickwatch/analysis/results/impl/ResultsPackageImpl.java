@@ -24,7 +24,11 @@ import de.hub.clickwatch.analysis.results.Constraint;
 import de.hub.clickwatch.analysis.results.DataEntry;
 import de.hub.clickwatch.analysis.results.DataSet;
 import de.hub.clickwatch.analysis.results.EqualsConstraint;
+import de.hub.clickwatch.analysis.results.GraphLink;
+import de.hub.clickwatch.analysis.results.GraphNode;
+import de.hub.clickwatch.analysis.results.GraphResult;
 import de.hub.clickwatch.analysis.results.NamedElement;
+import de.hub.clickwatch.analysis.results.NumericalResult;
 import de.hub.clickwatch.analysis.results.Or;
 import de.hub.clickwatch.analysis.results.Result;
 import de.hub.clickwatch.analysis.results.Results;
@@ -146,6 +150,34 @@ public class ResultsPackageImpl extends EPackageImpl implements ResultsPackage {
 	private EClass orEClass = null;
 
 	/**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EClass numericalResultEClass = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EClass graphResultEClass = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EClass graphNodeEClass = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EClass graphLinkEClass = null;
+
+    /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -387,24 +419,6 @@ public class ResultsPackageImpl extends EPackageImpl implements ResultsPackage {
 	 * <!-- end-user-doc -->
      * @generated
      */
-	public EReference getResult_Charts() {
-        return (EReference)resultEClass.getEStructuralFeatures().get(1);
-    }
-
-	/**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    public EAttribute getResult_Data() {
-        return (EAttribute)resultEClass.getEStructuralFeatures().get(2);
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-     * @generated
-     */
 	public EClass getXY() {
         return xyEClass;
     }
@@ -501,6 +515,114 @@ public class ResultsPackageImpl extends EPackageImpl implements ResultsPackage {
 
 	/**
      * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EClass getNumericalResult() {
+        return numericalResultEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getNumericalResult_Charts() {
+        return (EReference)numericalResultEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getNumericalResult_Data() {
+        return (EAttribute)numericalResultEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EClass getGraphResult() {
+        return graphResultEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getGraphResult_Nodes() {
+        return (EReference)graphResultEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getGraphResult_Links() {
+        return (EReference)graphResultEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EClass getGraphNode() {
+        return graphNodeEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getGraphNode_Outgoing() {
+        return (EReference)graphNodeEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getGraphNode_Incoming() {
+        return (EReference)graphNodeEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EClass getGraphLink() {
+        return graphLinkEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getGraphLink_Source() {
+        return (EReference)graphLinkEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getGraphLink_Target() {
+        return (EReference)graphLinkEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
      */
@@ -550,8 +672,6 @@ public class ResultsPackageImpl extends EPackageImpl implements ResultsPackage {
 
         resultEClass = createEClass(RESULT);
         createEAttribute(resultEClass, RESULT__TIMESTAMP);
-        createEReference(resultEClass, RESULT__CHARTS);
-        createEAttribute(resultEClass, RESULT__DATA);
 
         xyEClass = createEClass(XY);
 
@@ -570,6 +690,22 @@ public class ResultsPackageImpl extends EPackageImpl implements ResultsPackage {
 
         orEClass = createEClass(OR);
         createEReference(orEClass, OR__OPS);
+
+        numericalResultEClass = createEClass(NUMERICAL_RESULT);
+        createEReference(numericalResultEClass, NUMERICAL_RESULT__CHARTS);
+        createEAttribute(numericalResultEClass, NUMERICAL_RESULT__DATA);
+
+        graphResultEClass = createEClass(GRAPH_RESULT);
+        createEReference(graphResultEClass, GRAPH_RESULT__NODES);
+        createEReference(graphResultEClass, GRAPH_RESULT__LINKS);
+
+        graphNodeEClass = createEClass(GRAPH_NODE);
+        createEReference(graphNodeEClass, GRAPH_NODE__OUTGOING);
+        createEReference(graphNodeEClass, GRAPH_NODE__INCOMING);
+
+        graphLinkEClass = createEClass(GRAPH_LINK);
+        createEReference(graphLinkEClass, GRAPH_LINK__SOURCE);
+        createEReference(graphLinkEClass, GRAPH_LINK__TARGET);
 
         // Create data types
         dataSetEDataType = createEDataType(DATA_SET);
@@ -617,6 +753,10 @@ public class ResultsPackageImpl extends EPackageImpl implements ResultsPackage {
         resultsEClass.getESuperTypes().add(this.getChart());
         equalsConstraintEClass.getESuperTypes().add(this.getConstraint());
         orEClass.getESuperTypes().add(this.getConstraint());
+        numericalResultEClass.getESuperTypes().add(this.getResult());
+        graphResultEClass.getESuperTypes().add(this.getResult());
+        graphNodeEClass.getESuperTypes().add(this.getNamedElement());
+        graphLinkEClass.getESuperTypes().add(this.getNamedElement());
 
         // Initialize classes and features; add operations and parameters
         initEClass(chartEClass, Chart.class, "Chart", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -640,10 +780,8 @@ public class ResultsPackageImpl extends EPackageImpl implements ResultsPackage {
 
         initEClass(categoryEClass, Category.class, "Category", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-        initEClass(resultEClass, Result.class, "Result", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEClass(resultEClass, Result.class, "Result", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getResult_Timestamp(), ecorePackage.getEDate(), "timestamp", null, 0, 1, Result.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getResult_Charts(), this.getChart(), null, "charts", null, 0, -1, Result.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getResult_Data(), this.getDataSet(), "data", null, 0, 1, Result.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         EOperation op = addEOperation(resultEClass, null, "exportCSV", 0, 1, IS_UNIQUE, IS_ORDERED);
         addEParameter(op, ecorePackage.getEString(), "name", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -658,7 +796,7 @@ public class ResultsPackageImpl extends EPackageImpl implements ResultsPackage {
         initEReference(getResults_Results(), this.getResult(), null, "results", null, 0, -1, Results.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getResults_Groups(), this.getResults(), null, "groups", null, 0, -1, Results.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-        op = addEOperation(resultsEClass, this.getResult(), "createNewResult", 0, 1, IS_UNIQUE, IS_ORDERED);
+        op = addEOperation(resultsEClass, this.getNumericalResult(), "createNewNumericalResult", 0, 1, IS_UNIQUE, IS_ORDERED);
         addEParameter(op, ecorePackage.getEString(), "name", 0, 1, IS_UNIQUE, IS_ORDERED);
 
         op = addEOperation(resultsEClass, this.getResults(), "createNewGroup", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -673,6 +811,9 @@ public class ResultsPackageImpl extends EPackageImpl implements ResultsPackage {
         op = addEOperation(resultsEClass, null, "exportCSV", 0, 1, IS_UNIQUE, IS_ORDERED);
         addEParameter(op, ecorePackage.getEString(), "fileName", 0, 1, IS_UNIQUE, IS_ORDERED);
 
+        op = addEOperation(resultsEClass, this.getGraphResult(), "createNewGraphResult", 0, 1, IS_UNIQUE, IS_ORDERED);
+        addEParameter(op, ecorePackage.getEString(), "name", 0, 1, IS_UNIQUE, IS_ORDERED);
+
         initEClass(equalsConstraintEClass, EqualsConstraint.class, "EqualsConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getEqualsConstraint_Constraint(), ecorePackage.getEJavaObject(), "constraint", null, 0, 1, EqualsConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -685,6 +826,22 @@ public class ResultsPackageImpl extends EPackageImpl implements ResultsPackage {
 
         initEClass(orEClass, Or.class, "Or", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEReference(getOr_Ops(), this.getConstraint(), null, "ops", null, 0, -1, Or.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+        initEClass(numericalResultEClass, NumericalResult.class, "NumericalResult", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getNumericalResult_Charts(), this.getChart(), null, "charts", null, 0, -1, NumericalResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getNumericalResult_Data(), this.getDataSet(), "data", null, 0, 1, NumericalResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+        initEClass(graphResultEClass, GraphResult.class, "GraphResult", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getGraphResult_Nodes(), this.getGraphNode(), null, "nodes", null, 0, -1, GraphResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getGraphResult_Links(), this.getGraphLink(), null, "links", null, 0, -1, GraphResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+        initEClass(graphNodeEClass, GraphNode.class, "GraphNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getGraphNode_Outgoing(), this.getGraphLink(), this.getGraphLink_Source(), "outgoing", null, 0, -1, GraphNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getGraphNode_Incoming(), this.getGraphLink(), this.getGraphLink_Target(), "incoming", null, 0, -1, GraphNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+        initEClass(graphLinkEClass, GraphLink.class, "GraphLink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getGraphLink_Source(), this.getGraphNode(), this.getGraphNode_Outgoing(), "source", null, 0, 1, GraphLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getGraphLink_Target(), this.getGraphNode(), this.getGraphNode_Incoming(), "target", null, 0, 1, GraphLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         // Initialize data types
         initEDataType(dataSetEDataType, DataSet.class, "DataSet", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);

@@ -6,6 +6,7 @@
  */
 package de.hub.clickwatch.analysis.results.util;
 
+import de.hub.clickwatch.analysis.results.*;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
@@ -143,6 +144,22 @@ public class ResultsAdapterFactory extends AdapterFactoryImpl {
             @Override
             public Adapter caseOr(Or object) {
                 return createOrAdapter();
+            }
+            @Override
+            public Adapter caseNumericalResult(NumericalResult object) {
+                return createNumericalResultAdapter();
+            }
+            @Override
+            public Adapter caseGraphResult(GraphResult object) {
+                return createGraphResultAdapter();
+            }
+            @Override
+            public Adapter caseGraphNode(GraphNode object) {
+                return createGraphNodeAdapter();
+            }
+            @Override
+            public Adapter caseGraphLink(GraphLink object) {
+                return createGraphLinkAdapter();
             }
             @Override
             public Adapter defaultCase(EObject object) {
@@ -375,6 +392,62 @@ public class ResultsAdapterFactory extends AdapterFactoryImpl {
     }
 
 	/**
+     * Creates a new adapter for an object of class '{@link de.hub.clickwatch.analysis.results.NumericalResult <em>Numerical Result</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see de.hub.clickwatch.analysis.results.NumericalResult
+     * @generated
+     */
+    public Adapter createNumericalResultAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link de.hub.clickwatch.analysis.results.GraphResult <em>Graph Result</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see de.hub.clickwatch.analysis.results.GraphResult
+     * @generated
+     */
+    public Adapter createGraphResultAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link de.hub.clickwatch.analysis.results.GraphNode <em>Graph Node</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see de.hub.clickwatch.analysis.results.GraphNode
+     * @generated
+     */
+    public Adapter createGraphNodeAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link de.hub.clickwatch.analysis.results.GraphLink <em>Graph Link</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see de.hub.clickwatch.analysis.results.GraphLink
+     * @generated
+     */
+    public Adapter createGraphLinkAdapter() {
+        return null;
+    }
+
+    /**
      * Creates a new adapter for the default case.
      * <!-- begin-user-doc -->
 	 * This default implementation returns null.

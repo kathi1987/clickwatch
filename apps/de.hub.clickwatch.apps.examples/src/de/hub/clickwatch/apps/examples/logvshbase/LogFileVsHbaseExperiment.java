@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import com.google.inject.Inject;
 
+import de.hub.clickwatch.analysis.results.NumericalResult;
 import de.hub.clickwatch.analysis.results.Result;
 import de.hub.clickwatch.main.ClickWatchExternalLauncher;
 import de.hub.clickwatch.main.IArgumentsProvider;
@@ -67,7 +68,7 @@ public class LogFileVsHbaseExperiment implements IClickWatchMain {
 	private Result measureHBase(IClickWatchContext ctx) {
 		Record record = ctx.getAdapter(IRecordProvider.class).getRecord();
 		numberOfDataPoints = Integer.parseInt(ctx.getAdapter(IArgumentsProvider.class).getArguments()[1]);
-		Result result = ctx.getAdapter(IResultsProvider.class).getResults().createNewResult("hbaseresults");
+		NumericalResult result = ctx.getAdapter(IResultsProvider.class).getResults().createNewNumericalResult("hbaseresults");
 	
 		long durations[] = getDurations(record);
 		long hbaseSizes[] = getHBaseSizes(record, durations);
@@ -92,7 +93,7 @@ public class LogFileVsHbaseExperiment implements IClickWatchMain {
 		File sourceLogFile = new File(ctx.getAdapter(IArgumentsProvider.class).getArguments()[0]);
 		String grepCommand = ctx.getAdapter(IArgumentsProvider.class).getArguments()[2];
 		numberOfDataPoints = Integer.parseInt(ctx.getAdapter(IArgumentsProvider.class).getArguments()[1]);
-		Result result = ctx.getAdapter(IResultsProvider.class).getResults().createNewResult("logresults");
+		NumericalResult result = ctx.getAdapter(IResultsProvider.class).getResults().createNewNumericalResult("logresults");
 		
 		long durations[] = getDurations(record);
   		
