@@ -156,19 +156,25 @@ public class ClickWatchModuleUtil {
                         return logger;
                     } else {
     					return new ILogger() {
+    					    
+    					    PrintStream out = null;
+    					    
     						@Override
     						public synchronized void log(int status, String message,
     								Throwable exception) {
     						
-    							if (logFile != null) {
-    								try {
-    									logOut = new PrintStream(new File(logFile));
-    								} catch (FileNotFoundException e) {
-    									Throwables.propagate(e);
-    								}
-    							}
+    						    if (out == null) {
+        							if (logFile != null) {
+        								try {
+        									logOut = new PrintStream(new File(logFile));
+        								} catch (FileNotFoundException e) {
+        									Throwables.propagate(e);
+        								}
+        							} 
+        							out = logOut;
+    						    }
     							if ((debugLevel) >= status) {
-    								ClickWatchModuleUtil.log(logOut, status, message, exception);
+    								ClickWatchModuleUtil.log(out, status, message, exception);
     							}
     						}                        
     					};

@@ -122,9 +122,7 @@ public class SimpleRuntimeAnalysis implements IObjectActionDelegate {
 				.withValueSpecs(AxisBuilder.newAxisBuilder().withColumn(0).withName("time"))
 				.withValueSpecs(AxisBuilder.newAxisBuilder().withColumn(1).withName(value.getEntry().getEStructuralFeature().getName())).build());
 		
-		Iterator<Handler> iterator = dbUtil.getHandlerIterator(
-				DataBaseUtil.createHandle(record, node, handler),
-				monitor);
+        Iterator<Handler> iterator = dbUtil.getHandlerIterator(dbUtil.createHandle(record, node, handler), monitor);
 		while (iterator.hasNext()) {			
 			Handler newHandler = iterator.next();
 			long time = newHandler.getTimestamp() - record.getStart();

@@ -1,7 +1,5 @@
 package de.hub.clickwatch.apps.examples;
 
-import static de.hub.clickwatch.recorder.database.DataBaseUtil.createHandle;
-
 import java.util.Iterator;
 
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -38,7 +36,7 @@ public class HwBusyPlotAnalysis implements IClickWatchMain {
 		monitor.beginTask("Performing analysis on all nodes", nodes.length*100);
 		for (Node node: nodes) {
 			Iterator<Handler> iterator = dbUtil.getHandlerIterator(
-					createHandle(record, node, "device_wifi/wifidevice/cst/stats"),
+			        dbUtil.createHandle(record, node, "device_wifi/wifidevice/cst/stats"),
 					new SubProgressMonitor(monitor, 100));
 			while(iterator.hasNext()) {
 				Stats handler = (Stats)iterator.next();

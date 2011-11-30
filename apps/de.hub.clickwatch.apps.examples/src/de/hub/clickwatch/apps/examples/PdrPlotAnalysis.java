@@ -1,7 +1,5 @@
 package de.hub.clickwatch.apps.examples;
 
-import static de.hub.clickwatch.recorder.database.DataBaseUtil.createHandle;
-
 import java.util.Iterator;
 
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -40,7 +38,7 @@ public class PdrPlotAnalysis implements IClickWatchMain {
 		monitor.beginTask("Performing analysis on all nodes", nodes.length*100);
 		for (Node node: nodes) {
 			Iterator<Handler> iterator = dbUtil.getHandlerIterator(
-					createHandle(record, node, "device_wifi/link_stat/bcast_stats"),
+			        dbUtil.createHandle(record, node, "device_wifi/link_stat/bcast_stats"),
 					new SubProgressMonitor(monitor, 100));
 			while(iterator.hasNext()) {
 				Bcast_stats handler = (Bcast_stats)iterator.next();

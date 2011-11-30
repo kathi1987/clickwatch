@@ -1,7 +1,5 @@
 package de.hub.clickwatch.apps.examples;
 
-import static de.hub.clickwatch.recorder.database.DataBaseUtil.createHandle;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
@@ -58,7 +56,7 @@ public class SeismoCloudExport implements IClickWatchMain {
 					long end = record.getStart() + (SeismoCloudExport.this.end > 0 ? SeismoCloudExport.this.end : record.getEnd() - record.getStart());
 					
 					Iterator<Handler> iterator = dbUtil.getHandlerIterator(
-							createHandle(record, node, "seismo/localchannelinfo", start, end),
+					        dbUtil.createHandle(record, node, "seismo/localchannelinfo", start, end),
 							new SubProgressMonitor(monitor, 100));
 					while(iterator.hasNext()) {
 						Localchannelinfo handler = (Localchannelinfo)iterator.next();

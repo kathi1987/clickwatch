@@ -194,7 +194,7 @@ public class CWDataBaseTimeScaleController {
         if (selectedHandler != null) {
             IMergeAdapter mergeAdapter = getAdapter(selectedNode, IMergeAdapter.class);
 
-            Handler dbHandler = dataBaseUtil.getHandler(DataBaseUtil.createHandle(currentRecord, selectedNode, selectedHandler,
+            Handler dbHandler = dataBaseUtil.getHandler(dataBaseUtil.createHandle(currentRecord, selectedNode, selectedHandler,
                     time));
             if (dbHandler == null) {
                 dbHandler = ClickWatchModelFactory.eINSTANCE.createHandler();
@@ -219,7 +219,7 @@ public class CWDataBaseTimeScaleController {
                 IMergeAdapter mergeAdapter = getAdapter(currentNode, IMergeAdapter.class);
 
                 // get node from data base
-                Node nodeTimeCopy = dataBaseUtil.getNode(DataBaseUtil.createHandle(currentRecord, currentNode, time));
+                Node nodeTimeCopy = dataBaseUtil.getNode(dataBaseUtil.createHandle(currentRecord, currentNode, time));
 
                 if (nodeTimeCopy != null) {
                     // merge node into gui

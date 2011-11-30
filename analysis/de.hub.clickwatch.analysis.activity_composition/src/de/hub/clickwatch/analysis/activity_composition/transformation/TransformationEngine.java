@@ -93,7 +93,7 @@ public class TransformationEngine {
 						long start = 0;
 						long end = 0;
 						
-						inputHandler.add(util.getHandler(DataBaseUtil.createHandle(rec, nodeID, handlerID, start, end)));																
+						inputHandler.add(util.getHandler(util.createHandle(rec, nodeID, handlerID, start, end)));																
 					} else
 						raiseWarning("Oh a non clickwatch database input, sry not yet supported ("
 								+ mNode.getLabel() + ")");

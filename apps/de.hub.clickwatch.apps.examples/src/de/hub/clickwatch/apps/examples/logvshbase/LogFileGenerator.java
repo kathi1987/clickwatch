@@ -71,7 +71,7 @@ public class LogFileGenerator implements IClickWatchMain, IApplication {
 		logger.log(ILogger.INFO, "Creating database scanners for all handers for all nodes", null);
 		for (Node node: record.getConfiguration().getNodes()) {
 			for(Handler handler: node.getAllHandlers()) {
-				CurrentIterator iterator = new CurrentIterator(dbUtil.getHandlerIterator(DataBaseUtil.createHandle(record, node, handler)));
+				CurrentIterator iterator = new CurrentIterator(dbUtil.getHandlerIterator(dbUtil.createHandle(record, node, handler)));
 				insert(iterator, handlers);
 				nodeIds.put(iterator, node.getINetAddress());
 			}

@@ -25,6 +25,10 @@ public class ExportCSVAction implements IObjectActionDelegate {
         String[] filterExt = { "*.txt", "*.*" };
         fd.setFilterExtensions(filterExt);
         String fileName = fd.open();
+        if (fileName == null) {
+            // user cancled
+            return;
+        }
         
         if (this.slectionObject instanceof Results) {
         	((Results)slectionObject).exportCSV(fileName);

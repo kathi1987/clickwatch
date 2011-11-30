@@ -123,6 +123,7 @@ import org.eclipse.ui.views.properties.PropertySheet;
 import org.eclipse.ui.views.properties.PropertySheetPage;
 
 import de.hub.clickwatch.analysis.results.provider.ResultsItemProviderAdapterFactory;
+import de.hub.clickwatch.analysis.visualization.IVisualizationInputSource;
 import de.hub.clickwatch.model.presentation.ColoredReflectiveItemProviderAdapterFactory;
 import de.hub.clickwatch.model.provider.ClickWatchModelItemProviderAdapterFactory;
 import de.hub.clickwatch.recorder.database.CWDataBaseTimeScaleController;
@@ -134,10 +135,10 @@ import de.hub.emfxml.util.EmfXmlUtil;
  * This is an example of a CWDataBase model editor.
  * <!-- begin-user-doc --> <!--
  * end-user-doc -->
- * @generated
+ * @generated NOT
  */
 public class CWDataBaseEditor extends MultiPageEditorPart implements IEditingDomainProvider, ISelectionProvider, IMenuListener,
-        IViewerProvider, IGotoMarker {
+        IViewerProvider, IGotoMarker, IVisualizationInputSource {
     /**
      * This keeps track of the editing domain that is used to track all changes to the model.
      * <!-- begin-user-doc --> <!-- end-user-doc -->

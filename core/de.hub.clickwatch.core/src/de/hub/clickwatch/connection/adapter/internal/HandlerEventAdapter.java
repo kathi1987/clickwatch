@@ -43,6 +43,7 @@ public class HandlerEventAdapter extends AbstractAdapter implements IHandlerEven
     @Inject private ScheduledExecutorService ses;
     @Inject private Tasks taskDispatcher;
     
+    private boolean initializationRequired = true;    
     private boolean metaDataMightHaveChanged = false;
 
     private final Map<Object, IHandlerEventListener> eventListeners = new HashMap<Object, IHandlerEventListener>();
@@ -78,28 +79,31 @@ public class HandlerEventAdapter extends AbstractAdapter implements IHandlerEven
     @Override
     public void init(IInternalNodeConnection connection) {
         super.init(connection);
-        connection.getNode().eAdapters().add(new EContentAdapter() {
-            @Override
-            public void notifyChanged(Notification msg) {
-                if (msg.getFeature() == ClickWatchModelPackage.eINSTANCE.getNode_Elements() || 
-                        msg.getFeature() == ClickWatchModelPackage.eINSTANCE.getElement_Children() ||
-                        msg.getFeature() == ClickWatchModelPackage.eINSTANCE.getElement_Handlers()) {
-                    if (!metaDataMightHaveChanged) {
-                        logger.log(ILogger.DEBUG, "HandlerEventAdapter realized that meta-data has changed", null);
+        if (initializationRequired) {
+            connection.getNode().eAdapters().add(new EContentAdapter() {
+                @Override
+                public void notifyChanged(Notification msg) {
+                    if (msg.getFeature() == ClickWatchModelPackage.eINSTANCE.getNode_Elements() || 
+                            msg.getFeature() == ClickWatchModelPackage.eINSTANCE.getElement_Children() ||
+                            msg.getFeature() == ClickWatchModelPackage.eINSTANCE.getElement_Handlers()) {
+                        if (!metaDataMightHaveChanged) {
+                            logger.log(ILogger.DEBUG, "HandlerEventAdapter realized that meta-data has changed", null);
+                        }
+                        metaDataMightHaveChanged = true;
+                        
                     }
-                    metaDataMightHaveChanged = true;
-                    
+                    super.notifyChanged(msg);
                 }
-                super.notifyChanged(msg);
-            }
-
-            @Override
-            protected void selfAdapt(Notification notification) {
-                if (!(notification.getNotifier() instanceof Handler)) {
-                    super.selfAdapt(notification);
-                }
-            }                             
-        });
+    
+                @Override
+                protected void selfAdapt(Notification notification) {
+                    if (!(notification.getNotifier() instanceof Handler)) {
+                        super.selfAdapt(notification);
+                    }
+                }                             
+            });
+            initializationRequired = false;
+        }
     }
 
     @Override

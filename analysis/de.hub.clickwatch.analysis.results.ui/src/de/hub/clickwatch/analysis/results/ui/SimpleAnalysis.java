@@ -109,7 +109,7 @@ public class SimpleAnalysis implements IObjectActionDelegate {
 		String resultName = value.getEntry().getEStructuralFeature().getName();
 		Result genResult = results.getResult(resultName);
 		if (genResult == null) {
-		    genResult = results.createNewGraphResult(resultName);
+		    genResult = results.createNewNumericalResult(resultName);
 		} else {
 		    Preconditions.checkArgument(genResult instanceof NumericalResult);
 		}
@@ -121,10 +121,8 @@ public class SimpleAnalysis implements IObjectActionDelegate {
 				.withType(XYBuilder.newXYBuilder())
 				.withValueSpecs(AxisBuilder.newAxisBuilder().withColumn(0).withName("time"))
 				.withValueSpecs(AxisBuilder.newAxisBuilder().withColumn(1).withName(resultName)).build());
-		
-		Iterator<Handler> iterator = dbUtil.getHandlerIterator(
-				DataBaseUtil.createHandle(record, node, handler),
-				monitor);
+
+        Iterator<Handler> iterator = dbUtil.getHandlerIterator(dbUtil.createHandle(record, node, handler), monitor);
 		while (iterator.hasNext()) {			
 			Handler newHandler = iterator.next();
 			long time = newHandler.getTimestamp() - record.getStart();

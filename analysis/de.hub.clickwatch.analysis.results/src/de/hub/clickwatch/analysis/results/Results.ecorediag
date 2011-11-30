@@ -465,10 +465,10 @@
   </edges>
   <edges xmi:type="notation:Edge" xmi:id="_aXeC8MTwEeCRq8czE9D46A" type="3002" source="_t4XnYL34EeCysZNwnRpnrA" target="_YXcE4cTwEeCRq8czE9D46A">
     <children xmi:type="notation:Node" xmi:id="_aXfREMTwEeCRq8czE9D46A" type="4011">
-      <layoutConstraint xmi:type="notation:Location" xmi:id="_aXfREcTwEeCRq8czE9D46A" x="-10" y="-10"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_aXfREcTwEeCRq8czE9D46A" x="65" y="-51"/>
     </children>
     <children xmi:type="notation:Node" xmi:id="_aXfREsTwEeCRq8czE9D46A" type="4012">
-      <layoutConstraint xmi:type="notation:Location" xmi:id="_aXfRE8TwEeCRq8czE9D46A" x="10" y="10"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_aXfRE8TwEeCRq8czE9D46A" x="65" y="29"/>
     </children>
     <styles xmi:type="notation:ConnectorStyle" xmi:id="_aXeC8cTwEeCRq8czE9D46A" lineColor="4210752"/>
     <styles xmi:type="notation:FontStyle" xmi:id="_aXeC8sTwEeCRq8czE9D46A" fontColor="4210752" fontName="Lucida Grande" fontHeight="10"/>

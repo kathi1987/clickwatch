@@ -74,6 +74,8 @@ public class Recorder implements IErrorListener {
     private class RecordHandlerEventListener implements IHandlerEventListener {
         private final Node node;
         private long latestTime = 0;
+        private int recordedHandler = 0;
+        private int receiveCycles = 0;
         
         public RecordHandlerEventListener(Node node) {
             this.node = node;
@@ -83,6 +85,7 @@ public class Recorder implements IErrorListener {
         public void handlerReceived(Handler handler) {
             latestTime = handler.getTimestamp();
             dataBaseAdapter.record(node, handler);
+            recordedHandler++;
         }
 
         @Override
@@ -102,7 +105,12 @@ public class Recorder implements IErrorListener {
 
         @Override
         public void receivingStopped() {
-            
+            receiveCycles++;
+            node.getStatistics("recorded handler per receive cylce").addValue(recordedHandler);
+            recordedHandler = 0;
+            if (receiveCycles % 100 == 0) {
+                logger.log(ILogger.DEBUG, "completed " + receiveCycles + " receive cycles for node " + node.getINetAddress(), null);
+            }
         }
 
         @Override
@@ -112,6 +120,7 @@ public class Recorder implements IErrorListener {
 
         @Override
         public void listeningStopped() {
+            node.getStatistics("received cycles per recording").addValue(receiveCycles);
             dataBaseAdapter.close();
             save();            
         }

@@ -27,14 +27,16 @@ public abstract class AbstractDataView extends ViewPart implements ISelectionLis
 
 	@Override
 	public final void selectionChanged(IWorkbenchPart part, ISelection selection) {
-		for (IVisualizationInputProvider provider: getVisualizationInputProviders()) {
-			IVisualizationInput providedInput = provider.getInput(part, selection);
-			if (providedInput != null) {
-				setInput(providedInput);
-				return;
-			}
-		}
-		setInput(null);
+	    if (part instanceof IVisualizationInputSource) {
+    		for (IVisualizationInputProvider provider: getVisualizationInputProviders()) {
+    			IVisualizationInput providedInput = provider.getInput(part, selection);
+    			if (providedInput != null) {
+    				setInput(providedInput);
+    				return;
+    			}
+    		}
+    		setInput(null);
+	    }
 	}
 
 	@Override

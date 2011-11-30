@@ -83,7 +83,7 @@ public class HwBusyAndPdrPlotAnalysis implements IClickWatchMain {
 	
 	@SuppressWarnings("unchecked")
 	private <HC> void plot(String nodeId, String handlerId, IPlotConfig<HC> config) {
-		Iterator<Handler> iterator = dbUtil.getHandlerIterator(DataBaseUtil.createHandle(record, 
+		Iterator<Handler> iterator = dbUtil.getHandlerIterator(dbUtil.createHandle(record, 
 		        ModelBuilders.newNodeBuilder().withINetAddress(nodeId).build(),
 		        ModelBuilders.newHandlerBuilder().withName(handlerId).build()));
 		

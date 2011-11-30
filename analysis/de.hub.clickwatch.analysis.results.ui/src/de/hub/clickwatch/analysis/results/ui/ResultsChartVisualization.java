@@ -58,7 +58,10 @@ public class ResultsChartVisualization implements IVisualization {
 	
 	private JFreeChart createChart(NumericalResult result) {
 		Chart chart = getChart(result);
-		
+		if (chart == null) {
+		    return null;
+		}
+		 
 		if (chart.getType() instanceof XY) {
 			DataSet dataSet = result.getData();
 			
@@ -141,6 +144,9 @@ public class ResultsChartVisualization implements IVisualization {
 	}
 	
 	private Component createChartPanel(NumericalResult result) {
+	    if (result == null) {
+	        return null;
+	    }
 		JFreeChart jfChart = createChart(result);	
 		if (jfChart == null) {
 			return null;
@@ -161,7 +167,10 @@ public class ResultsChartVisualization implements IVisualization {
 			if (results.size() > 1) {
 				Panel panel = new Panel();
 				for (NumericalResult result: results) {
-					panel.add(createChartPanel(result));
+					Component chartPanel = createChartPanel(result);
+					if (chartPanel != null) {
+					    panel.add(chartPanel);
+					}
 				}	
 				return panel;
 			} else {

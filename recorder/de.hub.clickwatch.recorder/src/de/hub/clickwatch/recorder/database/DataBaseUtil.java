@@ -8,6 +8,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import com.google.common.base.Preconditions;
 import com.google.inject.Inject;
+import com.google.inject.Provider;
 import com.google.inject.Singleton;
 
 import de.hub.clickwatch.connection.adapter.values.IValueAdapter;
@@ -21,11 +22,13 @@ import de.hub.clickwatch.util.ILogger;
 @Singleton
 public class DataBaseUtil {
 
-    @Inject private IDataBaseAdapter dataBaseAdapter;
+    @Inject private Provider<IDataBaseAdapter> dataBaseAdapterProvider;
     @Inject private IValueAdapter valueAdapter;
     @Inject private ILogger logger;
 
-    private static class DataBaseHandle {
+    private class DataBaseHandle {
+        final IDataBaseAdapter dataBaseAdapter =  dataBaseAdapterProvider.get();
+        
         Record record;
         Node node;
         Handler handler;
@@ -33,32 +36,32 @@ public class DataBaseUtil {
         long end;
     }
 
-    public static DataBaseHandle createHandle(Record record, Node node, long time) {
+    public DataBaseHandle createHandle(Record record, Node node, long time) {
         return createHandle(record, node, (Handler)null, time, 0);
     }
 
-    public static DataBaseHandle createHandle(Record record, Node node, Handler handler) {
+    public DataBaseHandle createHandle(Record record, Node node, Handler handler) {
         return createHandle(record, node, handler, record.getStart(), record.getEnd());
     }
 
-    public static DataBaseHandle createHandle(Record record, Node node, String handlerName) {
+    public DataBaseHandle createHandle(Record record, Node node, String handlerName) {
         return createHandle(record, node, ModelBuilders.newHandlerBuilder().withName(handlerName).build());
     }
 
-    public static DataBaseHandle createHandle(Record record, String iNetAddress, String handlerName, long start, long end) {
+    public DataBaseHandle createHandle(Record record, String iNetAddress, String handlerName, long start, long end) {
         return createHandle(record, ModelBuilders.newNodeBuilder().withINetAddress(iNetAddress).build(), ModelBuilders
                 .newHandlerBuilder().withName(handlerName).build(), start, end);
     }
 
-    public static DataBaseHandle createHandle(Record record, Node node, String handlerName, long start, long end) {
+    public DataBaseHandle createHandle(Record record, Node node, String handlerName, long start, long end) {
         return createHandle(record, node, ModelBuilders.newHandlerBuilder().withName(handlerName).build(), start, end);
     }
 
-    public static DataBaseHandle createHandle(Record record, Node node, Handler handler, long time) {
+    public DataBaseHandle createHandle(Record record, Node node, Handler handler, long time) {
         return createHandle(record, node, handler, time, 0);
     }
 
-    public static DataBaseHandle createHandle(Record record, Node node, Handler handler, long start, long end) {
+    public DataBaseHandle createHandle(Record record, Node node, Handler handler, long start, long end) {
         DataBaseHandle result = new DataBaseHandle();
         result.record = record;
         result.node = node;
@@ -78,8 +81,8 @@ public class DataBaseUtil {
 
     public Iterator<Handler> getHandlerIterator(final DataBaseHandle h, final IProgressMonitor monitor) {
         monitor.beginTask("Going throw the data base", 100);
-        dataBaseAdapter.initialize(h.record, false);
-        final Iterator<Handler> dbIterator = ((HBaseDataBaseAdapter)dataBaseAdapter)
+        h.dataBaseAdapter.initialize(h.record, false);
+        final Iterator<Handler> dbIterator = ((HBaseDataBaseAdapter)h.dataBaseAdapter)
                 .retrieve(h.node, h.handler, h.start, h.end);
         final long duration = h.end - h.start;
         return new Iterator<Handler>() {
@@ -118,8 +121,8 @@ public class DataBaseUtil {
     }
 
     public Handler getHandler(DataBaseHandle h) {
-        dataBaseAdapter.initialize(h.record, false);
-        Handler dbHandler = dataBaseAdapter.retrieve(h.node, h.handler, h.start);
+        h.dataBaseAdapter.initialize(h.record, false);
+        Handler dbHandler = h.dataBaseAdapter.retrieve(h.node, h.handler, h.start);
         if (dbHandler == null) {
             return null;
         }
@@ -127,7 +130,7 @@ public class DataBaseUtil {
     }
 
     public Node getNode(DataBaseHandle h) {
-        dataBaseAdapter.initialize(h.record, false);
+        h.dataBaseAdapter.initialize(h.record, false);
 
         Node result = EcoreUtil.copy(h.node);
         loop: for (Node recordNode : h.record.getConfiguration().getNodes()) {
@@ -143,7 +146,7 @@ public class DataBaseUtil {
         }
 
         for (Handler handlerTimeCopy : result.getAllHandlers()) {
-            Handler dbHandler = dataBaseAdapter.retrieve(h.node, handlerTimeCopy, h.start);
+            Handler dbHandler = h.dataBaseAdapter.retrieve(h.node, handlerTimeCopy, h.start);
             if (dbHandler != null) {
                 Preconditions.checkState(dbHandler.getTimestamp() <= h.start);
                 if (dbHandler.getTimestamp() == 0) {

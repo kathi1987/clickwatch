@@ -1,7 +1,5 @@
 package de.hub.clickwatch.apps.examples;
 
-import static de.hub.clickwatch.recorder.database.DataBaseUtil.createHandle;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
@@ -159,7 +157,7 @@ public class SeismoMatlabExport implements IClickWatchMain {
 		monitor.beginTask("Performing analysis on all nodes", nodes.length*100);
 		for(final Node node: nodes) {
 			Iterator<Handler> iterator = dbUtil.getHandlerIterator(
-					createHandle(record, node.getINetAddress(), "tsi/syncinfo", 0, Long.MAX_VALUE),
+			        dbUtil.createHandle(record, node.getINetAddress(), "tsi/syncinfo", 0, Long.MAX_VALUE),
 					new SubProgressMonitor(monitor, 100));
 			iteratorLoop: while(iterator.hasNext()) {						
 				Syncinfo syncinfo = null;
@@ -203,7 +201,7 @@ public class SeismoMatlabExport implements IClickWatchMain {
 					long end = record.getStart() + (SeismoMatlabExport.this.end > 0 ? SeismoMatlabExport.this.end : record.getEnd() - record.getStart());
 					
 					Iterator<Handler> iterator = dbUtil.getHandlerIterator(
-							createHandle(record, node, "seismo/localchannelinfo", start, end),
+					        dbUtil.createHandle(record, node, "seismo/localchannelinfo", start, end),
 							new SubProgressMonitor(monitor, 100));
 					String nodeId = nodeId(node).toString();
 					iteratorLoop: while(iterator.hasNext()) {

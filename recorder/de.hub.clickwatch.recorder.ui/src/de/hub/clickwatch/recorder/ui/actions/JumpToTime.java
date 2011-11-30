@@ -198,7 +198,7 @@ public class JumpToTime extends AbstractAction<Record> {
                         ((UiClickWatchNodeMergeConfiguration)mergeAdapter.getMerger().getConfiguration()).setEditingDomainAdapter(eda);
 					    mergeAdapter.clearChanges();
 					    
-						Node nodeTimeCopy = dataBaseUtil.getNode(DataBaseUtil.createHandle(experimimentDescr, currentNode, time));
+						Node nodeTimeCopy = dataBaseUtil.getNode(dataBaseUtil.createHandle(experimimentDescr, currentNode, time));
 						
 						mergeAdapter.merge(nodeTimeCopy);
 						EcoreUtil.delete(nodeTimeCopy);						

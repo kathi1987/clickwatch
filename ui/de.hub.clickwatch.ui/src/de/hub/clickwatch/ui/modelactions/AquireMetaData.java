@@ -12,6 +12,7 @@ import de.hub.clickwatch.connection.adapter.IEditingDomainAdapter;
 import de.hub.clickwatch.connection.adapter.IMergeAdapter;
 import de.hub.clickwatch.connection.adapter.IMetaDataAdapter;
 import de.hub.clickwatch.merge.IMergeConfiguration;
+import de.hub.clickwatch.model.Network;
 import de.hub.clickwatch.model.Node;
 import de.hub.clickwatch.ui.connection.UiClickWatchNodeMergeConfiguration;
 import de.hub.clickwatch.util.Tasks;
@@ -60,6 +61,11 @@ public class AquireMetaData extends AbstractNodeAction {
                             ((UiClickWatchNodeMergeConfiguration)configuration).setEditingDomainAdapter(fConnection.getAdapter(IEditingDomainAdapter.class));
                             IMetaDataAdapter mda = fConnection.getAdapter(IMetaDataAdapter.class);
                             final Node metaData = mda.pullAllMetaData();
+                            if (node.eContainer() != null) {
+                                Network network = (Network)node.eContainer();
+                                metaData.filter(network.getElementFilter(), network.getHandlerFilter());
+                            }
+                            metaData.filter();
                             shell.getDisplay().syncExec(new Runnable() {                                
                                 @Override
                                 public void run() {

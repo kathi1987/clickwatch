@@ -15,6 +15,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.ISelection;
@@ -81,7 +82,7 @@ public class ExecutePlotHandler extends AbstractHandler {
         }
         final NumericalResult result = (NumericalResult)genResult;
        
-        result.getCharts().add(plotSpec.getChart());
+        result.getCharts().add(EcoreUtil.copy(plotSpec.getChart()));
         final IPlot plot = new IPlot() {
             @Override
             public void addResultEntry(Object... values) {
@@ -164,12 +165,10 @@ public class ExecutePlotHandler extends AbstractHandler {
                     @Override
                     public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
                         Iterator<Handler> handlerIterator = dataBaseUtil.getHandlerIterator(
-                                DataBaseUtil.createHandle(record, node, handler.getQualifiedName()), monitor);
+                                dataBaseUtil.createHandle(record, node, handler.getQualifiedName()), monitor);
                         while (handlerIterator.hasNext()) {
                             algorithm.add(plot, handlerIterator.next());
-                            monitor.worked(1);
                         }
-                        monitor.done();
                     }
                 });
             } catch (Exception e) {
