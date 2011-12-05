@@ -4,4 +4,7 @@ Bundle-Name: Examples
 Bundle-SymbolicName: de.hub.clickwatch.apps.examples;singleton:=true
 Bundle-Version: 2.2.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Require-Bundle: de.hub.clickwatch.apps.main
+Require-Bundle: de.hub.clickwatch.apps.main,
+ de.hub.clickwatch.ui;bundle-version="2.2.0"
+Eclipse-RegisterBuddy: de.hub.clickwatch.ui
+

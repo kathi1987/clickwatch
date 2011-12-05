@@ -84,5 +84,103 @@
                xml_values="true">
          </InjectorProvider>
       </main>
+      <main
+            class="de.hub.clickwatch.apps.examples.seismo.SeismoBusFlanken"
+            enableFor="de.hub.clickwatch.recorder.database.Record"
+            name="SeismoBusFlanken">
+         <InjectorProvider
+               debug="true"
+               specific_models="false"
+               xml_values="true">
+         </InjectorProvider>
+      </main>
+   </extension>
+   <extension
+         point="de.hub.clickwatch.analysis.Plot">
+      <plot
+            class="de.hub.clickwatch.ui.GuiceAwareExecutableExtensionFactory:de.hub.clickwatch.apps.examples.plots.HWBusyPlot"
+            handler="device_wifi/wifidevice/cst/stats"
+            name="Example plot (HW busy)">
+         <valuespec
+               is_axis="true"
+               name="time (ms)"
+               window_size="1000">
+         </valuespec>
+         <valuespec
+               is_axis="true"
+               name="hw_busy">
+         </valuespec>
+      </plot>
+      <plot
+            class="de.hub.clickwatch.ui.GuiceAwareExecutableExtensionFactory:de.hub.clickwatch.apps.examples.plots.SeismoPlot"
+            handler="seismo/localchannelinfo"
+            name="seismo amplitude">
+         <valuespec
+               is_axis="false"
+               name="axis">
+         </valuespec>
+         <valuespec
+               is_axis="true"
+               name="time (ms)"
+               window_size="1000">
+         </valuespec>
+         <valuespec
+               is_axis="true"
+               name="ampl (mg)">
+         </valuespec>
+      </plot>
+      <plot
+            class="de.hub.clickwatch.ui.GuiceAwareExecutableExtensionFactory:de.hub.clickwatch.apps.examples.plots.AvgSeismoPlot"
+            handler="seismo/localchannelinfo"
+            name="seismo amplitude (normalized)">
+         <valuespec
+               is_axis="false"
+               name="axis">
+         </valuespec>
+         <valuespec
+               is_axis="true"
+               name="time (ms)"
+               window_size="10000">
+         </valuespec>
+         <valuespec
+               is_axis="true"
+               name="ampl (mg)">
+         </valuespec>
+      </plot>
+      <plot
+            class="de.hub.clickwatch.ui.GuiceAwareExecutableExtensionFactory:de.hub.clickwatch.apps.examples.plots.SeismoFFT"
+            handler="seismo/localchannelinfo"
+            name="seismo FFT">
+         <valuespec
+               is_axis="false"
+               name="axis">
+         </valuespec>
+         <valuespec
+               is_axis="true"
+               name="frequency (Hu)">
+         </valuespec>
+         <valuespec
+               is_axis="true"
+               name="FFT">
+         </valuespec>
+      </plot>
+      <plot
+            class="de.hub.clickwatch.ui.GuiceAwareExecutableExtensionFactory:de.hub.clickwatch.apps.examples.plots.SeismoBus"
+            handler="seismo/localchannelinfo"
+            name="seismo bus">
+         <valuespec
+               is_axis="false"
+               name="axis">
+         </valuespec>
+         <valuespec
+               is_axis="true"
+               name="time (ms)"
+               window_size="1000">
+         </valuespec>
+         <valuespec
+               is_axis="true"
+               name="FFT ampl">
+         </valuespec>
+      </plot>
    </extension>
 </plugin>

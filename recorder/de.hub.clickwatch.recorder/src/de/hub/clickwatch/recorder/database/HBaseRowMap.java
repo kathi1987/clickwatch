@@ -41,7 +41,7 @@ public class HBaseRowMap implements Serializable {
 		
 		Preconditions.checkArgument(nodeKey != null);
 		if (handlerKey == null) {
-		    return null;
+		    return null; // TODO might cause serious problems when resulting in scanning for null, null
 		}
 		
 		byte[] row = new byte[nodeKey.length + handlerKey.length + timeKey.length];
