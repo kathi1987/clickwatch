@@ -52,7 +52,14 @@ public class ClickWatchModelProvider implements IClickWatchContextAdapter,
 			Resource modelResource = resourceSet.getResource(clickWatchModel, true);
 			
 			if (objectURIFragment != null) {
-				modelResource.getEObject(objectURIFragment);
+				clickWatchObject = modelResource.getEObject(objectURIFragment);
+				EObject container = clickWatchObject;
+				while (container != null && (!(container instanceof Network))) {
+					container = container.eContainer();
+				}
+				if (container != null) {
+					network = (Network)container;
+				}
 			} else {
 				clickWatchObject = modelResource.getContents().get(0);
 				network = (Network)modelResource.getContents().get(0);
