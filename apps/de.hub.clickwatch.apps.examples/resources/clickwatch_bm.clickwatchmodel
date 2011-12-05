@@ -1,0 +1,956 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cwm:Network xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:XMLSchema="http://www.w3.org/2001/XMLSchema" xmlns:cwm="http://de.hub.clickwatch.model">
+  <node iNetAddress="192.168.1.1">
+    <element name="Label_brnether">
+      <handler name="class" canRead="true" canWrite="true" timestamp="1322660930928924000">Null</handler>
+      <handler name="config" canRead="true" canWrite="true" timestamp="1322660930930293000"/>
+      <handler name="handlers" canRead="true" canWrite="true"/>
+      <handler name="name" canRead="true" canWrite="true"/>
+      <handler name="ports" canRead="true" canWrite="true"/>
+    </element>
+    <element name="brn_clf">
+      <handler name="class" canRead="true" canWrite="true" timestamp="1322660930931129000">Classifier</handler>
+      <handler name="config" canRead="true" canWrite="true" timestamp="1322660930931905000">0/0a,
+                             0/34,
+                             0/28,
+                             0/29,
+                               -</handler>
+      <handler name="handlers" canRead="true" canWrite="true"/>
+      <handler name="name" canRead="true" canWrite="true"/>
+      <handler name="ports" canRead="true" canWrite="true"/>
+      <handler name="program" canRead="true" canWrite="true" timestamp="1322660930932682000">0   0/0a000000%ff000000  yes->[0]  no->step 1
+ 1   0/34000000%ff000000  yes->[1]  no->step 2
+ 2   0/28000000%ff000000  yes->[2]  no->step 3
+ 3   0/29000000%ff000000  yes->[3]  no->[4]
+safe length 1
+alignment offset 0</handler>
+    </element>
+    <element name="device_wifi">
+      <children name="brnToMe">
+        <handler name="class" canRead="true" canWrite="true" timestamp="1322660930933418000">BRN2ToThisNode</handler>
+        <handler name="config" canRead="true" canWrite="true" timestamp="1322660930934209000">NODEIDENTITY id</handler>
+        <handler name="debug" canRead="true" canWrite="true"/>
+        <handler name="handlers" canRead="true" canWrite="true"/>
+        <handler name="name" canRead="true" canWrite="true"/>
+        <handler name="ports" canRead="true" canWrite="true"/>
+      </children>
+      <children name="brn_ether_clf">
+        <handler name="class" canRead="true" canWrite="true" timestamp="1322660930934904000">Classifier</handler>
+        <handler name="config" canRead="true" canWrite="true" timestamp="1322660930935583000">12/8086, -</handler>
+        <handler name="handlers" canRead="true" canWrite="true"/>
+        <handler name="name" canRead="true" canWrite="true"/>
+        <handler name="ports" canRead="true" canWrite="true"/>
+        <handler name="program" canRead="true" canWrite="true" timestamp="1322660930936179000">0  12/80860000%ffff0000  yes->[0]  no->[1]
+safe length 14
+alignment offset 0</handler>
+      </children>
+      <children name="brnwifi">
+        <handler name="bssid" canRead="true" canWrite="true" timestamp="1322660930936738000">00-00-00-00-00-00</handler>
+        <handler name="class" canRead="true" canWrite="true" timestamp="1322660930937286000">WifiEncap</handler>
+        <handler name="config" canRead="true" canWrite="true" timestamp="1322660930937833000">0x00, 0:0:0:0:0:0</handler>
+        <handler name="debug" canRead="true" canWrite="true"/>
+        <handler name="handlers" canRead="true" canWrite="true"/>
+        <handler name="mode" canRead="true" canWrite="true" timestamp="1322660930938423000">0</handler>
+        <handler name="name" canRead="true" canWrite="true"/>
+        <handler name="ports" canRead="true" canWrite="true"/>
+      </children>
+      <children name="data_power">
+        <handler name="class" canRead="true" canWrite="true" timestamp="1322660930938989000">BrnSetTXPower</handler>
+        <handler name="config" canRead="true" canWrite="true" timestamp="1322660930939546000">DEVICE wireless, POWER 61</handler>
+        <handler name="debug" canRead="true" canWrite="true"/>
+        <handler name="handlers" canRead="true" canWrite="true"/>
+        <handler name="name" canRead="true" canWrite="true"/>
+        <handler name="packetpool" canRead="true" canWrite="true" timestamp="1322660930940109000"><packetpool capacity="10" min_size="180" max_size="1600" size_steps="200">
+	<slots count="8">
+		<slot min_size="0" max_size="199" no_packets="0"/>
+		<slot min_size="200" max_size="399" no_packets="0"/>
+		<slot min_size="400" max_size="599" no_packets="10"/>
+		<slot min_size="600" max_size="799" no_packets="0"/>
+		<slot min_size="800" max_size="999" no_packets="0"/>
+		<slot min_size="1000" max_size="1199" no_packets="0"/>
+		<slot min_size="1200" max_size="1399" no_packets="0"/>
+		<slot min_size="1400" max_size="1599" no_packets="0"/>
+	</slots>
+	<stats inserts="10" kills="2897" hits="0" makes="584"/>
+</packetpool></handler>
+        <handler name="ports" canRead="true" canWrite="true"/>
+        <handler name="power" canRead="true" canWrite="true" timestamp="1322660930941756000"><settxpower name="06-1B-B1-05-46-10" id="06-1B-B1-05-46-10" power="61">
+	<device name="ath0" device_addr="06-1B-B1-05-46-10"/>
+</settxpower></handler>
+        <handler name="systempower" canRead="true" canWrite="true" timestamp="1322660930943043000"><settxpower name="06-1B-B1-05-46-10" id="06-1B-B1-05-46-10" power="61">
+	<device name="ath0" device_addr="06-1B-B1-05-46-10"/>
+</settxpower></handler>
+      </children>
+      <children name="data_queue">
+        <handler name="capacity" canRead="true" canWrite="true" timestamp="1322660930944326000">100</handler>
+        <handler name="class" canRead="true" canWrite="true" timestamp="1322660930945382000">NotifierQueue</handler>
+        <handler name="config" canRead="true" canWrite="true" timestamp="1322660930946055000">100</handler>
+        <handler name="drops" canRead="true" canWrite="true" timestamp="1322660930946648000">0</handler>
+        <handler name="handlers" canRead="true" canWrite="true"/>
+        <handler name="highwater_length" canRead="true" canWrite="true" timestamp="1322660930947232000">0</handler>
+        <handler name="length" canRead="true" canWrite="true" timestamp="1322660930947814000">0</handler>
+        <handler name="name" canRead="true" canWrite="true"/>
+        <handler name="ports" canRead="true" canWrite="true"/>
+      </children>
+      <children name="data_rate">
+        <handler name="class" canRead="true" canWrite="true" timestamp="1322660930948412000">SetTXRate</handler>
+        <handler name="config" canRead="true" canWrite="true" timestamp="1322660930948997000">RATE 2, TRIES 11</handler>
+        <handler name="handlers" canRead="true" canWrite="true"/>
+        <handler name="name" canRead="true" canWrite="true"/>
+        <handler name="ports" canRead="true" canWrite="true"/>
+        <handler name="rate" canRead="true" canWrite="true" timestamp="1322660930949558000">2</handler>
+        <handler name="tries" canRead="true" canWrite="true" timestamp="1322660930950112000">11</handler>
+      </children>
+      <children name="data_suppressor">
+        <handler name="active0" canRead="true" canWrite="true" timestamp="1322660930950671000">true</handler>
+        <handler name="active1" canRead="true" canWrite="true" timestamp="1322660930951221000">true</handler>
+        <handler name="class" canRead="true" canWrite="true" timestamp="1322660930951775000">Suppressor</handler>
+        <handler name="config" canRead="true" canWrite="true" timestamp="1322660930952344000"/>
+        <handler name="handlers" canRead="true" canWrite="true"/>
+        <handler name="name" canRead="true" canWrite="true"/>
+        <handler name="ports" canRead="true" canWrite="true"/>
+      </children>
+      <children name="error_clf">
+        <handler name="class" canRead="true" canWrite="true" timestamp="1322660930952918000">WifiErrorClassifier</handler>
+        <handler name="config" canRead="true" canWrite="true" timestamp="1322660930953476000"/>
+        <handler name="crc" canRead="true" canWrite="true" timestamp="1322660930954016000">558</handler>
+        <handler name="debug" canRead="true" canWrite="true"/>
+        <handler name="handlers" canRead="true" canWrite="true"/>
+        <handler name="name" canRead="true" canWrite="true"/>
+        <handler name="ok" canRead="true" canWrite="true" timestamp="1322660930954718000">3599</handler>
+        <handler name="packetpool" canRead="true" canWrite="true" timestamp="1322660930955311000"><packetpool capacity="10" min_size="180" max_size="1600" size_steps="200">
+	<slots count="8">
+		<slot min_size="0" max_size="199" no_packets="0"/>
+		<slot min_size="200" max_size="399" no_packets="0"/>
+		<slot min_size="400" max_size="599" no_packets="10"/>
+		<slot min_size="600" max_size="799" no_packets="0"/>
+		<slot min_size="800" max_size="999" no_packets="0"/>
+		<slot min_size="1000" max_size="1199" no_packets="0"/>
+		<slot min_size="1200" max_size="1399" no_packets="0"/>
+		<slot min_size="1400" max_size="1599" no_packets="0"/>
+	</slots>
+	<stats inserts="10" kills="2899" hits="0" makes="584"/>
+</packetpool></handler>
+        <handler name="phy" canRead="true" canWrite="true" timestamp="1322660930956733000">9</handler>
+        <handler name="ports" canRead="true" canWrite="true"/>
+      </children>
+      <children name="etx_metric">
+        <handler name="class" canRead="true" canWrite="true" timestamp="1322660930957361000">BRN2ETXMetric</handler>
+        <handler name="config" canRead="true" canWrite="true" timestamp="1322660930957991000">lt</handler>
+        <handler name="debug" canRead="true" canWrite="true"/>
+        <handler name="handlers" canRead="true" canWrite="true"/>
+        <handler name="name" canRead="true" canWrite="true"/>
+        <handler name="packetpool" canRead="true" canWrite="true" timestamp="1322660930958594000"><packetpool capacity="10" min_size="180" max_size="1600" size_steps="200">
+	<slots count="8">
+		<slot min_size="0" max_size="199" no_packets="0"/>
+		<slot min_size="200" max_size="399" no_packets="0"/>
+		<slot min_size="400" max_size="599" no_packets="10"/>
+		<slot min_size="600" max_size="799" no_packets="0"/>
+		<slot min_size="800" max_size="999" no_packets="0"/>
+		<slot min_size="1000" max_size="1199" no_packets="0"/>
+		<slot min_size="1200" max_size="1399" no_packets="0"/>
+		<slot min_size="1400" max_size="1599" no_packets="0"/>
+	</slots>
+	<stats inserts="10" kills="2895" hits="0" makes="583"/>
+</packetpool></handler>
+        <handler name="ports" canRead="true" canWrite="true"/>
+      </children>
+      <children name="filter_tx">
+        <handler name="class" canRead="true" canWrite="true" timestamp="1322660930960018000">FilterTX</handler>
+        <handler name="config" canRead="true" canWrite="true" timestamp="1322660930960750000"/>
+        <handler name="drops" canRead="true" canWrite="true" timestamp="1322660930961420000">0</handler>
+        <handler name="handlers" canRead="true" canWrite="true"/>
+        <handler name="name" canRead="true" canWrite="true"/>
+        <handler name="ports" canRead="true" canWrite="true"/>
+      </children>
+      <children name="link_stat">
+        <handler name="bad_version" canRead="true" canWrite="true" timestamp="1322660930962124000"><badnodes id="06-1B-B1-05-46-10" time="1308921251.542094878">
+</badnodes></handler>
+        <handler name="bcast_stats" canRead="true" canWrite="true" timestamp="1322660930963020000"><entry from="06-1B-B1-05-46-10" time="1308921251.543119807" seq="583" period="1000" tau="100000">
+	<link to="06-1B-B1-05-3B-96" seq="583" period="1000" tau="100000" last_rx="0.367109807">
+		<link_info size="300" rate="2" fwd="69" rev="100"/>
+		<link_info size="300" rate="12" fwd="66" rev="96"/>
+	</link>
+	<link to="06-1B-B1-05-3B-9B" seq="582" period="1000" tau="100000" last_rx="0.143735807">
+		<link_info size="300" rate="2" fwd="66" rev="98"/>
+		<link_info size="300" rate="12" fwd="56" rev="98"/>
+	</link>
+	<link to="06-1B-B1-05-3B-9F" seq="583" period="1000" tau="100000" last_rx="0.408895807">
+		<link_info size="300" rate="2" fwd="100" rev="100"/>
+		<link_info size="300" rate="12" fwd="100" rev="99"/>
+	</link>
+	<link to="06-1B-B1-05-46-08" seq="583" period="1000" tau="100000" last_rx="0.335145807">
+		<link_info size="300" rate="2" fwd="100" rev="100"/>
+		<link_info size="300" rate="12" fwd="100" rev="99"/>
+	</link>
+	<link to="06-1B-B1-05-46-09" seq="541" period="1000" tau="100000" last_rx="21.307297807">
+		<link_info size="300" rate="2" fwd="19" rev="6"/>
+		<link_info size="300" rate="12" fwd="31" rev="1"/>
+	</link>
+	<link to="06-1B-B1-07-CD-99" seq="586" period="1000" tau="100000" last_rx="0.328327807">
+		<link_info size="300" rate="2" fwd="99" rev="99"/>
+		<link_info size="300" rate="12" fwd="98" rev="100"/>
+	</link>
+</entry></handler>
+        <handler name="class" canRead="true" canWrite="true" timestamp="1322660930964968000">BRN2LinkStat</handler>
+        <handler name="config" canRead="true" canWrite="true" timestamp="1322660930965873000">DEVICE wireless,
+
+                            PERIOD 1000,
+
+
+
+
+                            TAU 100000,
+
+
+
+
+                            PROBES &quot;2 300 12 300&quot;,
+
+
+
+                            RT proberates,
+                            ETX etx_metric,
+                            DEBUG 2</handler>
+        <handler name="debug" canRead="true" canWrite="true"/>
+        <handler name="handlers" canRead="true" canWrite="true"/>
+        <handler name="name" canRead="true" canWrite="true"/>
+        <handler name="packetpool" canRead="true" canWrite="true" timestamp="1322660930966693000"><packetpool capacity="10" min_size="180" max_size="1600" size_steps="200">
+	<slots count="8">
+		<slot min_size="0" max_size="199" no_packets="0"/>
+		<slot min_size="200" max_size="399" no_packets="0"/>
+		<slot min_size="400" max_size="599" no_packets="10"/>
+		<slot min_size="600" max_size="799" no_packets="0"/>
+		<slot min_size="800" max_size="999" no_packets="0"/>
+		<slot min_size="1000" max_size="1199" no_packets="0"/>
+		<slot min_size="1200" max_size="1399" no_packets="0"/>
+		<slot min_size="1400" max_size="1599" no_packets="0"/>
+	</slots>
+	<stats inserts="10" kills="2895" hits="0" makes="583"/>
+</packetpool></handler>
+        <handler name="period" canRead="true" canWrite="true" timestamp="1322660930969249000"><period value="1000"/></handler>
+        <handler name="ports" canRead="true" canWrite="true"/>
+        <handler name="probes" canRead="true" canWrite="true" timestamp="1322660930970481000"><probes id="06-1B-B1-05-46-10" time="1308921251.538641100">
+<probe rate="2" size="300"/>
+<probe rate="12" size="300"/>
+</probes></handler>
+        <handler name="schema" canRead="true" canWrite="true" timestamp="1322660930971736000"><XMLSchema:schema><XMLSchema:element name="tau"><XMLSchema:complexType><XMLSchema:attribute name="value" type="xs:int" use="required"/></XMLSchema:complexType></XMLSchema:element><XMLSchema:element name="probes"><XMLSchema:complexType><XMLSchema:sequence><XMLSchema:element ref="probe" maxOccurs="unbounded"/></XMLSchema:sequence><XMLSchema:attribute name="time" type="xs:decimal" use="required"/><XMLSchema:attribute name="id" type="xs:string" use="required"/></XMLSchema:complexType></XMLSchema:element><XMLSchema:element name="probe"><XMLSchema:complexType><XMLSchema:attribute name="size" type="xs:short" use="required"/><XMLSchema:attribute name="rate" type="xs:byte" use="required"/></XMLSchema:complexType></XMLSchema:element><XMLSchema:element name="period"><XMLSchema:complexType><XMLSchema:attribute name="value" type="xs:int" use="required"/></XMLSchema:complexType></XMLSchema:element><XMLSchema:element name="link_info"><XMLSchema:complexType><XMLSchema:attribute name="size" type="xs:short" use="required"/><XMLSchema:attribute name="rev" type="xs:byte" use="required"/><XMLSchema:attribute name="rate" type="xs:byte" use="required"/><XMLSchema:attribute name="fwd" type="xs:byte" use="required"/></XMLSchema:complexType></XMLSchema:element><XMLSchema:element name="link"><XMLSchema:complexType><XMLSchema:sequence><XMLSchema:element ref="link_info" maxOccurs="unbounded"/></XMLSchema:sequence><XMLSchema:attribute name="to" type="xs:string" use="required"/><XMLSchema:attribute name="tau" type="xs:int" use="required"/><XMLSchema:attribute name="seq" type="xs:int" use="required"/><XMLSchema:attribute name="period" type="xs:int" use="required"/><XMLSchema:attribute name="last_rx" type="xs:decimal" use="required"/></XMLSchema:complexType></XMLSchema:element><XMLSchema:element name="handlers"><XMLSchema:complexType><XMLSchema:sequence><XMLSchema:element ref="handler" maxOccurs="unbounded"/></XMLSchema:sequence><XMLSchema:attribute name="elem_name" use="required"><XMLSchema:simpleType><XMLSchema:restriction base="xs:string"><XMLSchema:enumeration value="BRN2LinkStat"/></XMLSchema:restriction></XMLSchema:simpleType></XMLSchema:attribute></XMLSchema:complexType></XMLSchema:element><XMLSchema:element name="handler"><XMLSchema:complexType><XMLSchema:choice><XMLSchema:element ref="badnodes"/><XMLSchema:element ref="entry"/><XMLSchema:element ref="period"/><XMLSchema:element ref="probes"/><XMLSchema:element ref="tau"/></XMLSchema:choice><XMLSchema:attribute name="name" use="required"><XMLSchema:simpleType><XMLSchema:restriction base="xs:string"><XMLSchema:enumeration value="bad_version"/><XMLSchema:enumeration value="bcast_stats"/><XMLSchema:enumeration value="period"/><XMLSchema:enumeration value="probes"/><XMLSchema:enumeration value="tau"/></XMLSchema:restriction></XMLSchema:simpleType></XMLSchema:attribute></XMLSchema:complexType></XMLSchema:element><XMLSchema:element name="entry"><XMLSchema:complexType><XMLSchema:sequence><XMLSchema:element ref="link" maxOccurs="unbounded"/></XMLSchema:sequence><XMLSchema:attribute name="time" type="xs:decimal" use="required"/><XMLSchema:attribute name="tau" type="xs:int" use="required"/><XMLSchema:attribute name="seq" type="xs:int" use="required"/><XMLSchema:attribute name="period" type="xs:int" use="required"/><XMLSchema:attribute name="from" type="xs:string" use="required"/></XMLSchema:complexType></XMLSchema:element><XMLSchema:element name="badnodes"><XMLSchema:complexType><XMLSchema:sequence><XMLSchema:element ref="badnode" maxOccurs="unbounded"/></XMLSchema:sequence><XMLSchema:attribute name="time" type="xs:decimal" use="required"/><XMLSchema:attribute name="id" type="xs:string" use="required"/></XMLSchema:complexType></XMLSchema:element><XMLSchema:element name="badnode"><XMLSchema:complexType><XMLSchema:attribute name="version" type="xs:byte" use="required"/><XMLSchema:attribute name="id" type="xs:string" use="required"/></XMLSchema:complexType></XMLSchema:element></XMLSchema:schema></handler>
+        <handler name="tau" canRead="true" canWrite="true" timestamp="1322660930975307000"><tau value="100000"/></handler>
+      </children>
+      <children name="lp_clf">
+        <handler name="class" canRead="true" canWrite="true" timestamp="1322660930976623000">Classifier</handler>
+        <handler name="config" canRead="true" canWrite="true" timestamp="1322660930977630000">14/01, -</handler>
+        <handler name="handlers" canRead="true" canWrite="true"/>
+        <handler name="name" canRead="true" canWrite="true"/>
+        <handler name="ports" canRead="true" canWrite="true"/>
+        <handler name="program" canRead="true" canWrite="true" timestamp="1322660930978957000">0  12/00000100%0000ff00  yes->[0]  no->[1]
+safe length 15
+alignment offset 0</handler>
+      </children>
+      <children name="lp_data_scheduler">
+        <handler name="class" canRead="true" canWrite="true" timestamp="1322660930980038000">PrioSched</handler>
+        <handler name="config" canRead="true" canWrite="true" timestamp="1322660930981153000"/>
+        <handler name="handlers" canRead="true" canWrite="true"/>
+        <handler name="name" canRead="true" canWrite="true"/>
+        <handler name="ports" canRead="true" canWrite="true"/>
+      </children>
+      <children name="lp_etherencap">
+        <handler name="class" canRead="true" canWrite="true" timestamp="1322660930982219000">EtherEncap</handler>
+        <handler name="config" canRead="true" canWrite="true" timestamp="1322660930983075000">0x8086, deviceaddress, ff:ff:ff:ff:ff:ff</handler>
+        <handler name="dst" canRead="true" canWrite="true" timestamp="1322660930983801000">FF-FF-FF-FF-FF-FF</handler>
+        <handler name="ethertype" canRead="true" canWrite="true" timestamp="1322660930984568000">32902</handler>
+        <handler name="etht" canRead="true" canWrite="true" timestamp="1322660930985388000">32902</handler>
+        <handler name="handlers" canRead="true" canWrite="true"/>
+        <handler name="name" canRead="true" canWrite="true"/>
+        <handler name="ports" canRead="true" canWrite="true"/>
+        <handler name="src" canRead="true" canWrite="true" timestamp="1322660930986357000">06-1B-B1-05-46-10</handler>
+      </children>
+      <children name="lp_power">
+        <handler name="class" canRead="true" canWrite="true" timestamp="1322660930987263000">BrnSetTXPower</handler>
+        <handler name="config" canRead="true" canWrite="true" timestamp="1322660930988332000">DEVICE wireless, POWER 61</handler>
+        <handler name="debug" canRead="true" canWrite="true"/>
+        <handler name="handlers" canRead="true" canWrite="true"/>
+        <handler name="name" canRead="true" canWrite="true"/>
+        <handler name="packetpool" canRead="true" canWrite="true" timestamp="1322660930989359000"><packetpool capacity="10" min_size="180" max_size="1600" size_steps="200">
+	<slots count="8">
+		<slot min_size="0" max_size="199" no_packets="0"/>
+		<slot min_size="200" max_size="399" no_packets="0"/>
+		<slot min_size="400" max_size="599" no_packets="10"/>
+		<slot min_size="600" max_size="799" no_packets="0"/>
+		<slot min_size="800" max_size="999" no_packets="0"/>
+		<slot min_size="1000" max_size="1199" no_packets="0"/>
+		<slot min_size="1200" max_size="1399" no_packets="0"/>
+		<slot min_size="1400" max_size="1599" no_packets="0"/>
+	</slots>
+	<stats inserts="10" kills="2899" hits="0" makes="584"/>
+</packetpool></handler>
+        <handler name="ports" canRead="true" canWrite="true"/>
+        <handler name="power" canRead="true" canWrite="true" timestamp="1322660930991385000"><settxpower name="06-1B-B1-05-46-10" id="06-1B-B1-05-46-10" power="61">
+	<device name="ath0" device_addr="06-1B-B1-05-46-10"/>
+</settxpower></handler>
+        <handler name="systempower" canRead="true" canWrite="true" timestamp="1322660930993237000"><settxpower name="06-1B-B1-05-46-10" id="06-1B-B1-05-46-10" power="61">
+	<device name="ath0" device_addr="06-1B-B1-05-46-10"/>
+</settxpower></handler>
+      </children>
+      <children name="lp_queue">
+        <handler name="capacity" canRead="true" canWrite="true" timestamp="1322660930994819000">2</handler>
+        <handler name="class" canRead="true" canWrite="true" timestamp="1322660930995882000">FrontDropQueue</handler>
+        <handler name="config" canRead="true" canWrite="true" timestamp="1322660930996878000">2</handler>
+        <handler name="drops" canRead="true" canWrite="true" timestamp="1322660930998024000">0</handler>
+        <handler name="handlers" canRead="true" canWrite="true"/>
+        <handler name="highwater_length" canRead="true" canWrite="true" timestamp="1322660930999057000">1</handler>
+        <handler name="length" canRead="true" canWrite="true" timestamp="1322660931000011000">0</handler>
+        <handler name="name" canRead="true" canWrite="true"/>
+        <handler name="ports" canRead="true" canWrite="true"/>
+      </children>
+      <children name="lp_suppressor">
+        <handler name="active0" canRead="true" canWrite="true" timestamp="1322660931000845000">true</handler>
+        <handler name="class" canRead="true" canWrite="true" timestamp="1322660931001680000">Suppressor</handler>
+        <handler name="config" canRead="true" canWrite="true" timestamp="1322660931002622000"/>
+        <handler name="handlers" canRead="true" canWrite="true"/>
+        <handler name="name" canRead="true" canWrite="true"/>
+        <handler name="ports" canRead="true" canWrite="true"/>
+      </children>
+      <children name="lp_wifiencap">
+        <handler name="bssid" canRead="true" canWrite="true" timestamp="1322660931003947000">00-00-00-00-00-00</handler>
+        <handler name="class" canRead="true" canWrite="true" timestamp="1322660931004983000">WifiEncap</handler>
+        <handler name="config" canRead="true" canWrite="true" timestamp="1322660931005833000">0x00, 0:0:0:0:0:0</handler>
+        <handler name="debug" canRead="true" canWrite="true"/>
+        <handler name="handlers" canRead="true" canWrite="true"/>
+        <handler name="mode" canRead="true" canWrite="true" timestamp="1322660931006749000">0</handler>
+        <handler name="name" canRead="true" canWrite="true"/>
+        <handler name="ports" canRead="true" canWrite="true"/>
+      </children>
+      <children name="proberates">
+        <handler name="class" canRead="true" canWrite="true" timestamp="1322660931007683000">AvailableRates</handler>
+        <handler name="config" canRead="true" canWrite="true" timestamp="1322660931008517000">DEFAULT 2 12 22 108</handler>
+        <handler name="debug" canRead="true" canWrite="true"/>
+        <handler name="handlers" canRead="true" canWrite="true"/>
+        <handler name="name" canRead="true" canWrite="true"/>
+        <handler name="ports" canRead="true" canWrite="true"/>
+        <handler name="rates" canRead="true" canWrite="true" timestamp="1322660931009415000">DEFAULT  2 12 22 108
+06-1B-B1-05-46-08  2 12 22 108
+06-1B-B1-05-46-09  2 12 22 108
+06-1B-B1-05-3B-9F  2 12 22 108
+06-1B-B1-05-3B-9B  2 12 22 108
+06-1B-B1-05-3B-96  2 12 22 108
+06-1B-B1-07-CD-99  2 12 22 108</handler>
+      </children>
+      <children name="rates">
+        <handler name="class" canRead="true" canWrite="true" timestamp="1322660931010182000">AvailableRates</handler>
+        <handler name="config" canRead="true" canWrite="true" timestamp="1322660931011141000">DEFAULT 2 4 11 12 18 22 24 36 48 72 96 108</handler>
+        <handler name="debug" canRead="true" canWrite="true"/>
+        <handler name="handlers" canRead="true" canWrite="true"/>
+        <handler name="name" canRead="true" canWrite="true"/>
+        <handler name="ports" canRead="true" canWrite="true"/>
+        <handler name="rates" canRead="true" canWrite="true" timestamp="1322660931012098000">DEFAULT  2 4 11 12 18 22 24 36 48 72 96 108</handler>
+      </children>
+      <children name="wifidevice">
+        <children name="ath_op">
+          <handler name="class" canRead="true" canWrite="true" timestamp="1322660931013144000">Ath2Operation</handler>
+          <handler name="config" canRead="true" canWrite="true" timestamp="1322660931014023000">Wifidevice_config:
+Channel: 9
+cu treshold: 1
+cu update: 8
+cu anno mode: 1
+Queue 0: 4 10 3
+Queue 1: 4 10 7
+Queue 2: 3 4 2
+Queue 3: 2 3 2
+CCA treshold: 0
+Flags:
+ CCA: 0
+ Small Backoff: 0
+ Burst: 0
+ Channel Switch: 0
+ Macclone: 0</handler>
+          <handler name="debug" canRead="true" canWrite="true"/>
+          <handler name="handlers" canRead="true" canWrite="true"/>
+          <handler name="name" canRead="true" canWrite="true"/>
+          <handler name="packetpool" canRead="true" canWrite="true" timestamp="1322660931014804000"><packetpool capacity="10" min_size="180" max_size="1600" size_steps="200">
+	<slots count="8">
+		<slot min_size="0" max_size="199" no_packets="0"/>
+		<slot min_size="200" max_size="399" no_packets="0"/>
+		<slot min_size="400" max_size="599" no_packets="10"/>
+		<slot min_size="600" max_size="799" no_packets="0"/>
+		<slot min_size="800" max_size="999" no_packets="0"/>
+		<slot min_size="1000" max_size="1199" no_packets="0"/>
+		<slot min_size="1200" max_size="1399" no_packets="0"/>
+		<slot min_size="1400" max_size="1599" no_packets="0"/>
+	</slots>
+	<stats inserts="10" kills="3068" hits="0" makes="618"/>
+</packetpool></handler>
+          <handler name="pkt_count" canRead="true" canWrite="true" timestamp="1322660931016480000">229 34 229 34 34</handler>
+          <handler name="ports" canRead="true" canWrite="true"/>
+        </children>
+        <children name="ath_op_q">
+          <handler name="capacity" canRead="true" canWrite="true" timestamp="1322660931017478000">10</handler>
+          <handler name="class" canRead="true" canWrite="true" timestamp="1322660931018195000">NotifierQueue</handler>
+          <handler name="config" canRead="true" canWrite="true" timestamp="1322660931019162000">10</handler>
+          <handler name="drops" canRead="true" canWrite="true" timestamp="1322660931020150000">0</handler>
+          <handler name="handlers" canRead="true" canWrite="true"/>
+          <handler name="highwater_length" canRead="true" canWrite="true" timestamp="1322660931021062000">1</handler>
+          <handler name="length" canRead="true" canWrite="true" timestamp="1322660931021995000">0</handler>
+          <handler name="name" canRead="true" canWrite="true"/>
+          <handler name="ports" canRead="true" canWrite="true"/>
+        </children>
+        <children name="cst">
+          <handler name="class" canRead="true" canWrite="true" timestamp="1322660931022844000">ChannelStats</handler>
+          <handler name="config" canRead="true" canWrite="true" timestamp="1322660931023629000">DEVICE wireless, STATS_DURATION 1000, PROCFILE &quot;/proc/net/madwifi/ath0/channel_utility&quot;, PROCINTERVAL 1000, NEIGHBOUR_STATS true, FULL_STATS false, SAVE_DURATION 1000</handler>
+          <handler name="debug" canRead="true" canWrite="true"/>
+          <handler name="handlers" canRead="true" canWrite="true"/>
+          <handler name="max_time" canRead="true" canWrite="true" timestamp="1322660931024335000">1000</handler>
+          <handler name="name" canRead="true" canWrite="true"/>
+          <handler name="packetpool" canRead="true" canWrite="true" timestamp="1322660931025064000"><packetpool capacity="10" min_size="180" max_size="1600" size_steps="200">
+	<slots count="8">
+		<slot min_size="0" max_size="199" no_packets="0"/>
+		<slot min_size="200" max_size="399" no_packets="0"/>
+		<slot min_size="400" max_size="599" no_packets="10"/>
+		<slot min_size="600" max_size="799" no_packets="0"/>
+		<slot min_size="800" max_size="999" no_packets="0"/>
+		<slot min_size="1000" max_size="1199" no_packets="0"/>
+		<slot min_size="1200" max_size="1399" no_packets="0"/>
+		<slot min_size="1400" max_size="1599" no_packets="0"/>
+	</slots>
+	<stats inserts="10" kills="3068" hits="0" makes="618"/>
+</packetpool></handler>
+          <handler name="ports" canRead="true" canWrite="true"/>
+          <handler name="stats" canRead="true" canWrite="true" timestamp="1322660931026789000"><channelstats node="06-1B-B1-05-46-10" time="1308921267.987170184" id="308" length="1000" hw_duration="1000" unit="ms">
+	<mac packets="11" rx_pkt="11" no_err_pkt="10" crc_err_pkt="1" phy_err_pkt="0" unknown_err_pkt="0" tx_pkt="0" rx_unicast_pkt="0" rx_retry_pkt="0" rx_bcast_pkt="11 " rx_bytes="3696" tx_unicast_pkt="0" tx_retry_pkt="0" tx_bcast_pkt="0 " tx_bytes="0" zero_err_pkt="2" last_packet_time="1308921267.883621" no_src="5"/>
+	<mac_percentage busy="1" rx="1" tx="0" noerr_rx="1" crc_rx="0" phy_rx="0" unknown_err_rx="0" unit="percent"/>
+	<mac_duration busy="17106" rx="17106" tx="0" noerr_rx="16655" crc_rx="451" phy_rx="0" unknown_err_rx="0" unit="us"/>
+	<phy hwbusy="5" hwrx="4" hwtx="0" last_hw_stat_time="1308921267.987139123" hw_stats_count="1" avg_noise="-96" std_noise="0" avg_rssi="22" std_rssi="10" ctl_rssi0="0" ctl_rssi1="0" ctl_rssi2="0" ext_rssi0="0" ext_rssi1="0" ext_rssi2="0" channel="9"/>
+	<perf_counter cycles="43721446" busy_cycles="2402577" rx_cycles="2079559" tx_cycles="145069"/>
+	<neighbourstats>
+		<nb addr="06-1B-B1-05-46-08" rssi="25" std_rssi="5" min_rssi="25" max_rssi="26" pkt_cnt="2">
+			<rssi_extended>
+				<ctl rssi0="0" rssi1="0" rssi2="0"/>
+				<ext rssi0="0" rssi1="0" rssi2="0"/>
+			</rssi_extended>
+			<rssi_hist size="2" max_size="50" overflow="false" values="26,25"/>
+		</nb>
+		<nb addr="06-1B-B1-05-3B-9F" rssi="39" std_rssi="6" min_rssi="39" max_rssi="40" pkt_cnt="2">
+			<rssi_extended>
+				<ctl rssi0="0" rssi1="0" rssi2="0"/>
+				<ext rssi0="0" rssi1="0" rssi2="0"/>
+			</rssi_extended>
+			<rssi_hist size="2" max_size="50" overflow="false" values="39,40"/>
+		</nb>
+		<nb addr="06-1B-B1-05-3B-9B" rssi="17" std_rssi="4" min_rssi="17" max_rssi="18" pkt_cnt="2">
+			<rssi_extended>
+				<ctl rssi0="0" rssi1="0" rssi2="0"/>
+				<ext rssi0="0" rssi1="0" rssi2="0"/>
+			</rssi_extended>
+			<rssi_hist size="2" max_size="50" overflow="false" values="18,17"/>
+		</nb>
+		<nb addr="06-1B-B1-05-3B-96" rssi="17" std_rssi="4" min_rssi="17" max_rssi="18" pkt_cnt="2">
+			<rssi_extended>
+				<ctl rssi0="0" rssi1="0" rssi2="0"/>
+				<ext rssi0="0" rssi1="0" rssi2="0"/>
+			</rssi_extended>
+			<rssi_hist size="2" max_size="50" overflow="false" values="18,17"/>
+		</nb>
+		<nb addr="06-1B-B1-07-CD-99" rssi="21" std_rssi="4" min_rssi="21" max_rssi="22" pkt_cnt="2">
+			<rssi_extended>
+				<ctl rssi0="0" rssi1="0" rssi2="0"/>
+				<ext rssi0="0" rssi1="0" rssi2="0"/>
+			</rssi_extended>
+			<rssi_hist size="2" max_size="50" overflow="false" values="22,21"/>
+		</nb>
+	</neighbourstats>
+</channelstats></handler>
+          <handler name="stats_xml" canRead="true" canWrite="true" timestamp="1322660931034673000"><channelstats node="06-1B-B1-05-46-10" time="1308921267.987170184" id="308" length="1000" hw_duration="1000" unit="ms">
+	<mac packets="11" rx_pkt="11" no_err_pkt="10" crc_err_pkt="1" phy_err_pkt="0" unknown_err_pkt="0" tx_pkt="0" rx_unicast_pkt="0" rx_retry_pkt="0" rx_bcast_pkt="11 " rx_bytes="3696" tx_unicast_pkt="0" tx_retry_pkt="0" tx_bcast_pkt="0 " tx_bytes="0" zero_err_pkt="2" last_packet_time="1308921267.883621" no_src="5"/>
+	<mac_percentage busy="1" rx="1" tx="0" noerr_rx="1" crc_rx="0" phy_rx="0" unknown_err_rx="0" unit="percent"/>
+	<mac_duration busy="17106" rx="17106" tx="0" noerr_rx="16655" crc_rx="451" phy_rx="0" unknown_err_rx="0" unit="us"/>
+	<phy hwbusy="5" hwrx="4" hwtx="0" last_hw_stat_time="1308921267.987139123" hw_stats_count="1" avg_noise="-96" std_noise="0" avg_rssi="22" std_rssi="10" ctl_rssi0="0" ctl_rssi1="0" ctl_rssi2="0" ext_rssi0="0" ext_rssi1="0" ext_rssi2="0" channel="9"/>
+	<perf_counter cycles="43721446" busy_cycles="2402577" rx_cycles="2079559" tx_cycles="145069"/>
+	<neighbourstats>
+		<nb addr="06-1B-B1-05-46-08" rssi="25" std_rssi="5" min_rssi="25" max_rssi="26" pkt_cnt="2">
+			<rssi_extended>
+				<ctl rssi0="0" rssi1="0" rssi2="0"/>
+				<ext rssi0="0" rssi1="0" rssi2="0"/>
+			</rssi_extended>
+			<rssi_hist size="2" max_size="50" overflow="false" values="26,25"/>
+		</nb>
+		<nb addr="06-1B-B1-05-3B-9F" rssi="39" std_rssi="6" min_rssi="39" max_rssi="40" pkt_cnt="2">
+			<rssi_extended>
+				<ctl rssi0="0" rssi1="0" rssi2="0"/>
+				<ext rssi0="0" rssi1="0" rssi2="0"/>
+			</rssi_extended>
+			<rssi_hist size="2" max_size="50" overflow="false" values="39,40"/>
+		</nb>
+		<nb addr="06-1B-B1-05-3B-9B" rssi="17" std_rssi="4" min_rssi="17" max_rssi="18" pkt_cnt="2">
+			<rssi_extended>
+				<ctl rssi0="0" rssi1="0" rssi2="0"/>
+				<ext rssi0="0" rssi1="0" rssi2="0"/>
+			</rssi_extended>
+			<rssi_hist size="2" max_size="50" overflow="false" values="18,17"/>
+		</nb>
+		<nb addr="06-1B-B1-05-3B-96" rssi="17" std_rssi="4" min_rssi="17" max_rssi="18" pkt_cnt="2">
+			<rssi_extended>
+				<ctl rssi0="0" rssi1="0" rssi2="0"/>
+				<ext rssi0="0" rssi1="0" rssi2="0"/>
+			</rssi_extended>
+			<rssi_hist size="2" max_size="50" overflow="false" values="18,17"/>
+		</nb>
+		<nb addr="06-1B-B1-07-CD-99" rssi="21" std_rssi="4" min_rssi="21" max_rssi="22" pkt_cnt="2">
+			<rssi_extended>
+				<ctl rssi0="0" rssi1="0" rssi2="0"/>
+				<ext rssi0="0" rssi1="0" rssi2="0"/>
+			</rssi_extended>
+			<rssi_hist size="2" max_size="50" overflow="false" values="22,21"/>
+		</nb>
+	</neighbourstats>
+</channelstats></handler>
+        </children>
+        <children name="dev_decap">
+          <handler name="class" canRead="true" canWrite="true" timestamp="1322660931043322000">Ath2Decap</handler>
+          <handler name="config" canRead="true" canWrite="true" timestamp="1322660931044790000">ATHDECAP true, CHANNELSTATS cst</handler>
+          <handler name="debug" canRead="true" canWrite="true"/>
+          <handler name="handlers" canRead="true" canWrite="true"/>
+          <handler name="name" canRead="true" canWrite="true"/>
+          <handler name="packetpool" canRead="true" canWrite="true" timestamp="1322660931046233000"><packetpool capacity="10" min_size="180" max_size="1600" size_steps="200">
+	<slots count="8">
+		<slot min_size="0" max_size="199" no_packets="0"/>
+		<slot min_size="200" max_size="399" no_packets="0"/>
+		<slot min_size="400" max_size="599" no_packets="10"/>
+		<slot min_size="600" max_size="799" no_packets="0"/>
+		<slot min_size="800" max_size="999" no_packets="0"/>
+		<slot min_size="1000" max_size="1199" no_packets="0"/>
+		<slot min_size="1200" max_size="1399" no_packets="0"/>
+		<slot min_size="1400" max_size="1599" no_packets="0"/>
+	</slots>
+	<stats inserts="10" kills="3068" hits="0" makes="618"/>
+</packetpool></handler>
+          <handler name="ports" canRead="true" canWrite="true"/>
+        </children>
+        <children name="op_prio_s">
+          <handler name="class" canRead="true" canWrite="true" timestamp="1322660931048888000">PrioSched</handler>
+          <handler name="config" canRead="true" canWrite="true" timestamp="1322660931050316000"/>
+          <handler name="handlers" canRead="true" canWrite="true"/>
+          <handler name="name" canRead="true" canWrite="true"/>
+          <handler name="ports" canRead="true" canWrite="true"/>
+        </children>
+        <children name="rawwifidev_too_small_cnt">
+          <handler name="bit_rate" canRead="true" canWrite="true" timestamp="1322660931051590000">0</handler>
+          <handler name="byte_count" canRead="true" canWrite="true" timestamp="1322660931052747000">0</handler>
+          <handler name="byte_rate" canRead="true" canWrite="true" timestamp="1322660931054053000">0</handler>
+          <handler name="class" canRead="true" canWrite="true" timestamp="1322660931055008000">Counter</handler>
+          <handler name="config" canRead="true" canWrite="true" timestamp="1322660931055842000"/>
+          <handler name="count" canRead="true" canWrite="true" timestamp="1322660931056653000">0</handler>
+          <handler name="count_call" canRead="true" canWrite="true" timestamp="1322660931057505000"/>
+          <handler name="handlers" canRead="true" canWrite="true"/>
+          <handler name="name" canRead="true" canWrite="true"/>
+          <handler name="ports" canRead="true" canWrite="true"/>
+          <handler name="rate" canRead="true" canWrite="true" timestamp="1322660931058267000">0</handler>
+        </children>
+        <children name="sc">
+          <handler name="channel" canRead="true" canWrite="true" timestamp="1322660931059069000"><setchannel name="06-1B-B1-05-46-10" id="06-1B-B1-05-46-10" channel="0">
+	<device name="ath0" device_addr="06-1B-B1-05-46-10"/>
+</setchannel></handler>
+          <handler name="class" canRead="true" canWrite="true" timestamp="1322660931062841000">BRN2SetChannel</handler>
+          <handler name="config" canRead="true" canWrite="true" timestamp="1322660931063969000">DEVICE wireless, CHANNEL 0</handler>
+          <handler name="debug" canRead="true" canWrite="true"/>
+          <handler name="handlers" canRead="true" canWrite="true"/>
+          <handler name="name" canRead="true" canWrite="true"/>
+          <handler name="packetpool" canRead="true" canWrite="true" timestamp="1322660931064913000"><packetpool capacity="10" min_size="180" max_size="1600" size_steps="200">
+	<slots count="8">
+		<slot min_size="0" max_size="199" no_packets="0"/>
+		<slot min_size="200" max_size="399" no_packets="0"/>
+		<slot min_size="400" max_size="599" no_packets="10"/>
+		<slot min_size="600" max_size="799" no_packets="0"/>
+		<slot min_size="800" max_size="999" no_packets="0"/>
+		<slot min_size="1000" max_size="1199" no_packets="0"/>
+		<slot min_size="1200" max_size="1399" no_packets="0"/>
+		<slot min_size="1400" max_size="1599" no_packets="0"/>
+	</slots>
+	<stats inserts="10" kills="3068" hits="0" makes="618"/>
+</packetpool></handler>
+          <handler name="ports" canRead="true" canWrite="true"/>
+          <handler name="systemchannel" canRead="true" canWrite="true" timestamp="1322660931066759000"><setchannel name="06-1B-B1-05-46-10" id="06-1B-B1-05-46-10" channel="0">
+	<device name="ath0" device_addr="06-1B-B1-05-46-10"/>
+</setchannel></handler>
+        </children>
+      </children>
+      <children name="wififrame_clf">
+        <handler name="class" canRead="true" canWrite="true" timestamp="1322660931068195000">Classifier</handler>
+        <handler name="config" canRead="true" canWrite="true" timestamp="1322660931069336000">1/40%40,
+                                  0/00%0f,
+                                      -</handler>
+        <handler name="handlers" canRead="true" canWrite="true"/>
+        <handler name="name" canRead="true" canWrite="true"/>
+        <handler name="ports" canRead="true" canWrite="true"/>
+        <handler name="program" canRead="true" canWrite="true" timestamp="1322660931070185000">0   0/00000000%00400000  yes->step 1  no->[0]  short->yes
+ 1   0/00000000%0f000000  yes->[1]  no->[2]
+safe length 2
+alignment offset 0</handler>
+      </children>
+    </element>
+    <element name="gps">
+      <handler name="cart_coord" canRead="true" canWrite="true" timestamp="1322660931070896000">0 0 0</handler>
+      <handler name="class" canRead="true" canWrite="true" timestamp="1322660931071604000">GPS</handler>
+      <handler name="config" canRead="true" canWrite="true" timestamp="1322660931072461000"/>
+      <handler name="debug" canRead="true" canWrite="true"/>
+      <handler name="gps_coord" canRead="true" canWrite="true" timestamp="1322660931073120000"><gps id="06-1B-B1-05-46-10" time="1308921268.819296511" lat="52.429770" long="13.530940" alt="0.000490" speed="0.0"/></handler>
+      <handler name="handlers" canRead="true" canWrite="true"/>
+      <handler name="name" canRead="true" canWrite="true"/>
+      <handler name="packetpool" canRead="true" canWrite="true" timestamp="1322660931074018000"><packetpool capacity="10" min_size="180" max_size="1600" size_steps="200">
+	<slots count="8">
+		<slot min_size="0" max_size="199" no_packets="0"/>
+		<slot min_size="200" max_size="399" no_packets="0"/>
+		<slot min_size="400" max_size="599" no_packets="10"/>
+		<slot min_size="600" max_size="799" no_packets="0"/>
+		<slot min_size="800" max_size="999" no_packets="0"/>
+		<slot min_size="1000" max_size="1199" no_packets="0"/>
+		<slot min_size="1200" max_size="1399" no_packets="0"/>
+		<slot min_size="1400" max_size="1599" no_packets="0"/>
+	</slots>
+	<stats inserts="10" kills="3066" hits="0" makes="618"/>
+</packetpool></handler>
+      <handler name="ports" canRead="true" canWrite="true"/>
+    </element>
+    <element name="id">
+      <handler name="class" canRead="true" canWrite="true" timestamp="1322660931075342000">BRN2NodeIdentity</handler>
+      <handler name="config" canRead="true" canWrite="true" timestamp="1322660931075941000">NAME seismo146, DEVICES wireless</handler>
+      <handler name="debug" canRead="true" canWrite="true"/>
+      <handler name="handlers" canRead="true" canWrite="true"/>
+      <handler name="info" canRead="true" canWrite="true" timestamp="1322660931076549000"><nodeidentity name="seismo146">
+	<device index="0" name="ath0" ethernet_address="06-1B-B1-05-46-10" ip_address="0.0.0.0" type="WIRELESS"/>
+</nodeidentity></handler>
+      <handler name="name" canRead="true" canWrite="true"/>
+      <handler name="packetpool" canRead="true" canWrite="true" timestamp="1322660931077773000"><packetpool capacity="10" min_size="180" max_size="1600" size_steps="200">
+	<slots count="8">
+		<slot min_size="0" max_size="199" no_packets="0"/>
+		<slot min_size="200" max_size="399" no_packets="0"/>
+		<slot min_size="400" max_size="599" no_packets="10"/>
+		<slot min_size="600" max_size="799" no_packets="0"/>
+		<slot min_size="800" max_size="999" no_packets="0"/>
+		<slot min_size="1000" max_size="1199" no_packets="0"/>
+		<slot min_size="1200" max_size="1399" no_packets="0"/>
+		<slot min_size="1400" max_size="1599" no_packets="0"/>
+	</slots>
+	<stats inserts="10" kills="3066" hits="0" makes="618"/>
+</packetpool></handler>
+      <handler name="ports" canRead="true" canWrite="true"/>
+      <handler name="version" canRead="true" canWrite="true" timestamp="1322660931079415000"><version name="seismo146">
+	<click_binary version="1.8.0" brn_version="0.0.1" mode="userlevel" md5_id="00000000000000000000000000000000"/>
+	<click_script md5_id="00000000000000000000000000000000"/>
+</version></handler>
+    </element>
+    <element name="lt">
+      <handler name="blacklist" canRead="true" canWrite="true" timestamp="1322660931080622000"/>
+      <handler name="class" canRead="true" canWrite="true" timestamp="1322660931081345000">Brn2LinkTable</handler>
+      <handler name="config" canRead="true" canWrite="true" timestamp="1322660931082012000">NODEIDENTITY id, ROUTECACHE rc, STALE 500, SIMULATE false, CONSTMETRIC 1, MIN_LINK_METRIC_IN_ROUTE 9998</handler>
+      <handler name="debug" canRead="true" canWrite="true"/>
+      <handler name="dijkstra_time" canRead="true" canWrite="true" timestamp="1322660931082714000">70.000000</handler>
+      <handler name="handlers" canRead="true" canWrite="true"/>
+      <handler name="hosts" canRead="true" canWrite="true" timestamp="1322660931083260000">06-1B-B1-05-3B-8E from_me: 0 to_me: 0 assosiated: false
+06-1B-B1-05-3B-96 from_me: 0 to_me: 0 assosiated: false
+06-1B-B1-05-3B-9B from_me: 0 to_me: 0 assosiated: false
+06-1B-B1-05-3B-9F from_me: 0 to_me: 0 assosiated: false
+06-1B-B1-05-46-08 from_me: 0 to_me: 0 assosiated: false
+06-1B-B1-05-46-09 from_me: 0 to_me: 0 assosiated: false
+06-1B-B1-05-46-10 from_me: 0 to_me: 0 assosiated: false
+06-1B-B1-07-CD-97 from_me: 0 to_me: 0 assosiated: false
+06-1B-B1-07-CD-99 from_me: 0 to_me: 0 assosiated: false</handler>
+      <handler name="links" canRead="true" canWrite="true"/>
+      <handler name="name" canRead="true" canWrite="true"/>
+      <handler name="ports" canRead="true" canWrite="true"/>
+      <handler name="routes" canRead="true" canWrite="true" timestamp="1322660931083935000"/>
+      <handler name="routes_from" canRead="true" canWrite="true" timestamp="1322660931084840000"/>
+      <handler name="routes_to" canRead="true" canWrite="true" timestamp="1322660931085635000"/>
+    </element>
+    <element name="rc">
+      <handler name="active" canRead="true" canWrite="true" timestamp="1322660931086392000">true</handler>
+      <handler name="class" canRead="true" canWrite="true" timestamp="1322660931087163000">Brn2RouteCache</handler>
+      <handler name="config" canRead="true" canWrite="true" timestamp="1322660931087833000">DEBUG 0, ACTIVE true, DROP 0, SLICE 0, TTL 4</handler>
+      <handler name="debug" canRead="true" canWrite="true"/>
+      <handler name="handlers" canRead="true" canWrite="true"/>
+      <handler name="name" canRead="true" canWrite="true"/>
+      <handler name="ports" canRead="true" canWrite="true"/>
+    </element>
+    <element name="routing">
+      <children name="dsr_decap">
+        <handler name="class" canRead="true" canWrite="true" timestamp="1322660931088525000">BRN2DSRDecap</handler>
+        <handler name="config" canRead="true" canWrite="true" timestamp="1322660931089220000">NODEIDENTITY id, LINKTABLE lt</handler>
+        <handler name="debug" canRead="true" canWrite="true"/>
+        <handler name="handlers" canRead="true" canWrite="true"/>
+        <handler name="name" canRead="true" canWrite="true"/>
+        <handler name="packetpool" canRead="true" canWrite="true" timestamp="1322660931089929000"><packetpool capacity="10" min_size="180" max_size="1600" size_steps="200">
+	<slots count="8">
+		<slot min_size="0" max_size="199" no_packets="0"/>
+		<slot min_size="200" max_size="399" no_packets="0"/>
+		<slot min_size="400" max_size="599" no_packets="10"/>
+		<slot min_size="600" max_size="799" no_packets="0"/>
+		<slot min_size="800" max_size="999" no_packets="0"/>
+		<slot min_size="1000" max_size="1199" no_packets="0"/>
+		<slot min_size="1200" max_size="1399" no_packets="0"/>
+		<slot min_size="1400" max_size="1599" no_packets="0"/>
+	</slots>
+	<stats inserts="10" kills="3068" hits="0" makes="619"/>
+</packetpool></handler>
+        <handler name="ports" canRead="true" canWrite="true"/>
+      </children>
+      <children name="dsr_encap">
+        <handler name="class" canRead="true" canWrite="true" timestamp="1322660931091544000">BRN2DSREncap</handler>
+        <handler name="config" canRead="true" canWrite="true" timestamp="1322660931092082000">NODEIDENTITY id, LINKTABLE lt</handler>
+        <handler name="debug" canRead="true" canWrite="true"/>
+        <handler name="handlers" canRead="true" canWrite="true"/>
+        <handler name="name" canRead="true" canWrite="true"/>
+        <handler name="packetpool" canRead="true" canWrite="true" timestamp="1322660931092761000"><packetpool capacity="10" min_size="180" max_size="1600" size_steps="200">
+	<slots count="8">
+		<slot min_size="0" max_size="199" no_packets="0"/>
+		<slot min_size="200" max_size="399" no_packets="0"/>
+		<slot min_size="400" max_size="599" no_packets="10"/>
+		<slot min_size="600" max_size="799" no_packets="0"/>
+		<slot min_size="800" max_size="999" no_packets="0"/>
+		<slot min_size="1000" max_size="1199" no_packets="0"/>
+		<slot min_size="1200" max_size="1399" no_packets="0"/>
+		<slot min_size="1400" max_size="1599" no_packets="0"/>
+	</slots>
+	<stats inserts="10" kills="3068" hits="0" makes="619"/>
+</packetpool></handler>
+        <handler name="ports" canRead="true" canWrite="true"/>
+      </children>
+      <children name="dsrclf">
+        <handler name="class" canRead="true" canWrite="true" timestamp="1322660931094159000">Classifier</handler>
+        <handler name="config" canRead="true" canWrite="true" timestamp="1322660931094717000">6/01,
+                           6/02,
+                           6/03,
+                           6/04,</handler>
+        <handler name="handlers" canRead="true" canWrite="true"/>
+        <handler name="name" canRead="true" canWrite="true"/>
+        <handler name="ports" canRead="true" canWrite="true"/>
+        <handler name="program" canRead="true" canWrite="true" timestamp="1322660931095254000">0   4/00000100%0000ff00  yes->[0]  no->step 1
+ 1   4/00000200%0000ff00  yes->[1]  no->step 2
+ 2   4/00000300%0000ff00  yes->[2]  no->step 3
+ 3   4/00000400%0000ff00  yes->[3]  no->[X]
+safe length 7
+alignment offset 0</handler>
+      </children>
+      <children name="err_forwarder">
+        <handler name="class" canRead="true" canWrite="true" timestamp="1322660931095787000">BRN2ErrorForwarder</handler>
+        <handler name="config" canRead="true" canWrite="true" timestamp="1322660931096332000">NODEIDENTITY id, LINKTABLE lt, DSRENCAP dsr_encap, DSRDECAP dsr_decap, ROUTEQUERIER querier</handler>
+        <handler name="debug" canRead="true" canWrite="true"/>
+        <handler name="handlers" canRead="true" canWrite="true"/>
+        <handler name="name" canRead="true" canWrite="true"/>
+        <handler name="packetpool" canRead="true" canWrite="true" timestamp="1322660931096857000"><packetpool capacity="10" min_size="180" max_size="1600" size_steps="200">
+	<slots count="8">
+		<slot min_size="0" max_size="199" no_packets="0"/>
+		<slot min_size="200" max_size="399" no_packets="0"/>
+		<slot min_size="400" max_size="599" no_packets="10"/>
+		<slot min_size="600" max_size="799" no_packets="0"/>
+		<slot min_size="800" max_size="999" no_packets="0"/>
+		<slot min_size="1000" max_size="1199" no_packets="0"/>
+		<slot min_size="1200" max_size="1399" no_packets="0"/>
+		<slot min_size="1400" max_size="1599" no_packets="0"/>
+	</slots>
+	<stats inserts="10" kills="3070" hits="0" makes="619"/>
+</packetpool></handler>
+        <handler name="ports" canRead="true" canWrite="true"/>
+      </children>
+      <children name="querier">
+        <handler name="class" canRead="true" canWrite="true" timestamp="1322660931098067000">BRN2RouteQuerier</handler>
+        <handler name="config" canRead="true" canWrite="true" timestamp="1322660931098593000">NODEIDENTITY id, LINKTABLE lt, DSRENCAP dsr_encap, DSRDECAP dsr_decap, METRIC device_wifi/etx_metric, DEBUG 2</handler>
+        <handler name="debug" canRead="true" canWrite="true"/>
+        <handler name="fixed_route" canRead="true" canWrite="true" timestamp="1322660931099120000"/>
+        <handler name="handlers" canRead="true" canWrite="true"/>
+        <handler name="name" canRead="true" canWrite="true"/>
+        <handler name="packetpool" canRead="true" canWrite="true" timestamp="1322660931099614000"><packetpool capacity="10" min_size="180" max_size="1600" size_steps="200">
+	<slots count="8">
+		<slot min_size="0" max_size="199" no_packets="0"/>
+		<slot min_size="200" max_size="399" no_packets="0"/>
+		<slot min_size="400" max_size="599" no_packets="10"/>
+		<slot min_size="600" max_size="799" no_packets="0"/>
+		<slot min_size="800" max_size="999" no_packets="0"/>
+		<slot min_size="1000" max_size="1199" no_packets="0"/>
+		<slot min_size="1200" max_size="1399" no_packets="0"/>
+		<slot min_size="1400" max_size="1599" no_packets="0"/>
+	</slots>
+	<stats inserts="10" kills="3069" hits="0" makes="619"/>
+</packetpool></handler>
+        <handler name="ports" canRead="true" canWrite="true"/>
+      </children>
+      <children name="rep_forwarder">
+        <handler name="class" canRead="true" canWrite="true" timestamp="1322660931100906000">BRN2ReplyForwarder</handler>
+        <handler name="config" canRead="true" canWrite="true" timestamp="1322660931101864000">NODEIDENTITY id, LINKTABLE lt, DSRDECAP dsr_decap, ROUTEQUERIER querier, DSRENCAP dsr_encap</handler>
+        <handler name="debug" canRead="true" canWrite="true"/>
+        <handler name="handlers" canRead="true" canWrite="true"/>
+        <handler name="name" canRead="true" canWrite="true"/>
+        <handler name="packetpool" canRead="true" canWrite="true" timestamp="1322660931102563000"><packetpool capacity="10" min_size="180" max_size="1600" size_steps="200">
+	<slots count="8">
+		<slot min_size="0" max_size="199" no_packets="0"/>
+		<slot min_size="200" max_size="399" no_packets="0"/>
+		<slot min_size="400" max_size="599" no_packets="10"/>
+		<slot min_size="600" max_size="799" no_packets="0"/>
+		<slot min_size="800" max_size="999" no_packets="0"/>
+		<slot min_size="1000" max_size="1199" no_packets="0"/>
+		<slot min_size="1200" max_size="1399" no_packets="0"/>
+		<slot min_size="1400" max_size="1599" no_packets="0"/>
+	</slots>
+	<stats inserts="10" kills="3070" hits="0" makes="619"/>
+</packetpool></handler>
+        <handler name="ports" canRead="true" canWrite="true"/>
+      </children>
+      <children name="req_forwarder">
+        <handler name="class" canRead="true" canWrite="true" timestamp="1322660931103815000">BRN2RequestForwarder</handler>
+        <handler name="config" canRead="true" canWrite="true" timestamp="1322660931104350000">NODEIDENTITY id, LINKTABLE lt, DSRDECAP dsr_decap, DSRENCAP dsr_encap, ROUTEQUERIER querier, MINMETRIC 9998, ENABLE_DELAY_QUEUE true, DEBUG 2, LAST_HOP_OPT true</handler>
+        <handler name="debug" canRead="true" canWrite="true"/>
+        <handler name="handlers" canRead="true" canWrite="true"/>
+        <handler name="name" canRead="true" canWrite="true"/>
+        <handler name="packetpool" canRead="true" canWrite="true" timestamp="1322660931104885000"><packetpool capacity="10" min_size="180" max_size="1600" size_steps="200">
+	<slots count="8">
+		<slot min_size="0" max_size="199" no_packets="0"/>
+		<slot min_size="200" max_size="399" no_packets="0"/>
+		<slot min_size="400" max_size="599" no_packets="10"/>
+		<slot min_size="600" max_size="799" no_packets="0"/>
+		<slot min_size="800" max_size="999" no_packets="0"/>
+		<slot min_size="1000" max_size="1199" no_packets="0"/>
+		<slot min_size="1200" max_size="1399" no_packets="0"/>
+		<slot min_size="1400" max_size="1599" no_packets="0"/>
+	</slots>
+	<stats inserts="10" kills="3070" hits="0" makes="619"/>
+</packetpool></handler>
+        <handler name="ports" canRead="true" canWrite="true"/>
+        <handler name="stats" canRead="true" canWrite="true" timestamp="1322660931106091000"><stats better_route="0"/></handler>
+      </children>
+      <children name="routing_peek">
+        <handler name="class" canRead="true" canWrite="true" timestamp="1322660931106717000">DSRPeek</handler>
+        <handler name="config" canRead="true" canWrite="true" timestamp="1322660931107245000">DEBUG 2</handler>
+        <handler name="debug" canRead="true" canWrite="true"/>
+        <handler name="handlers" canRead="true" canWrite="true"/>
+        <handler name="name" canRead="true" canWrite="true"/>
+        <handler name="packetpool" canRead="true" canWrite="true" timestamp="1322660931107774000"><packetpool capacity="10" min_size="180" max_size="1600" size_steps="200">
+	<slots count="8">
+		<slot min_size="0" max_size="199" no_packets="0"/>
+		<slot min_size="200" max_size="399" no_packets="0"/>
+		<slot min_size="400" max_size="599" no_packets="10"/>
+		<slot min_size="600" max_size="799" no_packets="0"/>
+		<slot min_size="800" max_size="999" no_packets="0"/>
+		<slot min_size="1000" max_size="1199" no_packets="0"/>
+		<slot min_size="1200" max_size="1399" no_packets="0"/>
+		<slot min_size="1400" max_size="1599" no_packets="0"/>
+	</slots>
+	<stats inserts="10" kills="3070" hits="0" makes="619"/>
+</packetpool></handler>
+        <handler name="peek_info" canRead="true" canWrite="true" timestamp="1322660931109133000">Number of peek: 0</handler>
+        <handler name="ports" canRead="true" canWrite="true"/>
+      </children>
+      <children name="src_forwarder">
+        <handler name="class" canRead="true" canWrite="true" timestamp="1322660931109785000">BRN2SrcForwarder</handler>
+        <handler name="config" canRead="true" canWrite="true" timestamp="1322660931110344000">NODEIDENTITY id, LINKTABLE lt, DSRENCAP dsr_encap, ROUTEQUERIER querier, DSRDECAP dsr_decap, DEBUG 2</handler>
+        <handler name="debug" canRead="true" canWrite="true"/>
+        <handler name="handlers" canRead="true" canWrite="true"/>
+        <handler name="name" canRead="true" canWrite="true"/>
+        <handler name="packetpool" canRead="true" canWrite="true" timestamp="1322660931110904000"><packetpool capacity="10" min_size="180" max_size="1600" size_steps="200">
+	<slots count="8">
+		<slot min_size="0" max_size="199" no_packets="0"/>
+		<slot min_size="200" max_size="399" no_packets="0"/>
+		<slot min_size="400" max_size="599" no_packets="10"/>
+		<slot min_size="600" max_size="799" no_packets="0"/>
+		<slot min_size="800" max_size="999" no_packets="0"/>
+		<slot min_size="1000" max_size="1199" no_packets="0"/>
+		<slot min_size="1200" max_size="1399" no_packets="0"/>
+		<slot min_size="1400" max_size="1599" no_packets="0"/>
+	</slots>
+	<stats inserts="10" kills="3070" hits="0" makes="619"/>
+</packetpool></handler>
+        <handler name="ports" canRead="true" canWrite="true"/>
+      </children>
+      <children name="tee_to_err_fwd">
+        <handler name="class" canRead="true" canWrite="true" timestamp="1322660931112273000">Tee</handler>
+        <handler name="config" canRead="true" canWrite="true" timestamp="1322660931112902000"/>
+        <handler name="handlers" canRead="true" canWrite="true"/>
+        <handler name="name" canRead="true" canWrite="true"/>
+        <handler name="ports" canRead="true" canWrite="true"/>
+      </children>
+    </element>
+    <element name="sf">
+      <handler name="class" canRead="true" canWrite="true" timestamp="1322660931117243000">BRN2SimpleFlow</handler>
+      <handler name="config" canRead="true" canWrite="true" timestamp="1322660931118100000">HEADROOM 192, DEBUG 4</handler>
+      <handler name="debug" canRead="true" canWrite="true"/>
+      <handler name="handlers" canRead="true" canWrite="true"/>
+      <handler name="name" canRead="true" canWrite="true"/>
+      <handler name="packetpool" canRead="true" canWrite="true" timestamp="1322660931118747000"><packetpool capacity="10" min_size="180" max_size="1600" size_steps="200">
+	<slots count="8">
+		<slot min_size="0" max_size="199" no_packets="0"/>
+		<slot min_size="200" max_size="399" no_packets="0"/>
+		<slot min_size="400" max_size="599" no_packets="10"/>
+		<slot min_size="600" max_size="799" no_packets="0"/>
+		<slot min_size="800" max_size="999" no_packets="0"/>
+		<slot min_size="1000" max_size="1199" no_packets="0"/>
+		<slot min_size="1200" max_size="1399" no_packets="0"/>
+		<slot min_size="1400" max_size="1599" no_packets="0"/>
+	</slots>
+	<stats inserts="10" kills="3066" hits="0" makes="618"/>
+</packetpool></handler>
+      <handler name="ports" canRead="true" canWrite="true"/>
+      <handler name="stats" canRead="true" canWrite="true" timestamp="1322660931120224000"><flowstats node="06-1B-B1-05-46-10">
+</flowstats></handler>
+    </element>
+    <element name="sys_info">
+      <handler name="class" canRead="true" canWrite="true" timestamp="1322660931120994000">SystemInfo</handler>
+      <handler name="config" canRead="true" canWrite="true" timestamp="1322660931121533000">NODEIDENTITY id, CPUTIMERINTERVAL 1000</handler>
+      <handler name="debug" canRead="true" canWrite="true"/>
+      <handler name="handlers" canRead="true" canWrite="true"/>
+      <handler name="name" canRead="true" canWrite="true"/>
+      <handler name="packetpool" canRead="true" canWrite="true" timestamp="1322660931122073000"><packetpool capacity="10" min_size="180" max_size="1600" size_steps="200">
+	<slots count="8">
+		<slot min_size="0" max_size="199" no_packets="0"/>
+		<slot min_size="200" max_size="399" no_packets="0"/>
+		<slot min_size="400" max_size="599" no_packets="10"/>
+		<slot min_size="600" max_size="799" no_packets="0"/>
+		<slot min_size="800" max_size="999" no_packets="0"/>
+		<slot min_size="1000" max_size="1199" no_packets="0"/>
+		<slot min_size="1200" max_size="1399" no_packets="0"/>
+		<slot min_size="1400" max_size="1599" no_packets="0"/>
+	</slots>
+	<stats inserts="10" kills="3066" hits="0" makes="618"/>
+</packetpool></handler>
+      <handler name="ports" canRead="true" canWrite="true"/>
+      <handler name="schema" canRead="true" canWrite="true" timestamp="1322660931123294000">Tbd.</handler>
+      <handler name="systeminfo" canRead="true" canWrite="true" timestamp="1322660931123830000"><system id="06-1B-B1-05-46-10" name="seismo146" time="1308921268.807491160">
+	<mem total="256404" used="4376" cached="224284" buffers="1352" NFS_Unstable="10032"/>
+	<loadavg onemin="0.00" fivemin="0.00" fifteen="0.00"/>
+	<cpu_usage real="1.96" user="1.96" sys="0.0" unit="percent"/>
+	<uptime total="468757.08" idle="463380.76"/>
+	<linux version="Linux version 2.6.32.25 (kai_32@Zero2) (gcc version 4.4.3 (GCC) ) #6 Mon Apr 4 09:39:02 CEST 2011"/>
+</system></handler>
+    </element>
+    <element name="test">
+      <handler name="test" canRead="true" canWrite="true" timestamp="1322660931125330000"><test a="11"/></handler>
+    </element>
+    <element name="toMeAfterRouting">
+      <handler name="class" canRead="true" canWrite="true" timestamp="1322660931126064000">BRN2ToThisNode</handler>
+      <handler name="config" canRead="true" canWrite="true" timestamp="1322660931126599000">NODEIDENTITY id</handler>
+      <handler name="debug" canRead="true" canWrite="true"/>
+      <handler name="handlers" canRead="true" canWrite="true"/>
+      <handler name="name" canRead="true" canWrite="true"/>
+      <handler name="ports" canRead="true" canWrite="true"/>
+    </element>
+    <element name="wireless">
+      <handler name="address" canRead="true" canWrite="true" timestamp="1322660931127222000">06-1B-B1-05-46-10</handler>
+      <handler name="class" canRead="true" canWrite="true" timestamp="1322660931127776000">BRN2Device</handler>
+      <handler name="config" canRead="true" canWrite="true" timestamp="1322660931128305000">DEVICENAME &quot;ath0&quot;, ETHERADDRESS deviceaddress, DEVICETYPE &quot;WIRELESS&quot;</handler>
+      <handler name="debug" canRead="true" canWrite="true"/>
+      <handler name="deviceinfo" canRead="true" canWrite="true" timestamp="1322660931128879000"><device node="06-1B-B1-05-46-10" name="ath0" address="06-1B-B1-05-46-10" fix_address="06-1B-B1-05-46-10" type="WIRELESS"/></handler>
+      <handler name="handlers" canRead="true" canWrite="true"/>
+      <handler name="name" canRead="true" canWrite="true"/>
+      <handler name="packetpool" canRead="true" canWrite="true" timestamp="1322660931129690000"><packetpool capacity="10" min_size="180" max_size="1600" size_steps="200">
+	<slots count="8">
+		<slot min_size="0" max_size="199" no_packets="0"/>
+		<slot min_size="200" max_size="399" no_packets="0"/>
+		<slot min_size="400" max_size="599" no_packets="10"/>
+		<slot min_size="600" max_size="799" no_packets="0"/>
+		<slot min_size="800" max_size="999" no_packets="0"/>
+		<slot min_size="1000" max_size="1199" no_packets="0"/>
+		<slot min_size="1200" max_size="1399" no_packets="0"/>
+		<slot min_size="1400" max_size="1599" no_packets="0"/>
+	</slots>
+	<stats inserts="10" kills="3066" hits="0" makes="618"/>
+</packetpool></handler>
+      <handler name="ports" canRead="true" canWrite="true"/>
+    </element>
+  </node>
+</cwm:Network>

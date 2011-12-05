@@ -5,3 +5,5 @@ Bundle-SymbolicName: de.hub.clickwatch.apps.examples;singleton:=true
 Bundle-Version: 2.2.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Require-Bundle: de.hub.clickwatch.apps.main
+Bundle-ClassPath: lib/mysql-connector-java-5.1.18-bin.jar,
+ .
