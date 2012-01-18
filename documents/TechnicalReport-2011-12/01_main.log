@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.11 (TeX Live 2010) (format=pdflatex 2011.3.30)  2 JAN 2012 14:09
+This is pdfTeX, Version 3.1415926-1.40.11 (TeX Live 2010) (format=pdflatex 2011.3.30)  4 JAN 2012 12:22
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -301,50 +301,45 @@ File: figures/example_information_graph.pdf Graphic file (type pdf)
 
 
 
-{/usr/local/texlive/2010/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-<figures/example_analysis_data.pdf, id=15, 523.9575pt x 680.5425pt>
+{/usr/local/texlive/2010/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2 <./f
+igures/example_information_graph.pdf>] <figures/example_analysis_data.pdf, id=3
+0, 523.9575pt x 680.5425pt>
 File: figures/example_analysis_data.pdf Graphic file (type pdf)
 
 <use figures/example_analysis_data.pdf>
 
-LaTeX Warning: Float too large for page by 32.73456pt on input line 35.
+LaTeX Warning: Float too large for page by 32.73456pt on input line 42.
 
-[2 <./figures/example_information_graph.pdf>] [3 <./figures/example_analysis_da
-ta.pdf>] <figures/seismo_bus_composition.pdf, id=46, 503.8825pt x 748.7975pt>
+<figures/seismo_bus_composition.pdf, id=31, 503.8825pt x 748.7975pt>
 File: figures/seismo_bus_composition.pdf Graphic file (type pdf)
 
 <use figures/seismo_bus_composition.pdf>
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <9> on input line 54.
+(Font)              <9> on input line 58.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 54.
+(Font)              <6> on input line 58.
 
-<figures/link_distances_composition.pdf, id=47, 480.79625pt x 528.97626pt>
+<figures/link_distances_composition.pdf, id=32, 480.79625pt x 528.97626pt>
 File: figures/link_distances_composition.pdf Graphic file (type pdf)
 
-<use figures/link_distances_composition.pdf>
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [4]
-[5 <./figures/seismo_bus_composition.pdf> <./figures/link_distances_composition
-.pdf>]) (./05_framework.tex) (./03_relatedwork.tex) (./04_conclusions.tex)
+<use figures/link_distances_composition.pdf> [3] [4 <./figures/example_analysis
+_data.pdf>] [5 <./figures/seismo_bus_composition.pdf> <./figures/link_distances
+_composition.pdf>]) (./05_framework.tex) (./03_relatedwork.tex)
+(./04_conclusions.tex)
 No file 01_main.bbl.
 [6] (./01_main.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
  ) 
 Here is how much of TeX's memory you used:
  2354 strings out of 493747
  33825 string characters out of 3143546
- 101467 words of memory out of 3000000
+ 102475 words of memory out of 3000000
  5595 multiletter control sequences out of 15000+200000
  7802 words of font info for 28 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
- 38i,8n,23p,1086b,287s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 38i,8n,23p,1083b,287s stack positions out of 5000i,500n,10000p,200000b,50000s
 </usr/local/texlive/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></
@@ -353,7 +348,7 @@ r/local/texlive/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/l
 ocal/texlive/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/loc
 al/texlive/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/loca
 l/texlive/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on 01_main.pdf (6 pages, 214618 bytes).
+Output written on 01_main.pdf (6 pages, 218099 bytes).
 PDF statistics:
  268 PDF objects out of 1000 (max. 8388607)
  158 compressed objects within 2 object streams

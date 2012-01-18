@@ -1,0 +1,3 @@
+#!/bin/sh
+
+rm *.aux *.bbl *.log *.synctex.gz main.pdf
