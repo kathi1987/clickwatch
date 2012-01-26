@@ -25,7 +25,7 @@
 \pagestyle{headings}
 \mainmatter           
 
-\title{Towards Better Key-Value Model Stores}
+\title{Model Fragmentation For High Access Performance of Models Persisted in Key-Value Stores}
 
 \author{Markus Scheidgen}
 \authorrunning{M. Scheidgen}
@@ -40,9 +40,26 @@
 \markus{TODO}
 \end{abstract}
 
-\input{02_introduction}
-\input{03_relatedwork}
-\input{04_conclusions}
+\input{introduction}
+\input{relatedwork}
+\input{largemodelexamples}
+\input{gains}
+
+\section{Fragmentation Strategies}
+
+\subsection{Manual Fragmentation}
+\subsection{Automated Fragmentation based on Expected Range Queries}
+\subsection{Automated Fragmentation based on Access Patterns}
+\subsection{Fragmentation of Even Models}
+
+\subsubsection{Analysis}
+
+At the beginning, we will look at \emph{even} models. A model is even, if its inner structure suggest fragmentation into equal pieces. For example, an intuitive way to fragment a OO software model is to put each package into one entry. This is an uneven model, since packages have different sizes. Another example is sensor data, sensor data produced at each point in time or on each node has the same size. If one puts each sensor reading or each node into one entry, the entries will have similar size.
+
+Previously, we were looking the gains achieved with optimal fragmentation. While optimal fragmentation is plausible in manually fragmented models for a single specific loaded model (e.g. accessing single sensor readings in ClickWatch). Optimal fragmentation is unlikely for different loaded models (even impossible for models of different size). 
+
+In general, we can assume that the smaller $ope$ is compared to $load$, the more likely it is that much of each entry is part of the loaded model. In other words, the smaller my entries are, the more likely it is that much or all if a single entry is part of the loaded model. We will model $part$  accordingly.
+\input{conclusions}
 
 \bibliography{bibliography}
 
