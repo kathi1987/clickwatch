@@ -50,6 +50,7 @@ public class InjectorProvider implements IClickWatchContextAdapter,
 	private URI recordURI;
 
 	private Injector injector = null;
+	private boolean useSpecificDataValues;
 
 	@Override
 	public List<Option> getCommandLineOptions() {
@@ -80,6 +81,8 @@ public class InjectorProvider implements IClickWatchContextAdapter,
 				"use xml values instead of string values"));
 		options.add(new Option("s", "brn-specific-values", false,
 				"use brn-specific values when possible, xml-values are used otherwise."));
+		options.add(new Option("ds", "brn-specific-data-values", false,
+				"use brn-specific data values when possible, xml-values are used otherwise."));
 
 		options.add(new Option("r", "use-record", true,
 				"uses the given clickwatch model to emulate an actual network"));
@@ -123,9 +126,10 @@ public class InjectorProvider implements IClickWatchContextAdapter,
 
 			boolean useXml = commandLine.hasOption("x");
 			boolean useSpecificValues = commandLine.hasOption("s");
+			useSpecificDataValues = commandLine.hasOption("ds");
 			if (useXml) {
 				valueType = ValueType.XML;
-			} else if (useSpecificValues) {
+			} else if (useSpecificValues || useSpecificDataValues) {
 				valueType = ValueType.SPECIFIC;
 			} else {
 				valueType = ValueType.STRING;
@@ -234,29 +238,34 @@ public class InjectorProvider implements IClickWatchContextAdapter,
 	}
 
 	private Injector createInjector() {
-		
-		ClickWatchModuleBuilder builder = ClickWatchModuleUtil.newBuilder()
+
+		ClickWatchModuleBuilder builder = ClickWatchModuleUtil
+				.newBuilder()
 				.wDebug(debugLevel, logFile)
-				.wHandlerBhvr(handlerBehaviour, localUpdateInterval, remoteUpdateInterval);
+				.wHandlerBhvr(handlerBehaviour, localUpdateInterval,
+						remoteUpdateInterval);
 		if (valueType == ValueType.XML) {
 			builder.wValueAdapterClass(XmlValueAdapter.class);
 		} else if (valueType == ValueType.STRING) {
 			builder.wValueAdapterClass(StringValueAdapter.class);
 		} else if (valueType == ValueType.SPECIFIC) {
-			builder.wValueAdapterClass(BrnValueAdapter.class);
+			if (!useSpecificDataValues) {
+				builder.wValueAdapterClass(BrnValueAdapter.class);
+			} else {
+				builder.wValueAdapterClass(de.hub.clickwatch.specificdatamodels.brn.BrnValueAdapter.class);
+			}
 		} else {
 			builder.wValueAdapterClass(XmlValueAdapter.class);
 		}
 		builder.wRecord(recordURI);
-		
+
 		ClickWatchModule clickWatchModule = builder.build();
 		ClickWatchRecorderModule cwRecorderModule = new ClickWatchRecorderModule() {
 
 			@Override
 			protected void configureDataBaseAdapter() {
 				if (dataBaseType == DataBaseType.HBASE) {
-					bind(IDataBaseAdapter.class).to(
-							HBaseDataBaseAdapter.class);
+					bind(IDataBaseAdapter.class).to(HBaseDataBaseAdapter.class);
 				} else {
 					throw new IllegalArgumentException(
 							"unknown database-adatper");
@@ -265,12 +274,12 @@ public class InjectorProvider implements IClickWatchContextAdapter,
 
 			@Override
 			protected void configurePutsBufferSize() {
-				bind(int.class).annotatedWith(
-						Names.named(I_PUTS_BUFFER_SIZE)).toInstance(
-						handlerPerRecord);
+				bind(int.class).annotatedWith(Names.named(I_PUTS_BUFFER_SIZE))
+						.toInstance(handlerPerRecord);
 			}
 		};
-		Injector result = Guice.createInjector(clickWatchModule, cwRecorderModule);
+		Injector result = Guice.createInjector(clickWatchModule,
+				cwRecorderModule);
 		Throwables.logger = result.getInstance(ILogger.class);
 		return result;
 	}
