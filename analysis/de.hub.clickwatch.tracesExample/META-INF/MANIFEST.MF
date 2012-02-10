@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: TracesExample
+Bundle-SymbolicName: de.hub.clickwatch.tracesExample
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: de.hub.clickwatch.tracesexample.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ de.hub.clickwatch.specificdatamodels,
+ org.eclipse.emf.ecore;visibility:=reexport,
+ de.hub.clickwatch.apps.main;bundle-version="2.2.0",
+ de.digitalforger.smtl;bundle-version="1.0.0",
+ org.eclipse.emf;bundle-version="2.6.0",
+ de.hub.clickwatch.analysis.results.ui;bundle-version="2.2.0",
+ de.hub.clickwatch.analysis.visualization;bundle-version="2.2.0"
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
