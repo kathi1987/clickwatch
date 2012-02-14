@@ -24,7 +24,7 @@ import javax.swing.JFrame
 import java.util.LinkedList
 import de.hub.clickwatch.analysis.results.Chart
 import de.hub.clickwatch.analysis.results.util.ChartUtil
-import de.hub.clickwatch.analysis.results.Axis
+import de.hub.clickwatch.analysis.results.Series
 
 /**
  * @author Lars George
@@ -54,13 +54,13 @@ object HWBusyExampleSMTL {
       result.getCharts().add(ChartUtil.createXYChart("Plot over time", "nodes", "time", "HW_busy"));
       resultList.add(result)      
       for (node <- network.getNodes()) {
-        helper.transform(node, classOf[Axis])
+        helper.transform(node, classOf[Series])
       }
     })
 
     //
     // RULE: nodeRule
-    val nodeRule = new Rule[Node, Axis] using ((helper, node, axis) => {
+    val nodeRule = new Rule[Node, Series] using ((helper, node, series) => {
       
       val result = resultList.get(0)
       
