@@ -1,4 +1,4 @@
-\section{Introduction}\label{sec:introduction}
+\section{Analysis Traces (Problem 1)}\label{sec:analysis_traces}
 
 \subsection{The examples}
 
@@ -68,15 +68,15 @@ Examples taken from experiments with wireless mesh networks, the experiment pict
 
 Fig.~\ref{fig:seismo_bus_composition} and Fig.~\ref{fig:link_distances_composition} examples for the analysis of HWL ClickWatch data. These activity diagrams choreograph analysis steps (activities). Both are supposed to be performed on HWL ClickWatch data. This is are information graphs (trees). In those nodes have handlers and handlers have XML values at different points in time: hence n, h, t, xml as starting information graph. XML values are part of the information graph.
 
-\subsection{Applications}
-\subsection{General}
-The described concepts of APD, information and analysis are not new and performed in many fields. What is new is the notion of traces. In complex analysis scenarios traces allow to find siblings and common ancestors, which put the results and intermediate results of an analysis in relation. With other words traces increase the information content of an analysis information graph.
-
-In scenarios, where heterogenous data is produced and analyzed, different types of data is usually analyzed in different analysis steps, threads of analysis steps aggregate the different types of data with each other, and with each further analysis step the created results represent information on increasingly higher levels of abstraction. In such scenarios, it is not trivial to identify all ancestors and siblings of a resulting APD. The semantic for the type of a result is clear, but the semantic of a specific result (the trace of an APD) is not.
-
-\subsection{WMN/WSN}
-An example from WMN/WSN. In WMN/WSN experiment scenarios we have a large number of similar (or identical) data sources: the nodes of the network. But each node produces a large number of different APDs. Different sensors, protocol entities, etc. produce all different data. Analysis in this context means that for the different data types on each of the identical nodes different threads of analysis steps are applied. The results are many and complex information graphs that cover different aspects of the network. Trace based knowledge about ancestors and siblings becomes key. 
-
-Why is it key to identify siblings? The seismo sensors in a 100 node network produce different (about 300 in HWL) time signals: one might want to compare the time signals of nodes that are geographically close to each other. Close geographic positions are common ancestors for the time signals. The nodes form links (knowledge about links is a analysis result): it is important to compare the characteristic (analysis result) of one node to the characteristic of linked nodes. Here, nodes are ancestors of the characteristics; the nodes in a link have common ancestors (the links). Looking at a the characteristics of a link or a route (connected links), it is important to identify the characteristics of all nodes in the link or the route. Looking at the time signal of one sensor, one might want to see the time signals of other sensors of that node, or nodes that have links to the node, or nodes in close proximity. Looking at a sensor reading, one might want to see node characteristics recorded at a point in time close to the time of the sensor reading. Etc. etc. etc.
+%\subsection{Applications}
+%\subsection{General}
+%The described concepts of APD, information and analysis are not new and performed in many fields. What is new is the notion of traces. In complex analysis scenarios traces allow to find siblings and common ancestors, which put the results and intermediate results of an analysis in relation. With other words traces increase the information content of an analysis information graph.
+%
+%In scenarios, where heterogenous data is produced and analyzed, different types of data is usually analyzed in different analysis steps, threads of analysis steps aggregate the different types of data with each other, and with each further analysis step the created results represent information on increasingly higher levels of abstraction. In such scenarios, it is not trivial to identify all ancestors and siblings of a resulting APD. The semantic for the type of a result is clear, but the semantic of a specific result (the trace of an APD) is not.
+%
+%\subsection{WMN/WSN}
+%An example from WMN/WSN. In WMN/WSN experiment scenarios we have a large number of similar (or identical) data sources: the nodes of the network. But each node produces a large number of different APDs. Different sensors, protocol entities, etc. produce all different data. Analysis in this context means that for the different data types on each of the identical nodes different threads of analysis steps are applied. The results are many and complex information graphs that cover different aspects of the network. Trace based knowledge about ancestors and siblings becomes key. 
+%
+%Why is it key to identify siblings? The seismo sensors in a 100 node network produce different (about 300 in HWL) time signals: one might want to compare the time signals of nodes that are geographically close to each other. Close geographic positions are common ancestors for the time signals. The nodes form links (knowledge about links is a analysis result): it is important to compare the characteristic (analysis result) of one node to the characteristic of linked nodes. Here, nodes are ancestors of the characteristics; the nodes in a link have common ancestors (the links). Looking at a the characteristics of a link or a route (connected links), it is important to identify the characteristics of all nodes in the link or the route. Looking at the time signal of one sensor, one might want to see the time signals of other sensors of that node, or nodes that have links to the node, or nodes in close proximity. Looking at a sensor reading, one might want to see node characteristics recorded at a point in time close to the time of the sensor reading. Etc. etc. etc.
 
 

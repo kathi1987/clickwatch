@@ -1,10 +1,9 @@
-This is pdfTeX, Version 3.1415926-1.40.11 (TeX Live 2010) (format=pdflatex 2011.3.30)  4 JAN 2012 12:22
+This is pdfTeX, Version 3.1415926-1.40.11 (TeX Live 2010) (format=pdflatex 2011.3.30)  29 JAN 2012 13:06
 entering extended mode
- \write18 enabled.
- file:line:error style messages enabled.
+ restricted \write18 enabled.
  %&-line parsing enabled.
-**01_main.tex
-(./01_main.tex
+**main.tex
+(./main.tex
 LaTeX2e <2009/09/24>
 Babel <v3.8l> and hyphenation patterns for english, dumylang, nohyphenation, ge
 rman-x-2009-06-19, ngerman-x-2009-06-19, ancientgreek, ibycus, arabic, armenian
@@ -204,8 +203,8 @@ Package: inputenc 2008/03/30 v1.1d Input encoding file
 
 (/usr/local/texlive/2010/texmf-dist/tex/latex/base/latin1.def
 File: latin1.def 2008/03/30 v1.1d Input encoding file
-)) (./01_main.aux)
-\openout1 = `01_main.aux'.
+)) (./main.aux)
+\openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 23.
 LaTeX Font Info:    ... okay on input line 23.
@@ -219,6 +218,7 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 23.
 LaTeX Font Info:    ... okay on input line 23.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 23.
 LaTeX Font Info:    ... okay on input line 23.
+
 (/usr/local/texlive/2010/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count118
@@ -293,24 +293,30 @@ LaTeX Font Warning: Font shape `OMS/cmtt/m/n' undefined
 (Font)              using `OMS/cmsy/m/n' instead
 (Font)              for symbol `textbraceleft' on input line 36.
 
-(./02_introduction.tex
-<figures/example_information_graph.pdf, id=1, 355.3275pt x 230.8625pt>
+<figures/final_goal_mockup.pdf, id=1, 842.34094pt x 480.15184pt>
+File: figures/final_goal_mockup.pdf Graphic file (type pdf)
+
+<use figures/final_goal_mockup.pdf> [1
+
+
+
+{/usr/local/texlive/2010/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+Underfull \vbox (badness 2376) has occurred while \output is active []
+
+ [2 <./figures/final_goal_mockup.pdf>] (./analysis_traces.tex [3]
+<figures/example_information_graph.pdf, id=70, 355.3275pt x 230.8625pt>
 File: figures/example_information_graph.pdf Graphic file (type pdf)
 
-<use figures/example_information_graph.pdf> [1
-
-
-
-{/usr/local/texlive/2010/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2 <./f
-igures/example_information_graph.pdf>] <figures/example_analysis_data.pdf, id=3
-0, 523.9575pt x 680.5425pt>
+<use figures/example_information_graph.pdf> [4 <./figures/example_information_g
+raph.pdf>] <figures/example_analysis_data.pdf, id=86, 523.9575pt x 680.5425pt>
 File: figures/example_analysis_data.pdf Graphic file (type pdf)
 
 <use figures/example_analysis_data.pdf>
 
 LaTeX Warning: Float too large for page by 32.73456pt on input line 42.
 
-<figures/seismo_bus_composition.pdf, id=31, 503.8825pt x 748.7975pt>
+[5] [6 <./figures/example_analysis_data.pdf>]
+<figures/seismo_bus_composition.pdf, id=105, 503.8825pt x 748.7975pt>
 File: figures/seismo_bus_composition.pdf Graphic file (type pdf)
 
 <use figures/seismo_bus_composition.pdf>
@@ -319,39 +325,45 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 58.
 
-<figures/link_distances_composition.pdf, id=32, 480.79625pt x 528.97626pt>
+<figures/link_distances_composition.pdf, id=106, 480.79625pt x 528.97626pt>
 File: figures/link_distances_composition.pdf Graphic file (type pdf)
 
-<use figures/link_distances_composition.pdf> [3] [4 <./figures/example_analysis
-_data.pdf>] [5 <./figures/seismo_bus_composition.pdf> <./figures/link_distances
-_composition.pdf>]) (./05_framework.tex) (./03_relatedwork.tex)
-(./04_conclusions.tex)
-No file 01_main.bbl.
-[6] (./01_main.aux)
+<use figures/link_distances_composition.pdf>
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [7 <./figures/seismo_bus_composition.pdf> <./figures/link_distances_compositio
+n.pdf>])
+No file main.bbl.
+[8] (./main.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
  ) 
 Here is how much of TeX's memory you used:
- 2354 strings out of 493747
- 33825 string characters out of 3143546
- 102475 words of memory out of 3000000
- 5595 multiletter control sequences out of 15000+200000
+ 2348 strings out of 493747
+ 33780 string characters out of 3143546
+ 103459 words of memory out of 3000000
+ 5597 multiletter control sequences out of 15000+200000
  7802 words of font info for 28 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
- 38i,8n,23p,1083b,287s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 38i,8n,23p,1112b,287s stack positions out of 5000i,500n,10000p,200000b,50000s
 </usr/local/texlive/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></
-usr/local/texlive/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></us
-r/local/texlive/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/l
-ocal/texlive/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/loc
-al/texlive/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/loca
-l/texlive/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on 01_main.pdf (6 pages, 218099 bytes).
+usr/local/texlive/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></u
+sr/local/texlive/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr
+/local/texlive/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/lo
+cal/texlive/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/loc
+al/texlive/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local
+/texlive/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/
+texlive/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
+Output written on main.pdf (8 pages, 869710 bytes).
 PDF statistics:
- 268 PDF objects out of 1000 (max. 8388607)
- 158 compressed objects within 2 object streams
+ 332 PDF objects out of 1000 (max. 8388607)
+ 195 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
 

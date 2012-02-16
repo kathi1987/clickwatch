@@ -4,27 +4,24 @@ In this section, we analyse the performance gains from optimal model fragmentati
 
 \subsection{Optimal Fragmentation for non Distributed and Unordered Data Stores}
 
-First, we need to define a few functions that provide the performance of all operations involved in loading a model. We define the \emph{local load} function $ll$ that determines how long it takes to load a model of a given $size$  from a local data store:
+First, we need to define a few functions that provide the performance of all operations involved in loading a model. We define the $parse$ function that determines how long it takes to parse a serialized model of a given $size$.
 
-$$ll:size\rightarrow t=\mathcal{O}\left(size\right)$$
+$$parse(size)=\mathcal{O}\left(size\right)$$
 
-The next function \emph{find entry local} $fl$ determines how long it takes to find an entry in a local key-value data store based on the number of key $\#keys$, i.e. number of entries:
+The next function $access$ determines how long it takes to find an entry in a local key-value data store based on the number of key $\#keys$, i.e. number of entries:
 
-$$fl:\#keys\rightarrow t=\mathcal{O}log(\#keys)$$
+$$access(\#keys)=\mathcal{O}log(\#keys)$$
 
-We will use the following parameters: The total model $size$, the average number of objects per entry $ope$, the size of the model to load $load$, and $part$ the average percentage of an entry's objects that belong to the loaded model if at least one object is part of the loaded model.
+We will use the following parameters: The total model $size$, the average number of objects per entry $ope$, the size of the model to load $lsize$, and $part$ the average percentage of an entry's objects that belong to the loaded model if at least one object is part of the loaded model.
 
 The time $t$ to load a model with this parameters is:
 
-\begin{eqnarray*}
-t&=&\frac{load}{part*ope}\left(fl(\frac{size}{ope}) + ll(ope)\right)\\
-&=&\mathcal{O}\frac{load}{part*ope}\left(log(\frac{size}{ope})+ope\right)\\
-\end{eqnarray*}
+$$t=\frac{lsize}{part*ope}\left(access(\frac{size}{ope}) + parse(ope)\right)$$
 
-The two extreme examples are: (only one big entry) $ope=size$, $part=load/size$, $t=\mathcal{O}\left(size\right)$, and (one object per entry) $ope=1$, $part=1$, $t=\mathcal{O}\left(load\left(log(size)+1\right)\right)$. 
+The two extreme examples are: (only one big entry) $ope=size$, $part=lsize/size$, $t=\mathcal{O}\left(size\right)$, and (one object per entry) $ope=1$, $part=1$, $t=\mathcal{O}\left(lsize\left(log(size)+1\right)\right)$. 
 
 \subsubsection{Analysis}
-In the optimal model distribution (one only wants to load models that exactly constitute one entry) $ope=load$ and $part=1$ the time is $t=\mathcal{O}\left(log(\frac{size}{load})+load\right)$.
+In the optimal model distribution (one only wants to load models that exactly constitute one entry) $ope=lsize$ and $part=1$ the time is $t=\mathcal{O}\left(log(\frac{size}{lsize})+lsize\right)$.
 
 \begin{figure}
   \centering
@@ -33,13 +30,13 @@ In the optimal model distribution (one only wants to load models that exactly co
   \label{fig:optimal_load_times}
 \end{figure}
 
-The plot in Fig.~\ref{fig:optimal_load_times} shows the relation between objects per entry, load size, and the time it takes to load. The contours show loads that take the same time. The plot does not account for any $ll=m*size+n$ and $fl=m*log(\#keys)+n$ factors ($m,n$). Depending on actual factors (see next section) the linear or logarithmic parts of the contours are more or less dominant. If parsing is relatively slow, fragmentation becomes more important (linear parts of contours are longer), if accessing the data-base becomes relatively slow, fragmentation becomes less relevant and generally large object per entry numbers are more desirable (logarithmic parts of contours are longer).
+The plot in Fig.~\ref{fig:optimal_load_times} shows the relation between objects per entry, load size, and the time it takes to load. The contours show loads that take the same time. The plot does not account for any $parse=m*size+n$ and $access=m*log(\#keys)+n$ factors ($m,n$). Depending on actual factors (see next section) the linear or logarithmic parts of the contours are more or less dominant. If parsing is relatively slow, fragmentation becomes more important (linear parts of contours are longer), if accessing the data-base becomes relatively slow, fragmentation becomes less relevant and generally large object per entry numbers are more desirable (logarithmic parts of contours are longer).
 
 \subsubsection{Measurements}
 
-We measured the performance of EMF parsing (depending on model size) and HBase data store access (depending on number of data store entries). The results are shown in Fig.~\ref{fig:optimal_load_times}. As expected the parsing performance is linear and the data store access behaves logarithmic. The plot in Fig.~\ref{fig:optimal_load_times_measured} is similar to Fig.~\ref{fig:optimal_load_times}, but uses $ll$ and $fl$ factors based on the measurements (actually the interpolated functions shown as lines in the plots).  
+We measured the performance of EMF parsing (depending on model size) and HBase data store access (depending on number of data store entries). The results are shown in Fig.~\ref{fig:optimal_load_times}. As expected the parsing performance is linear and the data store access behaves logarithmic. The plot in Fig.~\ref{fig:optimal_load_times_measured} is similar to Fig.~\ref{fig:optimal_load_times}, but uses $parse$ and $access$ factors based on the measurements (actually the interpolated functions shown as lines in the plots).  
 
-From this plot, we can see what fragmentation allows compared to no fragmentation ($ope=size$) or complete fragmentation ($ope=1$). No fragmentation always takes the full time (10s in this scenario). Of course optimal results can be obtained if ($load=ope$). This optimal result allows to load models a 1000 times bigger at the same time than total fragmentation. 
+From this plot, we can see what fragmentation allows compared to no fragmentation ($ope=size$) or complete fragmentation ($ope=1$). No fragmentation always takes the full time (10s in this scenario). Of course optimal results can be obtained if ($lsize=ope$). This optimal result allows to load models a 1000 times bigger at the same time than total fragmentation. 
 
 \begin{figure}[ht]
 \begin{minipage}[b]{0.5\linewidth}
@@ -59,6 +56,36 @@ From this plot, we can see what fragmentation allows compared to no fragmentatio
 
 \subsection{Optimal Fragmentation in Ordered but Non Distributed Stores}
 
-In ordered stores, entries can be scanned. If keys are chosen intelligently, a loaded model consisting of multiple fragments can still be with only one logarithmic access and subsequent scans. Assuming that all keys are always chosen in the optimal way and that the time between scans is close to 0: as long as $ope<load$ the required load time equals $ll(load)$. We can have more fine grain fragmentation without loosing performance if larger models are loaded. 
+\begin{figure}
+  \centering
+  \includegraphics[width=0.65\linewidth]{figures/optimal_load_times_measured_ordered}
+  \caption{Load times based on actual EMF parsing and HBase access measurements in an ordered data store.}
+  \label{fig:optimal_load_times_measured_ordered}
+\end{figure}
+
+\subsubsection{Analysis}
+In ordered stores, entries can be scanned. 
+If keys are chosen intelligently, a loaded model consisting of multiple fragments can still be loaded with only one access and subsequent scans.
+Assuming that all keys are always chosen in the optimal way and that the time between scans is close to 0: as long as $ope<lsize$ the required load time equals $parse(lsize)$. We can have more fine grain fragmentation without loosing performance if larger models are loaded. 
+
+\subsubsection{Measurements}
+Fig.~\ref{fig:optimal_load_times_measured_ordered} shows that the time it takes to load models of a certain size, is independent from the fragmentation as long as the fragments are small enough, i.e. $ope<lsize$.
 
 \subsection{Optimal Fragmentation in Unordered but Distributed Stores}
+\subsubsection{Analysis}
+In a distributed store serialized model fragments are loaded from nodes in a distributed store network. The serialized model fragments are then parsed on the client. To model this, we need to distinguish between load and parse time:
+
+\begin{eqnarray*}
+parse(size)&=&\mathcal{O}(size)\\
+load(size)&=&\mathcal{O}(size)
+\end{eqnarray*}
+
+Furthermore, access times in a distributed data store are different; they do not only depend on the number of keys $\#keys$, but also on the number of nodes $\#nodes$:
+
+$$access(\#keys, \#nodes)=\mathcal{O}log(\#nodes)+\mathcal{O}log(\frac{\#keys}{\#nodes})$$
+
+In an optimal fragmentation and distribution of fragments, model fragments can be accessed and loaded in parallel. The number of parallel access and load processes is determined by the number of nodes in the data store. The average overall model load time (for $part=1$) is:
+
+$$t=\frac{lsize}{ope}\left(parse(ope)+\frac{access(\#nodes,\frac{size}{ope})+load(ope)}{\#nodes}\right)$$
+
+Note that this model does not allow parallel loading and parsing of the model. 
