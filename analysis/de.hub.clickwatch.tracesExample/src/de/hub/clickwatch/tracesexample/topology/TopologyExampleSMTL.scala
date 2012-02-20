@@ -20,25 +20,37 @@ import de.hub.clickwatch.analysis.results.GraphResult
 import de.hub.clickwatch.analysis.results.GraphLink
 import org.apache.log4j.BasicConfigurator
 import javax.swing.JFrame
+import org.eclipse.emf.ecore.EObject
 
 object TopologyExampleSMTL {
+  private var topologyTransformation : TransformationM2M = null
 
   private var graphResult : GraphResult = null
   private var SHOW_GRAPH = true
-  
+
   def main(args : Array[String]) {
     BasicConfigurator.resetConfiguration()
-    BasicConfigurator.configure();
+    BasicConfigurator.configure()
 
+    executeTransformation(null)
+  }
+
+  private var exampleNode : GraphNode = null
+  def getExampleNode() = {
+    exampleNode
+  }
+  /**
+   *
+   */
+  def executeTransformation(loadFromIterable : Iterable[_ <: EObject]) = {
     ResultsPackage.eINSTANCE
     ClickWatchDataModelPackage.eINSTANCE
     BrnPackage.eINSTANCE
 
     val resultsMM = "http://de.hub.clickwatch.analysis.results";
     val cwMM = "http://de.hub.clickwatch.datamodel";
-    val inputFile = "file:dump/dump.xmi"
 
-    val topologyTransformation = new TransformationM2M("Topology") from cwMM in inputFile to resultsMM
+    topologyTransformation = new TransformationM2M("Topology") from cwMM to resultsMM
 
     //
     // RULE: netWorkRule
@@ -75,7 +87,7 @@ object TopologyExampleSMTL {
           }
         }
       }
-      
+
       graphResult = result
     })
 
@@ -84,6 +96,9 @@ object TopologyExampleSMTL {
     val node2GraphNode = new Rule[Node, GraphNode]("Node") isLazy () using ((helper, node, graphNode) => {
       var statsHandler = node.getHandler("device_wifi/wifidevice/cst/stats").getValues().get(0).asInstanceOf[Stats]
       graphNode.setName(statsHandler.getChannelstats().getNode())
+
+      // just for fast testing possibilities
+      if (exampleNode == null) exampleNode = graphNode
     })
 
     //
@@ -93,11 +108,26 @@ object TopologyExampleSMTL {
 
     topologyTransformation.setShowDirectTrace(true)
     topologyTransformation.addRule(netWorkRule, node2GraphNode, link2GraphLink)
-    topologyTransformation transform "dump/dump.xmi" exportToFile "outputTopology.xmi"
+
+    
+    if (loadFromIterable == null)
+      topologyTransformation transform "dump/dump.xmi" exportToFile "outputTopology.xmi"
+    else
+      topologyTransformation transform loadFromIterable exportToFile "outputTopology.xmi"
 
     if (SHOW_GRAPH) {
       showGraph()
     }
+  }
+
+  /**
+   *
+   */
+  def getTransformation(loadFromIterable : Iterable[_ <: EObject]) = {
+    if (topologyTransformation == null)
+      executeTransformation(loadFromIterable)
+
+    topologyTransformation
   }
 
   private def showGraph() = {

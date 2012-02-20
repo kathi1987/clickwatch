@@ -56,13 +56,12 @@ object LinkStatExampleSMTL {
         for (link <- bcast_statsHandler.getEntry().getLink()) {
           helper.transform(link, classOf[Series])
         }
-
       //}
     })
 
     //
     // RULE: linkRule
-    val linkRule = new Rule[Link, Series] isLazy() using ((helper, link, series) => {
+    val linkRule = new Rule[Link, Series]("linkRule") isLazy() using ((helper, link, series) => {
       val result = resultList.get(0)
       var linkInfo = link.getLink_info().get(0);
       val linkName = link.hashCode().toString()

@@ -13,6 +13,7 @@ import de.hub.clickwatch.datamodel.Node
 import de.hub.clickwatch.analysis.results.GraphNode
 import de.hub.clickwatch.analysis.results.ui.ResultsChartVisualization
 import de.hub.clickwatch.datamodel.ClickWatchDataModelPackage
+import de.hub.clickwatch.datamodel.Handler
 import de.hub.clickwatch.specificdatamodels.brn.BrnPackage
 import de.hub.clickwatch.analysis.results.GraphResult
 import de.hub.clickwatch.datamodel.ClickWatchDataModelPackage
@@ -31,22 +32,29 @@ import de.hub.clickwatch.analysis.results.DoubleDataResultValue
 import de.hub.clickwatch.specificdatamodels.brn.device_wifi_wifidevice_cst_stats.Channelstats
 import java.util.ArrayList
 import de.hub.clickwatch.analysis.results.DataResultSet
-import de.hub.clickwatch.analysis.results.xyDataResultSet
+import de.hub.clickwatch.analysis.results.XYDataResultSet
 import de.hub.clickwatch.analysis.results.util.ResultsSwitch
+import org.eclipse.emf.ecore.EObject
 
 /**
  * @author Lars George
  *
  */
 object HWBusyExampleSMTL {
-  private var SHOW_GRAPH = true
   private val resultList = new LinkedList[NumericalResult]
-  private var onlyNodes = new ArrayList[Node]
+  private var hwbusyTransformation : TransformationM2M = null
+
+  var SHOW_GRAPH = true
+  var onlyNodes = new ArrayList[Node]
 
   def main(args : Array[String]) {
     BasicConfigurator.resetConfiguration()
     BasicConfigurator.configure();
 
+    executeTransformation(null);
+  }
+
+  private def executeTransformation(loadFromIterable : Iterable[_ <: EObject]) = {
     ResultsPackage.eINSTANCE
     ClickWatchDataModelPackage.eINSTANCE
     BrnPackage.eINSTANCE
@@ -55,64 +63,120 @@ object HWBusyExampleSMTL {
     val cwMM = "http://de.hub.clickwatch.datamodel";
     val inputFile = "file:dump/dump.xmi"
 
-    val hwbusyTransformation = new TransformationM2M("Topology") from cwMM in inputFile to resultsMM
+    hwbusyTransformation = new TransformationM2M("Topology") from cwMM to resultsMM
 
-    //
-    // RULE: networkRule
-    val networkRule = new Rule[Network, NumericalResult]("Network") using ((helper, network, result) => {
-      result.getCharts().add(ChartUtil.createXYChart("Plot over time", "nodes", "time", "HW_busy"));
-      resultList.add(result)
+    /**
+     * RULE
+     */
+    val networkRule = new Rule[Network, NumericalResult]("NunmericalResult") using (
+      (helper, network, result) => {
+        result.getCharts().add(ChartUtil.createXYChart("Plot over time", "nodes", "time", "HW_busy"));
+        resultList.add(result)
 
-      // just to get some "selected" nodes for the transformation
-      for (i <- 0 to 2) {
-        //helper.transform(node, classOf[Series])
-        var node = network.getNodes().get(i)
-        onlyNodes.add(node)
-      }
-    })
+        // just to get some "selected" nodes for the transformation
+        for (i <- 0 to 2) {
+          //helper.transform(node, classOf[Series])
+          var node = network.getNodes().get(i)
+          onlyNodes.add(node)
+        }
+      })
 
-    //
-    // RULE nodeRule
-    val nodeRule = new Rule[Node, xyDataResultSet]("Node") when ((node) => { onlyNodes.contains(node) }) using ((helper, node, resultSet) => {
-      resultSet.setName(node.getINetAddress())
+    /**
+     * RULE
+     */
+    val nodeToDataResultRule = new Rule[Node, XYDataResultSet]("xyDataSet") when (
+      (node) => { onlyNodes.contains(node) }) using (
+        (helper, node, resultSet) => {
+          resultSet.setName(node.getINetAddress())
 
-      // for all time values
-      for (statsHandler <- node.getHandler("device_wifi/wifidevice/cst/stats").getValues()) {
-        val hwBusyResult = helper.transform(statsHandler, classOf[DoubleDataResultValue])
-        val timeValue = create[DoubleDataResultValue]
-        timeValue.setValue(statsHandler.asInstanceOf[Stats].getTimestamp())
+          // for all time values
+          for (value <- node.getHandler("device_wifi/wifidevice/cst/stats").getValues()) {
 
-        resultSet.getXValues.add(timeValue)
-        resultSet.getYValues.add(hwBusyResult)
-      }    
-    })
+            // transform every statsHandler to a "hwBusyResult" (DoubleDataResultValue)
+            val hwBusyResult = helper.transform(value, classOf[DoubleDataResultValue])
 
-    //
-    // RULE statsRule
-    val statsRule = new Rule[Stats, DoubleDataResultValue]("Stats") isLazy () using ((helper, statsHandler, resultValue) => {
-      val result = resultList.get(0)
-      var time : java.lang.Long = statsHandler.getTimestamp()
-      var hwBusy : Integer = statsHandler.getChannelstats().getPhy().getHwbusy()
+            val timeValue = create[DoubleDataResultValue]
+            timeValue.setValue(value.asInstanceOf[Stats].getTimestamp())
 
-      resultValue.setValue(hwBusy.toDouble)
+            resultSet.getXValues.add(timeValue)
+            resultSet.getYValues.add(hwBusyResult)
+          }
+        })
 
-      // wont be needed if visualisation can read new output data model
-      // to be able to display the result
-      result.getData().add(
-        statsHandler.getChannelstats().getNode(),
-        time,
-        hwBusy);
-    })
+    /**
+     * RULE
+     */
+    val statsToHWBusyResultValueRule = new Rule[Stats, DoubleDataResultValue]("HWBusy") isLazy () using (
+      (helper, statsHandler, resultValue) => {
+
+        var time : java.lang.Long = statsHandler.getTimestamp()
+        var hwBusy : Integer = statsHandler.getChannelstats().getPhy().getHwbusy()
+
+        resultValue.setValue(hwBusy.toDouble)
+
+        // wont be needed if visualisation can read new output data model
+        // to be able to display the result
+        val result = resultList.get(0)
+        result.getData().add(
+          statsHandler.getChannelstats().getNode(),
+          time,
+          hwBusy);
+      })
+
+    /*
+     * 
+     * 
+     * VERSION 2
+     * 
+     * 
+     */
+
+    val statsHandlerToDataResultSet = new Rule[Handler, XYDataResultSet]("") when (
+      (h) => {
+        // check for the correct handler and that it is from a node we want to use
+        (h.getQualifiedName().equals("device_wifi/wifidevice/cst/stats") && onlyNodes.contains(h.eContainer().eContainer().eContainer().eContainer().asInstanceOf[Node]))
+      }) using (
+        (helper, handler, resultSet) => {
+          for (value <- handler.getValues()) {
+            // transform the hwBusy to a resultValue            
+            val hwBusyResult = helper.transform(value, classOf[DoubleDataResultValue])
+
+            val timeValue = create[DoubleDataResultValue]
+            timeValue.setValue(value.asInstanceOf[Stats].getTimestamp())
+
+            resultSet.getXValues.add(timeValue)
+            resultSet.getYValues.add(hwBusyResult)
+          }
+
+        })
 
     hwbusyTransformation.setShowDirectTrace(false)
-    hwbusyTransformation.addRule(networkRule, nodeRule, statsRule)
-    hwbusyTransformation transform "dump/dump.xmi" exportToFile "outputHWBusy.xmi"
+    //hwbusyTransformation.addRule(networkRule, nodeToDataResultRule, statsToHWBusyResultValueRule)
+    hwbusyTransformation.addRule(networkRule, statsHandlerToDataResultSet, statsToHWBusyResultValueRule)
+
+    if (loadFromIterable == null)
+      hwbusyTransformation transform "dump/dump.xmi" exportToFile "outputHWBusy.xmi"
+    else
+      hwbusyTransformation transform loadFromIterable exportToFile "outputHWBusy.xmi"
 
     if (SHOW_GRAPH) {
       showGraph()
-    }    
+    }
   }
 
+  /**
+   *
+   */
+  def getTransformation(loadFromIterable : Iterable[_ <: EObject]) = {
+    if (hwbusyTransformation == null)
+      executeTransformation(loadFromIterable)
+
+    hwbusyTransformation
+  }
+
+  /**
+   *
+   */
   private def showGraph() = {
 
     var jframe = new JFrame("Visualization")

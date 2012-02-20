@@ -1,49 +1,49 @@
 <?xml version="1.0" encoding="ASCII"?>
 <results:GraphResult xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:results="http://de.hub.clickwatch.analysis.results">
   <nodes name="06-1B-B1-05-3B-6F" outgoing="//@links.0 //@links.1" incoming="//@links.10 //@links.11 //@links.22 //@links.23"/>
-  <nodes name="06-1B-B1-05-3B-65" outgoing="//@links.23" incoming="//@links.0 //@links.12"/>
-  <nodes name="06-1B-B1-05-3B-A2" outgoing="//@links.10" incoming="//@links.1 //@links.13"/>
+  <nodes name="06-1B-B1-05-3B-65" outgoing="//@links.11" incoming="//@links.0 //@links.12"/>
+  <nodes name="06-1B-B1-05-3B-A2" outgoing="//@links.22" incoming="//@links.1 //@links.13"/>
   <nodes name="06-1B-B1-05-3B-3F" outgoing="//@links.2"/>
   <nodes name="06-1B-B1-05-3B-5D" outgoing="//@links.4 //@links.5 //@links.6" incoming="//@links.2 //@links.7 //@links.9 //@links.14 //@links.19 //@links.21"/>
-  <nodes name="06-1B-B1-05-3B-88" outgoing="//@links.3"/>
-  <nodes name="06-1B-B1-05-3B-75" outgoing="//@links.7 //@links.8" incoming="//@links.3 //@links.5 //@links.15 //@links.17"/>
+  <nodes name="06-1B-B1-05-3B-88" outgoing="//@links.3" incoming="//@links.6 //@links.8 //@links.18 //@links.20"/>
+  <nodes name="06-1B-B1-05-3B-75" outgoing="//@links.19 //@links.20" incoming="//@links.3 //@links.5 //@links.15 //@links.17"/>
   <nodes name="06-1B-B1-05-3B-3F" outgoing="//@links.14" incoming="//@links.4 //@links.16"/>
-  <nodes name="06-1B-B1-05-3B-88" outgoing="//@links.15" incoming="//@links.6 //@links.8 //@links.18 //@links.20"/>
+  <nodes name="06-1B-B1-05-3B-75" outgoing="//@links.7 //@links.8"/>
   <nodes name="06-1B-B1-05-45-F9"/>
   <nodes name="06-1B-B1-05-DE-6F"/>
   <nodes name="06-1B-B1-05-3B-6D"/>
   <nodes name="06-1B-B1-05-45-C4" outgoing="//@links.9"/>
-  <nodes name="06-1B-B1-05-3B-65" outgoing="//@links.11"/>
+  <nodes name="06-1B-B1-05-3B-A2" outgoing="//@links.10"/>
   <nodes name="06-1B-B1-05-3B-6F" outgoing="//@links.12 //@links.13"/>
+  <nodes name="06-1B-B1-05-3B-88" outgoing="//@links.15"/>
   <nodes name="06-1B-B1-05-3B-5D" outgoing="//@links.16 //@links.17 //@links.18"/>
-  <nodes name="06-1B-B1-05-3B-75" outgoing="//@links.19 //@links.20"/>
   <nodes name="06-1B-B1-05-45-F9"/>
   <nodes name="06-1B-B1-05-DE-6F"/>
   <nodes name="06-1B-B1-05-3B-6D"/>
   <nodes name="06-1B-B1-05-45-C4" outgoing="//@links.21"/>
-  <nodes name="06-1B-B1-05-3B-A2" outgoing="//@links.22"/>
+  <nodes name="06-1B-B1-05-3B-65" outgoing="//@links.23"/>
   <links source="//@nodes.0" target="//@nodes.1"/>
   <links source="//@nodes.0" target="//@nodes.2"/>
   <links source="//@nodes.3" target="//@nodes.4"/>
   <links source="//@nodes.5" target="//@nodes.6"/>
   <links source="//@nodes.4" target="//@nodes.7"/>
   <links source="//@nodes.4" target="//@nodes.6"/>
-  <links source="//@nodes.4" target="//@nodes.8"/>
-  <links source="//@nodes.6" target="//@nodes.4"/>
-  <links source="//@nodes.6" target="//@nodes.8"/>
+  <links source="//@nodes.4" target="//@nodes.5"/>
+  <links source="//@nodes.8" target="//@nodes.4"/>
+  <links source="//@nodes.8" target="//@nodes.5"/>
   <links source="//@nodes.12" target="//@nodes.4"/>
-  <links source="//@nodes.2" target="//@nodes.0"/>
   <links source="//@nodes.13" target="//@nodes.0"/>
+  <links source="//@nodes.1" target="//@nodes.0"/>
   <links source="//@nodes.14" target="//@nodes.1"/>
   <links source="//@nodes.14" target="//@nodes.2"/>
   <links source="//@nodes.7" target="//@nodes.4"/>
-  <links source="//@nodes.8" target="//@nodes.6"/>
-  <links source="//@nodes.15" target="//@nodes.7"/>
   <links source="//@nodes.15" target="//@nodes.6"/>
-  <links source="//@nodes.15" target="//@nodes.8"/>
-  <links source="//@nodes.16" target="//@nodes.4"/>
-  <links source="//@nodes.16" target="//@nodes.8"/>
+  <links source="//@nodes.16" target="//@nodes.7"/>
+  <links source="//@nodes.16" target="//@nodes.6"/>
+  <links source="//@nodes.16" target="//@nodes.5"/>
+  <links source="//@nodes.6" target="//@nodes.4"/>
+  <links source="//@nodes.6" target="//@nodes.5"/>
   <links source="//@nodes.20" target="//@nodes.4"/>
+  <links source="//@nodes.2" target="//@nodes.0"/>
   <links source="//@nodes.21" target="//@nodes.0"/>
-  <links source="//@nodes.1" target="//@nodes.0"/>
 </results:GraphResult>
