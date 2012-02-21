@@ -1,0 +1,17 @@
+\section{Related Work}
+\label{sec:related_work}
+
+For EMF based models, there are at least four different approaches to large models: (1) regular EMF with XMI based persistence; (2) EMF resources, where a resource can be a file or an entry in a data base; (3) CDO and other object relational mappings (ORM) for Ecore; (4) morsa a EMF data-base mapping for non-relational data bases.
+\footnote{Mentioned memory and time efficiency in this section are taken from the evaluation section~\ref{sec:evaluation}.}
+
+First, regular EMF: Models are persisted as XMI documents and can only be used if loaded completely into a computer's RAM. EMF realises the \emph{no fragmentation} strategy. The memory usage of EMF is linear to the model's size. It's time efficiency is good for small models, since it needs no further managing overhead, but is bad for large models due to pointless garbage collection and extensive allocation of memory.
+
+Secondly, EMF resources: EMF allows to fragment a model into different resources. Originally, each resource could only contain a separate containment hierarchy and only cross-references were allowed. But since EMF version \markus{version} containment proxies are supported. EMF support lazy loading: resources do not have to be loaded manually, EMF loads them transparently once the first object of a resource is accessed. Model objects have to be assigned to resources manually (\emph{manual fragmentation}). To actually save memory the user has to unload resources manually too. Memory efficiency is good if resources are handled properly. Time efficiency is also good due to minimal management overhead.
+
+Thirdly, CDO: CDO is a ORM for EMF.~\footnote{Lately, CDO also support non-relational data bases, such as MongoDB. Such features were not evaluated in this paper; but one can assume characteristics similar to those of morse.}
+It supports several relational data bases. Classes and features are mapped to tables and their columns. Objects, references, and attributes are mapped to rows. CDO was designed for software modeling and versioning and provides transaction, views, and versions. These features produce some overhead. 
+Relational data bases and SQL provide mechanisms to index and access objects and their features. This allows fast queries, if the user understands the underlying ORM. But, complex table structures and indexes cause very low entry (i.e. object) creation rates. Sorting entries into indexes and tables consumes time.
+CDO is RAM efficient. Traversing or loading parts of models is slow, because each object needs to be accessed individually. 
+
+Fourthly, morsa: Different to CDO, morsa uses so mongoDB, a no-sql data base. In no-sql data bases (or other key-value stores) store arbitrary values in an key-value map. This simple data structure allows fast and easy distributable data bases. Morsa stores objects, their references and attributes as JSON documents. Morsa furthermore uses mongoDB's index feature to index specific characteristics (e.g. an objects meta-class reference). This produces similar characteristics then with CDO: fast queries, slow creation, traverse, and load.
+\markus{You need decide where key-value stores are introduced and explained.} \markus{Need to add cites.}

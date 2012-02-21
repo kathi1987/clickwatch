@@ -1,0 +1,71 @@
+\section{Introduction}
+
+Modeling frameworks (e.g. EMF or kermeta) can only work with models if they are loaded into a computer's RAM. This limits the possible size of a model. 
+Modeling frameworks provide only limited capabilities to deal with large models (i.e. lazy loading in EMF). 
+Other frameworks (e.g. CDO) persist models in data bases and load and unload single model objects on demand. This allows to work with models of arbitrary size. 
+Data base persistence is RAM efficient and practically solves today's model size issues, but we claim that existing approaches are not time efficient. 
+Here, time efficiency relates to the execution time for common modeling tasks. In this paper, we look at the following tasks (1) creating and extending models, (2) traversing models (as necessary during model transformation), (3) querying models, and (4) loading parts of models (i.e. loading a diagram into an editor). 
+
+An obvious observation is that many modeling tasks (especially traversing models and loading parts of models) require to load large chunks of the model. Existing data base persistence frameworks, store and access model objects individually. If a tasks requires to load a larger part of the model, all its objects are still accessed individually from the underlying data base.
+
+Our hypothesis is that modeling tasks can be executed faster, if models are represented as larger aggregates within an underlying data base. Storing models as aggregates of objects and not as single objects reduces the number of data base accesses, or as Martin Fowler puts it on his blog: \emph{"Storing aggregates as fundamental units makes a lot of sense [...], since you have a large clump of data that you expect to be accessed together"},~\cite{}. This already raises the three main questions that we want to answer with this paper: Are there aggregates that are \emph{often} accessed together? How can we create them automatically and transparently? What actual influence on the performance has the choice of concrete aggregates?
+
+To answer these question, we will proceed as follows: First (section~\ref{sec:modeling_tasks}), we look at typical modeling applications: which model sizes they work with and what concrete modeling tasks are used predominantly. This will give us an idea of what aggregates could be and how often aggregates can be expected to be actually accessed together. 
+Secondly (section~\ref{sec:fragmentation}), we will present our aggregation approach. This approach is based on fragmenting models along their inherent spanning tree (composite tree). We will reason, that most modeling tasks need to load sub-trees of this composite tree, and that such sub-trees (model fragments) make reasonable aggregates. 
+In the related work section~\ref{sec:related_work}, we present existing model persistence frameworks and interpret their strategies with respect to the idea of fragmentation.
+In the next section, we provide a theoretical analysis of performance under optimal fragmentation to provide some bounds for efficiency expectations.
+In section~\ref{sec:framework}, we finally present our fragmentation strategy and a framework that implements it.
+The next section is the evaluation section, where we compare our framework to existing frameworks with respect to time and memory efficient execution of common modeling tasks. Furthermore, we use our framework to analyse the influence of the amount of fragmentation on performance.
+We close the paper with conclusions and further work. 
+
+
+
+%%% old technical report Introduction
+%\section{Introduction}
+%
+%\subsection{Problem Statement}
+%Large models (directed labelled graphs with a inherent spanning tree) cannot be maintained in computer memory. Large models need to be fragmented into smaller models. These smaller parts can be loaded and worked with. This is practical, since most applications only require to handle a small part of a large model at a time. 
+%
+%We distinguish between large and \emph{extra large} models. Large models are to big for computer memory, but still small enough to be served from a single computer: large models are small enough for common hard drives and a single computer can bear the load from accessing the model (small number of users, infrequent access, only small chunks are accessed). Extra large models require a distributed data store, because they are either to big or are used in a way that a single computer can not handle the load. Safety, redundancy, dependability, etc. are other qualities that we associate with extra large models and their storage. 
+%
+%Modern key value data stores, can (in principle) store extra large models. They provide all necessary qualities associated with extra large models (distributed, safe, redundant, dependable, scalability, etc.). The problem is that models have to be fragmented so that they can be accessed in part. The concrete fragmentation of a model and its granularity directly influences the performance of storing, accessing, and working with the model. Here, performance regards execution time, CPU load, and RAM memory usage. 
+%
+%\subsection{Fragmentation}
+%
+%Models (or data, or information) in this paper are directed labelled graphs (with an inherent spanning tree). Common model representations are EMF-based models or XML documents. We assume that nodes and all their outgoing edges always belong together and are inseparable\footnote{This is in direct contrast to ER/SQL based models and stores, where links between entities are stored in separate tables}. Often we will only write about nodes, but also mean all their outgoing edges (references to other nodes). For that matter a model is just a set of nodes (objects).
+%
+%A \emph{fragmentation} of a model is a set of sets of objects. The union of all sets in a fragmentation is the model; all sets are disjunct. The sets in a fragmentation are called \emph{fragments}. The objects in each fragment contain a single spanning tree (sub tree of the models spanning tree). Each fragment is identified by a unique key. The fragment key identifies the root of that tree. Model edges can be associated with keys to reference objects in a different fragment.  
+%
+%\subsection{Existing Storage Solutions and Fragmentation Strategies}
+%
+%There are three existing fragmentation strategies:
+%\begin{itemize}
+%
+%\item \emph{No fragmentation}, the model is not fragmented. Large models are not possible.
+%\item \emph{Total fragmentation}, each object of the model (a node with all its outgoing edges) is stored in its own fragment.
+%\item \emph{Manual fragmentation}, the user determines which objects of a model comprise which fragments.
+%\end{itemize} 
+%
+%\subsection{Key Value Stores}
+%
+%Key value stores technical systems that persist large (hash-)maps. They can store arbitrary values (string or byte arrays) under arbitrary keys (string or byte arrays). There are different mature solutions for different environments (grid, cluster, cloud). A key-value combination is called \emph{entry}.
+%
+%Key value stores can be \emph{distributed} or \emph{non distributed}; they can be \emph{ordered} or {unordered}. Generally values access complexity is logarithmic to the size the stored map (number of keys). This is true for both non distributed and distributed stores. In distributed stores complexity also depends logarithmically on the size of the store (number of computers (nodes) in the store). Reading an access value is linear to the size of the value. In distributed stores is a possibility to read values in parallel. In ordered stores, subsequent keys of an already accessed key can be accessed in constant time (scan). In general models are serialized and need parsing to be used. A loaded value (model fragment) is parsed in linear time (depending on the fragments size). We assume that parsing can only be performed on the client and no parallel parsing on different computers is possible. 
+%
+%\subsection{Detailed Problems}
+%
+%There are several distinct problems with fragmentation of (extra) large models:
+%\begin{itemize}
+%\item Trivial fragmentation (no or total) might not produce optimal or even functional results. 
+%
+%\item In extreme broad models one object might be too big (too many outgoing edges). Too big to be stored in RAM memory, or too big for reasonable and efficient use. This happens for example with sensor data collected over long periods of time. On sensor (object, node) holds references (edges) to thousands of thousands of values.  
+%
+%\item There are several parameters that influence optimal fragmentation: parsing speed, data store access speed, whether parsing or accesses different entries can be parallelized (distribute scenario). Random access (random read) vs. sequential access (scan). 
+%
+%\item Fragmentation in general depends on model usage patterns. These cannot be known at model creation and might change over time.
+%\end{itemize}
+%
+%\subsection{Terms}
+%
+%Specific terms are: \emph{model}, \emph{large model}, \emph{extra large model}, \emph{fragmentation}, \emph{fragment}, \emph{no fragmentation}, \emph{total fragmentation}, \emph{manual fragmentation}, \emph{key-value data store}, \emph{entry}, \emph{key}, \emph{value}, \emph{(un-)ordered store}, \emph{(non-)distributed store}. Further terminology may be introduced later.
+
