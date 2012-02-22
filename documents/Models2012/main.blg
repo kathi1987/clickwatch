@@ -1,0 +1,50 @@
+This is BibTeX, Version 0.99d (TeX Live 2010)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: main.aux
+The style file: splncs03.bst
+Database file #1: bibliography.bib
+Warning--I didn't find a database entry for "bibtable2006"
+Warning--I didn't find a database entry for "mapreduce"
+Warning--to sort, need author or key in cdo
+You've used 18 entries,
+            2785 wiz_defined-function locations,
+            696 strings with 7578 characters,
+and the built_in function-call counts, 8678 in all, are:
+= -- 696
+> -- 267
+< -- 9
++ -- 112
+- -- 92
+* -- 520
+:= -- 1133
+add.period$ -- 27
+call.type$ -- 18
+change.case$ -- 111
+chr.to.int$ -- 0
+cite$ -- 19
+duplicate$ -- 792
+empty$ -- 824
+format.name$ -- 105
+if$ -- 1891
+int.to.chr$ -- 0
+int.to.str$ -- 18
+missing$ -- 169
+newline$ -- 59
+num.names$ -- 36
+pop$ -- 333
+preamble$ -- 1
+purify$ -- 81
+quote$ -- 0
+skip$ -- 206
+stack$ -- 0
+substring$ -- 412
+swap$ -- 398
+text.length$ -- 9
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 66
+warning$ -- 1
+while$ -- 68
+width$ -- 20
+write$ -- 185
+(There were 3 warnings)

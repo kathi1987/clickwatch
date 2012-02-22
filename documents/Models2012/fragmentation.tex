@@ -1,9 +1,10 @@
 \section{Model Fragmentation}
+\label{sec:fragmentation}
 
 \subsection{Fragmention in General}
 All models considered in this paper have an inherent containment hierarchy. This means the models are graphs, but within these graphs there is a single distinct subset of edges that spans a tree. In EMF ecore based models, these trees consist of containment references. Hence, we also call these spanning trees containment trees.
 
-In the large section, we saw that typical model applications mostly use aggregates of model objects, more precisely sub-trees of the model's containment trees. The model fragmentation approach, divides (i.e. \emph{fragments}) a model along its containment tree. All \emph{fragments} are disjoint; no object is part of two fragments. Fragmentation is also always complete, i.e. each object is part of one fragment. The set of fragments of a model is called \emph{fragmentation}. Based on these characteristics, fragments can be compared to EMF's resources (especially with containment proxies); refer to section~\ref{sec:implementation}, where we use resources to realize fragments.
+In the large section, we saw that typical model applications mostly use aggregates of model objects, more precisely sub-trees of the model's containment trees. The model fragmentation approach, divides (i.e. \emph{fragments}) a model along its containment tree. All \emph{fragments} are disjoint; no object is part of two fragments. Fragmentation is also always complete, i.e. each object is part of one fragment. The set of fragments of a model is called \emph{fragmentation}. Based on these characteristics, fragments can be compared to EMF's resources (especially with containment proxies); refer to section~\ref{sec:implemention}, where we use resources to realize fragments.
 
 \begin{figure}[ht]
 \begin{minipage}[b]{0.5\linewidth}
@@ -37,7 +38,7 @@ A meta-model defines possible models (graph of objects and links between objects
 
 Only containment reference features can be designated as inter-fragment reference features and all instances of such a reference feature will be inter-fragment references (like a-references in Fig.~\ref{fig:metamodel_fragmentation_pattern_tree}). Other references (i.e. cross refernces) can become inter-fragment references \emph{by accident} (like c-references in Fig.~\ref{fig:metamodel_fragmentation_pattern_graph}).
 
-One the inter-fragment reference features are designated within the meta-model, it is easy to create and maintain fragmentations automatically and transparently; ref. to section~\ref{sec:implementation}.
+One the inter-fragment reference features are designated within the meta-model, it is easy to create and maintain fragmentations automatically and transparently; ref. to section~\ref{sec:implemention}.
 
 %\subsubsection{Theory}
 %Access patterns for a model are strongly influenced by its metamodel.

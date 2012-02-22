@@ -1,4 +1,5 @@
 \section{Evaluation}
+\label{sec:evaluation}
 
 We provide and evalutation based on two different models, following two different goals. First, we want to compare EMFFrag to its related world from the software modeling world using a software models. Secondly, we want to show the influence of different granularity of fragmentation on different performance parameters.
 
@@ -32,7 +33,7 @@ We measured the memory usage, needed for a full model access; the results are sh
 
 \subsubsection*{Full model access}
 
-The execution times for accessing the complete models are shown in Fig.~\ref{grabatsLoadTraverse}. Fist of all,  because the whole model is accessed, the execution time for all approaches grows with model size. EMF/XMI execution time grows more then linear due to pointless garbage collection. Morsa also shows sub linear performance, since each object has to be accessed individual, and even the best index only performs logarithmically depending on model size. EMFFrag performance is proportional to model size and number of fragments; as expected it takes longer to access the whole model on a more fragmented store.
+The execution times for accessing the complete models are shown in Fig.~\ref{fig:grabatsLoadTraverse}. Fist of all,  because the whole model is accessed, the execution time for all approaches grows with model size. EMF/XMI execution time grows more then linear due to pointless garbage collection. Morsa also shows sub linear performance, since each object has to be accessed individual, and even the best index only performs logarithmically depending on model size. EMFFrag performance is proportional to model size and number of fragments; as expected it takes longer to access the whole model on a more fragmented store.
 
 \begin{figure}
   \centering
@@ -56,6 +57,13 @@ In this section, we present the execution times of model queries. The query is a
 
 \subsection{The Influence of Fragmentation on Performance}
 
-In this section, we look hat query and full access execution times for models of the same size and characteristics, but with different fragmentations. For this purpose, we use a simple meta-model (ref. to Fig.~\ref{fig:fragmentationMetaModel}. We generated models with a simple algorithm that takes model size, fragment size, and a so callaed \emph{depth factor} as parameters. The \emph{depth factor} determines the proportion of average number of object children to the overall model size, i.e. the depth of the model. 
+In this section, we look hat query and full access execution times for models of the same size and characteristics, but with different fragmentations. For this purpose, we use a simple meta-model (ref. to Fig.~\ref{?}). We generated models with a simple algorithm that takes model size, fragment size, and a so called \emph{depth factor} as parameters. The \emph{depth factor} determines the proportion of average number of object children to the overall model size, i.e. the depth of the model. 
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.65\linewidth]{figures/fragBroadTestModel}
+  \caption{Execution times for traversing parts of models with different fragmentations.}
+  \label{fig:fragBroadModel}
+\end{figure}
 
 \markus{Measure first and then describe}

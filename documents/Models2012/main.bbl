@@ -1,0 +1,87 @@
+\begin{thebibliography}{10}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\urlprefix}{URL }
+
+\bibitem{cdo}
+Connected data objects (cdo). http://www.eclipse.org/cdo/
+
+\bibitem{couchdb2010}
+Anderson, J.C., Lehnardt, J., Slater, N.: CouchDB: The Definitive Guide Time to
+  Relax. O'Reilly Media, Inc., 1st edn. (2010)
+
+\bibitem{dynamo2007}
+DeCandia, G., Hastorun, D., Jampani, M., Kakulapati, G., Lakshman, A., Pilchin,
+  A., Sivasubramanian, S., Vosshall, P., Vogels, W.: Dynamo: amazon's highly
+  available key-value store. SIGOPS Oper. Syst. Rev.  41,  205--220 (Oct 2007)
+
+\bibitem{martinFowler}
+Fowler, M.: Aggregate oriented databases.
+  http://martinfowler.com/bliki/AggregateOrientedDatabase.html (Jan 2012)
+
+\bibitem{cityGML}
+Gr{\"o}ger, G., Kolbe, T.H., Czerwinski, A., Nagel, C.: Opengis city geography
+  markup language (citygml) encoding standard, version 1.0.0. Tech. Rep. Doc.
+  No. 08-007r1, OGC, Wayland (MA), USA (2008)
+
+\bibitem{ACID}
+Haerder, T., Reuter, A.: Principles of transaction-oriented database recovery.
+  ACM Comput. Surv.  15,  287--317 (December 1983)
+
+\bibitem{mongoEMF}
+Hunt, B.: Mongoemf. http://github.com/BryanHunt/mongo-emf/wiki
+
+\bibitem{hbase2008}
+Khetrapal, A., Ganesh, V.: Hbase and hypertable for large scale distributed
+  storage systems a performance evaluation for open source bigtable
+  implementations. Tech. rep., Purdue University (2008)
+
+\bibitem{cassandra2009}
+Lakshman, A., Malik, P.: Cassandra: structured storage system on a p2p network.
+  In: Proceedings of the 28th ACM symposium on Principles of distributed
+  computing. pp. 5--5. PODC '09, ACM, New York, NY, USA (2009)
+
+\bibitem{nosql2010}
+Orend, K.: Analysis and Classification of NoSQL Databases and Evaluation of
+  their Ability to Replace an Object-relational Persistence Layer. Master's
+  thesis, Technische Universit{\"a}t M{\"u}nchen (2010)
+
+\bibitem{morsa2011}
+Pag\'{a}n, J.E., Cuadrado, J.S., Molina, J.G.: Morsa: a scalable approach for
+  persisting and accessing large models. In: Proceedings of the 14th
+  international conference on Model driven engineering languages and systems.
+  pp. 77--92. MODELS'11, Springer-Verlag, Berlin, Heidelberg (2011)
+
+\bibitem{mongodb2010}
+Plugge, E., Hawkins, T., Membrey, P.: The Definitive Guide to MongoDB: The
+  NoSQL Database for Cloud and Desktop Computing. Apress, Berkely, CA, USA, 1st
+  edn. (2010)
+
+\bibitem{clickwatch}
+Scheidgen, M., Zubow, A., Sombrutzki, R.: {ClickWatch -- An Experimentation
+  Framework for Communication Network Test-beds}. In: IEEE Wireless
+  Communications and Networking Conference. France (2012)
+
+\bibitem{ScalarisTransactions2008}
+Sch\"{u}tt, T., Schintke, F., Reinefeld, A.: Scalaris: reliable transactional
+  p2p key/value store. In: Proceedings of the 7th ACM SIGPLAN workshop on
+  ERLANG. pp. 41--48. ERLANG '08, ACM, New York, NY, USA (2008)
+
+\bibitem{berlinGML}
+Stadler, A.: Making interoperability persistent: A 3d geo database based on
+  citygml. In: Lee, J., Zlatanova, S. (eds.) Proceedings of the 3rd
+  International Workshop on 3D Geo-Information, Seoul, Korea, pp. 175--192.
+  Springer Verlag, Berlin, Heidelberg, New York (2008)
+
+\bibitem{emf2009}
+Steinberg, D., Budinsky, F., Paternostro, M., Merks, E.: EMF: Eclipse Modeling
+  Framework 2.0. Addison-Wesley Professional, 2nd edn. (2009)
+
+\bibitem{wheeler}
+Wheeler, D.A.: {Counting Source Lines of Code (SLOC)}.
+  http://www.dwheeler.com/sloc (2002)
+
+\bibitem{hwl}
+Zubow, A., Sombrutzki, R.: A low-cost mimo mesh testbed based on 802.11n. In:
+  IEEE Wireless Communications and Networking Conference. France (2012)
+
+\end{thebibliography}

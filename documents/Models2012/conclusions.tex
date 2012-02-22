@@ -1,1 +1,15 @@
 \section{Conclusions}\label{sec:conclusions}
+
+\begin{itemize}
+
+\item We proposed model fragmentation for model data base persistence with better performance characteristics that existing solutions (e.g. CDO, Morsa).
+
+\item For most modelling tasks (create, traverse, query, partial load) fragmented models perform better or similar to existing solutions. For create, traverse, and partial load performance enhancements are of magnitudes.
+
+\item Fragmentation can be achieved with meta-model based fragmentations, which already provides close to optimal performance for many applications and tasks (e.g. editing and compiling for software code models). Other strategies are imaginable and future work.
+
+\item The downside is that the underlying key-value stores (generally) do not provide a transaction mechanism. Future work: implement transaction within EMFFrag or use key-value stores with transactions (e.g. Scalaris).
+
+\item On the up-side, good scalarbility for both model size and demand for parallel access: e.g. in geo-spatial models. Good integration into parallel computing, i.e. with map-reduce frameworks.
+
+\end{itemize}

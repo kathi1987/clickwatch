@@ -40,8 +40,8 @@ function [m,n] = hbase_lookup_perf()
 
     plot(rx, e(rx));
 
-    xlabel('number of records');
-    ylabel('load time (in ms)');
+    xlabel('number of data store keys');
+    ylabel('access execution time (in ms)');
     
 
     %set(gca, 'YScale', 'log')

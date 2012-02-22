@@ -1,6 +1,6 @@
 \relax 
 \bibstyle{splncs03}
-\citation{}
+\citation{martinFowler}
 \select@language{english}
 \@writefile{toc}{\select@language{english}}
 \@writefile{lof}{\select@language{english}}
@@ -10,48 +10,97 @@
 \@writefile{toc}{\contentsline {author}{Markus Scheidgen}{1}}
 \@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}}
 \citation{hwl}
-\citation{1,2}
+\citation{clickwatch}
 \@writefile{toc}{\contentsline {section}{\numberline {2}Applications for Large Models}{2}}
+\newlabel{sec:applications}{{2}{2}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Software Models}{2}}
 \citation{wheeler}
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces SLOC and estimated number of objects for popular large software projects.}}{3}}
 \newlabel{fig:software_model_sizes}{{1}{3}}
-\citation{SMTLpaper}
+\citation{estrin, lynch}
+\citation{hwl}
+\citation{clickwatch}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Heterogenous Sensor Data}{4}}
-\citation{CityGMLBerlinDB}
+\citation{cityGML}
+\citation{cityGML}
+\citation{berlinGML}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Geospatial Models}{5}}
 \@writefile{toc}{\contentsline {subsubsection}{Model Size}{5}}
 \@writefile{toc}{\contentsline {subsubsection}{Modeling Tasks}{5}}
 \@writefile{toc}{\contentsline {section}{\numberline {3}Model Fragmentation}{5}}
+\newlabel{sec:fragmentation}{{3}{5}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Fragmention in General}{5}}
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces An example pattern in a model and a fragmentation. The red links are inter fragment links.}}{6}}
 \newlabel{fig:metamodel_fragmentation_pattern_tree}{{2}{6}}
 \@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Another example pattern. For a single feature there are two types of instances: inter- and intra-fragment links.}}{6}}
 \newlabel{fig:metamodel_fragmentation_pattern_graph}{{3}{6}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Fragmentation Strategies}{6}}
+\citation{cdo}
+\citation{morsa2011}
+\citation{emf2009}
+\citation{mongoEMF}
+\citation{mongodb2010}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Meta-Model based Fragmentation}{7}}
 \@writefile{toc}{\contentsline {section}{\numberline {4}Related Work}{7}}
 \newlabel{sec:related_work}{{4}{7}}
-\@writefile{toc}{\contentsline {section}{\numberline {5}Possible Performance Gains from Model Fragmentation}{8}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Measure for liner parsing performance of EMF and logarithmic access performance of HBase.\leavevmode {\color  {red}Markus: The dots in the EMF chart refer to different object sizes. either explain or remove.}}}{9}}
-\newlabel{fig:figures/emf_hbase_performance_measured}{{4}{9}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Load times based on actual EMF parsing and HBase access measurements.}}{9}}
-\newlabel{fig:optimal_load_times_measured}{{5}{9}}
-\@writefile{toc}{\contentsline {section}{\numberline {6}Implementation of Model Fragmentation}{10}}
-\newlabel{sec:implemention}{{6}{10}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces EMFFrag architecture and example fragmentation.}}{10}}
-\newlabel{fig:architecture}{{6}{10}}
-\@writefile{toc}{\contentsline {section}{\numberline {7}Evaluation}{11}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Grabats -- Actual Software Models}{12}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Number of fragments used}}{12}}
-\newlabel{fig:grabatsFragments}{{7}{12}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Memory usage for a full model traversal}}{13}}
-\newlabel{fig:grabatsLoadTraverseMem}{{8}{13}}
-\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Execution time for a full model traversal}}{14}}
-\newlabel{fig:grabatsLoadTraverse}{{9}{14}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Execution time for a specific query}}{14}}
-\newlabel{fig:grabatsQuery}{{10}{14}}
-\bibdata{bibliography}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Model Persistence}{7}}
+\citation{cdo}
+\citation{mongodb2010}
+\citation{morsa2011}
+\citation{mongodb2010}
+\citation{ACID}
+\citation{nosql2010}
+\citation{mongodb2010}
+\citation{couchdb2010}
+\citation{bibtable2006}
+\citation{dynamo2007}
+\citation{hbase2008}
+\citation{cassandra2009}
+\citation{mapreduce}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Key-Value Stores}{8}}
+\citation{ScalarisTransactions2008}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Possible Performance Gains from Model Fragmentation}{9}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Measure for liner parsing performance of EMF and logarithmic access performance of HBase.}}{10}}
+\newlabel{fig:figures/emf_hbase_performance_measured}{{4}{10}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Load times based on actual EMF parsing and HBase access measurements.}}{10}}
+\newlabel{fig:optimal_load_times_measured}{{5}{10}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Load times based on actual EMF parsing and ...}}{11}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Implementation of Model Fragmentation}{11}}
+\newlabel{sec:implemention}{{6}{11}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces EMFFrag architecture and example fragmentation.}}{12}}
+\newlabel{fig:architecture}{{7}{12}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Evaluation}{13}}
+\newlabel{sec:evaluation}{{7}{13}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Grabats -- Actual Software Models}{13}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Number of fragments used}}{13}}
+\newlabel{fig:grabatsFragments}{{8}{13}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Memory usage for a full model traversal}}{14}}
+\newlabel{fig:grabatsLoadTraverseMem}{{9}{14}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Execution time for a full model traversal}}{15}}
+\newlabel{fig:grabatsLoadTraverse}{{10}{15}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {7.2}The Influence of Fragmentation on Performance}{15}}
 \@writefile{toc}{\contentsline {section}{\numberline {8}Conclusions}{15}}
 \newlabel{sec:conclusions}{{8}{15}}
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Execution time for a specific query}}{16}}
+\newlabel{fig:grabatsQuery}{{11}{16}}
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Execution times for traversing parts of models with different fragmentations.}}{16}}
+\newlabel{fig:fragBroadModel}{{12}{16}}
+\bibdata{bibliography}
+\bibcite{cdo}{1}
+\bibcite{couchdb2010}{2}
+\bibcite{dynamo2007}{3}
+\bibcite{martinFowler}{4}
+\bibcite{cityGML}{5}
+\bibcite{ACID}{6}
+\bibcite{mongoEMF}{7}
+\bibcite{hbase2008}{8}
+\bibcite{cassandra2009}{9}
+\bibcite{nosql2010}{10}
+\bibcite{morsa2011}{11}
+\bibcite{mongodb2010}{12}
+\bibcite{clickwatch}{13}
+\bibcite{ScalarisTransactions2008}{14}
+\bibcite{berlinGML}{15}
+\bibcite{emf2009}{16}
+\bibcite{wheeler}{17}
+\bibcite{hwl}{18}
