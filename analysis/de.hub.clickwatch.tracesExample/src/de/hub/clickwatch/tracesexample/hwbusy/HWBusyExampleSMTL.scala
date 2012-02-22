@@ -86,12 +86,14 @@ object HWBusyExampleSMTL {
      */
     val nodeToDataResultRule = new Rule[Node, XYDataResultSet]("xyDataSet") when (
       (node) => { onlyNodes.contains(node) }) using (
-        (helper, node, resultSet) => {
-          resultSet.setName(node.getINetAddress())
+        (helper, node, resultSet) => {          
 
           // for all time values
           for (value <- node.getHandler("device_wifi/wifidevice/cst/stats").getValues()) {
-
+        	  if(resultSet.getName() == null)
+        		  resultSet.setName(node.getINetAddress() + " / " + value.asInstanceOf[Stats].getChannelstats().getNode())
+            
+            
             // transform every statsHandler to a "hwBusyResult" (DoubleDataResultValue)
             val hwBusyResult = helper.transform(value, classOf[DoubleDataResultValue])
 
@@ -137,7 +139,13 @@ object HWBusyExampleSMTL {
         (h.getQualifiedName().equals("device_wifi/wifidevice/cst/stats") && onlyNodes.contains(h.eContainer().eContainer().eContainer().eContainer().asInstanceOf[Node]))
       }) using (
         (helper, handler, resultSet) => {
+                    
           for (value <- handler.getValues()) {
+        	// set the name of the data resultset
+            if(resultSet.getName() == null)  
+        		resultSet.setName(value.asInstanceOf[Stats].getChannelstats().getNode())  
+              
+            
             // transform the hwBusy to a resultValue            
             val hwBusyResult = helper.transform(value, classOf[DoubleDataResultValue])
 
@@ -155,7 +163,7 @@ object HWBusyExampleSMTL {
     hwbusyTransformation.addRule(networkRule, statsHandlerToDataResultSet, statsToHWBusyResultValueRule)
 
     if (loadFromIterable == null)
-      hwbusyTransformation transform "dump/dump.xmi" exportToFile "outputHWBusy.xmi"
+      hwbusyTransformation transform inputFile exportToFile "outputHWBusy.xmi"
     else
       hwbusyTransformation transform loadFromIterable exportToFile "outputHWBusy.xmi"
 

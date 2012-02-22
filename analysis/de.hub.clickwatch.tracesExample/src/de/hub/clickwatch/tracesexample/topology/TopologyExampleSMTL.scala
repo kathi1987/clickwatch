@@ -35,10 +35,18 @@ object TopologyExampleSMTL {
     executeTransformation(null)
   }
 
+  /**
+   * for testing purpose only
+   */
   private var exampleNode : GraphNode = null
   def getExampleNode() = {
     exampleNode
   }
+  private var exampleLink : GraphLink = null
+  def getExampleLink() = {
+    exampleLink
+  }
+
   /**
    *
    */
@@ -104,12 +112,15 @@ object TopologyExampleSMTL {
     //
     // RULE: link2GraphLink
     val link2GraphLink = new Rule[Link, GraphLink]("Link") isLazy () using ((helper, link, graphLink) => {
+      graphLink.setName(link.getEContainer_link().getFrom() + " - " + link.getTo())
+      
+      // just for fast testing possibilities
+      if (exampleLink == null) exampleLink = graphLink
     })
 
     topologyTransformation.setShowDirectTrace(true)
     topologyTransformation.addRule(netWorkRule, node2GraphNode, link2GraphLink)
 
-    
     if (loadFromIterable == null)
       topologyTransformation transform "dump/dump.xmi" exportToFile "outputTopology.xmi"
     else
