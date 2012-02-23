@@ -6,19 +6,25 @@
  */
 package de.hub.clickwatch.specificdatamodels.brn.device_wifi_link_stat_bcast_stats.impl;
 
+import de.hub.clickwatch.analysis.traceable.Traceable;
+import de.hub.clickwatch.analysis.traceable.TraceablePackage;
 import de.hub.clickwatch.datamodel.impl.ValueImpl;
 
 import de.hub.clickwatch.specificdatamodels.brn.device_wifi_link_stat_bcast_stats.Bcast_stats;
 import de.hub.clickwatch.specificdatamodels.brn.device_wifi_link_stat_bcast_stats.Device_wifi_link_stat_bcast_statsPackage;
 import de.hub.clickwatch.specificdatamodels.brn.device_wifi_link_stat_bcast_stats.Entry;
 
+import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -27,6 +33,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link de.hub.clickwatch.specificdatamodels.brn.device_wifi_link_stat_bcast_stats.impl.Bcast_statsImpl#getTracesFrom <em>Traces From</em>}</li>
+ *   <li>{@link de.hub.clickwatch.specificdatamodels.brn.device_wifi_link_stat_bcast_stats.impl.Bcast_statsImpl#getTracesTo <em>Traces To</em>}</li>
  *   <li>{@link de.hub.clickwatch.specificdatamodels.brn.device_wifi_link_stat_bcast_stats.impl.Bcast_statsImpl#getEntry <em>Entry</em>}</li>
  * </ul>
  * </p>
@@ -34,6 +42,24 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * @generated
  */
 public class Bcast_statsImpl extends ValueImpl implements Bcast_stats {
+	/**
+	 * The cached value of the '{@link #getTracesFrom() <em>Traces From</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTracesFrom()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Traceable> tracesFrom;
+	/**
+	 * The cached value of the '{@link #getTracesTo() <em>Traces To</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTracesTo()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Traceable> tracesTo;
 	/**
 	 * The cached value of the '{@link #getEntry() <em>Entry</em>}' containment reference.
 	 * <!-- begin-user-doc -->
@@ -61,6 +87,30 @@ public class Bcast_statsImpl extends ValueImpl implements Bcast_stats {
 	@Override
 	protected EClass eStaticClass() {
 		return Device_wifi_link_stat_bcast_statsPackage.Literals.BCAST_STATS;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<Traceable> getTracesFrom() {
+		if (tracesFrom == null) {
+			tracesFrom = new EObjectResolvingEList<Traceable>(Traceable.class, this, Device_wifi_link_stat_bcast_statsPackage.BCAST_STATS__TRACES_FROM);
+		}
+		return tracesFrom;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<Traceable> getTracesTo() {
+		if (tracesTo == null) {
+			tracesTo = new EObjectResolvingEList<Traceable>(Traceable.class, this, Device_wifi_link_stat_bcast_statsPackage.BCAST_STATS__TRACES_TO);
+		}
+		return tracesTo;
 	}
 
 	/**
@@ -144,6 +194,10 @@ public class Bcast_statsImpl extends ValueImpl implements Bcast_stats {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case Device_wifi_link_stat_bcast_statsPackage.BCAST_STATS__TRACES_FROM:
+				return getTracesFrom();
+			case Device_wifi_link_stat_bcast_statsPackage.BCAST_STATS__TRACES_TO:
+				return getTracesTo();
 			case Device_wifi_link_stat_bcast_statsPackage.BCAST_STATS__ENTRY:
 				return getEntry();
 		}
@@ -155,9 +209,18 @@ public class Bcast_statsImpl extends ValueImpl implements Bcast_stats {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case Device_wifi_link_stat_bcast_statsPackage.BCAST_STATS__TRACES_FROM:
+				getTracesFrom().clear();
+				getTracesFrom().addAll((Collection<? extends Traceable>)newValue);
+				return;
+			case Device_wifi_link_stat_bcast_statsPackage.BCAST_STATS__TRACES_TO:
+				getTracesTo().clear();
+				getTracesTo().addAll((Collection<? extends Traceable>)newValue);
+				return;
 			case Device_wifi_link_stat_bcast_statsPackage.BCAST_STATS__ENTRY:
 				setEntry((Entry)newValue);
 				return;
@@ -173,6 +236,12 @@ public class Bcast_statsImpl extends ValueImpl implements Bcast_stats {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case Device_wifi_link_stat_bcast_statsPackage.BCAST_STATS__TRACES_FROM:
+				getTracesFrom().clear();
+				return;
+			case Device_wifi_link_stat_bcast_statsPackage.BCAST_STATS__TRACES_TO:
+				getTracesTo().clear();
+				return;
 			case Device_wifi_link_stat_bcast_statsPackage.BCAST_STATS__ENTRY:
 				setEntry((Entry)null);
 				return;
@@ -188,10 +257,48 @@ public class Bcast_statsImpl extends ValueImpl implements Bcast_stats {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case Device_wifi_link_stat_bcast_statsPackage.BCAST_STATS__TRACES_FROM:
+				return tracesFrom != null && !tracesFrom.isEmpty();
+			case Device_wifi_link_stat_bcast_statsPackage.BCAST_STATS__TRACES_TO:
+				return tracesTo != null && !tracesTo.isEmpty();
 			case Device_wifi_link_stat_bcast_statsPackage.BCAST_STATS__ENTRY:
 				return entry != null;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == Traceable.class) {
+			switch (derivedFeatureID) {
+				case Device_wifi_link_stat_bcast_statsPackage.BCAST_STATS__TRACES_FROM: return TraceablePackage.TRACEABLE__TRACES_FROM;
+				case Device_wifi_link_stat_bcast_statsPackage.BCAST_STATS__TRACES_TO: return TraceablePackage.TRACEABLE__TRACES_TO;
+				default: return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == Traceable.class) {
+			switch (baseFeatureID) {
+				case TraceablePackage.TRACEABLE__TRACES_FROM: return Device_wifi_link_stat_bcast_statsPackage.BCAST_STATS__TRACES_FROM;
+				case TraceablePackage.TRACEABLE__TRACES_TO: return Device_wifi_link_stat_bcast_statsPackage.BCAST_STATS__TRACES_TO;
+				default: return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
 } //Bcast_statsImpl

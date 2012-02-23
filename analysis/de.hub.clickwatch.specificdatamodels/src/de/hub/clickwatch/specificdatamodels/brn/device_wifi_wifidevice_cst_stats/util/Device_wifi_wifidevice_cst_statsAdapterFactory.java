@@ -6,8 +6,10 @@
  */
 package de.hub.clickwatch.specificdatamodels.brn.device_wifi_wifidevice_cst_stats.util;
 
+import de.hub.clickwatch.analysis.traceable.Traceable;
 import de.hub.clickwatch.datamodel.Value;
 
+import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.specificdatamodels.brn.device_wifi_wifidevice_cst_stats.*;
 
 import org.eclipse.emf.common.notify.Adapter;
@@ -126,8 +128,16 @@ public class Device_wifi_wifidevice_cst_statsAdapterFactory extends AdapterFacto
 				return createStatsAdapter();
 			}
 			@Override
+			public Adapter caseHandler(Handler object) {
+				return createHandlerAdapter();
+			}
+			@Override
 			public Adapter caseValue(Value object) {
 				return createValueAdapter();
+			}
+			@Override
+			public Adapter caseTraceable(Traceable object) {
+				return createTraceableAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -332,6 +342,20 @@ public class Device_wifi_wifidevice_cst_statsAdapterFactory extends AdapterFacto
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link de.hub.clickwatch.model.Handler <em>Handler</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.hub.clickwatch.model.Handler
+	 * @generated
+	 */
+	public Adapter createHandlerAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link de.hub.clickwatch.datamodel.Value <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -342,6 +366,20 @@ public class Device_wifi_wifidevice_cst_statsAdapterFactory extends AdapterFacto
 	 * @generated
 	 */
 	public Adapter createValueAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.hub.clickwatch.analysis.traceable.Traceable <em>Traceable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.hub.clickwatch.analysis.traceable.Traceable
+	 * @generated
+	 */
+	public Adapter createTraceableAdapter() {
 		return null;
 	}
 

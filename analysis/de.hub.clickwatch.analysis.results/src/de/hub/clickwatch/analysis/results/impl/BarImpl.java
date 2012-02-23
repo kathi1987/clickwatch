@@ -22,22 +22,22 @@ import de.hub.clickwatch.analysis.results.ResultsPackage;
  */
 public class BarImpl extends ChartTypeImpl implements Bar {
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	protected BarImpl() {
-        super();
-    }
+		super();
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	@Override
 	protected EClass eStaticClass() {
-        return ResultsPackage.Literals.BAR;
-    }
+		return ResultsPackage.Literals.BAR;
+	}
 
 } //BarImpl

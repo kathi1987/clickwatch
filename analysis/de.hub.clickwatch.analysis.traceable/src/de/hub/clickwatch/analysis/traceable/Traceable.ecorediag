@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmi:id="_C7uQoV4DEeGXp7aMsEB7kQ" type="EcoreTools" name="Traceable" measurementUnit="Pixel">
+  <children xmi:type="notation:Node" xmi:id="_Ev3HwF4DEeGXp7aMsEB7kQ" type="1001">
+    <children xmi:type="notation:Node" xmi:id="_Ev7ZMF4DEeGXp7aMsEB7kQ" type="4001"/>
+    <children xmi:type="notation:Node" xmi:id="_Ev8nUF4DEeGXp7aMsEB7kQ" type="5001">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_Ev8nUV4DEeGXp7aMsEB7kQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_Ev8nUl4DEeGXp7aMsEB7kQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_Ev9OYF4DEeGXp7aMsEB7kQ"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_Ev_DkF4DEeGXp7aMsEB7kQ" type="5002">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_Ev_DkV4DEeGXp7aMsEB7kQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_Ev_Dkl4DEeGXp7aMsEB7kQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_Ev_Dk14DEeGXp7aMsEB7kQ"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_Ev3HwV4DEeGXp7aMsEB7kQ" fontColor="4210752" fontName="Segoe UI" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EClass" href="Traceable.ecore#//Traceable"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Ev3Hwl4DEeGXp7aMsEB7kQ" x="340" y="150"/>
+  </children>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_C7uQol4DEeGXp7aMsEB7kQ"/>
+  <element xmi:type="ecore:EPackage" href="Traceable.ecore#/"/>
+  <edges xmi:type="notation:Edge" xmi:id="_8TeZMF4hEeGXp7aMsEB7kQ" type="3002" source="_Ev3HwF4DEeGXp7aMsEB7kQ" target="_Ev3HwF4DEeGXp7aMsEB7kQ">
+    <children xmi:type="notation:Node" xmi:id="_8TgOYF4hEeGXp7aMsEB7kQ" type="4011">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_8TgOYV4hEeGXp7aMsEB7kQ" x="-10" y="-10"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_8TgOYl4hEeGXp7aMsEB7kQ" type="4012">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_8TgOY14hEeGXp7aMsEB7kQ" x="10" y="10"/>
+    </children>
+    <styles xmi:type="notation:ConnectorStyle" xmi:id="_8TeZMV4hEeGXp7aMsEB7kQ" lineColor="4210752"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_8TeZMl4hEeGXp7aMsEB7kQ" fontColor="4210752" fontName="Segoe UI" fontHeight="10"/>
+    <element xmi:type="ecore:EReference" href="Traceable.ecore#//Traceable/tracesFrom"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_8TeZM14hEeGXp7aMsEB7kQ" points="[50, 19, 26, 4]$[90, 35, 66, 20]$[90, 55, 66, 40]$[30, 55, 6, 40]$[30, 21, 6, 6]"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_EqJJMF4iEeGXp7aMsEB7kQ" id="(0.7450980392156863,0.8604651162790697)"/>
+  </edges>
+  <edges xmi:type="notation:Edge" xmi:id="_A1vqgF4iEeGXp7aMsEB7kQ" type="3002" source="_Ev3HwF4DEeGXp7aMsEB7kQ" target="_Ev3HwF4DEeGXp7aMsEB7kQ">
+    <children xmi:type="notation:Node" xmi:id="_A1wRkF4iEeGXp7aMsEB7kQ" type="4011">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_A1wRkV4iEeGXp7aMsEB7kQ" x="-10" y="-10"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_A1w4oF4iEeGXp7aMsEB7kQ" type="4012">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_A1w4oV4iEeGXp7aMsEB7kQ" x="10" y="10"/>
+    </children>
+    <styles xmi:type="notation:ConnectorStyle" xmi:id="_A1vqgV4iEeGXp7aMsEB7kQ" lineColor="4210752"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_A1vqgl4iEeGXp7aMsEB7kQ" fontColor="4210752" fontName="Segoe UI" fontHeight="10"/>
+    <element xmi:type="ecore:EReference" href="Traceable.ecore#//Traceable/tracesTo"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_A1vqg14iEeGXp7aMsEB7kQ" points="[50, 10, 83, -2]$[112, 10, 145, -2]$[112, 83, 145, 71]$[-25, 83, 8, 71]$[-25, 21, 8, 9]"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_DG5NwF4iEeGXp7aMsEB7kQ" id="(0.17647058823529413,0.7906976744186046)"/>
+  </edges>
+</notation:Diagram>

@@ -13,6 +13,10 @@ public class HandlerBuilder implements de.hub.clickwatch.datamodel.util.builder.
   private Boolean m_canWrite;
   private Boolean m_changed;
   private java.lang.String m_name;
+  private java.util.Collection<de.hub.clickwatch.analysis.traceable.Traceable> m_tracesFrom = new java.util.LinkedList<de.hub.clickwatch.analysis.traceable.Traceable>();
+  private java.util.Collection<de.hub.clickwatch.analysis.traceable.util.builder.ITraceableBuilder<? extends de.hub.clickwatch.analysis.traceable.Traceable>> m_featureTracesFromBuilder = new java.util.LinkedList<de.hub.clickwatch.analysis.traceable.util.builder.ITraceableBuilder<? extends de.hub.clickwatch.analysis.traceable.Traceable>>();
+  private java.util.Collection<de.hub.clickwatch.analysis.traceable.Traceable> m_tracesTo = new java.util.LinkedList<de.hub.clickwatch.analysis.traceable.Traceable>();
+  private java.util.Collection<de.hub.clickwatch.analysis.traceable.util.builder.ITraceableBuilder<? extends de.hub.clickwatch.analysis.traceable.Traceable>> m_featureTracesToBuilder = new java.util.LinkedList<de.hub.clickwatch.analysis.traceable.util.builder.ITraceableBuilder<? extends de.hub.clickwatch.analysis.traceable.Traceable>>();
   private java.util.Collection<de.hub.clickwatch.datamodel.Value> m_values = new java.util.LinkedList<de.hub.clickwatch.datamodel.Value>();
   private java.util.Collection<de.hub.clickwatch.datamodel.util.builder.IDatamodelBuilder<? extends de.hub.clickwatch.datamodel.Value>> m_featureValuesBuilder = new java.util.LinkedList<de.hub.clickwatch.datamodel.util.builder.IDatamodelBuilder<? extends de.hub.clickwatch.datamodel.Value>>();
   // helper attributes
@@ -20,6 +24,8 @@ public class HandlerBuilder implements de.hub.clickwatch.datamodel.util.builder.
   private boolean m_featureCanWriteSet = false;
   private boolean m_featureChangedSet = false;
   private boolean m_featureNameSet = false;
+  private boolean m_featureTracesFromSet = false;
+  private boolean m_featureTracesToSet = false;
   private boolean m_featureValuesSet = false;
 
   /**
@@ -50,6 +56,12 @@ public class HandlerBuilder implements de.hub.clickwatch.datamodel.util.builder.
     _builder.m_changed = m_changed;
     _builder.m_featureNameSet = m_featureNameSet;
     _builder.m_name = m_name;
+    _builder.m_featureTracesFromSet = m_featureTracesFromSet;
+    _builder.m_tracesFrom = m_tracesFrom;
+    _builder.m_featureTracesFromBuilder = m_featureTracesFromBuilder;
+    _builder.m_featureTracesToSet = m_featureTracesToSet;
+    _builder.m_tracesTo = m_tracesTo;
+    _builder.m_featureTracesToBuilder = m_featureTracesToBuilder;
     _builder.m_featureValuesSet = m_featureValuesSet;
     _builder.m_values = m_values;
     _builder.m_featureValuesBuilder = m_featureValuesBuilder;
@@ -73,6 +85,24 @@ public class HandlerBuilder implements de.hub.clickwatch.datamodel.util.builder.
     }
     if (m_featureNameSet) {
       _newInstance.setName(m_name);
+    }
+    if (m_featureTracesFromSet) {
+      _newInstance.getTracesFrom().addAll(m_tracesFrom);
+    } else {
+      if (!m_featureTracesFromBuilder.isEmpty()) {
+        for (de.hub.clickwatch.analysis.traceable.util.builder.ITraceableBuilder<? extends de.hub.clickwatch.analysis.traceable.Traceable> builder : m_featureTracesFromBuilder) {
+          _newInstance.getTracesFrom().add(builder.build());
+        }
+      }
+    }
+    if (m_featureTracesToSet) {
+      _newInstance.getTracesTo().addAll(m_tracesTo);
+    } else {
+      if (!m_featureTracesToBuilder.isEmpty()) {
+        for (de.hub.clickwatch.analysis.traceable.util.builder.ITraceableBuilder<? extends de.hub.clickwatch.analysis.traceable.Traceable> builder : m_featureTracesToBuilder) {
+          _newInstance.getTracesTo().add(builder.build());
+        }
+      }
     }
     if (m_featureValuesSet) {
       _newInstance.getValues().addAll(m_values);
@@ -107,6 +137,40 @@ public class HandlerBuilder implements de.hub.clickwatch.datamodel.util.builder.
   public HandlerBuilder withName(java.lang.String p_name) {
     m_name = p_name;
     m_featureNameSet = true;
+    return this;
+  }
+
+  public HandlerBuilder withTracesFrom(de.hub.clickwatch.analysis.traceable.Traceable p_tracesFrom) {
+    m_tracesFrom.add(p_tracesFrom);
+    m_featureTracesFromSet = true;
+    return this;
+  }
+
+  public HandlerBuilder withTracesFrom(java.util.Collection<? extends de.hub.clickwatch.analysis.traceable.Traceable> p_tracesFrom) {
+    m_tracesFrom.addAll(p_tracesFrom);
+    m_featureTracesFromSet = true;
+    return this;
+  }
+
+  public HandlerBuilder withTracesFrom(de.hub.clickwatch.analysis.traceable.util.builder.ITraceableBuilder<? extends de.hub.clickwatch.analysis.traceable.Traceable> p_traceableBuilder) {
+    m_featureTracesFromBuilder.add(p_traceableBuilder);
+    return this;
+  }
+
+  public HandlerBuilder withTracesTo(de.hub.clickwatch.analysis.traceable.Traceable p_tracesTo) {
+    m_tracesTo.add(p_tracesTo);
+    m_featureTracesToSet = true;
+    return this;
+  }
+
+  public HandlerBuilder withTracesTo(java.util.Collection<? extends de.hub.clickwatch.analysis.traceable.Traceable> p_tracesTo) {
+    m_tracesTo.addAll(p_tracesTo);
+    m_featureTracesToSet = true;
+    return this;
+  }
+
+  public HandlerBuilder withTracesTo(de.hub.clickwatch.analysis.traceable.util.builder.ITraceableBuilder<? extends de.hub.clickwatch.analysis.traceable.Traceable> p_traceableBuilder) {
+    m_featureTracesToBuilder.add(p_traceableBuilder);
     return this;
   }
 

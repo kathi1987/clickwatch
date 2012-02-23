@@ -6,6 +6,8 @@
  */
 package de.hub.clickwatch.datamodel.impl;
 
+import de.hub.clickwatch.analysis.traceable.Traceable;
+import de.hub.clickwatch.analysis.traceable.TraceablePackage;
 import java.util.Collection;
 import java.util.Iterator;
 
@@ -17,7 +19,9 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import com.google.common.base.Preconditions;
@@ -38,6 +42,8 @@ import de.hub.clickwatch.datamodel.Node;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link de.hub.clickwatch.datamodel.impl.NodeImpl#getTracesFrom <em>Traces From</em>}</li>
+ *   <li>{@link de.hub.clickwatch.datamodel.impl.NodeImpl#getTracesTo <em>Traces To</em>}</li>
  *   <li>{@link de.hub.clickwatch.datamodel.impl.NodeImpl#getINetAddress <em>INet Address</em>}</li>
  *   <li>{@link de.hub.clickwatch.datamodel.impl.NodeImpl#getPort <em>Port</em>}</li>
  *   <li>{@link de.hub.clickwatch.datamodel.impl.NodeImpl#getBackbone <em>Backbone</em>}</li>
@@ -54,6 +60,24 @@ import de.hub.clickwatch.datamodel.Node;
  */
 public class NodeImpl extends ModelElementWithStatisticsImpl implements Node {
     /**
+	 * The cached value of the '{@link #getTracesFrom() <em>Traces From</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTracesFrom()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Traceable> tracesFrom;
+	/**
+	 * The cached value of the '{@link #getTracesTo() <em>Traces To</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTracesTo()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Traceable> tracesTo;
+				/**
 	 * The default value of the '{@link #getINetAddress() <em>INet Address</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getINetAddress()
@@ -208,6 +232,30 @@ public class NodeImpl extends ModelElementWithStatisticsImpl implements Node {
 	}
 
     /**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<Traceable> getTracesFrom() {
+		if (tracesFrom == null) {
+			tracesFrom = new EObjectResolvingEList<Traceable>(Traceable.class, this, ClickWatchDataModelPackage.NODE__TRACES_FROM);
+		}
+		return tracesFrom;
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<Traceable> getTracesTo() {
+		if (tracesTo == null) {
+			tracesTo = new EObjectResolvingEList<Traceable>(Traceable.class, this, ClickWatchDataModelPackage.NODE__TRACES_TO);
+		}
+		return tracesTo;
+	}
+
+				/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -547,6 +595,10 @@ public class NodeImpl extends ModelElementWithStatisticsImpl implements Node {
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case ClickWatchDataModelPackage.NODE__TRACES_FROM:
+				return getTracesFrom();
+			case ClickWatchDataModelPackage.NODE__TRACES_TO:
+				return getTracesTo();
 			case ClickWatchDataModelPackage.NODE__INET_ADDRESS:
 				return getINetAddress();
 			case ClickWatchDataModelPackage.NODE__PORT:
@@ -577,6 +629,14 @@ public class NodeImpl extends ModelElementWithStatisticsImpl implements Node {
     @Override
     public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case ClickWatchDataModelPackage.NODE__TRACES_FROM:
+				getTracesFrom().clear();
+				getTracesFrom().addAll((Collection<? extends Traceable>)newValue);
+				return;
+			case ClickWatchDataModelPackage.NODE__TRACES_TO:
+				getTracesTo().clear();
+				getTracesTo().addAll((Collection<? extends Traceable>)newValue);
+				return;
 			case ClickWatchDataModelPackage.NODE__INET_ADDRESS:
 				setINetAddress((String)newValue);
 				return;
@@ -617,6 +677,12 @@ public class NodeImpl extends ModelElementWithStatisticsImpl implements Node {
     @Override
     public void eUnset(int featureID) {
 		switch (featureID) {
+			case ClickWatchDataModelPackage.NODE__TRACES_FROM:
+				getTracesFrom().clear();
+				return;
+			case ClickWatchDataModelPackage.NODE__TRACES_TO:
+				getTracesTo().clear();
+				return;
 			case ClickWatchDataModelPackage.NODE__INET_ADDRESS:
 				setINetAddress(INET_ADDRESS_EDEFAULT);
 				return;
@@ -655,6 +721,10 @@ public class NodeImpl extends ModelElementWithStatisticsImpl implements Node {
     @Override
     public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case ClickWatchDataModelPackage.NODE__TRACES_FROM:
+				return tracesFrom != null && !tracesFrom.isEmpty();
+			case ClickWatchDataModelPackage.NODE__TRACES_TO:
+				return tracesTo != null && !tracesTo.isEmpty();
 			case ClickWatchDataModelPackage.NODE__INET_ADDRESS:
 				return INET_ADDRESS_EDEFAULT == null ? iNetAddress != null : !INET_ADDRESS_EDEFAULT.equals(iNetAddress);
 			case ClickWatchDataModelPackage.NODE__PORT:
@@ -678,6 +748,40 @@ public class NodeImpl extends ModelElementWithStatisticsImpl implements Node {
 	}
 
     /**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == Traceable.class) {
+			switch (derivedFeatureID) {
+				case ClickWatchDataModelPackage.NODE__TRACES_FROM: return TraceablePackage.TRACEABLE__TRACES_FROM;
+				case ClickWatchDataModelPackage.NODE__TRACES_TO: return TraceablePackage.TRACEABLE__TRACES_TO;
+				default: return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == Traceable.class) {
+			switch (baseFeatureID) {
+				case TraceablePackage.TRACEABLE__TRACES_FROM: return ClickWatchDataModelPackage.NODE__TRACES_FROM;
+				case TraceablePackage.TRACEABLE__TRACES_TO: return ClickWatchDataModelPackage.NODE__TRACES_TO;
+				default: return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
+
+				/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */

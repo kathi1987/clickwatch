@@ -5,9 +5,9 @@
     editDirectory="/de.hub.clickwatch.model.edit/src" editorDirectory="/de.hub.clickwatch.model.editor/src"
     modelPluginID="de.hub.clickwatch.core.data" modelName="ClickWatchDataModel" editPluginClass="de.hub.clickwatch.model.provider.ClickWatchModelEditPlugin"
     editorPluginClass="de.hub.clickwatch.model.presentation.ClickWatchModelEditorPlugin"
-    importerID="org.eclipse.emf.importer.cdo" complianceLevel="6.0" copyrightFields="false"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0" copyrightFields="false"
     editPluginID="de.hub.clickwatch.model.edit" editorPluginID="de.hub.clickwatch.model.editor"
-    language="" usedGenPackages="platform:/plugin/org.eclipse.emf.ecore/model/XMLType.genmodel#//type platform:/resource/de.hub.clickwatch.core/src/de/hub/clickwatch/model/ClickWatchModel.genmodel#//model">
+    language="" usedGenPackages="../../../../../../de.hub.clickwatch.core/src/de/hub/clickwatch/model/ClickWatchModel.genmodel#//model ../../../../../../de.hub.clickwatch.analysis.traceable/src/de/hub/clickwatch/analysis/traceable/Traceable.genmodel#//traceable">
   <foreignModel>ClickWatchModel.ecore</foreignModel>
   <genPackages prefix="ClickWatchDataModel" basePackage="de.hub.clickwatch" resource="XMI"
       disposableProviderFactory="true" ecorePackage="ClickWatchModel.ecore#/">
@@ -100,12 +100,6 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClickWatchModel.ecore#//ClickWatchError/message"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ClickWatchModel.ecore#//ClickWatchError/exception"/>
     </genClasses>
-    <genClasses ecoreClass="ClickWatchModel.ecore#//Value">
-      <genFeatures property="Readonly" children="true" createChild="false" ecoreFeature="ecore:EAttribute ClickWatchModel.ecore#//Value/mixed"/>
-      <genFeatures property="Readonly" children="true" createChild="false" propertyCategory=""
-          ecoreFeature="ecore:EAttribute ClickWatchModel.ecore#//Value/any"/>
-      <genFeatures children="true" createChild="false" ecoreFeature="ecore:EAttribute ClickWatchModel.ecore#//Value/value"/>
-      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute ClickWatchModel.ecore#//Value/timestamp"/>
-    </genClasses>
+    <genClasses ecoreClass="ClickWatchModel.ecore#//Value"/>
   </genPackages>
 </genmodel:GenModel>

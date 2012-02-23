@@ -6,6 +6,7 @@
  */
 package de.hub.clickwatch.datamodel;
 
+import de.hub.clickwatch.analysis.traceable.TraceablePackage;
 import de.hub.clickwatch.model.ClickWatchModelPackage;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -110,13 +111,31 @@ public interface ClickWatchDataModelPackage extends EPackage {
 	int NODE__STATISTICS = MODEL_ELEMENT_WITH_STATISTICS__STATISTICS;
 
 	/**
+	 * The feature id for the '<em><b>Traces From</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__TRACES_FROM = MODEL_ELEMENT_WITH_STATISTICS_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Traces To</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__TRACES_TO = MODEL_ELEMENT_WITH_STATISTICS_FEATURE_COUNT + 1;
+
+	/**
 	 * The feature id for the '<em><b>INet Address</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NODE__INET_ADDRESS = MODEL_ELEMENT_WITH_STATISTICS_FEATURE_COUNT + 0;
+	int NODE__INET_ADDRESS = MODEL_ELEMENT_WITH_STATISTICS_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Port</b></em>' attribute.
@@ -125,7 +144,7 @@ public interface ClickWatchDataModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NODE__PORT = MODEL_ELEMENT_WITH_STATISTICS_FEATURE_COUNT + 1;
+	int NODE__PORT = MODEL_ELEMENT_WITH_STATISTICS_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Backbone</b></em>' attribute.
@@ -134,7 +153,7 @@ public interface ClickWatchDataModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NODE__BACKBONE = MODEL_ELEMENT_WITH_STATISTICS_FEATURE_COUNT + 2;
+	int NODE__BACKBONE = MODEL_ELEMENT_WITH_STATISTICS_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Connection</b></em>' attribute.
@@ -143,7 +162,7 @@ public interface ClickWatchDataModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NODE__CONNECTION = MODEL_ELEMENT_WITH_STATISTICS_FEATURE_COUNT + 3;
+	int NODE__CONNECTION = MODEL_ELEMENT_WITH_STATISTICS_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Retrieving</b></em>' attribute.
@@ -152,7 +171,7 @@ public interface ClickWatchDataModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NODE__RETRIEVING = MODEL_ELEMENT_WITH_STATISTICS_FEATURE_COUNT + 4;
+	int NODE__RETRIEVING = MODEL_ELEMENT_WITH_STATISTICS_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Listening</b></em>' attribute.
@@ -161,7 +180,7 @@ public interface ClickWatchDataModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NODE__LISTENING = MODEL_ELEMENT_WITH_STATISTICS_FEATURE_COUNT + 5;
+	int NODE__LISTENING = MODEL_ELEMENT_WITH_STATISTICS_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Recording</b></em>' attribute.
@@ -170,7 +189,7 @@ public interface ClickWatchDataModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NODE__RECORDING = MODEL_ELEMENT_WITH_STATISTICS_FEATURE_COUNT + 6;
+	int NODE__RECORDING = MODEL_ELEMENT_WITH_STATISTICS_FEATURE_COUNT + 8;
 
 	/**
 	 * The feature id for the '<em><b>Errors</b></em>' containment reference list.
@@ -179,7 +198,7 @@ public interface ClickWatchDataModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NODE__ERRORS = MODEL_ELEMENT_WITH_STATISTICS_FEATURE_COUNT + 7;
+	int NODE__ERRORS = MODEL_ELEMENT_WITH_STATISTICS_FEATURE_COUNT + 9;
 
 	/**
 	 * The feature id for the '<em><b>Elements</b></em>' containment reference list.
@@ -188,7 +207,7 @@ public interface ClickWatchDataModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NODE__ELEMENTS = MODEL_ELEMENT_WITH_STATISTICS_FEATURE_COUNT + 8;
+	int NODE__ELEMENTS = MODEL_ELEMENT_WITH_STATISTICS_FEATURE_COUNT + 10;
 
 	/**
 	 * The number of structural features of the '<em>Node</em>' class.
@@ -197,7 +216,7 @@ public interface ClickWatchDataModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NODE_FEATURE_COUNT = MODEL_ELEMENT_WITH_STATISTICS_FEATURE_COUNT + 9;
+	int NODE_FEATURE_COUNT = MODEL_ELEMENT_WITH_STATISTICS_FEATURE_COUNT + 11;
 
 	/**
 	 * The meta object id for the '{@link de.hub.clickwatch.datamodel.impl.ElementImpl <em>Element</em>}' class.
@@ -210,13 +229,31 @@ public interface ClickWatchDataModelPackage extends EPackage {
 	int ELEMENT = 1;
 
 	/**
+	 * The feature id for the '<em><b>Traces From</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ELEMENT__TRACES_FROM = TraceablePackage.TRACEABLE__TRACES_FROM;
+
+	/**
+	 * The feature id for the '<em><b>Traces To</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ELEMENT__TRACES_TO = TraceablePackage.TRACEABLE__TRACES_TO;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT__NAME = 0;
+	int ELEMENT__NAME = TraceablePackage.TRACEABLE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Handlers</b></em>' containment reference list.
@@ -225,7 +262,7 @@ public interface ClickWatchDataModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT__HANDLERS = 1;
+	int ELEMENT__HANDLERS = TraceablePackage.TRACEABLE_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
@@ -234,7 +271,7 @@ public interface ClickWatchDataModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT__CHILDREN = 2;
+	int ELEMENT__CHILDREN = TraceablePackage.TRACEABLE_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Element</em>' class.
@@ -243,7 +280,7 @@ public interface ClickWatchDataModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT_FEATURE_COUNT = 3;
+	int ELEMENT_FEATURE_COUNT = TraceablePackage.TRACEABLE_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link de.hub.clickwatch.datamodel.impl.HandlerImpl <em>Handler</em>}' class.
@@ -256,13 +293,31 @@ public interface ClickWatchDataModelPackage extends EPackage {
 	int HANDLER = 2;
 
 	/**
+	 * The feature id for the '<em><b>Traces From</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HANDLER__TRACES_FROM = TraceablePackage.TRACEABLE__TRACES_FROM;
+
+	/**
+	 * The feature id for the '<em><b>Traces To</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HANDLER__TRACES_TO = TraceablePackage.TRACEABLE__TRACES_TO;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HANDLER__NAME = 0;
+	int HANDLER__NAME = TraceablePackage.TRACEABLE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Can Read</b></em>' attribute.
@@ -271,7 +326,7 @@ public interface ClickWatchDataModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HANDLER__CAN_READ = 1;
+	int HANDLER__CAN_READ = TraceablePackage.TRACEABLE_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Can Write</b></em>' attribute.
@@ -280,7 +335,7 @@ public interface ClickWatchDataModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HANDLER__CAN_WRITE = 2;
+	int HANDLER__CAN_WRITE = TraceablePackage.TRACEABLE_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Changed</b></em>' attribute.
@@ -289,7 +344,7 @@ public interface ClickWatchDataModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HANDLER__CHANGED = 3;
+	int HANDLER__CHANGED = TraceablePackage.TRACEABLE_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Values</b></em>' containment reference list.
@@ -298,7 +353,7 @@ public interface ClickWatchDataModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HANDLER__VALUES = 4;
+	int HANDLER__VALUES = TraceablePackage.TRACEABLE_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>Handler</em>' class.
@@ -307,7 +362,7 @@ public interface ClickWatchDataModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HANDLER_FEATURE_COUNT = 5;
+	int HANDLER_FEATURE_COUNT = TraceablePackage.TRACEABLE_FEATURE_COUNT + 5;
 
 	/**
 	 * The meta object id for the '{@link de.hub.clickwatch.datamodel.impl.NetworkImpl <em>Network</em>}' class.
@@ -329,13 +384,31 @@ public interface ClickWatchDataModelPackage extends EPackage {
 	int NETWORK__STATISTICS = MODEL_ELEMENT_WITH_STATISTICS__STATISTICS;
 
 	/**
+	 * The feature id for the '<em><b>Traces From</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK__TRACES_FROM = MODEL_ELEMENT_WITH_STATISTICS_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Traces To</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK__TRACES_TO = MODEL_ELEMENT_WITH_STATISTICS_FEATURE_COUNT + 1;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NETWORK__NAME = MODEL_ELEMENT_WITH_STATISTICS_FEATURE_COUNT + 0;
+	int NETWORK__NAME = MODEL_ELEMENT_WITH_STATISTICS_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Nodes</b></em>' containment reference list.
@@ -344,7 +417,7 @@ public interface ClickWatchDataModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NETWORK__NODES = MODEL_ELEMENT_WITH_STATISTICS_FEATURE_COUNT + 1;
+	int NETWORK__NODES = MODEL_ELEMENT_WITH_STATISTICS_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Element Filter</b></em>' attribute.
@@ -353,7 +426,7 @@ public interface ClickWatchDataModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NETWORK__ELEMENT_FILTER = MODEL_ELEMENT_WITH_STATISTICS_FEATURE_COUNT + 2;
+	int NETWORK__ELEMENT_FILTER = MODEL_ELEMENT_WITH_STATISTICS_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Handler Filter</b></em>' attribute.
@@ -362,7 +435,7 @@ public interface ClickWatchDataModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NETWORK__HANDLER_FILTER = MODEL_ELEMENT_WITH_STATISTICS_FEATURE_COUNT + 3;
+	int NETWORK__HANDLER_FILTER = MODEL_ELEMENT_WITH_STATISTICS_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Subnetworks</b></em>' containment reference list.
@@ -371,7 +444,7 @@ public interface ClickWatchDataModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NETWORK__SUBNETWORKS = MODEL_ELEMENT_WITH_STATISTICS_FEATURE_COUNT + 4;
+	int NETWORK__SUBNETWORKS = MODEL_ELEMENT_WITH_STATISTICS_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Timestamp</b></em>' attribute.
@@ -380,7 +453,7 @@ public interface ClickWatchDataModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NETWORK__TIMESTAMP = MODEL_ELEMENT_WITH_STATISTICS_FEATURE_COUNT + 5;
+	int NETWORK__TIMESTAMP = MODEL_ELEMENT_WITH_STATISTICS_FEATURE_COUNT + 7;
 
 	/**
 	 * The number of structural features of the '<em>Network</em>' class.
@@ -389,7 +462,7 @@ public interface ClickWatchDataModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NETWORK_FEATURE_COUNT = MODEL_ELEMENT_WITH_STATISTICS_FEATURE_COUNT + 6;
+	int NETWORK_FEATURE_COUNT = MODEL_ELEMENT_WITH_STATISTICS_FEATURE_COUNT + 8;
 
 	/**
 	 * The meta object id for the '{@link de.hub.clickwatch.datamodel.impl.StatisticsContainerImpl <em>Statistics Container</em>}' class.

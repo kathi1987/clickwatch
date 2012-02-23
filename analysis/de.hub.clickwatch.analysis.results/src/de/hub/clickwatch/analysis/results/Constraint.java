@@ -21,11 +21,11 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Constraint extends EObject {
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @model entryDataType="de.hub.clickwatch.analysis.results.DataEntry"
-     * @generated
-     */
+	 * @model entryDataType="de.hub.clickwatch.analysis.results.DataEntry"
+	 * @generated
+	 */
 	boolean evaluate(DataEntry entry);
 
 } // Constraint

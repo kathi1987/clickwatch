@@ -63,4 +63,12 @@ public class ResultsBuilders {
   public static final GraphLinkBuilder newGraphLinkBuilder() {
     return GraphLinkBuilder.newGraphLinkBuilder();
   }
+
+  public static final XYDataResultSetBuilder newXYDataResultSetBuilder() {
+    return XYDataResultSetBuilder.newXYDataResultSetBuilder();
+  }
+
+  public static final DoubleDataResultValueBuilder newDoubleDataResultValueBuilder() {
+    return DoubleDataResultValueBuilder.newDoubleDataResultValueBuilder();
+  }
 }

@@ -3,13 +3,13 @@
     xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/de.hub.clickwatch.specificdatamodels/src"
     modelPluginID="de.hub.clickwatch.specificdatamodels" modelName="BrnHandlers" importerID="org.eclipse.emf.importer.ecore"
-    complianceLevel="6.0" copyrightFields="false" usedGenPackages="../../../../../../../de.hub.clickwatch.core.data/src/de/hub/clickwatch/datamodel/ClickWatchModel.genmodel#//datamodel">
+    complianceLevel="6.0" copyrightFields="false" usedGenPackages="../../../../../../../de.hub.clickwatch.core.data/src/de/hub/clickwatch/datamodel/ClickWatchModel.genmodel#//datamodel ../../../../../../../de.hub.clickwatch.core/src/de/hub/clickwatch/model/ClickWatchModel.genmodel#//model ../../../../../../../de.hub.clickwatch.analysis.traceable/src/de/hub/clickwatch/analysis/traceable/Traceable.genmodel#//traceable">
   <foreignModel>BrnHandlers.ecore</foreignModel>
   <genPackages prefix="Brn" basePackage="de.hub.clickwatch.specificdatamodels" resource="XML"
       disposableProviderFactory="true" ecorePackage="BrnHandlers.ecore#/">
     <genClasses ecoreClass="BrnHandlers.ecore#//HandlerSubClass"/>
-    <nestedGenPackages prefix="Sys_info_systeminfo" resource="XML" disposableProviderFactory="true"
-        ecorePackage="BrnHandlers.ecore#//sys_info_systeminfo">
+    <nestedGenPackages prefix="Sys_info_systeminfo" basePackage="de.hub.clickwatch.specificdatamodels.brn"
+        resource="XML" disposableProviderFactory="true" ecorePackage="BrnHandlers.ecore#//sys_info_systeminfo">
       <genClasses ecoreClass="BrnHandlers.ecore#//sys_info_systeminfo/Cpu_usage">
         <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference BrnHandlers.ecore#//sys_info_systeminfo/Cpu_usage/eContainer_cpu_usage"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BrnHandlers.ecore#//sys_info_systeminfo/Cpu_usage/real"/>
@@ -56,8 +56,8 @@
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BrnHandlers.ecore#//sys_info_systeminfo/Uptime/idle"/>
       </genClasses>
     </nestedGenPackages>
-    <nestedGenPackages prefix="Device_wifi_data_power_systempower" resource="XML"
-        disposableProviderFactory="true" ecorePackage="BrnHandlers.ecore#//device_wifi_data_power_systempower">
+    <nestedGenPackages prefix="Device_wifi_data_power_systempower" basePackage="de.hub.clickwatch.specificdatamodels.brn"
+        resource="XML" disposableProviderFactory="true" ecorePackage="BrnHandlers.ecore#//device_wifi_data_power_systempower">
       <genClasses ecoreClass="BrnHandlers.ecore#//device_wifi_data_power_systempower/Device">
         <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference BrnHandlers.ecore#//device_wifi_data_power_systempower/Device/eContainer_device"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BrnHandlers.ecore#//device_wifi_data_power_systempower/Device/name"/>
@@ -75,8 +75,8 @@
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference BrnHandlers.ecore#//device_wifi_data_power_systempower/Systempower/settxpower"/>
       </genClasses>
     </nestedGenPackages>
-    <nestedGenPackages prefix="Device_wifi_wifidevice_sc_systemchannel" resource="XML"
-        disposableProviderFactory="true" ecorePackage="BrnHandlers.ecore#//device_wifi_wifidevice_sc_systemchannel">
+    <nestedGenPackages prefix="Device_wifi_wifidevice_sc_systemchannel" basePackage="de.hub.clickwatch.specificdatamodels.brn"
+        resource="XML" disposableProviderFactory="true" ecorePackage="BrnHandlers.ecore#//device_wifi_wifidevice_sc_systemchannel">
       <genClasses ecoreClass="BrnHandlers.ecore#//device_wifi_wifidevice_sc_systemchannel/Device">
         <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference BrnHandlers.ecore#//device_wifi_wifidevice_sc_systemchannel/Device/eContainer_device"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BrnHandlers.ecore#//device_wifi_wifidevice_sc_systemchannel/Device/name"/>
@@ -94,8 +94,8 @@
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference BrnHandlers.ecore#//device_wifi_wifidevice_sc_systemchannel/Systemchannel/setchannel"/>
       </genClasses>
     </nestedGenPackages>
-    <nestedGenPackages prefix="Lease_tab_leases" resource="XML" disposableProviderFactory="true"
-        ecorePackage="BrnHandlers.ecore#//lease_tab_leases">
+    <nestedGenPackages prefix="Lease_tab_leases" basePackage="de.hub.clickwatch.specificdatamodels.brn"
+        resource="XML" disposableProviderFactory="true" ecorePackage="BrnHandlers.ecore#//lease_tab_leases">
       <genClasses ecoreClass="BrnHandlers.ecore#//lease_tab_leases/Client">
         <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference BrnHandlers.ecore#//lease_tab_leases/Client/eContainer_client"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BrnHandlers.ecore#//lease_tab_leases/Client/ip"/>
@@ -116,8 +116,8 @@
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference BrnHandlers.ecore#//lease_tab_leases/Leases/dhcpleases"/>
       </genClasses>
     </nestedGenPackages>
-    <nestedGenPackages prefix="Gps_gps_coord" resource="XML" disposableProviderFactory="true"
-        ecorePackage="BrnHandlers.ecore#//gps_gps_coord">
+    <nestedGenPackages prefix="Gps_gps_coord" basePackage="de.hub.clickwatch.specificdatamodels.brn"
+        resource="XML" disposableProviderFactory="true" ecorePackage="BrnHandlers.ecore#//gps_gps_coord">
       <genClasses ecoreClass="BrnHandlers.ecore#//gps_gps_coord/Gps">
         <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference BrnHandlers.ecore#//gps_gps_coord/Gps/eContainer_gps"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BrnHandlers.ecore#//gps_gps_coord/Gps/id"/>
@@ -131,14 +131,14 @@
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference BrnHandlers.ecore#//gps_gps_coord/Gps_coord/gps"/>
       </genClasses>
     </nestedGenPackages>
-    <nestedGenPackages prefix="Gps_cart_coord" resource="XML" disposableProviderFactory="true"
-        ecorePackage="BrnHandlers.ecore#//gps_cart_coord">
+    <nestedGenPackages prefix="Gps_cart_coord" basePackage="de.hub.clickwatch.specificdatamodels.brn"
+        resource="XML" disposableProviderFactory="true" ecorePackage="BrnHandlers.ecore#//gps_cart_coord">
       <genClasses ecoreClass="BrnHandlers.ecore#//gps_cart_coord/Cart_coord">
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BrnHandlers.ecore#//gps_cart_coord/Cart_coord/text"/>
       </genClasses>
     </nestedGenPackages>
-    <nestedGenPackages prefix="Lt_routes" resource="XML" disposableProviderFactory="true"
-        ecorePackage="BrnHandlers.ecore#//lt_routes">
+    <nestedGenPackages prefix="Lt_routes" basePackage="de.hub.clickwatch.specificdatamodels.brn"
+        resource="XML" disposableProviderFactory="true" ecorePackage="BrnHandlers.ecore#//lt_routes">
       <genClasses ecoreClass="BrnHandlers.ecore#//lt_routes/Link">
         <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference BrnHandlers.ecore#//lt_routes/Link/eContainer_link"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BrnHandlers.ecore#//lt_routes/Link/from"/>
@@ -164,8 +164,8 @@
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BrnHandlers.ecore#//lt_routes/Routetable/id"/>
       </genClasses>
     </nestedGenPackages>
-    <nestedGenPackages prefix="Lt_links" resource="XML" disposableProviderFactory="true"
-        ecorePackage="BrnHandlers.ecore#//lt_links">
+    <nestedGenPackages prefix="Lt_links" basePackage="de.hub.clickwatch.specificdatamodels.brn"
+        resource="XML" disposableProviderFactory="true" ecorePackage="BrnHandlers.ecore#//lt_links">
       <genClasses ecoreClass="BrnHandlers.ecore#//lt_links/Link">
         <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference BrnHandlers.ecore#//lt_links/Link/eContainer_link"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BrnHandlers.ecore#//lt_links/Link/from"/>
@@ -184,8 +184,8 @@
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BrnHandlers.ecore#//lt_links/Linktable/id"/>
       </genClasses>
     </nestedGenPackages>
-    <nestedGenPackages prefix="Device_wifi_link_stat_bcast_stats" resource="XML" disposableProviderFactory="true"
-        ecorePackage="BrnHandlers.ecore#//device_wifi_link_stat_bcast_stats">
+    <nestedGenPackages prefix="Device_wifi_link_stat_bcast_stats" basePackage="de.hub.clickwatch.specificdatamodels.brn"
+        resource="XML" disposableProviderFactory="true" ecorePackage="BrnHandlers.ecore#//device_wifi_link_stat_bcast_stats">
       <genClasses ecoreClass="BrnHandlers.ecore#//device_wifi_link_stat_bcast_stats/Bcast_stats">
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference BrnHandlers.ecore#//device_wifi_link_stat_bcast_stats/Bcast_stats/entry"/>
       </genClasses>
@@ -217,8 +217,8 @@
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BrnHandlers.ecore#//device_wifi_link_stat_bcast_stats/Link_info/rev"/>
       </genClasses>
     </nestedGenPackages>
-    <nestedGenPackages prefix="Device_wifi_wifidevice_cst_stats" resource="XML" disposableProviderFactory="true"
-        ecorePackage="BrnHandlers.ecore#//device_wifi_wifidevice_cst_stats">
+    <nestedGenPackages prefix="Device_wifi_wifidevice_cst_stats" basePackage="de.hub.clickwatch.specificdatamodels.brn"
+        resource="XML" disposableProviderFactory="true" ecorePackage="BrnHandlers.ecore#//device_wifi_wifidevice_cst_stats">
       <genClasses ecoreClass="BrnHandlers.ecore#//device_wifi_wifidevice_cst_stats/Channelstats">
         <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference BrnHandlers.ecore#//device_wifi_wifidevice_cst_stats/Channelstats/eContainer_channelstats"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BrnHandlers.ecore#//device_wifi_wifidevice_cst_stats/Channelstats/text"/>
@@ -351,8 +351,8 @@
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference BrnHandlers.ecore#//device_wifi_wifidevice_cst_stats/Stats/channelstats"/>
       </genClasses>
     </nestedGenPackages>
-    <nestedGenPackages prefix="Sf_stats" resource="XML" disposableProviderFactory="true"
-        ecorePackage="BrnHandlers.ecore#//sf_stats">
+    <nestedGenPackages prefix="Sf_stats" basePackage="de.hub.clickwatch.specificdatamodels.brn"
+        resource="XML" disposableProviderFactory="true" ecorePackage="BrnHandlers.ecore#//sf_stats">
       <genClasses ecoreClass="BrnHandlers.ecore#//sf_stats/Flowstats">
         <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference BrnHandlers.ecore#//sf_stats/Flowstats/eContainer_flowstats"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BrnHandlers.ecore#//sf_stats/Flowstats/text"/>
@@ -385,8 +385,8 @@
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BrnHandlers.ecore#//sf_stats/Txflow/time"/>
       </genClasses>
     </nestedGenPackages>
-    <nestedGenPackages prefix="Routing_dsr_stats_stats" resource="XML" disposableProviderFactory="true"
-        ecorePackage="BrnHandlers.ecore#//routing_dsr_stats_stats">
+    <nestedGenPackages prefix="Routing_dsr_stats_stats" basePackage="de.hub.clickwatch.specificdatamodels.brn"
+        resource="XML" disposableProviderFactory="true" ecorePackage="BrnHandlers.ecore#//routing_dsr_stats_stats">
       <genClasses ecoreClass="BrnHandlers.ecore#//routing_dsr_stats_stats/Dsr_route_stats">
         <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference BrnHandlers.ecore#//routing_dsr_stats_stats/Dsr_route_stats/eContainer_dsr_route_stats"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BrnHandlers.ecore#//routing_dsr_stats_stats/Dsr_route_stats/text"/>
@@ -414,8 +414,8 @@
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference BrnHandlers.ecore#//routing_dsr_stats_stats/Stats/dsr_route_stats"/>
       </genClasses>
     </nestedGenPackages>
-    <nestedGenPackages prefix="Seismo_localchannelinfo" resource="XML" disposableProviderFactory="true"
-        ecorePackage="BrnHandlers.ecore#//seismo_localchannelinfo">
+    <nestedGenPackages prefix="Seismo_localchannelinfo" basePackage="de.hub.clickwatch.specificdatamodels.brn"
+        resource="XML" disposableProviderFactory="true" ecorePackage="BrnHandlers.ecore#//seismo_localchannelinfo">
       <genClasses ecoreClass="BrnHandlers.ecore#//seismo_localchannelinfo/C">
         <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference BrnHandlers.ecore#//seismo_localchannelinfo/C/eContainer_c"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference BrnHandlers.ecore#//seismo_localchannelinfo/C/v"/>
@@ -432,8 +432,8 @@
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BrnHandlers.ecore#//seismo_localchannelinfo/V/c2"/>
       </genClasses>
     </nestedGenPackages>
-    <nestedGenPackages prefix="Tsi_syncinfo" resource="XML" disposableProviderFactory="true"
-        ecorePackage="BrnHandlers.ecore#//tsi_syncinfo">
+    <nestedGenPackages prefix="Tsi_syncinfo" basePackage="de.hub.clickwatch.specificdatamodels.brn"
+        resource="XML" disposableProviderFactory="true" ecorePackage="BrnHandlers.ecore#//tsi_syncinfo">
       <genClasses ecoreClass="BrnHandlers.ecore#//tsi_syncinfo/Syncinfo">
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference BrnHandlers.ecore#//tsi_syncinfo/Syncinfo/timesyncinfo"/>
       </genClasses>

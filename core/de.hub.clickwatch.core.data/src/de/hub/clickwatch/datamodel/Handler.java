@@ -6,6 +6,7 @@
  */
 package de.hub.clickwatch.datamodel;
 
+import de.hub.clickwatch.analysis.traceable.Traceable;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.FeatureMap;
@@ -30,7 +31,7 @@ import org.eclipse.emf.ecore.util.FeatureMap;
  * @model extendedMetaData="kind='mixed'"
  * @generated
  */
-public interface Handler extends EObject {
+public interface Handler extends Traceable {
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->

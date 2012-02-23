@@ -6,6 +6,7 @@
  */
 package de.hub.clickwatch.datamodel.impl;
 
+import de.hub.clickwatch.analysis.traceable.impl.TraceableImpl;
 import de.hub.clickwatch.datamodel.ClickWatchDataModelPackage;
 import java.util.Collection;
 
@@ -40,7 +41,7 @@ import de.hub.clickwatch.datamodel.Handler;
  *
  * @generated
  */
-public class ElementImpl extends EObjectImpl implements Element {
+public class ElementImpl extends TraceableImpl implements Element {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->

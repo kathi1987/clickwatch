@@ -8,7 +8,7 @@
       <valueSpecs xsi:type="results:Axis" name="HW_busy" column="2"/>
     </charts>
   </results:NumericalResult>
-  <results:XYDataResultSet>
+  <results:XYDataResultSet name="06-1B-B1-05-3B-6F">
     <xValues xsi:type="results:DoubleDataResultValue" value="1.32215050955887334E18"/>
     <xValues xsi:type="results:DoubleDataResultValue" value="1.32215050976950605E18"/>
     <xValues xsi:type="results:DoubleDataResultValue" value="1.32215050997519693E18"/>
@@ -16,13 +16,13 @@
     <yValues xsi:type="results:DoubleDataResultValue" value="15.0"/>
     <yValues xsi:type="results:DoubleDataResultValue" value="15.0"/>
   </results:XYDataResultSet>
-  <results:XYDataResultSet>
+  <results:XYDataResultSet name="06-1B-B1-05-3B-3F">
     <xValues xsi:type="results:DoubleDataResultValue" value="1.32215050961395098E18"/>
     <xValues xsi:type="results:DoubleDataResultValue" value="1.32215050981400499E18"/>
     <yValues xsi:type="results:DoubleDataResultValue" value="9.0"/>
     <yValues xsi:type="results:DoubleDataResultValue" value="9.0"/>
   </results:XYDataResultSet>
-  <results:XYDataResultSet>
+  <results:XYDataResultSet name="06-1B-B1-05-3B-88">
     <xValues xsi:type="results:DoubleDataResultValue" value="1.32215050965303578E18"/>
     <xValues xsi:type="results:DoubleDataResultValue" value="1.32215050985754906E18"/>
     <yValues xsi:type="results:DoubleDataResultValue" value="3.0"/>

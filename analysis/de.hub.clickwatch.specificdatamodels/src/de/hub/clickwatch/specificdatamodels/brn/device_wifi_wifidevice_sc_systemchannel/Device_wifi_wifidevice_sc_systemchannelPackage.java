@@ -192,6 +192,42 @@ public interface Device_wifi_wifidevice_sc_systemchannelPackage extends EPackage
 	int SYSTEMCHANNEL = 2;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYSTEMCHANNEL__NAME = ClickWatchDataModelPackage.VALUE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Can Read</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYSTEMCHANNEL__CAN_READ = ClickWatchDataModelPackage.VALUE__CAN_READ;
+
+	/**
+	 * The feature id for the '<em><b>Can Write</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYSTEMCHANNEL__CAN_WRITE = ClickWatchDataModelPackage.VALUE__CAN_WRITE;
+
+	/**
+	 * The feature id for the '<em><b>Changed</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYSTEMCHANNEL__CHANGED = ClickWatchDataModelPackage.VALUE__CHANGED;
+
+	/**
 	 * The feature id for the '<em><b>Mixed</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -8,6 +8,7 @@ package de.hub.clickwatch.specificdatamodels.brn.routing_dsr_stats_stats.util;
 
 import de.hub.clickwatch.datamodel.Value;
 
+import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.specificdatamodels.brn.routing_dsr_stats_stats.*;
 
 import org.eclipse.emf.common.notify.Adapter;
@@ -90,6 +91,10 @@ public class Routing_dsr_stats_statsAdapterFactory extends AdapterFactoryImpl {
 				return createStatsAdapter();
 			}
 			@Override
+			public Adapter caseHandler(Handler object) {
+				return createHandlerAdapter();
+			}
+			@Override
 			public Adapter caseValue(Value object) {
 				return createValueAdapter();
 			}
@@ -166,6 +171,20 @@ public class Routing_dsr_stats_statsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createStatsAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.hub.clickwatch.model.Handler <em>Handler</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.hub.clickwatch.model.Handler
+	 * @generated
+	 */
+	public Adapter createHandlerAdapter() {
 		return null;
 	}
 

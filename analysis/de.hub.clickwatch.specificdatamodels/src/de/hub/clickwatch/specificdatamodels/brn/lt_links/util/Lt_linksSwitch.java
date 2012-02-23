@@ -8,6 +8,7 @@ package de.hub.clickwatch.specificdatamodels.brn.lt_links.util;
 
 import de.hub.clickwatch.datamodel.Value;
 
+import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.specificdatamodels.brn.lt_links.*;
 
 import org.eclipse.emf.ecore.EObject;
@@ -82,6 +83,7 @@ public class Lt_linksSwitch<T> extends Switch<T> {
 				Links links = (Links)theEObject;
 				T result = caseLinks(links);
 				if (result == null) result = caseValue(links);
+				if (result == null) result = caseHandler(links);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -137,6 +139,21 @@ public class Lt_linksSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseLinktable(Linktable object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Handler</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Handler</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseHandler(Handler object) {
 		return null;
 	}
 

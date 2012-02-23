@@ -39,154 +39,154 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class GraphResultImpl extends ResultImpl implements GraphResult {
     /**
-     * The cached value of the '{@link #getNodes() <em>Nodes</em>}' containment reference list.
-     * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getNodes() <em>Nodes</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see #getNodes()
-     * @generated
-     * @ordered
-     */
+	 * @see #getNodes()
+	 * @generated
+	 * @ordered
+	 */
     protected EList<GraphNode> nodes;
 
     /**
-     * The cached value of the '{@link #getLinks() <em>Links</em>}' containment reference list.
-     * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getLinks() <em>Links</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see #getLinks()
-     * @generated
-     * @ordered
-     */
+	 * @see #getLinks()
+	 * @generated
+	 * @ordered
+	 */
     protected EList<GraphLink> links;
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     protected GraphResultImpl() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return ResultsPackage.Literals.GRAPH_RESULT;
-    }
+		return ResultsPackage.Literals.GRAPH_RESULT;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public EList<GraphNode> getNodes() {
-        if (nodes == null) {
-            nodes = new EObjectContainmentEList<GraphNode>(GraphNode.class, this, ResultsPackage.GRAPH_RESULT__NODES);
-        }
-        return nodes;
-    }
+		if (nodes == null) {
+			nodes = new EObjectContainmentEList<GraphNode>(GraphNode.class, this, ResultsPackage.GRAPH_RESULT__NODES);
+		}
+		return nodes;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public EList<GraphLink> getLinks() {
-        if (links == null) {
-            links = new EObjectContainmentEList<GraphLink>(GraphLink.class, this, ResultsPackage.GRAPH_RESULT__LINKS);
-        }
-        return links;
-    }
+		if (links == null) {
+			links = new EObjectContainmentEList<GraphLink>(GraphLink.class, this, ResultsPackage.GRAPH_RESULT__LINKS);
+		}
+		return links;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-        switch (featureID) {
-            case ResultsPackage.GRAPH_RESULT__NODES:
-                return ((InternalEList<?>)getNodes()).basicRemove(otherEnd, msgs);
-            case ResultsPackage.GRAPH_RESULT__LINKS:
-                return ((InternalEList<?>)getLinks()).basicRemove(otherEnd, msgs);
-        }
-        return super.eInverseRemove(otherEnd, featureID, msgs);
-    }
+		switch (featureID) {
+			case ResultsPackage.GRAPH_RESULT__NODES:
+				return ((InternalEList<?>)getNodes()).basicRemove(otherEnd, msgs);
+			case ResultsPackage.GRAPH_RESULT__LINKS:
+				return ((InternalEList<?>)getLinks()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
-        switch (featureID) {
-            case ResultsPackage.GRAPH_RESULT__NODES:
-                return getNodes();
-            case ResultsPackage.GRAPH_RESULT__LINKS:
-                return getLinks();
-        }
-        return super.eGet(featureID, resolve, coreType);
-    }
+		switch (featureID) {
+			case ResultsPackage.GRAPH_RESULT__NODES:
+				return getNodes();
+			case ResultsPackage.GRAPH_RESULT__LINKS:
+				return getLinks();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @SuppressWarnings("unchecked")
     @Override
     public void eSet(int featureID, Object newValue) {
-        switch (featureID) {
-            case ResultsPackage.GRAPH_RESULT__NODES:
-                getNodes().clear();
-                getNodes().addAll((Collection<? extends GraphNode>)newValue);
-                return;
-            case ResultsPackage.GRAPH_RESULT__LINKS:
-                getLinks().clear();
-                getLinks().addAll((Collection<? extends GraphLink>)newValue);
-                return;
-        }
-        super.eSet(featureID, newValue);
-    }
+		switch (featureID) {
+			case ResultsPackage.GRAPH_RESULT__NODES:
+				getNodes().clear();
+				getNodes().addAll((Collection<? extends GraphNode>)newValue);
+				return;
+			case ResultsPackage.GRAPH_RESULT__LINKS:
+				getLinks().clear();
+				getLinks().addAll((Collection<? extends GraphLink>)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     public void eUnset(int featureID) {
-        switch (featureID) {
-            case ResultsPackage.GRAPH_RESULT__NODES:
-                getNodes().clear();
-                return;
-            case ResultsPackage.GRAPH_RESULT__LINKS:
-                getLinks().clear();
-                return;
-        }
-        super.eUnset(featureID);
-    }
+		switch (featureID) {
+			case ResultsPackage.GRAPH_RESULT__NODES:
+				getNodes().clear();
+				return;
+			case ResultsPackage.GRAPH_RESULT__LINKS:
+				getLinks().clear();
+				return;
+		}
+		super.eUnset(featureID);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     public boolean eIsSet(int featureID) {
-        switch (featureID) {
-            case ResultsPackage.GRAPH_RESULT__NODES:
-                return nodes != null && !nodes.isEmpty();
-            case ResultsPackage.GRAPH_RESULT__LINKS:
-                return links != null && !links.isEmpty();
-        }
-        return super.eIsSet(featureID);
-    }
+		switch (featureID) {
+			case ResultsPackage.GRAPH_RESULT__NODES:
+				return nodes != null && !nodes.isEmpty();
+			case ResultsPackage.GRAPH_RESULT__LINKS:
+				return links != null && !links.isEmpty();
+		}
+		return super.eIsSet(featureID);
+	}
 
     /**
      * @generated NOT

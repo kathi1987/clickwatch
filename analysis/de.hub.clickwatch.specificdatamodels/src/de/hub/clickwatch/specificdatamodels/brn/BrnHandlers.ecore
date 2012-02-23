@@ -685,7 +685,7 @@
       <details key="handler_class" value="Bcast_stats"/>
       <details key="handler_name" value="device_wifi/link_stat/bcast_stats"/>
     </eAnnotations>
-    <eClassifiers xsi:type="ecore:EClass" name="Bcast_stats" eSuperTypes="../../../../../../../de.hub.clickwatch.core.data/src/de/hub/clickwatch/datamodel/ClickWatchModel.ecore#//Value">
+    <eClassifiers xsi:type="ecore:EClass" name="Bcast_stats" eSuperTypes="../../../../../../../de.hub.clickwatch.core.data/src/de/hub/clickwatch/datamodel/ClickWatchModel.ecore#//Value ../../../../../../../de.hub.clickwatch.analysis.traceable/src/de/hub/clickwatch/analysis/traceable/Traceable.ecore#//Traceable">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Bcast_stats|Handler"/>
       </eAnnotations>
@@ -697,7 +697,7 @@
         </eAnnotations>
       </eStructuralFeatures>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Entry">
+    <eClassifiers xsi:type="ecore:EClass" name="Entry" eSuperTypes="../../../../../../../de.hub.clickwatch.analysis.traceable/src/de/hub/clickwatch/analysis/traceable/Traceable.ecore#//Traceable">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Bcast_stats|Handler/entry|entry:Entry|EObject"/>
       </eAnnotations>
@@ -743,7 +743,7 @@
         </eAnnotations>
       </eStructuralFeatures>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Link">
+    <eClassifiers xsi:type="ecore:EClass" name="Link" eSuperTypes="../../../../../../../de.hub.clickwatch.analysis.traceable/src/de/hub/clickwatch/analysis/traceable/Traceable.ecore#//Traceable">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Bcast_stats|Handler/entry|entry:Entry|EObject/link|link:Link|EObject"/>
       </eAnnotations>
@@ -789,7 +789,7 @@
         </eAnnotations>
       </eStructuralFeatures>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Link_info">
+    <eClassifiers xsi:type="ecore:EClass" name="Link_info" eSuperTypes="../../../../../../../de.hub.clickwatch.analysis.traceable/src/de/hub/clickwatch/analysis/traceable/Traceable.ecore#//Traceable">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Bcast_stats|Handler/entry|entry:Entry|EObject/link|link:Link|EObject/link_info|link_info:Link_info|EObject"/>
       </eAnnotations>
@@ -1393,7 +1393,7 @@
         </eAnnotations>
       </eStructuralFeatures>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Stats" eSuperTypes="../../../../../../../de.hub.clickwatch.core.data/src/de/hub/clickwatch/datamodel/ClickWatchModel.ecore#//Value">
+    <eClassifiers xsi:type="ecore:EClass" name="Stats" eSuperTypes="../../../../../../../de.hub.clickwatch.core.data/src/de/hub/clickwatch/datamodel/ClickWatchModel.ecore#//Value ../../../../../../../de.hub.clickwatch.analysis.traceable/src/de/hub/clickwatch/analysis/traceable/Traceable.ecore#//Traceable">
       <eAnnotations source="http://de.hub.clickwatch.specificmodels">
         <details key="target_id" value="Stats|Handler"/>
       </eAnnotations>

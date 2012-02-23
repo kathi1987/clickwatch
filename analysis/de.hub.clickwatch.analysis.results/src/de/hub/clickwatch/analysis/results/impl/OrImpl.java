@@ -35,119 +35,119 @@ import de.hub.clickwatch.analysis.results.ResultsPackage;
  */
 public class OrImpl extends ConstraintImpl implements Or {
 	/**
-     * The cached value of the '{@link #getOps() <em>Ops</em>}' containment reference list.
-     * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getOps() <em>Ops</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @see #getOps()
-     * @generated
-     * @ordered
-     */
+	 * @see #getOps()
+	 * @generated
+	 * @ordered
+	 */
 	protected EList<Constraint> ops;
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	protected OrImpl() {
-        super();
-    }
+		super();
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	@Override
 	protected EClass eStaticClass() {
-        return ResultsPackage.Literals.OR;
-    }
+		return ResultsPackage.Literals.OR;
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	public EList<Constraint> getOps() {
-        if (ops == null) {
-            ops = new EObjectContainmentEList<Constraint>(Constraint.class, this, ResultsPackage.OR__OPS);
-        }
-        return ops;
-    }
+		if (ops == null) {
+			ops = new EObjectContainmentEList<Constraint>(Constraint.class, this, ResultsPackage.OR__OPS);
+		}
+		return ops;
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-        switch (featureID) {
-            case ResultsPackage.OR__OPS:
-                return ((InternalEList<?>)getOps()).basicRemove(otherEnd, msgs);
-        }
-        return super.eInverseRemove(otherEnd, featureID, msgs);
-    }
+		switch (featureID) {
+			case ResultsPackage.OR__OPS:
+				return ((InternalEList<?>)getOps()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-        switch (featureID) {
-            case ResultsPackage.OR__OPS:
-                return getOps();
-        }
-        return super.eGet(featureID, resolve, coreType);
-    }
+		switch (featureID) {
+			case ResultsPackage.OR__OPS:
+				return getOps();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-        switch (featureID) {
-            case ResultsPackage.OR__OPS:
-                getOps().clear();
-                getOps().addAll((Collection<? extends Constraint>)newValue);
-                return;
-        }
-        super.eSet(featureID, newValue);
-    }
+		switch (featureID) {
+			case ResultsPackage.OR__OPS:
+				getOps().clear();
+				getOps().addAll((Collection<? extends Constraint>)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	@Override
 	public void eUnset(int featureID) {
-        switch (featureID) {
-            case ResultsPackage.OR__OPS:
-                getOps().clear();
-                return;
-        }
-        super.eUnset(featureID);
-    }
+		switch (featureID) {
+			case ResultsPackage.OR__OPS:
+				getOps().clear();
+				return;
+		}
+		super.eUnset(featureID);
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	@Override
 	public boolean eIsSet(int featureID) {
-        switch (featureID) {
-            case ResultsPackage.OR__OPS:
-                return ops != null && !ops.isEmpty();
-        }
-        return super.eIsSet(featureID);
-    }
+		switch (featureID) {
+			case ResultsPackage.OR__OPS:
+				return ops != null && !ops.isEmpty();
+		}
+		return super.eIsSet(featureID);
+	}
 	
 	/**
 	 * <!-- begin-user-doc -->

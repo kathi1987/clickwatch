@@ -6,6 +6,7 @@
  */
 package de.hub.clickwatch.datamodel;
 
+import de.hub.clickwatch.analysis.traceable.Traceable;
 import org.eclipse.emf.common.util.EList;
 
 /**
@@ -29,7 +30,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface Network extends ModelElementWithStatistics {
+public interface Network extends ModelElementWithStatistics, Traceable {
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * The default value is <code>"My Network"</code>.

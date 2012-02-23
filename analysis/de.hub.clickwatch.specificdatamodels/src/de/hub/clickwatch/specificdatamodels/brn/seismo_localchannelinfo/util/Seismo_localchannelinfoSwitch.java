@@ -8,6 +8,7 @@ package de.hub.clickwatch.specificdatamodels.brn.seismo_localchannelinfo.util;
 
 import de.hub.clickwatch.datamodel.Value;
 
+import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.specificdatamodels.brn.seismo_localchannelinfo.*;
 
 import org.eclipse.emf.ecore.EObject;
@@ -82,6 +83,7 @@ public class Seismo_localchannelinfoSwitch<T> extends Switch<T> {
 				Localchannelinfo localchannelinfo = (Localchannelinfo)theEObject;
 				T result = caseLocalchannelinfo(localchannelinfo);
 				if (result == null) result = caseValue(localchannelinfo);
+				if (result == null) result = caseHandler(localchannelinfo);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -137,6 +139,21 @@ public class Seismo_localchannelinfoSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseV(V object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Handler</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Handler</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseHandler(Handler object) {
 		return null;
 	}
 

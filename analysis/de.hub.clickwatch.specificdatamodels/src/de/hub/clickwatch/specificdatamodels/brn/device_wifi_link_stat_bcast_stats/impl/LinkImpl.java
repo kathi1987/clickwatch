@@ -6,6 +6,7 @@
  */
 package de.hub.clickwatch.specificdatamodels.brn.device_wifi_link_stat_bcast_stats.impl;
 
+import de.hub.clickwatch.analysis.traceable.impl.TraceableImpl;
 import de.hub.clickwatch.specificdatamodels.brn.device_wifi_link_stat_bcast_stats.Device_wifi_link_stat_bcast_statsPackage;
 import de.hub.clickwatch.specificdatamodels.brn.device_wifi_link_stat_bcast_stats.Entry;
 import de.hub.clickwatch.specificdatamodels.brn.device_wifi_link_stat_bcast_stats.Link;
@@ -49,7 +50,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class LinkImpl extends EObjectImpl implements Link {
+public class LinkImpl extends TraceableImpl implements Link {
 	/**
 	 * The cached value of the '{@link #getText() <em>Text</em>}' attribute list.
 	 * <!-- begin-user-doc -->

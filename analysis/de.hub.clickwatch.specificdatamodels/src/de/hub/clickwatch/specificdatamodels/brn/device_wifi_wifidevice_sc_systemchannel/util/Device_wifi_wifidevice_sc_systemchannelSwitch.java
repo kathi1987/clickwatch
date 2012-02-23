@@ -8,6 +8,7 @@ package de.hub.clickwatch.specificdatamodels.brn.device_wifi_wifidevice_sc_syste
 
 import de.hub.clickwatch.datamodel.Value;
 
+import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.specificdatamodels.brn.device_wifi_wifidevice_sc_systemchannel.*;
 
 import org.eclipse.emf.ecore.EObject;
@@ -88,6 +89,7 @@ public class Device_wifi_wifidevice_sc_systemchannelSwitch<T> extends Switch<T> 
 				Systemchannel systemchannel = (Systemchannel)theEObject;
 				T result = caseSystemchannel(systemchannel);
 				if (result == null) result = caseValue(systemchannel);
+				if (result == null) result = caseHandler(systemchannel);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -137,6 +139,21 @@ public class Device_wifi_wifidevice_sc_systemchannelSwitch<T> extends Switch<T> 
 	 * @generated
 	 */
 	public T caseSystemchannel(Systemchannel object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Handler</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Handler</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseHandler(Handler object) {
 		return null;
 	}
 

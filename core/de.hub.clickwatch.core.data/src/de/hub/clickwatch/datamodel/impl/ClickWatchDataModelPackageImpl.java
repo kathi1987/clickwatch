@@ -6,6 +6,7 @@
  */
 package de.hub.clickwatch.datamodel.impl;
 
+import de.hub.clickwatch.analysis.traceable.TraceablePackage;
 import de.hub.clickwatch.connection.INodeConnection;
 import de.hub.clickwatch.connection.INodeConnectionProvider;
 
@@ -199,6 +200,7 @@ public class ClickWatchDataModelPackageImpl extends EPackageImpl implements Clic
 
 		// Initialize simple dependencies
 		ClickWatchModelPackage.eINSTANCE.eClass();
+		TraceablePackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theClickWatchDataModelPackage.createPackageContents();
@@ -782,6 +784,7 @@ public class ClickWatchDataModelPackageImpl extends EPackageImpl implements Clic
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
+		TraceablePackage theTraceablePackage = (TraceablePackage)EPackage.Registry.INSTANCE.getEPackage(TraceablePackage.eNS_URI);
 		ClickWatchModelPackage theClickWatchModelPackage = (ClickWatchModelPackage)EPackage.Registry.INSTANCE.getEPackage(ClickWatchModelPackage.eNS_URI);
 
 		// Create type parameters
@@ -790,7 +793,11 @@ public class ClickWatchDataModelPackageImpl extends EPackageImpl implements Clic
 
 		// Add supertypes to classes
 		nodeEClass.getESuperTypes().add(this.getModelElementWithStatistics());
+		nodeEClass.getESuperTypes().add(theTraceablePackage.getTraceable());
+		elementEClass.getESuperTypes().add(theTraceablePackage.getTraceable());
+		handlerEClass.getESuperTypes().add(theTraceablePackage.getTraceable());
 		networkEClass.getESuperTypes().add(this.getModelElementWithStatistics());
+		networkEClass.getESuperTypes().add(theTraceablePackage.getTraceable());
 		valueEClass.getESuperTypes().add(theClickWatchModelPackage.getHandler());
 
 		// Initialize classes and features; add operations and parameters

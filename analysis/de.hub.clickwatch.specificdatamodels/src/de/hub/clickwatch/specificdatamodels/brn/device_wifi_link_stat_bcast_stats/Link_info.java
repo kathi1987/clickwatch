@@ -6,6 +6,7 @@
  */
 package de.hub.clickwatch.specificdatamodels.brn.device_wifi_link_stat_bcast_stats;
 
+import de.hub.clickwatch.analysis.traceable.Traceable;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -28,7 +29,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model annotation="http://de.hub.clickwatch.specificmodels target_id='Bcast_stats|Handler/entry|entry:Entry|EObject/link|link:Link|EObject/link_info|link_info:Link_info|EObject'"
  * @generated
  */
-public interface Link_info extends EObject {
+public interface Link_info extends Traceable {
 	/**
 	 * Returns the value of the '<em><b>EContainer link info</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link de.hub.clickwatch.specificdatamodels.brn.device_wifi_link_stat_bcast_stats.Link#getLink_info <em>Link info</em>}'.

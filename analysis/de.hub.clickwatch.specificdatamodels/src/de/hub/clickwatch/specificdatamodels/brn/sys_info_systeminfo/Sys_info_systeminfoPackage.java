@@ -411,6 +411,42 @@ public interface Sys_info_systeminfoPackage extends EPackage {
 	int SYSTEMINFO = 5;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYSTEMINFO__NAME = ClickWatchDataModelPackage.VALUE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Can Read</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYSTEMINFO__CAN_READ = ClickWatchDataModelPackage.VALUE__CAN_READ;
+
+	/**
+	 * The feature id for the '<em><b>Can Write</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYSTEMINFO__CAN_WRITE = ClickWatchDataModelPackage.VALUE__CAN_WRITE;
+
+	/**
+	 * The feature id for the '<em><b>Changed</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYSTEMINFO__CHANGED = ClickWatchDataModelPackage.VALUE__CHANGED;
+
+	/**
 	 * The feature id for the '<em><b>Mixed</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

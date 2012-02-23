@@ -22,22 +22,22 @@ import de.hub.clickwatch.analysis.results.Series;
  */
 public class SeriesImpl extends ValueSpecImpl implements Series {
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	protected SeriesImpl() {
-        super();
-    }
+		super();
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	@Override
 	protected EClass eStaticClass() {
-        return ResultsPackage.Literals.SERIES;
-    }
+		return ResultsPackage.Literals.SERIES;
+	}
 
 } //SeriesImpl

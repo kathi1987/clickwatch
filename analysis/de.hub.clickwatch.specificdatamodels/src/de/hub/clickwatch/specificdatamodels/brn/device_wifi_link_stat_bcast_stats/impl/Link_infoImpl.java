@@ -6,6 +6,7 @@
  */
 package de.hub.clickwatch.specificdatamodels.brn.device_wifi_link_stat_bcast_stats.impl;
 
+import de.hub.clickwatch.analysis.traceable.impl.TraceableImpl;
 import de.hub.clickwatch.specificdatamodels.brn.device_wifi_link_stat_bcast_stats.Device_wifi_link_stat_bcast_statsPackage;
 import de.hub.clickwatch.specificdatamodels.brn.device_wifi_link_stat_bcast_stats.Link;
 import de.hub.clickwatch.specificdatamodels.brn.device_wifi_link_stat_bcast_stats.Link_info;
@@ -38,7 +39,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  *
  * @generated
  */
-public class Link_infoImpl extends EObjectImpl implements Link_info {
+public class Link_infoImpl extends TraceableImpl implements Link_info {
 	/**
 	 * The default value of the '{@link #getSize() <em>Size</em>}' attribute.
 	 * <!-- begin-user-doc -->
