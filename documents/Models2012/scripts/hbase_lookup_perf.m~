@@ -1,4 +1,4 @@
-function [m_l,n_l, m, n, pfc] = hbase_lookup_perf()
+function [m_l,n_l, pfc] = hbase_lookup_perf()
     runCol = 1;
     x2Col = -2;
     xCol = 2;
@@ -40,16 +40,13 @@ function [m_l,n_l, m, n, pfc] = hbase_lookup_perf()
     e_l = @(x) m_l*x+n_l;
     e_p = @(x) polyval(pfc,x);
     
-    all = [0; 0.01; rx; 1e8];
-    plot(all, e_l(all), '-r');    
-    %plot(all, e_p(all), '-r');
+    all = [0; 0.01; rx];
+    plot, e_l(rx));    
+    plot(all, e_p(all), '-r');
     
-    xlabel('number of data store keys');
-    ylabel('access execution time (in ms)');
+    figure;
     
-    %figure;
-    
-    %scatter(rx,ry);
+    scatter(rx,ry);
     ommit_first = 4;
     
     rx = rx(ommit_first:end)
@@ -57,7 +54,7 @@ function [m_l,n_l, m, n, pfc] = hbase_lookup_perf()
     
     rx_log = log(rx)
     
-    %hold on;
+    hold on;
     
     pf = polyfit(rx_log,ry,1);
     m = pf(1);
@@ -65,12 +62,12 @@ function [m_l,n_l, m, n, pfc] = hbase_lookup_perf()
     
     e = @(x) m*log(x)+n;
 
-    plot(all(3:end), e(all(3:end)), '-g');
+    plot(rx, e(rx));
 
-    %xlabel('number of data store keys');
-    %ylabel('access execution time (in ms)');
+    xlabel('number of data store keys');
+    ylabel('access execution time (in ms)');
     
-    hold off;
+
     %set(gca, 'YScale', 'log')
     %set(gca, 'XScale', 'log')
 

@@ -68,12 +68,13 @@ function[] = performance_gains()
             end
         end
         
-        colormap jet(8);
-        p = loglog(loads, times(1,:),'->', loads, times(2,:),'-s', loads, times(3,:),'-v', loads, times(4,:),'-d', loads, times(5,:),'-^', loads, times(6,:),'-<', loads, times(7,:),'-o');
-        set(p, 'LineWidth', 1);
+        hold on;
+        p = loglog(loads, times(2,:),'-sr', loads, times(3,:),'-vb', loads, times(4,:),'-dg', loads, times(5,:),'-^k', loads, times(6,:),'-<c', loads, times(7,:),'-om', loads);
+        times(1,:), '->'
+        set(gcf, 'Color', [0.8, 0.8, 0.8]);       
         xlabel('Number of loaded objects');
         ylabel('Execution time (ms)');
-        l = legend(p, num2str(opes', '%-u'),'Location','Best');
+        l = legend(gfc, num2str(opes', '%-u'),'Location','Best');
         t = get(l, 'title');
         set(t,'string','Fragment size');    
         axis tight;

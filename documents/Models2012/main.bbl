@@ -14,6 +14,11 @@ DeCandia, G., Hastorun, D., Jampani, M., Kakulapati, G., Lakshman, A., Pilchin,
   A., Sivasubramanian, S., Vosshall, P., Vogels, W.: Dynamo: amazon's highly
   available key-value store. SIGOPS Oper. Syst. Rev.  41,  205--220 (Oct 2007)
 
+\bibitem{estrin}
+Estrin, D., Girod, L., Pottie, G., Srivastava, M.: Instrumenting the world with
+  wireless sensor networks. In: IEEE International Conference on Acoustics,
+  Speech, and Signal Processing. Salt Lake City, UT , USA (2001)
+
 \bibitem{martinFowler}
 Fowler, M.: Aggregate oriented databases.
   http://martinfowler.com/bliki/AggregateOrientedDatabase.html (Jan 2012)
@@ -39,6 +44,11 @@ Khetrapal, A., Ganesh, V.: Hbase and hypertable for large scale distributed
 Lakshman, A., Malik, P.: Cassandra: structured storage system on a p2p network.
   In: Proceedings of the 28th ACM symposium on Principles of distributed
   computing. pp. 5--5. PODC '09, ACM, New York, NY, USA (2009)
+
+\bibitem{lynch}
+Lynch, J.P.: A summary review of wireless sensors and sensor networks for
+  structurr al health monitoring. The Shock and Vibration Digest  38(2),
+  91--128 (2006)
 
 \bibitem{nosql2010}
 Orend, K.: Analysis and Classification of NoSQL Databases and Evaluation of

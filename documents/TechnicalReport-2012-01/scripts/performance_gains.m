@@ -59,8 +59,8 @@ function[] = performance_gains()
     subplot(1,2,2)
     [m_hbase, n_hbase] = hbase_lookup_perf();
     
-    ll= @(s) m_emf*s;%+n_emf;
-    fl= @(k) m_hbase*log(k)%+n_hbase;
+    ll= @(s) m_emf*s+n_emf;
+    fl= @(k) m_hbase*k+n_hbase;
     
     figure(2);
     plotPerformanceGain(ll, fl, 0);

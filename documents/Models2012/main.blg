@@ -6,45 +6,45 @@ Database file #1: bibliography.bib
 Warning--I didn't find a database entry for "bibtable2006"
 Warning--I didn't find a database entry for "mapreduce"
 Warning--to sort, need author or key in cdo
-You've used 18 entries,
+You've used 20 entries,
             2785 wiz_defined-function locations,
-            696 strings with 7578 characters,
-and the built_in function-call counts, 8678 in all, are:
-= -- 696
-> -- 267
-< -- 9
-+ -- 112
-- -- 92
-* -- 520
-:= -- 1133
-add.period$ -- 27
-call.type$ -- 18
-change.case$ -- 111
+            710 strings with 7962 characters,
+and the built_in function-call counts, 9712 in all, are:
+= -- 781
+> -- 296
+< -- 11
++ -- 125
+- -- 102
+* -- 583
+:= -- 1267
+add.period$ -- 30
+call.type$ -- 20
+change.case$ -- 124
 chr.to.int$ -- 0
-cite$ -- 19
-duplicate$ -- 792
-empty$ -- 824
-format.name$ -- 105
-if$ -- 1891
+cite$ -- 21
+duplicate$ -- 888
+empty$ -- 920
+format.name$ -- 116
+if$ -- 2116
 int.to.chr$ -- 0
-int.to.str$ -- 18
-missing$ -- 169
-newline$ -- 59
-num.names$ -- 36
-pop$ -- 333
+int.to.str$ -- 20
+missing$ -- 189
+newline$ -- 65
+num.names$ -- 40
+pop$ -- 367
 preamble$ -- 1
-purify$ -- 81
+purify$ -- 90
 quote$ -- 0
-skip$ -- 206
+skip$ -- 233
 stack$ -- 0
-substring$ -- 412
-swap$ -- 398
-text.length$ -- 9
+substring$ -- 466
+swap$ -- 451
+text.length$ -- 11
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 66
+type$ -- 74
 warning$ -- 1
-while$ -- 68
-width$ -- 20
-write$ -- 185
+while$ -- 77
+width$ -- 22
+write$ -- 205
 (There were 3 warnings)
