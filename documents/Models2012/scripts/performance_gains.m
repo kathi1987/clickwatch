@@ -43,15 +43,15 @@ function[] = performance_gains()
         v=[1 10 100 1000 10000 100000];
         [C,h] = contour(opes, loads, times, v)
                       
-        axis tight % Fill entire axes with contour plot
-                
-        xlabel('Fragment size');
-        ylabel('Number of loaded objects');       
+        axis tight % Fill entire axes with contour plot                
+        xlabel('Fragment size [f]');        
+        ylabel('Number of loaded objects [l]');       
         set(gca, 'YScale', 'log');
         set(gca, 'XScale', 'log');
+        set(gca, 'XTick', [1 100 10000 1000000]);
         colorbar('hide');
         %clabel(C,h,'manual');
-        %clabel(C,h, 'LabelSpacing', 100, 'Rotation', 0); 
+        clabel(C,h, 'Rotation', 0); 
     end
 
     function[] = plotPerformanceGainSimple(ll, fl, msize_exp, opes)
@@ -71,21 +71,18 @@ function[] = performance_gains()
         colormap jet(8);
         p = loglog(loads, times(1,:),'->', loads, times(2,:),'-s', loads, times(3,:),'-v', loads, times(4,:),'-d', loads, times(5,:),'-^', loads, times(6,:),'-<', loads, times(7,:),'-o');
         set(p, 'LineWidth', 1);
-        xlabel('Number of loaded objects');
-        ylabel('Execution time (ms)');
-        l = legend(p, num2str(opes', '%-u'),'Location','Best');
+        xlabel('Number of loaded objects [l]');
+        ylabel('Execution time [t] (in ms)');
+        l = legend(p, num2str(opes', '%-.0e'),'Location','Best');
         t = get(l, 'title');
-        set(t,'string','Fragment size');    
+        set(t,'string','Fragment size [f]');    
         axis tight;
     end
 
-    figure;
-    subplot(2,1,1)
     [m_emf, n_emf] = emf_xmi_perf(4);
-    title('EMF XMI parse performance');
-    subplot(2,1,2)
+    %title('EMF XMI parse performance');
     [m_hbase, n_hbase, pfc] = hbase_lookup_perf();
-    title('HBase random access performance');
+    %title('HBase random access performance');
     
     ll= @(s) m_emf*s+n_emf;
     %fl= @(k) m_hbase*log(k)+n_hbase;
@@ -97,12 +94,16 @@ function[] = performance_gains()
             %y = polyval(pfc,k) 
         end;
     end
+
+    close all;
+    figure(2);
+    figure('Position',[100,100,450,338]);
+    plotPerformanceGain(ll, @fl, 0);
     
-    %figure(2);
-    %plotPerformanceGain(ll, @fl, 0);
     figure(3);
     plotPerformanceGainSimple(ll, @fl, 6, [1 1e1 1e2 1e3 1e4 1e5 1e6]);
     figure(4)
+    figure('Position',[100,100,450,338]);
     plotPerformanceGainSimple(ll, @fl, 9, [1 1e1 1e2 1e3 1e4 1e5 1e6]);
 %    title('time it takes to load a model based on measured times (in ms)');    
     

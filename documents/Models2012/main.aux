@@ -9,6 +9,7 @@
 \@writefile{toc}{\authcount {1}}
 \@writefile{toc}{\contentsline {author}{Markus Scheidgen}{1}}
 \@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}}
+\citation{modelsAsCode}
 \@writefile{toc}{\contentsline {section}{\numberline {2}Applications for Large Models}{2}}
 \newlabel{sec:applications}{{2}{2}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Software Models}{2}}
@@ -59,29 +60,39 @@
 \citation{mapreduce}
 \citation{ScalarisTransactions2008}
 \@writefile{toc}{\contentsline {section}{\numberline {5}Possible Performance Gains from Model Fragmentation}{9}}
-\@writefile{toc}{\contentsline {section}{\numberline {6}Implementation of Model Fragmentation}{10}}
-\newlabel{sec:implemention}{{6}{10}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Measure for liner parsing performance of EMF and logarithmic access performance of HBase.}}{11}}
-\newlabel{fig:figures/emf_hbase_performance_measured}{{4}{11}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Load times based on actual EMF parsing and HBase access measurements.}}{11}}
-\newlabel{fig:optimal_load_times_measured}{{5}{11}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Load times based on actual EMF parsing and ...}}{11}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces EMFFrag architecture and example fragmentation.}}{12}}
-\newlabel{fig:architecture}{{7}{12}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Measurements for EMF's XMI parser (dots) and linear fit (line).}}{10}}
+\newlabel{fig:emfParsePerf}{{4}{10}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces HBase accesses measures (dots) and fits (linear dashed, log. dotted).}}{10}}
+\newlabel{fig:hbaseAccessPerf}{{5}{10}}
+\newlabel{fig:theoryTimesSmall}{{5}{11}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Computed execution times for partial loads from a model with $10^6$ objects and fragmentations of different granularity.}}{11}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Implementation of Model Fragmentation}{11}}
+\newlabel{sec:implemention}{{6}{11}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Contour plot. Shows which $(f,l)$ have the same costs $t$.}}{12}}
+\newlabel{fig:theoryContour}{{7}{12}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Computed partial load times for a model of size $10^9$.}}{12}}
+\newlabel{fig:theoryTimesLarge}{{8}{12}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces EMFFrag architecture and example fragmentation.}}{12}}
+\newlabel{fig:architecture}{{9}{12}}
 \@writefile{toc}{\contentsline {section}{\numberline {7}Evaluation}{13}}
 \newlabel{sec:evaluation}{{7}{13}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Grabats -- Actual Software Models}{13}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Number of fragments used}}{14}}
-\newlabel{fig:grabatsFragments}{{8}{14}}
-\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Memory usage for a full model traversal}}{14}}
-\newlabel{fig:grabatsLoadTraverseMem}{{9}{14}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Execution time for a full model traversal}}{15}}
-\newlabel{fig:grabatsLoadTraverse}{{10}{15}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Execution time for traversing the different Grabats models with the different persistence solutions.}}{14}}
+\newlabel{fig:grabatsTraverseTime}{{10}{14}}
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Execution time for querying the different Grabats models with the example query.}}{14}}
+\newlabel{fig:grabatsQueryTime}{{11}{14}}
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Memory usage time for traversing the different Grabats.}}{14}}
+\newlabel{fig:grabatsTraverseMem}{{12}{14}}
+\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Number of fragments used by the different persistence solutions.}}{14}}
+\newlabel{fig:grabatsFragments}{{13}{14}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {7.2}The Influence of Fragmentation on Performance}{15}}
-\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Execution time for a specific query}}{16}}
-\newlabel{fig:grabatsQuery}{{11}{16}}
-\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Execution times for traversing parts of models with different fragmentations.}}{16}}
-\newlabel{fig:fragBroadModel}{{12}{16}}
+\@writefile{toc}{\contentsline {section}{\numberline {8}Future Work}{15}}
+\@writefile{toc}{\contentsline {subsubsection}{Sorted and Distributed Key-Value Stores}{15}}
+\citation{ScalarisTransactions2008}
+\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces Execution times for loading model parts with different fragmentation granularities.}}{16}}
+\newlabel{fig:measureTimeExtra}{{14}{16}}
+\@writefile{toc}{\contentsline {subsubsection}{Transactions}{16}}
+\@writefile{toc}{\contentsline {subsubsection}{Cross-References}{16}}
 \bibdata{bibliography}
 \bibcite{cdo}{1}
 \bibcite{couchdb2010}{2}
@@ -92,16 +103,18 @@
 \bibcite{ACID}{7}
 \bibcite{mongoEMF}{8}
 \bibcite{hbase2008}{9}
+\@writefile{toc}{\contentsline {subsubsection}{Large Value Sets}{17}}
+\@writefile{toc}{\contentsline {section}{\numberline {9}Conclusions}{17}}
+\newlabel{sec:conclusions}{{9}{17}}
 \bibcite{cassandra2009}{10}
 \bibcite{lynch}{11}
 \bibcite{nosql2010}{12}
 \bibcite{morsa2011}{13}
-\@writefile{toc}{\contentsline {section}{\numberline {8}Conclusions}{17}}
-\newlabel{sec:conclusions}{{8}{17}}
 \bibcite{mongodb2010}{14}
 \bibcite{clickwatch}{15}
 \bibcite{ScalarisTransactions2008}{16}
 \bibcite{berlinGML}{17}
 \bibcite{emf2009}{18}
-\bibcite{wheeler}{19}
-\bibcite{hwl}{20}
+\bibcite{modelsAsCode}{19}
+\bibcite{wheeler}{20}
+\bibcite{hwl}{21}

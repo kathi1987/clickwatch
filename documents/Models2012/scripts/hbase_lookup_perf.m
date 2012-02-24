@@ -25,13 +25,14 @@ function [m_l,n_l, m, n, pfc] = hbase_lookup_perf()
         end
     end
     
+    
     pfc = polyfit(rx,ry,5);
 
     rx_l = rx(1:10);
     ry_l = ry(1:10);
     
-    close all;
-    hold on;
+    figure('Position',[100,100,450,200]);
+    hold on;    
     scatter(rx, ry);
     pf_l = polyfit(rx_l,ry_l,1);
     m_l = pf_l(1);
@@ -40,12 +41,15 @@ function [m_l,n_l, m, n, pfc] = hbase_lookup_perf()
     e_l = @(x) m_l*x+n_l;
     e_p = @(x) polyval(pfc,x);
     
-    all = [0; 0.01; rx; 1e8];
-    plot(all, e_l(all), '-r');    
+    all = [0; 0.01; rx; 6e7];
+    plot(all, e_l(all), '--r'); 
+    ylim([0 12]);
+    set(gca,'XTick', 0:1e7:6e7);
+    
     %plot(all, e_p(all), '-r');
     
-    xlabel('number of data store keys');
-    ylabel('access execution time (in ms)');
+    xlabel('number of data store keys [#k]');
+    ylabel('access time [access(#k)] (in ms)');
     
     %figure;
     
@@ -65,7 +69,7 @@ function [m_l,n_l, m, n, pfc] = hbase_lookup_perf()
     
     e = @(x) m*log(x)+n;
 
-    plot(all(3:end), e(all(3:end)), '-g');
+    plot(all(3:end), e(all(3:end)), ':k');
 
     %xlabel('number of data store keys');
     %ylabel('access execution time (in ms)');

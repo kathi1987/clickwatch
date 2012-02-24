@@ -25,9 +25,8 @@ function [m,n] = emf_xmi_perf(x2_f)
             i = i + 1;
         end
     end
-
     
-    
+    figure('Position',[900,100,450,200]);
     index = find(rz(:)==x2_f);
     scatter(rx(index),ry(index));
     pf = polyfit(rx(index), ry(index), 1);   
@@ -35,10 +34,10 @@ function [m,n] = emf_xmi_perf(x2_f)
     n = pf(2);
     
     hold on
-    plot(rx(index), rx(index)*m+n);
+    plot(rx(index), rx(index)*m+n, '-r');
     
-    xlabel('model size in number of objects');
-    ylabel('parse execution time (in ms)');
+    xlabel('number of parsed objects [s]');
+    ylabel('parse time [parse(s)] (in ms)');
 
     set(gca, 'YScale', 'log')
     set(gca, 'XScale', 'log')
