@@ -1,24 +1,24 @@
 \relax 
 \bibstyle{splncs03}
-\citation{martinFowler}
 \select@language{english}
 \@writefile{toc}{\select@language{english}}
 \@writefile{lof}{\select@language{english}}
 \@writefile{lot}{\select@language{english}}
-\@writefile{toc}{\contentsline {title}{Model Fragmentation For High Access Performance of Models Persisted in Key-Value Stores}{1}}
+\@writefile{toc}{\contentsline {title}{Automated and Transparent Model Fragmentation for Persisting Large Models}{1}}
 \@writefile{toc}{\authcount {1}}
-\@writefile{toc}{\contentsline {author}{Markus Scheidgen}{1}}
+\@writefile{toc}{\contentsline {author}{Markus Scheidgen and Anatolij Zubow}{1}}
 \@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}}
-\citation{modelsAsCode}
+\citation{martinFowler}
 \@writefile{toc}{\contentsline {section}{\numberline {2}Applications for Large Models}{2}}
 \newlabel{sec:applications}{{2}{2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Software Models}{2}}
+\citation{modelsAsCode}
 \citation{wheeler}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Rough estimates for software code model sizes based on actual SLOC counts for existing software projects.}}{3}}
-\newlabel{fig:software_model_sizes}{{1}{3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Software Models}{3}}
 \citation{estrin,lynch}
 \citation{hwl}
 \citation{clickwatch}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Rough estimates for software code model sizes based on actual SLOC counts for existing software projects.}}{4}}
+\newlabel{fig:software_model_sizes}{{1}{4}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Heterogenous Sensor Data}{4}}
 \citation{cityGML}
 \citation{cityGML}
@@ -30,17 +30,14 @@
 \@writefile{toc}{\contentsline {section}{\numberline {3}Model Fragmentation}{6}}
 \newlabel{sec:fragmentation}{{3}{6}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Fragmention in General}{6}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces A fragmented example model with classes A,B,C and reference features a,b,c. Fragments are denotes with circles, references with lines: black for intra- and red for inter-fragment references.}}{6}}
-\newlabel{fig:metamodel_fragmentation_pattern_tree}{{2}{6}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces This example contains inter-fragment cross-references (feature c), i.e. inter-fragment references \emph  {by accident}. Feature a produces inter-fragment containment references.}}{6}}
-\newlabel{fig:metamodel_fragmentation_pattern_graph}{{3}{6}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Fragmentation Strategies}{6}}
 \citation{cdo}
 \citation{morsa2011}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Fragmentation Strategies}{7}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces A fragmented example model with classes A,B,C and reference features a,b,c. Fragments are denotes with circles, references with lines: black for intra- and red for inter-fragment references.}}{7}}
+\newlabel{fig:metamodel_fragmentation_pattern_tree}{{2}{7}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces This example contains inter-fragment cross-references (feature c), i.e. inter-fragment references \emph  {by accident}. Feature a produces inter-fragment containment references.}}{7}}
+\newlabel{fig:metamodel_fragmentation_pattern_graph}{{3}{7}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Meta-Model based Fragmentation}{7}}
-\@writefile{toc}{\contentsline {section}{\numberline {4}Related Work}{7}}
-\newlabel{sec:related_work}{{4}{7}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Model Persistence}{7}}
 \citation{emf2009}
 \citation{mongoEMF}
 \citation{mongodb2010}
@@ -48,9 +45,11 @@
 \citation{mongodb2010}
 \citation{morsa2011}
 \citation{mongodb2010}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Related Work}{8}}
+\newlabel{sec:related_work}{{4}{8}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Model Persistence}{8}}
 \citation{ACID}
 \citation{nosql2010}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Key-Value Stores}{8}}
 \citation{mongodb2010}
 \citation{couchdb2010}
 \citation{bibtable2006}
@@ -59,40 +58,46 @@
 \citation{cassandra2009}
 \citation{mapreduce}
 \citation{ScalarisTransactions2008}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Key-Value Stores}{9}}
 \@writefile{toc}{\contentsline {section}{\numberline {5}Possible Performance Gains from Model Fragmentation}{9}}
+\newlabel{sec:gains}{{5}{9}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Measurements for EMF's XMI parser (dots) and linear fit (line).}}{10}}
 \newlabel{fig:emfParsePerf}{{4}{10}}
 \@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces HBase accesses measures (dots) and fits (linear dashed, log. dotted).}}{10}}
 \newlabel{fig:hbaseAccessPerf}{{5}{10}}
 \newlabel{fig:theoryTimesSmall}{{5}{11}}
 \@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Computed execution times for partial loads from a model with $10^6$ objects and fragmentations of different granularity.}}{11}}
-\@writefile{toc}{\contentsline {section}{\numberline {6}Implementation of Model Fragmentation}{11}}
-\newlabel{sec:implemention}{{6}{11}}
 \@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Contour plot. Shows which $(f,l)$ have the same costs $t$.}}{12}}
 \newlabel{fig:theoryContour}{{7}{12}}
 \@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Computed partial load times for a model of size $10^9$.}}{12}}
 \newlabel{fig:theoryTimesLarge}{{8}{12}}
-\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces EMFFrag architecture and example fragmentation.}}{12}}
-\newlabel{fig:architecture}{{9}{12}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Implementation of Model Fragmentation}{12}}
+\newlabel{sec:implemention}{{6}{12}}
+\citation{EMFFragProject}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces EMFFrag architecture and example fragmentation.}}{13}}
+\newlabel{fig:architecture}{{9}{13}}
 \@writefile{toc}{\contentsline {section}{\numberline {7}Evaluation}{13}}
 \newlabel{sec:evaluation}{{7}{13}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Grabats -- Actual Software Models}{13}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Execution time for traversing the different Grabats models with the different persistence solutions.}}{14}}
-\newlabel{fig:grabatsTraverseTime}{{10}{14}}
-\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Execution time for querying the different Grabats models with the example query.}}{14}}
-\newlabel{fig:grabatsQueryTime}{{11}{14}}
-\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Memory usage time for traversing the different Grabats.}}{14}}
-\newlabel{fig:grabatsTraverseMem}{{12}{14}}
-\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Number of fragments used by the different persistence solutions.}}{14}}
-\newlabel{fig:grabatsFragments}{{13}{14}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}The Influence of Fragmentation on Performance}{15}}
-\@writefile{toc}{\contentsline {section}{\numberline {8}Future Work}{15}}
-\@writefile{toc}{\contentsline {subsubsection}{Sorted and Distributed Key-Value Stores}{15}}
+\citation{grabats}
+\citation{morsa2011}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Fragmentation Compared to other Persistence Frameworks}{14}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Execution time for traversing the different Grabats models with the different persistence solutions.}}{15}}
+\newlabel{fig:grabatsTraverseTime}{{10}{15}}
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Execution time for querying the different Grabats models with the example query.}}{15}}
+\newlabel{fig:grabatsQueryTime}{{11}{15}}
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Memory usage time for traversing the different Grabats.}}{15}}
+\newlabel{fig:grabatsTraverseMem}{{12}{15}}
+\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Number of fragments used by the different persistence solutions.}}{15}}
+\newlabel{fig:grabatsFragments}{{13}{15}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}The Influence of Fragmentation on Partial Load Performance}{16}}
+\@writefile{toc}{\contentsline {section}{\numberline {8}Future Work}{16}}
+\newlabel{future_work}{{8}{16}}
+\@writefile{toc}{\contentsline {subsubsection}{Sorted and Distributed Key-Value Stores}{16}}
 \citation{ScalarisTransactions2008}
-\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces Execution times for loading model parts with different fragmentation granularities.}}{16}}
-\newlabel{fig:measureTimeExtra}{{14}{16}}
-\@writefile{toc}{\contentsline {subsubsection}{Transactions}{16}}
-\@writefile{toc}{\contentsline {subsubsection}{Cross-References}{16}}
+\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces Execution times for loading model parts with different fragmentation granularities.}}{17}}
+\newlabel{fig:measureTimeExtra}{{14}{17}}
+\@writefile{toc}{\contentsline {subsubsection}{Transactions}{17}}
+\@writefile{toc}{\contentsline {subsubsection}{Cross-References}{17}}
 \bibdata{bibliography}
 \bibcite{cdo}{1}
 \bibcite{couchdb2010}{2}
@@ -100,12 +105,12 @@
 \bibcite{estrin}{4}
 \bibcite{martinFowler}{5}
 \bibcite{cityGML}{6}
+\@writefile{toc}{\contentsline {subsubsection}{Large Value Sets}{18}}
+\@writefile{toc}{\contentsline {section}{\numberline {9}Conclusions}{18}}
+\newlabel{sec:conclusions}{{9}{18}}
 \bibcite{ACID}{7}
 \bibcite{mongoEMF}{8}
 \bibcite{hbase2008}{9}
-\@writefile{toc}{\contentsline {subsubsection}{Large Value Sets}{17}}
-\@writefile{toc}{\contentsline {section}{\numberline {9}Conclusions}{17}}
-\newlabel{sec:conclusions}{{9}{17}}
 \bibcite{cassandra2009}{10}
 \bibcite{lynch}{11}
 \bibcite{nosql2010}{12}

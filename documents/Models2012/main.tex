@@ -27,19 +27,22 @@
 \pagestyle{headings}
 \mainmatter           
 
-\title{Model Fragmentation For High Access Performance of Models Persisted in Key-Value Stores}
+\title{Model Fragmentation}
+\title{Automated and Transparent Model Fragmentation for Persisting Large Models}
 
-\author{Markus Scheidgen}
-\authorrunning{M. Scheidgen}
+\author{Markus Scheidgen and Anatolij Zubow}
+\authorrunning{M. Scheidgen, A. Zubow}
 \institute{Department of Computer Science, Humboldt Universität zu Berlin\\
            Unter den Linden 6, 10099 Berlin, Germany\\
-           \email{\{scheidge\}@informatik.hu-berlin.de}}
+           \email{\{scheidge,zubow\}@informatik.hu-berlin.de}}
 
 \maketitle
 %\thispagestyle{empty}
 
 \begin{abstract} 
-\markus{TODO}
+\markus{Preliminary Abstract: } Existing model persistence frameworks either store models as a whole or object by object. Since most modeling tasks work with larger aggregates of a model, existing persistence either load to many objects or have to access many objects individually. We propose to persist a model broken into fragments. We discuss fragmentation strategies and fragmentation granularities. We  further show that fragmentation can be achieved automatically and transparently.
+
+First, we assess the size of large models and describe typical usage patterns to show that most application work with larger model aggregates. We provide an analytical framework to assess execution time gains for partially loading models and different fragmentation granularity. We show that model fragmentation can be achieved automatically and transparently. We compare model fragmentation to existing persistence frameworks (EMF XMI, CDO, and Morsa) based on for common modeling tasks: create/modify, traverse, query, and partial loads.
 \end{abstract}
 
 \input{introduction}

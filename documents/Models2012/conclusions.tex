@@ -1,8 +1,9 @@
 \section{Future Work} 
+\label{future_work}
 
 \subsubsection{Sorted and Distributed Key-Value Stores} 
 
-Our fragmentation strategy is based on unsorted key-value store accesses with $\mathcal{O}log$ complexity. Neither our analysis, nor out implementation EMFFrag, or our evaluation consider sorted key-value stores that allow to access sequential keys with constant time (scans). Neither did we consider distributed key-value stores which would allow parallel access. Key-value stores are easily distributed in peer two peer networks. This is done for two scalability reasons: replication (allows more users to access the same data in less time) and sharding (distributing data to allow faster and larger storage). Fragmentation can have an influence on both.
+Our fragmentation strategy is based on unsorted key-value store accesses with $\mathcal{O}log$ complexity. Neither our analysis, nor out  implementation EMFFrag, or our evaluation consider sorted key-value stores that allow to access sequential keys with constant time (scans). Neither did we consider distributed key-value stores which would allow parallel access. Key-value stores are easily distributed in peer two peer networks. This is done for two scalability reasons: replication (allows more users to access the same data in less time) and sharding (distributing data to allow faster and larger storage). Fragmentation can have an influence on both.
 
 \subsubsection{Transactions}
 
@@ -20,17 +21,4 @@ In large models, single objects can become very large themselves if they hold la
 
 \section{Conclusions}\label{sec:conclusions}
 
-
-\begin{itemize}
-
-\item We proposed model fragmentation for model data base persistence with better performance characteristics that existing solutions (e.g. CDO, Morsa).
-
-\item For most modelling tasks (create, traverse, query, partial load) fragmented models perform better or similar to existing solutions. For create, traverse, and partial load performance enhancements are of magnitudes.
-
-\item Fragmentation can be achieved with meta-model based fragmentations, which already provides close to optimal performance for many applications and tasks (e.g. editing and compiling for software code models). Other strategies are imaginable and future work.
-
-\item The downside is that the underlying key-value stores (generally) do not provide a transaction mechanism. Future work: implement transaction within EMFFrag or use key-value stores with transactions (e.g. Scalaris).
-
-\item On the up-side, good scalarbility for both model size and demand for parallel access: e.g. in geo-spatial models. Good integration into parallel computing, i.e. with map-reduce frameworks.
-
-\end{itemize}
+Large software models consist of upto $10^9$ objects. Models from other application can have a size upto $10^{12}$ objects. Traversing models and loading larger aggregates of objects are common tasks (section~\ref{sec:applications}). Depending on fragment size, partially loading models can be done faster than loading whole models or loading models object by object. There is no optimal fragment size, but intermediate fragment sizes provide a good approximation  (sections~\ref{sec:gains} and~\ref{sec:evaluation}). We provide a persistence framework that allows automatic and transparent fragmentation, if appropriate containment features are marked as fragmentation points in the meta-model (sections~\ref{sec:fragmentation} and~\ref{sec:implemention}). We compared our framework to existing frameworks (EMF XMI, CDO and Morsa) and our framework performs significantly better for creating/manipulating, traversing, and partially loading models. Execution times are 5 to 10 times smaller. Model queries (that favour object-by-object based model persistence with indexes, such as in CDO and Morsa) can be executed with comparable execution times (section~\ref{sec:evaluation}). Model fragmentation also determines the granularity of transactions, which can be a disadvantage. Further problems are single objects with features that can hold large value sets; the fragmentation approach has to be extended for fragmentation of such value sets (section~\ref{sec:future_work}). Our framework stores fragments in key-value stores. Those scale easily (both replication and sharding is supported) and integrate well in peer-to-peer computation scheme (e.g. map-reduce). Fragmentation therefore prepares very large models for modelling in the cloud applications (section~\ref{sec:related_work}).

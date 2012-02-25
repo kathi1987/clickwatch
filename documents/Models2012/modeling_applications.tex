@@ -99,18 +99,20 @@ Estimated on existing CityGML models published for Berlin~\cite{berlinGML} a LOD
 \subsubsection{Usage Patterns}
 Compared to model manipulation, model access is far more common and its efficient execution is paramount. If accessed, users usually load a containment hierarchies (sub-tree) corresponding to a given set of coordinates or address (geographic location): partial loads. Queries for distinct feature characteristics within a specific geographic location (i.e. with-in such a partial load) are also common. Geo-spatial models are accessed by many people at the same time. 
 
-\subsection*{Summary\footnote{Plus and minus signs characterise the importance of time efficiency for the corresponding property or task from 0 to 3.}}
+\subsection*{Summary}
+
+The following table summarizes this section. Two $+$ signs denote that execution times of the respective tasks are vital for the success of the application; a single $+$ denotes that the task is executed often, but performance is not essential; a $-$ denotes that the task if of minor importance.
+
+\begin{center}
 \begin{tabular}{|c||c|c|c|c|c|c|}
 \hline
-\bf{application} & \bf{model size} & \bf{parallel} & \bf{create} & \bf{traverse} & \bf{query} & \bf{part. load} \\
+\bf{application} & \bf{model size} & \bf{create/mod.} & \bf{traverse} & \bf{query} & \bf{partial load} \\
 \hline\hline
-software models & $0-10^9$ & - & - & ++ & + & ++ \\
+software models & $0-10^9$ & + & ++ & + & + \\
 \hline
-sensor data & $10^9$ & - & +++ & ++ & - & ++ \\
+sensor data & $10^9$ & ++ & ++ & - & ++ \\
 \hline
-geo-spatial models & $10^9-10^{12}$ & +++ & - & + & + & +++ \\
+geo-spatial models & $10^9-10^{12}$ & - & - & ++ & ++ \\
 \hline
 \end{tabular}
-
-
-
+\end{center}

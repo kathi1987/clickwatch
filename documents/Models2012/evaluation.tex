@@ -1,13 +1,16 @@
 \section{Evaluation}
 \label{sec:evaluation}
 
-We provide and evalutation based on two different models, following two different goals. First, we want to compare EMFFrag to its related world from the software modeling world using a software models. Secondly, we want to show the influence of different granularity of fragmentation on different performance parameters.
+This section has two goals. First, we want to compare our fragmentation approach to other model persistence frameworks. Secondly, we want to verify our findings from section~\ref{sec:gains}. 
+All measurements were performed on a Computer with Intel Core i5 2.4\.GHz CPU, 8 GB 1067 MHz DDR3 RAM, running Mac OS 10.7.3. All experiments were repeated at least 20 times, and all present results are respective averages. Code executing all measurements and all measured data can be downloaded as part of EMFFrag~\cite{EMFFragProject}.
 
-All experiments were conducted on a \markus{TODO}. All measures were repeated at least 20 times, and all present results are respective averages.
+\subsection{Fragmentation Compared to other Persistence Frameworks}
 
-\subsection{Grabats -- Actual Software Models}
+To compare fragmentation to EMF XMI, CDO, and Morsa, we measured execution time for the abstract modeling task. To analyse traverse and query, we used example models from the Grabats 2009 contest~\cite{grabats} as benchmarks. Those were already used to compare Morsa with EMF XMI and CDO here~\cite{morsa2011}. There are five example models labelled \emph{set0} to \emph{set4} and they all model Java software based on the same meta-model. Please note: even though the models increase in size, their growths is not linear. To measure the last task create/modify, we use simple test models, because importing Grabats' large XMI models files does not allow effective separation of loading the models with EMF and storing them with the respective persistence framework. We don't provide any comparative measures for partial loads. Partial load performance is indirectly covered by the measures on queries, which required to partially load the Grabats models. Furthermore, partial loads are extensively measured for EMFFrag in the next section.
 
-In this section, we will evaluate our approach to EMF/XMI, CDO, and Morsa. To cover as many use cases as possible, we will look at four abstract parameters: execution time of creating/manipulating, accessing complete models, accessing specific parts of models (query), and memory usage.
+Fig.~\ref{fig:grabatsFragments} shows the number of fragments that each framework produces for each model. Morsa and CDO implement total fragmentation and the number of fragments is also the number of objects in the model. For EMF XMI there is always only one fragment, because it implements no fragmentation. For EMFFrag, we provided two different meta-model based fragmentations. The first one puts each Java compilation unit and class file into a different fragment (EMFFrag coarse). The second one additionally puts the ASTs for each method block into a different fragment (EMFFrag fine). The number of fragments differs significantly for \emph{set2} and \emph{set3} which obviously contain a lot of method definitions. 
+
+We could not measure CDO's performance for \emph{set3} and \emph{set4}: the models are to large for a single CDO transaction, and circular cross-references do not allow to import the model with different transactions.
 
 \begin{figure}[ht]
 \begin{minipage}[b]{0.48\linewidth}
@@ -41,26 +44,24 @@ In this section, we will evaluate our approach to EMF/XMI, CDO, and Morsa. To co
 \end{minipage}
 \end{figure}
 
-The evaluation models are taken from the Grabats 2009 contest\markus{reference and some words}. There are five different software models. All covering Java projects. The models include the project structure, type structure, down to AST models of Java code. The five models have different sizes and complexities. Fig.~\ref{fig:grabatsFragments} shows the number of fragments that the different approaches used. Where EMF/XMI always uses only one fragment and morsa one fragment per object (i.e. the number of fragment equals the size of the model in number of objects). For EMFFrag, we used two differently strong fragmentations. First (Frag1), each class and compilation unit is put into a single fragment, and secondly (Frag2), additionally each method block is put in its own fragment. This shows the internal structure of sets zero through four: sets zero and one are pretty small, sets two and three containing lots of methods and its implementations, where set four seems to only contain information about projects, types, and members, but no implementation of members.
+\subsubsection*{Create/Modify} \markus{Big TODO: I need to measure this, describe the test models, plot results and testmeta-model and describe the results.}
 
-\subsubsection*{Model creation time}
+\markus{Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.}
 
-\subsubsection*{Memory usage}
+\markus{Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.}
 
-We measured the memory usage, needed for a full model access; the results are shown in Fig.~\ref{fig:grabatsLoadTraverseMem}. EMF/XMI's memory usage is proportional to model size, because it needs to load full models into memory. All other approaches need constant quantity of memory independent of model size. This quantity varies between the approaches, but is of an practical amount for all approaches. 
+\subsubsection*{Traverse} The execution times of CDO, Morsa, and EMFFrag are proportional to the size of the model (Fig.~\ref{fig:grabatsTraverseTime}). Times for EMF XMI grow faster than the model's sizes. Interestingly, Morsa and CDO both use total fragmentation and their respective execution times are very close. EMFFrag performs significantly faster: upto 10 times as fast as Morse and CDO. For models \emph{set2} and \emph{set3} (where the number of fragments differ largely between fine and coarse fragmentation) the fine fragmentation performs (not surprisingly) worse, since more fragments have to be loaded.
 
-\subsubsection*{Full model access}
+\subsubsection*{Query} The Grabats contest also provides an example query: find all Java type declarations that contain a static method which has this declared type as return type. Depending on the persistence framework, queries can be implemented in different ways. With EMF XMI and EMFFrag there are not indexes that would help to implement the query and we have to traverse the model until we found all type declarations. CDO allows to use SQL to query and Morsa provides a meta-model class to objects index. We measured both: executing the queries with these specific query mechanisms and with the previously mentioned traverse based implementation.
 
-The execution times for accessing the complete models are shown in Fig.~\ref{fig:grabatsLoadTraverse}. Fist of all,  because the whole model is accessed, the execution time for all approaches grows with model size. EMF/XMI execution time grows more then linear due to pointless garbage collection. Morsa also shows sub linear performance, since each object has to be accessed individual, and even the best index only performs logarithmically depending on model size. EMFFrag performance is proportional to model size and number of fragments; as expected it takes longer to access the whole model on a more fragmented store.
+The results (Fig.~\ref{fig:grabatsQueryTime}: EMF XMI performs badly for large models. CDO and Morsa with SQL and meta-class index performs best. But even though EMFFrag needs to traverse the model its performance is similar to CDO and Morsa. For \emph{set3} and fine fragmentation, EMFFrag even outperforms Morsa's index. Remember, with the fine fragmentation, EMFFrag does not need to load any method bodies to execute the query (partial load). Using the traverse implementation, CDO's and Morsa's performance difference to EMFFrag is similar to the measures for model traverse (here we basically perform a partial traverse).  
 
-\subsubsection*{Selective model access}
-
-In this section, we present the execution times of model queries. The query is also taken from the grabats 2009 contest. The query is to find those \emph{TypeDeclaration} instances in the Java model that contain a static method with the containing type as return type. Morsa can profit from its index on the objects meta-class to find all instances of \emph{TypeDeclaration}. All other approaches have to traverse the model to find all instances of \emph{TypeDeclations}. For the Morsa approach, we used two implementations of the query: one using the meta-class index, and the other traversing the model as in all other approaches. The results are shown in Fig.~\ref{fig:grabatsQuery}.
-
-\markus{TODO explain the query}
+\subsubsection*{Memory usage} During model traverse, we also measured the memory usage (Fig.~\ref{fig:grabatsTraverseMem}). EMF/XMI's memory usage is proportional to model size, because it needs to load the full models into memory. All other approaches need a comparable constant quantity of memory independent of model size.
 
 
-\subsection{The Influence of Fragmentation on Performance}
+\subsection{The Influence of Fragmentation on Partial Load Performance}
+
+In section~\ref{sec:gains}, we looked at fragmentation analytically and provided a plot (Fig.~\ref{fig:theoryTimesSmall}) that describes the expected influence of fragmentation granularity on partial load execution times. Here, we create the same plot, but based on data measured with EMFFrag. For this purpose, we used a simple meta-model (ref. to Fig.~\ref{?}) and generated models of size $10^6$ with different fragment sizes $f$. We measured the execution times for loading parts of different sizes $l$. The results are presented in Fig.~\ref{fig:measureTimeExtra}.
 
 \begin{figure}
   \centering
@@ -69,4 +70,4 @@ In this section, we present the execution times of model queries. The query is a
   \label{fig:measureTimeExtra}
 \end{figure}
 
-In this section, we look hat query and full access execution times for models of the same size and characteristics, but with different fragmentations. For this purpose, we use a simple meta-model (ref. to Fig.~\ref{?}). We generated models with a simple algorithm that takes model size, fragment size, and a so called \emph{depth factor} as parameters. The \emph{depth factor} determines the proportion of average number of object children to the overall model size, i.e. the depth of the model. 
+The plots show a similar picture with comparable values. Although, the measured times are generally larger probably due to additional EMFFrag implementation overhead that was not considered in our theoretical examination.
