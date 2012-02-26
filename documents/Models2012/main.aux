@@ -33,21 +33,19 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Fragmentation Strategies}{6}}
 \citation{cdo}
 \citation{morsa2011}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces A fragmented example model with classes A,B,C and reference features a,b,c. Fragments are denotes with circles, references with lines: black for intra- and red for inter-fragment references.}}{7}}
-\newlabel{fig:metamodel_fragmentation_pattern_tree}{{2}{7}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces This example contains inter-fragment cross-references (feature c), i.e. inter-fragment references \emph  {by accident}. Feature a produces inter-fragment containment references.}}{7}}
-\newlabel{fig:metamodel_fragmentation_pattern_graph}{{3}{7}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Meta-Model based Fragmentation}{7}}
 \citation{emf2009}
 \citation{mongoEMF}
 \citation{mongodb2010}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Example meta-model and model. In the mdoel: dashed lines denote fragments, double lines inter- and normal lines intra-fragment references. The references of feature \emph  {f1} determine the fragments, the reference of \emph  {f3} is a inter-fragment cross-reference by accident.}}{7}}
+\newlabel{fig:metamodelFragmentation}{{2}{7}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Meta-Model based Fragmentation}{7}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Related Work}{7}}
+\newlabel{sec:related_work}{{4}{7}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Model Persistence}{7}}
 \citation{cdo}
 \citation{mongodb2010}
 \citation{morsa2011}
 \citation{mongodb2010}
-\@writefile{toc}{\contentsline {section}{\numberline {4}Related Work}{8}}
-\newlabel{sec:related_work}{{4}{8}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Model Persistence}{8}}
 \citation{ACID}
 \citation{nosql2010}
 \citation{mongodb2010}
@@ -58,56 +56,56 @@
 \citation{cassandra2009}
 \citation{mapreduce}
 \citation{ScalarisTransactions2008}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Key-Value Stores}{9}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Key-Value Stores}{8}}
 \@writefile{toc}{\contentsline {section}{\numberline {5}Possible Performance Gains from Model Fragmentation}{9}}
 \newlabel{sec:gains}{{5}{9}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Measurements for EMF's XMI parser (dots) and linear fit (line).}}{10}}
-\newlabel{fig:emfParsePerf}{{4}{10}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces HBase accesses measures (dots) and fits (linear dashed, log. dotted).}}{10}}
-\newlabel{fig:hbaseAccessPerf}{{5}{10}}
-\newlabel{fig:theoryTimesSmall}{{5}{11}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Computed execution times for partial loads from a model with $10^6$ objects and fragmentations of different granularity.}}{11}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Contour plot. Shows which $(f,l)$ have the same costs $t$.}}{12}}
-\newlabel{fig:theoryContour}{{7}{12}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Computed partial load times for a model of size $10^9$.}}{12}}
-\newlabel{fig:theoryTimesLarge}{{8}{12}}
-\@writefile{toc}{\contentsline {section}{\numberline {6}Implementation of Model Fragmentation}{12}}
-\newlabel{sec:implemention}{{6}{12}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Measurements for EMF's XMI parser (dots) and linear fit (line).}}{10}}
+\newlabel{fig:emfParsePerf}{{3}{10}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces HBase accesses measures (dots) and fits (linear dashed, log. dotted).}}{10}}
+\newlabel{fig:hbaseAccessPerf}{{4}{10}}
+\newlabel{fig:theoryTimesSmall}{{5}{10}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Computed execution times for partial loads from a model with $10^6$ objects and fragmentations of different granularity.}}{10}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Contour plot. Shows which $(f,l)$ have the same costs $t$.}}{11}}
+\newlabel{fig:theoryContour}{{6}{11}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Computed partial load times for a model of size $10^9$.}}{11}}
+\newlabel{fig:theoryTimesLarge}{{7}{11}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Implementation of Model Fragmentation}{11}}
+\newlabel{sec:implemention}{{6}{11}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces EMFFrag architecture and example fragmentation.}}{12}}
+\newlabel{fig:architecture}{{8}{12}}
 \citation{EMFFragProject}
-\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces EMFFrag architecture and example fragmentation.}}{13}}
-\newlabel{fig:architecture}{{9}{13}}
-\@writefile{toc}{\contentsline {section}{\numberline {7}Evaluation}{13}}
-\newlabel{sec:evaluation}{{7}{13}}
 \citation{grabats}
 \citation{morsa2011}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Fragmentation Compared to other Persistence Frameworks}{14}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Execution time for traversing the different Grabats models with the different persistence solutions.}}{15}}
-\newlabel{fig:grabatsTraverseTime}{{10}{15}}
-\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Execution time for querying the different Grabats models with the example query.}}{15}}
-\newlabel{fig:grabatsQueryTime}{{11}{15}}
-\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Memory usage time for traversing the different Grabats.}}{15}}
-\newlabel{fig:grabatsTraverseMem}{{12}{15}}
-\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Number of fragments used by the different persistence solutions.}}{15}}
-\newlabel{fig:grabatsFragments}{{13}{15}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}The Influence of Fragmentation on Partial Load Performance}{16}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Evaluation}{13}}
+\newlabel{sec:evaluation}{{7}{13}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Fragmentation Compared to other Persistence Frameworks}{13}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Execution time for traversing the different Grabats models with the different persistence solutions.}}{14}}
+\newlabel{fig:grabatsTraverseTime}{{9}{14}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Execution time for querying the different Grabats models with the example query.}}{14}}
+\newlabel{fig:grabatsQueryTime}{{10}{14}}
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Memory usage time for traversing the different Grabats.}}{14}}
+\newlabel{fig:grabatsTraverseMem}{{11}{14}}
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Number of fragments used by the different persistence solutions.}}{14}}
+\newlabel{fig:grabatsFragments}{{12}{14}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}The Influence of Fragmentation on Partial Load Performance}{15}}
+\citation{ScalarisTransactions2008}
+\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Execution times for loading model parts with different fragmentation granularities.}}{16}}
+\newlabel{fig:measureTimeExtra}{{13}{16}}
 \@writefile{toc}{\contentsline {section}{\numberline {8}Future Work}{16}}
 \newlabel{future_work}{{8}{16}}
 \@writefile{toc}{\contentsline {subsubsection}{Sorted and Distributed Key-Value Stores}{16}}
-\citation{ScalarisTransactions2008}
-\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces Execution times for loading model parts with different fragmentation granularities.}}{17}}
-\newlabel{fig:measureTimeExtra}{{14}{17}}
-\@writefile{toc}{\contentsline {subsubsection}{Transactions}{17}}
-\@writefile{toc}{\contentsline {subsubsection}{Cross-References}{17}}
+\@writefile{toc}{\contentsline {subsubsection}{Transactions}{16}}
+\@writefile{toc}{\contentsline {subsubsection}{Cross-References}{16}}
 \bibdata{bibliography}
+\@writefile{toc}{\contentsline {subsubsection}{Large Value Sets}{17}}
+\@writefile{toc}{\contentsline {section}{\numberline {9}Conclusions}{17}}
+\newlabel{sec:conclusions}{{9}{17}}
 \bibcite{cdo}{1}
 \bibcite{couchdb2010}{2}
 \bibcite{dynamo2007}{3}
 \bibcite{estrin}{4}
 \bibcite{martinFowler}{5}
 \bibcite{cityGML}{6}
-\@writefile{toc}{\contentsline {subsubsection}{Large Value Sets}{18}}
-\@writefile{toc}{\contentsline {section}{\numberline {9}Conclusions}{18}}
-\newlabel{sec:conclusions}{{9}{18}}
 \bibcite{ACID}{7}
 \bibcite{mongoEMF}{8}
 \bibcite{hbase2008}{9}

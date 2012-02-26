@@ -2,41 +2,33 @@
 \label{sec:fragmentation}
 
 \subsection{Fragmention in General}
-As briefly mentioned before, all models considered in this paper can be characterizes as directed labled graphs with a fix spanning-tree (\emph{containment hierarchy}). In EMF based models, these trees consist of \emph{containment references}. The meta-model determines, which references are containment references and which are simply \emph{cross-references} through the use of \emph{containment reference} or \emph{cross-reference features}.
+All models considered in this paper can be characterizes as directed labled graphs with a fix spanning-tree called \emph{containment hierarchy}. In EMF based models, the containment hierarchy consists of \emph{containment references}; other graph edges are \emph{cross-references}. 
 
-In the last section, we saw that typical model applications mostly use aggregates of model objects, more precisely sub-trees of the model's containment hierarchy. We propose model fragmentation. The model fragmentation approach, divides (i.e. \emph{fragments}) a model along its containment hierarchy. All \emph{fragments} are disjoint; no object is part of two fragments. Fragmentation is also always complete, i.e. each object is part of one fragment. The set of fragments of a model is called \emph{fragmentation}. Based on these characteristics, fragments can be compared to EMF's resources (especially with containment proxies); refer to section~\ref{sec:implemention}, where we use resources to realize fragmentation. Fig.~\ref{fig:metamodel_fragmentation_pattern_tree} and Fig.~\ref{fig:metamodel_fragmentation_pattern_graph} present two examples.
+Model fragmentation approach, breaks (i.e. \emph{fragments}) a model along its containment hierarchy. All \emph{fragments} are disjoint; no object is part of two fragments. Fragmentation is also always complete, i.e. each object is part of one fragment. The set of fragments of a model is called \emph{fragmentation}. References between fragments are called inter-fragment and references within a fragment are called intra-fragment references.
 
+~\footnote{Based on these characteristics, fragments can be compared to EMF's resources (especially with containment proxies); refer to section~\ref{sec:implemention}, where we use resources to realize fragmentation.} 
 
 \begin{figure}[ht]
-\begin{minipage}[b]{0.5\linewidth}
 \centering
-\includegraphics[width=\linewidth]{figures/metamodel_fragmentation_patterns_tree}
-\caption{A fragmented example  model with classes A,B,C and reference features a,b,c. Fragments are denotes with circles, references with lines: black for intra- and red for inter-fragment references.}
-\label{fig:metamodel_fragmentation_pattern_tree}
-\end{minipage}
-\hspace{0.5cm}
-\begin{minipage}[b]{0.5\linewidth}
-\centering
-\includegraphics[width=\linewidth]{figures/metamodel_fragmentation_patterns_graph}
-\caption{This example contains inter-fragment cross-references (feature c), i.e. inter-fragment references \emph{by accident}. Feature a produces inter-fragment containment references.}
-\label{fig:metamodel_fragmentation_pattern_graph}
-\end{minipage}
+\includegraphics[width=0.65\linewidth]{figures/fragmentationExplained}
+\caption{Example meta-model and model. In the mdoel: dashed lines denote fragments, double lines inter- and normal lines intra-fragment references. The references of feature \emph{f1} determine the fragments, the reference of \emph{f3} is a inter-fragment cross-reference by accident.}
+\label{fig:metamodelFragmentation}
 \end{figure}  
 
 \subsection{Fragmentation Strategies}
 
-Originally a model has no fragmentation; also do we need to maintain a fragmentation when a model is manipulated. Further, we have to assume that fragmentation has an influence on performance. We denote algorithms necessary to create and maintain a fragmentation as \emph{fragmentation strategies}.
+Originally a model is not fragmented; once it was fragmented, the fragmentation needs to be maintained when the model is modified. Further, we have to assume that fragmentation has an influence on performance (refer to sections~\ref{sec:gains} and~\ref{sec:evaluation}). We denote a set of algorithms that allows to create and maintain a fragmentation as \emph{fragmentation strategy}.
 
-There are two trivial strategies: \emph{no fragmentation} and \emph{total fragmentation}. No fragmentation means the whole model constitutes the one and only fragment, such as in regular EMF (without resources). Total fragmentation means each object constitutes its own fragment. There are as many fragments as objects in the model. This strategy is implemented by existing persistence frameworks.
+There are two trivial strategies: \emph{no fragmentation} and \emph{total fragmentation}. No fragmentation means the whole model constitutes of one fragment, such as in EMF (without resources). Total fragmentation means each object constitutes its own fragment. There are as many fragments as objects in the model. This strategy is implemented by existing persistence frameworks like CDO.
 
 \subsection{Meta-Model based Fragmentation}
 
-There are other fragmentation strategies that produce fragmentations between no and total fragmentation. In this paper, we propose and use \emph{meta-model based fragmentation} as a new (but very simple) strategy.
+In this paper, we propose and use \emph{meta-model based fragmentation} as a strategy. A meta-model defines possible models by means of classes ant their attribute and reference features. Whereby, the meta-model determines which reference feature produce containment and with produce cross-references. The meta-modeller already uses containment-reference features to aggregate related objects.
 
-A meta-model defines possible models by means of classes and associations (i.e. structural features in EMF). A good meta-model only allows models that are suitable for the envisioned application. Containment references (indirectly the containment hierarchy) are already used by the meta-modeller to aggregate\footnote{In UML composition is a special case of aggregation} closely related objects. For the meta-model based fragmentation strategy, we ask the meta-modeller to mark some containment reference features as \emph{inter-fragment reference features}. All instances of these features, will break the containment hierarchy into fragments (we call their instances \emph{inter-fragment} references). This way, the meta-model determines where the spanning-tree is broken into fragments. 
-Once inter-fragment reference features are designated within the meta-model, it is easy to create and maintain fragmentations automatically and transparently; ref. to section~\ref{sec:implemention}.
+In meta-model based fragmentation, we ask the meta-modeller to additionally mark those containment reference features that should produce inter-fragment containment references. 
+This way, the meta-model determines where the containment-hierarchy is broken into fragments, and it becomes easy to create and maintain fragmentations automatically and transparently (ref. to section~\ref{sec:implemention}). Only containment-reference features determine fragmentation, cross-references can become inter-fragment references by accident. See Fig.~\ref{fig:metamodelFragmentation} for an example.
 
-Only containment features can be designated as inter-fragment reference features and all instances of such a reference feature will be inter-fragment references (like \texttt{a}-references in Fig.~\ref{fig:metamodel_fragmentation_pattern_tree}). Other references (i.e. cross references) can become inter-fragment references \emph{by accident} (like \texttt{c}-references in Fig.~\ref{fig:metamodel_fragmentation_pattern_graph}).
+%Only containment features can be designated as inter-fragment reference features and all instances of such a reference feature will be inter-fragment references (like \texttt{a}-references in Fig.~\ref{fig:metamodel_fragmentation_pattern_tree}). Other references (i.e. cross references) can become inter-fragment references \emph{by accident} (like \texttt{c}-references in Fig.~\ref{fig:metamodel_fragmentation_pattern_graph}).
 
 
 %\subsubsection{Theory}

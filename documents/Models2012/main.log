@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.11 (TeX Live 2010) (format=pdflatex 2011.3.30)  25 FEB 2012 13:22
+This is pdfTeX, Version 3.1415926-1.40.11 (TeX Live 2010) (format=pdflatex 2011.3.30)  26 FEB 2012 14:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -401,34 +401,28 @@ File: figures/software_model_sizes-eps-converted-to.pdf Graphic file (type pdf)
 
  <use figures/software_model_sizes-eps-converted-to.pdf> [3] [4 <./figures/soft
 ware_model_sizes-eps-converted-to.pdf>] [5]) (./fragmentation.tex
-<figures/metamodel_fragmentation_patterns_tree.pdf, id=34, 405.515pt x 393.47pt
->
-File: figures/metamodel_fragmentation_patterns_tree.pdf Graphic file (type pdf)
+<figures/fragmentationExplained.pdf, id=34, 301.125pt x 144.54pt>
+File: figures/fragmentationExplained.pdf Graphic file (type pdf)
 
- <use figures/metamodel_fragmentation_patterns_tree.pdf>
-<figures/metamodel_fragmentation_patterns_graph.pdf, id=35, 405.515pt x 393.47p
-t>
-File: figures/metamodel_fragmentation_patterns_graph.pdf Graphic file (type pdf
-)
- <use figures/metamodel_fragmentation_patterns_graph.pdf>
-Underfull \hbox (badness 10000) in paragraph at lines 21--21
-[]\OT1/cmr/bx/n/9 Fig.3. \OT1/cmr/m/n/9 This ex-am-ple con-tains inter-
+<use figures/fragmentationExplained.pdf> [6]
+
+LaTeX Warning: Reference `fig:metamodelFragmentation' on page 7 undefined on in
+put line 29.
+
+
+Overfull \hbox (19.82144pt too wide) in paragraph at lines 28--30
+\OT1/cmr/m/n/10 con-tain-ment ref-er-ences. This way, the meta-model de-ter-min
+es where the containment-
  []
 
+) (./relatedwork.tex [7 <./figures/fragmentationExplained.pdf>]
 
-Overfull \hbox (18.33745pt too wide) in paragraph at lines 11--24
-[][]   [] 
- []
-
-[6]) (./relatedwork.tex [7 <./figures/metamodel_fragmentation_patterns_tree.pdf
-> <./figures/metamodel_fragmentation_patterns_graph.pdf>] [8]
-
-LaTeX Warning: Citation `bibtable2006' on page 9 undefined on input line 27.
+LaTeX Warning: Citation `bibtable2006' on page 8 undefined on input line 25.
 
 
-LaTeX Warning: Citation `mapreduce' on page 9 undefined on input line 27.
+LaTeX Warning: Citation `mapreduce' on page 8 undefined on input line 25.
 
-) (./gains.tex [9]
+) (./gains.tex [8]
 Package epstopdf Info: Source file: <figures/emfParsePerf.eps>
 (epstopdf)                    date: 2012-02-24 13:07:20
 (epstopdf)                    size: 12221 bytes
@@ -441,7 +435,7 @@ onverted-to.pdf figures/emfParsePerf.eps>
 (epstopdf)             \includegraphics on input line 22.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/emfParsePerf-eps-converted-to.pdf, id=355, 401.5pt x 198.7425pt>
+<figures/emfParsePerf-eps-converted-to.pdf, id=92, 401.5pt x 198.7425pt>
 File: figures/emfParsePerf-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figures/emfParsePerf-eps-converted-to.pdf>
@@ -457,14 +451,10 @@ s-converted-to.pdf figures/hbaseAccessPerf.eps>
 (epstopdf)             \includegraphics on input line 29.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/hbaseAccessPerf-eps-converted-to.pdf, id=356, 390.45876pt x 195.73125p
-t>
+<figures/hbaseAccessPerf-eps-converted-to.pdf, id=93, 390.45876pt x 195.73125pt
+>
 File: figures/hbaseAccessPerf-eps-converted-to.pdf Graphic file (type pdf)
- <use figures/hbaseAccessPerf-eps-converted-to.pdf>
-Underfull \vbox (badness 1048) has occurred while \output is active []
-
- [10 <./figures/emfParsePerf-eps-converted-to.pdf> <./figures/hbaseAccessPerf-e
-ps-converted-to.pdf>]
+ <use figures/hbaseAccessPerf-eps-converted-to.pdf> [9]
 Package epstopdf Info: Source file: <figures/theoryTimesSmall.eps>
 (epstopdf)                    date: 2012-02-24 14:11:02
 (epstopdf)                    size: 842918 bytes
@@ -477,10 +467,12 @@ ps-converted-to.pdf figures/theoryTimesSmall.eps>
 (epstopdf)             \includegraphics on input line 40.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/theoryTimesSmall-eps-converted-to.pdf, id=375, 487.8225pt x 386.44376p
+<figures/theoryTimesSmall-eps-converted-to.pdf, id=101, 487.8225pt x 386.44376p
 t>
 File: figures/theoryTimesSmall-eps-converted-to.pdf Graphic file (type pdf)
- <use figures/theoryTimesSmall-eps-converted-to.pdf>
+ <use figures/theoryTimesSmall-eps-converted-to.pdf> [10 <./figures/emfParsePer
+f-eps-converted-to.pdf> <./figures/hbaseAccessPerf-eps-converted-to.pdf> <./fig
+ures/theoryTimesSmall-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <figures/theoryContour.eps>
 (epstopdf)                    date: 2012-02-24 13:44:30
 (epstopdf)                    size: 637418 bytes
@@ -493,7 +485,7 @@ converted-to.pdf figures/theoryContour.eps>
 (epstopdf)             \includegraphics on input line 50.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/theoryContour-eps-converted-to.pdf, id=376, 392.46625pt x 321.2pt>
+<figures/theoryContour-eps-converted-to.pdf, id=124, 392.46625pt x 321.2pt>
 File: figures/theoryContour-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figures/theoryContour-eps-converted-to.pdf>
@@ -509,24 +501,21 @@ ps-converted-to.pdf figures/theoryTimesLarge.eps>
 (epstopdf)             \includegraphics on input line 57.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/theoryTimesLarge-eps-converted-to.pdf, id=377, 397.485pt x 318.18875pt
+<figures/theoryTimesLarge-eps-converted-to.pdf, id=125, 397.485pt x 318.18875pt
 >
 File: figures/theoryTimesLarge-eps-converted-to.pdf Graphic file (type pdf)
  <use figures/theoryTimesLarge-eps-converted-to.pdf>) (./implementation.tex
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [11 <./figures/theoryTimesSmall-eps-converted-to.pdf>]
-<figures/architecture.pdf, id=389, 1057.9525pt x 766.865pt>
+<figures/architecture.pdf, id=126, 1057.9525pt x 766.865pt>
 File: figures/architecture.pdf Graphic file (type pdf)
 
-<use figures/architecture.pdf> [12 <./figures/theoryContour-eps-converted-to.pd
-f> <./figures/theoryTimesLarge-eps-converted-to.pdf>]) (./evaluation.tex
+<use figures/architecture.pdf> [11 <./figures/theoryContour-eps-converted-to.pd
+f> <./figures/theoryTimesLarge-eps-converted-to.pdf>] [12 <./figures/architectu
+re.pdf>]) (./evaluation.tex
 
 LaTeX Warning: Citation `EMFFragProject' on page 13 undefined on input line 5.
 
-[13 <./figures/architecture.pdf>]
 
-LaTeX Warning: Citation `grabats' on page 14 undefined on input line 9.
+LaTeX Warning: Citation `grabats' on page 13 undefined on input line 9.
 
 Package epstopdf Info: Source file: <figures/grabatsTraverseTimeExtra.eps>
 (epstopdf)                    date: 2012-02-24 16:53:24
@@ -540,7 +529,7 @@ eExtra-eps-converted-to.pdf figures/grabatsTraverseTimeExtra.eps>
 (epstopdf)             \includegraphics on input line 18.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/grabatsTraverseTimeExtra-eps-converted-to.pdf, id=434, 395.4775pt x 30
+<figures/grabatsTraverseTimeExtra-eps-converted-to.pdf, id=169, 395.4775pt x 30
 6.14375pt>
 File: figures/grabatsTraverseTimeExtra-eps-converted-to.pdf Graphic file (type 
 pdf)
@@ -557,7 +546,7 @@ tra-eps-converted-to.pdf figures/grabatsQueryTimeExtra.eps>
 (epstopdf)             \includegraphics on input line 25.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/grabatsQueryTimeExtra-eps-converted-to.pdf, id=435, 397.485pt x 306.14
+<figures/grabatsQueryTimeExtra-eps-converted-to.pdf, id=170, 397.485pt x 306.14
 375pt>
 File: figures/grabatsQueryTimeExtra-eps-converted-to.pdf Graphic file (type pdf
 )
@@ -574,7 +563,7 @@ o.pdf>
 (epstopdf)             \includegraphics on input line 34.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/grabatsTraverseMem-eps-converted-to.pdf, id=436, 395.4775pt x 255.9562
+<figures/grabatsTraverseMem-eps-converted-to.pdf, id=171, 395.4775pt x 255.9562
 5pt>
 File: figures/grabatsTraverseMem-eps-converted-to.pdf Graphic file (type pdf)
  <use figures/grabatsTraverseMem-eps-converted-to.pdf>
@@ -590,17 +579,17 @@ ps-converted-to.pdf figures/grabatsFragments.eps>
 (epstopdf)             \includegraphics on input line 41.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/grabatsFragments-eps-converted-to.pdf, id=437, 395.4775pt x 255.95625p
+<figures/grabatsFragments-eps-converted-to.pdf, id=172, 395.4775pt x 255.95625p
 t>
 File: figures/grabatsFragments-eps-converted-to.pdf Graphic file (type pdf)
- <use figures/grabatsFragments-eps-converted-to.pdf> [14]
-Underfull \vbox (badness 2119) has occurred while \output is active []
+ <use figures/grabatsFragments-eps-converted-to.pdf> [13]
+Underfull \vbox (badness 3746) has occurred while \output is active []
 
- [15 <./figures/grabatsTraverseTimeExtra-eps-converted-to.pdf> <./figures/graba
+ [14 <./figures/grabatsTraverseTimeExtra-eps-converted-to.pdf> <./figures/graba
 tsQueryTimeExtra-eps-converted-to.pdf> <./figures/grabatsTraverseMem-eps-conver
 ted-to.pdf> <./figures/grabatsFragments-eps-converted-to.pdf>]
 
-LaTeX Warning: Reference `?' on page 16 undefined on input line 64.
+LaTeX Warning: Reference `?' on page 15 undefined on input line 64.
 
 Package epstopdf Info: Source file: <figures/measureTimesExtra.eps>
 (epstopdf)                    date: 2012-02-24 17:08:11
@@ -614,28 +603,28 @@ eps-converted-to.pdf figures/measureTimesExtra.eps>
 (epstopdf)             \includegraphics on input line 68.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/measureTimesExtra-eps-converted-to.pdf, id=472, 483.8075pt x 388.45125
+<figures/measureTimesExtra-eps-converted-to.pdf, id=209, 483.8075pt x 388.45125
 pt>
 File: figures/measureTimesExtra-eps-converted-to.pdf Graphic file (type pdf)
  <use figures/measureTimesExtra-eps-converted-to.pdf>) (./conclusions.tex
-[16] [17 <./figures/measureTimesExtra-eps-converted-to.pdf>]
+[15] [16 <./figures/measureTimesExtra-eps-converted-to.pdf>]
 
-LaTeX Warning: Reference `sec:future_work' on page 18 undefined on input line 2
+LaTeX Warning: Reference `sec:future_work' on page 17 undefined on input line 2
 4.
 
-) (./main.bbl
+) (./main.bbl [17]
 Overfull \hbox (99.38307pt too wide) in paragraph at lines 23--25
 []\OT1/cmr/m/n/9 Fowler, M.: Ag-gre-gate ori-ented databases. http://martinfowl
 er.com/bliki/AggregateOrientedDatabase.html
  []
 
-[18]
+
 Underfull \hbox (badness 1199) in paragraph at lines 75--78
 []\OT1/cmr/m/n/9 Sch^^?utt, T., Schin-tke, F., Reine-feld, A.: Scalaris: re-li-
 able trans-ac-tional p2p
  []
 
-
+[18]
 Underfull \hbox (badness 10000) in paragraph at lines 94--96
 []\OT1/cmr/m/n/9 Wheeler, D.A.: Count-ing Source Lines of Code (SLOC).
  []
@@ -647,15 +636,18 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 LaTeX Warning: There were undefined references.
 
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
  ) 
 Here is how much of TeX's memory you used:
- 3516 strings out of 493747
- 51030 string characters out of 3143546
+ 3510 strings out of 493747
+ 50701 string characters out of 3143546
  123141 words of memory out of 3000000
- 6691 multiletter control sequences out of 15000+200000
- 9221 words of font info for 34 fonts, out of 3000000 for 9000
+ 6687 multiletter control sequences out of 15000+200000
+ 9053 words of font info for 33 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
- 38i,10n,23p,1840b,319s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 38i,10n,23p,1840b,318s stack positions out of 5000i,500n,10000p,200000b,50000s
 </usr/local/texlive/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></
@@ -671,12 +663,11 @@ ive/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive
 2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/20
 10/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/201
 0/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2010/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2010/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on main.pdf (19 pages, 547818 bytes).
+texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
+Output written on main.pdf (19 pages, 399682 bytes).
 PDF statistics:
- 547 PDF objects out of 1000 (max. 8388607)
- 326 compressed objects within 4 object streams
+ 283 PDF objects out of 1000 (max. 8388607)
+ 193 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 71 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 66 words of extra memory for PDF output out of 10000 (max. 10000000)
 
