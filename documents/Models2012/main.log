@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.11 (TeX Live 2010) (format=pdflatex 2011.3.30)  28 FEB 2012 17:29
+This is pdfTeX, Version 3.1415926-1.40.11 (TeX Live 2010) (format=pdflatex 2011.3.30)  28 FEB 2012 17:35
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -405,14 +405,8 @@ n.tex
 <figures/fragmentationExplained.pdf, id=32, 301.125pt x 144.54pt>
 File: figures/fragmentationExplained.pdf Graphic file (type pdf)
 
-<use figures/fragmentationExplained.pdf> [5]
-Overfull \hbox (19.82144pt too wide) in paragraph at lines 26--28
-\OT1/cmr/m/n/10 con-tain-ment ref-er-ences. This way, the meta-model de-ter-min
-es where the containment-
- []
-
-) (./relatedwork.tex [6 <./figures/fragmentationExplained.pdf>]) (./gains.tex
-[7]
+<use figures/fragmentationExplained.pdf> [5]) (./relatedwork.tex [6 <./figures/
+fragmentationExplained.pdf>]) (./gains.tex [7]
 Package epstopdf Info: Source file: <figures/emfParsePerf.eps>
 (epstopdf)                    date: 2012-02-28 16:45:50
 (epstopdf)                    size: 12858 bytes
@@ -422,9 +416,10 @@ Package epstopdf Info: Source file: <figures/emfParsePerf.eps>
 (epstopdf)                    size: 8821 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/emfParsePerf-eps-c
 onverted-to.pdf figures/emfParsePerf.eps>
-(epstopdf)             \includegraphics on input line 22.
+(epstopdf)             \includegraphics on input line 23.
 Package epstopdf Info: Output file is already uptodate.
- <figures/emfParsePerf-eps-converted-to.pdf, id=90, 401.5pt x 198.7425pt>
+
+<figures/emfParsePerf-eps-converted-to.pdf, id=90, 401.5pt x 198.7425pt>
 File: figures/emfParsePerf-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figures/emfParsePerf-eps-converted-to.pdf>
@@ -437,7 +432,7 @@ df>
 (epstopdf)                    size: 9449 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/hbaseAccessPerf-ep
 s-converted-to.pdf figures/hbaseAccessPerf.eps>
-(epstopdf)             \includegraphics on input line 29.
+(epstopdf)             \includegraphics on input line 30.
 Package epstopdf Info: Output file is already uptodate.
 
 <figures/hbaseAccessPerf-eps-converted-to.pdf, id=91, 390.45876pt x 195.73125pt
@@ -453,7 +448,7 @@ pdf>
 (epstopdf)                    size: 31320 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/theoryTimesSmall-e
 ps-converted-to.pdf figures/theoryTimesSmall.eps>
-(epstopdf)             \includegraphics on input line 40.
+(epstopdf)             \includegraphics on input line 41.
 Package epstopdf Info: Output file is already uptodate.
 
 <figures/theoryTimesSmall-eps-converted-to.pdf, id=99, 487.8225pt x 386.44376pt
@@ -472,16 +467,12 @@ Package epstopdf Info: Source file: <figures/createObjectsPerSecond.eps>
 (epstopdf)                    size: 12305 bytes
 (epstopdf)             Output file: <figures/createObjectsPerSecond-eps-convert
 ed-to.pdf>
+(epstopdf)                    date: 2012-02-28 17:29:23
+(epstopdf)                    size: 8661 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/createObjectsPerSe
 cond-eps-converted-to.pdf figures/createObjectsPerSecond.eps>
 (epstopdf)             \includegraphics on input line 16.
-runsystem(repstopdf --outfile=figures/createObjectsPerSecond-eps-converted-to.p
-df figures/createObjectsPerSecond.eps)...executed safely (allowed).
-
-Package epstopdf Info: Result file: <figures/createObjectsPerSecond-eps-convert
-ed-to.pdf>
-(epstopdf)                    date: 2012-02-28 17:29:23
-(epstopdf)                    size: 8661 bytes.
+Package epstopdf Info: Output file is already uptodate.
 
 <figures/createObjectsPerSecond-eps-converted-to.pdf, id=144, 398.48875pt x 189
 .70876pt>
@@ -493,16 +484,12 @@ Package epstopdf Info: Source file: <figures/createObjectsFragPerSecond.eps>
 (epstopdf)                    size: 13976 bytes
 (epstopdf)             Output file: <figures/createObjectsFragPerSecond-eps-con
 verted-to.pdf>
+(epstopdf)                    date: 2012-02-28 17:29:24
+(epstopdf)                    size: 8241 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/createObjectsFragP
 erSecond-eps-converted-to.pdf figures/createObjectsFragPerSecond.eps>
 (epstopdf)             \includegraphics on input line 24.
-runsystem(repstopdf --outfile=figures/createObjectsFragPerSecond-eps-converted-
-to.pdf figures/createObjectsFragPerSecond.eps)...executed safely (allowed).
-
-Package epstopdf Info: Result file: <figures/createObjectsFragPerSecond-eps-con
-verted-to.pdf>
-(epstopdf)                    date: 2012-02-28 17:29:24
-(epstopdf)                    size: 8241 bytes.
+Package epstopdf Info: Output file is already uptodate.
 
 <figures/createObjectsFragPerSecond-eps-converted-to.pdf, id=145, 399.4925pt x 
 198.7425pt>
@@ -581,14 +568,12 @@ Package epstopdf Info: Output file is already uptodate.
 <figures/grabatsFragments-eps-converted-to.pdf, id=149, 395.4775pt x 190.7125pt
 >
 File: figures/grabatsFragments-eps-converted-to.pdf Graphic file (type pdf)
- <use figures/grabatsFragments-eps-converted-to.pdf> [12]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [13 <./figures/createObjectsPerSecond-eps-converted-to.pdf> <./figures/createO
-bjectsFragPerSecond-eps-converted-to.pdf> <./figures/grabatsTraverseObjectsPerS
-econdExtra-eps-converted-to.pdf> <./figures/grabatsQueryTimeExtra-eps-converted
--to.pdf> <./figures/grabatsTraverseMem-eps-converted-to.pdf> <./figures/grabats
-Fragments-eps-converted-to.pdf>]
+ <use figures/grabatsFragments-eps-converted-to.pdf> [12] [13 <./figures/create
+ObjectsPerSecond-eps-converted-to.pdf> <./figures/createObjectsFragPerSecond-ep
+s-converted-to.pdf> <./figures/grabatsTraverseObjectsPerSecondExtra-eps-convert
+ed-to.pdf> <./figures/grabatsQueryTimeExtra-eps-converted-to.pdf> <./figures/gr
+abatsTraverseMem-eps-converted-to.pdf> <./figures/grabatsFragments-eps-converte
+d-to.pdf>]
 Package epstopdf Info: Source file: <figures/measureTimesExtra.eps>
 (epstopdf)                    date: 2012-02-28 17:25:04
 (epstopdf)                    size: 740830 bytes
@@ -654,7 +639,7 @@ ive/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive
 0/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2010/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2010/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on main.pdf (17 pages, 384838 bytes).
+Output written on main.pdf (17 pages, 384804 bytes).
 PDF statistics:
  284 PDF objects out of 1000 (max. 8388607)
  195 compressed objects within 2 object streams

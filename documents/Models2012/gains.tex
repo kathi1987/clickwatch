@@ -14,9 +14,10 @@ With the given assumptions, parameters, and functions the time to execute a part
 
 $$t_{m,f}(l)=\overbrace{\left\lceil\frac{l}{f}\right\rceil}^{\mathclap{\text{number of fragments to load}}}\underbrace{\left(access(\left\lceil\frac{m}{f}\right\rceil) + parse(f)\right)}_{\mathclap{\text{time to load one fragment}}}$$
 
-To actually use this cost function, we need concrete values for $parse$ and $access$. We measured the execution times for $parse$ with EMF's XMI parser for models of various sizes and fit a linear functions to the measured values (Fig.~\ref{fig:emfParsePerf}). For $access$ we measured the execution time for accessing keys in HBase for database tables with various numbers of keys $k$. For $k<10^6$ we use a linear function and for $k\ge 10^6$ a logarithmic function as a fit (Fig.~\ref{fig:hbaseAccessPerf}). For details on the measuring environment refer to section~\ref{sec:evaluation}.
+To actually use this cost function, we need concrete values for $parse$ and $access$. We measured the execution times for $parse$ with EMF's XMI parser for models of various sizes and fit a linear functions to the measured values (Fig.~\ref{fig:emfParsePerf}). For $access$ we measured the execution time for accessing keys in HBase for database tables with various numbers of keys $k$. For $k<10^6$ we use a linear function and for $k\ge 10^6$ a logarithmic function as a fit (Fig.~\ref{fig:hbaseAccessPerf}). 
+%For details on the measuring environment refer to section~\ref{sec:evaluation}.
 
-\begin{figure}[t]
+\begin{figure}[bt]
 \begin{minipage}[b]{0.48\linewidth}
 \centering
 \includegraphics[width=\linewidth]{figures/emfParsePerf}
@@ -37,7 +38,7 @@ Now, we can discuss the influence of fragment size $f$ on $t_{m,f}(l)$. First, w
 
 \begin{figure}
 \centering
-\includegraphics[width=0.5\linewidth]{figures/theoryTimesSmall}
+\includegraphics[width=0.65\linewidth]{figures/theoryTimesSmall}
 \label{fig:theoryTimesSmall}
 \caption{Computed execution times for partial loads from a model with $10^6$ objects and fragmentations of different granularity.}
 \end{figure}

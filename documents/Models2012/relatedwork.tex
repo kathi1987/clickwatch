@@ -10,7 +10,7 @@ First, EMF resources~\cite{emf2009}: EMF allows to fragment a model into differe
 
 Secondly, CDO~\cite{cdo}: CDO is a ORM for EMF.~\footnote{Lately, CDO also supports non-relational databases, such as MongoDB~\cite{mongodb2010}. Such features were not evaluated in this paper; but one can assume characteristics similar to those of Morsa.}
 It supports several relational databases. Classes and features are mapped to tables and columns. CDO was designed for software modeling and provides transaction, views, and versions.
-Relational databases and SQL provide mechanisms to index and access objects with queries. This allows fast queries, if the user understands the underlying ORM.
+Relational databases provide mechanisms to index and access objects with SQL queries. This allows fast queries, if the user understands the underlying ORM.
 
 Thirdly, morsa~\cite{morsa2011}: Different to CDO, Morsa uses mongoDB~\cite{mongodb2010}, a \emph{NoSQL} database that realizes a key-value store (see below). Morsa stores objects, their references and attributes as JSON documents. Morsa furthermore uses mongoDB's index feature to create and maintain indices for specific characteristics (e.g. an objects meta-class reference).
 

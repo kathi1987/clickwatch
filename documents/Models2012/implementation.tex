@@ -6,7 +6,7 @@ In this section, we present the EMF based persistence framework EMFFrag which im
 \tinyparagraph{Design goal}
 The main goal in our implementation is to (re)use EMF resource as much as possible. EMF resources already provide many required functionalities: they realize partial model persistence, resources manage inter-resource references through proxies, resources lazy-load, they can be added and deleted, and objects can be moved between resources. EMFFrag extends the existing implementations of EMF resources. EMFFrag could be realized with a very small code base of less than 900 lines of code.
 
-\begin{figure}
+\begin{figure}[t]
   \centering
   \includegraphics[width=0.8\linewidth]{figures/simpleArchitecture}
   \caption{EMFFrag partially loads a persisted model as internal model of dynamic EMF objects and exposes the model as client model via EMF generated model code with feature delegation.}
