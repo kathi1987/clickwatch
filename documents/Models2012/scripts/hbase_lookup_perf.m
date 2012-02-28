@@ -48,8 +48,8 @@ function [m_l,n_l, m, n, pfc] = hbase_lookup_perf()
     
     %plot(all, e_p(all), '-r');
     
-    xlabel('number of data store keys [#k]');
-    ylabel('access time [access(#k)] (in ms)');
+    xlabel('number of data store keys [k]');
+    ylabel('access time [access(k)] (in ms)');
     
     %figure;
     
@@ -74,8 +74,11 @@ function [m_l,n_l, m, n, pfc] = hbase_lookup_perf()
     %xlabel('number of data store keys');
     %ylabel('access execution time (in ms)');
     
+    legend('HBase access measurements', 'Linear fit (k<10^6)','Logarithmic fit (k\geq 10^6)','Location', 'Best');
+    
     hold off;
     %set(gca, 'YScale', 'log')
     %set(gca, 'XScale', 'log')
 
+    exportfig(gcf, 'hbaseAccessPerf.eps', 'LineStyleMap', [], 'Color', 'rgb');
 end

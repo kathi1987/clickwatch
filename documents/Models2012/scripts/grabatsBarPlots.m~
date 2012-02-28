@@ -72,49 +72,49 @@ clear all;
 % exportfig(gcf, 'grabatsTraverseObjectsPerSecond.eps', 'LineStyleMap', [], 'Color', 'rgb');
 
 %memory
-% memory = [ 34741397	99251404	745807894	1638047055	1765494183;
-% 3282200	3268081	3842562	3994814	4122279;
-% 4364742	6293135	6048543	5384703	5655025;
-% 4323533	6251802	6065440	5403960	5649159;];
-% 
-% figure1 = figure('XVisual','');
-% set(figure1, 'Position', [100, 100, 450, 200]);
-% axes1 = axes('Parent',figure1,'ZGrid','on','YGrid','on',...
-%     'YScale','log','YMinorTick','on',...
-%     'YMinorGrid','on',...
-%     'XTickLabel',['set0';'set1';'set2';'set3';'set4'],...
-%     'XTick',[1 2 3 4 5]);
-% box(axes1,'on');
-% hold(axes1,'all');
-% 
-% colormap(bone(6));
-% bar(memory'/1e6, 'Parent',axes1);
-% YLabel('Main memory (RAM) usage (in MByte)');
-% legend('XMI', 'Morsa', 'EMFFrag coarse', 'EMFFrag fine', 'Location', 'NorthWest');
-% exportfig(gcf, 'grabatsTraverseMem.eps', 'LineStyleMap', [], 'Color', 'rgb');
-% 
-% %fragments
-% fragments = [
-% 69680	197699	2082841	4594899	4961779;
-% 1677	6018	5754	4063	4607;
-% 1755	6293	25045	55699	4607;];
-% 
-% figure1 = figure('XVisual','');
-% set(figure1, 'Position', [100, 100, 450, 200]);
-% axes1 = axes('Parent',figure1,'ZGrid','on','YGrid','on',...
-%     'YScale','log','YMinorTick','on',...
-%     'YMinorGrid','on',...
-%     'XTickLabel',['set0';'set1';'set2';'set3';'set4'],...
-%     'XTick',[1 2 3 4 5]);
-% ylim(axes1,[1e3 1e7]);
-% box(axes1,'on');
-% hold(axes1,'all');
-% 
-% colormap(bone(6));
-% bar(fragments', 'Parent',axes1);
-% YLabel('Number of fragments');
-% legend('CDO/Morsa', 'EMFFrag coarse', 'EMFFrag fine', 'Location', 'NorthWest');
-% exportfig(gcf, 'grabatsFragments.eps', 'LineStyleMap', [], 'Color', 'rgb');
+memory = [ 34741397	99251404	745807894	1638047055	1765494183;
+3282200	3268081	3842562	3994814	4122279;
+4364742	6293135	6048543	5384703	5655025;
+4323533	6251802	6065440	5403960	5649159;];
+
+figure1 = figure('XVisual','');
+set(figure1, 'Position', [100, 100, 450, 200]);
+axes1 = axes('Parent',figure1,'ZGrid','on','YGrid','on',...
+    'YScale','log','YMinorTick','on',...
+    'YMinorGrid','on',...
+    'XTickLabel',['set0';'set1';'set2';'set3';'set4'],...
+    'XTick',[1 2 3 4 5]);
+box(axes1,'on');
+hold(axes1,'all');
+
+colormap(bone(6));
+bar(memory'/1e6, 'Parent',axes1);
+YLabel('Main memory (RAM) usage (in MB)');
+legend('XMI', 'Morsa', 'EMFFrag coarse', 'EMFFrag fine', 'Location', 'NorthWest');
+exportfig(gcf, 'grabatsTraverseMem.eps', 'LineStyleMap', [], 'Color', 'rgb');
+
+%fragments
+fragments = [
+69680	197699	2082841	4594899	4961779;
+1677	6018	5754	4063	4607;
+1755	6293	25045	55699	4607;];
+
+figure1 = figure('XVisual','');
+set(figure1, 'Position', [100, 100, 450, 200]);
+axes1 = axes('Parent',figure1,'ZGrid','on','YGrid','on',...
+    'YScale','log','YMinorTick','on',...
+    'YMinorGrid','on',...
+    'XTickLabel',['set0';'set1';'set2';'set3';'set4'],...
+    'XTick',[1 2 3 4 5]);
+ylim(axes1,[1e3 1e7]);
+box(axes1,'on');
+hold(axes1,'all');
+
+colormap(bone(6));
+bar(fragments', 'Parent',axes1);
+YLabel('Number of fragments');
+legend('CDO/Morsa', 'EMFFrag coarse', 'EMFFrag fine', 'Location', 'NorthWest');
+exportfig(gcf, 'grabatsFragments.eps', 'LineStyleMap', [], 'Color', 'rgb');
 
 %create objects per second
 objectsPerSecond = [59243.8 116460.4;
@@ -136,7 +136,7 @@ hold(axes1,'all');
 colormap(bone(2));
 bar(objectsPerSecond, 'Parent',axes1);
 YLabel('Objects per second (\times 10^4)');
-legend('w/ cross references', 'w/o cross references');
+legend('with cross references', 'with out cross references');
 exportfig(gcf, 'createObjectsPerSecond.eps', 'LineStyleMap', [], 'Color', 'rgb');
 
 %EMF frag create objects per second
@@ -156,7 +156,7 @@ loglog(fragmentations, objectsPerSecond(1,:),'-^', fragmentations, objectsPerSec
 
 YLabel('Objects per second');
 XLabel('Fragment size');
-legend('w/ cross references', 'w/o cross references','Location', 'SouthEast');
+legend('with cross references', 'with out cross references','Location', 'SouthEast');
 exportfig(gcf, 'createObjectsFragPerSecond.eps', 'LineStyleMap', [], 'Color', 'rgb');
 
 

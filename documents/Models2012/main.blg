@@ -3,48 +3,48 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: main.aux
 The style file: splncs03.bst
 Database file #1: bibliography.bib
-Warning--I didn't find a database entry for "bibtable2006"
-Warning--I didn't find a database entry for "mapreduce"
+Warning--I didn't find a database entry for "modelSizes"
 Warning--to sort, need author or key in cdo
-You've used 21 entries,
+Warning--to sort, need author or key in grabats
+You've used 23 entries,
             2785 wiz_defined-function locations,
-            718 strings with 8082 characters,
-and the built_in function-call counts, 10069 in all, are:
-= -- 808
-> -- 303
-< -- 12
-+ -- 128
-- -- 104
-* -- 603
-:= -- 1317
-add.period$ -- 31
-call.type$ -- 21
-change.case$ -- 128
+            729 strings with 8779 characters,
+and the built_in function-call counts, 11582 in all, are:
+= -- 944
+> -- 351
+< -- 14
++ -- 145
+- -- 122
+* -- 702
+:= -- 1487
+add.period$ -- 38
+call.type$ -- 23
+change.case$ -- 147
 chr.to.int$ -- 0
-cite$ -- 22
-duplicate$ -- 927
-empty$ -- 956
-format.name$ -- 118
-if$ -- 2191
+cite$ -- 25
+duplicate$ -- 1053
+empty$ -- 1094
+format.name$ -- 138
+if$ -- 2540
 int.to.chr$ -- 0
-int.to.str$ -- 21
-missing$ -- 197
-newline$ -- 68
-num.names$ -- 42
-pop$ -- 378
+int.to.str$ -- 23
+missing$ -- 223
+newline$ -- 74
+num.names$ -- 44
+pop$ -- 437
 preamble$ -- 1
-purify$ -- 93
+purify$ -- 106
 quote$ -- 0
-skip$ -- 241
+skip$ -- 283
 stack$ -- 0
-substring$ -- 479
-swap$ -- 471
-text.length$ -- 12
+substring$ -- 571
+swap$ -- 542
+text.length$ -- 14
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 78
-warning$ -- 1
-while$ -- 80
-width$ -- 23
-write$ -- 215
+type$ -- 86
+warning$ -- 2
+while$ -- 90
+width$ -- 25
+write$ -- 238
 (There were 3 warnings)

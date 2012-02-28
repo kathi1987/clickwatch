@@ -98,7 +98,7 @@ function[] = performance_gains()
     close all;
     figure(2);
     figure('Position',[100,100,450,338]);
-%    plotPerformanceGain(ll, @fl, 0);
+    plotPerformanceGain(ll, @fl, 0);
     
 %     figure(3);
 %     plotPerformanceGainSimple(ll, @fl, 6, [1 1e1 1e2 1e3 1e4 1e5 1e6]);

@@ -1,17 +1,15 @@
 \section{Model Fragmentation}
 \label{sec:fragmentation}
 
-\subsection{Fragmention in General}
-All models considered in this paper can be characterizes as directed labled graphs with a fix spanning-tree called \emph{containment hierarchy}. In EMF based models, the containment hierarchy consists of \emph{containment references}; other graph edges are \emph{cross-references}. 
+\subsection{Fragmentation in General}
+All models considered in this paper can be characterized as directed labeled graphs with a fix spanning-tree called \emph{containment hierarchy}. In EMF based models, the containment hierarchy consists of \emph{containment references}; other graph edges are \emph{cross-references}. 
 
-Model fragmentation approach, breaks (i.e. \emph{fragments}) a model along its containment hierarchy. All \emph{fragments} are disjoint; no object is part of two fragments. Fragmentation is also always complete, i.e. each object is part of one fragment. The set of fragments of a model is called \emph{fragmentation}. References between fragments are called inter-fragment and references within a fragment are called intra-fragment references.
-
-~\footnote{Based on these characteristics, fragments can be compared to EMF's resources (especially with containment proxies); refer to section~\ref{sec:implemention}, where we use resources to realize fragmentation.} 
+Model fragmentation breaks (i.e. \emph{fragments}) a model along its containment hierarchy. All \emph{fragments} are disjoint; no object is part of two fragments. Fragmentation is also always complete, i.e. each object is part of one fragment. The set of fragments of a model is called \emph{fragmentation}. References between fragments are called inter-fragment and references within a fragment are called intra-fragment references.~\footnote{Based on these characteristics, fragments can be compared to EMF's resources (especially with containment proxies); refer to section~\ref{sec:implemention}, where we use resources to realize fragmentation.} 
 
 \begin{figure}[ht]
 \centering
 \includegraphics[width=0.65\linewidth]{figures/fragmentationExplained}
-\caption{Example meta-model and model. In the mdoel: dashed lines denote fragments, double lines inter- and normal lines intra-fragment references. The references of feature \emph{f1} determine the fragments, the reference of \emph{f3} is a inter-fragment cross-reference by accident.}
+\caption{Example meta-model (left) and model (right). In the model: dashed ellipses denote fragments, double lines inter- and normal lines intra-fragment references. The references of feature \emph{f1} determine the fragments, the reference of \emph{f3} is a inter-fragment cross-reference by accident.}
 \label{fig:metamodelFragmentation}
 \end{figure}  
 
@@ -23,10 +21,10 @@ There are two trivial strategies: \emph{no fragmentation} and \emph{total fragme
 
 \subsection{Meta-Model based Fragmentation}
 
-In this paper, we propose and use \emph{meta-model based fragmentation} as a strategy. A meta-model defines possible models by means of classes ant their attribute and reference features. Whereby, the meta-model determines which reference feature produce containment and with produce cross-references. The meta-modeller already uses containment-reference features to aggregate related objects.
+In this paper, we propose and use \emph{meta-model based fragmentation} as fragmentation strategy. A meta-model defines possible models by means of classes and their attribute as well as reference features. Whereby, the meta-model determines which reference features produce containment and which produce cross-references. The meta-modeler already uses containment reference features to aggregate related objects.
 
-In meta-model based fragmentation, we ask the meta-modeller to additionally mark those containment reference features that should produce inter-fragment containment references. 
-This way, the meta-model determines where the containment-hierarchy is broken into fragments, and it becomes easy to create and maintain fragmentations automatically and transparently (ref. to section~\ref{sec:implemention}). Only containment-reference features determine fragmentation, cross-references can become inter-fragment references by accident. See Fig.~\ref{fig:metamodelFragmentation} for an example.
+In meta-model based fragmentation, we ask the meta-modeler to additionally mark those containment reference features that should produce inter-fragment containment references. 
+This way, the meta-model determines where the containment-hierarchy is broken into fragments, and it becomes easy to create and maintain fragmentations automatically and transparently (ref. to section~\ref{sec:implemention}). Only containment reference features determine fragmentation, cross-references can become inter-fragment references by accident. See Fig.~\ref{fig:metamodelFragmentation} for an example.
 
 %Only containment features can be designated as inter-fragment reference features and all instances of such a reference feature will be inter-fragment references (like \texttt{a}-references in Fig.~\ref{fig:metamodel_fragmentation_pattern_tree}). Other references (i.e. cross references) can become inter-fragment references \emph{by accident} (like \texttt{c}-references in Fig.~\ref{fig:metamodel_fragmentation_pattern_graph}).
 

@@ -11,6 +11,7 @@
 \newcommand{\markus}[1]{\textcolor{red}{Markus: #1}}
 \newcommand{\arif}[1]{\textcolor{blue}{Arif: #1}}
 \newcommand{\lars}[1]{\textcolor{greed}{Lars: #1}}
+\newcommand{\tinyparagraph}[1]{\vspace{0.2cm}\noindent\textbf{#1: }}
 
 \renewcommand\floatpagefraction{.9}
 \renewcommand\topfraction{.9}
@@ -40,9 +41,11 @@
 %\thispagestyle{empty}
 
 \begin{abstract} 
-\markus{Preliminary Abstract: } Existing model persistence frameworks either store models as a whole or object by object. Since most modeling tasks work with larger aggregates of a model, existing persistence either load to many objects or have to access many objects individually. We propose to persist a model broken into fragments. We discuss fragmentation strategies and fragmentation granularities. We  further show that fragmentation can be achieved automatically and transparently.
+Existing model persistence frameworks either store models as a whole or object by object. Since most modeling tasks work with larger aggregates of a model, existing persistence frameworks either load too many objects or access many objects individually. We propose to persist a model broken into larger fragments.
 
-First, we assess the size of large models and describe typical usage patterns to show that most application work with larger model aggregates. We provide an analytical framework to assess execution time gains for partially loading models and different fragmentation granularity. We show that model fragmentation can be achieved automatically and transparently. We compare model fragmentation to existing persistence frameworks (EMF XMI, CDO, and Morsa) based on for common modeling tasks: create/modify, traverse, query, and partial loads.
+First, we assess the size of large models and describe typical usage patterns to show that most applications work with aggregates of model objects. Secondly, we provide an analytical framework to assess execution time gains for partially loading models fragmented with different granularity. Thirdly, we propose meta-model-based fragmentation that we implemented in an EMF based framework. Fourthly, we analyze our approach in comparison to other persistence frameworks (XMI, CDO, and Morsa) based on four common modeling tasks: create/modify, traverse, query, and partial loads.
+
+We show that there is no generally optimal fragmentation, that fragmentation can be achieved automatically and transparently, and that fragmentation provides considerable performance gains compared to other persistence strategies.
 \end{abstract}
 
 \input{introduction}
@@ -54,6 +57,7 @@ First, we assess the size of large models and describe typical usage patterns to
 \input{evaluation}
 \input{conclusions}
 
+\clearpage
 \bibliography{bibliography}
 
 \end{document}

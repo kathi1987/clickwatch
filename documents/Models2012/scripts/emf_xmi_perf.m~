@@ -40,9 +40,9 @@ function [m,n] = emf_xmi_perf(x2_f)
     ylabel('parse time [parse(s)] (in ms)');
     
 
-    legend('XMI parser measurements', 'Linear fit','Location', 'NorthWest');
+    legend('XMI parse measurements', 'Linear fit','Location', 'SouthEast');
 
     set(gca, 'YScale', 'log')
     set(gca, 'XScale', 'log')
-    exportfig(gcf, 'emfParsePerf.eps', 'LineStyleMap', [], 'Color', 'rgb');
+    exportfig(gcf, 'hbaseAccessPerf.eps', 'LineStyleMap', [], 'Color', 'rgb');
 end
