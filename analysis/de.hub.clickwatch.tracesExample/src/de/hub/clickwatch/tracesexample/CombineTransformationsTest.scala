@@ -21,6 +21,10 @@ import scala.collection.mutable.LinkedList
 import org.apache.log4j.BasicConfigurator
 import scala.collection.mutable.HashMap
 import linkStats.LinkStatExampleSMTL
+import de.hub.clickwatch.analysis.traceable.Traceable
+import org.eclipse.emf.ecore.util.EcoreUtil
+import de.hub.clickwatch.traceanalyzer.TraceAnalyzer
+import de.hub.clickwatch.tracesexample.linkAndHW.HWBusyAverageExampleSMTL
 
 object CombineTransformationsTest {
 
@@ -28,22 +32,47 @@ object CombineTransformationsTest {
     BasicConfigurator.resetConfiguration()
     BasicConfigurator.configure()
 
-    var sourceModel : Resource = getModel()
+    var sourceModel : Resource = getModel("dump/dump.xmi")
     var hwBusyTrans = HWBusyExampleSMTL.getTransformation(sourceModel.getContents())
     sourceModel = hwBusyTrans.getFromModel().getResource()
     var topologyTrans = TopologyExampleSMTL.getTransformation(sourceModel.getContents())
     sourceModel = topologyTrans.getFromModel().getResource()
     var linkStatsTrans = LinkStatExampleSMTL.getTransformation(sourceModel.getContents())
+    sourceModel = linkStatsTrans.getFromModel().getResource()
+    var hwBusyAverageTrans = HWBusyAverageExampleSMTL.getTransformation(getModel("outputHWBusy.xmi").getContents())
+    //sourceModel = hwBusyAverageTrans.getFromModel().getResource()
 
+    val traceAnalyzer = new TraceAnalyzer()
+
+    println("\nMIT INTERNEN TRACES\n")
     // which classOf[XYDataResultSet] forIn GraphNode
-    var result = which(classOf[XYDataResultSet], TopologyExampleSMTL.getExampleNode(), hwBusyTrans, topologyTrans)    
-    println("The Graphnode: "+ TopologyExampleSMTL.getExampleNode() +"\nis based on data that connects to the following XYDataResultSet: "+ result)
+    var result = traceAnalyzer.which(classOf[XYDataResultSet], TopologyExampleSMTL.getExampleNode(), sourceModel.getResourceSet(), getModel("outputHWBusy.xmi"), getModel("outputTopology.xmi"))
+    println("The Graphnode: " + TopologyExampleSMTL.getExampleNode() + "\nis based on data that connects to the following XYDataResultSet: " + result)
 
     // wihch classOf[XYDataResultSet] forIn GraphEdge    
-    result = which(classOf[XYDataResultSet], TopologyExampleSMTL.getExampleLink(), linkStatsTrans, topologyTrans)  
-    println("The Graphlink: "+ TopologyExampleSMTL.getExampleLink() +"\nis based on data that connects to the following XYDataResultSet: "+ result)
+    result = traceAnalyzer.which(classOf[XYDataResultSet], TopologyExampleSMTL.getExampleLink(), sourceModel.getResourceSet(), getModel("outputLinkStat.xmi"), getModel("outputTopology.xmi"))
+    println("The Graphlink: " + TopologyExampleSMTL.getExampleLink() + "\nis based on data that connects to the following XYDataResultSet: " + result)
+
+    // which node was used to get the average hwbusy value?
+    // which classOf[Node] forIn DoubleDataResultValue
+    result = traceAnalyzer.which(classOf[Node], HWBusyAverageExampleSMTL.testAverageValue, sourceModel.getResourceSet(), getModel("outputTopology.xmi"), getModel("outputHWAverage.xmi"))
+    println("The Average Value: " + HWBusyAverageExampleSMTL.testAverageValue + "\nis based on data that connects to the following Node: " + result)
+
+    //    println("\n\nMIT SMTL TRACES\n")    
+    //    // which classOf[XYDataResultSet] forIn GraphNode
+    //    result = which(classOf[XYDataResultSet], TopologyExampleSMTL.getExampleNode(), hwBusyTrans, topologyTrans)    
+    //    println("The Graphnode: "+ TopologyExampleSMTL.getExampleNode() +"\nis based on data that connects to the following XYDataResultSet: "+ result)
+    //
+    //    // wihch classOf[XYDataResultSet] forIn GraphEdge    
+    //    result = which(classOf[XYDataResultSet], TopologyExampleSMTL.getExampleLink(), linkStatsTrans, topologyTrans)  
+    //    println("The Graphlink: "+ TopologyExampleSMTL.getExampleLink() +"\nis based on data that connects to the following XYDataResultSet: "+ result)
 
   }
+
+  // ******************************************************************************
+  //
+  // VERSION 2
+  //
 
   /**
    *
@@ -80,13 +109,13 @@ object CombineTransformationsTest {
           }
         }
       }
-      
+
       // did not find a match? move the examined object of the target one step up
-      if(bestPathLength < 0) {
+      if (bestPathLength < 0) {
         curTargetObject = curTargetObject.asInstanceOf[EObject].eContainer()
-        
+
         // does a parent object exist? if not no match at all can be found
-        if(curTargetObject == null) {
+        if (curTargetObject == null) {
           println("THERE COULD NOT BE FOUND ANY CONNECTION!!")
           return null
         }
@@ -132,7 +161,7 @@ object CombineTransformationsTest {
   /**
    *
    */
-  def getModel() : Resource = {
+  def getModel(path : String) : Resource = {
     ResultsPackage.eINSTANCE
     ClickWatchDataModelPackage.eINSTANCE
     BrnPackage.eINSTANCE
@@ -144,7 +173,7 @@ object CombineTransformationsTest {
     var res : Resource = null
 
     try {
-      res = resSet.getResource(URI.createFileURI("dump/dump.xmi"), true);
+      res = resSet.getResource(URI.createFileURI(path), true);
 
     } catch {
       case e : Throwable => throw new Exception("Loading error: [" + e.getMessage + "]")
