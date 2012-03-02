@@ -3,15 +3,19 @@ function[] = performance_gains()
     close all;
     clear all;
 
-    function[] = plotPerformanceGain(ll, fl)
+    function[] = plotPerformanceGain(ll, fl, ordered)
         part = 1;
         msize_exp = 7;
         msize=exp(msize_exp*log(10));
 
-        loads = logspace(0,msize_exp,300)
-        opes = logspace(0,msize_exp,300)
+        loads = logspace(0,msize_exp,300);
+        opes = logspace(0,msize_exp,300);
 
-        f = @(l,o) ceil(l/(part*o))*(fl(msize/o)+ll(o));
+        if ordered
+            f = @(l,o) ceil(l/(part*o))*(ll(o)) + fl(msize/o);
+        else
+            f = @(l,o) ceil(l/(part*o))*(fl(msize/o)+ll(o));
+        end      
 
         times=zeros(length(loads), length(opes));
         for i=1:length(loads)
@@ -55,19 +59,26 @@ function[] = performance_gains()
     subplot(1,2,2)
     [m_hbase, n_hbase] = hbase_lookup_perf();
     
-    ll= @(s) m_emf*s;%+n_emf;
-    fl= @(k) m_hbase*log(k);%+n_hbase;
+    ll= @(s) m_emf*s+n_emf;
+    fl= @(k) m_hbase*k+n_hbase;
     
     figure(2);
-    plotPerformanceGain(ll, fl);
+    plotPerformanceGain(ll, fl, 0);
     title('time it takes to load a model based on measured times (in ms)');    
     
     ll= @(s) s;
     fl= @(k) log(k);
     
     figure(3);
-    plotPerformanceGain(ll, fl);
+    plotPerformanceGain(ll, fl, 0);
     title('time it takes to load a model theoretical model (in time units)');
+            
+    ll= @(s) m_emf*s;% + n_emf;
+    fl= @(k) 0;
+    
+    figure(4);
+    plotPerformanceGain(ll, fl, 1);
+    title('time it takes to load a model based on measured times in an ordered data store (in ms)');
     
 end
     

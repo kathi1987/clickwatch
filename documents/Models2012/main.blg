@@ -1,0 +1,50 @@
+This is BibTeX, Version 0.99d (TeX Live 2010)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: main.aux
+The style file: splncs03.bst
+Database file #1: bibliography.bib
+Warning--I didn't find a database entry for "modelSizes"
+Warning--to sort, need author or key in cdo
+Warning--to sort, need author or key in grabats
+You've used 23 entries,
+            2785 wiz_defined-function locations,
+            729 strings with 8779 characters,
+and the built_in function-call counts, 11582 in all, are:
+= -- 944
+> -- 351
+< -- 14
++ -- 145
+- -- 122
+* -- 702
+:= -- 1487
+add.period$ -- 38
+call.type$ -- 23
+change.case$ -- 147
+chr.to.int$ -- 0
+cite$ -- 25
+duplicate$ -- 1053
+empty$ -- 1094
+format.name$ -- 138
+if$ -- 2540
+int.to.chr$ -- 0
+int.to.str$ -- 23
+missing$ -- 223
+newline$ -- 74
+num.names$ -- 44
+pop$ -- 437
+preamble$ -- 1
+purify$ -- 106
+quote$ -- 0
+skip$ -- 283
+stack$ -- 0
+substring$ -- 571
+swap$ -- 542
+text.length$ -- 14
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 86
+warning$ -- 2
+while$ -- 90
+width$ -- 25
+write$ -- 238
+(There were 3 warnings)

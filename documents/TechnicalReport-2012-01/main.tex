@@ -48,6 +48,41 @@
 \section{Fragmentation Strategies}
 
 \subsection{Manual Fragmentation}
+\subsection{Metamodel Defined Fragmentation}
+
+\begin{figure}[ht]
+\begin{minipage}[b]{0.5\linewidth}
+\centering
+\includegraphics[width=\linewidth]{figures/metamodel_fragmentation_patterns_tree}
+\caption{An example pattern in a model and a fragmentation. The red links are inter fragment links.}
+\label{fig:metamodel_fragmentation_pattern_tree}
+\end{minipage}
+\hspace{0.5cm}
+\begin{minipage}[b]{0.5\linewidth}
+\centering
+\includegraphics[width=\linewidth]{figures/metamodel_fragmentation_patterns_graph}
+\caption{Another example pattern. For a single feature there are two types of instances: inter- and intra-fragment links.}
+\label{fig:metamodel_fragmentation_pattern_graph}
+\end{minipage}
+\end{figure}
+
+\subsubsection{Theory}
+Access patterns for a model are strongly influenced by its metamodel.
+Metamodels are tiny in comparison to their large instances. 
+If you imagine looking from above onto a large model, the metamodel types of its objects form patterns. How we access a model is also influenced by its metamodel, since all algorithms doing something with a model are programmed against its metamodel.
+Hence, optimal fragmentation goes along this patterns.
+Most fragments will have the same structure, and fragments are connected through structural features of only few different types.
+One way to define fragmentation is to mark these fragment crossing structural features. 
+
+Fig.~\ref{fig:metamodel_fragmentation_pattern_tree} shows a simple example metamodel type pattern. The instances (links) of feature \emph{a} cross fragment borders (inter fragment links). All other links are intra-fragment links. The situation is a  little more complicated in Fig.~\ref{fig:metamodel_fragmentation_pattern_graph}. Here the links of feature \emph{c} have both inter- and intra-fragment instances. 
+
+If we want to describe fragmentation by marking features as inter- or intra-fragment features, it would work for the example in Fig.~\ref{fig:metamodel_fragmentation_pattern_tree}, but not for the example in Fig.~\ref{fig:metamodel_fragmentation_pattern_graph}. Obviously, we need further restrictions.
+
+Models (as used in this paper) always have a inherent spanning tree. The spanning tree is formed from links that are instances from containment features. All instances of containment features are part of the spanning tree. If we only allow containment features to be inter-fragment features then the instances of inter-fragment feature will always define a unique fragmentation. \markus{Proof?}
+
+\subsubsection{Implementation}
+This describes an implementation based on EMF. 
+
 \subsection{Automated Fragmentation based on Expected Range Queries}
 \subsection{Automated Fragmentation based on Access Patterns}
 \subsection{Fragmentation of Even Models}
@@ -59,6 +94,7 @@ At the beginning, we will look at \emph{even} models. A model is even, if its in
 Previously, we were looking the gains achieved with optimal fragmentation. While optimal fragmentation is plausible in manually fragmented models for a single specific loaded model (e.g. accessing single sensor readings in ClickWatch). Optimal fragmentation is unlikely for different loaded models (even impossible for models of different size). 
 
 In general, we can assume that the smaller $ope$ is compared to $load$, the more likely it is that much of each entry is part of the loaded model. In other words, the smaller my entries are, the more likely it is that much or all if a single entry is part of the loaded model. We will model $part$  accordingly.
+\input{evaluation}
 \input{conclusions}
 
 \bibliography{bibliography}

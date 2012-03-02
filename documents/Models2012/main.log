@@ -1,0 +1,648 @@
+This is pdfTeX, Version 3.1415926-1.40.11 (TeX Live 2010) (format=pdflatex 2011.3.30)  28 FEB 2012 17:35
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**main.tex
+(./main.tex
+LaTeX2e <2009/09/24>
+Babel <v3.8l> and hyphenation patterns for english, dumylang, nohyphenation, ge
+rman-x-2009-06-19, ngerman-x-2009-06-19, ancientgreek, ibycus, arabic, armenian
+, basque, bulgarian, catalan, pinyin, coptic, croatian, czech, danish, dutch, u
+kenglish, usenglishmax, esperanto, estonian, farsi, finnish, french, galician, 
+german, ngerman, swissgerman, monogreek, greek, hungarian, icelandic, assamese,
+ bengali, gujarati, hindi, kannada, malayalam, marathi, oriya, panjabi, tamil, 
+telugu, indonesian, interlingua, irish, italian, kurmanji, lao, latin, latvian,
+ lithuanian, mongolian, mongolianlmc, bokmal, nynorsk, polish, portuguese, roma
+nian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, turkish,
+ turkmen, ukrainian, uppersorbian, welsh, loaded.
+(./llncs.cls
+Document Class: llncs 2010/07/12 v2.17 
+ LaTeX document class for Lecture Notes in Computer Science
+(/usr/local/texlive/2010/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+(/usr/local/texlive/2010/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/local/texlive/2010/texmf-dist/tex/latex/tools/multicol.sty
+Package: multicol 2008/12/05 v1.6h multicolumn formatting (FMi)
+\c@tracingmulticols=\count87
+\mult@box=\box26
+\multicol@leftmargin=\dimen103
+\c@unbalance=\count88
+\c@collectmore=\count89
+\doublecol@number=\count90
+\multicoltolerance=\count91
+\multicolpretolerance=\count92
+\full@width=\dimen104
+\page@free=\dimen105
+\premulticols=\dimen106
+\postmulticols=\dimen107
+\multicolsep=\skip43
+\multicolbaselineskip=\skip44
+\partial@page=\box27
+\last@line=\box28
+\mult@rightbox=\box29
+\mult@grightbox=\box30
+\mult@gfirstbox=\box31
+\mult@firstbox=\box32
+\@tempa=\box33
+\@tempa=\box34
+\@tempa=\box35
+\@tempa=\box36
+\@tempa=\box37
+\@tempa=\box38
+\@tempa=\box39
+\@tempa=\box40
+\@tempa=\box41
+\@tempa=\box42
+\@tempa=\box43
+\@tempa=\box44
+\@tempa=\box45
+\@tempa=\box46
+\@tempa=\box47
+\@tempa=\box48
+\@tempa=\box49
+\c@columnbadness=\count93
+\c@finalcolumnbadness=\count94
+\last@try=\dimen108
+\multicolovershoot=\dimen109
+\multicolundershoot=\dimen110
+\mult@nat@firstbox=\box50
+\colbreak@box=\box51
+)
+(/usr/local/texlive/2010/texmf-dist/tex/latex/oberdiek/aliascnt.sty
+Package: aliascnt 2009/09/08 v1.3 Alias counter (HO)
+
+(/usr/local/texlive/2010/texmf-dist/tex/latex/carlisle/remreset.sty))
+\c@chapter=\count95
+LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 362.
+LaTeX Font Info:    Redeclaring math symbol \Delta on input line 363.
+LaTeX Font Info:    Redeclaring math symbol \Theta on input line 364.
+LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 365.
+LaTeX Font Info:    Redeclaring math symbol \Xi on input line 366.
+LaTeX Font Info:    Redeclaring math symbol \Pi on input line 367.
+LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 368.
+LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 369.
+LaTeX Font Info:    Redeclaring math symbol \Phi on input line 370.
+LaTeX Font Info:    Redeclaring math symbol \Psi on input line 371.
+LaTeX Font Info:    Redeclaring math symbol \Omega on input line 372.
+\tocchpnum=\dimen111
+\tocsecnum=\dimen112
+\tocsectotal=\dimen113
+\tocsubsecnum=\dimen114
+\tocsubsectotal=\dimen115
+\tocsubsubsecnum=\dimen116
+\tocsubsubsectotal=\dimen117
+\tocparanum=\dimen118
+\tocparatotal=\dimen119
+\tocsubparanum=\dimen120
+\@tempcntc=\count96
+\fnindent=\dimen121
+\c@@inst=\count97
+\c@@auth=\count98
+\c@auco=\count99
+\instindent=\dimen122
+\authrun=\box52
+\authorrunning=\toks14
+\tocauthor=\toks15
+\titrun=\box53
+\titlerunning=\toks16
+\toctitle=\toks17
+\c@theorem=\count100
+\c@case=\count101
+\c@conjecture=\count102
+\c@corollary=\count103
+\c@definition=\count104
+\c@example=\count105
+\c@exercise=\count106
+\c@lemma=\count107
+\c@note=\count108
+\c@problem=\count109
+\c@property=\count110
+\c@proposition=\count111
+\c@question=\count112
+\c@solution=\count113
+\c@remark=\count114
+\headlineindent=\dimen123
+)
+(/usr/local/texlive/2010/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2010/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks18
+)
+(/usr/local/texlive/2010/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2010/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/usr/local/texlive/2010/texmf-dist/tex/latex/latexconfig/graphics.cfg
+File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
+)
+Package graphics Info: Driver file: pdftex.def on input line 91.
+
+(/usr/local/texlive/2010/texmf-dist/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2010/02/14 v0.04n Graphics/color for pdfTeX
+\Gread@gobject=\count115
+))
+\Gin@req@height=\dimen124
+\Gin@req@width=\dimen125
+)
+(/usr/local/texlive/2010/texmf-dist/tex/generic/babel/babel.sty
+Package: babel 2008/07/06 v3.8l The Babel package
+
+(/usr/local/texlive/2010/texmf-dist/tex/generic/babel/english.ldf
+Language: english 2005/03/30 v3.3o English support from the babel system
+
+(/usr/local/texlive/2010/texmf-dist/tex/generic/babel/babel.def
+File: babel.def 2008/07/06 v3.8l Babel common definitions
+\babel@savecnt=\count116
+\U@D=\dimen126
+)
+\l@canadian = a dialect from \language\l@american 
+\l@australian = a dialect from \language\l@british 
+\l@newzealand = a dialect from \language\l@british 
+))
+(/usr/local/texlive/2010/texmf-dist/tex/latex/graphics/color.sty
+Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
+
+(/usr/local/texlive/2010/texmf-dist/tex/latex/latexconfig/color.cfg
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package color Info: Driver file: pdftex.def on input line 130.
+)
+(/usr/local/texlive/2010/texmf-dist/tex/latex/ucs/ucs.sty
+Package: ucs 2004/10/17 UCS: Unicode input support
+
+(/usr/local/texlive/2010/texmf-dist/tex/latex/ucs/data/uni-global.def
+File: uni-global.def 2004/10/17 UCS: Unicode global data
+)
+\uc@secondtry=\count117
+\uc@combtoks=\toks19
+\uc@combtoksb=\toks20
+\uc@temptokena=\toks21
+)
+(/usr/local/texlive/2010/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2008/03/30 v1.1d Input encoding file
+\inpenc@prehook=\toks22
+\inpenc@posthook=\toks23
+
+(/usr/local/texlive/2010/texmf-dist/tex/latex/base/latin1.def
+File: latin1.def 2008/03/30 v1.1d Input encoding file
+))
+(/usr/local/texlive/2010/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2000/07/18 v2.13 AMS math features
+\@mathmargin=\skip45
+
+For additional information on amsmath, use the `?' option.
+(/usr/local/texlive/2010/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01
+
+(/usr/local/texlive/2010/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks24
+\ex@=\dimen127
+))
+(/usr/local/texlive/2010/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen128
+)
+(/usr/local/texlive/2010/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count118
+LaTeX Info: Redefining \frac on input line 211.
+\uproot@=\count119
+\leftroot@=\count120
+LaTeX Info: Redefining \overline on input line 307.
+\classnum@=\count121
+\DOTSCASE@=\count122
+LaTeX Info: Redefining \ldots on input line 379.
+LaTeX Info: Redefining \dots on input line 382.
+LaTeX Info: Redefining \cdots on input line 467.
+\Mathstrutbox@=\box54
+\strutbox@=\box55
+\big@size=\dimen129
+LaTeX Font Info:    Redeclaring font encoding OML on input line 567.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
+
+
+Package amsmath Warning: Unable to redefine math accent \vec.
+
+\macc@depth=\count123
+\c@MaxMatrixCols=\count124
+\dotsspace@=\muskip10
+\c@parentequation=\count125
+\dspbrk@lvl=\count126
+\tag@help=\toks25
+\row@=\count127
+\column@=\count128
+\maxfields@=\count129
+\andhelp@=\toks26
+\eqnshift@=\dimen130
+\alignsep@=\dimen131
+\tagshift@=\dimen132
+\tagwidth@=\dimen133
+\totwidth@=\dimen134
+\lineht@=\dimen135
+\@envbody=\toks27
+\multlinegap=\skip46
+\multlinetaggap=\skip47
+\mathdisplay@stack=\toks28
+LaTeX Info: Redefining \[ on input line 2666.
+LaTeX Info: Redefining \] on input line 2667.
+) (/usr/local/texlive/2010/texmf-dist/tex/latex/mh/mathtools.sty
+Package: mathtools 2010/07/11 v1.08 mathematical typesetting tools (MH)
+
+(/usr/local/texlive/2010/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count130
+\calc@Bcount=\count131
+\calc@Adimen=\dimen136
+\calc@Bdimen=\dimen137
+\calc@Askip=\skip48
+\calc@Bskip=\skip49
+LaTeX Info: Redefining \setlength on input line 76.
+LaTeX Info: Redefining \addtolength on input line 77.
+\calc@Ccount=\count132
+\calc@Cskip=\skip50
+)
+(/usr/local/texlive/2010/texmf-dist/tex/latex/mh/mhsetup.sty
+Package: mhsetup 2010/01/21 v1.2a programming setup (MH)
+)
+\g_MT_multlinerow_int=\count133
+\l_MT_multwidth_dim=\dimen138
+) (./main.aux)
+\openout1 = `main.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+
+(/usr/local/texlive/2010/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count134
+\scratchdimen=\dimen139
+\scratchbox=\box56
+\nofMPsegments=\count135
+\nofMParguments=\count136
+\everyMPshowfont=\toks29
+\MPscratchCnt=\count137
+\MPscratchDim=\dimen140
+\MPnumerator=\count138
+\everyMPtoPDFconversion=\toks30
+) (/usr/local/texlive/2010/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2010/04/01 v0.9 Utility functions of pdfTeX for LuaTeX (HO)
+
+
+(/usr/local/texlive/2010/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/message (HO)
+)
+(/usr/local/texlive/2010/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+(/usr/local/texlive/2010/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2010/04/26 v1.7 LaTeX kernel commands for general use (HO)
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+)
+(/usr/local/texlive/2010/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
+
+(/usr/local/texlive/2010/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2007/09/30 v1.0 Managing graphics extensions (HO)
+)
+(/usr/local/texlive/2010/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2010/02/22 v3.7 Keyval support for LaTeX options (HO)
+
+(/usr/local/texlive/2010/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2010/03/01 v1.9 Key value parser (HO)
+
+(/usr/local/texlive/2010/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2010/01/28 v1.3 Prefix for e-TeX command names (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 436.
+
+(/usr/local/texlive/2010/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+(/usr/local/texlive/2010/texmf-dist/tex/latex/ucs/ucsencs.def
+File: ucsencs.def 2003/11/29 Fixes to fontencodings LGR, T3
+)
+LaTeX Font Info:    Try loading font information for OMS+cmtt on input line 40.
+
+LaTeX Font Info:    No file OMScmtt.fd. on input line 40.
+
+
+LaTeX Font Warning: Font shape `OMS/cmtt/m/n' undefined
+(Font)              using `OMS/cmsy/m/n' instead
+(Font)              for symbol `textbraceleft' on input line 40.
+
+(./introduction.tex [1
+
+
+
+{/usr/local/texlive/2010/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]) (./mod
+eling_applications.tex [2]
+
+LaTeX Warning: Citation `modelSizes' on page 3 undefined on input line 9.
+
+Package epstopdf Info: Source file: <figures/software_model_sizes.eps>
+(epstopdf)                    date: 2012-02-28 14:44:01
+(epstopdf)                    size: 922202 bytes
+(epstopdf)             Output file: <figures/software_model_sizes-eps-converted
+-to.pdf>
+(epstopdf)                    date: 2012-02-28 14:44:07
+(epstopdf)                    size: 28063 bytes
+(epstopdf)             Command: <repstopdf --outfile=figures/software_model_siz
+es-eps-converted-to.pdf figures/software_model_sizes.eps>
+(epstopdf)             \includegraphics on input line 13.
+Package epstopdf Info: Output file is already uptodate.
+
+<figures/software_model_sizes-eps-converted-to.pdf, id=16, 833.1125pt x 352.316
+25pt>
+File: figures/software_model_sizes-eps-converted-to.pdf Graphic file (type pdf)
+
+ <use figures/software_model_sizes-eps-converted-to.pdf>
+Underfull \vbox (badness 2547) has occurred while \output is active []
+
+ [3 <./figures/software_model_sizes-eps-converted-to.pdf>] [4]) (./fragmentatio
+n.tex
+<figures/fragmentationExplained.pdf, id=32, 301.125pt x 144.54pt>
+File: figures/fragmentationExplained.pdf Graphic file (type pdf)
+
+<use figures/fragmentationExplained.pdf> [5]) (./relatedwork.tex [6 <./figures/
+fragmentationExplained.pdf>]) (./gains.tex [7]
+Package epstopdf Info: Source file: <figures/emfParsePerf.eps>
+(epstopdf)                    date: 2012-02-28 16:45:50
+(epstopdf)                    size: 12858 bytes
+(epstopdf)             Output file: <figures/emfParsePerf-eps-converted-to.pdf>
+
+(epstopdf)                    date: 2012-02-28 16:46:49
+(epstopdf)                    size: 8821 bytes
+(epstopdf)             Command: <repstopdf --outfile=figures/emfParsePerf-eps-c
+onverted-to.pdf figures/emfParsePerf.eps>
+(epstopdf)             \includegraphics on input line 23.
+Package epstopdf Info: Output file is already uptodate.
+
+<figures/emfParsePerf-eps-converted-to.pdf, id=90, 401.5pt x 198.7425pt>
+File: figures/emfParsePerf-eps-converted-to.pdf Graphic file (type pdf)
+
+<use figures/emfParsePerf-eps-converted-to.pdf>
+Package epstopdf Info: Source file: <figures/hbaseAccessPerf.eps>
+(epstopdf)                    date: 2012-02-28 16:46:39
+(epstopdf)                    size: 10043 bytes
+(epstopdf)             Output file: <figures/hbaseAccessPerf-eps-converted-to.p
+df>
+(epstopdf)                    date: 2012-02-28 16:46:50
+(epstopdf)                    size: 9449 bytes
+(epstopdf)             Command: <repstopdf --outfile=figures/hbaseAccessPerf-ep
+s-converted-to.pdf figures/hbaseAccessPerf.eps>
+(epstopdf)             \includegraphics on input line 30.
+Package epstopdf Info: Output file is already uptodate.
+
+<figures/hbaseAccessPerf-eps-converted-to.pdf, id=91, 390.45876pt x 195.73125pt
+>
+File: figures/hbaseAccessPerf-eps-converted-to.pdf Graphic file (type pdf)
+ <use figures/hbaseAccessPerf-eps-converted-to.pdf> [8]
+Package epstopdf Info: Source file: <figures/theoryTimesSmall.eps>
+(epstopdf)                    date: 2012-02-28 16:37:27
+(epstopdf)                    size: 774782 bytes
+(epstopdf)             Output file: <figures/theoryTimesSmall-eps-converted-to.
+pdf>
+(epstopdf)                    date: 2012-02-28 16:43:58
+(epstopdf)                    size: 31320 bytes
+(epstopdf)             Command: <repstopdf --outfile=figures/theoryTimesSmall-e
+ps-converted-to.pdf figures/theoryTimesSmall.eps>
+(epstopdf)             \includegraphics on input line 41.
+Package epstopdf Info: Output file is already uptodate.
+
+<figures/theoryTimesSmall-eps-converted-to.pdf, id=99, 487.8225pt x 386.44376pt
+>
+File: figures/theoryTimesSmall-eps-converted-to.pdf Graphic file (type pdf)
+ <use figures/theoryTimesSmall-eps-converted-to.pdf>) (./implementation.tex
+[9 <./figures/emfParsePerf-eps-converted-to.pdf> <./figures/hbaseAccessPerf-eps
+-converted-to.pdf> <./figures/theoryTimesSmall-eps-converted-to.pdf>]
+<figures/simpleArchitecture.pdf, id=124, 667.49374pt x 308.15125pt>
+File: figures/simpleArchitecture.pdf Graphic file (type pdf)
+
+<use figures/simpleArchitecture.pdf> [10 <./figures/simpleArchitecture.pdf>])
+(./evaluation.tex [11]
+Package epstopdf Info: Source file: <figures/createObjectsPerSecond.eps>
+(epstopdf)                    date: 2012-02-28 17:27:30
+(epstopdf)                    size: 12305 bytes
+(epstopdf)             Output file: <figures/createObjectsPerSecond-eps-convert
+ed-to.pdf>
+(epstopdf)                    date: 2012-02-28 17:29:23
+(epstopdf)                    size: 8661 bytes
+(epstopdf)             Command: <repstopdf --outfile=figures/createObjectsPerSe
+cond-eps-converted-to.pdf figures/createObjectsPerSecond.eps>
+(epstopdf)             \includegraphics on input line 16.
+Package epstopdf Info: Output file is already uptodate.
+
+<figures/createObjectsPerSecond-eps-converted-to.pdf, id=144, 398.48875pt x 189
+.70876pt>
+File: figures/createObjectsPerSecond-eps-converted-to.pdf Graphic file (type pd
+f)
+ <use figures/createObjectsPerSecond-eps-converted-to.pdf>
+Package epstopdf Info: Source file: <figures/createObjectsFragPerSecond.eps>
+(epstopdf)                    date: 2012-02-28 17:27:31
+(epstopdf)                    size: 13976 bytes
+(epstopdf)             Output file: <figures/createObjectsFragPerSecond-eps-con
+verted-to.pdf>
+(epstopdf)                    date: 2012-02-28 17:29:24
+(epstopdf)                    size: 8241 bytes
+(epstopdf)             Command: <repstopdf --outfile=figures/createObjectsFragP
+erSecond-eps-converted-to.pdf figures/createObjectsFragPerSecond.eps>
+(epstopdf)             \includegraphics on input line 24.
+Package epstopdf Info: Output file is already uptodate.
+
+<figures/createObjectsFragPerSecond-eps-converted-to.pdf, id=145, 399.4925pt x 
+198.7425pt>
+File: figures/createObjectsFragPerSecond-eps-converted-to.pdf Graphic file (typ
+e pdf)
+ <use figures/createObjectsFragPerSecond-eps-converted-to.pdf>
+Package epstopdf Info: Source file: <figures/grabatsTraverseObjectsPerSecondExt
+ra.eps>
+(epstopdf)                    date: 2012-02-28 13:07:58
+(epstopdf)                    size: 614742 bytes
+(epstopdf)             Output file: <figures/grabatsTraverseObjectsPerSecondExt
+ra-eps-converted-to.pdf>
+(epstopdf)                    date: 2012-02-28 13:12:46
+(epstopdf)                    size: 32931 bytes
+(epstopdf)             Command: <repstopdf --outfile=figures/grabatsTraverseObj
+ectsPerSecondExtra-eps-converted-to.pdf figures/grabatsTraverseObjectsPerSecond
+Extra.eps>
+(epstopdf)             \includegraphics on input line 31.
+Package epstopdf Info: Output file is already uptodate.
+
+<figures/grabatsTraverseObjectsPerSecondExtra-eps-converted-to.pdf, id=146, 385
+.44pt x 314.17375pt>
+File: figures/grabatsTraverseObjectsPerSecondExtra-eps-converted-to.pdf Graphic
+ file (type pdf)
+
+<use figures/grabatsTraverseObjectsPerSecondExtra-eps-converted-to.pdf>
+Underfull \hbox (badness 1460) in paragraph at lines 32--32
+\OT1/cmr/m/n/9 sec-ond dur-ing travers-ing the dif-fer-ent
+ []
+
+Package epstopdf Info: Source file: <figures/grabatsQueryTimeExtra.eps>
+(epstopdf)                    date: 2012-02-28 13:07:42
+(epstopdf)                    size: 633290 bytes
+(epstopdf)             Output file: <figures/grabatsQueryTimeExtra-eps-converte
+d-to.pdf>
+(epstopdf)                    date: 2012-02-28 13:12:47
+(epstopdf)                    size: 28386 bytes
+(epstopdf)             Command: <repstopdf --outfile=figures/grabatsQueryTimeEx
+tra-eps-converted-to.pdf figures/grabatsQueryTimeExtra.eps>
+(epstopdf)             \includegraphics on input line 38.
+Package epstopdf Info: Output file is already uptodate.
+
+<figures/grabatsQueryTimeExtra-eps-converted-to.pdf, id=147, 395.4775pt x 305.1
+4pt>
+File: figures/grabatsQueryTimeExtra-eps-converted-to.pdf Graphic file (type pdf
+)
+ <use figures/grabatsQueryTimeExtra-eps-converted-to.pdf>
+Package epstopdf Info: Source file: <figures/grabatsTraverseMem.eps>
+(epstopdf)                    date: 2012-02-28 17:08:48
+(epstopdf)                    size: 15816 bytes
+(epstopdf)             Output file: <figures/grabatsTraverseMem-eps-converted-t
+o.pdf>
+(epstopdf)                    date: 2012-02-28 17:21:33
+(epstopdf)                    size: 8350 bytes
+(epstopdf)             Command: <repstopdf --outfile=figures/grabatsTraverseMem
+-eps-converted-to.pdf figures/grabatsTraverseMem.eps>
+(epstopdf)             \includegraphics on input line 47.
+Package epstopdf Info: Output file is already uptodate.
+
+<figures/grabatsTraverseMem-eps-converted-to.pdf, id=148, 395.4775pt x 190.7125
+pt>
+File: figures/grabatsTraverseMem-eps-converted-to.pdf Graphic file (type pdf)
+ <use figures/grabatsTraverseMem-eps-converted-to.pdf>
+Package epstopdf Info: Source file: <figures/grabatsFragments.eps>
+(epstopdf)                    date: 2012-02-28 17:08:49
+(epstopdf)                    size: 15151 bytes
+(epstopdf)             Output file: <figures/grabatsFragments-eps-converted-to.
+pdf>
+(epstopdf)                    date: 2012-02-28 17:21:34
+(epstopdf)                    size: 8253 bytes
+(epstopdf)             Command: <repstopdf --outfile=figures/grabatsFragments-e
+ps-converted-to.pdf figures/grabatsFragments.eps>
+(epstopdf)             \includegraphics on input line 54.
+Package epstopdf Info: Output file is already uptodate.
+
+<figures/grabatsFragments-eps-converted-to.pdf, id=149, 395.4775pt x 190.7125pt
+>
+File: figures/grabatsFragments-eps-converted-to.pdf Graphic file (type pdf)
+ <use figures/grabatsFragments-eps-converted-to.pdf> [12] [13 <./figures/create
+ObjectsPerSecond-eps-converted-to.pdf> <./figures/createObjectsFragPerSecond-ep
+s-converted-to.pdf> <./figures/grabatsTraverseObjectsPerSecondExtra-eps-convert
+ed-to.pdf> <./figures/grabatsQueryTimeExtra-eps-converted-to.pdf> <./figures/gr
+abatsTraverseMem-eps-converted-to.pdf> <./figures/grabatsFragments-eps-converte
+d-to.pdf>]
+Package epstopdf Info: Source file: <figures/measureTimesExtra.eps>
+(epstopdf)                    date: 2012-02-28 17:25:04
+(epstopdf)                    size: 740830 bytes
+(epstopdf)             Output file: <figures/measureTimesExtra-eps-converted-to
+.pdf>
+(epstopdf)                    date: 2012-02-28 17:27:01
+(epstopdf)                    size: 25817 bytes
+(epstopdf)             Command: <repstopdf --outfile=figures/measureTimesExtra-
+eps-converted-to.pdf figures/measureTimesExtra.eps>
+(epstopdf)             \includegraphics on input line 79.
+Package epstopdf Info: Output file is already uptodate.
+
+<figures/measureTimesExtra-eps-converted-to.pdf, id=204, 483.8075pt x 386.44376
+pt>
+File: figures/measureTimesExtra-eps-converted-to.pdf Graphic file (type pdf)
+ <use figures/measureTimesExtra-eps-converted-to.pdf>
+Package epstopdf Info: Source file: <figures/theoryTimesSmallWO.eps>
+(epstopdf)                    date: 2012-02-28 16:37:41
+(epstopdf)                    size: 790346 bytes
+(epstopdf)             Output file: <figures/theoryTimesSmallWO-eps-converted-t
+o.pdf>
+(epstopdf)                    date: 2012-02-28 17:24:12
+(epstopdf)                    size: 31495 bytes
+(epstopdf)             Command: <repstopdf --outfile=figures/theoryTimesSmallWO
+-eps-converted-to.pdf figures/theoryTimesSmallWO.eps>
+(epstopdf)             \includegraphics on input line 84.
+Package epstopdf Info: Output file is already uptodate.
+
+<figures/theoryTimesSmallWO-eps-converted-to.pdf, id=205, 487.8225pt x 386.4437
+6pt>
+File: figures/theoryTimesSmallWO-eps-converted-to.pdf Graphic file (type pdf)
+ <use figures/theoryTimesSmallWO-eps-converted-to.pdf>) (./conclusions.tex
+[14 <./figures/measureTimesExtra-eps-converted-to.pdf> <./figures/theoryTimesSm
+allWO-eps-converted-to.pdf>]) [15] (./main.bbl [16
+
+]) [17] (./main.aux)
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 3514 strings out of 493747
+ 51072 string characters out of 3143546
+ 123158 words of memory out of 3000000
+ 6689 multiletter control sequences out of 15000+200000
+ 9221 words of font info for 34 fonts, out of 3000000 for 9000
+ 714 hyphenation exceptions out of 8191
+ 38i,10n,23p,1441b,321s stack positions out of 5000i,500n,10000p,200000b,50000s
+</usr/local/texlive/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
+></usr/local/texlive/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
+</usr/local/texlive/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></
+usr/local/texlive/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></u
+sr/local/texlive/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></us
+r/local/texlive/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/
+local/texlive/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/lo
+cal/texlive/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/loca
+l/texlive/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/t
+exlive/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texl
+ive/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive
+/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/
+2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/20
+10/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/201
+0/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2010/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2010/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
+Output written on main.pdf (17 pages, 384804 bytes).
+PDF statistics:
+ 284 PDF objects out of 1000 (max. 8388607)
+ 195 compressed objects within 2 object streams
+ 0 named destinations out of 1000 (max. 500000)
+ 71 words of extra memory for PDF output out of 10000 (max. 10000000)
+
