@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.11 (TeX Live 2010) (format=pdflatex 2011.3.30)  28 FEB 2012 17:35
+This is pdfTeX, Version 3.1415926-1.40.11 (TeX Live 2010) (format=pdflatex 2011.3.30)  10 APR 2012 13:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -378,9 +378,6 @@ LaTeX Font Warning: Font shape `OMS/cmtt/m/n' undefined
 
 {/usr/local/texlive/2010/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]) (./mod
 eling_applications.tex [2]
-
-LaTeX Warning: Citation `modelSizes' on page 3 undefined on input line 9.
-
 Package epstopdf Info: Source file: <figures/software_model_sizes.eps>
 (epstopdf)                    date: 2012-02-28 14:44:01
 (epstopdf)                    size: 922202 bytes
@@ -617,11 +614,11 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 Here is how much of TeX's memory you used:
  3514 strings out of 493747
  51072 string characters out of 3143546
- 123158 words of memory out of 3000000
+ 123163 words of memory out of 3000000
  6689 multiletter control sequences out of 15000+200000
  9221 words of font info for 34 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
- 38i,10n,23p,1441b,321s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 38i,10n,23p,1441b,319s stack positions out of 5000i,500n,10000p,200000b,50000s
 </usr/local/texlive/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></
@@ -639,7 +636,7 @@ ive/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive
 0/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2010/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2010/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on main.pdf (17 pages, 384804 bytes).
+Output written on main.pdf (17 pages, 384694 bytes).
 PDF statistics:
  284 PDF objects out of 1000 (max. 8388607)
  195 compressed objects within 2 object streams

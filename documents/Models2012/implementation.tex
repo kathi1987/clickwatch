@@ -1,10 +1,10 @@
 \section{Implementation of Model Fragmentation}
 \label{sec:implemention}
 
-In this section, we present the EMF based persistence framework EMFFrag which implements the presented meta-model based fragmentation strategy (refer to section~\ref{sec:fragmentation}).
+In this section, we present the EMF based persistence framework EMFFrag~\cite{EMFFragProject} which implements the presented meta-model based fragmentation strategy (refer to section~\ref{sec:fragmentation}).
 
 \tinyparagraph{Design goal}
-The main goal in our implementation is to (re)use EMF resource as much as possible. EMF resources already provide many required functionalities: they realize partial model persistence, resources manage inter-resource references through proxies, resources lazy-load, they can be added and deleted, and objects can be moved between resources. EMFFrag extends the existing implementations of EMF resources. EMFFrag could be realized with a very small code base of less than 900 lines of code.
+The main goal in our implementation is to (re)use EMF resource as much as possible. EMF resources already provide many required functionalities: they realize partial model persistence, resources manage inter-resource references through proxies, resources lazy-load, they can be added and deleted, and objects can be moved between resources. EMFFrag extends the existing implementations of EMF resources. EMFFrag could be realized with a very small code base of less than 800 lines of code.
 
 \begin{figure}[t]
   \centering

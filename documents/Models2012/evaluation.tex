@@ -71,9 +71,9 @@ The results are shown in Fig.~\ref{fig:grabatsQueryTime}. XMI performs badly for
 
 \subsection{The Influence of Fragmentation on Partial Load Performance}
 
-In section~\ref{sec:gains}, we looked at fragmentation analytically and provided a plot (Fig.~\ref{fig:theoryTimesSmall}) that describes the expected influence of fragmentation granularity on partial load execution times. Here, we create the same plot, but based on data measured with EMFFrag. For this purpose, we used the same simple meta-model as before (to measure create/modify) and generated models of size $10^6$ with different fragment sizes $f$. We measured the execution times for loading parts of different sizes $l$. The results are presented in Fig.~\ref{fig:measureTimeExtra}.
+In section~\ref{sec:gains}, we looked at fragmentation analytically and provided a plot (Fig.~\ref{fig:measureTimeExtra}, right) that describes the expected influence of fragmentation granularity on partial load execution times. New, we create the same plot, but based on data measured with EMFFrag. For this purpose, we used the same simple meta-model as before (to measure create/modify) and generated models of size $10^6$ with different fragment sizes $f$. We measured the execution times for loading parts of different sizes $l$. The results are presented in Fig.~\ref{fig:measureTimeExtra}, left.
 
-\begin{figure}[b]
+\begin{figure}[t]
 \begin{minipage}[b]{0.48\linewidth}
 \centering
 \includegraphics[width=\linewidth]{figures/measureTimesExtra}
@@ -83,7 +83,7 @@ In section~\ref{sec:gains}, we looked at fragmentation analytically and provided
 \centering
 \includegraphics[width=\linewidth]{figures/theoryTimesSmallWO}
 \end{minipage}
-\caption{Execution times for loading model parts with different fragmentation granularity.}
+\caption{Execution times for loading model parts with different fragmentation granularity measured with EMFFrag (left) and analytical (right).}
 \label{fig:measureTimeExtra}
 \end{figure}
 %
