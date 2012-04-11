@@ -1,0 +1,43 @@
+\begin{thebibliography}{1}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\urlprefix}{URL }
+
+\bibitem{estrin}
+Estrin, D., Girod, L., Pottie, G., Srivastava, M.: {Instrumenting the world
+  with wireless sensor networks}. In: {IEEE International Conference on
+  Acoustics, Speech, and Signal Processing}. Salt Lake City, UT , USA (2001)
+
+\bibitem{cityGML}
+Gr{\"o}ger, G., Kolbe, T.H., Czerwinski, A., Nagel, C.: {OpenGIS City Geography
+  Markup Language (CityGML) Encoding Standard, Version 1.0.0}. Tech. Rep. Doc.
+  No. 08-007r1, OGC, Wayland (MA), USA (2008)
+
+\bibitem{lynch}
+Lynch, J.P.: {A Summary Review of Wireless Sensors and Sensor Networks for
+  Structurr al Health Monitoring}. {The Shock and Vibration Digest}  38(2),
+  91--128 (2006)
+
+\bibitem{clickwatch}
+Scheidgen, M., Zubow, A., Sombrutzki, R.: {ClickWatch} -- {An Experimentation
+  Framework for Communication Network Test-beds}. In: {IEEE Wireless
+  Communications and Networking Conference}. France (2012)
+
+\bibitem{berlinGML}
+Stadler, A.: {Making interoperability persistent: A 3D geo database based on
+  CityGML}. In: Lee, J., Zlatanova, S. (eds.) {Proceedings of the 3rd
+  International Workshop on 3D Geo-Information}, pp. 175--192. Springer Verlag,
+  Seoul, Korea (2008)
+
+\bibitem{modelsAsCode}
+Thomas, D.: {Programming With Models} -- {Modeling with Code}. {Journal of
+  Object Technology}  5(8) (2006)
+
+\bibitem{wheeler}
+Wheeler, D.A.: {Counting Source Lines of Code (SLOC)}.
+  http://www.dwheeler.com/sloc (2002)
+
+\bibitem{hwl}
+Zubow, A., Sombrutzki, R.: {A Low-cost MIMO Mesh Testbed based on 802.11n}. In:
+  {IEEE Wireless Communications and Networking Conference}. France (2012)
+
+\end{thebibliography}
