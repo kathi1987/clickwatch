@@ -49,7 +49,7 @@ public class DBDumper implements IClickWatchMain {
 		}
 	};
 
-	// which handlers should only be dumoed? The full qualified name is needed
+	// which handlers should only be dumped? The full qualified name is needed
 	private static ArrayList<String> ONLY_USE_HANDLERS = new ArrayList<String>() {
 		{
 			add("device_wifi/data/power/systempower");
