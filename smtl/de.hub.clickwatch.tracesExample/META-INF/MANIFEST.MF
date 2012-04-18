@@ -11,6 +11,7 @@ Require-Bundle: org.eclipse.ui,
  de.hub.clickwatch.apps.main;bundle-version="2.2.0",
  de.digitalforger.smtl;bundle-version="1.0.0",
  org.eclipse.emf;bundle-version="2.6.0",
+ de.hub.clickwatch.analysis.traceable,
  de.hub.clickwatch.analysis.results.ui;bundle-version="2.2.0",
  de.hub.clickwatch.analysis.visualization;bundle-version="2.2.0"
 Bundle-ActivationPolicy: lazy

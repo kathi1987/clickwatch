@@ -1,4 +1,4 @@
-package de.hub.clickwatch.traceanalyzer
+package de.hub.clickwatch.analysis.traceable.analyzer
 
 import scala.collection.JavaConversions._
 import org.eclipse.emf.ecore.EObject

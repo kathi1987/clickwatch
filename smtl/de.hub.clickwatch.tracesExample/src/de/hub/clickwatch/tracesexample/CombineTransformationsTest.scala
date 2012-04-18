@@ -1,31 +1,21 @@
 package de.hub.clickwatch.tracesexample
 
-import scala.collection.JavaConversions._
-import de.digitalforger.smtl.m2m.TransformationM2M
-import de.hub.clickwatch.tracesexample.hwbusy.HWBusyExampleSMTL
-import de.hub.clickwatch.tracesexample.topology.TopologyExampleSMTL
-import de.digitalforger.smtl.trace.Tracer
-import de.hub.clickwatch.analysis.results.XYDataResultSet
-import de.hub.clickwatch.analysis.results.GraphNode
-import org.eclipse.emf.ecore.EObject
-import de.hub.clickwatch.datamodel.Node
+import org.apache.log4j.BasicConfigurator
 import org.eclipse.emf.common.util.URI
-import org.eclipse.emf.ecore.resource.Resource
-import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
+import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl
+import de.hub.clickwatch.analysis.results.GraphNode
+import de.hub.clickwatch.analysis.results.XYDataResultSet
 import de.hub.clickwatch.analysis.results.ResultsPackage
+import de.hub.clickwatch.datamodel.Node
 import de.hub.clickwatch.datamodel.ClickWatchDataModelPackage
 import de.hub.clickwatch.specificdatamodels.brn.BrnPackage
-import scala.collection.mutable.LinkedList
-import org.apache.log4j.BasicConfigurator
-import scala.collection.mutable.HashMap
-import linkStats.LinkStatExampleSMTL
-import de.hub.clickwatch.analysis.traceable.Traceable
-import org.eclipse.emf.ecore.util.EcoreUtil
-import de.hub.clickwatch.traceanalyzer.TraceAnalyzer
+import de.hub.clickwatch.tracesexample.hwbusy.HWBusyExampleSMTL
 import de.hub.clickwatch.tracesexample.linkAndHW.HWBusyAverageExampleSMTL
-import java.io.File
+import de.hub.clickwatch.tracesexample.topology.TopologyExampleSMTL
+import linkStats.LinkStatExampleSMTL
+import de.hub.clickwatch.analysis.traceable.analyzer.TraceAnalyzer
 
 object CombineTransformationsTest {
 
