@@ -1,0 +1,2830 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cwdm="http://de.hub.clickwatch.datamodel"
+	xmlns:device_wifi_link_stat_bcast_stats="http://de.hub.clickwatch.specificmodels.brn/device_wifi/link_stat/bcast_stats"
+	xmlns:device_wifi_wifidevice_cst_stats="http://de.hub.clickwatch.specificmodels.brn/device_wifi/wifidevice/cst/stats">
+	<cwdm:Network name="DumpedNetwork">
+		<nodes iNetAddress="192.168.3.152">
+			<elements name="device_wifi">
+				<children name="link_stat">
+					<handlers name="bcast_stats" canRead="true">
+						<values xsi:type="device_wifi_link_stat_bcast_stats:Bcast_stats"
+							name="device_wifi/link_stat/bcast_stats" timestamp="1322150509558873386">
+							<entry from="06-1B-B1-05-3B-6F" time="1.3221505089931972E9"
+								seq="2929" period="1000" tau="100000">
+								<link to="06-0B-6B-09-F2-94" seq="345761" period="1000"
+									tau="100000" last_rx="65.718697091">
+									<link_info size="300" rate="2" rev="1" />
+								</link>
+								<link to="06-0F-B5-97-38-5A" seq="344607" period="1000"
+									tau="100000" last_rx="54.282216091">
+									<link_info size="300" rate="2" rev="1" />
+								</link>
+								<link to="06-1B-B1-05-3B-65" seq="2930" period="1000" tau="100000"
+									last_rx="0.047349091">
+									<link_info size="300" rate="2" fwd="100" rev="71" />
+									<link_info size="300" rate="12" fwd="95" rev="70" />
+								</link>
+								<link to="06-1B-B1-05-3B-A2" seq="2925" period="1000" tau="100000"
+									last_rx="0.314814091">
+									<link_info size="300" rate="2" fwd="100" rev="79" />
+									<link_info size="300" rate="12" fwd="97" rev="75" />
+								</link>
+								<link to="06-1B-B1-05-3B-AB" seq="2927" period="1000" tau="100000"
+									last_rx="0.317023091">
+									<link_info size="300" rate="2" fwd="90" rev="66" />
+									<link_info size="300" rate="12" fwd="50" rev="60" />
+								</link>
+							</entry>
+						</values>
+						<values xsi:type="device_wifi_link_stat_bcast_stats:Bcast_stats"
+							name="device_wifi/link_stat/bcast_stats" timestamp="1322150509769505965">
+							<entry from="06-1B-B1-05-3B-6F" time="1.3221505092011175E9"
+								seq="2930" period="1000" tau="100000">
+								<link to="06-0B-6B-09-F2-94" seq="345761" period="1000"
+									tau="100000" last_rx="65.926617614">
+									<link_info size="300" rate="2" rev="1" />
+								</link>
+								<link to="06-0F-B5-97-38-5A" seq="344607" period="1000"
+									tau="100000" last_rx="54.490136614">
+									<link_info size="300" rate="2" rev="1" />
+								</link>
+								<link to="06-1B-B1-05-3B-65" seq="2930" period="1000" tau="100000"
+									last_rx="0.255269614">
+									<link_info size="300" rate="2" fwd="100" rev="71" />
+									<link_info size="300" rate="12" fwd="95" rev="70" />
+								</link>
+								<link to="06-1B-B1-05-3B-A2" seq="2926" period="1000" tau="100000"
+									last_rx="0.048838614">
+									<link_info size="300" rate="2" fwd="100" rev="79" />
+									<link_info size="300" rate="12" fwd="98" rev="75" />
+								</link>
+								<link to="06-1B-B1-05-3B-AB" seq="2928" period="1000" tau="100000"
+									last_rx="0.047159614">
+									<link_info size="300" rate="2" fwd="89" rev="66" />
+									<link_info size="300" rate="12" fwd="50" rev="61" />
+								</link>
+							</entry>
+						</values>
+						<values xsi:type="device_wifi_link_stat_bcast_stats:Bcast_stats"
+							name="device_wifi/link_stat/bcast_stats" timestamp="1322150509975197033">
+							<entry from="06-1B-B1-05-3B-6F" time="1.3221505094063358E9"
+								seq="2930" period="1000" tau="100000">
+								<link to="06-0B-6B-09-F2-94" seq="345761" period="1000"
+									tau="100000" last_rx="66.131835907">
+									<link_info size="300" rate="2" rev="1" />
+								</link>
+								<link to="06-0F-B5-97-38-5A" seq="344607" period="1000"
+									tau="100000" last_rx="54.695354907">
+									<link_info size="300" rate="2" rev="1" />
+								</link>
+								<link to="06-1B-B1-05-3B-65" seq="2930" period="1000" tau="100000"
+									last_rx="0.460487907">
+									<link_info size="300" rate="2" fwd="100" rev="70" />
+									<link_info size="300" rate="12" fwd="95" rev="70" />
+								</link>
+								<link to="06-1B-B1-05-3B-A2" seq="2926" period="1000" tau="100000"
+									last_rx="0.254056907">
+									<link_info size="300" rate="2" fwd="100" rev="79" />
+									<link_info size="300" rate="12" fwd="98" rev="75" />
+								</link>
+								<link to="06-1B-B1-05-3B-AB" seq="2928" period="1000" tau="100000"
+									last_rx="0.252377907">
+									<link_info size="300" rate="2" fwd="89" rev="65" />
+									<link_info size="300" rate="12" fwd="50" rev="61" />
+								</link>
+							</entry>
+						</values>
+					</handlers>
+				</children>
+				<children name="wifidevice">
+					<children name="cst">
+						<handlers name="stats" canRead="true">
+							<values xsi:type="device_wifi_wifidevice_cst_stats:Stats"
+								name="device_wifi/wifidevice/cst/stats" timestamp="1322150509558873386">
+								<channelstats node="06-1B-B1-05-3B-6F" time="1.322150508782202E9"
+									id="1465" length="1000" hw_duration="1000" unit="ms">
+									<mac packets="95" rx_pkt="95" no_err_pkt="89" crc_err_pkt="5"
+										phy_err_pkt="1" rx_unicast_pkt="18" rx_retry_pkt="2"
+										rx_bcast_pkt="77" rx_bytes="12786" last_packet_time="1.322150508727488E9"
+										no_src="11" />
+									<mac_percentage busy="11" rx="11" noerr_rx="11"
+										unit="percent" />
+									<mac_duration busy="116878" rx="116878" noerr_rx="112435"
+										crc_rx="4011" phy_rx="432" unit="us" />
+									<phy hwbusy="15" hwrx="14" last_hw_stat_time="1.3221505087821698E9"
+										hw_stats_count="1" avg_noise="-96" avg_rssi="7" std_rssi="3"
+										channel="8" />
+									<perf_counter cycles="44168106" busy_cycles="6820840"
+										rx_cycles="6366531" tx_cycles="145069" />
+									<neighbourstats>
+										<nb addr="FF-FF-FF-FF-FF-FF" rssi="7" std_rssi="3"
+											min_rssi="6" max_rssi="10" pkt_cnt="4" rx_bytes="56">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="4" max_size="50" overflow="false"
+												values="6,8,10,6" />
+										</nb>
+										<nb addr="00-11-88-27-DE-20" rssi="7" std_rssi="3"
+											min_rssi="2" max_rssi="11" pkt_cnt="14" rx_bytes="1818">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="14" max_size="50" overflow="false"
+												values="9,7,5,2,9,9,7,9,7,9,9,11,7,3" />
+										</nb>
+										<nb addr="00-11-88-27-DE-22" rssi="8" std_rssi="3"
+											min_rssi="7" max_rssi="10" pkt_cnt="5" rx_bytes="835">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="5" max_size="50" overflow="false"
+												values="7,10,7,9,10" />
+										</nb>
+										<nb addr="00-11-88-27-DE-23" rssi="6" std_rssi="3"
+											min_rssi="3" max_rssi="10" pkt_cnt="8" rx_bytes="880">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="8" max_size="50" overflow="false"
+												values="5,4,8,9,10,8,7,3" />
+										</nb>
+										<nb addr="00-11-88-27-DE-24" rssi="7" std_rssi="3"
+											min_rssi="1" max_rssi="10" pkt_cnt="23" rx_bytes="2584">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="23" max_size="50" overflow="false"
+												values="8,10,8,4,4,4,4,9,10,7,1,9,6,8,10,10,5,7,8,7,9,9,8" />
+										</nb>
+										<nb addr="00-23-6C-BF-55-C6" rssi="12" std_rssi="4"
+											min_rssi="10" max_rssi="17" pkt_cnt="5" rx_bytes="1115">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="5" max_size="50" overflow="false"
+												values="11,12,10,13,17" />
+										</nb>
+										<nb addr="00-11-88-27-DE-25" rssi="5" std_rssi="3"
+											min_rssi="2" max_rssi="11" pkt_cnt="21" rx_bytes="3440">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="21" max_size="50" overflow="false"
+												values="5,5,3,4,3,3,4,5,10,8,5,5,8,9,10,9,11,2,5,5,3" />
+										</nb>
+										<nb addr="00-24-D7-1D-1C-50" rssi="3" std_rssi="2"
+											min_rssi="3" max_rssi="5" pkt_cnt="5" rx_bytes="150">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="5" max_size="50" overflow="false"
+												values="3,4,4,5,3" />
+										</nb>
+										<nb addr="06-1B-B1-05-3B-AB" rssi="7" min_rssi="7"
+											max_rssi="7" pkt_cnt="1" rx_bytes="336">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="1" max_size="50" overflow="false"
+												values="7" />
+										</nb>
+										<nb addr="06-1B-B1-05-3B-65" rssi="14" min_rssi="14"
+											max_rssi="14" pkt_cnt="1" rx_bytes="336">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="1" max_size="50" overflow="false"
+												values="14" />
+										</nb>
+										<nb addr="06-1B-B1-05-3B-A2" rssi="8" std_rssi="8"
+											max_rssi="16" pkt_cnt="2" rx_bytes="672">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="2" max_size="50" overflow="false"
+												values="16,0" />
+										</nb>
+									</neighbourstats>
+								</channelstats>
+							</values>
+							<values xsi:type="device_wifi_wifidevice_cst_stats:Stats"
+								name="device_wifi/wifidevice/cst/stats" timestamp="1322150509769505965">
+								<channelstats node="06-1B-B1-05-3B-6F" time="1.322150508782202E9"
+									id="1465" length="1000" hw_duration="1000" unit="ms">
+									<mac packets="95" rx_pkt="95" no_err_pkt="89" crc_err_pkt="5"
+										phy_err_pkt="1" rx_unicast_pkt="18" rx_retry_pkt="2"
+										rx_bcast_pkt="77" rx_bytes="12786" last_packet_time="1.322150508727488E9"
+										no_src="11" />
+									<mac_percentage busy="11" rx="11" noerr_rx="11"
+										unit="percent" />
+									<mac_duration busy="116878" rx="116878" noerr_rx="112435"
+										crc_rx="4011" phy_rx="432" unit="us" />
+									<phy hwbusy="15" hwrx="14" last_hw_stat_time="1.3221505087821698E9"
+										hw_stats_count="1" avg_noise="-96" avg_rssi="7" std_rssi="3"
+										channel="8" />
+									<perf_counter cycles="44168106" busy_cycles="6820840"
+										rx_cycles="6366531" tx_cycles="145069" />
+									<neighbourstats>
+										<nb addr="FF-FF-FF-FF-FF-FF" rssi="7" std_rssi="3"
+											min_rssi="6" max_rssi="10" pkt_cnt="4" rx_bytes="56">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="4" max_size="50" overflow="false"
+												values="6,8,10,6" />
+										</nb>
+										<nb addr="00-11-88-27-DE-20" rssi="7" std_rssi="3"
+											min_rssi="2" max_rssi="11" pkt_cnt="14" rx_bytes="1818">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="14" max_size="50" overflow="false"
+												values="9,7,5,2,9,9,7,9,7,9,9,11,7,3" />
+										</nb>
+										<nb addr="00-11-88-27-DE-22" rssi="8" std_rssi="3"
+											min_rssi="7" max_rssi="10" pkt_cnt="5" rx_bytes="835">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="5" max_size="50" overflow="false"
+												values="7,10,7,9,10" />
+										</nb>
+										<nb addr="00-11-88-27-DE-23" rssi="6" std_rssi="3"
+											min_rssi="3" max_rssi="10" pkt_cnt="8" rx_bytes="880">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="8" max_size="50" overflow="false"
+												values="5,4,8,9,10,8,7,3" />
+										</nb>
+										<nb addr="00-11-88-27-DE-24" rssi="7" std_rssi="3"
+											min_rssi="1" max_rssi="10" pkt_cnt="23" rx_bytes="2584">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="23" max_size="50" overflow="false"
+												values="8,10,8,4,4,4,4,9,10,7,1,9,6,8,10,10,5,7,8,7,9,9,8" />
+										</nb>
+										<nb addr="00-23-6C-BF-55-C6" rssi="12" std_rssi="4"
+											min_rssi="10" max_rssi="17" pkt_cnt="5" rx_bytes="1115">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="5" max_size="50" overflow="false"
+												values="11,12,10,13,17" />
+										</nb>
+										<nb addr="00-11-88-27-DE-25" rssi="5" std_rssi="3"
+											min_rssi="2" max_rssi="11" pkt_cnt="21" rx_bytes="3440">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="21" max_size="50" overflow="false"
+												values="5,5,3,4,3,3,4,5,10,8,5,5,8,9,10,9,11,2,5,5,3" />
+										</nb>
+										<nb addr="00-24-D7-1D-1C-50" rssi="3" std_rssi="2"
+											min_rssi="3" max_rssi="5" pkt_cnt="5" rx_bytes="150">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="5" max_size="50" overflow="false"
+												values="3,4,4,5,3" />
+										</nb>
+										<nb addr="06-1B-B1-05-3B-AB" rssi="7" min_rssi="7"
+											max_rssi="7" pkt_cnt="1" rx_bytes="336">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="1" max_size="50" overflow="false"
+												values="7" />
+										</nb>
+										<nb addr="06-1B-B1-05-3B-65" rssi="14" min_rssi="14"
+											max_rssi="14" pkt_cnt="1" rx_bytes="336">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="1" max_size="50" overflow="false"
+												values="14" />
+										</nb>
+										<nb addr="06-1B-B1-05-3B-A2" rssi="8" std_rssi="8"
+											max_rssi="16" pkt_cnt="2" rx_bytes="672">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="2" max_size="50" overflow="false"
+												values="16,0" />
+										</nb>
+									</neighbourstats>
+								</channelstats>
+							</values>
+							<values xsi:type="device_wifi_wifidevice_cst_stats:Stats"
+								name="device_wifi/wifidevice/cst/stats" timestamp="1322150509975197033">
+								<channelstats node="06-1B-B1-05-3B-6F" time="1.322150508782202E9"
+									id="1465" length="1000" hw_duration="1000" unit="ms">
+									<mac packets="95" rx_pkt="95" no_err_pkt="89" crc_err_pkt="5"
+										phy_err_pkt="1" rx_unicast_pkt="18" rx_retry_pkt="2"
+										rx_bcast_pkt="77" rx_bytes="12786" last_packet_time="1.322150508727488E9"
+										no_src="11" />
+									<mac_percentage busy="11" rx="11" noerr_rx="11"
+										unit="percent" />
+									<mac_duration busy="116878" rx="116878" noerr_rx="112435"
+										crc_rx="4011" phy_rx="432" unit="us" />
+									<phy hwbusy="15" hwrx="14" last_hw_stat_time="1.3221505087821698E9"
+										hw_stats_count="1" avg_noise="-96" avg_rssi="7" std_rssi="3"
+										channel="8" />
+									<perf_counter cycles="44168106" busy_cycles="6820840"
+										rx_cycles="6366531" tx_cycles="145069" />
+									<neighbourstats>
+										<nb addr="FF-FF-FF-FF-FF-FF" rssi="7" std_rssi="3"
+											min_rssi="6" max_rssi="10" pkt_cnt="4" rx_bytes="56">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="4" max_size="50" overflow="false"
+												values="6,8,10,6" />
+										</nb>
+										<nb addr="00-11-88-27-DE-20" rssi="7" std_rssi="3"
+											min_rssi="2" max_rssi="11" pkt_cnt="14" rx_bytes="1818">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="14" max_size="50" overflow="false"
+												values="9,7,5,2,9,9,7,9,7,9,9,11,7,3" />
+										</nb>
+										<nb addr="00-11-88-27-DE-22" rssi="8" std_rssi="3"
+											min_rssi="7" max_rssi="10" pkt_cnt="5" rx_bytes="835">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="5" max_size="50" overflow="false"
+												values="7,10,7,9,10" />
+										</nb>
+										<nb addr="00-11-88-27-DE-23" rssi="6" std_rssi="3"
+											min_rssi="3" max_rssi="10" pkt_cnt="8" rx_bytes="880">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="8" max_size="50" overflow="false"
+												values="5,4,8,9,10,8,7,3" />
+										</nb>
+										<nb addr="00-11-88-27-DE-24" rssi="7" std_rssi="3"
+											min_rssi="1" max_rssi="10" pkt_cnt="23" rx_bytes="2584">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="23" max_size="50" overflow="false"
+												values="8,10,8,4,4,4,4,9,10,7,1,9,6,8,10,10,5,7,8,7,9,9,8" />
+										</nb>
+										<nb addr="00-23-6C-BF-55-C6" rssi="12" std_rssi="4"
+											min_rssi="10" max_rssi="17" pkt_cnt="5" rx_bytes="1115">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="5" max_size="50" overflow="false"
+												values="11,12,10,13,17" />
+										</nb>
+										<nb addr="00-11-88-27-DE-25" rssi="5" std_rssi="3"
+											min_rssi="2" max_rssi="11" pkt_cnt="21" rx_bytes="3440">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="21" max_size="50" overflow="false"
+												values="5,5,3,4,3,3,4,5,10,8,5,5,8,9,10,9,11,2,5,5,3" />
+										</nb>
+										<nb addr="00-24-D7-1D-1C-50" rssi="3" std_rssi="2"
+											min_rssi="3" max_rssi="5" pkt_cnt="5" rx_bytes="150">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="5" max_size="50" overflow="false"
+												values="3,4,4,5,3" />
+										</nb>
+										<nb addr="06-1B-B1-05-3B-AB" rssi="7" min_rssi="7"
+											max_rssi="7" pkt_cnt="1" rx_bytes="336">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="1" max_size="50" overflow="false"
+												values="7" />
+										</nb>
+										<nb addr="06-1B-B1-05-3B-65" rssi="14" min_rssi="14"
+											max_rssi="14" pkt_cnt="1" rx_bytes="336">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="1" max_size="50" overflow="false"
+												values="14" />
+										</nb>
+										<nb addr="06-1B-B1-05-3B-A2" rssi="8" std_rssi="8"
+											max_rssi="16" pkt_cnt="2" rx_bytes="672">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="2" max_size="50" overflow="false"
+												values="16,0" />
+										</nb>
+									</neighbourstats>
+								</channelstats>
+							</values>
+						</handlers>
+					</children>
+				</children>
+			</elements>
+		</nodes>
+		<nodes iNetAddress="192.168.3.179">
+			<elements name="device_wifi">
+				<children name="link_stat">
+					<handlers name="bcast_stats" canRead="true">
+						<values xsi:type="device_wifi_link_stat_bcast_stats:Bcast_stats"
+							name="device_wifi/link_stat/bcast_stats" timestamp="1322150509613950873">
+							<entry from="06-1B-B1-05-3B-3F" time="1.3221505101005378E9"
+								seq="2933" period="1000" tau="100000">
+								<link to="06-0F-B5-97-33-6C" seq="344583" period="1000"
+									tau="100000" last_rx="67.892952668">
+									<link_info size="300" rate="2" rev="1" />
+								</link>
+								<link to="06-1B-B1-05-3B-5D" seq="2871" period="1000" tau="100000"
+									last_rx="33.177188668">
+									<link_info size="300" rate="2" fwd="31" rev="2" />
+								</link>
+							</entry>
+						</values>
+						<values xsi:type="device_wifi_link_stat_bcast_stats:Bcast_stats"
+							name="device_wifi/link_stat/bcast_stats" timestamp="1322150509814005066">
+							<entry from="06-1B-B1-05-3B-3F" time="1.3221505103002968E9"
+								seq="2933" period="1000" tau="100000">
+								<link to="06-0F-B5-97-33-6C" seq="344583" period="1000"
+									tau="100000" last_rx="68.092711824">
+									<link_info size="300" rate="2" rev="1" />
+								</link>
+								<link to="06-1B-B1-05-3B-5D" seq="2871" period="1000" tau="100000"
+									last_rx="33.376947824">
+									<link_info size="300" rate="2" fwd="31" rev="2" />
+								</link>
+							</entry>
+						</values>
+					</handlers>
+				</children>
+				<children name="wifidevice">
+					<children name="cst">
+						<handlers name="stats" canRead="true">
+							<values xsi:type="device_wifi_wifidevice_cst_stats:Stats"
+								name="device_wifi/wifidevice/cst/stats" timestamp="1322150509613950873">
+								<channelstats node="06-1B-B1-05-3B-3F" time="1.3221505100800788E9"
+									id="1465" length="1000" hw_duration="1000" unit="ms">
+									<mac packets="28" rx_pkt="28" no_err_pkt="23" crc_err_pkt="5"
+										rx_unicast_pkt="5" rx_bcast_pkt="23" rx_bytes="4218"
+										last_packet_time="1.322150509993997E9" no_src="5" />
+									<mac_percentage busy="3" rx="3" noerr_rx="3"
+										unit="percent" />
+									<mac_duration busy="39120" rx="39120" noerr_rx="32128"
+										crc_rx="6992" unit="us" />
+									<phy hwbusy="9" hwrx="8" last_hw_stat_time="1.3221505100800471E9"
+										hw_stats_count="1" avg_noise="-96" avg_rssi="3" std_rssi="1"
+										channel="8" />
+									<perf_counter cycles="44115315" busy_cycles="4257458"
+										rx_cycles="3717988" tx_cycles="145069" />
+									<neighbourstats>
+										<nb addr="00-11-88-27-D1-B0" rssi="2" std_rssi="2"
+											min_rssi="2" max_rssi="4" pkt_cnt="4" rx_bytes="672">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="4" max_size="50" overflow="false"
+												values="2,4,2,3" />
+										</nb>
+										<nb addr="00-11-88-27-D1-B2" rssi="3" std_rssi="2"
+											min_rssi="3" max_rssi="4" pkt_cnt="3" rx_bytes="501">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="3" max_size="50" overflow="false"
+												values="4,4,3" />
+										</nb>
+										<nb addr="00-11-88-27-D1-B3" rssi="2" std_rssi="2"
+											max_rssi="4" pkt_cnt="4" rx_bytes="440">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="4" max_size="50" overflow="false"
+												values="0,2,3,4" />
+										</nb>
+										<nb addr="00-11-88-27-D1-B4" rssi="3" std_rssi="1"
+											min_rssi="3" max_rssi="4" pkt_cnt="4" rx_bytes="544">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="4" max_size="50" overflow="false"
+												values="3,4,3,3" />
+										</nb>
+										<nb addr="00-11-88-27-D1-B5" rssi="3" std_rssi="1"
+											min_rssi="2" max_rssi="5" pkt_cnt="8" rx_bytes="1307">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="8" max_size="50" overflow="false"
+												values="4,3,3,3,3,5,3,2" />
+										</nb>
+									</neighbourstats>
+								</channelstats>
+							</values>
+							<values xsi:type="device_wifi_wifidevice_cst_stats:Stats"
+								name="device_wifi/wifidevice/cst/stats" timestamp="1322150509814005066">
+								<channelstats node="06-1B-B1-05-3B-3F" time="1.3221505100800788E9"
+									id="1465" length="1000" hw_duration="1000" unit="ms">
+									<mac packets="28" rx_pkt="28" no_err_pkt="23" crc_err_pkt="5"
+										rx_unicast_pkt="5" rx_bcast_pkt="23" rx_bytes="4218"
+										last_packet_time="1.322150509993997E9" no_src="5" />
+									<mac_percentage busy="3" rx="3" noerr_rx="3"
+										unit="percent" />
+									<mac_duration busy="39120" rx="39120" noerr_rx="32128"
+										crc_rx="6992" unit="us" />
+									<phy hwbusy="9" hwrx="8" last_hw_stat_time="1.3221505100800471E9"
+										hw_stats_count="1" avg_noise="-96" avg_rssi="3" std_rssi="1"
+										channel="8" />
+									<perf_counter cycles="44115315" busy_cycles="4257458"
+										rx_cycles="3717988" tx_cycles="145069" />
+									<neighbourstats>
+										<nb addr="00-11-88-27-D1-B0" rssi="2" std_rssi="2"
+											min_rssi="2" max_rssi="4" pkt_cnt="4" rx_bytes="672">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="4" max_size="50" overflow="false"
+												values="2,4,2,3" />
+										</nb>
+										<nb addr="00-11-88-27-D1-B2" rssi="3" std_rssi="2"
+											min_rssi="3" max_rssi="4" pkt_cnt="3" rx_bytes="501">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="3" max_size="50" overflow="false"
+												values="4,4,3" />
+										</nb>
+										<nb addr="00-11-88-27-D1-B3" rssi="2" std_rssi="2"
+											max_rssi="4" pkt_cnt="4" rx_bytes="440">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="4" max_size="50" overflow="false"
+												values="0,2,3,4" />
+										</nb>
+										<nb addr="00-11-88-27-D1-B4" rssi="3" std_rssi="1"
+											min_rssi="3" max_rssi="4" pkt_cnt="4" rx_bytes="544">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="4" max_size="50" overflow="false"
+												values="3,4,3,3" />
+										</nb>
+										<nb addr="00-11-88-27-D1-B5" rssi="3" std_rssi="1"
+											min_rssi="2" max_rssi="5" pkt_cnt="8" rx_bytes="1307">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="8" max_size="50" overflow="false"
+												values="4,3,3,3,3,5,3,2" />
+										</nb>
+									</neighbourstats>
+								</channelstats>
+							</values>
+						</handlers>
+					</children>
+				</children>
+			</elements>
+		</nodes>
+		<nodes iNetAddress="192.168.3.170">
+			<elements name="device_wifi">
+				<children name="link_stat">
+					<handlers name="bcast_stats" canRead="true">
+						<values xsi:type="device_wifi_link_stat_bcast_stats:Bcast_stats"
+							name="device_wifi/link_stat/bcast_stats" timestamp="1322150509653035871">
+							<entry from="06-1B-B1-05-3B-88" time="1.3221505090614283E9"
+								seq="2936" period="1000" tau="100000">
+								<link to="06-0F-B5-97-36-54" seq="344427" period="1000"
+									tau="100000" last_rx="146.007771208">
+									<link_info size="300" rate="2" />
+								</link>
+								<link to="06-1B-B1-05-3B-75" seq="2935" period="1000" tau="100000"
+									last_rx="0.180182208">
+									<link_info size="300" rate="2" fwd="93" rev="98" />
+									<link_info size="300" rate="12" fwd="95" rev="94" />
+								</link>
+							</entry>
+						</values>
+						<values xsi:type="device_wifi_link_stat_bcast_stats:Bcast_stats"
+							name="device_wifi/link_stat/bcast_stats" timestamp="1322150509857549086">
+							<entry from="06-1B-B1-05-3B-88" time="1.3221505092665887E9"
+								seq="2936" period="1000" tau="100000">
+								<link to="06-0F-B5-97-36-54" seq="344427" period="1000"
+									tau="100000" last_rx="146.21293164">
+									<link_info size="300" rate="2" />
+								</link>
+								<link to="06-1B-B1-05-3B-75" seq="2935" period="1000" tau="100000"
+									last_rx="0.38534264">
+									<link_info size="300" rate="2" fwd="93" rev="98" />
+									<link_info size="300" rate="12" fwd="95" rev="94" />
+								</link>
+							</entry>
+						</values>
+					</handlers>
+				</children>
+				<children name="wifidevice">
+					<children name="cst">
+						<handlers name="stats" canRead="true">
+							<values xsi:type="device_wifi_wifidevice_cst_stats:Stats"
+								name="device_wifi/wifidevice/cst/stats" timestamp="1322150509653035871">
+								<channelstats node="06-1B-B1-05-3B-88" time="1.3221505081247766E9"
+									id="1464" length="1000" hw_duration="1000" unit="ms">
+									<mac packets="2" rx_pkt="2" no_err_pkt="2" rx_bcast_pkt="2"
+										rx_bytes="672" last_packet_time="1.322150507805616E9" no_src="1" />
+									<mac_percentage unit="percent" />
+									<mac_duration busy="3331" rx="3331" noerr_rx="3331"
+										unit="us" />
+									<phy hwbusy="3" hwrx="1" last_hw_stat_time="1.3221505081247444E9"
+										hw_stats_count="1" avg_noise="-96" avg_rssi="18" std_rssi="4"
+										channel="8" />
+									<perf_counter cycles="43933757" busy_cycles="1514444"
+										rx_cycles="685908" tx_cycles="145069" />
+									<neighbourstats>
+										<nb addr="06-1B-B1-05-3B-75" rssi="18" std_rssi="4"
+											min_rssi="18" max_rssi="19" pkt_cnt="2" rx_bytes="672">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="2" max_size="50" overflow="false"
+												values="19,18" />
+										</nb>
+									</neighbourstats>
+								</channelstats>
+							</values>
+							<values xsi:type="device_wifi_wifidevice_cst_stats:Stats"
+								name="device_wifi/wifidevice/cst/stats" timestamp="1322150509857549086">
+								<channelstats node="06-1B-B1-05-3B-88" time="1.322150509150518E9"
+									id="1465" length="1000" hw_duration="1000" unit="ms">
+									<mac packets="2" rx_pkt="2" no_err_pkt="2" rx_bcast_pkt="2"
+										rx_bytes="672" last_packet_time="1.322150508854968E9" no_src="1" />
+									<mac_percentage unit="percent" />
+									<mac_duration busy="3331" rx="3331" noerr_rx="3331"
+										unit="us" />
+									<phy hwbusy="1" last_hw_stat_time="1.322150509150486E9"
+										hw_stats_count="1" avg_noise="-96" avg_rssi="18" std_rssi="4"
+										channel="8" />
+									<perf_counter cycles="45273484" busy_cycles="757200"
+										rx_cycles="254711" tx_cycles="145069" />
+									<neighbourstats>
+										<nb addr="06-1B-B1-05-3B-75" rssi="18" std_rssi="4"
+											min_rssi="18" max_rssi="19" pkt_cnt="2" rx_bytes="672">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="2" max_size="50" overflow="false"
+												values="19,18" />
+										</nb>
+									</neighbourstats>
+								</channelstats>
+							</values>
+						</handlers>
+					</children>
+				</children>
+			</elements>
+		</nodes>
+		<nodes iNetAddress="192.168.3.151">
+			<elements name="device_wifi">
+				<children name="link_stat">
+					<handlers name="bcast_stats" canRead="true">
+						<values xsi:type="device_wifi_link_stat_bcast_stats:Bcast_stats"
+							name="device_wifi/link_stat/bcast_stats" timestamp="1322150509680042377">
+							<entry from="06-1B-B1-05-3B-5D" time="1.32215050911231E9"
+								seq="2937" period="1000" tau="100000">
+								<link to="06-1B-B1-05-3B-3F" seq="2932" period="1000" tau="100000"
+									last_rx="0.823239935">
+									<link_info size="300" rate="2" fwd="2" rev="40" />
+									<link_info size="300" rate="12" rev="13" />
+								</link>
+								<link to="06-1B-B1-05-3B-75" seq="2934" period="1000" tau="100000"
+									last_rx="0.767266935">
+									<link_info size="300" rate="2" fwd="88" rev="86" />
+									<link_info size="300" rate="12" fwd="90" rev="71" />
+								</link>
+								<link to="06-1B-B1-05-3B-88" seq="2911" period="1000" tau="100000"
+									last_rx="12.522263935">
+									<link_info size="300" rate="2" rev="8" />
+								</link>
+								<link to="06-1B-B1-05-3B-AB" seq="2889" period="1000" tau="100000"
+									last_rx="19.410427935">
+									<link_info size="300" rate="2" fwd="14" rev="26" />
+									<link_info size="300" rate="12" rev="6" />
+								</link>
+							</entry>
+						</values>
+						<values xsi:type="device_wifi_link_stat_bcast_stats:Bcast_stats"
+							name="device_wifi/link_stat/bcast_stats" timestamp="1322150509886472944">
+							<entry from="06-1B-B1-05-3B-5D" time="1.3221505093184974E9"
+								seq="2938" period="1000" tau="100000">
+								<link to="06-1B-B1-05-3B-3F" seq="2932" period="1000" tau="100000"
+									last_rx="1.029427343">
+									<link_info size="300" rate="2" fwd="2" rev="40" />
+									<link_info size="300" rate="12" rev="13" />
+								</link>
+								<link to="06-1B-B1-05-3B-75" seq="2934" period="1000" tau="100000"
+									last_rx="0.973454343">
+									<link_info size="300" rate="2" fwd="88" rev="86" />
+									<link_info size="300" rate="12" fwd="90" rev="71" />
+								</link>
+								<link to="06-1B-B1-05-3B-88" seq="2911" period="1000" tau="100000"
+									last_rx="12.728451343">
+									<link_info size="300" rate="2" rev="8" />
+								</link>
+								<link to="06-1B-B1-05-3B-AB" seq="2889" period="1000" tau="100000"
+									last_rx="19.616615343">
+									<link_info size="300" rate="2" fwd="14" rev="26" />
+									<link_info size="300" rate="12" rev="6" />
+								</link>
+							</entry>
+						</values>
+					</handlers>
+				</children>
+				<children name="wifidevice">
+					<children name="cst">
+						<handlers name="stats" canRead="true">
+							<values xsi:type="device_wifi_wifidevice_cst_stats:Stats"
+								name="device_wifi/wifidevice/cst/stats" timestamp="1322150509680042377">
+								<channelstats node="06-1B-B1-05-3B-5D" time="1.3221505083625345E9"
+									id="1464" length="1000" hw_duration="1000" unit="ms">
+									<mac packets="83" rx_pkt="83" no_err_pkt="68" crc_err_pkt="13"
+										phy_err_pkt="2" rx_unicast_pkt="16" rx_bcast_pkt="67"
+										rx_bytes="12777" last_packet_time="1.322150508344948E9"
+										no_src="17" />
+									<mac_percentage busy="11" rx="11" noerr_rx="9"
+										crc_rx="1" unit="percent" />
+									<mac_duration busy="110865" rx="110865" noerr_rx="91550"
+										crc_rx="18163" phy_rx="1152" unit="us" />
+									<phy hwbusy="21" hwrx="19" last_hw_stat_time="1.3221505083625028E9"
+										hw_stats_count="1" avg_noise="-96" avg_rssi="15" std_rssi="12"
+										channel="8" />
+									<perf_counter cycles="44130191" busy_cycles="9538936"
+										rx_cycles="8396760" tx_cycles="145069" />
+									<neighbourstats>
+										<nb addr="00-23-6C-BF-55-C6" rssi="9" std_rssi="3"
+											min_rssi="8" max_rssi="11" pkt_cnt="2" rx_bytes="446">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="2" max_size="50" overflow="false"
+												values="11,8" />
+										</nb>
+										<nb addr="00-11-88-27-D1-B0" rssi="3" std_rssi="3"
+											max_rssi="5" pkt_cnt="7" rx_bytes="1044">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="7" max_size="50" overflow="false"
+												values="4,0,5,5,5,4,4" />
+										</nb>
+										<nb addr="00-11-88-27-D1-B2" rssi="4" std_rssi="2"
+											min_rssi="4" max_rssi="5" pkt_cnt="5" rx_bytes="835">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="5" max_size="50" overflow="false"
+												values="4,4,5,5,5" />
+										</nb>
+										<nb addr="00-11-88-27-D1-B3" rssi="5" std_rssi="3"
+											min_rssi="5" max_rssi="6" pkt_cnt="5" rx_bytes="550">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="5" max_size="50" overflow="false"
+												values="6,5,6,6,6" />
+										</nb>
+										<nb addr="00-11-88-27-D1-B4" rssi="4" std_rssi="1"
+											min_rssi="2" max_rssi="6" pkt_cnt="5" rx_bytes="680">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="5" max_size="50" overflow="false"
+												values="2,6,5,2,5" />
+										</nb>
+										<nb addr="00-11-88-27-D1-B5" rssi="3" std_rssi="3"
+											max_rssi="8" pkt_cnt="8" rx_bytes="906">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="8" max_size="50" overflow="false"
+												values="7,5,8,0,4,4,2,0" />
+										</nb>
+										<nb addr="00-11-88-28-68-30" rssi="28" std_rssi="6"
+											min_rssi="26" max_rssi="32" pkt_cnt="8" rx_bytes="1146">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="8" max_size="50" overflow="false"
+												values="32,27,31,26,27,30,29,28" />
+										</nb>
+										<nb addr="00-11-88-28-68-32" rssi="30" std_rssi="4"
+											min_rssi="29" max_rssi="31" pkt_cnt="3" rx_bytes="501">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="3" max_size="50" overflow="false"
+												values="31,31,29" />
+										</nb>
+										<nb addr="00-11-88-28-68-33" rssi="29" std_rssi="2"
+											min_rssi="26" max_rssi="32" pkt_cnt="5" rx_bytes="522">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="5" max_size="50" overflow="false"
+												values="32,32,26,27,28" />
+										</nb>
+										<nb addr="00-11-88-28-68-34" rssi="28" std_rssi="4"
+											min_rssi="26" max_rssi="31" pkt_cnt="3" rx_bytes="408">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="3" max_size="50" overflow="false"
+												values="31,26,28" />
+										</nb>
+										<nb addr="00-11-88-28-68-35" rssi="26" std_rssi="6"
+											min_rssi="14" max_rssi="32" pkt_cnt="9" rx_bytes="1481">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="9" max_size="50" overflow="false"
+												values="31,32,26,30,30,28,28,16,14" />
+										</nb>
+										<nb addr="00-1F-45-20-D3-D0" rssi="11" min_rssi="11"
+											max_rssi="11" pkt_cnt="1" rx_bytes="167">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="1" max_size="50" overflow="false"
+												values="11" />
+										</nb>
+										<nb addr="06-1B-B1-05-3B-3F" rssi="6" min_rssi="6"
+											max_rssi="6" pkt_cnt="1" rx_bytes="336">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="1" max_size="50" overflow="false"
+												values="6" />
+										</nb>
+										<nb addr="00-1F-45-20-D3-D2" rssi="11" min_rssi="11"
+											max_rssi="11" pkt_cnt="1" rx_bytes="167">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="1" max_size="50" overflow="false"
+												values="11" />
+										</nb>
+										<nb addr="00-1F-45-20-D3-D3" rssi="11" min_rssi="11"
+											max_rssi="11" pkt_cnt="2" rx_bytes="220">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="2" max_size="50" overflow="false"
+												values="11,11" />
+										</nb>
+										<nb addr="00-1F-45-20-D3-D5" rssi="9" min_rssi="9"
+											max_rssi="9" pkt_cnt="1" rx_bytes="338">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="1" max_size="50" overflow="false"
+												values="9" />
+										</nb>
+										<nb addr="06-1B-B1-05-3B-75" rssi="14" std_rssi="1"
+											min_rssi="13" max_rssi="15" pkt_cnt="2" rx_bytes="672">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="2" max_size="50" overflow="false"
+												values="13,15" />
+										</nb>
+									</neighbourstats>
+								</channelstats>
+							</values>
+						</handlers>
+					</children>
+				</children>
+			</elements>
+		</nodes>
+		<nodes iNetAddress="192.168.3.162">
+			<elements name="device_wifi">
+				<children name="link_stat">
+					<handlers name="bcast_stats" canRead="true">
+						<values xsi:type="device_wifi_link_stat_bcast_stats:Bcast_stats"
+							name="device_wifi/link_stat/bcast_stats" timestamp="1322150509732022888">
+							<entry from="06-1B-B1-05-3B-75" time="1.3221505090950994E9"
+								seq="2935" period="1000" tau="100000">
+								<link to="06-0F-B5-97-36-D8" seq="344593" period="1000"
+									tau="100000" last_rx="76.974676554">
+									<link_info size="300" rate="2" rev="1" />
+								</link>
+								<link to="06-1B-B1-05-3B-5D" seq="2937" period="1000" tau="100000"
+									last_rx="0.492354554">
+									<link_info size="300" rate="2" fwd="86" rev="88" />
+									<link_info size="300" rate="12" fwd="72" rev="90" />
+								</link>
+								<link to="06-1B-B1-05-3B-88" seq="2936" period="1000" tau="100000"
+									last_rx="0.171550554">
+									<link_info size="300" rate="2" fwd="98" rev="92" />
+									<link_info size="300" rate="12" fwd="95" rev="96" />
+								</link>
+							</entry>
+						</values>
+						<values xsi:type="device_wifi_link_stat_bcast_stats:Bcast_stats"
+							name="device_wifi/link_stat/bcast_stats" timestamp="1322150509937087985">
+							<entry from="06-1B-B1-05-3B-75" time="1.3221505093000183E9"
+								seq="2935" period="1000" tau="100000">
+								<link to="06-0F-B5-97-36-D8" seq="344593" period="1000"
+									tau="100000" last_rx="77.179595329">
+									<link_info size="300" rate="2" rev="1" />
+								</link>
+								<link to="06-1B-B1-05-3B-5D" seq="2938" period="1000" tau="100000"
+									last_rx="0.114947329">
+									<link_info size="300" rate="2" fwd="86" rev="88" />
+									<link_info size="300" rate="12" fwd="71" rev="90" />
+								</link>
+								<link to="06-1B-B1-05-3B-88" seq="2936" period="1000" tau="100000"
+									last_rx="0.376469329">
+									<link_info size="300" rate="2" fwd="98" rev="92" />
+									<link_info size="300" rate="12" fwd="95" rev="96" />
+								</link>
+							</entry>
+						</values>
+					</handlers>
+				</children>
+				<children name="wifidevice">
+					<children name="cst">
+						<handlers name="stats" canRead="true">
+							<values xsi:type="device_wifi_wifidevice_cst_stats:Stats"
+								name="device_wifi/wifidevice/cst/stats" timestamp="1322150509732022888">
+								<channelstats node="06-1B-B1-05-3B-75" time="1.3221505086018379E9"
+									id="1464" length="1000" hw_duration="1000" unit="ms">
+									<mac packets="55" rx_pkt="55" no_err_pkt="40" crc_err_pkt="15"
+										rx_unicast_pkt="18" rx_retry_pkt="1" rx_bcast_pkt="37"
+										rx_bytes="8581" last_packet_time="1.322150508532331E9" no_src="8" />
+									<mac_percentage busy="7" rx="7" noerr_rx="5"
+										crc_rx="1" unit="percent" />
+									<mac_duration busy="74350" rx="74350" noerr_rx="55030"
+										crc_rx="19320" unit="us" />
+									<phy hwbusy="10" hwrx="9" last_hw_stat_time="1.3221505086018066E9"
+										hw_stats_count="1" avg_noise="-96" avg_rssi="18" std_rssi="7"
+										channel="8" />
+									<perf_counter cycles="44192410" busy_cycles="4833934"
+										rx_cycles="4392934" tx_cycles="145069" />
+									<neighbourstats>
+										<nb addr="06-1B-B1-05-3B-88" rssi="26" std_rssi="5"
+											min_rssi="26" max_rssi="27" pkt_cnt="2" rx_bytes="672">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="2" max_size="50" overflow="false"
+												values="27,26" />
+										</nb>
+										<nb addr="06-1B-B1-05-3B-5D" rssi="9" std_rssi="2"
+											min_rssi="7" max_rssi="11" pkt_cnt="2" rx_bytes="672">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="2" max_size="50" overflow="false"
+												values="7,11" />
+										</nb>
+										<nb addr="00-24-D7-1D-1C-50" rssi="2" min_rssi="2"
+											max_rssi="2" pkt_cnt="2" rx_bytes="60">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="2" max_size="50" overflow="false"
+												values="2,2" />
+										</nb>
+										<nb addr="00-11-88-28-68-30" rssi="19" std_rssi="4"
+											min_rssi="17" max_rssi="25" pkt_cnt="13" rx_bytes="1788">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="13" max_size="50" overflow="false"
+												values="19,19,18,17,18,24,18,25,17,25,18,17,17" />
+										</nb>
+										<nb addr="00-11-88-28-68-32" rssi="22" std_rssi="4"
+											min_rssi="18" max_rssi="25" pkt_cnt="5" rx_bytes="835">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="5" max_size="50" overflow="false"
+												values="18,25,25,25,18" />
+										</nb>
+										<nb addr="00-11-88-28-68-33" rssi="19" std_rssi="5"
+											min_rssi="17" max_rssi="25" pkt_cnt="5" rx_bytes="550">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="5" max_size="50" overflow="false"
+												values="19,19,25,17,18" />
+										</nb>
+										<nb addr="00-11-88-28-68-34" rssi="19" min_rssi="19"
+											max_rssi="19" pkt_cnt="2" rx_bytes="272">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="2" max_size="50" overflow="false"
+												values="19,19" />
+										</nb>
+										<nb addr="00-11-88-28-68-35" rssi="20" std_rssi="6"
+											min_rssi="17" max_rssi="25" pkt_cnt="9" rx_bytes="1677">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="9" max_size="50" overflow="false"
+												values="18,17,19,24,24,24,25,18,18" />
+										</nb>
+									</neighbourstats>
+								</channelstats>
+							</values>
+						</handlers>
+					</children>
+				</children>
+			</elements>
+		</nodes>
+		<nodes iNetAddress="192.168.3.188">
+			<elements name="device_wifi">
+				<children name="link_stat">
+					<handlers name="bcast_stats" canRead="true">
+						<values xsi:type="device_wifi_link_stat_bcast_stats:Bcast_stats"
+							name="device_wifi/link_stat/bcast_stats" timestamp="1322150509764554896">
+							<entry from="06-1B-B1-05-45-F9" time="1.3221505100855443E9"
+								seq="2929" period="1000" tau="100000" />
+						</values>
+						<values xsi:type="device_wifi_link_stat_bcast_stats:Bcast_stats"
+							name="device_wifi/link_stat/bcast_stats" timestamp="1322150509969639232">
+							<entry from="06-1B-B1-05-45-F9" time="1.32215051029059E9"
+								seq="2929" period="1000" tau="100000" />
+						</values>
+					</handlers>
+				</children>
+				<children name="wifidevice">
+					<children name="cst">
+						<handlers name="stats" canRead="true">
+							<values xsi:type="device_wifi_wifidevice_cst_stats:Stats"
+								name="device_wifi/wifidevice/cst/stats" timestamp="1322150509764554896">
+								<channelstats node="06-1B-B1-05-45-F9" time="1.3221505097490633E9"
+									id="1464" length="1000" hw_duration="1000" unit="ms">
+									<mac />
+									<mac_percentage unit="percent" />
+									<mac_duration unit="us" />
+									<phy hwbusy="1" last_hw_stat_time="1.322150509749032E9"
+										hw_stats_count="1" avg_noise="-100" channel="8" />
+									<perf_counter cycles="43853107" busy_cycles="465815"
+										rx_cycles="296475" tx_cycles="145069" />
+									<neighbourstats />
+								</channelstats>
+							</values>
+							<values xsi:type="device_wifi_wifidevice_cst_stats:Stats"
+								name="device_wifi/wifidevice/cst/stats" timestamp="1322150509969639232">
+								<channelstats node="06-1B-B1-05-45-F9" time="1.3221505097490633E9"
+									id="1464" length="1000" hw_duration="1000" unit="ms">
+									<mac />
+									<mac_percentage unit="percent" />
+									<mac_duration unit="us" />
+									<phy hwbusy="1" last_hw_stat_time="1.322150509749032E9"
+										hw_stats_count="1" avg_noise="-100" channel="8" />
+									<perf_counter cycles="43853107" busy_cycles="465815"
+										rx_cycles="296475" tx_cycles="145069" />
+									<neighbourstats />
+								</channelstats>
+							</values>
+						</handlers>
+					</children>
+				</children>
+			</elements>
+		</nodes>
+		<nodes iNetAddress="192.168.3.168">
+			<elements name="device_wifi">
+				<children name="link_stat">
+					<handlers name="bcast_stats" canRead="true">
+						<values xsi:type="device_wifi_link_stat_bcast_stats:Bcast_stats"
+							name="device_wifi/link_stat/bcast_stats" timestamp="1322150509805976570">
+							<entry from="06-1B-B1-05-DE-6F" time="1.322150510126301E9"
+								seq="2933" period="1000" tau="100000">
+								<link to="06-1B-B1-05-3B-AB" seq="2928" period="1000" tau="100000"
+									last_rx="0.075560013">
+									<link_info size="300" rate="2" fwd="100" rev="100" />
+									<link_info size="300" rate="12" fwd="98" rev="73" />
+								</link>
+							</entry>
+						</values>
+					</handlers>
+				</children>
+				<children name="wifidevice">
+					<children name="cst">
+						<handlers name="stats" canRead="true">
+							<values xsi:type="device_wifi_wifidevice_cst_stats:Stats"
+								name="device_wifi/wifidevice/cst/stats" timestamp="1322150509805976570">
+								<channelstats node="06-1B-B1-05-DE-6F" time="1.3221505101006463E9"
+									id="1464" length="1000" hw_duration="1000" unit="ms">
+									<mac packets="5" rx_pkt="5" no_err_pkt="5" rx_bcast_pkt="5"
+										rx_bytes="986" last_packet_time="1.32215051008605E9" no_src="3" />
+									<mac_percentage unit="percent" />
+									<mac_duration busy="6419" rx="6419" noerr_rx="6419"
+										unit="us" />
+									<phy hwbusy="67" hwrx="33" last_hw_stat_time="1.3221505101006143E9"
+										hw_stats_count="1" avg_noise="-96" avg_rssi="15" std_rssi="14"
+										channel="8" />
+									<perf_counter cycles="44250181" busy_cycles="29715020"
+										rx_cycles="14889435" tx_cycles="124981" />
+									<neighbourstats>
+										<nb addr="00-11-88-5A-BF-A0" rssi="5" std_rssi="2"
+											min_rssi="5" max_rssi="6" pkt_cnt="2" rx_bytes="204">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="2" max_size="50" overflow="false"
+												values="6,5" />
+										</nb>
+										<nb addr="00-11-88-5A-BF-A3" rssi="4" min_rssi="4"
+											max_rssi="4" pkt_cnt="1" rx_bytes="110">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="1" max_size="50" overflow="false"
+												values="4" />
+										</nb>
+										<nb addr="06-1B-B1-05-3B-AB" rssi="32" std_rssi="2"
+											min_rssi="30" max_rssi="34" pkt_cnt="2" rx_bytes="672">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="2" max_size="50" overflow="false"
+												values="30,34" />
+										</nb>
+									</neighbourstats>
+								</channelstats>
+							</values>
+						</handlers>
+					</children>
+				</children>
+			</elements>
+		</nodes>
+		<nodes iNetAddress="192.168.3.154">
+			<elements name="device_wifi">
+				<children name="link_stat">
+					<handlers name="bcast_stats" canRead="true">
+						<values xsi:type="device_wifi_link_stat_bcast_stats:Bcast_stats"
+							name="device_wifi/link_stat/bcast_stats" timestamp="1322150509845513330">
+							<entry from="06-1B-B1-05-3B-6D" time="1.3221505101675055E9"
+								seq="2924" period="1000" tau="100000" />
+						</values>
+					</handlers>
+				</children>
+				<children name="wifidevice">
+					<children name="cst">
+						<handlers name="stats" canRead="true">
+							<values xsi:type="device_wifi_wifidevice_cst_stats:Stats"
+								name="device_wifi/wifidevice/cst/stats" timestamp="1322150509845513330">
+								<channelstats node="06-1B-B1-05-3B-6D" time="1.3221505101342049E9"
+									id="1464" length="1000" hw_duration="1000" unit="ms">
+									<mac />
+									<mac_percentage unit="percent" />
+									<mac_duration unit="us" />
+									<phy hwbusy="1" last_hw_stat_time="1.322150510134174E9"
+										hw_stats_count="1" avg_noise="-100" channel="8" />
+									<perf_counter cycles="43867412" busy_cycles="504508"
+										rx_cycles="333807" tx_cycles="145069" />
+									<neighbourstats />
+								</channelstats>
+							</values>
+						</handlers>
+					</children>
+				</children>
+			</elements>
+		</nodes>
+		<nodes iNetAddress="192.168.3.176">
+			<elements name="device_wifi">
+				<children name="link_stat">
+					<handlers name="bcast_stats" canRead="true">
+						<values xsi:type="device_wifi_link_stat_bcast_stats:Bcast_stats"
+							name="device_wifi/link_stat/bcast_stats" timestamp="1322150509872595972">
+							<entry from="06-1B-B1-05-45-C4" time="1.322150510191574E9"
+								seq="2921" period="1000" tau="100000">
+								<link to="06-1B-B1-05-3B-5D" seq="2785" period="1000" tau="100000"
+									last_rx="76.586394983">
+									<link_info size="300" rate="2" rev="1" />
+								</link>
+							</entry>
+						</values>
+					</handlers>
+				</children>
+				<children name="wifidevice">
+					<children name="cst">
+						<handlers name="stats" canRead="true">
+							<values xsi:type="device_wifi_wifidevice_cst_stats:Stats"
+								name="device_wifi/wifidevice/cst/stats" timestamp="1322150509872595972">
+								<channelstats node="06-1B-B1-05-45-C4" time="1.3221505093580842E9"
+									id="1463" length="1000" hw_duration="1000" unit="ms">
+									<mac />
+									<mac_percentage unit="percent" />
+									<mac_duration unit="us" />
+									<phy hwbusy="1" hwrx="1" last_hw_stat_time="1.3221505093580532E9"
+										hw_stats_count="1" avg_noise="-100" channel="8" />
+									<perf_counter cycles="43899016" busy_cycles="783095"
+										rx_cycles="480703" tx_cycles="145069" />
+									<neighbourstats />
+								</channelstats>
+							</values>
+						</handlers>
+					</children>
+				</children>
+			</elements>
+		</nodes>
+		<nodes iNetAddress="192.168.3.166">
+			<elements name="device_wifi">
+				<children name="link_stat">
+					<handlers name="bcast_stats" canRead="true">
+						<values xsi:type="device_wifi_link_stat_bcast_stats:Bcast_stats"
+							name="device_wifi/link_stat/bcast_stats" timestamp="1322150509905536508">
+							<entry from="06-1B-B1-05-3B-A2" time="1.3221505093179443E9"
+								seq="2926" period="1000" tau="100000">
+								<link to="06-1B-B1-05-3B-6F" seq="2930" period="1000" tau="100000"
+									last_rx="0.214345348">
+									<link_info size="300" rate="2" fwd="79" rev="100" />
+									<link_info size="300" rate="12" fwd="75" rev="98" />
+								</link>
+							</entry>
+						</values>
+					</handlers>
+				</children>
+				<children name="wifidevice">
+					<children name="cst">
+						<handlers name="stats" canRead="true">
+							<values xsi:type="device_wifi_wifidevice_cst_stats:Stats"
+								name="device_wifi/wifidevice/cst/stats" timestamp="1322150509905536508">
+								<channelstats node="06-1B-B1-05-3B-A2" time="1.3221505085903919E9"
+									id="1463" length="1000" hw_duration="1000" unit="ms">
+									<mac packets="2" rx_pkt="2" no_err_pkt="2" rx_bcast_pkt="2"
+										rx_bytes="672" last_packet_time="1.322150508475048E9" no_src="1" />
+									<mac_percentage unit="percent" />
+									<mac_duration busy="3331" rx="3331" noerr_rx="3331"
+										unit="us" />
+									<phy hwbusy="1" last_hw_stat_time="1.3221505085903614E9"
+										hw_stats_count="1" avg_noise="-96" avg_rssi="4" std_rssi="2"
+										channel="8" />
+									<perf_counter cycles="44247359" busy_cycles="566836"
+										rx_cycles="399835" tx_cycles="145069" />
+									<neighbourstats>
+										<nb addr="06-1B-B1-05-3B-6F" rssi="4" std_rssi="2"
+											min_rssi="4" max_rssi="5" pkt_cnt="2" rx_bytes="672">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="2" max_size="50" overflow="false"
+												values="5,4" />
+										</nb>
+									</neighbourstats>
+								</channelstats>
+							</values>
+						</handlers>
+					</children>
+				</children>
+			</elements>
+		</nodes>
+		<nodes iNetAddress="192.168.3.150">
+			<elements name="device_wifi">
+				<children name="link_stat">
+					<handlers name="bcast_stats" canRead="true">
+						<values xsi:type="device_wifi_link_stat_bcast_stats:Bcast_stats"
+							name="device_wifi/link_stat/bcast_stats" timestamp="1322150509958315273">
+							<entry from="06-1B-B1-05-3B-65" time="1.3221505093764586E9"
+								seq="2930" period="1000" tau="100000">
+								<link to="06-1B-B1-05-3B-6F" seq="2930" period="1000" tau="100000"
+									last_rx="0.268825744">
+									<link_info size="300" rate="2" fwd="71" rev="100" />
+									<link_info size="300" rate="12" fwd="70" rev="95" />
+								</link>
+							</entry>
+						</values>
+					</handlers>
+				</children>
+				<children name="wifidevice">
+					<children name="cst">
+						<handlers name="stats" canRead="true">
+							<values xsi:type="device_wifi_wifidevice_cst_stats:Stats"
+								name="device_wifi/wifidevice/cst/stats" timestamp="1322150509958315273">
+								<channelstats node="06-1B-B1-05-3B-65" time="1.3221505087365398E9"
+									id="1463" length="1000" hw_duration="1000" unit="ms">
+									<mac packets="1" rx_pkt="1" no_err_pkt="1" rx_bcast_pkt="1"
+										rx_bytes="336" last_packet_time="1.322150508479092E9" no_src="1" />
+									<mac_percentage unit="percent" />
+									<mac_duration busy="2880" rx="2880" noerr_rx="2880"
+										unit="us" />
+									<phy hwbusy="1" last_hw_stat_time="1.3221505087365081E9"
+										hw_stats_count="1" avg_noise="-96" avg_rssi="1" channel="8" />
+									<perf_counter cycles="44195923" busy_cycles="571590"
+										rx_cycles="402821" tx_cycles="145069" />
+									<neighbourstats>
+										<nb addr="06-1B-B1-05-3B-6F" rssi="1" min_rssi="1"
+											max_rssi="1" pkt_cnt="1" rx_bytes="336">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="1" max_size="50" overflow="false"
+												values="1" />
+										</nb>
+									</neighbourstats>
+								</channelstats>
+							</values>
+						</handlers>
+					</children>
+				</children>
+			</elements>
+		</nodes>
+		<nodes iNetAddress="192.168.3.152">
+			<elements name="device_wifi">
+				<children name="link_stat">
+					<handlers name="bcast_stats" canRead="true">
+						<values xsi:type="device_wifi_link_stat_bcast_stats:Bcast_stats"
+							name="device_wifi/link_stat/bcast_stats" timestamp="1322150509558873386">
+							<entry from="06-1B-B1-05-3B-6F" time="1.3221505089931972E9"
+								seq="2929" period="1000" tau="100000">
+								<link to="06-0B-6B-09-F2-94" seq="345761" period="1000"
+									tau="100000" last_rx="65.718697091">
+									<link_info size="300" rate="2" rev="1" />
+								</link>
+								<link to="06-0F-B5-97-38-5A" seq="344607" period="1000"
+									tau="100000" last_rx="54.282216091">
+									<link_info size="300" rate="2" rev="1" />
+								</link>
+								<link to="06-1B-B1-05-3B-65" seq="2930" period="1000" tau="100000"
+									last_rx="0.047349091">
+									<link_info size="300" rate="2" fwd="100" rev="71" />
+									<link_info size="300" rate="12" fwd="95" rev="70" />
+								</link>
+								<link to="06-1B-B1-05-3B-A2" seq="2925" period="1000" tau="100000"
+									last_rx="0.314814091">
+									<link_info size="300" rate="2" fwd="100" rev="79" />
+									<link_info size="300" rate="12" fwd="97" rev="75" />
+								</link>
+								<link to="06-1B-B1-05-3B-AB" seq="2927" period="1000" tau="100000"
+									last_rx="0.317023091">
+									<link_info size="300" rate="2" fwd="90" rev="66" />
+									<link_info size="300" rate="12" fwd="50" rev="60" />
+								</link>
+							</entry>
+						</values>
+						<values xsi:type="device_wifi_link_stat_bcast_stats:Bcast_stats"
+							name="device_wifi/link_stat/bcast_stats" timestamp="1322150509769505965">
+							<entry from="06-1B-B1-05-3B-6F" time="1.3221505092011175E9"
+								seq="2930" period="1000" tau="100000">
+								<link to="06-0B-6B-09-F2-94" seq="345761" period="1000"
+									tau="100000" last_rx="65.926617614">
+									<link_info size="300" rate="2" rev="1" />
+								</link>
+								<link to="06-0F-B5-97-38-5A" seq="344607" period="1000"
+									tau="100000" last_rx="54.490136614">
+									<link_info size="300" rate="2" rev="1" />
+								</link>
+								<link to="06-1B-B1-05-3B-65" seq="2930" period="1000" tau="100000"
+									last_rx="0.255269614">
+									<link_info size="300" rate="2" fwd="100" rev="71" />
+									<link_info size="300" rate="12" fwd="95" rev="70" />
+								</link>
+								<link to="06-1B-B1-05-3B-A2" seq="2926" period="1000" tau="100000"
+									last_rx="0.048838614">
+									<link_info size="300" rate="2" fwd="100" rev="79" />
+									<link_info size="300" rate="12" fwd="98" rev="75" />
+								</link>
+								<link to="06-1B-B1-05-3B-AB" seq="2928" period="1000" tau="100000"
+									last_rx="0.047159614">
+									<link_info size="300" rate="2" fwd="89" rev="66" />
+									<link_info size="300" rate="12" fwd="50" rev="61" />
+								</link>
+							</entry>
+						</values>
+						<values xsi:type="device_wifi_link_stat_bcast_stats:Bcast_stats"
+							name="device_wifi/link_stat/bcast_stats" timestamp="1322150509975197033">
+							<entry from="06-1B-B1-05-3B-6F" time="1.3221505094063358E9"
+								seq="2930" period="1000" tau="100000">
+								<link to="06-0B-6B-09-F2-94" seq="345761" period="1000"
+									tau="100000" last_rx="66.131835907">
+									<link_info size="300" rate="2" rev="1" />
+								</link>
+								<link to="06-0F-B5-97-38-5A" seq="344607" period="1000"
+									tau="100000" last_rx="54.695354907">
+									<link_info size="300" rate="2" rev="1" />
+								</link>
+								<link to="06-1B-B1-05-3B-65" seq="2930" period="1000" tau="100000"
+									last_rx="0.460487907">
+									<link_info size="300" rate="2" fwd="100" rev="70" />
+									<link_info size="300" rate="12" fwd="95" rev="70" />
+								</link>
+								<link to="06-1B-B1-05-3B-A2" seq="2926" period="1000" tau="100000"
+									last_rx="0.254056907">
+									<link_info size="300" rate="2" fwd="100" rev="79" />
+									<link_info size="300" rate="12" fwd="98" rev="75" />
+								</link>
+								<link to="06-1B-B1-05-3B-AB" seq="2928" period="1000" tau="100000"
+									last_rx="0.252377907">
+									<link_info size="300" rate="2" fwd="89" rev="65" />
+									<link_info size="300" rate="12" fwd="50" rev="61" />
+								</link>
+							</entry>
+						</values>
+					</handlers>
+				</children>
+				<children name="wifidevice">
+					<children name="cst">
+						<handlers name="stats" canRead="true">
+							<values xsi:type="device_wifi_wifidevice_cst_stats:Stats"
+								name="device_wifi/wifidevice/cst/stats" timestamp="1322150509558873386">
+								<channelstats node="06-1B-B1-05-3B-6F" time="1.322150508782202E9"
+									id="1465" length="1000" hw_duration="1000" unit="ms">
+									<mac packets="95" rx_pkt="95" no_err_pkt="89" crc_err_pkt="5"
+										phy_err_pkt="1" rx_unicast_pkt="18" rx_retry_pkt="2"
+										rx_bcast_pkt="77" rx_bytes="12786" last_packet_time="1.322150508727488E9"
+										no_src="11" />
+									<mac_percentage busy="11" rx="11" noerr_rx="11"
+										unit="percent" />
+									<mac_duration busy="116878" rx="116878" noerr_rx="112435"
+										crc_rx="4011" phy_rx="432" unit="us" />
+									<phy hwbusy="15" hwrx="14" last_hw_stat_time="1.3221505087821698E9"
+										hw_stats_count="1" avg_noise="-96" avg_rssi="7" std_rssi="3"
+										channel="8" />
+									<perf_counter cycles="44168106" busy_cycles="6820840"
+										rx_cycles="6366531" tx_cycles="145069" />
+									<neighbourstats>
+										<nb addr="FF-FF-FF-FF-FF-FF" rssi="7" std_rssi="3"
+											min_rssi="6" max_rssi="10" pkt_cnt="4" rx_bytes="56">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="4" max_size="50" overflow="false"
+												values="6,8,10,6" />
+										</nb>
+										<nb addr="00-11-88-27-DE-20" rssi="7" std_rssi="3"
+											min_rssi="2" max_rssi="11" pkt_cnt="14" rx_bytes="1818">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="14" max_size="50" overflow="false"
+												values="9,7,5,2,9,9,7,9,7,9,9,11,7,3" />
+										</nb>
+										<nb addr="00-11-88-27-DE-22" rssi="8" std_rssi="3"
+											min_rssi="7" max_rssi="10" pkt_cnt="5" rx_bytes="835">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="5" max_size="50" overflow="false"
+												values="7,10,7,9,10" />
+										</nb>
+										<nb addr="00-11-88-27-DE-23" rssi="6" std_rssi="3"
+											min_rssi="3" max_rssi="10" pkt_cnt="8" rx_bytes="880">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="8" max_size="50" overflow="false"
+												values="5,4,8,9,10,8,7,3" />
+										</nb>
+										<nb addr="00-11-88-27-DE-24" rssi="7" std_rssi="3"
+											min_rssi="1" max_rssi="10" pkt_cnt="23" rx_bytes="2584">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="23" max_size="50" overflow="false"
+												values="8,10,8,4,4,4,4,9,10,7,1,9,6,8,10,10,5,7,8,7,9,9,8" />
+										</nb>
+										<nb addr="00-23-6C-BF-55-C6" rssi="12" std_rssi="4"
+											min_rssi="10" max_rssi="17" pkt_cnt="5" rx_bytes="1115">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="5" max_size="50" overflow="false"
+												values="11,12,10,13,17" />
+										</nb>
+										<nb addr="00-11-88-27-DE-25" rssi="5" std_rssi="3"
+											min_rssi="2" max_rssi="11" pkt_cnt="21" rx_bytes="3440">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="21" max_size="50" overflow="false"
+												values="5,5,3,4,3,3,4,5,10,8,5,5,8,9,10,9,11,2,5,5,3" />
+										</nb>
+										<nb addr="00-24-D7-1D-1C-50" rssi="3" std_rssi="2"
+											min_rssi="3" max_rssi="5" pkt_cnt="5" rx_bytes="150">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="5" max_size="50" overflow="false"
+												values="3,4,4,5,3" />
+										</nb>
+										<nb addr="06-1B-B1-05-3B-AB" rssi="7" min_rssi="7"
+											max_rssi="7" pkt_cnt="1" rx_bytes="336">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="1" max_size="50" overflow="false"
+												values="7" />
+										</nb>
+										<nb addr="06-1B-B1-05-3B-65" rssi="14" min_rssi="14"
+											max_rssi="14" pkt_cnt="1" rx_bytes="336">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="1" max_size="50" overflow="false"
+												values="14" />
+										</nb>
+										<nb addr="06-1B-B1-05-3B-A2" rssi="8" std_rssi="8"
+											max_rssi="16" pkt_cnt="2" rx_bytes="672">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="2" max_size="50" overflow="false"
+												values="16,0" />
+										</nb>
+									</neighbourstats>
+								</channelstats>
+							</values>
+							<values xsi:type="device_wifi_wifidevice_cst_stats:Stats"
+								name="device_wifi/wifidevice/cst/stats" timestamp="1322150509769505965">
+								<channelstats node="06-1B-B1-05-3B-6F" time="1.322150508782202E9"
+									id="1465" length="1000" hw_duration="1000" unit="ms">
+									<mac packets="95" rx_pkt="95" no_err_pkt="89" crc_err_pkt="5"
+										phy_err_pkt="1" rx_unicast_pkt="18" rx_retry_pkt="2"
+										rx_bcast_pkt="77" rx_bytes="12786" last_packet_time="1.322150508727488E9"
+										no_src="11" />
+									<mac_percentage busy="11" rx="11" noerr_rx="11"
+										unit="percent" />
+									<mac_duration busy="116878" rx="116878" noerr_rx="112435"
+										crc_rx="4011" phy_rx="432" unit="us" />
+									<phy hwbusy="15" hwrx="14" last_hw_stat_time="1.3221505087821698E9"
+										hw_stats_count="1" avg_noise="-96" avg_rssi="7" std_rssi="3"
+										channel="8" />
+									<perf_counter cycles="44168106" busy_cycles="6820840"
+										rx_cycles="6366531" tx_cycles="145069" />
+									<neighbourstats>
+										<nb addr="FF-FF-FF-FF-FF-FF" rssi="7" std_rssi="3"
+											min_rssi="6" max_rssi="10" pkt_cnt="4" rx_bytes="56">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="4" max_size="50" overflow="false"
+												values="6,8,10,6" />
+										</nb>
+										<nb addr="00-11-88-27-DE-20" rssi="7" std_rssi="3"
+											min_rssi="2" max_rssi="11" pkt_cnt="14" rx_bytes="1818">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="14" max_size="50" overflow="false"
+												values="9,7,5,2,9,9,7,9,7,9,9,11,7,3" />
+										</nb>
+										<nb addr="00-11-88-27-DE-22" rssi="8" std_rssi="3"
+											min_rssi="7" max_rssi="10" pkt_cnt="5" rx_bytes="835">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="5" max_size="50" overflow="false"
+												values="7,10,7,9,10" />
+										</nb>
+										<nb addr="00-11-88-27-DE-23" rssi="6" std_rssi="3"
+											min_rssi="3" max_rssi="10" pkt_cnt="8" rx_bytes="880">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="8" max_size="50" overflow="false"
+												values="5,4,8,9,10,8,7,3" />
+										</nb>
+										<nb addr="00-11-88-27-DE-24" rssi="7" std_rssi="3"
+											min_rssi="1" max_rssi="10" pkt_cnt="23" rx_bytes="2584">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="23" max_size="50" overflow="false"
+												values="8,10,8,4,4,4,4,9,10,7,1,9,6,8,10,10,5,7,8,7,9,9,8" />
+										</nb>
+										<nb addr="00-23-6C-BF-55-C6" rssi="12" std_rssi="4"
+											min_rssi="10" max_rssi="17" pkt_cnt="5" rx_bytes="1115">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="5" max_size="50" overflow="false"
+												values="11,12,10,13,17" />
+										</nb>
+										<nb addr="00-11-88-27-DE-25" rssi="5" std_rssi="3"
+											min_rssi="2" max_rssi="11" pkt_cnt="21" rx_bytes="3440">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="21" max_size="50" overflow="false"
+												values="5,5,3,4,3,3,4,5,10,8,5,5,8,9,10,9,11,2,5,5,3" />
+										</nb>
+										<nb addr="00-24-D7-1D-1C-50" rssi="3" std_rssi="2"
+											min_rssi="3" max_rssi="5" pkt_cnt="5" rx_bytes="150">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="5" max_size="50" overflow="false"
+												values="3,4,4,5,3" />
+										</nb>
+										<nb addr="06-1B-B1-05-3B-AB" rssi="7" min_rssi="7"
+											max_rssi="7" pkt_cnt="1" rx_bytes="336">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="1" max_size="50" overflow="false"
+												values="7" />
+										</nb>
+										<nb addr="06-1B-B1-05-3B-65" rssi="14" min_rssi="14"
+											max_rssi="14" pkt_cnt="1" rx_bytes="336">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="1" max_size="50" overflow="false"
+												values="14" />
+										</nb>
+										<nb addr="06-1B-B1-05-3B-A2" rssi="8" std_rssi="8"
+											max_rssi="16" pkt_cnt="2" rx_bytes="672">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="2" max_size="50" overflow="false"
+												values="16,0" />
+										</nb>
+									</neighbourstats>
+								</channelstats>
+							</values>
+							<values xsi:type="device_wifi_wifidevice_cst_stats:Stats"
+								name="device_wifi/wifidevice/cst/stats" timestamp="1322150509975197033">
+								<channelstats node="06-1B-B1-05-3B-6F" time="1.322150508782202E9"
+									id="1465" length="1000" hw_duration="1000" unit="ms">
+									<mac packets="95" rx_pkt="95" no_err_pkt="89" crc_err_pkt="5"
+										phy_err_pkt="1" rx_unicast_pkt="18" rx_retry_pkt="2"
+										rx_bcast_pkt="77" rx_bytes="12786" last_packet_time="1.322150508727488E9"
+										no_src="11" />
+									<mac_percentage busy="11" rx="11" noerr_rx="11"
+										unit="percent" />
+									<mac_duration busy="116878" rx="116878" noerr_rx="112435"
+										crc_rx="4011" phy_rx="432" unit="us" />
+									<phy hwbusy="15" hwrx="14" last_hw_stat_time="1.3221505087821698E9"
+										hw_stats_count="1" avg_noise="-96" avg_rssi="7" std_rssi="3"
+										channel="8" />
+									<perf_counter cycles="44168106" busy_cycles="6820840"
+										rx_cycles="6366531" tx_cycles="145069" />
+									<neighbourstats>
+										<nb addr="FF-FF-FF-FF-FF-FF" rssi="7" std_rssi="3"
+											min_rssi="6" max_rssi="10" pkt_cnt="4" rx_bytes="56">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="4" max_size="50" overflow="false"
+												values="6,8,10,6" />
+										</nb>
+										<nb addr="00-11-88-27-DE-20" rssi="7" std_rssi="3"
+											min_rssi="2" max_rssi="11" pkt_cnt="14" rx_bytes="1818">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="14" max_size="50" overflow="false"
+												values="9,7,5,2,9,9,7,9,7,9,9,11,7,3" />
+										</nb>
+										<nb addr="00-11-88-27-DE-22" rssi="8" std_rssi="3"
+											min_rssi="7" max_rssi="10" pkt_cnt="5" rx_bytes="835">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="5" max_size="50" overflow="false"
+												values="7,10,7,9,10" />
+										</nb>
+										<nb addr="00-11-88-27-DE-23" rssi="6" std_rssi="3"
+											min_rssi="3" max_rssi="10" pkt_cnt="8" rx_bytes="880">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="8" max_size="50" overflow="false"
+												values="5,4,8,9,10,8,7,3" />
+										</nb>
+										<nb addr="00-11-88-27-DE-24" rssi="7" std_rssi="3"
+											min_rssi="1" max_rssi="10" pkt_cnt="23" rx_bytes="2584">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="23" max_size="50" overflow="false"
+												values="8,10,8,4,4,4,4,9,10,7,1,9,6,8,10,10,5,7,8,7,9,9,8" />
+										</nb>
+										<nb addr="00-23-6C-BF-55-C6" rssi="12" std_rssi="4"
+											min_rssi="10" max_rssi="17" pkt_cnt="5" rx_bytes="1115">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="5" max_size="50" overflow="false"
+												values="11,12,10,13,17" />
+										</nb>
+										<nb addr="00-11-88-27-DE-25" rssi="5" std_rssi="3"
+											min_rssi="2" max_rssi="11" pkt_cnt="21" rx_bytes="3440">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="21" max_size="50" overflow="false"
+												values="5,5,3,4,3,3,4,5,10,8,5,5,8,9,10,9,11,2,5,5,3" />
+										</nb>
+										<nb addr="00-24-D7-1D-1C-50" rssi="3" std_rssi="2"
+											min_rssi="3" max_rssi="5" pkt_cnt="5" rx_bytes="150">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="5" max_size="50" overflow="false"
+												values="3,4,4,5,3" />
+										</nb>
+										<nb addr="06-1B-B1-05-3B-AB" rssi="7" min_rssi="7"
+											max_rssi="7" pkt_cnt="1" rx_bytes="336">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="1" max_size="50" overflow="false"
+												values="7" />
+										</nb>
+										<nb addr="06-1B-B1-05-3B-65" rssi="14" min_rssi="14"
+											max_rssi="14" pkt_cnt="1" rx_bytes="336">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="1" max_size="50" overflow="false"
+												values="14" />
+										</nb>
+										<nb addr="06-1B-B1-05-3B-A2" rssi="8" std_rssi="8"
+											max_rssi="16" pkt_cnt="2" rx_bytes="672">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="2" max_size="50" overflow="false"
+												values="16,0" />
+										</nb>
+									</neighbourstats>
+								</channelstats>
+							</values>
+						</handlers>
+					</children>
+				</children>
+			</elements>
+		</nodes>
+		<nodes iNetAddress="192.168.3.179">
+			<elements name="device_wifi">
+				<children name="link_stat">
+					<handlers name="bcast_stats" canRead="true">
+						<values xsi:type="device_wifi_link_stat_bcast_stats:Bcast_stats"
+							name="device_wifi/link_stat/bcast_stats" timestamp="1322150509613950873">
+							<entry from="06-1B-B1-05-3B-3F" time="1.3221505101005378E9"
+								seq="2933" period="1000" tau="100000">
+								<link to="06-0F-B5-97-33-6C" seq="344583" period="1000"
+									tau="100000" last_rx="67.892952668">
+									<link_info size="300" rate="2" rev="1" />
+								</link>
+								<link to="06-1B-B1-05-3B-5D" seq="2871" period="1000" tau="100000"
+									last_rx="33.177188668">
+									<link_info size="300" rate="2" fwd="31" rev="2" />
+								</link>
+							</entry>
+						</values>
+						<values xsi:type="device_wifi_link_stat_bcast_stats:Bcast_stats"
+							name="device_wifi/link_stat/bcast_stats" timestamp="1322150509814005066">
+							<entry from="06-1B-B1-05-3B-3F" time="1.3221505103002968E9"
+								seq="2933" period="1000" tau="100000">
+								<link to="06-0F-B5-97-33-6C" seq="344583" period="1000"
+									tau="100000" last_rx="68.092711824">
+									<link_info size="300" rate="2" rev="1" />
+								</link>
+								<link to="06-1B-B1-05-3B-5D" seq="2871" period="1000" tau="100000"
+									last_rx="33.376947824">
+									<link_info size="300" rate="2" fwd="31" rev="2" />
+								</link>
+							</entry>
+						</values>
+					</handlers>
+				</children>
+				<children name="wifidevice">
+					<children name="cst">
+						<handlers name="stats" canRead="true">
+							<values xsi:type="device_wifi_wifidevice_cst_stats:Stats"
+								name="device_wifi/wifidevice/cst/stats" timestamp="1322150509613950873">
+								<channelstats node="06-1B-B1-05-3B-3F" time="1.3221505100800788E9"
+									id="1465" length="1000" hw_duration="1000" unit="ms">
+									<mac packets="28" rx_pkt="28" no_err_pkt="23" crc_err_pkt="5"
+										rx_unicast_pkt="5" rx_bcast_pkt="23" rx_bytes="4218"
+										last_packet_time="1.322150509993997E9" no_src="5" />
+									<mac_percentage busy="3" rx="3" noerr_rx="3"
+										unit="percent" />
+									<mac_duration busy="39120" rx="39120" noerr_rx="32128"
+										crc_rx="6992" unit="us" />
+									<phy hwbusy="9" hwrx="8" last_hw_stat_time="1.3221505100800471E9"
+										hw_stats_count="1" avg_noise="-96" avg_rssi="3" std_rssi="1"
+										channel="8" />
+									<perf_counter cycles="44115315" busy_cycles="4257458"
+										rx_cycles="3717988" tx_cycles="145069" />
+									<neighbourstats>
+										<nb addr="00-11-88-27-D1-B0" rssi="2" std_rssi="2"
+											min_rssi="2" max_rssi="4" pkt_cnt="4" rx_bytes="672">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="4" max_size="50" overflow="false"
+												values="2,4,2,3" />
+										</nb>
+										<nb addr="00-11-88-27-D1-B2" rssi="3" std_rssi="2"
+											min_rssi="3" max_rssi="4" pkt_cnt="3" rx_bytes="501">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="3" max_size="50" overflow="false"
+												values="4,4,3" />
+										</nb>
+										<nb addr="00-11-88-27-D1-B3" rssi="2" std_rssi="2"
+											max_rssi="4" pkt_cnt="4" rx_bytes="440">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="4" max_size="50" overflow="false"
+												values="0,2,3,4" />
+										</nb>
+										<nb addr="00-11-88-27-D1-B4" rssi="3" std_rssi="1"
+											min_rssi="3" max_rssi="4" pkt_cnt="4" rx_bytes="544">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="4" max_size="50" overflow="false"
+												values="3,4,3,3" />
+										</nb>
+										<nb addr="00-11-88-27-D1-B5" rssi="3" std_rssi="1"
+											min_rssi="2" max_rssi="5" pkt_cnt="8" rx_bytes="1307">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="8" max_size="50" overflow="false"
+												values="4,3,3,3,3,5,3,2" />
+										</nb>
+									</neighbourstats>
+								</channelstats>
+							</values>
+							<values xsi:type="device_wifi_wifidevice_cst_stats:Stats"
+								name="device_wifi/wifidevice/cst/stats" timestamp="1322150509814005066">
+								<channelstats node="06-1B-B1-05-3B-3F" time="1.3221505100800788E9"
+									id="1465" length="1000" hw_duration="1000" unit="ms">
+									<mac packets="28" rx_pkt="28" no_err_pkt="23" crc_err_pkt="5"
+										rx_unicast_pkt="5" rx_bcast_pkt="23" rx_bytes="4218"
+										last_packet_time="1.322150509993997E9" no_src="5" />
+									<mac_percentage busy="3" rx="3" noerr_rx="3"
+										unit="percent" />
+									<mac_duration busy="39120" rx="39120" noerr_rx="32128"
+										crc_rx="6992" unit="us" />
+									<phy hwbusy="9" hwrx="8" last_hw_stat_time="1.3221505100800471E9"
+										hw_stats_count="1" avg_noise="-96" avg_rssi="3" std_rssi="1"
+										channel="8" />
+									<perf_counter cycles="44115315" busy_cycles="4257458"
+										rx_cycles="3717988" tx_cycles="145069" />
+									<neighbourstats>
+										<nb addr="00-11-88-27-D1-B0" rssi="2" std_rssi="2"
+											min_rssi="2" max_rssi="4" pkt_cnt="4" rx_bytes="672">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="4" max_size="50" overflow="false"
+												values="2,4,2,3" />
+										</nb>
+										<nb addr="00-11-88-27-D1-B2" rssi="3" std_rssi="2"
+											min_rssi="3" max_rssi="4" pkt_cnt="3" rx_bytes="501">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="3" max_size="50" overflow="false"
+												values="4,4,3" />
+										</nb>
+										<nb addr="00-11-88-27-D1-B3" rssi="2" std_rssi="2"
+											max_rssi="4" pkt_cnt="4" rx_bytes="440">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="4" max_size="50" overflow="false"
+												values="0,2,3,4" />
+										</nb>
+										<nb addr="00-11-88-27-D1-B4" rssi="3" std_rssi="1"
+											min_rssi="3" max_rssi="4" pkt_cnt="4" rx_bytes="544">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="4" max_size="50" overflow="false"
+												values="3,4,3,3" />
+										</nb>
+										<nb addr="00-11-88-27-D1-B5" rssi="3" std_rssi="1"
+											min_rssi="2" max_rssi="5" pkt_cnt="8" rx_bytes="1307">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="8" max_size="50" overflow="false"
+												values="4,3,3,3,3,5,3,2" />
+										</nb>
+									</neighbourstats>
+								</channelstats>
+							</values>
+						</handlers>
+					</children>
+				</children>
+			</elements>
+		</nodes>
+		<nodes iNetAddress="192.168.3.170">
+			<elements name="device_wifi">
+				<children name="link_stat">
+					<handlers name="bcast_stats" canRead="true">
+						<values xsi:type="device_wifi_link_stat_bcast_stats:Bcast_stats"
+							name="device_wifi/link_stat/bcast_stats" timestamp="1322150509653035871">
+							<entry from="06-1B-B1-05-3B-88" time="1.3221505090614283E9"
+								seq="2936" period="1000" tau="100000">
+								<link to="06-0F-B5-97-36-54" seq="344427" period="1000"
+									tau="100000" last_rx="146.007771208">
+									<link_info size="300" rate="2" />
+								</link>
+								<link to="06-1B-B1-05-3B-75" seq="2935" period="1000" tau="100000"
+									last_rx="0.180182208">
+									<link_info size="300" rate="2" fwd="93" rev="98" />
+									<link_info size="300" rate="12" fwd="95" rev="94" />
+								</link>
+							</entry>
+						</values>
+						<values xsi:type="device_wifi_link_stat_bcast_stats:Bcast_stats"
+							name="device_wifi/link_stat/bcast_stats" timestamp="1322150509857549086">
+							<entry from="06-1B-B1-05-3B-88" time="1.3221505092665887E9"
+								seq="2936" period="1000" tau="100000">
+								<link to="06-0F-B5-97-36-54" seq="344427" period="1000"
+									tau="100000" last_rx="146.21293164">
+									<link_info size="300" rate="2" />
+								</link>
+								<link to="06-1B-B1-05-3B-75" seq="2935" period="1000" tau="100000"
+									last_rx="0.38534264">
+									<link_info size="300" rate="2" fwd="93" rev="98" />
+									<link_info size="300" rate="12" fwd="95" rev="94" />
+								</link>
+							</entry>
+						</values>
+					</handlers>
+				</children>
+				<children name="wifidevice">
+					<children name="cst">
+						<handlers name="stats" canRead="true">
+							<values xsi:type="device_wifi_wifidevice_cst_stats:Stats"
+								name="device_wifi/wifidevice/cst/stats" timestamp="1322150509653035871">
+								<channelstats node="06-1B-B1-05-3B-88" time="1.3221505081247766E9"
+									id="1464" length="1000" hw_duration="1000" unit="ms">
+									<mac packets="2" rx_pkt="2" no_err_pkt="2" rx_bcast_pkt="2"
+										rx_bytes="672" last_packet_time="1.322150507805616E9" no_src="1" />
+									<mac_percentage unit="percent" />
+									<mac_duration busy="3331" rx="3331" noerr_rx="3331"
+										unit="us" />
+									<phy hwbusy="3" hwrx="1" last_hw_stat_time="1.3221505081247444E9"
+										hw_stats_count="1" avg_noise="-96" avg_rssi="18" std_rssi="4"
+										channel="8" />
+									<perf_counter cycles="43933757" busy_cycles="1514444"
+										rx_cycles="685908" tx_cycles="145069" />
+									<neighbourstats>
+										<nb addr="06-1B-B1-05-3B-75" rssi="18" std_rssi="4"
+											min_rssi="18" max_rssi="19" pkt_cnt="2" rx_bytes="672">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="2" max_size="50" overflow="false"
+												values="19,18" />
+										</nb>
+									</neighbourstats>
+								</channelstats>
+							</values>
+							<values xsi:type="device_wifi_wifidevice_cst_stats:Stats"
+								name="device_wifi/wifidevice/cst/stats" timestamp="1322150509857549086">
+								<channelstats node="06-1B-B1-05-3B-88" time="1.322150509150518E9"
+									id="1465" length="1000" hw_duration="1000" unit="ms">
+									<mac packets="2" rx_pkt="2" no_err_pkt="2" rx_bcast_pkt="2"
+										rx_bytes="672" last_packet_time="1.322150508854968E9" no_src="1" />
+									<mac_percentage unit="percent" />
+									<mac_duration busy="3331" rx="3331" noerr_rx="3331"
+										unit="us" />
+									<phy hwbusy="1" last_hw_stat_time="1.322150509150486E9"
+										hw_stats_count="1" avg_noise="-96" avg_rssi="18" std_rssi="4"
+										channel="8" />
+									<perf_counter cycles="45273484" busy_cycles="757200"
+										rx_cycles="254711" tx_cycles="145069" />
+									<neighbourstats>
+										<nb addr="06-1B-B1-05-3B-75" rssi="18" std_rssi="4"
+											min_rssi="18" max_rssi="19" pkt_cnt="2" rx_bytes="672">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="2" max_size="50" overflow="false"
+												values="19,18" />
+										</nb>
+									</neighbourstats>
+								</channelstats>
+							</values>
+						</handlers>
+					</children>
+				</children>
+			</elements>
+		</nodes>
+		<nodes iNetAddress="192.168.3.151">
+			<elements name="device_wifi">
+				<children name="link_stat">
+					<handlers name="bcast_stats" canRead="true">
+						<values xsi:type="device_wifi_link_stat_bcast_stats:Bcast_stats"
+							name="device_wifi/link_stat/bcast_stats" timestamp="1322150509680042377">
+							<entry from="06-1B-B1-05-3B-5D" time="1.32215050911231E9"
+								seq="2937" period="1000" tau="100000">
+								<link to="06-1B-B1-05-3B-3F" seq="2932" period="1000" tau="100000"
+									last_rx="0.823239935">
+									<link_info size="300" rate="2" fwd="2" rev="40" />
+									<link_info size="300" rate="12" rev="13" />
+								</link>
+								<link to="06-1B-B1-05-3B-75" seq="2934" period="1000" tau="100000"
+									last_rx="0.767266935">
+									<link_info size="300" rate="2" fwd="88" rev="86" />
+									<link_info size="300" rate="12" fwd="90" rev="71" />
+								</link>
+								<link to="06-1B-B1-05-3B-88" seq="2911" period="1000" tau="100000"
+									last_rx="12.522263935">
+									<link_info size="300" rate="2" rev="8" />
+								</link>
+								<link to="06-1B-B1-05-3B-AB" seq="2889" period="1000" tau="100000"
+									last_rx="19.410427935">
+									<link_info size="300" rate="2" fwd="14" rev="26" />
+									<link_info size="300" rate="12" rev="6" />
+								</link>
+							</entry>
+						</values>
+						<values xsi:type="device_wifi_link_stat_bcast_stats:Bcast_stats"
+							name="device_wifi/link_stat/bcast_stats" timestamp="1322150509886472944">
+							<entry from="06-1B-B1-05-3B-5D" time="1.3221505093184974E9"
+								seq="2938" period="1000" tau="100000">
+								<link to="06-1B-B1-05-3B-3F" seq="2932" period="1000" tau="100000"
+									last_rx="1.029427343">
+									<link_info size="300" rate="2" fwd="2" rev="40" />
+									<link_info size="300" rate="12" rev="13" />
+								</link>
+								<link to="06-1B-B1-05-3B-75" seq="2934" period="1000" tau="100000"
+									last_rx="0.973454343">
+									<link_info size="300" rate="2" fwd="88" rev="86" />
+									<link_info size="300" rate="12" fwd="90" rev="71" />
+								</link>
+								<link to="06-1B-B1-05-3B-88" seq="2911" period="1000" tau="100000"
+									last_rx="12.728451343">
+									<link_info size="300" rate="2" rev="8" />
+								</link>
+								<link to="06-1B-B1-05-3B-AB" seq="2889" period="1000" tau="100000"
+									last_rx="19.616615343">
+									<link_info size="300" rate="2" fwd="14" rev="26" />
+									<link_info size="300" rate="12" rev="6" />
+								</link>
+							</entry>
+						</values>
+					</handlers>
+				</children>
+				<children name="wifidevice">
+					<children name="cst">
+						<handlers name="stats" canRead="true">
+							<values xsi:type="device_wifi_wifidevice_cst_stats:Stats"
+								name="device_wifi/wifidevice/cst/stats" timestamp="1322150509680042377">
+								<channelstats node="06-1B-B1-05-3B-5D" time="1.3221505083625345E9"
+									id="1464" length="1000" hw_duration="1000" unit="ms">
+									<mac packets="83" rx_pkt="83" no_err_pkt="68" crc_err_pkt="13"
+										phy_err_pkt="2" rx_unicast_pkt="16" rx_bcast_pkt="67"
+										rx_bytes="12777" last_packet_time="1.322150508344948E9"
+										no_src="17" />
+									<mac_percentage busy="11" rx="11" noerr_rx="9"
+										crc_rx="1" unit="percent" />
+									<mac_duration busy="110865" rx="110865" noerr_rx="91550"
+										crc_rx="18163" phy_rx="1152" unit="us" />
+									<phy hwbusy="21" hwrx="19" last_hw_stat_time="1.3221505083625028E9"
+										hw_stats_count="1" avg_noise="-96" avg_rssi="15" std_rssi="12"
+										channel="8" />
+									<perf_counter cycles="44130191" busy_cycles="9538936"
+										rx_cycles="8396760" tx_cycles="145069" />
+									<neighbourstats>
+										<nb addr="00-23-6C-BF-55-C6" rssi="9" std_rssi="3"
+											min_rssi="8" max_rssi="11" pkt_cnt="2" rx_bytes="446">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="2" max_size="50" overflow="false"
+												values="11,8" />
+										</nb>
+										<nb addr="00-11-88-27-D1-B0" rssi="3" std_rssi="3"
+											max_rssi="5" pkt_cnt="7" rx_bytes="1044">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="7" max_size="50" overflow="false"
+												values="4,0,5,5,5,4,4" />
+										</nb>
+										<nb addr="00-11-88-27-D1-B2" rssi="4" std_rssi="2"
+											min_rssi="4" max_rssi="5" pkt_cnt="5" rx_bytes="835">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="5" max_size="50" overflow="false"
+												values="4,4,5,5,5" />
+										</nb>
+										<nb addr="00-11-88-27-D1-B3" rssi="5" std_rssi="3"
+											min_rssi="5" max_rssi="6" pkt_cnt="5" rx_bytes="550">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="5" max_size="50" overflow="false"
+												values="6,5,6,6,6" />
+										</nb>
+										<nb addr="00-11-88-27-D1-B4" rssi="4" std_rssi="1"
+											min_rssi="2" max_rssi="6" pkt_cnt="5" rx_bytes="680">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="5" max_size="50" overflow="false"
+												values="2,6,5,2,5" />
+										</nb>
+										<nb addr="00-11-88-27-D1-B5" rssi="3" std_rssi="3"
+											max_rssi="8" pkt_cnt="8" rx_bytes="906">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="8" max_size="50" overflow="false"
+												values="7,5,8,0,4,4,2,0" />
+										</nb>
+										<nb addr="00-11-88-28-68-30" rssi="28" std_rssi="6"
+											min_rssi="26" max_rssi="32" pkt_cnt="8" rx_bytes="1146">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="8" max_size="50" overflow="false"
+												values="32,27,31,26,27,30,29,28" />
+										</nb>
+										<nb addr="00-11-88-28-68-32" rssi="30" std_rssi="4"
+											min_rssi="29" max_rssi="31" pkt_cnt="3" rx_bytes="501">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="3" max_size="50" overflow="false"
+												values="31,31,29" />
+										</nb>
+										<nb addr="00-11-88-28-68-33" rssi="29" std_rssi="2"
+											min_rssi="26" max_rssi="32" pkt_cnt="5" rx_bytes="522">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="5" max_size="50" overflow="false"
+												values="32,32,26,27,28" />
+										</nb>
+										<nb addr="00-11-88-28-68-34" rssi="28" std_rssi="4"
+											min_rssi="26" max_rssi="31" pkt_cnt="3" rx_bytes="408">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="3" max_size="50" overflow="false"
+												values="31,26,28" />
+										</nb>
+										<nb addr="00-11-88-28-68-35" rssi="26" std_rssi="6"
+											min_rssi="14" max_rssi="32" pkt_cnt="9" rx_bytes="1481">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="9" max_size="50" overflow="false"
+												values="31,32,26,30,30,28,28,16,14" />
+										</nb>
+										<nb addr="00-1F-45-20-D3-D0" rssi="11" min_rssi="11"
+											max_rssi="11" pkt_cnt="1" rx_bytes="167">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="1" max_size="50" overflow="false"
+												values="11" />
+										</nb>
+										<nb addr="06-1B-B1-05-3B-3F" rssi="6" min_rssi="6"
+											max_rssi="6" pkt_cnt="1" rx_bytes="336">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="1" max_size="50" overflow="false"
+												values="6" />
+										</nb>
+										<nb addr="00-1F-45-20-D3-D2" rssi="11" min_rssi="11"
+											max_rssi="11" pkt_cnt="1" rx_bytes="167">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="1" max_size="50" overflow="false"
+												values="11" />
+										</nb>
+										<nb addr="00-1F-45-20-D3-D3" rssi="11" min_rssi="11"
+											max_rssi="11" pkt_cnt="2" rx_bytes="220">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="2" max_size="50" overflow="false"
+												values="11,11" />
+										</nb>
+										<nb addr="00-1F-45-20-D3-D5" rssi="9" min_rssi="9"
+											max_rssi="9" pkt_cnt="1" rx_bytes="338">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="1" max_size="50" overflow="false"
+												values="9" />
+										</nb>
+										<nb addr="06-1B-B1-05-3B-75" rssi="14" std_rssi="1"
+											min_rssi="13" max_rssi="15" pkt_cnt="2" rx_bytes="672">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="2" max_size="50" overflow="false"
+												values="13,15" />
+										</nb>
+									</neighbourstats>
+								</channelstats>
+							</values>
+						</handlers>
+					</children>
+				</children>
+			</elements>
+		</nodes>
+		<nodes iNetAddress="192.168.3.162">
+			<elements name="device_wifi">
+				<children name="link_stat">
+					<handlers name="bcast_stats" canRead="true">
+						<values xsi:type="device_wifi_link_stat_bcast_stats:Bcast_stats"
+							name="device_wifi/link_stat/bcast_stats" timestamp="1322150509732022888">
+							<entry from="06-1B-B1-05-3B-75" time="1.3221505090950994E9"
+								seq="2935" period="1000" tau="100000">
+								<link to="06-0F-B5-97-36-D8" seq="344593" period="1000"
+									tau="100000" last_rx="76.974676554">
+									<link_info size="300" rate="2" rev="1" />
+								</link>
+								<link to="06-1B-B1-05-3B-5D" seq="2937" period="1000" tau="100000"
+									last_rx="0.492354554">
+									<link_info size="300" rate="2" fwd="86" rev="88" />
+									<link_info size="300" rate="12" fwd="72" rev="90" />
+								</link>
+								<link to="06-1B-B1-05-3B-88" seq="2936" period="1000" tau="100000"
+									last_rx="0.171550554">
+									<link_info size="300" rate="2" fwd="98" rev="92" />
+									<link_info size="300" rate="12" fwd="95" rev="96" />
+								</link>
+							</entry>
+						</values>
+						<values xsi:type="device_wifi_link_stat_bcast_stats:Bcast_stats"
+							name="device_wifi/link_stat/bcast_stats" timestamp="1322150509937087985">
+							<entry from="06-1B-B1-05-3B-75" time="1.3221505093000183E9"
+								seq="2935" period="1000" tau="100000">
+								<link to="06-0F-B5-97-36-D8" seq="344593" period="1000"
+									tau="100000" last_rx="77.179595329">
+									<link_info size="300" rate="2" rev="1" />
+								</link>
+								<link to="06-1B-B1-05-3B-5D" seq="2938" period="1000" tau="100000"
+									last_rx="0.114947329">
+									<link_info size="300" rate="2" fwd="86" rev="88" />
+									<link_info size="300" rate="12" fwd="71" rev="90" />
+								</link>
+								<link to="06-1B-B1-05-3B-88" seq="2936" period="1000" tau="100000"
+									last_rx="0.376469329">
+									<link_info size="300" rate="2" fwd="98" rev="92" />
+									<link_info size="300" rate="12" fwd="95" rev="96" />
+								</link>
+							</entry>
+						</values>
+					</handlers>
+				</children>
+				<children name="wifidevice">
+					<children name="cst">
+						<handlers name="stats" canRead="true">
+							<values xsi:type="device_wifi_wifidevice_cst_stats:Stats"
+								name="device_wifi/wifidevice/cst/stats" timestamp="1322150509732022888">
+								<channelstats node="06-1B-B1-05-3B-75" time="1.3221505086018379E9"
+									id="1464" length="1000" hw_duration="1000" unit="ms">
+									<mac packets="55" rx_pkt="55" no_err_pkt="40" crc_err_pkt="15"
+										rx_unicast_pkt="18" rx_retry_pkt="1" rx_bcast_pkt="37"
+										rx_bytes="8581" last_packet_time="1.322150508532331E9" no_src="8" />
+									<mac_percentage busy="7" rx="7" noerr_rx="5"
+										crc_rx="1" unit="percent" />
+									<mac_duration busy="74350" rx="74350" noerr_rx="55030"
+										crc_rx="19320" unit="us" />
+									<phy hwbusy="10" hwrx="9" last_hw_stat_time="1.3221505086018066E9"
+										hw_stats_count="1" avg_noise="-96" avg_rssi="18" std_rssi="7"
+										channel="8" />
+									<perf_counter cycles="44192410" busy_cycles="4833934"
+										rx_cycles="4392934" tx_cycles="145069" />
+									<neighbourstats>
+										<nb addr="06-1B-B1-05-3B-88" rssi="26" std_rssi="5"
+											min_rssi="26" max_rssi="27" pkt_cnt="2" rx_bytes="672">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="2" max_size="50" overflow="false"
+												values="27,26" />
+										</nb>
+										<nb addr="06-1B-B1-05-3B-5D" rssi="9" std_rssi="2"
+											min_rssi="7" max_rssi="11" pkt_cnt="2" rx_bytes="672">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="2" max_size="50" overflow="false"
+												values="7,11" />
+										</nb>
+										<nb addr="00-24-D7-1D-1C-50" rssi="2" min_rssi="2"
+											max_rssi="2" pkt_cnt="2" rx_bytes="60">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="2" max_size="50" overflow="false"
+												values="2,2" />
+										</nb>
+										<nb addr="00-11-88-28-68-30" rssi="19" std_rssi="4"
+											min_rssi="17" max_rssi="25" pkt_cnt="13" rx_bytes="1788">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="13" max_size="50" overflow="false"
+												values="19,19,18,17,18,24,18,25,17,25,18,17,17" />
+										</nb>
+										<nb addr="00-11-88-28-68-32" rssi="22" std_rssi="4"
+											min_rssi="18" max_rssi="25" pkt_cnt="5" rx_bytes="835">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="5" max_size="50" overflow="false"
+												values="18,25,25,25,18" />
+										</nb>
+										<nb addr="00-11-88-28-68-33" rssi="19" std_rssi="5"
+											min_rssi="17" max_rssi="25" pkt_cnt="5" rx_bytes="550">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="5" max_size="50" overflow="false"
+												values="19,19,25,17,18" />
+										</nb>
+										<nb addr="00-11-88-28-68-34" rssi="19" min_rssi="19"
+											max_rssi="19" pkt_cnt="2" rx_bytes="272">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="2" max_size="50" overflow="false"
+												values="19,19" />
+										</nb>
+										<nb addr="00-11-88-28-68-35" rssi="20" std_rssi="6"
+											min_rssi="17" max_rssi="25" pkt_cnt="9" rx_bytes="1677">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="9" max_size="50" overflow="false"
+												values="18,17,19,24,24,24,25,18,18" />
+										</nb>
+									</neighbourstats>
+								</channelstats>
+							</values>
+						</handlers>
+					</children>
+				</children>
+			</elements>
+		</nodes>
+		<nodes iNetAddress="192.168.3.188">
+			<elements name="device_wifi">
+				<children name="link_stat">
+					<handlers name="bcast_stats" canRead="true">
+						<values xsi:type="device_wifi_link_stat_bcast_stats:Bcast_stats"
+							name="device_wifi/link_stat/bcast_stats" timestamp="1322150509764554896">
+							<entry from="06-1B-B1-05-45-F9" time="1.3221505100855443E9"
+								seq="2929" period="1000" tau="100000" />
+						</values>
+						<values xsi:type="device_wifi_link_stat_bcast_stats:Bcast_stats"
+							name="device_wifi/link_stat/bcast_stats" timestamp="1322150509969639232">
+							<entry from="06-1B-B1-05-45-F9" time="1.32215051029059E9"
+								seq="2929" period="1000" tau="100000" />
+						</values>
+					</handlers>
+				</children>
+				<children name="wifidevice">
+					<children name="cst">
+						<handlers name="stats" canRead="true">
+							<values xsi:type="device_wifi_wifidevice_cst_stats:Stats"
+								name="device_wifi/wifidevice/cst/stats" timestamp="1322150509764554896">
+								<channelstats node="06-1B-B1-05-45-F9" time="1.3221505097490633E9"
+									id="1464" length="1000" hw_duration="1000" unit="ms">
+									<mac />
+									<mac_percentage unit="percent" />
+									<mac_duration unit="us" />
+									<phy hwbusy="1" last_hw_stat_time="1.322150509749032E9"
+										hw_stats_count="1" avg_noise="-100" channel="8" />
+									<perf_counter cycles="43853107" busy_cycles="465815"
+										rx_cycles="296475" tx_cycles="145069" />
+									<neighbourstats />
+								</channelstats>
+							</values>
+							<values xsi:type="device_wifi_wifidevice_cst_stats:Stats"
+								name="device_wifi/wifidevice/cst/stats" timestamp="1322150509969639232">
+								<channelstats node="06-1B-B1-05-45-F9" time="1.3221505097490633E9"
+									id="1464" length="1000" hw_duration="1000" unit="ms">
+									<mac />
+									<mac_percentage unit="percent" />
+									<mac_duration unit="us" />
+									<phy hwbusy="1" last_hw_stat_time="1.322150509749032E9"
+										hw_stats_count="1" avg_noise="-100" channel="8" />
+									<perf_counter cycles="43853107" busy_cycles="465815"
+										rx_cycles="296475" tx_cycles="145069" />
+									<neighbourstats />
+								</channelstats>
+							</values>
+						</handlers>
+					</children>
+				</children>
+			</elements>
+		</nodes>
+		<nodes iNetAddress="192.168.3.168">
+			<elements name="device_wifi">
+				<children name="link_stat">
+					<handlers name="bcast_stats" canRead="true">
+						<values xsi:type="device_wifi_link_stat_bcast_stats:Bcast_stats"
+							name="device_wifi/link_stat/bcast_stats" timestamp="1322150509805976570">
+							<entry from="06-1B-B1-05-DE-6F" time="1.322150510126301E9"
+								seq="2933" period="1000" tau="100000">
+								<link to="06-1B-B1-05-3B-AB" seq="2928" period="1000" tau="100000"
+									last_rx="0.075560013">
+									<link_info size="300" rate="2" fwd="100" rev="100" />
+									<link_info size="300" rate="12" fwd="98" rev="73" />
+								</link>
+							</entry>
+						</values>
+					</handlers>
+				</children>
+				<children name="wifidevice">
+					<children name="cst">
+						<handlers name="stats" canRead="true">
+							<values xsi:type="device_wifi_wifidevice_cst_stats:Stats"
+								name="device_wifi/wifidevice/cst/stats" timestamp="1322150509805976570">
+								<channelstats node="06-1B-B1-05-DE-6F" time="1.3221505101006463E9"
+									id="1464" length="1000" hw_duration="1000" unit="ms">
+									<mac packets="5" rx_pkt="5" no_err_pkt="5" rx_bcast_pkt="5"
+										rx_bytes="986" last_packet_time="1.32215051008605E9" no_src="3" />
+									<mac_percentage unit="percent" />
+									<mac_duration busy="6419" rx="6419" noerr_rx="6419"
+										unit="us" />
+									<phy hwbusy="67" hwrx="33" last_hw_stat_time="1.3221505101006143E9"
+										hw_stats_count="1" avg_noise="-96" avg_rssi="15" std_rssi="14"
+										channel="8" />
+									<perf_counter cycles="44250181" busy_cycles="29715020"
+										rx_cycles="14889435" tx_cycles="124981" />
+									<neighbourstats>
+										<nb addr="00-11-88-5A-BF-A0" rssi="5" std_rssi="2"
+											min_rssi="5" max_rssi="6" pkt_cnt="2" rx_bytes="204">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="2" max_size="50" overflow="false"
+												values="6,5" />
+										</nb>
+										<nb addr="00-11-88-5A-BF-A3" rssi="4" min_rssi="4"
+											max_rssi="4" pkt_cnt="1" rx_bytes="110">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="1" max_size="50" overflow="false"
+												values="4" />
+										</nb>
+										<nb addr="06-1B-B1-05-3B-AB" rssi="32" std_rssi="2"
+											min_rssi="30" max_rssi="34" pkt_cnt="2" rx_bytes="672">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="2" max_size="50" overflow="false"
+												values="30,34" />
+										</nb>
+									</neighbourstats>
+								</channelstats>
+							</values>
+						</handlers>
+					</children>
+				</children>
+			</elements>
+		</nodes>
+		<nodes iNetAddress="192.168.3.154">
+			<elements name="device_wifi">
+				<children name="link_stat">
+					<handlers name="bcast_stats" canRead="true">
+						<values xsi:type="device_wifi_link_stat_bcast_stats:Bcast_stats"
+							name="device_wifi/link_stat/bcast_stats" timestamp="1322150509845513330">
+							<entry from="06-1B-B1-05-3B-6D" time="1.3221505101675055E9"
+								seq="2924" period="1000" tau="100000" />
+						</values>
+					</handlers>
+				</children>
+				<children name="wifidevice">
+					<children name="cst">
+						<handlers name="stats" canRead="true">
+							<values xsi:type="device_wifi_wifidevice_cst_stats:Stats"
+								name="device_wifi/wifidevice/cst/stats" timestamp="1322150509845513330">
+								<channelstats node="06-1B-B1-05-3B-6D" time="1.3221505101342049E9"
+									id="1464" length="1000" hw_duration="1000" unit="ms">
+									<mac />
+									<mac_percentage unit="percent" />
+									<mac_duration unit="us" />
+									<phy hwbusy="1" last_hw_stat_time="1.322150510134174E9"
+										hw_stats_count="1" avg_noise="-100" channel="8" />
+									<perf_counter cycles="43867412" busy_cycles="504508"
+										rx_cycles="333807" tx_cycles="145069" />
+									<neighbourstats />
+								</channelstats>
+							</values>
+						</handlers>
+					</children>
+				</children>
+			</elements>
+		</nodes>
+		<nodes iNetAddress="192.168.3.176">
+			<elements name="device_wifi">
+				<children name="link_stat">
+					<handlers name="bcast_stats" canRead="true">
+						<values xsi:type="device_wifi_link_stat_bcast_stats:Bcast_stats"
+							name="device_wifi/link_stat/bcast_stats" timestamp="1322150509872595972">
+							<entry from="06-1B-B1-05-45-C4" time="1.322150510191574E9"
+								seq="2921" period="1000" tau="100000">
+								<link to="06-1B-B1-05-3B-5D" seq="2785" period="1000" tau="100000"
+									last_rx="76.586394983">
+									<link_info size="300" rate="2" rev="1" />
+								</link>
+							</entry>
+						</values>
+					</handlers>
+				</children>
+				<children name="wifidevice">
+					<children name="cst">
+						<handlers name="stats" canRead="true">
+							<values xsi:type="device_wifi_wifidevice_cst_stats:Stats"
+								name="device_wifi/wifidevice/cst/stats" timestamp="1322150509872595972">
+								<channelstats node="06-1B-B1-05-45-C4" time="1.3221505093580842E9"
+									id="1463" length="1000" hw_duration="1000" unit="ms">
+									<mac />
+									<mac_percentage unit="percent" />
+									<mac_duration unit="us" />
+									<phy hwbusy="1" hwrx="1" last_hw_stat_time="1.3221505093580532E9"
+										hw_stats_count="1" avg_noise="-100" channel="8" />
+									<perf_counter cycles="43899016" busy_cycles="783095"
+										rx_cycles="480703" tx_cycles="145069" />
+									<neighbourstats />
+								</channelstats>
+							</values>
+						</handlers>
+					</children>
+				</children>
+			</elements>
+		</nodes>
+		<nodes iNetAddress="192.168.3.166">
+			<elements name="device_wifi">
+				<children name="link_stat">
+					<handlers name="bcast_stats" canRead="true">
+						<values xsi:type="device_wifi_link_stat_bcast_stats:Bcast_stats"
+							name="device_wifi/link_stat/bcast_stats" timestamp="1322150509905536508">
+							<entry from="06-1B-B1-05-3B-A2" time="1.3221505093179443E9"
+								seq="2926" period="1000" tau="100000">
+								<link to="06-1B-B1-05-3B-6F" seq="2930" period="1000" tau="100000"
+									last_rx="0.214345348">
+									<link_info size="300" rate="2" fwd="79" rev="100" />
+									<link_info size="300" rate="12" fwd="75" rev="98" />
+								</link>
+							</entry>
+						</values>
+					</handlers>
+				</children>
+				<children name="wifidevice">
+					<children name="cst">
+						<handlers name="stats" canRead="true">
+							<values xsi:type="device_wifi_wifidevice_cst_stats:Stats"
+								name="device_wifi/wifidevice/cst/stats" timestamp="1322150509905536508">
+								<channelstats node="06-1B-B1-05-3B-A2" time="1.3221505085903919E9"
+									id="1463" length="1000" hw_duration="1000" unit="ms">
+									<mac packets="2" rx_pkt="2" no_err_pkt="2" rx_bcast_pkt="2"
+										rx_bytes="672" last_packet_time="1.322150508475048E9" no_src="1" />
+									<mac_percentage unit="percent" />
+									<mac_duration busy="3331" rx="3331" noerr_rx="3331"
+										unit="us" />
+									<phy hwbusy="1" last_hw_stat_time="1.3221505085903614E9"
+										hw_stats_count="1" avg_noise="-96" avg_rssi="4" std_rssi="2"
+										channel="8" />
+									<perf_counter cycles="44247359" busy_cycles="566836"
+										rx_cycles="399835" tx_cycles="145069" />
+									<neighbourstats>
+										<nb addr="06-1B-B1-05-3B-6F" rssi="4" std_rssi="2"
+											min_rssi="4" max_rssi="5" pkt_cnt="2" rx_bytes="672">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="2" max_size="50" overflow="false"
+												values="5,4" />
+										</nb>
+									</neighbourstats>
+								</channelstats>
+							</values>
+						</handlers>
+					</children>
+				</children>
+			</elements>
+		</nodes>
+		<nodes iNetAddress="192.168.3.150">
+			<elements name="device_wifi">
+				<children name="link_stat">
+					<handlers name="bcast_stats" canRead="true">
+						<values xsi:type="device_wifi_link_stat_bcast_stats:Bcast_stats"
+							name="device_wifi/link_stat/bcast_stats" timestamp="1322150509958315273">
+							<entry from="06-1B-B1-05-3B-65" time="1.3221505093764586E9"
+								seq="2930" period="1000" tau="100000">
+								<link to="06-1B-B1-05-3B-6F" seq="2930" period="1000" tau="100000"
+									last_rx="0.268825744">
+									<link_info size="300" rate="2" fwd="71" rev="100" />
+									<link_info size="300" rate="12" fwd="70" rev="95" />
+								</link>
+							</entry>
+						</values>
+					</handlers>
+				</children>
+				<children name="wifidevice">
+					<children name="cst">
+						<handlers name="stats" canRead="true">
+							<values xsi:type="device_wifi_wifidevice_cst_stats:Stats"
+								name="device_wifi/wifidevice/cst/stats" timestamp="1322150509958315273">
+								<channelstats node="06-1B-B1-05-3B-65" time="1.3221505087365398E9"
+									id="1463" length="1000" hw_duration="1000" unit="ms">
+									<mac packets="1" rx_pkt="1" no_err_pkt="1" rx_bcast_pkt="1"
+										rx_bytes="336" last_packet_time="1.322150508479092E9" no_src="1" />
+									<mac_percentage unit="percent" />
+									<mac_duration busy="2880" rx="2880" noerr_rx="2880"
+										unit="us" />
+									<phy hwbusy="1" last_hw_stat_time="1.3221505087365081E9"
+										hw_stats_count="1" avg_noise="-96" avg_rssi="1" channel="8" />
+									<perf_counter cycles="44195923" busy_cycles="571590"
+										rx_cycles="402821" tx_cycles="145069" />
+									<neighbourstats>
+										<nb addr="06-1B-B1-05-3B-6F" rssi="1" min_rssi="1"
+											max_rssi="1" pkt_cnt="1" rx_bytes="336">
+											<rssi_extended>
+												<ctl />
+												<ext />
+											</rssi_extended>
+											<rssi_hist size="1" max_size="50" overflow="false"
+												values="1" />
+										</nb>
+									</neighbourstats>
+								</channelstats>
+							</values>
+						</handlers>
+					</children>
+				</children>
+			</elements>
+		</nodes>
+	</cwdm:Network>
+</xmi:XMI>

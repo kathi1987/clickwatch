@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:results="http://de.hub.clickwatch.analysis.results">
+  <results:NumericalResult data="rO0ABXNyADNkZS5odWIuY2xpY2t3YXRjaC5hbmFseXNpcy5yZXN1bHRzLmltcGwuRGF0YVNldEltcGxZbzVc2oqppwIAAUwAB2VudHJpZXN0ABBMamF2YS91dGlsL0xpc3Q7eHBzcgATamF2YS51dGlsLkFycmF5TGlzdHiB0h2Zx2GdAwABSQAEc2l6ZXhwAAAAB3cEAAAACnNyAEFkZS5odWIuY2xpY2t3YXRjaC5hbmFseXNpcy5yZXN1bHRzLmltcGwuRGF0YVNldEltcGwkRGF0YUVudHJ5SW1wbN9WCeOtMvomAgACTAAGdGhpcyQwdAA1TGRlL2h1Yi9jbGlja3dhdGNoL2FuYWx5c2lzL3Jlc3VsdHMvaW1wbC9EYXRhU2V0SW1wbDtbAAZ2YWx1ZXN0ABNbTGphdmEvbGFuZy9PYmplY3Q7eHBxAH4AAnVyABNbTGphdmEubGFuZy5PYmplY3Q7kM5YnxBzKWwCAAB4cAAAAAN0ABEwNi0xQi1CMS0wNS0zQi02RnNyAA5qYXZhLmxhbmcuTG9uZzuL5JDMjyPfAgABSgAFdmFsdWV4cgAQamF2YS5sYW5nLk51bWJlcoaslR0LlOCLAgAAeHASWTjiJdu9KnNyABFqYXZhLmxhbmcuSW50ZWdlchLioKT3gYc4AgABSQAFdmFsdWV4cQB+AA0AAAAPc3EAfgAFcQB+AAJ1cQB+AAkAAAADdAARMDYtMUItQjEtMDUtM0ItNkZzcQB+AAwSWTjiMmm8rXEAfgAQc3EAfgAFcQB+AAJ1cQB+AAkAAAADdAARMDYtMUItQjEtMDUtM0ItNkZzcQB+AAwSWTjiPqxVaXEAfgAQc3EAfgAFcQB+AAJ1cQB+AAkAAAADdAARMDYtMUItQjEtMDUtM0ItM0ZzcQB+AAwSWTjiKSQnmXNxAH4ADwAAAAlzcQB+AAVxAH4AAnVxAH4ACQAAAAN0ABEwNi0xQi1CMS0wNS0zQi0zRnNxAH4ADBJZOOI1EL1KcQB+AB1zcQB+AAVxAH4AAnVxAH4ACQAAAAN0ABEwNi0xQi1CMS0wNS0zQi04OHNxAH4ADBJZOOIreItfc3EAfgAPAAAAA3NxAH4ABXEAfgACdXEAfgAJAAAAA3QAETA2LTFCLUIxLTA1LTNCLTg4c3EAfgAMElk44jepKx5zcQB+AA8AAAABeA==">
+    <tracesFrom href="file:dump/dump.xmi#/"/>
+    <charts name="Plot over time">
+      <type xsi:type="results:XY"/>
+      <valueSpecs xsi:type="results:Series" name="nodes"/>
+      <valueSpecs xsi:type="results:Axis" name="time" column="1"/>
+      <valueSpecs xsi:type="results:Axis" name="HW_busy" column="2"/>
+    </charts>
+  </results:NumericalResult>
+  <results:XYDataResultSet name="06-1B-B1-05-3B-6F">
+    <tracesFrom href="file:dump/dump.xmi#//@nodes.0/@elements.0/@children.1/@children.0/@handlers.0"/>
+    <xValues xsi:type="results:DoubleDataResultValue" value="1.32215050955887334E18">
+      <tracesFrom href="file:dump/dump.xmi#//@nodes.0/@elements.0/@children.1/@children.0/@handlers.0/@values.0"/>
+    </xValues>
+    <xValues xsi:type="results:DoubleDataResultValue" value="1.32215050976950605E18">
+      <tracesFrom href="file:dump/dump.xmi#//@nodes.0/@elements.0/@children.1/@children.0/@handlers.0/@values.1"/>
+    </xValues>
+    <xValues xsi:type="results:DoubleDataResultValue" value="1.32215050997519693E18">
+      <tracesFrom href="file:dump/dump.xmi#//@nodes.0/@elements.0/@children.1/@children.0/@handlers.0/@values.2"/>
+    </xValues>
+    <yValues xsi:type="results:DoubleDataResultValue" value="15.0">
+      <tracesFrom href="file:dump/dump.xmi#//@nodes.0/@elements.0/@children.1/@children.0/@handlers.0/@values.0"/>
+    </yValues>
+    <yValues xsi:type="results:DoubleDataResultValue" value="15.0">
+      <tracesFrom href="file:dump/dump.xmi#//@nodes.0/@elements.0/@children.1/@children.0/@handlers.0/@values.1"/>
+    </yValues>
+    <yValues xsi:type="results:DoubleDataResultValue" value="15.0">
+      <tracesFrom href="file:dump/dump.xmi#//@nodes.0/@elements.0/@children.1/@children.0/@handlers.0/@values.2"/>
+    </yValues>
+  </results:XYDataResultSet>
+  <results:XYDataResultSet name="06-1B-B1-05-3B-3F">
+    <tracesFrom href="file:dump/dump.xmi#//@nodes.1/@elements.0/@children.1/@children.0/@handlers.0"/>
+    <xValues xsi:type="results:DoubleDataResultValue" value="1.32215050961395098E18">
+      <tracesFrom href="file:dump/dump.xmi#//@nodes.1/@elements.0/@children.1/@children.0/@handlers.0/@values.0"/>
+    </xValues>
+    <xValues xsi:type="results:DoubleDataResultValue" value="1.32215050981400499E18">
+      <tracesFrom href="file:dump/dump.xmi#//@nodes.1/@elements.0/@children.1/@children.0/@handlers.0/@values.1"/>
+    </xValues>
+    <yValues xsi:type="results:DoubleDataResultValue" value="9.0">
+      <tracesFrom href="file:dump/dump.xmi#//@nodes.1/@elements.0/@children.1/@children.0/@handlers.0/@values.0"/>
+    </yValues>
+    <yValues xsi:type="results:DoubleDataResultValue" value="9.0">
+      <tracesFrom href="file:dump/dump.xmi#//@nodes.1/@elements.0/@children.1/@children.0/@handlers.0/@values.1"/>
+    </yValues>
+  </results:XYDataResultSet>
+  <results:XYDataResultSet name="06-1B-B1-05-3B-88">
+    <tracesFrom href="file:dump/dump.xmi#//@nodes.2/@elements.0/@children.1/@children.0/@handlers.0"/>
+    <xValues xsi:type="results:DoubleDataResultValue" value="1.32215050965303578E18">
+      <tracesFrom href="file:dump/dump.xmi#//@nodes.2/@elements.0/@children.1/@children.0/@handlers.0/@values.0"/>
+    </xValues>
+    <xValues xsi:type="results:DoubleDataResultValue" value="1.32215050985754906E18">
+      <tracesFrom href="file:dump/dump.xmi#//@nodes.2/@elements.0/@children.1/@children.0/@handlers.0/@values.1"/>
+    </xValues>
+    <yValues xsi:type="results:DoubleDataResultValue" value="3.0">
+      <tracesFrom href="file:dump/dump.xmi#//@nodes.2/@elements.0/@children.1/@children.0/@handlers.0/@values.0"/>
+    </yValues>
+    <yValues xsi:type="results:DoubleDataResultValue" value="1.0">
+      <tracesFrom href="file:dump/dump.xmi#//@nodes.2/@elements.0/@children.1/@children.0/@handlers.0/@values.1"/>
+    </yValues>
+  </results:XYDataResultSet>
+</xmi:XMI>
