@@ -32,7 +32,7 @@ object HWBusyAverageExampleSMTL {
     /**
      * RULE
      */
-    val testRule = new Rule[XYDataResultSet, DoubleDataResultValue]("makeAverage") using ((h, s, t) => {
+    val testRule = new Rule[XYDataResultSet, DoubleDataResultValue]("makeAverage") perform ((s, t) => {
 
       // just for testing purpose
       if (testAverageValue == null) testAverageValue = t
@@ -51,9 +51,9 @@ object HWBusyAverageExampleSMTL {
     hwBusyAverageTransformation.addRule(testRule)
 
     if (loadFromIterable != null)
-      hwBusyAverageTransformation transform loadFromIterable exportToFile "outputHWAverage.xmi"
+      hwBusyAverageTransformation transform loadFromIterable export "outputHWAverage.xmi"
     else
-      hwBusyAverageTransformation transform loadFromFile exportToFile "outputHWAverage.xmi"
+      hwBusyAverageTransformation transform loadFromFile export "outputHWAverage.xmi"
   }
 
   /**

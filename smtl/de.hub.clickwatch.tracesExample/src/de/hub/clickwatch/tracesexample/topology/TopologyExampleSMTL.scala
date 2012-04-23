@@ -5,6 +5,7 @@ import de.hub.clickwatch.analysis.results.Results
 import de.hub.clickwatch.analysis.results.ResultsPackage
 import de.hub.clickwatch.model.ClickWatchModelPackage
 import de.digitalforger.smtl.m2m.TransformationM2M
+import de.digitalforger.smtl.m2m.TransformationHelperSyntax._
 import de.digitalforger.smtl.m2m.Rule
 import de.hub.clickwatch.datamodel.Node
 import de.hub.clickwatch.analysis.results.GraphNode
@@ -62,10 +63,10 @@ object TopologyExampleSMTL {
 
     //
     // RULE: netWorkRule
-    val netWorkRule = new Rule[Network, GraphResult]("Network") using ((helper, network, result) => {
+    val netWorkRule = new Rule[Network, GraphResult]("Network") perform ((network, result) => {
 
       for (node <- network.getNodes()) {
-        val graphNode = helper.transform(node, classOf[GraphNode])
+        val graphNode = as[GraphNode](node)
         result.getNodes().add(graphNode)
 
         // check the links of the node
@@ -74,14 +75,14 @@ object TopologyExampleSMTL {
         for (link <- bcastHandler.getEntry().getLink()) {
 
           // look at all nodes, if the target of this link exists in there
-          val res = helper.getAllElementsOfInputType(classOf[Node]).filter(n => {
+          val res = getInputElements[Node]().filter(n => {
             var bcastHandler = n.asInstanceOf[Node].getHandler("device_wifi/link_stat/bcast_stats").getValues().get(0).asInstanceOf[Bcast_stats]
             bcastHandler.getEntry().getFrom().equals(link.getTo())
           })
 
           // if we found a target node
           if (!res.isEmpty) {
-            val lnk = helper.transform(link, classOf[GraphLink])
+            val lnk = as[GraphLink](link)
 
             // the link is contained in the result
             result.getLinks().add(lnk)
@@ -89,7 +90,7 @@ object TopologyExampleSMTL {
             // the link is outoing from the resulting graphNode
             graphNode.getOutgoing().add(lnk)
 
-            val targetGraphNode = helper.transform(res.first, classOf[GraphNode])
+            val targetGraphNode = as[GraphNode](res.first)
             result.getNodes().add(targetGraphNode)
             lnk.setTarget(targetGraphNode)
           }
@@ -101,7 +102,7 @@ object TopologyExampleSMTL {
 
     //
     // RULE: node2GraphNode
-    val node2GraphNode = new Rule[Node, GraphNode]("Node") isLazy () using ((helper, node, graphNode) => {
+    val node2GraphNode = new Rule[Node, GraphNode]("Node") isLazy () perform ((node, graphNode) => {
       var statsHandler = node.getHandler("device_wifi/wifidevice/cst/stats").getValues().get(0).asInstanceOf[Stats]
       graphNode.setName(statsHandler.getChannelstats().getNode())
 
@@ -111,7 +112,7 @@ object TopologyExampleSMTL {
 
     //
     // RULE: link2GraphLink
-    val link2GraphLink = new Rule[Link, GraphLink]("Link") isLazy () using ((helper, link, graphLink) => {
+    val link2GraphLink = new Rule[Link, GraphLink]("Link") isLazy () perform ((link, graphLink) => {
       graphLink.setName(link.getEContainer_link().getFrom() + " - " + link.getTo())
       
       // just for fast testing possibilities
@@ -122,9 +123,9 @@ object TopologyExampleSMTL {
     topologyTransformation.addRule(netWorkRule, node2GraphNode, link2GraphLink)
 
     if (loadFromIterable == null)
-      topologyTransformation transform "dump/dump.xmi" exportToFile "outputTopology.xmi"
+      topologyTransformation transform "dump/dump.xmi" export "outputTopology.xmi"
     else
-      topologyTransformation transform loadFromIterable exportToFile "outputTopology.xmi"
+      topologyTransformation transform loadFromIterable export "outputTopology.xmi"
 
     if (SHOW_GRAPH) {
       showGraph()

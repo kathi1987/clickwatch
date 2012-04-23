@@ -68,8 +68,8 @@ object HWBusyExampleSMTL {
     /**
      * RULE
      */
-    val networkRule = new Rule[Network, NumericalResult]("NunmericalResult") using (
-      (helper, network, result) => {
+    val networkRule = new Rule[Network, NumericalResult]("NunmericalResult") perform (
+      (network, result) => {
         result.getCharts().add(ChartUtil.createXYChart("Plot over time", "nodes", "time", "HW_busy"));
         resultList.add(result)
 
@@ -85,8 +85,8 @@ object HWBusyExampleSMTL {
      * RULE
      */
     val nodeToDataResultRule = new Rule[Node, XYDataResultSet]("xyDataSet") when (
-      (node) => { onlyNodes.contains(node) }) using (
-        (helper, node, resultSet) => {          
+      (node) => { onlyNodes.contains(node) }) perform (
+        (node, resultSet) => {          
 
           // for all time values
           for (value <- node.getHandler("device_wifi/wifidevice/cst/stats").getValues()) {
@@ -108,8 +108,8 @@ object HWBusyExampleSMTL {
     /**
      * RULE
      */
-    val statsToHWBusyResultValueRule = new Rule[Stats, DoubleDataResultValue]("HWBusy") isLazy () using (
-      (helper, statsHandler, resultValue) => {
+    val statsToHWBusyResultValueRule = new Rule[Stats, DoubleDataResultValue]("HWBusy") isLazy () perform (
+      (statsHandler, resultValue) => {
 
         var time : java.lang.Long = statsHandler.getTimestamp()
         var hwBusy : Integer = statsHandler.getChannelstats().getPhy().getHwbusy()
@@ -137,8 +137,8 @@ object HWBusyExampleSMTL {
       (h) => {
         // check for the correct handler and that it is from a node we want to use
         (h.getQualifiedName().equals("device_wifi/wifidevice/cst/stats") && onlyNodes.contains(h.eContainer().eContainer().eContainer().eContainer().asInstanceOf[Node]))
-      }) using (
-        (helper, handler, resultSet) => {
+      }) perform (
+        (handler, resultSet) => {
                     
           for (value <- handler.getValues()) {
         	// set the name of the data resultset
@@ -163,9 +163,9 @@ object HWBusyExampleSMTL {
     hwbusyTransformation.addRule(networkRule, statsHandlerToDataResultSet, statsToHWBusyResultValueRule)
 
     if (loadFromIterable == null)
-      hwbusyTransformation transform inputFile exportToFile "outputHWBusy.xmi"
+      hwbusyTransformation transform inputFile export "outputHWBusy.xmi"
     else
-      hwbusyTransformation transform loadFromIterable exportToFile "outputHWBusy.xmi"
+      hwbusyTransformation transform loadFromIterable export "outputHWBusy.xmi"
 
     if (SHOW_GRAPH) {
       showGraph()

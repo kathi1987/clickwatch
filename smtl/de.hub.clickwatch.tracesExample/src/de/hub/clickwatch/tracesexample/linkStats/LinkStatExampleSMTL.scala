@@ -55,7 +55,7 @@ object LinkStatExampleSMTL {
 
     //
     // RULE: networkRule
-    val networkRule = new Rule[Network, NumericalResult]("Network") using ((helper, network, result) => {
+    val networkRule = new Rule[Network, NumericalResult]("Network") perform ((network, result) => {
       result.getCharts().add(ChartUtil.createXYChart("Link attributes", "links", "attribute", "value"));
       resultList.add(result)
 
@@ -64,19 +64,19 @@ object LinkStatExampleSMTL {
       var bcast_statsHandler = node.getHandler("device_wifi/link_stat/bcast_stats").getValues().get(0).asInstanceOf[Bcast_stats];
 
       for (link <- bcast_statsHandler.getEntry().getLink()) {
-        helper.transform(link, classOf[XYDataResultSet])
+        as[XYDataResultSet](link)
       }
       //}
     })
 
     //
     // RULE: linkRule
-    val linkRule = new Rule[Link, XYDataResultSet]("linkRule") isLazy () using ((helper, link, resultSet) => {
+    val linkRule = new Rule[Link, XYDataResultSet]("linkRule") isLazy () perform ((link, resultSet) => {
 
       resultSet.setName(link.getEContainer_link().getFrom() + " - " + link.getTo())
       
       var linkInfo = link.getLink_info().get(0);
-      helper.transform(linkInfo, classOf[DoubleDataResultValue])
+      as[DoubleDataResultValue](linkInfo)
 
       // is still here for the visual representation
       val result = resultList.get(0)
@@ -105,7 +105,7 @@ object LinkStatExampleSMTL {
 
     //
     // RULE: linkInfoRule
-    val linkInfoRule = new Rule[Link_info, DoubleDataResultValue]("linkInfoRule") isLazy () using ((h, linkInfo, rateValue) => {
+    val linkInfoRule = new Rule[Link_info, DoubleDataResultValue]("linkInfoRule") isLazy () perform ((linkInfo, rateValue) => {
       rateValue.setValue(linkInfo.getRate())
 
       val sizeValue = create[DoubleDataResultValue]
@@ -122,9 +122,9 @@ object LinkStatExampleSMTL {
     linkStatsTransformation.addRule(networkRule, linkRule, linkInfoRule)
 
     if (loadFromIterable == null)
-      linkStatsTransformation transform inputFile exportToFile "outputLinkStat.xmi"
+      linkStatsTransformation transform inputFile export "outputLinkStat.xmi"
     else
-      linkStatsTransformation transform loadFromIterable exportToFile "outputLinkStat.xmi"
+      linkStatsTransformation transform loadFromIterable export "outputLinkStat.xmi"
 
     if (SHOW_GRAPH) {
       showGraph()
