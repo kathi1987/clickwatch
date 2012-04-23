@@ -163,9 +163,9 @@ object HWBusyExampleSMTL {
     hwbusyTransformation.addRule(networkRule, statsHandlerToDataResultSet, statsToHWBusyResultValueRule)
 
     if (loadFromIterable == null)
-      hwbusyTransformation transform inputFile export "outputHWBusy.xmi"
+      hwbusyTransformation transform inputFile
     else
-      hwbusyTransformation transform loadFromIterable export "outputHWBusy.xmi"
+      hwbusyTransformation transform loadFromIterable
 
     if (SHOW_GRAPH) {
       showGraph()

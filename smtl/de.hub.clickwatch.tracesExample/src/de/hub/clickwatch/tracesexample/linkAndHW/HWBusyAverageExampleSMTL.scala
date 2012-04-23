@@ -51,9 +51,9 @@ object HWBusyAverageExampleSMTL {
     hwBusyAverageTransformation.addRule(testRule)
 
     if (loadFromIterable != null)
-      hwBusyAverageTransformation transform loadFromIterable export "outputHWAverage.xmi"
+      hwBusyAverageTransformation transform loadFromIterable
     else
-      hwBusyAverageTransformation transform loadFromFile export "outputHWAverage.xmi"
+      hwBusyAverageTransformation transform loadFromFile
   }
 
   /**

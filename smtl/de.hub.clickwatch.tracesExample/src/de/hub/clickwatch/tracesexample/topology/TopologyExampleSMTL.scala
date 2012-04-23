@@ -123,9 +123,9 @@ object TopologyExampleSMTL {
     topologyTransformation.addRule(netWorkRule, node2GraphNode, link2GraphLink)
 
     if (loadFromIterable == null)
-      topologyTransformation transform "dump/dump.xmi" export "outputTopology.xmi"
+      topologyTransformation transform "dump/dump.xmi"
     else
-      topologyTransformation transform loadFromIterable export "outputTopology.xmi"
+      topologyTransformation transform loadFromIterable 
 
     if (SHOW_GRAPH) {
       showGraph()

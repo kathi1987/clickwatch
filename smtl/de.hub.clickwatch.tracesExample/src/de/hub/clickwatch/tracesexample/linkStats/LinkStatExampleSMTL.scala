@@ -122,9 +122,9 @@ object LinkStatExampleSMTL {
     linkStatsTransformation.addRule(networkRule, linkRule, linkInfoRule)
 
     if (loadFromIterable == null)
-      linkStatsTransformation transform inputFile export "outputLinkStat.xmi"
+      linkStatsTransformation transform inputFile
     else
-      linkStatsTransformation transform loadFromIterable export "outputLinkStat.xmi"
+      linkStatsTransformation transform loadFromIterable
 
     if (SHOW_GRAPH) {
       showGraph()

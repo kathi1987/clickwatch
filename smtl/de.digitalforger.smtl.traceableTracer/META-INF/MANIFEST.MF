@@ -5,7 +5,7 @@ Bundle-SymbolicName: de.digitalforger.smtl.traceableTracer;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: de.digitalforger.smtl.traceabletracer.Activator
 Require-Bundle: org.eclipse.core.runtime,
- de.digitalforger.smtl;bundle-version="1.0.0",
+ de.digitalforger.smtl,
  de.hub.clickwatch.analysis.traceable;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6

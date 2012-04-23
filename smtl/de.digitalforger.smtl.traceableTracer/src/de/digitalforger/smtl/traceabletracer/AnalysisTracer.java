@@ -4,6 +4,13 @@ import de.digitalforger.smtl.m2m.IRule;
 import de.digitalforger.smtl.trace.IAdditionalTracer;
 import de.hub.clickwatch.analysis.traceable.Traceable;
 
+/**
+ * This tracer plug-in adds Traceable exntries in model elements that to support this functionality
+ * These elements must implement the interface Traceable
+ * 
+ * @author Lars George
+ *
+ */
 public class AnalysisTracer implements IAdditionalTracer {
 
 	public AnalysisTracer() {
@@ -12,9 +19,7 @@ public class AnalysisTracer implements IAdditionalTracer {
 
 	@Override
 	public void trace(Object from, Object to, IRule byRule) {
-		System.out.println("ADDITIONAL TRACING !!!!!!!!!!!!!!!!!!!!!");
 		if(to instanceof Traceable && from instanceof Traceable) {
-			System.out.println("successfull");
 			((Traceable)to).getTracesFrom().add(((Traceable)from));
 			((Traceable)from).getTracesFrom().add(((Traceable)to));
 		}
