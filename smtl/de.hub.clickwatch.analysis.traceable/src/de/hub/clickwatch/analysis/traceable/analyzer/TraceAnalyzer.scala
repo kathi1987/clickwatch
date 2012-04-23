@@ -55,15 +55,25 @@ class TraceAnalyzer {
     while (bestPathLength < 0) {
       // look where on the path of the candidates this object is    
       for (c <- candidatePaths) {
-        if (c._2.contains(curTargetObject)) {
-          // the target object is on the path of this candidate        
-          curPathLength = c._2.size() - c._2.indexOf(curTargetObject)
+        for (t <- c._2) {
+          try {      
+            // check equality. cannot use contains of list, because eObjects need to be compared in a specific way
+            if (t.eClass().getEPackage().getNsURI().equals(curTargetObject.eClass().getEPackage().getNsURI()) && 
+                EcoreUtil.equals(t, curTargetObject)) {
+              
+              // the target object is on the path of this candidate        
+              curPathLength = c._2.size() - c._2.indexOf(curTargetObject)
 
-          // is this a better candidate (shorter path to the target)
-          if (bestPathLength == -1 || curPathLength < bestPathLength) {
-            bestCandiate = c._1
-            bestPathLength = curPathLength
+              // is this a better candidate (shorter path to the target)
+              if (bestPathLength == -1 || curPathLength < bestPathLength) {
+                bestCandiate = c._1
+                bestPathLength = curPathLength
+              }
+            }
+          } catch {
+            case e : ClassCastException => ""
           }
+
         }
       }
 

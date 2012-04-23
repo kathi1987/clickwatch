@@ -16,6 +16,7 @@ import de.hub.clickwatch.tracesexample.linkAndHW.HWBusyAverageExampleSMTL
 import de.hub.clickwatch.tracesexample.topology.TopologyExampleSMTL
 import linkStats.LinkStatExampleSMTL
 import de.hub.clickwatch.analysis.traceable.analyzer.TraceAnalyzer
+import de.hub.clickwatch.analysis.results.GraphResult
 
 object CombineTransformationsTest {
 
@@ -31,34 +32,17 @@ object CombineTransformationsTest {
     val traceAnalyzer = new TraceAnalyzer()
     
     val allResources = new ResourceSetImpl()
-    
-    var res = getModel("dump/dump.xmi")    
-    // res.setURI(URI.createFileURI("dump/dump.xmi"))    
-    allResources.getResources().add(res)
-    
-    res = getModel("outputLinkStat.xmi")    
-//    res.setURI(URI.createFileURI("new-model3"))  
-    allResources.getResources().add(res)
-    
-    res = getModel("outputHWBusy.xmi")    
-//    res.setURI(URI.createFileURI("new-model3"))  
-    allResources.getResources().add(res)
-    
-    res = getModel("outputTopology.xmi")    
-//    res.setURI(URI.createFileURI("new-model3"))  
-    allResources.getResources().add(res)
-        
-    res = getModel("outputHWAverage.xmi")    
-//    res.setURI(URI.createFileURI("new-model3"))  
-    allResources.getResources().add(res)
-
+              
+    allResources.getResources().add(getModel("dump/dump.xmi"))              
+    allResources.getResources().add(getModel("outputLinkStat.xmi"))            
+    allResources.getResources().add(getModel("outputHWBusy.xmi"))    
+    allResources.getResources().add(getModel("outputTopology.xmi"))
+    allResources.getResources().add(getModel("outputHWAverage.xmi"))
+         
+    val exampleNode = allResources.getResource(URI.createFileURI("outputTopology.xmi"), true).getContents().get(0).asInstanceOf[GraphResult].getNodes().get(0)
     // which classOf[XYDataResultSet] forIn GraphNode
-    var result = traceAnalyzer.which(classOf[XYDataResultSet], TopologyExampleSMTL.getExampleNode(), allResources)
+    var result = traceAnalyzer.which(classOf[XYDataResultSet], exampleNode, allResources)
     println("The Graphnode: " + TopologyExampleSMTL.getExampleNode() + "\nis based on data that connects to the following XYDataResultSet: " + result)
-
-    // wihch classOf[XYDataResultSet] forIn GraphEdge    
-    result = traceAnalyzer.which(classOf[XYDataResultSet], TopologyExampleSMTL.getExampleLink(), allResources)
-    println("The Graphlink: " + TopologyExampleSMTL.getExampleLink() + "\nis based on data that connects to the following XYDataResultSet: " + result)
 
     // which GraphNode was used to get the average hwbusy value?
     // which classOf[GraphNode] forIn DoubleDataResultValue
