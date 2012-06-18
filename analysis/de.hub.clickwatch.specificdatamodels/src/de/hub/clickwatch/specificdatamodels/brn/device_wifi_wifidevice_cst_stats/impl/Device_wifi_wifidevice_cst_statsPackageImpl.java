@@ -6,6 +6,7 @@
  */
 package de.hub.clickwatch.specificdatamodels.brn.device_wifi_wifidevice_cst_stats.impl;
 
+import de.hub.clickwatch.analysis.traceable.TraceablePackage;
 import de.hub.clickwatch.datamodel.ClickWatchDataModelPackage;
 
 import de.hub.clickwatch.specificdatamodels.brn.BrnPackage;
@@ -1540,6 +1541,7 @@ public class Device_wifi_wifidevice_cst_statsPackageImpl extends EPackageImpl im
 
 		// Obtain other dependent packages
 		ClickWatchDataModelPackage theClickWatchDataModelPackage = (ClickWatchDataModelPackage)EPackage.Registry.INSTANCE.getEPackage(ClickWatchDataModelPackage.eNS_URI);
+		TraceablePackage theTraceablePackage = (TraceablePackage)EPackage.Registry.INSTANCE.getEPackage(TraceablePackage.eNS_URI);
 
 		// Create type parameters
 
@@ -1547,6 +1549,7 @@ public class Device_wifi_wifidevice_cst_statsPackageImpl extends EPackageImpl im
 
 		// Add supertypes to classes
 		statsEClass.getESuperTypes().add(theClickWatchDataModelPackage.getValue());
+		statsEClass.getESuperTypes().add(theTraceablePackage.getTraceable());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(channelstatsEClass, Channelstats.class, "Channelstats", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

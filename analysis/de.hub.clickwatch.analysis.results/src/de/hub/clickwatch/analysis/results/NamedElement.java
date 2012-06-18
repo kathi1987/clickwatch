@@ -6,6 +6,7 @@
  */
 package de.hub.clickwatch.analysis.results;
 
+import de.hub.clickwatch.analysis.traceable.Traceable;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -24,31 +25,31 @@ import org.eclipse.emf.ecore.EObject;
  * @model abstract="true"
  * @generated
  */
-public interface NamedElement extends EObject {
+public interface NamedElement extends Traceable {
 	/**
-     * Returns the value of the '<em><b>Name</b></em>' attribute.
-     * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-     * @return the value of the '<em>Name</em>' attribute.
-     * @see #setName(String)
-     * @see de.hub.clickwatch.analysis.results.ResultsPackage#getNamedElement_Name()
-     * @model
-     * @generated
-     */
+	 * @return the value of the '<em>Name</em>' attribute.
+	 * @see #setName(String)
+	 * @see de.hub.clickwatch.analysis.results.ResultsPackage#getNamedElement_Name()
+	 * @model
+	 * @generated
+	 */
 	String getName();
 
 	/**
-     * Sets the value of the '{@link de.hub.clickwatch.analysis.results.NamedElement#getName <em>Name</em>}' attribute.
-     * <!-- begin-user-doc -->
+	 * Sets the value of the '{@link de.hub.clickwatch.analysis.results.NamedElement#getName <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @param value the new value of the '<em>Name</em>' attribute.
-     * @see #getName()
-     * @generated
-     */
+	 * @param value the new value of the '<em>Name</em>' attribute.
+	 * @see #getName()
+	 * @generated
+	 */
 	void setName(String value);
 
 } // NamedElement

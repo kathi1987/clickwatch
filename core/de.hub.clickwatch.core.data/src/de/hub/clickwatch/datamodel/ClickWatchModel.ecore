@@ -3,7 +3,7 @@
     xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="datamodel"
     nsURI="http://de.hub.clickwatch.datamodel" nsPrefix="cwdm">
-  <eClassifiers xsi:type="ecore:EClass" name="Node" eSuperTypes="#//ModelElementWithStatistics">
+  <eClassifiers xsi:type="ecore:EClass" name="Node" eSuperTypes="#//ModelElementWithStatistics ../../../../../../de.hub.clickwatch.analysis.traceable/src/de/hub/clickwatch/analysis/traceable/Traceable.ecore#//Traceable">
     <eOperations name="getHandler" eType="#//Handler">
       <eParameters name="qualifiedName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
@@ -40,7 +40,7 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Element">
+  <eClassifiers xsi:type="ecore:EClass" name="Element" eSuperTypes="../../../../../../de.hub.clickwatch.analysis.traceable/src/de/hub/clickwatch/analysis/traceable/Traceable.ecore#//Traceable">
     <eOperations name="getQualifiedName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eOperations name="getHandler" eType="#//Handler">
       <eParameters name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -60,7 +60,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
         eType="#//Element" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Handler">
+  <eClassifiers xsi:type="ecore:EClass" name="Handler" eSuperTypes="../../../../../../de.hub.clickwatch.analysis.traceable/src/de/hub/clickwatch/analysis/traceable/Traceable.ecore#//Traceable">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
       <details key="kind" value="mixed"/>
     </eAnnotations>
@@ -73,7 +73,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="values" upperBound="-1"
         eType="#//Value" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Network" eSuperTypes="#//ModelElementWithStatistics">
+  <eClassifiers xsi:type="ecore:EClass" name="Network" eSuperTypes="#//ModelElementWithStatistics ../../../../../../de.hub.clickwatch.analysis.traceable/src/de/hub/clickwatch/analysis/traceable/Traceable.ecore#//Traceable">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         defaultValueLiteral="My Network"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="nodes" upperBound="-1"

@@ -18,6 +18,7 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link de.hub.clickwatch.analysis.results.NumericalResult#getCharts <em>Charts</em>}</li>
  *   <li>{@link de.hub.clickwatch.analysis.results.NumericalResult#getData <em>Data</em>}</li>
+ *   <li>{@link de.hub.clickwatch.analysis.results.NumericalResult#getDataResultSet <em>Data Result Set</em>}</li>
  * </ul>
  * </p>
  *
@@ -27,45 +28,71 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface NumericalResult extends Result {
     /**
-     * Returns the value of the '<em><b>Charts</b></em>' containment reference list.
-     * The list contents are of type {@link de.hub.clickwatch.analysis.results.Chart}.
-     * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Charts</b></em>' containment reference list.
+	 * The list contents are of type {@link de.hub.clickwatch.analysis.results.Chart}.
+	 * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Charts</em>' containment reference list isn't clear,
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * @return the value of the '<em>Charts</em>' containment reference list.
-     * @see de.hub.clickwatch.analysis.results.ResultsPackage#getNumericalResult_Charts()
-     * @model containment="true"
-     * @generated
-     */
+	 * @return the value of the '<em>Charts</em>' containment reference list.
+	 * @see de.hub.clickwatch.analysis.results.ResultsPackage#getNumericalResult_Charts()
+	 * @model containment="true"
+	 * @generated
+	 */
     EList<Chart> getCharts();
 
     /**
-     * Returns the value of the '<em><b>Data</b></em>' attribute.
-     * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Data</b></em>' attribute.
+	 * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Data</em>' attribute isn't clear,
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * @return the value of the '<em>Data</em>' attribute.
-     * @see #setData(DataSet)
-     * @see de.hub.clickwatch.analysis.results.ResultsPackage#getNumericalResult_Data()
-     * @model dataType="de.hub.clickwatch.analysis.results.DataSet"
-     * @generated
-     */
+	 * @return the value of the '<em>Data</em>' attribute.
+	 * @see #setData(DataSet)
+	 * @see de.hub.clickwatch.analysis.results.ResultsPackage#getNumericalResult_Data()
+	 * @model dataType="de.hub.clickwatch.analysis.results.DataSet"
+	 * @generated
+	 */
     DataSet getData();
 
     /**
-     * Sets the value of the '{@link de.hub.clickwatch.analysis.results.NumericalResult#getData <em>Data</em>}' attribute.
-     * <!-- begin-user-doc -->
+	 * Sets the value of the '{@link de.hub.clickwatch.analysis.results.NumericalResult#getData <em>Data</em>}' attribute.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @param value the new value of the '<em>Data</em>' attribute.
-     * @see #getData()
-     * @generated
-     */
+	 * @param value the new value of the '<em>Data</em>' attribute.
+	 * @see #getData()
+	 * @generated
+	 */
     void setData(DataSet value);
+
+				/**
+	 * Returns the value of the '<em><b>Data Result Set</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Data Result Set</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Data Result Set</em>' reference.
+	 * @see #setDataResultSet(DataResultSet)
+	 * @see de.hub.clickwatch.analysis.results.ResultsPackage#getNumericalResult_DataResultSet()
+	 * @model
+	 * @generated
+	 */
+	DataResultSet getDataResultSet();
+
+				/**
+	 * Sets the value of the '{@link de.hub.clickwatch.analysis.results.NumericalResult#getDataResultSet <em>Data Result Set</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Data Result Set</em>' reference.
+	 * @see #getDataResultSet()
+	 * @generated
+	 */
+	void setDataResultSet(DataResultSet value);
 
 } // NumericalResult

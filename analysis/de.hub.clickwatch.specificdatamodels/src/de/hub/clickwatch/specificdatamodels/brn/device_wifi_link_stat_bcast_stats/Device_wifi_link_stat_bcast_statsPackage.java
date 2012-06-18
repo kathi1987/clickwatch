@@ -6,6 +6,7 @@
  */
 package de.hub.clickwatch.specificdatamodels.brn.device_wifi_link_stat_bcast_stats;
 
+import de.hub.clickwatch.analysis.traceable.TraceablePackage;
 import de.hub.clickwatch.datamodel.ClickWatchDataModelPackage;
 
 import org.eclipse.emf.ecore.EAttribute;
@@ -73,6 +74,42 @@ public interface Device_wifi_link_stat_bcast_statsPackage extends EPackage {
 	int BCAST_STATS = 0;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BCAST_STATS__NAME = ClickWatchDataModelPackage.VALUE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Can Read</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BCAST_STATS__CAN_READ = ClickWatchDataModelPackage.VALUE__CAN_READ;
+
+	/**
+	 * The feature id for the '<em><b>Can Write</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BCAST_STATS__CAN_WRITE = ClickWatchDataModelPackage.VALUE__CAN_WRITE;
+
+	/**
+	 * The feature id for the '<em><b>Changed</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BCAST_STATS__CHANGED = ClickWatchDataModelPackage.VALUE__CHANGED;
+
+	/**
 	 * The feature id for the '<em><b>Mixed</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -109,13 +146,31 @@ public interface Device_wifi_link_stat_bcast_statsPackage extends EPackage {
 	int BCAST_STATS__TIMESTAMP = ClickWatchDataModelPackage.VALUE__TIMESTAMP;
 
 	/**
+	 * The feature id for the '<em><b>Traces From</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BCAST_STATS__TRACES_FROM = ClickWatchDataModelPackage.VALUE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Traces To</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BCAST_STATS__TRACES_TO = ClickWatchDataModelPackage.VALUE_FEATURE_COUNT + 1;
+
+	/**
 	 * The feature id for the '<em><b>Entry</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BCAST_STATS__ENTRY = ClickWatchDataModelPackage.VALUE_FEATURE_COUNT + 0;
+	int BCAST_STATS__ENTRY = ClickWatchDataModelPackage.VALUE_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Bcast stats</em>' class.
@@ -124,7 +179,7 @@ public interface Device_wifi_link_stat_bcast_statsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BCAST_STATS_FEATURE_COUNT = ClickWatchDataModelPackage.VALUE_FEATURE_COUNT + 1;
+	int BCAST_STATS_FEATURE_COUNT = ClickWatchDataModelPackage.VALUE_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link de.hub.clickwatch.specificdatamodels.brn.device_wifi_link_stat_bcast_stats.impl.EntryImpl <em>Entry</em>}' class.
@@ -137,13 +192,31 @@ public interface Device_wifi_link_stat_bcast_statsPackage extends EPackage {
 	int ENTRY = 1;
 
 	/**
+	 * The feature id for the '<em><b>Traces From</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY__TRACES_FROM = TraceablePackage.TRACEABLE__TRACES_FROM;
+
+	/**
+	 * The feature id for the '<em><b>Traces To</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY__TRACES_TO = TraceablePackage.TRACEABLE__TRACES_TO;
+
+	/**
 	 * The feature id for the '<em><b>EContainer entry</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENTRY__ECONTAINER_ENTRY = 0;
+	int ENTRY__ECONTAINER_ENTRY = TraceablePackage.TRACEABLE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Text</b></em>' attribute list.
@@ -152,7 +225,7 @@ public interface Device_wifi_link_stat_bcast_statsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENTRY__TEXT = 1;
+	int ENTRY__TEXT = TraceablePackage.TRACEABLE_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Link</b></em>' containment reference list.
@@ -161,7 +234,7 @@ public interface Device_wifi_link_stat_bcast_statsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENTRY__LINK = 2;
+	int ENTRY__LINK = TraceablePackage.TRACEABLE_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>From</b></em>' attribute.
@@ -170,7 +243,7 @@ public interface Device_wifi_link_stat_bcast_statsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENTRY__FROM = 3;
+	int ENTRY__FROM = TraceablePackage.TRACEABLE_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Time</b></em>' attribute.
@@ -179,7 +252,7 @@ public interface Device_wifi_link_stat_bcast_statsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENTRY__TIME = 4;
+	int ENTRY__TIME = TraceablePackage.TRACEABLE_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Seq</b></em>' attribute.
@@ -188,7 +261,7 @@ public interface Device_wifi_link_stat_bcast_statsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENTRY__SEQ = 5;
+	int ENTRY__SEQ = TraceablePackage.TRACEABLE_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Period</b></em>' attribute.
@@ -197,7 +270,7 @@ public interface Device_wifi_link_stat_bcast_statsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENTRY__PERIOD = 6;
+	int ENTRY__PERIOD = TraceablePackage.TRACEABLE_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Tau</b></em>' attribute.
@@ -206,7 +279,7 @@ public interface Device_wifi_link_stat_bcast_statsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENTRY__TAU = 7;
+	int ENTRY__TAU = TraceablePackage.TRACEABLE_FEATURE_COUNT + 7;
 
 	/**
 	 * The number of structural features of the '<em>Entry</em>' class.
@@ -215,7 +288,7 @@ public interface Device_wifi_link_stat_bcast_statsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENTRY_FEATURE_COUNT = 8;
+	int ENTRY_FEATURE_COUNT = TraceablePackage.TRACEABLE_FEATURE_COUNT + 8;
 
 	/**
 	 * The meta object id for the '{@link de.hub.clickwatch.specificdatamodels.brn.device_wifi_link_stat_bcast_stats.impl.LinkImpl <em>Link</em>}' class.
@@ -228,13 +301,31 @@ public interface Device_wifi_link_stat_bcast_statsPackage extends EPackage {
 	int LINK = 2;
 
 	/**
+	 * The feature id for the '<em><b>Traces From</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINK__TRACES_FROM = TraceablePackage.TRACEABLE__TRACES_FROM;
+
+	/**
+	 * The feature id for the '<em><b>Traces To</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINK__TRACES_TO = TraceablePackage.TRACEABLE__TRACES_TO;
+
+	/**
 	 * The feature id for the '<em><b>EContainer link</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LINK__ECONTAINER_LINK = 0;
+	int LINK__ECONTAINER_LINK = TraceablePackage.TRACEABLE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Text</b></em>' attribute list.
@@ -243,7 +334,7 @@ public interface Device_wifi_link_stat_bcast_statsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LINK__TEXT = 1;
+	int LINK__TEXT = TraceablePackage.TRACEABLE_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Link info</b></em>' containment reference list.
@@ -252,7 +343,7 @@ public interface Device_wifi_link_stat_bcast_statsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LINK__LINK_INFO = 2;
+	int LINK__LINK_INFO = TraceablePackage.TRACEABLE_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>To</b></em>' attribute.
@@ -261,7 +352,7 @@ public interface Device_wifi_link_stat_bcast_statsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LINK__TO = 3;
+	int LINK__TO = TraceablePackage.TRACEABLE_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Seq</b></em>' attribute.
@@ -270,7 +361,7 @@ public interface Device_wifi_link_stat_bcast_statsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LINK__SEQ = 4;
+	int LINK__SEQ = TraceablePackage.TRACEABLE_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Period</b></em>' attribute.
@@ -279,7 +370,7 @@ public interface Device_wifi_link_stat_bcast_statsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LINK__PERIOD = 5;
+	int LINK__PERIOD = TraceablePackage.TRACEABLE_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Tau</b></em>' attribute.
@@ -288,7 +379,7 @@ public interface Device_wifi_link_stat_bcast_statsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LINK__TAU = 6;
+	int LINK__TAU = TraceablePackage.TRACEABLE_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Last rx</b></em>' attribute.
@@ -297,7 +388,7 @@ public interface Device_wifi_link_stat_bcast_statsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LINK__LAST_RX = 7;
+	int LINK__LAST_RX = TraceablePackage.TRACEABLE_FEATURE_COUNT + 7;
 
 	/**
 	 * The number of structural features of the '<em>Link</em>' class.
@@ -306,7 +397,7 @@ public interface Device_wifi_link_stat_bcast_statsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LINK_FEATURE_COUNT = 8;
+	int LINK_FEATURE_COUNT = TraceablePackage.TRACEABLE_FEATURE_COUNT + 8;
 
 	/**
 	 * The meta object id for the '{@link de.hub.clickwatch.specificdatamodels.brn.device_wifi_link_stat_bcast_stats.impl.Link_infoImpl <em>Link info</em>}' class.
@@ -319,13 +410,31 @@ public interface Device_wifi_link_stat_bcast_statsPackage extends EPackage {
 	int LINK_INFO = 3;
 
 	/**
+	 * The feature id for the '<em><b>Traces From</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINK_INFO__TRACES_FROM = TraceablePackage.TRACEABLE__TRACES_FROM;
+
+	/**
+	 * The feature id for the '<em><b>Traces To</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINK_INFO__TRACES_TO = TraceablePackage.TRACEABLE__TRACES_TO;
+
+	/**
 	 * The feature id for the '<em><b>EContainer link info</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LINK_INFO__ECONTAINER_LINK_INFO = 0;
+	int LINK_INFO__ECONTAINER_LINK_INFO = TraceablePackage.TRACEABLE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Size</b></em>' attribute.
@@ -334,7 +443,7 @@ public interface Device_wifi_link_stat_bcast_statsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LINK_INFO__SIZE = 1;
+	int LINK_INFO__SIZE = TraceablePackage.TRACEABLE_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Rate</b></em>' attribute.
@@ -343,7 +452,7 @@ public interface Device_wifi_link_stat_bcast_statsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LINK_INFO__RATE = 2;
+	int LINK_INFO__RATE = TraceablePackage.TRACEABLE_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Fwd</b></em>' attribute.
@@ -352,7 +461,7 @@ public interface Device_wifi_link_stat_bcast_statsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LINK_INFO__FWD = 3;
+	int LINK_INFO__FWD = TraceablePackage.TRACEABLE_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Rev</b></em>' attribute.
@@ -361,7 +470,7 @@ public interface Device_wifi_link_stat_bcast_statsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LINK_INFO__REV = 4;
+	int LINK_INFO__REV = TraceablePackage.TRACEABLE_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>Link info</em>' class.
@@ -370,7 +479,7 @@ public interface Device_wifi_link_stat_bcast_statsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LINK_INFO_FEATURE_COUNT = 5;
+	int LINK_INFO_FEATURE_COUNT = TraceablePackage.TRACEABLE_FEATURE_COUNT + 5;
 
 
 	/**

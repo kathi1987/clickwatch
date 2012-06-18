@@ -6,6 +6,7 @@
  */
 package de.hub.clickwatch.datamodel.util;
 
+import de.hub.clickwatch.analysis.traceable.Traceable;
 import de.hub.clickwatch.datamodel.*;
 
 import java.util.Map;
@@ -112,6 +113,10 @@ public class ClickWatchDataModelAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseValue(Value object) {
 				return createValueAdapter();
+			}
+			@Override
+			public Adapter caseTraceable(Traceable object) {
+				return createTraceableAdapter();
 			}
 			@Override
 			public Adapter caseClickWatchModel_Handler(de.hub.clickwatch.model.Handler object) {
@@ -274,6 +279,20 @@ public class ClickWatchDataModelAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createValueAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.hub.clickwatch.analysis.traceable.Traceable <em>Traceable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.hub.clickwatch.analysis.traceable.Traceable
+	 * @generated
+	 */
+	public Adapter createTraceableAdapter() {
 		return null;
 	}
 

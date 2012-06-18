@@ -19,6 +19,10 @@ public class NetworkBuilder implements de.hub.clickwatch.datamodel.util.builder.
   private java.util.Collection<de.hub.clickwatch.datamodel.util.builder.IDatamodelBuilder<? extends de.hub.clickwatch.datamodel.Node>> m_featureNodesBuilder = new java.util.LinkedList<de.hub.clickwatch.datamodel.util.builder.IDatamodelBuilder<? extends de.hub.clickwatch.datamodel.Node>>();
   private java.util.Collection<de.hub.clickwatch.datamodel.Network> m_subnetworks = new java.util.LinkedList<de.hub.clickwatch.datamodel.Network>();
   private java.util.Collection<de.hub.clickwatch.datamodel.util.builder.IDatamodelBuilder<? extends de.hub.clickwatch.datamodel.Network>> m_featureSubnetworksBuilder = new java.util.LinkedList<de.hub.clickwatch.datamodel.util.builder.IDatamodelBuilder<? extends de.hub.clickwatch.datamodel.Network>>();
+  private java.util.Collection<de.hub.clickwatch.analysis.traceable.Traceable> m_tracesFrom = new java.util.LinkedList<de.hub.clickwatch.analysis.traceable.Traceable>();
+  private java.util.Collection<de.hub.clickwatch.analysis.traceable.util.builder.ITraceableBuilder<? extends de.hub.clickwatch.analysis.traceable.Traceable>> m_featureTracesFromBuilder = new java.util.LinkedList<de.hub.clickwatch.analysis.traceable.util.builder.ITraceableBuilder<? extends de.hub.clickwatch.analysis.traceable.Traceable>>();
+  private java.util.Collection<de.hub.clickwatch.analysis.traceable.Traceable> m_tracesTo = new java.util.LinkedList<de.hub.clickwatch.analysis.traceable.Traceable>();
+  private java.util.Collection<de.hub.clickwatch.analysis.traceable.util.builder.ITraceableBuilder<? extends de.hub.clickwatch.analysis.traceable.Traceable>> m_featureTracesToBuilder = new java.util.LinkedList<de.hub.clickwatch.analysis.traceable.util.builder.ITraceableBuilder<? extends de.hub.clickwatch.analysis.traceable.Traceable>>();
   // helper attributes
   private boolean m_featureElementFilterSet = false;
   private boolean m_featureHandlerFilterSet = false;
@@ -27,6 +31,8 @@ public class NetworkBuilder implements de.hub.clickwatch.datamodel.util.builder.
   private boolean m_featureStatisticsSet = false;
   private boolean m_featureSubnetworksSet = false;
   private boolean m_featureTimestampSet = false;
+  private boolean m_featureTracesFromSet = false;
+  private boolean m_featureTracesToSet = false;
 
   /**
    * Builder is not instantiated with a constructor.
@@ -65,6 +71,12 @@ public class NetworkBuilder implements de.hub.clickwatch.datamodel.util.builder.
     _builder.m_featureSubnetworksBuilder = m_featureSubnetworksBuilder;
     _builder.m_featureTimestampSet = m_featureTimestampSet;
     _builder.m_timestamp = m_timestamp;
+    _builder.m_featureTracesFromSet = m_featureTracesFromSet;
+    _builder.m_tracesFrom = m_tracesFrom;
+    _builder.m_featureTracesFromBuilder = m_featureTracesFromBuilder;
+    _builder.m_featureTracesToSet = m_featureTracesToSet;
+    _builder.m_tracesTo = m_tracesTo;
+    _builder.m_featureTracesToBuilder = m_featureTracesToBuilder;
     return _builder;
   }
 
@@ -108,6 +120,24 @@ public class NetworkBuilder implements de.hub.clickwatch.datamodel.util.builder.
       if (!m_featureSubnetworksBuilder.isEmpty()) {
         for (de.hub.clickwatch.datamodel.util.builder.IDatamodelBuilder<? extends de.hub.clickwatch.datamodel.Network> builder : m_featureSubnetworksBuilder) {
           _newInstance.getSubnetworks().add(builder.build());
+        }
+      }
+    }
+    if (m_featureTracesFromSet) {
+      _newInstance.getTracesFrom().addAll(m_tracesFrom);
+    } else {
+      if (!m_featureTracesFromBuilder.isEmpty()) {
+        for (de.hub.clickwatch.analysis.traceable.util.builder.ITraceableBuilder<? extends de.hub.clickwatch.analysis.traceable.Traceable> builder : m_featureTracesFromBuilder) {
+          _newInstance.getTracesFrom().add(builder.build());
+        }
+      }
+    }
+    if (m_featureTracesToSet) {
+      _newInstance.getTracesTo().addAll(m_tracesTo);
+    } else {
+      if (!m_featureTracesToBuilder.isEmpty()) {
+        for (de.hub.clickwatch.analysis.traceable.util.builder.ITraceableBuilder<? extends de.hub.clickwatch.analysis.traceable.Traceable> builder : m_featureTracesToBuilder) {
+          _newInstance.getTracesTo().add(builder.build());
         }
       }
     }
@@ -180,6 +210,40 @@ public class NetworkBuilder implements de.hub.clickwatch.datamodel.util.builder.
 
   public NetworkBuilder withSubnetworks(de.hub.clickwatch.datamodel.util.builder.IDatamodelBuilder<? extends de.hub.clickwatch.datamodel.Network> p_networkBuilder) {
     m_featureSubnetworksBuilder.add(p_networkBuilder);
+    return this;
+  }
+
+  public NetworkBuilder withTracesFrom(de.hub.clickwatch.analysis.traceable.Traceable p_tracesFrom) {
+    m_tracesFrom.add(p_tracesFrom);
+    m_featureTracesFromSet = true;
+    return this;
+  }
+
+  public NetworkBuilder withTracesFrom(java.util.Collection<? extends de.hub.clickwatch.analysis.traceable.Traceable> p_tracesFrom) {
+    m_tracesFrom.addAll(p_tracesFrom);
+    m_featureTracesFromSet = true;
+    return this;
+  }
+
+  public NetworkBuilder withTracesFrom(de.hub.clickwatch.analysis.traceable.util.builder.ITraceableBuilder<? extends de.hub.clickwatch.analysis.traceable.Traceable> p_traceableBuilder) {
+    m_featureTracesFromBuilder.add(p_traceableBuilder);
+    return this;
+  }
+
+  public NetworkBuilder withTracesTo(de.hub.clickwatch.analysis.traceable.Traceable p_tracesTo) {
+    m_tracesTo.add(p_tracesTo);
+    m_featureTracesToSet = true;
+    return this;
+  }
+
+  public NetworkBuilder withTracesTo(java.util.Collection<? extends de.hub.clickwatch.analysis.traceable.Traceable> p_tracesTo) {
+    m_tracesTo.addAll(p_tracesTo);
+    m_featureTracesToSet = true;
+    return this;
+  }
+
+  public NetworkBuilder withTracesTo(de.hub.clickwatch.analysis.traceable.util.builder.ITraceableBuilder<? extends de.hub.clickwatch.analysis.traceable.Traceable> p_traceableBuilder) {
+    m_featureTracesToBuilder.add(p_traceableBuilder);
     return this;
   }
 }

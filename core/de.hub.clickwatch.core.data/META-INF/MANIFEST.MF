@@ -13,7 +13,8 @@ Require-Bundle: org.eclipse.core.runtime;visibility:=reexport,
  com.google.collect;bundle-version="1.0.0";visibility:=reexport,
  edu.mit.clickcontrol;bundle-version="2.0.0";visibility:=reexport,
  de.hub.emfxml;bundle-version="2.0.0";visibility:=reexport,
- de.hub.clickwatch.core;bundle-version="2.2.0";visibility:=reexport
+ de.hub.clickwatch.core;bundle-version="2.2.0";visibility:=reexport,
+ de.hub.clickwatch.analysis.traceable;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy
 Export-Package: de.hub.clickwatch.datamodel,
  de.hub.clickwatch.datamodel.impl,

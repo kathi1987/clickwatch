@@ -6,6 +6,7 @@
  */
 package de.hub.clickwatch.datamodel;
 
+import de.hub.clickwatch.analysis.traceable.Traceable;
 import org.eclipse.emf.common.util.EList;
 
 import de.hub.clickwatch.connection.INodeConnection;
@@ -34,7 +35,7 @@ import de.hub.clickwatch.connection.INodeConnection;
  * @model
  * @generated
  */
-public interface Node extends ModelElementWithStatistics {
+public interface Node extends ModelElementWithStatistics, Traceable {
 	/**
 	 * Returns the value of the '<em><b>INet Address</b></em>' attribute.
 	 * The default value is <code>"localhost"</code>.

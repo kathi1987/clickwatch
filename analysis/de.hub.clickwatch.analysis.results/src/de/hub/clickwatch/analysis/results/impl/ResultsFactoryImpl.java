@@ -6,6 +6,7 @@
  */
 package de.hub.clickwatch.analysis.results.impl;
 
+import de.hub.clickwatch.analysis.results.*;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -47,236 +48,258 @@ import de.hub.clickwatch.analysis.results.XY;
  */
 public class ResultsFactoryImpl extends EFactoryImpl implements ResultsFactory {
 	/**
-     * Creates the default factory implementation.
-     * <!-- begin-user-doc -->
+	 * Creates the default factory implementation.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	public static ResultsFactory init() {
-        try {
-            ResultsFactory theResultsFactory = (ResultsFactory)EPackage.Registry.INSTANCE.getEFactory("http://de.hub.clickwatch.analysis.results"); 
-            if (theResultsFactory != null) {
-                return theResultsFactory;
-            }
-        }
-        catch (Exception exception) {
-            EcorePlugin.INSTANCE.log(exception);
-        }
-        return new ResultsFactoryImpl();
-    }
+		try {
+			ResultsFactory theResultsFactory = (ResultsFactory)EPackage.Registry.INSTANCE.getEFactory("http://de.hub.clickwatch.analysis.results"); 
+			if (theResultsFactory != null) {
+				return theResultsFactory;
+			}
+		}
+		catch (Exception exception) {
+			EcorePlugin.INSTANCE.log(exception);
+		}
+		return new ResultsFactoryImpl();
+	}
 
 	/**
-     * Creates an instance of the factory.
-     * <!-- begin-user-doc -->
+	 * Creates an instance of the factory.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	public ResultsFactoryImpl() {
-        super();
-    }
+		super();
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	@Override
 	public EObject create(EClass eClass) {
-        switch (eClass.getClassifierID()) {
-            case ResultsPackage.CHART: return createChart();
-            case ResultsPackage.AXIS: return createAxis();
-            case ResultsPackage.SERIES: return createSeries();
-            case ResultsPackage.CATEGORY: return createCategory();
-            case ResultsPackage.XY: return createXY();
-            case ResultsPackage.BOX_AND_WHISKERS: return createBoxAndWhiskers();
-            case ResultsPackage.BAR: return createBar();
-            case ResultsPackage.RESULTS: return createResults();
-            case ResultsPackage.EQUALS_CONSTRAINT: return createEqualsConstraint();
-            case ResultsPackage.OR: return createOr();
-            case ResultsPackage.NUMERICAL_RESULT: return createNumericalResult();
-            case ResultsPackage.GRAPH_RESULT: return createGraphResult();
-            case ResultsPackage.GRAPH_NODE: return createGraphNode();
-            case ResultsPackage.GRAPH_LINK: return createGraphLink();
-            default:
-                throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
-        }
-    }
+		switch (eClass.getClassifierID()) {
+			case ResultsPackage.CHART: return createChart();
+			case ResultsPackage.AXIS: return createAxis();
+			case ResultsPackage.SERIES: return createSeries();
+			case ResultsPackage.CATEGORY: return createCategory();
+			case ResultsPackage.XY: return createXY();
+			case ResultsPackage.BOX_AND_WHISKERS: return createBoxAndWhiskers();
+			case ResultsPackage.BAR: return createBar();
+			case ResultsPackage.RESULTS: return createResults();
+			case ResultsPackage.EQUALS_CONSTRAINT: return createEqualsConstraint();
+			case ResultsPackage.OR: return createOr();
+			case ResultsPackage.NUMERICAL_RESULT: return createNumericalResult();
+			case ResultsPackage.GRAPH_RESULT: return createGraphResult();
+			case ResultsPackage.GRAPH_NODE: return createGraphNode();
+			case ResultsPackage.GRAPH_LINK: return createGraphLink();
+			case ResultsPackage.XY_DATA_RESULT_SET: return createXYDataResultSet();
+			case ResultsPackage.DOUBLE_DATA_RESULT_VALUE: return createDoubleDataResultValue();
+			default:
+				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+		}
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     public Object createFromString(EDataType eDataType, String initialValue) {
-        switch (eDataType.getClassifierID()) {
-            case ResultsPackage.DATA_SET:
-                return createDataSetFromString(eDataType, initialValue);
-            case ResultsPackage.DATA_ENTRY:
-                return createDataEntryFromString(eDataType, initialValue);
-            default:
-                throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
-        }
-    }
+		switch (eDataType.getClassifierID()) {
+			case ResultsPackage.DATA_SET:
+				return createDataSetFromString(eDataType, initialValue);
+			case ResultsPackage.DATA_ENTRY:
+				return createDataEntryFromString(eDataType, initialValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		}
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     public String convertToString(EDataType eDataType, Object instanceValue) {
-        switch (eDataType.getClassifierID()) {
-            case ResultsPackage.DATA_SET:
-                return convertDataSetToString(eDataType, instanceValue);
-            case ResultsPackage.DATA_ENTRY:
-                return convertDataEntryToString(eDataType, instanceValue);
-            default:
-                throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
-        }
-    }
+		switch (eDataType.getClassifierID()) {
+			case ResultsPackage.DATA_SET:
+				return convertDataSetToString(eDataType, instanceValue);
+			case ResultsPackage.DATA_ENTRY:
+				return convertDataEntryToString(eDataType, instanceValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		}
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	public Chart createChart() {
-        ChartImpl chart = new ChartImpl();
-        return chart;
-    }
+		ChartImpl chart = new ChartImpl();
+		return chart;
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	public Axis createAxis() {
-        AxisImpl axis = new AxisImpl();
-        return axis;
-    }
+		AxisImpl axis = new AxisImpl();
+		return axis;
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	public Series createSeries() {
-        SeriesImpl series = new SeriesImpl();
-        return series;
-    }
+		SeriesImpl series = new SeriesImpl();
+		return series;
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	public Category createCategory() {
-        CategoryImpl category = new CategoryImpl();
-        return category;
-    }
+		CategoryImpl category = new CategoryImpl();
+		return category;
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	public XY createXY() {
-        XYImpl xy = new XYImpl();
-        return xy;
-    }
+		XYImpl xy = new XYImpl();
+		return xy;
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	public BoxAndWhiskers createBoxAndWhiskers() {
-        BoxAndWhiskersImpl boxAndWhiskers = new BoxAndWhiskersImpl();
-        return boxAndWhiskers;
-    }
+		BoxAndWhiskersImpl boxAndWhiskers = new BoxAndWhiskersImpl();
+		return boxAndWhiskers;
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	public Bar createBar() {
-        BarImpl bar = new BarImpl();
-        return bar;
-    }
+		BarImpl bar = new BarImpl();
+		return bar;
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	public Results createResults() {
-        ResultsImpl results = new ResultsImpl();
-        return results;
-    }
+		ResultsImpl results = new ResultsImpl();
+		return results;
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	public EqualsConstraint createEqualsConstraint() {
-        EqualsConstraintImpl equalsConstraint = new EqualsConstraintImpl();
-        return equalsConstraint;
-    }
+		EqualsConstraintImpl equalsConstraint = new EqualsConstraintImpl();
+		return equalsConstraint;
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	public Or createOr() {
-        OrImpl or = new OrImpl();
-        return or;
-    }
+		OrImpl or = new OrImpl();
+		return or;
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public NumericalResult createNumericalResult() {
-        NumericalResultImpl numericalResult = new NumericalResultImpl();
-        return numericalResult;
-    }
+		NumericalResultImpl numericalResult = new NumericalResultImpl();
+		return numericalResult;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public GraphResult createGraphResult() {
-        GraphResultImpl graphResult = new GraphResultImpl();
-        return graphResult;
-    }
+		GraphResultImpl graphResult = new GraphResultImpl();
+		return graphResult;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public GraphNode createGraphNode() {
-        GraphNodeImpl graphNode = new GraphNodeImpl();
-        return graphNode;
-    }
+		GraphNodeImpl graphNode = new GraphNodeImpl();
+		return graphNode;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public GraphLink createGraphLink() {
-        GraphLinkImpl graphLink = new GraphLinkImpl();
-        return graphLink;
-    }
+		GraphLinkImpl graphLink = new GraphLinkImpl();
+		return graphLink;
+	}
 
     /**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public XYDataResultSet createXYDataResultSet() {
+		XYDataResultSetImpl xyDataResultSet = new XYDataResultSetImpl();
+		return xyDataResultSet;
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DoubleDataResultValue createDoubleDataResultValue() {
+		DoubleDataResultValueImpl doubleDataResultValue = new DoubleDataResultValueImpl();
+		return doubleDataResultValue;
+	}
+
+				/**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated NOT
@@ -309,41 +332,41 @@ public class ResultsFactoryImpl extends EFactoryImpl implements ResultsFactory {
     }
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public DataEntry createDataEntryFromString(EDataType eDataType, String initialValue) {
-        return (DataEntry)super.createFromString(eDataType, initialValue);
-    }
+		return (DataEntry)super.createFromString(eDataType, initialValue);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public String convertDataEntryToString(EDataType eDataType, Object instanceValue) {
-        return super.convertToString(eDataType, instanceValue);
-    }
+		return super.convertToString(eDataType, instanceValue);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	public ResultsPackage getResultsPackage() {
-        return (ResultsPackage)getEPackage();
-    }
+		return (ResultsPackage)getEPackage();
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @deprecated
-     * @generated
-     */
+	 * @deprecated
+	 * @generated
+	 */
 	@Deprecated
 	public static ResultsPackage getPackage() {
-        return ResultsPackage.eINSTANCE;
-    }
+		return ResultsPackage.eINSTANCE;
+	}
 
 } //ResultsFactoryImpl

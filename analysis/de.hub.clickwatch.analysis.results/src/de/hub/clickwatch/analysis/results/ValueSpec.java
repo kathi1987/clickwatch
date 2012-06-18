@@ -26,55 +26,55 @@ package de.hub.clickwatch.analysis.results;
  */
 public interface ValueSpec extends NamedElement {
 	/**
-     * Returns the value of the '<em><b>Column</b></em>' attribute.
-     * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Column</b></em>' attribute.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Column</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-     * @return the value of the '<em>Column</em>' attribute.
-     * @see #setColumn(int)
-     * @see de.hub.clickwatch.analysis.results.ResultsPackage#getValueSpec_Column()
-     * @model
-     * @generated
-     */
+	 * @return the value of the '<em>Column</em>' attribute.
+	 * @see #setColumn(int)
+	 * @see de.hub.clickwatch.analysis.results.ResultsPackage#getValueSpec_Column()
+	 * @model
+	 * @generated
+	 */
 	int getColumn();
 
 	/**
-     * Sets the value of the '{@link de.hub.clickwatch.analysis.results.ValueSpec#getColumn <em>Column</em>}' attribute.
-     * <!-- begin-user-doc -->
+	 * Sets the value of the '{@link de.hub.clickwatch.analysis.results.ValueSpec#getColumn <em>Column</em>}' attribute.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @param value the new value of the '<em>Column</em>' attribute.
-     * @see #getColumn()
-     * @generated
-     */
+	 * @param value the new value of the '<em>Column</em>' attribute.
+	 * @see #getColumn()
+	 * @generated
+	 */
 	void setColumn(int value);
 
 	/**
-     * Returns the value of the '<em><b>Constraint</b></em>' containment reference.
-     * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Constraint</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Constraint</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-     * @return the value of the '<em>Constraint</em>' containment reference.
-     * @see #setConstraint(Constraint)
-     * @see de.hub.clickwatch.analysis.results.ResultsPackage#getValueSpec_Constraint()
-     * @model containment="true"
-     * @generated
-     */
+	 * @return the value of the '<em>Constraint</em>' containment reference.
+	 * @see #setConstraint(Constraint)
+	 * @see de.hub.clickwatch.analysis.results.ResultsPackage#getValueSpec_Constraint()
+	 * @model containment="true"
+	 * @generated
+	 */
 	Constraint getConstraint();
 
 	/**
-     * Sets the value of the '{@link de.hub.clickwatch.analysis.results.ValueSpec#getConstraint <em>Constraint</em>}' containment reference.
-     * <!-- begin-user-doc -->
+	 * Sets the value of the '{@link de.hub.clickwatch.analysis.results.ValueSpec#getConstraint <em>Constraint</em>}' containment reference.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @param value the new value of the '<em>Constraint</em>' containment reference.
-     * @see #getConstraint()
-     * @generated
-     */
+	 * @param value the new value of the '<em>Constraint</em>' containment reference.
+	 * @see #getConstraint()
+	 * @generated
+	 */
 	void setConstraint(Constraint value);
 
 } // ValueSpec

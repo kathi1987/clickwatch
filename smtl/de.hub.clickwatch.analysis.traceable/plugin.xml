@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id$
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <package
+            uri="http://traceable/1.0"
+            class="de.hub.clickwatch.analysis.traceable.traceable.TraceablePackage"
+            genModel="src/de/hub/clickwatch/analysis/traceable/Traceable.genmodel"/>
+   </extension>
+
+</plugin>

@@ -6,6 +6,7 @@
  */
 package de.hub.clickwatch.datamodel.impl;
 
+import de.hub.clickwatch.analysis.traceable.impl.TraceableImpl;
 import de.hub.clickwatch.datamodel.ClickWatchDataModelPackage;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -43,7 +44,7 @@ import java.util.Collection;
  *
  * @generated
  */
-public class HandlerImpl extends EObjectImpl implements Handler {
+public class HandlerImpl extends TraceableImpl implements Handler {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->

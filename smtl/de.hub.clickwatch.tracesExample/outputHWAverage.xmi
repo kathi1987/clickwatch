@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:results="http://de.hub.clickwatch.analysis.results">
+  <results:DoubleDataResultValue value="15.0">
+    <tracesFrom href="file:outputHWBusy.xmi#/1"/>
+  </results:DoubleDataResultValue>
+  <results:DoubleDataResultValue value="9.0">
+    <tracesFrom href="file:outputHWBusy.xmi#/2"/>
+  </results:DoubleDataResultValue>
+  <results:DoubleDataResultValue value="2.0">
+    <tracesFrom href="file:outputHWBusy.xmi#/3"/>
+  </results:DoubleDataResultValue>
+</xmi:XMI>

@@ -6,8 +6,10 @@
  */
 package de.hub.clickwatch.specificdatamodels.brn.device_wifi_link_stat_bcast_stats.util;
 
+import de.hub.clickwatch.analysis.traceable.Traceable;
 import de.hub.clickwatch.datamodel.Value;
 
+import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.specificdatamodels.brn.device_wifi_link_stat_bcast_stats.*;
 
 import org.eclipse.emf.ecore.EObject;
@@ -76,24 +78,29 @@ public class Device_wifi_link_stat_bcast_statsSwitch<T> extends Switch<T> {
 				Bcast_stats bcast_stats = (Bcast_stats)theEObject;
 				T result = caseBcast_stats(bcast_stats);
 				if (result == null) result = caseValue(bcast_stats);
+				if (result == null) result = caseTraceable(bcast_stats);
+				if (result == null) result = caseHandler(bcast_stats);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case Device_wifi_link_stat_bcast_statsPackage.ENTRY: {
 				Entry entry = (Entry)theEObject;
 				T result = caseEntry(entry);
+				if (result == null) result = caseTraceable(entry);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case Device_wifi_link_stat_bcast_statsPackage.LINK: {
 				Link link = (Link)theEObject;
 				T result = caseLink(link);
+				if (result == null) result = caseTraceable(link);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case Device_wifi_link_stat_bcast_statsPackage.LINK_INFO: {
 				Link_info link_info = (Link_info)theEObject;
 				T result = caseLink_info(link_info);
+				if (result == null) result = caseTraceable(link_info);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -162,6 +169,21 @@ public class Device_wifi_link_stat_bcast_statsSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Handler</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Handler</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseHandler(Handler object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Value</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -173,6 +195,21 @@ public class Device_wifi_link_stat_bcast_statsSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseValue(Value object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Traceable</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Traceable</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTraceable(Traceable object) {
 		return null;
 	}
 

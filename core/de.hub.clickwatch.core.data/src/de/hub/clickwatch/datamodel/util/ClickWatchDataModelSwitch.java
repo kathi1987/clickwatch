@@ -6,6 +6,7 @@
  */
 package de.hub.clickwatch.datamodel.util;
 
+import de.hub.clickwatch.analysis.traceable.Traceable;
 import de.hub.clickwatch.datamodel.*;
 
 import java.util.Map;
@@ -76,18 +77,21 @@ public class ClickWatchDataModelSwitch<T> extends Switch<T> {
 				Node node = (Node)theEObject;
 				T result = caseNode(node);
 				if (result == null) result = caseModelElementWithStatistics(node);
+				if (result == null) result = caseTraceable(node);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case ClickWatchDataModelPackage.ELEMENT: {
 				Element element = (Element)theEObject;
 				T result = caseElement(element);
+				if (result == null) result = caseTraceable(element);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case ClickWatchDataModelPackage.HANDLER: {
 				Handler handler = (Handler)theEObject;
 				T result = caseHandler(handler);
+				if (result == null) result = caseTraceable(handler);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -95,6 +99,7 @@ public class ClickWatchDataModelSwitch<T> extends Switch<T> {
 				Network network = (Network)theEObject;
 				T result = caseNetwork(network);
 				if (result == null) result = caseModelElementWithStatistics(network);
+				if (result == null) result = caseTraceable(network);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -286,6 +291,21 @@ public class ClickWatchDataModelSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseValue(Value object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Traceable</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Traceable</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTraceable(Traceable object) {
 		return null;
 	}
 

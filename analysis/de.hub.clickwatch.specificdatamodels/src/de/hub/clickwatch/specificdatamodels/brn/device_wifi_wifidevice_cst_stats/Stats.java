@@ -6,6 +6,7 @@
  */
 package de.hub.clickwatch.specificdatamodels.brn.device_wifi_wifidevice_cst_stats;
 
+import de.hub.clickwatch.analysis.traceable.Traceable;
 import de.hub.clickwatch.datamodel.Value;
 
 /**
@@ -24,7 +25,7 @@ import de.hub.clickwatch.datamodel.Value;
  * @model annotation="http://de.hub.clickwatch.specificmodels target_id='Stats|Handler'"
  * @generated
  */
-public interface Stats extends Value {
+public interface Stats extends Value, Traceable {
 	/**
 	 * Returns the value of the '<em><b>Channelstats</b></em>' containment reference.
 	 * It is bidirectional and its opposite is '{@link de.hub.clickwatch.specificdatamodels.brn.device_wifi_wifidevice_cst_stats.Channelstats#getEContainer_channelstats <em>EContainer channelstats</em>}'.

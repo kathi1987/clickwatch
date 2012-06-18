@@ -8,6 +8,7 @@ package de.hub.clickwatch.specificdatamodels.brn.gps_cart_coord.util;
 
 import de.hub.clickwatch.datamodel.Value;
 
+import de.hub.clickwatch.model.Handler;
 import de.hub.clickwatch.specificdatamodels.brn.gps_cart_coord.*;
 
 import org.eclipse.emf.ecore.EObject;
@@ -76,6 +77,7 @@ public class Gps_cart_coordSwitch<T> extends Switch<T> {
 				Cart_coord cart_coord = (Cart_coord)theEObject;
 				T result = caseCart_coord(cart_coord);
 				if (result == null) result = caseValue(cart_coord);
+				if (result == null) result = caseHandler(cart_coord);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -95,6 +97,21 @@ public class Gps_cart_coordSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseCart_coord(Cart_coord object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Handler</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Handler</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseHandler(Handler object) {
 		return null;
 	}
 

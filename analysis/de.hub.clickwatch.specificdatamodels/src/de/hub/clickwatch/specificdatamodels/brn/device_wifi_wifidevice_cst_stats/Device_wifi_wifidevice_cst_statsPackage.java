@@ -1237,6 +1237,42 @@ public interface Device_wifi_wifidevice_cst_statsPackage extends EPackage {
 	int STATS = 12;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATS__NAME = ClickWatchDataModelPackage.VALUE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Can Read</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATS__CAN_READ = ClickWatchDataModelPackage.VALUE__CAN_READ;
+
+	/**
+	 * The feature id for the '<em><b>Can Write</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATS__CAN_WRITE = ClickWatchDataModelPackage.VALUE__CAN_WRITE;
+
+	/**
+	 * The feature id for the '<em><b>Changed</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATS__CHANGED = ClickWatchDataModelPackage.VALUE__CHANGED;
+
+	/**
 	 * The feature id for the '<em><b>Mixed</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1273,13 +1309,31 @@ public interface Device_wifi_wifidevice_cst_statsPackage extends EPackage {
 	int STATS__TIMESTAMP = ClickWatchDataModelPackage.VALUE__TIMESTAMP;
 
 	/**
+	 * The feature id for the '<em><b>Traces From</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATS__TRACES_FROM = ClickWatchDataModelPackage.VALUE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Traces To</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATS__TRACES_TO = ClickWatchDataModelPackage.VALUE_FEATURE_COUNT + 1;
+
+	/**
 	 * The feature id for the '<em><b>Channelstats</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STATS__CHANNELSTATS = ClickWatchDataModelPackage.VALUE_FEATURE_COUNT + 0;
+	int STATS__CHANNELSTATS = ClickWatchDataModelPackage.VALUE_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Stats</em>' class.
@@ -1288,7 +1342,7 @@ public interface Device_wifi_wifidevice_cst_statsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STATS_FEATURE_COUNT = ClickWatchDataModelPackage.VALUE_FEATURE_COUNT + 1;
+	int STATS_FEATURE_COUNT = ClickWatchDataModelPackage.VALUE_FEATURE_COUNT + 3;
 
 
 	/**

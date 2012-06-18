@@ -15,11 +15,17 @@ public class GraphResultBuilder implements de.hub.clickwatch.analysis.results.ut
   private java.util.Collection<de.hub.clickwatch.analysis.results.util.builder.IResultsBuilder<? extends de.hub.clickwatch.analysis.results.GraphLink>> m_featureLinksBuilder = new java.util.LinkedList<de.hub.clickwatch.analysis.results.util.builder.IResultsBuilder<? extends de.hub.clickwatch.analysis.results.GraphLink>>();
   private java.util.Collection<de.hub.clickwatch.analysis.results.GraphNode> m_nodes = new java.util.LinkedList<de.hub.clickwatch.analysis.results.GraphNode>();
   private java.util.Collection<de.hub.clickwatch.analysis.results.util.builder.IResultsBuilder<? extends de.hub.clickwatch.analysis.results.GraphNode>> m_featureNodesBuilder = new java.util.LinkedList<de.hub.clickwatch.analysis.results.util.builder.IResultsBuilder<? extends de.hub.clickwatch.analysis.results.GraphNode>>();
+  private java.util.Collection<de.hub.clickwatch.analysis.traceable.Traceable> m_tracesFrom = new java.util.LinkedList<de.hub.clickwatch.analysis.traceable.Traceable>();
+  private java.util.Collection<de.hub.clickwatch.analysis.traceable.util.builder.ITraceableBuilder<? extends de.hub.clickwatch.analysis.traceable.Traceable>> m_featureTracesFromBuilder = new java.util.LinkedList<de.hub.clickwatch.analysis.traceable.util.builder.ITraceableBuilder<? extends de.hub.clickwatch.analysis.traceable.Traceable>>();
+  private java.util.Collection<de.hub.clickwatch.analysis.traceable.Traceable> m_tracesTo = new java.util.LinkedList<de.hub.clickwatch.analysis.traceable.Traceable>();
+  private java.util.Collection<de.hub.clickwatch.analysis.traceable.util.builder.ITraceableBuilder<? extends de.hub.clickwatch.analysis.traceable.Traceable>> m_featureTracesToBuilder = new java.util.LinkedList<de.hub.clickwatch.analysis.traceable.util.builder.ITraceableBuilder<? extends de.hub.clickwatch.analysis.traceable.Traceable>>();
   // helper attributes
   private boolean m_featureLinksSet = false;
   private boolean m_featureNameSet = false;
   private boolean m_featureNodesSet = false;
   private boolean m_featureTimestampSet = false;
+  private boolean m_featureTracesFromSet = false;
+  private boolean m_featureTracesToSet = false;
 
   /**
    * Builder is not instantiated with a constructor.
@@ -51,6 +57,12 @@ public class GraphResultBuilder implements de.hub.clickwatch.analysis.results.ut
     _builder.m_featureNodesBuilder = m_featureNodesBuilder;
     _builder.m_featureTimestampSet = m_featureTimestampSet;
     _builder.m_timestamp = m_timestamp;
+    _builder.m_featureTracesFromSet = m_featureTracesFromSet;
+    _builder.m_tracesFrom = m_tracesFrom;
+    _builder.m_featureTracesFromBuilder = m_featureTracesFromBuilder;
+    _builder.m_featureTracesToSet = m_featureTracesToSet;
+    _builder.m_tracesTo = m_tracesTo;
+    _builder.m_featureTracesToBuilder = m_featureTracesToBuilder;
     return _builder;
   }
 
@@ -81,6 +93,24 @@ public class GraphResultBuilder implements de.hub.clickwatch.analysis.results.ut
       if (!m_featureNodesBuilder.isEmpty()) {
         for (de.hub.clickwatch.analysis.results.util.builder.IResultsBuilder<? extends de.hub.clickwatch.analysis.results.GraphNode> builder : m_featureNodesBuilder) {
           _newInstance.getNodes().add(builder.build());
+        }
+      }
+    }
+    if (m_featureTracesFromSet) {
+      _newInstance.getTracesFrom().addAll(m_tracesFrom);
+    } else {
+      if (!m_featureTracesFromBuilder.isEmpty()) {
+        for (de.hub.clickwatch.analysis.traceable.util.builder.ITraceableBuilder<? extends de.hub.clickwatch.analysis.traceable.Traceable> builder : m_featureTracesFromBuilder) {
+          _newInstance.getTracesFrom().add(builder.build());
+        }
+      }
+    }
+    if (m_featureTracesToSet) {
+      _newInstance.getTracesTo().addAll(m_tracesTo);
+    } else {
+      if (!m_featureTracesToBuilder.isEmpty()) {
+        for (de.hub.clickwatch.analysis.traceable.util.builder.ITraceableBuilder<? extends de.hub.clickwatch.analysis.traceable.Traceable> builder : m_featureTracesToBuilder) {
+          _newInstance.getTracesTo().add(builder.build());
         }
       }
     }
@@ -130,6 +160,40 @@ public class GraphResultBuilder implements de.hub.clickwatch.analysis.results.ut
 
   public GraphResultBuilder withNodes(de.hub.clickwatch.analysis.results.util.builder.IResultsBuilder<? extends de.hub.clickwatch.analysis.results.GraphNode> p_graphNodeBuilder) {
     m_featureNodesBuilder.add(p_graphNodeBuilder);
+    return this;
+  }
+
+  public GraphResultBuilder withTracesFrom(de.hub.clickwatch.analysis.traceable.Traceable p_tracesFrom) {
+    m_tracesFrom.add(p_tracesFrom);
+    m_featureTracesFromSet = true;
+    return this;
+  }
+
+  public GraphResultBuilder withTracesFrom(java.util.Collection<? extends de.hub.clickwatch.analysis.traceable.Traceable> p_tracesFrom) {
+    m_tracesFrom.addAll(p_tracesFrom);
+    m_featureTracesFromSet = true;
+    return this;
+  }
+
+  public GraphResultBuilder withTracesFrom(de.hub.clickwatch.analysis.traceable.util.builder.ITraceableBuilder<? extends de.hub.clickwatch.analysis.traceable.Traceable> p_traceableBuilder) {
+    m_featureTracesFromBuilder.add(p_traceableBuilder);
+    return this;
+  }
+
+  public GraphResultBuilder withTracesTo(de.hub.clickwatch.analysis.traceable.Traceable p_tracesTo) {
+    m_tracesTo.add(p_tracesTo);
+    m_featureTracesToSet = true;
+    return this;
+  }
+
+  public GraphResultBuilder withTracesTo(java.util.Collection<? extends de.hub.clickwatch.analysis.traceable.Traceable> p_tracesTo) {
+    m_tracesTo.addAll(p_tracesTo);
+    m_featureTracesToSet = true;
+    return this;
+  }
+
+  public GraphResultBuilder withTracesTo(de.hub.clickwatch.analysis.traceable.util.builder.ITraceableBuilder<? extends de.hub.clickwatch.analysis.traceable.Traceable> p_traceableBuilder) {
+    m_featureTracesToBuilder.add(p_traceableBuilder);
     return this;
   }
 }
