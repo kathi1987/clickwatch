@@ -1,0 +1,19 @@
+Thanks for your efforts. 
+
+Generally typos and errors will be removed. 
+
+Answers to concrete questions, remarks:
+Review one: 
+Question for page 3: 
+When a sub-unit of a software model (e.g. a package, a class, etc.) is compiled or model transformed, this "compilation unit" needs to be traversed by the tool performing the compiling/transforming. Traversed means that the containment hierarchy that constitutes the logical structure of the software model is traversed from its root down, usually in a depth or breath first manner.
+
+Remark for page 12: The mentioned "meta-model with one class" was only used for benchmarking purposes. The paper also contains measurement results for more meaningful models. Those models were also used as a benchmark by another MODELS contribution (2011) before.
+
+Review two:
+Thanks for the pointers to additional related work. This will go into the camera ready version of the paper.
+
+Review three:
+The dataset used for evaluation was only briefly introduced since it was used before in other publications, i.e. at MODELS 2011. A detailed description is available and pointed at as a reference.
+The paper discusses its application to software engineering and also (briefly) in two other domains. We could put all the focus on software engineering, if the application of software modeling techniques to other domains is not of interest to the MODELS community.
+The evaluation section of the paper is fully devoted to software models, since we used bechmark models from the software engineering community.
+In depths speculations (a.k.a discussion) about the implications of the measured results have been left out on purpose. 

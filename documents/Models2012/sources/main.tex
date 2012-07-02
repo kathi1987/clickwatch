@@ -1,0 +1,75 @@
+% !TEX encoding = Windows Latin 1
+\documentclass{llncs}
+\usepackage{graphicx}
+\usepackage[english]{babel}
+\usepackage{color}
+\usepackage{ucs}
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath}
+\usepackage{mathtools} 
+
+\newcommand{\markus}[1]{\textcolor{red}{Markus: #1}}
+\newcommand{\arif}[1]{\textcolor{blue}{Arif: #1}}
+\newcommand{\lars}[1]{\textcolor{greed}{Lars: #1}}
+\newcommand{\tinyparagraph}[1]{\vspace{0.2cm}\noindent\textbf{#1: }}
+
+\renewcommand\floatpagefraction{.9}
+\renewcommand\topfraction{.9}
+\renewcommand\bottomfraction{.9}
+\renewcommand\textfraction{.1}   
+\setcounter{totalnumber}{50}
+\setcounter{topnumber}{50}
+\setcounter{bottomnumber}{50}
+
+\bibliographystyle{splncs03}
+
+\begin{document}
+\frontmatter        
+\pagestyle{headings}
+\mainmatter           
+
+%\title{Automated and Transparent Model Fragmentation for Persisting Large Models}
+\title{Automated and Transparent Model Fragmentation for Persisting Large Models}
+
+%\author{Markus Scheidgen, Anatolij Zubow, Joachim Fischer}
+%\authorrunning{M. Scheidgen, A. Zubow, J. Fischer}
+%\institute{Department of Computer Science, Humboldt Universit‰t zu Berlin\\
+%           Unter den Linden 6, 10099 Berlin, Germany\\
+%           \email{\{scheidge,zubow,fischer\}@informatik.hu-berlin.de}}
+
+\author{Markus Scheidgen\inst{1} \and Anatolij Zubow\inst{1}
+Joachim Fischer\inst{1} \and Thomas H. Kolbe\inst{2}}
+
+\institute{Humboldt Universit‰t zu Berlin, Department of Computer Science\\%, Unter den Linden 6, 10099 Berlin, Germany\\
+\email{\{scheidge,zubow,fischer\}@informatik.hu-berlin.de}
+\and
+Technical University Berlin,
+Institute for Geodesy and Geoinformation Science\\%,
+%Straﬂe des 17. Juni 135, 10623 Berlin, Germany\\
+\email{thomas.kolbe@tu-berlin.de}}
+
+\maketitle
+%\thispagestyle{empty}
+
+\begin{abstract} 
+Existing model persistence frameworks either store models as a whole or object by object. Since most modeling tasks work with larger aggregates of a model, existing persistence frameworks either load too many objects or access many objects individually. We propose to persist a model broken into larger fragments.
+
+First, we assess the size of large models and describe typical usage patterns to show that most applications work with aggregates of model objects. Secondly, we provide an analytical framework to assess execution time gains for partially loading models fragmented with different granularity. Thirdly, we propose meta-model-based fragmentation that we implemented in an EMF based framework. Fourthly, we analyze our approach in comparison to other persistence frameworks %(XMI, CDO, and Morsa) 
+based on four common modeling tasks: create/modify, traverse, query, and partial loads.
+
+We show that there is no generally optimal fragmentation, that fragmentation can be achieved automatically and transparently, and that fragmentation provides considerable performance gains.% compared to other persistence strategies.
+\end{abstract}
+
+\input{introduction}
+\input{modeling_applications}
+\input{fragmentation}
+\input{relatedwork}
+\input{gains}
+\input{implementation}
+\input{evaluation}
+\input{conclusions}
+
+\clearpage
+\bibliography{bibliography}
+
+\end{document}
