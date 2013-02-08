@@ -252,7 +252,7 @@ public class InjectorProvider implements IClickWatchContextAdapter,
 			if (!useSpecificDataValues) {
 				builder.wValueAdapterClass(BrnValueAdapter.class);
 			} else {
-				builder.wValueAdapterClass(de.hub.clickwatch.specificdatamodels.brn.BrnValueAdapter.class);
+				builder.wValueAdapterClass(de.hub.clickwatch.specificmodels.brn.BrnValueAdapter.class);
 			}
 		} else {
 			builder.wValueAdapterClass(XmlValueAdapter.class);

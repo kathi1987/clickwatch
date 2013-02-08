@@ -40,7 +40,6 @@ import de.hub.clickwatch.analysis.results.ResultsPackage;
 import de.hub.clickwatch.analysis.results.Series;
 import de.hub.clickwatch.analysis.results.ValueSpec;
 import de.hub.clickwatch.analysis.results.XYDataResultSet;
-import de.hub.clickwatch.analysis.traceable.TraceablePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -269,9 +268,6 @@ public class ResultsPackageImpl extends EPackageImpl implements ResultsPackage {
 		ResultsPackageImpl theResultsPackage = (ResultsPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof ResultsPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new ResultsPackageImpl());
 
 		isInited = true;
-
-		// Initialize simple dependencies
-		TraceablePackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theResultsPackage.createPackageContents();
@@ -865,9 +861,6 @@ public class ResultsPackageImpl extends EPackageImpl implements ResultsPackage {
 		setNsPrefix(eNS_PREFIX);
 		setNsURI(eNS_URI);
 
-		// Obtain other dependent packages
-		TraceablePackage theTraceablePackage = (TraceablePackage)EPackage.Registry.INSTANCE.getEPackage(TraceablePackage.eNS_URI);
-
 		// Create type parameters
 
 		// Set bounds for type parameters
@@ -876,7 +869,6 @@ public class ResultsPackageImpl extends EPackageImpl implements ResultsPackage {
 		chartEClass.getESuperTypes().add(this.getNamedElement());
 		chartTypeEClass.getESuperTypes().add(this.getNamedElement());
 		valueSpecEClass.getESuperTypes().add(this.getNamedElement());
-		namedElementEClass.getESuperTypes().add(theTraceablePackage.getTraceable());
 		axisEClass.getESuperTypes().add(this.getValueSpec());
 		seriesEClass.getESuperTypes().add(this.getValueSpec());
 		categoryEClass.getESuperTypes().add(this.getValueSpec());
@@ -891,10 +883,8 @@ public class ResultsPackageImpl extends EPackageImpl implements ResultsPackage {
 		graphResultEClass.getESuperTypes().add(this.getResult());
 		graphNodeEClass.getESuperTypes().add(this.getNamedElement());
 		graphLinkEClass.getESuperTypes().add(this.getNamedElement());
-		dataResultSetEClass.getESuperTypes().add(theTraceablePackage.getTraceable());
 		xyDataResultSetEClass.getESuperTypes().add(this.getDataResultSet());
 		doubleDataResultValueEClass.getESuperTypes().add(this.getDataResultValue());
-		dataResultValueEClass.getESuperTypes().add(theTraceablePackage.getTraceable());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(chartEClass, Chart.class, "Chart", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

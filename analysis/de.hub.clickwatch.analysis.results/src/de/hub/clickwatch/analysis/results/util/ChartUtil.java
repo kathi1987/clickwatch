@@ -10,11 +10,11 @@ public class ChartUtil {
 
 	public static Chart createXYChart(String name, String series, String x, String y) {
 		return ChartBuilder.newChartBuilder()
-				.withName(name)
-				.withType(XYBuilder.newXYBuilder())
-				.withValueSpecs(SeriesBuilder.newSeriesBuilder().withColumn(0).withName(series))
-				.withValueSpecs(AxisBuilder.newAxisBuilder().withColumn(1).withName(x))
-				.withValueSpecs(AxisBuilder.newAxisBuilder().withColumn(2).withName(y))
+				.name(name)
+				.type(XYBuilder.newXYBuilder())
+				.valueSpecs(SeriesBuilder.newSeriesBuilder().column(0).name(series))
+				.valueSpecs(AxisBuilder.newAxisBuilder().column(1).name(x))
+				.valueSpecs(AxisBuilder.newAxisBuilder().column(2).name(y))
 				.build();
 	}
 }

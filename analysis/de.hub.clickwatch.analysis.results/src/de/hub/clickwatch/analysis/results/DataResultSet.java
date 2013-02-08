@@ -6,7 +6,6 @@
  */
 package de.hub.clickwatch.analysis.results;
 
-import de.hub.clickwatch.analysis.traceable.Traceable;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -19,5 +18,5 @@ import org.eclipse.emf.ecore.EObject;
  * @model abstract="true"
  * @generated
  */
-public interface DataResultSet extends Traceable {
+public interface DataResultSet extends EObject {
 } // DataResultSet

@@ -7,32 +7,36 @@
 package de.hub.clickwatch.analysis.results.provider;
 
 
+import de.hub.clickwatch.analysis.results.ResultsFactory;
+import de.hub.clickwatch.analysis.results.ResultsPackage;
+import de.hub.clickwatch.analysis.results.XYDataResultSet;
+
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.ecore.EStructuralFeature;
+
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import de.hub.clickwatch.analysis.results.Chart;
-import de.hub.clickwatch.analysis.results.ResultsFactory;
-import de.hub.clickwatch.analysis.results.ResultsPackage;
-
 /**
- * This is the item provider adapter for a {@link de.hub.clickwatch.analysis.results.Chart} object.
+ * This is the item provider adapter for a {@link de.hub.clickwatch.analysis.results.XYDataResultSet} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class ChartItemProvider
-	extends NamedElementItemProvider
+public class XYDataResultSetItemProvider
+	extends DataResultSetItemProvider
 	implements
 		IEditingDomainItemProvider,
 		IStructuredItemContentProvider,
@@ -45,7 +49,7 @@ public class ChartItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ChartItemProvider(AdapterFactory adapterFactory) {
+	public XYDataResultSetItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -60,8 +64,31 @@ public class ChartItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addNamePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Name feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addNamePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_XYDataResultSet_name_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_XYDataResultSet_name_feature", "_UI_XYDataResultSet_type"),
+				 ResultsPackage.Literals.XY_DATA_RESULT_SET__NAME,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -76,8 +103,8 @@ public class ChartItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(ResultsPackage.Literals.CHART__TYPE);
-			childrenFeatures.add(ResultsPackage.Literals.CHART__VALUE_SPECS);
+			childrenFeatures.add(ResultsPackage.Literals.XY_DATA_RESULT_SET__XVALUES);
+			childrenFeatures.add(ResultsPackage.Literals.XY_DATA_RESULT_SET__YVALUES);
 		}
 		return childrenFeatures;
 	}
@@ -96,14 +123,14 @@ public class ChartItemProvider
 	}
 
 	/**
-	 * This returns Chart.gif.
+	 * This returns XYDataResultSet.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Chart"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/XYDataResultSet"));
 	}
 
 	/**
@@ -114,10 +141,10 @@ public class ChartItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Chart)object).getName();
+		String label = ((XYDataResultSet)object).getName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_Chart_type") :
-			getString("_UI_Chart_type") + " " + label;
+			getString("_UI_XYDataResultSet_type") :
+			getString("_UI_XYDataResultSet_type") + " " + label;
 	}
 
 	/**
@@ -131,9 +158,12 @@ public class ChartItemProvider
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(Chart.class)) {
-			case ResultsPackage.CHART__TYPE:
-			case ResultsPackage.CHART__VALUE_SPECS:
+		switch (notification.getFeatureID(XYDataResultSet.class)) {
+			case ResultsPackage.XY_DATA_RESULT_SET__NAME:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
+			case ResultsPackage.XY_DATA_RESULT_SET__XVALUES:
+			case ResultsPackage.XY_DATA_RESULT_SET__YVALUES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -153,33 +183,36 @@ public class ChartItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(ResultsPackage.Literals.CHART__TYPE,
-				 ResultsFactory.eINSTANCE.createXY()));
+				(ResultsPackage.Literals.XY_DATA_RESULT_SET__XVALUES,
+				 ResultsFactory.eINSTANCE.createDoubleDataResultValue()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(ResultsPackage.Literals.CHART__TYPE,
-				 ResultsFactory.eINSTANCE.createBoxAndWhiskers()));
+				(ResultsPackage.Literals.XY_DATA_RESULT_SET__YVALUES,
+				 ResultsFactory.eINSTANCE.createDoubleDataResultValue()));
+	}
 
-		newChildDescriptors.add
-			(createChildParameter
-				(ResultsPackage.Literals.CHART__TYPE,
-				 ResultsFactory.eINSTANCE.createBar()));
+	/**
+	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
+		Object childFeature = feature;
+		Object childObject = child;
 
-		newChildDescriptors.add
-			(createChildParameter
-				(ResultsPackage.Literals.CHART__VALUE_SPECS,
-				 ResultsFactory.eINSTANCE.createAxis()));
+		boolean qualify =
+			childFeature == ResultsPackage.Literals.XY_DATA_RESULT_SET__XVALUES ||
+			childFeature == ResultsPackage.Literals.XY_DATA_RESULT_SET__YVALUES;
 
-		newChildDescriptors.add
-			(createChildParameter
-				(ResultsPackage.Literals.CHART__VALUE_SPECS,
-				 ResultsFactory.eINSTANCE.createSeries()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ResultsPackage.Literals.CHART__VALUE_SPECS,
-				 ResultsFactory.eINSTANCE.createCategory()));
+		if (qualify) {
+			return getString
+				("_UI_CreateChild_text2",
+				 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+		}
+		return super.getCreateChildText(owner, feature, child, selection);
 	}
 
 }

@@ -7,7 +7,6 @@
 package de.hub.clickwatch.analysis.results.util;
 
 import de.hub.clickwatch.analysis.results.*;
-import de.hub.clickwatch.analysis.traceable.Traceable;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
@@ -19,8 +18,15 @@ import de.hub.clickwatch.analysis.results.Category;
 import de.hub.clickwatch.analysis.results.Chart;
 import de.hub.clickwatch.analysis.results.ChartType;
 import de.hub.clickwatch.analysis.results.Constraint;
+import de.hub.clickwatch.analysis.results.DataResultSet;
+import de.hub.clickwatch.analysis.results.DataResultValue;
+import de.hub.clickwatch.analysis.results.DoubleDataResultValue;
 import de.hub.clickwatch.analysis.results.EqualsConstraint;
+import de.hub.clickwatch.analysis.results.GraphLink;
+import de.hub.clickwatch.analysis.results.GraphNode;
+import de.hub.clickwatch.analysis.results.GraphResult;
 import de.hub.clickwatch.analysis.results.NamedElement;
+import de.hub.clickwatch.analysis.results.NumericalResult;
 import de.hub.clickwatch.analysis.results.Or;
 import de.hub.clickwatch.analysis.results.Result;
 import de.hub.clickwatch.analysis.results.Results;
@@ -28,6 +34,7 @@ import de.hub.clickwatch.analysis.results.ResultsPackage;
 import de.hub.clickwatch.analysis.results.Series;
 import de.hub.clickwatch.analysis.results.ValueSpec;
 import de.hub.clickwatch.analysis.results.XY;
+import de.hub.clickwatch.analysis.results.XYDataResultSet;
 
 /**
  * <!-- begin-user-doc -->
@@ -90,7 +97,6 @@ public class ResultsSwitch<T> extends Switch<T> {
 				Chart chart = (Chart)theEObject;
 				T result = caseChart(chart);
 				if (result == null) result = caseNamedElement(chart);
-				if (result == null) result = caseTraceable(chart);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -98,7 +104,6 @@ public class ResultsSwitch<T> extends Switch<T> {
 				ChartType chartType = (ChartType)theEObject;
 				T result = caseChartType(chartType);
 				if (result == null) result = caseNamedElement(chartType);
-				if (result == null) result = caseTraceable(chartType);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -106,14 +111,12 @@ public class ResultsSwitch<T> extends Switch<T> {
 				ValueSpec valueSpec = (ValueSpec)theEObject;
 				T result = caseValueSpec(valueSpec);
 				if (result == null) result = caseNamedElement(valueSpec);
-				if (result == null) result = caseTraceable(valueSpec);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case ResultsPackage.NAMED_ELEMENT: {
 				NamedElement namedElement = (NamedElement)theEObject;
 				T result = caseNamedElement(namedElement);
-				if (result == null) result = caseTraceable(namedElement);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -122,7 +125,6 @@ public class ResultsSwitch<T> extends Switch<T> {
 				T result = caseAxis(axis);
 				if (result == null) result = caseValueSpec(axis);
 				if (result == null) result = caseNamedElement(axis);
-				if (result == null) result = caseTraceable(axis);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -131,7 +133,6 @@ public class ResultsSwitch<T> extends Switch<T> {
 				T result = caseSeries(series);
 				if (result == null) result = caseValueSpec(series);
 				if (result == null) result = caseNamedElement(series);
-				if (result == null) result = caseTraceable(series);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -140,7 +141,6 @@ public class ResultsSwitch<T> extends Switch<T> {
 				T result = caseCategory(category);
 				if (result == null) result = caseValueSpec(category);
 				if (result == null) result = caseNamedElement(category);
-				if (result == null) result = caseTraceable(category);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -148,7 +148,6 @@ public class ResultsSwitch<T> extends Switch<T> {
 				Result result = (Result)theEObject;
 				T theResult = caseResult(result);
 				if (theResult == null) theResult = caseNamedElement(result);
-				if (theResult == null) theResult = caseTraceable(result);
 				if (theResult == null) theResult = defaultCase(theEObject);
 				return theResult;
 			}
@@ -157,7 +156,6 @@ public class ResultsSwitch<T> extends Switch<T> {
 				T result = caseXY(xy);
 				if (result == null) result = caseChartType(xy);
 				if (result == null) result = caseNamedElement(xy);
-				if (result == null) result = caseTraceable(xy);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -166,7 +164,6 @@ public class ResultsSwitch<T> extends Switch<T> {
 				T result = caseBoxAndWhiskers(boxAndWhiskers);
 				if (result == null) result = caseChartType(boxAndWhiskers);
 				if (result == null) result = caseNamedElement(boxAndWhiskers);
-				if (result == null) result = caseTraceable(boxAndWhiskers);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -175,7 +172,6 @@ public class ResultsSwitch<T> extends Switch<T> {
 				T result = caseBar(bar);
 				if (result == null) result = caseChartType(bar);
 				if (result == null) result = caseNamedElement(bar);
-				if (result == null) result = caseTraceable(bar);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -184,7 +180,6 @@ public class ResultsSwitch<T> extends Switch<T> {
 				T result = caseResults(results);
 				if (result == null) result = caseChart(results);
 				if (result == null) result = caseNamedElement(results);
-				if (result == null) result = caseTraceable(results);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -213,7 +208,6 @@ public class ResultsSwitch<T> extends Switch<T> {
 				T result = caseNumericalResult(numericalResult);
 				if (result == null) result = caseResult(numericalResult);
 				if (result == null) result = caseNamedElement(numericalResult);
-				if (result == null) result = caseTraceable(numericalResult);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -222,7 +216,6 @@ public class ResultsSwitch<T> extends Switch<T> {
 				T result = caseGraphResult(graphResult);
 				if (result == null) result = caseResult(graphResult);
 				if (result == null) result = caseNamedElement(graphResult);
-				if (result == null) result = caseTraceable(graphResult);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -230,7 +223,6 @@ public class ResultsSwitch<T> extends Switch<T> {
 				GraphNode graphNode = (GraphNode)theEObject;
 				T result = caseGraphNode(graphNode);
 				if (result == null) result = caseNamedElement(graphNode);
-				if (result == null) result = caseTraceable(graphNode);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -238,14 +230,12 @@ public class ResultsSwitch<T> extends Switch<T> {
 				GraphLink graphLink = (GraphLink)theEObject;
 				T result = caseGraphLink(graphLink);
 				if (result == null) result = caseNamedElement(graphLink);
-				if (result == null) result = caseTraceable(graphLink);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case ResultsPackage.DATA_RESULT_SET: {
 				DataResultSet dataResultSet = (DataResultSet)theEObject;
 				T result = caseDataResultSet(dataResultSet);
-				if (result == null) result = caseTraceable(dataResultSet);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -253,7 +243,6 @@ public class ResultsSwitch<T> extends Switch<T> {
 				XYDataResultSet xyDataResultSet = (XYDataResultSet)theEObject;
 				T result = caseXYDataResultSet(xyDataResultSet);
 				if (result == null) result = caseDataResultSet(xyDataResultSet);
-				if (result == null) result = caseTraceable(xyDataResultSet);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -261,14 +250,12 @@ public class ResultsSwitch<T> extends Switch<T> {
 				DoubleDataResultValue doubleDataResultValue = (DoubleDataResultValue)theEObject;
 				T result = caseDoubleDataResultValue(doubleDataResultValue);
 				if (result == null) result = caseDataResultValue(doubleDataResultValue);
-				if (result == null) result = caseTraceable(doubleDataResultValue);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case ResultsPackage.DATA_RESULT_VALUE: {
 				DataResultValue dataResultValue = (DataResultValue)theEObject;
 				T result = caseDataResultValue(dataResultValue);
-				if (result == null) result = caseTraceable(dataResultValue);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -618,21 +605,6 @@ public class ResultsSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseDataResultValue(DataResultValue object) {
-		return null;
-	}
-
-				/**
-	 * Returns the result of interpreting the object as an instance of '<em>Traceable</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Traceable</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseTraceable(Traceable object) {
 		return null;
 	}
 

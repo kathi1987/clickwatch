@@ -6,8 +6,6 @@
  */
 package de.hub.clickwatch.analysis.results.impl;
 
-import de.hub.clickwatch.analysis.results.GraphResult;
-import de.hub.clickwatch.analysis.results.NumericalResult;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
@@ -22,6 +20,8 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import de.hub.clickwatch.analysis.results.DataEntry;
+import de.hub.clickwatch.analysis.results.GraphResult;
+import de.hub.clickwatch.analysis.results.NumericalResult;
 import de.hub.clickwatch.analysis.results.Result;
 import de.hub.clickwatch.analysis.results.Results;
 import de.hub.clickwatch.analysis.results.ResultsFactory;

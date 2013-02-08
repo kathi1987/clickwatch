@@ -28,6 +28,7 @@ import de.hub.clickwatch.analysis.results.Category;
 import de.hub.clickwatch.analysis.results.Chart;
 import de.hub.clickwatch.analysis.results.DataEntry;
 import de.hub.clickwatch.analysis.results.DataSet;
+import de.hub.clickwatch.analysis.results.DoubleDataResultValue;
 import de.hub.clickwatch.analysis.results.EqualsConstraint;
 import de.hub.clickwatch.analysis.results.GraphLink;
 import de.hub.clickwatch.analysis.results.GraphNode;
@@ -39,6 +40,7 @@ import de.hub.clickwatch.analysis.results.ResultsFactory;
 import de.hub.clickwatch.analysis.results.ResultsPackage;
 import de.hub.clickwatch.analysis.results.Series;
 import de.hub.clickwatch.analysis.results.XY;
+import de.hub.clickwatch.analysis.results.XYDataResultSet;
 
 /**
  * <!-- begin-user-doc -->

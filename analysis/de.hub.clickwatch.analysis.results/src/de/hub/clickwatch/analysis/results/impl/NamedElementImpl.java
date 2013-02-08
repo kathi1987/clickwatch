@@ -13,7 +13,6 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 import de.hub.clickwatch.analysis.results.NamedElement;
 import de.hub.clickwatch.analysis.results.ResultsPackage;
-import de.hub.clickwatch.analysis.traceable.impl.TraceableImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -28,7 +27,7 @@ import de.hub.clickwatch.analysis.traceable.impl.TraceableImpl;
  *
  * @generated
  */
-public abstract class NamedElementImpl extends TraceableImpl implements NamedElement {
+public abstract class NamedElementImpl extends EObjectImpl implements NamedElement {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->

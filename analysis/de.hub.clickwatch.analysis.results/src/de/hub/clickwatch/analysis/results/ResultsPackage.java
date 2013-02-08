@@ -6,7 +6,6 @@
  */
 package de.hub.clickwatch.analysis.results;
 
-import de.hub.clickwatch.analysis.traceable.TraceablePackage;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
@@ -82,31 +81,13 @@ public interface ResultsPackage extends EPackage {
 	int NAMED_ELEMENT = 3;
 
 	/**
-	 * The feature id for the '<em><b>Traces From</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NAMED_ELEMENT__TRACES_FROM = TraceablePackage.TRACEABLE__TRACES_FROM;
-
-	/**
-	 * The feature id for the '<em><b>Traces To</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NAMED_ELEMENT__TRACES_TO = TraceablePackage.TRACEABLE__TRACES_TO;
-
-	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NAMED_ELEMENT__NAME = TraceablePackage.TRACEABLE_FEATURE_COUNT + 0;
+	int NAMED_ELEMENT__NAME = 0;
 
 	/**
 	 * The number of structural features of the '<em>Named Element</em>' class.
@@ -115,7 +96,7 @@ public interface ResultsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NAMED_ELEMENT_FEATURE_COUNT = TraceablePackage.TRACEABLE_FEATURE_COUNT + 1;
+	int NAMED_ELEMENT_FEATURE_COUNT = 1;
 
 	/**
 	 * The meta object id for the '<em>Data Entry</em>' data type.
@@ -136,24 +117,6 @@ public interface ResultsPackage extends EPackage {
 	 * @generated
 	 */
 	int CHART = 0;
-
-	/**
-	 * The feature id for the '<em><b>Traces From</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CHART__TRACES_FROM = NAMED_ELEMENT__TRACES_FROM;
-
-	/**
-	 * The feature id for the '<em><b>Traces To</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CHART__TRACES_TO = NAMED_ELEMENT__TRACES_TO;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -202,24 +165,6 @@ public interface ResultsPackage extends EPackage {
 	int CHART_TYPE = 1;
 
 	/**
-	 * The feature id for the '<em><b>Traces From</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CHART_TYPE__TRACES_FROM = NAMED_ELEMENT__TRACES_FROM;
-
-	/**
-	 * The feature id for the '<em><b>Traces To</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CHART_TYPE__TRACES_TO = NAMED_ELEMENT__TRACES_TO;
-
-	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -246,24 +191,6 @@ public interface ResultsPackage extends EPackage {
 	 * @generated
 	 */
 	int VALUE_SPEC = 2;
-
-	/**
-	 * The feature id for the '<em><b>Traces From</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_SPEC__TRACES_FROM = NAMED_ELEMENT__TRACES_FROM;
-
-	/**
-	 * The feature id for the '<em><b>Traces To</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_SPEC__TRACES_TO = NAMED_ELEMENT__TRACES_TO;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -310,24 +237,6 @@ public interface ResultsPackage extends EPackage {
 	 * @generated
 	 */
 	int AXIS = 4;
-
-	/**
-	 * The feature id for the '<em><b>Traces From</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AXIS__TRACES_FROM = VALUE_SPEC__TRACES_FROM;
-
-	/**
-	 * The feature id for the '<em><b>Traces To</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AXIS__TRACES_TO = VALUE_SPEC__TRACES_TO;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -394,24 +303,6 @@ public interface ResultsPackage extends EPackage {
 	int SERIES = 5;
 
 	/**
-	 * The feature id for the '<em><b>Traces From</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SERIES__TRACES_FROM = VALUE_SPEC__TRACES_FROM;
-
-	/**
-	 * The feature id for the '<em><b>Traces To</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SERIES__TRACES_TO = VALUE_SPEC__TRACES_TO;
-
-	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -456,24 +347,6 @@ public interface ResultsPackage extends EPackage {
 	 * @generated
 	 */
 	int CATEGORY = 6;
-
-	/**
-	 * The feature id for the '<em><b>Traces From</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CATEGORY__TRACES_FROM = VALUE_SPEC__TRACES_FROM;
-
-	/**
-	 * The feature id for the '<em><b>Traces To</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CATEGORY__TRACES_TO = VALUE_SPEC__TRACES_TO;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -522,24 +395,6 @@ public interface ResultsPackage extends EPackage {
 	int RESULT = 7;
 
 	/**
-	 * The feature id for the '<em><b>Traces From</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RESULT__TRACES_FROM = NAMED_ELEMENT__TRACES_FROM;
-
-	/**
-	 * The feature id for the '<em><b>Traces To</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RESULT__TRACES_TO = NAMED_ELEMENT__TRACES_TO;
-
-	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -577,24 +432,6 @@ public interface ResultsPackage extends EPackage {
 	int XY = 8;
 
 	/**
-	 * The feature id for the '<em><b>Traces From</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XY__TRACES_FROM = CHART_TYPE__TRACES_FROM;
-
-	/**
-	 * The feature id for the '<em><b>Traces To</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XY__TRACES_TO = CHART_TYPE__TRACES_TO;
-
-	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -621,24 +458,6 @@ public interface ResultsPackage extends EPackage {
 	 * @generated
 	 */
 	int BOX_AND_WHISKERS = 9;
-
-	/**
-	 * The feature id for the '<em><b>Traces From</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BOX_AND_WHISKERS__TRACES_FROM = CHART_TYPE__TRACES_FROM;
-
-	/**
-	 * The feature id for the '<em><b>Traces To</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BOX_AND_WHISKERS__TRACES_TO = CHART_TYPE__TRACES_TO;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -669,24 +488,6 @@ public interface ResultsPackage extends EPackage {
 	int BAR = 10;
 
 	/**
-	 * The feature id for the '<em><b>Traces From</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BAR__TRACES_FROM = CHART_TYPE__TRACES_FROM;
-
-	/**
-	 * The feature id for the '<em><b>Traces To</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BAR__TRACES_TO = CHART_TYPE__TRACES_TO;
-
-	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -713,24 +514,6 @@ public interface ResultsPackage extends EPackage {
 	 * @generated
 	 */
 	int RESULTS = 11;
-
-	/**
-	 * The feature id for the '<em><b>Traces From</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RESULTS__TRACES_FROM = CHART__TRACES_FROM;
-
-	/**
-	 * The feature id for the '<em><b>Traces To</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RESULTS__TRACES_TO = CHART__TRACES_TO;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -875,24 +658,6 @@ public interface ResultsPackage extends EPackage {
     int NUMERICAL_RESULT = 15;
 
     /**
-	 * The feature id for the '<em><b>Traces From</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NUMERICAL_RESULT__TRACES_FROM = RESULT__TRACES_FROM;
-
-	/**
-	 * The feature id for the '<em><b>Traces To</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NUMERICAL_RESULT__TRACES_TO = RESULT__TRACES_TO;
-
-				/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -957,24 +722,6 @@ public interface ResultsPackage extends EPackage {
     int GRAPH_RESULT = 16;
 
     /**
-	 * The feature id for the '<em><b>Traces From</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GRAPH_RESULT__TRACES_FROM = RESULT__TRACES_FROM;
-
-				/**
-	 * The feature id for the '<em><b>Traces To</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GRAPH_RESULT__TRACES_TO = RESULT__TRACES_TO;
-
-				/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1030,24 +777,6 @@ public interface ResultsPackage extends EPackage {
     int GRAPH_NODE = 17;
 
     /**
-	 * The feature id for the '<em><b>Traces From</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GRAPH_NODE__TRACES_FROM = NAMED_ELEMENT__TRACES_FROM;
-
-				/**
-	 * The feature id for the '<em><b>Traces To</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GRAPH_NODE__TRACES_TO = NAMED_ELEMENT__TRACES_TO;
-
-				/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1094,24 +823,6 @@ public interface ResultsPackage extends EPackage {
     int GRAPH_LINK = 18;
 
     /**
-	 * The feature id for the '<em><b>Traces From</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GRAPH_LINK__TRACES_FROM = NAMED_ELEMENT__TRACES_FROM;
-
-				/**
-	 * The feature id for the '<em><b>Traces To</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GRAPH_LINK__TRACES_TO = NAMED_ELEMENT__TRACES_TO;
-
-				/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1159,31 +870,13 @@ public interface ResultsPackage extends EPackage {
 	int DATA_RESULT_SET = 19;
 
 				/**
-	 * The feature id for the '<em><b>Traces From</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_RESULT_SET__TRACES_FROM = TraceablePackage.TRACEABLE__TRACES_FROM;
-
-				/**
-	 * The feature id for the '<em><b>Traces To</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_RESULT_SET__TRACES_TO = TraceablePackage.TRACEABLE__TRACES_TO;
-
-				/**
 	 * The number of structural features of the '<em>Data Result Set</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_RESULT_SET_FEATURE_COUNT = TraceablePackage.TRACEABLE_FEATURE_COUNT + 0;
+	int DATA_RESULT_SET_FEATURE_COUNT = 0;
 
 				/**
 	 * The meta object id for the '{@link de.hub.clickwatch.analysis.results.impl.XYDataResultSetImpl <em>XY Data Result Set</em>}' class.
@@ -1194,24 +887,6 @@ public interface ResultsPackage extends EPackage {
 	 * @generated
 	 */
 	int XY_DATA_RESULT_SET = 20;
-
-				/**
-	 * The feature id for the '<em><b>Traces From</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XY_DATA_RESULT_SET__TRACES_FROM = DATA_RESULT_SET__TRACES_FROM;
-
-				/**
-	 * The feature id for the '<em><b>Traces To</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XY_DATA_RESULT_SET__TRACES_TO = DATA_RESULT_SET__TRACES_TO;
 
 				/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1260,31 +935,13 @@ public interface ResultsPackage extends EPackage {
 	int DATA_RESULT_VALUE = 22;
 
 				/**
-	 * The feature id for the '<em><b>Traces From</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_RESULT_VALUE__TRACES_FROM = TraceablePackage.TRACEABLE__TRACES_FROM;
-
-				/**
-	 * The feature id for the '<em><b>Traces To</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_RESULT_VALUE__TRACES_TO = TraceablePackage.TRACEABLE__TRACES_TO;
-
-				/**
 	 * The number of structural features of the '<em>Data Result Value</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_RESULT_VALUE_FEATURE_COUNT = TraceablePackage.TRACEABLE_FEATURE_COUNT + 0;
+	int DATA_RESULT_VALUE_FEATURE_COUNT = 0;
 
 				/**
 	 * The meta object id for the '{@link de.hub.clickwatch.analysis.results.impl.DoubleDataResultValueImpl <em>Double Data Result Value</em>}' class.
@@ -1295,24 +952,6 @@ public interface ResultsPackage extends EPackage {
 	 * @generated
 	 */
 	int DOUBLE_DATA_RESULT_VALUE = 21;
-
-				/**
-	 * The feature id for the '<em><b>Traces From</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DOUBLE_DATA_RESULT_VALUE__TRACES_FROM = DATA_RESULT_VALUE__TRACES_FROM;
-
-				/**
-	 * The feature id for the '<em><b>Traces To</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DOUBLE_DATA_RESULT_VALUE__TRACES_TO = DATA_RESULT_VALUE__TRACES_TO;
 
 				/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.

@@ -6,13 +6,11 @@
  */
 package de.hub.clickwatch.analysis.results.impl;
 
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.impl.EObjectImpl;
+
 import de.hub.clickwatch.analysis.results.DataResultValue;
 import de.hub.clickwatch.analysis.results.ResultsPackage;
-
-import de.hub.clickwatch.analysis.traceable.impl.TraceableImpl;
-import org.eclipse.emf.ecore.EClass;
-
-import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,7 +21,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  *
  * @generated
  */
-public abstract class DataResultValueImpl extends TraceableImpl implements DataResultValue {
+public abstract class DataResultValueImpl extends EObjectImpl implements DataResultValue {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

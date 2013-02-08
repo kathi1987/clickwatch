@@ -12,23 +12,25 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+
+import org.eclipse.emf.common.util.ResourceLocator;
+
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-
-import de.hub.clickwatch.analysis.results.BoxAndWhiskers;
+import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 
 /**
- * This is the item provider adapter for a {@link de.hub.clickwatch.analysis.results.BoxAndWhiskers} object.
+ * This is the item provider adapter for a {@link de.hub.clickwatch.analysis.results.DataResultSet} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class BoxAndWhiskersItemProvider
-	extends ChartTypeItemProvider
+public class DataResultSetItemProvider
+	extends ItemProviderAdapter
 	implements
 		IEditingDomainItemProvider,
 		IStructuredItemContentProvider,
@@ -41,7 +43,7 @@ public class BoxAndWhiskersItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public BoxAndWhiskersItemProvider(AdapterFactory adapterFactory) {
+	public DataResultSetItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -61,17 +63,6 @@ public class BoxAndWhiskersItemProvider
 	}
 
 	/**
-	 * This returns BoxAndWhiskers.gif.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/BoxAndWhiskers"));
-	}
-
-	/**
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -79,10 +70,7 @@ public class BoxAndWhiskersItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((BoxAndWhiskers)object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_BoxAndWhiskers_type") :
-			getString("_UI_BoxAndWhiskers_type") + " " + label;
+		return getString("_UI_DataResultSet_type");
 	}
 
 	/**
@@ -108,6 +96,17 @@ public class BoxAndWhiskersItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+	}
+
+	/**
+	 * Return the resource locator for this item provider's resources.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ResourceLocator getResourceLocator() {
+		return ResultsEditPlugin.INSTANCE;
 	}
 
 }

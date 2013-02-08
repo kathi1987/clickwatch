@@ -2,7 +2,7 @@ package de.hub.clickwatch.analysis.results.util.builder;
 
 /**
  * <!-- begin-user-doc --> 
- *   A builder for the model object ' <em><b>de.hub.clickwatch.analysis.results.Bar</b></em>'.
+ *   A builder for the model object '<em><b>de.hub.clickwatch.analysis.results.Bar</b></em>'.
  * <!-- end-user-doc -->
  * 
  * @generated
@@ -10,14 +10,8 @@ package de.hub.clickwatch.analysis.results.util.builder;
 public class BarBuilder implements de.hub.clickwatch.analysis.results.util.builder.IResultsBuilder<de.hub.clickwatch.analysis.results.Bar> {
   // features and builders
   private java.lang.String m_name;
-  private java.util.Collection<de.hub.clickwatch.analysis.traceable.Traceable> m_tracesFrom = new java.util.LinkedList<de.hub.clickwatch.analysis.traceable.Traceable>();
-  private java.util.Collection<de.hub.clickwatch.analysis.traceable.util.builder.ITraceableBuilder<? extends de.hub.clickwatch.analysis.traceable.Traceable>> m_featureTracesFromBuilder = new java.util.LinkedList<de.hub.clickwatch.analysis.traceable.util.builder.ITraceableBuilder<? extends de.hub.clickwatch.analysis.traceable.Traceable>>();
-  private java.util.Collection<de.hub.clickwatch.analysis.traceable.Traceable> m_tracesTo = new java.util.LinkedList<de.hub.clickwatch.analysis.traceable.Traceable>();
-  private java.util.Collection<de.hub.clickwatch.analysis.traceable.util.builder.ITraceableBuilder<? extends de.hub.clickwatch.analysis.traceable.Traceable>> m_featureTracesToBuilder = new java.util.LinkedList<de.hub.clickwatch.analysis.traceable.util.builder.ITraceableBuilder<? extends de.hub.clickwatch.analysis.traceable.Traceable>>();
   // helper attributes
   private boolean m_featureNameSet = false;
-  private boolean m_featureTracesFromSet = false;
-  private boolean m_featureTracesToSet = false;
 
   /**
    * Builder is not instantiated with a constructor.
@@ -35,18 +29,28 @@ public class BarBuilder implements de.hub.clickwatch.analysis.results.util.build
   }
 
   /**
+   * This method creates a new instance of the BarBuilder. 
+   * The builder is initialized using an existing '<em><b>de.hub.clickwatch.analysis.results.Bar</b></em>' model object.
+   * In order to avoid changes to the provided '<em><b>de.hub.clickwatch.analysis.results.Bar</b></em>' model object, a copy is created using <em><b>org.eclipse.emf.ecore.util.EcoreUtil.Copier</b></em>.
+   * @param bar The existing '<em><b>de.hub.clickwatch.analysis.results.Bar</b></em>' model object to be used for the initialization of the builder  
+   * @return new initialized instance of the BarBuilder
+   */
+  public static BarBuilder newBarBuilder(de.hub.clickwatch.analysis.results.Bar p_bar) {
+    org.eclipse.emf.ecore.util.EcoreUtil.Copier c = new org.eclipse.emf.ecore.util.EcoreUtil.Copier();
+    de.hub.clickwatch.analysis.results.Bar _bar = (de.hub.clickwatch.analysis.results.Bar) c.copy(((de.hub.clickwatch.analysis.results.Bar) p_bar));
+    c.copyReferences();
+    BarBuilder _builder = newBarBuilder();
+    _builder.name(_bar.getName());
+    return _builder;
+  }
+
+  /**
    * This method can be used to override attributes of the builder. It constructs a new builder and copies the current values to it.
    */
   public BarBuilder but() {
     BarBuilder _builder = newBarBuilder();
     _builder.m_featureNameSet = m_featureNameSet;
     _builder.m_name = m_name;
-    _builder.m_featureTracesFromSet = m_featureTracesFromSet;
-    _builder.m_tracesFrom = m_tracesFrom;
-    _builder.m_featureTracesFromBuilder = m_featureTracesFromBuilder;
-    _builder.m_featureTracesToSet = m_featureTracesToSet;
-    _builder.m_tracesTo = m_tracesTo;
-    _builder.m_featureTracesToBuilder = m_featureTracesToBuilder;
     return _builder;
   }
 
@@ -55,68 +59,17 @@ public class BarBuilder implements de.hub.clickwatch.analysis.results.util.build
    * @return new instance of the de.hub.clickwatch.analysis.results.Bar type
    */
   public de.hub.clickwatch.analysis.results.Bar build() {
-    final de.hub.clickwatch.analysis.results.Bar _newInstance = de.hub.clickwatch.analysis.results.ResultsFactory.eINSTANCE.createBar();
+    final de.hub.clickwatch.analysis.results.Bar _newInstance = (de.hub.clickwatch.analysis.results.Bar) de.hub.clickwatch.analysis.results.ResultsFactory.eINSTANCE
+        .create(de.hub.clickwatch.analysis.results.ResultsPackage.eINSTANCE.getBar());
     if (m_featureNameSet) {
       _newInstance.setName(m_name);
-    }
-    if (m_featureTracesFromSet) {
-      _newInstance.getTracesFrom().addAll(m_tracesFrom);
-    } else {
-      if (!m_featureTracesFromBuilder.isEmpty()) {
-        for (de.hub.clickwatch.analysis.traceable.util.builder.ITraceableBuilder<? extends de.hub.clickwatch.analysis.traceable.Traceable> builder : m_featureTracesFromBuilder) {
-          _newInstance.getTracesFrom().add(builder.build());
-        }
-      }
-    }
-    if (m_featureTracesToSet) {
-      _newInstance.getTracesTo().addAll(m_tracesTo);
-    } else {
-      if (!m_featureTracesToBuilder.isEmpty()) {
-        for (de.hub.clickwatch.analysis.traceable.util.builder.ITraceableBuilder<? extends de.hub.clickwatch.analysis.traceable.Traceable> builder : m_featureTracesToBuilder) {
-          _newInstance.getTracesTo().add(builder.build());
-        }
-      }
     }
     return _newInstance;
   }
 
-  public BarBuilder withName(java.lang.String p_name) {
+  public BarBuilder name(java.lang.String p_name) {
     m_name = p_name;
     m_featureNameSet = true;
-    return this;
-  }
-
-  public BarBuilder withTracesFrom(de.hub.clickwatch.analysis.traceable.Traceable p_tracesFrom) {
-    m_tracesFrom.add(p_tracesFrom);
-    m_featureTracesFromSet = true;
-    return this;
-  }
-
-  public BarBuilder withTracesFrom(java.util.Collection<? extends de.hub.clickwatch.analysis.traceable.Traceable> p_tracesFrom) {
-    m_tracesFrom.addAll(p_tracesFrom);
-    m_featureTracesFromSet = true;
-    return this;
-  }
-
-  public BarBuilder withTracesFrom(de.hub.clickwatch.analysis.traceable.util.builder.ITraceableBuilder<? extends de.hub.clickwatch.analysis.traceable.Traceable> p_traceableBuilder) {
-    m_featureTracesFromBuilder.add(p_traceableBuilder);
-    return this;
-  }
-
-  public BarBuilder withTracesTo(de.hub.clickwatch.analysis.traceable.Traceable p_tracesTo) {
-    m_tracesTo.add(p_tracesTo);
-    m_featureTracesToSet = true;
-    return this;
-  }
-
-  public BarBuilder withTracesTo(java.util.Collection<? extends de.hub.clickwatch.analysis.traceable.Traceable> p_tracesTo) {
-    m_tracesTo.addAll(p_tracesTo);
-    m_featureTracesToSet = true;
-    return this;
-  }
-
-  public BarBuilder withTracesTo(de.hub.clickwatch.analysis.traceable.util.builder.ITraceableBuilder<? extends de.hub.clickwatch.analysis.traceable.Traceable> p_traceableBuilder) {
-    m_featureTracesToBuilder.add(p_traceableBuilder);
     return this;
   }
 }

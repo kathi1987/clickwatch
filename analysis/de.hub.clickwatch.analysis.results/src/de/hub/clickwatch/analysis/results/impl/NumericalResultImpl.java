@@ -6,13 +6,6 @@
  */
 package de.hub.clickwatch.analysis.results.impl;
 
-import de.hub.clickwatch.analysis.results.Chart;
-import de.hub.clickwatch.analysis.results.DataResultSet;
-import de.hub.clickwatch.analysis.results.DataEntry;
-import de.hub.clickwatch.analysis.results.DataSet;
-import de.hub.clickwatch.analysis.results.NumericalResult;
-import de.hub.clickwatch.analysis.results.ResultsPackage;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
@@ -20,15 +13,19 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
+import de.hub.clickwatch.analysis.results.Chart;
+import de.hub.clickwatch.analysis.results.DataEntry;
+import de.hub.clickwatch.analysis.results.DataResultSet;
+import de.hub.clickwatch.analysis.results.DataSet;
+import de.hub.clickwatch.analysis.results.NumericalResult;
+import de.hub.clickwatch.analysis.results.ResultsPackage;
 
 /**
  * <!-- begin-user-doc -->

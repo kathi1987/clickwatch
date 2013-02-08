@@ -2,7 +2,7 @@ package de.hub.clickwatch.analysis.results.util.builder;
 
 /**
  * <!-- begin-user-doc --> 
- *   A builder for the model object ' <em><b>de.hub.clickwatch.analysis.results.Results</b></em>'.
+ *   A builder for the model object '<em><b>de.hub.clickwatch.analysis.results.Results</b></em>'.
  * <!-- end-user-doc -->
  * 
  * @generated
@@ -16,18 +16,12 @@ public class ResultsBuilder implements de.hub.clickwatch.analysis.results.util.b
   private java.util.Collection<de.hub.clickwatch.analysis.results.util.builder.IResultsBuilder<? extends de.hub.clickwatch.analysis.results.Results>> m_featureGroupsBuilder = new java.util.LinkedList<de.hub.clickwatch.analysis.results.util.builder.IResultsBuilder<? extends de.hub.clickwatch.analysis.results.Results>>();
   private java.util.Collection<de.hub.clickwatch.analysis.results.Result> m_results = new java.util.LinkedList<de.hub.clickwatch.analysis.results.Result>();
   private java.util.Collection<de.hub.clickwatch.analysis.results.util.builder.IResultsBuilder<? extends de.hub.clickwatch.analysis.results.Result>> m_featureResultsBuilder = new java.util.LinkedList<de.hub.clickwatch.analysis.results.util.builder.IResultsBuilder<? extends de.hub.clickwatch.analysis.results.Result>>();
-  private java.util.Collection<de.hub.clickwatch.analysis.traceable.Traceable> m_tracesFrom = new java.util.LinkedList<de.hub.clickwatch.analysis.traceable.Traceable>();
-  private java.util.Collection<de.hub.clickwatch.analysis.traceable.util.builder.ITraceableBuilder<? extends de.hub.clickwatch.analysis.traceable.Traceable>> m_featureTracesFromBuilder = new java.util.LinkedList<de.hub.clickwatch.analysis.traceable.util.builder.ITraceableBuilder<? extends de.hub.clickwatch.analysis.traceable.Traceable>>();
-  private java.util.Collection<de.hub.clickwatch.analysis.traceable.Traceable> m_tracesTo = new java.util.LinkedList<de.hub.clickwatch.analysis.traceable.Traceable>();
-  private java.util.Collection<de.hub.clickwatch.analysis.traceable.util.builder.ITraceableBuilder<? extends de.hub.clickwatch.analysis.traceable.Traceable>> m_featureTracesToBuilder = new java.util.LinkedList<de.hub.clickwatch.analysis.traceable.util.builder.ITraceableBuilder<? extends de.hub.clickwatch.analysis.traceable.Traceable>>();
   private java.util.Collection<de.hub.clickwatch.analysis.results.ValueSpec> m_valueSpecs = new java.util.LinkedList<de.hub.clickwatch.analysis.results.ValueSpec>();
   private java.util.Collection<de.hub.clickwatch.analysis.results.util.builder.IResultsBuilder<? extends de.hub.clickwatch.analysis.results.ValueSpec>> m_featureValueSpecsBuilder = new java.util.LinkedList<de.hub.clickwatch.analysis.results.util.builder.IResultsBuilder<? extends de.hub.clickwatch.analysis.results.ValueSpec>>();
   // helper attributes
   private boolean m_featureGroupsSet = false;
   private boolean m_featureNameSet = false;
   private boolean m_featureResultsSet = false;
-  private boolean m_featureTracesFromSet = false;
-  private boolean m_featureTracesToSet = false;
   private boolean m_featureTypeSet = false;
   private boolean m_featureValueSpecsSet = false;
 
@@ -47,6 +41,32 @@ public class ResultsBuilder implements de.hub.clickwatch.analysis.results.util.b
   }
 
   /**
+   * This method creates a new instance of the ResultsBuilder. 
+   * The builder is initialized using an existing '<em><b>de.hub.clickwatch.analysis.results.Results</b></em>' model object.
+   * In order to avoid changes to the provided '<em><b>de.hub.clickwatch.analysis.results.Results</b></em>' model object, a copy is created using <em><b>org.eclipse.emf.ecore.util.EcoreUtil.Copier</b></em>.
+   * @param results The existing '<em><b>de.hub.clickwatch.analysis.results.Results</b></em>' model object to be used for the initialization of the builder  
+   * @return new initialized instance of the ResultsBuilder
+   */
+  public static ResultsBuilder newResultsBuilder(de.hub.clickwatch.analysis.results.Results p_results) {
+    org.eclipse.emf.ecore.util.EcoreUtil.Copier c = new org.eclipse.emf.ecore.util.EcoreUtil.Copier();
+    de.hub.clickwatch.analysis.results.Results _results = (de.hub.clickwatch.analysis.results.Results) c.copy(((de.hub.clickwatch.analysis.results.Results) p_results));
+    c.copyReferences();
+    ResultsBuilder _builder = newResultsBuilder();
+    _builder.name(_results.getName());
+    _builder.type(_results.getType());
+    if (_results.getGroups() != null) {
+      _builder.groups(_results.getGroups());
+    }
+    if (_results.getResults() != null) {
+      _builder.results(_results.getResults());
+    }
+    if (_results.getValueSpecs() != null) {
+      _builder.valueSpecs(_results.getValueSpecs());
+    }
+    return _builder;
+  }
+
+  /**
    * This method can be used to override attributes of the builder. It constructs a new builder and copies the current values to it.
    */
   public ResultsBuilder but() {
@@ -59,12 +79,6 @@ public class ResultsBuilder implements de.hub.clickwatch.analysis.results.util.b
     _builder.m_featureResultsSet = m_featureResultsSet;
     _builder.m_results = m_results;
     _builder.m_featureResultsBuilder = m_featureResultsBuilder;
-    _builder.m_featureTracesFromSet = m_featureTracesFromSet;
-    _builder.m_tracesFrom = m_tracesFrom;
-    _builder.m_featureTracesFromBuilder = m_featureTracesFromBuilder;
-    _builder.m_featureTracesToSet = m_featureTracesToSet;
-    _builder.m_tracesTo = m_tracesTo;
-    _builder.m_featureTracesToBuilder = m_featureTracesToBuilder;
     _builder.m_featureTypeSet = m_featureTypeSet;
     _builder.m_type = m_type;
     _builder.m_featureTypeBuilder = m_featureTypeBuilder;
@@ -79,7 +93,8 @@ public class ResultsBuilder implements de.hub.clickwatch.analysis.results.util.b
    * @return new instance of the de.hub.clickwatch.analysis.results.Results type
    */
   public de.hub.clickwatch.analysis.results.Results build() {
-    final de.hub.clickwatch.analysis.results.Results _newInstance = de.hub.clickwatch.analysis.results.ResultsFactory.eINSTANCE.createResults();
+    final de.hub.clickwatch.analysis.results.Results _newInstance = (de.hub.clickwatch.analysis.results.Results) de.hub.clickwatch.analysis.results.ResultsFactory.eINSTANCE
+        .create(de.hub.clickwatch.analysis.results.ResultsPackage.eINSTANCE.getResults());
     if (m_featureNameSet) {
       _newInstance.setName(m_name);
     }
@@ -108,24 +123,6 @@ public class ResultsBuilder implements de.hub.clickwatch.analysis.results.util.b
         }
       }
     }
-    if (m_featureTracesFromSet) {
-      _newInstance.getTracesFrom().addAll(m_tracesFrom);
-    } else {
-      if (!m_featureTracesFromBuilder.isEmpty()) {
-        for (de.hub.clickwatch.analysis.traceable.util.builder.ITraceableBuilder<? extends de.hub.clickwatch.analysis.traceable.Traceable> builder : m_featureTracesFromBuilder) {
-          _newInstance.getTracesFrom().add(builder.build());
-        }
-      }
-    }
-    if (m_featureTracesToSet) {
-      _newInstance.getTracesTo().addAll(m_tracesTo);
-    } else {
-      if (!m_featureTracesToBuilder.isEmpty()) {
-        for (de.hub.clickwatch.analysis.traceable.util.builder.ITraceableBuilder<? extends de.hub.clickwatch.analysis.traceable.Traceable> builder : m_featureTracesToBuilder) {
-          _newInstance.getTracesTo().add(builder.build());
-        }
-      }
-    }
     if (m_featureValueSpecsSet) {
       _newInstance.getValueSpecs().addAll(m_valueSpecs);
     } else {
@@ -138,104 +135,70 @@ public class ResultsBuilder implements de.hub.clickwatch.analysis.results.util.b
     return _newInstance;
   }
 
-  public ResultsBuilder withName(java.lang.String p_name) {
+  public ResultsBuilder name(java.lang.String p_name) {
     m_name = p_name;
     m_featureNameSet = true;
     return this;
   }
 
-  public ResultsBuilder withType(de.hub.clickwatch.analysis.results.ChartType p_type) {
+  public ResultsBuilder type(de.hub.clickwatch.analysis.results.ChartType p_type) {
     m_type = p_type;
     m_featureTypeSet = true;
     return this;
   }
 
-  public ResultsBuilder withType(de.hub.clickwatch.analysis.results.util.builder.IResultsBuilder<? extends de.hub.clickwatch.analysis.results.ChartType> p_chartTypeBuilder) {
+  public ResultsBuilder type(de.hub.clickwatch.analysis.results.util.builder.IResultsBuilder<? extends de.hub.clickwatch.analysis.results.ChartType> p_chartTypeBuilder) {
     m_featureTypeBuilder = p_chartTypeBuilder;
     return this;
   }
 
-  public ResultsBuilder withGroups(de.hub.clickwatch.analysis.results.Results p_groups) {
+  public ResultsBuilder groups(de.hub.clickwatch.analysis.results.Results p_groups) {
     m_groups.add(p_groups);
     m_featureGroupsSet = true;
     return this;
   }
 
-  public ResultsBuilder withGroups(java.util.Collection<? extends de.hub.clickwatch.analysis.results.Results> p_groups) {
+  public ResultsBuilder groups(java.util.Collection<? extends de.hub.clickwatch.analysis.results.Results> p_groups) {
     m_groups.addAll(p_groups);
     m_featureGroupsSet = true;
     return this;
   }
 
-  public ResultsBuilder withGroups(de.hub.clickwatch.analysis.results.util.builder.IResultsBuilder<? extends de.hub.clickwatch.analysis.results.Results> p_resultsBuilder) {
+  public ResultsBuilder groups(de.hub.clickwatch.analysis.results.util.builder.IResultsBuilder<? extends de.hub.clickwatch.analysis.results.Results> p_resultsBuilder) {
     m_featureGroupsBuilder.add(p_resultsBuilder);
     return this;
   }
 
-  public ResultsBuilder withResults(de.hub.clickwatch.analysis.results.Result p_results) {
+  public ResultsBuilder results(de.hub.clickwatch.analysis.results.Result p_results) {
     m_results.add(p_results);
     m_featureResultsSet = true;
     return this;
   }
 
-  public ResultsBuilder withResults(java.util.Collection<? extends de.hub.clickwatch.analysis.results.Result> p_results) {
+  public ResultsBuilder results(java.util.Collection<? extends de.hub.clickwatch.analysis.results.Result> p_results) {
     m_results.addAll(p_results);
     m_featureResultsSet = true;
     return this;
   }
 
-  public ResultsBuilder withResults(de.hub.clickwatch.analysis.results.util.builder.IResultsBuilder<? extends de.hub.clickwatch.analysis.results.Result> p_resultBuilder) {
+  public ResultsBuilder results(de.hub.clickwatch.analysis.results.util.builder.IResultsBuilder<? extends de.hub.clickwatch.analysis.results.Result> p_resultBuilder) {
     m_featureResultsBuilder.add(p_resultBuilder);
     return this;
   }
 
-  public ResultsBuilder withTracesFrom(de.hub.clickwatch.analysis.traceable.Traceable p_tracesFrom) {
-    m_tracesFrom.add(p_tracesFrom);
-    m_featureTracesFromSet = true;
-    return this;
-  }
-
-  public ResultsBuilder withTracesFrom(java.util.Collection<? extends de.hub.clickwatch.analysis.traceable.Traceable> p_tracesFrom) {
-    m_tracesFrom.addAll(p_tracesFrom);
-    m_featureTracesFromSet = true;
-    return this;
-  }
-
-  public ResultsBuilder withTracesFrom(de.hub.clickwatch.analysis.traceable.util.builder.ITraceableBuilder<? extends de.hub.clickwatch.analysis.traceable.Traceable> p_traceableBuilder) {
-    m_featureTracesFromBuilder.add(p_traceableBuilder);
-    return this;
-  }
-
-  public ResultsBuilder withTracesTo(de.hub.clickwatch.analysis.traceable.Traceable p_tracesTo) {
-    m_tracesTo.add(p_tracesTo);
-    m_featureTracesToSet = true;
-    return this;
-  }
-
-  public ResultsBuilder withTracesTo(java.util.Collection<? extends de.hub.clickwatch.analysis.traceable.Traceable> p_tracesTo) {
-    m_tracesTo.addAll(p_tracesTo);
-    m_featureTracesToSet = true;
-    return this;
-  }
-
-  public ResultsBuilder withTracesTo(de.hub.clickwatch.analysis.traceable.util.builder.ITraceableBuilder<? extends de.hub.clickwatch.analysis.traceable.Traceable> p_traceableBuilder) {
-    m_featureTracesToBuilder.add(p_traceableBuilder);
-    return this;
-  }
-
-  public ResultsBuilder withValueSpecs(de.hub.clickwatch.analysis.results.ValueSpec p_valueSpecs) {
+  public ResultsBuilder valueSpecs(de.hub.clickwatch.analysis.results.ValueSpec p_valueSpecs) {
     m_valueSpecs.add(p_valueSpecs);
     m_featureValueSpecsSet = true;
     return this;
   }
 
-  public ResultsBuilder withValueSpecs(java.util.Collection<? extends de.hub.clickwatch.analysis.results.ValueSpec> p_valueSpecs) {
+  public ResultsBuilder valueSpecs(java.util.Collection<? extends de.hub.clickwatch.analysis.results.ValueSpec> p_valueSpecs) {
     m_valueSpecs.addAll(p_valueSpecs);
     m_featureValueSpecsSet = true;
     return this;
   }
 
-  public ResultsBuilder withValueSpecs(de.hub.clickwatch.analysis.results.util.builder.IResultsBuilder<? extends de.hub.clickwatch.analysis.results.ValueSpec> p_valueSpecBuilder) {
+  public ResultsBuilder valueSpecs(de.hub.clickwatch.analysis.results.util.builder.IResultsBuilder<? extends de.hub.clickwatch.analysis.results.ValueSpec> p_valueSpecBuilder) {
     m_featureValueSpecsBuilder.add(p_valueSpecBuilder);
     return this;
   }

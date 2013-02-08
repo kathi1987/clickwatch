@@ -7,7 +7,6 @@
 package de.hub.clickwatch.analysis.results.util;
 
 import de.hub.clickwatch.analysis.results.*;
-import de.hub.clickwatch.analysis.traceable.Traceable;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
@@ -20,8 +19,15 @@ import de.hub.clickwatch.analysis.results.Category;
 import de.hub.clickwatch.analysis.results.Chart;
 import de.hub.clickwatch.analysis.results.ChartType;
 import de.hub.clickwatch.analysis.results.Constraint;
+import de.hub.clickwatch.analysis.results.DataResultSet;
+import de.hub.clickwatch.analysis.results.DataResultValue;
+import de.hub.clickwatch.analysis.results.DoubleDataResultValue;
 import de.hub.clickwatch.analysis.results.EqualsConstraint;
+import de.hub.clickwatch.analysis.results.GraphLink;
+import de.hub.clickwatch.analysis.results.GraphNode;
+import de.hub.clickwatch.analysis.results.GraphResult;
 import de.hub.clickwatch.analysis.results.NamedElement;
+import de.hub.clickwatch.analysis.results.NumericalResult;
 import de.hub.clickwatch.analysis.results.Or;
 import de.hub.clickwatch.analysis.results.Result;
 import de.hub.clickwatch.analysis.results.Results;
@@ -29,6 +35,7 @@ import de.hub.clickwatch.analysis.results.ResultsPackage;
 import de.hub.clickwatch.analysis.results.Series;
 import de.hub.clickwatch.analysis.results.ValueSpec;
 import de.hub.clickwatch.analysis.results.XY;
+import de.hub.clickwatch.analysis.results.XYDataResultSet;
 
 /**
  * <!-- begin-user-doc -->
@@ -177,10 +184,6 @@ public class ResultsAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseDataResultValue(DataResultValue object) {
 				return createDataResultValueAdapter();
-			}
-			@Override
-			public Adapter caseTraceable(Traceable object) {
-				return createTraceableAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -521,20 +524,6 @@ public class ResultsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createDataResultValueAdapter() {
-		return null;
-	}
-
-				/**
-	 * Creates a new adapter for an object of class '{@link de.hub.clickwatch.analysis.traceable.Traceable <em>Traceable</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see de.hub.clickwatch.analysis.traceable.Traceable
-	 * @generated
-	 */
-	public Adapter createTraceableAdapter() {
 		return null;
 	}
 

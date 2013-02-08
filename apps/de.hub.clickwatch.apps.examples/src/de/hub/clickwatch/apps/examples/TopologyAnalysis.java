@@ -60,7 +60,7 @@ public class TopologyAnalysis implements IClickWatchMain {
 		    if (name.startsWith("192.168.3.")) {
 		        name = name.substring(10);
 		    }
-            GraphNode graphNode = GraphNodeBuilder.newGraphNodeBuilder().withName(name).build();
+            GraphNode graphNode = GraphNodeBuilder.newGraphNodeBuilder().name(name).build();
             macMap.put(stats.getEntry().getFrom(), graphNode);
             result.getNodes().add(graphNode);
 		    monitor.worked(1);
@@ -72,7 +72,7 @@ public class TopologyAnalysis implements IClickWatchMain {
 		        String toMac = link.getTo();
                 GraphNode to = macMap.get(toMac);
                 if (to != null) {
-                    GraphLink graphLink = GraphLinkBuilder.newGraphLinkBuilder().withName("").withSource(from).withTarget(to).build();
+                    GraphLink graphLink = GraphLinkBuilder.newGraphLinkBuilder().name("").source(from).target(to).build();
                     result.getLinks().add(graphLink);
                 } else {
                     logger.log(ILogger.INFO, "topology contains link to nodes outside the network", null);

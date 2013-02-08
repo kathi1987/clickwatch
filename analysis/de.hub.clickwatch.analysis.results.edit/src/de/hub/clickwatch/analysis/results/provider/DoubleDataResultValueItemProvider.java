@@ -7,28 +7,33 @@
 package de.hub.clickwatch.analysis.results.provider;
 
 
+import de.hub.clickwatch.analysis.results.DoubleDataResultValue;
+import de.hub.clickwatch.analysis.results.ResultsPackage;
+
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-
-import de.hub.clickwatch.analysis.results.BoxAndWhiskers;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link de.hub.clickwatch.analysis.results.BoxAndWhiskers} object.
+ * This is the item provider adapter for a {@link de.hub.clickwatch.analysis.results.DoubleDataResultValue} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class BoxAndWhiskersItemProvider
-	extends ChartTypeItemProvider
+public class DoubleDataResultValueItemProvider
+	extends DataResultValueItemProvider
 	implements
 		IEditingDomainItemProvider,
 		IStructuredItemContentProvider,
@@ -41,7 +46,7 @@ public class BoxAndWhiskersItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public BoxAndWhiskersItemProvider(AdapterFactory adapterFactory) {
+	public DoubleDataResultValueItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -56,19 +61,42 @@ public class BoxAndWhiskersItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addValuePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This returns BoxAndWhiskers.gif.
+	 * This adds a property descriptor for the Value feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addValuePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_DoubleDataResultValue_value_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_DoubleDataResultValue_value_feature", "_UI_DoubleDataResultValue_type"),
+				 ResultsPackage.Literals.DOUBLE_DATA_RESULT_VALUE__VALUE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This returns DoubleDataResultValue.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/BoxAndWhiskers"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/DoubleDataResultValue"));
 	}
 
 	/**
@@ -79,10 +107,8 @@ public class BoxAndWhiskersItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((BoxAndWhiskers)object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_BoxAndWhiskers_type") :
-			getString("_UI_BoxAndWhiskers_type") + " " + label;
+		DoubleDataResultValue doubleDataResultValue = (DoubleDataResultValue)object;
+		return getString("_UI_DoubleDataResultValue_type") + " " + doubleDataResultValue.getValue();
 	}
 
 	/**
@@ -95,6 +121,12 @@ public class BoxAndWhiskersItemProvider
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
+
+		switch (notification.getFeatureID(DoubleDataResultValue.class)) {
+			case ResultsPackage.DOUBLE_DATA_RESULT_VALUE__VALUE:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
+		}
 		super.notifyChanged(notification);
 	}
 

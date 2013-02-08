@@ -6,7 +6,6 @@
  */
 package de.hub.clickwatch.analysis.results;
 
-import de.hub.clickwatch.analysis.traceable.Traceable;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -25,7 +24,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model abstract="true"
  * @generated
  */
-public interface NamedElement extends Traceable {
+public interface NamedElement extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
