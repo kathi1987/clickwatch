@@ -34,6 +34,7 @@ public class MetaDataAdapter extends AbstractAdapter implements IMetaDataAdapter
         }
         ClickWatchModelFactory modelFactory = ClickWatchModelFactory.eINSTANCE;
         Node metaData = modelFactory.createNode();
+        metaData.setINetAddress(connection.getNode().getINetAddress());
 
         Map<String, Element> elementMap = new HashMap<String, Element>();
         List<String> configElementNames = null;

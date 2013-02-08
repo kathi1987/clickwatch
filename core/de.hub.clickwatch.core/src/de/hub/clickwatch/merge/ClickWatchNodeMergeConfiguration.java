@@ -62,8 +62,7 @@ public class ClickWatchNodeMergeConfiguration extends DefaultMergeConfiguration 
 	}
 	
 	@Override
-	public void handleDiffernce(IContext context, Object oldValue,
-			Object newValue, int index) {
+	public void handleDiffernce(IContext context, Object oldValue, Object newValue, int index) {
 	    INodeConnection connection = ClickWatchModelUtil.getContainingNode(context.getContainer()).getConnection();
 	    if (connection != null) {
 	        connection.getAdapter(IMergeAdapter.class).addChange(context.getContainer(), context.getFeature());

@@ -109,12 +109,18 @@ public class EcoreFactoryImpl extends EFactoryImpl implements EcoreFactory
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
+   * @generated NOT
    */
   @Override
   public Object createFromString(EDataType eDataType, String initialValue)
   {
-    switch (eDataType.getClassifierID())
+	// begin HUB
+	int classifierID = eDataType.getClassifierID();
+	if (classifierID != EcorePackage.ESTRING) {
+		initialValue = initialValue.trim();
+	}
+    switch (classifierID)
+    // end HUB
     {
       case EcorePackage.EBIG_DECIMAL:
         return createEBigDecimalFromString(eDataType, initialValue);
