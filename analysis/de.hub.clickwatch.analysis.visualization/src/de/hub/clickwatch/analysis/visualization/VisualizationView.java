@@ -22,6 +22,7 @@ public class VisualizationView extends AbstractDataView implements IVisualizatio
 	private Frame frame = null;
 	private IVisualizationInput currentInput = null;
 	
+	/* Wird aufgerufen wenn sich die Selection ändert! */
 	protected void setInput(final IVisualizationInput input) {
 		if (input == null) {
 			return;
@@ -32,6 +33,11 @@ public class VisualizationView extends AbstractDataView implements IVisualizatio
 		
 		currentInput = input;
 		currentInput.addInputChangeListener(this);
+		
+		/* Entfernt alle alten angezeigten Plost und fügt den neuen hinzu!
+		 * Den neuen bekommt er über input.getInputData
+		 * Eigentlich Arbeit in der if-Abfrage!!!
+		 * Holt die zu visualisierenden Elemente aus dem providersCache */
 		for (IVisualization visualization: getVisualizations()) {
 			if (visualization.isEnabledForInput(input.getInputData())) {
 				frame.removeAll();
@@ -51,7 +57,10 @@ public class VisualizationView extends AbstractDataView implements IVisualizatio
 			}
 		}
 	}
-
+	/**
+	 * Wird beim Eclipsestart aufgerufen!
+	 * Erzeugt die neue View inkl. Frame und Plot!
+	 */
 	public void createPartControl(Composite parent) {
 		super.createPartControl(parent);
 		Composite composite = new Composite(parent, SWT.EMBEDDED | SWT.NO_BACKGROUND);
@@ -59,6 +68,12 @@ public class VisualizationView extends AbstractDataView implements IVisualizatio
 	    frame.pack();
 	}
 	
+	/**
+	 * Wird aufgerufen wenn ein Knoten selektiert ist, der dann zum Plot führt!
+	 * Beim ersten Aufruf: providersCache (inputliste) == leer => neu anlegen
+	 * Danach wird immer der aktuelle providersCache zurückgegeben
+	 * @return
+	 */
 	private List<IVisualization> getVisualizations() {
 		if (providersCache == null) {
 			List<IVisualization> result = new ArrayList<IVisualization>();

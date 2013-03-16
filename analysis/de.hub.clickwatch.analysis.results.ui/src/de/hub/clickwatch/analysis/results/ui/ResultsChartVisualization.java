@@ -43,6 +43,7 @@ public class ResultsChartVisualization implements IVisualization {
 		return hasChart;
 	}
 	
+	/* Wird aufgerufen wenn der Chart aktualisiert werden soll! */
 	private Chart getChart(Object input) {
 		if (input instanceof NumericalResult) {
 		    NumericalResult result = (NumericalResult)input;
@@ -56,6 +57,8 @@ public class ResultsChartVisualization implements IVisualization {
 		return null;
 	}
 	
+	/* Eigentliche Chart wird hier erstellt und mit Datenbefüllt!
+	 * Wird aufgerufen wenn der Chart aktualisiert werden soll! */
 	private JFreeChart createChart(NumericalResult result) {
 		Chart chart = getChart(result);
 		if (chart == null) {
@@ -143,6 +146,7 @@ public class ResultsChartVisualization implements IVisualization {
 		}
 	}
 	
+	/* Wird augerufen wenn der Chart aktualisiert werden soll! */
 	private Component createChartPanel(NumericalResult result) {
 	    if (result == null) {
 	        return null;
@@ -157,7 +161,9 @@ public class ResultsChartVisualization implements IVisualization {
 			return chartPanel;
 		}
 	}
-
+	
+	/* Wird aufgerufen wenn der Chart aktualisert werden soll!
+	 * (von VisualizationView.frame.add()) */
 	@SuppressWarnings("unchecked")
 	@Override
 	public Component createVisualization(Object input) {	

@@ -34,7 +34,7 @@ public class ResultsVisualizationInputProvider implements IVisualizationInputPro
 			final AbstractVisualizationInput input = new AbstractVisualizationInput() {			
 				@Override
 				public Object getInputData() {
-					return results;
+					return results;				//hier landet man während des Chartaufbaus irgendwann mal (nach Aufruf von input.getInputData() in VisualizationView)
 				}
 			};
 			

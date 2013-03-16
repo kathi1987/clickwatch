@@ -14,6 +14,8 @@ import org.eclipse.ui.part.ViewPart;
 
 import de.hub.clickwatch.util.Throwables;
 
+/* Klasse wird aufgerufen, sobald sich die Selction innerhalb von Eclipse ändert!*/
+
 public abstract class AbstractDataView extends ViewPart implements ISelectionListener {
 	
 	private static final String visualizationInputPorviderExtensionId = "de.hub.clickwatch.analysis.VisualizationInputProvider";
@@ -21,6 +23,9 @@ public abstract class AbstractDataView extends ViewPart implements ISelectionLis
 	
 	protected abstract void setInput(IVisualizationInput input);
 
+	/* Wird beim Eclipsestart aufgerufen!
+	 * von VisualizationView.createpartcontrol
+	 * Erstellt den View?*/
 	public void createPartControl(Composite parent) {		
 		getViewSite().getPage().addSelectionListener(this);
 	}
